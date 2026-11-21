@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Skupina stop bilješki",
+    "description": "Složite nekoliko stop bilješki u jedan blok koji prikazuje jednu po jednu bilješku, npr. Savjeti ili Novosti. Uz njih se mogu složiti i kartice s uputama, bočne bilješke i uokvireni citati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Naziv skupine koji najavljuju čitači zaslona, npr. Savjeti ili Novosti."
+      },
+      {
+        "title": "Bilješke",
+        "description": "Stop bilješke u skupini. Mogu se dodati i kartice s uputama, bočne bilješke i uokvireni citati."
+      }
+    ]
+  }
+}

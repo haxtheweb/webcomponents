@@ -60,6 +60,8 @@
   "flagsFound": "{correct} av {total} hittade",
   "toRethink": "{count} att tänka om",
   "notEvidence": "inte belägg för den här flaggan",
+  "isEvidence": "belägg för den här flaggan",
+  "readingKeys": "Använd piltangenterna för att gå från en {unit} till nästa.",
   "markAnswers": "Markera svar",
   "doneMarking": "Klar med att markera svar",
   "editHint": "Redigera texten nedan. Använd Markera svar i blockmenyn för att välja var varje flagga hör hemma.",

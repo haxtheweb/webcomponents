@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Kiʻikuhi mai ke kikokikona",
+    "description": "E kākau i kiʻikuhi ma ke ʻano he kikokikona (Mermaid): he kiʻikuhi kahe, kaʻina, laina manawa a me nā mea hou aku. Kaha ʻia ma ka ʻaoʻao me kahi kikokikona pani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Hōʻike ʻia ma luna o ke kiʻikuhi a hoʻohana ʻia ma ke ʻano he inoa nona."
+      },
+      {
+        "title": "Kumu kiʻikuhi",
+        "description": "Kikokikona Mermaid, no ka laʻana: flowchart TD, a laila hoʻokahi laina no kēlā me kēia loulou e like me A[Draft] --> B{Ready?}. E hoʻohui iā |label| ma hope o kekahi pua e lepili ai. Hōʻano hou ke kaha kiʻi ʻoiai ʻoe e kikokiko ana."
+      },
+      {
+        "title": "Kikokikona pani",
+        "description": "E wehewehe i ka mea a ke kiʻikuhi e hōʻike ai no ka poʻe hiki ʻole ke ʻike iā ia. E waiho hakahaka ma kahi kiʻikuhi kahe i papa inoa ʻia kona mau ʻanuʻu nou."
+      },
+      {
+        "title": "Kākau kiʻi",
+        "description": "Kākau kiʻi koho i hōʻike ʻia ma lalo o ke kiʻikuhi."
+      },
+      {
+        "title": "Hōʻike i ke kumu",
+        "description": "Hōʻike i ke kikokikona kiʻikuhi ma ka ʻaoʻao o ke kaha kiʻi."
+      },
+      {
+        "title": "Hōʻike i ke kikokikona pani",
+        "description": "Hōʻike i ke kikokikona pani ma lalo o ke kaha kiʻi. Loaʻa mau ia i nā mea heluhelu pakuhi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Waihona kumu",
+        "description": "Helu wahi o kahi waihona .mmd e kaha ai ma kahi o ke kikokikona ma luna (https a i ʻole ala ma kēia kahua)."
+      },
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu o ka ʻāpana kiʻi ikona ma ke poʻo."
+      }
+    ]
+  }
+}

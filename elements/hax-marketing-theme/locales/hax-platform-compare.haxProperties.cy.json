@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Cymharu platfformau",
+    "description": "Pen wrth ben: dewiswch unrhyw ddau blatfform o ffeil ddata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data cymharu (JSON)"
+      },
+      {
+        "title": "ID y platfform chwith"
+      },
+      {
+        "title": "ID y platfform de"
+      }
+    ]
+  }
+}

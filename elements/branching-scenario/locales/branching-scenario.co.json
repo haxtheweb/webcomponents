@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenariu",
+  "directions": "Struzzioni",
+  "showDirections": "Mustrà e struzzioni",
+  "hideDirections": "Piattà e struzzioni",
+  "directionsRead": "Leghjite ogni scena è sceglite ciò chì feriate.",
+  "directionsEndings": "Ci sò parechje fine. Pruvate un altru caminu dopu avè finitu.",
+  "startOver": "Ricumincià",
+  "back": "Un passu in daretu",
+  "tryAnother": "Pruvà un altru caminu",
+  "path": "Caminu",
+  "scene": "Scena",
+  "ending": "Fine",
+  "end": "fine",
+  "scenesSeen": "{seen} scene viste nant'à {total}",
+  "endingReached": "Fine ghjunta",
+  "addScene": "Aghjunghje una scena",
+  "newScene": "Nova scena",
+  "newSceneText": "Discrivite ciò chì succede, po ligate ogni scelta à una scena.",
+  "editingNote": "Mudificazione: ogni scena hè mustrata. Una scelta hè un liame versu # seguitatu da un ID di scena.",
+  "noScenes": "Aghjunghjite una scena per principià u scenariu."
+}

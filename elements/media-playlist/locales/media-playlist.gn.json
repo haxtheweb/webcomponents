@@ -5,5 +5,7 @@
   "editModeLabel": "Ñembopu rysýi ñembosako'i reko",
   "position": "{current} / {total}",
   "previousItem": "Mboyvegua",
-  "nextItem": "Upeiguáva"
+  "nextItem": "Upeiguáva",
+  "fullScreen": "Mba'erechaha tuichakue",
+  "exitFullScreen": "Esẽ mba'erechaha tuichakuégui"
 }

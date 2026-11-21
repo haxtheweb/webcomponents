@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plataformakunata tupachiy",
+    "description": "Uya uyapura: huk willay willañiqimanta mayqin iskay plataformatapas akllay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tupachiy willay (JSON)"
+      },
+      {
+        "title": "Lluq'i plataformap id-nin"
+      },
+      {
+        "title": "Paña plataformap id-nin"
+      }
+    ]
+  }
+}

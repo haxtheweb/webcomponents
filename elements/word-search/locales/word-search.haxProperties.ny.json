@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Kusaka mawu",
+    "description": "Gululi la zilembo lokhala ndi mawu obisika. Ophunzira amadina chilembo choyamba ndi chomaliza cha liwu lililonse. Limayeserera kuzindikira momwe liwu limalembedwera, osati tanthauzo lake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Zomwe ophunzira afunsidwa kupeza, zowonetsedwa pamutu."
+      },
+      {
+        "title": "Mawu",
+        "description": "Mawu oti abisidwe. Mipata ndi zizindikiro za kalembedwe zimasiyidwa m'gululi. Mawu omwe sakukwanira amalembedwa pamene mukusintha ndipo amasiyidwa kwa ophunzira."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kukula kwa gululi",
+        "description": "Zilembo pa mbali iliyonse, 4 mpaka 16. Siyani chopanda kanthu kuti likwanire liwu lalitali kwambiri (mpaka 12). Kupitirira 12 kumapukusika m'mbali pa foni."
+      },
+      {
+        "title": "Mawu okhotakhota",
+        "description": "Bisaninso mawu mokhotakhota. Zovuta kwambiri."
+      },
+      {
+        "title": "Mawu obwerera",
+        "description": "Bisaninso mawu olembedwa mobwerera. Zovuta kwambiri."
+      },
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wosankha wa chizindikiro cha pamutu, chilembo choyamba chosankhidwa ndi batani."
+      }
+    ]
+  }
+}

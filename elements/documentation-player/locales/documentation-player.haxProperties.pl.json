@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Odtwarzacz dokumentacji",
+    "description": "Omówienie, demo i dokumentacja komponentu sieciowego, z przyciskami kopiowania dla HTML, importu, npm i CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Plik danych dokumentacji",
+        "description": "Dane dokumentacji dostarczane z elementem (lib/tag.docs.json)."
+      },
+      {
+        "title": "Scenorys omówienia",
+        "description": "Scenorys animacji dostarczany z elementem (tag.motion.json). Opcjonalny."
+      },
+      {
+        "title": "Samouczek wideo",
+        "description": "Krótkie wideo o elemencie (YouTube, Vimeo lub plik wideo). Zastępuje wideo z danych dokumentacji."
+      },
+      {
+        "title": "Otwórz na karcie",
+        "description": "Która karta jest widoczna jako pierwsza.",
+        "options": {
+          "motion": "Omówienie",
+          "video": "Wideo",
+          "demo": "Demo",
+          "docs": "Dokumentacja",
+          "schema": "Schemat"
+        }
+      },
+      {
+        "title": "Automatyczne odtwarzanie omówienia",
+        "description": "Rozpocznij omówienie, gdy tylko pojawi się odtwarzacz. Ignorowane, gdy czytelnik preferuje ograniczony ruch."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Temat omówienia",
+        "description": "Dla elementów z kilkoma omówieniami: który temat otworzyć najpierw (np. add-blocks). Pozostaw puste dla głównego."
+      },
+      {
+        "title": "Link do demo na żywo",
+        "description": "Dokąd prowadzi przycisk Otwórz źródło demo. Domyślnie folder demo w repozytorium."
+      },
+      {
+        "title": "Link do dokumentacji",
+        "description": "Dokąd prowadzi przycisk pełnej dokumentacji, np. odpowiednia strona Learn HAX."
+      }
+    ]
+  }
+}

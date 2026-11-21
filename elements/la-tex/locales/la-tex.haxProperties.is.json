@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skrifa með stærðfræðitáknmálinu LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bakgrunnur myndar",
+        "description": "Bakgrunnur á bak við teiknaðar myndir. Sjálfvirkt bætir aðeins við einum þegar erfitt væri að sjá teikninguna á síðunni, svo sem dökkar línur í dökkri stillingu.",
+        "options": {
+          "auto": "Sjálfvirkt",
+          "light": "Ljóst",
+          "dark": "Dökkt",
+          "none": "Ekkert"
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Grafico radar",
+    "description": "Grafico radar (a ragnatela) per modelli di maturità e punteggi per aspetti, come HEOSAT. Include un'alternativa testuale e una tabella dati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Titolo del grafico; usato anche come suo nome accessibile."
+      },
+      {
+        "title": "Punteggio massimo",
+        "description": "Valore più alto della scala."
+      },
+      {
+        "title": "Categorie",
+        "description": "Una categoria per riga. Ne servono almeno 3."
+      },
+      {
+        "title": "Punteggi",
+        "description": "Numeri separati da virgole, uno per categoria nello stesso ordine."
+      },
+      {
+        "title": "Punteggi obiettivo",
+        "description": "Numeri separati da virgole, uno per categoria nello stesso ordine."
+      },
+      {
+        "title": "Mostra legenda",
+        "description": "Mostra una legenda che nomina i punteggi e gli obiettivi."
+      },
+      {
+        "title": "Compatto",
+        "description": "Grafico più piccolo senza etichette, legenda o tabella dati. Passa sopra un punto per vederne i valori."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etichetta dei punteggi",
+        "description": "Etichetta della legenda e della tabella per i punteggi."
+      },
+      {
+        "title": "Etichetta degli obiettivi",
+        "description": "Etichetta della legenda e della tabella per gli obiettivi."
+      }
+    ]
+  }
+}

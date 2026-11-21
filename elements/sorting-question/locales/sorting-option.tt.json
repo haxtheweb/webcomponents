@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Җавап дөрес тәртиптә",
   "answerInIncorrectOrder": "Җавап дөрес булмаган тәртиптә",
   "moveOptionUp": "Вариантны тәртиптә өскә күчерү өчен сайлагыз",
-  "moveOptionDown": "Вариантны тәртиптә аска күчерү өчен сайлагыз"
+  "moveOptionDown": "Вариантны тәртиптә аска күчерү өчен сайлагыз",
+  "moveEarlier": "Алдарак күчерү",
+  "moveLater": "Соңрак күчерү",
+  "correct": "Дөрес",
+  "incorrect": "Дөрес түгел"
 }

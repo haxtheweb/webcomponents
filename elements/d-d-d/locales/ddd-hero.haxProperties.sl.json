@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Velika slika, GIF ali video z naslovom in besedilom čez, postavljen kjer koli na strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika ali video",
+        "description": "Datoteka JPG, PNG, WebP, GIF, MP4 ali WebM."
+      },
+      {
+        "title": "Nadomestno besedilo",
+        "description": "Opišite sliko. Če je samo okras, pustite prazno."
+      },
+      {
+        "title": "Naslov",
+        "description": "Naslov, prikazan čez medij. Pustite prazno, če ga ne želite."
+      },
+      {
+        "title": "Besedilo",
+        "description": "Besedilo, prikazano pod naslovom, čez medij."
+      },
+      {
+        "title": "Polna širina",
+        "description": "Razteg od roba do roba namesto v stolpcu vsebine."
+      },
+      {
+        "title": "Višina",
+        "options": {
+          "tall": "Visoko",
+          "medium": "Srednje",
+          "short": "Nizko"
+        }
+      },
+      {
+        "title": "Kadriranje",
+        "description": "Kako je fotografija postavljena pri vsaki velikosti zaslona"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zatemnitev",
+        "description": "Barva, položena čez medij. Z naslovom ali besedilom je vedno prisotna, da besedilo ostane berljivo.",
+        "options": {
+          "blue": "Modra",
+          "bottom": "Temno spodaj",
+          "none": "Brez"
+        }
+      },
+      {
+        "title": "Položaj besedila",
+        "options": {
+          "bottom": "Spodaj",
+          "middle": "Na sredini"
+        }
+      },
+      {
+        "title": "Goriščna točka vodoravno",
+        "description": "Del slike, ki ostane viden pri obrezovanju, od 0 (levo) do 100 (desno)."
+      },
+      {
+        "title": "Goriščna točka navpično",
+        "description": "Del slike, ki ostane viden pri obrezovanju, od 0 (zgoraj) do 100 (spodaj)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Testutik diagramara",
+    "description": "Idatzi diagrama bat testu gisa (Mermaid): fluxu-diagrama, sekuentzia, denbora-lerroa eta gehiago. Orrian marrazten da testu-alternatiba batekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Diagramaren gainean erakusten da eta haren izen gisa erabiltzen da."
+      },
+      {
+        "title": "Diagramaren iturburua",
+        "description": "Mermaid testua, adibidez: flowchart TD, eta gero lerro bat esteka bakoitzeko, adibidez A[Draft] --> B{Ready?}. Gehitu |label| gezi baten ondoren etiketatzeko. Marrazkia idatzi ahala eguneratzen da."
+      },
+      {
+        "title": "Testu-alternatiba",
+        "description": "Deskribatu diagramak zer erakusten duen ikusi ezin dutenentzat. Utzi hutsik fluxu-diagrama batean urratsak zuretzat zerrendatzeko."
+      },
+      {
+        "title": "Irudi-oina",
+        "description": "Diagramaren azpian erakusten den aukerako oina."
+      },
+      {
+        "title": "Erakutsi iturburua",
+        "description": "Erakutsi diagramaren testua marrazkiaren ondoan."
+      },
+      {
+        "title": "Erakutsi testu-alternatiba",
+        "description": "Erakutsi testu-alternatiba marrazkiaren azpian. Pantaila-irakurgailuentzat beti dago eskuragarri."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iturburu-fitxategia",
+        "description": "Goiko testuaren ordez marraztu beharreko .mmd fitxategi baten helbidea (https edo gune honetako bide bat)."
+      },
+      {
+        "title": "Azentu-kolorea",
+        "description": "Goiburuko ikono-txartelaren kolorea."
+      }
+    ]
+  }
+}

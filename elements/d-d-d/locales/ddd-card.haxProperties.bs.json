@@ -52,6 +52,20 @@
           "_top": "Gornji prozor - _top",
           "_parent": "Roditeljski prozor - _parent"
         }
+      },
+      {
+        "title": "Bez strelice",
+        "description": "Sakrij strelicu dugmeta."
+      },
+      {
+        "title": "Link: cilj",
+        "description": "Gdje otvoriti link.",
+        "options": {
+          "": "Isti prozor",
+          "_blank": "Novi prozor - _blank",
+          "_top": "Gornji prozor - _top",
+          "_parent": "Roditeljski prozor - _parent"
+        }
       }
     ],
     "developer": [

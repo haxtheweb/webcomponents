@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Skrivmaskin",
     "description": "Text som skriver sig själv, ett tecken i taget."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "Texten som skrivs ut när elementet rullas in i vyn."
+      },
+      {
+        "title": "Skriver",
+        "description": "Visa den blinkande markören; elementet ställer in detta medan det skriver."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fördröjning",
+        "description": "Millisekunder att vänta innan skrivandet börjar."
+      },
+      {
+        "title": "Markörens varaktighet",
+        "description": "Millisekunder som markören fortsätter blinka efter att texten har skrivits."
+      },
+      {
+        "title": "Hastighet",
+        "description": "Millisekunder per tecken; lägre tal skriver snabbare."
+      }
+    ]
   }
 }

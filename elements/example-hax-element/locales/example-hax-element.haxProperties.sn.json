@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Element yemuenzaniso yekutanga inoshandiswa kuratidza marongerwo eHAX nezvimiro zvinogadziriswa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro"
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "Konservi ĉiujn",
-  "saveTheFollowing": "Ĉu konservi la jenajn: {list}?"
+  "saveTheFollowing": "Ĉu konservi la jenajn: {list}?",
+  "save": "Konservi",
+  "cancel": "Nuligi"
 }

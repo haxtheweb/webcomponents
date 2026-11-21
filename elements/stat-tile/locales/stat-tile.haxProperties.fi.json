@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tilastoruutu",
+    "description": "Yksi merkittävä luku nimiöineen ja muutostietoineen. Sijoita useita ruudukkoon koontinäytön riviksi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimiö",
+        "description": "Mitä luku mittaa."
+      },
+      {
+        "title": "Arvo",
+        "description": "Luku. Pelkkä luku ryhmitellään sivun kielen mukaan; kaikki muu näytetään kirjoitetussa muodossa."
+      },
+      {
+        "title": "Muutos",
+        "description": "Miten se muuttui sanoin, esimerkiksi 6 % tällä lukukaudella."
+      },
+      {
+        "title": "Suunta",
+        "description": "Onko muutos ylös- vai alaspäin.",
+        "options": {
+          "": "Ei mitään",
+          "up": "Ylös",
+          "down": "Alas"
+        }
+      }
+    ]
+  }
+}

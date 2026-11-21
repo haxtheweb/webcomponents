@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "He atahanga nui, he GIF, he ataata rānei me tētahi upoko me te kuputuhi ki runga, ka whakanohoia ki hea rānei o te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Atahanga, ataata rānei",
+        "description": "He kōnae JPG, PNG, WebP, GIF, MP4, WebM rānei."
+      },
+      {
+        "title": "Kuputuhi kē",
+        "description": "Whakaahuatia te atahanga. Waiho kia wātea mēnā he whakapaipai noa iho."
+      },
+      {
+        "title": "Upoko",
+        "description": "Te upoko ka whakaaturia ki runga i te pāpāho. Waiho kia wātea mēnā kāore."
+      },
+      {
+        "title": "Kuputuhi",
+        "description": "Te kuputuhi ka whakaaturia i raro i te upoko, ki runga i te pāpāho."
+      },
+      {
+        "title": "Whānui katoa",
+        "description": "Toro atu mai i te tapa ki te tapa, kaua e noho ki te tīwae ihirangi."
+      },
+      {
+        "title": "Teitei",
+        "options": {
+          "tall": "Teitei",
+          "medium": "Waenga",
+          "short": "Poto"
+        }
+      },
+      {
+        "title": "Tāpare",
+        "description": "Te āhua o te noho a te whakaahua i ia rahi mata"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Memeha",
+        "description": "He tae ka whakatakotoria ki runga i te pāpāho. Mēnā he upoko, he kuputuhi rānei, ka noho tonu he tae, kia māmā tonu te pānui i te kuputuhi.",
+        "options": {
+          "blue": "Kahurangi",
+          "bottom": "Pōuri ki raro",
+          "none": "Kore"
+        }
+      },
+      {
+        "title": "Tūranga kuputuhi",
+        "options": {
+          "bottom": "Raro",
+          "middle": "Waenganui"
+        }
+      },
+      {
+        "title": "Pūwāhi arotahi whakapae",
+        "description": "Te wāhanga o te atahanga ka noho kitea ina kokotia, mai i te 0 (mauī) ki te 100 (matau)."
+      },
+      {
+        "title": "Pūwāhi arotahi whakararo",
+        "description": "Te wāhanga o te atahanga ka noho kitea ina kokotia, mai i te 0 (runga) ki te 100 (raro)."
+      }
+    ]
+  }
+}

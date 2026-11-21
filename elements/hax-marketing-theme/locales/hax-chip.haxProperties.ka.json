@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ჩიპი",
+    "description": "პატარა ხატულა იარლიყით"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ხატულა"
+      },
+      {
+        "title": "იარლიყი"
+      }
+    ]
+  }
+}

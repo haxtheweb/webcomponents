@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Fona attēls."
+        "description": "Fona attēls.",
+        "title": "Attēls"
       },
       {
         "property": "caption",
-        "description": "Teksta virsraksts."
+        "description": "Teksta virsraksts.",
+        "title": "Paraksts"
       }
     ]
   }

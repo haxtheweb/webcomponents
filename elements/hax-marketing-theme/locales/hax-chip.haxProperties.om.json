@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Mallattoo xiqqaa maqaa qabu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mallattoo"
+      },
+      {
+        "title": "Maqaa"
+      }
+    ]
+  }
+}

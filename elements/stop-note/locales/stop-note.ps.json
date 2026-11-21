@@ -3,5 +3,7 @@
   "status_stop": "ودرېږئ",
   "status_warning": "خبرداری",
   "status_success": "بریالیتوب",
-  "status_info": "یادښت"
+  "status_info": "یادښت",
+  "status_tip": "آیا پوهېږئ؟",
+  "status_new": "څه نوي دي"
 }

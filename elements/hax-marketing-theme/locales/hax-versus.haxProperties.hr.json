@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Protiv",
+    "description": "Riječi uz gumb za dvoboj s dva lika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Kamo vodi gumb"
+      },
+      {
+        "title": "Tekst gumba"
+      },
+      {
+        "title": "Sjeme lijevog lika"
+      },
+      {
+        "title": "Sjeme desnog lika"
+      }
+    ]
+  }
+}

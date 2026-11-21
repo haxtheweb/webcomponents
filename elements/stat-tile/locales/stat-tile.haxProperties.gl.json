@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ficha de estatística",
+    "description": "Un número importante, coa súa etiqueta e como cambiou. Coloca varios nunha grella para unha fila de panel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "O que mide o número."
+      },
+      {
+        "title": "Valor",
+        "description": "O número. Un número simple agrúpase segundo o idioma da páxina; calquera outra cousa móstrase tal como está escrita."
+      },
+      {
+        "title": "Cambio",
+        "description": "Como cambiou, en palabras, como 6% este trimestre."
+      },
+      {
+        "title": "Dirección",
+        "description": "Se o cambio é cara arriba ou cara abaixo.",
+        "options": {
+          "": "Ningunha",
+          "up": "Arriba",
+          "down": "Abaixo"
+        }
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "Chengetedza Zvose",
-  "saveTheFollowing": "Chengetedza zvinotevera: {list}?"
+  "saveTheFollowing": "Chengetedza zvinotevera: {list}?",
+  "save": "Chengetedza",
+  "cancel": "Kanzura"
 }

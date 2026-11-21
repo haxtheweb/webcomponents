@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "አዶን ደብቅ",
         "description": "ጽሑፍን ለማጉላት የሚያገለግለውን አዶ ደብቅ"
+      },
+      {
+        "title": "መልክ",
+        "description": "አዝራሩ ምን ያህል አጽንዖት እንዳለው።",
+        "options": {
+          "": "የተሞላ",
+          "tonal": "ቃናዊ",
+          "outlined": "ዝርዝር ያለው",
+          "plain": "ተራ"
+        }
+      },
+      {
+        "title": "መጠን",
+        "description": "የአዝራር መጠን።",
+        "options": {
+          "s": "ትንሽ",
+          "": "መካከለኛ",
+          "l": "ትልቅ"
+        }
       }
     ],
     "advanced": [

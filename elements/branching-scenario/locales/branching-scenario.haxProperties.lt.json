@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Išsišakojantis scenarijus",
+    "description": "Istorija, kurioje kiekvienas pasirinkimas veda į kitą sceną ir pabaigą. Besimokantieji gali grįžti atgal ir išbandyti kitus kelius; pasiekta pabaiga nustato rezultatą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Scenarijaus pavadinimas, rodomas jo antraštėje."
+      },
+      {
+        "title": "Pradinė scena",
+        "description": "Scenos, nuo kurios pradeda besimokantieji, ID. Palikite tuščią, kad būtų pradedama nuo pirmos scenos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcento spalva",
+        "description": "Pasirinktinė antraštės žymės, mygtukų ir pasirinkimo krašto spalva."
+      }
+    ]
+  }
+}

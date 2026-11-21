@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Uku willay",
+    "description": "Qillqapi tiyananpi qillqasqa willay. Huk yupay hina rikhurin, yupasqa willaykuna listataq p'anqap uranpi kikillanmanta rurakun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Willay",
+        "description": "Uku willaypa qillqan."
+      },
+      {
+        "title": "Mana ñawpaq qhawayniyuq",
+        "description": "Ñawinchaq yupay patapi ratonta purichiptin utaq yuyaychakuptin willayta ama rikuchiychu."
+      }
+    ]
+  }
+}

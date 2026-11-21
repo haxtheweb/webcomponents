@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Geschichtsknäppchen",
+    "description": "De Knäppchen, deen d'Geschicht hannert enger Aussoe op hax.cloud opmécht, oder déi passend Plaz op enger anerer Websäit vum HAX-Netzwierk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wouhi en féiert",
+        "options": {
+          "cloud": "hax.cloud, d'Geschicht",
+          "learn": "learn.hax.cloud, en Tutorial",
+          "try": "browser.hax.cloud, ausprobéieren",
+          "elements": "webcomponents.hax.cloud, e Block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adress op där Websäit (eng Geschicht op hax.cloud gesäit aus wéi stories/ee450a19)"
+      },
+      {
+        "title": "Wouriwwer et geet"
+      },
+      {
+        "title": "Klengen Chip"
+      },
+      {
+        "title": "Am Knäppchen weisen, wouriwwer et geet"
+      }
+    ]
+  }
+}

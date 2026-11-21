@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentációs lejátszó",
+    "description": "Útmutató, bemutató és referencia egy webkomponenshez, másológombokkal a HTML-hez, az importhoz, az npm-hez és a CDN-hez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentációs adatfájl",
+        "description": "Az elemmel együtt szállított dokumentációs adatok (lib/tag.docs.json)."
+      },
+      {
+        "title": "Útmutató forgatókönyve",
+        "description": "Az elemmel együtt szállított mozgásforgatókönyv (tag.motion.json). Opcionális."
+      },
+      {
+        "title": "Videós oktatóanyag",
+        "description": "Rövid videó az elemről (YouTube, Vimeo vagy videófájl). Felülírja a dokumentációs adatokban lévő videót."
+      },
+      {
+        "title": "Megnyitás ezen a lapon",
+        "description": "Melyik lap látszódjon először.",
+        "options": {
+          "motion": "Útmutató",
+          "video": "Videó",
+          "demo": "Bemutató",
+          "docs": "Dokumentáció",
+          "schema": "Séma"
+        }
+      },
+      {
+        "title": "Útmutató automatikus lejátszása",
+        "description": "Az útmutató azonnal elindul, amint a lejátszó megjelenik. Figyelmen kívül marad, ha az olvasó csökkentett mozgást kér."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Útmutató témája",
+        "description": "Több útmutatóval rendelkező elemeknél melyik téma nyíljon meg először (például add-blocks). Hagyja üresen a fő útmutatóhoz."
+      },
+      {
+        "title": "Élő bemutató hivatkozása",
+        "description": "Hová vezet a Bemutató forrásának megnyitása gomb. Alapértelmezés szerint a tároló bemutató mappájába."
+      },
+      {
+        "title": "Dokumentáció hivatkozása",
+        "description": "Hová vezet a teljes dokumentáció gomb, például a megfelelő Learn HAX oldalra."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "Ìran",
+  "ending": "Ìparí",
+  "goodEnding": "Ìparí rere",
+  "mixedEnding": "Ìparí àdàlù",
+  "poorEnding": "Ìparí tí kò dára",
+  "scoreOf": "Àmì {score} nínú {max}",
+  "scoreOnly": "Àmì {score}",
+  "startScene": "Bẹ̀rẹ̀",
+  "sceneIdLabel": "ID ìran",
+  "needsId": "Ṣàfikún ID ìran kí àwọn àṣàyàn lè so mọ́ ìran yìí.",
+  "orphan": "Kò sí àṣàyàn tó so mọ́ ìran yìí.",
+  "deadLinks": "Àwọn ìjápọ̀ wọ̀nyí tọ́ka sí ìran tí kò sí:"
+}

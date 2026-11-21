@@ -181,6 +181,16 @@ Custom property | Description | Default
  * @LitElement
  * @element hax-body
  */
+/**
+ * Blocks a dragged block can be dropped into besides the page and grid
+ * columns, with the block tags each takes (null: any block)
+ */
+const HAX_DRAG_COLLECTIONS = {
+  "image-gallery": ["MEDIA-IMAGE", "IMG"],
+  "media-playlist": ["VIDEO-PLAYER", "AUDIO-PLAYER"],
+  "play-list": null,
+};
+
 class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   static get tag() {
     return "hax-body";
@@ -2294,7 +2304,34 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       rects: pageItems.map((el) => el.getBoundingClientRect()),
       box: this.getBoundingClientRect(),
     });
-    if (node.tagName === "GRID-PLATE") return zones;
+    // collections take blocks too: a gallery its images, a media playlist
+    // its players, a play-list any block as a new slide. Their children
+    // carry no slot. A node never drops into itself. They are listed last
+    // so one inside a grid column wins over the column.
+    const lists = [];
+    Object.keys(HAX_DRAG_COLLECTIONS).forEach((tag) => {
+      const accepts = HAX_DRAG_COLLECTIONS[tag];
+      if (accepts && !accepts.includes(node.tagName)) return;
+      [...this.querySelectorAll(tag)].forEach((list) => {
+        if (list === node || node.contains(list)) return;
+        const box = list.getBoundingClientRect();
+        if (box.width < 2 || box.height < 2) return;
+        const items = [...list.children].filter(
+          (el) =>
+            el !== node &&
+            el.getBoundingClientRect().height > 0 &&
+            (!accepts || accepts.includes(el.tagName)),
+        );
+        lists.push({
+          container: list,
+          slot: null,
+          items: items,
+          rects: items.map((el) => el.getBoundingClientRect()),
+          box: box,
+        });
+      });
+    });
+    if (node.tagName === "GRID-PLATE") return zones.concat(lists);
     [...this.querySelectorAll("grid-plate")].forEach((grid) => {
       if (!grid.shadowRoot || node.contains(grid)) return;
       const cols = (grid.layout || "1-1").split("-").length;
@@ -2315,7 +2352,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         });
       });
     });
-    return zones;
+    return zones.concat(lists);
   }
   _blockDragMove(e) {
     const d = this._blockDrag;
@@ -2549,7 +2586,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (!noop) {
       if (zone.slot) {
         node.setAttribute("slot", zone.slot);
-      } else if (zone.container === this) {
+      } else if (
+        zone.container === this ||
+        HAX_DRAG_COLLECTIONS[zone.container.tagName.toLowerCase()] !== undefined
+      ) {
         node.removeAttribute("slot");
       }
       if (before) {
@@ -3936,6 +3976,23 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Split text primitive content at the current selection range.
    * Paragraphs split into paragraphs; headings split into heading + paragraph.
    */
+  /**
+   * true when an HTML string holds no text and nothing but line breaks
+   */
+  __isEffectivelyEmptyHTML(html) {
+    // parsed into an inert template: nothing in it loads or runs
+    const probe = globalThis.document.createElement("template");
+    probe.innerHTML = sanitizeHTMLString(html || "");
+    const frag = probe.content;
+    return (
+      frag.textContent.replace(/[\s\u00a0\u200b]/g, "") === "" &&
+      // inline formatting left behind at the caret is not content, any
+      // other element (an image, an embed, a web component) is
+      !frag.querySelector(
+        "*:not(br):not(span):not(b):not(strong):not(i):not(em):not(u):not(s):not(sub):not(sup):not(a)",
+      )
+    );
+  }
   __splitTextBlockAtSelection(node) {
     const range = HAXStore.getRange();
     if (
@@ -3959,7 +4016,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       ? "p"
       : node.tagName.toLowerCase();
     const newNode = globalThis.document.createElement(insertTag);
-    if (insertTag === node.tagName.toLowerCase()) {
+    // Enter at the end of a block starts a new, plain paragraph: the
+    // block's design attributes (data-style-guide, DDD accents, fonts,
+    // alignment) stay on the block they were set on. Splitting text in
+    // the middle keeps them on both halves, since both were styled.
+    const startsFresh = this.__isEffectivelyEmptyHTML(afterHTML);
+    if (insertTag === node.tagName.toLowerCase() && !startsFresh) {
       for (let i = 0; i < node.attributes.length; i++) {
         const attr = node.attributes[i];
         if (!["id", "data-hax-active", "contenteditable"].includes(attr.name)) {

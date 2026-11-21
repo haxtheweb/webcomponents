@@ -52,6 +52,20 @@
           "_top": "Goiko leihoa - _top",
           "_parent": "Leiho gurasoa - _parent"
         }
+      },
+      {
+        "title": "Geziarik ez",
+        "description": "Ezkutatu botoiaren gezia."
+      },
+      {
+        "title": "Esteka: helburua",
+        "description": "Non ireki esteka.",
+        "options": {
+          "": "Leiho berean",
+          "_blank": "Leiho berria - _blank",
+          "_top": "Goiko leihoa - _top",
+          "_parent": "Leiho gurasoa - _parent"
+        }
       }
     ],
     "developer": [

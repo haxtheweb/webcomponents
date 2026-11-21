@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Brīdinājums",
           "success": "Apstiprinājums",
-          "info": "Paziņojums"
+          "info": "Paziņojums",
+          "tip": "Padoms",
+          "new": "Kas jauns"
         }
       },
       {

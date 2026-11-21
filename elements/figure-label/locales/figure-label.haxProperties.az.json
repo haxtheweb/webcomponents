@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Fiqur etiketi",
     "description": "Məzmun daxilində media resurslarını işarələmək üçün fiqur etiketi elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəkil nömrəsi",
+        "description": "Şəkil üçün nömrə və ya qısa etiket, məsələn 1.3"
+      },
+      {
+        "title": "Təsvir",
+        "description": "Şəklin qısa təsviri"
+      }
+    ]
   }
 }

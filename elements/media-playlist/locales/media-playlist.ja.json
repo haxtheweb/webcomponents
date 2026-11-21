@@ -5,5 +5,7 @@
   "editModeLabel": "メディアプレイリストの編集モード",
   "position": "{current} / {total}",
   "previousItem": "前の項目",
-  "nextItem": "次の項目"
+  "nextItem": "次の項目",
+  "fullScreen": "全画面",
+  "exitFullScreen": "全画面を終了"
 }

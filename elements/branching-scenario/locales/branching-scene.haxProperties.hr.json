@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Prizor scenarija",
+    "description": "Jedan prizor razgranatog scenarija. Povežite svaki izbor s drugim prizorom pomoću # nakon kojeg slijedi ID prizora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID prizora",
+        "description": "Na što vode izbori: poveznica na # nakon koje slijedi ovaj ID vodi na ovaj prizor. Slova, brojke i crtice."
+      },
+      {
+        "title": "Naslov",
+        "description": "Naslov prizora."
+      },
+      {
+        "title": "Završetak",
+        "description": "Završava li ovaj prizor put i kako je završio.",
+        "options": {
+          "": "Nije završetak",
+          "good": "Dobar završetak",
+          "mixed": "Mješovit završetak",
+          "poor": "Loš završetak"
+        }
+      },
+      {
+        "title": "Rezultat",
+        "description": "Rezultat za dosezanje ovog završetka. Najviši rezultat završetka u scenariju je maksimum."
+      }
+    ]
+  }
+}

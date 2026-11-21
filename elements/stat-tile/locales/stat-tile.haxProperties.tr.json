@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "İstatistik kutucuğu",
+    "description": "Önemli bir sayı, etiketi ve nasıl değiştiğiyle birlikte. Bir pano satırı için birkaç tanesini ızgaraya yerleştirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Sayının neyi ölçtüğü."
+      },
+      {
+        "title": "Değer",
+        "description": "Sayı. Düz bir sayı sayfa diline göre gruplanır; diğer her şey yazıldığı gibi gösterilir."
+      },
+      {
+        "title": "Değişim",
+        "description": "Nasıl değiştiği, kelimelerle, örneğin bu dönem %6."
+      },
+      {
+        "title": "Yön",
+        "description": "Değişimin artış mı azalış mı olduğu.",
+        "options": {
+          "": "Yok",
+          "up": "Yukarı",
+          "down": "Aşağı"
+        }
+      }
+    ]
+  }
+}

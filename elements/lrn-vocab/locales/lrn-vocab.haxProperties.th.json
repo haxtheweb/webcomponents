@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "คำ"
+        "title": "คำ",
+        "description": "คำหรือวลีที่ผู้อ่านคลิกเพื่อดูความหมาย"
       },
       {
         "slot": "",

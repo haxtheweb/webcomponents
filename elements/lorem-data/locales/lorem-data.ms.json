@@ -1,4 +1,6 @@
 {
   "saveAll": "Simpan Semua",
-  "saveTheFollowing": "Simpan yang berikut: {list}?"
+  "saveTheFollowing": "Simpan yang berikut: {list}?",
+  "save": "Simpan",
+  "cancel": "Batal"
 }

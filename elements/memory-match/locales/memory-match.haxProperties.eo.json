@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memorludo",
+    "description": "Turnu kartojn por trovi parojn. Parigu terminon kun ĝia signifo, por ke kongruo montru komprenon, aŭ uzu du kongruajn tekstojn aŭ bildojn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "La instrukcio montrata en la kapo, ekzemple: Kongruigu la terminon kun ĝia tasko."
+      },
+      {
+        "title": "Paroj",
+        "description": "Ĉiu paro estas du kartoj, kiuj apartenas kune, kutime termino kaj ĝia signifo. Flanko bezonas tekston, bildon aŭ ambaŭ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcenta koloro",
+        "description": "Nedeviga koloro por la kapa ĉipo, la kartaj dorsoj kaj la butono."
+      }
+    ]
+  }
+}

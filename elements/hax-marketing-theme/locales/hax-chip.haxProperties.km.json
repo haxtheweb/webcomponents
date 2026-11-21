@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "បន្ទះ",
+    "description": "រូបតំណាងតូចមានស្លាក"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "រូបតំណាង"
+      },
+      {
+        "title": "ស្លាក"
+      }
+    ]
+  }
+}

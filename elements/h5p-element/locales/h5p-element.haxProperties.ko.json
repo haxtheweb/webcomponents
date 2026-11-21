@@ -4,7 +4,12 @@
     "description": "업로드한 .h5p 파일의 H5P 인터랙티브 콘텐츠를 H5P 서버 없이 재생합니다"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P 파일",
+        "description": ".h5p 파일을 업로드하거나 링크하세요. 브라우저에서 압축이 풀리므로 H5P 서버가 필요 없습니다."
+      }
+    ],
     "advanced": [
       {
         "title": "레거시 iframe 임베드 코드",

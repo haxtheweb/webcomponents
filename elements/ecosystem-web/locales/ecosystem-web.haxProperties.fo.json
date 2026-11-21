@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Vistskipanarvevur",
+    "description": "Ein samvirkin vevur yvir, hvussu partarnir í eini verkætlan eru tengdir, við undirvevum og ferðum stig fyri stig."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vevdáta",
+        "description": "URL til JSON-pakkan við vevum (bygdur í PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Vevur",
+        "description": "Id á vevinum, sum skal vísast fyrst; main er vistskipanarvevurin."
+      },
+      {
+        "title": "Valdur flísur",
+        "description": "Id á einum flísi, sum skal veljast, tá ið vevurin letst upp."
+      },
+      {
+        "title": "Ferð",
+        "description": "Id á eini ferð at byrja við."
+      },
+      {
+        "title": "Byrja í listavísing",
+        "description": "Vís vevin sum innskotnar listar í staðin fyri tekningina."
+      },
+      {
+        "title": "Bert tekning",
+        "description": "Vís bert tekningina, sum eina mynd: einki høvd, ferðir, smálutir ella stigstong."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Les eftir",
+        "description": "Byrja við hvørjum flísi lisnum eftir einum máti.",
+        "options": {
+          "": "Bert sambond",
+          "fresh": "Ferskleiki",
+          "bus": "Bussfaktorur",
+          "impact": "Ávirkan",
+          "evidence": "Prógv",
+          "parity": "Javnstøða"
+        }
+      }
+    ]
+  }
+}

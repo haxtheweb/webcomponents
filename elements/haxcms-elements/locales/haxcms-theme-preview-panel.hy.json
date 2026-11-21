@@ -8,5 +8,9 @@
   "theme": "Թեմա",
   "palette": "Պալիտրա",
   "cancel": "Չեղարկել",
-  "openAppearanceSettings": "Բացել արտաքին տեսքի կարգավորումները"
+  "openAppearanceSettings": "Բացել արտաքին տեսքի կարգավորումները",
+  "designSystem": "Դիզայն համակարգ",
+  "designSystemDefault": "DDD (լռելյայն)",
+  "designSystemThemeDefault": "{name} (թեմայի լռելյայնը)",
+  "designSystemHelp": "Գույն, տառատեսակ, անկյուններ և խտություն։ Դասավորությունը դեռ որոշում է թեման։"
 }

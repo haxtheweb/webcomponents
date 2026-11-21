@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "शीर्षक"
+        "title": "शीर्षक",
+        "description": "कोर्स मॉडल के ऊपर दिखाया गया शीर्षक।"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "दिखाने के लिए 3D मॉडल फ़ाइल (.glb या .gltf) का पता।"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "जो लोग 3D मॉडल नहीं देख सकते उनके लिए उसका वर्णन करें।"
       },
       {
         "title": "जानकारी क्षेत्र"

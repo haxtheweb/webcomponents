@@ -6,6 +6,8 @@
   "faviconDescription": "బ్రౌజర్ ట్యాబ్ చిత్రం / ఫోన్‌లలో చిన్న సైట్ లోగోగా ఉపయోగించబడుతుంది",
   "domain": "డొమైన్",
   "domainDescription": "ఈ వెబ్‌సైట్ డొమైన్",
+  "sameAs": "ఈ సైట్ యొక్క ఇతర ప్రొఫైల్‌లు",
+  "sameAsDescription": "ఇతర చోట్ల ఉన్న ఈ సైట్ లేదా సంస్థ ప్రొఫైల్‌లకు పంక్తికి ఒక లింక్ (GitHub, LinkedIn, YouTube, Mastodon). శోధన యంత్రాలు ఆ ప్రొఫైల్‌లను ఈ సైట్‌కు అనుసంధానించడానికి వాటిని ఉపయోగిస్తాయి.",
   "language": "భాష",
   "languageDescription": "ఈ సైట్ భాష. పేరు లేదా కోడ్ ద్వారా వెతకండి, లేదా fr-CA వంటి మరొక కోడ్‌ను నమోదు చేయండి.",
   "googleAnalyticsId": "Google Analytics ID",

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Sumasangang senaryo",
+    "description": "Isang kuwento kung saan humahantong ang bawat pagpipilian sa ibang eksena at wakas. Maaaring bumalik ang mga mag-aaral at sumubok ng ibang landas; ang naabot na wakas ang nagtatakda ng iskor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Pangalan ng senaryo, ipinapakita sa header nito."
+      },
+      {
+        "title": "Panimulang eksena",
+        "description": "Id ng eksena kung saan nagsisimula ang mga mag-aaral. Iwanang blangko para magsimula sa unang eksena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulay ng accent",
+        "description": "Opsyonal na kulay para sa header chip, mga button at gilid ng pagpipilian."
+      }
+    ]
+  }
+}

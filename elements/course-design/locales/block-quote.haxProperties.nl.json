@@ -20,6 +20,12 @@
         "title": "Afbeelding",
         "description": "Afbeelding die bij het citaat wordt getoond."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Omkaderd",
+        "description": "Teken het citaat op het gedeelde blokkader, met een pictogram en label erboven, zodat het past bij notities en instructiekaarten."
+      }
     ]
   }
 }

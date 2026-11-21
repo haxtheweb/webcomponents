@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tembiasakue botõ",
+    "description": "Botõ oipe'áva tembiasakue oĩva peteĩ he'ihápe hax.cloud-pe, térã tenda ojoguáva ambue HAX ñanduti tendápe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mamópa oho",
+        "options": {
+          "cloud": "hax.cloud, tembiasakue",
+          "learn": "learn.hax.cloud, peteĩ mbo'esyry",
+          "try": "browser.hax.cloud, eñeha'ã",
+          "elements": "webcomponents.hax.cloud, peteĩ bloque",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Kundaharape upe tendápe (peteĩ tembiasakue hax.cloud-pe ojogua stories/ee450a19)"
+      },
+      {
+        "title": "Mba'e rehepa oñe'ẽ"
+      },
+      {
+        "title": "Chip michĩ"
+      },
+      {
+        "title": "Ehechauka botõme mba'e rehepa oñe'ẽ"
+      }
+    ]
+  }
+}

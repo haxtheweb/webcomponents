@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Xalên germ nas bike",
+    "description": "Fêrxwaz cihên rast ên li ser wêneyekê bi klîk, tikandin an bi xaça nîşanê ya klavyeyê dibînin. Hevtaya bi not a nexşeya wêneyê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wêne",
+        "description": "Wêneyê ku fêrxwaz lê digerin."
+      },
+      {
+        "title": "Nivîsa alternatîf",
+        "description": "Wêneyê ji bo kesên ku nikarin wê bibînin rave dike. Tu carî wekî sernav nayê nîşandan."
+      },
+      {
+        "title": "Sernav",
+        "description": "Sernavekî kurt ê xuya ku li jora wêneyê tê nîşandan."
+      },
+      {
+        "title": "Pirs",
+        "description": "Ji fêrxwazan tê xwestin ku di wêneyê de çi bibînin."
+      },
+      {
+        "title": "Bersiv",
+        "description": "Her bersiv hêlîkeke bi nav e li ser wêneyê. Cih û mezinahî ji sedî yên wêneyê ne, ji quncika wê ya jor-çep tên pîvandin. Dema sererastkirinê, her bersiv li ser wêneyê xêzkirî ye."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hewl",
+        "description": "Fêrxwazek çend caran dikare biceribîne. 0 tê wateya bêsînor."
+      },
+      {
+        "title": "Şaşiyên destûrdayî",
+        "description": "Çend şaşî hewlekê diqedînin. 0 tê wateya bêsînor, û fêrxwaz bişkoka Biqedîne distînin."
+      },
+      {
+        "title": "Qatbar",
+        "description": "Vê pirsê wekî rêzeke ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên qatbar ên li kêleka wê digire."
+      },
+      {
+        "title": "Qatkirî dest pê bike",
+        "description": "Dema qatbar be, wekî rêzeke girtî dest pê bike ku tenê pirs û rewşa wê nîşan dide."
+      },
+      {
+        "title": "Formata notkirinê",
+        "description": "OER Schema: formata notkirinê ji bo vê nirxandinê (wek puan, tîp, ji sedî, temamkirin)."
+      },
+      {
+        "title": "Armanca fêrbûnê",
+        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navê quizê",
+        "description": "Navê quizê ku ji bo naskirina vê hêmanê di hawîrdorên bi xAPI de tê şandin"
+      },
+      {
+        "title": "Ders",
+        "description": "OER Schema: dersa ku ev nirxandin jê re ye."
+      }
+    ]
+  }
+}

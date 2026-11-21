@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Iwebhu ye-ecosystem",
+    "description": "Iwebhu esebenzisanayo yendlela iinxalenye zeprojekthi ezinxibelelana ngayo, eneewebhu ezincinci nokhenketho lwenyathelo ngenyathelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yewebhu",
+        "description": "I-URL yenyanda ye-JSON yeewebhu (eyakhiwe kwi-PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Iwebhu",
+        "description": "I-id yewebhu eboniswa kuqala; main yiwebhu ye-ecosystem."
+      },
+      {
+        "title": "Ithayile ekhethiweyo",
+        "description": "I-id yethayile ekhethwayo xa iwebhu ivuleka."
+      },
+      {
+        "title": "Ukhenketho",
+        "description": "I-id yokhenketho lokuqala."
+      },
+      {
+        "title": "Qala kwimbonakalo yoluhlu",
+        "description": "Bonisa iwebhu njengezintlu ezifakwe ngaphakathi endaweni yomzobo."
+      },
+      {
+        "title": "Umzobo kuphela",
+        "description": "Bonisa umzobo kuphela, njengomfanekiso: akukho sihloko, khenketho, iinkcukacha okanye ibha yenyathelo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Funda ngo",
+        "description": "Qala ithayile nganye ifundwa ngomlinganiselo omnye.",
+        "options": {
+          "": "Unxibelelwano kuphela",
+          "fresh": "Ubutsha",
+          "bus": "Isiphumo sebhasi",
+          "impact": "Impembelelo",
+          "evidence": "Ubungqina",
+          "parity": "Ukulingana"
+        }
+      }
+    ]
+  }
+}

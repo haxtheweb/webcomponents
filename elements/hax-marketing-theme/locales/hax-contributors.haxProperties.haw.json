@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Nā mea kōkua",
+    "description": "Nā kānaka i kūkulu i ka papahana, mai kekahi waihona papa inoa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waihona papa inoa (JSON)"
+      },
+      {
+        "title": "Nānaina: landed, lab a i ʻole code"
+      },
+      {
+        "title": "Ka nui loa o nā kānaka e hōʻike ai (ʻo 0 nā mea a pau)"
+      }
+    ]
+  }
+}

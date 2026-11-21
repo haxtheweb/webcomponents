@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Štítok",
+    "description": "Malá ikona s označením"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Označenie"
+      }
+    ]
+  }
+}

@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "정답",
-        "description": "답의 순서가 올바른 순서를 정의합니다."
+        "description": "답의 순서가 올바른 순서를 정의합니다.",
+        "options": {
+          "": "목록",
+          "cards": "이미지 카드"
+        }
+      },
+      {
+        "title": "답",
+        "description": "답의 순서가 정답 순서가 됩니다."
       }
     ],
     "advanced": [

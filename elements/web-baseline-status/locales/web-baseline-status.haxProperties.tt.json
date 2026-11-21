@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline халәте",
+    "description": "Веб-платформа мөмкинлегенең Baseline браузер ярдәме халәтен күрсәтү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Мөмкинлек ID'ы",
+        "description": "Веб-мөмкинлекнең ID'ы, мәсәлән anchor-positioning. ID'ларны webstatus.dev сайтында табыгыз; ID — мөмкинлек бите URL адресының соңгы өлеше."
+      }
+    ]
+  }
+}

@@ -4,7 +4,12 @@
     "description": "H5P interaktív tartalmat játszik le egy feltöltött .h5p fájlból, H5P-szerver nélkül"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P fájl",
+        "description": "Töltsön fel vagy hivatkozzon egy .h5p fájlra. A böngészőben csomagolódik ki; nincs szükség H5P szerverre."
+      }
+    ],
     "advanced": [
       {
         "title": "Régi iframe beágyazási kód",

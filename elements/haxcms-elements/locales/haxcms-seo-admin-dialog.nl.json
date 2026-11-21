@@ -6,6 +6,8 @@
   "faviconDescription": "Afbeelding op het browsertabblad / op telefoons gebruikt als klein sitelogo",
   "domain": "Domein",
   "domainDescription": "Domein van deze website",
+  "sameAs": "Andere profielen van deze site",
+  "sameAsDescription": "Eén link per regel naar profielen van deze site of organisatie elders (GitHub, LinkedIn, YouTube, Mastodon). Zoekmachines gebruiken ze om die profielen aan deze site te koppelen.",
   "language": "Taal",
   "languageDescription": "Taal van deze site. Zoek op naam of code, of voer een andere code in zoals fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

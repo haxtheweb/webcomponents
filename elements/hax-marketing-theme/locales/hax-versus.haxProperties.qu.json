@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Contra",
+    "description": "Iskay runayuq uya uyapura ñit'inap waqtanpi simikuna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uma siq'i"
+      },
+      {
+        "title": "Ñit'ina maymanchus rin"
+      },
+      {
+        "title": "Ñit'inap qillqan"
+      },
+      {
+        "title": "Lluq'i runap muhun"
+      },
+      {
+        "title": "Paña runap muhun"
+      }
+    ]
+  }
+}

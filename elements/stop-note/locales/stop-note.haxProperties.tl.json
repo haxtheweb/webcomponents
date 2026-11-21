@@ -23,7 +23,9 @@
           "stop": "Huminto",
           "warning": "Babala",
           "success": "Kumpirmasyon",
-          "info": "Paunawa"
+          "info": "Paunawa",
+          "tip": "Tip",
+          "new": "Ano ang bago"
         }
       },
       {

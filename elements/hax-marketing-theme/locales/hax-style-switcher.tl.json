@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema ng disenyo",
+  "dddDefault": "DDD (default)",
+  "designSystemHelp": "Kulay, type, mga sulok at focus. Pinapanatili ng tema ang layout.",
+  "designSystemFixed": "May sariling design system ang temang ito.",
+  "palette": "Palette",
+  "themeDefault": "Default ng tema",
+  "paletteNumber": "Palette {n}",
+  "siteTheme": "{name} (tema ng site na ito)",
+  "restyle": "Baguhin ang istilo ng site na ito",
+  "close": "Isara",
+  "reset": "Bumalik sa sariling hitsura ng site na ito",
+  "random": "Sorpresahin ako",
+  "about": "Ipinapakita nito ang ilan sa mga hitsurang nakapaloob sa HAX. Hindi kailanman nagbabago ang mga pahina: nasa JSON Outline Schema ang istruktura at bawat block ay karaniwang web component, kaya malayang mapapalitan ang disenyo."
+}

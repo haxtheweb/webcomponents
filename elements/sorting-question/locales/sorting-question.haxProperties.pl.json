@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Odpowiedzi",
-        "description": "Kolejność odpowiedzi określa prawidłową sekwencję."
+        "description": "Kolejność odpowiedzi określa prawidłową sekwencję.",
+        "options": {
+          "": "Lista",
+          "cards": "Karty z obrazami"
+        }
+      },
+      {
+        "title": "Odpowiedzi",
+        "description": "Kolejność odpowiedzi określa poprawną sekwencję."
       }
     ],
     "advanced": [

@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Įspėjimas",
           "success": "Patvirtinimas",
-          "info": "Pranešimas"
+          "info": "Pranešimas",
+          "tip": "Patarimas",
+          "new": "Kas naujo"
         }
       },
       {

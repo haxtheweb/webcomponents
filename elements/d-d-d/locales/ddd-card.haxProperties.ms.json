@@ -52,6 +52,20 @@
           "_top": "Tetingkap teratas - _top",
           "_parent": "Tetingkap induk - _parent"
         }
+      },
+      {
+        "title": "Tiada Anak Panah",
+        "description": "Sembunyikan anak panah butang."
+      },
+      {
+        "title": "Pautan: sasaran",
+        "description": "Tempat untuk membuka pautan.",
+        "options": {
+          "": "Tetingkap yang sama",
+          "_blank": "Tetingkap baharu - _blank",
+          "_top": "Tetingkap atas - _top",
+          "_parent": "Tetingkap induk - _parent"
+        }
       }
     ],
     "developer": [

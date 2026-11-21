@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "כפתור סיפור",
+    "description": "הכפתור שפותח את הסיפור שמאחורי טענה ב־hax.cloud, או את המקום המתאים באתר אחר ברשת HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "לאן הוא מוביל",
+        "options": {
+          "cloud": "hax.cloud, הסיפור",
+          "learn": "learn.hax.cloud, מדריך",
+          "try": "browser.hax.cloud, נסו את זה",
+          "elements": "webcomponents.hax.cloud, בלוק",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "כתובת באותו אתר (סיפור ב־hax.cloud נראה כמו stories/ee450a19)"
+      },
+      {
+        "title": "על מה זה"
+      },
+      {
+        "title": "תג קטן"
+      },
+      {
+        "title": "הצגת הנושא בתוך הכפתור"
+      }
+    ]
+  }
+}

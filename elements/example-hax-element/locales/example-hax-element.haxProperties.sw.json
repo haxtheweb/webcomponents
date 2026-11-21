@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Kipengele cha mfano cha kuanzia kinachotumika kuonyesha usanidi wa HAX na sifa zinazoweza kuhaririwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa"
+      }
+    ]
+  }
+}

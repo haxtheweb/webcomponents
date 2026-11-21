@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Stāsta poga",
+    "description": "Poga, kas atver stāstu aiz apgalvojuma vietnē hax.cloud vai atbilstošo vietu citā HAX tīkla vietnē"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kur tā ved",
+        "options": {
+          "cloud": "hax.cloud, stāsts",
+          "learn": "learn.hax.cloud, pamācība",
+          "try": "browser.hax.cloud, izmēģiniet",
+          "elements": "webcomponents.hax.cloud, bloks",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adrese šajā vietnē (stāsts vietnē hax.cloud izskatās šādi: stories/ee450a19)"
+      },
+      {
+        "title": "Par ko tas ir"
+      },
+      {
+        "title": "Mazs žetons"
+      },
+      {
+        "title": "Rādīt pogā, par ko tas ir"
+      }
+    ]
+  }
+}

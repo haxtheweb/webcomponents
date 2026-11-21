@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titill"
+        "title": "titill",
+        "description": "Fyrirsögn sýnd fyrir ofan námskeiðslíkanið."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Slóð þrívíddarlíkansskrárinnar (.glb eða .gltf) sem á að sýna."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Lýstu þrívíddarlíkaninu fyrir fólk sem sér það ekki."
       },
       {
         "title": "Upplýsingasvæði"

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram z textu",
+    "description": "Napíšte diagram ako text (Mermaid): vývojový diagram, sekvenciu, časovú os a ďalšie. Vykreslí sa na stránke s textovou alternatívou."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Zobrazuje sa nad diagramom a používa sa ako jeho názov."
+      },
+      {
+        "title": "Zdroj diagramu",
+        "description": "Text Mermaid, napríklad: flowchart TD, potom jeden riadok na prepojenie, ako A[Draft] --> B{Ready?}. Pridajte |label| za šípku na jej označenie. Kresba sa aktualizuje počas písania."
+      },
+      {
+        "title": "Textová alternatíva",
+        "description": "Opíšte, čo diagram zobrazuje, pre ľudí, ktorí ho nevidia. Pri vývojovom diagrame nechajte prázdne a jeho kroky sa vypíšu za vás."
+      },
+      {
+        "title": "Popisok",
+        "description": "Voliteľný popisok zobrazený pod diagramom."
+      },
+      {
+        "title": "Zobraziť zdroj",
+        "description": "Zobraziť text diagramu vedľa kresby."
+      },
+      {
+        "title": "Zobraziť textovú alternatívu",
+        "description": "Zobraziť textovú alternatívu pod kresbou. Pre čítačky obrazovky je vždy dostupná."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zdrojový súbor",
+        "description": "Adresa súboru .mmd na vykreslenie namiesto textu vyššie (https alebo cesta na tejto stránke)."
+      },
+      {
+        "title": "Farba zvýraznenia",
+        "description": "Farba štítka s ikonou v záhlaví."
+      }
+    ]
+  }
+}

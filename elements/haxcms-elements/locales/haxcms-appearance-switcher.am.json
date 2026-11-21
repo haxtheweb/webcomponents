@@ -1,0 +1,8 @@
+{
+  "theme": "ገጽታ",
+  "palette": "ቤተ-ቀለም",
+  "themeDefault": "የገጽታው ነባሪ",
+  "designSystem": "የንድፍ ስርዓት",
+  "designSystemDefault": "DDD (ነባሪ)",
+  "designSystemUnavailable": "ይህ ገጽታ የራሱን የንድፍ ስርዓት ይጠብቃል"
+}

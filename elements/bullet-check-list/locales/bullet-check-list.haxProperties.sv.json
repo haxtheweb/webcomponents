@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Checklista",
+    "description": "En lista med kryssrutor. Läsarna bockar av punkter och deras framsteg sparas på deras egen enhet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Listans namn. Läses upp som etikett för gruppen av kryssrutor."
+      },
+      {
+        "title": "Punkter",
+        "description": "Varje punkt är en kryssruta. Ikryssade eller inaktiverade punkter kan inte ändras av läsarna."
+      },
+      {
+        "title": "Numrerad",
+        "description": "Visa en numrerad lista i stället för en punktlista."
+      },
+      {
+        "title": "Status",
+        "description": "Ändrar färgerna så att de matchar stop-note.",
+        "options": {
+          "info": "Meddelande",
+          "success": "Bekräftelse",
+          "warning": "Varning",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Lagrings-id",
+        "description": "Unikt id som används för att spara läsarens framsteg på deras enhet. Genereras automatiskt; ändra det bara för att dela framsteg mellan listor eller för att börja om."
+      }
+    ]
+  }
+}

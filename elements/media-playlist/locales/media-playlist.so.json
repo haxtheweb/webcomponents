@@ -5,5 +5,7 @@
   "editModeLabel": "Habka tafatirka liiska warbaahinta",
   "position": "{current} ka {total}",
   "previousItem": "Shayga hore",
-  "nextItem": "Shayga xiga"
+  "nextItem": "Shayga xiga",
+  "fullScreen": "Shaashad buuxda",
+  "exitFullScreen": "Ka bax shaashadda buuxda"
 }

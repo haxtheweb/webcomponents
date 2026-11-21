@@ -52,6 +52,20 @@
           "_top": "Foddaa olii - _top",
           "_parent": "Foddaa maatii - _parent"
         }
+      },
+      {
+        "title": "Xiyyi hin jiru",
+        "description": "Xiyya qabduu dhoksi."
+      },
+      {
+        "title": "Liinkii: galma",
+        "description": "Liinkichi eessatti akka banamu.",
+        "options": {
+          "": "Foddaa tokkicha",
+          "_blank": "Foddaa haaraa - _blank",
+          "_top": "Foddaa olii - _top",
+          "_parent": "Foddaa maatii - _parent"
+        }
       }
     ],
     "developer": [

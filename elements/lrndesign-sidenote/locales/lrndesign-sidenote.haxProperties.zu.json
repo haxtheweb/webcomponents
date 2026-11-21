@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Inothi eseceleni",
+    "description": "Inothi elihlukaniswe nokuqukethwe okulizungezile, elinesithonjana nelebula okungakhethwa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebula",
+        "description": "Ilebula yenothi eseceleni."
+      },
+      {
+        "title": "Isithonjana",
+        "description": "Isithonjana senothi eseceleni."
+      },
+      {
+        "title": "Okuqukethwe",
+        "description": "Okuqukethwe kwenothi eseceleni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala",
+        "description": "Umbala inothi eseceleni elinombala wawo."
+      }
+    ]
+  }
+}

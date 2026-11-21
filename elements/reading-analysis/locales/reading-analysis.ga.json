@@ -60,6 +60,8 @@
   "flagsFound": "{correct} as {total} aimsithe",
   "toRethink": "{count} le hathmhachnamh",
   "notEvidence": "ní fianaise don bhratach seo é",
+  "isEvidence": "fianaise don bhratach seo",
+  "readingKeys": "Úsáid na saigheadeochracha chun bogadh ó {unit} amháin go dtí an chéad cheann eile.",
   "markAnswers": "Marcáil freagraí",
   "doneMarking": "Marcáil freagraí críochnaithe",
   "editHint": "Cuir an téacs thíos in eagar. Úsáid Marcáil freagraí i roghchlár an bhloic chun a roghnú cá bhfuil gach bratach ag dul.",

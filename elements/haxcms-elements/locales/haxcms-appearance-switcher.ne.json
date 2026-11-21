@@ -1,0 +1,8 @@
+{
+  "theme": "थिम",
+  "palette": "प्यालेट",
+  "themeDefault": "थिमको पूर्वनिर्धारित",
+  "designSystem": "डिजाइन प्रणाली",
+  "designSystemDefault": "DDD (पूर्वनिर्धारित)",
+  "designSystemUnavailable": "यो थिमले आफ्नै डिजाइन प्रणाली राख्छ"
+}

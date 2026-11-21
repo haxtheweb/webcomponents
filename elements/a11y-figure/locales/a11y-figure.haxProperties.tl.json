@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alt Text"
+        "title": "Alt Text",
+        "description": "Ilarawan ang larawan para sa mga taong hindi nakakakita nito."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opsyonal na buod na teksto kapag bukas ang mga detalye"
+        "title": "Opsyonal na buod na teksto kapag bukas ang mga detalye",
+        "description": "Teksto ng button habang nakatago ang paglalarawan, tulad ng Ipakita ang paglalarawan."
       },
       {
         "property": "closeText",
-        "title": "Opsyonal na buod na teksto kapag sarado ang mga detalye"
+        "title": "Opsyonal na buod na teksto kapag sarado ang mga detalye",
+        "description": "Teksto ng button habang ipinapakita ang paglalarawan, tulad ng Itago ang paglalarawan."
       }
     ]
   }

@@ -5,5 +5,7 @@
   "editModeLabel": "میڈیا پلے لسٹ ترمیمی موڈ",
   "position": "{current} از {total}",
   "previousItem": "پچھلی شے",
-  "nextItem": "اگلی شے"
+  "nextItem": "اگلی شے",
+  "fullScreen": "پوری اسکرین",
+  "exitFullScreen": "پوری اسکرین سے باہر نکلیں"
 }

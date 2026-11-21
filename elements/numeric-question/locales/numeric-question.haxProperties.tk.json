@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "San soragy",
+    "description": "San bilen jogap berilýän sorag. Jogap hemişelik san ýa-da üýtgeýänlerden hasaplanýan formula bolup, rugsat berlen çäkde bolsa hasaba alynýar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sorag",
+        "description": "Öwrenijilerden näme soralýar. Bahasyny görkezmek üçin üýtgeýäniň adyny {d} ýaly figuraly ýaýlarda ýazyň."
+      },
+      {
+        "title": "Birlik",
+        "description": "Jogap meýdanynyň ýanynda tekst hökmünde görkezilýär, meselem km/h."
+      },
+      {
+        "title": "Jogap",
+        "description": "Dogry san. Jogaby formula hasaplaýan bolsa boş goýuň."
+      },
+      {
+        "title": "Formula",
+        "description": "Jogaby üýtgeýänlerden hasaplaýar, meselem d / (t / 60). + - * / ^, ýaýlar, sqrt() we abs() ulanyp bolýar. Bellenen bolsa, jogabyň ýerine ulanylýar."
+      },
+      {
+        "title": "Üýtgeýänler",
+        "description": "Formulanyň we soragyň ulanýan sanlary. Her biri iň pes we iň ýokary bahasynyň arasynda ädimler bilen baha alýar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rugsat berlen çäk",
+        "description": "Takyk jogapdan näçe uzaklykda henizem hasaba alynýar. 0 takyk ýa-da aşakdaky onluk belgilere çenli tegeleklenen diýmegi aňladýar."
+      },
+      {
+        "title": "Çäk görnüşi",
+        "description": "Absolýut: çägi goşmak ýa-da aýyrmak. Göterim: takyk jogabyň şol göterimini goşmak ýa-da aýyrmak.",
+        "options": {
+          "absolute": "Absolýut",
+          "percent": "Göterim"
+        }
+      },
+      {
+        "title": "Onluk belgiler",
+        "description": "Öwrenijilerden şu sany belgä çenli tegeleklemek soralýar we jogap şoňa çenli tegeleklenip görkezilýär. Tegeleklemezlik üçin boş goýuň."
+      },
+      {
+        "title": "Synanyşyklar",
+        "description": "Öwreniji näçe gezek barlap biler. 0 çäksiz diýmegi aňladýar."
+      },
+      {
+        "title": "Her synanyşykda täze sanlar",
+        "description": "Öwreniji her gezek gaýtadan synanyşanda üýtgeýänleriň täze bahalaryny saýla. Şonda olar gaýdyp gelende öňki jogaby görkezilmeýär, diňe dogry jogap berendigi görkezilýär."
+      },
+      {
+        "title": "Ýygnalýan",
+        "description": "Bu soragy açylýan we ýapylýan setir hökmünde görkez. Birini açmak onuň ýanyndaky beýleki ýygnalýan soraglary ýapýar."
+      },
+      {
+        "title": "Ýygnalan görnüşde başla",
+        "description": "Ýygnalýan bolanda, diňe soragy we ýagdaýy görkezilýän ýapyk setir hökmünde başla."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI kesgitlemesi üçin ulanylýan testiň ady."
+      }
+    ]
+  }
+}

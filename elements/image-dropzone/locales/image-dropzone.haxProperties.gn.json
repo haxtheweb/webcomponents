@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Ta'ãnga ñejahejaha",
+    "description": "Temimbo'ekuéra omoĩ teraguã tenda oĩva ta'ãnga ári, upéi ohechajey imbohovái."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga temimbo'ekuéra omoĩhápe teraguã."
+      },
+      {
+        "title": "Moñe'ẽrã ambue",
+        "description": "Omombe'u ta'ãnga umi tapicha ndaikatúivape ohecha. Ani remombe'u mamópa oho teraguãkuéra."
+      },
+      {
+        "title": "Ta'ãnga réra",
+        "description": "Peteĩ téra mbyky ojehecháva ta'ãngape g̃uarã, ojehechaukáva ijyvatégui."
+      },
+      {
+        "title": "Porandu",
+        "description": "Mba'épa ojejerure temimbo'ekuérape ojapo hag̃ua teraguã reheve."
+      },
+      {
+        "title": "Teraguã ha tenda",
+        "description": "Peteĩteĩ mba'e ha'e teraguã temimbo'ekuéra ikatúva omoĩ. Eme'ẽ peteĩ teraguãme tenda réra emoĩ hag̃ua hendápe ta'ãngápe; teraguã ndoguerekóiva tenda réra ha'e hembýva ndoikéiva mamovépe. Tenda papapy ha'e ta'ãnga porcentaje."
+      },
+      {
+        "title": "Ta'ãnga rehegua",
+        "description": "Ta'ãnga rehegua ojeiporavokuaáva ojehechaukáva ta'ãnga guýpe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ñeha'ãkuéra",
+        "description": "Mboy jey temimbo'e ikatu ohechajey. 0 he'ise ndaipóri ñemboja'i."
+      },
+      {
+        "title": "Embojehe'a teraguãkuéra",
+        "description": "Ehechauka teraguãkuéra ambue ñemohendápe peteĩteĩ jeikévo."
+      },
+      {
+        "title": "Ikatúva oñemboty",
+        "description": "Ehechauka ko porandu tysýi ramo ojepe'a ha oñembotýva. Peteĩ jepe'a omboty ambue porandu ikatúva oñemboty hi'ykére oĩva."
+      },
+      {
+        "title": "Eñepyrũ oñembotývo",
+        "description": "Ikatúramo oñemboty, eñepyrũ tysýi oñembotýva ramo ohechaukáva porandu ha hekotee añoite."
+      },
+      {
+        "title": "Kytã reko",
+        "description": "OER Schema: kytã reko ko jeha'ãme g̃uarã (techapyrã kytã, tai, porcentaje, ñemohu'ã)."
+      },
+      {
+        "title": "Jehekombo'e jehupytyrã",
+        "description": "OER Schema: jehekombo'e jehupytyrã ojoajúva ko jeha'ã rehe."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Porandupy réra",
+        "description": "Porandupy réra ojeipurúva xAPI jehechakuaápe análisis sistema-pe."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso ko jeha'ã oñembosako'ihápe."
+      }
+    ]
+  }
+}

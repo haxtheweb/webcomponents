@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Start av externt verktyg",
+    "description": "Ett block som öppnar ett externt lärverktyg i ett nytt fönster eller på sidan, som en vanlig länk eller med en LTI 1.3-inloggningsbegäran."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Verktygets namn. Det visas i sidhuvudet och på knappen."
+      },
+      {
+        "title": "Beskrivning",
+        "description": "Vad eleverna gör i verktyget, visas ovanför knappen."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Verktygets adress. Den måste vara en fullständig adress som börjar med https:// eller http://."
+      },
+      {
+        "title": "Öppna i",
+        "description": "Ett nytt fönster fungerar med alla verktyg. På den här sidan fungerar bara med verktyg som tillåter att de visas inuti en annan webbplats.",
+        "options": {
+          "window": "Ett nytt fönster",
+          "embed": "På den här sidan"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-inloggnings-URL",
+        "description": "Endast LTI 1.3: verktygets adress för att initiera inloggning. Med den, ett client ID och ett deployment ID skickar knappen en LTI-inloggningsbegäran i stället för att öppna en vanlig länk. För att slutföra starten krävs webbplatsens LTI-tjänst."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID som verktyget gav den här webbplatsen. En offentlig identifierare, ingen hemlighet: lägg aldrig nycklar eller hemligheter här."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID som verktyget gav den här webbplatsen. En offentlig identifierare, ingen hemlighet."
+      },
+      {
+        "title": "LTI-utfärdare",
+        "description": "Adressen som identifierar den här webbplatsen för verktyget. Lämna tomt för att använda adressen till webbplatsen som sidan ligger på."
+      },
+      {
+        "title": "Höjd på sidan",
+        "description": "Verktygets höjd när det öppnas på den här sidan, i pixlar (200 till 2000)."
+      },
+      {
+        "title": "Accentfärg",
+        "description": "Färg på rubriketiketten och knappen. Lämna tomt för att följa temat."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-inloggningstips",
+        "description": "Ett ogenomskinligt värde som webbplatsens LTI-tjänst använder för att känna igen eleven. Tillhandahålls oftast av webbplatsen via händelsen lti-launch-request i stället för att sparas här. Aldrig ett lösenord eller en nyckel."
+      },
+      {
+        "title": "LTI-meddelandetips",
+        "description": "Ett ogenomskinligt värde som webbplatsens LTI-tjänst använder för att känna igen den här starten. Tillhandahålls oftast av webbplatsen i stället för att sparas här."
+      }
+    ]
+  }
+}

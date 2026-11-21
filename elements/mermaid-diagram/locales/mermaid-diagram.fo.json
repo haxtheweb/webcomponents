@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramm",
+  "flowchart": "flóðrit",
+  "sequence": "røð",
+  "source": "Kelda",
+  "textAlternative": "Tekstur í staðin",
+  "present": "Legg fram",
+  "exitPresent": "Far úr framløguni",
+  "loading": "Innlesur diagrammið",
+  "empty": "Einki at tekna enn. Legg keldu diagrammsins afturat.",
+  "error": "Feilur",
+  "parseError": "Hetta diagrammið kundi ikki teknast. Kanna keldina.",
+  "loadError": "Diagrammsavnið kundi ikki innlesast.",
+  "srcError": "Diagrammfílan kundi ikki innlesast.",
+  "decision": "avgerð",
+  "end": "endi",
+  "goTo": "far til {target}",
+  "ifGoTo": "um {label}, far til {target}",
+  "describedBySource": "Diagramm lýst við keldu síni.",
+  "scrollable": "Diagramm, kann rullast"
+}

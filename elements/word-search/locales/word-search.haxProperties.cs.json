@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Osmisměrka",
+    "description": "Mřížka písmen se skrytými slovy. Studenti ťuknou na první a poslední písmeno každého slova. Procvičuje rozpoznání, jak se pojem píše, ne co znamená."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Co mají studenti najít, zobrazeno v záhlaví."
+      },
+      {
+        "title": "Slova",
+        "description": "Slova ke skrytí. Mezery a interpunkce se do mřížky nedávají. Slova, která se nevejdou, se při úpravách vypíšou a studentům se vynechají."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Velikost mřížky",
+        "description": "Písmen na stranu, 4 až 16. Ponechte prázdné, aby se přizpůsobila nejdelšímu slovu (až 12). Více než 12 se na telefonu posouvá do stran."
+      },
+      {
+        "title": "Úhlopříčná slova",
+        "description": "Skrývat slova i úhlopříčně. Těžší."
+      },
+      {
+        "title": "Slova pozpátku",
+        "description": "Skrývat i slova napsaná pozpátku. Těžší."
+      },
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná barva štítku záhlaví, vybraného prvního písmene a tlačítka."
+      }
+    ]
+  }
+}

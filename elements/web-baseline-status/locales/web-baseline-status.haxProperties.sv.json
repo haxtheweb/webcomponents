@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-status",
+    "description": "Visa Baseline-status för webbläsarstöd för en funktion i webbplattformen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funktions-ID",
+        "description": "ID för webbfunktionen, till exempel anchor-positioning. Hitta ID:n på webstatus.dev; ID:t är sista delen av en funktionssidas URL."
+      }
+    ]
+  }
+}

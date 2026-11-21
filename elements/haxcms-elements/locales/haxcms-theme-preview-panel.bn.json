@@ -8,5 +8,9 @@
   "theme": "থিম",
   "palette": "প্যালেট",
   "cancel": "বাতিল করুন",
-  "openAppearanceSettings": "চেহারার সেটিংস খুলুন"
+  "openAppearanceSettings": "চেহারার সেটিংস খুলুন",
+  "designSystem": "ডিজাইন সিস্টেম",
+  "designSystemDefault": "DDD (ডিফল্ট)",
+  "designSystemThemeDefault": "{name} (থিমের ডিফল্ট)",
+  "designSystemHelp": "রং, টাইপ, কোণা ও ঘনত্ব। লেআউট এখনো থিমই ঠিক করে।"
 }

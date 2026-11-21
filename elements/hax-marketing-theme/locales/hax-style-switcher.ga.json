@@ -1,0 +1,16 @@
+{
+  "theme": "Téama",
+  "designSystem": "Córas dearaidh",
+  "dddDefault": "DDD (réamhshocrú)",
+  "designSystemHelp": "Dath, cló, coirnéil agus fócas. Coinníonn an téama an leagan amach.",
+  "designSystemFixed": "Coinníonn an téama seo a chóras dearaidh féin.",
+  "palette": "Pailéad",
+  "themeDefault": "Réamhshocrú an téama",
+  "paletteNumber": "Pailéad {n}",
+  "siteTheme": "{name} (téama an tsuímh seo)",
+  "restyle": "Athstíleáil an suíomh seo",
+  "close": "Dún",
+  "reset": "Ar ais go cuma an tsuímh seo féin",
+  "random": "Cuir iontas orm",
+  "about": "Taispeánann sé seo roinnt de na cumaí atá ionsuite in HAX. Ní athraíonn na leathanaigh choíche: tá an struchtúr in JSON Outline Schema agus is comhpháirt ghréasáin chaighdeánach gach bloc, mar sin is féidir an dearadh a mhalartú go saor."
+}

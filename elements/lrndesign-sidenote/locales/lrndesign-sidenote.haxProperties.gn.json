@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Jehaipy ykegua",
+    "description": "Peteĩ jehaipy oñemomombyrýva tekoha jerekuégui, ta'ãngachu'i ha teraguã ojeiporavokuaáva reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teraguã",
+        "description": "Jehaipy ykegua teraguã."
+      },
+      {
+        "title": "Ta'ãngachu'i",
+        "description": "Jehaipy ykegua ta'ãngachu'i."
+      },
+      {
+        "title": "Tekoha",
+        "description": "Jehaipy ykegua tekoha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sa'y",
+        "description": "Sa'y oñemoĩva jehaipy ykeguápe."
+      }
+    ]
+  }
+}

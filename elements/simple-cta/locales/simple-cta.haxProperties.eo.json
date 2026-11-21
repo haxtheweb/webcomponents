@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Kaŝi piktogramon",
         "description": "Kaŝi la piktogramon uzatan por akcenti tekston"
+      },
+      {
+        "title": "Aspekto",
+        "description": "Kiom da emfazo la butono havas.",
+        "options": {
+          "": "Plenigita",
+          "tonal": "Tona",
+          "outlined": "Konturita",
+          "plain": "Simpla"
+        }
+      },
+      {
+        "title": "Grandeco",
+        "description": "Butona grandeco.",
+        "options": {
+          "s": "Malgranda",
+          "": "Meza",
+          "l": "Granda"
+        }
       }
     ],
     "advanced": [

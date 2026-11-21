@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "mutu"
+        "title": "mutu",
+        "description": "Mutu wowonetsedwa pamwamba pa chitsanzo cha maphunziro."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adiresi ya fayilo ya chitsanzo cha 3D (.glb kapena .gltf) yoti iwonetsedwe."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Fotokozani chitsanzo cha 3D kwa anthu omwe sangathe kuchiwona."
       },
       {
         "title": "Malo a zambiri"

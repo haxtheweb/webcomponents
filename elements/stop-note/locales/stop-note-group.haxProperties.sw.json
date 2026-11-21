@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kikundi cha stop note",
+    "description": "Panga stop notes kadhaa katika kizuizi kimoja kinachoonyesha dokezo moja kwa wakati, kama Vidokezo au Kipya ni nini. Kadi za maelekezo, madokezo ya pembeni na nukuu zenye fremu zinaweza kupangwa pamoja nazo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lebo",
+        "description": "Jina la kikundi ambalo visoma skrini hutangaza, kama Vidokezo au Kipya ni nini."
+      },
+      {
+        "title": "Madokezo",
+        "description": "Stop notes zilizo katika kikundi. Kadi za maelekezo, madokezo ya pembeni na nukuu zenye fremu zinaweza kuongezwa pia."
+      }
+    ]
+  }
+}

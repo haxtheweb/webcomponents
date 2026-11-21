@@ -6,6 +6,8 @@
   "faviconDescription": "Bild för webbläsarfliken / används på telefoner som liten webbplatslogotyp",
   "domain": "Domän",
   "domainDescription": "Den här webbplatsens domän",
+  "sameAs": "Andra profiler för den här webbplatsen",
+  "sameAsDescription": "En länk per rad till webbplatsens eller organisationens profiler på andra ställen (GitHub, LinkedIn, YouTube, Mastodon). Sökmotorer använder dem för att koppla ihop profilerna med den här webbplatsen.",
   "language": "Språk",
   "languageDescription": "Webbplatsens språk. Sök efter namn eller kod, eller ange en annan kod som fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

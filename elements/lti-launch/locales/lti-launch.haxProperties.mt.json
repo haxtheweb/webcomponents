@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tnedija ta' għodda esterna",
+    "description": "Blokk li jiftaħ għodda esterna tat-tagħlim f'tieqa ġdida jew fuq il-paġna, bħala link sempliċi jew b'talba ta' login LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Isem l-għodda. Jidher fl-intestatura u fuq il-buttuna."
+      },
+      {
+        "title": "Deskrizzjoni",
+        "description": "X'jagħmlu l-istudenti fl-għodda, muri fuq il-buttuna."
+      },
+      {
+        "title": "URL tat-tnedija",
+        "description": "Indirizz tal-għodda. Għandu jkun indirizz sħiħ li jibda b'https:// jew http://."
+      },
+      {
+        "title": "Iftaħ f'",
+        "description": "Tieqa ġdida taħdem ma' kull għodda. F'din il-paġna jaħdem biss ma' għodod li jippermettu li jintwerew ġewwa sit ieħor.",
+        "options": {
+          "window": "Tieqa ġdida",
+          "embed": "F'din il-paġna"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL tal-login LTI",
+        "description": "LTI 1.3 biss: l-indirizz tal-bidu tal-login tal-għodda. B'dan, ID tal-klijent u ID tal-iskjerament il-buttuna tibgħat talba ta' login LTI minflok ma tiftaħ link sempliċi. Biex titlesta t-tnedija hemm bżonn is-servizz LTI ta' dan is-sit."
+      },
+      {
+        "title": "ID tal-klijent LTI",
+        "description": "L-ID tal-klijent li l-għodda tat lil dan is-sit. Identifikatur pubbliku, mhux sigriet: qatt tpoġġi ċwievet jew sigrieti hawn."
+      },
+      {
+        "title": "ID tal-iskjerament LTI",
+        "description": "L-ID tal-iskjerament li l-għodda tat lil dan is-sit. Identifikatur pubbliku, mhux sigriet."
+      },
+      {
+        "title": "Emittent LTI",
+        "description": "L-indirizz li jidentifika dan is-sit lill-għodda. Ħallih vojt biex tuża l-indirizz tas-sit fejn tinsab il-paġna."
+      },
+      {
+        "title": "Għoli fuq il-paġna",
+        "description": "Għoli tal-għodda meta tinfetaħ f'din il-paġna, f'pixels (200 sa 2000)."
+      },
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur taċ-ċippa tal-intestatura u l-buttuna. Ħallih vojt biex isegwi t-tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ħjiel tal-login LTI",
+        "description": "Valur opak li s-servizz LTI ta' dan is-sit juża biex jagħraf lill-istudent. Normalment jingħata mis-sit permezz tal-avveniment lti-launch-request minflok ma jiġi salvat hawn. Qatt password jew ċavetta."
+      },
+      {
+        "title": "Ħjiel tal-messaġġ LTI",
+        "description": "Valur opak li s-servizz LTI ta' dan is-sit juża biex jagħraf din it-tnedija. Normalment jingħata mis-sit minflok ma jiġi salvat hawn."
+      }
+    ]
+  }
+}

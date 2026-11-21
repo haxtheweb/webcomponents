@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Resminama pleýeri",
+    "description": "Web komponent üçin gollanma, demo we maglumatnama, HTML, import, npm we CDN üçin göçürme düwmeleri bilen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Resminama maglumat faýly",
+        "description": "Element bilen gelýän resminama maglumatlary (lib/tag.docs.json)."
+      },
+      {
+        "title": "Gollanmanyň storiborde",
+        "description": "Element bilen gelýän hereket storibordy (tag.motion.json). Hökmany däl."
+      },
+      {
+        "title": "Wideo gollanma",
+        "description": "Element barada gysga wideo (YouTube, Vimeo ýa-da wideo faýly). Resminama maglumatlaryndaky wideonyň ýerine geçýär."
+      },
+      {
+        "title": "Goýmada aç",
+        "description": "Haýsy goýmanyň ilki görkezilýändigi.",
+        "options": {
+          "motion": "Gollanma",
+          "video": "Wideo",
+          "demo": "Demo",
+          "docs": "Resminama",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Gollanmany awtomatik oýnat",
+        "description": "Pleýer görkezilen badyna gollanmany başla. Okyjy az hereketi saýlasa hasaba alynmaýar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gollanmanyň temasy",
+        "description": "Birnäçe gollanmasy bolan elementler üçin ilki haýsy temany açmaly (meselem add-blocks). Esasy üçin boş goýuň."
+      },
+      {
+        "title": "Göni demo baglanyşygy",
+        "description": "Demo çeşmesini aç düwmesiniň nirä alyp barýandygy. Deslapky ammardaky demo bukjasy."
+      },
+      {
+        "title": "Resminama baglanyşygy",
+        "description": "Doly resminama düwmesiniň nirä alyp barýandygy, meselem gabat gelýän Learn HAX sahypasy."
+      }
+    ]
+  }
+}

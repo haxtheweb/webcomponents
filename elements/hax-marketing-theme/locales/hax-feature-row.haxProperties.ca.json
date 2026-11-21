@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Fila de funció",
+    "description": "Una pantalla del producte al costat del que significa per a tu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta petita"
+      },
+      {
+        "title": "Encapçalament"
+      },
+      {
+        "title": "Imatge"
+      },
+      {
+        "title": "Què mostra la imatge"
+      },
+      {
+        "title": "Imatge a la dreta"
+      },
+      {
+        "title": "Color de l'ombra (nom DDD; en blanc segueix la paleta)"
+      }
+    ]
+  }
+}

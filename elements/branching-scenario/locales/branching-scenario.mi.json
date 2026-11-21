@@ -1,0 +1,22 @@
+{
+  "scenario": "Tauwhāiti",
+  "directions": "Ngā tohutohu",
+  "showDirections": "Whakaatu tohutohu",
+  "hideDirections": "Huna tohutohu",
+  "directionsRead": "Pānuitia ia whakaaturanga, ka kōwhiri ai i tāu e mahi ai.",
+  "directionsEndings": "He maha ngā mutunga. Whakamātauria he ara kē ina oti koe.",
+  "startOver": "Tīmata anō",
+  "back": "Kotahi te hipanga whakamuri",
+  "tryAnother": "Whakamātauria he ara kē",
+  "path": "Ara",
+  "scene": "Whakaaturanga",
+  "ending": "Mutunga",
+  "end": "mutunga",
+  "scenesSeen": "Kua kitea te {seen} o ngā whakaaturanga {total}",
+  "endingReached": "Kua tae ki te mutunga",
+  "addScene": "Tāpiri whakaaturanga",
+  "newScene": "Whakaaturanga hou",
+  "newSceneText": "Whakaahuatia te mea ka puta, kātahi ka hono i ia kōwhiringa ki tētahi whakaaturanga.",
+  "editingNote": "Whakatika: ka whakaaturia ngā whakaaturanga katoa. He hono te kōwhiringa ki te # me te ID whakaaturanga i muri.",
+  "noScenes": "Tāpirihia he whakaaturanga hei tīmata i te tauwhāiti."
+}

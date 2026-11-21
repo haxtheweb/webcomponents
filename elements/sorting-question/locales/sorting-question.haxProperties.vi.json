@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Đáp án",
+        "description": "Thứ tự đáp án xác định trình tự đúng.",
+        "options": {
+          "": "Danh sách",
+          "cards": "Thẻ hình ảnh"
+        }
+      },
+      {
+        "title": "Đáp án",
         "description": "Thứ tự đáp án xác định trình tự đúng."
       }
     ],

@@ -20,6 +20,12 @@
         "title": "Chithunzi",
         "description": "Chithunzi chowonetsedwa ndi mawu ogwidwawo."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Yokhala m'chimango",
+        "description": "Jambulani mawu ogwidwa pa chimango chogawana cha gawo, ndi chizindikiro ndi chilembo pamwamba pake, kuti chifanane ndi zolemba ndi makadi a malangizo."
+      }
     ]
   }
 }

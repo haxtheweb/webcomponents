@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Seznam korakov",
     "description": "Oštevilčeni koraki za dokončanje naloge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kazalnik korakov",
+        "description": "Prikaži korake kot strnjeno vrstico naslovov, ki označuje napredek. Vsebina korakov v tej postavitvi ni prikazana."
+      },
+      {
+        "title": "Trenutni korak",
+        "description": "Korak, na katerem je bralec, šteto od 1. Prejšnji koraki so prikazani kot dokončani. Uporablja ga kazalnik korakov."
+      }
+    ]
   }
 }

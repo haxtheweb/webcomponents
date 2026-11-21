@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Boční poznámka",
+    "description": "Poznámka oddělená od okolního obsahu, s volitelnou ikonou a popiskem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Popisek",
+        "description": "Popisek boční poznámky."
+      },
+      {
+        "title": "Ikona",
+        "description": "Ikona boční poznámky."
+      },
+      {
+        "title": "Obsah",
+        "description": "Obsah boční poznámky."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Barva",
+        "description": "Barva, kterou je boční poznámka zabarvena."
+      }
+    ]
+  }
+}

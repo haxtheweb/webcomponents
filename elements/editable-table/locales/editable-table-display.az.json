@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV kimi kopyala.",
   "printTable": "Cədvəli çap et",
   "selectColumn": "Sütun seçin",
-  "dataTable": "Data · Cədvəl"
+  "dataTable": "Data · Cədvəl",
+  "filterStatus": "{total} sətirdən {shown} göstərilir, {column} üzrə süzülüb: {text}",
+  "columnNumber": "Sütun {column}",
+  "clearFilter": "Süzgəci təmizlə"
 }

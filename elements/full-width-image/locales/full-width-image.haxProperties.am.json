@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "የጀርባ ምስል።"
+        "description": "የጀርባ ምስል።",
+        "title": "ምስል"
       },
       {
         "property": "caption",
-        "description": "የጽሑፍ ርዕስ።"
+        "description": "የጽሑፍ ርዕስ።",
+        "title": "መግለጫ ጽሑፍ"
       }
     ]
   }

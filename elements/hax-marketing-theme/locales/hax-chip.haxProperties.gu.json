@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ચિપ",
+    "description": "લેબલ સાથેનું નાનું આઇકન"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "આઇકન"
+      },
+      {
+        "title": "લેબલ"
+      }
+    ]
+  }
+}

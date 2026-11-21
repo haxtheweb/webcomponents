@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Gruppu di note",
+    "description": "Ammansate parechje stop notes in un solu bloccu chì mostra una nota à a volta, cum'è Cunsiglii o Ciò chì hè novu. Carte d'istruzzioni, note laterale è citazioni inquadrate si ponu ammansà cun elle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "Nome di u gruppu chì i lettori di screnu annunzianu, cum'è Cunsiglii o Ciò chì hè novu."
+      },
+      {
+        "title": "Note",
+        "description": "E stop notes di u gruppu. Si ponu aghjunghje dinò carte d'istruzzioni, note laterale è citazioni inquadrate."
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Bawaan tema",
+  "designSystem": "Sistem desain",
+  "designSystemDefault": "DDD (bawaan)",
+  "designSystemUnavailable": "Tema ini mempertahankan sistem desainnya sendiri"
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "tajuk"
+        "title": "tajuk",
+        "description": "Tajuk yang dipaparkan di atas model kursus."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Alamat fail model 3D (.glb atau .gltf) untuk dipaparkan."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Huraikan model 3D untuk orang yang tidak dapat melihatnya."
       },
       {
         "title": "Kawasan maklumat"

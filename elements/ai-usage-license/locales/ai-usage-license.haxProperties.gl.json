@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modificador de medio",
-        "description": "Modificador opcional do ámbito do medio. Especifica o tipo de medio ao que se aplica esta licenza."
+        "description": "Modificador opcional do ámbito do medio. Especifica o tipo de medio ao que se aplica esta licenza.",
+        "options": {
+          "": "Sen modificador"
+        }
       },
       {
         "property": "uri",

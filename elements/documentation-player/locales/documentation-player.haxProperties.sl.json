@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Predvajalnik dokumentacije",
+    "description": "Vodnik, predstavitev in referenca za spletno komponento z gumbi za kopiranje HTML, uvoza, npm in CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podatkovna datoteka dokumentacije",
+        "description": "Podatki dokumentacije, priloženi elementu (lib/tag.docs.json)."
+      },
+      {
+        "title": "Snemalna knjiga vodnika",
+        "description": "Snemalna knjiga gibanja, priložena elementu (tag.motion.json). Izbirno."
+      },
+      {
+        "title": "Video vadnica",
+        "description": "Kratek video o elementu (YouTube, Vimeo ali video datoteka). Preglasi video v podatkih dokumentacije."
+      },
+      {
+        "title": "Odpri na zavihku",
+        "description": "Kateri zavihek je prikazan prvi.",
+        "options": {
+          "motion": "Vodnik",
+          "video": "Video",
+          "demo": "Predstavitev",
+          "docs": "Dokumentacija",
+          "schema": "Shema"
+        }
+      },
+      {
+        "title": "Samodejno predvajaj vodnik",
+        "description": "Začni vodnik takoj, ko se prikaže predvajalnik. Prezrto, če bralec raje izbere zmanjšano gibanje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema vodnika",
+        "description": "Za elemente z več vodniki tema, ki se odpre prva (na primer add-blocks). Za glavnega pustite prazno."
+      },
+      {
+        "title": "Povezava do predstavitve v živo",
+        "description": "Kam vodi gumb Odpri vir predstavitve. Privzeto mapa demo v repozitoriju."
+      },
+      {
+        "title": "Povezava do dokumentacije",
+        "description": "Kam vodi gumb za celotno dokumentacijo, na primer ustrezna stran Learn HAX."
+      }
+    ]
+  }
+}

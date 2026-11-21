@@ -8,5 +8,9 @@
   "theme": "Mawduuc",
   "palette": "Midab-qaybeed",
   "cancel": "Jooji",
-  "openAppearanceSettings": "Fur Dejimaha Muuqaalka"
+  "openAppearanceSettings": "Fur Dejimaha Muuqaalka",
+  "designSystem": "Nidaamka naqshadda",
+  "designSystemDefault": "DDD (caadi)",
+  "designSystemThemeDefault": "{name} (caadiga theme-ka)",
+  "designSystemHelp": "Midab, far, geesaha iyo cufnaanta. Theme-ka ayaa weli go'aamiya qaabka."
 }

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Skupina stop poznámok",
+    "description": "Zoskupte niekoľko stop poznámok do jedného bloku, ktorý zobrazuje jednu poznámku naraz, napríklad Tipy alebo Čo je nové. Spolu s nimi možno zoskupiť aj karty s pokynmi, bočné poznámky a citáty v ráme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Označenie",
+        "description": "Názov skupiny, ktorý ohlásia čítačky obrazovky, napríklad Tipy alebo Čo je nové."
+      },
+      {
+        "title": "Poznámky",
+        "description": "Stop poznámky v skupine. Pridať možno aj karty s pokynmi, bočné poznámky a citáty v ráme."
+      }
+    ]
+  }
+}

@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detajet e pikave interaktive",
         "description": "Pikat interaktive në hartën e imazhit."
+      },
+      {
+        "title": "Detajet e pikave",
+        "description": "Pikat interaktive në hartën e imazhit."
       }
     ]
   }

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Designsystem",
+  "dddDefault": "DDD (standard)",
+  "designSystemHelp": "Farve, typografi, hjørner og fokus. Temaet bevarer layoutet.",
+  "designSystemFixed": "Dette tema bevarer sit eget designsystem.",
+  "palette": "Palet",
+  "themeDefault": "Temaets standard",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (dette websteds tema)",
+  "restyle": "Giv dette websted nyt udseende",
+  "close": "Luk",
+  "reset": "Tilbage til webstedets eget udseende",
+  "random": "Overrask mig",
+  "about": "Dette viser nogle af de udseender, der er indbygget i HAX. Siderne ændrer sig aldrig: strukturen ligger i JSON Outline Schema, og hver blok er en standard-webkomponent, så designet frit kan udskiftes."
+}

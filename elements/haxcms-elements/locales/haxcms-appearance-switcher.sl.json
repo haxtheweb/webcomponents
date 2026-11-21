@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Paleta",
+  "themeDefault": "Privzeto teme",
+  "designSystem": "Sistem oblikovanja",
+  "designSystemDefault": "DDD (privzeto)",
+  "designSystemUnavailable": "Ta tema ohranja svoj sistem oblikovanja"
+}

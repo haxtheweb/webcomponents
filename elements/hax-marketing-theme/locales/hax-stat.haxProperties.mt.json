@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Numru li jgħodd 'il fuq, b'tikketta u link għall-istorja tiegħu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numru sa fejn jgħodd"
+      },
+      {
+        "title": "Qabel in-numru"
+      },
+      {
+        "title": "Wara n-numru"
+      },
+      {
+        "title": "Kliem minflok numru"
+      },
+      {
+        "title": "X'jgħodd"
+      },
+      {
+        "title": "Indirizz tal-istorja fuq hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

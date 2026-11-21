@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternativní text"
+        "title": "Alternativní text",
+        "description": "Popište obrázek pro lidi, kteří ho nevidí."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Volitelný text shrnutí, když jsou podrobnosti otevřené"
+        "title": "Volitelný text shrnutí, když jsou podrobnosti otevřené",
+        "description": "Text tlačítka, když je popis skrytý, například Zobrazit popis."
       },
       {
         "property": "closeText",
-        "title": "Volitelný text shrnutí, když jsou podrobnosti zavřené"
+        "title": "Volitelný text shrnutí, když jsou podrobnosti zavřené",
+        "description": "Text tlačítka, když je popis zobrazený, například Skrýt popis."
       }
     ]
   }

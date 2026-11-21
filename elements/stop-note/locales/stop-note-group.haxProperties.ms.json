@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kumpulan Stop Note",
+    "description": "Susun beberapa stop note menjadi satu blok yang menunjukkan satu nota pada satu masa, seperti Petua atau Apa yang baharu. Kad arahan, nota sisi dan petikan berbingkai boleh disusun bersamanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Nama kumpulan yang diumumkan oleh pembaca skrin, seperti Petua atau Apa yang baharu."
+      },
+      {
+        "title": "Nota",
+        "description": "Stop note dalam kumpulan. Kad arahan, nota sisi dan petikan berbingkai juga boleh ditambah."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "项目符号核对清单",
+    "description": "一张复选框列表。读者勾掉条目，进度会记辣伊拉自家个设备上。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "列表个名字。会当复选框组个标签读出来。"
+      },
+      {
+        "title": "条目",
+        "description": "每个条目是一个复选框。勾好个或者禁用个条目读者改勿了。"
+      },
+      {
+        "title": "编号",
+        "description": "用编号列表代替项目符号列表。"
+      },
+      {
+        "title": "状态",
+        "description": "拿颜色改成搭 stop-note 一样。",
+        "options": {
+          "info": "通知",
+          "success": "确认",
+          "warning": "警告",
+          "stop": "停止"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "存储 id",
+        "description": "用来辣读者设备上记进度个唯一 id。自动生成；只有要辣几张列表之间共享进度或者从头开始个辰光再改。"
+      }
+    ]
+  }
+}

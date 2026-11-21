@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-status",
+    "description": "Wys die Baseline-blaaierondersteuningstatus van 'n webplatformkenmerk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kenmerk-ID",
+        "description": "ID van die webkenmerk, byvoorbeeld anchor-positioning. Vind ID's by webstatus.dev; die ID is die laaste deel van 'n kenmerkbladsy se URL."
+      }
+    ]
+  }
+}

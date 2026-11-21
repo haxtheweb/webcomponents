@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Akara ọgụgụ",
     "description": "Mmewere akara ọgụgụ iji kaa akara ihe mgbasa ozi n'ime ọdịnaya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nọmba ihe osise",
+        "description": "Nọmba ma ọ bụ akara aha dị mkpụmkpụ maka ihe osise ahụ, dịka 1.3"
+      },
+      {
+        "title": "Nkọwa",
+        "description": "Nkọwa dị mkpụmkpụ nke ihe osise ahụ"
+      }
+    ]
   }
 }

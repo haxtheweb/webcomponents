@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Greinótt atburðarás",
+    "description": "Saga þar sem hvert val leiðir til annars atriðis og endis. Nemendur geta stigið til baka og prófað aðrar leiðir; endirinn sem náðist ákvarðar stigin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Heiti atburðarásarinnar, sýnt í haus hennar."
+      },
+      {
+        "title": "Upphafsatriði",
+        "description": "Auðkenni atriðisins sem nemendur byrja á. Skildu eftir autt til að byrja á fyrsta atriðinu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls litur fyrir haus-merkið, hnappana og brún vals."
+      }
+    ]
+  }
+}

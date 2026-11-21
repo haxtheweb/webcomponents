@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Žetons",
+    "description": "Maza ikona ar etiķeti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Etiķete"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistika kafeli",
+    "description": "Vacib olan bir ədəd, etiketi və necə dəyişdiyi ilə. İdarə paneli sətri üçün bir neçəsini şəbəkədə yerləşdirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Ədədin nəyi ölçdüyü."
+      },
+      {
+        "title": "Qiymət",
+        "description": "Ədəd. Adi ədəd səhifənin dilinə görə qruplaşdırılır; başqa hər şey yazıldığı kimi göstərilir."
+      },
+      {
+        "title": "Dəyişiklik",
+        "description": "Necə dəyişdiyi, sözlərlə, məsələn bu semestr 6%."
+      },
+      {
+        "title": "İstiqamət",
+        "description": "Dəyişikliyin yuxarı və ya aşağı olduğu.",
+        "options": {
+          "": "Yoxdur",
+          "up": "Yuxarı",
+          "down": "Aşağı"
+        }
+      }
+    ]
+  }
+}

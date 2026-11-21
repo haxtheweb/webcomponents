@@ -3,5 +3,7 @@
   "status_stop": "ឈប់",
   "status_warning": "ការព្រមាន",
   "status_success": "ជោគជ័យ",
-  "status_info": "កំណត់ចំណាំ"
+  "status_info": "កំណត់ចំណាំ",
+  "status_tip": "តើអ្នកដឹងទេ?",
+  "status_new": "អ្វីថ្មី"
 }

@@ -20,6 +20,12 @@
         "title": "Mynd",
         "description": "Mynd, sum verður víst saman við sitatinum."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Innrammað",
+        "description": "Tekna sitatið á felags blokkrammanum, við einum ímynd og heiti omanfyri, so tað passar til notur og vegleiðingarkort."
+      }
     ]
   }
 }

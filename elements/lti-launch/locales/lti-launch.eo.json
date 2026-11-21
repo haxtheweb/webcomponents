@@ -1,0 +1,19 @@
+{
+  "label": "Ekstera ilo",
+  "labelLti": "Ekstera ilo · LTI 1.3",
+  "theTool": "la ilo",
+  "directions": "Instrukcioj",
+  "showDirections": "Montri instrukciojn",
+  "hideDirections": "Kaŝi instrukciojn",
+  "directionsWindow": "La butono malfermas novan fenestron kun la ilo en ĝi.",
+  "directionsEmbed": "La butono malfermas la ilon sur ĉi tiu paĝo. Se ĝi ne ŝargiĝas, anstataŭe malfermu ĝin en nova fenestro.",
+  "directionsLti": "Ĉi tiu retejo ensalutigas vin al la ilo, do vi ne bezonas apartan konton.",
+  "openWindow": "Malfermi {title} (nova fenestro)",
+  "openEmbed": "Malfermi {title}",
+  "openInstead": "Anstataŭe malfermi en nova fenestro",
+  "frameTitle": "{title} (ekstera ilo)",
+  "openedWindow": "Nova fenestro kun la ilo malfermiĝis.",
+  "openedEmbed": "La ilo malfermiĝis sur ĉi tiu paĝo.",
+  "needsUrl": "Ĉi tiu bloko bezonas lanĉan adreson, kiu komenciĝas per http:// aŭ https://.",
+  "needsSignIn": "Ĉi tiu ilo bezonas la ensalutan servon de ĉi tiu retejo, kiu ne disponeblas ĉi tie. Nenio estis malfermita."
+}

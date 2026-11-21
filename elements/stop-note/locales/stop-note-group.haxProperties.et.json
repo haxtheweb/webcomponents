@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stoppmärkuste rühm",
+    "description": "Virna mitu stoppmärkust ühte plokki, mis näitab korraga ühte märkust, näiteks Nõuanded või Mis on uut. Nendega koos saab virnastada ka juhendikaarte, kõrvalmärkusi ja raamitud tsitaate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Silt",
+        "description": "Rühma nimi, mille ekraanilugejad ette loevad, näiteks Nõuanded või Mis on uut."
+      },
+      {
+        "title": "Märkmed",
+        "description": "Rühma stoppmärkused. Lisada saab ka juhendikaarte, kõrvalmärkusi ja raamitud tsitaate."
+      }
+    ]
+  }
+}

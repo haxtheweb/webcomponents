@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Şahalanýan ssenariý",
+    "description": "Her saýlawyň başga sahna we soňa alyp barýan hekaýasy. Öwrenijiler yza gaýdyp, başga ýollary synap bilerler; ýetilen soňy baly kesgitleýär."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Ssenariýanyň ady, sözbaşysynda görkezilýär."
+      },
+      {
+        "title": "Başlangyç sahna",
+        "description": "Öwrenijileriň başlaýan sahnasynyň id-si. Birinji sahnadan başlamak üçin boş goýuň."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşany, düwmeler we saýlawyň gyrasy üçin goşmaça reňk."
+      }
+    ]
+  }
+}

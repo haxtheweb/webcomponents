@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ocultar ícone",
         "description": "Ocultar o ícone usado para destacar o texto"
+      },
+      {
+        "title": "Aparência",
+        "description": "Quanto destaque o botão tem.",
+        "options": {
+          "": "Preenchido",
+          "tonal": "Tonal",
+          "outlined": "Contornado",
+          "plain": "Simples"
+        }
+      },
+      {
+        "title": "Tamanho",
+        "description": "Tamanho do botão.",
+        "options": {
+          "s": "Pequeno",
+          "": "Médio",
+          "l": "Grande"
+        }
       }
     ],
     "advanced": [

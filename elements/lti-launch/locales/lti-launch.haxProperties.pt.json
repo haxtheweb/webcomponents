@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Abertura de ferramenta externa",
+    "description": "Um bloco que abre uma ferramenta de aprendizagem externa em uma nova janela ou na página, como link simples ou com uma solicitação de login LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome da ferramenta. Aparece no cabeçalho e no botão."
+      },
+      {
+        "title": "Descrição",
+        "description": "O que os alunos fazem na ferramenta, mostrado acima do botão."
+      },
+      {
+        "title": "URL de lançamento",
+        "description": "Endereço da ferramenta. Deve ser um endereço completo que comece com https:// ou http://."
+      },
+      {
+        "title": "Abrir em",
+        "description": "Uma nova janela funciona com qualquer ferramenta. Nesta página só funciona com ferramentas que permitem ser exibidas dentro de outro site.",
+        "options": {
+          "window": "Uma nova janela",
+          "embed": "Nesta página"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL de login LTI",
+        "description": "Somente LTI 1.3: o endereço de início de login da ferramenta. Com ele, um client ID e um deployment ID, o botão envia uma solicitação de login LTI em vez de abrir um link simples. Concluir o lançamento requer o serviço LTI deste site."
+      },
+      {
+        "title": "Client ID LTI",
+        "description": "O client ID que a ferramenta deu a este site. Um identificador público, não um segredo: nunca coloque chaves ou segredos aqui."
+      },
+      {
+        "title": "Deployment ID LTI",
+        "description": "O deployment ID que a ferramenta deu a este site. Um identificador público, não um segredo."
+      },
+      {
+        "title": "Emissor LTI",
+        "description": "O endereço que identifica este site para a ferramenta. Deixe vazio para usar o endereço do site em que a página está."
+      },
+      {
+        "title": "Altura na página",
+        "description": "Altura da ferramenta quando abre nesta página, em pixels (200 a 2000)."
+      },
+      {
+        "title": "Cor de destaque",
+        "description": "Cor do chip do cabeçalho e do botão. Deixe vazio para seguir o tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Dica de login LTI",
+        "description": "Um valor opaco que o serviço LTI deste site usa para reconhecer o aluno. Normalmente fornecido pelo site pelo evento lti-launch-request em vez de salvo aqui. Nunca uma senha ou chave."
+      },
+      {
+        "title": "Dica de mensagem LTI",
+        "description": "Um valor opaco que o serviço LTI deste site usa para reconhecer este lançamento. Normalmente fornecido pelo site em vez de salvo aqui."
+      }
+    ]
+  }
+}

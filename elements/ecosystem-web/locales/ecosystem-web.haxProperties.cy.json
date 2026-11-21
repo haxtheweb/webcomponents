@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Gwe'r ecosystem",
+    "description": "Gwe ryngweithiol o sut mae rhannau prosiect yn cysylltu, gydag is-weoedd a theithiau cam wrth gam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data'r we",
+        "description": "URL y bwndel JSON o weoedd (wedi'i adeiladu yn PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Gwe",
+        "description": "ID y we i'w dangos gyntaf; main yw gwe'r ecosystem."
+      },
+      {
+        "title": "Teilsen ddewisedig",
+        "description": "ID teilsen i'w dewis pan fydd y we yn agor."
+      },
+      {
+        "title": "Taith",
+        "description": "ID taith i ddechrau arni."
+      },
+      {
+        "title": "Dechrau yng ngolwg rhestr",
+        "description": "Dangos y we fel rhestrau nythog yn lle'r llun."
+      },
+      {
+        "title": "Llun yn unig",
+        "description": "Dangos y llun yn unig, fel ffigur: dim pennawd, teithiau, manylion na bar camau."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Darllen yn ôl",
+        "description": "Dechrau gyda phob teilsen wedi'i darllen yn ôl un mesur.",
+        "options": {
+          "": "Cysylltiadau yn unig",
+          "fresh": "Ffresni",
+          "bus": "Ffactor bws",
+          "impact": "Effaith",
+          "evidence": "Tystiolaeth",
+          "parity": "Cydraddoldeb"
+        }
+      }
+    ]
+  }
+}

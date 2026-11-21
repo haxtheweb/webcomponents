@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Jalqabsiisa meeshaa alaa",
+    "description": "Kutaa meeshaa barnootaa alaa foddaa haaraa keessatti ykn fuula irratti, akka liinkii salphaatti ykn gaaffii seensaa LTI 1.3 waliin banu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Maqaa meeshichaa. Mata-duree fi qabduu irratti mul'ata."
+      },
+      {
+        "title": "Ibsa",
+        "description": "Waan barattoonni meeshicha keessatti hojjetan, qabduu ol kan mul'atu."
+      },
+      {
+        "title": "URL jalqabsiisaa",
+        "description": "Teessoo meeshichaa. Teessoo guutuu https:// ykn http:// n jalqabu ta'uu qaba."
+      },
+      {
+        "title": "Keessatti bani",
+        "description": "Foddaan haaraan meeshaa hunda waliin hojjeta. Fuula kana irratti meeshaalee marsariitii biraa keessatti mul'achuu hayyaman qofa waliin hojjeta.",
+        "options": {
+          "window": "Foddaa haaraa",
+          "embed": "Fuula kana irratti"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL seensa LTI",
+        "description": "LTI 1.3 qofa: teessoo jalqabsiisa seensaa meeshichaa. Kanaa fi ID maamilaa fi ID diriirsaa waliin, qabduun liinkii salphaa banuu mannaa gaaffii seensaa LTI erga. Jalqabsiisa xumuruuf tajaajila LTI marsariitii kanaa barbaachisa."
+      },
+      {
+        "title": "ID maamilaa LTI",
+        "description": "ID maamilaa meeshichi marsariitii kanaaf kenne. Adda baastuu ifaa, iccitii miti: furtuuwwan ykn iccitii asitti gonkumaa hin kaa'in."
+      },
+      {
+        "title": "ID diriirsaa LTI",
+        "description": "ID diriirsaa meeshichi marsariitii kanaaf kenne. Adda baastuu ifaa, iccitii miti."
+      },
+      {
+        "title": "Kennaa LTI",
+        "description": "Teessoo marsariitii kana meeshichatti adda baasu. Teessoo marsariitii fuulli irra jiru fayyadamuuf duwwaa dhiisi."
+      },
+      {
+        "title": "Dheerina fuula irratti",
+        "description": "Dheerina meeshichaa yeroo fuula kana irratti banamu, pikselaan (200 hanga 2000)."
+      },
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu mallattoo mata-duree fi qabduu. Dhaabbii hordofuuf duwwaa dhiisi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Akeekkachiisa seensa LTI",
+        "description": "Gatii dhoksaa tajaajilli LTI marsariitii kanaa barataa beekuuf fayyadamu. Yeroo baay'ee asitti olkaa'amuu mannaa marsariitiin taatee lti-launch-request keessaan kenna. Gonkumaa jecha darbii ykn furtuu miti."
+      },
+      {
+        "title": "Akeekkachiisa ergaa LTI",
+        "description": "Gatii dhoksaa tajaajilli LTI marsariitii kanaa jalqabsiisa kana beekuuf fayyadamu. Yeroo baay'ee asitti olkaa'amuu mannaa marsariitiin kenna."
+      }
+    ]
+  }
+}

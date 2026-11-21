@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Reikningsæfing",
+    "description": "Stutt runa af sjálfvirkt gerðum reikningsdæmum með tafarlausri endurgjöf. Veldu reikniaðgerðir og talnabil; hver umferð er ný."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Heiti þessarar æfingar, sýnt í haus hennar."
+      },
+      {
+        "title": "Reikniaðgerðir",
+        "description": "Hvers konar dæmi eru lögð fyrir. Nemendur geta slökkt á hverju þeirra áður en þeir byrja.",
+        "options": {
+          "add": "Samlagning",
+          "subtract": "Frádráttur",
+          "multiply": "Margföldun",
+          "divide": "Deiling",
+          "add subtract": "Samlagning og frádráttur",
+          "multiply divide": "Margföldun og deiling",
+          "add multiply": "Samlagning og margföldun",
+          "add divide": "Samlagning og deiling",
+          "subtract multiply": "Frádráttur og margföldun",
+          "subtract divide": "Frádráttur og deiling",
+          "add subtract multiply": "Samlagning, frádráttur og margföldun",
+          "add subtract divide": "Samlagning, frádráttur og deiling",
+          "add multiply divide": "Samlagning, margföldun og deiling",
+          "subtract multiply divide": "Frádráttur, margföldun og deiling",
+          "add subtract multiply divide": "Allar fjórar"
+        }
+      },
+      {
+        "title": "Minnsta tala",
+        "description": "Minnsta talan sem notuð er í dæmi. Heilar tölur, 0 eða hærri."
+      },
+      {
+        "title": "Stærsta tala",
+        "description": "Stærsta talan sem notuð er í dæmi. Útkomur og deilar í deilingu haldast einnig á þessu bili."
+      },
+      {
+        "title": "Fjöldi dæma",
+        "description": "Hve mörg dæmi eru í einni umferð (1 til 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tímamörk",
+        "description": "Sekúndur sem leyfðar eru fyrir heila umferð. 0 þýðir enginn tímamælir, sem er sjálfgefið: tímasettar æfingar bregðast nemendum sem þurfa meiri tíma. Þegar stillt geta nemendur samt slökkt á tímamælinum fyrir sig."
+      },
+      {
+        "title": "Áherslulitur",
+        "description": "Litur haus-merkisins og hnappanna. Skildu eftir autt til að fylgja þemanu."
+      }
+    ]
+  }
+}

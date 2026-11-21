@@ -3,5 +3,8 @@
   "copyAsCsv": "คัดลอกเป็น CSV",
   "printTable": "พิมพ์ตาราง",
   "selectColumn": "เลือกคอลัมน์",
-  "dataTable": "ข้อมูล · ตาราง"
+  "dataTable": "ข้อมูล · ตาราง",
+  "filterStatus": "แสดง {shown} จาก {total} แถว กรองตาม {column}: {text}",
+  "columnNumber": "คอลัมน์ {column}",
+  "clearFilter": "ล้างตัวกรอง"
 }

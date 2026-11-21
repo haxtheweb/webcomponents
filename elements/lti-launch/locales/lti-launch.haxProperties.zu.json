@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ukuqalisa ithuluzi langaphandle",
+    "description": "Ibhlokhi evula ithuluzi lokufunda langaphandle ewindini elisha noma ekhasini, njengesixhumanisi esivamile noma ngesicelo sokungena se-LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lethuluzi. Liboniswa esihlokweni nasenkinobhweni."
+      },
+      {
+        "title": "Incazelo",
+        "description": "Lokho abafundi abakwenzayo kuthuluzi, okuboniswa ngaphezu kwenkinobho."
+      },
+      {
+        "title": "I-URL yokuqalisa",
+        "description": "Ikheli lethuluzi. Kumele kube yikheli eliphelele eliqala nge-https:// noma nge-http://."
+      },
+      {
+        "title": "Vula ku-",
+        "description": "Iwindi elisha lisebenza nawo wonke amathuluzi. Kuleli khasi kusebenza kuphela namathuluzi avumela ukuboniswa ngaphakathi kwenye isayithi.",
+        "options": {
+          "window": "Iwindi elisha",
+          "embed": "Kuleli khasi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "I-URL yokungena ye-LTI",
+        "description": "I-LTI 1.3 kuphela: ikheli lokuqalisa ukungena kwethuluzi. Ngalokhu, i-ID yeklayenti ne-ID yokusatshalaliswa, inkinobho ithumela isicelo sokungena se-LTI esikhundleni sokuvula isixhumanisi esivamile. Ukuqeda ukuqalisa kudinga isevisi ye-LTI yale sayithi."
+      },
+      {
+        "title": "I-ID yeklayenti ye-LTI",
+        "description": "I-ID yeklayenti ithuluzi elinikeze yona le sayithi. Isihlonzi somphakathi, hhayi imfihlo: ungalokothi ubeke okhiye noma izimfihlo lapha."
+      },
+      {
+        "title": "I-ID yokusatshalaliswa ye-LTI",
+        "description": "I-ID yokusatshalaliswa ithuluzi elinikeze yona le sayithi. Isihlonzi somphakathi, hhayi imfihlo."
+      },
+      {
+        "title": "Umkhiphi we-LTI",
+        "description": "Ikheli elihlonza le sayithi kuthuluzi. Shiya kungenalutho ukuze usebenzise ikheli lesayithi ikhasi elikuyo."
+      },
+      {
+        "title": "Ukuphakama ekhasini",
+        "description": "Ukuphakama kwethuluzi uma livuleka kuleli khasi, ngamaphikseli (200 kuya ku-2000)."
+      },
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala we-chip yesihloko nenkinobho. Shiya kungenalutho ukuze kulandele itimu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Isicebiso sokungena se-LTI",
+        "description": "Inani elingacacile isevisi ye-LTI yale sayithi elisebenzisayo ukuze ibone umfundi. Ngokuvamile linikezwa yisayithi ngomcimbi we-lti-launch-request kunokuba lilondolozwe lapha. Akulona neze iphasiwedi noma ukhiye."
+      },
+      {
+        "title": "Isicebiso somlayezo se-LTI",
+        "description": "Inani elingacacile isevisi ye-LTI yale sayithi elisebenzisayo ukuze ibone lokhu kuqalisa. Ngokuvamile linikezwa yisayithi kunokuba lilondolozwe lapha."
+      }
+    ]
+  }
+}

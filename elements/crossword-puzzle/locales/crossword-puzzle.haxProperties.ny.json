@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Mawu odutsana",
+    "description": "Mawu odutsana opangidwa kuchokera ku mndandanda wa mawu ndi zidziwitso. Gululi limapangidwa m'malo mwanu; ophunzira amalemba mawu ndi kuwayang'ana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Mutu kapena funso lowonetsedwa pamwamba pa mawu odutsana."
+      },
+      {
+        "title": "Mawu",
+        "description": "Liwu lililonse ndi chidziwitso chake. Gululi limapangidwa kuchokera ku mndandanda uwu: liwu lalitali kwambiri limayikidwa koyamba ndipo enawo amalidutsa pa zilembo zogawana."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuyesa",
+        "description": "Kangati wophunzira angayang'ane. 0 imatanthauza mopanda malire."
+      },
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wosankha wa chizindikiro cha pamutu, liwu logwira ntchito ndi mabatani a zochita."
+      },
+      {
+        "title": "Yopindika",
+        "description": "Onetsani mawu odutsana awa ngati mzere womwe umatseguka ndi kutseka. Kutsegula limodzi kumatseka mafunso ena opindika omwe ali pafupi nalo."
+      },
+      {
+        "title": "Yambani mopindidwa",
+        "description": "Ikakhala yopindika, yambani ngati mzere wotsekedwa womwe umawonetsa mutu ndi momwe zilili kokha."
+      },
+      {
+        "title": "Mtundu wa kupereka magiredi",
+        "description": "OER Schema: mtundu wa kupereka magiredi pa kuyesa uku (mwachitsanzo mapointi, chilembo, peresenti, kumaliza)."
+      },
+      {
+        "title": "Cholinga cha maphunziro",
+        "description": "OER Schema: cholinga cha maphunziro chogwirizana ndi kuyesa uku."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso logwiritsidwa ntchito pozindikiritsa xAPI m'machitidwe owunika."
+      },
+      {
+        "title": "Maphunziro",
+        "description": "OER Schema: maphunziro omwe kuyesa uku kwapangidwira."
+      }
+    ]
+  }
+}

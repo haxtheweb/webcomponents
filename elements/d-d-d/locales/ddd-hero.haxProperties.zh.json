@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "横幅",
+    "description": "一张大图片、GIF 或视频，上面叠加标题和文字，可放在页面任意位置。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片或视频",
+        "description": "JPG、PNG、WebP、GIF、MP4 或 WebM 文件。"
+      },
+      {
+        "title": "替代文本",
+        "description": "描述这张图片。如果仅作装饰，请留空。"
+      },
+      {
+        "title": "标题",
+        "description": "显示在媒体上方的标题。留空则不显示。"
+      },
+      {
+        "title": "文本",
+        "description": "显示在标题下方、媒体之上的文字。"
+      },
+      {
+        "title": "全宽",
+        "description": "从边缘延伸到边缘，而不是位于内容栏中。"
+      },
+      {
+        "title": "高度",
+        "options": {
+          "tall": "高",
+          "medium": "中",
+          "short": "矮"
+        }
+      },
+      {
+        "title": "取景",
+        "description": "照片在各屏幕尺寸下的位置"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "渐变",
+        "description": "覆盖在媒体上的颜色。有标题或文字时始终会有一层，以保持文字清晰可读。",
+        "options": {
+          "blue": "蓝色",
+          "bottom": "底部变暗",
+          "none": "无"
+        }
+      },
+      {
+        "title": "文字位置",
+        "options": {
+          "bottom": "底部",
+          "middle": "中间"
+        }
+      },
+      {
+        "title": "水平焦点",
+        "description": "裁剪时保持可见的图片部分，从 0（左）到 100（右）。"
+      },
+      {
+        "title": "垂直焦点",
+        "description": "裁剪时保持可见的图片部分，从 0（顶部）到 100（底部）。"
+      }
+    ]
+  }
+}

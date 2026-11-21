@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "наслов"
+        "title": "наслов",
+        "description": "Наслов приказан изнад модела курса."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Адреса датотеке 3D модела (.glb или .gltf) за приказ."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Опишите 3D модел за особе које не могу да га виде."
       },
       {
         "title": "Област информација"

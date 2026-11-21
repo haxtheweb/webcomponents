@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Waarskuwing",
           "success": "Bevestiging",
-          "info": "Kennisgewing"
+          "info": "Kennisgewing",
+          "tip": "Wenk",
+          "new": "Wat is nuut"
         }
       },
       {

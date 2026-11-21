@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Eginleikaraðir",
+    "description": "Ein skíggi úr vøruni við síðuna av, hvat hon merkir fyri teg"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lítið heiti"
+      },
+      {
+        "title": "Yvirskrift"
+      },
+      {
+        "title": "Mynd"
+      },
+      {
+        "title": "Hvat myndin vísir"
+      },
+      {
+        "title": "Mynd til høgru"
+      },
+      {
+        "title": "Skuggalitur (DDD-navn, tómt fylgir litaborðinum)"
+      }
+    ]
+  }
+}

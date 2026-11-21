@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Etkin noktaları belirle",
+    "description": "Öğrenenler tıklayarak, dokunarak veya klavyeyle artı imleci hareket ettirerek bir görseldeki doğru noktaları bulur. Görsel haritanın puanlanan karşılığı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Görsel",
+        "description": "Öğrenenlerin aradığı resim."
+      },
+      {
+        "title": "Alternatif metin",
+        "description": "Resmi göremeyen kişiler için açıklar. Asla başlık olarak gösterilmez."
+      },
+      {
+        "title": "Başlık",
+        "description": "Resmin üstünde gösterilen kısa, görünür bir başlık."
+      },
+      {
+        "title": "Soru",
+        "description": "Öğrenenlerden resimde ne bulmalarının istendiği."
+      },
+      {
+        "title": "Yanıtlar",
+        "description": "Her yanıt resim üzerinde adlandırılmış bir ovaldir. Konum ve boyut, resmin sol üst köşesinden ölçülen resim yüzdeleridir. Düzenlerken her yanıtın çevresi resim üzerinde çizilir."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Denemeler",
+        "description": "Bir öğrenenin kaç kez deneyebileceği. 0 sınırsız demektir."
+      },
+      {
+        "title": "İzin verilen ıskalar",
+        "description": "Kaç ıskanın denemeyi bitireceği. 0 sınırsız demektir ve öğrenenler bir Bitir düğmesi alır."
+      },
+      {
+        "title": "Daraltılabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak yanındaki diğer daraltılabilir soruları kapatır."
+      },
+      {
+        "title": "Daraltılmış başla",
+        "description": "Daraltılabilir olduğunda yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      },
+      {
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Bu öğenin tanımlanması için xAPI tabanlı ortamlarda kullanılmak üzere iletilen test adı"
+      },
+      {
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      }
+    ]
+  }
+}

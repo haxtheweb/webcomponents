@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platfoarmferliking",
+    "description": "Kop oan kop: kies twa platfoarms út in gegevensbestân"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ferlikingsgegevens (JSON)"
+      },
+      {
+        "title": "Id fan it linker platfoarm"
+      },
+      {
+        "title": "Id fan it rjochter platfoarm"
+      }
+    ]
+  }
+}

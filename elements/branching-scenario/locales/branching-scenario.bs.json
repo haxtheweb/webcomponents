@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenarij",
+  "directions": "Uputstva",
+  "showDirections": "Prikaži uputstva",
+  "hideDirections": "Sakrij uputstva",
+  "directionsRead": "Pročitajte svaku scenu i odaberite šta biste uradili.",
+  "directionsEndings": "Postoji nekoliko završetaka. Kad završite, isprobajte drugi put.",
+  "startOver": "Počni ispočetka",
+  "back": "Korak nazad",
+  "tryAnother": "Isprobaj drugi put",
+  "path": "Put",
+  "scene": "Scena",
+  "ending": "Završetak",
+  "end": "kraj",
+  "scenesSeen": "Viđeno {seen} od {total} scena",
+  "endingReached": "Završetak dostignut",
+  "addScene": "Dodaj scenu",
+  "newScene": "Nova scena",
+  "newSceneText": "Opišite šta se dešava, a zatim povežite svaki izbor sa scenom.",
+  "editingNote": "Uređivanje: prikazane su sve scene. Izbor je link na # iza kojeg slijedi id scene.",
+  "noScenes": "Dodajte scenu da započnete scenarij."
+}

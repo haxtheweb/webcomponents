@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "diagram alir",
+  "sequence": "urutan",
+  "source": "Sumber",
+  "textAlternative": "Alternatif teks",
+  "present": "Presentasikan",
+  "exitPresent": "Keluar dari presentasi",
+  "loading": "Memuat diagram",
+  "empty": "Belum ada yang bisa digambar. Tambahkan sumber diagram.",
+  "error": "Kesalahan",
+  "parseError": "Diagram ini tidak dapat digambar. Periksa sumbernya.",
+  "loadError": "Pustaka diagram tidak dapat dimuat.",
+  "srcError": "File diagram tidak dapat dimuat.",
+  "decision": "keputusan",
+  "end": "selesai",
+  "goTo": "lanjut ke {target}",
+  "ifGoTo": "jika {label}, lanjut ke {target}",
+  "describedBySource": "Diagram dijelaskan oleh sumbernya.",
+  "scrollable": "Diagram, dapat digulir"
+}

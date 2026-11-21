@@ -3,5 +3,6 @@
   "zoomOut": "Уменьшить",
   "rotateRight": "Повернуть вправо",
   "mirrorImage": "Отразить изображение",
-  "openInNewWindow": "Открыть в новом окне"
+  "openInNewWindow": "Открыть в новом окне",
+  "imageTools": "Инструменты изображения"
 }

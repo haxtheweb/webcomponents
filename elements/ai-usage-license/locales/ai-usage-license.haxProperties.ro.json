@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modificator media",
-        "description": "Modificator opțional de domeniu media. Specifică tipul de media la care se aplică această licență."
+        "description": "Modificator opțional de domeniu media. Specifică tipul de media la care se aplică această licență.",
+        "options": {
+          "": "Fără modificator"
+        }
       },
       {
         "property": "uri",

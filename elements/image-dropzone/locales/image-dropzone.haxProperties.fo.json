@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Sleppiøki á mynd",
+    "description": "Lesandi seta merkir á øki lagd oman á eina mynd, og kanna síðan svarið."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd",
+        "description": "Myndin, sum lesandi seta merkir á."
+      },
+      {
+        "title": "Annar tekstur",
+        "description": "Lýsir myndina fyri fólki, sum ikki kunnu síggja hana. Avdúka ikki, hvar merkini skulu."
+      },
+      {
+        "title": "Myndaheiti",
+        "description": "Eitt stutt sjónligt heiti á myndini, víst omanfyri."
+      },
+      {
+        "title": "Spurningur",
+        "description": "Hvat lesandi verða biðin um at gera við merkini."
+      },
+      {
+        "title": "Merkir og øki",
+        "description": "Hvør lutur er eitt merki, sum lesandi kunnu seta. Gev einum merki eitt økisnavn fyri at seta økið á myndina; eitt merki uttan økisnavn er eyka og hoyrir ongastaðni heima. Økistøl eru prosent av myndini."
+      },
+      {
+        "title": "Myndatekstur",
+        "description": "Valfrír myndatekstur víst undir myndini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Royndir",
+        "description": "Hvussu nógvar ferðir ein lesandi kann kanna. 0 merkir óavmarkað."
+      },
+      {
+        "title": "Blanda merkir",
+        "description": "Vís merkini í aðrari røð við hvørja vitjan."
+      },
+      {
+        "title": "Kann leggjast saman",
+        "description": "Vís henda spurningin sum eina røð, ið letst upp og aftur. At lata ein upp letur hinar samanleggjandi spurningarnar við síðuna av aftur."
+      },
+      {
+        "title": "Byrja samanlagt",
+        "description": "Tá ið hann kann leggjast saman, byrja sum ein afturlatin røð, ið bert vísir spurningin og støðuna."
+      },
+      {
+        "title": "Metingarsnið",
+        "description": "OER Schema: metingarsnið fyri hesa meting (t.d. stig, bókstavur, prosent, liðugt)."
+      },
+      {
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál, sum hoyrir til hesa meting."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn á spurnarkappingini",
+        "description": "Navn á spurnarkapping, brúkt til xAPI-eyðmerking í greiningarkervum."
+      },
+      {
+        "title": "Skeið",
+        "description": "OER Schema: skeiðið, sum henda metingin er ætlað til."
+      }
+    ]
+  }
+}

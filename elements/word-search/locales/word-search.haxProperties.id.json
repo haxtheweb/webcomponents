@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cari kata",
+    "description": "Kisi huruf dengan kata tersembunyi. Pelajar mengetuk huruf pertama dan terakhir setiap kata. Melatih kejelian mengenali ejaan istilah, bukan maknanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Apa yang diminta untuk ditemukan pelajar, ditampilkan di judul."
+      },
+      {
+        "title": "Kata",
+        "description": "Kata yang disembunyikan. Spasi dan tanda baca tidak dimasukkan ke kisi. Kata yang tidak muat dicantumkan saat Anda menyunting dan dilewati untuk pelajar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukuran kisi",
+        "description": "Huruf per sisi, 4 sampai 16. Biarkan kosong agar sesuai dengan kata terpanjang (hingga 12). Lebih dari 12 akan bergulir ke samping di ponsel."
+      },
+      {
+        "title": "Kata diagonal",
+        "description": "Sembunyikan juga kata secara diagonal. Lebih sulit."
+      },
+      {
+        "title": "Kata terbalik",
+        "description": "Sembunyikan juga kata yang ditulis terbalik. Lebih sulit."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna opsional untuk label judul, huruf pertama yang dipilih, dan tombol."
+      }
+    ]
+  }
+}

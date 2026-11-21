@@ -40,5 +40,7 @@
   "hideDirections": "Ukryj instrukcję",
   "showRelatedContent": "Pokaż powiązane treści",
   "hideRelatedContent": "Ukryj powiązane treści",
-  "notAttempted": "Nie podjęto próby"
+  "notAttempted": "Nie podjęto próby",
+  "cardsDirections": "Ułóż karty we właściwej kolejności przyciskami przesuń wcześniej i przesuń później na każdej karcie albo przeciągnij je myszą. Gdy uznasz, że kolejność jest właściwa, sprawdź odpowiedź, wybierając {checkAnswer}.",
+  "movedToPosition": "{item} przeniesiono na pozycję {position} z {total}"
 }

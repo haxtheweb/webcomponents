@@ -40,5 +40,7 @@
   "hideDirections": "Rêwerzan veşêre",
   "showRelatedContent": "Naveroka têkildar nîşan bide",
   "hideRelatedContent": "Naveroka têkildar veşêre",
-  "notAttempted": "Nehatiye ceribandin"
+  "notAttempted": "Nehatiye ceribandin",
+  "cardsDirections": "Kartan bi bişkokên berê bibe û paşê bibe yên li ser her kartê bi rêza rast bi cih bike, an wan bi mişkê bikişîne. Dema tu bawer bikî ku rêz rast e, bersiva xwe bi hilbijartina {checkAnswer} biceribîne.",
+  "movedToPosition": "{item} çû cihê {position} ji {total}"
 }

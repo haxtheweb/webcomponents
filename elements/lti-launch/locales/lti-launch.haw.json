@@ -1,0 +1,19 @@
+{
+  "label": "Mea hana o waho",
+  "labelLti": "Mea hana o waho · LTI 1.3",
+  "theTool": "ka mea hana",
+  "directions": "Nā kuhikuhi",
+  "showDirections": "Hōʻike i nā kuhikuhi",
+  "hideDirections": "Hūnā i nā kuhikuhi",
+  "directionsWindow": "Wehe ke pihi i pukaaniani hou me ka mea hana i loko.",
+  "directionsEmbed": "Wehe ke pihi i ka mea hana ma kēia ʻaoʻao. Inā ʻaʻole hoʻouka, e wehe iā ia ma kahi pukaaniani hou ma kahi o ia.",
+  "directionsLti": "Hoʻokomo kēia kahua iā ʻoe i ka mea hana, no laila ʻaʻole pono iā ʻoe kekahi moʻokāki ʻokoʻa.",
+  "openWindow": "Wehe iā {title} (pukaaniani hou)",
+  "openEmbed": "Wehe iā {title}",
+  "openInstead": "Wehe ma kahi pukaaniani hou ma kahi o ia",
+  "frameTitle": "{title} (mea hana o waho)",
+  "openedWindow": "Ua wehe ʻia kekahi pukaaniani hou me ka mea hana.",
+  "openedEmbed": "Ua wehe ʻia ka mea hana ma kēia ʻaoʻao.",
+  "needsUrl": "Pono kēia poloka i helu wahi hoʻomaka e hoʻomaka ana me http:// a i ʻole https://.",
+  "needsSignIn": "Pono kēia mea hana i ka lawelawe komo o kēia kahua, ʻaʻole i loaʻa ma ʻaneʻi. ʻAʻohe mea i wehe ʻia."
+}

@@ -1,0 +1,19 @@
+{
+  "label": "Externes Tool",
+  "labelLti": "Externes Tool · LTI 1.3",
+  "theTool": "das Tool",
+  "directions": "Anleitung",
+  "showDirections": "Anleitung anzeigen",
+  "hideDirections": "Anleitung ausblenden",
+  "directionsWindow": "Die Schaltfläche öffnet ein neues Fenster mit dem Tool.",
+  "directionsEmbed": "Die Schaltfläche öffnet das Tool auf dieser Seite. Wenn es nicht lädt, öffne es stattdessen in einem neuen Fenster.",
+  "directionsLti": "Diese Website meldet dich beim Tool an, du brauchst also kein separates Konto.",
+  "openWindow": "{title} öffnen (neues Fenster)",
+  "openEmbed": "{title} öffnen",
+  "openInstead": "Stattdessen in einem neuen Fenster öffnen",
+  "frameTitle": "{title} (externes Tool)",
+  "openedWindow": "Ein neues Fenster mit dem Tool wurde geöffnet.",
+  "openedEmbed": "Das Tool wurde auf dieser Seite geöffnet.",
+  "needsUrl": "Dieser Block braucht eine Startadresse, die mit http:// oder https:// beginnt.",
+  "needsSignIn": "Dieses Tool braucht den Anmeldedienst dieser Website, der hier nicht verfügbar ist. Es wurde nichts geöffnet."
+}

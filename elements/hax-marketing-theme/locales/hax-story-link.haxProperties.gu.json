@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "વાર્તા બટન",
+    "description": "hax.cloud પર દાવા પાછળની વાર્તા, અથવા બીજી HAX નેટવર્ક સાઇટ પરનું મેળ ખાતું સ્થાન ખોલતું બટન"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "તે ક્યાં જાય છે",
+        "options": {
+          "cloud": "hax.cloud, વાર્તા",
+          "learn": "learn.hax.cloud, ટ્યુટોરિયલ",
+          "try": "browser.hax.cloud, અજમાવો",
+          "elements": "webcomponents.hax.cloud, બ્લૉક",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "તે સાઇટ પરનું સરનામું (hax.cloud પરની વાર્તા stories/ee450a19 જેવી દેખાય છે)"
+      },
+      {
+        "title": "તે શેના વિશે છે"
+      },
+      {
+        "title": "નાની ચિપ"
+      },
+      {
+        "title": "તે શેના વિશે છે તે બટનમાં બતાવો"
+      }
+    ]
+  }
+}

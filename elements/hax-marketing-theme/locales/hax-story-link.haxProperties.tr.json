@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hikâye düğmesi",
+    "description": "hax.cloud'da bir iddianın ardındaki hikâyeyi veya başka bir HAX ağı sitesindeki ilgili yeri açan düğme"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gittiği yer",
+        "options": {
+          "cloud": "hax.cloud, hikâye",
+          "learn": "learn.hax.cloud, bir eğitim",
+          "try": "browser.hax.cloud, deneyin",
+          "elements": "webcomponents.hax.cloud, bir blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "O sitedeki adres (hax.cloud'daki bir hikâye stories/ee450a19 gibi görünür)"
+      },
+      {
+        "title": "Ne hakkında olduğu"
+      },
+      {
+        "title": "Küçük çip"
+      },
+      {
+        "title": "Ne hakkında olduğunu düğmede göster"
+      }
+    ]
+  }
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "heiti"
+        "title": "heiti",
+        "description": "Yvirskrift víst omanfyri skeiðsmyndlinum."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adressan á 3D-myndilsfíluni (.glb ella .gltf), sum skal vísast."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Lýs 3D-myndilin fyri fólki, sum ikki kunnu síggja hann."
       },
       {
         "title": "Kunningarøki"

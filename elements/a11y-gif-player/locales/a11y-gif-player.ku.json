@@ -2,5 +2,9 @@
   "toggleAnimation": "Anîmasyonê veke/bigire",
   "info": "agahî",
   "image": "Wêne",
-  "animatedGif": "GIF-a anîmeyî"
+  "animatedGif": "GIF-a anîmeyî",
+  "playAnimation": "Anîmasyonê lê bide",
+  "pauseAnimation": "Anîmasyonê rawestîne",
+  "showDescription": "Danasînê nîşan bide",
+  "hideDescription": "Danasînê veşêre"
 }

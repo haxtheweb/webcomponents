@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kaikōwhiri whakamahinga",
+    "description": "Kōwhiria te take o tētahi pae, ka whiwhi ai i tētahi hono e whakatuwhera ana i a HAX i te pūtirotiro me taua pae tīmatanga, me te tono CLI e hāngai ana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wāhitau HAX i te pūtirotiro",
+        "description": "Te wāhi e tuwhera ai te hono; ka tāpiria te ?skeleton= me te &name="
+      },
+      {
+        "title": "Ngā pae tīmatanga hei waiho",
+        "description": "Ngā ingoa mīhini, wehea ki te piko"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rārangi pae tīmatanga",
+        "description": "Te wāhitau o te rārangi anga (te hōputu e pānuitia ana e app-hax)"
+      }
+    ]
+  }
+}

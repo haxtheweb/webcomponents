@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Hoʻohālikelike kahua hana",
+    "description": "Alo a alo: e koho i ʻelua kahua hana mai kekahi waihona ʻikepili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ʻIkepili hoʻohālikelike (JSON)"
+      },
+      {
+        "title": "Id kahua hana hema"
+      },
+      {
+        "title": "Id kahua hana ʻākau"
+      }
+    ]
+  }
+}

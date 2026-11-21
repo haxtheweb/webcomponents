@@ -40,5 +40,7 @@
   "hideDirections": "پنهان کردن راهنما",
   "showRelatedContent": "نمایش محتوای مرتبط",
   "hideRelatedContent": "پنهان کردن محتوای مرتبط",
-  "notAttempted": "تلاش نشده"
+  "notAttempted": "تلاش نشده",
+  "cardsDirections": "کارت‌ها را با دکمه‌های «انتقال به قبل» و «انتقال به بعد» روی هر کارت به ترتیب درست بچینید، یا با ماوس بکشید. وقتی فکر کردید ترتیب درست است، با انتخاب {checkAnswer} پاسختان را بیازمایید.",
+  "movedToPosition": "{item} به جایگاه {position} از {total} منتقل شد"
 }

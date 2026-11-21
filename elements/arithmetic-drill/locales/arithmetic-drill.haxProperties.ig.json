@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Mmega mgbakọ",
+    "description": "Usoro nsogbu mgbakọ dị mkpụmkpụ e mepụtara nwere nzaghachi ozugbo. Họrọ arụmọrụ na oke ọnụọgụ; egwuregwu ọ bụla bụ ọhụrụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Aha mmega a, e gosiri n'isi ya."
+      },
+      {
+        "title": "Arụmọrụ",
+        "description": "Ụdị nsogbu ndị a na-ajụ. Ndị mmụta nwere ike ịgbanyụ nke ọ bụla n'ime ha tupu ha amalite.",
+        "options": {
+          "add": "Mgbakwunye",
+          "subtract": "Mwepu",
+          "multiply": "Mmụba",
+          "divide": "Nkewa",
+          "add subtract": "Mgbakwunye na mwepu",
+          "multiply divide": "Mmụba na nkewa",
+          "add multiply": "Mgbakwunye na mmụba",
+          "add divide": "Mgbakwunye na nkewa",
+          "subtract multiply": "Mwepu na mmụba",
+          "subtract divide": "Mwepu na nkewa",
+          "add subtract multiply": "Mgbakwunye, mwepu na mmụba",
+          "add subtract divide": "Mgbakwunye, mwepu na nkewa",
+          "add multiply divide": "Mgbakwunye, mmụba na nkewa",
+          "subtract multiply divide": "Mwepu, mmụba na nkewa",
+          "add subtract multiply divide": "Ha anọ niile"
+        }
+      },
+      {
+        "title": "Ọnụọgụ kacha nta",
+        "description": "Ọnụọgụ kacha nta e ji na nsogbu. Ọnụọgụ zuru ezu, 0 ma ọ bụ karịa."
+      },
+      {
+        "title": "Ọnụọgụ kacha ibu",
+        "description": "Ọnụọgụ kacha ibu e ji na nsogbu. Azịza nkewa na ndị nkewa na-anọkwa n'oke a."
+      },
+      {
+        "title": "Ọnụọgụ nsogbu",
+        "description": "Ole nsogbu dị n'otu egwuregwu (1 ruo 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oke oge",
+        "description": "Sekọnd ekwere maka egwuregwu dum. 0 pụtara enweghị oge nleba, nke bụ ndabara: mmega nwere oge na-emebi ndị mmụta chọrọ oge karịa. Mgbe etọrọ ya, ndị mmụta ka nwere ike ịgbanyụ oge nleba maka onwe ha."
+      },
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba akara isi na bọtịnụ. Hapụ ya efu ka o soro isiokwu."
+      }
+    ]
+  }
+}

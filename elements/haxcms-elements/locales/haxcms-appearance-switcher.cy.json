@@ -1,0 +1,8 @@
+{
+  "theme": "Thema",
+  "palette": "Palet",
+  "themeDefault": "Diofyn y thema",
+  "designSystem": "System ddylunio",
+  "designSystemDefault": "DDD (diofyn)",
+  "designSystemUnavailable": "Mae'r thema hon yn cadw ei system ddylunio ei hun"
+}

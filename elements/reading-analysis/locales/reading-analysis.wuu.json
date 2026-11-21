@@ -60,6 +60,8 @@
   "flagsFound": "寻着 {correct}/{total}",
   "toRethink": "{count} 只要再想想",
   "notEvidence": "勿是搿只标记个证据",
+  "isEvidence": "迭个标记个依据",
+  "readingKeys": "用方向键从一个{unit}移到下一个。",
   "markAnswers": "标答案",
   "doneMarking": "标答案弄好了",
   "editHint": "拉下头编辑阅读材料。用区块菜单里个“标答案”拣每只标记应该摆个地方。",

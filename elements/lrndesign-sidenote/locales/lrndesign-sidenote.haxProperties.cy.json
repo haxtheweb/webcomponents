@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nodyn ochr",
+    "description": "Nodyn wedi'i osod ar wahân i'r cynnwys o'i amgylch, gydag eicon a label dewisol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Label y nodyn ochr."
+      },
+      {
+        "title": "Eicon",
+        "description": "Eicon y nodyn ochr."
+      },
+      {
+        "title": "Cynnwys",
+        "description": "Cynnwys y nodyn ochr."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lliw",
+        "description": "Y lliw y mae'r nodyn ochr wedi'i arlliwio ag ef."
+      }
+    ]
+  }
+}

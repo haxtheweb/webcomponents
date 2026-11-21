@@ -4,7 +4,12 @@
     "description": "H5P eduki interaktiboa erreproduzitzen du igotako .h5p fitxategi batetik, H5P zerbitzaririk gabe"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P fitxategia",
+        "description": "Igo edo estekatu .h5p fitxategi bat. Arakatzailean deskonprimitzen da; ez da H5P zerbitzaririk behar."
+      }
+    ],
     "advanced": [
       {
         "title": "iframe txertatzeko kode zaharra",

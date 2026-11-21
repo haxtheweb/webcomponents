@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "文本生成图表",
+    "description": "用文本（Mermaid）编写图表：流程图、时序图、时间线等。它会绘制在页面中，并附带文本替代。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "显示在图表上方，并用作其名称。"
+      },
+      {
+        "title": "图表源代码",
+        "description": "Mermaid 文本，例如：flowchart TD，然后每行一个连接，如 A[Draft] --> B{Ready?}。在箭头后添加 |label| 为其加标签。图形会随输入实时更新。"
+      },
+      {
+        "title": "文本替代",
+        "description": "为看不到图表的人描述它显示的内容。对于流程图，留空会自动为您列出其步骤。"
+      },
+      {
+        "title": "说明文字",
+        "description": "显示在图表下方的可选说明文字。"
+      },
+      {
+        "title": "显示源代码",
+        "description": "在图形旁显示图表文本。"
+      },
+      {
+        "title": "显示文本替代",
+        "description": "在图形下方显示文本替代。屏幕阅读器始终可以读取它。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "源文件",
+        "description": "要绘制的 .mmd 文件地址，用于代替上方文本（https 或本网站上的路径）。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题中图标标签片的颜色。"
+      }
+    ]
+  }
+}

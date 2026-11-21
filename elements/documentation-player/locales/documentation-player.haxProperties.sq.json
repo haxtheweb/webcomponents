@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Luajtësi i dokumentacionit",
+    "description": "Udhëzim, demonstrim dhe referencë për një web component, me butona kopjimi për HTML, import, npm dhe CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skedari i të dhënave të dokumentacionit",
+        "description": "Të dhënat e dokumentacionit që vijnë me elementin (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard-i i udhëzimit",
+        "description": "Storyboard-i i lëvizjes që vjen me elementin (tag.motion.json). Opsional."
+      },
+      {
+        "title": "Video-udhëzues",
+        "description": "Një video e shkurtër për elementin (YouTube, Vimeo ose skedar video). Zëvendëson videon te të dhënat e dokumentacionit."
+      },
+      {
+        "title": "Hap në skedën",
+        "description": "Cila skedë shfaqet e para.",
+        "options": {
+          "motion": "Udhëzim",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentacion",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Udhëzim me luajtje automatike",
+        "description": "Nis udhëzimin sapo të shfaqet luajtësi. Shpërfillet kur lexuesi preferon lëvizje të reduktuar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema e udhëzimit",
+        "description": "Për elementet me disa udhëzime, cila temë hapet e para (për shembull add-blocks). Lëre bosh për atë kryesoren."
+      },
+      {
+        "title": "Lidhja e demonstrimit të drejtpërdrejtë",
+        "description": "Ku të çon butoni Open demo source. Si parazgjedhje dosja demo në repository."
+      },
+      {
+        "title": "Lidhja e dokumentacionit",
+        "description": "Ku të çon butoni i dokumentacionit të plotë, për shembull faqja përkatëse e Learn HAX."
+      }
+    ]
+  }
+}

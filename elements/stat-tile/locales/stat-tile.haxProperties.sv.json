@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikruta",
+    "description": "Ett tal som betyder något, med dess etikett och hur det har förändrats. Placera flera i ett rutnät för en instrumentpanelsrad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikett",
+        "description": "Vad talet mäter."
+      },
+      {
+        "title": "Värde",
+        "description": "Talet. Ett vanligt tal grupperas enligt sidans språk; allt annat visas som det skrivits."
+      },
+      {
+        "title": "Förändring",
+        "description": "Hur det förändrades, i ord, till exempel 6 % den här terminen."
+      },
+      {
+        "title": "Riktning",
+        "description": "Om förändringen är uppåt eller nedåt.",
+        "options": {
+          "": "Ingen",
+          "up": "Upp",
+          "down": "Ned"
+        }
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Chủ đề",
   "palette": "Bảng màu",
   "cancel": "Hủy",
-  "openAppearanceSettings": "Mở cài đặt diện mạo"
+  "openAppearanceSettings": "Mở cài đặt diện mạo",
+  "designSystem": "Hệ thống thiết kế",
+  "designSystemDefault": "DDD (mặc định)",
+  "designSystemThemeDefault": "{name} (mặc định của giao diện)",
+  "designSystemHelp": "Màu sắc, kiểu chữ, góc bo và mật độ. Giao diện vẫn quyết định bố cục."
 }

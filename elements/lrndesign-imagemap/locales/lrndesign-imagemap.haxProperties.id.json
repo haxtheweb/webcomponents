@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detail titik panas",
         "description": "Titik panas interaktif pada peta gambar."
+      },
+      {
+        "title": "Detail titik",
+        "description": "Titik interaktif pada peta gambar."
       }
     ]
   }

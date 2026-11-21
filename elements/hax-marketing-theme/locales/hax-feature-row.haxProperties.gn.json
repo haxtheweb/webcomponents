@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mba'e tysýi",
+    "description": "Peteĩ mba'erechaha producto rehegua oĩva he'iséva ndéve ykére"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teraguã michĩ"
+      },
+      {
+        "title": "Omoakãva"
+      },
+      {
+        "title": "Ta'ãnga"
+      },
+      {
+        "title": "Mba'épa ohechauka ta'ãnga"
+      },
+      {
+        "title": "Ta'ãnga akatúa gotyo"
+      },
+      {
+        "title": "Añuvã sa'y (DDD réra, nandi omoirũ paleta)"
+      }
+    ]
+  }
+}

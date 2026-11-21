@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Gaaffii lakkoofsaa",
+    "description": "Gaaffii lakkoofsaan deebi'u. Deebiin lakkoofsa dhaabbataa ykn foormulaa jijjiiramoota irraa herregamu dha, yeroo daangaa obsaa keessa jiru ni fudhatama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gaaffii",
+        "description": "Waan barattoonni gaafataman. Gatii isaa agarsiisuuf maqaa jijjiiramaa gooroo keessatti barreessi, kan akka {d}."
+      },
+      {
+        "title": "Safartuu",
+        "description": "Bakka deebii cinaatti akka barreeffamaatti mul'ata, fakkeenyaaf km/h."
+      },
+      {
+        "title": "Deebii",
+        "description": "Lakkoofsa sirrii. Yoo foormulaan deebii herrege duwwaa dhiisi."
+      },
+      {
+        "title": "Foormulaa",
+        "description": "Jijjiiramoota irraa deebii herrega, fakkeenyaaf d / (t / 60). + - * / ^, gooroo, sqrt() fi abs() fayyadamuu danda'a. Yeroo kaa'amu deebii bakka bu'ee fayyada."
+      },
+      {
+        "title": "Jijjiiramoota",
+        "description": "Lakkoofsota foormulaa fi gaaffiin fayyadaman. Tokkoon tokkoon gatii gadi aanaa fi ol aanaa isaa gidduu, tarkaanfiidhaan fudhata."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daangaa obsaa",
+        "description": "Deebii sirrii irraa hagam fagaatee ammallee fudhatama. 0 jechuun sirrii, ykn bakka desimaala armaan gadiitti geeffame."
+      },
+      {
+        "title": "Gosa daangaa obsaa",
+        "description": "Guutuu: daangaa obsaa ida'ama ykn hir'ama. Dhibbeentaa: dhibbeentaa sana deebii sirrii irraa ida'ama ykn hir'ama.",
+        "options": {
+          "absolute": "Guutuu",
+          "percent": "Dhibbeentaa"
+        }
+      },
+      {
+        "title": "Bakka desimaalaa",
+        "description": "Barattoonni bakka kana hammaatti akka geessan gaafatamu, deebiinis kanatti geeffamee mul'ata. Geessuu malee duwwaa dhiisi."
+      },
+      {
+        "title": "Yaaliiwwan",
+        "description": "Barataan si'a meeqa sakatta'uu danda'a. 0 jechuun daangaa malee."
+      },
+      {
+        "title": "Yaalii hunda irratti lakkoofsota haaraa",
+        "description": "Yeroo barataan irra deebi'ee yaalu hunda gatii jijjiiramootaa haaraa fidi. Yeroo deebi'an deebiin isaanii duraa hin mul'atu, sirrii ta'uu isaa qofatu mul'ata."
+      },
+      {
+        "title": "Kan cufamu",
+        "description": "Gaaffii kana akka tarree banamuu fi cufamuutti agarsiisi. Tokko banuun gaaffiiwwan cufaman biroo cinaa isaa jiran cufa."
+      },
+      {
+        "title": "Cufamee jalqabi",
+        "description": "Yeroo cufamu ta'u, akka tarree cufamaa gaaffii fi haala isaa qofa agarsiisuutti jalqabi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa sirnoota xiinxalaa keessatti adda baafannaa xAPI'f fayyadu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "He mea hoʻomaka laʻana i hoʻohana ʻia e hōʻike i ka hoʻonohonoho HAX a me nā waiwai hiki ke hoʻoponopono."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa"
+      }
+    ]
+  }
+}

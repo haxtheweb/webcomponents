@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lista ta' passi",
     "description": "Passi nnumerati biex tlesti kompitu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indikatur tal-passi",
+        "description": "Uri l-passi bħala ringiela kompatta ta' titli li timmarka l-progress. Il-kontenut tal-passi ma jidhirx f'dan it-tqassim."
+      },
+      {
+        "title": "Pass attwali",
+        "description": "Il-pass fejn qiegħed il-qarrej, ngħoddu minn 1. Il-passi ta' qabel jidhru bħala lesti. Użat mill-indikatur tal-passi."
+      }
+    ]
   }
 }

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Pakuhi radar",
+    "description": "Pakuhi radar (pūnāwelewele) no nā kumu hoʻohālike oʻo a me ka helu ʻaoʻao, e like me HEOSAT. Komo pū he kikokikona pani a me ka papa ʻikepili."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Poʻo no ka pakuhi; hoʻohana pū ʻia ma ke ʻano he inoa hiki ke komo."
+      },
+      {
+        "title": "Helu kiʻekiʻe loa",
+        "description": "Ka waiwai kiʻekiʻe loa ma ka pālākiō."
+      },
+      {
+        "title": "Nā māhele",
+        "description": "Hoʻokahi māhele ma kēlā me kēia laina. Pono he 3 ma ka liʻiliʻi loa."
+      },
+      {
+        "title": "Nā helu",
+        "description": "Nā helu i hoʻokaʻawale ʻia me ke koma, hoʻokahi no kēlā me kēia māhele ma ke kaʻina like."
+      },
+      {
+        "title": "Nā helu pahuhopu",
+        "description": "Nā helu i hoʻokaʻawale ʻia me ke koma, hoʻokahi no kēlā me kēia māhele ma ke kaʻina like."
+      },
+      {
+        "title": "Hōʻike i ke kī",
+        "description": "Hōʻike i kahi kī e kapa ana i nā helu a me nā pahuhopu."
+      },
+      {
+        "title": "Paʻapū",
+        "description": "Pakuhi liʻiliʻi aʻe me ka ʻole o nā lepili, ke kī a i ʻole ka papa ʻikepili. E lele ma luna o kekahi kiko e ʻike i kona mau waiwai."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lepili helu",
+        "description": "Lepili kī a me ka papa no nā helu."
+      },
+      {
+        "title": "Lepili pahuhopu",
+        "description": "Lepili kī a me ka papa no nā pahuhopu."
+      }
+    ]
+  }
+}

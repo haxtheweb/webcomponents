@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista kontrolna",
+    "description": "Lista pól wyboru. Czytelnicy odhaczają pozycje, a ich postęp jest zapamiętywany na ich własnym urządzeniu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Nazwa listy. Odczytywana na głos jako etykieta grupy pól wyboru."
+      },
+      {
+        "title": "Pozycje",
+        "description": "Każda pozycja to pole wyboru. Czytelnicy nie mogą zmieniać pozycji zaznaczonych ani wyłączonych."
+      },
+      {
+        "title": "Numerowana",
+        "description": "Pokaż listę numerowaną zamiast punktowanej."
+      },
+      {
+        "title": "Stan",
+        "description": "Zmienia kolory, aby pasowały do stop-note.",
+        "options": {
+          "info": "Informacja",
+          "success": "Potwierdzenie",
+          "warning": "Ostrzeżenie",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID przechowywania",
+        "description": "Unikalny identyfikator używany do zapamiętania postępu czytelnika na jego urządzeniu. Generowany automatycznie; zmień go tylko, aby współdzielić postęp między listami lub zacząć od nowa."
+      }
+    ]
+  }
+}

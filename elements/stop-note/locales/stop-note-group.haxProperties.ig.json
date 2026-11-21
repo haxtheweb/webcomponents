@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Otu Stop Note",
+    "description": "Chịkọta ọtụtụ stop note n'otu ngọngọ na-egosi otu ndetu n'otu oge, dịka Ndụmọdụ ma ọ bụ Ihe ọhụrụ. Enwere ike ịchịkọta kaadị ntụziaka, ndetu n'akụkụ na nkwupụta nwere okpokolo na ha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akara aha",
+        "description": "Aha otu ahụ ihe ọgụgụ ihuenyo na-ekwupụta, dịka Ndụmọdụ ma ọ bụ Ihe ọhụrụ."
+      },
+      {
+        "title": "Ndetu",
+        "description": "Stop note dị n'otu ahụ. Enwere ike ịgbakwunye kaadị ntụziaka, ndetu n'akụkụ na nkwupụta nwere okpokolo."
+      }
+    ]
+  }
+}

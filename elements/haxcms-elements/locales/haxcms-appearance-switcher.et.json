@@ -1,0 +1,8 @@
+{
+  "theme": "Kujundus",
+  "palette": "Palett",
+  "themeDefault": "Kujunduse vaikeväärtus",
+  "designSystem": "Disainisüsteem",
+  "designSystemDefault": "DDD (vaikimisi)",
+  "designSystemUnavailable": "See kujundus säilitab oma disainisüsteemi"
+}

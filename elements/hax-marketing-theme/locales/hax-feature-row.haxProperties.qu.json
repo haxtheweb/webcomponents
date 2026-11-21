@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kaqnin siq'i",
+    "description": "Productop huk qhawanan, qampaq imatachus niyta munasqanpa waqtanpi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Huch'uy etiqueta"
+      },
+      {
+        "title": "Uma siq'i"
+      },
+      {
+        "title": "Rikch'a"
+      },
+      {
+        "title": "Rikch'a imatam rikuchin"
+      },
+      {
+        "title": "Rikch'a pañapi"
+      },
+      {
+        "title": "Llantup llimp'in (DDD suti, ch'usaqqa llimp'ikunata qatin)"
+      }
+    ]
+  }
+}

@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Mhinduro",
-        "description": "Kurongeka kwemhinduro kunotsanangura nhevedzano yakarurama."
+        "description": "Kurongeka kwemhinduro kunotsanangura nhevedzano yakarurama.",
+        "options": {
+          "": "Rondedzero",
+          "cards": "Makadhi emifananidzo"
+        }
+      },
+      {
+        "title": "Mhinduro",
+        "description": "Hurongwa hwemhinduro hunotsanangura kutevedzana kwakarurama."
       }
     ],
     "advanced": [

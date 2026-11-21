@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline būsena",
+    "description": "Rodyti žiniatinklio platformos funkcijos Baseline naršyklių palaikymo būseną."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funkcijos ID",
+        "description": "Žiniatinklio funkcijos ID, pavyzdžiui, anchor-positioning. ID rasite webstatus.dev; ID yra paskutinė funkcijos puslapio URL dalis."
+      }
+    ]
+  }
+}

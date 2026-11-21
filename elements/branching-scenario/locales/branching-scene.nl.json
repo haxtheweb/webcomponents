@@ -1,0 +1,14 @@
+{
+  "scene": "Scène",
+  "ending": "Einde",
+  "goodEnding": "Goed einde",
+  "mixedEnding": "Gemengd einde",
+  "poorEnding": "Slecht einde",
+  "scoreOf": "Score {score} van {max}",
+  "scoreOnly": "Score {score}",
+  "startScene": "Start",
+  "sceneIdLabel": "Scène-ID",
+  "needsId": "Voeg een scène-ID toe zodat keuzes naar deze scène kunnen linken.",
+  "orphan": "Geen enkele keuze linkt naar deze scène.",
+  "deadLinks": "Deze links verwijzen naar een scène die niet bestaat:"
+}

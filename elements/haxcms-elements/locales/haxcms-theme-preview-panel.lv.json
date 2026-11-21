@@ -8,5 +8,9 @@
   "theme": "Motīvs",
   "palette": "Palete",
   "cancel": "Atcelt",
-  "openAppearanceSettings": "Atvērt izskata iestatījumus"
+  "openAppearanceSettings": "Atvērt izskata iestatījumus",
+  "designSystem": "Dizaina sistēma",
+  "designSystemDefault": "DDD (noklusējums)",
+  "designSystemThemeDefault": "{name} (motīva noklusējums)",
+  "designSystemHelp": "Krāsa, fonts, stūri un blīvums. Izkārtojumu joprojām nosaka motīvs."
 }

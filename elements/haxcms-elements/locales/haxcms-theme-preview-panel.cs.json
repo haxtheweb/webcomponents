@@ -8,5 +8,9 @@
   "theme": "Motiv",
   "palette": "Paleta",
   "cancel": "Zrušit",
-  "openAppearanceSettings": "Otevřít nastavení vzhledu"
+  "openAppearanceSettings": "Otevřít nastavení vzhledu",
+  "designSystem": "Designový systém",
+  "designSystemDefault": "DDD (výchozí)",
+  "designSystemThemeDefault": "{name} (výchozí podle motivu)",
+  "designSystemHelp": "Barvy, písmo, rohy a hustota. O rozvržení stále rozhoduje motiv."
 }

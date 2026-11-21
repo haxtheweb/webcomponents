@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cuardach focal",
+    "description": "Greille litreacha le focail i bhfolach. Tapálann foghlaimeoirí an chéad litir agus an litir dheireanach de gach focal. Cleachtann sé conas a litrítear téarma a aithint, ní a bhrí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "An rud a iarrtar ar fhoghlaimeoirí a aimsiú, taispeánta sa cheanntásc."
+      },
+      {
+        "title": "Focail",
+        "description": "Na focail le folú. Fágtar spásanna agus poncaíocht as an ngreille. Liostaítear focail nach n-oireann fad atá tú ag eagarthóireacht agus fágtar amach iad d'fhoghlaimeoirí."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Méid na greille",
+        "description": "Litreacha in aghaidh an taoibh, 4 go 16. Fág folamh chun an focal is faide a chur isteach (suas le 12). Scrollaíonn níos mó ná 12 go cliathánach ar fhón."
+      },
+      {
+        "title": "Focail trasnánacha",
+        "description": "Folaigh focail go trasnánach freisin. Níos deacra."
+      },
+      {
+        "title": "Focail droim ar ais",
+        "description": "Folaigh focail scríofa droim ar ais freisin. Níos deacra."
+      },
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath roghnach do shlis an cheanntáisc, an chéad litir roghnaithe agus an cnaipe."
+      }
+    ]
+  }
+}

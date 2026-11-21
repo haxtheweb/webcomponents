@@ -1,0 +1,14 @@
+{
+  "scene": "ਦ੍ਰਿਸ਼",
+  "ending": "ਅੰਤ",
+  "goodEnding": "ਚੰਗਾ ਅੰਤ",
+  "mixedEnding": "ਮਿਲਿਆ-ਜੁਲਿਆ ਅੰਤ",
+  "poorEnding": "ਮਾੜਾ ਅੰਤ",
+  "scoreOf": "ਸਕੋਰ {max} ਵਿੱਚੋਂ {score}",
+  "scoreOnly": "ਸਕੋਰ {score}",
+  "startScene": "ਸ਼ੁਰੂ",
+  "sceneIdLabel": "ਦ੍ਰਿਸ਼ ID",
+  "needsId": "ਦ੍ਰਿਸ਼ ID ਜੋੜੋ ਤਾਂ ਜੋ ਚੋਣਾਂ ਇਸ ਦ੍ਰਿਸ਼ ਨਾਲ ਜੁੜ ਸਕਣ।",
+  "orphan": "ਕੋਈ ਚੋਣ ਇਸ ਦ੍ਰਿਸ਼ ਨਾਲ ਨਹੀਂ ਜੁੜਦੀ।",
+  "deadLinks": "ਇਹ ਲਿੰਕ ਉਸ ਦ੍ਰਿਸ਼ ਵੱਲ ਇਸ਼ਾਰਾ ਕਰਦੇ ਹਨ ਜੋ ਮੌਜੂਦ ਨਹੀਂ:"
+}

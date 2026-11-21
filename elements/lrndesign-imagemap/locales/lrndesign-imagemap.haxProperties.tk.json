@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Işjeň nokatlaryň jikme-jiklikleri",
         "description": "Surat kartasyndaky interaktiw işjeň nokatlar."
+      },
+      {
+        "title": "Nokat jikme-jiklikleri",
+        "description": "Surat kartasyndaky interaktiw nokatlar."
       }
     ]
   }

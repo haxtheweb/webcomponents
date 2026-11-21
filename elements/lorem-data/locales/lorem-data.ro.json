@@ -1,4 +1,6 @@
 {
   "saveAll": "Salvează tot",
-  "saveTheFollowing": "Salvezi următoarele: {list}?"
+  "saveTheFollowing": "Salvezi următoarele: {list}?",
+  "save": "Salvați",
+  "cancel": "Anulare"
 }

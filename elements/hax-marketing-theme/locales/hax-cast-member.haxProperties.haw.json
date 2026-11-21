@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Lālā hui keaka",
+    "description": "Hoʻokahi anaina, hōʻike ʻia e kekahi kanaka keaka, me nā huaʻōlelo a me kahi pihi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ʻO wai kēia"
+      },
+      {
+        "title": "ʻAno kanaka keaka"
+      },
+      {
+        "title": "Hua kanaka keaka"
+      },
+      {
+        "title": "Waihoʻoluʻu kahua (inoa DDD)"
+      },
+      {
+        "title": "Ma hea e hele ai ke pihi"
+      },
+      {
+        "title": "Kikokikona pihi"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sammas",
+    "description": "Sammas: nimi, fraas, ikoon, värv ja miks see on oluline"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimi"
+      },
+      {
+        "title": "Fraas"
+      },
+      {
+        "title": "Ikoon"
+      },
+      {
+        "title": "Värv (DDD nimi)"
+      },
+      {
+        "title": "Milline sammas, 1 kuni 7"
+      },
+      {
+        "title": "Väike kaart"
+      },
+      {
+        "title": "Kuhu nimi läheb"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scena scenarija",
+    "description": "Jedna scena razgranatog scenarija. Povežite svaki izbor s drugom scenom pomoću # iza kojeg slijedi id scene."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id scene",
+        "description": "Na šta vode izbori: link na # iza kojeg slijedi ovaj id vodi na ovu scenu. Slova, brojevi i crtice."
+      },
+      {
+        "title": "Naslov",
+        "description": "Naslov scene."
+      },
+      {
+        "title": "Završetak",
+        "description": "Da li ova scena završava put i kako je ishod ispao.",
+        "options": {
+          "": "Nije završetak",
+          "good": "Dobar završetak",
+          "mixed": "Mješovit završetak",
+          "poor": "Loš završetak"
+        }
+      },
+      {
+        "title": "Rezultat",
+        "description": "Rezultat za dostizanje ovog završetka. Najviši rezultat završetka u scenariju je maksimum."
+      }
+    ]
+  }
+}

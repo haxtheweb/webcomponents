@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Exercício de aritmética",
+    "description": "Uma rodada curta de problemas de aritmética gerados, com feedback imediato. Escolha as operações e o intervalo de números; cada rodada é nova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome deste exercício, mostrado no cabeçalho."
+      },
+      {
+        "title": "Operações",
+        "description": "Quais tipos de problema são propostos. Os alunos podem desativar qualquer um deles antes de começar.",
+        "options": {
+          "add": "Adição",
+          "subtract": "Subtração",
+          "multiply": "Multiplicação",
+          "divide": "Divisão",
+          "add subtract": "Adição e subtração",
+          "multiply divide": "Multiplicação e divisão",
+          "add multiply": "Adição e multiplicação",
+          "add divide": "Adição e divisão",
+          "subtract multiply": "Subtração e multiplicação",
+          "subtract divide": "Subtração e divisão",
+          "add subtract multiply": "Adição, subtração e multiplicação",
+          "add subtract divide": "Adição, subtração e divisão",
+          "add multiply divide": "Adição, multiplicação e divisão",
+          "subtract multiply divide": "Subtração, multiplicação e divisão",
+          "add subtract multiply divide": "As quatro"
+        }
+      },
+      {
+        "title": "Menor número",
+        "description": "O menor número usado em um problema. Números inteiros, 0 ou mais."
+      },
+      {
+        "title": "Maior número",
+        "description": "O maior número usado em um problema. Os resultados e divisores das divisões também ficam nesse intervalo."
+      },
+      {
+        "title": "Número de problemas",
+        "description": "Quantos problemas há em uma rodada (1 a 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limite de tempo",
+        "description": "Segundos permitidos para uma rodada inteira. 0 significa sem cronômetro, que é o padrão: exercícios cronometrados prejudicam alunos que precisam de mais tempo. Quando definido, os alunos ainda podem desativar o cronômetro para si."
+      },
+      {
+        "title": "Cor de destaque",
+        "description": "Cor do chip do cabeçalho e dos botões. Deixe vazio para seguir o tema."
+      }
+    ]
+  }
+}

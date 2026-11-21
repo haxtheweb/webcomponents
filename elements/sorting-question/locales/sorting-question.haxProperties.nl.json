@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Antwoorden",
+        "description": "De volgorde van de antwoorden bepaalt de juiste reeks.",
+        "options": {
+          "": "Lijst",
+          "cards": "Afbeeldingskaarten"
+        }
+      },
+      {
+        "title": "Antwoorden",
         "description": "De volgorde van de antwoorden bepaalt de juiste reeks."
       }
     ],

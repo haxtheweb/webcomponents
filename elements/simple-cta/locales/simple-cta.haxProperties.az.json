@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "İkonu gizlət",
         "description": "Mətni vurğulamaq üçün istifadə olunan ikonu gizlət"
+      },
+      {
+        "title": "Görünüş",
+        "description": "Düymənin nə qədər vurğulandığı.",
+        "options": {
+          "": "Doldurulmuş",
+          "tonal": "Tonal",
+          "outlined": "Konturlu",
+          "plain": "Sadə"
+        }
+      },
+      {
+        "title": "Ölçü",
+        "description": "Düymənin ölçüsü.",
+        "options": {
+          "s": "Kiçik",
+          "": "Orta",
+          "l": "Böyük"
+        }
       }
     ],
     "advanced": [

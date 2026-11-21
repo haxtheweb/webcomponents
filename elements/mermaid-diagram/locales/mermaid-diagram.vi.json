@@ -1,0 +1,21 @@
+{
+  "diagram": "Sơ đồ",
+  "flowchart": "lưu đồ",
+  "sequence": "tuần tự",
+  "source": "Nguồn",
+  "textAlternative": "Văn bản thay thế",
+  "present": "Trình chiếu",
+  "exitPresent": "Thoát trình chiếu",
+  "loading": "Đang tải sơ đồ",
+  "empty": "Chưa có gì để vẽ. Hãy thêm mã nguồn sơ đồ.",
+  "error": "Lỗi",
+  "parseError": "Không thể vẽ sơ đồ này. Hãy kiểm tra mã nguồn.",
+  "loadError": "Không thể tải thư viện sơ đồ.",
+  "srcError": "Không thể tải tệp sơ đồ.",
+  "decision": "quyết định",
+  "end": "hết",
+  "goTo": "đi tới {target}",
+  "ifGoTo": "nếu {label}, đi tới {target}",
+  "describedBySource": "Sơ đồ được mô tả bằng mã nguồn của nó.",
+  "scrollable": "Sơ đồ, có thể cuộn"
+}

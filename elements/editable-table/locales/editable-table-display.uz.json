@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV sifatida nusxalash.",
   "printTable": "Jadvalni chop etish",
   "selectColumn": "Ustunni tanlash",
-  "dataTable": "Ma’lumotlar · Jadval"
+  "dataTable": "Ma’lumotlar · Jadval",
+  "filterStatus": "{total} ta qatordan {shown} tasi ko‘rsatilmoqda, {column} bo‘yicha filtrlangan: {text}",
+  "columnNumber": "{column}-ustun",
+  "clearFilter": "Filtrni tozalash"
 }

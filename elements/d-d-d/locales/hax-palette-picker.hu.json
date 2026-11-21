@@ -5,5 +5,6 @@
   "selected": "Kijelölt",
   "currentlyActiveAndSelectedPalette": "Jelenleg aktív és kijelölt paletta",
   "currentlyActivePalette": "Jelenleg aktív paletta",
-  "selectedPaletteToApply": "Alkalmazásra kijelölt paletta"
+  "selectedPaletteToApply": "Alkalmazásra kijelölt paletta",
+  "paletteNumber": "{number}. paletta"
 }

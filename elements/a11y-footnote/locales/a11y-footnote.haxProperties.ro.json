@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Notă de subsol",
+    "description": "O notă scrisă acolo unde îi este locul în text. Apare ca număr, iar lista numerotată de note se construiește singură în partea de jos a paginii."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notă",
+        "description": "Textul notei de subsol."
+      },
+      {
+        "title": "Fără previzualizare",
+        "description": "Nu afișați nota când un cititor trece cu mouse-ul sau focalizează numărul."
+      }
+    ]
+  }
+}

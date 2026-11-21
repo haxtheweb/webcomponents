@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Nút câu chuyện",
+    "description": "Nút mở câu chuyện đằng sau một tuyên bố trên hax.cloud, hoặc vị trí tương ứng trên một trang khác trong mạng lưới HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dẫn tới đâu",
+        "options": {
+          "cloud": "hax.cloud, câu chuyện",
+          "learn": "learn.hax.cloud, một bài hướng dẫn",
+          "try": "browser.hax.cloud, dùng thử",
+          "elements": "webcomponents.hax.cloud, một khối",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Địa chỉ trên trang đó (một câu chuyện trên hax.cloud có dạng stories/ee450a19)"
+      },
+      {
+        "title": "Nói về điều gì"
+      },
+      {
+        "title": "Chip nhỏ"
+      },
+      {
+        "title": "Hiển thị nội dung trong nút"
+      }
+    ]
+  }
+}

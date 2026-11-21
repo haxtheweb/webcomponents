@@ -9,5 +9,7 @@
   "slidePages": "Skyfiebladsye",
   "goToSlide": "Gaan na skyfie {number}",
   "slides": "Skyfies",
-  "position": "{number} van {total}"
+  "position": "{number} van {total}",
+  "fullScreen": "Volskerm",
+  "exitFullScreen": "Verlaat volskerm"
 }

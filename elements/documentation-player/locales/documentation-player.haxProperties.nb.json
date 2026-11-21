@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentasjonsspiller",
+    "description": "Gjennomgang, demo og referanse for en webkomponent, med kopiknapper for HTML, import, npm og CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentasjonsdatafil",
+        "description": "Dokumentasjonsdataene som følger med elementet (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard for gjennomgang",
+        "description": "Bevegelsesstoryboardet som følger med elementet (tag.motion.json). Valgfritt."
+      },
+      {
+        "title": "Videoopplæring",
+        "description": "En kort video om elementet (YouTube, Vimeo eller en videofil). Overstyrer videoen i dokumentasjonsdataene."
+      },
+      {
+        "title": "Åpne på fane",
+        "description": "Hvilken fane som vises først.",
+        "options": {
+          "motion": "Gjennomgang",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasjon",
+          "schema": "Skjema"
+        }
+      },
+      {
+        "title": "Spill av gjennomgang automatisk",
+        "description": "Start gjennomgangen så snart spilleren vises. Ignoreres når leseren foretrekker redusert bevegelse."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gjennomgangsemne",
+        "description": "For elementer med flere gjennomganger: hvilket emne som åpnes først (for eksempel add-blocks). La stå tomt for hovedemnet."
+      },
+      {
+        "title": "Lenke til live-demo",
+        "description": "Hvor knappen Åpne demokilde går. Standard er demomappen i repoet."
+      },
+      {
+        "title": "Dokumentasjonslenke",
+        "description": "Hvor knappen for full dokumentasjon går, for eksempel den tilsvarende Learn HAX-siden."
+      }
+    ]
+  }
+}

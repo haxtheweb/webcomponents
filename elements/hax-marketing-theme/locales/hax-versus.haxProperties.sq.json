@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kundër",
+    "description": "Fjalë pranë një butoni kokë më kokë me dy personazhe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli"
+      },
+      {
+        "title": "Ku të çon butoni"
+      },
+      {
+        "title": "Teksti i butonit"
+      },
+      {
+        "title": "Fara e personazhit majtas"
+      },
+      {
+        "title": "Fara e personazhit djathtas"
+      }
+    ]
+  }
+}

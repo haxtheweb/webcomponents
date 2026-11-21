@@ -8,5 +8,9 @@
   "theme": "Þema",
   "palette": "Litaspjald",
   "cancel": "Hætta við",
-  "openAppearanceSettings": "Opna útlitsstillingar"
+  "openAppearanceSettings": "Opna útlitsstillingar",
+  "designSystem": "Hönnunarkerfi",
+  "designSystemDefault": "DDD (sjálfgefið)",
+  "designSystemThemeDefault": "{name} (sjálfgefið í þema)",
+  "designSystemHelp": "Litir, letur, horn og þéttleiki. Þemað ræður samt útlitinu."
 }

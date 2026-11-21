@@ -5,5 +5,7 @@
   "editModeLabel": "Yanayin gyara jerin kafofin watsa labarai",
   "position": "{current} cikin {total}",
   "previousItem": "Abu na baya",
-  "nextItem": "Abu na gaba"
+  "nextItem": "Abu na gaba",
+  "fullScreen": "Cikakken allo",
+  "exitFullScreen": "Fita daga cikakken allo"
 }

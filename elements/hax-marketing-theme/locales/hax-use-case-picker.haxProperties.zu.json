@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Isikhethi sokusetshenziswa",
+    "description": "Khetha ukuthi isayithi ingeyani bese uthola isixhumanisi esivula i-HAX kusiphequluli naleyo sayithi yokuqala, kanye nomyalo we-CLI ofanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikheli le-HAX kusiphequluli",
+        "description": "Lapho isixhumanisi sivuleka khona; sengezelwa u-?skeleton= no-&name="
+      },
+      {
+        "title": "Amasayithi okuqala okufanele ashiywe ngaphandle",
+        "description": "Amagama omshini, ahlukaniswe ngokhefana"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Uhlu lwamasayithi okuqala",
+        "description": "Ikheli lohlu lwamathambo (ifomethi i-app-hax eyifundayo)"
+      }
+    ]
+  }
+}

@@ -52,6 +52,20 @@
           "_top": "የላይኛው መስኮት - _top",
           "_parent": "ወላጅ መስኮት - _parent"
         }
+      },
+      {
+        "title": "ቀስት የለም",
+        "description": "የአዝራሩን ቀስት ደብቅ።"
+      },
+      {
+        "title": "አገናኝ፦ ዒላማ",
+        "description": "አገናኙ የት እንደሚከፈት።",
+        "options": {
+          "": "ተመሳሳይ መስኮት",
+          "_blank": "አዲስ መስኮት - _blank",
+          "_top": "የላይኛው መስኮት - _top",
+          "_parent": "ወላጅ መስኮት - _parent"
+        }
       }
     ],
     "developer": [

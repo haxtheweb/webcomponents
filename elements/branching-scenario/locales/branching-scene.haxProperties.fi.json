@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Skenaarion kohtaus",
+    "description": "Yksi haarautuvan skenaarion kohtaus. Linkitä jokainen valinta toiseen kohtaukseen merkillä # ja sen kohtauksen tunnuksella."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kohtauksen tunnus",
+        "description": "Mihin valinnat linkittävät: linkki, jossa on # ja tämä tunnus, johtaa tähän kohtaukseen. Kirjaimia, numeroita ja yhdysmerkkejä."
+      },
+      {
+        "title": "Otsikko",
+        "description": "Kohtauksen otsikko."
+      },
+      {
+        "title": "Loppu",
+        "description": "Päättääkö tämä kohtaus polun, ja miten se päättyi.",
+        "options": {
+          "": "Ei loppu",
+          "good": "Hyvä loppu",
+          "mixed": "Vaihteleva loppu",
+          "poor": "Huono loppu"
+        }
+      },
+      {
+        "title": "Pisteet",
+        "description": "Pisteet tähän loppuun pääsemisestä. Skenaarion suurin loppupistemäärä on maksimi."
+      }
+    ]
+  }
+}

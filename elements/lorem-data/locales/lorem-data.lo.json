@@ -1,4 +1,6 @@
 {
   "saveAll": "ບັນທຶກທັງໝົດ",
-  "saveTheFollowing": "ບັນທຶກລາຍການຕໍ່ໄປນີ້: {list}?"
+  "saveTheFollowing": "ບັນທຶກລາຍການຕໍ່ໄປນີ້: {list}?",
+  "save": "ບັນທຶກ",
+  "cancel": "ຍົກເລີກ"
 }

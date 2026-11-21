@@ -6,6 +6,8 @@
   "faviconDescription": "Sawirka tab-ka baadhaha / taleefannada waxaa loogu isticmaalaa astaan yar oo goobta ah",
   "domain": "Domeyn",
   "domainDescription": "Domain-ka goobtan internetka",
+  "sameAs": "Bogagga kale ee goobtan",
+  "sameAsDescription": "Hal link sadarkiiba oo loo diro bogagga goobtan ama ururkan meelo kale (GitHub, LinkedIn, YouTube, Mastodon). Matoorada raadintu waxay u isticmaalaan inay bogaggaas ku xiraan goobtan.",
   "language": "Luuqad",
   "languageDescription": "Luqadda goobtan. Ku raadi magac ama koodh, ama geli koodh kale sida fr-CA.",
   "googleAnalyticsId": "Aqoonsiga Google Analytics",

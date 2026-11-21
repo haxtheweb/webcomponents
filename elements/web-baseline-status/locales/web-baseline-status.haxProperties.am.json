@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "የ Baseline ሁኔታ",
+    "description": "የአንድ የድር መድረክ ባህሪ የ Baseline አሳሽ ድጋፍ ሁኔታን አሳይ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "የባህሪ ID",
+        "description": "የድር ባህሪው ID፣ ለምሳሌ anchor-positioning። IDዎችን በ webstatus.dev ያግኙ፤ IDው የባህሪ ገጽ URL የመጨረሻ ክፍል ነው።"
+      }
+    ]
+  }
+}

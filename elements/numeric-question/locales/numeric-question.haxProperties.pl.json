@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pytanie liczbowe",
+    "description": "Pytanie, na które odpowiada się liczbą. Odpowiedź to stała liczba lub wzór obliczany ze zmiennych i jest zaliczana, gdy mieści się w tolerancji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pytanie",
+        "description": "O co pytani są uczący się. Wpisz nazwę zmiennej w nawiasach klamrowych, np. {d}, aby pokazać jej wartość."
+      },
+      {
+        "title": "Jednostka",
+        "description": "Wyświetlana jako tekst obok pola odpowiedzi, np. km/h."
+      },
+      {
+        "title": "Odpowiedź",
+        "description": "Poprawna liczba. Pozostaw puste, gdy odpowiedź oblicza wzór."
+      },
+      {
+        "title": "Wzór",
+        "description": "Oblicza odpowiedź ze zmiennych, np. d / (t / 60). Może używać + - * / ^, nawiasów, sqrt() i abs(). Gdy jest ustawiony, zastępuje odpowiedź."
+      },
+      {
+        "title": "Zmienne",
+        "description": "Liczby używane przez wzór i pytanie. Każda przyjmuje wartość między najmniejszą a największą, z krokiem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerancja",
+        "description": "Jak daleko od dokładnej odpowiedzi wciąż się liczy. 0 oznacza dokładnie lub z zaokrągleniem do poniższej liczby miejsc po przecinku."
+      },
+      {
+        "title": "Typ tolerancji",
+        "description": "Bezwzględna: plus minus tolerancja. Procentowa: plus minus tyle procent dokładnej odpowiedzi.",
+        "options": {
+          "absolute": "Bezwzględna",
+          "percent": "Procentowa"
+        }
+      },
+      {
+        "title": "Miejsca po przecinku",
+        "description": "Uczący się mają zaokrąglić do tylu miejsc, a odpowiedź jest pokazywana z takim zaokrągleniem. Pozostaw puste, aby nie zaokrąglać."
+      },
+      {
+        "title": "Próby",
+        "description": "Ile razy uczący się może sprawdzić. 0 oznacza bez limitu."
+      },
+      {
+        "title": "Nowe liczby przy każdej próbie",
+        "description": "Losuj nowe wartości zmiennych przy każdej kolejnej próbie. Wcześniejsza odpowiedź nie jest wtedy pokazywana po powrocie, tylko to, czy była poprawna."
+      },
+      {
+        "title": "Zwijana",
+        "description": "Pokaż to pytanie jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka inne zwijane pytania obok."
+      },
+      {
+        "title": "Zacznij zwinięte",
+        "description": "Gdy jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego stan."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
+      }
+    ]
+  }
+}

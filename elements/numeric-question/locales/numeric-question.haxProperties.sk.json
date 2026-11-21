@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Číselná otázka",
+    "description": "Otázka, na ktorú sa odpovedá číslom. Odpoveď je pevné číslo alebo vzorec vypočítaný z premenných a uzná sa, ak je v rámci tolerancie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otázka",
+        "description": "Na čo sa študentov pýtate. Napíšte názov premennej do zložených zátvoriek, napríklad {d}, aby sa zobrazila jej hodnota."
+      },
+      {
+        "title": "Jednotka",
+        "description": "Zobrazuje sa ako text vedľa poľa odpovede, napríklad km/h."
+      },
+      {
+        "title": "Odpoveď",
+        "description": "Správne číslo. Ak odpoveď vypočíta vzorec, nechajte prázdne."
+      },
+      {
+        "title": "Vzorec",
+        "description": "Vypočíta odpoveď z premenných, napríklad d / (t / 60). Môže používať + - * / ^, zátvorky, sqrt() a abs(). Ak je nastavený, použije sa namiesto odpovede."
+      },
+      {
+        "title": "Premenné",
+        "description": "Čísla, ktoré používa vzorec a otázka. Každé nadobúda hodnotu medzi svojím minimom a maximom, po krokoch."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerancia",
+        "description": "Ako ďaleko od presnej odpovede sa ešte uzná. 0 znamená presne alebo zaokrúhlené na desatinné miesta nižšie."
+      },
+      {
+        "title": "Typ tolerancie",
+        "description": "Absolútna: plus mínus tolerancia. Percentuálna: plus mínus toľko percent z presnej odpovede.",
+        "options": {
+          "absolute": "Absolútna",
+          "percent": "Percentuálna"
+        }
+      },
+      {
+        "title": "Desatinné miesta",
+        "description": "Študenti majú zaokrúhliť na toľko miest a odpoveď sa zobrazí zaokrúhlená. Ak nechcete zaokrúhľovať, nechajte prázdne."
+      },
+      {
+        "title": "Pokusy",
+        "description": "Koľkokrát môže študent kontrolovať. 0 znamená neobmedzene."
+      },
+      {
+        "title": "Nové čísla pri každom pokuse",
+        "description": "Pri každom ďalšom pokuse študenta vygenerovať nové hodnoty premenných. Jeho predchádzajúca odpoveď sa potom po návrate nezobrazí, iba to, či odpovedal správne."
+      },
+      {
+        "title": "Zbaliteľné",
+        "description": "Zobraziť túto otázku ako riadok, ktorý sa otvára a zatvára. Otvorením jednej sa zatvoria ostatné zbaliteľné otázky vedľa nej."
+      },
+      {
+        "title": "Začať zbalené",
+        "description": "Ak je zbaliteľná, začať ako zatvorený riadok, ktorý zobrazuje iba otázku a jej stav."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Názov kvízu",
+        "description": "Názov kvízu použitý na identifikáciu xAPI v analytických systémoch."
+      }
+    ]
+  }
+}

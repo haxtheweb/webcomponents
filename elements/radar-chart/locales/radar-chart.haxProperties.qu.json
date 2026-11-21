@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar gráfico",
+    "description": "Puquy modelokunapaq kaqnin chaninchaypaq radar (araña) gráfico, HEOSAT hina. Qillqa rantinta willay tablatawan apan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Gráficop uma siq'in; aypanalla sutin hinapas llamk'achisqa."
+      },
+      {
+        "title": "Aswan hatun puntaje",
+        "description": "Tupuypi aswan hatun chanin."
+      },
+      {
+        "title": "Layakuna",
+        "description": "Sapa siq'ipi huk laya. Aswan pisillaqa 3-ta munan."
+      },
+      {
+        "title": "Puntajekuna",
+        "description": "Comawan t'aqasqa yupaykuna, sapa layapaq huk kikin siq'ipi."
+      },
+      {
+        "title": "Munasqa puntajekuna",
+        "description": "Comawan t'aqasqa yupaykuna, sapa layapaq huk kikin siq'ipi."
+      },
+      {
+        "title": "Leyendata rikuchiy",
+        "description": "Puntajekunata munasqakunata sutichaq leyendata rikuchiy."
+      },
+      {
+        "title": "Huch'uy",
+        "description": "Mana etiquetayuq, leyendayuq, willay tablayuq huch'uy gráfico. Huk punto patapi ratonta purichiy chaninninkunata rikunaykipaq."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Puntaje etiqueta",
+        "description": "Puntajekunapaq leyenda tabla etiqueta."
+      },
+      {
+        "title": "Munasqa etiqueta",
+        "description": "Munasqakunapaq leyenda tabla etiqueta."
+      }
+    ]
+  }
+}

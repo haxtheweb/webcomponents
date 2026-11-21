@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modificador de mídia",
-        "description": "Modificador opcional de domínio de mídia. Especifica o tipo de mídia ao qual esta licença se aplica."
+        "description": "Modificador opcional de domínio de mídia. Especifica o tipo de mídia ao qual esta licença se aplica.",
+        "options": {
+          "": "Sem modificador"
+        }
       },
       {
         "property": "uri",

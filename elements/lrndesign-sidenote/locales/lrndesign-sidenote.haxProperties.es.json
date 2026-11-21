@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota al margen",
+    "description": "Una nota separada del contenido que la rodea, con un icono y una etiqueta opcionales."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "La etiqueta de la nota al margen."
+      },
+      {
+        "title": "Icono",
+        "description": "El icono de la nota al margen."
+      },
+      {
+        "title": "Contenido",
+        "description": "Contenido de la nota al margen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color",
+        "description": "El color con el que se tiñe la nota al margen."
+      }
+    ]
+  }
+}

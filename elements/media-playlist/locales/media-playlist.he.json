@@ -5,5 +5,7 @@
   "editModeLabel": "מצב עריכה של רשימת השמעת מדיה",
   "position": "{current} מתוך {total}",
   "previousItem": "הפריט הקודם",
-  "nextItem": "הפריט הבא"
+  "nextItem": "הפריט הבא",
+  "fullScreen": "מסך מלא",
+  "exitFullScreen": "יציאה ממסך מלא"
 }

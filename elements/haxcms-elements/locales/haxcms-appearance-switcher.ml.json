@@ -1,0 +1,8 @@
+{
+  "theme": "തീം",
+  "palette": "പാലറ്റ്",
+  "themeDefault": "തീം സ്ഥിരസ്ഥിതി",
+  "designSystem": "ഡിസൈൻ സിസ്റ്റം",
+  "designSystemDefault": "DDD (സ്ഥിരസ്ഥിതി)",
+  "designSystemUnavailable": "ഈ തീം സ്വന്തം ഡിസൈൻ സിസ്റ്റം നിലനിർത്തുന്നു"
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenarioscen",
+    "description": "En scen i ett förgrenat scenario. Länka varje val till en annan scen med # följt av dess scen-id."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Scen-id",
+        "description": "Det som val länkar till: en länk till # följt av detta id leder till den här scenen. Bokstäver, siffror och bindestreck."
+      },
+      {
+        "title": "Rubrik",
+        "description": "Scenens rubrik."
+      },
+      {
+        "title": "Slut",
+        "description": "Om den här scenen avslutar en väg, och hur det gick.",
+        "options": {
+          "": "Inte ett slut",
+          "good": "Bra slut",
+          "mixed": "Blandat slut",
+          "poor": "Dåligt slut"
+        }
+      },
+      {
+        "title": "Poäng",
+        "description": "Poäng för att nå det här slutet. Den högsta slutpoängen i scenariot är maxpoängen."
+      }
+    ]
+  }
+}

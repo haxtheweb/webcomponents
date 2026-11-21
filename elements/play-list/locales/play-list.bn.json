@@ -9,5 +9,7 @@
   "slidePages": "স্লাইড পেজ",
   "goToSlide": "স্লাইড {number}-এ যান",
   "slides": "স্লাইড",
-  "position": "{total}-এর মধ্যে {number}"
+  "position": "{total}-এর মধ্যে {number}",
+  "fullScreen": "পূর্ণ স্ক্রিন",
+  "exitFullScreen": "পূর্ণ স্ক্রিন থেকে বের হন"
 }

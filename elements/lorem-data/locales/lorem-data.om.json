@@ -1,4 +1,6 @@
 {
   "saveAll": "Hunda Olkaa'i",
-  "saveTheFollowing": "Kanneen armaan gadii olkaa'i: {list}?"
+  "saveTheFollowing": "Kanneen armaan gadii olkaa'i: {list}?",
+  "save": "Olkaa'i",
+  "cancel": "Haqi"
 }

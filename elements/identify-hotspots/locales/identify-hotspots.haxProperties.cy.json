@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Adnabod mannau poeth",
+    "description": "Mae dysgwyr yn canfod y mannau cywir ar ddelwedd drwy glicio, tapio neu symud croeswallt bysellfwrdd. Y cymar wedi'i raddio i fap delwedd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Delwedd",
+        "description": "Y llun y mae dysgwyr yn chwilio ynddo."
+      },
+      {
+        "title": "Testun amgen",
+        "description": "Yn disgrifio'r llun ar gyfer pobl na allant ei weld. Ni chaiff byth ei ddangos fel y teitl."
+      },
+      {
+        "title": "Teitl",
+        "description": "Teitl gweladwy byr a ddangosir uwchben y llun."
+      },
+      {
+        "title": "Cwestiwn",
+        "description": "Yr hyn y gofynnir i ddysgwyr ei ganfod yn y llun."
+      },
+      {
+        "title": "Atebion",
+        "description": "Mae pob ateb yn hirgrwn wedi'i enwi ar y llun. Mae safle a maint yn ganrannau o'r llun, wedi'u mesur o'i gornel chwith uchaf. Wrth olygu, mae pob ateb wedi'i amlinellu ar y llun."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ymgeisiau",
+        "description": "Sawl gwaith y gall dysgwr roi cynnig. Mae 0 yn golygu diderfyn."
+      },
+      {
+        "title": "Methiannau a ganiateir",
+        "description": "Sawl methiant sy'n dod ag ymgais i ben. Mae 0 yn golygu diderfyn, ac mae dysgwyr yn cael botwm Gorffen."
+      },
+      {
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      },
+      {
+        "title": "Fformat graddio",
+        "description": "OER Schema: fformat graddio ar gyfer yr asesiad hwn (e.e. pwyntiau, llythyren, canran, cwblhau)."
+      },
+      {
+        "title": "Amcan dysgu",
+        "description": "OER Schema: amcan dysgu sy'n gysylltiedig â'r asesiad hwn."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a basiwyd i'w ddefnyddio mewn amgylcheddau a yrrir gan xAPI i adnabod yr eitem hon"
+      },
+      {
+        "title": "Cwrs",
+        "description": "OER Schema: y cwrs y bwriedir yr asesiad hwn ar ei gyfer."
+      }
+    ]
+  }
+}

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fihla i-icon",
         "description": "Fihla i-icon esetyenziswa ukugxininisa umbhalo"
+      },
+      {
+        "title": "Inkangeleko",
+        "description": "Ugxininiso olungakanani iqhosha elinalo.",
+        "options": {
+          "": "Igcwalisiwe",
+          "tonal": "Ithoni",
+          "outlined": "Inomphetho",
+          "plain": "Elula"
+        }
+      },
+      {
+        "title": "Ubungakanani",
+        "description": "Ubungakanani beqhosha.",
+        "options": {
+          "s": "Incinci",
+          "": "Phakathi",
+          "l": "Inkulu"
+        }
       }
     ],
     "advanced": [

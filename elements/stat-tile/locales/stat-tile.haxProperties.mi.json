@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Taera tatauranga",
+    "description": "Kotahi te tau whai take, me tōna tapanga me te āhua o tōna panoni. Whakanohoia ētahi ki tētahi mātiti mō tētahi rārangi papatohu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tapanga",
+        "description": "Te mea e inea ana e te tau."
+      },
+      {
+        "title": "Uara",
+        "description": "Te tau. Ka whakarōpūhia tētahi tau noa e ai ki te reo o te whārangi; ko ētahi atu ka whakaaturia pērā i te tuhinga."
+      },
+      {
+        "title": "Panoni",
+        "description": "Te āhua o tōna panoni, ki ngā kupu, pērā i te 6% i tēnei wāhanga."
+      },
+      {
+        "title": "Ahunga",
+        "description": "Mēnā kei te piki, kei te heke rānei te panoni.",
+        "options": {
+          "": "Kore",
+          "up": "Ake",
+          "down": "Heke"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Linea di funzione",
+    "description": "Un screnu di u pruduttu accantu à ciò ch'ellu significa per voi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Piccula etichetta"
+      },
+      {
+        "title": "Titulu"
+      },
+      {
+        "title": "Maghjina"
+      },
+      {
+        "title": "Ciò chì mostra a maghjina"
+      },
+      {
+        "title": "Maghjina à diritta"
+      },
+      {
+        "title": "Culore di l'ombra (nome DDD, biotu seguita a tavuletta)"
+      }
+    ]
+  }
+}

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Kaiwhakarerekē pāpāho",
-        "description": "He kaiwhakarerekē rohe pāpāho kōwhiringa. Ka tautuhi i te momo pāpāho e pā ana tēnei raihana."
+        "description": "He kaiwhakarerekē rohe pāpāho kōwhiringa. Ka tautuhi i te momo pāpāho e pā ana tēnei raihana.",
+        "options": {
+          "": "Kāore he whakarerekē"
+        }
       },
       {
         "property": "uri",

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Siart radar",
+    "description": "Siart radar (pry cop) ar gyfer modelau aeddfedrwydd a sgorio agweddau, fel HEOSAT. Yn cynnwys dewis amgen testun a thabl data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Pennawd y siart; fe'i defnyddir hefyd fel ei enw hygyrch."
+      },
+      {
+        "title": "Sgôr uchaf",
+        "description": "Y gwerth uchaf ar y raddfa."
+      },
+      {
+        "title": "Categorïau",
+        "description": "Un categori fesul llinell. Angen o leiaf 3."
+      },
+      {
+        "title": "Sgoriau",
+        "description": "Rhifau wedi'u gwahanu gan atalnod, un fesul categori yn yr un drefn."
+      },
+      {
+        "title": "Sgoriau targed",
+        "description": "Rhifau wedi'u gwahanu gan atalnod, un fesul categori yn yr un drefn."
+      },
+      {
+        "title": "Dangos allwedd",
+        "description": "Dangos allwedd sy'n enwi'r sgoriau a'r targedau."
+      },
+      {
+        "title": "Cryno",
+        "description": "Siart llai heb labeli, allwedd na thabl data. Hofranwch dros bwynt i weld ei werthoedd."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Label sgôr",
+        "description": "Label allwedd a thabl ar gyfer y sgoriau."
+      },
+      {
+        "title": "Label targed",
+        "description": "Label allwedd a thabl ar gyfer y targedau."
+      }
+    ]
+  }
+}

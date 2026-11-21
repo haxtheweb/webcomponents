@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Atriði atburðarásar",
+    "description": "Eitt atriði greinóttrar atburðarásar. Tengdu hvert val við annað atriði með # og síðan auðkenni þess."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Auðkenni atriðis",
+        "description": "Það sem val tengir á: tengill á # og síðan þetta auðkenni leiðir að þessu atriði. Bókstafir, tölustafir og bandstrik."
+      },
+      {
+        "title": "Fyrirsögn",
+        "description": "Fyrirsögn atriðisins."
+      },
+      {
+        "title": "Endir",
+        "description": "Hvort þetta atriði lýkur leið, og hvernig það fór.",
+        "options": {
+          "": "Ekki endir",
+          "good": "Góður endir",
+          "mixed": "Blandaður endir",
+          "poor": "Slæmur endir"
+        }
+      },
+      {
+        "title": "Stig",
+        "description": "Stig fyrir að ná þessum endi. Hæstu stig endis í atburðarásinni eru hámarkið."
+      }
+    ]
+  }
+}

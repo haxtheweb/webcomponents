@@ -5,5 +5,6 @@
   "selected": "已选择",
   "currentlyActiveAndSelectedPalette": "当前使用且已选择的调色板",
   "currentlyActivePalette": "当前使用的调色板",
-  "selectedPaletteToApply": "已选择待应用的调色板"
+  "selectedPaletteToApply": "已选择待应用的调色板",
+  "paletteNumber": "调色板 {number}"
 }

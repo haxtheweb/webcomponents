@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "E grousst Bild, GIF oder Video mat enger Iwwerschrëft an Text driwwer, iergendwou op enger Säit placéiert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild oder Video",
+        "description": "E JPG-, PNG-, WebP-, GIF-, MP4- oder WebM-Fichier."
+      },
+      {
+        "title": "Alternativen Text",
+        "description": "Beschreift d'Bild. Eidel loossen, wann et just Dekoratioun ass."
+      },
+      {
+        "title": "Iwwerschrëft",
+        "description": "Iwwerschrëft iwwer de Medien. Eidel loossen fir keng."
+      },
+      {
+        "title": "Text",
+        "description": "Text ënner der Iwwerschrëft, iwwer de Medien."
+      },
+      {
+        "title": "Ganz Breet",
+        "description": "Vu Rand zu Rand goen amplaz an der Inhaltskolonn ze sinn."
+      },
+      {
+        "title": "Héicht",
+        "options": {
+          "tall": "Héich",
+          "medium": "Mëttel",
+          "short": "Kuerz"
+        }
+      },
+      {
+        "title": "Bildausschnëtt",
+        "description": "Wéi d'Foto bei all Schiermgréisst sëtzt"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iwwerbliedung",
+        "description": "Faarf iwwer de Medien. Mat enger Iwwerschrëft oder Text gëtt et ëmmer eng, sou datt den Text liesbar bleift.",
+        "options": {
+          "blue": "Blo",
+          "bottom": "Donkel ënnen",
+          "none": "Keng"
+        }
+      },
+      {
+        "title": "Textpositioun",
+        "options": {
+          "bottom": "Ënnen",
+          "middle": "Mëtt"
+        }
+      },
+      {
+        "title": "Fokuspunkt horizontal",
+        "description": "Deel vum Bild, deen ze gesi bleift, wann et zougeschnidde gëtt, vun 0 (lénks) bis 100 (riets)."
+      },
+      {
+        "title": "Fokuspunkt vertikal",
+        "description": "Deel vum Bild, deen ze gesi bleift, wann et zougeschnidde gëtt, vun 0 (uewen) bis 100 (ënnen)."
+      }
+    ]
+  }
+}

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Media modifikatori",
-        "description": "Ixtiyoriy media sohasi modifikatori. Ushbu litsenziya qaysi media turiga tegishli ekanini belgilaydi."
+        "description": "Ixtiyoriy media sohasi modifikatori. Ushbu litsenziya qaysi media turiga tegishli ekanini belgilaydi.",
+        "options": {
+          "": "Modifikatorsiz"
+        }
       },
       {
         "property": "uri",

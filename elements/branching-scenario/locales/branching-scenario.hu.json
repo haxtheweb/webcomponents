@@ -1,0 +1,22 @@
+{
+  "scenario": "Forgatókönyv",
+  "directions": "Útmutató",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "directionsRead": "Olvassa el az egyes jeleneteket, és válassza ki, mit tenne.",
+  "directionsEndings": "Több befejezés van. Ha végzett, próbáljon ki egy másik utat.",
+  "startOver": "Újrakezdés",
+  "back": "Egy lépés vissza",
+  "tryAnother": "Másik út kipróbálása",
+  "path": "Út",
+  "scene": "Jelenet",
+  "ending": "Befejezés",
+  "end": "vége",
+  "scenesSeen": "{total} jelenetből {seen} megtekintve",
+  "endingReached": "Befejezés elérve",
+  "addScene": "Jelenet hozzáadása",
+  "newScene": "Új jelenet",
+  "newSceneText": "Írja le, mi történik, majd kapcsoljon minden választást egy jelenethez.",
+  "editingNote": "Szerkesztés: minden jelenet látható. A választás egy hivatkozás, amely # jellel és egy jelenetazonosítóval kezdődik.",
+  "noScenes": "Adjon hozzá egy jelenetet a forgatókönyv elindításához."
+}

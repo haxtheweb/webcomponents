@@ -5,5 +5,7 @@
   "editModeLabel": "Рэжым рэдагавання медыяплэйліста",
   "position": "{current} з {total}",
   "previousItem": "Папярэдні элемент",
-  "nextItem": "Наступны элемент"
+  "nextItem": "Наступны элемент",
+  "fullScreen": "На ўвесь экран",
+  "exitFullScreen": "Выйсці з поўнаэкраннага рэжыму"
 }

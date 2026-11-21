@@ -8,5 +8,9 @@
   "theme": "Mijar",
   "palette": "Paleta rengan",
   "cancel": "Betal bike",
-  "openAppearanceSettings": "Mîhengên Xuyangê Veke"
+  "openAppearanceSettings": "Mîhengên Xuyangê Veke",
+  "designSystem": "Pergala sêwiranê",
+  "designSystemDefault": "DDD (standard)",
+  "designSystemThemeDefault": "{name} (standarda temayê)",
+  "designSystemHelp": "Reng, tîpnivîs, quncik û dendik. Dirûv hêj ji aliyê temayê ve tê diyarkirin."
 }

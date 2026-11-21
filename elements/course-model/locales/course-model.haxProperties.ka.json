@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "სათაური"
+        "title": "სათაური",
+        "description": "კურსის მოდელის ზემოთ ნაჩვენები სათაური."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "საჩვენებელი 3D მოდელის ფაილის (.glb ან .gltf) მისამართი."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "აღწერეთ 3D მოდელი მათთვის, ვისაც მისი დანახვა არ შეუძლია."
       },
       {
         "title": "ინფორმაციის არე"

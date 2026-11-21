@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Orodha ya hatua",
     "description": "Hatua zenye namba za kukamilisha kazi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiashiria cha hatua",
+        "description": "Onyesha hatua kama safu fupi ya vichwa inayoonyesha maendeleo. Maudhui ya hatua hayaonyeshwi katika mpangilio huu."
+      },
+      {
+        "title": "Hatua ya sasa",
+        "description": "Hatua aliyopo msomaji, ikihesabiwa kuanzia 1. Hatua za awali zinaonyeshwa kama zimekamilika. Hutumiwa na kiashiria cha hatua."
+      }
+    ]
   }
 }

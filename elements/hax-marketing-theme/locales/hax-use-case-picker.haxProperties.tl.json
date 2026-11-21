@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Tagapili ng use case",
+    "description": "Piliin kung para saan ang isang site at kumuha ng link na nagbubukas ng HAX sa browser na may starter site na iyon, kasama ang katugmang CLI command."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Address ng HAX sa browser",
+        "description": "Kung saan bumubukas ang link; dinadagdagan ito ng ?skeleton= at &name="
+      },
+      {
+        "title": "Mga starter site na hindi isasama",
+        "description": "Mga machine name, pinaghihiwalay ng kuwit"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Listahan ng starter site",
+        "description": "Address ng skeleton list (ang format na binabasa ng app-hax)"
+      }
+    ]
+  }
+}

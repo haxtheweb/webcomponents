@@ -2,5 +2,9 @@
   "toggleAnimation": "Alternar animación",
   "info": "información",
   "image": "Imagen",
-  "animatedGif": "GIF animado"
+  "animatedGif": "GIF animado",
+  "playAnimation": "Reproducir animación",
+  "pauseAnimation": "Pausar animación",
+  "showDescription": "Mostrar descripción",
+  "hideDescription": "Ocultar descripción"
 }

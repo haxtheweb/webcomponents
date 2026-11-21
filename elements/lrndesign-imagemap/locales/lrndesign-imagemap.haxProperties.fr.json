@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Détails des zones cliquables",
         "description": "Les zones cliquables interactives de l'image."
+      },
+      {
+        "title": "Détails des zones cliquables",
+        "description": "Les zones interactives de l'image cliquable."
       }
     ]
   }

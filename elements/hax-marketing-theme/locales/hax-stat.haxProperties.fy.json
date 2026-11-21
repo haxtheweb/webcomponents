@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistyk",
+    "description": "In getal dat optelt, mei in label en in keppeling nei it ferhaal derefter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Getal om nei op te tellen"
+      },
+      {
+        "title": "Foar it getal"
+      },
+      {
+        "title": "Nei it getal"
+      },
+      {
+        "title": "Wurden ynstee fan in getal"
+      },
+      {
+        "title": "Wat it telt"
+      },
+      {
+        "title": "Ferhaaladres op hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

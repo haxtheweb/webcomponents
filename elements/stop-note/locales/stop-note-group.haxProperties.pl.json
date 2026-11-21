@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupa Stop Note",
+    "description": "Złóż kilka stop notes w jeden blok, który pokazuje jedną notatkę naraz, np. Wskazówki lub Co nowego. Karty instrukcji, notatki na marginesie i cytaty w ramce można układać razem z nimi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etykieta",
+        "description": "Nazwa grupy ogłaszana przez czytniki ekranu, np. Wskazówki lub Co nowego."
+      },
+      {
+        "title": "Notatki",
+        "description": "Stop notes w grupie. Można też dodać karty instrukcji, notatki na marginesie i cytaty w ramce."
+      }
+    ]
+  }
+}

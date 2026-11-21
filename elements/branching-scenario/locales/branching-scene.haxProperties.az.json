@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ssenari səhnəsi",
+    "description": "Budaqlanan ssenarinin bir səhnəsi. Hər seçimi # və ardınca səhnə id-si ilə başqa səhnəyə bağlayın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Səhnə id-si",
+        "description": "Seçimlərin bağlandığı şey: # və ardınca bu id olan keçid bu səhnəyə aparır. Hərflər, rəqəmlər və defislər."
+      },
+      {
+        "title": "Başlıq",
+        "description": "Səhnənin başlığı."
+      },
+      {
+        "title": "Sonluq",
+        "description": "Bu səhnənin yolu bitirib-bitirmədiyi və nəticənin necə olduğu.",
+        "options": {
+          "": "Sonluq deyil",
+          "good": "Yaxşı sonluq",
+          "mixed": "Qarışıq sonluq",
+          "poor": "Pis sonluq"
+        }
+      },
+      {
+        "title": "Xal",
+        "description": "Bu sonluğa çatmaq üçün xal. Ssenaridəki ən yüksək sonluq xalı maksimumdur."
+      }
+    ]
+  }
+}

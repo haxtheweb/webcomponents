@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Start af eksternt værktøj",
+    "description": "En blok, der åbner et eksternt læringsværktøj i et nyt vindue eller på siden, som et almindeligt link eller med en LTI 1.3-loginanmodning."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Værktøjets navn. Det vises i overskriften og på knappen."
+      },
+      {
+        "title": "Beskrivelse",
+        "description": "Hvad deltagerne gør i værktøjet, vist over knappen."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Værktøjets adresse. Det skal være en fuld adresse, der begynder med https:// eller http://."
+      },
+      {
+        "title": "Åbn i",
+        "description": "Et nyt vindue virker med alle værktøjer. På denne side virker kun med værktøjer, der tillader at blive vist inde i et andet websted.",
+        "options": {
+          "window": "Et nyt vindue",
+          "embed": "På denne side"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-login-URL",
+        "description": "Kun LTI 1.3: værktøjets adresse til start af login. Med denne, et klient-ID og et deployment-ID sender knappen en LTI-loginanmodning i stedet for at åbne et almindeligt link. Fuldførelse af starten kræver webstedets LTI-tjeneste."
+      },
+      {
+        "title": "LTI-klient-ID",
+        "description": "Det klient-ID, værktøjet gav dette websted. En offentlig identifikator, ikke en hemmelighed: indsæt aldrig nøgler eller hemmeligheder her."
+      },
+      {
+        "title": "LTI-deployment-ID",
+        "description": "Det deployment-ID, værktøjet gav dette websted. En offentlig identifikator, ikke en hemmelighed."
+      },
+      {
+        "title": "LTI-udsteder",
+        "description": "Adressen, der identificerer dette websted over for værktøjet. Lad være tom for at bruge adressen på det websted, siden ligger på."
+      },
+      {
+        "title": "Højde på siden",
+        "description": "Værktøjets højde, når det åbnes på denne side, i pixels (200 til 2000)."
+      },
+      {
+        "title": "Accentfarve",
+        "description": "Farve på overskriftsmærket og knappen. Lad være tom for at følge temaet."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-loginhint",
+        "description": "En uigennemsigtig værdi, som webstedets LTI-tjeneste bruger til at genkende deltageren. Leveres normalt af webstedet via hændelsen lti-launch-request i stedet for at blive gemt her. Aldrig en adgangskode eller nøgle."
+      },
+      {
+        "title": "LTI-beskedhint",
+        "description": "En uigennemsigtig værdi, som webstedets LTI-tjeneste bruger til at genkende denne start. Leveres normalt af webstedet i stedet for at blive gemt her."
+      }
+    ]
+  }
+}

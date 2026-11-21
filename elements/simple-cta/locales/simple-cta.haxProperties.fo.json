@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fjal ikon",
         "description": "Fjal ikonið, ið verður nýtt til at framhevja tekst"
+      },
+      {
+        "title": "Útsjónd",
+        "description": "Hvussu nógv áherðsla knøtturin hevur.",
+        "options": {
+          "": "Fyltur",
+          "tonal": "Tónaður",
+          "outlined": "Umrammaður",
+          "plain": "Einfaldur"
+        }
+      },
+      {
+        "title": "Stødd",
+        "description": "Stødd á knøtti.",
+        "options": {
+          "s": "Lítil",
+          "": "Miðal",
+          "l": "Stórur"
+        }
       }
     ],
     "advanced": [

@@ -1,4 +1,6 @@
 {
   "saveAll": "រក្សាទុកទាំងអស់",
-  "saveTheFollowing": "រក្សាទុកដូចខាងក្រោម៖ {list}?"
+  "saveTheFollowing": "រក្សាទុកដូចខាងក្រោម៖ {list}?",
+  "save": "រក្សាទុក",
+  "cancel": "បោះបង់"
 }

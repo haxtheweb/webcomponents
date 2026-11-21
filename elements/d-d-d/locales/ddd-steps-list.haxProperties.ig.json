@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ndepụta nzọụkwụ",
     "description": "Usoro nwere nọmba maka imecha ọrụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ihe ngosi nzọụkwụ",
+        "description": "Gosi nzọụkwụ dịka ahịrị kọmpat nke aha na-egosi ọganihu. A naghị egosi ọdịnaya nzọụkwụ na nhazi a."
+      },
+      {
+        "title": "Nzọụkwụ ugbu a",
+        "description": "Nzọụkwụ onye na-agụ akwụkwọ nọ na ya, na-agụ site na 1. Nzọụkwụ ndị gara aga na-egosi dịka emechara. Ihe ngosi nzọụkwụ na-eji ya."
+      }
+    ]
   }
 }

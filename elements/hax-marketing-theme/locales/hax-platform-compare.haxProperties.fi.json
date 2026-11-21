@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Alustavertailu",
+    "description": "Vastakkain: valitse mitkä tahansa kaksi alustaa datatiedostosta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vertailudata (JSON)"
+      },
+      {
+        "title": "Vasemman alustan tunnus"
+      },
+      {
+        "title": "Oikean alustan tunnus"
+      }
+    ]
+  }
+}

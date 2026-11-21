@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Mga kontribyutor",
+    "description": "Ang mga taong bumuo ng proyekto, mula sa roster file"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "File ng roster (JSON)"
+      },
+      {
+        "title": "View: landed, lab o code"
+      },
+      {
+        "title": "Pinakamaraming taong ipapakita (0 ay lahat)"
+      }
+    ]
+  }
+}

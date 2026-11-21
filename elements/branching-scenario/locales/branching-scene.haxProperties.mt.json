@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Xena tax-xenarju",
+    "description": "Xena waħda ta' xenarju bil-fergħat. Orbot kull għażla ma' xena oħra b'# segwit mill-ID tax-xena tagħha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID tax-xena",
+        "description": "Għal xiex jorbtu l-għażliet: link għal # segwit minn dan l-ID iwassal għal din ix-xena. Ittri, numri u sing."
+      },
+      {
+        "title": "Intestatura",
+        "description": "Intestatura tax-xena."
+      },
+      {
+        "title": "Tmiem",
+        "description": "Jekk din ix-xena ttemmx triq, u kif spiċċat.",
+        "options": {
+          "": "Mhux tmiem",
+          "good": "Tmiem tajjeb",
+          "mixed": "Tmiem imħallat",
+          "poor": "Tmiem ħażin"
+        }
+      },
+      {
+        "title": "Punteġġ",
+        "description": "Punteġġ talli tilħaq dan it-tmiem. L-ogħla punteġġ ta' tmiem fix-xenarju huwa l-massimu."
+      }
+    ]
+  }
+}

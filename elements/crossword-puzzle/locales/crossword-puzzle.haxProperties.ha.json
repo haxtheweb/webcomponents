@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ƙetare kalmomi",
+    "description": "Ƙetare kalmomi da aka yi daga jerin kalmomi da alamu. Ana samar maka da grid ɗin; masu koyo suna rubuta kalmomin kuma suna duba su."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Take ko tambayar da ake nunawa a saman ƙetare kalmomin."
+      },
+      {
+        "title": "Kalmomi",
+        "description": "Kowace kalma da alamarta. Ana samar da grid daga wannan jeri: ana sanya kalma mafi tsayi da farko kuma sauran suna ƙetare ta a kan haruffan da aka raba."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ƙoƙari",
+        "description": "Sau nawa mai koyo zai iya dubawa. 0 yana nufin mara iyaka."
+      },
+      {
+        "title": "Launin ƙawa",
+        "description": "Launi na zaɓi don guntun kai, kalmar da ke aiki da maɓallan aiki."
+      },
+      {
+        "title": "Ana iya naɗewa",
+        "description": "Nuna wannan ƙetare kalmomi a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin da ake iya naɗewa da ke kusa da shi."
+      },
+      {
+        "title": "Fara a naɗe",
+        "description": "Idan ana iya naɗewa, fara a matsayin layi a rufe da ke nuna take da matsayinsa kawai."
+      },
+      {
+        "title": "Tsarin bayar da maki",
+        "description": "OER Schema: tsarin bayar da maki don wannan kimantawa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan kimantawa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Sunan tambayoyin",
+        "description": "Sunan tambayoyin da ake amfani da shi don gano xAPI a tsarin nazari."
+      },
+      {
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan kimantawa domin shi."
+      }
+    ]
+  }
+}

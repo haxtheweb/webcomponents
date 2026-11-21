@@ -1,0 +1,14 @@
+{
+  "scene": "صحنه",
+  "ending": "پای",
+  "goodEnding": "ښه پای",
+  "mixedEnding": "ګډ پای",
+  "poorEnding": "خراب پای",
+  "scoreOf": "نمرې {score} له {max}",
+  "scoreOnly": "نمرې {score}",
+  "startScene": "پیل",
+  "sceneIdLabel": "د صحنې id",
+  "needsId": "د صحنې id ورزیات کړئ ترڅو انتخابونه دې صحنې ته وتړل شي.",
+  "orphan": "هېڅ انتخاب دې صحنې ته نه دی تړل شوی.",
+  "deadLinks": "دا لینکونه هغې صحنې ته اشاره کوي چې شتون نه لري:"
+}

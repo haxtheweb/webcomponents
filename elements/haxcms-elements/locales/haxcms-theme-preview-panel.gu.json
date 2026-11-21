@@ -8,5 +8,9 @@
   "theme": "થીમ",
   "palette": "પેલેટ",
   "cancel": "રદ કરો",
-  "openAppearanceSettings": "દેખાવ સેટિંગ્સ ખોલો"
+  "openAppearanceSettings": "દેખાવ સેટિંગ્સ ખોલો",
+  "designSystem": "ડિઝાઇન સિસ્ટમ",
+  "designSystemDefault": "DDD (ડિફૉલ્ટ)",
+  "designSystemThemeDefault": "{name} (થીમ ડિફૉલ્ટ)",
+  "designSystemHelp": "રંગ, ટાઇપ, ખૂણા અને ઘનતા. લેઆઉટ હજી પણ થીમ નક્કી કરે છે."
 }

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline абалы",
+    "description": "Веб-платформа мүмкүнчүлүгүнүн Baseline браузер колдоо абалын көрсөтүү."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Мүмкүнчүлүктүн ID'си",
+        "description": "Веб мүмкүнчүлүгүнүн ID'си, мисалы, anchor-positioning. ID'лерди webstatus.dev сайтынан табыңыз; ID — мүмкүнчүлүк барагынын URL'инин акыркы бөлүгү."
+      }
+    ]
+  }
+}

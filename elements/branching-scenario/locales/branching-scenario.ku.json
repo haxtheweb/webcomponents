@@ -1,0 +1,22 @@
+{
+  "scenario": "Senaryo",
+  "directions": "Rêwerz",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "directionsRead": "Her dîmenê bixwîne û hilbijêre ka tu dê çi bikî.",
+  "directionsEndings": "Çend dawî hene. Piştî qedandinê rêyeke din biceribîne.",
+  "startOver": "Ji nû ve dest pê bike",
+  "back": "Gavekê paşve",
+  "tryAnother": "Rêyeke din biceribîne",
+  "path": "Rê",
+  "scene": "Dîmen",
+  "ending": "Dawî",
+  "end": "dawî",
+  "scenesSeen": "{seen} ji {total} dîmenan hatin dîtin",
+  "endingReached": "Gihîşt dawiyê",
+  "addScene": "Dîmen zêde bike",
+  "newScene": "Dîmena nû",
+  "newSceneText": "Binivîse çi diqewime, paşê her bijarekê bi dîmenekê ve girê bide.",
+  "editingNote": "Sererastkirin: hemû dîmen tên nîşandan. Bijarek girêdanek e bo # û piştre ID-ya dîmenê.",
+  "noScenes": "Ji bo destpêkirina senaryoyê dîmenekê zêde bike."
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ukuzilolonga kwezibalo",
+    "description": "Uchungechunge olufushane lwezinkinga zezibalo ezikhiqiziwe ezinempendulo esheshayo. Khetha imisebenzi nebanga lezinombolo; umzuliswano ngamunye umusha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lalokhu kuzilolonga, eliboniswa esihlokweni sakho."
+      },
+      {
+        "title": "Imisebenzi",
+        "description": "Izinhlobo zezinkinga ezibuzwayo. Abafundi bangavala noma yiziphi zazo ngaphambi kokuqala.",
+        "options": {
+          "add": "Ukuhlanganisa",
+          "subtract": "Ukususa",
+          "multiply": "Ukuphindaphinda",
+          "divide": "Ukuhlukanisa",
+          "add subtract": "Ukuhlanganisa nokususa",
+          "multiply divide": "Ukuphindaphinda nokuhlukanisa",
+          "add multiply": "Ukuhlanganisa nokuphindaphinda",
+          "add divide": "Ukuhlanganisa nokuhlukanisa",
+          "subtract multiply": "Ukususa nokuphindaphinda",
+          "subtract divide": "Ukususa nokuhlukanisa",
+          "add subtract multiply": "Ukuhlanganisa, ukususa nokuphindaphinda",
+          "add subtract divide": "Ukuhlanganisa, ukususa nokuhlukanisa",
+          "add multiply divide": "Ukuhlanganisa, ukuphindaphinda nokuhlukanisa",
+          "subtract multiply divide": "Ukususa, ukuphindaphinda nokuhlukanisa",
+          "add subtract multiply divide": "Zontathu nesine"
+        }
+      },
+      {
+        "title": "Inombolo encane kakhulu",
+        "description": "Inombolo encane kakhulu esetshenziswa enkingeni. Izinombolo eziphelele, 0 noma ngaphezulu."
+      },
+      {
+        "title": "Inombolo enkulu kakhulu",
+        "description": "Inombolo enkulu kakhulu esetshenziswa enkingeni. Izimpendulo zokuhlukanisa nezihlukanisi nazo zihlala kuleli banga."
+      },
+      {
+        "title": "Inani lezinkinga",
+        "description": "Zingaki izinkinga emzuliswaneni owodwa (1 kuya ku-100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umkhawulo wesikhathi",
+        "description": "Amasekhondi avunyelwe umzuliswano wonke. U-0 usho ukuthi asikho isibali-sikhathi, okuyikho okuzenzakalelayo: ukuzilolonga okunesikhathi kwehlulisa abafundi abadinga isikhathi esengeziwe. Uma kusethiwe, abafundi basengasivala isibali-sikhathi ngokwabo."
+      },
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala we-chip yesihloko nezinkinobho. Shiya kungenalutho ukuze kulandele itimu."
+      }
+    ]
+  }
+}

@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mepere emepe"
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mepere emepe",
+        "description": "Ederede bọtịnụ mgbe nkọwa zoro ezo, dịka Gosi nkọwa."
       },
       {
         "property": "closeText",
-        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mechiri emechi"
+        "title": "Ederede nchịkọta nhọrọ mgbe nkọwa mechiri emechi",
+        "description": "Ederede bọtịnụ mgbe nkọwa na-egosi, dịka Zoo nkọwa."
       }
     ]
   }

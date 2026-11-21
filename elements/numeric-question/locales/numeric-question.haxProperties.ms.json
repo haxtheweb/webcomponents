@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Soalan berangka",
+    "description": "Soalan yang dijawab dengan nombor. Jawapan ialah nombor tetap atau formula yang dikira daripada pemboleh ubah, dan dikira betul apabila berada dalam lingkungan toleransi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Soalan",
+        "description": "Apa yang ditanya kepada pelajar. Tulis nama pemboleh ubah dalam kurungan kerinting, seperti {d}, untuk menunjukkan nilainya."
+      },
+      {
+        "title": "Unit",
+        "description": "Dipaparkan sebagai teks di sebelah medan jawapan, contohnya km/j."
+      },
+      {
+        "title": "Jawapan",
+        "description": "Nombor yang betul. Biarkan kosong apabila formula mengira jawapannya."
+      },
+      {
+        "title": "Formula",
+        "description": "Mengira jawapan daripada pemboleh ubah, contohnya d / (t / 60). Boleh menggunakan + - * / ^, kurungan, sqrt() dan abs(). Digunakan dan bukannya jawapan apabila ditetapkan."
+      },
+      {
+        "title": "Pemboleh ubah",
+        "description": "Nombor yang digunakan oleh formula dan soalan. Setiap satu mengambil nilai antara terendah dan tertingginya, mengikut langkah."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleransi",
+        "description": "Sejauh mana daripada jawapan tepat yang masih dikira. 0 bermaksud tepat, atau dibundarkan kepada tempat perpuluhan di bawah."
+      },
+      {
+        "title": "Jenis toleransi",
+        "description": "Mutlak: tambah atau tolak toleransi. Peratus: tambah atau tolak peratus itu daripada jawapan tepat.",
+        "options": {
+          "absolute": "Mutlak",
+          "percent": "Peratus"
+        }
+      },
+      {
+        "title": "Tempat perpuluhan",
+        "description": "Pelajar diminta membundarkan kepada sebanyak ini tempat, dan jawapan dipaparkan dibundarkan kepadanya. Biarkan kosong untuk tiada pembundaran."
+      },
+      {
+        "title": "Cubaan",
+        "description": "Berapa kali pelajar boleh menyemak. 0 bermaksud tanpa had."
+      },
+      {
+        "title": "Nombor baharu pada setiap cubaan",
+        "description": "Hasilkan nilai pemboleh ubah baharu setiap kali pelajar mencuba lagi. Jawapan mereka yang terdahulu tidak dipaparkan apabila mereka kembali, hanya sama ada mereka betul."
+      },
+      {
+        "title": "Boleh dilipat",
+        "description": "Tunjukkan soalan ini sebagai baris yang boleh dibuka dan ditutup. Membuka satu akan menutup soalan boleh lipat lain di sebelahnya."
+      },
+      {
+        "title": "Mula dalam keadaan dilipat",
+        "description": "Apabila boleh dilipat, mula sebagai baris tertutup yang hanya menunjukkan soalan dan statusnya."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuiz",
+        "description": "Nama kuiz yang digunakan untuk pengenalan xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

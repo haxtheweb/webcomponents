@@ -9,5 +9,7 @@
   "slidePages": "Ta'ãnga kuatiarogue",
   "goToSlide": "Eho ta'ãnga {number}-pe",
   "slides": "Diapositiva",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Mba'erechaha tuichakue",
+  "exitFullScreen": "Esẽ mba'erechaha tuichakuégui"
 }

@@ -9,5 +9,7 @@
   "slidePages": "Սլայդների էջեր",
   "goToSlide": "Անցնել {number} սլայդին",
   "slides": "Սլայդներ",
-  "position": "{total}-ից {number}"
+  "position": "{total}-ից {number}",
+  "fullScreen": "Լիաէկրան",
+  "exitFullScreen": "Դուրս գալ լիաէկրանից"
 }

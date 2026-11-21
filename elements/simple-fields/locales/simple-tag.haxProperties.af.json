@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Outomatiese aksentkleur",
         "description": "Lei die aksentkleur outomaties van die etiketteks af."
+      },
+      {
+        "title": "Betekenis",
+        "description": "Gee die etiket 'n betekeniskleur. Laat leeg vir 'n neutrale etiket.",
+        "options": {
+          "": "Neutraal",
+          "brand": "Handelsmerk",
+          "success": "Sukses",
+          "warning": "Waarskuwing",
+          "danger": "Gevaar"
+        }
       }
     ],
     "advanced": [

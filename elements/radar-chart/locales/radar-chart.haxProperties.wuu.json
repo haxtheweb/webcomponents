@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "雷达图",
+    "description": "雷达（蜘蛛网）图，用于成熟度模型搭各方面打分，比方 HEOSAT。包括文字替代搭数据表。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "图表个标题；也当伊个无障碍名字用。"
+      },
+      {
+        "title": "最高分",
+        "description": "刻度上个最高值。"
+      },
+      {
+        "title": "类别",
+        "description": "每行一个类别。至少要 3 个。"
+      },
+      {
+        "title": "分数",
+        "description": "逗号隔开个数字，按同样顺序每个类别一个。"
+      },
+      {
+        "title": "目标分数",
+        "description": "逗号隔开个数字，按同样顺序每个类别一个。"
+      },
+      {
+        "title": "显示图例",
+        "description": "显示一个标明分数搭目标个图例。"
+      },
+      {
+        "title": "紧凑",
+        "description": "小一点个图表，呒没标签、图例或者数据表。鼠标悬停一个点看伊个值。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "分数标签",
+        "description": "图例搭表格里分数个标签。"
+      },
+      {
+        "title": "目标标签",
+        "description": "图例搭表格里目标个标签。"
+      }
+    ]
+  }
+}

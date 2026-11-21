@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Címke",
+    "description": "Kis címkézett ikon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Címke"
+      }
+    ]
+  }
+}

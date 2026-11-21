@@ -8,5 +8,9 @@
   "theme": "تھیم",
   "palette": "رنگ پٹی",
   "cancel": "منسوخ کرو",
-  "openAppearanceSettings": "دِکھ ترتیباں کھولو"
+  "openAppearanceSettings": "دِکھ ترتیباں کھولو",
+  "designSystem": "ڈیزائن سسٹم",
+  "designSystemDefault": "DDD (ڈیفالٹ)",
+  "designSystemThemeDefault": "{name} (تھیم ڈیفالٹ)",
+  "designSystemHelp": "رنگ، اکھر شیلی، کونے تے گھنتا۔ لے آؤٹ حالے وی تھیم طے کردا اے۔"
 }

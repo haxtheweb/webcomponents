@@ -3,5 +3,8 @@
   "copyAsCsv": "Avrita sum CSV.",
   "printTable": "Prenta talvu",
   "selectColumn": "Vel teig",
-  "dataTable": "Data · Talva"
+  "dataTable": "Data · Talva",
+  "filterStatus": "Vísir {shown} av {total} røðum, filtrerað eftir {column}: {text}",
+  "columnNumber": "Teigur {column}",
+  "clearFilter": "Strika filtur"
 }

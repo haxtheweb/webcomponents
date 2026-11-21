@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Aimsigh spotaí te",
+    "description": "Aimsíonn foghlaimeoirí na spotaí cearta ar íomhá trí chliceáil, thapáil nó croschuaille méarchláir a bhogadh. An leagan grádaithe de léarscáil íomhá."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Íomhá",
+        "description": "An pictiúr a chuardaíonn foghlaimeoirí."
+      },
+      {
+        "title": "Téacs malartach",
+        "description": "Déanann sé cur síos ar an bpictiúr do dhaoine nach féidir leo é a fheiceáil. Ní thaispeántar choíche é mar an teideal."
+      },
+      {
+        "title": "Teideal",
+        "description": "Teideal gearr infheicthe a thaispeántar os cionn an phictiúir."
+      },
+      {
+        "title": "Ceist",
+        "description": "An rud a iarrtar ar fhoghlaimeoirí a aimsiú sa phictiúr."
+      },
+      {
+        "title": "Freagraí",
+        "description": "Is ubhchruth ainmnithe ar an bpictiúr gach freagra. Is céatadáin den phictiúr iad suíomh agus méid, tomhaiste óna chúinne uachtair ar chlé. Le linn eagarthóireachta, tá imlíne ar gach freagra ar an bpictiúr."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iarrachtaí",
+        "description": "Cé mhéad uair is féidir le foghlaimeoir triail a bhaint as. Ciallaíonn 0 gan teorainn."
+      },
+      {
+        "title": "Seachráin ceadaithe",
+        "description": "Cé mhéad seachrán a chríochnaíonn iarracht. Ciallaíonn 0 gan teorainn, agus faigheann foghlaimeoirí cnaipe Críochnaigh."
+      },
+      {
+        "title": "In-laghdaithe",
+        "description": "Taispeáin an cheist seo mar ró a osclaíonn agus a dhúnann. Dúnann oscailt ceann amháin na ceisteanna in-laghdaithe eile in aice leis."
+      },
+      {
+        "title": "Tosaigh laghdaithe",
+        "description": "Nuair atá sé in-laghdaithe, tosaigh mar ró dúnta nach dtaispeánann ach an cheist agus a stádas."
+      },
+      {
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a chuirtear isteach le húsáid i dtimpeallachtaí faoi stiúir xAPI chun an mhír seo a aithint"
+      },
+      {
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
+      }
+    ]
+  }
+}

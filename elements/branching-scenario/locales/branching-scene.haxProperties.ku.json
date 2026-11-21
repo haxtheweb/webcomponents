@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Dîmena senaryoyê",
+    "description": "Dîmenek ji senaryoyeke şaxdar. Her bijarekê bi # û piştre ID-ya dîmenê bi dîmeneke din ve girê bide."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ya dîmenê",
+        "description": "Bijare bi çi ve girê didin: girêdanek bo # û piştre vê ID-yê ber bi vê dîmenê ve diçe. Tîp, hejmar û xêzik."
+      },
+      {
+        "title": "Sernav",
+        "description": "Sernavê dîmenê."
+      },
+      {
+        "title": "Dawî",
+        "description": "Gelo ev dîmen rêyekê diqedîne, û çawa derket.",
+        "options": {
+          "": "Ne dawî ye",
+          "good": "Dawiya baş",
+          "mixed": "Dawiya tevlihev",
+          "poor": "Dawiya xirab"
+        }
+      },
+      {
+        "title": "Puan",
+        "description": "Puan ji bo gihîştina vê dawiyê. Puana dawiyê ya herî bilind di senaryoyê de herî zêde ye."
+      }
+    ]
+  }
+}

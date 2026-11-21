@@ -1,0 +1,19 @@
+{
+  "label": "Ferramenta externa",
+  "labelLti": "Ferramenta externa · LTI 1.3",
+  "theTool": "a ferramenta",
+  "directions": "Instruções",
+  "showDirections": "Mostrar instruções",
+  "hideDirections": "Ocultar instruções",
+  "directionsWindow": "O botão abre uma nova janela com a ferramenta.",
+  "directionsEmbed": "O botão abre a ferramenta nesta página. Se ela não carregar, abra-a em uma nova janela.",
+  "directionsLti": "Este site conecta você à ferramenta, então você não precisa de uma conta separada.",
+  "openWindow": "Abrir {title} (nova janela)",
+  "openEmbed": "Abrir {title}",
+  "openInstead": "Abrir em uma nova janela",
+  "frameTitle": "{title} (ferramenta externa)",
+  "openedWindow": "Uma nova janela foi aberta com a ferramenta.",
+  "openedEmbed": "A ferramenta foi aberta nesta página.",
+  "needsUrl": "Este bloco precisa de um endereço de lançamento que comece com http:// ou https://.",
+  "needsSignIn": "Esta ferramenta precisa do serviço de login deste site, que não está disponível aqui. Nada foi aberto."
+}

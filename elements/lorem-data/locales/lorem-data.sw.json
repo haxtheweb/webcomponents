@@ -1,4 +1,6 @@
 {
   "saveAll": "Hifadhi Zote",
-  "saveTheFollowing": "Hifadhi yafuatayo: {list}?"
+  "saveTheFollowing": "Hifadhi yafuatayo: {list}?",
+  "save": "Hifadhi",
+  "cancel": "Ghairi"
 }

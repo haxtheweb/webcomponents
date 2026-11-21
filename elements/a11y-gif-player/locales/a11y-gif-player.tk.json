@@ -2,5 +2,9 @@
   "toggleAnimation": "Animasiýany açmak/ýapmak",
   "info": "maglumat",
   "image": "Surat",
-  "animatedGif": "Animasiýaly GIF"
+  "animatedGif": "Animasiýaly GIF",
+  "playAnimation": "Animasiýany oýnat",
+  "pauseAnimation": "Animasiýany saklat",
+  "showDescription": "Düşündirişi görkez",
+  "hideDescription": "Düşündirişi gizle"
 }

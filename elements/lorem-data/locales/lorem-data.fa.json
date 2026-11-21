@@ -1,4 +1,6 @@
 {
   "saveAll": "ذخیره همه",
-  "saveTheFollowing": "موارد زیر ذخیره شوند: {list}؟"
+  "saveTheFollowing": "موارد زیر ذخیره شوند: {list}؟",
+  "save": "ذخیره",
+  "cancel": "لغو"
 }

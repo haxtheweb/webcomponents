@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Gano wurare masu muhimmanci",
+    "description": "Masu koyo suna samun wurare daidai a kan hoto ta hanyar dannawa, taɓawa ko motsa alamar nuni ta madannai. Takwaran taswirar hoto mai maki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hoto",
+        "description": "Hoton da masu koyo ke bincika."
+      },
+      {
+        "title": "Madadin rubutu",
+        "description": "Yana bayyana hoton don mutanen da ba sa iya ganinsa. Ba a taɓa nuna shi a matsayin take ba."
+      },
+      {
+        "title": "Take",
+        "description": "Gajeren take da ake gani a saman hoton."
+      },
+      {
+        "title": "Tambaya",
+        "description": "Abin da ake tambayar masu koyo su samu a hoton."
+      },
+      {
+        "title": "Amsoshi",
+        "description": "Kowace amsa kwai ne mai suna a kan hoton. Matsayi da girma kashi ne na hoton, an auna daga kusurwarsa ta hagu ta sama. Yayin gyarawa, ana zayyana kowace amsa a kan hoton."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ƙoƙari",
+        "description": "Sau nawa mai koyo zai iya gwadawa. 0 yana nufin mara iyaka."
+      },
+      {
+        "title": "Kuskuren da aka yarda",
+        "description": "Kuskure nawa ne ke kawo ƙarshen ƙoƙari. 0 yana nufin mara iyaka, kuma masu koyo suna samun maɓallin Gama."
+      },
+      {
+        "title": "Ana iya naɗewa",
+        "description": "Nuna wannan tambaya a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin da ake iya naɗewa da ke kusa da shi."
+      },
+      {
+        "title": "Fara a naɗe",
+        "description": "Idan ana iya naɗewa, fara a matsayin layi a rufe da ke nuna tambayar da matsayinta kawai."
+      },
+      {
+        "title": "Tsarin bayar da maki",
+        "description": "OER Schema: tsarin bayar da maki don wannan kimantawa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan kimantawa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Sunan tambayoyin",
+        "description": "Sunan tambayoyin da aka shigar don amfani a mahallin xAPI don gano wannan abu"
+      },
+      {
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan kimantawa domin shi."
+      }
+    ]
+  }
+}

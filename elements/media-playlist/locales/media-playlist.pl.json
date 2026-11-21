@@ -5,5 +5,7 @@
   "editModeLabel": "Tryb edycji playlisty multimediów",
   "position": "{current} z {total}",
   "previousItem": "Poprzedni element",
-  "nextItem": "Następny element"
+  "nextItem": "Następny element",
+  "fullScreen": "Pełny ekran",
+  "exitFullScreen": "Wyjdź z pełnego ekranu"
 }

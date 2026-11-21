@@ -1,0 +1,14 @@
+{
+  "scene": "Escena",
+  "ending": "Paha",
+  "goodEnding": "Paha porã",
+  "mixedEnding": "Paha ijehe'áva",
+  "poorEnding": "Paha vai",
+  "scoreOf": "Kytã {score} {max} apytégui",
+  "scoreOnly": "Kytã {score}",
+  "startScene": "Eñepyrũ",
+  "sceneIdLabel": "Escena id",
+  "needsId": "Embojoapy escena id ikatu hag̃uáicha umi jeporavo ojoaju ko escena rehe.",
+  "orphan": "Ni peteĩ jeporavo ndojoajúi ko escena rehe.",
+  "deadLinks": "Ko'ã juajuha ohechauka peteĩ escena ndaipóriva:"
+}

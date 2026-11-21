@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scena scenariusza",
+    "description": "Jedna scena scenariusza rozgałęzionego. Połącz każdy wybór z inną sceną linkiem # z jej ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID sceny",
+        "description": "Do czego prowadzą wybory: link do # z tym ID prowadzi do tej sceny. Litery, cyfry i myślniki."
+      },
+      {
+        "title": "Nagłówek",
+        "description": "Nagłówek sceny."
+      },
+      {
+        "title": "Zakończenie",
+        "description": "Czy ta scena kończy ścieżkę i jak się skończyła.",
+        "options": {
+          "": "Nie zakończenie",
+          "good": "Dobre zakończenie",
+          "mixed": "Mieszane zakończenie",
+          "poor": "Słabe zakończenie"
+        }
+      },
+      {
+        "title": "Wynik",
+        "description": "Wynik za osiągnięcie tego zakończenia. Najwyższy wynik zakończenia w scenariuszu jest maksimum."
+      }
+    ]
+  }
+}

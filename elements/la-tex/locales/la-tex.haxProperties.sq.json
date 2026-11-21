@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Shkruaj duke përdorur shënimin matematikor LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sfondi i fotos",
+        "description": "Sfondi pas fotove të vizatuara. Automatik shton një vetëm kur vizatimi do të ishte i vështirë për t'u parë në faqe, si vija të errëta në modalitetin e errët.",
+        "options": {
+          "auto": "Automatik",
+          "light": "I çelët",
+          "dark": "I errët",
+          "none": "Asnjë"
+        }
+      }
+    ]
   }
 }

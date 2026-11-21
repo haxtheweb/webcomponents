@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "തലക്കെട്ട്"
+        "title": "തലക്കെട്ട്",
+        "description": "കോഴ്സ് മോഡലിന് മുകളിൽ കാണിക്കുന്ന തലക്കെട്ട്."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "കാണിക്കേണ്ട 3D മോഡൽ ഫയലിന്റെ (.glb അല്ലെങ്കിൽ .gltf) വിലാസം."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "കാണാൻ കഴിയാത്തവർക്കായി 3D മോഡൽ വിവരിക്കുക."
       },
       {
         "title": "വിവര ഭാഗം"

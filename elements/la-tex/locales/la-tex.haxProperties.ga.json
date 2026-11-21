@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Scríobh ag úsáid nodaireacht mhatamaitice LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cúlra pictiúr",
+        "description": "Cúlra taobh thiar de phictiúir tharraingthe. Ní chuireann Uathoibríoch ceann leis ach nuair a bheadh sé deacair an líníocht a fheiceáil ar an leathanach, mar shampla línte dorcha i mód dorcha.",
+        "options": {
+          "auto": "Uathoibríoch",
+          "light": "Geal",
+          "dark": "Dorcha",
+          "none": "Dada"
+        }
+      }
+    ]
   }
 }

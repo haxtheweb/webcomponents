@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Näidiselement, mida kasutatakse HAX-i seadistuse ja muudetavate omaduste tutvustamiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri"
+      }
+    ]
+  }
+}

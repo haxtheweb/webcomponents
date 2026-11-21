@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Label gambar",
     "description": "Elemen label gambar untuk menandai aset media di dalam konten."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomor gambar",
+        "description": "Nomor atau label singkat untuk gambar, mis. 1.3"
+      },
+      {
+        "title": "Deskripsi",
+        "description": "Deskripsi singkat gambar"
+      }
+    ]
   }
 }

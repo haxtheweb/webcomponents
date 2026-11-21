@@ -5,5 +5,6 @@
   "selected": "தேர்ந்தெடுக்கப்பட்டது",
   "currentlyActiveAndSelectedPalette": "தற்போது செயலில் உள்ள மற்றும் தேர்ந்தெடுக்கப்பட்ட வண்ணத் தட்டு",
   "currentlyActivePalette": "தற்போது செயலில் உள்ள வண்ணத் தட்டு",
-  "selectedPaletteToApply": "பயன்படுத்தத் தேர்ந்தெடுக்கப்பட்ட வண்ணத் தட்டு"
+  "selectedPaletteToApply": "பயன்படுத்தத் தேர்ந்தெடுக்கப்பட்ட வண்ணத் தட்டு",
+  "paletteNumber": "தட்டு {number}"
 }

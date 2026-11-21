@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Aŭtomata akcenta koloro",
         "description": "Aŭtomate derivi la akcentan koloron el la etikeda teksto."
+      },
+      {
+        "title": "Signifo",
+        "description": "Donu al la etikedo signifan koloron. Lasu malplena por neŭtrala etikedo.",
+        "options": {
+          "": "Neŭtrala",
+          "brand": "Marko",
+          "success": "Sukceso",
+          "warning": "Averto",
+          "danger": "Danĝero"
+        }
       }
     ],
     "advanced": [

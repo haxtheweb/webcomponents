@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tambua maeneo",
+    "description": "Wanafunzi hupata sehemu sahihi kwenye picha kwa kubofya, kugusa au kusogeza alama ya kulenga kwa kibodi. Mwenzake wa kupimwa wa ramani ya picha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Picha",
+        "description": "Picha ambayo wanafunzi hutafuta ndani yake."
+      },
+      {
+        "title": "Maandishi mbadala",
+        "description": "Inaeleza picha kwa watu wasioweza kuiona. Haionyeshwi kamwe kama kichwa."
+      },
+      {
+        "title": "Kichwa",
+        "description": "Kichwa kifupi kinachoonekana juu ya picha."
+      },
+      {
+        "title": "Swali",
+        "description": "Kile wanafunzi wanachoombwa kupata kwenye picha."
+      },
+      {
+        "title": "Majibu",
+        "description": "Kila jibu ni duaradufu yenye jina kwenye picha. Nafasi na ukubwa ni asilimia za picha, zikipimwa kutoka kona yake ya juu kushoto. Wakati wa kuhariri, kila jibu linazungushiwa mstari kwenye picha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Majaribio",
+        "description": "Ni mara ngapi mwanafunzi anaweza kujaribu. 0 inamaanisha bila kikomo."
+      },
+      {
+        "title": "Makosa yanayoruhusiwa",
+        "description": "Ni makosa mangapi yanamaliza jaribio. 0 inamaanisha bila kikomo, na wanafunzi wanapata kitufe cha Maliza."
+      },
+      {
+        "title": "Inayokunjika",
+        "description": "Onyesha swali hili kama safu inayofunguka na kufungwa. Kufungua moja hufunga maswali mengine yanayokunjika kando yake."
+      },
+      {
+        "title": "Anza ikiwa imekunjwa",
+        "description": "Ikiwa inakunjika, anza kama safu iliyofungwa inayoonyesha swali na hali yake tu."
+      },
+      {
+        "title": "Muundo wa upimaji",
+        "description": "OER Schema: muundo wa upimaji wa tathmini hii (k.m. pointi, herufi, asilimia, ukamilishaji)."
+      },
+      {
+        "title": "Lengo la kujifunza",
+        "description": "OER Schema: lengo la kujifunza linalohusishwa na tathmini hii."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jina la jaribio",
+        "description": "Jina la jaribio linalopitishwa kwa matumizi katika mazingira yanayoendeshwa na xAPI kwa utambulisho wa kipengee hiki"
+      },
+      {
+        "title": "Kozi",
+        "description": "OER Schema: kozi ambayo tathmini hii imekusudiwa."
+      }
+    ]
+  }
+}

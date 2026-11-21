@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grŵp nodiadau",
+    "description": "Pentyrrwch sawl stop note mewn un bloc sy'n dangos un nodyn ar y tro, fel Awgrymiadau neu Beth sy'n newydd. Gellir pentyrru cardiau cyfarwyddiadau, nodiadau ochr a dyfyniadau wedi'u fframio gyda nhw."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Enw'r grŵp y mae darllenwyr sgrin yn ei gyhoeddi, fel Awgrymiadau neu Beth sy'n newydd."
+      },
+      {
+        "title": "Nodiadau",
+        "description": "Y stop notes yn y grŵp. Gellir ychwanegu cardiau cyfarwyddiadau, nodiadau ochr a dyfyniadau wedi'u fframio hefyd."
+      }
+    ]
+  }
+}

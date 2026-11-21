@@ -40,5 +40,7 @@
   "hideDirections": "Itago ang mga direksyon",
   "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
   "hideRelatedContent": "Itago ang kaugnay na nilalaman",
-  "notAttempted": "Hindi pa nasubukan"
+  "notAttempted": "Hindi pa nasubukan",
+  "cardsDirections": "Ilagay ang mga card sa tamang pagkakasunod-sunod gamit ang mga button na ilipat nang mas maaga at ilipat nang mas huli sa bawat card, o i-drag ang mga ito gamit ang mouse. Kapag naniniwala kang tama na ang pagkakasunod-sunod, subukan ang iyong sagot sa pagpili ng {checkAnswer}.",
+  "movedToPosition": "Inilipat ang {item} sa posisyon {position} sa {total}"
 }

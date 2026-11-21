@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Crosfhocal",
+    "description": "Crosfhocal déanta ó liosta focal agus leideanna. Gintear an ghreille duit; clóscríobhann foghlaimeoirí na focail agus seiceálann siad iad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "An teideal nó an cheist a thaispeántar os cionn an chrosfhocail."
+      },
+      {
+        "title": "Focail",
+        "description": "Gach focal agus a leid. Gintear an ghreille ón liosta seo: cuirtear an focal is faide ar dtús agus trasnaíonn na cinn eile é ar litreacha comhroinnte."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iarrachtaí",
+        "description": "Cé mhéad uair is féidir le foghlaimeoir seiceáil. Ciallaíonn 0 gan teorainn."
+      },
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath roghnach do shlis an cheanntáisc, don fhocal gníomhach agus do na cnaipí gníomhaíochta."
+      },
+      {
+        "title": "In-laghdaithe",
+        "description": "Taispeáin an crosfhocal seo mar ró a osclaíonn agus a dhúnann. Dúnann oscailt ceann amháin na ceisteanna in-laghdaithe eile in aice leis."
+      },
+      {
+        "title": "Tosaigh laghdaithe",
+        "description": "Nuair atá sé in-laghdaithe, tosaigh mar ró dúnta nach dtaispeánann ach an teideal agus a stádas."
+      },
+      {
+        "title": "Formáid ghrádaithe",
+        "description": "OER Schema: formáid ghrádaithe don mheasúnú seo (m.sh. pointí, litir, céatadán, críochnú)."
+      },
+      {
+        "title": "Cuspóir foghlama",
+        "description": "OER Schema: cuspóir foghlama a bhaineann leis an measúnú seo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a úsáidtear le haghaidh aitheantais xAPI i gcórais anailísíochta."
+      },
+      {
+        "title": "Cúrsa",
+        "description": "OER Schema: an cúrsa a bhfuil an measúnú seo beartaithe dó."
+      }
+    ]
+  }
+}

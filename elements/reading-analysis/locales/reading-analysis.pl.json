@@ -60,6 +60,8 @@
   "flagsFound": "Znaleziono {correct} z {total}",
   "toRethink": "Do przemyślenia: {count}",
   "notEvidence": "nie jest dowodem dla tej flagi",
+  "isEvidence": "dowód dla tego oznaczenia",
+  "readingKeys": "Użyj strzałek, aby przejść od jednego elementu ({unit}) do następnego.",
   "markAnswers": "Oznacz odpowiedzi",
   "doneMarking": "Zakończ oznaczanie odpowiedzi",
   "editHint": "Edytuj tekst poniżej. Użyj opcji Oznacz odpowiedzi w menu bloku, aby wybrać, gdzie należy każda flaga.",

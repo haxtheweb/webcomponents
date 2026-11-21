@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ishtirokchilar",
+    "description": "Ro‘yxat faylidan olingan loyihani qurgan odamlar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ro‘yxat fayli (JSON)"
+      },
+      {
+        "title": "Ko‘rinish: landed, lab yoki code"
+      },
+      {
+        "title": "Ko‘rsatiladigan eng ko‘p odam soni (0 — hammasi)"
+      }
+    ]
+  }
+}

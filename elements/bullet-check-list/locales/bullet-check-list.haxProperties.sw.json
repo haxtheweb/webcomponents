@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Orodha ya kuweka alama",
+    "description": "Orodha ya visanduku vya kuteua. Wasomaji huweka alama kwenye vipengee na maendeleo yao hukumbukwa kwenye kifaa chao wenyewe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Jina la orodha. Husomwa kwa sauti kama lebo ya kikundi cha visanduku vya kuteua."
+      },
+      {
+        "title": "Vipengee",
+        "description": "Kila kipengee ni kisanduku cha kuteua. Vipengee vilivyoteuliwa au vilivyozimwa haviwezi kubadilishwa na wasomaji."
+      },
+      {
+        "title": "Zenye namba",
+        "description": "Onyesha orodha ya namba badala ya orodha ya vitone."
+      },
+      {
+        "title": "Hali",
+        "description": "Hubadilisha rangi zilingane na stop-note.",
+        "options": {
+          "info": "Taarifa",
+          "success": "Uthibitisho",
+          "warning": "Onyo",
+          "stop": "Simama"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID ya hifadhi",
+        "description": "ID ya kipekee inayotumika kukumbuka maendeleo ya msomaji kwenye kifaa chake. Huzalishwa kiotomatiki; ibadilishe tu kushiriki maendeleo kati ya orodha au kuanza upya."
+      }
+    ]
+  }
+}

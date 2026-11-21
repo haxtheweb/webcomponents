@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Yaadannoo jalaa",
+    "description": "Yaadannoo barreeffama keessatti bakka itti ta'utti barreeffame. Akka lakkoofsaatti mul'ata, tarreen yaadannoowwan lakkoofsifamanis ofumaan fuula jalatti ijaarama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yaadannoo",
+        "description": "Barreeffama yaadannoo jalaa."
+      },
+      {
+        "title": "Duraan ilaaluun hin jiru",
+        "description": "Yeroo dubbisaan lakkoofsa irra maawusii kaa'u ykn xiyyeeffatu yaadannoo hin agarsiisin."
+      }
+    ]
+  }
+}

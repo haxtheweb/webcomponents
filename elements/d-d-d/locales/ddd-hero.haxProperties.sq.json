@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Një imazh, GIF ose video e madhe me titull dhe tekst sipër, e vendosur kudo në faqe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imazh ose video",
+        "description": "Një skedar JPG, PNG, WebP, GIF, MP4 ose WebM."
+      },
+      {
+        "title": "Tekst alternativ",
+        "description": "Përshkruaje imazhin. Lëre bosh kur është vetëm dekor."
+      },
+      {
+        "title": "Titulli",
+        "description": "Titulli i shfaqur mbi mediat. Lëre bosh për asnjë."
+      },
+      {
+        "title": "Tekst",
+        "description": "Teksti i shfaqur nën titull, mbi mediat."
+      },
+      {
+        "title": "Gjerësi e plotë",
+        "description": "Shtrihu nga skaji në skaj në vend që të rrish në kolonën e përmbajtjes."
+      },
+      {
+        "title": "Lartësia",
+        "options": {
+          "tall": "I lartë",
+          "medium": "Mesatar",
+          "short": "I shkurtër"
+        }
+      },
+      {
+        "title": "Kuadrimi",
+        "description": "Si qëndron fotoja në çdo madhësi ekrani"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zbehje",
+        "description": "Ngjyra e vendosur mbi mediat. Me titull ose tekst ka gjithmonë një, që teksti të mbetet i lexueshëm.",
+        "options": {
+          "blue": "Blu",
+          "bottom": "E errët poshtë",
+          "none": "Asnjë"
+        }
+      },
+      {
+        "title": "Pozicioni i tekstit",
+        "options": {
+          "bottom": "Poshtë",
+          "middle": "Në mes"
+        }
+      },
+      {
+        "title": "Pika e fokusit horizontalisht",
+        "description": "Pjesa e imazhit që mbetet e dukshme kur pritet, nga 0 (majtas) deri në 100 (djathtas)."
+      },
+      {
+        "title": "Pika e fokusit vertikalisht",
+        "description": "Pjesa e imazhit që mbetet e dukshme kur pritet, nga 0 (lart) deri në 100 (poshtë)."
+      }
+    ]
+  }
+}

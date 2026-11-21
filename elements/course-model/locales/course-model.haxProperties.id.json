@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "judul"
+        "title": "judul",
+        "description": "Judul yang ditampilkan di atas model kursus."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Alamat file model 3D (.glb atau .gltf) yang ditampilkan."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Jelaskan model 3D untuk orang yang tidak dapat melihatnya."
       },
       {
         "title": "Area informasi"

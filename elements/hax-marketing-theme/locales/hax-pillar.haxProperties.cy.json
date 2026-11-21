@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Colofn",
+    "description": "Colofn: enw, ymadrodd, eicon, lliw a pham mae'n bwysig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Enw"
+      },
+      {
+        "title": "Ymadrodd"
+      },
+      {
+        "title": "Eicon"
+      },
+      {
+        "title": "Lliw (enw DDD)"
+      },
+      {
+        "title": "Pa golofn, 1 i 7"
+      },
+      {
+        "title": "Cerdyn bach"
+      },
+      {
+        "title": "Ble mae'r enw'n mynd"
+      }
+    ]
+  }
+}

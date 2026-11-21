@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX ಸಂರಚನೆ ಮತ್ತು ಸಂಪಾದಿಸಬಹುದಾದ ಗುಣಲಕ್ಷಣಗಳನ್ನು ಪ್ರದರ್ಶಿಸಲು ಬಳಸುವ ಉದಾಹರಣೆ ಆರಂಭಿಕ ಅಂಶ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ಶೀರ್ಷಿಕೆ"
+      }
+    ]
+  }
+}

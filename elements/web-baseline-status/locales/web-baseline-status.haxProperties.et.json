@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline'i olek",
+    "description": "Näita veebiplatvormi funktsiooni Baseline'i brauseritoe olekut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funktsiooni ID",
+        "description": "Veebifunktsiooni ID, näiteks anchor-positioning. ID-d leiad saidilt webstatus.dev; ID on funktsioonilehe URL-i viimane osa."
+      }
+    ]
+  }
+}

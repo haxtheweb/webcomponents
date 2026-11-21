@@ -6,6 +6,8 @@
   "faviconDescription": "Imaginea filei browserului / folosită pe telefoane ca siglă mică a site-ului",
   "domain": "Domeniu",
   "domainDescription": "Domeniul acestui site web",
+  "sameAs": "Alte profiluri ale acestui site",
+  "sameAsDescription": "Câte un link pe rând către profilurile acestui site sau ale organizației din alte locuri (GitHub, LinkedIn, YouTube, Mastodon). Motoarele de căutare le folosesc pentru a lega acele profiluri de acest site.",
   "language": "Limbă",
   "languageDescription": "Limba acestui site. Căutați după nume sau cod ori introduceți alt cod, de exemplu fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

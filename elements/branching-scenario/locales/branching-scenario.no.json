@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenario",
+  "directions": "Instruksjoner",
+  "showDirections": "Vis instruksjoner",
+  "hideDirections": "Skjul instruksjoner",
+  "directionsRead": "Les hver scene og velg hva du ville gjort.",
+  "directionsEndings": "Det finnes flere avslutninger. Prøv en annen vei når du er ferdig.",
+  "startOver": "Start på nytt",
+  "back": "Ett steg tilbake",
+  "tryAnother": "Prøv en annen vei",
+  "path": "Vei",
+  "scene": "Scene",
+  "ending": "Avslutning",
+  "end": "slutt",
+  "scenesSeen": "{seen} av {total} scener sett",
+  "endingReached": "Avslutning nådd",
+  "addScene": "Legg til scene",
+  "newScene": "Ny scene",
+  "newSceneText": "Beskriv hva som skjer, og koble hvert valg til en scene.",
+  "editingNote": "Redigering: alle scener vises. Et valg er en lenke til # etterfulgt av en scene-ID.",
+  "noScenes": "Legg til en scene for å starte scenarioet."
+}

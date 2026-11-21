@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skryf met die wiskundige notasie LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Prentagtergrond",
+        "description": "Agtergrond agter getekende prente. Outomaties voeg een net by wanneer die tekening moeilik op die bladsy sigbaar sou wees, soos donker lyne in donker modus.",
+        "options": {
+          "auto": "Outomaties",
+          "light": "Lig",
+          "dark": "Donker",
+          "none": "Geen"
+        }
+      }
+    ]
   }
 }

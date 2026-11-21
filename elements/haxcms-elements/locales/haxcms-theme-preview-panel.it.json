@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Tavolozza",
   "cancel": "Annulla",
-  "openAppearanceSettings": "Apri impostazioni aspetto"
+  "openAppearanceSettings": "Apri impostazioni aspetto",
+  "designSystem": "Sistema di design",
+  "designSystemDefault": "DDD (predefinito)",
+  "designSystemThemeDefault": "{name} (predefinito del tema)",
+  "designSystemHelp": "Colore, tipografia, angoli e densità. Il layout lo decide ancora il tema."
 }

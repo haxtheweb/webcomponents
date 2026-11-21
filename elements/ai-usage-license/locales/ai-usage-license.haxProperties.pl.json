@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modyfikator mediów",
-        "description": "Opcjonalny modyfikator domeny mediów. Określa rodzaj mediów, których dotyczy ta licencja."
+        "description": "Opcjonalny modyfikator domeny mediów. Określa rodzaj mediów, których dotyczy ta licencja.",
+        "options": {
+          "": "Bez modyfikatora"
+        }
       },
       {
         "property": "uri",

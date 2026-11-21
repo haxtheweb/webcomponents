@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Lêgerîna peyvan",
+    "description": "Toreke tîpan bi peyvên veşartî. Fêrxwaz li tîpa yekem û dawî ya her peyvê dixin. Dîtina ka têgehek çawa tê rastnivîsandin rahênan dike, ne wateya wê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Ji fêrxwazan tê xwestin ku çi bibînin, di serî de tê nîşandan."
+      },
+      {
+        "title": "Peyv",
+        "description": "Peyvên ji bo veşartinê. Valahî û xalbendî ji torê tên derxistin. Peyvên ku cih nagirin dema sererastkirinê tên rêzkirin û ji bo fêrxwazan tên derxistin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mezinahiya torê",
+        "description": "Tîp ji bo her aliyekî, 4 heta 16. Vala bihêle da ku li peyva herî dirêj bê (heta 12). Ji 12-an zêdetir li ser telefonê ber bi aliyekî ve tê gerandin."
+      },
+      {
+        "title": "Peyvên xwar",
+        "description": "Peyvan bi awayê xwar jî veşêre. Zehmettir."
+      },
+      {
+        "title": "Peyvên berevajî",
+        "description": "Peyvên berevajî nivîsandî jî veşêre. Zehmettir."
+      },
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê vebijarkî ji bo çîpa serî, tîpa yekem a hilbijartî û bişkokê."
+      }
+    ]
+  }
+}

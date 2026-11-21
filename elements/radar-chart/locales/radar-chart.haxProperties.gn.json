@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar ta'ãngarysýi",
+    "description": "Radar (ñandu) ta'ãngarysýi modelo ñakyrãme ha kytã mba'e rehegua peg̃uarã, HEOSAT-icha. Oguereko moñe'ẽrã ambue ha marandu tabla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Ta'ãngarysýi omoakãva; ojeipuru avei héra ojeikekuaáva ramo."
+      },
+      {
+        "title": "Kytã tuichavéva",
+        "description": "Hepy yvatevéva escala-pe."
+      },
+      {
+        "title": "Categoría",
+        "description": "Peteĩ categoría peteĩteĩ tysýipe. Oikotevẽ 3 sa'ivéramo."
+      },
+      {
+        "title": "Kytãkuéra",
+        "description": "Papapy coma rupive oñemboja'óva, peteĩ peteĩteĩ categoríape g̃uarã peteĩchagua ñemohendápe."
+      },
+      {
+        "title": "Kytã ojehupytyséva",
+        "description": "Papapy coma rupive oñemboja'óva, peteĩ peteĩteĩ categoríape g̃uarã peteĩchagua ñemohendápe."
+      },
+      {
+        "title": "Ehechauka leyenda",
+        "description": "Ehechauka peteĩ leyenda omboheráva kytã ha ojehupytyséva."
+      },
+      {
+        "title": "Michĩ",
+        "description": "Ta'ãngarysýi michĩve teraguã, leyenda térã marandu tabla'ỹre. Ehasa peteĩ punto ári rehecha hag̃ua hepykuéra."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kytã teraguã",
+        "description": "Leyenda ha tabla teraguã kytãme g̃uarã."
+      },
+      {
+        "title": "Jehupytyrã teraguã",
+        "description": "Leyenda ha tabla teraguã jehupytyrãme g̃uarã."
+      }
+    ]
+  }
+}

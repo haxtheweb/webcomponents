@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Aktiv nöqtə təfərrüatları",
         "description": "Şəkil xəritəsindəki interaktiv aktiv nöqtələr."
+      },
+      {
+        "title": "Aktiv nöqtə təfərrüatları",
+        "description": "Şəkil xəritəsindəki interaktiv aktiv nöqtələr."
       }
     ]
   }

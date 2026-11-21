@@ -2,5 +2,9 @@
   "toggleAnimation": "تبديل الحركة",
   "info": "معلومات",
   "image": "صورة",
-  "animatedGif": "صورة GIF متحركة"
+  "animatedGif": "صورة GIF متحركة",
+  "playAnimation": "تشغيل الرسوم المتحركة",
+  "pauseAnimation": "إيقاف الرسوم المتحركة مؤقتًا",
+  "showDescription": "إظهار الوصف",
+  "hideDescription": "إخفاء الوصف"
 }

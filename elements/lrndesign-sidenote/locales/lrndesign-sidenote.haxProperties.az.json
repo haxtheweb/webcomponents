@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yan qeyd",
+    "description": "Ətrafdakı məzmundan ayrılmış, ixtiyari ikon və etiketli qeyd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Yan qeydin etiketi."
+      },
+      {
+        "title": "İkon",
+        "description": "Yan qeydin ikonu."
+      },
+      {
+        "title": "Məzmun",
+        "description": "Yan qeydin məzmunu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rəng",
+        "description": "Yan qeydin çalarlandığı rəng."
+      }
+    ]
+  }
+}

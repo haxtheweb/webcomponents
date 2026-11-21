@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valfrjáls samantektartexti þegar upplýsingar eru opnar"
+        "title": "Valfrjáls samantektartexti þegar upplýsingar eru opnar",
+        "description": "Texti hnapps meðan lýsingin er falin, t.d. Sýna lýsingu."
       },
       {
         "property": "closeText",
-        "title": "Valfrjáls samantektartexti þegar upplýsingar eru lokaðar"
+        "title": "Valfrjáls samantektartexti þegar upplýsingar eru lokaðar",
+        "description": "Texti hnapps meðan lýsingin er sýnd, t.d. Fela lýsingu."
       }
     ]
   }

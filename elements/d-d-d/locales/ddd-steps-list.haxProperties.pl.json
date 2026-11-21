@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lista kroków",
     "description": "Ponumerowane kroki do wykonania zadania."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wskaźnik kroków",
+        "description": "Pokaż kroki jako zwarty wiersz tytułów oznaczający postęp. W tym układzie treść kroków nie jest pokazywana."
+      },
+      {
+        "title": "Bieżący krok",
+        "description": "Krok, na którym jest czytelnik, licząc od 1. Wcześniejsze kroki są pokazane jako ukończone. Używane przez wskaźnik kroków."
+      }
+    ]
   }
 }

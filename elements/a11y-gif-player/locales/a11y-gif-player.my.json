@@ -2,5 +2,9 @@
   "toggleAnimation": "လှုပ်ရှားပုံ ဖွင့်/ပိတ်",
   "info": "အချက်အလက်",
   "image": "ပုံ",
-  "animatedGif": "လှုပ်ရှားနေသော GIF"
+  "animatedGif": "လှုပ်ရှားနေသော GIF",
+  "playAnimation": "လှုပ်ရှားသက်ဝင်ပုံကို ဖွင့်ရန်",
+  "pauseAnimation": "လှုပ်ရှားသက်ဝင်ပုံကို ခဏရပ်ရန်",
+  "showDescription": "ဖော်ပြချက်ကို ပြရန်",
+  "hideDescription": "ဖော်ပြချက်ကို ဖျောက်ရန်"
 }

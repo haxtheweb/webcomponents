@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerisk spørgsmål",
+    "description": "Et spørgsmål, der besvares med et tal. Svaret er et fast tal eller en formel udregnet ud fra variabler og tæller, når det er inden for en tolerance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Spørgsmål",
+        "description": "Hvad deltagerne bliver spurgt om. Skriv et variabelnavn i krøllede parenteser, som {d}, for at vise dets værdi."
+      },
+      {
+        "title": "Enhed",
+        "description": "Vises som tekst ved siden af svarfeltet, for eksempel km/h."
+      },
+      {
+        "title": "Svar",
+        "description": "Det rigtige tal. Lad være tom, når en formel udregner svaret."
+      },
+      {
+        "title": "Formel",
+        "description": "Udregner svaret ud fra variablerne, for eksempel d / (t / 60). Kan bruge + - * / ^, parenteser, sqrt() og abs(). Bruges i stedet for svaret, når den er angivet."
+      },
+      {
+        "title": "Variabler",
+        "description": "Tal, som formlen og spørgsmålet bruger. Hvert tager en værdi mellem sin laveste og højeste, i trin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerance",
+        "description": "Hvor langt fra det nøjagtige svar der stadig tæller. 0 betyder nøjagtigt eller afrundet til decimalerne nedenfor."
+      },
+      {
+        "title": "Tolerancetype",
+        "description": "Absolut: plus eller minus tolerancen. Procent: plus eller minus den procentdel af det nøjagtige svar.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Procent"
+        }
+      },
+      {
+        "title": "Decimaler",
+        "description": "Deltagerne bliver bedt om at afrunde til dette antal decimaler, og svaret vises afrundet til det. Lad være tom for ingen afrunding."
+      },
+      {
+        "title": "Forsøg",
+        "description": "Hvor mange gange en deltager kan tjekke. 0 betyder ubegrænset."
+      },
+      {
+        "title": "Nye tal ved hvert forsøg",
+        "description": "Træk nye variabelværdier, hver gang en deltager prøver igen. Deres tidligere svar vises så ikke, når de vender tilbage, kun om de havde ret."
+      },
+      {
+        "title": "Sammenklappelig",
+        "description": "Vis dette spørgsmål som en række, der åbner og lukker. Når ét åbnes, lukkes de andre sammenklappelige spørgsmål ved siden af."
+      },
+      {
+        "title": "Start sammenklappet",
+        "description": "Når det er sammenklappeligt, startes det som en lukket række, der kun viser spørgsmålet og dets status."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der bruges til xAPI-identifikation i analysesystemer."
+      }
+    ]
+  }
+}

@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ਵਜੋਂ ਕਾਪੀ ਕਰੋ।",
   "printTable": "ਟੇਬਲ ਪ੍ਰਿੰਟ ਕਰੋ",
   "selectColumn": "ਕਾਲਮ ਚੁਣੋ",
-  "dataTable": "ਡਾਟਾ · ਸਾਰਣੀ"
+  "dataTable": "ਡਾਟਾ · ਸਾਰਣੀ",
+  "filterStatus": "{total} ਵਿੱਚੋਂ {shown} ਕਤਾਰਾਂ ਦਿਖਾਈਆਂ, {column} ਅਨੁਸਾਰ ਫਿਲਟਰ: {text}",
+  "columnNumber": "ਕਾਲਮ {column}",
+  "clearFilter": "ਫਿਲਟਰ ਹਟਾਓ"
 }

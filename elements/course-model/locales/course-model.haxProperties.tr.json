@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "başlık"
+        "title": "başlık",
+        "description": "Ders modelinin üstünde gösterilen başlık."
       },
       {
         "property": "src",
-        "title": "kaynak"
+        "title": "kaynak",
+        "description": "Gösterilecek 3B model dosyasının (.glb veya .gltf) adresi."
       },
       {
         "property": "alt",
-        "title": "alternatif metin"
+        "title": "alternatif metin",
+        "description": "3B modeli göremeyen kişiler için açıklayın."
       },
       {
         "title": "Bilgi alanı"

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ökosystem-Netz",
+    "description": "En interaktiivt Netz, dat weist, wéi d'Deeler vun engem Projet zesummenhänken, mat Ënnernetzer a Schrëtt-fir-Schrëtt-Touren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Netzdaten",
+        "description": "URL vum JSON-Bündel vun Netzer (an PRAW gebaut, ecosystem-webs.json)."
+      },
+      {
+        "title": "Netz",
+        "description": "ID vum Netz, dat als éischt gewise gëtt; main ass dat Ökosystem-Netz."
+      },
+      {
+        "title": "Gewielte Kachel",
+        "description": "ID vun enger Kachel, déi gewielt gëtt, wann d'Netz opgeet."
+      },
+      {
+        "title": "Tour",
+        "description": "ID vun engem Tour, mat deem ugefaange gëtt."
+      },
+      {
+        "title": "An der Lëschtenusiicht ufänken",
+        "description": "D'Netz als verschachtelt Lëschten amplaz vun der Zeechnung weisen."
+      },
+      {
+        "title": "Just Zeechnung",
+        "description": "Just d'Zeechnung als Figur weisen: kee Kapp, keng Touren, keng Detailer a keng Schrëttleescht."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gelies no",
+        "description": "Mat all Kachel no enger eenzeger Moossnam gelies ufänken.",
+        "options": {
+          "": "Just Verbindungen",
+          "fresh": "Aktualitéit",
+          "bus": "Bus-Faktor",
+          "impact": "Impakt",
+          "evidence": "Beweis",
+          "parity": "Paritéit"
+        }
+      }
+    ]
+  }
+}

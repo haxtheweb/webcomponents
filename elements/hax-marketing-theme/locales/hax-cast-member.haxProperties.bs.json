@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Član postave",
+    "description": "Jedna publika, koju igra lik, s riječima i dugmetom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ko je ovo"
+      },
+      {
+        "title": "Vrsta lika"
+      },
+      {
+        "title": "Sjeme lika"
+      },
+      {
+        "title": "Boja scene (DDD naziv)"
+      },
+      {
+        "title": "Kuda vodi dugme"
+      },
+      {
+        "title": "Tekst dugmeta"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Značka",
+    "description": "Majhna ikona z oznako"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Oznaka"
+      }
+    ]
+  }
+}

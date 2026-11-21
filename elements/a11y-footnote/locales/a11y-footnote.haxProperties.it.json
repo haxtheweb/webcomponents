@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota a piè di pagina",
+    "description": "Una nota scritta dove serve nel testo. Appare come un numero, e l'elenco numerato delle note si crea da solo in fondo alla pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "Il testo della nota a piè di pagina."
+      },
+      {
+        "title": "Nessuna anteprima",
+        "description": "Non mostrare la nota quando un lettore passa sopra il numero o lo seleziona."
+      }
+    ]
+  }
+}

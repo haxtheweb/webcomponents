@@ -4,7 +4,12 @@
     "description": "Muter konten interaktif H5P saka berkas .h5p sing diunggah, tanpa perlu server H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Berkas H5P",
+        "description": "Unggah utawa gandhengake berkas .h5p. Dibukak ing browser; ora butuh server H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Kode embed iframe lawas",

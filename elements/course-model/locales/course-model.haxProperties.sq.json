@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titulli"
+        "title": "titulli",
+        "description": "Titulli i shfaqur mbi modelin e kursit."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adresa e skedarit të modelit 3D (.glb ose .gltf) për t'u shfaqur."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Përshkruaje modelin 3D për njerëzit që nuk mund ta shohin."
       },
       {
         "title": "Zona e informacionit"

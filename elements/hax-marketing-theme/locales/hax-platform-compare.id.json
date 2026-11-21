@@ -1,0 +1,15 @@
+{
+  "loading": "Memuat perbandingan.",
+  "yes": "Ya",
+  "partly": "Sebagian",
+  "no": "Tidak",
+  "compare": "Bandingkan",
+  "with": "Dengan",
+  "vs": "vs",
+  "caption": "{a} dan {b}, fitur demi fitur",
+  "feature": "Fitur",
+  "clearYes": "{count} dari {total} jelas ya",
+  "seeForYourself": "Lihat sendiri:",
+  "and": "dan",
+  "why": "Mengapa"
+}

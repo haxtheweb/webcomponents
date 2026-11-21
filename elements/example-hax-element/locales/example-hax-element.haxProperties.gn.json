@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Pehẽ ñepyrũrã techapyrã ojeipurúva ohechauka hag̃ua HAX ñemboheko ha mba'ete ikatúva oñembosako'i."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra"
+      }
+    ]
+  }
+}

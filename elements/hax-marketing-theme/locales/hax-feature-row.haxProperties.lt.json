@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funkcijos eilutė",
+    "description": "Produkto ekranas šalia to, ką jis jums reiškia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maža etiketė"
+      },
+      {
+        "title": "Antraštė"
+      },
+      {
+        "title": "Paveikslėlis"
+      },
+      {
+        "title": "Kas rodoma paveikslėlyje"
+      },
+      {
+        "title": "Paveikslėlis dešinėje"
+      },
+      {
+        "title": "Šešėlio spalva (DDD pavadinimas, tuščia – pagal paletę)"
+      }
+    ]
+  }
+}

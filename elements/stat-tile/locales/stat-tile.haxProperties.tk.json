@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistika plitkasy",
+    "description": "Bellikli we nähili üýtgändigi bilen möhüm bir san. Dolandyryş paneli setiri üçin birnäçesini gözenekde ýerleşdiriň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bellik",
+        "description": "Sanyň näme ölçeýändigi."
+      },
+      {
+        "title": "Baha",
+        "description": "San. Ýönekeý san sahypanyň diline görä toparlanýar; başga zatlar ýazylyşy ýaly görkezilýär."
+      },
+      {
+        "title": "Üýtgeşme",
+        "description": "Nähili üýtgändigi, sözler bilen, meselem bu möhletde 6%."
+      },
+      {
+        "title": "Ugur",
+        "description": "Üýtgeşmäniň ýokarymy ýa-da aşakmy.",
+        "options": {
+          "": "Ýok",
+          "up": "Ýokary",
+          "down": "Aşak"
+        }
+      }
+    ]
+  }
+}

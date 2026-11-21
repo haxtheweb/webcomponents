@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistiektegel",
+    "description": "Eén getal dat ertoe doet, met het label en hoe het veranderde. Plaats er meerdere in een raster voor een dashboardrij."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Wat het getal meet."
+      },
+      {
+        "title": "Waarde",
+        "description": "Het getal. Een gewoon getal wordt gegroepeerd volgens de paginataal; al het andere wordt getoond zoals geschreven."
+      },
+      {
+        "title": "Verandering",
+        "description": "Hoe het veranderde, in woorden, zoals 6% deze periode."
+      },
+      {
+        "title": "Richting",
+        "description": "Of de verandering omhoog of omlaag gaat.",
+        "options": {
+          "": "Geen",
+          "up": "Omhoog",
+          "down": "Omlaag"
+        }
+      }
+    ]
+  }
+}

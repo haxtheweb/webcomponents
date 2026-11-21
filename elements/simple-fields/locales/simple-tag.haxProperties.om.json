@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Halluu calaqqee ofumaan",
         "description": "Halluu calaqqee barreeffama maqaa irraa ofumaan argadhu."
+      },
+      {
+        "title": "Hiika",
+        "description": "Mallattootiif halluu hiikaa kenni. Mallattoo giddu-galeessaaf duwwaa dhiisi.",
+        "options": {
+          "": "Giddu-galeessa",
+          "brand": "Maqaa daldalaa",
+          "success": "Milkaa'ina",
+          "warning": "Akeekkachiisa",
+          "danger": "Balaa"
+        }
       }
     ],
     "advanced": [

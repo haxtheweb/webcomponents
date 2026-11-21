@@ -1,0 +1,21 @@
+{
+  "diagram": "Hoahoa",
+  "flowchart": "tūtohi rere",
+  "sequence": "raupapa",
+  "source": "Pūtake",
+  "textAlternative": "Kuputuhi kē",
+  "present": "Whakaatu",
+  "exitPresent": "Puta i te whakaaturanga",
+  "loading": "E uta ana i te hoahoa",
+  "empty": "Kāore anō he mea hei tuhi. Tāpirihia te pūtake o te hoahoa.",
+  "error": "Hapa",
+  "parseError": "Kāore i taea te tuhi i tēnei hoahoa. Tirohia te pūtake.",
+  "loadError": "Kāore i taea te uta i te whare pukapuka hoahoa.",
+  "srcError": "Kāore i taea te uta i te kōnae hoahoa.",
+  "decision": "whakatau",
+  "end": "mutunga",
+  "goTo": "haere ki {target}",
+  "ifGoTo": "mēnā {label}, haere ki {target}",
+  "describedBySource": "He hoahoa e whakaahuatia ana e tōna pūtake.",
+  "scrollable": "Hoahoa, ka taea te panuku"
+}

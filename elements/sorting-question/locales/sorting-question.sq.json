@@ -40,5 +40,7 @@
   "hideDirections": "Fshih udhëzimet",
   "showRelatedContent": "Shfaq përmbajtjen e lidhur",
   "hideRelatedContent": "Fshih përmbajtjen e lidhur",
-  "notAttempted": "Nuk është provuar"
+  "notAttempted": "Nuk është provuar",
+  "cardsDirections": "Vendosi letrat në rendin e saktë me butonat lëviz më herët dhe lëviz më vonë në çdo letër, ose tërhiqi me miun. Kur beson se janë në rendin e saktë, provo përgjigjen duke zgjedhur {checkAnswer}.",
+  "movedToPosition": "{item} u zhvendos në pozicionin {position} nga {total}"
 }

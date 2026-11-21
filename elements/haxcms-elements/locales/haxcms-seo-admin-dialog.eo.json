@@ -6,6 +6,8 @@
   "faviconDescription": "Bildo de retumila langeto / uzata en telefonoj kiel malgranda reteja emblemo",
   "domain": "Domajno",
   "domainDescription": "Domajno de ĉi tiu retejo",
+  "sameAs": "Aliaj profiloj de ĉi tiu retejo",
+  "sameAsDescription": "Unu ligilo po linio al la profiloj de ĉi tiu retejo aŭ organizo aliloke (GitHub, LinkedIn, YouTube, Mastodon). Serĉiloj uzas ilin por konekti tiujn profilojn al ĉi tiu retejo.",
   "language": "Lingvo",
   "languageDescription": "Lingvo de ĉi tiu retejo. Serĉu laŭ nomo aŭ kodo, aŭ enigu alian kodon kiel fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

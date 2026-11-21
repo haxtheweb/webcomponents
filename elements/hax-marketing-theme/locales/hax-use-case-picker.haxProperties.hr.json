@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Birač namjene",
+    "description": "Odaberite čemu web-mjesto služi i dobijte poveznicu koja otvara HAX u pregledniku s tim početnim web-mjestom, uz odgovarajuću CLI naredbu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresa HAX-a u pregledniku",
+        "description": "Gdje se poveznica otvara; dodaju joj se ?skeleton= i &name="
+      },
+      {
+        "title": "Početna web-mjesta koja se izostavljaju",
+        "description": "Strojni nazivi, odvojeni zarezom"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Popis početnih web-mjesta",
+        "description": "Adresa popisa kostura (format koji čita app-hax)"
+      }
+    ]
+  }
+}

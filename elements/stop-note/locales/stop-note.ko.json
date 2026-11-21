@@ -3,5 +3,7 @@
   "status_stop": "중지",
   "status_warning": "경고",
   "status_success": "성공",
-  "status_info": "참고"
+  "status_info": "참고",
+  "status_tip": "알고 계셨나요?",
+  "status_new": "새로운 기능"
 }

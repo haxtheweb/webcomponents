@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Umbala ogqamisayo ozenzekelayo",
         "description": "Fumana umbala ogqamisayo kumbhalo weleyibhile ngokuzenzekelayo."
+      },
+      {
+        "title": "Intsingiselo",
+        "description": "Nika ithegi umbala wentsingiselo. Shiya kungenanto kwithegi engathathi cala.",
+        "options": {
+          "": "Engathathi cala",
+          "brand": "Uphawu",
+          "success": "Impumelelo",
+          "warning": "Isilumkiso",
+          "danger": "Ingozi"
+        }
       }
     ],
     "advanced": [

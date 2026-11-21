@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Externes Tool starten",
+    "description": "Ein Block, der ein externes Lernwerkzeug in einem neuen Fenster oder auf der Seite öffnet, als einfacher Link oder mit einer LTI 1.3-Anmeldeanfrage."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Name des Tools. Er wird in der Kopfzeile und auf der Schaltfläche angezeigt."
+      },
+      {
+        "title": "Beschreibung",
+        "description": "Was Lernende im Tool tun, über der Schaltfläche angezeigt."
+      },
+      {
+        "title": "Start-URL",
+        "description": "Adresse des Tools. Es muss eine vollständige Adresse sein, die mit https:// oder http:// beginnt."
+      },
+      {
+        "title": "Öffnen in",
+        "description": "Ein neues Fenster funktioniert mit jedem Tool. Auf dieser Seite funktioniert nur mit Tools, die das Einbetten in eine andere Website erlauben.",
+        "options": {
+          "window": "Einem neuen Fenster",
+          "embed": "Auf dieser Seite"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-Anmelde-URL",
+        "description": "Nur LTI 1.3: die Adresse des Tools zum Start der Anmeldung. Damit, mit einer Client-ID und einer Deployment-ID sendet die Schaltfläche eine LTI-Anmeldeanfrage, statt einen einfachen Link zu öffnen. Zum Abschließen des Starts wird der LTI-Dienst dieser Website benötigt."
+      },
+      {
+        "title": "LTI-Client-ID",
+        "description": "Die Client-ID, die das Tool dieser Website gegeben hat. Eine öffentliche Kennung, kein Geheimnis: Trage hier niemals Schlüssel oder Geheimnisse ein."
+      },
+      {
+        "title": "LTI-Deployment-ID",
+        "description": "Die Deployment-ID, die das Tool dieser Website gegeben hat. Eine öffentliche Kennung, kein Geheimnis."
+      },
+      {
+        "title": "LTI-Aussteller",
+        "description": "Die Adresse, die diese Website gegenüber dem Tool identifiziert. Leer lassen, um die Adresse der Website zu verwenden, auf der die Seite liegt."
+      },
+      {
+        "title": "Höhe auf der Seite",
+        "description": "Höhe des Tools, wenn es auf dieser Seite geöffnet wird, in Pixeln (200 bis 2000)."
+      },
+      {
+        "title": "Akzentfarbe",
+        "description": "Farbe des Kopfzeilen-Chips und der Schaltfläche. Leer lassen, um dem Theme zu folgen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-Anmeldehinweis",
+        "description": "Ein undurchsichtiger Wert, mit dem der LTI-Dienst dieser Website die lernende Person erkennt. Wird normalerweise von der Website über das Ereignis lti-launch-request geliefert statt hier gespeichert. Niemals ein Passwort oder Schlüssel."
+      },
+      {
+        "title": "LTI-Nachrichtenhinweis",
+        "description": "Ein undurchsichtiger Wert, mit dem der LTI-Dienst dieser Website diesen Start erkennt. Wird normalerweise von der Website geliefert statt hier gespeichert."
+      }
+    ]
+  }
+}

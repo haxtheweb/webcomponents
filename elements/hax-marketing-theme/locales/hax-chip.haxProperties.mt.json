@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Ċippa",
+    "description": "Ikona żgħira b'tikketta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Tikketta"
+      }
+    ]
+  }
+}

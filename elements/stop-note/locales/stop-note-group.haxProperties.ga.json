@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grúpa Stop Note",
+    "description": "Carnaigh roinnt nótaí stop i mbloc amháin a thaispeánann nóta amháin ag an am, mar Leideanna nó Cad atá nua. Is féidir cártaí treoracha, nótaí taoibh agus athfhriotail fhrámaithe a charnadh leo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lipéad",
+        "description": "Ainm don ghrúpa a fhógraíonn léitheoirí scáileáin, mar Leideanna nó Cad atá nua."
+      },
+      {
+        "title": "Nótaí",
+        "description": "Na nótaí stop sa ghrúpa. Is féidir cártaí treoracha, nótaí taoibh agus athfhriotail fhrámaithe a chur leis freisin."
+      }
+    ]
+  }
+}

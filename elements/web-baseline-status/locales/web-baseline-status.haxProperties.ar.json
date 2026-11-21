@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "حالة Baseline",
+    "description": "اعرض حالة دعم المتصفحات Baseline لميزة من ميزات منصة الويب."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "معرّف الميزة",
+        "description": "معرّف ميزة الويب، مثل anchor-positioning. اعثر على المعرّفات في webstatus.dev؛ المعرّف هو الجزء الأخير من URL صفحة الميزة."
+      }
+    ]
+  }
+}

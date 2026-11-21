@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Lliw acen awtomatig",
         "description": "Pennu'r lliw acen o destun y label yn awtomatig."
+      },
+      {
+        "title": "Ystyr",
+        "description": "Rhowch liw ystyr i'r tag. Gadewch yn wag am dag niwtral.",
+        "options": {
+          "": "Niwtral",
+          "brand": "Brand",
+          "success": "Llwyddiant",
+          "warning": "Rhybudd",
+          "danger": "Perygl"
+        }
       }
     ],
     "advanced": [

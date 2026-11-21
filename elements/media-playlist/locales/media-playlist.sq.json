@@ -5,5 +5,7 @@
   "editModeLabel": "Modaliteti i redaktimit të listës së medias",
   "position": "{current} nga {total}",
   "previousItem": "Elementi i mëparshëm",
-  "nextItem": "Elementi tjetër"
+  "nextItem": "Elementi tjetër",
+  "fullScreen": "Ekran i plotë",
+  "exitFullScreen": "Dil nga ekrani i plotë"
 }

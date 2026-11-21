@@ -1,0 +1,19 @@
+{
+  "label": "Irinṣẹ́ òde",
+  "labelLti": "Irinṣẹ́ òde · LTI 1.3",
+  "theTool": "irinṣẹ́ náà",
+  "directions": "Ìtọ́sọ́nà",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "directionsWindow": "Bọ́tìnnì náà ń ṣí fèrèsé tuntun pẹ̀lú irinṣẹ́ náà nínú rẹ̀.",
+  "directionsEmbed": "Bọ́tìnnì náà ń ṣí irinṣẹ́ náà lórí ojú-ìwé yìí. Tí kò bá gbé wá, ṣí i nínú fèrèsé tuntun dípò rẹ̀.",
+  "directionsLti": "Ojú-òpó yìí ń mú ọ wọlé sí irinṣẹ́ náà, nítorí náà o kò nílò àkọọ́lẹ̀ ọ̀tọ̀.",
+  "openWindow": "Ṣí {title} (fèrèsé tuntun)",
+  "openEmbed": "Ṣí {title}",
+  "openInstead": "Ṣí i nínú fèrèsé tuntun dípò rẹ̀",
+  "frameTitle": "{title} (irinṣẹ́ òde)",
+  "openedWindow": "Fèrèsé tuntun ṣí pẹ̀lú irinṣẹ́ náà.",
+  "openedEmbed": "Irinṣẹ́ náà ṣí lórí ojú-ìwé yìí.",
+  "needsUrl": "Búlọ́ọ̀kù yìí nílò àdírẹ́sì ìfilọ́lẹ̀ tó bẹ̀rẹ̀ pẹ̀lú http:// tàbí https://.",
+  "needsSignIn": "Irinṣẹ́ yìí nílò iṣẹ́ ìwọlé ojú-òpó yìí, èyí tí kò sí níbí. A kò ṣí nǹkankan."
+}

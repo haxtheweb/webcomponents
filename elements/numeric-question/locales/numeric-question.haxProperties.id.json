@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pertanyaan numerik",
+    "description": "Pertanyaan yang dijawab dengan angka. Jawabannya berupa angka tetap atau rumus yang dihitung dari variabel, dan dianggap benar jika berada dalam toleransi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pertanyaan",
+        "description": "Apa yang ditanyakan kepada pelajar. Tulis nama variabel dalam kurung kurawal, seperti {d}, untuk menampilkan nilainya."
+      },
+      {
+        "title": "Satuan",
+        "description": "Ditampilkan sebagai teks di samping kolom jawaban, misalnya km/jam."
+      },
+      {
+        "title": "Jawaban",
+        "description": "Angka yang benar. Biarkan kosong jika rumus yang menghitung jawabannya."
+      },
+      {
+        "title": "Rumus",
+        "description": "Menghitung jawaban dari variabel, misalnya d / (t / 60). Dapat menggunakan + - * / ^, tanda kurung, sqrt(), dan abs(). Digunakan alih-alih jawaban jika diisi."
+      },
+      {
+        "title": "Variabel",
+        "description": "Angka yang digunakan rumus dan pertanyaan. Masing-masing mengambil nilai antara nilai terendah dan tertingginya, dengan langkah tertentu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleransi",
+        "description": "Seberapa jauh dari jawaban pasti yang masih dianggap benar. 0 berarti tepat, atau dibulatkan ke angka desimal di bawah."
+      },
+      {
+        "title": "Jenis toleransi",
+        "description": "Absolut: plus atau minus toleransi. Persen: plus atau minus persentase tersebut dari jawaban pasti.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Persen"
+        }
+      },
+      {
+        "title": "Angka desimal",
+        "description": "Pelajar diminta membulatkan ke jumlah angka desimal ini, dan jawaban ditampilkan dengan pembulatan tersebut. Biarkan kosong untuk tanpa pembulatan."
+      },
+      {
+        "title": "Percobaan",
+        "description": "Berapa kali pelajar dapat memeriksa. 0 berarti tidak terbatas."
+      },
+      {
+        "title": "Angka baru di setiap percobaan",
+        "description": "Munculkan nilai variabel baru setiap kali pelajar mencoba lagi. Jawaban sebelumnya tidak ditampilkan saat mereka kembali, hanya apakah jawabannya benar."
+      },
+      {
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan pertanyaan ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "title": "Mulai dalam keadaan tertutup",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuis",
+        "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
+      }
+    ]
+  }
+}

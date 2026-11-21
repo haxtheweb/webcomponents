@@ -2,5 +2,9 @@
   "toggleAnimation": "הפעלה/השהיה של האנימציה",
   "info": "מידע",
   "image": "תמונה",
-  "animatedGif": "GIF מונפש"
+  "animatedGif": "GIF מונפש",
+  "playAnimation": "הפעל אנימציה",
+  "pauseAnimation": "השהה אנימציה",
+  "showDescription": "הצג תיאור",
+  "hideDescription": "הסתר תיאור"
 }

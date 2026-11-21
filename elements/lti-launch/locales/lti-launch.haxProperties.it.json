@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Avvio di strumento esterno",
+    "description": "Un blocco che apre uno strumento didattico esterno in una nuova finestra o nella pagina, come semplice link o con una richiesta di accesso LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nome dello strumento. Viene mostrato nell'intestazione e sul pulsante."
+      },
+      {
+        "title": "Descrizione",
+        "description": "Cosa fanno gli studenti nello strumento, mostrato sopra il pulsante."
+      },
+      {
+        "title": "URL di avvio",
+        "description": "Indirizzo dello strumento. Deve essere un indirizzo completo che inizi con https:// o http://."
+      },
+      {
+        "title": "Apri in",
+        "description": "Una nuova finestra funziona con ogni strumento. In questa pagina funziona solo con strumenti che consentono di essere mostrati all'interno di un altro sito.",
+        "options": {
+          "window": "Una nuova finestra",
+          "embed": "In questa pagina"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL di accesso LTI",
+        "description": "Solo LTI 1.3: l'indirizzo di avvio dell'accesso dello strumento. Con questo, un client ID e un deployment ID, il pulsante invia una richiesta di accesso LTI invece di aprire un semplice link. Per completare l'avvio serve il servizio LTI di questo sito."
+      },
+      {
+        "title": "Client ID LTI",
+        "description": "Il client ID che lo strumento ha fornito a questo sito. Un identificativo pubblico, non un segreto: non inserire mai chiavi o segreti qui."
+      },
+      {
+        "title": "Deployment ID LTI",
+        "description": "Il deployment ID che lo strumento ha fornito a questo sito. Un identificativo pubblico, non un segreto."
+      },
+      {
+        "title": "Issuer LTI",
+        "description": "L'indirizzo che identifica questo sito presso lo strumento. Lascia vuoto per usare l'indirizzo del sito in cui si trova la pagina."
+      },
+      {
+        "title": "Altezza nella pagina",
+        "description": "Altezza dello strumento quando si apre in questa pagina, in pixel (da 200 a 2000)."
+      },
+      {
+        "title": "Colore di accento",
+        "description": "Colore dell'etichetta nell'intestazione e del pulsante. Lascia vuoto per seguire il tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Login hint LTI",
+        "description": "Un valore opaco che il servizio LTI di questo sito usa per riconoscere lo studente. Di solito fornito dal sito tramite l'evento lti-launch-request invece di essere salvato qui. Mai una password o una chiave."
+      },
+      {
+        "title": "Message hint LTI",
+        "description": "Un valore opaco che il servizio LTI di questo sito usa per riconoscere questo avvio. Di solito fornito dal sito invece di essere salvato qui."
+      }
+    ]
+  }
+}

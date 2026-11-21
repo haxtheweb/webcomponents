@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Amsa tana cikin tsari daidai",
   "answerInIncorrectOrder": "Amsa ba ta cikin tsari daidai",
   "moveOptionUp": "Zaɓa don matsar da zaɓi sama a tsari",
-  "moveOptionDown": "Zaɓa don matsar da zaɓi ƙasa a tsari"
+  "moveOptionDown": "Zaɓa don matsar da zaɓi ƙasa a tsari",
+  "moveEarlier": "Matsar da gaba",
+  "moveLater": "Matsar da baya",
+  "correct": "Daidai",
+  "incorrect": "Ba daidai ba"
 }

@@ -1,4 +1,6 @@
 {
   "saveAll": "Llapanta Waqaychay",
-  "saveTheFollowing": "Kaykunata waqaychankichu: {list}?"
+  "saveTheFollowing": "Kaykunata waqaychankichu: {list}?",
+  "save": "Waqaychay",
+  "cancel": "Saqiy"
 }

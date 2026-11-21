@@ -6,6 +6,8 @@
   "faviconDescription": "د براوزر د ټب انځور / په ټیلیفونونو کې د سایټ د کوچني لوګو په توګه کارول کېږي",
   "domain": "ډومین",
   "domainDescription": "د دې ویبسایټ ډومین",
+  "sameAs": "د دې سایټ نورې پېژندپاڼې",
+  "sameAsDescription": "په هره کرښه کې یو لینک د دې سایټ یا سازمان نورو پېژندپاڼو ته (GitHub، LinkedIn، YouTube، Mastodon). د لټون انجنونه یې د دې پېژندپاڼو د دې سایټ سره تړلو لپاره کاروي.",
   "language": "ژبه",
   "languageDescription": "د دې سایټ ژبه. په نوم یا کوډ ولټوئ، یا بل کوډ لکه fr-CA دننه کړئ.",
   "googleAnalyticsId": "د Google Analytics ID",

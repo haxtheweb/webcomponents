@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Chosewerera zolemba",
+    "description": "Malangizo, chiwonetsero ndi zofotokozera za web component, ndi mabatani okopera a HTML, import, npm ndi CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fayilo ya deta ya zolemba",
+        "description": "Deta ya zolemba yomwe imabwera ndi chinthucho (lib/tag.docs.json)."
+      },
+      {
+        "title": "Ndondomeko ya zithunzi za malangizo",
+        "description": "Ndondomeko ya kayendedwe yomwe imabwera ndi chinthucho (tag.motion.json). Mwakufuna."
+      },
+      {
+        "title": "Phunziro la kanema",
+        "description": "Kanema wachidule wonena za chinthucho (YouTube, Vimeo kapena fayilo ya kanema). Imalowa m'malo mwa kanema mu deta ya zolemba."
+      },
+      {
+        "title": "Tsegulani pa tabu",
+        "description": "Tabu yomwe ikuwonetsedwa koyamba.",
+        "options": {
+          "motion": "Malangizo",
+          "video": "Kanema",
+          "demo": "Chiwonetsero",
+          "docs": "Zolemba",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Malangizo odziyambitsa okha",
+        "description": "Yambitsani malangizo pomwe chosewerera chawonekera. Sichigwira ntchito ngati wowerenga amakonda kayendedwe kochepa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mutu wa malangizo",
+        "description": "Kwa zinthu zokhala ndi malangizo angapo, mutu woti utsegulidwe koyamba (mwachitsanzo add-blocks). Siyani chopanda kanthu kwa waukulu."
+      },
+      {
+        "title": "Ulalo wa chiwonetsero chamoyo",
+        "description": "Komwe batani la Tsegulani gwero la chiwonetsero limapita. Mwachisawawa ndi foda ya chiwonetsero mu malo osungira."
+      },
+      {
+        "title": "Ulalo wa zolemba",
+        "description": "Komwe batani la zolemba zonse limapita, mwachitsanzo tsamba lofanana la Learn HAX."
+      }
+    ]
+  }
+}

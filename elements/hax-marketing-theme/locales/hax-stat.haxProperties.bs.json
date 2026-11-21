@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Broj koji odbrojava naviše, s oznakom i linkom na svoju priču"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Broj do kojeg se broji"
+      },
+      {
+        "title": "Prije broja"
+      },
+      {
+        "title": "Nakon broja"
+      },
+      {
+        "title": "Riječi umjesto broja"
+      },
+      {
+        "title": "Šta se broji"
+      },
+      {
+        "title": "Adresa priče na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

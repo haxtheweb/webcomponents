@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Itshati ye-radar",
+    "description": "Itshati ye-radar (yesigcawu) yeemodeli zokuvuthwa nokumaka iinkalo, njenge-HEOSAT. Ibandakanya isicatshulwa esingenye indlela netheyibhile yedatha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Isihloko setshati; sikwasetyenziswa njengegama layo elifikelelekayo."
+      },
+      {
+        "title": "Amanqaku aphezulu",
+        "description": "Elona xabiso liphezulu kwisikali."
+      },
+      {
+        "title": "Iindidi",
+        "description": "Udidi olunye kumgca ngamnye. Kufuneka ubuncinane ezi-3."
+      },
+      {
+        "title": "Amanqaku",
+        "description": "Amanani ahlulwe ngeekoma, elinye kudidi ngalunye ngolandelelwano olufanayo."
+      },
+      {
+        "title": "Amanqaku ekujoliswe kuwo",
+        "description": "Amanani ahlulwe ngeekoma, elinye kudidi ngalunye ngolandelelwano olufanayo."
+      },
+      {
+        "title": "Bonisa isitshixo",
+        "description": "Bonisa isitshixo esibiza amanqaku nezinto ekujoliswe kuzo."
+      },
+      {
+        "title": "Imfutshane",
+        "description": "Itshati encinci engenazo iilebhile, isitshixo okanye itheyibhile yedatha. Hambisa imowusi phezu kwenqaku ukubona amaxabiso alo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ilebhile yamanqaku",
+        "description": "Ilebhile yesitshixo netheyibhile yamanqaku."
+      },
+      {
+        "title": "Ilebhile yokujolisa",
+        "description": "Ilebhile yesitshixo netheyibhile yezinto ekujoliswe kuzo."
+      }
+    ]
+  }
+}

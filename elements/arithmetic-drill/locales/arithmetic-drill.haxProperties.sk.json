@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetický dril",
+    "description": "Krátka séria generovaných aritmetických príkladov s okamžitou spätnou väzbou. Vyberte operácie a rozsah čísel; každé kolo je nové."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Názov tohto drilu, zobrazený v jeho záhlaví."
+      },
+      {
+        "title": "Operácie",
+        "description": "Ktoré druhy príkladov sa zadávajú. Študenti môžu ktorýkoľvek z nich pred začatím vypnúť.",
+        "options": {
+          "add": "Sčítanie",
+          "subtract": "Odčítanie",
+          "multiply": "Násobenie",
+          "divide": "Delenie",
+          "add subtract": "Sčítanie a odčítanie",
+          "multiply divide": "Násobenie a delenie",
+          "add multiply": "Sčítanie a násobenie",
+          "add divide": "Sčítanie a delenie",
+          "subtract multiply": "Odčítanie a násobenie",
+          "subtract divide": "Odčítanie a delenie",
+          "add subtract multiply": "Sčítanie, odčítanie a násobenie",
+          "add subtract divide": "Sčítanie, odčítanie a delenie",
+          "add multiply divide": "Sčítanie, násobenie a delenie",
+          "subtract multiply divide": "Odčítanie, násobenie a delenie",
+          "add subtract multiply divide": "Všetky štyri"
+        }
+      },
+      {
+        "title": "Najmenšie číslo",
+        "description": "Najmenšie číslo použité v príklade. Celé čísla, 0 alebo viac."
+      },
+      {
+        "title": "Najväčšie číslo",
+        "description": "Najväčšie číslo použité v príklade. Výsledky delenia a deliteľe tiež zostávajú v tomto rozsahu."
+      },
+      {
+        "title": "Počet príkladov",
+        "description": "Koľko príkladov je v jednom kole (1 až 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Časový limit",
+        "description": "Počet sekúnd na celé kolo. 0 znamená bez časovača, čo je predvolené: drily na čas znevýhodňujú študentov, ktorí potrebujú viac času. Ak je nastavený, študenti si časovač môžu sami vypnúť."
+      },
+      {
+        "title": "Farba zvýraznenia",
+        "description": "Farba štítka v záhlaví a tlačidiel. Ak chcete použiť motív, nechajte prázdne."
+      }
+    ]
+  }
+}

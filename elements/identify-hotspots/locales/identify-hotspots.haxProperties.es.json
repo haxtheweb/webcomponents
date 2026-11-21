@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identificar zonas",
+    "description": "Los estudiantes encuentran los puntos correctos de una imagen haciendo clic, tocando o moviendo una mira con el teclado. La versión calificada de un mapa de imagen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagen",
+        "description": "La imagen en la que buscan los estudiantes."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Describe la imagen para las personas que no pueden verla. Nunca se muestra como título."
+      },
+      {
+        "title": "Título",
+        "description": "Un título corto visible que se muestra sobre la imagen."
+      },
+      {
+        "title": "Pregunta",
+        "description": "Lo que se pide a los estudiantes que encuentren en la imagen."
+      },
+      {
+        "title": "Respuestas",
+        "description": "Cada respuesta es un óvalo con nombre sobre la imagen. La posición y el tamaño son porcentajes de la imagen, medidos desde su esquina superior izquierda. Durante la edición, cada respuesta aparece contorneada en la imagen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intentos",
+        "description": "Cuántas veces puede intentarlo un estudiante. 0 significa ilimitado."
+      },
+      {
+        "title": "Fallos permitidos",
+        "description": "Cuántos fallos terminan un intento. 0 significa ilimitado, y los estudiantes reciben un botón Terminar."
+      },
+      {
+        "title": "Plegable",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Abrir una cierra las demás preguntas plegables que tenga al lado."
+      },
+      {
+        "title": "Empezar plegado",
+        "description": "Si es plegable, empieza como una fila cerrada que solo muestra la pregunta y su estado."
+      },
+      {
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario que se pasa para identificar este elemento en entornos basados en xAPI"
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso al que va destinada esta evaluación."
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Cabeceira destacada",
+    "description": "Unha imaxe grande, GIF ou vídeo cun título e texto por riba, colocado en calquera parte dunha páxina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imaxe ou vídeo",
+        "description": "Un ficheiro JPG, PNG, WebP, GIF, MP4 ou WebM."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Describe a imaxe. Déixao baleiro cando sexa só decoración."
+      },
+      {
+        "title": "Título",
+        "description": "Título mostrado sobre o multimedia. Déixao baleiro para ningún."
+      },
+      {
+        "title": "Texto",
+        "description": "Texto mostrado baixo o título, sobre o multimedia."
+      },
+      {
+        "title": "Ancho completo",
+        "description": "Ocupar de bordo a bordo en vez de quedar na columna de contido."
+      },
+      {
+        "title": "Altura",
+        "options": {
+          "tall": "Alto",
+          "medium": "Medio",
+          "short": "Baixo"
+        }
+      },
+      {
+        "title": "Encadre",
+        "description": "Como se sitúa a foto en cada tamaño de pantalla"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Esvaecemento",
+        "description": "Cor posta sobre o multimedia. Con título ou texto sempre hai unha, para que o texto siga sendo lexible.",
+        "options": {
+          "blue": "Azul",
+          "bottom": "Escuro na parte inferior",
+          "none": "Ningunha"
+        }
+      },
+      {
+        "title": "Posición do texto",
+        "options": {
+          "bottom": "Abaixo",
+          "middle": "Medio"
+        }
+      },
+      {
+        "title": "Punto focal horizontal",
+        "description": "Parte da imaxe que queda á vista cando se recorta, de 0 (esquerda) a 100 (dereita)."
+      },
+      {
+        "title": "Punto focal vertical",
+        "description": "Parte da imaxe que queda á vista cando se recorta, de 0 (arriba) a 100 (abaixo)."
+      }
+    ]
+  }
+}

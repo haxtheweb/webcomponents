@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Ushtrim aritmetike",
+    "description": "Një seri e shkurtër ushtrimesh aritmetike të gjeneruara me komente të menjëhershme. Zgjidh veprimet dhe intervalin e numrave; çdo raund është i ri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Emri i këtij ushtrimi, i shfaqur në kokën e tij."
+      },
+      {
+        "title": "Veprimet",
+        "description": "Cilat lloje ushtrimesh pyeten. Nxënësit mund të çaktivizojnë cilindo prej tyre para se të fillojnë.",
+        "options": {
+          "add": "Mbledhje",
+          "subtract": "Zbritje",
+          "multiply": "Shumëzim",
+          "divide": "Pjesëtim",
+          "add subtract": "Mbledhje dhe zbritje",
+          "multiply divide": "Shumëzim dhe pjesëtim",
+          "add multiply": "Mbledhje dhe shumëzim",
+          "add divide": "Mbledhje dhe pjesëtim",
+          "subtract multiply": "Zbritje dhe shumëzim",
+          "subtract divide": "Zbritje dhe pjesëtim",
+          "add subtract multiply": "Mbledhje, zbritje dhe shumëzim",
+          "add subtract divide": "Mbledhje, zbritje dhe pjesëtim",
+          "add multiply divide": "Mbledhje, shumëzim dhe pjesëtim",
+          "subtract multiply divide": "Zbritje, shumëzim dhe pjesëtim",
+          "add subtract multiply divide": "Të katërta"
+        }
+      },
+      {
+        "title": "Numri më i vogël",
+        "description": "Numri më i vogël i përdorur në një ushtrim. Numra të plotë, 0 ose më shumë."
+      },
+      {
+        "title": "Numri më i madh",
+        "description": "Numri më i madh i përdorur në një ushtrim. Përgjigjet e pjesëtimit dhe pjesëtuesit mbeten gjithashtu në këtë interval."
+      },
+      {
+        "title": "Numri i ushtrimeve",
+        "description": "Sa ushtrime ka në një raund (1 deri në 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kufiri kohor",
+        "description": "Sekondat e lejuara për një raund të plotë. 0 do të thotë pa kohëmatës, që është parazgjedhja: ushtrimet me kohë i dështojnë nxënësit që kanë nevojë për më shumë kohë. Kur caktohet, nxënësit mund ta çaktivizojnë vetë kohëmatësin."
+      },
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra e etiketës së kokës dhe e butonave. Lëre bosh për të ndjekur temën."
+      }
+    ]
+  }
+}

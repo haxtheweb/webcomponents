@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Àwọn ìdáhùn",
-        "description": "Ètò-ìtẹ̀léra àwọn ìdáhùn ni ó ń pinnu ọ̀wọ́ tó tọ́."
+        "description": "Ètò-ìtẹ̀léra àwọn ìdáhùn ni ó ń pinnu ọ̀wọ́ tó tọ́.",
+        "options": {
+          "": "Àkójọ",
+          "cards": "Àwọn káàdì àwòrán"
+        }
+      },
+      {
+        "title": "Àwọn ìdáhùn",
+        "description": "Ìtò ìdáhùn ló ń ṣàlàyé ìtẹ̀léra tó tọ̀nà."
       }
     ],
     "advanced": [

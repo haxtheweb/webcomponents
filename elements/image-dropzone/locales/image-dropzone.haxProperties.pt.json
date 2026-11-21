@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zonas de soltar em imagem",
+    "description": "Os alunos colocam rótulos em zonas sobre uma imagem e depois verificam a resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagem",
+        "description": "A imagem em que os alunos colocam os rótulos."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Descreve a imagem para pessoas que não podem vê-la. Não revele onde os rótulos vão."
+      },
+      {
+        "title": "Título da imagem",
+        "description": "Um título curto visível para a imagem, mostrado acima dela."
+      },
+      {
+        "title": "Pergunta",
+        "description": "O que os alunos devem fazer com os rótulos."
+      },
+      {
+        "title": "Rótulos e zonas",
+        "description": "Cada item é um rótulo que os alunos podem colocar. Dê a um rótulo um nome de zona para pôr a zona dele na imagem; um rótulo sem nome de zona é um extra que não pertence a lugar nenhum. Os números das zonas são porcentagens da imagem."
+      },
+      {
+        "title": "Legenda",
+        "description": "Legenda opcional mostrada abaixo da imagem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativas",
+        "description": "Quantas vezes um aluno pode verificar. 0 significa ilimitado."
+      },
+      {
+        "title": "Embaralhar rótulos",
+        "description": "Mostrar os rótulos em uma ordem diferente a cada visita."
+      },
+      {
+        "title": "Recolhível",
+        "description": "Mostrar esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra só a pergunta e o status."
+      },
+      {
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade avaliativa (por ex. pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do questionário",
+        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso a que esta avaliação se destina."
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Attēla nomešanas zona",
+    "description": "Izglītojamie novieto etiķetes uz zonām virs attēla, tad pārbauda savu atbildi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Attēls",
+        "description": "Attēls, uz kura izglītojamie novieto etiķetes."
+      },
+      {
+        "title": "Alternatīvais teksts",
+        "description": "Apraksta attēlu cilvēkiem, kuri to nevar redzēt. Neatklājiet, kur jānovieto etiķetes."
+      },
+      {
+        "title": "Attēla virsraksts",
+        "description": "Īss redzams attēla virsraksts, kas tiek rādīts virs tā."
+      },
+      {
+        "title": "Jautājums",
+        "description": "Kas izglītojamajiem jādara ar etiķetēm."
+      },
+      {
+        "title": "Etiķetes un zonas",
+        "description": "Katrs vienums ir etiķete, ko izglītojamie var novietot. Piešķiriet etiķetei zonas nosaukumu, lai tās zona parādītos attēlā; etiķete bez zonas nosaukuma ir lieka un nekur nepieder. Zonu skaitļi ir procentos no attēla."
+      },
+      {
+        "title": "Paraksts",
+        "description": "Neobligāts paraksts, kas tiek rādīts zem attēla."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mēģinājumi",
+        "description": "Cik reižu izglītojamais var pārbaudīt. 0 nozīmē neierobežoti."
+      },
+      {
+        "title": "Jaukt etiķetes",
+        "description": "Rādīt etiķetes katrā apmeklējumā citā secībā."
+      },
+      {
+        "title": "Sakļaujams",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, aizveras citi blakus esošie sakļaujamie jautājumi."
+      },
+      {
+        "title": "Sākt sakļautu",
+        "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kas rāda tikai jautājumu un tā statusu."
+      },
+      {
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma vērtēšanas formāts (piemēram, punkti, atzīme ar burtu, procenti, izpilde)."
+      },
+      {
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      },
+      {
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram šis vērtējums paredzēts."
+      }
+    ]
+  }
+}

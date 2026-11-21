@@ -5,5 +5,7 @@
   "editModeLabel": "Breytingahamur miðlaspilunarlista",
   "position": "{current} af {total}",
   "previousItem": "Fyrra atriði",
-  "nextItem": "Næsta atriði"
+  "nextItem": "Næsta atriði",
+  "fullScreen": "Allur skjárinn",
+  "exitFullScreen": "Hætta í öllum skjánum"
 }

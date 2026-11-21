@@ -1,0 +1,16 @@
+{
+  "drawing": "Debuxo",
+  "edit": "Editar o debuxo",
+  "start": "Comezar a debuxar",
+  "remove": "Eliminar o debuxo",
+  "empty": "Aínda non hai nada debuxado",
+  "save": "Gardar",
+  "cancel": "Cancelar",
+  "close": "Pechar",
+  "discard": "Descartar os cambios",
+  "discardConfirm": "Descartar os cambios sen gardar?",
+  "keepEditing": "Seguir editando",
+  "draw": "Debuxo",
+  "feedback": "Comentarios",
+  "signature": "Sinatura"
+}

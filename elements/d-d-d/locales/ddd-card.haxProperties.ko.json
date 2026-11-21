@@ -52,6 +52,20 @@
           "_top": "최상위 창 - _top",
           "_parent": "상위 창 - _parent"
         }
+      },
+      {
+        "title": "화살표 없음",
+        "description": "버튼 화살표를 숨깁니다."
+      },
+      {
+        "title": "링크: 대상",
+        "description": "링크를 열 위치.",
+        "options": {
+          "": "같은 창",
+          "_blank": "새 창 - _blank",
+          "_top": "최상위 창 - _top",
+          "_parent": "상위 창 - _parent"
+        }
       }
     ],
     "developer": [

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Izbirnik namena",
+    "description": "Izberite, čemu je spletišče namenjeno, in dobite povezavo, ki odpre HAX v brskalniku s tem začetnim spletiščem, ter ustrezen ukaz CLI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov HAX v brskalniku",
+        "description": "Kje se povezava odpre; dodata se ?skeleton= in &name="
+      },
+      {
+        "title": "Začetna spletišča, ki jih izpustimo",
+        "description": "Strojna imena, ločena z vejico"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Seznam začetnih spletišč",
+        "description": "Naslov seznama okostij (oblika, ki jo bere app-hax)"
+      }
+    ]
+  }
+}

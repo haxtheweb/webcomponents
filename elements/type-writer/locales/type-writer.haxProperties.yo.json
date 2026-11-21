@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Ẹ̀rọ ìtẹ̀wé",
     "description": "Ọ̀rọ̀ tí ó ń tẹ ara rẹ̀ ní lẹ́tà kan lẹ́ẹ̀kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ láti tẹ̀ jáde nígbà tí ẹ̀yà náà bá yí wọ inú ìwòye."
+      },
+      {
+        "title": "Títẹ̀",
+        "description": "Fi kọ́sọ̀ tó ń ṣẹ́jú hàn; ẹ̀yà náà ń ṣètò èyí nígbà tí ó ń tẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ìdádúró",
+        "description": "Mílísẹ́kọ́ńdì láti dúró kí títẹ̀ tó bẹ̀rẹ̀."
+      },
+      {
+        "title": "Àkókò kọ́sọ̀",
+        "description": "Mílísẹ́kọ́ńdì tí kọ́sọ̀ ń bá ìṣẹ́jú lọ lẹ́yìn tí a ti tẹ ọ̀rọ̀ náà."
+      },
+      {
+        "title": "Ìyára",
+        "description": "Mílísẹ́kọ́ńdì fún lẹ́tà kọ̀ọ̀kan; àwọn nọ́mbà tó kéré ń tẹ̀ kíákíá."
+      }
+    ]
   }
 }

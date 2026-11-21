@@ -23,7 +23,9 @@
           "stop": "Arrêt",
           "warning": "Avertissement",
           "success": "Confirmation",
-          "info": "Avis"
+          "info": "Avis",
+          "tip": "Astuce",
+          "new": "Nouveautés"
         }
       },
       {

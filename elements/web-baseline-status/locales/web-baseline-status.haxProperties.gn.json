@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline tekotee",
+    "description": "Ehechauka Baseline kundahára pytyvõ tekotee peteĩ ñanduti plataforma mba'e rehegua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mba'e ID",
+        "description": "Ñanduti mba'e ID, techapyrã anchor-positioning. Ejuhu ID webstatus.dev-pe; ID ha'e mba'e kuatiarogue URL vore paha."
+      }
+    ]
+  }
+}

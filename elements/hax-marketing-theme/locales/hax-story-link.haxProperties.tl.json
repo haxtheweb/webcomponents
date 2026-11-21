@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Button ng kuwento",
+    "description": "Ang button na nagbubukas ng kuwento sa likod ng isang pahayag sa hax.cloud, o ang katugmang lugar sa ibang site ng HAX network"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kung saan ito pupunta",
+        "options": {
+          "cloud": "hax.cloud, ang kuwento",
+          "learn": "learn.hax.cloud, isang tutorial",
+          "try": "browser.hax.cloud, subukan ito",
+          "elements": "webcomponents.hax.cloud, isang block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Address sa site na iyon (ang kuwento sa hax.cloud ay mukhang stories/ee450a19)"
+      },
+      {
+        "title": "Tungkol saan ito"
+      },
+      {
+        "title": "Maliit na chip"
+      },
+      {
+        "title": "Ipakita sa button kung tungkol saan ito"
+      }
+    ]
+  }
+}

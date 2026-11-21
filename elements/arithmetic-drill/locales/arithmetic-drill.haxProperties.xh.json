@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Uqheliselo lwezibalo",
+    "description": "Uthotho olufutshane lweengxaki zezibalo ezenziweyo ezinengxelo kwangoko. Khetha imisebenzi noluhlu lwamanani; umjikelo ngamnye mtsha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lolu qheliselo, eliboniswa kwisihloko salo."
+      },
+      {
+        "title": "Imisebenzi",
+        "description": "Ziziphi iintlobo zeengxaki ezibuzwayo. Abafundi bangacima nayiphi na kuzo ngaphambi kokuqala.",
+        "options": {
+          "add": "Ukudibanisa",
+          "subtract": "Ukuthabatha",
+          "multiply": "Ukuphinda-phinda",
+          "divide": "Ukwahlula",
+          "add subtract": "Ukudibanisa nokuthabatha",
+          "multiply divide": "Ukuphinda-phinda nokwahlula",
+          "add multiply": "Ukudibanisa nokuphinda-phinda",
+          "add divide": "Ukudibanisa nokwahlula",
+          "subtract multiply": "Ukuthabatha nokuphinda-phinda",
+          "subtract divide": "Ukuthabatha nokwahlula",
+          "add subtract multiply": "Ukudibanisa, ukuthabatha nokuphinda-phinda",
+          "add subtract divide": "Ukudibanisa, ukuthabatha nokwahlula",
+          "add multiply divide": "Ukudibanisa, ukuphinda-phinda nokwahlula",
+          "subtract multiply divide": "Ukuthabatha, ukuphinda-phinda nokwahlula",
+          "add subtract multiply divide": "Zone"
+        }
+      },
+      {
+        "title": "Elona nani lincinci",
+        "description": "Elona nani lincinci elisetyenziswa kwingxaki. Amanani apheleleyo, 0 okanye ngaphezulu."
+      },
+      {
+        "title": "Elona nani likhulu",
+        "description": "Elona nani likhulu elisetyenziswa kwingxaki. Iimpendulo zokwahlula nezahluli nazo zihlala kolu luhlu."
+      },
+      {
+        "title": "Inani leengxaki",
+        "description": "Zingaphi iingxaki ezikumjikelo omnye (1 ukuya ku-100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umda wexesha",
+        "description": "Imizuzwana evumelekileyo yomjikelo wonke. 0 kuthetha akukho sibali-xesha, nto leyo emiselweyo: uqheliselo olunexesha luyabahlula abafundi abafuna ixesha elingakumbi. Xa lisetiwe, abafundi basenokusicima isibali-xesha ngokwabo."
+      },
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala wetshiphu yesihloko namaqhosha. Shiya kungenanto ukulandela umxholo."
+      }
+    ]
+  }
+}

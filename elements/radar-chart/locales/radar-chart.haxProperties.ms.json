@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Carta radar",
+    "description": "Carta radar (labah-labah) untuk model kematangan dan pemarkahan faset, seperti HEOSAT. Termasuk alternatif teks dan jadual data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Tajuk carta; juga digunakan sebagai nama boleh aksesnya."
+      },
+      {
+        "title": "Skor maksimum",
+        "description": "Nilai tertinggi pada skala."
+      },
+      {
+        "title": "Kategori",
+        "description": "Satu kategori setiap baris. Memerlukan sekurang-kurangnya 3."
+      },
+      {
+        "title": "Skor",
+        "description": "Nombor dipisahkan dengan koma, satu setiap kategori dalam susunan yang sama."
+      },
+      {
+        "title": "Skor sasaran",
+        "description": "Nombor dipisahkan dengan koma, satu setiap kategori dalam susunan yang sama."
+      },
+      {
+        "title": "Tunjukkan petunjuk",
+        "description": "Tunjukkan petunjuk yang menamakan skor dan sasaran."
+      },
+      {
+        "title": "Padat",
+        "description": "Carta lebih kecil tanpa label, petunjuk atau jadual data. Halakan tetikus ke titik untuk melihat nilainya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Label skor",
+        "description": "Label petunjuk dan jadual untuk skor."
+      },
+      {
+        "title": "Label sasaran",
+        "description": "Label petunjuk dan jadual untuk sasaran."
+      }
+    ]
+  }
+}

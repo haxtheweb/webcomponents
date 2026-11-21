@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "コントリビューター",
+    "description": "プロジェクトを作った人々。名簿ファイルから"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "名簿ファイル（JSON）"
+      },
+      {
+        "title": "表示: landed、lab、code"
+      },
+      {
+        "title": "表示する最大人数（0 はすべて）"
+      }
+    ]
+  }
+}

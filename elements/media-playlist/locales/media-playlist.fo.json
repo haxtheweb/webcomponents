@@ -5,5 +5,7 @@
   "editModeLabel": "Rættingarstøða fyri miðlaspælilista",
   "position": "{current} av {total}",
   "previousItem": "Fyrra atrið",
-  "nextItem": "Næsta atrið"
+  "nextItem": "Næsta atrið",
+  "fullScreen": "Fullur skíggi",
+  "exitFullScreen": "Far úr fullum skíggja"
 }

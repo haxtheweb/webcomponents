@@ -20,6 +20,12 @@
         "title": "Mufananidzo",
         "description": "Mufananidzo unoratidzwa nechirevo."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Ine furemu",
+        "description": "Dhirowa mutsara pafuremu yebhuroko inogovaniswa, ine icon nezita pamusoro payo, kuti ienderane nezvinyorwa nemakadhi emirayiridzo."
+      }
     ]
   }
 }

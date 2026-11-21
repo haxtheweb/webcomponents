@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platform-összehasonlítás",
+    "description": "Fej fej mellett: válasszon ki bármely két platformot egy adatfájlból"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Összehasonlító adatok (JSON)"
+      },
+      {
+        "title": "Bal oldali platform azonosítója"
+      },
+      {
+        "title": "Jobb oldali platform azonosítója"
+      }
+    ]
+  }
+}

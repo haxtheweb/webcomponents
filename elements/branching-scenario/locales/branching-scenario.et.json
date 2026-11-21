@@ -1,0 +1,22 @@
+{
+  "scenario": "Stsenaarium",
+  "directions": "Juhised",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "directionsRead": "Loe iga stseeni ja vali, mida sina teeksid.",
+  "directionsEndings": "Lõppe on mitu. Kui oled lõpetanud, proovi teist teed.",
+  "startOver": "Alusta otsast",
+  "back": "Üks samm tagasi",
+  "tryAnother": "Proovi teist teed",
+  "path": "Tee",
+  "scene": "Stseen",
+  "ending": "Lõpp",
+  "end": "lõpp",
+  "scenesSeen": "{seen}/{total} stseeni nähtud",
+  "endingReached": "Lõpp saavutatud",
+  "addScene": "Lisa stseen",
+  "newScene": "Uus stseen",
+  "newSceneText": "Kirjelda, mis juhtub, ja seo siis iga valik stseeniga.",
+  "editingNote": "Muutmine: kuvatakse kõik stseenid. Valik on link kujul # ja stseeni ID.",
+  "noScenes": "Stsenaariumi alustamiseks lisa stseen."
+}

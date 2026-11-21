@@ -1,0 +1,8 @@
+{
+  "theme": "ທີມ",
+  "palette": "ຈານສີ",
+  "themeDefault": "ຄ່າເລີ່ມຕົ້ນຂອງທີມ",
+  "designSystem": "ລະບົບການອອກແບບ",
+  "designSystemDefault": "DDD (ຄ່າເລີ່ມຕົ້ນ)",
+  "designSystemUnavailable": "ທີມນີ້ຮັກສາລະບົບການອອກແບບຂອງມັນເອງ"
+}

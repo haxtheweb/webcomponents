@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Släppzoner i bild",
+    "description": "Eleverna placerar etiketter på zoner ovanpå en bild och kontrollerar sedan sitt svar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "Bilden som eleverna placerar etiketter på."
+      },
+      {
+        "title": "Alternativ text",
+        "description": "Beskriver bilden för personer som inte kan se den. Avslöja inte var etiketterna ska placeras."
+      },
+      {
+        "title": "Bildtitel",
+        "description": "En kort synlig titel för bilden, som visas ovanför den."
+      },
+      {
+        "title": "Fråga",
+        "description": "Vad eleverna ombeds göra med etiketterna."
+      },
+      {
+        "title": "Etiketter och zoner",
+        "description": "Varje objekt är en etikett som eleverna kan placera. Ge en etikett ett zonnamn för att placera dess zon i bilden; en etikett utan zonnamn är extra och hör inte hemma någonstans. Zonsiffrorna är procent av bilden."
+      },
+      {
+        "title": "Bildtext",
+        "description": "Valfri bildtext som visas under bilden."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Försök",
+        "description": "Hur många gånger en elev kan kontrollera. 0 betyder obegränsat."
+      },
+      {
+        "title": "Blanda etiketter",
+        "description": "Visa etiketterna i en annan ordning vid varje besök."
+      },
+      {
+        "title": "Hopfällbar",
+        "description": "Visa frågan som en rad som öppnas och stängs. När en öppnas stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "title": "Börja hopfälld",
+        "description": "När den är hopfällbar börjar den som en stängd rad som bara visar frågan och dess status."
+      },
+      {
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, bokstav, procent, slutförande)."
+      },
+      {
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizets namn",
+        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
+      }
+    ]
+  }
+}

@@ -3,5 +3,6 @@
   "zoomOut": "Zoom arrière",
   "rotateRight": "Pivoter à droite",
   "mirrorImage": "Image miroir",
-  "openInNewWindow": "Ouvrir dans une nouvelle fenêtre"
+  "openInNewWindow": "Ouvrir dans une nouvelle fenêtre",
+  "imageTools": "Outils d'image"
 }

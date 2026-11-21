@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opsionele opsommingsteks wanneer besonderhede oop is"
+        "title": "Opsionele opsommingsteks wanneer besonderhede oop is",
+        "description": "Knoppieteks terwyl die beskrywing versteek is, soos Wys beskrywing."
       },
       {
         "property": "closeText",
-        "title": "Opsionele opsommingsteks wanneer besonderhede toe is"
+        "title": "Opsionele opsommingsteks wanneer besonderhede toe is",
+        "description": "Knoppieteks terwyl die beskrywing gewys word, soos Versteek beskrywing."
       }
     ]
   }

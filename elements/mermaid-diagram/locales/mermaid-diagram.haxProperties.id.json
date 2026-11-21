@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram dari teks",
+    "description": "Tulis diagram sebagai teks (Mermaid): diagram alir, urutan, linimasa, dan lainnya. Diagram digambar di halaman dengan alternatif teks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Ditampilkan di atas diagram dan digunakan sebagai namanya."
+      },
+      {
+        "title": "Sumber diagram",
+        "description": "Teks Mermaid, misalnya: flowchart TD, lalu satu baris per tautan seperti A[Draft] --> B{Ready?}. Tambahkan |label| setelah panah untuk memberinya label. Gambar diperbarui saat Anda mengetik."
+      },
+      {
+        "title": "Alternatif teks",
+        "description": "Jelaskan apa yang ditampilkan diagram untuk orang yang tidak dapat melihatnya. Biarkan kosong pada diagram alir agar langkah-langkahnya dicantumkan otomatis."
+      },
+      {
+        "title": "Keterangan",
+        "description": "Keterangan opsional yang ditampilkan di bawah diagram."
+      },
+      {
+        "title": "Tampilkan sumber",
+        "description": "Tampilkan teks diagram di samping gambar."
+      },
+      {
+        "title": "Tampilkan alternatif teks",
+        "description": "Tampilkan alternatif teks di bawah gambar. Selalu tersedia bagi pembaca layar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "File sumber",
+        "description": "Alamat file .mmd yang digambar alih-alih teks di atas (https atau jalur di situs ini)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna chip ikon di judul."
+      }
+    ]
+  }
+}

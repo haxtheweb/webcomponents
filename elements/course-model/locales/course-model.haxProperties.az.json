@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "başlıq"
+        "title": "başlıq",
+        "description": "Kurs modelinin üstündə göstərilən başlıq."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Göstəriləcək 3D model faylının (.glb və ya .gltf) ünvanı."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D modeli görə bilməyən insanlar üçün təsvir edin."
       },
       {
         "title": "Məlumat sahəsi"

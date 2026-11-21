@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenarioscène",
+    "description": "Eén scène van een vertakkend scenario. Koppel elke keuze aan een andere scène met # gevolgd door de scène-ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Scène-ID",
+        "description": "Waar keuzes naar linken: een link naar # gevolgd door deze ID leidt naar deze scène. Letters, cijfers en koppeltekens."
+      },
+      {
+        "title": "Kop",
+        "description": "Kop van de scène."
+      },
+      {
+        "title": "Einde",
+        "description": "Of deze scène een pad afsluit, en hoe het afliep.",
+        "options": {
+          "": "Geen einde",
+          "good": "Goed einde",
+          "mixed": "Gemengd einde",
+          "poor": "Slecht einde"
+        }
+      },
+      {
+        "title": "Score",
+        "description": "Score voor het bereiken van dit einde. De hoogste eindscore in het scenario is het maximum."
+      }
+    ]
+  }
+}

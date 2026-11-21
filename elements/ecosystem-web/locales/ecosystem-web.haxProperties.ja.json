@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "エコシステムウェブ",
+    "description": "プロジェクトの各部分のつながりを示すインタラクティブなウェブ。サブウェブとステップごとのツアー付き。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ウェブのデータ",
+        "description": "ウェブの JSON バンドルの URL（PRAW でビルドされた ecosystem-webs.json）。"
+      },
+      {
+        "title": "ウェブ",
+        "description": "最初に表示するウェブの ID。main はエコシステムウェブです。"
+      },
+      {
+        "title": "選択するタイル",
+        "description": "ウェブを開いたときに選択するタイルの ID。"
+      },
+      {
+        "title": "ツアー",
+        "description": "開始するツアーの ID。"
+      },
+      {
+        "title": "リスト表示で開始",
+        "description": "図の代わりに入れ子のリストとしてウェブを表示します。"
+      },
+      {
+        "title": "図のみ",
+        "description": "図だけを図版として表示します: ヘッダー、ツアー、詳細、ステップバーなし。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "表示の基準",
+        "description": "すべてのタイルを 1 つの指標で表示して開始します。",
+        "options": {
+          "": "つながりのみ",
+          "fresh": "鮮度",
+          "bus": "バス係数",
+          "impact": "影響",
+          "evidence": "根拠",
+          "parity": "同等性"
+        }
+      }
+    ]
+  }
+}

@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Pūrere patopato",
     "description": "Kupu ka patopato i a ia anō, kotahi pū i te wā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuputuhi",
+        "description": "Te kuputuhi hei patopato ina panuku mai te huānga ki te tirohanga."
+      },
+      {
+        "title": "E patopato ana",
+        "description": "Whakaaturia te pehu kimokimo; ka tautuhia tēnei e te huānga i a ia e patopato ana."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Takaware",
+        "description": "Ngā hautekau mano hēkona hei tatari i mua i te tīmatanga o te patopato."
+      },
+      {
+        "title": "Te roa o te pehu",
+        "description": "Ngā hautekau mano hēkona e kimokimo tonu ai te pehu i muri i te patopatohia o te kuputuhi."
+      },
+      {
+        "title": "Tere",
+        "description": "Ngā hautekau mano hēkona mō ia pūāhua; ka tere ake te patopato a ngā tau iti ake."
+      }
+    ]
   }
 }

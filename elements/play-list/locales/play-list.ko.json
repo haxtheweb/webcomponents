@@ -9,5 +9,7 @@
   "slidePages": "슬라이드 페이지",
   "goToSlide": "슬라이드 {number}(으)로 이동",
   "slides": "슬라이드",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "전체 화면",
+  "exitFullScreen": "전체 화면 종료"
 }

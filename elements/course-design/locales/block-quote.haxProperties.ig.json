@@ -20,6 +20,12 @@
         "title": "Onyonyo",
         "description": "Onyonyo a na-egosi ya na nhota ahụ."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Nwere okpokolo",
+        "description": "See nkwupụta ahụ n'okpokolo ngọngọ a na-ekekọrịta, nwere akara ngosi na akara aha n'elu ya, ka o kwekọọ na ndetu na kaadị ntụziaka."
+      }
     ]
   }
 }

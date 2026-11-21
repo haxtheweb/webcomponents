@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ball den fhoireann",
+    "description": "Lucht féachana amháin, á léiriú ag carachtar, le focail agus cnaipe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cé hé seo"
+      },
+      {
+        "title": "Cineál carachtair"
+      },
+      {
+        "title": "Síol an charachtair"
+      },
+      {
+        "title": "Dath an stáitse (ainm DDD)"
+      },
+      {
+        "title": "Cá dtéann an cnaipe"
+      },
+      {
+        "title": "Téacs an chnaipe"
+      }
+    ]
+  }
+}

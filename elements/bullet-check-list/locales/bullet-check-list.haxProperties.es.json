@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista de verificación con viñetas",
+    "description": "Una lista de casillas de verificación. Los lectores marcan elementos y su progreso se recuerda en su propio dispositivo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nombre de la lista. Se lee en voz alta como etiqueta del grupo de casillas."
+      },
+      {
+        "title": "Elementos",
+        "description": "Cada elemento es una casilla. Los lectores no pueden cambiar los elementos marcados o desactivados."
+      },
+      {
+        "title": "Numerada",
+        "description": "Mostrar una lista numerada en lugar de una con viñetas."
+      },
+      {
+        "title": "Estado",
+        "description": "Cambia los colores para que coincidan con stop-note.",
+        "options": {
+          "info": "Aviso",
+          "success": "Confirmación",
+          "warning": "Advertencia",
+          "stop": "Alto"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id de almacenamiento",
+        "description": "Id único que se usa para recordar el progreso del lector en su dispositivo. Se genera automáticamente; cámbialo solo para compartir el progreso entre listas o para empezar de cero."
+      }
+    ]
+  }
+}

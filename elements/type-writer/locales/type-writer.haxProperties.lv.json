@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Rakstāmmašīna",
     "description": "Teksts, kas pats sevi raksta pa vienai rakstzīmei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teksts",
+        "description": "Teksts, kas jāieraksta, tiklīdz elements ieritinās skatā."
+      },
+      {
+        "title": "Rakstīšana",
+        "description": "Rādīt mirgojošu kursoru; elements to iestata, kamēr raksta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aizture",
+        "description": "Milisekundes, kas jāgaida pirms rakstīšanas sākuma."
+      },
+      {
+        "title": "Kursora ilgums",
+        "description": "Milisekundes, cik ilgi kursors turpina mirgot pēc teksta uzrakstīšanas."
+      },
+      {
+        "title": "Ātrums",
+        "description": "Milisekundes uz rakstzīmi; mazāki skaitļi raksta ātrāk."
+      }
+    ]
   }
 }

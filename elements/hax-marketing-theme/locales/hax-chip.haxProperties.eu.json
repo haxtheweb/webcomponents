@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Txip",
+    "description": "Etiketadun ikono txiki bat"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikonoa"
+      },
+      {
+        "title": "Etiketa"
+      }
+    ]
+  }
+}

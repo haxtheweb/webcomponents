@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Ñemombyky ojeporavokuaáva mba'emimi ojejuruja jave"
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi ojejuruja jave",
+        "description": "Botõ moñe'ẽrã ñemombe'u okañy aja, Ehechauka ñemombe'u-icha."
       },
       {
         "property": "closeText",
-        "title": "Ñemombyky ojeporavokuaáva mba'emimi oñemboty jave"
+        "title": "Ñemombyky ojeporavokuaáva mba'emimi oñemboty jave",
+        "description": "Botõ moñe'ẽrã ñemombe'u ojehechauka aja, Emokañy ñemombe'u-icha."
       }
     ]
   }

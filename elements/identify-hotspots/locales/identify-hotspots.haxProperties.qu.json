@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Puntokunata riqsiy",
+    "description": "Yachaqaqkunaqa huk rikch'api allin tiyanakunata tarinku ñit'ispa, llamispa utaq teclado cruz señalta kuyuchispa. Rikch'a mapap chaninchasqa kaqnin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikch'a",
+        "description": "Yachaqaqkunap maskasqanku rikch'a."
+      },
+      {
+        "title": "Rantin qillqa",
+        "description": "Mana rikuyta atiqkunapaq rikch'ata willan. Manam hayk'appas suti hina rikuchikunchu."
+      },
+      {
+        "title": "Suti",
+        "description": "Rikch'ap hanaqninpi rikuchisqa pisi rikukuq suti."
+      },
+      {
+        "title": "Tapuy",
+        "description": "Yachaqaqkunata rikch'api imatachus tarinankupaq mañakun."
+      },
+      {
+        "title": "Kutichiykuna",
+        "description": "Sapa kutichiy rikch'api sutiyuq runtu rikch'ay. Tiyanan sayayninpas rikch'ap porcentajenmi, hanaq lluq'i k'uchunmanta tupusqa. Allichachkaptinqa, sapa kutichiy rikch'api muyurisqa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruraykuykuna",
+        "description": "Huk yachaqaq hayk'a kutitam ruraykunman. 0 niyta munan mana saywayuq."
+      },
+      {
+        "title": "Saqisqa pantaykuna",
+        "description": "Hayk'a pantaykunam huk ruraykuyta tukuchin. 0 niyta munan mana saywayuq, yachaqaqkunataq Tukuchay ñit'inata hap'inku."
+      },
+      {
+        "title": "K'uyunalla",
+        "description": "Kay tapuyta kichakuq wichq'akuq siq'i hina rikuchiy. Hukta kichayqa waqtanpi kaq huk k'uyunalla tapuykunata wichq'an."
+      },
+      {
+        "title": "K'uyusqa qallariy",
+        "description": "K'uyunalla kaptinqa, tapuyllata kaqnintawan rikuchiq wichq'asqa siq'i hina qallariy."
+      },
+      {
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina puntokuna, siq'i, porcentaje, tukuchay)."
+      },
+      {
+        "title": "Yachay munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachay munay."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tapukuyp sutin",
+        "description": "xAPI kamachisqa pachakunapi kay kaqta riqsinapaq apasqa tapukuy suti"
+      },
+      {
+        "title": "Yachaqay",
+        "description": "OER Schema: kay chaninchay maymanchus rinan yachaqay."
+      }
+    ]
+  }
+}

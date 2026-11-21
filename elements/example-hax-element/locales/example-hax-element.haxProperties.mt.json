@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Element tal-bidu eżempju użat biex juri l-konfigurazzjoni ta' HAX u proprjetajiet editjabbli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu"
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Galvenais bloks",
+    "description": "Liels attēls, GIF vai video ar virsrakstu un tekstu virs tā, ko var novietot jebkur lapā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Attēls vai video",
+        "description": "JPG, PNG, WebP, GIF, MP4 vai WebM fails."
+      },
+      {
+        "title": "Alternatīvais teksts",
+        "description": "Aprakstiet attēlu. Atstājiet tukšu, ja tas ir tikai dekoratīvs."
+      },
+      {
+        "title": "Virsraksts",
+        "description": "Virsraksts, kas tiek rādīts virs multivides. Atstājiet tukšu, ja nav vajadzīgs."
+      },
+      {
+        "title": "Teksts",
+        "description": "Teksts, kas tiek rādīts zem virsraksta, virs multivides."
+      },
+      {
+        "title": "Pilns platums",
+        "description": "Stiepties no malas līdz malai, nevis atrasties satura kolonnā."
+      },
+      {
+        "title": "Augstums",
+        "options": {
+          "tall": "Augsts",
+          "medium": "Vidējs",
+          "short": "Zems"
+        }
+      },
+      {
+        "title": "Kadrējums",
+        "description": "Kā fotoattēls novietojas katrā ekrāna izmērā"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pārklājums",
+        "description": "Krāsa, kas tiek uzklāta virs multivides. Ja ir virsraksts vai teksts, tā vienmēr ir, lai teksts paliktu salasāms.",
+        "options": {
+          "blue": "Zils",
+          "bottom": "Tumšs apakšā",
+          "none": "Nav"
+        }
+      },
+      {
+        "title": "Teksta novietojums",
+        "options": {
+          "bottom": "Apakšā",
+          "middle": "Vidū"
+        }
+      },
+      {
+        "title": "Fokusa punkts horizontāli",
+        "description": "Attēla daļa, kas paliek redzama, kad tas tiek apgriezts, no 0 (pa kreisi) līdz 100 (pa labi)."
+      },
+      {
+        "title": "Fokusa punkts vertikāli",
+        "description": "Attēla daļa, kas paliek redzama, kad tas tiek apgriezts, no 0 (augšā) līdz 100 (apakšā)."
+      }
+    ]
+  }
+}

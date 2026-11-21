@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Umqolo wophawu",
+    "description": "Isikrini semveliso ecaleni kwento esithetha yona kuwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebhile encinci"
+      },
+      {
+        "title": "Isihloko"
+      },
+      {
+        "title": "Umfanekiso"
+      },
+      {
+        "title": "Oko kuboniswa ngumfanekiso"
+      },
+      {
+        "title": "Umfanekiso ngasekunene"
+      },
+      {
+        "title": "Umbala wesithunzi (igama le-DDD, okungenanto kulandela ipaleti)"
+      }
+    ]
+  }
+}

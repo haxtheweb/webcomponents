@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "贡献者",
+    "description": "从名单文件里来个、做迭个项目个人"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "名单文件（JSON）"
+      },
+      {
+        "title": "视图：landed、lab 或者 code"
+      },
+      {
+        "title": "最多显示几个人（0 表示全部）"
+      }
+    ]
+  }
+}

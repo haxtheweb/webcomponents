@@ -6,6 +6,8 @@
   "faviconDescription": "Brauzer tabidagi rasm / telefonlarda kichik sayt logotipi sifatida ishlatiladi",
   "domain": "Domen",
   "domainDescription": "Ushbu veb-sayt domeni",
+  "sameAs": "Bu saytning boshqa profillari",
+  "sameAsDescription": "Bu sayt yoki tashkilotning boshqa joylardagi profillariga har bir qatorga bitta havola (GitHub, LinkedIn, YouTube, Mastodon). Qidiruv tizimlari ulardan o‘sha profillarni shu sayt bilan bog‘lash uchun foydalanadi.",
   "language": "Til",
   "languageDescription": "Ushbu saytning tili. Nomi yoki kodi bo‘yicha qidiring yoki fr-CA kabi boshqa kodni kiriting.",
   "googleAnalyticsId": "Google Analytics ID",

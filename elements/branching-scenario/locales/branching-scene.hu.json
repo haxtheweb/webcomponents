@@ -1,0 +1,14 @@
+{
+  "scene": "Jelenet",
+  "ending": "Befejezés",
+  "goodEnding": "Jó befejezés",
+  "mixedEnding": "Vegyes befejezés",
+  "poorEnding": "Gyenge befejezés",
+  "scoreOf": "Pontszám: {score} / {max}",
+  "scoreOnly": "Pontszám: {score}",
+  "startScene": "Kezdés",
+  "sceneIdLabel": "Jelenetazonosító",
+  "needsId": "Adjon meg jelenetazonosítót, hogy a választások erre a jelenetre hivatkozhassanak.",
+  "orphan": "Egyetlen választás sem hivatkozik erre a jelenetre.",
+  "deadLinks": "Ezek a hivatkozások nem létező jelenetre mutatnak:"
+}

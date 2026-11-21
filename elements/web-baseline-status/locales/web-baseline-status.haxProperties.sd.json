@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline حالت",
+    "description": "ويب پليٽ فارم جي ڪنهن خاصيت جي Baseline برائوزر سپورٽ حالت ڏيکاريو."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "خاصيت ID",
+        "description": "ويب خاصيت جي ID، مثال طور anchor-positioning. IDs webstatus.dev تي ڳوليو؛ ID خاصيت صفحي جي URL جو آخري حصو آهي."
+      }
+    ]
+  }
+}

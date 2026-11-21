@@ -8,5 +8,9 @@
   "theme": "Téama",
   "palette": "Pailéad",
   "cancel": "Cealaigh",
-  "openAppearanceSettings": "Oscail Socruithe Cuma"
+  "openAppearanceSettings": "Oscail Socruithe Cuma",
+  "designSystem": "Córas dearaidh",
+  "designSystemDefault": "DDD (réamhshocrú)",
+  "designSystemThemeDefault": "{name} (réamhshocrú an téama)",
+  "designSystemHelp": "Dath, cló, coirnéil agus dlús. Is é an téama a shocraíonn an leagan amach fós."
 }

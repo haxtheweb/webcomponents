@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Käyttötapausvalitsin",
+    "description": "Valitse, mihin sivusto on tarkoitettu, ja saat linkin, joka avaa HAXin selaimessa kyseisellä aloitussivustolla, sekä vastaavan CLI-komennon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX selaimessa -osoite",
+        "description": "Missä linkki avautuu; siihen lisätään ?skeleton= ja &name="
+      },
+      {
+        "title": "Pois jätettävät aloitussivustot",
+        "description": "Konenimet pilkuin eroteltuina"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aloitussivustojen luettelo",
+        "description": "Runkoluettelon osoite (muoto, jota app-hax lukee)"
+      }
+    ]
+  }
+}

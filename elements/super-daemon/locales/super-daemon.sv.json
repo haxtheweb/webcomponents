@@ -41,6 +41,7 @@
   "resultsCount": "{count} resultat",
   "superDaemon": "Super Daemon",
   "merlin": "Merlin",
+  "voiceName": "Future",
   "closeMerlin": "Stäng Merlin",
   "listeningState": "Lyssnar",
   "speakingState": "Talar",

@@ -766,6 +766,7 @@ export class AppHaxBackendAPI extends LitElement {
           store.authValidated = true;
           if (userName && typeof userName === "string") {
             store.user = {
+              ...(toJS(store.user) || {}),
               name: userName,
             };
           }
@@ -794,8 +795,13 @@ export class AppHaxBackendAPI extends LitElement {
     this.__loopBlock = true;
     const userData = await this.makeCall("getUserDataPath");
     if (userData && userData.data) {
+      // a single-user install keeps no userName in userData.json; the
+      // name the session check just confirmed is the one to keep, or the
+      // menu says "user" and the saved character (keyed by name) is lost
+      const current = toJS(store.user) || {};
       store.user = {
-        name: userData.data.userName,
+        name: userData.data.userName || current.name || "",
+        avatarCode: userData.data.avatarCode || current.avatarCode || "",
       };
     } else {
       this._clearAuthSession(false);

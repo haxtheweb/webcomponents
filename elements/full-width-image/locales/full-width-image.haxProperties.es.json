@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imagen de fondo."
+        "description": "Imagen de fondo.",
+        "title": "Imagen"
       },
       {
         "property": "caption",
-        "description": "Encabezado de texto."
+        "description": "Encabezado de texto.",
+        "title": "Pie de foto"
       }
     ]
   }

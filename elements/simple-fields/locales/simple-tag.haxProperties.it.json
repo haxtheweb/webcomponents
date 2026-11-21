@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Colore di accento automatico",
         "description": "Ricava automaticamente il colore di accento dal testo dell'etichetta."
+      },
+      {
+        "title": "Significato",
+        "description": "Dai al tag un colore con significato. Lascia vuoto per un tag neutro.",
+        "options": {
+          "": "Neutro",
+          "brand": "Brand",
+          "success": "Successo",
+          "warning": "Attenzione",
+          "danger": "Pericolo"
+        }
       }
     ],
     "advanced": [

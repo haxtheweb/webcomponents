@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Umatshini wokuchwetheza",
     "description": "Umbhalo ozichwetheza ngokwawo unobumba omnye ngexesha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isicatshulwa",
+        "description": "Isicatshulwa esiza kuchwethezwa xa into iskrolela ekubonakaleni."
+      },
+      {
+        "title": "Iyachwetheza",
+        "description": "Bonisa ikhesa ekhazimlayo; into iyayiseta le xa ichwetheza."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukulibaziseka",
+        "description": "Iimilisekondi zokulinda ngaphambi kokuba ukuchwetheza kuqale."
+      },
+      {
+        "title": "Ixesha lekhesa",
+        "description": "Iimilisekondi ikhesa eqhubeka ikhazimla ngazo emva kokuba isicatshulwa sichwethezwe."
+      },
+      {
+        "title": "Isantya",
+        "description": "Iimilisekondi ngonobumba ngamnye; amanani asezantsi achwetheza ngokukhawuleza."
+      }
+    ]
   }
 }

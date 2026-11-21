@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Kutsvaga mazwi",
+    "description": "Gridi yetsamba ine mazwi akavanzwa. Vadzidzi vanobaya tsamba yekutanga neyekupedzisira yeizwi rimwe nerimwe. Inodzidzira kuona kuperetwa kwezita, kwete zvarinoreva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Zvinokumbirwa vadzidzi kuti vawane, zvinoratidzwa pamusoro."
+      },
+      {
+        "title": "Mazwi",
+        "description": "Mazwi ekuvanza. Nzvimbo nezviratidzo zvinosiiwa kunze kwegridi. Mazwi asingakwane anonyorwa paunogadzirisa uye anosiiwa kuvadzidzi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saizi yegridi",
+        "description": "Tsamba parutivi, 4 kusvika 16. Siya pasina chinhu kuti ikwane izwi rakareba zvikuru (kusvika 12). Kupfuura 12 kunoskrora kudivi parunhare."
+      },
+      {
+        "title": "Mazwi ari diagonally",
+        "description": "Vanza mazwi diagonally zvakare. Zvakaoma."
+      },
+      {
+        "title": "Mazwi akadzokera kumashure",
+        "description": "Vanza mazwi akanyorwa akadzokera kumashure zvakare. Zvakaoma."
+      },
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwesarudzo rwechip yemusoro, tsamba yekutanga yakasarudzwa nebhatani."
+      }
+    ]
+  }
+}

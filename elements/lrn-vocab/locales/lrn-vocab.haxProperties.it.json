@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Termine"
+        "title": "Termine",
+        "description": "La parola o frase su cui i lettori fanno clic per vederne la definizione."
       },
       {
         "slot": "",

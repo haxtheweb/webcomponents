@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Doorashada ujeeddada",
+    "description": "Dooro waxa goobi u adeegayso oo hel link fura HAX browser-ka oo leh goobtaas bilowga ah, iyo amarka CLI ee u dhigma."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaanka HAX ee browser-ka",
+        "description": "Meesha link-gu ka furmo; waxaa lagu darayaa ?skeleton= iyo &name="
+      },
+      {
+        "title": "Goobaha bilowga ee laga reebayo",
+        "description": "Magacyada mashiinka, oo hakad lagu kala saaray"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liiska goobaha bilowga",
+        "description": "Cinwaanka liiska skeleton-ka (qaabka uu akhriyo app-hax)"
+      }
+    ]
+  }
+}

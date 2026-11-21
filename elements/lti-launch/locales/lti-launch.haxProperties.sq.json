@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hapja e mjetit të jashtëm",
+    "description": "Një bllok që hap një mjet të jashtëm mësimor në një dritare të re ose në faqe, si lidhje e thjeshtë ose me kërkesë hyrjeje LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Emri i mjetit. Shfaqet në kokë dhe në buton."
+      },
+      {
+        "title": "Përshkrimi",
+        "description": "Çfarë bëjnë nxënësit në mjet, e shfaqur mbi buton."
+      },
+      {
+        "title": "URL e hapjes",
+        "description": "Adresa e mjetit. Duhet të jetë adresë e plotë që fillon me https:// ose http://."
+      },
+      {
+        "title": "Hap në",
+        "description": "Një dritare e re funksionon me çdo mjet. Në këtë faqe funksionon vetëm me mjetet që lejojnë të shfaqen brenda një sajti tjetër.",
+        "options": {
+          "window": "Një dritare e re",
+          "embed": "Në këtë faqe"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL e hyrjes LTI",
+        "description": "Vetëm LTI 1.3: adresa e nisjes së hyrjes së mjetit. Me këtë, një client ID dhe një deployment ID, butoni dërgon kërkesë hyrjeje LTI në vend që të hapë një lidhje të thjeshtë. Përfundimi i hapjes kërkon shërbimin LTI të këtij sajti."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID që mjeti i dha këtij sajti. Identifikues publik, jo sekret: mos vendos kurrë çelësa ose sekrete këtu."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID që mjeti i dha këtij sajti. Identifikues publik, jo sekret."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Adresa që e identifikon këtë sajt te mjeti. Lëre bosh për të përdorur adresën e sajtit ku ndodhet faqja."
+      },
+      {
+        "title": "Lartësia në faqe",
+        "description": "Lartësia e mjetit kur hapet në këtë faqe, në piksel (200 deri në 2000)."
+      },
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra e etiketës së kokës dhe e butonit. Lëre bosh për të ndjekur temën."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Sugjerim hyrjeje LTI",
+        "description": "Një vlerë e errët që shërbimi LTI i këtij sajti përdor për të njohur nxënësin. Zakonisht jepet nga sajti përmes ngjarjes lti-launch-request në vend që të ruhet këtu. Kurrë fjalëkalim ose çelës."
+      },
+      {
+        "title": "Sugjerim mesazhi LTI",
+        "description": "Një vlerë e errët që shërbimi LTI i këtij sajti përdor për të njohur këtë hapje. Zakonisht jepet nga sajti në vend që të ruhet këtu."
+      }
+    ]
+  }
+}

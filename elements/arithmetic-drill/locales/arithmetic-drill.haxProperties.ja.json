@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "計算ドリル",
+    "description": "自動生成された計算問題の短いセットで、すぐにフィードバックが得られます。演算と数の範囲を選んでください。毎回新しい問題になります。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "タイトル",
+        "description": "このドリルの名前。ヘッダーに表示されます。"
+      },
+      {
+        "title": "演算",
+        "description": "出題する問題の種類。学習者は開始前にどれでもオフにできます。",
+        "options": {
+          "add": "足し算",
+          "subtract": "引き算",
+          "multiply": "掛け算",
+          "divide": "割り算",
+          "add subtract": "足し算と引き算",
+          "multiply divide": "掛け算と割り算",
+          "add multiply": "足し算と掛け算",
+          "add divide": "足し算と割り算",
+          "subtract multiply": "引き算と掛け算",
+          "subtract divide": "引き算と割り算",
+          "add subtract multiply": "足し算、引き算、掛け算",
+          "add subtract divide": "足し算、引き算、割り算",
+          "add multiply divide": "足し算、掛け算、割り算",
+          "subtract multiply divide": "引き算、掛け算、割り算",
+          "add subtract multiply divide": "4 つすべて"
+        }
+      },
+      {
+        "title": "最小の数",
+        "description": "問題で使う最小の数。0 以上の整数。"
+      },
+      {
+        "title": "最大の数",
+        "description": "問題で使う最大の数。割り算の答えと除数もこの範囲に収まります。"
+      },
+      {
+        "title": "問題数",
+        "description": "1 回あたりの問題数（1～100）。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "制限時間",
+        "description": "1 回全体に許される秒数。0 はタイマーなしで、これがデフォルトです。時間制限のあるドリルは、時間が必要な学習者を不利にします。設定した場合でも、学習者は自分でタイマーをオフにできます。"
+      },
+      {
+        "title": "アクセントカラー",
+        "description": "ヘッダーのチップとボタンの色。空欄にするとテーマに従います。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "loading": "S'està carregant la comparació.",
+  "yes": "Sí",
+  "partly": "En part",
+  "no": "No",
+  "compare": "Compara",
+  "with": "Amb",
+  "vs": "vs.",
+  "caption": "{a} i {b}, funció per funció",
+  "feature": "Funció",
+  "clearYes": "{count} de {total} amb un sí clar",
+  "seeForYourself": "Comprova-ho tu mateix:",
+  "and": "i",
+  "why": "Per què"
+}

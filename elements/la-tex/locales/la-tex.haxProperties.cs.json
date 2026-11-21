@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Pište pomocí matematické notace LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pozadí obrázku",
+        "description": "Pozadí za kreslenými obrázky. Automaticky se přidá jen tehdy, když by kresba byla na stránce špatně vidět, například tmavé čáry v tmavém režimu.",
+        "options": {
+          "auto": "Automaticky",
+          "light": "Světlé",
+          "dark": "Tmavé",
+          "none": "Žádná"
+        }
+      }
+    ]
   }
 }

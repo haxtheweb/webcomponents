@@ -1,0 +1,8 @@
+{
+  "theme": "தீம்",
+  "palette": "வண்ணத் தட்டு",
+  "themeDefault": "தீம் இயல்புநிலை",
+  "designSystem": "வடிவமைப்பு அமைப்பு",
+  "designSystemDefault": "DDD (இயல்புநிலை)",
+  "designSystemUnavailable": "இந்தத் தீம் அதன் சொந்த வடிவமைப்பு அமைப்பை வைத்திருக்கும்"
+}

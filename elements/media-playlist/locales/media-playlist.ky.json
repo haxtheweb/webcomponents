@@ -5,5 +5,7 @@
   "editModeLabel": "Медиа ойнотмо тизмесин түзөтүү режими",
   "position": "{total} ичинен {current}",
   "previousItem": "Мурунку элемент",
-  "nextItem": "Кийинки элемент"
+  "nextItem": "Кийинки элемент",
+  "fullScreen": "Толук экран",
+  "exitFullScreen": "Толук экрандан чыгуу"
 }

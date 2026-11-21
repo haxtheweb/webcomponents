@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ominaisuusrivi",
+    "description": "Näkymä tuotteesta sen rinnalla, mitä se merkitsee sinulle"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pieni nimiö"
+      },
+      {
+        "title": "Otsikko"
+      },
+      {
+        "title": "Kuva"
+      },
+      {
+        "title": "Mitä kuva esittää"
+      },
+      {
+        "title": "Kuva oikealla"
+      },
+      {
+        "title": "Varjon väri (DDD-nimi, tyhjä seuraa palettia)"
+      }
+    ]
+  }
+}

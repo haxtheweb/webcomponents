@@ -6,6 +6,8 @@
   "faviconDescription": "Wêneyê tabloya gerokê / li ser telefonan wekî logoya biçûk a malperê tê bikaranîn",
   "domain": "Domain",
   "domainDescription": "Domaina vê malperê",
+  "sameAs": "Profîlên din ên vê malperê",
+  "sameAsDescription": "Her rêzekê girêdanek bo profîlên vê malperê an rêxistinê li cihên din (GitHub, LinkedIn, YouTube, Mastodon). Motorên lêgerînê wan bi kar tînin da ku wan profîlan bi vê malperê ve girê bidin.",
   "language": "Ziman",
   "languageDescription": "Zimanê vê malperê. Li gorî nav an kodê bigerin, an jî kodeke din wekî fr-CA binivîsin.",
   "googleAnalyticsId": "Google Analytics ID",

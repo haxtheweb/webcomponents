@@ -1,0 +1,22 @@
+{
+  "scenario": "シナリオ",
+  "directions": "説明",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "directionsRead": "各場面を読んで、自分ならどうするかを選んでください。",
+  "directionsEndings": "結末は複数あります。終わったら別の道を試してください。",
+  "startOver": "最初からやり直す",
+  "back": "1 つ戻る",
+  "tryAnother": "別の道を試す",
+  "path": "道筋",
+  "scene": "場面",
+  "ending": "結末",
+  "end": "終わり",
+  "scenesSeen": "{total} 場面中 {seen} 場面を見ました",
+  "endingReached": "結末に到達しました",
+  "addScene": "場面を追加",
+  "newScene": "新しい場面",
+  "newSceneText": "何が起こるかを書き、各選択肢を場面にリンクしてください。",
+  "editingNote": "編集中: すべての場面が表示されます。選択肢は # の後に場面 ID を付けたリンクです。",
+  "noScenes": "シナリオを始めるには場面を追加してください。"
+}

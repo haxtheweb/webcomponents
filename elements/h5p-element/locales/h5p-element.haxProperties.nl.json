@@ -4,7 +4,12 @@
     "description": "Speelt interactieve H5P-inhoud af vanuit een geüpload .h5p-bestand, zonder H5P-server"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-bestand",
+        "description": "Upload of link een .h5p-bestand. Het wordt in de browser uitgepakt; er is geen H5P-server nodig."
+      }
+    ],
     "advanced": [
       {
         "title": "Verouderde iframe-insluitcode",

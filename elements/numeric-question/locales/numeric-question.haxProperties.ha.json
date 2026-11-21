@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Tambaya ta lamba",
+    "description": "Tambayar da ake amsawa da lamba. Amsar lamba ce tsayayye ko dabarar da aka lissafa daga masu canji, kuma ana ƙirga ta idan tana cikin iyakar haƙuri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tambaya",
+        "description": "Abin da ake tambayar masu koyo. Rubuta sunan mai canji a cikin baka mai lanƙwasa, kamar {d}, don nuna ƙimarsa."
+      },
+      {
+        "title": "Ma'auni",
+        "description": "Ana nuna shi a matsayin rubutu kusa da filin amsa, misali km/h."
+      },
+      {
+        "title": "Amsa",
+        "description": "Lamba daidai. Bar shi babu komai idan dabara ce ke lissafa amsar."
+      },
+      {
+        "title": "Dabara",
+        "description": "Yana lissafa amsar daga masu canji, misali d / (t / 60). Za a iya amfani da + - * / ^, baka, sqrt() da abs(). Ana amfani da shi maimakon amsar idan an saita."
+      },
+      {
+        "title": "Masu canji",
+        "description": "Lambobin da dabarar da tambayar ke amfani da su. Kowanne yana ɗaukar ƙima tsakanin mafi ƙanƙanta da mafi girmansa, a matakai."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Haƙuri",
+        "description": "Nisan da ke daga ainihin amsa wanda har yanzu ake ƙirga shi. 0 yana nufin daidai, ko an zagaye zuwa wuraren da ke ƙasa bayan ɗigo."
+      },
+      {
+        "title": "Nau'in haƙuri",
+        "description": "Cikakke: ƙari ko ragi na haƙurin. Kashi: ƙari ko ragi na wannan kashi na ainihin amsa.",
+        "options": {
+          "absolute": "Cikakke",
+          "percent": "Kashi"
+        }
+      },
+      {
+        "title": "Wurare bayan ɗigo",
+        "description": "Ana tambayar masu koyo su zagaye zuwa wurare nawa, kuma ana nuna amsar an zagaye ta haka. Bar shi babu komai don rashin zagayawa."
+      },
+      {
+        "title": "Ƙoƙari",
+        "description": "Sau nawa mai koyo zai iya dubawa. 0 yana nufin mara iyaka."
+      },
+      {
+        "title": "Sababbin lambobi a kowane gwaji",
+        "description": "Kawo sababbin ƙimomin masu canji duk lokacin da mai koyo ya sake gwadawa. Sannan ba a nuna amsarsu ta baya idan sun dawo, sai dai ko sun yi daidai."
+      },
+      {
+        "title": "Ana iya naɗewa",
+        "description": "Nuna wannan tambaya a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin da ake iya naɗewa da ke kusa da shi."
+      },
+      {
+        "title": "Fara a naɗe",
+        "description": "Idan ana iya naɗewa, fara a matsayin layi a rufe da ke nuna tambayar da matsayinta kawai."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Sunan tambayoyin",
+        "description": "Sunan tambayoyin da ake amfani da shi don gano xAPI a tsarin nazari."
+      }
+    ]
+  }
+}

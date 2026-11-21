@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ।"
+        "description": "ਪਿਛੋਕੜ ਚਿੱਤਰ।",
+        "title": "ਚਿੱਤਰ"
       },
       {
         "property": "caption",
-        "description": "ਲਿਖਤ ਸਿਰਲੇਖ।"
+        "description": "ਲਿਖਤ ਸਿਰਲੇਖ।",
+        "title": "ਕੈਪਸ਼ਨ"
       }
     ]
   }

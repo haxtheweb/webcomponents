@@ -4,7 +4,12 @@
     "description": "Leghje u cuntenutu interattivu H5P da un schedariu .h5p caricatu, senza bisognu di un servitore H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Schedariu H5P",
+        "description": "Caricate o ligate un schedariu .h5p. Hè scumpressatu in u navigatore; ùn ci vole micca servitore H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Codice d'integrazione iframe anticu",

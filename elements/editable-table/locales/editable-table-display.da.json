@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiér som CSV.",
   "printTable": "Udskriv tabel",
   "selectColumn": "Vælg kolonne",
-  "dataTable": "Data · Tabel"
+  "dataTable": "Data · Tabel",
+  "filterStatus": "Viser {shown} af {total} rækker, filtreret efter {column}: {text}",
+  "columnNumber": "Kolonne {column}",
+  "clearFilter": "Ryd filter"
 }

@@ -1,0 +1,19 @@
+{
+  "label": "Offeryn allanol",
+  "labelLti": "Offeryn allanol · LTI 1.3",
+  "theTool": "yr offeryn",
+  "directions": "Cyfarwyddiadau",
+  "showDirections": "Dangos cyfarwyddiadau",
+  "hideDirections": "Cuddio cyfarwyddiadau",
+  "directionsWindow": "Mae'r botwm yn agor ffenestr newydd gyda'r offeryn ynddi.",
+  "directionsEmbed": "Mae'r botwm yn agor yr offeryn ar y dudalen hon. Os nad yw'n llwytho, agorwch ef mewn ffenestr newydd yn lle hynny.",
+  "directionsLti": "Mae'r wefan hon yn eich mewngofnodi i'r offeryn, felly nid oes angen cyfrif ar wahân arnoch.",
+  "openWindow": "Agor {title} (ffenestr newydd)",
+  "openEmbed": "Agor {title}",
+  "openInstead": "Agor mewn ffenestr newydd yn lle hynny",
+  "frameTitle": "{title} (offeryn allanol)",
+  "openedWindow": "Agorodd ffenestr newydd gyda'r offeryn.",
+  "openedEmbed": "Agorodd yr offeryn ar y dudalen hon.",
+  "needsUrl": "Mae angen cyfeiriad lansio sy'n dechrau gyda http:// neu https:// ar y bloc hwn.",
+  "needsSignIn": "Mae angen gwasanaeth mewngofnodi'r wefan hon ar yr offeryn hwn, ac nid yw ar gael yma. Ni agorwyd dim."
+}

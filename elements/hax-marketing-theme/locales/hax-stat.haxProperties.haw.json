@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Helu",
+    "description": "He helu e helu ana i luna, me ka lepili a me ka loulou i kona moʻolelo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ka helu e helu ai a hiki"
+      },
+      {
+        "title": "Ma mua o ka helu"
+      },
+      {
+        "title": "Ma hope o ka helu"
+      },
+      {
+        "title": "Nā huaʻōlelo ma kahi o ka helu"
+      },
+      {
+        "title": "Ka mea āna e helu ai"
+      },
+      {
+        "title": "Helu wahi moʻolelo ma hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -6,6 +6,8 @@
   "faviconDescription": "Billede på browserfanen / bruges på telefoner som lille webstedslogo",
   "domain": "Domæne",
   "domainDescription": "Domænet for dette websted",
+  "sameAs": "Andre profiler for dette websted",
+  "sameAsDescription": "Ét link pr. linje til dette websteds eller organisations profiler andre steder (GitHub, LinkedIn, YouTube, Mastodon). Søgemaskiner bruger dem til at forbinde profilerne med dette websted.",
   "language": "Sprog",
   "languageDescription": "Dette websteds sprog. Søg efter navn eller kode, eller indtast en anden kode som fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

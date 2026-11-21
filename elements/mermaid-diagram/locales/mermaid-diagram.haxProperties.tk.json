@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Tekstden diagramma",
+    "description": "Diagrammany tekst hökmünde ýazyň (Mermaid): blok-shema, yzygiderlik, wagt çyzgysy we başgalar. Ol sahypada alternatiw tekst bilen çyzylýar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Diagrammanyň üstünde görkezilýär we onuň ady hökmünde ulanylýar."
+      },
+      {
+        "title": "Diagrammanyň çeşmesi",
+        "description": "Mermaid teksti, meselem: flowchart TD, soňra her baglanyşyk üçin bir setir, meselem A[Draft] --> B{Ready?}. Belgilemek üçin okdan soň |label| goşuň. Çyzgy ýazýan wagtyňyz täzelenýär."
+      },
+      {
+        "title": "Alternatiw tekst",
+        "description": "Diagrammanyň näme görkezýändigini görüp bilmeýänler üçin beýan ediň. Blok-shemada onuň ädimleriniň siziň üçin sanawlanmagy üçin boş goýuň."
+      },
+      {
+        "title": "Ýazgy",
+        "description": "Diagrammanyň aşagynda görkezilýän goşmaça ýazgy."
+      },
+      {
+        "title": "Çeşmäni görkez",
+        "description": "Diagramma tekstini çyzgynyň ýanynda görkez."
+      },
+      {
+        "title": "Alternatiw teksti görkez",
+        "description": "Alternatiw teksti çyzgynyň aşagynda görkez. Ol ekran okaýjylary üçin elmydama elýeterli."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Çeşme faýly",
+        "description": "Ýokardaky tekstiň ýerine çyzylmaly .mmd faýlynyň salgysy (https ýa-da bu saýtdaky ýol)."
+      },
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşydaky ikonka nyşanynyň reňki."
+      }
+    ]
+  }
+}

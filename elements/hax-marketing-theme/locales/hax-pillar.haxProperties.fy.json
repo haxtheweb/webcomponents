@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pylder",
+    "description": "In pylder: namme, sin, ikoan, kleur en wêrom't it wichtich is"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namme"
+      },
+      {
+        "title": "Sin"
+      },
+      {
+        "title": "Ikoan"
+      },
+      {
+        "title": "Kleur (DDD-namme)"
+      },
+      {
+        "title": "Hokker pylder, 1 oant 7"
+      },
+      {
+        "title": "Lytse kaart"
+      },
+      {
+        "title": "Wêr't de namme komt"
+      }
+    ]
+  }
+}

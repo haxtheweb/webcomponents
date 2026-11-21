@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Àkójọ àyẹ̀wò olóńbọ́ọ̀lù",
+    "description": "Àkójọ àwọn àpótí àmì. Àwọn òǹkàwé ń sàmì sí àwọn ohun, a sì ń rántí ìlọsíwájú wọn lórí ẹ̀rọ tiwọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Orúkọ àkójọ náà. A ń kà á sókè gẹ́gẹ́ bí àmì ẹgbẹ́ àwọn àpótí àmì."
+      },
+      {
+        "title": "Àwọn ohun",
+        "description": "Ohun kọ̀ọ̀kan jẹ́ àpótí àmì. Àwọn òǹkàwé kò lè yí àwọn ohun tí a ti sàmì sí tàbí tí a ti dí padà."
+      },
+      {
+        "title": "Olónọ́mbà",
+        "description": "Fi àkójọ olónọ́mbà hàn dípò olóńbọ́ọ̀lù."
+      },
+      {
+        "title": "Ipò",
+        "description": "Ó ń yí àwọn àwọ̀ padà láti bá stop-note mu.",
+        "options": {
+          "info": "Àkíyèsí",
+          "success": "Ìfìdímúlẹ̀",
+          "warning": "Ìkìlọ̀",
+          "stop": "Dúró"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID ìpamọ́",
+        "description": "ID aláìlẹ́gbẹ́ tí a ń lò láti rántí ìlọsíwájú òǹkàwé lórí ẹ̀rọ wọn. A ń ṣẹ̀dá rẹ̀ fúnra rẹ̀; yí i padà nìkan láti pín ìlọsíwájú láàárín àwọn àkójọ tàbí láti bẹ̀rẹ̀ lákọ̀tun."
+      }
+    ]
+  }
+}

@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Máquina de escrever",
     "description": "Texto que se digita sozinho, um caractere de cada vez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Texto",
+        "description": "O texto a digitar quando o elemento aparecer na tela."
+      },
+      {
+        "title": "Digitando",
+        "description": "Mostrar o cursor piscando; o elemento define isto enquanto digita."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Atraso",
+        "description": "Milissegundos de espera antes de começar a digitar."
+      },
+      {
+        "title": "Duração do cursor",
+        "description": "Milissegundos em que o cursor continua piscando depois que o texto é digitado."
+      },
+      {
+        "title": "Velocidade",
+        "description": "Milissegundos por caractere; números menores digitam mais rápido."
+      }
+    ]
   }
 }

@@ -8,5 +8,9 @@
   "theme": "Thema",
   "palette": "Palet",
   "cancel": "Canslo",
-  "openAppearanceSettings": "Agor Gosodiadau'r Golwg"
+  "openAppearanceSettings": "Agor Gosodiadau'r Golwg",
+  "designSystem": "System ddylunio",
+  "designSystemDefault": "DDD (diofyn)",
+  "designSystemThemeDefault": "{name} (diofyn y thema)",
+  "designSystemHelp": "Lliw, teip, corneli a dwysedd. Y thema sy'n dal i benderfynu'r gosodiad."
 }

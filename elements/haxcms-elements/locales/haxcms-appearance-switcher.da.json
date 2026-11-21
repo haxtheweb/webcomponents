@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Temaets standard",
+  "designSystem": "Designsystem",
+  "designSystemDefault": "DDD (standard)",
+  "designSystemUnavailable": "Dette tema bevarer sit eget designsystem"
+}

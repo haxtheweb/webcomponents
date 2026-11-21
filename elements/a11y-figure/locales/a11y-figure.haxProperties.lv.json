@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternatīvais teksts"
+        "title": "Alternatīvais teksts",
+        "description": "Aprakstiet attēlu cilvēkiem, kuri to nevar redzēt."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir atvērtas"
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir atvērtas",
+        "description": "Pogas teksts, kamēr apraksts ir paslēpts, piemēram, “Rādīt aprakstu”."
       },
       {
         "property": "closeText",
-        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir aizvērtas"
+        "title": "Neobligāts kopsavilkuma teksts, kad detaļas ir aizvērtas",
+        "description": "Pogas teksts, kamēr apraksts ir redzams, piemēram, “Slēpt aprakstu”."
       }
     ]
   }

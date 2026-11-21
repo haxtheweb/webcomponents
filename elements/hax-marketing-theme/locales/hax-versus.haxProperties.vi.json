@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Đối đầu",
+    "description": "Lời bên cạnh nút đối đầu với hai nhân vật"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề"
+      },
+      {
+        "title": "Nút dẫn tới đâu"
+      },
+      {
+        "title": "Chữ trên nút"
+      },
+      {
+        "title": "Hạt giống nhân vật bên trái"
+      },
+      {
+        "title": "Hạt giống nhân vật bên phải"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Бутон за история",
+    "description": "Бутонът, който отваря историята зад твърдение в hax.cloud или съответното място в друг сайт от мрежата HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Къде води",
+        "options": {
+          "cloud": "hax.cloud, историята",
+          "learn": "learn.hax.cloud, урок",
+          "try": "browser.hax.cloud, изпробвайте",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Адрес в този сайт (история в hax.cloud изглежда като stories/ee450a19)"
+      },
+      {
+        "title": "За какво се отнася"
+      },
+      {
+        "title": "Малък чип"
+      },
+      {
+        "title": "Покажи в бутона за какво се отнася"
+      }
+    ]
+  }
+}

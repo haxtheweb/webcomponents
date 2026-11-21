@@ -4,7 +4,12 @@
     "description": "Phát nội dung tương tác H5P từ tệp .h5p đã tải lên, không cần máy chủ H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Tệp H5P",
+        "description": "Tải lên hoặc liên kết một tệp .h5p. Nó được giải nén trong trình duyệt; không cần máy chủ H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Mã nhúng iframe cũ",

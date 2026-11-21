@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Whakaharatau tātai",
+    "description": "He raupapa poto o ngā rapanga tātai kua waihangatia me te urupare inamata. Kōwhiria ngā mahi tātai me te awhe tau; he hou ia rauna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te ingoa o tēnei whakaharatau, ka whakaaturia ki tōna pane."
+      },
+      {
+        "title": "Ngā mahi tātai",
+        "description": "Ko ēhea momo rapanga ka pātaia. Ka taea e ngā ākonga te whakaweto i tētahi o ēnei i mua i tā rātou tīmata.",
+        "options": {
+          "add": "Tāpiri",
+          "subtract": "Tango",
+          "multiply": "Whakarea",
+          "divide": "Wehe",
+          "add subtract": "Tāpiri me te tango",
+          "multiply divide": "Whakarea me te wehe",
+          "add multiply": "Tāpiri me te whakarea",
+          "add divide": "Tāpiri me te wehe",
+          "subtract multiply": "Tango me te whakarea",
+          "subtract divide": "Tango me te wehe",
+          "add subtract multiply": "Tāpiri, tango me te whakarea",
+          "add subtract divide": "Tāpiri, tango me te wehe",
+          "add multiply divide": "Tāpiri, whakarea me te wehe",
+          "subtract multiply divide": "Tango, whakarea me te wehe",
+          "add subtract multiply divide": "Te katoa e whā"
+        }
+      },
+      {
+        "title": "Tau iti rawa",
+        "description": "Te tau iti rawa ka whakamahia i tētahi rapanga. He tau tōpū, 0 neke atu rānei."
+      },
+      {
+        "title": "Tau nui rawa",
+        "description": "Te tau nui rawa ka whakamahia i tētahi rapanga. Ka noho hoki ngā whakautu wehe me ngā tauwehe ki tēnei awhe."
+      },
+      {
+        "title": "Te maha o ngā rapanga",
+        "description": "E hia ngā rapanga i te rauna kotahi (1 ki te 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tepe wā",
+        "description": "Ngā hēkona e whakaaetia ana mō te rauna katoa. Ko te 0 te tikanga kāore he matawā, koinei te taunoa: ka taka ngā ākonga e hiahia ana ki te wā roa ake i ngā whakaharatau whai matawā. Ina tautuhia, ka taea tonu e ngā ākonga te whakaweto i te matawā mō rātou anō."
+      },
+      {
+        "title": "Tae arotahi",
+        "description": "Te tae o te maramara pane me ngā pātene. Waiho kia wātea hei whai i te kaupapa."
+      }
+    ]
+  }
+}

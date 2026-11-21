@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Simi maskay",
+    "description": "Pakasqa simikunayuq siq'i malla. Yachaqaqkunaqa sapa simip ñawpaq qhipa siq'inta llaminku. Huk simi imaynatam qillqasqa kasqanta riqsiyta wakichin, manam ima niyta munasqantachu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Yachaqaqkunata imatachus tarinankupaq mañakun, uma siq'ipi rikuchisqa."
+      },
+      {
+        "title": "Simikuna",
+        "description": "Pakanapaq simikuna. Ch'usaq tiyanakuna puntuacionkunapas mallamanta saqisqa. Mana haykuq simikunaqa allichachkaptiyki listasqa, yachaqaqkunapaqtaq saqisqa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mallap sayaynin",
+        "description": "Sapa ladopi siq'ikuna, 4 manta 16 kama. Ch'usaqta saqiy aswan suni simi haykunanpaq (12 kama). 12 manta aswanqa celularpi waqtaman kuyurin."
+      },
+      {
+        "title": "Wiksu simikuna",
+        "description": "Simikunata wiksupipas pakay. Aswan sasa."
+      },
+      {
+        "title": "Qhipanmanta simikuna",
+        "description": "Qhipanmanta qillqasqa simikunatapas pakay. Aswan sasa."
+      },
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, akllasqa ñawpaq siq'i, ñit'inapaq munaspa churana llimp'i."
+      }
+    ]
+  }
+}

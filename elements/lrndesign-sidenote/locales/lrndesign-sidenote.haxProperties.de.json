@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Randnotiz",
+    "description": "Eine vom umgebenden Inhalt abgesetzte Notiz mit optionalem Symbol und optionaler Beschriftung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beschriftung",
+        "description": "Die Beschriftung der Randnotiz."
+      },
+      {
+        "title": "Symbol",
+        "description": "Das Symbol der Randnotiz."
+      },
+      {
+        "title": "Inhalt",
+        "description": "Inhalt der Randnotiz."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Farbe",
+        "description": "Die Farbe, mit der die Randnotiz getönt ist."
+      }
+    ]
+  }
+}

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mudificatore di media",
-        "description": "Mudificatore facultativu di duminiu media. Specifica u tipu di media à u quale s'applica sta licenza."
+        "description": "Mudificatore facultativu di duminiu media. Specifica u tipu di media à u quale s'applica sta licenza.",
+        "options": {
+          "": "Nisun mudificadore"
+        }
       },
       {
         "property": "uri",

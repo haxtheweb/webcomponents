@@ -1,0 +1,14 @@
+{
+  "scene": "Scena",
+  "ending": "Finale",
+  "goodEnding": "Finale positivo",
+  "mixedEnding": "Finale misto",
+  "poorEnding": "Finale negativo",
+  "scoreOf": "Punteggio {score} su {max}",
+  "scoreOnly": "Punteggio {score}",
+  "startScene": "Inizio",
+  "sceneIdLabel": "Id della scena",
+  "needsId": "Aggiungi un id della scena così che le scelte possano collegarsi a questa scena.",
+  "orphan": "Nessuna scelta collega a questa scena.",
+  "deadLinks": "Questi link puntano a una scena che non esiste:"
+}

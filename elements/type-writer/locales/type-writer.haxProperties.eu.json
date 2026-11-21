@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Idazmakina",
     "description": "Bere burua karakterez karaktere idazten duen testua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Testua",
+        "description": "Elementua ikusgai agertzen denean idatziko den testua."
+      },
+      {
+        "title": "Idazten",
+        "description": "Erakutsi kurtsore keinukaria; elementuak idazten duen bitartean ezartzen du."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Atzerapena",
+        "description": "Idazten hasi aurretik itxaron beharreko milisegundoak."
+      },
+      {
+        "title": "Kurtsorearen iraupena",
+        "description": "Testua idatzi ondoren kurtsoreak keinuka jarraitzen duen milisegundoak."
+      },
+      {
+        "title": "Abiadura",
+        "description": "Milisegundoak karaktere bakoitzeko; zenbaki txikiagoek azkarrago idazten dute."
+      }
+    ]
   }
 }

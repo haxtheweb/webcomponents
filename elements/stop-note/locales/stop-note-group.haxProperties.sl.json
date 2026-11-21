@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Skupina opomb stop",
+    "description": "Zložite več opomb stop v en blok, ki prikazuje eno opombo naenkrat, na primer Nasveti ali Kaj je novega. Skupaj z njimi lahko zložite tudi kartice z navodili, stranske opombe in uokvirjene citate."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Ime skupine, ki ga napovejo bralniki zaslona, na primer Nasveti ali Kaj je novega."
+      },
+      {
+        "title": "Opombe",
+        "description": "Opombe stop v skupini. Dodate lahko tudi kartice z navodili, stranske opombe in uokvirjene citate."
+      }
+    ]
+  }
+}

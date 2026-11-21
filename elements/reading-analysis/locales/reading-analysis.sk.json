@@ -60,6 +60,8 @@
   "flagsFound": "Nájdené: {correct} z {total}",
   "toRethink": "Na prehodnotenie: {count}",
   "notEvidence": "nie je dôkazom pre túto záložku",
+  "isEvidence": "dôkaz pre tento príznak",
+  "readingKeys": "Šípkami prechádzajte z jednej položky {unit} na ďalšiu.",
   "markAnswers": "Označiť odpovede",
   "doneMarking": "Dokončiť označovanie odpovedí",
   "editHint": "Upravte text nižšie. Pomocou Označiť odpovede v ponuke bloku vyberte, kam patrí každá záložka.",

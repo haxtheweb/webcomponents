@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krustvārdu mīkla",
+    "description": "Krustvārdu mīkla, kas veidota no vārdu un norāžu saraksta. Režģis tiek ģenerēts automātiski; izglītojamie ieraksta vārdus un pārbauda tos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Virsraksts vai jautājums, kas tiek rādīts virs krustvārdu mīklas."
+      },
+      {
+        "title": "Vārdi",
+        "description": "Katrs vārds un tā norāde. Režģis tiek ģenerēts no šī saraksta: garākais vārds tiek novietots pirmais, un pārējie to krusto pa kopīgiem burtiem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mēģinājumi",
+        "description": "Cik reižu izglītojamais var pārbaudīt. 0 nozīmē neierobežoti."
+      },
+      {
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta krāsa galvenes etiķetei, aktīvajam vārdam un darbību pogām."
+      },
+      {
+        "title": "Sakļaujams",
+        "description": "Rādīt šo krustvārdu mīklu kā rindu, kas atveras un aizveras. Atverot vienu, aizveras citi blakus esošie sakļaujamie jautājumi."
+      },
+      {
+        "title": "Sākt sakļautu",
+        "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kas rāda tikai virsrakstu un statusu."
+      },
+      {
+        "title": "Vērtēšanas formāts",
+        "description": "OER Schema: šī vērtējuma vērtēšanas formāts (piemēram, punkti, atzīme ar burtu, procenti, izpilde)."
+      },
+      {
+        "title": "Mācību mērķis",
+        "description": "OER Schema: ar šo vērtējumu saistītais mācību mērķis."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      },
+      {
+        "title": "Kurss",
+        "description": "OER Schema: kurss, kuram šis vērtējums paredzēts."
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona di depositu nant'à maghjina",
+    "description": "I studienti piazzanu etichette nant'à zone stese sopra una maghjina, po verificheghjanu a so risposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maghjina",
+        "description": "A maghjina nant'à a quale i studienti piazzanu etichette."
+      },
+      {
+        "title": "Testu alternativu",
+        "description": "Discrive a maghjina per e persone chì ùn a ponu vede. Ùn palisate micca induve vanu l'etichette."
+      },
+      {
+        "title": "Titulu di a maghjina",
+        "description": "Un titulu cortu visibile per a maghjina, mustratu sopra."
+      },
+      {
+        "title": "Quistione",
+        "description": "Ciò chì si dumanda à i studienti di fà cù l'etichette."
+      },
+      {
+        "title": "Etichette è zone",
+        "description": "Ogni elementu hè un'etichetta chì i studienti ponu piazzà. Date un nome di zona à un'etichetta per mette a so zona nant'à a maghjina; un'etichetta senza nome di zona hè in più è ùn và in nisun locu. I numeri di zona sò percentuali di a maghjina."
+      },
+      {
+        "title": "Legenda",
+        "description": "Legenda facultativa mustrata sottu à a maghjina."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte un studiente pò verificà. 0 vole dì senza limitu."
+      },
+      {
+        "title": "Mischjà l'etichette",
+        "description": "Mustrà l'etichette in un ordine sfarente à ogni visita."
+      },
+      {
+        "title": "Pieghevule",
+        "description": "Mustrà sta quistione cum'è una linea chì s'apre è si chjode. Apre ne una chjode l'altre quistioni pieghevule vicinu."
+      },
+      {
+        "title": "Principià piegatu",
+        "description": "Quand'ellu hè pieghevule, principià cum'è una linea chjosa chì mostra solu a quistione è u so statu."
+      },
+      {
+        "title": "Furmatu di valutazione",
+        "description": "OER Schema: furmatu di valutazione per sta prova (per esempiu punti, lettera, percentuale, cumpiimentu)."
+      },
+      {
+        "title": "Ugettivu d'amparera",
+        "description": "OER Schema: ugettivu d'amparera assuciatu à sta prova."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analisi."
+      },
+      {
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta prova."
+      }
+    ]
+  }
+}

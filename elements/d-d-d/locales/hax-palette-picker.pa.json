@@ -5,5 +5,6 @@
   "selected": "ਚੁਣਿਆ",
   "currentlyActiveAndSelectedPalette": "ਮੌਜੂਦਾ ਸਮੇਂ ਸਰਗਰਮ ਅਤੇ ਚੁਣਿਆ ਪੈਲੇਟ",
   "currentlyActivePalette": "ਮੌਜੂਦਾ ਸਮੇਂ ਸਰਗਰਮ ਪੈਲੇਟ",
-  "selectedPaletteToApply": "ਲਾਗੂ ਕਰਨ ਲਈ ਚੁਣਿਆ ਪੈਲੇਟ"
+  "selectedPaletteToApply": "ਲਾਗੂ ਕਰਨ ਲਈ ਚੁਣਿਆ ਪੈਲੇਟ",
+  "paletteNumber": "ਪੈਲੇਟ {number}"
 }

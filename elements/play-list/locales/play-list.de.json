@@ -9,5 +9,7 @@
   "slidePages": "Folienseiten",
   "goToSlide": "Zu Folie {number} wechseln",
   "slides": "Folien",
-  "position": "{number} von {total}"
+  "position": "{number} von {total}",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild beenden"
 }

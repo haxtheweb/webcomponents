@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yaadannoo cinaa",
+    "description": "Yaadannoo qabiyyee naannoo irraa adda baafame, mallattoo fi maqaa filannoo waliin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa",
+        "description": "Maqaa yaadannoo cinaa."
+      },
+      {
+        "title": "Mallattoo",
+        "description": "Mallattoo yaadannoo cinaa."
+      },
+      {
+        "title": "Qabiyyee",
+        "description": "Qabiyyee yaadannoo cinaa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Halluu",
+        "description": "Halluu yaadannoon cinaa ittiin halluufame."
+      }
+    ]
+  }
+}

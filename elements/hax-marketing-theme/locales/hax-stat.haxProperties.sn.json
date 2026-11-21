@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nhamba",
+    "description": "Nhamba inoverenga ichikwira, ine zita nelink kunyaya yayo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhamba yekuverenga kusvika"
+      },
+      {
+        "title": "Pamberi penhamba"
+      },
+      {
+        "title": "Mushure menhamba"
+      },
+      {
+        "title": "Mazwi panzvimbo penhamba"
+      },
+      {
+        "title": "Zvainoverenga"
+      },
+      {
+        "title": "Kero yenyaya pa hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

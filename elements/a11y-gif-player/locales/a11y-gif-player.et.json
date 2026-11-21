@@ -2,5 +2,9 @@
   "toggleAnimation": "Lülita animatsioon sisse/välja",
   "info": "info",
   "image": "Pilt",
-  "animatedGif": "Animeeritud GIF"
+  "animatedGif": "Animeeritud GIF",
+  "playAnimation": "Esita animatsioon",
+  "pauseAnimation": "Peata animatsioon",
+  "showDescription": "Näita kirjeldust",
+  "hideDescription": "Peida kirjeldus"
 }

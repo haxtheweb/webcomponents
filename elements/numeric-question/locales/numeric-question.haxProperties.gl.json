@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pregunta numérica",
+    "description": "Unha pregunta que se responde cun número. A resposta é un número fixo ou unha fórmula calculada a partir de variables, e conta cando está dentro dunha tolerancia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pregunta",
+        "description": "O que se lle pregunta ao alumnado. Escribe o nome dunha variable entre chaves, como {d}, para mostrar o seu valor."
+      },
+      {
+        "title": "Unidade",
+        "description": "Móstrase como texto ao lado do campo da resposta, por exemplo km/h."
+      },
+      {
+        "title": "Resposta",
+        "description": "O número correcto. Déixao baleiro cando unha fórmula calcula a resposta."
+      },
+      {
+        "title": "Fórmula",
+        "description": "Calcula a resposta a partir das variables, por exemplo d / (t / 60). Pode usar + - * / ^, parénteses, sqrt() e abs(). Úsase en vez da resposta cando está definida."
+      },
+      {
+        "title": "Variables",
+        "description": "Números que usan a fórmula e a pregunta. Cada un toma un valor entre o seu mínimo e o seu máximo, en pasos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerancia",
+        "description": "Canto se pode afastar da resposta exacta e aínda contar. 0 significa exacta, ou redondeada aos decimais de abaixo."
+      },
+      {
+        "title": "Tipo de tolerancia",
+        "description": "Absoluta: máis ou menos a tolerancia. Porcentaxe: máis ou menos esa porcentaxe da resposta exacta.",
+        "options": {
+          "absolute": "Absoluta",
+          "percent": "Porcentaxe"
+        }
+      },
+      {
+        "title": "Decimais",
+        "description": "Pídese ao alumnado que redondee a este número de decimais, e a resposta móstrase redondeada así. Déixao baleiro para non redondear."
+      },
+      {
+        "title": "Intentos",
+        "description": "Cantas veces pode comprobar unha persoa. 0 significa ilimitado."
+      },
+      {
+        "title": "Números novos en cada intento",
+        "description": "Xera novos valores das variables cada vez que alguén o tenta de novo. Entón a súa resposta anterior non se mostra cando volve, só se a acertou."
+      },
+      {
+        "title": "Contraíble",
+        "description": "Mostrar esta pregunta como unha fila que se abre e se pecha. Abrir unha pecha as outras preguntas contraíbles do seu carón."
+      },
+      {
+        "title": "Comezar contraído",
+        "description": "Cando é contraíble, comeza como unha fila pechada que só mostra a pregunta e o seu estado."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

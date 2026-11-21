@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ciyaariyaha dukumentiyada",
+    "description": "Hagid, bandhig iyo tixraac web component ah, oo leh badhamo koobiyeyn oo HTML, import, npm iyo CDN ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faylka xogta dukumentiyada",
+        "description": "Xogta dukumentiyada ee la socota element-ka (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard-ka hagidda",
+        "description": "Storyboard-ka dhaqdhaqaaqa ee la socda element-ka (tag.motion.json). Ikhtiyaari."
+      },
+      {
+        "title": "Fiidiyow casharro",
+        "description": "Fiidiyow gaaban oo ku saabsan element-ka (YouTube, Vimeo ama fayl fiidiyow). Wuxuu ka dul maraa fiidiyowga ku jira xogta dukumentiyada."
+      },
+      {
+        "title": "Ku fur tab",
+        "description": "Tab-ka marka hore muuqda.",
+        "options": {
+          "motion": "Hagid",
+          "video": "Fiidiyow",
+          "demo": "Bandhig",
+          "docs": "Dukumentiyo",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Hagid si toos ah u ciyaarta",
+        "description": "Bilow hagidda isla marka ciyaariyuhu muuqdo. Lama tixgeliyo marka akhristuhu door bido dhaqdhaqaaq yar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mawduuca hagidda",
+        "description": "Elements-ka leh hagidyo badan, mawduuca marka hore la furayo (tusaale add-blocks). Ka tag madhan kan ugu muhiimsan."
+      },
+      {
+        "title": "Link-ga bandhigga tooska ah",
+        "description": "Meesha badhanka Open demo source uu u socdo. Caadi ahaan galka demo ee repository-ga."
+      },
+      {
+        "title": "Link-ga dukumentiyada",
+        "description": "Meesha badhanka dukumentiyada buuxa uu u socdo, tusaale bogga Learn HAX ee u dhigma."
+      }
+    ]
+  }
+}

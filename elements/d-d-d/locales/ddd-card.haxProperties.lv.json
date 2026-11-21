@@ -52,6 +52,20 @@
           "_top": "Augšējais logs — _top",
           "_parent": "Vecāklogs — _parent"
         }
+      },
+      {
+        "title": "Bez bultiņas",
+        "description": "Slēpt pogas bultiņu."
+      },
+      {
+        "title": "Saite: mērķis",
+        "description": "Kur atvērt saiti.",
+        "options": {
+          "": "Tajā pašā logā",
+          "_blank": "Jaunā logā - _blank",
+          "_top": "Augšējā logā - _top",
+          "_parent": "Vecāklogā - _parent"
+        }
       }
     ],
     "developer": [

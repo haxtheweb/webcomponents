@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline حالت",
+    "description": "کسی ویب پلیٹ فارم فیچر کی Baseline براؤزر سپورٹ کی حالت دکھائیں۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "فیچر ID",
+        "description": "ویب فیچر کی ID، مثلاً anchor-positioning۔ IDs کو webstatus.dev پر تلاش کریں؛ ID فیچر صفحے کے URL کا آخری حصہ ہے۔"
+      }
+    ]
+  }
+}

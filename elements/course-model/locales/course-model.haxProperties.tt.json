@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "title"
+        "title": "title",
+        "description": "Курс моделе өстендә күрсәтелә торган башлык."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Күрсәтелә торган 3D модель файлының (.glb яки .gltf) адресы."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D модельне күрә алмаучылар өчен тасвирлагыз."
       },
       {
         "title": "Мәгълүмат өлкәсе"

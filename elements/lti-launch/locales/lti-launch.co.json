@@ -1,0 +1,19 @@
+{
+  "label": "Attrezzu esternu",
+  "labelLti": "Attrezzu esternu · LTI 1.3",
+  "theTool": "l'attrezzu",
+  "directions": "Struzzioni",
+  "showDirections": "Mustrà e struzzioni",
+  "hideDirections": "Piattà e struzzioni",
+  "directionsWindow": "U buttone apre una nova finestra cù l'attrezzu dentru.",
+  "directionsEmbed": "U buttone apre l'attrezzu nant'à sta pagina. S'ellu ùn si carica, apritelu piuttostu in una nova finestra.",
+  "directionsLti": "Stu situ vi cunnette à l'attrezzu, dunque ùn vi ci vole micca un contu à parte.",
+  "openWindow": "Apre {title} (nova finestra)",
+  "openEmbed": "Apre {title}",
+  "openInstead": "Apre piuttostu in una nova finestra",
+  "frameTitle": "{title} (attrezzu esternu)",
+  "openedWindow": "Una nova finestra s'hè aperta cù l'attrezzu.",
+  "openedEmbed": "L'attrezzu s'hè apertu nant'à sta pagina.",
+  "needsUrl": "Stu bloccu hà bisognu d'un indirizzu di lanciu chì principia cù http:// o https://.",
+  "needsSignIn": "Stu attrezzu hà bisognu di u serviziu di cunnessione di stu situ, chì ùn hè micca dispunibule quì. Nunda ùn s'hè apertu."
+}

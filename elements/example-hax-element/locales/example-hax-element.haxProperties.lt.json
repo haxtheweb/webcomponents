@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Pavyzdinis pradinis elementas, naudojamas HAX konfigūracijai ir redaguojamoms savybėms parodyti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas"
+      }
+    ]
+  }
+}

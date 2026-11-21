@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ისტორიის ღილაკი",
+    "description": "ღილაკი, რომელიც ხსნის მტკიცების მიღმა ისტორიას hax.cloud-ზე, ან შესაბამის ადგილს HAX ქსელის სხვა საიტზე"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "სად მიდის",
+        "options": {
+          "cloud": "hax.cloud, ისტორია",
+          "learn": "learn.hax.cloud, გაკვეთილი",
+          "try": "browser.hax.cloud, სცადეთ",
+          "elements": "webcomponents.hax.cloud, ბლოკი",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "მისამართი იმ საიტზე (ისტორია hax.cloud-ზე ასე გამოიყურება: stories/ee450a19)"
+      },
+      {
+        "title": "რის შესახებაა"
+      },
+      {
+        "title": "პატარა ჩიპი"
+      },
+      {
+        "title": "ღილაკში ჩვენება, რის შესახებაა"
+      }
+    ]
+  }
+}

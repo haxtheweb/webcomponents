@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "מונח"
+        "title": "מונח",
+        "description": "המילה או הביטוי שהקוראים לוחצים עליהם כדי לראות את ההגדרה."
       },
       {
         "property": "information",

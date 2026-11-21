@@ -20,6 +20,12 @@
         "title": "Obraz",
         "description": "Obraz wyświetlany z cytatem."
       }
+    ],
+    "advanced": [
+      {
+        "title": "W ramce",
+        "description": "Rysuj cytat na wspólnej ramce bloku, z ikoną i etykietą nad nim, aby pasował do notatek i kart instrukcji."
+      }
     ]
   }
 }

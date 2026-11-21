@@ -1,4 +1,6 @@
 {
   "saveAll": "Sačuvaj sve",
-  "saveTheFollowing": "Sačuvati sljedeće: {list}?"
+  "saveTheFollowing": "Sačuvati sljedeće: {list}?",
+  "save": "Sačuvaj",
+  "cancel": "Otkaži"
 }

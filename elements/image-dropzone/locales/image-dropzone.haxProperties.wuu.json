@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "图片放置区",
+    "description": "学习者拿标签放到盖辣图片上个区域里，再检查答案。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片",
+        "description": "学习者放标签个图片。"
+      },
+      {
+        "title": "替代文字",
+        "description": "为看勿见个人描述图片。勿要透露标签放辣啥地方。"
+      },
+      {
+        "title": "图片标题",
+        "description": "图片个一个短标题，显示辣伊上头。"
+      },
+      {
+        "title": "问题",
+        "description": "要学习者拿标签做啥。"
+      },
+      {
+        "title": "标签搭区域",
+        "description": "每个条目是学习者好放个一个标签。拨标签一个区域名字，就会辣图片上放伊个区域；呒没区域名字个标签是多余个，勿属于任何地方。区域数字是图片个百分比。"
+      },
+      {
+        "title": "说明文字",
+        "description": "图片下头显示个可选说明文字。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "尝试次数",
+        "description": "学习者好检查几趟。0 表示勿限。"
+      },
+      {
+        "title": "打乱标签",
+        "description": "每趟来访侪用勿一样个顺序显示标签。"
+      },
+      {
+        "title": "好折叠",
+        "description": "拿迭道题显示成一行，好打开好合拢。打开一个会合拢旁边别个好折叠个题目。"
+      },
+      {
+        "title": "开始辰光合拢",
+        "description": "好折叠个辰光，开始是合拢个一行，只显示题目搭伊个状态。"
+      },
+      {
+        "title": "评分格式",
+        "description": "OER Schema：迭个评估个评分格式（比方分数、等第、百分比、完成度）。"
+      },
+      {
+        "title": "学习目标",
+        "description": "OER Schema：搭迭个评估相关个学习目标。"
+      }
+    ],
+    "developer": [
+      {
+        "title": "测验名字",
+        "description": "分析系统里用于 xAPI 识别个测验名字。"
+      },
+      {
+        "title": "课程",
+        "description": "OER Schema：迭个评估面向个课程。"
+      }
+    ]
+  }
+}

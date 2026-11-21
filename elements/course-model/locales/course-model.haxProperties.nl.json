@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titel"
+        "title": "titel",
+        "description": "Kop die boven het cursusmodel wordt getoond."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adres van het 3D-modelbestand (.glb of .gltf) dat moet worden getoond."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Beschrijf het 3D-model voor mensen die het niet kunnen zien."
       },
       {
         "title": "Informatiegebied"

@@ -9,5 +9,7 @@
   "slidePages": "Masamba a zithunzi",
   "goToSlide": "Pitani ku chithunzi {number}",
   "slides": "Masilaidi",
-  "position": "{number} mwa {total}"
+  "position": "{number} mwa {total}",
+  "fullScreen": "Sikirini yonse",
+  "exitFullScreen": "Tulukani mu sikirini yonse"
 }

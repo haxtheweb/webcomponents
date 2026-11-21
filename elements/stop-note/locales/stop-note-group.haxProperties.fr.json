@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Groupe de notes",
+    "description": "Empilez plusieurs notes dans un bloc qui affiche une note à la fois, comme Astuces ou Nouveautés. Les fiches d'instructions, notes latérales et citations encadrées peuvent y être empilées."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Libellé",
+        "description": "Nom du groupe annoncé par les lecteurs d'écran, comme Astuces ou Nouveautés."
+      },
+      {
+        "title": "Notes",
+        "description": "Les notes du groupe. Des fiches d'instructions, notes latérales et citations encadrées peuvent aussi être ajoutées."
+      }
+    ]
+  }
+}

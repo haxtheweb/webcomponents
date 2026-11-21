@@ -9,5 +9,7 @@
   "slidePages": "Slayd səhifələri",
   "goToSlide": "{number} nömrəli slayda keç",
   "slides": "Slaydlar",
-  "position": "{number}/{total}"
+  "position": "{number}/{total}",
+  "fullScreen": "Tam ekran",
+  "exitFullScreen": "Tam ekrandan çıx"
 }

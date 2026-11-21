@@ -40,5 +40,7 @@
   "hideDirections": "Ezkutatu argibideak",
   "showRelatedContent": "Erakutsi lotutako edukia",
   "hideRelatedContent": "Ezkutatu lotutako edukia",
-  "notAttempted": "Saiatu gabe"
+  "notAttempted": "Saiatu gabe",
+  "cardsDirections": "Jarri kartak ordena zuzenean karta bakoitzeko mugitu lehenago eta mugitu geroago botoiekin, edo arrastatu saguarekin. Ordena zuzena dutela uste duzunean, probatu zure erantzuna {checkAnswer} hautatuz.",
+  "movedToPosition": "{item} {total}tik {position}. posiziora mugitu da"
 }

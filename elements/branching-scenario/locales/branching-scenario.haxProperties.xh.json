@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Imeko enamasebe",
+    "description": "Ibali apho ukhetho ngalunye lukhokelela kumboniso nesiphelo esahlukileyo. Abafundi banokubuyela umva bazame ezinye iindlela; isiphelo esifikelelweyo simisela amanqaku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lemeko, eliboniswa kwisihloko sayo."
+      },
+      {
+        "title": "Umboniso wokuqala",
+        "description": "I-id yomboniso abafundi abaqala kuwo. Shiya kungenanto ukuqala kumboniso wokuqala."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala ongakhethwa wetshiphu yesihloko, amaqhosha nomphetho wokhetho."
+      }
+    ]
+  }
+}

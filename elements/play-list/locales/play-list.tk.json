@@ -9,5 +9,7 @@
   "slidePages": "Slaýd sahypalary",
   "goToSlide": "{number} slaýda geç",
   "slides": "Slaýdlar",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Doly ekran",
+  "exitFullScreen": "Doly ekrandan çyk"
 }

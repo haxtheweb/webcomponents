@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Bulmaca",
+    "description": "Kelime ve ipucu listesinden oluşturulan bir bulmaca. Izgara sizin için oluşturulur; öğrenenler kelimeleri yazar ve denetler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Bulmacanın üstünde gösterilen başlık veya soru."
+      },
+      {
+        "title": "Kelimeler",
+        "description": "Her kelime ve ipucu. Izgara bu listeden oluşturulur: en uzun kelime önce yerleştirilir, diğerleri ortak harflerde onu keser."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Denemeler",
+        "description": "Bir öğrenenin kaç kez denetleyebileceği. 0 sınırsız demektir."
+      },
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketi, etkin kelime ve eylem düğmeleri için isteğe bağlı renk."
+      },
+      {
+        "title": "Daraltılabilir",
+        "description": "Bu bulmacayı açılıp kapanan bir satır olarak göster. Birini açmak yanındaki diğer daraltılabilir soruları kapatır."
+      },
+      {
+        "title": "Daraltılmış başla",
+        "description": "Daraltılabilir olduğunda yalnızca başlığı ve durumunu gösteren kapalı bir satır olarak başla."
+      },
+      {
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analiz sistemlerinde xAPI tanımlaması için kullanılan test adı."
+      },
+      {
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      }
+    ]
+  }
+}

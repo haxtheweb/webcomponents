@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Odpovede",
+        "description": "Poradie odpovedí určuje správnu postupnosť.",
+        "options": {
+          "": "Zoznam",
+          "cards": "Obrázkové karty"
+        }
+      },
+      {
+        "title": "Odpovede",
         "description": "Poradie odpovedí určuje správnu postupnosť."
       }
     ],

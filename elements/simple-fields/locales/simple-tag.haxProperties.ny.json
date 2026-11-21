@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Mtundu wowonjezera wokha",
         "description": "Pezani mtundu wowonjezera kuchokera m'mawu a dzina lokha."
+      },
+      {
+        "title": "Tanthauzo",
+        "description": "Patsani tag mtundu wa tanthauzo. Siyani chopanda kanthu kuti ikhale tag yosalowerera.",
+        "options": {
+          "": "Yosalowerera",
+          "brand": "Mtundu wa dzina",
+          "success": "Kupambana",
+          "warning": "Chenjezo",
+          "danger": "Ngozi"
+        }
       }
     ],
     "advanced": [

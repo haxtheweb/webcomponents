@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Križanka",
+    "description": "Križanka, sestavljena iz seznama besed in opisov. Mreža se ustvari samodejno; učenci vpisujejo besede in jih preverjajo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naslov ali vprašanje, prikazano nad križanko."
+      },
+      {
+        "title": "Besede",
+        "description": "Vsaka beseda in njen opis. Mreža se ustvari iz tega seznama: najdaljša beseda je postavljena prva, druge jo križajo na skupnih črkah."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poskusi",
+        "description": "Kolikokrat lahko učenec preveri. 0 pomeni neomejeno."
+      },
+      {
+        "title": "Poudarjalna barva",
+        "description": "Izbirna barva za značko v glavi, aktivno besedo in gumbe za dejanja."
+      },
+      {
+        "title": "Zložljivo",
+        "description": "Prikaži to križanko kot vrstico, ki se odpira in zapira. Odpiranje ene zapre druga zložljiva vprašanja ob njej."
+      },
+      {
+        "title": "Začni zloženo",
+        "description": "Ko je zložljivo, začni kot zaprta vrstica, ki prikazuje le naslov in stanje."
+      },
+      {
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotek, dokončanje)."
+      },
+      {
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ime kviza",
+        "description": "Ime kviza za identifikacijo xAPI v analitičnih sistemih."
+      },
+      {
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, ki mu je to preverjanje namenjeno."
+      }
+    ]
+  }
+}

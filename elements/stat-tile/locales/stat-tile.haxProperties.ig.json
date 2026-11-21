@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Taịlụ ọnụọgụ",
+    "description": "Otu ọnụọgụ dị mkpa, nwere akara aha ya na otu o si gbanwee. Tinye ọtụtụ n'ime grid maka ahịrị dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akara aha",
+        "description": "Ihe ọnụọgụ ahụ na-atụ."
+      },
+      {
+        "title": "Uru",
+        "description": "Ọnụọgụ ahụ. A na-ahazi ọnụọgụ nkịtị dịka asụsụ peeji si dị; ihe ọ bụla ọzọ na-egosi dịka e dere ya."
+      },
+      {
+        "title": "Mgbanwe",
+        "description": "Otu o si gbanwee, n'okwu, dịka 6% n'oge ọmụmụ a."
+      },
+      {
+        "title": "Ntụzịaka",
+        "description": "Ma mgbanwe ahụ ọ na-arị elu ma ọ bụ na-agbada.",
+        "options": {
+          "": "Ọ dịghị",
+          "up": "Elu",
+          "down": "Ala"
+        }
+      }
+    ]
+  }
+}

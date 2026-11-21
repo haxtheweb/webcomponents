@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Skaitlisks jautājums",
+    "description": "Jautājums, uz kuru atbild ar skaitli. Atbilde ir fiksēts skaitlis vai formula, kas aprēķināta no mainīgajiem, un tiek ieskaitīta, ja tā ir pielaides robežās."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jautājums",
+        "description": "Ko izglītojamajiem jautā. Ierakstiet mainīgā nosaukumu figūriekavās, piemēram, {d}, lai parādītu tā vērtību."
+      },
+      {
+        "title": "Mērvienība",
+        "description": "Tiek rādīta kā teksts blakus atbildes laukam, piemēram, km/h."
+      },
+      {
+        "title": "Atbilde",
+        "description": "Pareizais skaitlis. Atstājiet tukšu, ja atbildi aprēķina formula."
+      },
+      {
+        "title": "Formula",
+        "description": "Aprēķina atbildi no mainīgajiem, piemēram, d / (t / 60). Var izmantot + - * / ^, iekavas, sqrt() un abs(). Ja iestatīta, tiek izmantota atbildes vietā."
+      },
+      {
+        "title": "Mainīgie",
+        "description": "Skaitļi, ko izmanto formula un jautājums. Katrs iegūst vērtību starp savu mazāko un lielāko, ar soli."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pielaide",
+        "description": "Cik tālu no precīzās atbildes vēl tiek ieskaitīts. 0 nozīmē precīzi vai noapaļoti līdz zemāk norādītajām decimālzīmēm."
+      },
+      {
+        "title": "Pielaides veids",
+        "description": "Absolūtā: plus vai mīnus pielaide. Procentuālā: plus vai mīnus šis procents no precīzās atbildes.",
+        "options": {
+          "absolute": "Absolūtā",
+          "percent": "Procentuālā"
+        }
+      },
+      {
+        "title": "Decimālzīmes",
+        "description": "Izglītojamajiem lūdz noapaļot līdz šim zīmju skaitam, un atbilde tiek rādīta noapaļota. Atstājiet tukšu, lai nenoapaļotu."
+      },
+      {
+        "title": "Mēģinājumi",
+        "description": "Cik reižu izglītojamais var pārbaudīt. 0 nozīmē neierobežoti."
+      },
+      {
+        "title": "Jauni skaitļi katrā mēģinājumā",
+        "description": "Izvēlēties jaunas mainīgo vērtības katru reizi, kad izglītojamais mēģina vēlreiz. Tad, atgriežoties, viņa iepriekšējā atbilde netiek rādīta, tikai tas, vai tā bija pareiza."
+      },
+      {
+        "title": "Sakļaujams",
+        "description": "Rādīt šo jautājumu kā rindu, kas atveras un aizveras. Atverot vienu, aizveras citi blakus esošie sakļaujamie jautājumi."
+      },
+      {
+        "title": "Sākt sakļautu",
+        "description": "Ja sakļaujams, sākt kā aizvērtu rindu, kas rāda tikai jautājumu un tā statusu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testa nosaukums",
+        "description": "Testa nosaukums, ko izmanto xAPI identifikācijai analītikas sistēmās."
+      }
+    ]
+  }
+}

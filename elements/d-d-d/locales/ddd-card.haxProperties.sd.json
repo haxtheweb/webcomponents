@@ -52,6 +52,20 @@
           "_top": "مٿين ونڊو - _top",
           "_parent": "پيرنٽ ونڊو - _parent"
         }
+      },
+      {
+        "title": "تير کان سواءِ",
+        "description": "بٽڻ جو تير لڪايو."
+      },
+      {
+        "title": "لنڪ: ٽارگيٽ",
+        "description": "لنڪ ڪٿي کولجي.",
+        "options": {
+          "": "ساڳي ونڊو",
+          "_blank": "نئين ونڊو - _blank",
+          "_top": "مٿين ونڊو - _top",
+          "_parent": "والدين ونڊو - _parent"
+        }
       }
     ],
     "developer": [

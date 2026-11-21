@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memoryspel",
+    "description": "Vänd kort för att hitta par. Para ihop ett begrepp med dess betydelse så att ett par visar förståelse, eller använd två matchande texter eller bilder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Uppmaningen som visas i sidhuvudet, till exempel: Matcha begreppet med dess uppgift."
+      },
+      {
+        "title": "Par",
+        "description": "Varje par är två kort som hör ihop, oftast ett begrepp och dess betydelse. En sida behöver text, en bild eller båda."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentfärg",
+        "description": "Valfri färg för rubriketiketten, kortens baksidor och knappen."
+      }
+    ]
+  }
+}

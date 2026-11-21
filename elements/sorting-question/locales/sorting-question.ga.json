@@ -40,5 +40,7 @@
   "hideDirections": "Folaigh na treoracha",
   "showRelatedContent": "Taispeáin ábhar gaolmhar",
   "hideRelatedContent": "Folaigh ábhar gaolmhar",
-  "notAttempted": "Gan iarracht"
+  "notAttempted": "Gan iarracht",
+  "cardsDirections": "Cuir na cártaí san ord ceart leis na cnaipí bog níos luaithe agus bog níos déanaí ar gach cárta, nó tarraing iad le luch. Nuair a chreideann tú go bhfuil siad san ord ceart, tástáil do fhreagra trí {checkAnswer} a roghnú.",
+  "movedToPosition": "Bogadh {item} go dtí suíomh {position} as {total}"
 }

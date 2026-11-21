@@ -1,0 +1,21 @@
+{
+  "diagram": "Kaavio",
+  "flowchart": "vuokaavio",
+  "sequence": "sekvenssi",
+  "source": "Lähde",
+  "textAlternative": "Tekstivastine",
+  "present": "Esitä",
+  "exitPresent": "Poistu esityksestä",
+  "loading": "Ladataan kaaviota",
+  "empty": "Ei vielä mitään piirrettävää. Lisää kaavion lähde.",
+  "error": "Virhe",
+  "parseError": "Tätä kaaviota ei voitu piirtää. Tarkista lähde.",
+  "loadError": "Kaaviokirjastoa ei voitu ladata.",
+  "srcError": "Kaaviotiedostoa ei voitu ladata.",
+  "decision": "päätös",
+  "end": "loppu",
+  "goTo": "siirry kohteeseen {target}",
+  "ifGoTo": "jos {label}, siirry kohteeseen {target}",
+  "describedBySource": "Kaavio, jonka lähde kuvaa.",
+  "scrollable": "Kaavio, vieritettävä"
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Sonli savol",
+    "description": "Son bilan javob beriladigan savol. Javob — belgilangan son yoki o‘zgaruvchilardan hisoblanadigan formula, va u ruxsat etilgan farq ichida bo‘lsa hisobga olinadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Savol",
+        "description": "O‘quvchilardan nima so‘raladi. Qiymatini ko‘rsatish uchun o‘zgaruvchi nomini jingalak qavsga yozing, masalan {d}."
+      },
+      {
+        "title": "O‘lchov birligi",
+        "description": "Javob maydoni yonida matn sifatida ko‘rsatiladi, masalan km/h."
+      },
+      {
+        "title": "Javob",
+        "description": "To‘g‘ri son. Javobni formula hisoblasa, bo‘sh qoldiring."
+      },
+      {
+        "title": "Formula",
+        "description": "Javobni o‘zgaruvchilardan hisoblaydi, masalan d / (t / 60). + - * / ^, qavslar, sqrt() va abs() ishlatish mumkin. Belgilanganda javob o‘rniga ishlatiladi."
+      },
+      {
+        "title": "O‘zgaruvchilar",
+        "description": "Formula va savol ishlatadigan sonlar. Har biri eng kichik va eng katta qiymati orasida, qadamlar bilan qiymat oladi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruxsat etilgan farq",
+        "description": "Aniq javobdan qancha farq hali hisobga olinadi. 0 aniq degani yoki quyidagi kasr xonalarigacha yaxlitlangan."
+      },
+      {
+        "title": "Farq turi",
+        "description": "Mutlaq: farq qiymatiga ortiq yoki kam. Foiz: aniq javobning shu foiziga ortiq yoki kam.",
+        "options": {
+          "absolute": "Mutlaq",
+          "percent": "Foiz"
+        }
+      },
+      {
+        "title": "Kasr xonalari",
+        "description": "O‘quvchilardan shuncha xonagacha yaxlitlash so‘raladi va javob shunday yaxlitlangan holda ko‘rsatiladi. Yaxlitlamaslik uchun bo‘sh qoldiring."
+      },
+      {
+        "title": "Urinishlar",
+        "description": "O‘quvchi necha marta tekshira oladi. 0 cheklanmagan degani."
+      },
+      {
+        "title": "Har urinishda yangi sonlar",
+        "description": "O‘quvchi har safar qayta urinishganda yangi o‘zgaruvchi qiymatlarini tanlash. Shunda qaytganida oldingi javobi ko‘rsatilmaydi, faqat to‘g‘ri topgan-topmagani."
+      },
+      {
+        "title": "Yig‘iladigan",
+        "description": "Bu savolni ochilib-yopiladigan qator sifatida ko‘rsatish. Birini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat savol va holatni ko‘rsatadigan yopiq qator sifatida boshlanadi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Test nomi",
+        "description": "Tahlil tizimlarida xAPI identifikatsiyasi uchun ishlatiladigan test nomi."
+      }
+    ]
+  }
+}

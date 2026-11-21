@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Kooxda Stop Note",
+    "description": "Isku dar dhowr stop note hal block oo muujiya hal qoraal mar kasta, sida Talooyin ama Waxa cusub. Kaarardka tilmaamaha, qoraallada dhinaca iyo xigashooyinka jirka leh ayaa iyaga lala isku dari karaa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Calaamad",
+        "description": "Magaca kooxda ay akhriyeyaasha shaashaddu ku dhawaaqaan, sida Talooyin ama Waxa cusub."
+      },
+      {
+        "title": "Qoraallo",
+        "description": "Stop notes-ka kooxda ku jira. Kaarardka tilmaamaha, qoraallada dhinaca iyo xigashooyinka jirka leh ayaa sidoo kale lagu dari karaa."
+      }
+    ]
+  }
+}

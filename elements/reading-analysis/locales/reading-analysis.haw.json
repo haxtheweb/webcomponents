@@ -60,6 +60,8 @@
   "flagsFound": "Ua loaʻa he {correct} o {total}",
   "toRethink": "{count} e noʻonoʻo hou ai",
   "notEvidence": "ʻaʻole he hōʻike no kēia hae",
+  "isEvidence": "hōʻike no kēia hae",
+  "readingKeys": "E hoʻohana i nā kī pua e neʻe ai mai kekahi {unit} a i kekahi.",
   "markAnswers": "Kaha i nā pane",
   "doneMarking": "Ua pau ke kaha ʻana i nā pane",
   "editHint": "E hoʻoponopono i ka heluhelu ma lalo. E hoʻohana iā Kaha i nā pane ma ka papa koho o ka poloka e koho ai i ka wahi o kēlā me kēia hae.",

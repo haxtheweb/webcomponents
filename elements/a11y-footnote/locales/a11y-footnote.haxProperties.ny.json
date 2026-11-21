@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Mawu am'munsi",
+    "description": "Cholemba cholembedwa pomwe chikuyenera mu zolemba. Chimawonekera ngati nambala, ndipo mndandanda wa zolemba wa manambala umadzipanga wokha pansi pa tsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cholemba",
+        "description": "Zolemba za mawu am'munsi."
+      },
+      {
+        "title": "Palibe chithunzithunzi",
+        "description": "Musawonetse cholemba pamene wowerenga ayika cholozera kapena kuyang'ana nambala."
+      }
+    ]
+  }
+}

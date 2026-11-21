@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Naslovni blok",
+    "description": "Velika slika, GIF ili videozapis s naslovom i tekstom preko njih, bilo gdje na stranici."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika ili videozapis",
+        "description": "Datoteka JPG, PNG, WebP, GIF, MP4 ili WebM."
+      },
+      {
+        "title": "Alternativni tekst",
+        "description": "Opišite sliku. Ostavite prazno ako je samo ukras."
+      },
+      {
+        "title": "Naslov",
+        "description": "Naslov prikazan preko medija. Ostavite prazno ako ga ne želite."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst prikazan ispod naslova, preko medija."
+      },
+      {
+        "title": "Puna širina",
+        "description": "Proteže se od ruba do ruba umjesto unutar stupca sadržaja."
+      },
+      {
+        "title": "Visina",
+        "options": {
+          "tall": "Visoko",
+          "medium": "Srednje",
+          "short": "Nisko"
+        }
+      },
+      {
+        "title": "Kadriranje",
+        "description": "Kako fotografija stoji na svakoj veličini zaslona"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zatamnjenje",
+        "description": "Boja položena preko medija. Uz naslov ili tekst uvijek postoji, kako bi tekst ostao čitljiv.",
+        "options": {
+          "blue": "Plava",
+          "bottom": "Tamno pri dnu",
+          "none": "Nema"
+        }
+      },
+      {
+        "title": "Položaj teksta",
+        "options": {
+          "bottom": "Dolje",
+          "middle": "Sredina"
+        }
+      },
+      {
+        "title": "Žarišna točka vodoravno",
+        "description": "Dio slike koji ostaje vidljiv kad se obreže, od 0 (lijevo) do 100 (desno)."
+      },
+      {
+        "title": "Žarišna točka okomito",
+        "description": "Dio slike koji ostaje vidljiv kad se obreže, od 0 (vrh) do 100 (dno)."
+      }
+    ]
+  }
+}

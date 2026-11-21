@@ -1,4 +1,6 @@
 {
   "saveAll": "Hamısını saxla",
-  "saveTheFollowing": "Bunlar saxlanılsın: {list}?"
+  "saveTheFollowing": "Bunlar saxlanılsın: {list}?",
+  "save": "Saxla",
+  "cancel": "Ləğv et"
 }

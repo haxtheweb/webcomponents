@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Nyora uchishandisa manyorerwo esvomhu LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kumashure kwemufananidzo",
+        "description": "Kumashure kwemifananidzo yakadhirowewa. Otomatiki inowedzera chete kana mufananidzo uchizonetsa kuona papeji, semitsetse yerima murima.",
+        "options": {
+          "auto": "Otomatiki",
+          "light": "Chiedza",
+          "dark": "Rima",
+          "none": "Hapana"
+        }
+      }
+    ]
   }
 }

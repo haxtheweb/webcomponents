@@ -5,5 +5,6 @@
   "selected": "Vybraná",
   "currentlyActiveAndSelectedPalette": "Aktuálně aktivní a vybraná paleta",
   "currentlyActivePalette": "Aktuálně aktivní paleta",
-  "selectedPaletteToApply": "Vybraná paleta k použití"
+  "selectedPaletteToApply": "Vybraná paleta k použití",
+  "paletteNumber": "Paleta {number}"
 }

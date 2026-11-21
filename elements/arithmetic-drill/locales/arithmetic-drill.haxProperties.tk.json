@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Arifmetika türgenleşigi",
+    "description": "Derrew seslenmeli, awtomatik döredilen arifmetiki meseleleriň gysga toplumy. Amallary we san aralygyny saýlaň; her tapgyr täze."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Bu türgenleşigiň ady, sözbaşysynda görkezilýär."
+      },
+      {
+        "title": "Amallar",
+        "description": "Haýsy görnüşli meseleleriň soralýandygy. Öwrenijiler başlamazdan öň bularyň islendigini öçürip bilerler.",
+        "options": {
+          "add": "Goşmak",
+          "subtract": "Aýyrmak",
+          "multiply": "Köpeltmek",
+          "divide": "Bölmek",
+          "add subtract": "Goşmak we aýyrmak",
+          "multiply divide": "Köpeltmek we bölmek",
+          "add multiply": "Goşmak we köpeltmek",
+          "add divide": "Goşmak we bölmek",
+          "subtract multiply": "Aýyrmak we köpeltmek",
+          "subtract divide": "Aýyrmak we bölmek",
+          "add subtract multiply": "Goşmak, aýyrmak we köpeltmek",
+          "add subtract divide": "Goşmak, aýyrmak we bölmek",
+          "add multiply divide": "Goşmak, köpeltmek we bölmek",
+          "subtract multiply divide": "Aýyrmak, köpeltmek we bölmek",
+          "add subtract multiply divide": "Dördüsi hem"
+        }
+      },
+      {
+        "title": "Iň kiçi san",
+        "description": "Meselede ulanylýan iň kiçi san. Bitin sanlar, 0 ýa-da köp."
+      },
+      {
+        "title": "Iň uly san",
+        "description": "Meselede ulanylýan iň uly san. Bölmegiň jogaplary we bölüjileri hem şu aralykda galýar."
+      },
+      {
+        "title": "Meseleleriň sany",
+        "description": "Bir tapgyrda näçe mesele bar (1-den 100-e çenli)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Wagt çägi",
+        "description": "Tutuş tapgyr üçin rugsat berilýän sekuntlar. 0 taýmer ýok diýmegi aňladýar we bu deslapky sazlama: wagtly türgenleşikler köp wagt gerek bolan öwrenijileri şowsuzlyga sezewar edýär. Bellenen bolsa, öwrenijiler taýmeri özleri üçin öçürip bilerler."
+      },
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşanynyň we düwmeleriň reňki. Tema eýermek üçin boş goýuň."
+      }
+    ]
+  }
+}

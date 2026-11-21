@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Text lângă un buton față în față cu două personaje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu"
+      },
+      {
+        "title": "Unde duce butonul"
+      },
+      {
+        "title": "Textul butonului"
+      },
+      {
+        "title": "Seed-ul personajului din stânga"
+      },
+      {
+        "title": "Seed-ul personajului din dreapta"
+      }
+    ]
+  }
+}

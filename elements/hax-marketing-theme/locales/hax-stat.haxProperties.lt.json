@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Skaičius, kuris didėja, su etikete ir nuoroda į jo istoriją"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skaičius, iki kurio didėti"
+      },
+      {
+        "title": "Prieš skaičių"
+      },
+      {
+        "title": "Po skaičiaus"
+      },
+      {
+        "title": "Žodžiai vietoj skaičiaus"
+      },
+      {
+        "title": "Ką jis skaičiuoja"
+      },
+      {
+        "title": "Istorijos adresas hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

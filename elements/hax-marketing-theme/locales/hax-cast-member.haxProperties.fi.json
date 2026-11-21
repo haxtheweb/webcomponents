@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Näyttelijä",
+    "description": "Yksi yleisö hahmon esittämänä, tekstin ja painikkeen kera"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuka tämä on"
+      },
+      {
+        "title": "Hahmotyyppi"
+      },
+      {
+        "title": "Hahmon siemen"
+      },
+      {
+        "title": "Näyttämön väri (DDD-nimi)"
+      },
+      {
+        "title": "Mihin painike vie"
+      },
+      {
+        "title": "Painikkeen teksti"
+      }
+    ]
+  }
+}

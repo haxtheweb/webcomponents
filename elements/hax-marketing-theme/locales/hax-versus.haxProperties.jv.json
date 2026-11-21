@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lawan",
+    "description": "Tembung ing sandhinge tombol adu langsung karo rong paraga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irah-irahan"
+      },
+      {
+        "title": "Tujuan tombol"
+      },
+      {
+        "title": "Teks tombol"
+      },
+      {
+        "title": "Wiji paraga kiwa"
+      },
+      {
+        "title": "Wiji paraga tengen"
+      }
+    ]
+  }
+}

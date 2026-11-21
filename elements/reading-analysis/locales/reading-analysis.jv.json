@@ -60,6 +60,8 @@
   "flagsFound": "{correct} saka {total} ditemokaké",
   "toRethink": "{count} kudu dipikir manèh",
   "notEvidence": "dudu bukti kanggo gendéra iki",
+  "isEvidence": "bukti kanggo tandha iki",
+  "readingKeys": "Gunakake tombol panah kanggo pindhah saka siji {unit} menyang sabanjure.",
   "markAnswers": "Tandhani wangsulan",
   "doneMarking": "Rampung nandhani wangsulan",
   "editHint": "Owahi wacan ing ngisor. Gunakaké Tandhani wangsulan ing menu blok kanggo milih panggonané saben gendéra.",

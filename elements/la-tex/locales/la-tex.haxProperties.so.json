@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Ku qor qoraalka xisaabta LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gadaasha sawirka",
+        "description": "Gadaasha sawirrada la sawiray. Otomaatig wuxuu ku daraa mid oo keliya marka sawirku adkaan lahaa in bogga lagu arko, sida xariiqyo mugdi ah oo qaabka mugdiga ah.",
+        "options": {
+          "auto": "Otomaatig",
+          "light": "Iftiin",
+          "dark": "Mugdi",
+          "none": "Midna"
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Olùyan ìlò",
+    "description": "Yan ohun tí ojú-òpó wà fún kí o sì gba ìjápọ̀ tó ń ṣí HAX nínú aṣàwákiri pẹ̀lú ojú-òpó ìbẹ̀rẹ̀ yẹn, pẹ̀lú àṣẹ CLI tó bá a mu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àdírẹ́sì HAX nínú aṣàwákiri",
+        "description": "Ibi tí ìjápọ̀ ń ṣí; a ń ṣàfikún ?skeleton= àti &name= sí i"
+      },
+      {
+        "title": "Àwọn ojú-òpó ìbẹ̀rẹ̀ láti fi sílẹ̀",
+        "description": "Àwọn orúkọ ẹ̀rọ, tí a fi kọ́mà yà"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àkójọ ojú-òpó ìbẹ̀rẹ̀",
+        "description": "Àdírẹ́sì àkójọ egungun (fọ́ọ̀mù tí app-hax ń kà)"
+      }
+    ]
+  }
+}

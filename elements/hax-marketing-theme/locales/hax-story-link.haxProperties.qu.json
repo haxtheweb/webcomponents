@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Willakuy ñit'ina",
+    "description": "hax.cloud nisqapi huk niypa qhipanpi kaq willakuyta, utaq huk HAX llika kitipi tupaq tiyanata kichaq ñit'ina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maymanchus rin",
+        "options": {
+          "cloud": "hax.cloud, willakuy",
+          "learn": "learn.hax.cloud, huk yachachiy",
+          "try": "browser.hax.cloud, pruebay",
+          "elements": "webcomponents.hax.cloud, huk bloque",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Chay kitipi tiyana (hax.cloud nisqapi willakuyqa stories/ee450a19 hinam)"
+      },
+      {
+        "title": "Imamantataq"
+      },
+      {
+        "title": "Huch'uy chip"
+      },
+      {
+        "title": "Ñit'inapi imamantachus kasqanta rikuchiy"
+      }
+    ]
+  }
+}

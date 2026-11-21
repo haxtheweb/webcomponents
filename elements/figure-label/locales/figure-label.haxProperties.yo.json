@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Àmì àwòrán",
     "description": "Ẹ̀yà àmì àwòrán láti sàmì sí àwọn ohun mídíà nínú àkóónú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nọ́mbà àwòrán",
+        "description": "Nọ́mbà tàbí àmì kúkúrú fún àwòrán náà, fún àpẹẹrẹ 1.3"
+      },
+      {
+        "title": "Àpèjúwe",
+        "description": "Àpèjúwe kúkúrú ti àwòrán náà"
+      }
+    ]
   }
 }

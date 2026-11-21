@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram z tekstu",
+    "description": "Zapisz diagram jako tekst (Mermaid): schemat blokowy, sekwencję, oś czasu i więcej. Jest rysowany na stronie z alternatywą tekstową."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Wyświetlane nad diagramem i używane jako jego nazwa."
+      },
+      {
+        "title": "Źródło diagramu",
+        "description": "Tekst Mermaid, np.: flowchart TD, a potem po jednym wierszu na połączenie, takie jak A[Draft] --> B{Ready?}. Dodaj |etykieta| po strzałce, aby ją opisać. Rysunek aktualizuje się podczas pisania."
+      },
+      {
+        "title": "Alternatywa tekstowa",
+        "description": "Opisz, co pokazuje diagram, dla osób, które go nie widzą. Pozostaw puste przy schemacie blokowym, aby jego kroki zostały wypisane automatycznie."
+      },
+      {
+        "title": "Podpis",
+        "description": "Opcjonalny podpis wyświetlany pod diagramem."
+      },
+      {
+        "title": "Pokaż źródło",
+        "description": "Pokaż tekst diagramu obok rysunku."
+      },
+      {
+        "title": "Pokaż alternatywę tekstową",
+        "description": "Pokaż alternatywę tekstową pod rysunkiem. Jest zawsze dostępna dla czytników ekranu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Plik źródłowy",
+        "description": "Adres pliku .mmd do narysowania zamiast powyższego tekstu (https lub ścieżka w tej witrynie)."
+      },
+      {
+        "title": "Kolor akcentu",
+        "description": "Kolor etykiety ikony w nagłówku."
+      }
+    ]
+  }
+}

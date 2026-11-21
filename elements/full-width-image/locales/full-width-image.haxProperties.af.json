@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Agtergrondprent."
+        "description": "Agtergrondprent.",
+        "title": "Beeld"
       },
       {
         "property": "caption",
-        "description": "Teksopskrif."
+        "description": "Teksopskrif.",
+        "title": "Onderskrif"
       }
     ]
   }

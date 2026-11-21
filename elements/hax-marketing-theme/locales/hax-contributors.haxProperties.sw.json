@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Wachangiaji",
+    "description": "Watu waliojenga mradi, kutoka kwenye faili ya orodha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faili ya orodha (JSON)"
+      },
+      {
+        "title": "Mwonekano: landed, lab au code"
+      },
+      {
+        "title": "Idadi ya juu ya watu wa kuonyesha (0 ni wote)"
+      }
+    ]
+  }
+}

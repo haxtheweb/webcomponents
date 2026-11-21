@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternative tekst"
+        "title": "Alternative tekst",
+        "description": "Beskriuw de ôfbylding foar minsken dy't him net sjen kinne."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opsjonele gearfettingstekst as de details iepen binne"
+        "title": "Opsjonele gearfettingstekst as de details iepen binne",
+        "description": "Knoptekst wylst de beskriuwing ferburgen is, lykas Beskriuwing sjen litte."
       },
       {
         "property": "closeText",
-        "title": "Opsjonele gearfettingstekst as de details ticht binne"
+        "title": "Opsjonele gearfettingstekst as de details ticht binne",
+        "description": "Knoptekst wylst de beskriuwing toand wurdt, lykas Beskriuwing ferbergje."
       }
     ]
   }

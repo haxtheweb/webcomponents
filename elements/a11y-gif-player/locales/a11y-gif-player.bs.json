@@ -2,5 +2,9 @@
   "toggleAnimation": "Uključi/isključi animaciju",
   "info": "informacije",
   "image": "Slika",
-  "animatedGif": "Animirani GIF"
+  "animatedGif": "Animirani GIF",
+  "playAnimation": "Pokreni animaciju",
+  "pauseAnimation": "Pauziraj animaciju",
+  "showDescription": "Prikaži opis",
+  "hideDescription": "Sakrij opis"
 }

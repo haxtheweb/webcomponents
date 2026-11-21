@@ -1,0 +1,14 @@
+{
+  "scene": "Scene",
+  "ending": "Slutning",
+  "goodEnding": "God slutning",
+  "mixedEnding": "Blandet slutning",
+  "poorEnding": "Dårlig slutning",
+  "scoreOf": "Score {score} af {max}",
+  "scoreOnly": "Score {score}",
+  "startScene": "Start",
+  "sceneIdLabel": "Scene-id",
+  "needsId": "Tilføj et scene-id, så valg kan linke til denne scene.",
+  "orphan": "Intet valg linker til denne scene.",
+  "deadLinks": "Disse links peger på en scene, der ikke findes:"
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Paskirties parinkiklis",
+    "description": "Pasirinkite, kam skirta svetainė, ir gaukite nuorodą, kuri atidaro HAX naršyklėje su ta pradine svetaine, bei atitinkamą CLI komandą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX naršyklėje adresas",
+        "description": "Kur atidaroma nuoroda; prie jos pridedama ?skeleton= ir &name="
+      },
+      {
+        "title": "Praleidžiamos pradinės svetainės",
+        "description": "Sisteminiai pavadinimai, atskirti kableliais"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pradinių svetainių sąrašas",
+        "description": "Skeletų sąrašo adresas (formatas, kurį skaito app-hax)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kennzahl-Kachel",
+    "description": "Eine wichtige Zahl mit ihrer Beschriftung und wie sie sich verändert hat. Setze mehrere in ein Raster für eine Dashboard-Zeile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beschriftung",
+        "description": "Was die Zahl misst."
+      },
+      {
+        "title": "Wert",
+        "description": "Die Zahl. Eine einfache Zahl wird nach der Sprache der Seite gruppiert; alles andere wird wie geschrieben angezeigt."
+      },
+      {
+        "title": "Veränderung",
+        "description": "Wie sie sich verändert hat, in Worten, etwa 6 % in diesem Semester."
+      },
+      {
+        "title": "Richtung",
+        "description": "Ob die Veränderung nach oben oder unten geht.",
+        "options": {
+          "": "Keine",
+          "up": "Nach oben",
+          "down": "Nach unten"
+        }
+      }
+    ]
+  }
+}

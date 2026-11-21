@@ -1,0 +1,14 @@
+{
+  "scene": "Ihe nkiri",
+  "ending": "Njedebe",
+  "goodEnding": "Njedebe ọma",
+  "mixedEnding": "Njedebe agwakọtara",
+  "poorEnding": "Njedebe ọjọọ",
+  "scoreOf": "Akara {score} n'ime {max}",
+  "scoreOnly": "Akara {score}",
+  "startScene": "Mmalite",
+  "sceneIdLabel": "Id ihe nkiri",
+  "needsId": "Tinye id ihe nkiri ka nhọrọ nwee ike ijikọ na ihe nkiri a.",
+  "orphan": "Ọ dịghị nhọrọ jikọrọ na ihe nkiri a.",
+  "deadLinks": "Njikọ ndị a na-atụ aka n'ihe nkiri na-adịghị:"
+}

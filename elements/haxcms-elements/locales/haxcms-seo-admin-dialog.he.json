@@ -6,6 +6,8 @@
   "faviconDescription": "תמונה ללשונית הדפדפן / משמשת בטלפונים כלוגו קטן של האתר",
   "domain": "דומיין",
   "domainDescription": "הדומיין של אתר זה",
+  "sameAs": "פרופילים נוספים של האתר",
+  "sameAsDescription": "קישור אחד בכל שורה לפרופילים של האתר או הארגון במקומות אחרים (GitHub, LinkedIn, YouTube, Mastodon). מנועי חיפוש משתמשים בהם כדי לקשר את הפרופילים לאתר הזה.",
   "language": "שפה",
   "languageDescription": "שפת האתר. חפשו לפי שם או קוד, או הזינו קוד אחר כגון fr-CA.",
   "googleAnalyticsId": "מזהה Google Analytics",

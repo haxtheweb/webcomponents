@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Mutambi wemagwaro",
+    "description": "Kufamba nemumwe, demo nereferensi yeweb component, ine mabhatani ekukopa eHTML, import, npm neCDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faira redata remagwaro",
+        "description": "Data remagwaro rinouya nelement (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard yekufamba nemumwe",
+        "description": "Storyboard yekufamba inouya nelement (tag.motion.json). Hazvimanikidzwe."
+      },
+      {
+        "title": "Vhidhiyo yekudzidzisa",
+        "description": "Vhidhiyo pfupi nezve element (YouTube, Vimeo kana faira revhidhiyo). Inotsiva vhidhiyo iri mudata remagwaro."
+      },
+      {
+        "title": "Vhura patabhu",
+        "description": "Tabhu ipi inoratidzwa kutanga.",
+        "options": {
+          "motion": "Kufamba nemumwe",
+          "video": "Vhidhiyo",
+          "demo": "Demo",
+          "docs": "Magwaro",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Kufamba nemumwe kunotamba kwega",
+        "description": "Tanga kufamba nemumwe mutambi achangoratidzwa. Hazviteererwi kana muverengi achida kufamba kushoma."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Musoro wekufamba nemumwe",
+        "description": "Kumaelement ane kufamba nemumwe kwakawanda, musoro upi wekuvhura kutanga (semuenzaniso add-blocks). Siya pasina chinhu kuti uwane mukuru."
+      },
+      {
+        "title": "Link yedemo mhenyu",
+        "description": "Panoenda bhatani reOpen demo source. Sezvakajairwa inoenda kufolda yedemo murepository."
+      },
+      {
+        "title": "Link yemagwaro",
+        "description": "Panoenda bhatani remagwaro akazara, semuenzaniso peji reLearn HAX rinoenderana."
+      }
+    ]
+  }
+}

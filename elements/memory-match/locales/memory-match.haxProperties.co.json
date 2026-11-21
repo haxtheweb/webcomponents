@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ghjocu di memoria",
+    "description": "Vultate e carte per truvà i paghji. Accuppiate un termine cù u so significatu per chì un paghju mostri a cumprensione, o aduprate dui testi o maghjine chì currispondenu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "A cunsigna mustrata in u capu, per esempiu: Accuppiate u termine cù a so funzione."
+      },
+      {
+        "title": "Paghji",
+        "description": "Ogni paghju hè duie carte chì vanu inseme, di solitu un termine è u so significatu. Un latu hà bisognu di testu, d'una maghjina, o di i dui."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore facultativu per l'etichetta di u capu, u daretu di e carte è u buttone."
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Woordzoeker",
+    "description": "Een letterrooster met verborgen woorden. Leerlingen tikken op de eerste en laatste letter van elk woord. Oefent herkennen hoe een begrip wordt gespeld, niet wat het betekent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Wat leerlingen moeten vinden, getoond in de kop."
+      },
+      {
+        "title": "Woorden",
+        "description": "De woorden om te verbergen. Spaties en leestekens worden uit het rooster weggelaten. Woorden die niet passen worden tijdens het bewerken opgesomd en voor leerlingen weggelaten."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Roostergrootte",
+        "description": "Letters per zijde, 4 tot 16. Laat leeg om het langste woord te laten passen (tot 12). Meer dan 12 scrolt op een telefoon zijwaarts."
+      },
+      {
+        "title": "Diagonale woorden",
+        "description": "Verberg woorden ook diagonaal. Moeilijker."
+      },
+      {
+        "title": "Achterstevoren woorden",
+        "description": "Verberg ook woorden die achterstevoren zijn geschreven. Moeilijker."
+      },
+      {
+        "title": "Accentkleur",
+        "description": "Optionele kleur voor het kopetiket, de gekozen eerste letter en de knop."
+      }
+    ]
+  }
+}

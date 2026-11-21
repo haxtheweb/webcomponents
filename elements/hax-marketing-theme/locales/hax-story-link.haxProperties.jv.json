@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tombol crita",
+    "description": "Tombol sing mbukak crita ing mburine pratelan ing hax.cloud, utawa panggonan sing cocog ing situs jaringan HAX liyane"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tujuane",
+        "options": {
+          "cloud": "hax.cloud, critane",
+          "learn": "learn.hax.cloud, tutorial",
+          "try": "browser.hax.cloud, cobanen",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Alamat ing situs kasebut (crita ing hax.cloud wujude kaya stories/ee450a19)"
+      },
+      {
+        "title": "Babagan apa"
+      },
+      {
+        "title": "Chip cilik"
+      },
+      {
+        "title": "Tampilake babagan apa ing tombol"
+      }
+    ]
+  }
+}

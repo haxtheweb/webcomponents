@@ -1,0 +1,16 @@
+{
+  "drawing": "Kresba",
+  "edit": "Upravit kresbu",
+  "start": "Začít kreslit",
+  "remove": "Odebrat kresbu",
+  "empty": "Zatím nic nenakresleno",
+  "save": "Uložit",
+  "cancel": "Zrušit",
+  "close": "Zavřít",
+  "discard": "Zahodit změny",
+  "discardConfirm": "Zahodit neuložené změny?",
+  "keepEditing": "Pokračovat v úpravách",
+  "draw": "Kresba",
+  "feedback": "Zpětná vazba",
+  "signature": "Podpis"
+}

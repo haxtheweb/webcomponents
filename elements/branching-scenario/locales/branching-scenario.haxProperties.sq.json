@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Skenar me degëzime",
+    "description": "Një histori ku çdo zgjedhje të çon në një skenë dhe përfundim të ndryshëm. Nxënësit mund të kthehen pas dhe të provojnë rrugë të tjera; përfundimi i arritur cakton pikët."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Emri i skenarit, i shfaqur në kokën e tij."
+      },
+      {
+        "title": "Skena fillestare",
+        "description": "ID-ja e skenës ku fillojnë nxënësit. Lëre bosh për të filluar te skena e parë."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyrë opsionale për etiketën e kokës, butonat dhe skajin e një zgjedhjeje."
+      }
+    ]
+  }
+}

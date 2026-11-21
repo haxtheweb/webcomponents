@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Respostas",
+        "description": "A orde das respostas define a secuencia correcta.",
+        "options": {
+          "": "Lista",
+          "cards": "Fichas con imaxe"
+        }
+      },
+      {
+        "title": "Respostas",
         "description": "A orde das respostas define a secuencia correcta."
       }
     ],

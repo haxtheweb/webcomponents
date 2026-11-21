@@ -3,5 +3,8 @@
   "copyAsCsv": "Tārua hei CSV.",
   "printTable": "Tā Ripanga",
   "selectColumn": "Tīpako Tīwae",
-  "dataTable": "Raraunga · Ripanga"
+  "dataTable": "Raraunga · Ripanga",
+  "filterStatus": "E whakaatu ana i te {shown} o ngā rārangi {total}, i tātarihia mā {column}: {text}",
+  "columnNumber": "Tīwae {column}",
+  "clearFilter": "Ūkui tātari"
 }

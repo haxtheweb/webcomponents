@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Eiginleikaröð",
+    "description": "Skjámynd af vörunni við hliðina á því hvað hún þýðir fyrir þig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lítið merki"
+      },
+      {
+        "title": "Fyrirsögn"
+      },
+      {
+        "title": "Mynd"
+      },
+      {
+        "title": "Hvað myndin sýnir"
+      },
+      {
+        "title": "Mynd til hægri"
+      },
+      {
+        "title": "Skuggalitur (DDD-heiti, autt fylgir litaspjaldinu)"
+      }
+    ]
+  }
+}

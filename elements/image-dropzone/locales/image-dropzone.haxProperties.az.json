@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Şəkil üzərində yerləşdirmə",
+    "description": "Öyrənənlər etiketləri şəklin üzərindəki zonalara yerləşdirir, sonra cavablarını yoxlayır."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəkil",
+        "description": "Öyrənənlərin etiket yerləşdirdiyi şəkil."
+      },
+      {
+        "title": "Alternativ mətn",
+        "description": "Şəkli görə bilməyən insanlar üçün təsvir edir. Etiketlərin hara getdiyini açıqlamayın."
+      },
+      {
+        "title": "Şəklin başlığı",
+        "description": "Şəkil üçün onun üstündə göstərilən qısa görünən başlıq."
+      },
+      {
+        "title": "Sual",
+        "description": "Öyrənənlərdən etiketlərlə nə etmək tələb olunur."
+      },
+      {
+        "title": "Etiketlər və zonalar",
+        "description": "Hər element öyrənənlərin yerləşdirə biləcəyi etiketdir. Zonasını şəkildə yerləşdirmək üçün etiketə zona adı verin; zona adı olmayan etiket heç yerə aid olmayan artıq etiketdir. Zona rəqəmləri şəklin faizləridir."
+      },
+      {
+        "title": "Başlıq yazısı",
+        "description": "Şəklin altında göstərilən ixtiyari başlıq yazısı."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cəhdlər",
+        "description": "Öyrənənin neçə dəfə yoxlaya biləcəyi. 0 limitsiz deməkdir."
+      },
+      {
+        "title": "Etiketləri qarışdır",
+        "description": "Etiketləri hər ziyarətdə fərqli ardıcıllıqla göstər."
+      },
+      {
+        "title": "Yığıla bilən",
+        "description": "Bu sualı açılıb-bağlanan sətir kimi göstər. Birini açmaq yanındakı digər yığıla bilən sualları bağlayır."
+      },
+      {
+        "title": "Yığılmış başla",
+        "description": "Yığıla bilən olduqda yalnız sualı və statusunu göstərən bağlı sətir kimi başla."
+      },
+      {
+        "title": "Qiymətləndirmə formatı",
+        "description": "OER Schema: bu qiymətləndirmə üçün qiymətləndirmə formatı (məsələn, xal, hərf, faiz, tamamlama)."
+      },
+      {
+        "title": "Təlim məqsədi",
+        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli təlim məqsədi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analitika sistemlərində xAPI identifikasiyası üçün istifadə olunan test adı."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
+      }
+    ]
+  }
+}

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Barreeffama Bakka Bu'aa"
+        "title": "Barreeffama Bakka Bu'aa",
+        "description": "Namoota arguu hin dandeenyeef suuraa ibsi."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni banamu"
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni banamu",
+        "description": "Barreeffama qabduu yeroo ibsi dhokatu, fakkeenyaaf Ibsa agarsiisi."
       },
       {
         "property": "closeText",
-        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni cufamu"
+        "title": "Barreeffama cuunfaa dirqama hin taane yeroo bal'inni cufamu",
+        "description": "Barreeffama qabduu yeroo ibsi mul'atu, fakkeenyaaf Ibsa dhoksi."
       }
     ]
   }

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hekaýa düwmesi",
+    "description": "hax.cloud-da tassyklamanyň aňyrsyndaky hekaýany ýa-da başga HAX tor saýtyndaky gabat gelýän ýeri açýan düwme"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nirä alyp barýar",
+        "options": {
+          "cloud": "hax.cloud, hekaýa",
+          "learn": "learn.hax.cloud, gollanma",
+          "try": "browser.hax.cloud, synap gör",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Şol saýtdaky salgy (hax.cloud-daky hekaýa stories/ee450a19 ýaly görünýär)"
+      },
+      {
+        "title": "Näme barada"
+      },
+      {
+        "title": "Kiçi nyşan"
+      },
+      {
+        "title": "Näme baradadygyny düwmede görkez"
+      }
+    ]
+  }
+}

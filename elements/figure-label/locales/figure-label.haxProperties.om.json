@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Maqaa fakkii",
     "description": "Elementii maqaa fakkii qabeenya miidiyaa qabiyyee keessaa mallatteessuuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lakkoofsa fakkii",
+        "description": "Lakkoofsa ykn maqaa gabaabaa fakkiif, fkn. 1.3"
+      },
+      {
+        "title": "Ibsa",
+        "description": "Ibsa gabaabaa fakkii"
+      }
+    ]
   }
 }

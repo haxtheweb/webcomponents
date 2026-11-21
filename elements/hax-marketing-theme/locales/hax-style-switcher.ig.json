@@ -1,0 +1,16 @@
+{
+  "theme": "Isiokwu",
+  "designSystem": "Sistemụ imewe",
+  "dddDefault": "DDD (ndabara)",
+  "designSystemHelp": "Agba, mkpụrụedemede, nkuku na nlebara anya. Isiokwu ahụ na-edobe nhazi ya.",
+  "designSystemFixed": "Isiokwu a na-edobe sistemụ imewe nke ya.",
+  "palette": "Paleti",
+  "themeDefault": "Ndabara isiokwu",
+  "paletteNumber": "Paleti {n}",
+  "siteTheme": "{name} (isiokwu saịtị a)",
+  "restyle": "Gbanwee ụdị saịtị a",
+  "close": "Mechie",
+  "reset": "Laghachi n'ọdịdị saịtị a n'onwe ya",
+  "random": "Tụọ m n'anya",
+  "about": "Nke a na-egosi ụfọdụ ọdịdị e wuru n'ime HAX. Peeji anaghị agbanwe agbanwe: nhazi bi na JSON Outline Schema, ngọngọ ọ bụla bụkwa web component ụkpụrụ, ya mere imewe nwere onwe ya ịgbanwe."
+}

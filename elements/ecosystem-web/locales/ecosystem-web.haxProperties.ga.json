@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Gréasán an éiceachórais",
+    "description": "Gréasán idirghníomhach de conas a cheanglaíonn codanna tionscadail, le fo-ghréasáin agus turais céim ar chéim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sonraí an ghréasáin",
+        "description": "URL an bheartáin JSON de ghréasáin (tógtha in PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Gréasán",
+        "description": "Aitheantas an ghréasáin le taispeáint ar dtús; is é main gréasán an éiceachórais."
+      },
+      {
+        "title": "Tíl roghnaithe",
+        "description": "Aitheantas tíle le roghnú nuair a osclaíonn an gréasán."
+      },
+      {
+        "title": "Turas",
+        "description": "Aitheantas turais le tosú air."
+      },
+      {
+        "title": "Tosaigh in amharc liosta",
+        "description": "Taispeáin an gréasán mar liostaí neadaithe in ionad na líníochta."
+      },
+      {
+        "title": "Líníocht amháin",
+        "description": "Taispeáin an líníocht amháin, mar fhíor: gan ceanntásc, turais, sonraí ná barra céime."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Léite de réir",
+        "description": "Tosaigh le gach tíl léite de réir tomhais amháin.",
+        "options": {
+          "": "Naisc amháin",
+          "fresh": "Úire",
+          "bus": "Fachtóir bus",
+          "impact": "Tionchar",
+          "evidence": "Fianaise",
+          "parity": "Paireacht"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "Sena",
+  "ending": "Endi",
+  "goodEnding": "Góður endi",
+  "mixedEnding": "Blandaður endi",
+  "poorEnding": "Vánaligur endi",
+  "scoreOf": "Stig {score} av {max}",
+  "scoreOnly": "Stig {score}",
+  "startScene": "Byrjan",
+  "sceneIdLabel": "Senu-id",
+  "needsId": "Legg eitt senu-id afturat, so val kunnu leinkja til hesa senuna.",
+  "orphan": "Einki val leinkjar til hesa senuna.",
+  "deadLinks": "Hesi leinkini vísa til eina senu, sum ikki er til:"
+}

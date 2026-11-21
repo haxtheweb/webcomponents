@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Miðlabroytari",
-        "description": "Valfrítt miðlaøkisbroytari. Ásetir hvat slag av miðli hetta loyvið galdar fyri."
+        "description": "Valfrítt miðlaøkisbroytari. Ásetir hvat slag av miðli hetta loyvið galdar fyri.",
+        "options": {
+          "": "Eingin broytari"
+        }
       },
       {
         "property": "uri",

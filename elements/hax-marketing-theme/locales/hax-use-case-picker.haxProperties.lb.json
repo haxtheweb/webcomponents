@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Asazzweck-Auswiel",
+    "description": "Wielt, fir wat eng Websäit ass, a kritt e Link, deen HAX am Browser mat där Startwebsäit opmécht, plus de passende CLI-Befehl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adress vun HAX am Browser",
+        "description": "Wou de Link opgeet; ?skeleton= an &name= ginn derbäigesat"
+      },
+      {
+        "title": "Startwebsäiten, déi ausgelooss ginn",
+        "description": "Maschinennimm, mat Komma getrennt"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lëscht vun de Startwebsäiten",
+        "description": "Adress vun der Skeleton-Lëscht (d'Format, dat app-hax liest)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "ອົງປະກອບເລີ່ມຕົ້ນຕົວຢ່າງທີ່ໃຊ້ສາທິດການຕັ້ງຄ່າ HAX ແລະ ຄຸນສົມບັດທີ່ແກ້ໄຂໄດ້."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ຫົວຂໍ້"
+      }
+    ]
+  }
+}

@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Rabhadh",
           "success": "Deimhniú",
-          "info": "Fógra"
+          "info": "Fógra",
+          "tip": "Leid",
+          "new": "Cad atá nua"
         }
       },
       {

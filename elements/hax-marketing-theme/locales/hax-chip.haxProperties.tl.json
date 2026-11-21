@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Isang maliit na icon na may label"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Icon"
+      },
+      {
+        "title": "Label"
+      }
+    ]
+  }
+}

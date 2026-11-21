@@ -9,5 +9,7 @@
   "slidePages": "ಸ್ಲೈಡ್ ಪುಟಗಳು",
   "goToSlide": "ಸ್ಲೈಡ್ {number} ಗೆ ಹೋಗಿ",
   "slides": "ಸ್ಲೈಡ್‌ಗಳು",
-  "position": "{total} ರಲ್ಲಿ {number}"
+  "position": "{total} ರಲ್ಲಿ {number}",
+  "fullScreen": "ಪೂರ್ಣ ಪರದೆ",
+  "exitFullScreen": "ಪೂರ್ಣ ಪರದೆಯಿಂದ ನಿರ್ಗಮಿಸಿ"
 }

@@ -2,5 +2,9 @@
   "toggleAnimation": "Animasyonu aç/kapat",
   "info": "bilgi",
   "image": "Görsel",
-  "animatedGif": "Hareketli GIF"
+  "animatedGif": "Hareketli GIF",
+  "playAnimation": "Animasyonu oynat",
+  "pauseAnimation": "Animasyonu duraklat",
+  "showDescription": "Açıklamayı göster",
+  "hideDescription": "Açıklamayı gizle"
 }

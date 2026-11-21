@@ -40,5 +40,7 @@
   "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
   "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
   "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
-  "notAttempted": "A kò tíì gbìyànjú"
+  "notAttempted": "A kò tíì gbìyànjú",
+  "cardsDirections": "To àwọn káàdì ní ìtẹ̀léra tó tọ̀nà pẹ̀lú àwọn bọ́tìnnì gbé e ṣáájú àti gbé e sẹ́yìn lórí káàdì kọ̀ọ̀kan, tàbí fà wọ́n pẹ̀lú ẹ̀rọ asin. Nígbà tí o bá gbà pé wọ́n wà ní ìtẹ̀léra tó tọ̀nà, dán ìdáhùn rẹ wò nípa yíyan {checkAnswer}.",
+  "movedToPosition": "A ti gbé {item} sí ipò {position} nínú {total}"
 }

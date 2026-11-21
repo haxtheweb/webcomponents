@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funktionszeile",
+    "description": "Ein Bildschirm des Produkts neben dem, was er für dich bedeutet"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kleine Beschriftung"
+      },
+      {
+        "title": "Überschrift"
+      },
+      {
+        "title": "Bild"
+      },
+      {
+        "title": "Was das Bild zeigt"
+      },
+      {
+        "title": "Bild rechts"
+      },
+      {
+        "title": "Schattenfarbe (DDD-Name, leer folgt der Palette)"
+      }
+    ]
+  }
+}

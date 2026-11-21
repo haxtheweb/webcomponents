@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Término"
+        "title": "Término",
+        "description": "La palabra o frase en la que los lectores hacen clic para ver su definición."
       },
       {
         "slot": "",

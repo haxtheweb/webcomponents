@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Çip",
+    "description": "Etiketli küçük bir simge"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Simge"
+      },
+      {
+        "title": "Etiket"
+      }
+    ]
+  }
+}

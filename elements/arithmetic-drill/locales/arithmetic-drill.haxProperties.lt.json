@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetikos treniruotė",
+    "description": "Trumpas sugeneruotų aritmetikos uždavinių ratas su momentiniu grįžtamuoju ryšiu. Pasirinkite veiksmus ir skaičių intervalą; kiekvienas ratas naujas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Šios treniruotės pavadinimas, rodomas jos antraštėje."
+      },
+      {
+        "title": "Veiksmai",
+        "description": "Kokių rūšių uždaviniai pateikiami. Besimokantieji prieš pradėdami gali bet kurią iš jų išjungti.",
+        "options": {
+          "add": "Sudėtis",
+          "subtract": "Atimtis",
+          "multiply": "Daugyba",
+          "divide": "Dalyba",
+          "add subtract": "Sudėtis ir atimtis",
+          "multiply divide": "Daugyba ir dalyba",
+          "add multiply": "Sudėtis ir daugyba",
+          "add divide": "Sudėtis ir dalyba",
+          "subtract multiply": "Atimtis ir daugyba",
+          "subtract divide": "Atimtis ir dalyba",
+          "add subtract multiply": "Sudėtis, atimtis ir daugyba",
+          "add subtract divide": "Sudėtis, atimtis ir dalyba",
+          "add multiply divide": "Sudėtis, daugyba ir dalyba",
+          "subtract multiply divide": "Atimtis, daugyba ir dalyba",
+          "add subtract multiply divide": "Visi keturi"
+        }
+      },
+      {
+        "title": "Mažiausias skaičius",
+        "description": "Mažiausias uždavinyje naudojamas skaičius. Sveikieji skaičiai, 0 ar daugiau."
+      },
+      {
+        "title": "Didžiausias skaičius",
+        "description": "Didžiausias uždavinyje naudojamas skaičius. Dalybos atsakymai ir dalikliai taip pat lieka šiame intervale."
+      },
+      {
+        "title": "Uždavinių skaičius",
+        "description": "Kiek uždavinių yra viename rate (nuo 1 iki 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Laiko riba",
+        "description": "Visam ratui skirtos sekundės. 0 reiškia be laikmačio – tai numatytoji reikšmė: treniruotės su laiku nuvilia besimokančiuosius, kuriems reikia daugiau laiko. Kai nustatyta, besimokantieji vis tiek gali patys išjungti laikmatį."
+      },
+      {
+        "title": "Akcento spalva",
+        "description": "Antraštės žymės ir mygtukų spalva. Palikite tuščią, kad būtų naudojama temos spalva."
+      }
+    ]
+  }
+}

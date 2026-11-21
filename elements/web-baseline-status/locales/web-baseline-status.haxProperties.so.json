@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Xaaladda Baseline",
+    "description": "Muuji xaaladda taageerada browser-ka Baseline ee astaan madal web ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ga astaanta",
+        "description": "ID-ga astaanta web-ka, tusaale anchor-positioning. Ka hel ID-yada webstatus.dev; ID-gu waa qaybta ugu dambeysa ee URL-ka bogga astaanta."
+      }
+    ]
+  }
+}

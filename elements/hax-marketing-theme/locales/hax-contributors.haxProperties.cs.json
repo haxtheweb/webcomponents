@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Přispěvatelé",
+    "description": "Lidé, kteří projekt vytvořili, ze souboru se seznamem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Soubor se seznamem (JSON)"
+      },
+      {
+        "title": "Zobrazení: landed, lab nebo code"
+      },
+      {
+        "title": "Nejvíce lidí k zobrazení (0 jsou všichni)"
+      }
+    ]
+  }
+}

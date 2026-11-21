@@ -60,6 +60,8 @@
   "flagsFound": "{correct}/{total} megtalálva",
   "toRethink": "Átgondolandó: {count}",
   "notEvidence": "nem bizonyíték erre a zászlóra",
+  "isEvidence": "bizonyíték ehhez a jelöléshez",
+  "readingKeys": "A nyílbillentyűkkel léphet egyik {unit} egységről a következőre.",
   "markAnswers": "Válaszok megjelölése",
   "doneMarking": "Válaszok megjelölésének befejezése",
   "editHint": "Szerkeszd az alábbi szöveget. A blokk menüjében a Válaszok megjelölése paranccsal választhatod ki, hová tartoznak az egyes zászlók.",

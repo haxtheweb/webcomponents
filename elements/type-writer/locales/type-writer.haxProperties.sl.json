@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Pisalni stroj",
     "description": "Besedilo, ki se samo izpisuje, znak za znakom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Besedilo",
+        "description": "Besedilo, ki se izpiše, ko se element pomakne v pogled."
+      },
+      {
+        "title": "Tipkanje",
+        "description": "Prikaži utripajoč kazalec; element to nastavi med tipkanjem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zakasnitev",
+        "description": "Milisekunde čakanja pred začetkom tipkanja."
+      },
+      {
+        "title": "Trajanje kazalca",
+        "description": "Milisekunde, ko kazalec utripa po izpisu besedila."
+      },
+      {
+        "title": "Hitrost",
+        "description": "Milisekunde na znak; nižja števila tipkajo hitreje."
+      }
+    ]
   }
 }

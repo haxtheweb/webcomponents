@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Zita remufananidzo",
     "description": "Chinhu chezita remufananidzo chekumaka midhiya mukati mezvirimo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhamba yemufananidzo",
+        "description": "Nhamba kana zita pfupi remufananidzo, semuenzaniso 1.3"
+      },
+      {
+        "title": "Tsananguro",
+        "description": "Tsananguro pfupi yemufananidzo"
+      }
+    ]
   }
 }

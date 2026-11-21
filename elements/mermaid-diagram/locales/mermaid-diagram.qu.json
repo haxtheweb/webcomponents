@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagrama",
+  "flowchart": "ruray siq'i",
+  "sequence": "qatinakuy",
+  "source": "Pukyu",
+  "textAlternative": "Qillqa rantin",
+  "present": "Riqsichiy",
+  "exitPresent": "Riqsichiymanta lluqsiy",
+  "loading": "Diagrama cargakuchkan",
+  "empty": "Manaraq siq'inapaq imapas kanchu. Diagramap pukyunta yapay.",
+  "error": "Pantay",
+  "parseError": "Kay diagramaqa manam siq'iyta atikurqanchu. Pukyunta qhaway.",
+  "loadError": "Diagrama bibliotecaqa manam cargayta atikurqanchu.",
+  "srcError": "Diagrama willañiqiqa manam cargayta atikurqanchu.",
+  "decision": "akllay",
+  "end": "tukuy",
+  "goTo": "{target} nisqaman riy",
+  "ifGoTo": "{label} kaptinqa, {target} nisqaman riy",
+  "describedBySource": "Pukyunwan willasqa diagrama.",
+  "scrollable": "Diagrama, kuyuchinalla"
+}

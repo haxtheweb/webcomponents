@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "טיטל"
+        "title": "טיטל",
+        "description": "קעפּל געװיזן איבער דעם קורס־מאָדעל."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "אַדרעס פֿון דער 3D־מאָדעל טעקע (.glb אָדער .gltf) צו װײַזן."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "באַשרײַב דעם 3D־מאָדעל פֿאַר מענטשן װאָס קענען אים ניט זען."
       },
       {
         "title": "אינפֿאָרמאַציע־שטח"

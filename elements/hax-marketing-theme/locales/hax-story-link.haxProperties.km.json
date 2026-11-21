@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ប៊ូតុងរឿង",
+    "description": "ប៊ូតុងដែលបើករឿងនៅពីក្រោយការអះអាងមួយនៅលើ hax.cloud ឬកន្លែងដែលត្រូវគ្នានៅលើគេហទំព័របណ្ដាញ HAX ផ្សេងទៀត"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "កន្លែងដែលវានាំទៅ",
+        "options": {
+          "cloud": "hax.cloud រឿង",
+          "learn": "learn.hax.cloud មេរៀន",
+          "try": "browser.hax.cloud សាកល្បង",
+          "elements": "webcomponents.hax.cloud ប្លុក",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "អាសយដ្ឋាននៅលើគេហទំព័រនោះ (រឿងនៅលើ hax.cloud មើលទៅដូចជា stories/ee450a19)"
+      },
+      {
+        "title": "វានិយាយអំពីអ្វី"
+      },
+      {
+        "title": "បន្ទះតូច"
+      },
+      {
+        "title": "បង្ហាញអ្វីដែលវានិយាយអំពីក្នុងប៊ូតុង"
+      }
+    ]
+  }
+}

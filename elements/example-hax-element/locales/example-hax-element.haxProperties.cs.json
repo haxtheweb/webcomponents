@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Ukázkový startovní prvek pro předvedení konfigurace HAX a upravitelných vlastností."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název"
+      }
+    ]
+  }
+}

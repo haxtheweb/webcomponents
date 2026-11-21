@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палитра",
   "cancel": "Отказ",
-  "openAppearanceSettings": "Отваряне на настройките за външен вид"
+  "openAppearanceSettings": "Отваряне на настройките за външен вид",
+  "designSystem": "Дизайн система",
+  "designSystemDefault": "DDD (по подразбиране)",
+  "designSystemThemeDefault": "{name} (по подразбиране за темата)",
+  "designSystemHelp": "Цвят, шрифт, ъгли и плътност. Темата все още определя оформлението."
 }

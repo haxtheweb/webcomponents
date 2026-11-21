@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Bild-Ofleeëzon",
+    "description": "D'Léierender leeën Etiketten op Zonen, déi iwwer e Bild geluecht sinn, a kontrolléieren dann hir Äntwert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "D'Bild, op dat d'Léierender Etiketten leeën."
+      },
+      {
+        "title": "Alternativen Text",
+        "description": "Beschreift d'Bild fir Leit, déi et net gesi kënnen. Verrot net, wou d'Etiketten hikommen."
+      },
+      {
+        "title": "Bildtitel",
+        "description": "E kuerze sichtbaren Titel fir d'Bild, driwwer gewisen."
+      },
+      {
+        "title": "Fro",
+        "description": "Wat d'Léierender mat den Etikette maache sollen."
+      },
+      {
+        "title": "Etiketten an Zonen",
+        "description": "All Element ass eng Etikett, déi d'Léierender placéiere kënnen. Gitt enger Etikett en Zonennumm, fir hir Zon op d'Bild ze setzen; eng Etikett ouni Zonennumm ass zousätzlech a gehéiert néierens hin. D'Zonenzuele sinn a Prozent vum Bild."
+      },
+      {
+        "title": "Bildënnerschrëft",
+        "description": "Optional Bildënnerschrëft ënner dem Bild."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versich",
+        "description": "Wéi oft e Léierende kontrolléiere kann. 0 heescht onbegrenzt."
+      },
+      {
+        "title": "Etiketten duerchmëschen",
+        "description": "D'Etiketten bei all Besuch an enger anerer Reiefolleg weisen."
+      },
+      {
+        "title": "Zouklappbar",
+        "description": "Dës Fro als Zeil weisen, déi op- an zougeet. Wann eng opgeet, ginn déi aner zouklappbar Froen dernieft zou."
+      },
+      {
+        "title": "Zougeklappt ufänken",
+        "description": "Wann zouklappbar, als zou Zeil ufänken, déi just d'Fro an hire Status weist."
+      },
+      {
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Evaluatioun (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Evaluatioun verbonnen ass."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Evaluatioun geduecht ass."
+      }
+    ]
+  }
+}

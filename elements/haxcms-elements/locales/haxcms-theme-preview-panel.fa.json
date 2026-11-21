@@ -8,5 +8,9 @@
   "theme": "پوسته",
   "palette": "پالت",
   "cancel": "لغو",
-  "openAppearanceSettings": "باز کردن تنظیمات ظاهر"
+  "openAppearanceSettings": "باز کردن تنظیمات ظاهر",
+  "designSystem": "سیستم طراحی",
+  "designSystemDefault": "DDD (پیش‌فرض)",
+  "designSystemThemeDefault": "{name} (پیش‌فرض پوسته)",
+  "designSystemHelp": "رنگ، حروف، گوشه‌ها و تراکم. چیدمان را همچنان پوسته تعیین می‌کند."
 }

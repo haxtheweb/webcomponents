@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Skribmaŝino",
     "description": "Teksto, kiu tajpas sin mem po unu signo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teksto",
+        "description": "La teksto por tajpi, kiam la elemento rulumiĝas en vidon."
+      },
+      {
+        "title": "Tajpante",
+        "description": "Montri la palpebrumantan kursoron; la elemento agordas ĉi tion dum ĝi tajpas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Prokrasto",
+        "description": "Milisekundoj por atendi antaŭ ol tajpado komenciĝas."
+      },
+      {
+        "title": "Daŭro de la kursoro",
+        "description": "Milisekundoj, dum kiuj la kursoro daŭre palpebrumas post kiam la teksto estas tajpita."
+      },
+      {
+        "title": "Rapido",
+        "description": "Milisekundoj po signo; pli malaltaj nombroj tajpas pli rapide."
+      }
+    ]
   }
 }

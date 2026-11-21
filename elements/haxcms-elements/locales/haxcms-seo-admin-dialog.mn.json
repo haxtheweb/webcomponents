@@ -6,6 +6,8 @@
   "faviconDescription": "Хөтчийн табын зураг / утсан дээр сайтын жижиг лого болгон ашиглагдана",
   "domain": "Домэйн",
   "domainDescription": "Энэ вэбсайтын домэйн",
+  "sameAs": "Энэ сайтын бусад профайл",
+  "sameAsDescription": "Энэ сайт эсвэл байгууллагын өөр газар дахь профайлын холбоосыг мөр тус бүрт нэгээр (GitHub, LinkedIn, YouTube, Mastodon). Хайлтын системүүд эдгээр профайлыг энэ сайттай холбоход ашиглана.",
   "language": "Хэл",
   "languageDescription": "Энэ сайтын хэл. Нэр эсвэл кодоор хайх, эсвэл fr-CA гэх мэт өөр код оруулна уу.",
   "googleAnalyticsId": "Google Analytics ID",

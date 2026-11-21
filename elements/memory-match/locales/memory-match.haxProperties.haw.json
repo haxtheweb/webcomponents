@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Pāʻani hoʻomanaʻo",
+    "description": "E hoʻohuli i nā kāleka e loaʻa ai nā pālua. E hoʻopili i kahi huaʻōlelo me kona manaʻo i hōʻike ka like ʻana i ka hoʻomaopopo, a i ʻole e hoʻohana i ʻelua kikokikona a kiʻi like paha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Ke kauoha i hōʻike ʻia ma ke poʻo, no ka laʻana: E hoʻopili i ka huaʻōlelo i kāna hana."
+      },
+      {
+        "title": "Nā pālua",
+        "description": "He ʻelua kāleka pili kēlā me kēia pālua, he huaʻōlelo a me kona manaʻo ma ka maʻamau. Pono kekahi ʻaoʻao i kikokikona, kiʻi, a i ʻole lāua ʻelua."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu koho no ka ʻāpana poʻo, nā kua kāleka a me ke pihi."
+      }
+    ]
+  }
+}

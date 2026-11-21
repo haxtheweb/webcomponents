@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "In grutte ôfbylding, GIF of fideo mei in koptekst en tekst derop, oeral op in side te pleatsen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ofbylding of fideo",
+        "description": "In JPG-, PNG-, WebP-, GIF-, MP4- of WebM-bestân."
+      },
+      {
+        "title": "Alternative tekst",
+        "description": "Beskriuw de ôfbylding. Lit leech as it allinnich fersiering is."
+      },
+      {
+        "title": "Koptekst",
+        "description": "Koptekst toand oer de media. Lit leech foar gjin."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst toand ûnder de koptekst, oer de media."
+      },
+      {
+        "title": "Folsleine breedte",
+        "description": "Fan râne oant râne rinne ynstee fan yn de ynhâldskolom te sitten."
+      },
+      {
+        "title": "Hichte",
+        "options": {
+          "tall": "Heech",
+          "medium": "Middel",
+          "short": "Leech"
+        }
+      },
+      {
+        "title": "Kadrearring",
+        "description": "Hoe't de foto op elke skermgrutte sit"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ferfaging",
+        "description": "Kleur oer de media lein. Mei in koptekst of tekst is der altyd ien, sadat de tekst lêsber bliuwt.",
+        "options": {
+          "blue": "Blau",
+          "bottom": "Tsjuster ûnderoan",
+          "none": "Gjin"
+        }
+      },
+      {
+        "title": "Tekstposysje",
+        "options": {
+          "bottom": "Underoan",
+          "middle": "Midden"
+        }
+      },
+      {
+        "title": "Fokuspunt horizontaal",
+        "description": "It part fan de ôfbylding dat yn byld bliuwt as er bysnien wurdt, fan 0 (lofts) oant 100 (rjochts)."
+      },
+      {
+        "title": "Fokuspunt fertikaal",
+        "description": "It part fan de ôfbylding dat yn byld bliuwt as er bysnien wurdt, fan 0 (boppe) oant 100 (ûnder)."
+      }
+    ]
+  }
+}

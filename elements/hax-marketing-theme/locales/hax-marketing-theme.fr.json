@@ -1,0 +1,16 @@
+{
+  "skipToContent": "Aller au contenu",
+  "site": "Site",
+  "changeLogo": "Changer le logo",
+  "anotherPicture": "Afficher une autre image",
+  "anotherTheme": "Afficher un autre thème",
+  "switcherHeading": "Même site, à votre goût. Changez-le en direct :",
+  "remix": "Remixer",
+  "remixRandom": "Remixer ce site : un style choisi au hasard",
+  "remixOptions": "Afficher toutes les façons de remixer ce site",
+  "pagesUnder": "Pages sous {name}",
+  "previous": "Précédent",
+  "next": "Suivant",
+  "pages": "Page précédente et suivante",
+  "footerLinks": "Plus"
+}

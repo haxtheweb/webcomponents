@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "旁注",
+    "description": "搭周围内容分开个一条注释，带可选个图标搭标签。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标签",
+        "description": "旁注个标签。"
+      },
+      {
+        "title": "图标",
+        "description": "旁注个图标。"
+      },
+      {
+        "title": "内容",
+        "description": "旁注个内容。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "颜色",
+        "description": "旁注染个颜色。"
+      }
+    ]
+  }
+}

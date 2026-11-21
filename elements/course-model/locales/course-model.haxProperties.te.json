@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "శీర్షిక"
+        "title": "శీర్షిక",
+        "description": "కోర్సు మోడల్ పైన చూపబడే శీర్షిక."
       },
       {
         "property": "src",
-        "title": "మూలం"
+        "title": "మూలం",
+        "description": "చూపించాల్సిన 3D మోడల్ ఫైల్ చిరునామా (.glb లేదా .gltf)."
       },
       {
         "property": "alt",
-        "title": "ప్రత్యామ్నాయ వచనం"
+        "title": "ప్రత్యామ్నాయ వచనం",
+        "description": "చూడలేని వ్యక్తుల కోసం 3D మోడల్‌ను వివరించండి."
       },
       {
         "title": "సమాచార ప్రాంతం"

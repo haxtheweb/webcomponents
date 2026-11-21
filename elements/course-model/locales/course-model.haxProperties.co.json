@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titulu"
+        "title": "titulu",
+        "description": "Titulu mustratu sopra u mudellu di u corsu."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Indirizzu di u schedariu di mudellu 3D (.glb o .gltf) à mustrà."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Discrivite u mudellu 3D per e persone chì ùn u ponu vede."
       },
       {
         "title": "Zona d'infurmazioni"

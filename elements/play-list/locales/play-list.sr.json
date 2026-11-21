@@ -9,5 +9,7 @@
   "slidePages": "Странице слајдова",
   "goToSlide": "Иди на слајд {number}",
   "slides": "Слајдови",
-  "position": "{number} од {total}"
+  "position": "{number} од {total}",
+  "fullScreen": "Цео екран",
+  "exitFullScreen": "Изађи из целог екрана"
 }

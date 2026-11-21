@@ -1,0 +1,14 @@
+{
+  "scene": "Chiitiko",
+  "ending": "Magumo",
+  "goodEnding": "Magumo akanaka",
+  "mixedEnding": "Magumo akasanganiswa",
+  "poorEnding": "Magumo akaipa",
+  "scoreOf": "Mamakisi {score} pa{max}",
+  "scoreOnly": "Mamakisi {score}",
+  "startScene": "Tanga",
+  "sceneIdLabel": "ID yechiitiko",
+  "needsId": "Wedzera ID yechiitiko kuti sarudzo dzikwanise kubatana nechiitiko ichi.",
+  "orphan": "Hapana sarudzo inobatana nechiitiko ichi.",
+  "deadLinks": "Ma link aya anonongedza kuchiitiko chisipo:"
+}

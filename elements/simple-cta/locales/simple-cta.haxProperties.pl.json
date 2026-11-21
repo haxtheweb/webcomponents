@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ukryj ikonę",
         "description": "Ukryj ikonę akcentującą tekst"
+      },
+      {
+        "title": "Wygląd",
+        "description": "Jak mocno przycisk jest wyróżniony.",
+        "options": {
+          "": "Wypełniony",
+          "tonal": "Tonalny",
+          "outlined": "Z obrysem",
+          "plain": "Zwykły"
+        }
+      },
+      {
+        "title": "Rozmiar",
+        "description": "Rozmiar przycisku.",
+        "options": {
+          "s": "Mały",
+          "": "Średni",
+          "l": "Duży"
+        }
       }
     ],
     "advanced": [

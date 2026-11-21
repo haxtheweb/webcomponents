@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram iz besedila",
+    "description": "Napišite diagram kot besedilo (Mermaid): diagram poteka, zaporedje, časovnico in drugo. Nariše se na strani z besedilno alternativo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Prikazano nad diagramom in uporabljeno kot njegovo ime."
+      },
+      {
+        "title": "Vir diagrama",
+        "description": "Besedilo Mermaid, na primer: flowchart TD, nato ena vrstica na povezavo, kot je A[Draft] --> B{Ready?}. Za puščico dodajte |label|, da jo označite. Risba se posodablja med tipkanjem."
+      },
+      {
+        "title": "Besedilna alternativa",
+        "description": "Opišite, kaj diagram prikazuje, za ljudi, ki ga ne vidijo. Pri diagramu poteka pustite prazno, da se njegovi koraki navedejo samodejno."
+      },
+      {
+        "title": "Napis",
+        "description": "Izbirni napis, prikazan pod diagramom."
+      },
+      {
+        "title": "Prikaži vir",
+        "description": "Prikaži besedilo diagrama ob risbi."
+      },
+      {
+        "title": "Prikaži besedilno alternativo",
+        "description": "Prikaži besedilno alternativo pod risbo. Bralnikom zaslona je vedno na voljo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Izvorna datoteka",
+        "description": "Naslov datoteke .mmd, ki se nariše namesto zgornjega besedila (https ali pot na tem spletišču)."
+      },
+      {
+        "title": "Poudarjalna barva",
+        "description": "Barva značke ikone v glavi."
+      }
+    ]
+  }
+}

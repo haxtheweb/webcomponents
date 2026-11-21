@@ -1,0 +1,14 @@
+{
+  "scene": "Cảnh",
+  "ending": "Kết thúc",
+  "goodEnding": "Kết thúc tốt",
+  "mixedEnding": "Kết thúc lẫn lộn",
+  "poorEnding": "Kết thúc kém",
+  "scoreOf": "Điểm {score} / {max}",
+  "scoreOnly": "Điểm {score}",
+  "startScene": "Bắt đầu",
+  "sceneIdLabel": "ID cảnh",
+  "needsId": "Thêm ID cảnh để các lựa chọn có thể liên kết tới cảnh này.",
+  "orphan": "Không có lựa chọn nào liên kết tới cảnh này.",
+  "deadLinks": "Các liên kết này trỏ tới một cảnh không tồn tại:"
+}

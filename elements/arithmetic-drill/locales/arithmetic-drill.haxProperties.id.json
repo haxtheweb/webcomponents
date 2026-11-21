@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Latihan aritmetika",
+    "description": "Rangkaian singkat soal aritmetika yang dibuat otomatis dengan umpan balik instan. Pilih operasi dan rentang angka; setiap putaran selalu baru."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Nama latihan ini, ditampilkan di judulnya."
+      },
+      {
+        "title": "Operasi",
+        "description": "Jenis soal yang ditanyakan. Pelajar dapat mematikan salah satunya sebelum mulai.",
+        "options": {
+          "add": "Penjumlahan",
+          "subtract": "Pengurangan",
+          "multiply": "Perkalian",
+          "divide": "Pembagian",
+          "add subtract": "Penjumlahan dan pengurangan",
+          "multiply divide": "Perkalian dan pembagian",
+          "add multiply": "Penjumlahan dan perkalian",
+          "add divide": "Penjumlahan dan pembagian",
+          "subtract multiply": "Pengurangan dan perkalian",
+          "subtract divide": "Pengurangan dan pembagian",
+          "add subtract multiply": "Penjumlahan, pengurangan, dan perkalian",
+          "add subtract divide": "Penjumlahan, pengurangan, dan pembagian",
+          "add multiply divide": "Penjumlahan, perkalian, dan pembagian",
+          "subtract multiply divide": "Pengurangan, perkalian, dan pembagian",
+          "add subtract multiply divide": "Keempatnya"
+        }
+      },
+      {
+        "title": "Angka terkecil",
+        "description": "Angka terkecil yang digunakan dalam soal. Bilangan bulat, 0 atau lebih."
+      },
+      {
+        "title": "Angka terbesar",
+        "description": "Angka terbesar yang digunakan dalam soal. Hasil dan pembagi dalam pembagian juga tetap dalam rentang ini."
+      },
+      {
+        "title": "Jumlah soal",
+        "description": "Berapa banyak soal dalam satu putaran (1 sampai 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Batas waktu",
+        "description": "Detik yang diizinkan untuk satu putaran penuh. 0 berarti tanpa pengatur waktu, dan ini bawaannya: latihan berwaktu merugikan pelajar yang membutuhkan lebih banyak waktu. Jika diatur, pelajar tetap dapat mematikan pengatur waktu untuk diri mereka sendiri."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna label judul dan tombol. Biarkan kosong untuk mengikuti tema."
+      }
+    ]
+  }
+}

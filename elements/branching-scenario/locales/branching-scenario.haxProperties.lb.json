@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Verzweigte Szenario",
+    "description": "Eng Geschicht, an där all Wiel zu enger anerer Zeen an engem aneren Enn féiert. D'Léierender kënnen zréckgoen an aner Weeër probéieren; dat erreecht Enn bestëmmt de Score."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Numm vum Szenario, a sengem Kapp ugewisen."
+      },
+      {
+        "title": "Startzeen",
+        "description": "Zeen-ID vun der Zeen, bei där d'Léierender ufänken. Eidel loossen, fir bei der éischter Zeen unzefänken."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akzentfaarf",
+        "description": "Optional Faarf fir de Kapp-Chip, d'Knäppercher an de Rand vun enger Wiel."
+      }
+    ]
+  }
+}

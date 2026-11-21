@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Чип",
+    "description": "Тамгалы кечкенә иконка"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Иконка"
+      },
+      {
+        "title": "Тамга"
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Pisz z użyciem notacji matematycznej LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tło obrazu",
+        "description": "Tło za rysowanymi obrazami. Automatycznie dodaje je tylko wtedy, gdy rysunek byłby słabo widoczny na stronie, np. ciemne linie w trybie ciemnym.",
+        "options": {
+          "auto": "Automatycznie",
+          "light": "Jasne",
+          "dark": "Ciemne",
+          "none": "Brak"
+        }
+      }
+    ]
   }
 }

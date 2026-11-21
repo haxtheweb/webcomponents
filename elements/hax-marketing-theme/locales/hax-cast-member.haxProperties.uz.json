@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aktyor",
+    "description": "Personaj ijro etgan bitta auditoriya, so‘zlar va tugma bilan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bu kim"
+      },
+      {
+        "title": "Personaj turi"
+      },
+      {
+        "title": "Personaj urug‘i"
+      },
+      {
+        "title": "Sahna rangi (DDD nomi)"
+      },
+      {
+        "title": "Tugma qayerga olib boradi"
+      },
+      {
+        "title": "Tugma matni"
+      }
+    ]
+  }
+}

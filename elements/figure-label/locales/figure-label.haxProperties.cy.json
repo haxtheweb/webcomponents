@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Label ffigur",
     "description": "Elfen label ffigur i farcio asedau cyfryngau o fewn cynnwys."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rhif y ffigur",
+        "description": "Rhif neu label byr ar gyfer y ffigur, e.e. 1.3"
+      },
+      {
+        "title": "Disgrifiad",
+        "description": "Disgrifiad byr o'r ffigur"
+      }
+    ]
   }
 }

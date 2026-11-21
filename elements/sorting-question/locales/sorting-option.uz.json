@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Javob toʻgʻri tartibda",
   "answerInIncorrectOrder": "Javob notoʻgʻri tartibda",
   "moveOptionUp": "Variantni tartibda yuqoriga siljitish uchun tanlang",
-  "moveOptionDown": "Variantni tartibda pastga siljitish uchun tanlang"
+  "moveOptionDown": "Variantni tartibda pastga siljitish uchun tanlang",
+  "moveEarlier": "Oldinroqqa surish",
+  "moveLater": "Keyinroqqa surish",
+  "correct": "To‘g‘ri",
+  "incorrect": "Noto‘g‘ri"
 }

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistem dizajna",
+  "dddDefault": "DDD (zadano)",
+  "designSystemHelp": "Boja, tipografija, uglovi i fokus. Tema zadržava raspored.",
+  "designSystemFixed": "Ova tema zadržava vlastiti sistem dizajna.",
+  "palette": "Paleta",
+  "themeDefault": "Zadano za temu",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (tema ove stranice)",
+  "restyle": "Promijeni stil ove stranice",
+  "close": "Zatvori",
+  "reset": "Nazad na vlastiti izgled ove stranice",
+  "random": "Iznenadi me",
+  "about": "Ovo prikazuje nekoliko izgleda ugrađenih u HAX. Stranice se nikad ne mijenjaju: struktura je u JSON Outline Schema, a svaki blok je standardna web komponenta, pa se dizajn može slobodno mijenjati."
+}

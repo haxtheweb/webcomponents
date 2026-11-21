@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "teitl"
+        "title": "teitl",
+        "description": "Pennawd a ddangosir uwchben model y cwrs."
       },
       {
         "property": "src",
-        "title": "ffynhonnell"
+        "title": "ffynhonnell",
+        "description": "Cyfeiriad y ffeil model 3D (.glb neu .gltf) i'w dangos."
       },
       {
         "property": "alt",
-        "title": "testun amgen"
+        "title": "testun amgen",
+        "description": "Disgrifiwch y model 3D ar gyfer pobl na allant ei weld."
       },
       {
         "title": "Ardal wybodaeth"

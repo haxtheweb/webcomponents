@@ -60,6 +60,8 @@
   "flagsFound": "{correct} kati ya {total} zimepatikana",
   "toRethink": "{count} za kufikiria upya",
   "notEvidence": "si ushahidi wa bendera hii",
+  "isEvidence": "ushahidi wa bendera hii",
+  "readingKeys": "Tumia vitufe vya mishale kuhama kutoka {unit} moja hadi inayofuata.",
   "markAnswers": "Weka alama kwenye majibu",
   "doneMarking": "Nimemaliza kuweka alama kwenye majibu",
   "editHint": "Hariri usomaji ulio hapa chini. Tumia Weka alama kwenye majibu katika menyu ya kizuizi kuchagua mahali kila bendera inapostahili.",

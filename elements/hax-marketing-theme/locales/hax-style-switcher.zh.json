@@ -1,0 +1,16 @@
+{
+  "theme": "主题",
+  "designSystem": "设计系统",
+  "dddDefault": "DDD（默认）",
+  "designSystemHelp": "颜色、字体、圆角和焦点。主题保留布局。",
+  "designSystemFixed": "此主题保留其自身的设计系统。",
+  "palette": "调色板",
+  "themeDefault": "主题默认",
+  "paletteNumber": "调色板 {n}",
+  "siteTheme": "{name}（此网站的主题）",
+  "restyle": "重新设计此网站的样式",
+  "close": "关闭",
+  "reset": "恢复此网站原本的外观",
+  "random": "给我惊喜",
+  "about": "这里展示了 HAX 内置的几种外观。页面内容从不改变：结构保存在 JSON Outline Schema 中，每个块都是标准 Web 组件，因此设计可以自由切换。"
+}

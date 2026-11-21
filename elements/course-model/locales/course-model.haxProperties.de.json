@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "Titel"
+        "title": "Titel",
+        "description": "Überschrift über dem Kursmodell."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adresse der anzuzeigenden 3D-Modelldatei (.glb oder .gltf)."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Beschreibe das 3D-Modell für Menschen, die es nicht sehen können."
       },
       {
         "title": "Informationsbereich"

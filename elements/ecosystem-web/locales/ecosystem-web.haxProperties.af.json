@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekostelsel-web",
+    "description": "'n Interaktiewe web van hoe die dele van 'n projek verbind, met sub-webbe en stap-vir-stap-toere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Webdata",
+        "description": "URL van die JSON-bundel webbe (gebou in PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "ID van die web om eerste te wys; main is die ekostelsel-web."
+      },
+      {
+        "title": "Gekose teël",
+        "description": "ID van 'n teël om te kies wanneer die web oopmaak."
+      },
+      {
+        "title": "Toer",
+        "description": "ID van 'n toer om mee te begin."
+      },
+      {
+        "title": "Begin in lysaansig",
+        "description": "Wys die web as geneste lyste in plaas van die tekening."
+      },
+      {
+        "title": "Slegs tekening",
+        "description": "Wys net die tekening, as 'n figuur: geen opskrif, toere, besonderhede of stapbalk nie."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lees volgens",
+        "description": "Begin met elke teël volgens een maatstaf gelees.",
+        "options": {
+          "": "Slegs verbindings",
+          "fresh": "Varsheid",
+          "bus": "Busfaktor",
+          "impact": "Impak",
+          "evidence": "Bewys",
+          "parity": "Pariteit"
+        }
+      }
+    ]
+  }
+}

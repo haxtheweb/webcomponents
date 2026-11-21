@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tíl staitistice",
+    "description": "Uimhir amháin atá tábhachtach, lena lipéad agus conas a d'athraigh sí. Cuir roinnt díobh i ngreille le haghaidh ró deais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lipéad",
+        "description": "Cad a thomhaiseann an uimhir."
+      },
+      {
+        "title": "Luach",
+        "description": "An uimhir. Grúpáiltear uimhir shimplí de réir theanga an leathanaigh; taispeántar aon rud eile mar a scríobhadh é."
+      },
+      {
+        "title": "Athrú",
+        "description": "Conas a d'athraigh sí, i bhfocail, mar shampla 6% an téarma seo."
+      },
+      {
+        "title": "Treo",
+        "description": "Cé acu an bhfuil an t-athrú suas nó síos.",
+        "options": {
+          "": "Dada",
+          "up": "Suas",
+          "down": "Síos"
+        }
+      }
+    ]
+  }
+}

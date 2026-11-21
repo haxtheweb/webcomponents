@@ -20,6 +20,12 @@
         "title": "Surat",
         "description": "Sitata bilen görkezilýän surat."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Çarçuwaly",
+        "description": "Sitatany bellikler we görkezme kartlary bilen gabat geler ýaly, üstünde nyşan we bellik bolan umumy blok çarçuwasynda çyz."
+      }
     ]
   }
 }

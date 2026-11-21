@@ -5,5 +5,7 @@
   "editModeLabel": "د رسنیو لړلیک د سمون حالت",
   "position": "{current} له {total}",
   "previousItem": "مخکینی توکی",
-  "nextItem": "بل توکی"
+  "nextItem": "بل توکی",
+  "fullScreen": "بشپړه پرده",
+  "exitFullScreen": "له بشپړې پردې وتل"
 }

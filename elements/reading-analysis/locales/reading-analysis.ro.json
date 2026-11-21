@@ -60,6 +60,8 @@
   "flagsFound": "{correct} din {total} găsite",
   "toRethink": "{count} de reconsiderat",
   "notEvidence": "nu este o dovadă pentru acest marcaj",
+  "isEvidence": "dovadă pentru această semnalare",
+  "readingKeys": "Folosiți tastele săgeți pentru a trece de la un {unit} la următorul.",
   "markAnswers": "Marchează răspunsurile",
   "doneMarking": "Gata cu marcarea răspunsurilor",
   "editHint": "Editează textul de mai jos. Folosește Marchează răspunsurile din meniul blocului pentru a alege unde trebuie pus fiecare marcaj.",

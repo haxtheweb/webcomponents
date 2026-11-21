@@ -5,5 +5,7 @@
   "editModeLabel": "Hali ya kuhariri orodha ya kucheza ya media",
   "position": "{current} kati ya {total}",
   "previousItem": "Kipengee kilichotangulia",
-  "nextItem": "Kipengee kinachofuata"
+  "nextItem": "Kipengee kinachofuata",
+  "fullScreen": "Skrini nzima",
+  "exitFullScreen": "Toka kwenye skrini nzima"
 }

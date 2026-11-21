@@ -1,0 +1,15 @@
+{
+  "loading": "Učitavanje usporedbe.",
+  "yes": "Da",
+  "partly": "Djelomično",
+  "no": "Ne",
+  "compare": "Usporedi",
+  "with": "S",
+  "vs": "vs",
+  "caption": "{a} i {b}, značajka po značajka",
+  "feature": "Značajka",
+  "clearYes": "Jasno da: {count} od {total}",
+  "seeForYourself": "Uvjerite se sami:",
+  "and": "i",
+  "why": "Zašto"
+}

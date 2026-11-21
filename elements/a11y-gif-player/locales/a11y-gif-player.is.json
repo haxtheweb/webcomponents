@@ -2,5 +2,9 @@
   "toggleAnimation": "Kveikja/slökkva á hreyfimynd",
   "info": "upplýsingar",
   "image": "Mynd",
-  "animatedGif": "Hreyfimynd (GIF)"
+  "animatedGif": "Hreyfimynd (GIF)",
+  "playAnimation": "Spila hreyfimynd",
+  "pauseAnimation": "Gera hlé á hreyfimynd",
+  "showDescription": "Sýna lýsingu",
+  "hideDescription": "Fela lýsingu"
 }

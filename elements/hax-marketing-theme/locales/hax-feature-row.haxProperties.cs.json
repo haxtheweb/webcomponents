@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Řádek funkce",
+    "description": "Obrazovka produktu vedle toho, co pro vás znamená"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Malý popisek"
+      },
+      {
+        "title": "Nadpis"
+      },
+      {
+        "title": "Obrázek"
+      },
+      {
+        "title": "Co obrázek ukazuje"
+      },
+      {
+        "title": "Obrázek vpravo"
+      },
+      {
+        "title": "Barva stínu (název DDD, prázdné se řídí paletou)"
+      }
+    ]
+  }
+}

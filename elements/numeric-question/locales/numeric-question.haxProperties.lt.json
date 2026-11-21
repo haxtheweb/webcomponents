@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Skaitinis klausimas",
+    "description": "Klausimas, į kurį atsakoma skaičiumi. Atsakymas yra fiksuotas skaičius arba formulė, apskaičiuojama iš kintamųjų, ir įskaitomas, jei patenka į leistiną paklaidą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Klausimas",
+        "description": "Ko klausiama besimokančiųjų. Parašykite kintamojo pavadinimą riestiniuose skliaustuose, pvz., {d}, kad būtų parodyta jo reikšmė."
+      },
+      {
+        "title": "Matavimo vienetas",
+        "description": "Rodomas kaip tekstas šalia atsakymo laukelio, pavyzdžiui, km/h."
+      },
+      {
+        "title": "Atsakymas",
+        "description": "Teisingas skaičius. Palikite tuščią, kai atsakymą apskaičiuoja formulė."
+      },
+      {
+        "title": "Formulė",
+        "description": "Apskaičiuoja atsakymą iš kintamųjų, pavyzdžiui, d / (t / 60). Galima naudoti + - * / ^, skliaustus, sqrt() ir abs(). Nustatyta naudojama vietoj atsakymo."
+      },
+      {
+        "title": "Kintamieji",
+        "description": "Skaičiai, kuriuos naudoja formulė ir klausimas. Kiekvienas įgyja reikšmę tarp mažiausios ir didžiausios, žingsniais."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Leistina paklaida",
+        "description": "Kiek nuo tikslaus atsakymo dar įskaitoma. 0 reiškia tiksliai arba suapvalinus iki toliau nurodytų skaitmenų po kablelio."
+      },
+      {
+        "title": "Paklaidos tipas",
+        "description": "Absoliuti: plius minus paklaida. Procentinė: plius minus tiek procentų nuo tikslaus atsakymo.",
+        "options": {
+          "absolute": "Absoliuti",
+          "percent": "Procentinė"
+        }
+      },
+      {
+        "title": "Skaitmenys po kablelio",
+        "description": "Besimokančiųjų prašoma suapvalinti iki tiek skaitmenų, o atsakymas rodomas suapvalintas. Palikite tuščią, jei apvalinti nereikia."
+      },
+      {
+        "title": "Bandymai",
+        "description": "Kiek kartų besimokantysis gali tikrinti. 0 reiškia neribotai."
+      },
+      {
+        "title": "Nauji skaičiai kiekvieno bandymo metu",
+        "description": "Generuoti naujas kintamųjų reikšmes kaskart, kai besimokantysis bando dar kartą. Grįžus ankstesnis atsakymas tada nerodomas, tik tai, ar jis buvo teisingas."
+      },
+      {
+        "title": "Suskleidžiamas",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, užsidaro kiti šalia esantys suskleidžiami klausimai."
+      },
+      {
+        "title": "Pradėti suskleistą",
+        "description": "Jei suskleidžiamas, pradėti kaip uždarą eilutę, rodančią tik klausimą ir jo būseną."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      }
+    ]
+  }
+}

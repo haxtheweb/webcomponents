@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Liwu"
+        "title": "Liwu",
+        "description": "Liwu kapena mawu omwe owerenga amadina kuti awone tanthauzo lake."
       },
       {
         "property": "information",

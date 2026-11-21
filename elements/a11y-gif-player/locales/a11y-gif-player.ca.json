@@ -2,5 +2,9 @@
   "toggleAnimation": "Commuta l'animació",
   "info": "informació",
   "image": "Imatge",
-  "animatedGif": "GIF animat"
+  "animatedGif": "GIF animat",
+  "playAnimation": "Reprodueix l'animació",
+  "pauseAnimation": "Posa en pausa l'animació",
+  "showDescription": "Mostra la descripció",
+  "hideDescription": "Amaga la descripció"
 }

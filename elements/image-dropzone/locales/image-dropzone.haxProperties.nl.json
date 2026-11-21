@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Afbeeldingsdropzone",
+    "description": "Leerlingen plaatsen labels op zones over een afbeelding en controleren dan hun antwoord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Afbeelding",
+        "description": "De afbeelding waarop leerlingen labels plaatsen."
+      },
+      {
+        "title": "Alternatieve tekst",
+        "description": "Beschrijft de afbeelding voor mensen die haar niet kunnen zien. Verklap niet waar de labels horen."
+      },
+      {
+        "title": "Titel van de afbeelding",
+        "description": "Een korte zichtbare titel voor de afbeelding, erboven getoond."
+      },
+      {
+        "title": "Vraag",
+        "description": "Wat leerlingen met de labels moeten doen."
+      },
+      {
+        "title": "Labels en zones",
+        "description": "Elk item is een label dat leerlingen kunnen plaatsen. Geef een label een zonenaam om de zone op de afbeelding te zetten; een label zonder zonenaam is extra en hoort nergens. Zonegetallen zijn percentages van de afbeelding."
+      },
+      {
+        "title": "Bijschrift",
+        "description": "Optioneel bijschrift onder de afbeelding."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoe vaak een leerling kan controleren. 0 betekent onbeperkt."
+      },
+      {
+        "title": "Labels schudden",
+        "description": "Toon de labels bij elk bezoek in een andere volgorde."
+      },
+      {
+        "title": "Inklapbaar",
+        "description": "Toon deze vraag als een rij die open- en dichtgaat. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "title": "Ingeklapt beginnen",
+        "description": "Als ze inklapbaar is, begin dan als een gesloten rij die alleen de vraag en de status toont."
+      },
+      {
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van de quiz",
+        "description": "Quiznaam voor xAPI-identificatie in analysesystemen."
+      },
+      {
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      }
+    ]
+  }
+}

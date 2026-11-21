@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funkcijas rinda",
+    "description": "Produkta ekrāns blakus tam, ko tas nozīmē jums"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maza etiķete"
+      },
+      {
+        "title": "Virsraksts"
+      },
+      {
+        "title": "Attēls"
+      },
+      {
+        "title": "Ko attēls rāda"
+      },
+      {
+        "title": "Attēls pa labi"
+      },
+      {
+        "title": "Ēnas krāsa (DDD nosaukums, tukšs seko paletei)"
+      }
+    ]
+  }
+}

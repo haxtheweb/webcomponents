@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Aktiv nöqtələri müəyyən et",
+    "description": "Öyrənənlər klikləyərək, toxunaraq və ya klaviatura nişangahını hərəkət etdirərək şəkildə düzgün nöqtələri tapır. Şəkil xəritəsinin qiymətləndirilən qarşılığı."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəkil",
+        "description": "Öyrənənlərin axtardığı şəkil."
+      },
+      {
+        "title": "Alternativ mətn",
+        "description": "Şəkli görə bilməyən insanlar üçün təsvir edir. Heç vaxt başlıq kimi göstərilmir."
+      },
+      {
+        "title": "Başlıq",
+        "description": "Şəklin üstündə göstərilən qısa görünən başlıq."
+      },
+      {
+        "title": "Sual",
+        "description": "Öyrənənlərdən şəkildə nəyi tapmaq tələb olunur."
+      },
+      {
+        "title": "Cavablar",
+        "description": "Hər cavab şəkildə adlandırılmış ovaldır. Mövqe və ölçü şəklin sol yuxarı küncündən ölçülən faizlərdir. Redaktə zamanı hər cavab şəkildə konturlanır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cəhdlər",
+        "description": "Öyrənənin neçə dəfə cəhd edə biləcəyi. 0 limitsiz deməkdir."
+      },
+      {
+        "title": "İcazə verilən səhvlər",
+        "description": "Neçə səhvin cəhdi bitirdiyi. 0 limitsiz deməkdir və öyrənənlər Bitir düyməsi alır."
+      },
+      {
+        "title": "Yığıla bilən",
+        "description": "Bu sualı açılıb-bağlanan sətir kimi göstər. Birini açmaq yanındakı digər yığıla bilən sualları bağlayır."
+      },
+      {
+        "title": "Yığılmış başla",
+        "description": "Yığıla bilən olduqda yalnız sualı və statusunu göstərən bağlı sətir kimi başla."
+      },
+      {
+        "title": "Qiymətləndirmə formatı",
+        "description": "OER Schema: bu qiymətləndirmə üçün qiymətləndirmə formatı (məsələn, xal, hərf, faiz, tamamlama)."
+      },
+      {
+        "title": "Təlim məqsədi",
+        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli təlim məqsədi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Bu elementin identifikasiyası üçün xAPI əsaslı mühitlərdə istifadə olunmaq üçün ötürülən test adı"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
+      }
+    ]
+  }
+}

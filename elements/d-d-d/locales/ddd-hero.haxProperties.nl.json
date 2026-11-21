@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Een grote afbeelding, GIF of video met een kop en tekst erover, waar dan ook op een pagina geplaatst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Afbeelding of video",
+        "description": "Een JPG-, PNG-, WebP-, GIF-, MP4- of WebM-bestand."
+      },
+      {
+        "title": "Alternatieve tekst",
+        "description": "Beschrijf de afbeelding. Laat leeg als ze alleen decoratief is."
+      },
+      {
+        "title": "Kop",
+        "description": "Kop die over de media wordt getoond. Laat leeg voor geen."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst die onder de kop, over de media wordt getoond."
+      },
+      {
+        "title": "Volledige breedte",
+        "description": "Van rand tot rand lopen in plaats van in de inhoudskolom te staan."
+      },
+      {
+        "title": "Hoogte",
+        "options": {
+          "tall": "Hoog",
+          "medium": "Middel",
+          "short": "Laag"
+        }
+      },
+      {
+        "title": "Kadrering",
+        "description": "Hoe de foto bij elk schermformaat staat"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vervaging",
+        "description": "Kleur die over de media ligt. Met een kop of tekst is er altijd een, zodat de tekst leesbaar blijft.",
+        "options": {
+          "blue": "Blauw",
+          "bottom": "Donker aan de onderkant",
+          "none": "Geen"
+        }
+      },
+      {
+        "title": "Tekstpositie",
+        "options": {
+          "bottom": "Onder",
+          "middle": "Midden"
+        }
+      },
+      {
+        "title": "Brandpunt horizontaal",
+        "description": "Deel van de afbeelding dat zichtbaar blijft bij bijsnijden, van 0 (links) tot 100 (rechts)."
+      },
+      {
+        "title": "Brandpunt verticaal",
+        "description": "Deel van de afbeelding dat zichtbaar blijft bij bijsnijden, van 0 (boven) tot 100 (onder)."
+      }
+    ]
+  }
+}

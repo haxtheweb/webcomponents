@@ -1,0 +1,19 @@
+{
+  "label": "Externt Tool",
+  "labelLti": "Externt Tool · LTI 1.3",
+  "theTool": "d'Tool",
+  "directions": "Uweisungen",
+  "showDirections": "Uweisunge weisen",
+  "hideDirections": "Uweisunge verstoppen",
+  "directionsWindow": "De Knäppchen mécht eng nei Fënster mam Tool op.",
+  "directionsEmbed": "De Knäppchen mécht d'Tool op dëser Säit op. Wann et net lued, maacht et amplaz an enger neier Fënster op.",
+  "directionsLti": "Dës Websäit mellt Iech beim Tool un, dofir braucht Dir kee separate Kont.",
+  "openWindow": "{title} opmaachen (nei Fënster)",
+  "openEmbed": "{title} opmaachen",
+  "openInstead": "Amplaz an enger neier Fënster opmaachen",
+  "frameTitle": "{title} (externt Tool)",
+  "openedWindow": "Eng nei Fënster mam Tool ass opgaangen.",
+  "openedEmbed": "D'Tool ass op dëser Säit opgaangen.",
+  "needsUrl": "Dëse Block brauch eng Startadress, déi mat http:// oder https:// ufänkt.",
+  "needsSignIn": "Dëst Tool brauch den Umeldungsservice vun dëser Websäit, deen hei net disponibel ass. Et gouf näischt opgemaach."
+}

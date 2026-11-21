@@ -4,7 +4,12 @@
     "description": "מפעיל תוכן אינטראקטיבי של H5P מקובץ h5p. שהועלה, ללא צורך בשרת H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "קובץ H5P",
+        "description": "העלו או קשרו קובץ ‎.h5p. הוא נפרס בדפדפן; אין צורך בשרת H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "קוד הטמעה ישן של iframe",

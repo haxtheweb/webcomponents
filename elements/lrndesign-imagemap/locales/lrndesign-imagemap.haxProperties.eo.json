@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detaloj de aktivaj punktoj",
         "description": "La interagaj aktivaj punktoj sur la bildmapo."
+      },
+      {
+        "title": "Detaloj de aktivaj punktoj",
+        "description": "La interagaj aktivaj punktoj sur la bildmapo."
       }
     ]
   }

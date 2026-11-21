@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Otomatik vurgu rengi",
         "description": "Vurgu rengini etiket metninden otomatik olarak türet."
+      },
+      {
+        "title": "Anlam",
+        "description": "Etikete anlam taşıyan bir renk verin. Nötr bir etiket için boş bırakın.",
+        "options": {
+          "": "Nötr",
+          "brand": "Marka",
+          "success": "Başarılı",
+          "warning": "Uyarı",
+          "danger": "Tehlike"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Atmiņas spēle",
+    "description": "Apgrieziet kārtis, lai atrastu pārus. Savienojiet terminu ar tā nozīmi, lai sakritība parādītu izpratni, vai izmantojiet divus atbilstošus tekstus vai attēlus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Uzdevums, kas tiek rādīts galvenē, piemēram: Savienojiet terminu ar tā funkciju."
+      },
+      {
+        "title": "Pāri",
+        "description": "Katrs pāris ir divas kārtis, kas pieder kopā, parasti termins un tā nozīme. Pusei nepieciešams teksts, attēls vai abi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta krāsa galvenes etiķetei, kāršu mugurpusei un pogai."
+      }
+    ]
+  }
+}

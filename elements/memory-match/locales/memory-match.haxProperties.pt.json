@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Jogo da memória",
+    "description": "Vire cartas para encontrar pares. Combine um termo com seu significado para que o par mostre compreensão, ou use dois textos ou imagens iguais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O enunciado mostrado no cabeçalho, por exemplo: Associe o termo à sua função."
+      },
+      {
+        "title": "Pares",
+        "description": "Cada par são duas cartas que combinam, geralmente um termo e seu significado. Um lado precisa de texto, imagem ou ambos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cor de destaque",
+        "description": "Cor opcional para o chip do cabeçalho, o verso das cartas e o botão."
+      }
+    ]
+  }
+}

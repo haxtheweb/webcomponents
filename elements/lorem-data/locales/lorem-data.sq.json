@@ -1,4 +1,6 @@
 {
   "saveAll": "Ruaj të gjitha",
-  "saveTheFollowing": "Të ruhen sa vijon: {list}?"
+  "saveTheFollowing": "Të ruhen sa vijon: {list}?",
+  "save": "Ruaj",
+  "cancel": "Anulo"
 }

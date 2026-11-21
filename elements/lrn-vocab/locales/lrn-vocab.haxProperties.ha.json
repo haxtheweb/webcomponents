@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Kalma"
+        "title": "Kalma",
+        "description": "Kalma ko jimlar da masu karatu ke dannawa don ganin ma'anarta."
       },
       {
         "slot": "",

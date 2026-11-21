@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krossvord",
+    "description": "Sözlər və ipucları siyahısından hazırlanmış krossvord. Şəbəkə sizin üçün yaradılır; öyrənənlər sözləri yazır və yoxlayır."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Krossvordun üstündə göstərilən başlıq və ya sual."
+      },
+      {
+        "title": "Sözlər",
+        "description": "Hər söz və onun ipucu. Şəbəkə bu siyahıdan yaradılır: ən uzun söz əvvəl yerləşdirilir, digərləri onu ortaq hərflərdə kəsir."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cəhdlər",
+        "description": "Öyrənənin neçə dəfə yoxlaya biləcəyi. 0 limitsiz deməkdir."
+      },
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanı, aktiv söz və əməliyyat düymələri üçün ixtiyari rəng."
+      },
+      {
+        "title": "Yığıla bilən",
+        "description": "Bu krossvordu açılıb-bağlanan sətir kimi göstər. Birini açmaq yanındakı digər yığıla bilən sualları bağlayır."
+      },
+      {
+        "title": "Yığılmış başla",
+        "description": "Yığıla bilən olduqda yalnız başlığı və statusunu göstərən bağlı sətir kimi başla."
+      },
+      {
+        "title": "Qiymətləndirmə formatı",
+        "description": "OER Schema: bu qiymətləndirmə üçün qiymətləndirmə formatı (məsələn, xal, hərf, faiz, tamamlama)."
+      },
+      {
+        "title": "Təlim məqsədi",
+        "description": "OER Schema: bu qiymətləndirmə ilə əlaqəli təlim məqsədi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analitika sistemlərində xAPI identifikasiyası üçün istifadə olunan test adı."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu qiymətləndirmənin nəzərdə tutulduğu kurs."
+      }
+    ]
+  }
+}

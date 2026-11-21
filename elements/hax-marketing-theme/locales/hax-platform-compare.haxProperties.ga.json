@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Comparáid ardán",
+    "description": "Ceann ar cheann: roghnaigh dhá ardán ar bith ó chomhad sonraí"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sonraí comparáide (JSON)"
+      },
+      {
+        "title": "Aitheantas an ardáin chlé"
+      },
+      {
+        "title": "Aitheantas an ardáin dheis"
+      }
+    ]
+  }
+}

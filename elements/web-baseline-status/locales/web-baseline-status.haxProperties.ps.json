@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "د Baseline حالت",
+    "description": "د وېب پلاتفورم د یوې ځانګړنې لپاره د Baseline براوزر ملاتړ حالت ښکاره کړئ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "د ځانګړنې ID",
+        "description": "د وېب ځانګړنې ID، د بېلګې په توګه anchor-positioning. IDs په webstatus.dev کې ومومئ؛ ID د ځانګړنې د پاڼې د URL وروستۍ برخه ده."
+      }
+    ]
+  }
+}

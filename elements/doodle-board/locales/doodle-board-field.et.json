@@ -1,0 +1,16 @@
+{
+  "drawing": "Joonistus",
+  "edit": "Muuda joonistust",
+  "start": "Alusta joonistamist",
+  "remove": "Eemalda joonistus",
+  "empty": "Midagi pole veel joonistatud",
+  "save": "Salvesta",
+  "cancel": "Tühista",
+  "close": "Sulge",
+  "discard": "Loobu muudatustest",
+  "discardConfirm": "Kas loobuda salvestamata muudatustest?",
+  "keepEditing": "Jätka muutmist",
+  "draw": "Joonistus",
+  "feedback": "Tagasiside",
+  "signature": "Allkiri"
+}

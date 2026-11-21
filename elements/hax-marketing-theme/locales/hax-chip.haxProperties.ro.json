@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Cip",
+    "description": "O pictogramă mică cu etichetă"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pictogramă"
+      },
+      {
+        "title": "Etichetă"
+      }
+    ]
+  }
+}

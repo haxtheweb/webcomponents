@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palett",
   "cancel": "Avbryt",
-  "openAppearanceSettings": "Öppna utseendeinställningar"
+  "openAppearanceSettings": "Öppna utseendeinställningar",
+  "designSystem": "Designsystem",
+  "designSystemDefault": "DDD (standard)",
+  "designSystemThemeDefault": "{name} (temats standard)",
+  "designSystemHelp": "Färg, typsnitt, hörn och täthet. Temat bestämmer fortfarande layouten."
 }

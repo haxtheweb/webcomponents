@@ -2,5 +2,9 @@
   "toggleAnimation": "Animatsiyani yoqish/o‘chirish",
   "info": "maʼlumot",
   "image": "Rasm",
-  "animatedGif": "Animatsiyali GIF"
+  "animatedGif": "Animatsiyali GIF",
+  "playAnimation": "Animatsiyani ijro etish",
+  "pauseAnimation": "Animatsiyani pauza qilish",
+  "showDescription": "Tavsifni ko‘rsatish",
+  "hideDescription": "Tavsifni yashirish"
 }

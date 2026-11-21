@@ -9,5 +9,7 @@
   "slidePages": "Nā ʻaoʻao kiʻi paheʻe",
   "goToSlide": "Hele i ke kiʻi paheʻe {number}",
   "slides": "Nā paheʻe",
-  "position": "{number} o {total}"
+  "position": "{number} o {total}",
+  "fullScreen": "Pakuhi piha",
+  "exitFullScreen": "Haʻalele i ka pakuhi piha"
 }

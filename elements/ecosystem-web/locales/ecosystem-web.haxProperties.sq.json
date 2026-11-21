@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Rrjeti i ekosistemit",
+    "description": "Një rrjet interaktiv se si lidhen pjesët e një projekti, me nënrrjete dhe ture hap pas hapi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Të dhënat e rrjetit",
+        "description": "URL e paketës JSON të rrjeteve (ndërtuar në PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Rrjeti",
+        "description": "ID-ja e rrjetit për t'u shfaqur i pari; main është rrjeti i ekosistemit."
+      },
+      {
+        "title": "Pllaka e zgjedhur",
+        "description": "ID-ja e një pllake për t'u zgjedhur kur hapet rrjeti."
+      },
+      {
+        "title": "Turi",
+        "description": "ID-ja e një turi për të filluar."
+      },
+      {
+        "title": "Fillo në pamjen listë",
+        "description": "Shfaqe rrjetin si lista të ndërfutura në vend të vizatimit."
+      },
+      {
+        "title": "Vetëm vizatimi",
+        "description": "Shfaq vetëm vizatimin, si figurë: pa kokë, ture, detaje ose shirit hapash."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lexo sipas",
+        "description": "Fillo me çdo pllakë të lexuar sipas një mase.",
+        "options": {
+          "": "Vetëm lidhjet",
+          "fresh": "Freskia",
+          "bus": "Bus factor",
+          "impact": "Ndikimi",
+          "evidence": "Dëshmi",
+          "parity": "Barazia"
+        }
+      }
+    ]
+  }
+}

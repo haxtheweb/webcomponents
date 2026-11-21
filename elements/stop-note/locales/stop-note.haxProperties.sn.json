@@ -23,7 +23,9 @@
           "stop": "Mira",
           "warning": "Yambiro",
           "success": "Kusimbisa",
-          "info": "Chiziviso"
+          "info": "Chiziviso",
+          "tip": "Zano",
+          "new": "Zvitsva"
         }
       },
       {

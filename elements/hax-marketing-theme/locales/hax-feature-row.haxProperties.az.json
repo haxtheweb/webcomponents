@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Xüsusiyyət sətri",
+    "description": "Məhsulun ekranı və onun sizin üçün nə demək olduğu yan-yana"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiçik etiket"
+      },
+      {
+        "title": "Başlıq"
+      },
+      {
+        "title": "Şəkil"
+      },
+      {
+        "title": "Şəklin nə göstərdiyi"
+      },
+      {
+        "title": "Şəkil sağda"
+      },
+      {
+        "title": "Kölgə rəngi (DDD adı, boş olduqda palitranı izləyir)"
+      }
+    ]
+  }
+}

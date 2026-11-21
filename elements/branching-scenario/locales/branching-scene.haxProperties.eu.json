@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Agertokiaren eszena",
+    "description": "Adarkatutako agertoki baten eszena bat. Lotu aukera bakoitza beste eszena batekin # eta haren eszena-IDa erabiliz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Eszenaren IDa",
+        "description": "Aukerek zer lotzen duten: # eta ID hau duen esteka batek eszena honetara darama. Letrak, zenbakiak eta marratxoak."
+      },
+      {
+        "title": "Izenburua",
+        "description": "Eszenaren izenburua."
+      },
+      {
+        "title": "Amaiera",
+        "description": "Eszena honek bide bat amaitzen duen, eta nola atera zen.",
+        "options": {
+          "": "Ez da amaiera",
+          "good": "Amaiera ona",
+          "mixed": "Amaiera mistoa",
+          "poor": "Amaiera txarra"
+        }
+      },
+      {
+        "title": "Puntuazioa",
+        "description": "Amaiera honetara iristeagatiko puntuazioa. Agertokiko amaierarik altuenaren puntuazioa da gehienezkoa."
+      }
+    ]
+  }
+}

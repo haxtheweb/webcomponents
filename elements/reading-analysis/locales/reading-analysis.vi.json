@@ -60,6 +60,8 @@
   "flagsFound": "Đã tìm thấy {correct}/{total}",
   "toRethink": "{count} cần xem lại",
   "notEvidence": "không phải bằng chứng cho lá cờ này",
+  "isEvidence": "bằng chứng cho cờ này",
+  "readingKeys": "Dùng phím mũi tên để di chuyển sang {unit} tiếp theo.",
   "markAnswers": "Đánh dấu đáp án",
   "doneMarking": "Hoàn tất đánh dấu đáp án",
   "editHint": "Chỉnh sửa bài đọc bên dưới. Dùng Đánh dấu đáp án trong menu khối để chọn nơi mỗi lá cờ thuộc về.",

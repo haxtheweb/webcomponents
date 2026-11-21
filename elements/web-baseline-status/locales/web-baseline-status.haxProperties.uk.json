@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Стан Baseline",
+    "description": "Показати стан підтримки браузерами Baseline для функції вебплатформи."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID функції",
+        "description": "ID вебфункції, наприклад anchor-positioning. Шукайте ID на webstatus.dev; ID — це остання частина URL сторінки функції."
+      }
+    ]
+  }
+}

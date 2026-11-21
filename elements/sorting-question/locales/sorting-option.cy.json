@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Mae'r ateb yn y drefn gywir",
   "answerInIncorrectOrder": "Mae'r ateb yn y drefn anghywir",
   "moveOptionUp": "Dewiswch i symud yr opsiwn i fyny yn y drefn",
-  "moveOptionDown": "Dewiswch i symud yr opsiwn i lawr yn y drefn"
+  "moveOptionDown": "Dewiswch i symud yr opsiwn i lawr yn y drefn",
+  "moveEarlier": "Symud yn gynharach",
+  "moveLater": "Symud yn hwyrach",
+  "correct": "Cywir",
+  "incorrect": "Anghywir"
 }

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rekenoefening",
+    "description": "Een korte reeks gegenereerde rekensommen met directe feedback. Kies de bewerkingen en het getallenbereik; elke ronde is nieuw."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van deze oefening, getoond in de kop."
+      },
+      {
+        "title": "Bewerkingen",
+        "description": "Welke soorten sommen worden gesteld. Leerlingen kunnen elk hiervan uitzetten voordat ze beginnen.",
+        "options": {
+          "add": "Optellen",
+          "subtract": "Aftrekken",
+          "multiply": "Vermenigvuldigen",
+          "divide": "Delen",
+          "add subtract": "Optellen en aftrekken",
+          "multiply divide": "Vermenigvuldigen en delen",
+          "add multiply": "Optellen en vermenigvuldigen",
+          "add divide": "Optellen en delen",
+          "subtract multiply": "Aftrekken en vermenigvuldigen",
+          "subtract divide": "Aftrekken en delen",
+          "add subtract multiply": "Optellen, aftrekken en vermenigvuldigen",
+          "add subtract divide": "Optellen, aftrekken en delen",
+          "add multiply divide": "Optellen, vermenigvuldigen en delen",
+          "subtract multiply divide": "Aftrekken, vermenigvuldigen en delen",
+          "add subtract multiply divide": "Alle vier"
+        }
+      },
+      {
+        "title": "Kleinste getal",
+        "description": "Het kleinste getal dat in een som wordt gebruikt. Hele getallen, 0 of meer."
+      },
+      {
+        "title": "Grootste getal",
+        "description": "Het grootste getal dat in een som wordt gebruikt. Uitkomsten en delers bij delen blijven ook binnen dit bereik."
+      },
+      {
+        "title": "Aantal sommen",
+        "description": "Hoeveel sommen er in één ronde zitten (1 tot 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tijdslimiet",
+        "description": "Aantal seconden voor een hele ronde. 0 betekent geen timer, wat de standaard is: getimede oefeningen laten leerlingen die meer tijd nodig hebben zakken. Als die is ingesteld, kunnen leerlingen de timer nog steeds voor zichzelf uitzetten."
+      },
+      {
+        "title": "Accentkleur",
+        "description": "Kleur van het kopetiket en de knoppen. Laat leeg om het thema te volgen."
+      }
+    ]
+  }
+}

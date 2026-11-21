@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Buchstabensalat",
+    "description": "Ein Buchstabenraster mit versteckten Wörtern. Lernende tippen auf den ersten und letzten Buchstaben jedes Wortes. Übt, wie ein Begriff geschrieben wird, nicht was er bedeutet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Was Lernende finden sollen, in der Kopfzeile angezeigt."
+      },
+      {
+        "title": "Wörter",
+        "description": "Die zu versteckenden Wörter. Leerzeichen und Satzzeichen werden im Raster weggelassen. Wörter, die nicht passen, werden beim Bearbeiten aufgelistet und für Lernende weggelassen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rastergröße",
+        "description": "Buchstaben pro Seite, 4 bis 16. Leer lassen, um es an das längste Wort anzupassen (bis 12). Mehr als 12 scrollt auf einem Smartphone seitlich."
+      },
+      {
+        "title": "Diagonale Wörter",
+        "description": "Wörter auch diagonal verstecken. Schwieriger."
+      },
+      {
+        "title": "Rückwärts-Wörter",
+        "description": "Auch rückwärts geschriebene Wörter verstecken. Schwieriger."
+      },
+      {
+        "title": "Akzentfarbe",
+        "description": "Optionale Farbe für den Kopfzeilen-Chip, den gewählten ersten Buchstaben und die Schaltfläche."
+      }
+    ]
+  }
+}

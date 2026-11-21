@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rhes nodwedd",
+    "description": "Sgrin o'r cynnyrch wrth ymyl yr hyn y mae'n ei olygu i chi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label bach"
+      },
+      {
+        "title": "Pennawd"
+      },
+      {
+        "title": "Llun"
+      },
+      {
+        "title": "Beth mae'r llun yn ei ddangos"
+      },
+      {
+        "title": "Llun ar y dde"
+      },
+      {
+        "title": "Lliw cysgod (enw DDD, mae gwag yn dilyn y palet)"
+      }
+    ]
+  }
+}

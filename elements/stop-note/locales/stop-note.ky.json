@@ -3,5 +3,7 @@
   "status_stop": "Токтоо",
   "status_warning": "Эскертүү",
   "status_success": "Ийгилик",
-  "status_info": "Эскертме"
+  "status_info": "Эскертме",
+  "status_tip": "Билесизби?",
+  "status_new": "Эмне жаңылык"
 }

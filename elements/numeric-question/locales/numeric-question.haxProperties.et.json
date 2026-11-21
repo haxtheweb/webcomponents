@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Arvuline küsimus",
+    "description": "Küsimus, millele vastatakse arvuga. Vastus on fikseeritud arv või muutujatest arvutatud valem ja seda arvestatakse, kui see jääb lubatud hälbe piiresse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Küsimus",
+        "description": "Mida õppijatelt küsitakse. Muutuja väärtuse kuvamiseks kirjuta selle nimi looksulgudesse, näiteks {d}."
+      },
+      {
+        "title": "Ühik",
+        "description": "Kuvatakse tekstina vastusevälja kõrval, näiteks km/h."
+      },
+      {
+        "title": "Vastus",
+        "description": "Õige arv. Jäta tühjaks, kui vastuse arvutab välja valem."
+      },
+      {
+        "title": "Valem",
+        "description": "Arvutab vastuse muutujatest, näiteks d / (t / 60). Saab kasutada + - * / ^, sulge, sqrt() ja abs(). Kui see on määratud, kasutatakse seda vastuse asemel."
+      },
+      {
+        "title": "Muutujad",
+        "description": "Arvud, mida valem ja küsimus kasutavad. Igaüks võtab väärtuse oma väikseima ja suurima vahel, sammude kaupa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lubatud hälve",
+        "description": "Kui kaugel täpsest vastusest arvestatakse veel õigeks. 0 tähendab täpset või allpool määratud kümnendkohtadeni ümardatud vastust."
+      },
+      {
+        "title": "Hälbe tüüp",
+        "description": "Absoluutne: pluss-miinus lubatud hälve. Protsent: pluss-miinus nii mitu protsenti täpsest vastusest.",
+        "options": {
+          "absolute": "Absoluutne",
+          "percent": "Protsent"
+        }
+      },
+      {
+        "title": "Kümnendkohad",
+        "description": "Õppijatel palutakse ümardada nii mitme kohani ja vastust näidatakse sellisena ümardatult. Ümardamiseta jäta tühjaks."
+      },
+      {
+        "title": "Katsed",
+        "description": "Mitu korda õppija saab kontrollida. 0 tähendab piiramatut."
+      },
+      {
+        "title": "Uued arvud igal katsel",
+        "description": "Loosi muutujatele uued väärtused iga kord, kui õppija uuesti proovib. Siis ei näidata tagasi tulles tema varasemat vastust, ainult seda, kas see oli õige."
+      },
+      {
+        "title": "Kokkupandav",
+        "description": "Näita seda küsimust reana, mis avaneb ja sulgub. Ühe avamine sulgeb kõrvalolevad teised kokkupandavad küsimused."
+      },
+      {
+        "title": "Alusta kokkupandult",
+        "description": "Kokkupandavana alusta suletud reana, mis näitab ainult küsimust ja olekut."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Viktoriini nimi",
+        "description": "Viktoriini nimi, mida kasutatakse xAPI-tuvastuseks analüütikasüsteemides."
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Escriu amb la notació matemàtica LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fons de la imatge",
+        "description": "Fons darrere de les imatges dibuixades. Automàtic n'afegeix un només quan el dibuix es veuria malament a la pàgina, com ara línies fosques en mode fosc.",
+        "options": {
+          "auto": "Automàtic",
+          "light": "Clar",
+          "dark": "Fosc",
+          "none": "Cap"
+        }
+      }
+    ]
   }
 }

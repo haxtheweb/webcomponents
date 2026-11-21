@@ -60,6 +60,8 @@
   "flagsFound": "{correct} su {total} trovate",
   "toRethink": "{count} da ripensare",
   "notEvidence": "non è una prova per questa bandierina",
+  "isEvidence": "prova per questa segnalazione",
+  "readingKeys": "Usa i tasti freccia per passare da un {unit} al successivo.",
   "markAnswers": "Segna le risposte",
   "doneMarking": "Fine segnatura risposte",
   "editHint": "Modifica il testo qui sotto. Usa Segna le risposte nel menu del blocco per scegliere dove va ogni bandierina.",

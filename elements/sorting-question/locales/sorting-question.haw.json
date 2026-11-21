@@ -40,5 +40,7 @@
   "hideDirections": "E peʻe i nā kuhikuhi",
   "showRelatedContent": "E hōʻike i ka maʻamau pili",
   "hideRelatedContent": "E peʻe i ka maʻamau pili",
-  "notAttempted": "ʻAʻole i hoʻāʻo ʻia"
+  "notAttempted": "ʻAʻole i hoʻāʻo ʻia",
+  "cardsDirections": "E kau i nā kāleka ma ke kaʻina pololei me nā pihi neʻe ma mua a neʻe ma hope ma kēlā me kēia kāleka, a i ʻole e kauō iā lākou me ka ʻiole. Ke manaʻo ʻoe aia lākou ma ke kaʻina pololei, e hōʻoia i kāu pane ma ke koho ʻana iā {checkAnswer}.",
+  "movedToPosition": "Ua neʻe ʻo {item} i ke kūlana {position} o {total}"
 }

@@ -2,5 +2,9 @@
   "toggleAnimation": "اینیمیشن چالو/بند کرو",
   "info": "معلومات",
   "image": "تصویر",
-  "animatedGif": "متحرک GIF"
+  "animatedGif": "متحرک GIF",
+  "playAnimation": "اینیمیشن چلاؤ",
+  "pauseAnimation": "اینیمیشن روکو",
+  "showDescription": "تفصیل وکھاؤ",
+  "hideDescription": "تفصیل لکاؤ"
 }

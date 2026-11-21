@@ -40,5 +40,7 @@
   "hideDirections": "ہدایات چھپائیں",
   "showRelatedContent": "متعلقہ مواد دکھائیں",
   "hideRelatedContent": "متعلقہ مواد چھپائیں",
-  "notAttempted": "کوشش نہیں کی گئی"
+  "notAttempted": "کوشش نہیں کی گئی",
+  "cardsDirections": "ہر کارڈ پر پہلے اور بعد میں لے جانے والے بٹنوں سے، یا ماؤس سے گھسیٹ کر، کارڈز کو درست ترتیب میں رکھیں۔ جب آپ کو یقین ہو کہ ترتیب درست ہے تو {checkAnswer} منتخب کر کے اپنا جواب جانچیں۔",
+  "movedToPosition": "{item} کو {total} میں سے مقام {position} پر منتقل کیا گیا"
 }

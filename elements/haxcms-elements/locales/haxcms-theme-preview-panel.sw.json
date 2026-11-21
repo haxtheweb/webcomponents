@@ -8,5 +8,9 @@
   "theme": "Mandhari",
   "palette": "Paleti",
   "cancel": "Ghairi",
-  "openAppearanceSettings": "Fungua Mipangilio ya Mwonekano"
+  "openAppearanceSettings": "Fungua Mipangilio ya Mwonekano",
+  "designSystem": "Mfumo wa usanifu",
+  "designSystemDefault": "DDD (chaguo-msingi)",
+  "designSystemThemeDefault": "{name} (chaguo-msingi la mandhari)",
+  "designSystemHelp": "Rangi, mwandiko, kona na msongamano. Mandhari bado huamua mpangilio."
 }

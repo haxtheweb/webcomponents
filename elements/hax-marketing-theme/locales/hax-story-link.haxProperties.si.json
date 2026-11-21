@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "කතා බොත්තම",
+    "description": "hax.cloud මත ප්‍රකාශයක් පිටුපස ඇති කතාව, හෝ වෙනත් HAX ජාල අඩවියක ගැළපෙන ස්ථානය විවෘත කරන බොත්තම"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "එය යන තැන",
+        "options": {
+          "cloud": "hax.cloud, කතාව",
+          "learn": "learn.hax.cloud, නිබන්ධනයක්",
+          "try": "browser.hax.cloud, උත්සාහ කරන්න",
+          "elements": "webcomponents.hax.cloud, කොටසක්",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "එම අඩවියේ ලිපිනය (hax.cloud මත කතාවක් stories/ee450a19 ලෙස පෙනේ)"
+      },
+      {
+        "title": "එය කුමක් ගැනද"
+      },
+      {
+        "title": "කුඩා චිපය"
+      },
+      {
+        "title": "එය කුමක් ගැනද යන්න බොත්තමේ පෙන්වන්න"
+      }
+    ]
+  }
+}

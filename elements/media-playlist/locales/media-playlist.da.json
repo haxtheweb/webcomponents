@@ -5,5 +5,7 @@
   "editModeLabel": "Redigeringstilstand for medieplayliste",
   "position": "{current} af {total}",
   "previousItem": "Forrige element",
-  "nextItem": "Næste element"
+  "nextItem": "Næste element",
+  "fullScreen": "Fuld skærm",
+  "exitFullScreen": "Afslut fuld skærm"
 }

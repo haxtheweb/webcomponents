@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Paprskový graf",
+    "description": "Paprskový (pavoučí) graf pro modely vyspělosti a hodnocení aspektů, například HEOSAT. Obsahuje textovou alternativu a datovou tabulku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Nadpis grafu; používá se i jako jeho přístupný název."
+      },
+      {
+        "title": "Maximální skóre",
+        "description": "Nejvyšší hodnota na stupnici."
+      },
+      {
+        "title": "Kategorie",
+        "description": "Jedna kategorie na řádek. Jsou potřeba alespoň 3."
+      },
+      {
+        "title": "Skóre",
+        "description": "Čísla oddělená čárkou, jedno na kategorii ve stejném pořadí."
+      },
+      {
+        "title": "Cílová skóre",
+        "description": "Čísla oddělená čárkou, jedno na kategorii ve stejném pořadí."
+      },
+      {
+        "title": "Zobrazit legendu",
+        "description": "Zobrazit legendu s názvy skóre a cílů."
+      },
+      {
+        "title": "Kompaktní",
+        "description": "Menší graf bez popisků, legendy a datové tabulky. Najetím na bod uvidíte jeho hodnoty."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Popisek skóre",
+        "description": "Popisek skóre v legendě a tabulce."
+      },
+      {
+        "title": "Popisek cíle",
+        "description": "Popisek cílů v legendě a tabulce."
+      }
+    ]
+  }
+}

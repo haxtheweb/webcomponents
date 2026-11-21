@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "İptal",
-  "openAppearanceSettings": "Görünüm Ayarlarını Aç"
+  "openAppearanceSettings": "Görünüm Ayarlarını Aç",
+  "designSystem": "Tasarım sistemi",
+  "designSystemDefault": "DDD (varsayılan)",
+  "designSystemThemeDefault": "{name} (tema varsayılanı)",
+  "designSystemHelp": "Renk, yazı, köşeler ve yoğunluk. Düzene yine tema karar verir."
 }

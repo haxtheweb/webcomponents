@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Zane-zane daga rubutu",
+    "description": "Rubuta zane-zane a matsayin rubutu (Mermaid): zanen gudana, jerin, layin lokaci da sauransu. Ana zana shi a shafin tare da madadin rubutu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Ana nuna shi a saman zane-zanen kuma ana amfani da shi a matsayin sunansa."
+      },
+      {
+        "title": "Tushen zane-zane",
+        "description": "Rubutun Mermaid, misali: flowchart TD, sannan layi ɗaya don kowane mahaɗi kamar A[Draft] --> B{Ready?}. Ƙara |label| bayan kibiya don ba ta lakabi. Zanen yana sabuntawa yayin da kake rubutu."
+      },
+      {
+        "title": "Madadin rubutu",
+        "description": "Bayyana abin da zane-zanen ke nunawa don mutanen da ba sa iya ganinsa. Bar shi babu komai a zanen gudana don a jera maka matakansa."
+      },
+      {
+        "title": "Taken hoto",
+        "description": "Taken zaɓi da ake nunawa ƙarƙashin zane-zanen."
+      },
+      {
+        "title": "Nuna tushen",
+        "description": "Nuna rubutun zane-zane kusa da zanen."
+      },
+      {
+        "title": "Nuna madadin rubutu",
+        "description": "Nuna madadin rubutu ƙarƙashin zanen. Koyaushe yana samuwa ga masu karanta allo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fayil ɗin tushe",
+        "description": "Adireshin fayil ɗin .mmd da za a zana maimakon rubutun da ke sama (https ko hanya a wannan shafi)."
+      },
+      {
+        "title": "Launin ƙawa",
+        "description": "Launin guntun gunki a kai."
+      }
+    ]
+  }
+}

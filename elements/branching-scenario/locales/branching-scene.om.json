@@ -1,0 +1,14 @@
+{
+  "scene": "Taatee",
+  "ending": "Xumura",
+  "goodEnding": "Xumura gaarii",
+  "mixedEnding": "Xumura makaa",
+  "poorEnding": "Xumura gadhee",
+  "scoreOf": "Qabxii {max} keessaa {score}",
+  "scoreOnly": "Qabxii {score}",
+  "startScene": "Jalqabi",
+  "sceneIdLabel": "ID taatee",
+  "needsId": "Filannoowwan taatee kanatti akka hidhaman ID taatee dabali.",
+  "orphan": "Filannoon taatee kanatti hidhame hin jiru.",
+  "deadLinks": "Liinkiiwwan kun taatee hin jirre agarsiisu:"
+}

@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "bagan alir",
+  "sequence": "urutan",
+  "source": "Sumber",
+  "textAlternative": "Alternatif teks",
+  "present": "Presentasi",
+  "exitPresent": "Metu saka presentasi",
+  "loading": "Lagi ngemot diagram",
+  "empty": "Durung ana sing digambar. Tambah sumber diagram.",
+  "error": "Kesalahan",
+  "parseError": "Diagram iki ora bisa digambar. Priksa sumbere.",
+  "loadError": "Pustaka diagram ora bisa dimuat.",
+  "srcError": "Berkas diagram ora bisa dimuat.",
+  "decision": "keputusan",
+  "end": "pungkasan",
+  "goTo": "menyang {target}",
+  "ifGoTo": "yen {label}, menyang {target}",
+  "describedBySource": "Diagram sing diterangake dening sumbere.",
+  "scrollable": "Diagram, bisa digulung"
+}

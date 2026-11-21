@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Pengubah media",
-        "description": "Pengubah domain media opsional. Menentukan jenis media yang dicakup lisensi ini."
+        "description": "Pengubah domain media opsional. Menentukan jenis media yang dicakup lisensi ini.",
+        "options": {
+          "": "Tanpa pengubah"
+        }
       },
       {
         "property": "uri",

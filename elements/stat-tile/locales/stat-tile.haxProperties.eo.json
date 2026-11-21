@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistika kahelo",
+    "description": "Unu grava nombro, kun ĝia etikedo kaj kiel ĝi ŝanĝiĝis. Metu plurajn en krado por panela vico."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikedo",
+        "description": "Kion la nombro mezuras."
+      },
+      {
+        "title": "Valoro",
+        "description": "La nombro. Simpla nombro estas grupigita laŭ la lingvo de la paĝo; io ajn alia montriĝas kiel skribite."
+      },
+      {
+        "title": "Ŝanĝo",
+        "description": "Kiel ĝi ŝanĝiĝis, per vortoj, ekzemple 6% ĉi-semestre."
+      },
+      {
+        "title": "Direkto",
+        "description": "Ĉu la ŝanĝo estas supren aŭ malsupren.",
+        "options": {
+          "": "Neniu",
+          "up": "Supren",
+          "down": "Malsupren"
+        }
+      }
+    ]
+  }
+}

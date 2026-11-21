@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "纵横字谜",
+    "description": "用一列词搭提示做个纵横字谜。格子会自动帮侬生成；学习者打词再检查。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "纵横字谜上头显示个标题或者问题。"
+      },
+      {
+        "title": "词",
+        "description": "每个词搭伊个提示。格子从迭张列表生成：最长个词先放，其余个辣共同字母上搭伊交叉。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "尝试次数",
+        "description": "学习者好检查几趟。0 表示勿限。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题标签、当前词搭操作按钮个可选颜色。"
+      },
+      {
+        "title": "好折叠",
+        "description": "拿迭个纵横字谜显示成一行，好打开好合拢。打开一个会合拢旁边别个好折叠个题目。"
+      },
+      {
+        "title": "开始辰光合拢",
+        "description": "好折叠个辰光，开始是合拢个一行，只显示标题搭伊个状态。"
+      },
+      {
+        "title": "评分格式",
+        "description": "OER Schema：迭个评估个评分格式（比方分数、等第、百分比、完成度）。"
+      },
+      {
+        "title": "学习目标",
+        "description": "OER Schema：搭迭个评估相关个学习目标。"
+      }
+    ],
+    "developer": [
+      {
+        "title": "测验名字",
+        "description": "分析系统里用于 xAPI 识别个测验名字。"
+      },
+      {
+        "title": "课程",
+        "description": "OER Schema：迭个评估面向个课程。"
+      }
+    ]
+  }
+}

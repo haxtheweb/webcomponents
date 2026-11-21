@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zone za ispuštanje na slici",
+    "description": "Polaznici postavljaju oznake na zone položene preko slike, a zatim provjeravaju odgovor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika",
+        "description": "Slika na koju polaznici postavljaju oznake."
+      },
+      {
+        "title": "Alternativni tekst",
+        "description": "Opisuje sliku za osobe koje je ne mogu vidjeti. Ne otkrivajte kamo idu oznake."
+      },
+      {
+        "title": "Naslov slike",
+        "description": "Kratak vidljivi naslov slike, prikazan iznad nje."
+      },
+      {
+        "title": "Pitanje",
+        "description": "Što polaznici trebaju učiniti s oznakama."
+      },
+      {
+        "title": "Oznake i zone",
+        "description": "Svaka stavka je oznaka koju polaznici mogu postaviti. Dajte oznaci naziv zone kako biste njezinu zonu postavili na sliku; oznaka bez naziva zone je višak koji nikamo ne pripada. Brojevi zona su postoci slike."
+      },
+      {
+        "title": "Opis slike",
+        "description": "Neobavezni opis prikazan ispod slike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta polaznik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "title": "Promiješaj oznake",
+        "description": "Prikaži oznake drugim redoslijedom pri svakom posjetu."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao redak koji se otvara i zatvara. Otvaranje jednog zatvara ostala sklopiva pitanja pokraj njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni redak koji prikazuje samo pitanje i njegov status."
+      },
+      {
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu provjeru (npr. bodovi, slovo, postotak, dovršenost)."
+      },
+      {
+        "title": "Ishod učenja",
+        "description": "OER Schema: ishod učenja povezan s ovom provjerom."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sustavima."
+      },
+      {
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj kojemu je ova provjera namijenjena."
+      }
+    ]
+  }
+}

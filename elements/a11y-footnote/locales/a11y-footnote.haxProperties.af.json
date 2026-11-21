@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Voetnoot",
+    "description": "'n Nota wat geskryf word waar dit in die teks hoort. Dit wys as 'n nommer, en die genommerde lys notas bou homself onderaan die bladsy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "Die teks van die voetnoot."
+      },
+      {
+        "title": "Geen voorskou",
+        "description": "Moenie die nota wys wanneer 'n leser oor die nommer beweeg of daarop fokus nie."
+      }
+    ]
+  }
+}

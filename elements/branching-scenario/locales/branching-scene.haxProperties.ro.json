@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenă de scenariu",
+    "description": "O scenă a unui scenariu ramificat. Legați fiecare alegere de altă scenă cu # urmat de id-ul scenei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id scenă",
+        "description": "La ce trimit alegerile: un link către # urmat de acest id duce la această scenă. Litere, cifre și cratime."
+      },
+      {
+        "title": "Titlu",
+        "description": "Titlul scenei."
+      },
+      {
+        "title": "Final",
+        "description": "Dacă această scenă încheie un drum și cum s-a terminat.",
+        "options": {
+          "": "Nu este un final",
+          "good": "Final bun",
+          "mixed": "Final mixt",
+          "poor": "Final slab"
+        }
+      },
+      {
+        "title": "Scor",
+        "description": "Scorul pentru atingerea acestui final. Cel mai mare scor de final din scenariu este maximul."
+      }
+    ]
+  }
+}

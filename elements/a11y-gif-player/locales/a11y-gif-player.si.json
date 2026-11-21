@@ -2,5 +2,9 @@
   "toggleAnimation": "සජීවිකරණය මාරු කරන්න",
   "info": "තොරතුරු",
   "image": "රූපය",
-  "animatedGif": "සජීවීකරණ GIF"
+  "animatedGif": "සජීවීකරණ GIF",
+  "playAnimation": "සජීවිකරණය වාදනය කරන්න",
+  "pauseAnimation": "සජීවිකරණය විරාම කරන්න",
+  "showDescription": "විස්තරය පෙන්වන්න",
+  "hideDescription": "විස්තරය සඟවන්න"
 }

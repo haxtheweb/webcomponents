@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "tytuł"
+        "title": "tytuł",
+        "description": "Nagłówek wyświetlany nad modelem kursu."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adres pliku modelu 3D (.glb lub .gltf) do wyświetlenia."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Opisz model 3D dla osób, które go nie widzą."
       },
       {
         "title": "Obszar informacji"

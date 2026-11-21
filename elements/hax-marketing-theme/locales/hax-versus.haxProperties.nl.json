@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Tekst naast een kop-aan-kopknop met twee personages"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kop"
+      },
+      {
+        "title": "Waar de knop naartoe gaat"
+      },
+      {
+        "title": "Knoptekst"
+      },
+      {
+        "title": "Seed van linkerpersonage"
+      },
+      {
+        "title": "Seed van rechterpersonage"
+      }
+    ]
+  }
+}

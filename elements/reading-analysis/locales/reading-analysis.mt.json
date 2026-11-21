@@ -60,6 +60,8 @@
   "flagsFound": "{correct} minn {total} instabu",
   "toRethink": "{count} x'terġa' taħseb fuqhom",
   "notEvidence": "mhix evidenza għal din il-bandiera",
+  "isEvidence": "evidenza għal din il-bandiera",
+  "readingKeys": "Uża l-vleġeġ biex timxi minn {unit} għal li jmiss.",
   "markAnswers": "Immarka t-tweġibiet",
   "doneMarking": "Lest mill-immarkar tat-tweġibiet",
   "editHint": "Editja t-test hawn taħt. Uża Immarka t-tweġibiet fil-menu tal-blokk biex tagħżel fejn tmur kull bandiera.",

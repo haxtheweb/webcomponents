@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ädimler sanawy",
     "description": "Ýumşy ýerine ýetirmek üçin belgilenen ädimler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ädim görkezijisi",
+        "description": "Ädimleri öňe gidişi belleýän ykjam atlar setiri hökmünde görkez. Bu ýerleşişde ädimleriň mazmuny görkezilmeýär."
+      },
+      {
+        "title": "Häzirki ädim",
+        "description": "Okyjynyň häzirki ädimi, 1-den sanalýar. Öňki ädimler tamamlanan hökmünde görkezilýär. Ädim görkezijisi tarapyndan ulanylýar."
+      }
+    ]
   }
 }

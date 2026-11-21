@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "स्वयं उठाव रंग",
         "description": "लेबल मजकुरावरून उठाव रंग आपोआप ठरवा."
+      },
+      {
+        "title": "अर्थ",
+        "description": "टॅगला अर्थदर्शक रंग द्या. तटस्थ टॅगसाठी रिकामे ठेवा.",
+        "options": {
+          "": "तटस्थ",
+          "brand": "ब्रँड",
+          "success": "यश",
+          "warning": "इशारा",
+          "danger": "धोका"
+        }
       }
     ],
     "advanced": [

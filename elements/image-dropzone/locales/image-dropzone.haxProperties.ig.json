@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Mpaghara ntụba onyonyo",
+    "description": "Ndị mmụta na-etinye akara aha na mpaghara dị n'elu onyonyo, wee lelee azịza ha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Onyonyo",
+        "description": "Onyonyo ndị mmụta na-etinye akara aha na ya."
+      },
+      {
+        "title": "Ederede nnọchi",
+        "description": "Na-akọwa onyonyo ahụ maka ndị na-enweghị ike ịhụ ya. Ekpughela ebe akara aha ga-aga."
+      },
+      {
+        "title": "Aha onyonyo",
+        "description": "Aha dị mkpụmkpụ a na-ahụ anya maka onyonyo ahụ, e gosiri n'elu ya."
+      },
+      {
+        "title": "Ajụjụ",
+        "description": "Ihe a na-ajụ ndị mmụta ka ha jiri akara aha mee."
+      },
+      {
+        "title": "Akara aha na mpaghara",
+        "description": "Ihe ọ bụla bụ akara aha ndị mmụta nwere ike itinye. Nye akara aha aha mpaghara iji tinye mpaghara ya na onyonyo; akara aha na-enweghị aha mpaghara bụ nke ọzọ na-adịghị ebe ọ bụla. Ọnụọgụ mpaghara bụ pasentị nke onyonyo ahụ."
+      },
+      {
+        "title": "Nkọwa onyonyo",
+        "description": "Nkọwa onyonyo nhọrọ e gosiri n'okpuru onyonyo ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngbalị",
+        "description": "Ugboro ole onye mmụta nwere ike ilele. 0 pụtara enweghị oke."
+      },
+      {
+        "title": "Gwakọta akara aha",
+        "description": "Gosi akara aha n'usoro dị iche oge ọ bụla a bịara."
+      },
+      {
+        "title": "Enwere ike ịkpachi",
+        "description": "Gosi ajụjụ a dịka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ enwere ike ịkpachi dị n'akụkụ ya."
+      },
+      {
+        "title": "Malite emechiri emechi",
+        "description": "Mgbe enwere ike ịkpachi, malite dịka ahịrị emechiri emechi na-egosi naanị ajụjụ na ọnọdụ ya."
+      },
+      {
+        "title": "Ụdị akara",
+        "description": "OER Schema: ụdị akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta metụtara nyocha a."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Aha ajụjụ ule",
+        "description": "Aha ajụjụ ule e ji maka njirimara xAPI na sistemụ nyocha data."
+      },
+      {
+        "title": "Ọmụmụ",
+        "description": "OER Schema: ọmụmụ e bu n'obi maka nyocha a."
+      }
+    ]
+  }
+}

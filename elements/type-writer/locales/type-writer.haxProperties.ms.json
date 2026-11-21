@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mesin taip",
     "description": "Teks yang menaip sendiri, satu aksara pada satu masa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teks",
+        "description": "Teks untuk ditaip sebaik sahaja elemen ditatal ke dalam pandangan."
+      },
+      {
+        "title": "Menaip",
+        "description": "Tunjukkan kursor berkelip; elemen menetapkan ini semasa ia menaip."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lengah",
+        "description": "Milisaat untuk menunggu sebelum menaip bermula."
+      },
+      {
+        "title": "Tempoh kursor",
+        "description": "Milisaat kursor terus berkelip selepas teks ditaip."
+      },
+      {
+        "title": "Kelajuan",
+        "description": "Milisaat setiap aksara; nombor lebih rendah menaip lebih pantas."
+      }
+    ]
   }
 }

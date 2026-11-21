@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Nane hua ʻōlelo keʻa",
+    "description": "He nane hua ʻōlelo keʻa i hana ʻia mai kekahi papa inoa o nā hua ʻōlelo a me nā kuhi. Hana ʻia ka mānoanoa nou; kikokiko nā haumāna i nā hua ʻōlelo a nānā iā lākou."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Ka poʻo inoa a i ʻole ka nīnau i hōʻike ʻia ma luna o ka nane."
+      },
+      {
+        "title": "Nā hua ʻōlelo",
+        "description": "Kēlā me kēia hua ʻōlelo a me kona kuhi. Hana ʻia ka mānoanoa mai kēia papa inoa: kau mua ʻia ka hua ʻōlelo lōʻihi loa a keʻa nā mea ʻē aʻe iā ia ma nā hua palapala like."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nā hoʻāʻo",
+        "description": "ʻEhia manawa e hiki ai i kekahi haumāna ke nānā. ʻO ka 0, palena ʻole."
+      },
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu koho no ka ʻāpana poʻo, ka hua ʻōlelo e hana ʻia nei a me nā pihi hana."
+      },
+      {
+        "title": "Hiki ke ʻōpiʻi",
+        "description": "Hōʻike i kēia nane ma ke ʻano he lālani e wehe a pani ai. Ke wehe ʻia kekahi, pani ʻia nā nīnau ʻōpiʻi ʻē aʻe ma kona ʻaoʻao."
+      },
+      {
+        "title": "Hoʻomaka me ka ʻōpiʻi",
+        "description": "Ke hiki ke ʻōpiʻi, e hoʻomaka ma ke ʻano he lālani pani e hōʻike ana i ka poʻo inoa a me kona kūlana wale nō."
+      },
+      {
+        "title": "ʻAno kaha helu",
+        "description": "OER Schema: ke ʻano kaha helu no kēia loiloi (e laʻa nā ʻai, hua palapala, pakeneka, pau ʻana)."
+      },
+      {
+        "title": "Pahuhopu aʻo",
+        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Inoa o ka hoʻokolohua",
+        "description": "Inoa hoʻokolohua i hoʻohana ʻia no ka hōʻike xAPI ma nā ʻōnaehana kālailai."
+      },
+      {
+        "title": "Papa",
+        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
+      }
+    ]
+  }
+}

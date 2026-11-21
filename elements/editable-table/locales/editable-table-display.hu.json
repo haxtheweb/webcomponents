@@ -3,5 +3,8 @@
   "copyAsCsv": "Másolás CSV-ként.",
   "printTable": "Táblázat nyomtatása",
   "selectColumn": "Oszlop kiválasztása",
-  "dataTable": "Adatok · Táblázat"
+  "dataTable": "Adatok · Táblázat",
+  "filterStatus": "{total} sorból {shown} látható, szűrő: {column}: {text}",
+  "columnNumber": "{column}. oszlop",
+  "clearFilter": "Szűrő törlése"
 }

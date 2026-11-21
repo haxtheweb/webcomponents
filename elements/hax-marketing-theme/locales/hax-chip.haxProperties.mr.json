@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "चिप",
+    "description": "लेबल असलेले लहान चिन्ह"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "चिन्ह"
+      },
+      {
+        "title": "लेबल"
+      }
+    ]
+  }
+}

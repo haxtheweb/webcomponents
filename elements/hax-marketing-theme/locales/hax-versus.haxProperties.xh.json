@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ngokuchasene",
+    "description": "Amagama ecaleni kweqhosha lobuso ngobuso elinabalinganiswa ababini"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko"
+      },
+      {
+        "title": "Apho iqhosha liya khona"
+      },
+      {
+        "title": "Isicatshulwa seqhosha"
+      },
+      {
+        "title": "Imbewu yomlinganiswa ngasekhohlo"
+      },
+      {
+        "title": "Imbewu yomlinganiswa ngasekunene"
+      }
+    ]
+  }
+}

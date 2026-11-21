@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Testun Amgen"
+        "title": "Testun Amgen",
+        "description": "Disgrifiwch y ddelwedd ar gyfer pobl na allant ei gweld."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Testun crynodeb dewisol pan fo'r manylion ar agor"
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar agor",
+        "description": "Testun y botwm tra bo'r disgrifiad wedi'i guddio, fel Dangos disgrifiad."
       },
       {
         "property": "closeText",
-        "title": "Testun crynodeb dewisol pan fo'r manylion ar gau"
+        "title": "Testun crynodeb dewisol pan fo'r manylion ar gau",
+        "description": "Testun y botwm tra bo'r disgrifiad yn cael ei ddangos, fel Cuddio disgrifiad."
       }
     ]
   }

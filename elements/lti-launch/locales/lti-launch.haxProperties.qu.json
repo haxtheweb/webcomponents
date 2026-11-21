@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hawa llamk'ana qallariy",
+    "description": "Hawa yachay llamk'anata musuq ventanapi utaq p'anqapi kichaq bloque, ch'uya t'inki hina utaq LTI 1.3 yaykuy mañakuywan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Llamk'anap sutin. Uma siq'ipi ñit'inapipas rikuchisqa."
+      },
+      {
+        "title": "Willakuy",
+        "description": "Yachaqaqkuna llamk'anapi imatachus ruranku, ñit'inap hanaqninpi rikuchisqa."
+      },
+      {
+        "title": "Qallariy URL",
+        "description": "Llamk'anap tiyanan. https:// utaq http:// nisqawan qallariq hunt'asqa tiyana kanan."
+      },
+      {
+        "title": "Kaypi kichay",
+        "description": "Musuq ventanaqa llapan llamk'anakunawan llamk'an. Kay p'anqapiqa huk kiti ukhupi rikuchikuyta saqiq llamk'anakunawanlla llamk'an.",
+        "options": {
+          "window": "Musuq ventana",
+          "embed": "Kay p'anqapi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI yaykuy URL",
+        "description": "LTI 1.3 nisqallapaq: llamk'anap yaykuy qallariy tiyanan. Kaywan, huk client ID-wan huk deployment ID-wan ñit'inaqa ch'uya t'inkita kichanan rantinpi LTI yaykuy mañakuyta kachan. Qallariyta tukuchinapaqqa kay kitip LTI servicionta munan."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Llamk'anap kay kitiman qusqan client ID. Llapanpaq riqsichiq, mana pakasqachu: ama hayk'appas kaypi llavekunata pakasqakunatapas churaychu."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Llamk'anap kay kitiman qusqan deployment ID. Llapanpaq riqsichiq, mana pakasqachu."
+      },
+      {
+        "title": "LTI qukuq",
+        "description": "Kay kitita llamk'anaman riqsichiq tiyana. Ch'usaqta saqiy p'anqa kachkan kitip tiyananta llamk'achinanpaq."
+      },
+      {
+        "title": "P'anqapi sayay",
+        "description": "Kay p'anqapi kichakuptin llamk'anap sayaynin, pixelkunapi (200 manta 2000 kama)."
+      },
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, ñit'inap llimp'in. Ch'usaqta saqiy rikchayta qatinanpaq."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI yaykuy yanapay",
+        "description": "Kay kitip LTI servicion yachaqaqta riqsinanpaq llamk'achisqan mana sut'i chanin. Sapa kutilla kitim lti-launch-request ruraywan qun, manataq kaypi waqaychakunchu. Manam hayk'appas pakasqa simi utaq llavechu."
+      },
+      {
+        "title": "LTI willay yanapay",
+        "description": "Kay kitip LTI servicion kay qallariyta riqsinanpaq llamk'achisqan mana sut'i chanin. Sapa kutilla kitim qun, manataq kaypi waqaychakunchu."
+      }
+    ]
+  }
+}

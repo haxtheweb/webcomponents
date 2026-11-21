@@ -1,4 +1,6 @@
 {
   "saveAll": "Αποθήκευση όλων",
-  "saveTheFollowing": "Αποθήκευση των εξής: {list};"
+  "saveTheFollowing": "Αποθήκευση των εξής: {list};",
+  "save": "Αποθήκευση",
+  "cancel": "Ακύρωση"
 }

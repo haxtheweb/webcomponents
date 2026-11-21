@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Wíwá ọ̀rọ̀",
+    "description": "Àwọ̀n lẹ́tà pẹ̀lú àwọn ọ̀rọ̀ tó farapamọ́. Àwọn akẹ́kọ̀ọ́ ń tẹ lẹ́tà àkọ́kọ́ àti tó kẹ́yìn ọ̀rọ̀ kọ̀ọ̀kan. Ó ń dánrawò rírí bí a ṣe ń kọ ọ̀rọ̀ kan, kì í ṣe ìtumọ̀ rẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Ohun tí a ní kí àwọn akẹ́kọ̀ọ́ wá, tí a fihàn nínú àkọlé."
+      },
+      {
+        "title": "Àwọn ọ̀rọ̀",
+        "description": "Àwọn ọ̀rọ̀ láti fi pamọ́. A fi àyè àti àmì-ìdánudúró sílẹ̀ kúrò nínú àwọ̀n. A ń ṣe àkójọ àwọn ọ̀rọ̀ tí kò bá a mu nígbà tí o ń ṣàtúnṣe, a sì fi wọ́n sílẹ̀ fún àwọn akẹ́kọ̀ọ́."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ìwọ̀n àwọ̀n",
+        "description": "Lẹ́tà fún ẹ̀gbẹ́ kọ̀ọ̀kan, 4 sí 16. Fi sílẹ̀ ní òfo láti bá ọ̀rọ̀ tó gùn jù mu (títí dé 12). Ju 12 lọ ń yí lọ sẹ́gbẹ̀ẹ́ lórí fóònù."
+      },
+      {
+        "title": "Àwọn ọ̀rọ̀ onídàgẹ̀rẹ̀",
+        "description": "Tún fi àwọn ọ̀rọ̀ pamọ́ ní ìdàgẹ̀rẹ̀. Ó le jù."
+      },
+      {
+        "title": "Àwọn ọ̀rọ̀ ìfàsẹ́yìn",
+        "description": "Tún fi àwọn ọ̀rọ̀ tí a kọ ní ìfàsẹ́yìn pamọ́. Ó le jù."
+      },
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ àṣàyàn fún chip àkọlé, lẹ́tà àkọ́kọ́ tí a yàn àti bọ́tìnnì."
+      }
+    ]
+  }
+}

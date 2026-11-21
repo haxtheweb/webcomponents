@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Odgovori",
-        "description": "Redoslijed odgovora određuje ispravan slijed."
+        "description": "Redoslijed odgovora određuje ispravan slijed.",
+        "options": {
+          "": "Lista",
+          "cards": "Kartice sa slikama"
+        }
+      },
+      {
+        "title": "Odgovori",
+        "description": "Redoslijed odgovora određuje tačan slijed."
       }
     ],
     "advanced": [

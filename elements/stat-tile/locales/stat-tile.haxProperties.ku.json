@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Çargoşeya statîstîkê",
+    "description": "Hejmarek ku girîng e, bi etîketa wê û çawa guheriye. Çendan di torekê de bicih bike ji bo rêzeke dashboardê."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etîket",
+        "description": "Hejmar çi dipîve."
+      },
+      {
+        "title": "Nirx",
+        "description": "Hejmar. Hejmareke sade li gorî zimanê rûpelê tê komkirin; her tiştê din wekî ku hatiye nivîsîn xuya dike."
+      },
+      {
+        "title": "Guhertin",
+        "description": "Çawa guheriye, bi peyvan, wek 6% vê wergerê."
+      },
+      {
+        "title": "Alî",
+        "description": "Gelo guhertin ber bi jor an jêr ve ye.",
+        "options": {
+          "": "Tune",
+          "up": "Jor",
+          "down": "Jêr"
+        }
+      }
+    ]
+  }
+}

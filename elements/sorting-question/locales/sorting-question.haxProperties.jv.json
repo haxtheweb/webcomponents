@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Wangsulan",
+        "description": "Urutan wangsulan nemtokake urutan sing bener.",
+        "options": {
+          "": "Dhaptar",
+          "cards": "Kertu gambar"
+        }
+      },
+      {
+        "title": "Wangsulan",
         "description": "Urutan wangsulan nemtokake urutan sing bener."
       }
     ],

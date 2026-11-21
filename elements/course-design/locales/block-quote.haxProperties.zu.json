@@ -20,6 +20,12 @@
         "title": "Isithombe",
         "description": "Isithombe esiboniswa nengcaphuno."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kufakwe ohlakeni",
+        "description": "Dweba isicaphuno ohlakeni lwebhlokhi olwabelwanayo, nesithonjana nelebula ngaphezulu kwaso, ukuze sifane namanothi namakhadi emiyalelo."
+      }
     ]
   }
 }

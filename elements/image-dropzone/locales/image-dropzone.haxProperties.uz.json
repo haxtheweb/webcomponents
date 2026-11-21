@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Tasvirga tashlash",
+    "description": "O‘quvchilar tasvir ustidagi hududlarga yorliqlarni joylashtiradi, so‘ng javobini tekshiradi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tasvir",
+        "description": "O‘quvchilar yorliqlarni joylashtiradigan tasvir."
+      },
+      {
+        "title": "Muqobil matn",
+        "description": "Tasvirni ko‘ra olmaydigan odamlar uchun tavsiflaydi. Yorliqlar qayerga borishini oshkor qilmang."
+      },
+      {
+        "title": "Tasvir sarlavhasi",
+        "description": "Tasvir ustida ko‘rsatiladigan qisqa sarlavha."
+      },
+      {
+        "title": "Savol",
+        "description": "O‘quvchilardan yorliqlar bilan nima qilish so‘raladi."
+      },
+      {
+        "title": "Yorliqlar va hududlar",
+        "description": "Har bir band — o‘quvchilar joylashtira oladigan yorliq. Hududini tasvirga qo‘yish uchun yorliqqa hudud nomini bering; hudud nomi yo‘q yorliq hech qayerga tegishli bo‘lmagan ortiqcha yorliqdir. Hudud raqamlari tasvirning foizlarida."
+      },
+      {
+        "title": "Izoh",
+        "description": "Tasvir ostida ko‘rsatiladigan ixtiyoriy izoh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Urinishlar",
+        "description": "O‘quvchi necha marta tekshira oladi. 0 cheklanmagan degani."
+      },
+      {
+        "title": "Yorliqlarni aralashtirish",
+        "description": "Har tashrifda yorliqlarni boshqa tartibda ko‘rsatish."
+      },
+      {
+        "title": "Yig‘iladigan",
+        "description": "Bu savolni ochilib-yopiladigan qator sifatida ko‘rsatish. Birini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat savol va holatni ko‘rsatadigan yopiq qator sifatida boshlanadi."
+      },
+      {
+        "title": "Baholash formati",
+        "description": "OER Schema: bu baholash uchun baholash formati (masalan, ballar, harf, foiz, bajarilganlik)."
+      },
+      {
+        "title": "O‘quv maqsadi",
+        "description": "OER Schema: bu baholash bilan bog‘liq o‘quv maqsadi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Test nomi",
+        "description": "Tahlil tizimlarida xAPI identifikatsiyasi uchun ishlatiladigan test nomi."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baholash mo‘ljallangan kurs."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "loading": "Ielādē salīdzinājumu.",
+  "yes": "Jā",
+  "partly": "Daļēji",
+  "no": "Nē",
+  "compare": "Salīdzināt",
+  "with": "Ar",
+  "vs": "pret",
+  "caption": "{a} un {b}, funkciju pa funkcijai",
+  "feature": "Funkcija",
+  "clearYes": "{count} no {total} — skaidrs jā",
+  "seeForYourself": "Pārliecinieties paši:",
+  "and": "un",
+  "why": "Kāpēc"
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Bouton d'histoire",
+    "description": "Le bouton qui ouvre l'histoire derrière une affirmation sur hax.cloud, ou l'endroit correspondant sur un autre site du réseau HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Destination",
+        "options": {
+          "cloud": "hax.cloud, l'histoire",
+          "learn": "learn.hax.cloud, un tutoriel",
+          "try": "browser.hax.cloud, l'essayer",
+          "elements": "webcomponents.hax.cloud, un bloc",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresse sur ce site (une histoire sur hax.cloud ressemble à stories/ee450a19)"
+      },
+      {
+        "title": "De quoi il s'agit"
+      },
+      {
+        "title": "Petite pastille"
+      },
+      {
+        "title": "Afficher le sujet dans le bouton"
+      }
+    ]
+  }
+}

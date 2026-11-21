@@ -4,7 +4,12 @@
     "description": "Odtwarza interaktywne treści H5P z przesłanego pliku .h5p, bez potrzeby serwera H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Plik H5P",
+        "description": "Prześlij lub podlinkuj plik .h5p. Jest rozpakowywany w przeglądarce; serwer H5P nie jest potrzebny."
+      }
+    ],
     "advanced": [
       {
         "title": "Starszy kod osadzania iframe",

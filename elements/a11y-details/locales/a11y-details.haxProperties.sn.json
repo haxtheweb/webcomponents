@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavhurwa"
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavhurwa",
+        "description": "Mavara ebhatani tsananguro yakavigwa, akadai seRatidza tsananguro."
       },
       {
         "property": "closeText",
-        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavharwa"
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavharwa",
+        "description": "Mavara ebhatani tsananguro ichiratidzwa, akadai seViga tsananguro."
       }
     ]
   }

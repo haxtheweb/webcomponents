@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Dhaptar langkah",
     "description": "Langkah-langkah nganggo nomer kanggo ngrampungake tugas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pratandha langkah",
+        "description": "Tampilake langkah minangka baris judhul ringkes sing nandhani kemajuan. Isi langkah ora ditampilake ing tata letak iki."
+      },
+      {
+        "title": "Langkah saiki",
+        "description": "Langkah papan pamaca saiki, diitung saka 1. Langkah sadurunge katon wis rampung. Dienggo dening pratandha langkah."
+      }
+    ]
   }
 }

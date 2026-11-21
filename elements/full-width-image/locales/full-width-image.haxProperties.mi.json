@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Whakaahua papamuri."
+        "description": "Whakaahua papamuri.",
+        "title": "Atahanga"
       },
       {
         "property": "caption",
-        "description": "Kupu upoko."
+        "description": "Kupu upoko.",
+        "title": "Tapanga"
       }
     ]
   }

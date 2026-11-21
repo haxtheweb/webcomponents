@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Etiqueta",
+    "description": "Un pequeño icono con etiqueta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Icono"
+      },
+      {
+        "title": "Etiqueta"
+      }
+    ]
+  }
+}

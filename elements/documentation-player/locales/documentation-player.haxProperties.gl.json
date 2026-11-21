@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Reprodutor de documentación",
+    "description": "Percorrido, demostración e referencia dun compoñente web, con botóns de copia para HTML, import, npm e CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ficheiro de datos da documentación",
+        "description": "Os datos de documentación que se inclúen co elemento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Guión gráfico do percorrido",
+        "description": "O guión gráfico de movemento que se inclúe co elemento (tag.motion.json). Opcional."
+      },
+      {
+        "title": "Titorial en vídeo",
+        "description": "Un vídeo curto sobre o elemento (YouTube, Vimeo ou un ficheiro de vídeo). Substitúe o vídeo dos datos de documentación."
+      },
+      {
+        "title": "Abrir na lapela",
+        "description": "Que lapela se mostra primeiro.",
+        "options": {
+          "motion": "Percorrido",
+          "video": "Vídeo",
+          "demo": "Demostración",
+          "docs": "Documentación",
+          "schema": "Esquema"
+        }
+      },
+      {
+        "title": "Reproducir o percorrido automaticamente",
+        "description": "Iniciar o percorrido en canto se mostre o reprodutor. Ignórase cando o lector prefire movemento reducido."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema do percorrido",
+        "description": "Para elementos con varios percorridos, que tema abrir primeiro (por exemplo add-blocks). Déixao baleiro para o principal."
+      },
+      {
+        "title": "Ligazón á demostración en directo",
+        "description": "A onde leva o botón Abrir a fonte da demostración. Por defecto, o cartafol demo do repositorio."
+      },
+      {
+        "title": "Ligazón á documentación",
+        "description": "A onde leva o botón da documentación completa, por exemplo a páxina de Learn HAX correspondente."
+      }
+    ]
+  }
+}

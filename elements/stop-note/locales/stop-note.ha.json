@@ -3,5 +3,7 @@
   "status_stop": "Tsaya",
   "status_warning": "Gargaɗi",
   "status_success": "Nasara",
-  "status_info": "Lura"
+  "status_info": "Lura",
+  "status_tip": "Ka sani?",
+  "status_new": "Abin da ke sabo"
 }

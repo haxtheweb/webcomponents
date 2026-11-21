@@ -3,5 +3,7 @@
   "status_stop": "עצור",
   "status_warning": "אזהרה",
   "status_success": "הצלחה",
-  "status_info": "הערה"
+  "status_info": "הערה",
+  "status_tip": "הידעתם?",
+  "status_new": "מה חדש"
 }

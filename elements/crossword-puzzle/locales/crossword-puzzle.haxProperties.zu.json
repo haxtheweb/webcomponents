@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "I-crossword",
+    "description": "I-crossword eyenziwe ohlwini lwamagama nemikhondo. Igridi ikhiqizwa wena; abafundi bathayipha amagama bese bewahlola."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Isihloko noma umbuzo oboniswa ngaphezu kwe-crossword."
+      },
+      {
+        "title": "Amagama",
+        "description": "Igama ngalinye nomkhondo walo. Igridi ikhiqizwa kulolu hlu: igama elide kakhulu libekwa kuqala bese amanye eliwela ezinhlamvwini abelana ngazo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Imizamo",
+        "description": "Izikhathi umfundi angahlola ngazo. U-0 usho ukuthi akunamkhawulo."
+      },
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala ongakhethwa we-chip yesihloko, igama elisebenzayo nezinkinobho zezenzo."
+      },
+      {
+        "title": "Iyagoqeka",
+        "description": "Bonisa le crossword njengomugqa ovuleka futhi uvaleke. Ukuvula owodwa kuvala eminye imibuzo egoqekayo eseduze nawo."
+      },
+      {
+        "title": "Qala kugoqiwe",
+        "description": "Uma igoqeka, qala njengomugqa ovaliwe obonisa isihloko nesimo sawo kuphela."
+      },
+      {
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, amaphesenti, ukuqedwa)."
+      },
+      {
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lequizi",
+        "description": "Igama lequizi elisetshenziselwa ukuhlonza kwe-xAPI ezinhlelweni zokuhlaziya."
+      },
+      {
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
+      }
+    ]
+  }
+}

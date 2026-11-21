@@ -40,5 +40,7 @@
   "hideDirections": "Zoo ntụziaka",
   "showRelatedContent": "Gosi ọdịnaya dị ya nso",
   "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
-  "notAttempted": "Anwalebeghị"
+  "notAttempted": "Anwalebeghị",
+  "cardsDirections": "Debe kaadị ndị ahụ n'usoro ziri ezi site na bọtịnụ kpalie gaa n'ihu na kpalie gaa n'azụ dị na kaadị ọ bụla, ma ọ bụ jiri mmasị dọrọ ha. Mgbe i kwenyere na ha nọ n'usoro ziri ezi, nwalee azịza gị site n'ịhọrọ {checkAnswer}.",
+  "movedToPosition": "Akpaliri {item} gaa n'ọnọdụ {position} n'ime {total}"
 }

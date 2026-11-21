@@ -6,6 +6,8 @@
   "faviconDescription": "Larawan sa tab ng browser / ginagamit sa mga telepono bilang maliit na logo ng site",
   "domain": "Domain",
   "domainDescription": "Domain ng website na ito",
+  "sameAs": "Iba pang profile ng site na ito",
+  "sameAsDescription": "Isang link bawat linya sa mga profile ng site o organisasyong ito sa ibang lugar (GitHub, LinkedIn, YouTube, Mastodon). Ginagamit ito ng mga search engine para ikonekta ang mga profile na iyon sa site na ito.",
   "language": "Wika",
   "languageDescription": "Wika ng site na ito. Maghanap ayon sa pangalan o code, o maglagay ng ibang code tulad ng fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

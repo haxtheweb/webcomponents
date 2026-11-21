@@ -1,0 +1,22 @@
+{
+  "scenario": "Scénář",
+  "directions": "Pokyny",
+  "showDirections": "Zobrazit pokyny",
+  "hideDirections": "Skrýt pokyny",
+  "directionsRead": "Přečtěte si každou scénu a vyberte, co byste udělali.",
+  "directionsEndings": "Konců je několik. Až skončíte, zkuste jinou cestu.",
+  "startOver": "Začít znovu",
+  "back": "O krok zpět",
+  "tryAnother": "Zkusit jinou cestu",
+  "path": "Cesta",
+  "scene": "Scéna",
+  "ending": "Konec",
+  "end": "konec",
+  "scenesSeen": "Viděno {seen} z {total} scén",
+  "endingReached": "Dosaženo konce",
+  "addScene": "Přidat scénu",
+  "newScene": "Nová scéna",
+  "newSceneText": "Popište, co se stane, a pak propojte každou volbu se scénou.",
+  "editingNote": "Úpravy: zobrazují se všechny scény. Volba je odkaz na # následovaný ID scény.",
+  "noScenes": "Přidejte scénu a začněte scénář."
+}

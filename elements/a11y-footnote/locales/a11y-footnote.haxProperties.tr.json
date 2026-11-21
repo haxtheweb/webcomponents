@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Dipnot",
+    "description": "Metinde ait olduğu yere yazılan bir not. Bir sayı olarak görünür ve numaralı not listesi sayfanın altında kendiliğinden oluşur."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Not",
+        "description": "Dipnotun metni."
+      },
+      {
+        "title": "Önizleme yok",
+        "description": "Okuyucu sayının üzerine geldiğinde veya odaklandığında notu gösterme."
+      }
+    ]
+  }
+}

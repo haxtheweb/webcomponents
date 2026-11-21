@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatická zvýrazňující barva",
         "description": "Automaticky odvodit zvýrazňující barvu z textu popisku."
+      },
+      {
+        "title": "Význam",
+        "description": "Dejte štítku významovou barvu. Ponechte prázdné pro neutrální štítek.",
+        "options": {
+          "": "Neutrální",
+          "brand": "Značka",
+          "success": "Úspěch",
+          "warning": "Varování",
+          "danger": "Nebezpečí"
+        }
       }
     ],
     "advanced": [

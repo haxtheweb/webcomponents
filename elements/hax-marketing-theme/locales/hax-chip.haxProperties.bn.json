@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "চিপ",
+    "description": "লেবেলসহ একটি ছোট আইকন"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "আইকন"
+      },
+      {
+        "title": "লেবেল"
+      }
+    ]
+  }
+}

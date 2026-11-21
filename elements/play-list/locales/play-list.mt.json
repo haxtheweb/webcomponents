@@ -9,5 +9,7 @@
   "slidePages": "Paġni tas-slajds",
   "goToSlide": "Mur għas-slajd {number}",
   "slides": "Slajds",
-  "position": "{number} minn {total}"
+  "position": "{number} minn {total}",
+  "fullScreen": "Skrin sħiħ",
+  "exitFullScreen": "Oħroġ mill-iskrin sħiħ"
 }

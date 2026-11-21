@@ -1,0 +1,19 @@
+{
+  "label": "Zunanje orodje",
+  "labelLti": "Zunanje orodje · LTI 1.3",
+  "theTool": "orodje",
+  "directions": "Navodila",
+  "showDirections": "Prikaži navodila",
+  "hideDirections": "Skrij navodila",
+  "directionsWindow": "Gumb odpre novo okno z orodjem.",
+  "directionsEmbed": "Gumb odpre orodje na tej strani. Če se ne naloži, ga raje odprite v novem oknu.",
+  "directionsLti": "To spletišče vas prijavi v orodje, zato ne potrebujete ločenega računa.",
+  "openWindow": "Odpri {title} (novo okno)",
+  "openEmbed": "Odpri {title}",
+  "openInstead": "Raje odpri v novem oknu",
+  "frameTitle": "{title} (zunanje orodje)",
+  "openedWindow": "Odprlo se je novo okno z orodjem.",
+  "openedEmbed": "Orodje se je odprlo na tej strani.",
+  "needsUrl": "Ta blok potrebuje zagonski naslov, ki se začne s http:// ali https://.",
+  "needsSignIn": "To orodje potrebuje storitev prijave tega spletišča, ki tu ni na voljo. Nič ni bilo odprto."
+}

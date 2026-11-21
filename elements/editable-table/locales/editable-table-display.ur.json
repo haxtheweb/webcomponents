@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV کے طور پر کاپی کریں۔",
   "printTable": "ٹیبل پرنٹ کریں",
   "selectColumn": "کالم منتخب کریں",
-  "dataTable": "ڈیٹا · جدول"
+  "dataTable": "ڈیٹا · جدول",
+  "filterStatus": "{total} میں سے {shown} قطاریں دکھائی جا رہی ہیں، {column} کے لحاظ سے فلٹر شدہ: {text}",
+  "columnNumber": "کالم {column}",
+  "clearFilter": "فلٹر صاف کریں"
 }

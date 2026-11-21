@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nóta taoibh",
+    "description": "Nóta curtha ar leith ón ábhar máguaird, le deilbhín agus lipéad roghnach."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lipéad",
+        "description": "Lipéad an nóta taoibh."
+      },
+      {
+        "title": "Deilbhín",
+        "description": "Deilbhín an nóta taoibh."
+      },
+      {
+        "title": "Ábhar",
+        "description": "Ábhar an nóta taoibh."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dath",
+        "description": "An dath lena ndéantar an nóta taoibh a imdhathú."
+      }
+    ]
+  }
+}

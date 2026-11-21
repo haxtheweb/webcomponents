@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerisk spørsmål",
+    "description": "Et spørsmål som besvares med et tall. Svaret er et fast tall eller en formel regnet ut fra variabler, og godtas når det er innenfor en toleranse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Spørsmål",
+        "description": "Hva elevene blir spurt om. Skriv et variabelnavn i klammer, som {d}, for å vise verdien."
+      },
+      {
+        "title": "Enhet",
+        "description": "Vises som tekst ved siden av svarfeltet, for eksempel km/t."
+      },
+      {
+        "title": "Svar",
+        "description": "Det riktige tallet. La stå tomt når en formel regner ut svaret."
+      },
+      {
+        "title": "Formel",
+        "description": "Regner ut svaret fra variablene, for eksempel d / (t / 60). Kan bruke + - * / ^, parenteser, sqrt() og abs(). Brukes i stedet for svaret når den er angitt."
+      },
+      {
+        "title": "Variabler",
+        "description": "Tall som formelen og spørsmålet bruker. Hvert tar en verdi mellom laveste og høyeste, i steg."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranse",
+        "description": "Hvor langt fra det eksakte svaret som fortsatt godtas. 0 betyr eksakt, eller avrundet til desimalene nedenfor."
+      },
+      {
+        "title": "Toleransetype",
+        "description": "Absolutt: pluss eller minus toleransen. Prosent: pluss eller minus den prosenten av det eksakte svaret.",
+        "options": {
+          "absolute": "Absolutt",
+          "percent": "Prosent"
+        }
+      },
+      {
+        "title": "Desimaler",
+        "description": "Elevene blir bedt om å runde av til så mange desimaler, og svaret vises avrundet til det. La stå tomt for ingen avrunding."
+      },
+      {
+        "title": "Forsøk",
+        "description": "Hvor mange ganger en elev kan sjekke. 0 betyr ubegrenset."
+      },
+      {
+        "title": "Nye tall ved hvert forsøk",
+        "description": "Trekk nye variabelverdier hver gang en elev prøver igjen. Det tidligere svaret vises da ikke når de kommer tilbake, bare om de svarte riktig."
+      },
+      {
+        "title": "Sammenleggbar",
+        "description": "Vis dette spørsmålet som en rad som åpnes og lukkes. Når én åpnes, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "title": "Start sammenlagt",
+        "description": "Når den er sammenleggbar, start som en lukket rad som bare viser spørsmålet og statusen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      }
+    ]
+  }
+}

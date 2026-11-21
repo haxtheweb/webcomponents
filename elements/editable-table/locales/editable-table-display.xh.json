@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopa njenge-CSV.",
   "printTable": "Shicilela iTafile",
   "selectColumn": "Khetha iKholamu",
-  "dataTable": "Idatha · Itheyibhile"
+  "dataTable": "Idatha · Itheyibhile",
+  "filterStatus": "Kuboniswa imiqolo eli-{shown} kwe-{total}, ihluzwe ngo-{column}: {text}",
+  "columnNumber": "Ikholamu {column}",
+  "clearFilter": "Coca isihluzi"
 }

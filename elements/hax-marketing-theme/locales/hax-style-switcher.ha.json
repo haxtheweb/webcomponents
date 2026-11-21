@@ -1,0 +1,16 @@
+{
+  "theme": "Jigo",
+  "designSystem": "Tsarin ƙira",
+  "dddDefault": "DDD (tsoho)",
+  "designSystemHelp": "Launi, nau'in rubutu, kusurwoyi da mayar da hankali. Jigon yana riƙe da tsarin shimfiɗa.",
+  "designSystemFixed": "Wannan jigo yana riƙe da tsarin ƙirarsa na kansa.",
+  "palette": "Palette",
+  "themeDefault": "Tsohon jigo",
+  "paletteNumber": "Palette {n}",
+  "siteTheme": "{name} (jigon wannan shafi)",
+  "restyle": "Sake salo wannan shafi",
+  "close": "Rufe",
+  "reset": "Koma kan kamannin wannan shafi na asali",
+  "random": "Ba ni mamaki",
+  "about": "Wannan yana nuna wasu kamanni da aka gina cikin HAX. Shafukan ba sa canzawa: tsari yana zaune a JSON Outline Schema kuma kowane tubali daidaitaccen web component ne, don haka ƙirar tana da 'yancin canzawa."
+}

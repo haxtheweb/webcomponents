@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "横幅",
+    "description": "一张大图片、GIF 或者视频，上头有标题搭文字，好放辣页面随便啥地方。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片或者视频",
+        "description": "一个 JPG、PNG、WebP、GIF、MP4 或者 WebM 文件。"
+      },
+      {
+        "title": "替代文字",
+        "description": "描述迭张图片。只是装饰个话就空辣海。"
+      },
+      {
+        "title": "标题",
+        "description": "媒体上头显示个标题。勿要就空辣海。"
+      },
+      {
+        "title": "文字",
+        "description": "标题下头、媒体上头显示个文字。"
+      },
+      {
+        "title": "全宽",
+        "description": "从边到边铺满，勿放辣内容栏里。"
+      },
+      {
+        "title": "高度",
+        "options": {
+          "tall": "高",
+          "medium": "中",
+          "short": "矮"
+        }
+      },
+      {
+        "title": "取景",
+        "description": "每种屏幕尺寸下照片哪能摆"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "渐变",
+        "description": "盖辣媒体上个颜色。有标题或者文字个辰光总归有一层，叫文字好读。",
+        "options": {
+          "blue": "蓝",
+          "bottom": "底下暗",
+          "none": "呒没"
+        }
+      },
+      {
+        "title": "文字位置",
+        "options": {
+          "bottom": "底下",
+          "middle": "当中"
+        }
+      },
+      {
+        "title": "横向焦点",
+        "description": "裁剪个辰光保持辣视野里个图片部分，从 0（左）到 100（右）。"
+      },
+      {
+        "title": "纵向焦点",
+        "description": "裁剪个辰光保持辣视野里个图片部分，从 0（上）到 100（下）。"
+      }
+    ]
+  }
+}

@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Atsakymai",
+        "description": "Atsakymų tvarka nustato teisingą seką.",
+        "options": {
+          "": "Sąrašas",
+          "cards": "Paveikslėlių kortelės"
+        }
+      },
+      {
+        "title": "Atsakymai",
         "description": "Atsakymų tvarka nustato teisingą seką."
       }
     ],

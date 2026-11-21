@@ -8,5 +8,9 @@
   "theme": "Theme",
   "palette": "အရောင်စု",
   "cancel": "မလုပ်တော့ပါ",
-  "openAppearanceSettings": "အသွင်အပြင် ဆက်တင်များ ဖွင့်ရန်"
+  "openAppearanceSettings": "အသွင်အပြင် ဆက်တင်များ ဖွင့်ရန်",
+  "designSystem": "ဒီဇိုင်းစနစ်",
+  "designSystemDefault": "DDD (မူလ)",
+  "designSystemThemeDefault": "{name} (အပြင်အဆင် မူလ)",
+  "designSystemHelp": "အရောင်၊ စာလုံးပုံစံ၊ ထောင့်များနှင့် သိပ်သည်းမှု။ အပြင်အဆင်က အခင်းအကျင်းကို ဆက်ဆုံးဖြတ်သည်။"
 }

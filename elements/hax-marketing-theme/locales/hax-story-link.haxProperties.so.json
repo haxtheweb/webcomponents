@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Badhanka sheekada",
+    "description": "Badhanka fura sheekada ka dambeysa sheegasho ee hax.cloud, ama meesha u dhiganta ee goob kale oo shabakadda HAX ah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Meesha uu u socdo",
+        "options": {
+          "cloud": "hax.cloud, sheekada",
+          "learn": "learn.hax.cloud, cashar",
+          "try": "browser.hax.cloud, isku day",
+          "elements": "webcomponents.hax.cloud, block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Cinwaanka goobtaas (sheeko ee hax.cloud waxay u egtahay stories/ee450a19)"
+      },
+      {
+        "title": "Waxa ay ku saabsan tahay"
+      },
+      {
+        "title": "Chip yar"
+      },
+      {
+        "title": "Ku muuji badhanka waxa ay ku saabsan tahay"
+      }
+    ]
+  }
+}

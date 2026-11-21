@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ಶೀರ್ಷಿಕೆ"
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕೋರ್ಸ್ ಮಾದರಿಯ ಮೇಲೆ ತೋರಿಸುವ ಶೀರ್ಷಿಕೆ."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "ತೋರಿಸಬೇಕಾದ 3D ಮಾದರಿ ಫೈಲ್‌ನ (.glb ಅಥವಾ .gltf) ವಿಳಾಸ."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D ಮಾದರಿಯನ್ನು ನೋಡಲಾಗದ ಜನರಿಗಾಗಿ ಅದನ್ನು ವಿವರಿಸಿ."
       },
       {
         "title": "ಮಾಹಿತಿ ಪ್ರದೇಶ"

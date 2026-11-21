@@ -1,0 +1,15 @@
+{
+  "loading": "Konparazioa kargatzen.",
+  "yes": "Bai",
+  "partly": "Partzialki",
+  "no": "Ez",
+  "compare": "Konparatu",
+  "with": "Honekin",
+  "vs": "vs",
+  "caption": "{a} eta {b}, ezaugarriz ezaugarri",
+  "feature": "Ezaugarria",
+  "clearYes": "{total}tik {count} bai argia",
+  "seeForYourself": "Ikusi zuk zeuk:",
+  "and": "eta",
+  "why": "Zergatik"
+}

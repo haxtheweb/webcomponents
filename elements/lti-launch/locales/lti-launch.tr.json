@@ -1,0 +1,19 @@
+{
+  "label": "Harici araç",
+  "labelLti": "Harici araç · LTI 1.3",
+  "theTool": "araç",
+  "directions": "Yönergeler",
+  "showDirections": "Yönergeleri göster",
+  "hideDirections": "Yönergeleri gizle",
+  "directionsWindow": "Düğme, aracı yeni bir pencerede açar.",
+  "directionsEmbed": "Düğme, aracı bu sayfada açar. Yüklenmezse bunun yerine yeni bir pencerede açın.",
+  "directionsLti": "Bu site sizi araçta oturum açtırır, bu yüzden ayrı bir hesaba ihtiyacınız yoktur.",
+  "openWindow": "{title} aç (yeni pencere)",
+  "openEmbed": "{title} aç",
+  "openInstead": "Bunun yerine yeni pencerede aç",
+  "frameTitle": "{title} (harici araç)",
+  "openedWindow": "Araçla birlikte yeni bir pencere açıldı.",
+  "openedEmbed": "Araç bu sayfada açıldı.",
+  "needsUrl": "Bu blok, http:// veya https:// ile başlayan bir başlatma adresine ihtiyaç duyar.",
+  "needsSignIn": "Bu araç, bu sitenin burada kullanılamayan oturum açma hizmetine ihtiyaç duyar. Hiçbir şey açılmadı."
+}

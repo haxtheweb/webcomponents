@@ -6,6 +6,8 @@
   "faviconDescription": "ब्राउझर टॅब प्रतिमा / फोनवर लहान साइट लोगो म्हणून वापरली जाते",
   "domain": "डोमेन",
   "domainDescription": "या वेबसाइटचे डोमेन",
+  "sameAs": "या साइटची इतर प्रोफाइल",
+  "sameAsDescription": "या साइटच्या किंवा संस्थेच्या इतरत्र असलेल्या प्रोफाइलचा प्रत्येक ओळीत एक दुवा (GitHub, LinkedIn, YouTube, Mastodon). सर्च इंजिन त्या प्रोफाइल या साइटशी जोडण्यासाठी त्यांचा वापर करतात.",
   "language": "भाषा",
   "languageDescription": "या साइटची भाषा. नाव किंवा कोडने शोधा, किंवा fr-CA सारखा दुसरा कोड प्रविष्ट करा.",
   "googleAnalyticsId": "Google Analytics ID",

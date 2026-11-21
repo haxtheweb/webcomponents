@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Escenario ramificado",
+    "description": "Unha historia na que cada opción leva a unha escena e un final diferentes. O alumnado pode retroceder e probar outros camiños; o final ao que se chega define a puntuación."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome do escenario, mostrado na súa cabeceira."
+      },
+      {
+        "title": "Escena inicial",
+        "description": "Id da escena na que comeza o alumnado. Déixao baleiro para comezar na primeira escena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cor de realce",
+        "description": "Cor opcional para a etiqueta da cabeceira, os botóns e o bordo dunha opción."
+      }
+    ]
+  }
+}

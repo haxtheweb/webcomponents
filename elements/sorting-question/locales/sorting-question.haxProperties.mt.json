@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Tweġibiet",
+        "description": "L-ordni tat-tweġibiet tiddefinixxi s-sekwenza korretta.",
+        "options": {
+          "": "Lista",
+          "cards": "Karti tal-immaġni"
+        }
+      },
+      {
+        "title": "Tweġibiet",
         "description": "L-ordni tat-tweġibiet tiddefinixxi s-sekwenza korretta."
       }
     ],

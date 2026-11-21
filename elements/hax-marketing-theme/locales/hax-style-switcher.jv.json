@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistem desain",
+  "dddDefault": "DDD (gawan)",
+  "designSystemHelp": "Warna, aksara, pojok lan fokus. Tema njaga tata letake.",
+  "designSystemFixed": "Tema iki njaga sistem desaine dhewe.",
+  "palette": "Palet",
+  "themeDefault": "Gawan tema",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (tema situs iki)",
+  "restyle": "Ganti gaya situs iki",
+  "close": "Tutup",
+  "reset": "Bali menyang tampilan asli situs iki",
+  "random": "Kejutana aku",
+  "about": "Iki nuduhake sawetara tampilan sing wis ana ing HAX. Kacane ora tau owah: struktur ana ing JSON Outline Schema lan saben blok yaiku komponen web standar, mula desaine bebas diganti."
+}

@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imagine de fundal."
+        "description": "Imagine de fundal.",
+        "title": "Imagine"
       },
       {
         "property": "caption",
-        "description": "Titlul textului."
+        "description": "Titlul textului.",
+        "title": "Legendă"
       }
     ]
   }

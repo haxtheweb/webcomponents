@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Maandishi Mbadala"
+        "title": "Maandishi Mbadala",
+        "description": "Eleza picha kwa watu wasioweza kuiona."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa wazi"
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa wazi",
+        "description": "Maandishi ya kitufe maelezo yakiwa yamefichwa, kama Onyesha maelezo."
       },
       {
         "property": "closeText",
-        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa yamefungwa"
+        "title": "Maandishi ya hiari ya muhtasari maelezo yakiwa yamefungwa",
+        "description": "Maandishi ya kitufe maelezo yakiwa yanaonyeshwa, kama Ficha maelezo."
       }
     ]
   }

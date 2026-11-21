@@ -3,5 +3,8 @@
   "copyAsCsv": "Als CSV kopéieren.",
   "printTable": "Tabell drécken",
   "selectColumn": "Kolonn wielen",
-  "dataTable": "Donnéeën · Tabell"
+  "dataTable": "Donnéeën · Tabell",
+  "filterStatus": "{shown} vun {total} Zeilen ugewisen, gefiltert no {column}: {text}",
+  "columnNumber": "Kolonn {column}",
+  "clearFilter": "Filter läschen"
 }

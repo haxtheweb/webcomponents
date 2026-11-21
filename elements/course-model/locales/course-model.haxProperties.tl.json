@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "pamagat"
+        "title": "pamagat",
+        "description": "Heading na ipinapakita sa itaas ng course model."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Address ng 3D model file (.glb o .gltf) na ipapakita."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Ilarawan ang 3D model para sa mga taong hindi nakakakita nito."
       },
       {
         "title": "Lugar ng impormasyon"

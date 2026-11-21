@@ -1,4 +1,6 @@
 {
   "saveAll": "Баарын сактоо",
-  "saveTheFollowing": "Төмөнкүлөрдү сактайсызбы: {list}?"
+  "saveTheFollowing": "Төмөнкүлөрдү сактайсызбы: {list}?",
+  "save": "Сактоо",
+  "cancel": "Жокко чыгаруу"
 }

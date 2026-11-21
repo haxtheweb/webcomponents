@@ -1,0 +1,22 @@
+{
+  "scenario": "Ìṣẹ̀lẹ̀",
+  "directions": "Ìtọ́sọ́nà",
+  "showDirections": "Fi ìtọ́sọ́nà hàn",
+  "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
+  "directionsRead": "Ka ìran kọ̀ọ̀kan kí o sì yan ohun tí ìwọ yóò ṣe.",
+  "directionsEndings": "Ìparí púpọ̀ ló wà. Gbìyànjú ọ̀nà mìíràn lẹ́yìn tí o bá parí.",
+  "startOver": "Bẹ̀rẹ̀ lákọ̀tun",
+  "back": "Padà sẹ́yìn ìgbésẹ̀ kan",
+  "tryAnother": "Gbìyànjú ọ̀nà mìíràn",
+  "path": "Ọ̀nà",
+  "scene": "Ìran",
+  "ending": "Ìparí",
+  "end": "òpin",
+  "scenesSeen": "A ti rí ìran {seen} nínú {total}",
+  "endingReached": "O ti dé ìparí",
+  "addScene": "Ṣàfikún ìran",
+  "newScene": "Ìran tuntun",
+  "newSceneText": "Ṣàpèjúwe ohun tó ṣẹlẹ̀, lẹ́yìn náà so àṣàyàn kọ̀ọ̀kan mọ́ ìran kan.",
+  "editingNote": "Àtúnṣe: gbogbo ìran ni a fihàn. Àṣàyàn jẹ́ ìjápọ̀ sí # tí id ìran tẹ̀lé.",
+  "noScenes": "Ṣàfikún ìran kan láti bẹ̀rẹ̀ ìṣẹ̀lẹ̀ náà."
+}

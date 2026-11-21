@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "הסתרת סמל",
         "description": "הסתרת הסמל המשמש להדגשת הטקסט"
+      },
+      {
+        "title": "מראה",
+        "description": "כמה הדגשה יש לכפתור.",
+        "options": {
+          "": "מלא",
+          "tonal": "גווני",
+          "outlined": "מתאר",
+          "plain": "פשוט"
+        }
+      },
+      {
+        "title": "גודל",
+        "description": "גודל הכפתור.",
+        "options": {
+          "s": "קטן",
+          "": "בינוני",
+          "l": "גדול"
+        }
       }
     ],
     "advanced": [

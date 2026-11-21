@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota à pede di pagina",
+    "description": "Una nota scritta induve ella và in u testu. Si mostra cum'è un numeru, è a lista numerata di e note si custruisce da per ella in fondu à a pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "U testu di a nota à pede di pagina."
+      },
+      {
+        "title": "Nisuna antevista",
+        "description": "Ùn mustrà micca a nota quandu un lettore passa sopra o mette u focus nant'à u numeru."
+      }
+    ]
+  }
+}

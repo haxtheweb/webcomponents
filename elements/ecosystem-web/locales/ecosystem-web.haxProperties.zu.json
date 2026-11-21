@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Iwebhu ye-ecosystem",
+    "description": "Iwebhu esebenzisanayo ebonisa ukuthi izingxenye zephrojekthi zixhumana kanjani, namawebhu amancane nokuvakasha kwesinyathelo ngesinyathelo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yewebhu",
+        "description": "I-URL yenqwaba ye-JSON yamawebhu (eyakhiwe ku-PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Iwebhu",
+        "description": "I-ID yewebhu okufanele iboniswe kuqala; i-main iyiwebhu ye-ecosystem."
+      },
+      {
+        "title": "Ithayela elikhethiwe",
+        "description": "I-ID yethayela okufanele likhethwe uma iwebhu ivuleka."
+      },
+      {
+        "title": "Ukuvakasha",
+        "description": "I-ID yokuvakasha okufanele kuqalwe kukho."
+      },
+      {
+        "title": "Qala ekubukeni kohlu",
+        "description": "Bonisa iwebhu njengezinhlu ezifakwe ngaphakathi esikhundleni somdwebo."
+      },
+      {
+        "title": "Umdwebo kuphela",
+        "description": "Bonisa umdwebo kuphela, njengomfanekiso: asikho isihloko, ukuvakasha, imininingwane noma ibha yezinyathelo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kufundwa ngo-",
+        "description": "Qala nawo wonke amathayela efundwa ngesilinganiso esisodwa.",
+        "options": {
+          "": "Ukuxhumana kuphela",
+          "fresh": "Ubusha",
+          "bus": "Bus factor",
+          "impact": "Umthelela",
+          "evidence": "Ubufakazi",
+          "parity": "Ukulingana"
+        }
+      }
+    ]
+  }
+}

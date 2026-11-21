@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "脚注",
+    "description": "写在正文中相应位置的注释。它显示为一个数字，编号的注释列表会自动生成在页面底部。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "注释",
+        "description": "脚注的文本。"
+      },
+      {
+        "title": "无预览",
+        "description": "读者悬停或聚焦在数字上时不显示注释。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Primerjava platform",
+    "description": "Iz oči v oči: izberite kateri koli dve platformi iz podatkovne datoteke"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podatki primerjave (JSON)"
+      },
+      {
+        "title": "ID leve platforme"
+      },
+      {
+        "title": "ID desne platforme"
+      }
+    ]
+  }
+}

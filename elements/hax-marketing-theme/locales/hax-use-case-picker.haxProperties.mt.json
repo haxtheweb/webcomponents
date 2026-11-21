@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Għażla tal-użu",
+    "description": "Agħżel għal xiex inhu sit u ikseb link li tiftaħ HAX fil-browser b'dak is-sit tal-bidu, flimkien mal-kmand CLI li jaqbel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indirizz ta' HAX fil-browser",
+        "description": "Fejn tinfetaħ il-link; jiżdiedu magħha ?skeleton= u &name="
+      },
+      {
+        "title": "Siti tal-bidu li jitħallew barra",
+        "description": "Ismijiet tal-magna, separati b'virgoli"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista tas-siti tal-bidu",
+        "description": "Indirizz tal-lista tal-iskeletri (il-format li jaqra app-hax)"
+      }
+    ]
+  }
+}

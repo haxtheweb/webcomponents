@@ -1,0 +1,16 @@
+{
+  "theme": "Theme",
+  "designSystem": "Hurongwa hwedhizaini",
+  "dddDefault": "DDD (yakajairwa)",
+  "designSystemHelp": "Ruvara, mavara, makona nekutarisa. Theme inochengeta marongerwo.",
+  "designSystemFixed": "Theme iyi inochengeta hurongwa hwayo hwedhizaini.",
+  "palette": "Paleti",
+  "themeDefault": "Yakajairwa netheme",
+  "paletteNumber": "Paleti {n}",
+  "siteTheme": "{name} (theme yesaiti iyi)",
+  "restyle": "Chinja chitarisiko chesaiti iyi",
+  "close": "Vhara",
+  "reset": "Dzokera kuchitarisiko chesaiti iyi",
+  "random": "Ndishamise",
+  "about": "Izvi zvinoratidza zvitarisiko zvishoma zvakavakwa muHAX. Mapeji haambochinja: chimiro chiri muJSON Outline Schema uye bhuroko rimwe nerimwe iweb component yakajairwa, saka dhizaini yakasununguka kuchinjwa."
+}

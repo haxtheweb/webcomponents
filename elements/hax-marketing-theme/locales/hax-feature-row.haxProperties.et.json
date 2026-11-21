@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funktsioonirida",
+    "description": "Toote ekraan kõrvuti sellega, mida see sinu jaoks tähendab"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Väike silt"
+      },
+      {
+        "title": "Pealkiri"
+      },
+      {
+        "title": "Pilt"
+      },
+      {
+        "title": "Mida pilt näitab"
+      },
+      {
+        "title": "Pilt paremal"
+      },
+      {
+        "title": "Varju värv (DDD nimi, tühi järgib paletti)"
+      }
+    ]
+  }
+}

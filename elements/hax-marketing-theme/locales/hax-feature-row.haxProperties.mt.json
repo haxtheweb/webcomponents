@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ringiela tal-karatteristika",
+    "description": "Skrin tal-prodott ħdejn xi tfisser għalik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tikketta żgħira"
+      },
+      {
+        "title": "Intestatura"
+      },
+      {
+        "title": "Stampa"
+      },
+      {
+        "title": "X'turi l-istampa"
+      },
+      {
+        "title": "Stampa fuq il-lemin"
+      },
+      {
+        "title": "Kulur tad-dell (isem DDD, vojt isegwi l-paletta)"
+      }
+    ]
+  }
+}

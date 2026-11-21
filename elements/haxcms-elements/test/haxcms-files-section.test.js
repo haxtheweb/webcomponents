@@ -237,7 +237,12 @@ describe("haxcms-files-admin-dialog embed action", () => {
     realBody = HAXStore.activeHaxBody;
     inserts = [];
     hides = 0;
+    // a page already in edit mode with its content loaded: the insert
+    // waits for exactly that before it goes in
     HAXStore.activeHaxBody = {
+      editMode: true,
+      children: [{}],
+      hasAttribute: (name) => name === "edit-mode",
       haxInsert: (tag, content, props) => inserts.push([tag, content, props]),
     };
     globalThis.addEventListener("simple-modal-hide", onHide);
@@ -256,12 +261,12 @@ describe("haxcms-files-admin-dialog embed action", () => {
     el.runAction("insert");
     await el.updateComplete;
     el.shadowRoot.querySelector('.choice [data-choice="gallery"]').click();
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise((resolve) => setTimeout(resolve, 900));
     expect(hides).to.equal(1);
     expect(inserts).to.deep.equal([
       [
         "image-gallery",
-        '<media-image source="/files/a.png" alt="a.png"></media-image><media-image source="/files/b.jpg" alt="b.jpg"></media-image>',
+        '<media-image source="files/a.png" alt="a.png"></media-image><media-image source="files/b.jpg" alt="b.jpg"></media-image>',
         { mode: "grid" },
       ],
     ]);
@@ -272,12 +277,12 @@ describe("haxcms-files-admin-dialog embed action", () => {
     el._toggleRowSelectedByKey("u1", true);
     el._toggleRowSelectedByKey("u3", true);
     el.runAction("insert");
-    await new Promise((resolve) => setTimeout(resolve, 400));
+    await new Promise((resolve) => setTimeout(resolve, 900));
     expect(el.shadowRoot.querySelector(".choice")).to.not.exist;
     expect(hides).to.equal(1);
     expect(inserts).to.deep.equal([
-      ["media-image", "", { source: "/files/a.png", alt: "a.png" }],
-      ["media-image", "", { source: "/files/c.pdf", alt: "c.pdf" }],
+      ["media-image", "", { source: "files/a.png", alt: "a.png" }],
+      ["media-image", "", { source: "files/c.pdf", alt: "c.pdf" }],
     ]);
   });
 });

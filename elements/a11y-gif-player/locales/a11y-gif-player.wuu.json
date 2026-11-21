@@ -2,5 +2,9 @@
   "toggleAnimation": "切换动画",
   "info": "信息",
   "image": "图片",
-  "animatedGif": "动画 GIF"
+  "animatedGif": "动画 GIF",
+  "playAnimation": "播放动画",
+  "pauseAnimation": "暂停动画",
+  "showDescription": "显示描述",
+  "hideDescription": "隐藏描述"
 }

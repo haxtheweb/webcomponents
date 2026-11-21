@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopeeri CSV-na.",
   "printTable": "Prindi tabel",
   "selectColumn": "Vali veerg",
-  "dataTable": "Andmed · Tabel"
+  "dataTable": "Andmed · Tabel",
+  "filterStatus": "Kuvatakse {shown}/{total} rida, filtreeritud veeru {column} järgi: {text}",
+  "columnNumber": "Veerg {column}",
+  "clearFilter": "Tühjenda filter"
 }

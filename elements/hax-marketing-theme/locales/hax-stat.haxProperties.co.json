@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistica",
+    "description": "Un numeru chì conta in sù, cù un'etichetta è un liame à a so storia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numeru finu à u quale cuntà"
+      },
+      {
+        "title": "Nanzu à u numeru"
+      },
+      {
+        "title": "Dopu à u numeru"
+      },
+      {
+        "title": "Parolle invece d'un numeru"
+      },
+      {
+        "title": "Ciò ch'ellu conta"
+      },
+      {
+        "title": "Indirizzu di a storia nant'à hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

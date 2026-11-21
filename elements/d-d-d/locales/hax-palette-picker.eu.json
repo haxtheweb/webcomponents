@@ -5,5 +5,6 @@
   "selected": "Hautatua",
   "currentlyActiveAndSelectedPalette": "Une honetan aktibo eta hautatuta dagoen paleta",
   "currentlyActivePalette": "Une honetan aktibo dagoen paleta",
-  "selectedPaletteToApply": "Aplikatzeko hautatutako paleta"
+  "selectedPaletteToApply": "Aplikatzeko hautatutako paleta",
+  "paletteNumber": "{number}. paleta"
 }

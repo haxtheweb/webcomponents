@@ -60,6 +60,8 @@
   "flagsFound": "已找到 {correct}/{total}",
   "toRethink": "{count} 处需重新考虑",
   "notEvidence": "不是此标记的证据",
+  "isEvidence": "此标记的依据",
+  "readingKeys": "使用方向键从一个{unit}移到下一个。",
   "markAnswers": "标注答案",
   "doneMarking": "完成标注答案",
   "editHint": "在下方编辑阅读材料。使用区块菜单中的“标注答案”选择每个标记应放置的位置。",

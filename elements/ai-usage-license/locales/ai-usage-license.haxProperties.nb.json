@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mediemodifikator",
-        "description": "Valgfri modifikator for mediedomene. Angir hvilken type medier denne lisensen gjelder for."
+        "description": "Valgfri modifikator for mediedomene. Angir hvilken type medier denne lisensen gjelder for.",
+        "options": {
+          "": "Ingen modifikator"
+        }
       },
       {
         "property": "uri",

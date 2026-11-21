@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-stato",
+    "description": "Montri la Baseline-staton de retumila subteno de trajto de la retplatformo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID de trajto",
+        "description": "ID de la reta trajto, ekzemple anchor-positioning. Trovu ID-ojn ĉe webstatus.dev; la ID estas la lasta parto de la URL de trajta paĝo."
+      }
+    ]
+  }
+}

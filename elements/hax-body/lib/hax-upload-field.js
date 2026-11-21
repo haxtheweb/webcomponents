@@ -88,6 +88,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       cancel: "Cancel",
       uploadMedia: "Upload media",
       uploadDisabled: "Uploading media is disabled for this site",
+      uploadOfFileFailed: "Could not upload {name}: {reason}",
+      uploadFailedReason: "the server did not accept it",
       imageInfo: "Image info",
       size: "Size",
       dimensions: "Dimensions",

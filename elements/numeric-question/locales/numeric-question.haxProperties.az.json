@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Rəqəmli sual",
+    "description": "Ədədlə cavablandırılan sual. Cavab sabit ədəd və ya dəyişənlərdən hesablanan düsturdur və dözümlülük daxilində olduqda qəbul edilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sual",
+        "description": "Öyrənənlərdən nə soruşulur. Dəyişənin qiymətini göstərmək üçün onun adını fiqurlu mötərizədə yazın, məsələn {d}."
+      },
+      {
+        "title": "Vahid",
+        "description": "Cavab sahəsinin yanında mətn kimi göstərilir, məsələn km/saat."
+      },
+      {
+        "title": "Cavab",
+        "description": "Düzgün ədəd. Cavabı düstur hesablayırsa boş saxlayın."
+      },
+      {
+        "title": "Düstur",
+        "description": "Cavabı dəyişənlərdən hesablayır, məsələn d / (t / 60). + - * / ^, mötərizələr, sqrt() və abs() istifadə edə bilər. Təyin edildikdə cavab əvəzinə istifadə olunur."
+      },
+      {
+        "title": "Dəyişənlər",
+        "description": "Düsturun və sualın istifadə etdiyi ədədlər. Hər biri ən kiçik və ən böyük arasında addımlarla qiymət alır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dözümlülük",
+        "description": "Dəqiq cavabdan nə qədər uzaqlığın hələ qəbul edildiyi. 0 dəqiq və ya aşağıdakı onluq rəqəmlərə yuvarlaqlaşdırılmış deməkdir."
+      },
+      {
+        "title": "Dözümlülük növü",
+        "description": "Mütləq: üstəgəl və ya çıx dözümlülük. Faiz: dəqiq cavabın üstəgəl və ya çıx həmin faizi.",
+        "options": {
+          "absolute": "Mütləq",
+          "percent": "Faiz"
+        }
+      },
+      {
+        "title": "Onluq rəqəmlər",
+        "description": "Öyrənənlərdən bu qədər rəqəmə yuvarlaqlaşdırmaq tələb olunur və cavab ona yuvarlaqlaşdırılmış göstərilir. Yuvarlaqlaşdırma olmaması üçün boş saxlayın."
+      },
+      {
+        "title": "Cəhdlər",
+        "description": "Öyrənənin neçə dəfə yoxlaya biləcəyi. 0 limitsiz deməkdir."
+      },
+      {
+        "title": "Hər cəhddə yeni ədədlər",
+        "description": "Öyrənən hər dəfə yenidən cəhd etdikdə yeni dəyişən qiymətləri seç. Onlar qayıtdıqda əvvəlki cavabları göstərilmir, yalnız düz olub-olmadığı."
+      },
+      {
+        "title": "Yığıla bilən",
+        "description": "Bu sualı açılıb-bağlanan sətir kimi göstər. Birini açmaq yanındakı digər yığıla bilən sualları bağlayır."
+      },
+      {
+        "title": "Yığılmış başla",
+        "description": "Yığıla bilən olduqda yalnız sualı və statusunu göstərən bağlı sətir kimi başla."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analitika sistemlərində xAPI identifikasiyası üçün istifadə olunan test adı."
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Rakstiet, izmantojot matemātisko notāciju LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Attēla fons",
+        "description": "Fons aiz zīmētiem attēliem. Automātiskais to pievieno tikai tad, ja zīmējums lapā būtu grūti saskatāms, piemēram, tumšas līnijas tumšajā režīmā.",
+        "options": {
+          "auto": "Automātisks",
+          "light": "Gaišs",
+          "dark": "Tumšs",
+          "none": "Nav"
+        }
+      }
+    ]
   }
 }

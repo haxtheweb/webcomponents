@@ -60,6 +60,8 @@
   "flagsFound": "U gjetën {correct} nga {total}",
   "toRethink": "{count} për t'u rimenduar",
   "notEvidence": "nuk është provë për këtë shenjë",
+  "isEvidence": "dëshmi për këtë flamur",
+  "readingKeys": "Përdor tastet e shigjetave për të kaluar nga një {unit} te tjetri.",
   "markAnswers": "Shëno përgjigjet",
   "doneMarking": "Përfundo shënimin e përgjigjeve",
   "editHint": "Redakto tekstin më poshtë. Përdor Shëno përgjigjet në menynë e bllokut për të zgjedhur ku duhet vendosur çdo shenjë.",

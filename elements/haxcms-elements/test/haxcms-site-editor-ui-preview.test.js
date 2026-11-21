@@ -45,10 +45,10 @@ describe("haxcms-site-editor-ui preview", () => {
 
   const button = () => element.shadowRoot.querySelector("#previewbutton");
 
-  it("shows Preview with its shortcut just before the HAX mark", () => {
+  it("shows User preview with its shortcut just before the HAX mark", () => {
     const btn = button();
     expect(btn).to.exist;
-    expect(btn.getAttribute("label")).to.equal("Preview • Ctrl⇧8");
+    expect(btn.getAttribute("label")).to.equal("User preview • Ctrl⇧8");
     expect(btn.getAttribute("icon")).to.equal("icons:visibility");
     const group = element.shadowRoot.querySelector(".topbar-right-group");
     const controls = group.querySelector(".preview-toolbar-buttons");
@@ -98,6 +98,8 @@ describe("haxcms-site-editor-ui preview", () => {
     expect(element.exitPreview()).to.equal(true);
     await element.updateComplete;
     expect(store.previewMode).to.equal(false);
+    await element.updateComplete;
+    expect(button().getAttribute("label")).to.equal("User preview • Ctrl⇧8");
     expect(element.hasAttribute("preview-mode")).to.equal(false);
     expect(element.shadowRoot.querySelector("#previewdevicebutton")).to.equal(
       null,

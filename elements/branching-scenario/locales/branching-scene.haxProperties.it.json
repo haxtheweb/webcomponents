@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scena dello scenario",
+    "description": "Una scena di uno scenario a bivi. Collega ogni scelta a un'altra scena con # seguito dal suo id."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id della scena",
+        "description": "A cosa puntano le scelte: un link a # seguito da questo id porta a questa scena. Lettere, numeri e trattini."
+      },
+      {
+        "title": "Titolo",
+        "description": "Titolo della scena."
+      },
+      {
+        "title": "Finale",
+        "description": "Se questa scena conclude un percorso, e com'è andata.",
+        "options": {
+          "": "Non è un finale",
+          "good": "Finale positivo",
+          "mixed": "Finale misto",
+          "poor": "Finale negativo"
+        }
+      },
+      {
+        "title": "Punteggio",
+        "description": "Punteggio per aver raggiunto questo finale. Il punteggio più alto tra i finali dello scenario è il massimo."
+      }
+    ]
+  }
+}

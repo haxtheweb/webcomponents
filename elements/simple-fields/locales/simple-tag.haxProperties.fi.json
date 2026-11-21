@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automaattinen korostusväri",
         "description": "Johda korostusväri automaattisesti nimiketekstistä."
+      },
+      {
+        "title": "Merkitys",
+        "description": "Anna tunnisteelle merkitysväri. Jätä tyhjäksi neutraalia tunnistetta varten.",
+        "options": {
+          "": "Neutraali",
+          "brand": "Brändi",
+          "success": "Onnistuminen",
+          "warning": "Varoitus",
+          "danger": "Vaara"
+        }
       }
     ],
     "advanced": [

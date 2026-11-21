@@ -52,6 +52,20 @@
           "_top": "Nejvyšší okno - _top",
           "_parent": "Nadřazené okno - _parent"
         }
+      },
+      {
+        "title": "Bez šipky",
+        "description": "Skrýt šipku tlačítka."
+      },
+      {
+        "title": "Odkaz: cíl",
+        "description": "Kde odkaz otevřít.",
+        "options": {
+          "": "Stejné okno",
+          "_blank": "Nové okno - _blank",
+          "_top": "Horní okno - _top",
+          "_parent": "Nadřazené okno - _parent"
+        }
       }
     ],
     "developer": [

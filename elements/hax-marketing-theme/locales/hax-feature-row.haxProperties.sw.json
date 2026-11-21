@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Safu ya kipengele",
+    "description": "Skrini ya bidhaa kando ya maana yake kwako"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lebo ndogo"
+      },
+      {
+        "title": "Kichwa"
+      },
+      {
+        "title": "Picha"
+      },
+      {
+        "title": "Picha inaonyesha nini"
+      },
+      {
+        "title": "Picha upande wa kulia"
+      },
+      {
+        "title": "Rangi ya kivuli (jina la DDD, tupu hufuata paleti)"
+      }
+    ]
+  }
+}

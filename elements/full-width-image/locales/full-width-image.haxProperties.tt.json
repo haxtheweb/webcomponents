@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Фон рәсеме."
+        "description": "Фон рәсеме.",
+        "title": "Сурәт"
       },
       {
         "property": "caption",
-        "description": "Текст башлыгы."
+        "description": "Текст башлыгы.",
+        "title": "Язу"
       }
     ]
   }

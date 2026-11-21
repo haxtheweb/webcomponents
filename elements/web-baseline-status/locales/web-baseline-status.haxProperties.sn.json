@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Mamiriro eBaseline",
+    "description": "Ratidza mamiriro ekutsigira kwebrowser kweBaseline kwechimiro chepuratifomu yewebhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID yechimiro",
+        "description": "ID yechimiro chewebhu, semuenzaniso anchor-positioning. Wana maID pa webstatus.dev; ID chikamu chekupedzisira cheURL yepeji rechimiro."
+      }
+    ]
+  }
+}

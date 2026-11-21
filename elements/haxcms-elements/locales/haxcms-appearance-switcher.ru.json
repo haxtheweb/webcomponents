@@ -1,0 +1,8 @@
+{
+  "theme": "Тема",
+  "palette": "Палитра",
+  "themeDefault": "По умолчанию для темы",
+  "designSystem": "Дизайн-система",
+  "designSystemDefault": "DDD (по умолчанию)",
+  "designSystemUnavailable": "Эта тема использует собственную дизайн-систему"
+}

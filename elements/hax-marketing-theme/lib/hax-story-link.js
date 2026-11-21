@@ -153,8 +153,8 @@ class HaxStoryLink extends I18NMixin(DDD) {
         }
         :host([compact]) a {
           min-height: var(--ddd-spacing-6);
-          padding: 0;
-          padding-inline-end: var(--ddd-spacing-3);
+          padding-block: 0;
+          padding-inline: 0 var(--ddd-spacing-3);
           font-size: var(--ddd-font-size-5xs);
           gap: var(--ddd-spacing-1);
         }

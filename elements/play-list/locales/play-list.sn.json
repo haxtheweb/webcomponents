@@ -9,5 +9,7 @@
   "slidePages": "Mapeji emaslide",
   "goToSlide": "Enda kuslide {number}",
   "slides": "Masiraidhi",
-  "position": "{number} pa{total}"
+  "position": "{number} pa{total}",
+  "fullScreen": "Skrini yakazara",
+  "exitFullScreen": "Buda muskrini yakazara"
 }

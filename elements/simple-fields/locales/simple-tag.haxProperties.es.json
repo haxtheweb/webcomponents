@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Color de acento automático",
         "description": "Derivar automáticamente el color de acento a partir del texto de la etiqueta."
+      },
+      {
+        "title": "Significado",
+        "description": "Da a la etiqueta un color con significado. Déjalo vacío para una etiqueta neutra.",
+        "options": {
+          "": "Neutro",
+          "brand": "Marca",
+          "success": "Éxito",
+          "warning": "Advertencia",
+          "danger": "Peligro"
+        }
       }
     ],
     "advanced": [

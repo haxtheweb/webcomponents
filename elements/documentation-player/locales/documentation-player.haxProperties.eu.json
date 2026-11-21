@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentazio-erreproduzigailua",
+    "description": "Web osagai baten gida, demoa eta erreferentzia, HTML, import, npm eta CDNrako kopiatze-botoiekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentazio-datuen fitxategia",
+        "description": "Elementuarekin batera datorren dokumentazio-datuak (lib/tag.docs.json)."
+      },
+      {
+        "title": "Gidaren storyboard-a",
+        "description": "Elementuarekin batera datorren mugimendu-storyboard-a (tag.motion.json). Aukerakoa."
+      },
+      {
+        "title": "Bideo-tutoriala",
+        "description": "Elementuari buruzko bideo labur bat (YouTube, Vimeo edo bideo-fitxategi bat). Dokumentazio-datuetako bideoa gainidazten du."
+      },
+      {
+        "title": "Ireki fitxan",
+        "description": "Zein fitxa erakusten den lehenik.",
+        "options": {
+          "motion": "Gida",
+          "video": "Bideoa",
+          "demo": "Demoa",
+          "docs": "Dokumentazioa",
+          "schema": "Eskema"
+        }
+      },
+      {
+        "title": "Gidaren erreprodukzio automatikoa",
+        "description": "Hasi gida erreproduzigailua agertu bezain laster. Ez da kontuan hartzen irakurleak mugimendu murriztua nahiago duenean."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gidaren gaia",
+        "description": "Hainbat gida dituzten elementuetarako, zein gai ireki lehenik (adibidez add-blocks). Utzi hutsik nagusirako."
+      },
+      {
+        "title": "Zuzeneko demoaren esteka",
+        "description": "Nora doan Ireki demoaren iturburua botoia. Lehenespenez biltegiko demo karpeta."
+      },
+      {
+        "title": "Dokumentazioaren esteka",
+        "description": "Nora doan dokumentazio osoaren botoia, adibidez dagokion Learn HAX orria."
+      }
+    ]
+  }
+}

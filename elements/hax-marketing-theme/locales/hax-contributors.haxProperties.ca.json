@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Col·laboradors",
+    "description": "Les persones que han construït el projecte, a partir d'un fitxer de llista"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fitxer de llista (JSON)"
+      },
+      {
+        "title": "Vista: landed, lab o code"
+      },
+      {
+        "title": "Nombre màxim de persones a mostrar (0 és totes)"
+      }
+    ]
+  }
+}

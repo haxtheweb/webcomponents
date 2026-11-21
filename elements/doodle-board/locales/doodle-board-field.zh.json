@@ -1,0 +1,16 @@
+{
+  "drawing": "绘图",
+  "edit": "编辑绘图",
+  "start": "开始绘图",
+  "remove": "删除绘图",
+  "empty": "尚未绘制任何内容",
+  "save": "保存",
+  "cancel": "取消",
+  "close": "关闭",
+  "discard": "放弃更改",
+  "discardConfirm": "放弃未保存的更改？",
+  "keepEditing": "继续编辑",
+  "draw": "绘图",
+  "feedback": "反馈",
+  "signature": "签名"
+}

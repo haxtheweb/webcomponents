@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palitra",
   "cancel": "Ləğv et",
-  "openAppearanceSettings": "Görünüş parametrlərini aç"
+  "openAppearanceSettings": "Görünüş parametrlərini aç",
+  "designSystem": "Dizayn sistemi",
+  "designSystemDefault": "DDD (standart)",
+  "designSystemThemeDefault": "{name} (mövzunun standartı)",
+  "designSystemHelp": "Rəng, şrift, künclər və sıxlıq. Tərtibatı hələ də mövzu müəyyən edir."
 }

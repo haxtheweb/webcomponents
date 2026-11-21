@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Chizindikiro cha chithunzi",
     "description": "Chizindikiro cha chithunzi chosonyeza zofalitsa mkati mwa zomwe zili mkati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nambala ya chithunzi",
+        "description": "Nambala kapena chilembo chachifupi cha chithunzi, mwachitsanzo 1.3"
+      },
+      {
+        "title": "Kufotokozera",
+        "description": "Kufotokozera kwachidule kwa chithunzi"
+      }
+    ]
   }
 }

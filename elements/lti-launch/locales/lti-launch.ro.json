@@ -1,0 +1,19 @@
+{
+  "label": "Instrument extern",
+  "labelLti": "Instrument extern · LTI 1.3",
+  "theTool": "instrumentul",
+  "directions": "Instrucțiuni",
+  "showDirections": "Afișați instrucțiunile",
+  "hideDirections": "Ascundeți instrucțiunile",
+  "directionsWindow": "Butonul deschide o fereastră nouă cu instrumentul.",
+  "directionsEmbed": "Butonul deschide instrumentul pe această pagină. Dacă nu se încarcă, deschideți-l într-o fereastră nouă.",
+  "directionsLti": "Acest site vă conectează la instrument, așa că nu aveți nevoie de un cont separat.",
+  "openWindow": "Deschideți {title} (fereastră nouă)",
+  "openEmbed": "Deschideți {title}",
+  "openInstead": "Deschideți în schimb într-o fereastră nouă",
+  "frameTitle": "{title} (instrument extern)",
+  "openedWindow": "S-a deschis o fereastră nouă cu instrumentul.",
+  "openedEmbed": "Instrumentul s-a deschis pe această pagină.",
+  "needsUrl": "Acest bloc are nevoie de o adresă de lansare care începe cu http:// sau https://.",
+  "needsSignIn": "Acest instrument are nevoie de serviciul de conectare al acestui site, care nu este disponibil aici. Nu s-a deschis nimic."
+}

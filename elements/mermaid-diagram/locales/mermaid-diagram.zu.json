@@ -1,0 +1,21 @@
+{
+  "diagram": "Umdwebo",
+  "flowchart": "ishadi lokugeleza",
+  "sequence": "ukulandelana",
+  "source": "Umthombo",
+  "textAlternative": "Enye indlela yombhalo",
+  "present": "Yethula",
+  "exitPresent": "Phuma esethulweni",
+  "loading": "Kulayishwa umdwebo",
+  "empty": "Akukho okufanele kudwetshwe okwamanje. Engeza umthombo womdwebo.",
+  "error": "Iphutha",
+  "parseError": "Lo mdwebo awukwazanga ukudwetshwa. Hlola umthombo.",
+  "loadError": "Umtapo wemidwebo awukwazanga ukulayishwa.",
+  "srcError": "Ifayela lomdwebo alikwazanga ukulayishwa.",
+  "decision": "isinqumo",
+  "end": "ukuphela",
+  "goTo": "iya ku-{target}",
+  "ifGoTo": "uma {label}, iya ku-{target}",
+  "describedBySource": "Umdwebo ochazwe ngumthombo wawo.",
+  "scrollable": "Umdwebo, uyaskroleka"
+}

@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Optionele samenvattingstekst wanneer de details open zijn"
+        "title": "Optionele samenvattingstekst wanneer de details open zijn",
+        "description": "Knoptekst terwijl de beschrijving verborgen is, zoals Beschrijving tonen."
       },
       {
         "property": "closeText",
-        "title": "Optionele samenvattingstekst wanneer de details gesloten zijn"
+        "title": "Optionele samenvattingstekst wanneer de details gesloten zijn",
+        "description": "Knoptekst terwijl de beschrijving zichtbaar is, zoals Beschrijving verbergen."
       }
     ]
   }

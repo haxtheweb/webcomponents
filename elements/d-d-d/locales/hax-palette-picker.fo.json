@@ -5,5 +5,6 @@
   "selected": "Valt",
   "currentlyActiveAndSelectedPalette": "Núverandi virkið og valt litaspjald",
   "currentlyActivePalette": "Núverandi virkið litaspjald",
-  "selectedPaletteToApply": "Valt litaspjald at nýta"
+  "selectedPaletteToApply": "Valt litaspjald at nýta",
+  "paletteNumber": "Litaborð {number}"
 }

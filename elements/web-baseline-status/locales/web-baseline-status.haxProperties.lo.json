@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "ສະຖານະ Baseline",
+    "description": "ສະແດງສະຖານະການຮອງຮັບບຣາວເຊີ Baseline ຂອງຄຸນສົມບັດແພລັດຟອມເວັບ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ຄຸນສົມບັດ",
+        "description": "ID ຂອງຄຸນສົມບັດເວັບ, ຕົວຢ່າງ anchor-positioning. ຊອກຫາ ID ໄດ້ທີ່ webstatus.dev; ID ແມ່ນສ່ວນສຸດທ້າຍຂອງ URL ໜ້າຄຸນສົມບັດ."
+      }
+    ]
+  }
+}

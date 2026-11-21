@@ -3401,9 +3401,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       insertSymbol: "Insert symbol",
       insertSymbolInline: "Insert symbol (inline token)",
       searchForSymbol: "Search for a symbol",
-      joinOurCommunity: "Join our Community",
+      joinHaxCommunity: "Join HAX community",
       userTutorials: "User Tutorials",
-      userDocumentation: "User Documentation",
       // no longer in Merlin; kept until the nightly translations drop it
       // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
@@ -3832,12 +3831,29 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "/HAX/text/symbol",
     });
 
-    // contribution helpers
+    // community: its own group at the very end of Merlin's list (the
+    // high priority sinks it), so what can be done right now comes first
     SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "joinOurCommunity" },
-      title: this.t.joinOurCommunity,
+      i18n: { context: this, title: "userTutorials" },
+      title: this.t.userTutorials,
+      icon: "hax:hax2022",
+      priority: 100000,
+      tags: ["Documentation", "tutorials", "learn", "community", "help"],
+      externalLink: true,
+      value: {
+        target: this,
+        method: "_openExternalLink",
+        args: ["https://learn.hax.cloud/"],
+      },
+      eventName: "super-daemon-element-method",
+      path: "Community/Tutorials",
+      context: "community",
+    });
+    SuperDaemonInstance.defineOption({
+      i18n: { context: this, title: "joinHaxCommunity" },
+      title: this.t.joinHaxCommunity,
       icon: "hax:discord",
-      priority: -100,
+      priority: 100001,
       tags: ["community", "discord", "chat", "help"],
       externalLink: true,
       value: {
@@ -3846,44 +3862,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         args: ["https://discord.gg/aCGxmRHEJP"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/join",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "userTutorials" },
-      title: this.t.userTutorials,
-      icon: "hax:hax2022",
-      priority: -1000,
-      tags: ["Documentation", "community", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/tutorials"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/tutorials",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "userDocumentation" },
-      title: this.t.userDocumentation,
-      icon: "hax:hax2022",
-      tags: ["Documentation", "community", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://haxtheweb.org/documentation"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/documentation",
+      path: "Community/Join",
       context: "community",
     });
     SuperDaemonInstance.defineOption({
       i18n: { context: this, title: "reportAnIssueTogether" },
       title: this.t.reportAnIssueTogether,
       icon: "mdi-social:github-circle",
+      priority: 100002,
       tags: [
         "Bug report",
         "Feature request",
@@ -3899,7 +3885,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         args: ["issue", "POP"],
       },
       eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
+      path: "Community/Contribute",
       context: "community",
     });
     // container for HTML primitives to have hooks declared on their behalf
@@ -5814,7 +5800,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         context: ["HAX", "/"],
         eventName: "super-daemon-run-program",
         path: "/sources/" + app.details.title.toLowerCase(),
-        priority: app.details.title.toLowerCase() === "local files" ? -100 : 0,
+        // media search sits after Insert blocks (blocks rank 0): a group
+        // follows the rank of its best result. Local files leads the group
+        priority: app.details.title.toLowerCase() === "local files" ? 10 : 20,
       });
       // preconnect apps at registration time
       if (app.connection && app.connection.protocol && app.connection.url) {

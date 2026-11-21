@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Exercici d'aritmètica",
+    "description": "Una breu sèrie de problemes d'aritmètica generats amb retroacció immediata. Tria les operacions i l'interval de nombres; cada ronda és nova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Nom d'aquest exercici, que es mostra a la capçalera."
+      },
+      {
+        "title": "Operacions",
+        "description": "Quins tipus de problemes es plantegen. Els alumnes poden desactivar-ne qualsevol abans de començar.",
+        "options": {
+          "add": "Suma",
+          "subtract": "Resta",
+          "multiply": "Multiplicació",
+          "divide": "Divisió",
+          "add subtract": "Suma i resta",
+          "multiply divide": "Multiplicació i divisió",
+          "add multiply": "Suma i multiplicació",
+          "add divide": "Suma i divisió",
+          "subtract multiply": "Resta i multiplicació",
+          "subtract divide": "Resta i divisió",
+          "add subtract multiply": "Suma, resta i multiplicació",
+          "add subtract divide": "Suma, resta i divisió",
+          "add multiply divide": "Suma, multiplicació i divisió",
+          "subtract multiply divide": "Resta, multiplicació i divisió",
+          "add subtract multiply divide": "Les quatre"
+        }
+      },
+      {
+        "title": "Nombre més petit",
+        "description": "El nombre més petit que s'utilitza en un problema. Nombres enters, 0 o més."
+      },
+      {
+        "title": "Nombre més gran",
+        "description": "El nombre més gran que s'utilitza en un problema. Els resultats i divisors de les divisions també es mantenen dins d'aquest interval."
+      },
+      {
+        "title": "Nombre de problemes",
+        "description": "Quants problemes hi ha en una ronda (de 1 a 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Límit de temps",
+        "description": "Segons permesos per a tota una ronda. 0 vol dir sense temporitzador, que és l'opció per defecte: els exercicis cronometrats perjudiquen els alumnes que necessiten més temps. Si s'estableix, els alumnes encara poden desactivar el temporitzador per a ells mateixos."
+      },
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color de l'etiqueta de la capçalera i dels botons. Deixa-ho buit per seguir el tema."
+      }
+    ]
+  }
+}

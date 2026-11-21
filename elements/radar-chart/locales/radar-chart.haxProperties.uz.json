@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar diagramma",
+    "description": "Yetuklik modellari va jihatlar bo‘yicha baholash, masalan HEOSAT uchun radar (o‘rgimchak) diagramma. Matnli muqobil va ma’lumotlar jadvalini o‘z ichiga oladi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Diagramma sarlavhasi; uning qulay nomi sifatida ham ishlatiladi."
+      },
+      {
+        "title": "Maksimal ball",
+        "description": "Shkaladagi eng yuqori qiymat."
+      },
+      {
+        "title": "Toifalar",
+        "description": "Har bir qatorga bitta toifa. Kamida 3 ta kerak."
+      },
+      {
+        "title": "Ballar",
+        "description": "Vergul bilan ajratilgan sonlar, har bir toifa uchun bittadan, xuddi shu tartibda."
+      },
+      {
+        "title": "Maqsadli ballar",
+        "description": "Vergul bilan ajratilgan sonlar, har bir toifa uchun bittadan, xuddi shu tartibda."
+      },
+      {
+        "title": "Shartli belgilarni ko‘rsatish",
+        "description": "Ballar va maqsadlarni nomlaydigan shartli belgilarni ko‘rsatish."
+      },
+      {
+        "title": "Ixcham",
+        "description": "Yorliqlar, shartli belgilar yoki ma’lumotlar jadvalisiz kichikroq diagramma. Qiymatlarini ko‘rish uchun nuqta ustiga kursorni olib boring."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ball yorlig‘i",
+        "description": "Ballar uchun shartli belgilar va jadval yorlig‘i."
+      },
+      {
+        "title": "Maqsad yorlig‘i",
+        "description": "Maqsadlar uchun shartli belgilar va jadval yorlig‘i."
+      }
+    ]
+  }
+}

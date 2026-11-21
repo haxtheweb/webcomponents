@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "vývojový diagram",
+  "sequence": "sekvencia",
+  "source": "Zdroj",
+  "textAlternative": "Textová alternatíva",
+  "present": "Prezentovať",
+  "exitPresent": "Ukončiť prezentáciu",
+  "loading": "Načítava sa diagram",
+  "empty": "Zatiaľ nie je čo kresliť. Pridajte zdroj diagramu.",
+  "error": "Chyba",
+  "parseError": "Tento diagram sa nepodarilo vykresliť. Skontrolujte zdroj.",
+  "loadError": "Knižnicu diagramov sa nepodarilo načítať.",
+  "srcError": "Súbor diagramu sa nepodarilo načítať.",
+  "decision": "rozhodnutie",
+  "end": "koniec",
+  "goTo": "prejsť na {target}",
+  "ifGoTo": "ak {label}, prejsť na {target}",
+  "describedBySource": "Diagram opísaný svojím zdrojom.",
+  "scrollable": "Diagram, posúvateľný"
+}

@@ -9,5 +9,7 @@
   "slidePages": "Diapositiva p'anqakuna",
   "goToSlide": "{number} diapositivaman riy",
   "slides": "Rikuchina p'anqakuna",
-  "position": "{total}manta {number}"
+  "position": "{total}manta {number}",
+  "fullScreen": "Hunt'asqa qhawana",
+  "exitFullScreen": "Hunt'asqa qhawanamanta lluqsiy"
 }

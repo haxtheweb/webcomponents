@@ -3,5 +3,7 @@
   "status_stop": "Kwụsị",
   "status_warning": "Ịdọ aka ná ntị",
   "status_success": "Ihe ịga nke ọma",
-  "status_info": "Ndetu"
+  "status_info": "Ndetu",
+  "status_tip": "Ị ma?",
+  "status_new": "Ihe ọhụrụ"
 }

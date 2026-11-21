@@ -60,6 +60,8 @@
   "flagsFound": "{correct} sur {total} trouvés",
   "toRethink": "{count} à revoir",
   "notEvidence": "pas une preuve pour ce drapeau",
+  "isEvidence": "preuve pour ce signalement",
+  "readingKeys": "Utilisez les touches fléchées pour passer d'un(e) {unit} au suivant.",
   "markAnswers": "Marquer les réponses",
   "doneMarking": "Terminer le marquage des réponses",
   "editHint": "Modifie le texte ci-dessous. Utilise Marquer les réponses dans le menu du bloc pour choisir où va chaque drapeau.",

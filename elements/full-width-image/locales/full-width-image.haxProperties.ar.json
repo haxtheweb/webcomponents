@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "صورة الخلفية."
+        "description": "صورة الخلفية.",
+        "title": "صورة"
       },
       {
         "property": "caption",
-        "description": "عنوان نصي."
+        "description": "عنوان نصي.",
+        "title": "التعليق"
       }
     ]
   }

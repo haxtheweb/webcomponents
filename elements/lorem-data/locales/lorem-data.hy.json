@@ -1,4 +1,6 @@
 {
   "saveAll": "Պահպանել բոլորը",
-  "saveTheFollowing": "Պահպանե՞լ հետևյալը՝ {list}"
+  "saveTheFollowing": "Պահպանե՞լ հետևյալը՝ {list}",
+  "save": "Պահպանել",
+  "cancel": "Չեղարկել"
 }

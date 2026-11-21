@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Slikovno območje za spuščanje",
+    "description": "Učenci postavljajo oznake na območja nad sliko in nato preverijo odgovor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika",
+        "description": "Slika, na katero učenci postavljajo oznake."
+      },
+      {
+        "title": "Nadomestno besedilo",
+        "description": "Opiše sliko za ljudi, ki je ne vidijo. Ne izdajte, kam spadajo oznake."
+      },
+      {
+        "title": "Naslov slike",
+        "description": "Kratek viden naslov slike, prikazan nad njo."
+      },
+      {
+        "title": "Vprašanje",
+        "description": "Kaj morajo učenci narediti z oznakami."
+      },
+      {
+        "title": "Oznake in območja",
+        "description": "Vsak element je oznaka, ki jo učenci lahko postavijo. Oznaki dajte ime območja, da se njeno območje pojavi na sliki; oznaka brez imena območja je odvečna in ne spada nikamor. Številke območij so odstotki slike."
+      },
+      {
+        "title": "Napis",
+        "description": "Izbirni napis, prikazan pod sliko."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poskusi",
+        "description": "Kolikokrat lahko učenec preveri. 0 pomeni neomejeno."
+      },
+      {
+        "title": "Premešaj oznake",
+        "description": "Ob vsakem obisku prikaži oznake v drugem vrstnem redu."
+      },
+      {
+        "title": "Zložljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Odpiranje enega zapre druga zložljiva vprašanja ob njem."
+      },
+      {
+        "title": "Začni zloženo",
+        "description": "Ko je zložljivo, začni kot zaprta vrstica, ki prikazuje le vprašanje in njegovo stanje."
+      },
+      {
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotek, dokončanje)."
+      },
+      {
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ime kviza",
+        "description": "Ime kviza za identifikacijo xAPI v analitičnih sistemih."
+      },
+      {
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, ki mu je to preverjanje namenjeno."
+      }
+    ]
+  }
+}

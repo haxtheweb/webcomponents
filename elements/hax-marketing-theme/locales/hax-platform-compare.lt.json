@@ -1,0 +1,15 @@
+{
+  "loading": "Įkeliamas palyginimas.",
+  "yes": "Taip",
+  "partly": "Iš dalies",
+  "no": "Ne",
+  "compare": "Palyginti",
+  "with": "Su",
+  "vs": "prieš",
+  "caption": "{a} ir {b}, funkcija po funkcijos",
+  "feature": "Funkcija",
+  "clearYes": "Aiškus „taip“: {count} iš {total}",
+  "seeForYourself": "Įsitikinkite patys:",
+  "and": "ir",
+  "why": "Kodėl"
+}

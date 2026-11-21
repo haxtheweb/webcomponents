@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiraj kao CSV.",
   "printTable": "Ispiši tablicu",
   "selectColumn": "Odaberi stupac",
-  "dataTable": "Podaci · Tablica"
+  "dataTable": "Podaci · Tablica",
+  "filterStatus": "Prikazano redaka: {shown} od {total}, filtrirano po {column}: {text}",
+  "columnNumber": "Stupac {column}",
+  "clearFilter": "Očisti filtar"
 }

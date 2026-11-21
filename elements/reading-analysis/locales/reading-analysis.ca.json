@@ -60,6 +60,8 @@
   "flagsFound": "{correct} de {total} trobades",
   "toRethink": "{count} per repensar",
   "notEvidence": "no és una evidència per a aquesta bandereta",
+  "isEvidence": "evidència d'aquesta marca",
+  "readingKeys": "Fes servir les tecles de fletxa per passar d'un {unit} al següent.",
   "markAnswers": "Marca les respostes",
   "doneMarking": "Marcatge de respostes acabat",
   "editHint": "Edita la lectura de sota. Fes servir Marca les respostes al menú del bloc per triar on va cada bandereta.",

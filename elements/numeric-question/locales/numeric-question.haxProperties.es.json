@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pregunta numérica",
+    "description": "Una pregunta que se responde con un número. La respuesta es un número fijo o una fórmula calculada a partir de variables, y cuenta si está dentro de una tolerancia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pregunta",
+        "description": "Lo que se pregunta a los estudiantes. Escribe el nombre de una variable entre llaves, como {d}, para mostrar su valor."
+      },
+      {
+        "title": "Unidad",
+        "description": "Se muestra como texto junto al campo de respuesta, por ejemplo km/h."
+      },
+      {
+        "title": "Respuesta",
+        "description": "El número correcto. Déjalo vacío cuando una fórmula calcule la respuesta."
+      },
+      {
+        "title": "Fórmula",
+        "description": "Calcula la respuesta a partir de las variables, por ejemplo d / (t / 60). Puede usar + - * / ^, paréntesis, sqrt() y abs(). Si se define, se usa en lugar de la respuesta."
+      },
+      {
+        "title": "Variables",
+        "description": "Números que usan la fórmula y la pregunta. Cada uno toma un valor entre su mínimo y su máximo, en pasos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerancia",
+        "description": "Cuánto puede alejarse de la respuesta exacta y seguir contando. 0 significa exacta, o redondeada a los decimales de abajo."
+      },
+      {
+        "title": "Tipo de tolerancia",
+        "description": "Absoluta: más o menos la tolerancia. Porcentaje: más o menos ese porcentaje de la respuesta exacta.",
+        "options": {
+          "absolute": "Absoluta",
+          "percent": "Porcentaje"
+        }
+      },
+      {
+        "title": "Decimales",
+        "description": "Se pide a los estudiantes que redondeen a este número de decimales, y la respuesta se muestra redondeada así. Déjalo vacío para no redondear."
+      },
+      {
+        "title": "Intentos",
+        "description": "Cuántas veces puede comprobar un estudiante. 0 significa ilimitado."
+      },
+      {
+        "title": "Números nuevos en cada intento",
+        "description": "Genera valores nuevos para las variables cada vez que un estudiante lo intenta de nuevo. Entonces su respuesta anterior no se muestra cuando vuelve, solo si acertó."
+      },
+      {
+        "title": "Plegable",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Abrir una cierra las demás preguntas plegables que tenga al lado."
+      },
+      {
+        "title": "Empezar plegado",
+        "description": "Si es plegable, empieza como una fila cerrada que solo muestra la pregunta y su estado."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
+      }
+    ]
+  }
+}

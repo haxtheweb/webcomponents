@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Upozornenie",
   "status_success": "Úspech",
-  "status_info": "Poznámka"
+  "status_info": "Poznámka",
+  "status_tip": "Vedeli ste?",
+  "status_new": "Čo je nové"
 }

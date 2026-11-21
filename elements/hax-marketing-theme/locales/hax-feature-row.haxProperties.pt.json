@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Linha de recurso",
+    "description": "Uma tela do produto ao lado do que ela significa para você"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rótulo pequeno"
+      },
+      {
+        "title": "Título"
+      },
+      {
+        "title": "Imagem"
+      },
+      {
+        "title": "O que a imagem mostra"
+      },
+      {
+        "title": "Imagem à direita"
+      },
+      {
+        "title": "Cor da sombra (nome DDD; em branco segue a paleta)"
+      }
+    ]
+  }
+}

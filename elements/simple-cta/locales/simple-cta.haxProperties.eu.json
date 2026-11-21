@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ezkutatu ikonoa",
         "description": "Ezkutatu testua nabarmentzeko erabilitako ikonoa"
+      },
+      {
+        "title": "Itxura",
+        "description": "Botoiak zenbateko nabarmentasuna duen.",
+        "options": {
+          "": "Betea",
+          "tonal": "Tonala",
+          "outlined": "Ingeratua",
+          "plain": "Arrunta"
+        }
+      },
+      {
+        "title": "Tamaina",
+        "description": "Botoiaren tamaina.",
+        "options": {
+          "s": "Txikia",
+          "": "Ertaina",
+          "l": "Handia"
+        }
       }
     ],
     "advanced": [

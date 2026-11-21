@@ -5,5 +5,6 @@
   "selected": "ເລືອກແລ້ວ",
   "currentlyActiveAndSelectedPalette": "ຊຸດສີທີ່ໃຊ້ງານຢູ່ ແລະ ເລືອກແລ້ວ",
   "currentlyActivePalette": "ຊຸດສີທີ່ໃຊ້ງານຢູ່",
-  "selectedPaletteToApply": "ຊຸດສີທີ່ເລືອກເພື່ອນຳໃຊ້"
+  "selectedPaletteToApply": "ຊຸດສີທີ່ເລືອກເພື່ອນຳໃຊ້",
+  "paletteNumber": "ຈານສີ {number}"
 }

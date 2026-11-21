@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "izenburua"
+        "title": "izenburua",
+        "description": "Ikastaro-ereduaren gainean erakusten den izenburua."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Erakutsi beharreko 3D eredu-fitxategiaren helbidea (.glb edo .gltf)."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Deskribatu 3D eredua ikusi ezin dutenentzat."
       },
       {
         "title": "Informazio-eremua"

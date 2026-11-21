@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Unthâldspultsje",
+    "description": "Draai kaarten om om pearen te finen. Keppelje in term oan syn betsjutting, sadat in pear begryp sjen lit, of brûk twa gelikense teksten of ôfbyldings."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "De opdracht yn de koptekst, bygelyks: Keppelje de term oan syn taak."
+      },
+      {
+        "title": "Pearen",
+        "description": "Elk pear is twa kaarten dy't by elkoar hearre, meastal in term en syn betsjutting. In kant hat tekst, in ôfbylding of beide nedich."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksintkleur",
+        "description": "Opsjonele kleur foar it kopteksttsjip, de efterkant fan de kaarten en de knop."
+      }
+    ]
+  }
+}

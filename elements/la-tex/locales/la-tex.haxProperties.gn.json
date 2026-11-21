@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Ehai papapykuaa jehaipyrã LaTeX rupive"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãnga hapykuegua",
+        "description": "Hapykuegua ta'ãngahaipy rapykuépe. Automático ombojoapy peteĩ añoite ta'ãngahaipy hasyramo ojehecha hag̃ua kuatiaroguépe, techapyrã tysýi pytũ pytũ rekópe.",
+        "options": {
+          "auto": "Automático",
+          "light": "Hesakã",
+          "dark": "Pytũ",
+          "none": "Mba'eve"
+        }
+      }
+    ]
   }
 }

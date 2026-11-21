@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fotnote",
+    "description": "Et notat skrevet der det hører hjemme i teksten. Det vises som et tall, og den nummererte listen over notater bygges automatisk nederst på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notat",
+        "description": "Teksten i fotnoten."
+      },
+      {
+        "title": "Ingen forhåndsvisning",
+        "description": "Ikke vis notatet når en leser holder musepekeren over eller fokuserer tallet."
+      }
+    ]
+  }
+}

@@ -40,5 +40,7 @@
   "hideDirections": "Ɓoye umarni",
   "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
   "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan",
-  "notAttempted": "Ba a gwada ba"
+  "notAttempted": "Ba a gwada ba",
+  "cardsDirections": "Sanya katunan cikin tsari daidai da maɓallan matsar da gaba da matsar da baya a kowane kati, ko ja su da linzamin kwamfuta. Idan ka yarda cewa suna cikin tsari daidai, gwada amsarka ta zaɓar {checkAnswer}.",
+  "movedToPosition": "An matsar da {item} zuwa matsayi {position} cikin {total}"
 }

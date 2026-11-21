@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Ritvél",
     "description": "Texti sem skrifar sig sjálfur einn staf í einu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Texti",
+        "description": "Textinn sem á að vélrita þegar íhluturinn skrunast inn í sýn."
+      },
+      {
+        "title": "Vélritun",
+        "description": "Sýna blikkandi bendil; íhluturinn stillir þetta meðan hann vélritar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Töf",
+        "description": "Millisekúndur til að bíða áður en vélritun hefst."
+      },
+      {
+        "title": "Tímalengd bendils",
+        "description": "Millisekúndur sem bendillinn heldur áfram að blikka eftir að textinn hefur verið vélritaður."
+      },
+      {
+        "title": "Hraði",
+        "description": "Millisekúndur á staf; lægri tölur vélrita hraðar."
+      }
+    ]
   }
 }

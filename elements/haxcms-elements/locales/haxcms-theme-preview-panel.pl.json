@@ -8,5 +8,9 @@
   "theme": "Motyw",
   "palette": "Paleta",
   "cancel": "Anuluj",
-  "openAppearanceSettings": "Otwórz ustawienia wyglądu"
+  "openAppearanceSettings": "Otwórz ustawienia wyglądu",
+  "designSystem": "System projektowy",
+  "designSystemDefault": "DDD (domyślny)",
+  "designSystemThemeDefault": "{name} (domyślne motywu)",
+  "designSystemHelp": "Kolor, typografia, narożniki i gęstość. Motyw nadal decyduje o układzie."
 }

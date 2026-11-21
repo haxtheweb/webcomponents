@@ -40,5 +40,7 @@
   "hideDirections": "Huna i ngā tohutohu",
   "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
   "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
-  "notAttempted": "Kāore ano i whakamātauria"
+  "notAttempted": "Kāore ano i whakamātauria",
+  "cardsDirections": "Whakaraupapatia ngā kāri ki te raupapa tika mā ngā pātene “Neke kia mua ake” me “Neke kia muri ake” i ia kāri, tōia rānei ki te kiore. Ina whakapono koe kei te raupapa tika, whakamātauria tō whakautu mā te tīpako i te {checkAnswer}.",
+  "movedToPosition": "Kua nekehia {item} ki te tūranga {position} o {total}"
 }

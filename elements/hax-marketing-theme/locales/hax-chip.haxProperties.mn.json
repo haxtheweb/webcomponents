@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Шошго",
+    "description": "Шошготой жижиг дүрс"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Дүрс"
+      },
+      {
+        "title": "Шошго"
+      }
+    ]
+  }
+}

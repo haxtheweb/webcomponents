@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "找热点",
+    "description": "学习者用点、轻触或者移动键盘十字准星，辣图片上寻出正确个地方。是图片热区个计分版。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片",
+        "description": "学习者要搜个图片。"
+      },
+      {
+        "title": "替代文字",
+        "description": "为看勿见个人描述图片。从来勿当标题显示。"
+      },
+      {
+        "title": "标题",
+        "description": "图片上头显示个一个短标题。"
+      },
+      {
+        "title": "问题",
+        "description": "要学习者辣图片里寻个是啥。"
+      },
+      {
+        "title": "答案",
+        "description": "每个答案是图片上一个有名字个椭圆。位置搭大小是图片个百分比，从左上角量起。编辑个辰光，每个答案侪辣图片上框出来。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "尝试次数",
+        "description": "学习者好试几趟。0 表示勿限。"
+      },
+      {
+        "title": "允许勿中次数",
+        "description": "勿中几趟就结束一次尝试。0 表示勿限，学习者会有一只“结束”按钮。"
+      },
+      {
+        "title": "好折叠",
+        "description": "拿迭道题显示成一行，好打开好合拢。打开一个会合拢旁边别个好折叠个题目。"
+      },
+      {
+        "title": "开始辰光合拢",
+        "description": "好折叠个辰光，开始是合拢个一行，只显示题目搭伊个状态。"
+      },
+      {
+        "title": "评分格式",
+        "description": "OER Schema：迭个评估个评分格式（比方分数、等第、百分比、完成度）。"
+      },
+      {
+        "title": "学习目标",
+        "description": "OER Schema：搭迭个评估相关个学习目标。"
+      }
+    ],
+    "developer": [
+      {
+        "title": "测验名字",
+        "description": "传进去个测验名字，辣 xAPI 驱动个环境里用来识别迭个条目"
+      },
+      {
+        "title": "课程",
+        "description": "OER Schema：迭个评估面向个课程。"
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "ಥೀಮ್",
   "palette": "ಬಣ್ಣದ ಪ್ಯಾಲೆಟ್",
   "cancel": "ರದ್ದುಮಾಡಿ",
-  "openAppearanceSettings": "ನೋಟದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ"
+  "openAppearanceSettings": "ನೋಟದ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ತೆರೆಯಿರಿ",
+  "designSystem": "ವಿನ್ಯಾಸ ವ್ಯವಸ್ಥೆ",
+  "designSystemDefault": "DDD (ಡೀಫಾಲ್ಟ್)",
+  "designSystemThemeDefault": "{name} (ಥೀಮ್ ಡೀಫಾಲ್ಟ್)",
+  "designSystemHelp": "ಬಣ್ಣ, ಅಕ್ಷರವಿನ್ಯಾಸ, ಮೂಲೆಗಳು ಮತ್ತು ಸಾಂದ್ರತೆ. ವಿನ್ಯಾಸಾಕಾರವನ್ನು ಇನ್ನೂ ಥೀಮ್ ನಿರ್ಧರಿಸುತ್ತದೆ."
 }

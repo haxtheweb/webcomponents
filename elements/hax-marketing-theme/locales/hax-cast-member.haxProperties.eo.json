@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rolanto",
+    "description": "Unu publiko, ludata de rolulo, kun vortoj kaj butono"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiu ĉi tio estas"
+      },
+      {
+        "title": "Tipo de rolulo"
+      },
+      {
+        "title": "Semo de rolulo"
+      },
+      {
+        "title": "Sceneja koloro (DDD-nomo)"
+      },
+      {
+        "title": "Kien la butono iras"
+      },
+      {
+        "title": "Butona teksto"
+      }
+    ]
+  }
+}

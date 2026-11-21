@@ -1,0 +1,16 @@
+{
+  "skipToContent": "Liigu sisu juurde",
+  "site": "Sait",
+  "changeLogo": "Muuda logo",
+  "anotherPicture": "Näita teist pilti",
+  "anotherTheme": "Näita teist kujundust",
+  "switcherHeading": "Sama sait, sinu valik. Vaheta seda reaalajas:",
+  "remix": "Remiksi",
+  "remixRandom": "Remiksi seda saiti: juhuslikult valitud välimus",
+  "remixOptions": "Näita kõiki viise selle saidi remiksimiseks",
+  "pagesUnder": "Lehed jaotises {name}",
+  "previous": "Eelmine",
+  "next": "Järgmine",
+  "pages": "Eelmine ja järgmine leht",
+  "footerLinks": "Veel"
+}

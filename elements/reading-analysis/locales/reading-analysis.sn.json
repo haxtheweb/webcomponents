@@ -60,6 +60,8 @@
   "flagsFound": "{correct} kubva pa{total} zvawanikwa",
   "toRethink": "{count} zvekufungisisa zvakare",
   "notEvidence": "hahusi humbowo hwemureza uyu",
+  "isEvidence": "humbowo hwemureza uyu",
+  "readingKeys": "Shandisa makiyi emiseve kufamba kubva pa{unit} imwe kuenda kune inotevera.",
   "markAnswers": "Maka mhinduro",
   "doneMarking": "Ndapedza kumaka mhinduro",
   "editHint": "Gadzirisa zvinyorwa zviri pazasi. Shandisa Maka mhinduro mumenyu yebhuroka kusarudza panofanira kuiswa mureza wega wega.",

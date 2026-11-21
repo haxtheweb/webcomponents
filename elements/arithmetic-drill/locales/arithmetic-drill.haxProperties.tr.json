@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetik alıştırması",
+    "description": "Anında geri bildirimli, üretilmiş kısa bir aritmetik problem dizisi. İşlemleri ve sayı aralığını seçin; her tur yenidir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Başlığında gösterilen bu alıştırmanın adı."
+      },
+      {
+        "title": "İşlemler",
+        "description": "Hangi tür problemlerin sorulacağı. Öğrenenler başlamadan önce bunlardan herhangi birini kapatabilir.",
+        "options": {
+          "add": "Toplama",
+          "subtract": "Çıkarma",
+          "multiply": "Çarpma",
+          "divide": "Bölme",
+          "add subtract": "Toplama ve çıkarma",
+          "multiply divide": "Çarpma ve bölme",
+          "add multiply": "Toplama ve çarpma",
+          "add divide": "Toplama ve bölme",
+          "subtract multiply": "Çıkarma ve çarpma",
+          "subtract divide": "Çıkarma ve bölme",
+          "add subtract multiply": "Toplama, çıkarma ve çarpma",
+          "add subtract divide": "Toplama, çıkarma ve bölme",
+          "add multiply divide": "Toplama, çarpma ve bölme",
+          "subtract multiply divide": "Çıkarma, çarpma ve bölme",
+          "add subtract multiply divide": "Dördü de"
+        }
+      },
+      {
+        "title": "En küçük sayı",
+        "description": "Bir problemde kullanılan en küçük sayı. Tam sayılar, 0 veya daha fazla."
+      },
+      {
+        "title": "En büyük sayı",
+        "description": "Bir problemde kullanılan en büyük sayı. Bölme yanıtları ve bölenler de bu aralıkta kalır."
+      },
+      {
+        "title": "Problem sayısı",
+        "description": "Bir turda kaç problem olduğu (1 ile 100 arası)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Süre sınırı",
+        "description": "Tüm tur için izin verilen saniye. 0 zamanlayıcı yok demektir ve varsayılandır: süreli alıştırmalar daha fazla zamana ihtiyaç duyan öğrenenleri başarısız kılar. Ayarlandığında bile öğrenenler zamanlayıcıyı kendileri için kapatabilir."
+      },
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketinin ve düğmelerin rengi. Temayı izlemek için boş bırakın."
+      }
+    ]
+  }
+}

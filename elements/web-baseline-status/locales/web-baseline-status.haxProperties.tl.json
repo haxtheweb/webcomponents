@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status ng Baseline",
+    "description": "Ipakita ang Baseline browser support status ng isang web platform feature."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Feature ID",
+        "description": "ID ng web feature, halimbawa anchor-positioning. Hanapin ang mga ID sa webstatus.dev; ang ID ay ang huling bahagi ng URL ng pahina ng feature."
+      }
+    ]
+  }
+}

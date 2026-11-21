@@ -52,6 +52,20 @@
           "_top": "Yuqori oyna - _top",
           "_parent": "Ota oyna - _parent"
         }
+      },
+      {
+        "title": "Strelkasiz",
+        "description": "Tugma strelkasini yashirish."
+      },
+      {
+        "title": "Havola: nishon",
+        "description": "Havolani qayerda ochish.",
+        "options": {
+          "": "O‘sha oyna",
+          "_blank": "Yangi oyna - _blank",
+          "_top": "Yuqori oyna - _top",
+          "_parent": "Ota oyna - _parent"
+        }
       }
     ],
     "developer": [

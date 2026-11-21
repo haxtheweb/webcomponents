@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternativtext"
+        "title": "Alternativtext",
+        "description": "Beskriv bilden för personer som inte kan se den."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valfri sammanfattningstext när detaljerna är öppna"
+        "title": "Valfri sammanfattningstext när detaljerna är öppna",
+        "description": "Knapptext när beskrivningen är dold, till exempel Visa beskrivning."
       },
       {
         "property": "closeText",
-        "title": "Valfri sammanfattningstext när detaljerna är stängda"
+        "title": "Valfri sammanfattningstext när detaljerna är stängda",
+        "description": "Knapptext när beskrivningen visas, till exempel Dölj beskrivning."
       }
     ]
   }

@@ -1,0 +1,22 @@
+{
+  "scenario": "Senaryo",
+  "directions": "Mga direksyon",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "directionsRead": "Basahin ang bawat eksena at piliin kung ano ang gagawin mo.",
+  "directionsEndings": "May ilang wakas. Sumubok ng ibang landas pagkatapos mong matapos.",
+  "startOver": "Magsimulang muli",
+  "back": "Bumalik nang isang hakbang",
+  "tryAnother": "Sumubok ng ibang landas",
+  "path": "Landas",
+  "scene": "Eksena",
+  "ending": "Wakas",
+  "end": "wakas",
+  "scenesSeen": "{seen} sa {total} eksena ang nakita",
+  "endingReached": "Naabot ang wakas",
+  "addScene": "Magdagdag ng eksena",
+  "newScene": "Bagong eksena",
+  "newSceneText": "Ilarawan kung ano ang nangyayari, pagkatapos i-link ang bawat pagpipilian sa isang eksena.",
+  "editingNote": "Nag-e-edit: ipinapakita ang bawat eksena. Ang pagpipilian ay link sa # na sinusundan ng id ng eksena.",
+  "noScenes": "Magdagdag ng eksena para simulan ang senaryo."
+}

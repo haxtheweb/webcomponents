@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Listă de verificare cu marcatori",
+    "description": "O listă de casete de bifat. Cititorii bifează elementele, iar progresul lor este reținut pe propriul dispozitiv."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Numele listei. Citit cu voce tare ca etichetă a grupului de casete de bifat."
+      },
+      {
+        "title": "Elemente",
+        "description": "Fiecare element este o casetă de bifat. Elementele bifate sau dezactivate nu pot fi schimbate de cititori."
+      },
+      {
+        "title": "Numerotată",
+        "description": "Afișați o listă numerotată în locul uneia cu marcatori."
+      },
+      {
+        "title": "Stare",
+        "description": "Schimbă culorile pentru a se potrivi cu stop-note.",
+        "options": {
+          "info": "Notificare",
+          "success": "Confirmare",
+          "warning": "Avertisment",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id de stocare",
+        "description": "Id unic folosit pentru a reține progresul cititorului pe dispozitivul său. Generat automat; schimbați-l doar pentru a partaja progresul între liste sau pentru a o lua de la capăt."
+      }
+    ]
+  }
+}

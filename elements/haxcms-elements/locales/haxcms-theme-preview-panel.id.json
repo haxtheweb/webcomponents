@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "Batal",
-  "openAppearanceSettings": "Buka Pengaturan Tampilan"
+  "openAppearanceSettings": "Buka Pengaturan Tampilan",
+  "designSystem": "Sistem desain",
+  "designSystemDefault": "DDD (bawaan)",
+  "designSystemThemeDefault": "{name} (bawaan tema)",
+  "designSystemHelp": "Warna, huruf, sudut, dan kerapatan. Tema tetap menentukan tata letak."
 }

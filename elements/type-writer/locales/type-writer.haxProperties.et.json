@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Kirjutusmasin",
     "description": "Tekst, mis trükib end ise, üks märk korraga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Tekst, mis trükitakse välja, kui element vaatesse keritakse."
+      },
+      {
+        "title": "Trükkimine",
+        "description": "Näita vilkuvat kursorit; element määrab selle trükkimise ajal."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Viivitus",
+        "description": "Millisekundid, mida oodata enne trükkimise algust."
+      },
+      {
+        "title": "Kursori kestus",
+        "description": "Millisekundid, mille jooksul kursor pärast teksti trükkimist edasi vilgub."
+      },
+      {
+        "title": "Kiirus",
+        "description": "Millisekundeid märgi kohta; väiksemad arvud trükivad kiiremini."
+      }
+    ]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Minnisspæl",
+    "description": "Vend kortum fyri at finna pør. Para eitt hugtak við týdningi sínum, so eitt par vísir skilning, ella brúka tveir eins tekstir ella myndir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Uppgávan víst í høvdinum, til dømis: Para hugtakið við uppgávu síni."
+      },
+      {
+        "title": "Pør",
+        "description": "Hvørt par er tvey kort, sum hoyra saman, vanliga eitt hugtak og týdningur tess. Ein síða krevur tekst, mynd ella bæði."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Áherðslulitur",
+        "description": "Valfríur litur til høvuðsmerkið, bakið á kortunum og knøttin."
+      }
+    ]
+  }
+}

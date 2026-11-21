@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Butonul poveștii",
+    "description": "Butonul care deschide povestea din spatele unei afirmații pe hax.cloud sau locul corespunzător pe alt site al rețelei HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Unde duce",
+        "options": {
+          "cloud": "hax.cloud, povestea",
+          "learn": "learn.hax.cloud, un tutorial",
+          "try": "browser.hax.cloud, încercați-l",
+          "elements": "webcomponents.hax.cloud, un bloc",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa pe acel site (o poveste pe hax.cloud arată ca stories/ee450a19)"
+      },
+      {
+        "title": "Despre ce este"
+      },
+      {
+        "title": "Cip mic"
+      },
+      {
+        "title": "Afișați în buton despre ce este"
+      }
+    ]
+  }
+}

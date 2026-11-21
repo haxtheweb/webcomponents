@@ -5,5 +5,7 @@
   "editModeLabel": "Մեդիա նվագացանկի խմբագրման ռեժիմ",
   "position": "{total}-ից {current}",
   "previousItem": "Նախորդ տարրը",
-  "nextItem": "Հաջորդ տարրը"
+  "nextItem": "Հաջորդ տարրը",
+  "fullScreen": "Լիաէկրան",
+  "exitFullScreen": "Դուրս գալ լիաէկրանից"
 }

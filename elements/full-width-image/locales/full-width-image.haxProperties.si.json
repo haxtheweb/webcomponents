@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "පසුබිම් රූපය."
+        "description": "පසුබිම් රූපය.",
+        "title": "රූපය"
       },
       {
         "property": "caption",
-        "description": "පෙළ ශීර්ෂය."
+        "description": "පෙළ ශීර්ෂය.",
+        "title": "සිරස්තලය"
       }
     ]
   }

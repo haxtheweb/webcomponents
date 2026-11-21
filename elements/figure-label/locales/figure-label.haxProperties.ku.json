@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etîketa wêneyê",
     "description": "Hêmana etîketa wêneyê ji bo nîşankirina çavkaniyên medyayê di nav naverokê de."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hejmara wêneyê",
+        "description": "Hejmar an etîketeke kurt ji bo wêneyê, wek 1.3"
+      },
+      {
+        "title": "Rave",
+        "description": "Raveya kurt a wêneyê"
+      }
+    ]
   }
 }

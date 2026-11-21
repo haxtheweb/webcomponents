@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Notă laterală",
+    "description": "O notă separată de conținutul din jur, cu o pictogramă și o etichetă opționale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetă",
+        "description": "Eticheta notei laterale."
+      },
+      {
+        "title": "Pictogramă",
+        "description": "Pictograma notei laterale."
+      },
+      {
+        "title": "Conținut",
+        "description": "Conținutul notei laterale."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culoare",
+        "description": "Culoarea cu care este nuanțată nota laterală."
+      }
+    ]
+  }
+}

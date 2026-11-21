@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Dlaždica štatistiky",
+    "description": "Jedno dôležité číslo s označením a tým, ako sa zmenilo. Niekoľko ich umiestnite do mriežky ako riadok nástenky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Označenie",
+        "description": "Čo číslo meria."
+      },
+      {
+        "title": "Hodnota",
+        "description": "Číslo. Obyčajné číslo sa zoskupí podľa jazyka stránky; čokoľvek iné sa zobrazí tak, ako je napísané."
+      },
+      {
+        "title": "Zmena",
+        "description": "Ako sa zmenilo, slovami, napríklad 6 % tento semester."
+      },
+      {
+        "title": "Smer",
+        "description": "Či je zmena nahor alebo nadol.",
+        "options": {
+          "": "Žiadne",
+          "up": "Nahor",
+          "down": "Nadol"
+        }
+      }
+    ]
+  }
+}

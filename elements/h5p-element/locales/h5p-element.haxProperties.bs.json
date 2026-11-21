@@ -4,7 +4,12 @@
     "description": "Reproducira H5P interaktivni sadržaj iz otpremljene .h5p datoteke, bez potrebe za H5P serverom"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P datoteka",
+        "description": "Otpremite ili povežite .h5p datoteku. Raspakuje se u pregledniku; H5P server nije potreban."
+      }
+    ],
     "advanced": [
       {
         "title": "Stari kod za ugradnju iframe-a",

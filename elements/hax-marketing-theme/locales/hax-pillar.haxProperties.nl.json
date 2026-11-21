@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pijler",
+    "description": "Een pijler: naam, zin, pictogram, kleur en waarom het ertoe doet"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naam"
+      },
+      {
+        "title": "Zin"
+      },
+      {
+        "title": "Pictogram"
+      },
+      {
+        "title": "Kleur (DDD-naam)"
+      },
+      {
+        "title": "Welke pijler, 1 tot 7"
+      },
+      {
+        "title": "Kleine kaart"
+      },
+      {
+        "title": "Waar de naam naartoe gaat"
+      }
+    ]
+  }
+}

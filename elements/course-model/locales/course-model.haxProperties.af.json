@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titel"
+        "title": "titel",
+        "description": "Opskrif wat bo die kursusmodel gewys word."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adres van die 3D-modellêer (.glb of .gltf) om te wys."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Beskryf die 3D-model vir mense wat dit nie kan sien nie."
       },
       {
         "title": "Inligtingsarea"

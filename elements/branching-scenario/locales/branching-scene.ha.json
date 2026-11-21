@@ -1,0 +1,14 @@
+{
+  "scene": "Fage",
+  "ending": "Ƙarshe",
+  "goodEnding": "Ƙarshe mai kyau",
+  "mixedEnding": "Ƙarshe gauraye",
+  "poorEnding": "Ƙarshe mara kyau",
+  "scoreOf": "Maki {score} cikin {max}",
+  "scoreOnly": "Maki {score}",
+  "startScene": "Fara",
+  "sceneIdLabel": "Id na fage",
+  "needsId": "Ƙara id na fage don zaɓuɓɓuka su iya haɗuwa da wannan fage.",
+  "orphan": "Babu zaɓin da ke haɗuwa da wannan fage.",
+  "deadLinks": "Waɗannan mahaɗai suna nuna fagen da babu shi:"
+}

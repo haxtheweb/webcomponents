@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Kirjoituskone",
     "description": "Teksti, joka kirjoittaa itsensä merkki kerrallaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teksti",
+        "description": "Teksti, joka kirjoitetaan, kun elementti vierii näkyviin."
+      },
+      {
+        "title": "Kirjoitetaan",
+        "description": "Näytä vilkkuva kohdistin; elementti asettaa tämän kirjoittaessaan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Viive",
+        "description": "Millisekunnit ennen kirjoittamisen alkua."
+      },
+      {
+        "title": "Kohdistimen kesto",
+        "description": "Millisekunnit, joiden ajan kohdistin vilkkuu tekstin kirjoittamisen jälkeen."
+      },
+      {
+        "title": "Nopeus",
+        "description": "Millisekuntia merkkiä kohden; pienemmät luvut kirjoittavat nopeammin."
+      }
+    ]
   }
 }

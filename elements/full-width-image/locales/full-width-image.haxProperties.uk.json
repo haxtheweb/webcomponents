@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Фонове зображення."
+        "description": "Фонове зображення.",
+        "title": "Зображення"
       },
       {
         "property": "caption",
-        "description": "Текстовий заголовок."
+        "description": "Текстовий заголовок.",
+        "title": "Підпис"
       }
     ]
   }

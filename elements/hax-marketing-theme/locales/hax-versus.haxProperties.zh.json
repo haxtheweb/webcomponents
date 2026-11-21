@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "对决",
+    "description": "两个角色对决按钮旁的文字"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题"
+      },
+      {
+        "title": "按钮指向的位置"
+      },
+      {
+        "title": "按钮文字"
+      },
+      {
+        "title": "左侧角色种子"
+      },
+      {
+        "title": "右侧角色种子"
+      }
+    ]
+  }
+}

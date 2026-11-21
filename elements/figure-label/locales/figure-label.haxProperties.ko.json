@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "그림 레이블",
     "description": "콘텐츠 내 미디어 자산을 표시하는 그림 레이블 요소."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "그림 번호",
+        "description": "그림의 번호나 짧은 레이블(예: 1.3)"
+      },
+      {
+        "title": "설명",
+        "description": "그림에 대한 짧은 설명"
+      }
+    ]
   }
 }

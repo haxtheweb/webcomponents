@@ -4,7 +4,12 @@
     "description": "Paleidžia interaktyvų H5P turinį iš įkelto .h5p failo, H5P serverio nereikia"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P failas",
+        "description": "Įkelkite .h5p failą arba pateikite nuorodą į jį. Jis išpakuojamas naršyklėje; H5P serverio nereikia."
+      }
+    ],
     "advanced": [
       {
         "title": "Senas iframe įterpimo kodas",

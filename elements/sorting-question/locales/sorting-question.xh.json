@@ -40,5 +40,7 @@
   "hideDirections": "Fihla imiyalelo",
   "showRelatedContent": "Bonisa umxholo ohambelanayo",
   "hideRelatedContent": "Fihla umxholo ohambelanayo",
-  "notAttempted": "Ayizanga zizanywa"
+  "notAttempted": "Ayizanga zizanywa",
+  "cardsDirections": "Beka amakhadi ngolandelelwano oluchanekileyo ngamaqhosha okuhambisa ngaphambili nangasemva kwikhadi ngalinye, okanye uwarhuqe ngemowusi. Xa ukholelwa ukuba akulandelelwano oluchanekileyo, vavanya impendulo yakho ngokukhetha {checkAnswer}.",
+  "movedToPosition": "I-{item} ihanjiswe kwindawo {position} kwezi-{total}"
 }

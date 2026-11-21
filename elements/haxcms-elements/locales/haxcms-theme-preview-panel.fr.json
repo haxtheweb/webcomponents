@@ -8,5 +8,9 @@
   "theme": "Thème",
   "palette": "Palette",
   "cancel": "Annuler",
-  "openAppearanceSettings": "Ouvrir les paramètres d'apparence"
+  "openAppearanceSettings": "Ouvrir les paramètres d'apparence",
+  "designSystem": "Système de design",
+  "designSystemDefault": "DDD (par défaut)",
+  "designSystemThemeDefault": "{name} (par défaut du thème)",
+  "designSystemHelp": "Couleurs, typographie, coins et densité. Le thème décide toujours de la mise en page."
 }

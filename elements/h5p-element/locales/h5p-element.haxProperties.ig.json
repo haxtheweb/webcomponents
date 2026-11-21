@@ -4,7 +4,12 @@
     "description": "Na-akpọ ọdịnaya H5P na-emekọrịta site na faịlụ .h5p ebugoro, na-enweghị mkpa maka sava H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Faịlụ H5P",
+        "description": "Bulite ma ọ bụ jikọọ faịlụ .h5p. A na-emeghe ya na brawụza; a chọghị sava H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Koodu ntinye iframe ochie",

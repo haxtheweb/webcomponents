@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Obrázková dropzóna",
+    "description": "Studenti umisťují popisky na zóny položené přes obrázek a pak kontrolují odpověď."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázek",
+        "description": "Obrázek, na který studenti umisťují popisky."
+      },
+      {
+        "title": "Alternativní text",
+        "description": "Popisuje obrázek pro lidi, kteří ho nevidí. Neprozrazujte, kam popisky patří."
+      },
+      {
+        "title": "Název obrázku",
+        "description": "Krátký viditelný název obrázku, zobrazený nad ním."
+      },
+      {
+        "title": "Otázka",
+        "description": "Co mají studenti s popisky udělat."
+      },
+      {
+        "title": "Popisky a zóny",
+        "description": "Každá položka je popisek, který mohou studenti umístit. Dejte popisku název zóny, aby se jeho zóna objevila na obrázku; popisek bez názvu zóny je navíc a nikam nepatří. Čísla zón jsou procenta obrázku."
+      },
+      {
+        "title": "Popisek",
+        "description": "Volitelný popisek zobrazený pod obrázkem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokusy",
+        "description": "Kolikrát může student kontrolovat. 0 znamená neomezeně."
+      },
+      {
+        "title": "Zamíchat popisky",
+        "description": "Při každé návštěvě zobrazit popisky v jiném pořadí."
+      },
+      {
+        "title": "Sbalitelné",
+        "description": "Zobrazit tuto otázku jako řádek, který se otevírá a zavírá. Otevření jednoho zavře ostatní sbalitelné otázky vedle něj."
+      },
+      {
+        "title": "Začít sbalené",
+        "description": "Je-li sbalitelné, začít jako zavřený řádek, který ukazuje jen otázku a stav."
+      },
+      {
+        "title": "Formát hodnocení",
+        "description": "OER Schema: formát hodnocení tohoto testu (např. body, známka, procenta, dokončení)."
+      },
+      {
+        "title": "Vzdělávací cíl",
+        "description": "OER Schema: vzdělávací cíl spojený s tímto testem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Název kvízu",
+        "description": "Název kvízu používaný k identifikaci xAPI v analytických systémech."
+      },
+      {
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pro který je tento test určen."
+      }
+    ]
+  }
+}

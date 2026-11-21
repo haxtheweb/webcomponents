@@ -3,5 +3,8 @@
   "copyAsCsv": "Ṣẹ̀dà bí CSV.",
   "printTable": "Tẹ Tábìlì Jáde",
   "selectColumn": "Yan Òpó",
-  "dataTable": "Dátà · Tábìlì"
+  "dataTable": "Dátà · Tábìlì",
+  "filterStatus": "Ó ń fi ìlà {shown} hàn nínú {total}, tí a sẹ́ nípasẹ̀ {column}: {text}",
+  "columnNumber": "Ọ̀wọ̀n {column}",
+  "clearFilter": "Pa àsẹ́ rẹ́"
 }

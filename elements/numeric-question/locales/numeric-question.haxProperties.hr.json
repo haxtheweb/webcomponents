@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Brojčano pitanje",
+    "description": "Pitanje na koje se odgovara brojem. Odgovor je fiksni broj ili formula izračunata iz varijabli, a priznaje se kad je unutar dopuštenog odstupanja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pitanje",
+        "description": "Što se polaznike pita. Napišite naziv varijable u vitičastim zagradama, kao {d}, da prikažete njezinu vrijednost."
+      },
+      {
+        "title": "Mjerna jedinica",
+        "description": "Prikazuje se kao tekst pokraj polja za odgovor, npr. km/h."
+      },
+      {
+        "title": "Odgovor",
+        "description": "Točan broj. Ostavite prazno kad odgovor izračunava formula."
+      },
+      {
+        "title": "Formula",
+        "description": "Izračunava odgovor iz varijabli, npr. d / (t / 60). Može koristiti + - * / ^, zagrade, sqrt() i abs(). Kad je postavljena, koristi se umjesto odgovora."
+      },
+      {
+        "title": "Varijable",
+        "description": "Brojevi koje koriste formula i pitanje. Svaki poprima vrijednost između svoje najmanje i najveće, u koracima."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dopušteno odstupanje",
+        "description": "Koliko daleko od točnog odgovora se još priznaje. 0 znači točno, ili zaokruženo na broj decimala u nastavku."
+      },
+      {
+        "title": "Vrsta odstupanja",
+        "description": "Apsolutno: plus ili minus odstupanje. Postotak: plus ili minus toliko posto točnog odgovora.",
+        "options": {
+          "absolute": "Apsolutno",
+          "percent": "Postotak"
+        }
+      },
+      {
+        "title": "Decimalna mjesta",
+        "description": "Od polaznika se traži zaokruživanje na ovoliko mjesta, a odgovor se prikazuje tako zaokružen. Ostavite prazno za bez zaokruživanja."
+      },
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta polaznik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "title": "Novi brojevi pri svakom pokušaju",
+        "description": "Izvlači nove vrijednosti varijabli svaki put kad polaznik ponovno pokuša. Njegov raniji odgovor tada se ne prikazuje kad se vrati, samo je li bio točan."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao redak koji se otvara i zatvara. Otvaranje jednog zatvara ostala sklopiva pitanja pokraj njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni redak koji prikazuje samo pitanje i njegov status."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sustavima."
+      }
+    ]
+  }
+}

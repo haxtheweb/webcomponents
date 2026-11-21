@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Schrëttlëscht",
     "description": "Nummeréiert Schrëtt fir eng Aufgab ofzeschléissen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Schrëttindikator",
+        "description": "D'Schrëtt als kompakt Zeil vun Titele weisen, déi de Fortschrëtt markéiert. Den Inhalt vun de Schrëtt gëtt an dësem Layout net gewisen."
+      },
+      {
+        "title": "Aktuelle Schrëtt",
+        "description": "De Schrëtt, op deem de Lieser ass, vun 1 un gezielt. Fréier Schrëtt ginn als ofgeschloss gewisen. Vum Schrëttindikator benotzt."
+      }
+    ]
   }
 }

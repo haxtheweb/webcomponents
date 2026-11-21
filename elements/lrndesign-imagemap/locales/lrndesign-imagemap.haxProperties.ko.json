@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "핫스팟 세부 정보",
         "description": "이미지 맵의 인터랙티브 핫스팟입니다."
+      },
+      {
+        "title": "핫스팟 세부 정보",
+        "description": "이미지 맵의 인터랙티브 핫스팟."
       }
     ]
   }

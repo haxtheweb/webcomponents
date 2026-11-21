@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radara diagramo",
+    "description": "Radara (araneaĵa) diagramo por maturecaj modeloj kaj facetaj poentaroj, kiel HEOSAT. Inkluzivas tekstan alternativon kaj datumtabelon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Titolo de la diagramo; ankaŭ uzata kiel ĝia alirebla nomo."
+      },
+      {
+        "title": "Maksimuma poentaro",
+        "description": "Plej alta valoro en la skalo."
+      },
+      {
+        "title": "Kategorioj",
+        "description": "Unu kategorio po linio. Bezonas almenaŭ 3."
+      },
+      {
+        "title": "Poentaroj",
+        "description": "Nombroj apartigitaj per komoj, unu po kategorio en la sama ordo."
+      },
+      {
+        "title": "Celaj poentaroj",
+        "description": "Nombroj apartigitaj per komoj, unu po kategorio en la sama ordo."
+      },
+      {
+        "title": "Montri klarigon",
+        "description": "Montri klarigon, kiu nomas la poentarojn kaj la celojn."
+      },
+      {
+        "title": "Kompakta",
+        "description": "Pli malgranda diagramo sen etikedoj, klarigo aŭ datumtabelo. Ŝvebu super punkto por vidi ĝiajn valorojn."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etikedo de poentaro",
+        "description": "Klariga kaj tabela etikedo por la poentaroj."
+      },
+      {
+        "title": "Etikedo de celo",
+        "description": "Klariga kaj tabela etikedo por la celoj."
+      }
+    ]
+  }
+}

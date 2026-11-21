@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skriva við støddfrøðiskriftini LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Myndabakgrund",
+        "description": "Bakgrund aftan fyri teknaðar myndir. Sjálvvirkið leggur bert eina afturat, tá ið tað hevði verið ringt at sæð tekningina á síðuni, sum myrkar linjur í myrkum hátti.",
+        "options": {
+          "auto": "Sjálvvirkið",
+          "light": "Ljóst",
+          "dark": "Myrkt",
+          "none": "Eingin"
+        }
+      }
+    ]
   }
 }

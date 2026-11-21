@@ -3,5 +3,7 @@
   "status_stop": "توقف",
   "status_warning": "تحذير",
   "status_success": "نجاح",
-  "status_info": "ملاحظة"
+  "status_info": "ملاحظة",
+  "status_tip": "هل تعلم؟",
+  "status_new": "ما الجديد"
 }

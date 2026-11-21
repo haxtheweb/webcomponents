@@ -1,0 +1,21 @@
+{
+  "diagram": "ሥዕላዊ መግለጫ",
+  "flowchart": "የፍሰት ገበታ",
+  "sequence": "ቅደም ተከተል",
+  "source": "ምንጭ",
+  "textAlternative": "የጽሑፍ አማራጭ",
+  "present": "አቅርብ",
+  "exitPresent": "ከአቀራረብ ውጣ",
+  "loading": "ሥዕላዊ መግለጫውን በመጫን ላይ",
+  "empty": "እስካሁን የሚሳል ነገር የለም። የሥዕላዊ መግለጫውን ምንጭ ያክሉ።",
+  "error": "ስህተት",
+  "parseError": "ይህ ሥዕላዊ መግለጫ ሊሳል አልቻለም። ምንጩን ይፈትሹ።",
+  "loadError": "የሥዕላዊ መግለጫው ቤተ-መጻሕፍት ሊጫን አልቻለም።",
+  "srcError": "የሥዕላዊ መግለጫው ፋይል ሊጫን አልቻለም።",
+  "decision": "ውሳኔ",
+  "end": "መጨረሻ",
+  "goTo": "ወደ {target} ሂድ",
+  "ifGoTo": "{label} ከሆነ ወደ {target} ሂድ",
+  "describedBySource": "በምንጩ የተገለጸ ሥዕላዊ መግለጫ።",
+  "scrollable": "ሥዕላዊ መግለጫ፣ ሊሸበለል የሚችል"
+}

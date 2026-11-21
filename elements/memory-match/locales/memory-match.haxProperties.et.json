@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mälumäng",
+    "description": "Pööra kaarte, et leida paare. Seo mõiste selle tähendusega, nii et paari leidmine näitab mõistmist, või kasuta kahte sobivat teksti või pilti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Päises kuvatav ülesanne, näiteks: Seo mõiste selle ülesandega."
+      },
+      {
+        "title": "Paarid",
+        "description": "Iga paar on kaks kokku kuuluvat kaarti, tavaliselt mõiste ja selle tähendus. Poolel peab olema tekst, pilt või mõlemad."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline värv päise sildile, kaartide tagakülgedele ja nupule."
+      }
+    ]
+  }
+}

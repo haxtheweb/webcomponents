@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "媒体修饰符",
-        "description": "可选的媒体领域修饰符。指定此许可适用的媒体类型。"
+        "description": "可选的媒体领域修饰符。指定此许可适用的媒体类型。",
+        "options": {
+          "": "无修饰"
+        }
       },
       {
         "property": "uri",

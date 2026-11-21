@@ -4,7 +4,12 @@
     "description": "アップロードした.h5pファイルからH5Pのインタラクティブコンテンツを再生します。H5Pサーバーは不要です"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P ファイル",
+        "description": ".h5p ファイルをアップロードまたはリンクします。ブラウザー内で展開され、H5P サーバーは不要です。"
+      }
+    ],
     "advanced": [
       {
         "title": "従来のiframe埋め込みコード",

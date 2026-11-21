@@ -8,5 +8,9 @@
   "theme": "主题",
   "palette": "调色板",
   "cancel": "取消",
-  "openAppearanceSettings": "打开外观设置"
+  "openAppearanceSettings": "打开外观设置",
+  "designSystem": "设计系统",
+  "designSystemDefault": "DDD（默认）",
+  "designSystemThemeDefault": "{name}（主题默认）",
+  "designSystemHelp": "颜色、字体、圆角和密度。布局仍由主题决定。"
 }

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "LaTeX matematiki belgilenişini ulanyp ýazyň"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Surat fony",
+        "description": "Çyzylan suratlaryň aňyrsyndaky fon. Awtomatik diňe çyzgy sahypada kyn görünjek bolsa, meselem garaňky režimde garaňky çyzyklar, fon goşýar.",
+        "options": {
+          "auto": "Awtomatik",
+          "light": "Ýagty",
+          "dark": "Garaňky",
+          "none": "Ýok"
+        }
+      }
+    ]
   }
 }

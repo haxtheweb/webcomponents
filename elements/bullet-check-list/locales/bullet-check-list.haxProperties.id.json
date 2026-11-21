@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Daftar centang",
+    "description": "Daftar kotak centang. Pembaca mencentang item dan kemajuan mereka diingat di perangkat mereka sendiri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Nama daftar. Dibacakan sebagai label grup kotak centang."
+      },
+      {
+        "title": "Item",
+        "description": "Setiap item adalah kotak centang. Item yang dicentang atau dinonaktifkan tidak dapat diubah oleh pembaca."
+      },
+      {
+        "title": "Bernomor",
+        "description": "Tampilkan daftar bernomor alih-alih berpoin."
+      },
+      {
+        "title": "Status",
+        "description": "Mengubah warna agar sesuai dengan stop-note.",
+        "options": {
+          "info": "Pemberitahuan",
+          "success": "Konfirmasi",
+          "warning": "Peringatan",
+          "stop": "Berhenti"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID penyimpanan",
+        "description": "ID unik untuk mengingat kemajuan pembaca di perangkatnya. Dibuat otomatis; ubah hanya untuk berbagi kemajuan antardaftar atau untuk memulai dari awal."
+      }
+    ]
+  }
+}

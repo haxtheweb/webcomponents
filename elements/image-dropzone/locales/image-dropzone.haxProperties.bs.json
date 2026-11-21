@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona ispuštanja na slici",
+    "description": "Učenici postavljaju oznake na zone položene preko slike, a zatim provjeravaju odgovor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika",
+        "description": "Slika na koju učenici postavljaju oznake."
+      },
+      {
+        "title": "Alternativni tekst",
+        "description": "Opisuje sliku za ljude koji je ne mogu vidjeti. Ne otkrivajte gdje idu oznake."
+      },
+      {
+        "title": "Naslov slike",
+        "description": "Kratak vidljiv naslov slike, prikazan iznad nje."
+      },
+      {
+        "title": "Pitanje",
+        "description": "Šta se od učenika traži da urade s oznakama."
+      },
+      {
+        "title": "Oznake i zone",
+        "description": "Svaka stavka je oznaka koju učenici mogu postaviti. Dajte oznaci naziv zone da njenu zonu postavite na sliku; oznaka bez naziva zone je višak koji nigdje ne pripada. Brojevi zona su postoci slike."
+      },
+      {
+        "title": "Potpis",
+        "description": "Opcionalni potpis prikazan ispod slike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta učenik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "title": "Promiješaj oznake",
+        "description": "Prikaži oznake drugačijim redoslijedom pri svakoj posjeti."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao red koji se otvara i zatvara. Otvaranje jednog zatvara druga sklopiva pitanja pored njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni red koji prikazuje samo pitanje i status."
+      },
+      {
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovo, postotak, završenost)."
+      },
+      {
+        "title": "Cilj učenja",
+        "description": "OER Schema: cilj učenja povezan s ovom procjenom."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sistemima."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      }
+    ]
+  }
+}

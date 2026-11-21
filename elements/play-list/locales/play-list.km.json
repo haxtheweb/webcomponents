@@ -9,5 +9,7 @@
   "slidePages": "ទំព័រស្លាយ",
   "goToSlide": "ទៅកាន់ស្លាយ {number}",
   "slides": "ស្លាយ",
-  "position": "{number} ក្នុងចំណោម {total}"
+  "position": "{number} ក្នុងចំណោម {total}",
+  "fullScreen": "ពេញអេក្រង់",
+  "exitFullScreen": "ចាកចេញពីពេញអេក្រង់"
 }

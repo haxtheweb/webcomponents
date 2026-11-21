@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numeerinen kysymys",
+    "description": "Kysymys, johon vastataan luvulla. Vastaus on kiinteä luku tai muuttujista laskettu kaava, ja se hyväksytään, kun se on toleranssin sisällä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kysymys",
+        "description": "Mitä oppijoilta kysytään. Kirjoita muuttujan nimi aaltosulkeisiin, kuten {d}, näyttääksesi sen arvon."
+      },
+      {
+        "title": "Yksikkö",
+        "description": "Näytetään tekstinä vastauskentän vieressä, esimerkiksi km/h."
+      },
+      {
+        "title": "Vastaus",
+        "description": "Oikea luku. Jätä tyhjäksi, kun kaava laskee vastauksen."
+      },
+      {
+        "title": "Kaava",
+        "description": "Laskee vastauksen muuttujista, esimerkiksi d / (t / 60). Voi käyttää merkkejä + - * / ^, sulkeita, sqrt() ja abs(). Käytetään vastauksen sijaan, kun asetettu."
+      },
+      {
+        "title": "Muuttujat",
+        "description": "Luvut, joita kaava ja kysymys käyttävät. Kukin saa arvon pienimmän ja suurimman arvonsa väliltä askelin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranssi",
+        "description": "Kuinka kaukana tarkasta vastauksesta vielä hyväksytään. 0 tarkoittaa tarkkaa tai alla olevaan desimaalimäärään pyöristettyä."
+      },
+      {
+        "title": "Toleranssin tyyppi",
+        "description": "Absoluuttinen: plus tai miinus toleranssi. Prosentti: plus tai miinus kyseinen prosentti tarkasta vastauksesta.",
+        "options": {
+          "absolute": "Absoluuttinen",
+          "percent": "Prosentti"
+        }
+      },
+      {
+        "title": "Desimaalit",
+        "description": "Oppijoita pyydetään pyöristämään näin moneen desimaaliin, ja vastaus näytetään siihen pyöristettynä. Jätä tyhjäksi, jos pyöristystä ei käytetä."
+      },
+      {
+        "title": "Yritykset",
+        "description": "Montako kertaa oppija voi tarkistaa. 0 tarkoittaa rajoittamatonta."
+      },
+      {
+        "title": "Uudet luvut joka yrityksellä",
+        "description": "Arvo muuttujille uudet arvot aina, kun oppija yrittää uudelleen. Aiempaa vastausta ei silloin näytetä palatessa, vain se, oliko se oikein."
+      },
+      {
+        "title": "Kutistettava",
+        "description": "Näytä tämä kysymys avautuvana ja sulkeutuvana rivinä. Yhden avaaminen sulkee viereiset kutistettavat kysymykset."
+      },
+      {
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, aloita suljettuna rivinä, joka näyttää vain kysymyksen ja tilan."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      }
+    ]
+  }
+}

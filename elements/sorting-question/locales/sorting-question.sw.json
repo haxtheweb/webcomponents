@@ -40,5 +40,7 @@
   "hideDirections": "Ficha maelekezo",
   "showRelatedContent": "Onyesha maudhui yanayohusiana",
   "hideRelatedContent": "Ficha maudhui yanayohusiana",
-  "notAttempted": "Haijajaribiwa"
+  "notAttempted": "Haijajaribiwa",
+  "cardsDirections": "Panga kadi kwa mpangilio sahihi kwa vitufe vya sogeza mapema na sogeza baadaye kwenye kila kadi, au uziburute kwa kipanya. Ukiamini ziko kwa mpangilio sahihi, jaribu jibu lako kwa kuchagua {checkAnswer}.",
+  "movedToPosition": "{item} imehamishiwa nafasi {position} kati ya {total}"
 }

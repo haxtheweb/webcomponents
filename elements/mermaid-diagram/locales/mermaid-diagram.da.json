@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "rutediagram",
+  "sequence": "sekvens",
+  "source": "Kilde",
+  "textAlternative": "Tekstalternativ",
+  "present": "Præsentér",
+  "exitPresent": "Afslut præsentation",
+  "loading": "Indlæser diagrammet",
+  "empty": "Intet at tegne endnu. Tilføj diagrammets kilde.",
+  "error": "Fejl",
+  "parseError": "Dette diagram kunne ikke tegnes. Tjek kilden.",
+  "loadError": "Diagrambiblioteket kunne ikke indlæses.",
+  "srcError": "Diagramfilen kunne ikke indlæses.",
+  "decision": "beslutning",
+  "end": "slut",
+  "goTo": "gå til {target}",
+  "ifGoTo": "hvis {label}, gå til {target}",
+  "describedBySource": "Diagram beskrevet af sin kilde.",
+  "scrollable": "Diagram, kan rulles"
+}

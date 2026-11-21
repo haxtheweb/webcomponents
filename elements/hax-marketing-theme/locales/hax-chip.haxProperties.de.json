@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Ein kleines beschriftetes Symbol"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Symbol"
+      },
+      {
+        "title": "Beschriftung"
+      }
+    ]
+  }
+}

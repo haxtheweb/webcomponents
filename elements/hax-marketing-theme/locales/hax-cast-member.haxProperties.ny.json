@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Wosewera",
+    "description": "Omvera amodzi, oseweredwa ndi munthu wojambulidwa, ndi mawu ndi batani"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Uyu ndi ndani"
+      },
+      {
+        "title": "Mtundu wa munthu wojambulidwa"
+      },
+      {
+        "title": "Mbewu ya munthu wojambulidwa"
+      },
+      {
+        "title": "Mtundu wa siteji (dzina la DDD)"
+      },
+      {
+        "title": "Komwe batani limapita"
+      },
+      {
+        "title": "Zolemba za batani"
+      }
+    ]
+  }
+}

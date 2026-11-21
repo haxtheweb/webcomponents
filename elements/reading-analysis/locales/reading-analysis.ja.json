@@ -60,6 +60,8 @@
   "flagsFound": "{total}件中{correct}件を発見",
   "toRethink": "見直しが必要: {count}件",
   "notEvidence": "このフラグの根拠ではありません",
+  "isEvidence": "このフラグの根拠",
+  "readingKeys": "矢印キーで次の {unit} に移動します。",
   "markAnswers": "正解を設定",
   "doneMarking": "正解の設定を終了",
   "editHint": "下の文章を編集してください。ブロックメニューの「正解を設定」で、各フラグを置く場所を選びます。",

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Pukllaq",
+    "description": "Huk uyariq, huk runap pukllasqan, simikunawan huk ñit'inawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pitaq kay"
+      },
+      {
+        "title": "Runap layan"
+      },
+      {
+        "title": "Runap muhun"
+      },
+      {
+        "title": "Escenariop llimp'in (DDD suti)"
+      },
+      {
+        "title": "Ñit'ina maymanchus rin"
+      },
+      {
+        "title": "Ñit'inap qillqan"
+      }
+    ]
+  }
+}

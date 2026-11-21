@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ọmọ ẹgbẹ́ òṣèré",
+    "description": "Olùgbọ́ kan, tí ẹ̀dá-ìtàn kan ń ṣe, pẹ̀lú ọ̀rọ̀ àti bọ́tìnnì"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta ni èyí"
+      },
+      {
+        "title": "Irú ẹ̀dá-ìtàn"
+      },
+      {
+        "title": "Irúgbìn ẹ̀dá-ìtàn"
+      },
+      {
+        "title": "Àwọ̀ ìtàgé (orúkọ DDD)"
+      },
+      {
+        "title": "Ibi tí bọ́tìnnì ń lọ"
+      },
+      {
+        "title": "Ọ̀rọ̀ bọ́tìnnì"
+      }
+    ]
+  }
+}

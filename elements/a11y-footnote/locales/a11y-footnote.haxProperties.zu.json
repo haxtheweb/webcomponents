@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Inothi yaphansi",
+    "description": "Inothi elibhalwe lapho elifanele khona embhalweni. Liboniswa njengenombolo, futhi uhlu lwamanothi olunezinombolo luzakhela lona ngezansi kwekhasi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inothi",
+        "description": "Umbhalo wenothi yaphansi."
+      },
+      {
+        "title": "Akukho ukubuka kuqala",
+        "description": "Ungalibonisi inothi uma umfundi ezulazula noma egxila enombolweni."
+      }
+    ]
+  }
+}

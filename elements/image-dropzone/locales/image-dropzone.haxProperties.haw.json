@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Wahi hoʻokuʻu kiʻi",
+    "description": "Kau nā haumāna i nā lepili ma nā wahi i uhi ʻia ma luna o kekahi kiʻi, a laila nānā i kā lākou pane."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiʻi",
+        "description": "Ke kiʻi e kau ai nā haumāna i nā lepili."
+      },
+      {
+        "title": "Kikokikona pani",
+        "description": "Wehewehe i ke kiʻi no ka poʻe hiki ʻole ke ʻike iā ia. Mai hōʻike i kahi e hele ai nā lepili."
+      },
+      {
+        "title": "Poʻo inoa kiʻi",
+        "description": "He poʻo inoa pōkole ʻike ʻia no ke kiʻi, hōʻike ʻia ma luna ona."
+      },
+      {
+        "title": "Nīnau",
+        "description": "Ka mea i noi ʻia i nā haumāna e hana me nā lepili."
+      },
+      {
+        "title": "Nā lepili a me nā wahi",
+        "description": "He lepili kēlā me kēia mea hiki i nā haumāna ke kau. E hāʻawi i ka lepili i inoa wahi e kau ai i kona wahi ma ke kiʻi; ʻo ka lepili me ka inoa wahi ʻole he keu ia ʻaʻohe ona wahi. He pakeneka o ke kiʻi nā helu wahi."
+      },
+      {
+        "title": "Kākau kiʻi",
+        "description": "Kākau kiʻi koho i hōʻike ʻia ma lalo o ke kiʻi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nā hoʻāʻo",
+        "description": "ʻEhia manawa e hiki ai i kekahi haumāna ke nānā. ʻO ka 0, palena ʻole."
+      },
+      {
+        "title": "Hoʻohuikau i nā lepili",
+        "description": "Hōʻike i nā lepili ma ke kaʻina ʻokoʻa i kēlā me kēia kipa ʻana."
+      },
+      {
+        "title": "Hiki ke ʻōpiʻi",
+        "description": "Hōʻike i kēia nīnau ma ke ʻano he lālani e wehe a pani ai. Ke wehe ʻia kekahi, pani ʻia nā nīnau ʻōpiʻi ʻē aʻe ma kona ʻaoʻao."
+      },
+      {
+        "title": "Hoʻomaka me ka ʻōpiʻi",
+        "description": "Ke hiki ke ʻōpiʻi, e hoʻomaka ma ke ʻano he lālani pani e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      },
+      {
+        "title": "ʻAno kaha helu",
+        "description": "OER Schema: ke ʻano kaha helu no kēia loiloi (e laʻa nā ʻai, hua palapala, pakeneka, pau ʻana)."
+      },
+      {
+        "title": "Pahuhopu aʻo",
+        "description": "OER Schema: ka pahuhopu aʻo e pili ana i kēia loiloi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Inoa o ka hoʻokolohua",
+        "description": "Inoa hoʻokolohua i hoʻohana ʻia no ka hōʻike xAPI ma nā ʻōnaehana kālailai."
+      },
+      {
+        "title": "Papa",
+        "description": "OER Schema: ka papa i manaʻo ʻia ai kēia loiloi."
+      }
+    ]
+  }
+}

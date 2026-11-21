@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Peteĩ ta'ãnga tuicha, GIF térã video omoakãva ha moñe'ẽrã reheve ijyvatégui, oñemoĩva oimeraẽ hendápe kuatiaroguépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãnga térã video",
+        "description": "Peteĩ marandurenda JPG, PNG, WebP, GIF, MP4 térã WebM."
+      },
+      {
+        "title": "Moñe'ẽrã ambue",
+        "description": "Emombe'u ta'ãnga. Eheja nandi ha'éramo mbojeguaha añoite."
+      },
+      {
+        "title": "Omoakãva",
+        "description": "Omoakãva ojehechaukáva media ári. Eheja nandi ndaipotáiramo."
+      },
+      {
+        "title": "Moñe'ẽrã",
+        "description": "Moñe'ẽrã ojehechaukáva omoakãva guýpe, media ári."
+      },
+      {
+        "title": "Ipekue henyhẽva",
+        "description": "Oho rembe'ýgui rembe'ýpe tekoha columna-pe opyta rangue."
+      },
+      {
+        "title": "Yvatekue",
+        "options": {
+          "tall": "Ijyvate",
+          "medium": "Mbytegua",
+          "short": "Mbyky"
+        }
+      },
+      {
+        "title": "Ñemohenda marco-pe",
+        "description": "Mba'éichapa oñemoĩ ta'ãnga peteĩteĩ mba'erechaha tuichakuépe"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ñemokañy mbeguemi",
+        "description": "Sa'y oñemoĩva media ári. Omoakãva térã moñe'ẽrã reheve oĩ tapiaite peteĩ, moñe'ẽrã ikatu hag̃uáicha oñemoñe'ẽ.",
+        "options": {
+          "blue": "Hovy",
+          "bottom": "Pytũ iguýpe",
+          "none": "Mba'eve"
+        }
+      },
+      {
+        "title": "Moñe'ẽrã renda",
+        "options": {
+          "bottom": "Iguýpe",
+          "middle": "Mbytépe"
+        }
+      },
+      {
+        "title": "Punto focal yke gotyo",
+        "description": "Ta'ãnga vore opytáva ojehecha oñekytĩvo, 0 (asu) guive 100 (akatúa) peve."
+      },
+      {
+        "title": "Punto focal yvy gotyo",
+        "description": "Ta'ãnga vore opytáva ojehecha oñekytĩvo, 0 (yvate) guive 100 (iguýpe) peve."
+      }
+    ]
+  }
+}

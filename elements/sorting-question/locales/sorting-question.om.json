@@ -40,5 +40,7 @@
   "hideDirections": "Qajeelfama dhoksi",
   "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
   "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
-  "notAttempted": "Hin yaalamne"
+  "notAttempted": "Hin yaalamne",
+  "cardsDirections": "Qabduuwwan gara duraa fi gara boodaatti socho'suu kaardii tokkoon tokkoon irra jiraniin kaardiiwwan tartiiba sirrii keessa kaa'i, ykn maawusiidhaan harkisi. Yeroo tartiibni sirrii ta'uu amantu, {checkAnswer} filachuun deebii kee qori.",
+  "movedToPosition": "{item} gara bakka {total} keessaa {position} tti socho'eera"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Layin fasali",
+    "description": "Allon samfurin kusa da abin da yake nufi a gare ka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ƙaramin lakabi"
+      },
+      {
+        "title": "Kanun labari"
+      },
+      {
+        "title": "Hoto"
+      },
+      {
+        "title": "Abin da hoton ke nunawa"
+      },
+      {
+        "title": "Hoto a dama"
+      },
+      {
+        "title": "Launin inuwa (sunan DDD, idan babu komai yana bin palette)"
+      }
+    ]
+  }
+}

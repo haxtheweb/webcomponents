@@ -6,6 +6,8 @@
   "faviconDescription": "ภาพบนแท็บเบราว์เซอร์ / ใช้บนโทรศัพท์เป็นโลโก้ไซต์ขนาดเล็ก",
   "domain": "โดเมน",
   "domainDescription": "โดเมนของเว็บไซต์นี้",
+  "sameAs": "โปรไฟล์อื่นของเว็บไซต์นี้",
+  "sameAsDescription": "หนึ่งลิงก์ต่อบรรทัด ไปยังโปรไฟล์ของเว็บไซต์หรือองค์กรนี้ที่อื่น (GitHub, LinkedIn, YouTube, Mastodon) เสิร์ชเอนจินใช้ลิงก์เหล่านี้เชื่อมโปรไฟล์กับเว็บไซต์นี้",
   "language": "ภาษา",
   "languageDescription": "ภาษาของไซต์นี้ ค้นหาด้วยชื่อหรือรหัส หรือป้อนรหัสอื่น เช่น fr-CA",
   "googleAnalyticsId": "Google Analytics ID",

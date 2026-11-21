@@ -40,5 +40,7 @@
   "hideDirections": "Skjul vejledning",
   "showRelatedContent": "Vis relateret indhold",
   "hideRelatedContent": "Skjul relateret indhold",
-  "notAttempted": "Ikke forsøgt"
+  "notAttempted": "Ikke forsøgt",
+  "cardsDirections": "Sæt kortene i den rigtige rækkefølge med knapperne flyt tidligere og flyt senere på hvert kort, eller træk dem med en mus. Når du mener, de er i den rigtige rækkefølge, så test dit svar ved at vælge {checkAnswer}.",
+  "movedToPosition": "{item} flyttet til position {position} af {total}"
 }

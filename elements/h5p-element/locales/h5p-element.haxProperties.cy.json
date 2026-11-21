@@ -4,7 +4,12 @@
     "description": "Yn chwarae cynnwys rhyngweithiol H5P o ffeil .h5p a uwchlwythwyd, heb angen gweinydd H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Ffeil H5P",
+        "description": "Uwchlwythwch neu cysylltwch ffeil .h5p. Caiff ei dadbacio yn y porwr; nid oes angen gweinydd H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Cod mewnosod iframe etifeddol",

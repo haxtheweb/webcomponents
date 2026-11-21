@@ -23,7 +23,9 @@
           "stop": "Dayan",
           "warning": "Xəbərdarlıq",
           "success": "Təsdiq",
-          "info": "Bildiriş"
+          "info": "Bildiriş",
+          "tip": "Məsləhət",
+          "new": "Yeniliklər"
         }
       },
       {

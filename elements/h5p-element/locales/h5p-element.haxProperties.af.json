@@ -4,7 +4,12 @@
     "description": "Speel interaktiewe H5P-inhoud vanaf 'n opgelaaide .h5p-lêer, sonder dat 'n H5P-bediener nodig is"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-lêer",
+        "description": "Laai 'n .h5p-lêer op of skakel daarna. Dit word in die blaaier uitgepak; geen H5P-bediener word benodig nie."
+      }
+    ],
     "advanced": [
       {
         "title": "Ou iframe-invoegkode",

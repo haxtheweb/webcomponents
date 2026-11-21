@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Tekst alternatywny"
+        "title": "Tekst alternatywny",
+        "description": "Opisz obraz dla osób, które go nie widzą."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są rozwinięte"
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są rozwinięte",
+        "description": "Tekst przycisku, gdy opis jest ukryty, np. Pokaż opis."
       },
       {
         "property": "closeText",
-        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są zwinięte"
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są zwinięte",
+        "description": "Tekst przycisku, gdy opis jest widoczny, np. Ukryj opis."
       }
     ]
   }

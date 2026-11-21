@@ -40,5 +40,7 @@
   "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
   "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
   "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
-  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ",
+  "cardsDirections": "ਹਰ ਕਾਰਡ ਤੇ ਪਹਿਲਾਂ ਕਰੋ ਅਤੇ ਬਾਅਦ ਵਿੱਚ ਕਰੋ ਬਟਨਾਂ ਨਾਲ ਕਾਰਡਾਂ ਨੂੰ ਸਹੀ ਕ੍ਰਮ ਵਿੱਚ ਰੱਖੋ, ਜਾਂ ਮਾਊਸ ਨਾਲ ਘਸੀਟੋ। ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੱਗੇ ਕਿ ਕ੍ਰਮ ਸਹੀ ਹੈ, {checkAnswer} ਚੁਣ ਕੇ ਆਪਣਾ ਜਵਾਬ ਜਾਂਚੋ।",
+  "movedToPosition": "{item} ਨੂੰ {total} ਵਿੱਚੋਂ ਸਥਾਨ {position} ਤੇ ਲਿਜਾਇਆ"
 }

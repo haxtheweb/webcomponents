@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "زر القصة",
+    "description": "الزر الذي يفتح القصة وراء ادعاء على hax.cloud، أو المكان المطابق على موقع آخر من شبكة HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "الوجهة",
+        "options": {
+          "cloud": "hax.cloud، القصة",
+          "learn": "learn.hax.cloud، درس",
+          "try": "browser.hax.cloud، جرّبه",
+          "elements": "webcomponents.hax.cloud، كتلة",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "العنوان على ذلك الموقع (القصة على hax.cloud تبدو مثل stories/ee450a19)"
+      },
+      {
+        "title": "موضوعه"
+      },
+      {
+        "title": "شارة صغيرة"
+      },
+      {
+        "title": "إظهار الموضوع في الزر"
+      }
+    ]
+  }
+}

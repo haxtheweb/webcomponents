@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Lawan",
+    "description": "Kata-kata di sebelah butang bersemuka dengan dua watak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk"
+      },
+      {
+        "title": "Destinasi butang"
+      },
+      {
+        "title": "Teks butang"
+      },
+      {
+        "title": "Benih watak kiri"
+      },
+      {
+        "title": "Benih watak kanan"
+      }
+    ]
+  }
+}

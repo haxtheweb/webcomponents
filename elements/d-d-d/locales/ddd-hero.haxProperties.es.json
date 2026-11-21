@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Cabecera destacada",
+    "description": "Una imagen, GIF o vídeo grande con un encabezado y texto encima, que se puede colocar en cualquier parte de una página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagen o vídeo",
+        "description": "Un archivo JPG, PNG, WebP, GIF, MP4 o WebM."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Describe la imagen. Déjalo vacío si es solo decorativa."
+      },
+      {
+        "title": "Encabezado",
+        "description": "Encabezado que se muestra sobre el medio. Déjalo vacío para no mostrar ninguno."
+      },
+      {
+        "title": "Texto",
+        "description": "Texto que se muestra bajo el encabezado, sobre el medio."
+      },
+      {
+        "title": "Ancho completo",
+        "description": "Ocupa de borde a borde en lugar de quedarse en la columna de contenido."
+      },
+      {
+        "title": "Alto",
+        "options": {
+          "tall": "Alta",
+          "medium": "Media",
+          "short": "Baja"
+        }
+      },
+      {
+        "title": "Encuadre",
+        "description": "Cómo se coloca la foto en cada tamaño de pantalla"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Velo",
+        "description": "Color superpuesto al medio. Con un encabezado o texto siempre hay uno, para que el texto se pueda leer.",
+        "options": {
+          "blue": "Azul",
+          "bottom": "Oscuro en la parte inferior",
+          "none": "Ninguno"
+        }
+      },
+      {
+        "title": "Posición del texto",
+        "options": {
+          "bottom": "Abajo",
+          "middle": "En medio"
+        }
+      },
+      {
+        "title": "Punto focal horizontal",
+        "description": "Parte de la imagen que permanece visible cuando se recorta, de 0 (izquierda) a 100 (derecha)."
+      },
+      {
+        "title": "Punto focal vertical",
+        "description": "Parte de la imagen que permanece visible cuando se recorta, de 0 (arriba) a 100 (abajo)."
+      }
+    ]
+  }
+}

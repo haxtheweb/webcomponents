@@ -23,7 +23,9 @@
           "stop": "Steðga",
           "warning": "Ávaring",
           "success": "Váttan",
-          "info": "Fráboðan"
+          "info": "Fráboðan",
+          "tip": "Ráð",
+          "new": "Hvat er nýtt"
         }
       },
       {

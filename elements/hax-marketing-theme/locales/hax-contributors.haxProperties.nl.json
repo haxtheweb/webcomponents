@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bijdragers",
+    "description": "De mensen die het project bouwden, uit een rosterbestand"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rosterbestand (JSON)"
+      },
+      {
+        "title": "Weergave: landed, lab of code"
+      },
+      {
+        "title": "Maximaal aantal te tonen mensen (0 is iedereen)"
+      }
+    ]
+  }
+}

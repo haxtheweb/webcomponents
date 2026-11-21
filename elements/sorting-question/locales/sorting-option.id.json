@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Jawaban dalam urutan yang benar",
   "answerInIncorrectOrder": "Jawaban dalam urutan yang salah",
   "moveOptionUp": "Pilih untuk memindahkan opsi ke atas dalam urutan",
-  "moveOptionDown": "Pilih untuk memindahkan opsi ke bawah dalam urutan"
+  "moveOptionDown": "Pilih untuk memindahkan opsi ke bawah dalam urutan",
+  "moveEarlier": "Pindah lebih awal",
+  "moveLater": "Pindah lebih akhir",
+  "correct": "Benar",
+  "incorrect": "Salah"
 }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Dewisydd defnydd",
+    "description": "Dewiswch at beth mae gwefan a chael dolen sy'n agor HAX yn y porwr gyda'r wefan gychwynnol honno, ynghyd â'r gorchymyn CLI cyfatebol."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cyfeiriad HAX yn y porwr",
+        "description": "Ble mae'r ddolen yn agor; mae ?skeleton= a &name= yn cael eu hychwanegu"
+      },
+      {
+        "title": "Gwefannau cychwynnol i'w gadael allan",
+        "description": "Enwau peiriant, wedi'u gwahanu gan atalnod"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rhestr gwefannau cychwynnol",
+        "description": "Cyfeiriad y rhestr sgerbydau (y fformat y mae app-hax yn ei ddarllen)"
+      }
+    ]
+  }
+}

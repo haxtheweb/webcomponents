@@ -40,5 +40,7 @@
   "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
   "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
   "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
-  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ",
+  "cardsDirections": "ຈັດບັດໃຫ້ຖືກລຳດັບດ້ວຍປຸ່ມ ຍ້າຍໄປກ່ອນ ແລະ ຍ້າຍໄປຫຼັງ ໃນແຕ່ລະບັດ, ຫຼື ລາກພວກມັນດ້ວຍເມົ້າ. ເມື່ອທ່ານເຊື່ອວ່າຖືກລຳດັບແລ້ວ, ທົດສອບຄຳຕອບໂດຍເລືອກ {checkAnswer}.",
+  "movedToPosition": "ຍ້າຍ {item} ໄປຕຳແໜ່ງ {position} ຈາກ {total} ແລ້ວ"
 }

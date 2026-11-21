@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "гарчиг"
+        "title": "гарчиг",
+        "description": "Хичээлийн загварын дээр харагдах гарчиг."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Харуулах 3D загварын файлын (.glb эсвэл .gltf) хаяг."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Харж чадахгүй хүмүүст зориулж 3D загварыг тайлбарлана уу."
       },
       {
         "title": "Мэдээллийн хэсэг"

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Untwerpsysteem",
+  "dddDefault": "DDD (standert)",
+  "designSystemHelp": "Kleur, lettertype, hoeken en fokus. It tema hâldt de opmaak.",
+  "designSystemFixed": "Dit tema hâldt syn eigen ûntwerpsysteem.",
+  "palette": "Palet",
+  "themeDefault": "Temastandert",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (it tema fan dizze side)",
+  "restyle": "Dizze side in nije styl jaan",
+  "close": "Slute",
+  "reset": "Werom nei de eigen útstrieling fan dizze side",
+  "random": "Ferras my",
+  "about": "Dit lit in pear fan de útstrielings sjen dy't yn HAX ynboud binne. De siden feroarje nea: de struktuer libbet yn JSON Outline Schema en elk blok is in standert webkomponint, dus it ûntwerp kin frij wiksele wurde."
+}

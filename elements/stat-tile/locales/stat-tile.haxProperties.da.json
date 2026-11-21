@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikfelt",
+    "description": "Ét tal, der betyder noget, med dets etiket og hvordan det har ændret sig. Placér flere i et gitter til en kontrolpanelrække."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Hvad tallet måler."
+      },
+      {
+        "title": "Værdi",
+        "description": "Tallet. Et almindeligt tal grupperes efter sidens sprog; alt andet vises som skrevet."
+      },
+      {
+        "title": "Ændring",
+        "description": "Hvordan det har ændret sig, i ord, såsom 6% dette semester."
+      },
+      {
+        "title": "Retning",
+        "description": "Om ændringen går op eller ned.",
+        "options": {
+          "": "Ingen",
+          "up": "Op",
+          "down": "Ned"
+        }
+      }
+    ]
+  }
+}

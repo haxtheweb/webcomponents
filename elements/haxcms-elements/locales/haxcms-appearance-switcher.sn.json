@@ -1,0 +1,8 @@
+{
+  "theme": "Theme",
+  "palette": "Paleti",
+  "themeDefault": "Yakajairwa netheme",
+  "designSystem": "Hurongwa hwedhizaini",
+  "designSystemDefault": "DDD (yakajairwa)",
+  "designSystemUnavailable": "Theme iyi inochengeta hurongwa hwayo hwedhizaini"
+}

@@ -2,5 +2,9 @@
   "toggleAnimation": "Whakakā/whakaweto i te hākoritanga",
   "info": "mōhiohio",
   "image": "Whakaahua",
-  "animatedGif": "GIF hākoritanga"
+  "animatedGif": "GIF hākoritanga",
+  "playAnimation": "Pūrei i te hākoritanga",
+  "pauseAnimation": "Tatari i te hākoritanga",
+  "showDescription": "Whakaatu i te whakaahuatanga",
+  "hideDescription": "Huna i te whakaahuatanga"
 }

@@ -2,5 +2,9 @@
   "toggleAnimation": "Animaatio päälle/pois",
   "info": "tiedot",
   "image": "Kuva",
-  "animatedGif": "Animoitu GIF"
+  "animatedGif": "Animoitu GIF",
+  "playAnimation": "Toista animaatio",
+  "pauseAnimation": "Keskeytä animaatio",
+  "showDescription": "Näytä kuvaus",
+  "hideDescription": "Piilota kuvaus"
 }

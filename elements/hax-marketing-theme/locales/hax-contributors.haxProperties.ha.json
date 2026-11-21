@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Masu ba da gudummawa",
+    "description": "Mutanen da suka gina aikin, daga fayil ɗin jerin sunaye"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fayil ɗin jerin sunaye (JSON)"
+      },
+      {
+        "title": "Duba: landed, lab ko code"
+      },
+      {
+        "title": "Mafi yawan mutanen da za a nuna (0 duka ne)"
+      }
+    ]
+  }
+}

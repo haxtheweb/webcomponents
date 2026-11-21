@@ -1,4 +1,6 @@
 {
   "saveAll": "Gcina Konke",
-  "saveTheFollowing": "Gcina lokhu okulandelayo: {list}?"
+  "saveTheFollowing": "Gcina lokhu okulandelayo: {list}?",
+  "save": "Londoloza",
+  "cancel": "Khansela"
 }

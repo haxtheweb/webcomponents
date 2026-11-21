@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Daftar langkah",
     "description": "Langkah bernomor untuk menyelesaikan tugas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indikator langkah",
+        "description": "Tampilkan langkah sebagai baris judul ringkas yang menandai kemajuan. Isi langkah tidak ditampilkan dalam tata letak ini."
+      },
+      {
+        "title": "Langkah saat ini",
+        "description": "Langkah tempat pembaca berada, dihitung dari 1. Langkah sebelumnya ditampilkan sebagai selesai. Digunakan oleh indikator langkah."
+      }
+    ]
   }
 }

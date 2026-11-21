@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ñe'ẽ jeheka",
+    "description": "Peteĩ tai kuadrícula ñe'ẽ kañymby reheve. Temimbo'ekuéra ojopy peteĩteĩ ñe'ẽ tai peteĩha ha paha. Ojeporu ohechakuaa hag̃ua mba'éichapa ojehai peteĩ ñe'ẽ, ndaha'éi he'iséva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Mba'épa ojejerure temimbo'ekuérape ojuhu hag̃ua, ojehechaukáva iñakãme."
+      },
+      {
+        "title": "Ñe'ẽkuéra",
+        "description": "Ñe'ẽ ojeñomi hag̃ua. Pa'ũ ha kyta opyta kuadrícula okápe. Ñe'ẽ ndoikéiva oñemoĩ listápe rembosako'i aja ha opyta okápe temimbo'ekuérape g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuadrícula tuichakue",
+        "description": "Tai peteĩteĩ ykére, 4 guive 16 peve. Eheja nandi oike hag̃ua ñe'ẽ ipukuvéva (12 peve). 12 ári ojeku'e ykére gotyo pumbyrýpe."
+      },
+      {
+        "title": "Ñe'ẽ ijyke gotyo",
+        "description": "Avei emokañy ñe'ẽ ijyke gotyo. Hasyve."
+      },
+      {
+        "title": "Ñe'ẽ tapykue gotyo",
+        "description": "Avei emokañy ñe'ẽ ojehaíva tapykue gotyo. Hasyve."
+      },
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Sa'y ojeiporavokuaáva iñakã chip, tai peteĩha ojeiporavóva ha botõme g̃uarã."
+      }
+    ]
+  }
+}

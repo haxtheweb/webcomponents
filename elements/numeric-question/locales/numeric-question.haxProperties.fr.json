@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Question numérique",
+    "description": "Une question à laquelle on répond par un nombre. La réponse est un nombre fixe ou une formule calculée à partir de variables, et compte si elle est dans une tolérance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Question",
+        "description": "Ce qui est demandé aux apprenants. Écrivez un nom de variable entre accolades, comme {d}, pour afficher sa valeur."
+      },
+      {
+        "title": "Unité",
+        "description": "Affichée sous forme de texte à côté du champ de réponse, par exemple km/h."
+      },
+      {
+        "title": "Réponse",
+        "description": "Le nombre correct. Laissez vide quand une formule calcule la réponse."
+      },
+      {
+        "title": "Formule",
+        "description": "Calcule la réponse à partir des variables, par exemple d / (t / 60). Peut utiliser + - * / ^, des parenthèses, sqrt() et abs(). Utilisée à la place de la réponse si elle est définie."
+      },
+      {
+        "title": "Variables",
+        "description": "Nombres utilisés par la formule et la question. Chacun prend une valeur entre son minimum et son maximum, par pas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolérance",
+        "description": "Écart par rapport à la réponse exacte qui compte encore. 0 signifie exact, ou arrondi aux décimales ci-dessous."
+      },
+      {
+        "title": "Type de tolérance",
+        "description": "Absolue : plus ou moins la tolérance. Pourcentage : plus ou moins ce pourcentage de la réponse exacte.",
+        "options": {
+          "absolute": "Absolue",
+          "percent": "Pourcentage"
+        }
+      },
+      {
+        "title": "Décimales",
+        "description": "On demande aux apprenants d'arrondir à ce nombre de décimales, et la réponse est affichée arrondie ainsi. Laissez vide pour ne pas arrondir."
+      },
+      {
+        "title": "Tentatives",
+        "description": "Combien de fois un apprenant peut vérifier. 0 signifie illimité."
+      },
+      {
+        "title": "Nouveaux nombres à chaque essai",
+        "description": "Tirer de nouvelles valeurs de variables à chaque nouvel essai d'un apprenant. Sa réponse précédente n'est alors pas affichée à son retour, seulement s'il avait juste."
+      },
+      {
+        "title": "Repliable",
+        "description": "Afficher cette question sous forme de ligne qui s'ouvre et se ferme. En ouvrir une ferme les autres questions repliables à côté."
+      },
+      {
+        "title": "Démarrer replié",
+        "description": "Si repliable, commencer comme une ligne fermée qui n'affiche que la question et son état."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      }
+    ]
+  }
+}

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Media modifikatoru",
-        "description": "İstəyə bağlı media sahəsi modifikatoru. Bu lisenziyanın aid olduğu media növünü müəyyən edir."
+        "description": "İstəyə bağlı media sahəsi modifikatoru. Bu lisenziyanın aid olduğu media növünü müəyyən edir.",
+        "options": {
+          "": "Modifikator yoxdur"
+        }
       },
       {
         "property": "uri",

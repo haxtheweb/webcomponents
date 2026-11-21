@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Mufananidzo wekumashure."
+        "description": "Mufananidzo wekumashure.",
+        "title": "Mufananidzo"
       },
       {
         "property": "caption",
-        "description": "Musoro wemavara."
+        "description": "Musoro wemavara.",
+        "title": "Zita remufananidzo"
       }
     ]
   }

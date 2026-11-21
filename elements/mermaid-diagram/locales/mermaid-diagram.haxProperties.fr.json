@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramme à partir de texte",
+    "description": "Écrivez un diagramme sous forme de texte (Mermaid) : organigramme, séquence, frise chronologique et plus. Il est dessiné dans la page avec une alternative textuelle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Affiché au-dessus du diagramme et utilisé comme son nom."
+      },
+      {
+        "title": "Source du diagramme",
+        "description": "Texte Mermaid, par exemple : flowchart TD, puis une ligne par lien comme A[Draft] --> B{Ready?}. Ajoutez |label| après une flèche pour l'étiqueter. Le dessin se met à jour pendant la saisie."
+      },
+      {
+        "title": "Alternative textuelle",
+        "description": "Décrivez ce que montre le diagramme pour les personnes qui ne peuvent pas le voir. Laissez vide sur un organigramme pour que ses étapes soient listées pour vous."
+      },
+      {
+        "title": "Légende",
+        "description": "Légende facultative affichée sous le diagramme."
+      },
+      {
+        "title": "Afficher la source",
+        "description": "Afficher le texte du diagramme à côté du dessin."
+      },
+      {
+        "title": "Afficher l'alternative textuelle",
+        "description": "Afficher l'alternative textuelle sous le dessin. Elle est toujours disponible pour les lecteurs d'écran."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fichier source",
+        "description": "Adresse d'un fichier .mmd à dessiner à la place du texte ci-dessus (https ou un chemin sur ce site)."
+      },
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur de la pastille d'icône dans l'en-tête."
+      }
+    ]
+  }
+}

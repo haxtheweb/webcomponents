@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Fila de función",
+    "description": "Unha pantalla do produto ao lado do que significa para ti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta pequena"
+      },
+      {
+        "title": "Título"
+      },
+      {
+        "title": "Imaxe"
+      },
+      {
+        "title": "Que mostra a imaxe"
+      },
+      {
+        "title": "Imaxe á dereita"
+      },
+      {
+        "title": "Cor da sombra (nome DDD, en branco segue a paleta)"
+      }
+    ]
+  }
+}

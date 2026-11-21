@@ -1,4 +1,6 @@
 {
   "saveAll": "Gorde guztiak",
-  "saveTheFollowing": "Gorde hauek: {list}?"
+  "saveTheFollowing": "Gorde hauek: {list}?",
+  "save": "Gorde",
+  "cancel": "Utzi"
 }

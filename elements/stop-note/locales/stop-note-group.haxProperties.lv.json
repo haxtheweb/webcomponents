@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note grupa",
+    "description": "Sakraujiet vairākas stop piezīmes vienā blokā, kas rāda pa vienai piezīmei, piemēram, Padomi vai Kas jauns. Kopā ar tām var sakraut norādījumu kartītes, sānu piezīmes un ierāmētus citātus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiķete",
+        "description": "Grupas nosaukums, ko paziņo ekrāna lasītāji, piemēram, Padomi vai Kas jauns."
+      },
+      {
+        "title": "Piezīmes",
+        "description": "Stop piezīmes grupā. Var pievienot arī norādījumu kartītes, sānu piezīmes un ierāmētus citātus."
+      }
+    ]
+  }
+}

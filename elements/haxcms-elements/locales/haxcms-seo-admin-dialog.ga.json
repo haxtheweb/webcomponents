@@ -6,6 +6,8 @@
   "faviconDescription": "Íomhá chluaisín an bhrabhsálaí / úsáidtear ar ghutháin mar lógó beag an tsuímh",
   "domain": "Fearann",
   "domainDescription": "Fearann an tsuímh ghréasáin seo",
+  "sameAs": "Próifílí eile an tsuímh seo",
+  "sameAsDescription": "Nasc amháin in aghaidh na líne le próifílí an tsuímh nó na heagraíochta seo in áiteanna eile (GitHub, LinkedIn, YouTube, Mastodon). Úsáideann innill chuardaigh iad chun na próifílí sin a cheangal leis an suíomh seo.",
   "language": "Teanga",
   "languageDescription": "Teanga an tsuímh seo. Cuardaigh de réir ainm nó cód, nó cuir cód eile isteach mar fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Varování",
           "success": "Potvrzení",
-          "info": "Upozornění"
+          "info": "Upozornění",
+          "tip": "Tip",
+          "new": "Co je nového"
         }
       },
       {

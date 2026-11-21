@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hekayə düyməsi",
+    "description": "hax.cloud-da iddianın arxasındakı hekayəni və ya başqa HAX şəbəkə saytında uyğun yeri açan düymə"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hara aparır",
+        "options": {
+          "cloud": "hax.cloud, hekayə",
+          "learn": "learn.hax.cloud, dərslik",
+          "try": "browser.hax.cloud, sınayın",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Həmin saytdakı ünvan (hax.cloud-da hekayə stories/ee450a19 kimi görünür)"
+      },
+      {
+        "title": "Nədən bəhs edir"
+      },
+      {
+        "title": "Kiçik nişan"
+      },
+      {
+        "title": "Nədən bəhs etdiyini düymədə göstər"
+      }
+    ]
+  }
+}

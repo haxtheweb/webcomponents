@@ -1,0 +1,14 @@
+{
+  "scene": "Zeen",
+  "ending": "Enn",
+  "goodEnding": "Gutt Enn",
+  "mixedEnding": "Gemëscht Enn",
+  "poorEnding": "Schlecht Enn",
+  "scoreOf": "Score {score} vun {max}",
+  "scoreOnly": "Score {score}",
+  "startScene": "Start",
+  "sceneIdLabel": "Zeen-ID",
+  "needsId": "Setzt eng Zeen-ID derbäi, fir datt Wielen op dës Zeen verlinke kënnen.",
+  "orphan": "Keng Wiel verlinkt op dës Zeen.",
+  "deadLinks": "Dës Linke weisen op eng Zeen, déi et net gëtt:"
+}

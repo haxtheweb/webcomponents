@@ -5,5 +5,7 @@
   "editModeLabel": "Режим уређивања медијске плејлисте",
   "position": "{current} од {total}",
   "previousItem": "Претходна ставка",
-  "nextItem": "Следећа ставка"
+  "nextItem": "Следећа ставка",
+  "fullScreen": "Цео екран",
+  "exitFullScreen": "Изађи из целог екрана"
 }

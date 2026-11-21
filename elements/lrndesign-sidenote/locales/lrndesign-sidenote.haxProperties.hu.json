@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Széljegyzet",
+    "description": "A környező tartalomtól elkülönített megjegyzés, opcionális ikonnal és címkével."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Címke",
+        "description": "A széljegyzet címkéje."
+      },
+      {
+        "title": "Ikon",
+        "description": "A széljegyzet ikonja."
+      },
+      {
+        "title": "Tartalom",
+        "description": "A széljegyzet tartalma."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Szín",
+        "description": "A széljegyzet árnyalatának színe."
+      }
+    ]
+  }
+}

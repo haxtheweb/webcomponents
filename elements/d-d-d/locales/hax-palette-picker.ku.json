@@ -5,5 +5,6 @@
   "selected": "Hilbijartî",
   "currentlyActiveAndSelectedPalette": "Paleta niha çalak û hilbijartî",
   "currentlyActivePalette": "Paleta niha çalak",
-  "selectedPaletteToApply": "Paleta hilbijartî ji bo sepandinê"
+  "selectedPaletteToApply": "Paleta hilbijartî ji bo sepandinê",
+  "paletteNumber": "Paleta {number}"
 }

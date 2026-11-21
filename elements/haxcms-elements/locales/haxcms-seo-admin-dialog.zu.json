@@ -6,6 +6,8 @@
   "faviconDescription": "Isithombe sethebhu yesiphequluli / sisetshenziswa ezingcingweni njengelogo encane yesayithi",
   "domain": "Isizinda",
   "domainDescription": "Isizinda sale webhusayithi",
+  "sameAs": "Amaphrofayela amanye ale sayithi",
+  "sameAsDescription": "Isixhumanisi esisodwa emugqeni ngamunye kumaphrofayela ale sayithi noma enhlangano kwenye indawo (GitHub, LinkedIn, YouTube, Mastodon). Izinjini zokusesha ziwasebenzisela ukuxhuma lawo maphrofayela nale sayithi.",
   "language": "Ulimi",
   "languageDescription": "Ulimi lwale sayithi. Sesha ngegama noma ikhodi, noma faka enye ikhodi efana ne-fr-CA.",
   "googleAnalyticsId": "I-ID ye-Google Analytics",

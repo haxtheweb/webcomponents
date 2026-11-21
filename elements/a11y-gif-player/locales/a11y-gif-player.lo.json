@@ -2,5 +2,9 @@
   "toggleAnimation": "ເປີດ/ປິດພາບເຄື່ອນໄຫວ",
   "info": "ຂໍ້ມູນ",
   "image": "ຮູບພາບ",
-  "animatedGif": "GIF ເຄື່ອນໄຫວ"
+  "animatedGif": "GIF ເຄື່ອນໄຫວ",
+  "playAnimation": "ຫຼິ້ນພາບເຄື່ອນໄຫວ",
+  "pauseAnimation": "ຢຸດພາບເຄື່ອນໄຫວຊົ່ວຄາວ",
+  "showDescription": "ສະແດງຄຳອະທິບາຍ",
+  "hideDescription": "ເຊື່ອງຄຳອະທິບາຍ"
 }

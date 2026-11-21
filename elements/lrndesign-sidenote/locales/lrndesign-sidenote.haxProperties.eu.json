@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Alboko oharra",
+    "description": "Inguruko edukitik bereizitako oharra, aukerako ikono eta etiketa batekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Alboko oharraren etiketa."
+      },
+      {
+        "title": "Ikonoa",
+        "description": "Alboko oharraren ikonoa."
+      },
+      {
+        "title": "Edukia",
+        "description": "Alboko oharraren edukia."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kolorea",
+        "description": "Alboko oharra tindatzeko kolorea."
+      }
+    ]
+  }
+}

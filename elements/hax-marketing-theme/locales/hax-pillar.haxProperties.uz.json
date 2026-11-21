@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ustun",
+    "description": "Ustun: nomi, ibora, belgi, rang va nega muhimligi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomi"
+      },
+      {
+        "title": "Ibora"
+      },
+      {
+        "title": "Belgi"
+      },
+      {
+        "title": "Rang (DDD nomi)"
+      },
+      {
+        "title": "Qaysi ustun, 1 dan 7 gacha"
+      },
+      {
+        "title": "Kichik karta"
+      },
+      {
+        "title": "Nom qayerda joylashadi"
+      }
+    ]
+  }
+}

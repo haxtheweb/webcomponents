@@ -6,6 +6,8 @@
   "faviconDescription": "ब्राउजर ट्याब छवि / फोनहरूमा सानो साइट लोगोको रूपमा प्रयोग हुन्छ",
   "domain": "डोमेन",
   "domainDescription": "यस वेबसाइटको डोमेन",
+  "sameAs": "यो साइटका अन्य प्रोफाइलहरू",
+  "sameAsDescription": "अन्यत्रका यो साइट वा संस्थाका प्रोफाइलहरूको प्रति लाइन एउटा लिङ्क (GitHub, LinkedIn, YouTube, Mastodon)। खोज इन्जिनहरूले ती प्रोफाइलहरूलाई यो साइटसँग जोड्न तिनलाई प्रयोग गर्छन्।",
   "language": "भाषा",
   "languageDescription": "यस साइटको भाषा। नाम वा कोडबाट खोज्नुहोस्, वा fr-CA जस्तो अर्को कोड प्रविष्ट गर्नुहोस्।",
   "googleAnalyticsId": "Google Analytics ID",

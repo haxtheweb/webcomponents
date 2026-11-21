@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Leikari",
+    "description": "Einn markhópur, leikinn af persónu, með texta og hnappi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hver þetta er"
+      },
+      {
+        "title": "Tegund persónu"
+      },
+      {
+        "title": "Fræ persónu"
+      },
+      {
+        "title": "Litur sviðs (DDD-heiti)"
+      },
+      {
+        "title": "Hvert hnappurinn vísar"
+      },
+      {
+        "title": "Texti hnapps"
+      }
+    ]
+  }
+}

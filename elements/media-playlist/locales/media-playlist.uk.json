@@ -5,5 +5,7 @@
   "editModeLabel": "Режим редагування медіасписку відтворення",
   "position": "{current} з {total}",
   "previousItem": "Попередній елемент",
-  "nextItem": "Наступний елемент"
+  "nextItem": "Наступний елемент",
+  "fullScreen": "На весь екран",
+  "exitFullScreen": "Вийти з повноекранного режиму"
 }

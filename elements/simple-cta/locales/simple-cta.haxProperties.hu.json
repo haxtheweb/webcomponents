@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ikon elrejtése",
         "description": "A szöveget kiemelő ikon elrejtése"
+      },
+      {
+        "title": "Megjelenés",
+        "description": "Mennyire hangsúlyos a gomb.",
+        "options": {
+          "": "Kitöltött",
+          "tonal": "Tónusos",
+          "outlined": "Körvonalas",
+          "plain": "Egyszerű"
+        }
+      },
+      {
+        "title": "Méret",
+        "description": "Gomb mérete.",
+        "options": {
+          "s": "Kicsi",
+          "": "Közepes",
+          "l": "Nagy"
+        }
       }
     ],
     "advanced": [

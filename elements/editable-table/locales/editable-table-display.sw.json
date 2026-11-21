@@ -3,5 +3,8 @@
   "copyAsCsv": "Nakili kama CSV.",
   "printTable": "Chapisha Jedwali",
   "selectColumn": "Chagua Safu",
-  "dataTable": "Data · Jedwali"
+  "dataTable": "Data · Jedwali",
+  "filterStatus": "Inaonyesha safu {shown} kati ya {total}, zimechujwa kwa {column}: {text}",
+  "columnNumber": "Safu wima {column}",
+  "clearFilter": "Futa kichujio"
 }

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Gumaachitoota",
+    "description": "Namoota pirojektii ijaaran, faayilii galmee maqaa irraa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faayilii galmee maqaa (JSON)"
+      },
+      {
+        "title": "Mul'ata: landed, lab ykn code"
+      },
+      {
+        "title": "Baay'ina namoota agarsiifamanii (0 hunda)"
+      }
+    ]
+  }
+}

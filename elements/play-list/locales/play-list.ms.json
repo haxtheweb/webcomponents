@@ -9,5 +9,7 @@
   "slidePages": "Halaman slaid",
   "goToSlide": "Pergi ke slaid {number}",
   "slides": "Slaid",
-  "position": "{number} daripada {total}"
+  "position": "{number} daripada {total}",
+  "fullScreen": "Skrin penuh",
+  "exitFullScreen": "Keluar skrin penuh"
 }

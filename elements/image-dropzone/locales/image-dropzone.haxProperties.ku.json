@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Qada berdanê ya wêneyê",
+    "description": "Fêrxwaz etîketan li ser qadên li ser wêneyekê bicih dikin, paşê bersiva xwe kontrol dikin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wêne",
+        "description": "Wêneyê ku fêrxwaz etîketan li ser bicih dikin."
+      },
+      {
+        "title": "Nivîsa alternatîf",
+        "description": "Wêneyê ji bo kesên ku nikarin wê bibînin rave dike. Eşkere neke ka etîket diçin ku derê."
+      },
+      {
+        "title": "Sernavê wêneyê",
+        "description": "Sernavekî kurt ê xuya ji bo wêneyê, li jora wê tê nîşandan."
+      },
+      {
+        "title": "Pirs",
+        "description": "Ji fêrxwazan tê xwestin ku bi etîketan çi bikin."
+      },
+      {
+        "title": "Etîket û qad",
+        "description": "Her hêman etîketek e ku fêrxwaz dikarin bicih bikin. Navê qadekê bide etîketekê da ku qada wê li ser wêneyê bê danîn; etîketa bê navê qadê zêde ye û aîdê tu derê nîne. Hejmarên qadan ji sedî yên wêneyê ne."
+      },
+      {
+        "title": "Binnivîs",
+        "description": "Binnivîsa vebijarkî ku di bin wêneyê de tê nîşandan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hewl",
+        "description": "Fêrxwazek çend caran dikare kontrol bike. 0 tê wateya bêsînor."
+      },
+      {
+        "title": "Etîketan tevlihev bike",
+        "description": "Her serdanê etîketan bi rêzeke cuda nîşan bide."
+      },
+      {
+        "title": "Qatbar",
+        "description": "Vê pirsê wekî rêzeke ku vedibe û digire nîşan bide. Vekirina yekê pirsên din ên qatbar ên li kêleka wê digire."
+      },
+      {
+        "title": "Qatkirî dest pê bike",
+        "description": "Dema qatbar be, wekî rêzeke girtî dest pê bike ku tenê pirs û rewşa wê nîşan dide."
+      },
+      {
+        "title": "Formata notkirinê",
+        "description": "OER Schema: formata notkirinê ji bo vê nirxandinê (wek puan, tîp, ji sedî, temamkirin)."
+      },
+      {
+        "title": "Armanca fêrbûnê",
+        "description": "OER Schema: armanca fêrbûnê ya bi vê nirxandinê ve girêdayî."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navê quizê",
+        "description": "Navê quizê ji bo naskirina xAPI di pergalên analîtîkê de."
+      },
+      {
+        "title": "Ders",
+        "description": "OER Schema: dersa ku ev nirxandin jê re ye."
+      }
+    ]
+  }
+}

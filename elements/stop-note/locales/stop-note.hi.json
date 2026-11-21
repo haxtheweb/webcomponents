@@ -3,5 +3,7 @@
   "status_stop": "रुकें",
   "status_warning": "चेतावनी",
   "status_success": "सफलता",
-  "status_info": "नोट"
+  "status_info": "नोट",
+  "status_tip": "क्या आप जानते हैं?",
+  "status_new": "नया क्या है"
 }

@@ -1,0 +1,19 @@
+{
+  "label": "Kanpoko tresna",
+  "labelLti": "Kanpoko tresna · LTI 1.3",
+  "theTool": "tresna",
+  "directions": "Jarraibideak",
+  "showDirections": "Erakutsi jarraibideak",
+  "hideDirections": "Ezkutatu jarraibideak",
+  "directionsWindow": "Botoiak leiho berri bat irekitzen du tresnarekin.",
+  "directionsEmbed": "Botoiak tresna orri honetan irekitzen du. Kargatzen ez bada, ireki leiho berri batean horren ordez.",
+  "directionsLti": "Gune honek tresnan saioa hasten dizu, beraz ez duzu aparteko konturik behar.",
+  "openWindow": "Ireki {title} (leiho berria)",
+  "openEmbed": "Ireki {title}",
+  "openInstead": "Ireki leiho berri batean horren ordez",
+  "frameTitle": "{title} (kanpoko tresna)",
+  "openedWindow": "Leiho berri bat ireki da tresnarekin.",
+  "openedEmbed": "Tresna orri honetan ireki da.",
+  "needsUrl": "Bloke honek http:// edo https://-rekin hasten den abiarazte-helbide bat behar du.",
+  "needsSignIn": "Tresna honek gune honen saio-hasiera zerbitzua behar du, eta ez dago erabilgarri hemen. Ez da ezer ireki."
+}

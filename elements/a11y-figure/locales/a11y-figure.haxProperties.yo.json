@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Ọ̀rọ̀ àfirọ́pò"
+        "title": "Ọ̀rọ̀ àfirọ́pò",
+        "description": "Ṣàpèjúwe àwòrán náà fún àwọn tí kò lè rí i."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá ṣí"
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá ṣí",
+        "description": "Ọ̀rọ̀ bọ́tìnnì nígbà tí àpèjúwe bá farapamọ́, bí Fi àpèjúwe hàn."
       },
       {
         "property": "closeText",
-        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá tì"
+        "title": "Ọ̀rọ̀ àkópọ̀ (àṣàyàn) nígbà tí àwọn àlàyé bá tì",
+        "description": "Ọ̀rọ̀ bọ́tìnnì nígbà tí àpèjúwe bá ń hàn, bí Fi àpèjúwe pamọ́."
       }
     ]
   }

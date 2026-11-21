@@ -40,5 +40,7 @@
   "hideDirections": "ہدایتاں لکاؤ",
   "showRelatedContent": "متعلقہ مواد ویکھو",
   "hideRelatedContent": "متعلقہ مواد لکاؤ",
-  "notAttempted": "کوشش نئیں کیتی گئی"
+  "notAttempted": "کوشش نئیں کیتی گئی",
+  "cardsDirections": "ہر کارڈ تے پہلاں کرو تے بعد وچ کرو بٹناں نال کارڈاں نوں ٹھیک ترتیب وچ رکھو، یا ماؤس نال گھسیٹو۔ جدوں تہانوں لگے کہ ترتیب ٹھیک اے، {checkAnswer} چن کے اپنا جواب جانچو۔",
+  "movedToPosition": "{item} نوں {total} وچوں تھاں {position} تے لے گئے"
 }

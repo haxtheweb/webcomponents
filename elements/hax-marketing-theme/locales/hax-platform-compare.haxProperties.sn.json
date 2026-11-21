@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kuenzanisa mapuratifomu",
+    "description": "Musoro nemusoro: sarudza chero mapuratifomu maviri kubva pafaira redata"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data rekuenzanisa (JSON)"
+      },
+      {
+        "title": "ID yepuratifomu yekuruboshwe"
+      },
+      {
+        "title": "ID yepuratifomu yekurudyi"
+      }
+    ]
+  }
+}

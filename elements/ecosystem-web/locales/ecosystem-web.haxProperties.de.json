@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ökosystem-Netz",
+    "description": "Ein interaktives Netz, das zeigt, wie die Teile eines Projekts zusammenhängen, mit Teilnetzen und Schritt-für-Schritt-Touren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Netzdaten",
+        "description": "URL des JSON-Bundles mit Netzen (in PRAW erstellt, ecosystem-webs.json)."
+      },
+      {
+        "title": "Netz",
+        "description": "ID des zuerst angezeigten Netzes; main ist das Ökosystem-Netz."
+      },
+      {
+        "title": "Ausgewählte Kachel",
+        "description": "ID einer Kachel, die beim Öffnen des Netzes ausgewählt wird."
+      },
+      {
+        "title": "Tour",
+        "description": "ID einer Tour, mit der begonnen wird."
+      },
+      {
+        "title": "In Listenansicht starten",
+        "description": "Das Netz als verschachtelte Listen statt als Zeichnung anzeigen."
+      },
+      {
+        "title": "Nur Zeichnung",
+        "description": "Nur die Zeichnung als Abbildung zeigen: ohne Kopfzeile, Touren, Details oder Schrittleiste."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lesen nach",
+        "description": "Mit allen Kacheln nach einem Maß gelesen starten.",
+        "options": {
+          "": "Nur Verbindungen",
+          "fresh": "Aktualität",
+          "bus": "Bus-Faktor",
+          "impact": "Wirkung",
+          "evidence": "Begründung",
+          "parity": "Parität"
+        }
+      }
+    ]
+  }
+}

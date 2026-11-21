@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV olarak kopyala.",
   "printTable": "Tabloyu Yazdır",
   "selectColumn": "Sütun Seç",
-  "dataTable": "Veri · Tablo"
+  "dataTable": "Veri · Tablo",
+  "filterStatus": "{total} satırdan {shown} tanesi gösteriliyor, {column} sütununa göre filtrelendi: {text}",
+  "columnNumber": "{column} sütunu",
+  "clearFilter": "Filtreyi temizle"
 }

@@ -20,6 +20,12 @@
         "title": "Whakaahua",
         "description": "Whakaahua ka whakaaturia me te whakahua."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kua tāparetia",
+        "description": "Tuhia te kōrero whakahua ki te anga paraka tiritahi, me tētahi ata me tētahi tapanga i runga ake, kia hāngai ki ngā tuhipoka me ngā kāri tohutohu."
+      }
     ]
   }
 }

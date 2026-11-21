@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Gambar latar mburi."
+        "description": "Gambar latar mburi.",
+        "title": "Gambar"
       },
       {
         "property": "caption",
-        "description": "Irah-irahan teks."
+        "description": "Irah-irahan teks.",
+        "title": "Katrangan"
       }
     ]
   }

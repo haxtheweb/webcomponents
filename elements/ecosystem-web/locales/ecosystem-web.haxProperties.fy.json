@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosysteemweb",
+    "description": "In ynteraktyf web fan hoe't de dielen fan in projekt mei-inoar ferbûn binne, mei subwebben en stap-foar-stap rûnliedings."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Webgegevens",
+        "description": "URL fan de JSON-bondel mei webben (boud yn PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "Id fan it web dat earst toand wurdt; main is it ekosysteemweb."
+      },
+      {
+        "title": "Selektearre tegel",
+        "description": "Id fan in tegel om te selektearjen as it web iepenet."
+      },
+      {
+        "title": "Rûnlieding",
+        "description": "Id fan in rûnlieding om mei te begjinnen."
+      },
+      {
+        "title": "Begjinne yn listwerjefte",
+        "description": "It web sjen litte as nêste listen ynstee fan de tekening."
+      },
+      {
+        "title": "Allinnich tekening",
+        "description": "Allinnich de tekening sjen litte, as figuer: gjin koptekst, rûnliedings, details of stapbalke."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lêze neffens",
+        "description": "Begjinne mei elke tegel lêzen neffens ien maatstêf.",
+        "options": {
+          "": "Allinnich ferbinings",
+          "fresh": "Farskens",
+          "bus": "Busfaktor",
+          "impact": "Ympakt",
+          "evidence": "Bewiis",
+          "parity": "Pariteit"
+        }
+      }
+    ]
+  }
+}

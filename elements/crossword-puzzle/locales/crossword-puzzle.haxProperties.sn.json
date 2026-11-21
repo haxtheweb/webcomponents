@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Crossword",
+    "description": "Crossword yakagadzirwa kubva murondedzero yemazwi nepfungwa. Gridi inogadzirirwa iwe; vadzidzi vanonyora mazwi vozviongorora."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Musoro kana mubvunzo unoratidzwa pamusoro pecrossword."
+      },
+      {
+        "title": "Mazwi",
+        "description": "Izwi rimwe nerimwe nepfungwa yaro. Gridi inogadzirwa kubva murondedzero iyi: izwi rakareba zvikuru rinoiswa kutanga uye mamwe anoriyambuka pamavara akagovaniswa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuedza",
+        "description": "Kangani mudzidzi anogona kutarisa. 0 zvinoreva kusingaperi."
+      },
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwesarudzo rwechip yemusoro, izwi riri kushanda nemabhatani ezviito."
+      },
+      {
+        "title": "Inopetwa",
+        "description": "Ratidza crossword iyi semutsara unovhurika nekuvhara. Kuvhura imwe kunovhara mimwe mibvunzo inopetwa iri padhuze nayo."
+      },
+      {
+        "title": "Tanga yakapetwa",
+        "description": "Kana ichipetwa, tanga semutsara wakavharwa unoratidza musoro nemamiriro awo chete."
+      },
+      {
+        "title": "Fomati yemamakisi",
+        "description": "OER Schema: fomati yemamakisi eongororo iyi (semuenzaniso mapoinzi, tsamba, muzana, kupedza)."
+      },
+      {
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Zita rekuyedzwa",
+        "description": "Zita rekuyedzwa rinoshandiswa pakuzivisa xAPI muhurongwa hwekuongorora."
+      },
+      {
+        "title": "Kosi",
+        "description": "OER Schema: kosi iyo ongororo iyi yakagadzirirwa."
+      }
+    ]
+  }
+}

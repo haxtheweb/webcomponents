@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota f'qiegħ il-paġna",
+    "description": "Nota miktuba fejn tappartjeni fit-test. Tidher bħala numru, u l-lista numerata tan-noti tinbena waħedha f'qiegħ il-paġna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "It-test tan-nota f'qiegħ il-paġna."
+      },
+      {
+        "title": "L-ebda previżjoni",
+        "description": "Turix in-nota meta qarrej jgħaddi fuq jew jiffoka fuq in-numru."
+      }
+    ]
+  }
+}

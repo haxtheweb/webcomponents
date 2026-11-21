@@ -1,0 +1,8 @@
+{
+  "theme": "თემა",
+  "palette": "პალიტრა",
+  "themeDefault": "თემის ნაგულისხმევი",
+  "designSystem": "დიზაინ-სისტემა",
+  "designSystemDefault": "DDD (ნაგულისხმევი)",
+  "designSystemUnavailable": "ეს თემა საკუთარ დიზაინ-სისტემას ინარჩუნებს"
+}

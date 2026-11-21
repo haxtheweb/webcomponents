@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ökoszisztéma-háló",
+    "description": "Interaktív háló arról, hogyan kapcsolódnak egy projekt részei, alhálókkal és lépésről lépésre haladó bejárásokkal."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hálóadatok",
+        "description": "A hálók JSON-csomagjának URL-je (a PRAW-ban készül, ecosystem-webs.json)."
+      },
+      {
+        "title": "Háló",
+        "description": "Az elsőként megjelenítendő háló azonosítója; a main az ökoszisztéma-háló."
+      },
+      {
+        "title": "Kiválasztott csempe",
+        "description": "A háló megnyitásakor kiválasztandó csempe azonosítója."
+      },
+      {
+        "title": "Bejárás",
+        "description": "A kezdő bejárás azonosítója."
+      },
+      {
+        "title": "Indítás listanézetben",
+        "description": "A háló beágyazott listákként jelenik meg a rajz helyett."
+      },
+      {
+        "title": "Csak a rajz",
+        "description": "Csak a rajz jelenik meg ábraként: fejléc, bejárások, részletek és lépéssáv nélkül."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Olvasás szerint",
+        "description": "Kezdéskor minden csempe egyetlen mérőszám szerint olvasható.",
+        "options": {
+          "": "Csak a kapcsolatok",
+          "fresh": "Frissesség",
+          "bus": "Buszfaktor",
+          "impact": "Hatás",
+          "evidence": "Bizonyíték",
+          "parity": "Paritás"
+        }
+      }
+    ]
+  }
+}

@@ -2,5 +2,9 @@
   "toggleAnimation": "Skift animatión",
   "info": "kunning",
   "image": "Mynd",
-  "animatedGif": "Teknað GIF"
+  "animatedGif": "Teknað GIF",
+  "playAnimation": "Spæl teknimyndina",
+  "pauseAnimation": "Steðga teknimyndini",
+  "showDescription": "Vís lýsing",
+  "hideDescription": "Fjal lýsing"
 }

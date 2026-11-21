@@ -5,5 +5,7 @@
   "editModeLabel": "Beaarbechtungsmodus vun der Medien-Playlist",
   "position": "{current} vun {total}",
   "previousItem": "Virdrun Element",
-  "nextItem": "Nächst Element"
+  "nextItem": "Nächst Element",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild verloossen"
 }

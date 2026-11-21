@@ -301,7 +301,49 @@ class HaxTrayUpload extends HaxUploadField {
       this.newAssetConfigure();
       // ensures that if we have selfie / audio it closes those widgets
       this.option = "fileupload";
+    } else if (e.detail.xhr.status !== 403) {
+      this._uploadFailed(e);
     }
+  }
+  /**
+   * A drop, paste or Merlin upload runs with the tray's file list hidden,
+   * so a refused upload has to say so where the user is looking, and
+   * take back the empty block that was waiting for the file.
+   */
+  _uploadFailed(e) {
+    const file = e.detail.file;
+    const name = file && file.name ? file.name : "";
+    const queue = this.shadowRoot
+      ? this.shadowRoot.querySelector("#fileupload")
+      : null;
+    let reason = "";
+    if (queue && typeof queue._responseMessage === "function") {
+      reason = queue._responseMessage(e.detail.xhr);
+    }
+    HAXStore.toast(
+      this.t.uploadOfFileFailed
+        .replace("{name}", () => name)
+        .replace("{reason}", () => reason || this.t.uploadFailedReason),
+      6000,
+    );
+    const placeholder = HAXStore.activePlaceHolder;
+    if (
+      placeholder &&
+      placeholder.parentNode &&
+      (placeholder.hasAttribute("uploading") ||
+        (placeholder.tagName === "P" &&
+          placeholder.textContent.trim() === "" &&
+          placeholder.children.length === 0))
+    ) {
+      placeholder.remove();
+    }
+    HAXStore.activePlaceHolder = null;
+    HAXStore.activePlaceHolderCallback = null;
+    this.__mediaBatchTotal = 0;
+    this.__mediaBatch = [];
+    this.__imageBatchTotal = 0;
+    this.__imageBatch = [];
+    this.option = "fileupload";
   }
 
   _canUpload() {

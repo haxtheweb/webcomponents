@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Forgreinet scenario",
+    "description": "En historie der hvert valg fører til en annen scene og avslutning. Elevene kan gå tilbake og prøve andre veier; avslutningen de når, bestemmer poengsummen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Navnet på scenarioet, vist i toppteksten."
+      },
+      {
+        "title": "Startscene",
+        "description": "Scene-ID-en til scenen elevene starter i. La stå tomt for å starte i den første scenen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksentfarge",
+        "description": "Valgfri farge for toppetiketten, knappene og kanten på et valg."
+      }
+    ]
+  }
+}

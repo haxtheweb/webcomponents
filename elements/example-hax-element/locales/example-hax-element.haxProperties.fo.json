@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Dømi um byrjanarlut, brúktur til at vísa HAX-uppseting og rættiligar eginleikar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti"
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palet",
   "cancel": "Batal",
-  "openAppearanceSettings": "Buka Tetapan Penampilan"
+  "openAppearanceSettings": "Buka Tetapan Penampilan",
+  "designSystem": "Sistem reka bentuk",
+  "designSystemDefault": "DDD (lalai)",
+  "designSystemThemeDefault": "{name} (lalai tema)",
+  "designSystemHelp": "Warna, tipografi, bucu dan kepadatan. Tema masih menentukan susun atur."
 }

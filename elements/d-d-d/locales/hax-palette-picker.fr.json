@@ -5,5 +5,6 @@
   "selected": "Sélectionnée",
   "currentlyActiveAndSelectedPalette": "Palette actuellement active et sélectionnée",
   "currentlyActivePalette": "Palette actuellement active",
-  "selectedPaletteToApply": "Palette sélectionnée à appliquer"
+  "selectedPaletteToApply": "Palette sélectionnée à appliquer",
+  "paletteNumber": "Palette {number}"
 }

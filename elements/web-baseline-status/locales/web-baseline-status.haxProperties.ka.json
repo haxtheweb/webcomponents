@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline სტატუსი",
+    "description": "ვებპლატფორმის ფუნქციის Baseline ბრაუზერის მხარდაჭერის სტატუსის ჩვენება."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ფუნქციის ID",
+        "description": "ვებფუნქციის ID, მაგალითად anchor-positioning. ID-ები იპოვეთ webstatus.dev-ზე; ID ფუნქციის გვერდის URL-ის ბოლო ნაწილია."
+      }
+    ]
+  }
+}

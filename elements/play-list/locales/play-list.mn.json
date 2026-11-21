@@ -9,5 +9,7 @@
   "slidePages": "Слайдын хуудсууд",
   "goToSlide": "{number}-р слайд руу очих",
   "slides": "Слайд",
-  "position": "{number}/{total}"
+  "position": "{number}/{total}",
+  "fullScreen": "Бүтэн дэлгэц",
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах"
 }

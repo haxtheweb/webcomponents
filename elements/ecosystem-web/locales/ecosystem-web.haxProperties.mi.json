@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Tukutuku pūnaha rauropi",
+    "description": "He tukutuku pāhekoheko o te hononga o ngā wāhanga o tētahi kaupapa, me ngā tukutuku-iti me ngā haerenga ā-hipanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Raraunga tukutuku",
+        "description": "Te URL o te paihere JSON o ngā tukutuku (i hangaia i PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tukutuku",
+        "description": "Te ID o te tukutuku hei whakaatu tuatahi; ko main te tukutuku pūnaha rauropi."
+      },
+      {
+        "title": "Taera kua tīpakohia",
+        "description": "Te ID o tētahi taera hei tīpako ina tuwhera te tukutuku."
+      },
+      {
+        "title": "Haerenga",
+        "description": "Te ID o tētahi haerenga hei tīmata."
+      },
+      {
+        "title": "Tīmata i te tirohanga rārangi",
+        "description": "Whakaaturia te tukutuku hei rārangi kōhanga, kaua hei tuhinga."
+      },
+      {
+        "title": "Tuhinga anake",
+        "description": "Whakaaturia te tuhinga anake, hei whakaahua: kāore he pane, he haerenga, he taipitopito, he pae hipanga rānei."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pānui mā",
+        "description": "Tīmata me te pānui o ia taera mā te ine kotahi.",
+        "options": {
+          "": "Ngā hononga anake",
+          "fresh": "Hōu",
+          "bus": "Take pahi",
+          "impact": "Pānga",
+          "evidence": "Taunakitanga",
+          "parity": "Ōritetanga"
+        }
+      }
+    ]
+  }
+}

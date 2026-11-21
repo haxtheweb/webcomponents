@@ -52,6 +52,20 @@
           "_top": "Dritarja e sipërme - _top",
           "_parent": "Dritarja prind - _parent"
         }
+      },
+      {
+        "title": "Pa shigjetë",
+        "description": "Fshih shigjetën e butonit."
+      },
+      {
+        "title": "Lidhja: objektivi",
+        "description": "Ku të hapet lidhja.",
+        "options": {
+          "": "E njëjta dritare",
+          "_blank": "Dritare e re - _blank",
+          "_top": "Dritarja e sipërme - _top",
+          "_parent": "Dritarja prind - _parent"
+        }
       }
     ],
     "developer": [

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Wasan ƙwaƙwalwa",
+    "description": "Juya katuna don samun biyu-biyu. Haɗa kalma da ma'anarta don dacewa ta nuna fahimta, ko yi amfani da rubutu ko hotuna biyu masu kama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Umarnin da ake nunawa a kai, misali: Haɗa kalmar da aikinta."
+      },
+      {
+        "title": "Biyu-biyu",
+        "description": "Kowane biyu katuna biyu ne da suka dace da juna, galibi kalma da ma'anarta. Gefe yana buƙatar rubutu, hoto, ko duka biyu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Launin ƙawa",
+        "description": "Launi na zaɓi don guntun kai, bayan katuna da maɓallin."
+      }
+    ]
+  }
+}

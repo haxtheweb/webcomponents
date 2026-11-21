@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Bhala usebenzisa uphawu lwezibalo lwe-LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ingemuva lesithombe",
+        "description": "Ingemuva ngemuva kwezithombe ezidwetshiwe. U-Okuzenzakalelayo wengeza elilodwa kuphela uma umdwebo uzoba nzima ukubonakala ekhasini, njengemigqa emnyama kumodi emnyama.",
+        "options": {
+          "auto": "Okuzenzakalelayo",
+          "light": "Kukhanya",
+          "dark": "Kumnyama",
+          "none": "Lutho"
+        }
+      }
+    ]
   }
 }

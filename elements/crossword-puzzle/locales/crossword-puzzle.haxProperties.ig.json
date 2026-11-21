@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Egwuregwu okwu gafere",
+    "description": "Egwuregwu okwu gafere e mere site na ndepụta okwu na ntụaka. A na-emepụtara gị grid ahụ; ndị mmụta na-ede okwu ndị ahụ ma lelee ha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Aha ma ọ bụ ajụjụ e gosiri n'elu egwuregwu okwu gafere ahụ."
+      },
+      {
+        "title": "Okwu",
+        "description": "Okwu ọ bụla na ntụaka ya. A na-emepụta grid site na ndepụta a: a na-ebu ụzọ tinye okwu kacha ogologo, ndị ọzọ na-agafe ya na mkpụrụedemede ha nwekọrọ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngbalị",
+        "description": "Ugboro ole onye mmụta nwere ike ilele. 0 pụtara enweghị oke."
+      },
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba nhọrọ maka akara isi, okwu na-arụ ọrụ na bọtịnụ omume."
+      },
+      {
+        "title": "Enwere ike ịkpachi",
+        "description": "Gosi egwuregwu okwu gafere a dịka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ enwere ike ịkpachi dị n'akụkụ ya."
+      },
+      {
+        "title": "Malite emechiri emechi",
+        "description": "Mgbe enwere ike ịkpachi, malite dịka ahịrị emechiri emechi na-egosi naanị aha na ọnọdụ ya."
+      },
+      {
+        "title": "Ụdị akara",
+        "description": "OER Schema: ụdị akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta metụtara nyocha a."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Aha ajụjụ ule",
+        "description": "Aha ajụjụ ule e ji maka njirimara xAPI na sistemụ nyocha data."
+      },
+      {
+        "title": "Ọmụmụ",
+        "description": "OER Schema: ọmụmụ e bu n'obi maka nyocha a."
+      }
+    ]
+  }
+}

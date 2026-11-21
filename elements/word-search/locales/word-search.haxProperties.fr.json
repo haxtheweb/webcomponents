@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Mots mêlés",
+    "description": "Une grille de lettres avec des mots cachés. Les apprenants touchent la première et la dernière lettre de chaque mot. Entraîne à repérer l'orthographe d'un terme, pas son sens."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Ce que les apprenants doivent trouver, affiché dans l'en-tête."
+      },
+      {
+        "title": "Mots",
+        "description": "Les mots à cacher. Les espaces et la ponctuation sont exclus de la grille. Les mots qui ne tiennent pas sont listés pendant la modification et exclus pour les apprenants."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Taille de la grille",
+        "description": "Lettres par côté, de 4 à 16. Laissez vide pour s'adapter au mot le plus long (jusqu'à 12). Au-delà de 12, la grille défile horizontalement sur un téléphone."
+      },
+      {
+        "title": "Mots en diagonale",
+        "description": "Cacher aussi des mots en diagonale. Plus difficile."
+      },
+      {
+        "title": "Mots à l'envers",
+        "description": "Cacher aussi des mots écrits à l'envers. Plus difficile."
+      },
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur facultative pour la pastille d'en-tête, la première lettre choisie et le bouton."
+      }
+    ]
+  }
+}

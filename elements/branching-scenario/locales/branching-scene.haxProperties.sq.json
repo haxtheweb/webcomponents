@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Skenë e skenarit",
+    "description": "Një skenë e një skenari me degëzime. Lidh çdo zgjedhje me një skenë tjetër me # të ndjekur nga id-ja e skenës."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ja e skenës",
+        "description": "Ku lidhen zgjedhjet: një lidhje te # e ndjekur nga kjo id të çon te kjo skenë. Shkronja, numra dhe viza."
+      },
+      {
+        "title": "Titulli",
+        "description": "Titulli i skenës."
+      },
+      {
+        "title": "Përfundimi",
+        "description": "Nëse kjo skenë e mbyll një rrugë, dhe si përfundoi.",
+        "options": {
+          "": "Nuk është përfundim",
+          "good": "Përfundim i mirë",
+          "mixed": "Përfundim i përzier",
+          "poor": "Përfundim i dobët"
+        }
+      },
+      {
+        "title": "Pikët",
+        "description": "Pikët për arritjen e këtij përfundimi. Pikët më të larta të përfundimit në skenar janë maksimumi."
+      }
+    ]
+  }
+}

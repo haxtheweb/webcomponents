@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Sfida",
+    "description": "Testo accanto a un pulsante testa a testa con due personaggi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo"
+      },
+      {
+        "title": "Dove porta il pulsante"
+      },
+      {
+        "title": "Testo del pulsante"
+      },
+      {
+        "title": "Seme del personaggio a sinistra"
+      },
+      {
+        "title": "Seme del personaggio a destra"
+      }
+    ]
+  }
+}

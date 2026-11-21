@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Verhaalknop",
+    "description": "De knop die het verhaal achter een bewering op hax.cloud opent, of de bijbehorende plek op een andere site in het HAX-netwerk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Waar hij naartoe gaat",
+        "options": {
+          "cloud": "hax.cloud, het verhaal",
+          "learn": "learn.hax.cloud, een tutorial",
+          "try": "browser.hax.cloud, probeer het",
+          "elements": "webcomponents.hax.cloud, een blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adres op die site (een verhaal op hax.cloud ziet eruit als stories/ee450a19)"
+      },
+      {
+        "title": "Waar het over gaat"
+      },
+      {
+        "title": "Kleine chip"
+      },
+      {
+        "title": "Toon in de knop waar het over gaat"
+      }
+    ]
+  }
+}

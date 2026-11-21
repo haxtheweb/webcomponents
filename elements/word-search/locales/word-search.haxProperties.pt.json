@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Caça-palavras",
+    "description": "Uma grade de letras com palavras escondidas. Os alunos tocam na primeira e na última letra de cada palavra. Treina perceber como um termo é escrito, não o que significa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O que os alunos devem encontrar, mostrado no cabeçalho."
+      },
+      {
+        "title": "Palavras",
+        "description": "As palavras a esconder. Espaços e pontuação ficam fora da grade. As palavras que não cabem são listadas durante a edição e ficam de fora para os alunos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tamanho da grade",
+        "description": "Letras por lado, de 4 a 16. Deixe vazio para caber a palavra mais longa (até 12). Mais de 12 rola para os lados em um celular."
+      },
+      {
+        "title": "Palavras na diagonal",
+        "description": "Também esconder palavras na diagonal. Mais difícil."
+      },
+      {
+        "title": "Palavras de trás para frente",
+        "description": "Também esconder palavras escritas de trás para frente. Mais difícil."
+      },
+      {
+        "title": "Cor de destaque",
+        "description": "Cor opcional para o chip do cabeçalho, a primeira letra escolhida e o botão."
+      }
+    ]
+  }
+}

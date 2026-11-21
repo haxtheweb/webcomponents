@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Et stort billede, en GIF eller en video med en overskrift og tekst ovenpå, placeret hvor som helst på en side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Billede eller video",
+        "description": "En JPG-, PNG-, WebP-, GIF-, MP4- eller WebM-fil."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriv billedet. Lad være tom, når det kun er pynt."
+      },
+      {
+        "title": "Overskrift",
+        "description": "Overskrift vist over mediet. Lad være tom for ingen."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst vist under overskriften, over mediet."
+      },
+      {
+        "title": "Fuld bredde",
+        "description": "Gå fra kant til kant i stedet for at sidde i indholdskolonnen."
+      },
+      {
+        "title": "Højde",
+        "options": {
+          "tall": "Høj",
+          "medium": "Mellem",
+          "short": "Lav"
+        }
+      },
+      {
+        "title": "Udsnit",
+        "description": "Hvordan billedet sidder ved hver skærmstørrelse"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toning",
+        "description": "Farve lagt over mediet. Med en overskrift eller tekst er der altid én, så teksten forbliver læselig.",
+        "options": {
+          "blue": "Blå",
+          "bottom": "Mørk forneden",
+          "none": "Ingen"
+        }
+      },
+      {
+        "title": "Tekstplacering",
+        "options": {
+          "bottom": "Bund",
+          "middle": "Midte"
+        }
+      },
+      {
+        "title": "Vandret fokuspunkt",
+        "description": "Den del af billedet, der forbliver synlig, når det beskæres, fra 0 (venstre) til 100 (højre)."
+      },
+      {
+        "title": "Lodret fokuspunkt",
+        "description": "Den del af billedet, der forbliver synlig, når det beskæres, fra 0 (top) til 100 (bund)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Umugqa wesici",
+    "description": "Isikrini somkhiqizo eceleni kwalokho okusho kuwe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebula elincane"
+      },
+      {
+        "title": "Isihloko"
+      },
+      {
+        "title": "Isithombe"
+      },
+      {
+        "title": "Lokho isithombe esikubonisayo"
+      },
+      {
+        "title": "Isithombe kwesokudla"
+      },
+      {
+        "title": "Umbala wesithunzi (igama le-DDD, okungenalutho kulandela iphalethi)"
+      }
+    ]
+  }
+}

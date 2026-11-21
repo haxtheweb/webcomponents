@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Filar",
+    "description": "Filar: nazwa, hasło, ikona, kolor i dlaczego jest ważny"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nazwa"
+      },
+      {
+        "title": "Hasło"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Kolor (nazwa DDD)"
+      },
+      {
+        "title": "Który filar, od 1 do 7"
+      },
+      {
+        "title": "Mała karta"
+      },
+      {
+        "title": "Gdzie trafia nazwa"
+      }
+    ]
+  }
+}

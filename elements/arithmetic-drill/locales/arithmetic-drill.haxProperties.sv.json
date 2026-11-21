@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetikövning",
+    "description": "En kort serie genererade räkneuppgifter med direkt återkoppling. Välj räknesätt och talområde; varje omgång är ny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Övningens namn, som visas i dess sidhuvud."
+      },
+      {
+        "title": "Räknesätt",
+        "description": "Vilka sorters uppgifter som ställs. Eleverna kan stänga av vilka som helst av dem innan de börjar.",
+        "options": {
+          "add": "Addition",
+          "subtract": "Subtraktion",
+          "multiply": "Multiplikation",
+          "divide": "Division",
+          "add subtract": "Addition och subtraktion",
+          "multiply divide": "Multiplikation och division",
+          "add multiply": "Addition och multiplikation",
+          "add divide": "Addition och division",
+          "subtract multiply": "Subtraktion och multiplikation",
+          "subtract divide": "Subtraktion och division",
+          "add subtract multiply": "Addition, subtraktion och multiplikation",
+          "add subtract divide": "Addition, subtraktion och division",
+          "add multiply divide": "Addition, multiplikation och division",
+          "subtract multiply divide": "Subtraktion, multiplikation och division",
+          "add subtract multiply divide": "Alla fyra"
+        }
+      },
+      {
+        "title": "Minsta tal",
+        "description": "Det minsta talet som används i en uppgift. Heltal, 0 eller mer."
+      },
+      {
+        "title": "Största tal",
+        "description": "Det största talet som används i en uppgift. Kvoter och divisorer håller sig också inom detta intervall."
+      },
+      {
+        "title": "Antal uppgifter",
+        "description": "Hur många uppgifter som ingår i en omgång (1 till 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tidsgräns",
+        "description": "Sekunder som tillåts för en hel omgång. 0 betyder ingen timer, vilket är standard: tidsbegränsade övningar sviker elever som behöver mer tid. När den är inställd kan eleverna ändå stänga av timern för egen del."
+      },
+      {
+        "title": "Accentfärg",
+        "description": "Färg på rubriketiketten och knapparna. Lämna tomt för att följa temat."
+      }
+    ]
+  }
+}

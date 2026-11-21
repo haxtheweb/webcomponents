@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "图标签",
     "description": "辣内容里标记媒体资源个图标签元素。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图号",
+        "description": "图个编号或者短标签，比方 1.3"
+      },
+      {
+        "title": "描述",
+        "description": "图个简短描述"
+      }
+    ]
   }
 }

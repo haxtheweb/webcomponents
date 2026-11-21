@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Pemutar dokumentasi",
+    "description": "Panduan, demo, dan referensi untuk komponen web, dengan tombol salin untuk HTML, impor, npm, dan CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "File data dokumentasi",
+        "description": "Data dokumentasi yang disertakan bersama elemen (lib/tag.docs.json)."
+      },
+      {
+        "title": "Papan cerita panduan",
+        "description": "Papan cerita gerak yang disertakan bersama elemen (tag.motion.json). Opsional."
+      },
+      {
+        "title": "Tutorial video",
+        "description": "Video singkat tentang elemen (YouTube, Vimeo, atau file video). Menggantikan video di data dokumentasi."
+      },
+      {
+        "title": "Buka di tab",
+        "description": "Tab mana yang ditampilkan pertama.",
+        "options": {
+          "motion": "Panduan",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasi",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Putar panduan otomatis",
+        "description": "Mulai panduan segera setelah pemutar tampil. Diabaikan jika pembaca memilih gerakan yang dikurangi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Topik panduan",
+        "description": "Untuk elemen dengan beberapa panduan, topik mana yang dibuka pertama (misalnya add-blocks). Biarkan kosong untuk panduan utama."
+      },
+      {
+        "title": "Tautan demo langsung",
+        "description": "Tujuan tombol Buka sumber demo. Bawaannya folder demo di repositori."
+      },
+      {
+        "title": "Tautan dokumentasi",
+        "description": "Tujuan tombol dokumentasi lengkap, misalnya halaman Learn HAX yang sesuai."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kigae cha takwimu",
+    "description": "Namba moja muhimu, yenye lebo yake na jinsi ilivyobadilika. Weka kadhaa kwenye gridi kwa safu ya dashibodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lebo",
+        "description": "Namba inapima nini."
+      },
+      {
+        "title": "Thamani",
+        "description": "Namba. Namba ya kawaida hupangwa kwa makundi kulingana na lugha ya ukurasa; kitu kingine chochote huonyeshwa kama kilivyoandikwa."
+      },
+      {
+        "title": "Mabadiliko",
+        "description": "Jinsi ilivyobadilika, kwa maneno, kama 6% muhula huu."
+      },
+      {
+        "title": "Mwelekeo",
+        "description": "Kama mabadiliko ni ya kwenda juu au chini.",
+        "options": {
+          "": "Hakuna",
+          "up": "Juu",
+          "down": "Chini"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "项目符号核对清单",
+    "description": "一组复选框。读者勾选项目后，进度会保存在他们自己的设备上。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "清单名称。作为这组复选框的标签被朗读。"
+      },
+      {
+        "title": "项目",
+        "description": "每个项目都是一个复选框。已勾选或已禁用的项目读者无法更改。"
+      },
+      {
+        "title": "编号",
+        "description": "显示编号列表而不是项目符号列表。"
+      },
+      {
+        "title": "状态",
+        "description": "更改颜色以匹配 stop-note。",
+        "options": {
+          "info": "通知",
+          "success": "确认",
+          "warning": "警告",
+          "stop": "停止"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "存储 ID",
+        "description": "用于在读者设备上记住其进度的唯一 ID。自动生成；只有在想让多个清单共享进度或重新开始时才需更改。"
+      }
+    ]
+  }
+}

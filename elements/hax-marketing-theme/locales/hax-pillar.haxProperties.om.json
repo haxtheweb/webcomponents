@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Utubaa",
+    "description": "Utubaa: maqaa, gaalee, mallattoo, halluu fi maaliif akka barbaachisu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa"
+      },
+      {
+        "title": "Gaalee"
+      },
+      {
+        "title": "Mallattoo"
+      },
+      {
+        "title": "Halluu (maqaa DDD)"
+      },
+      {
+        "title": "Utubaa kam, 1 hanga 7"
+      },
+      {
+        "title": "Kaardii xiqqaa"
+      },
+      {
+        "title": "Maqaan eessa deema"
+      }
+    ]
+  }
+}

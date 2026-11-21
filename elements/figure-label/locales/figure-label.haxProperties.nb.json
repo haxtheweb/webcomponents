@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Figuretikett",
     "description": "Figuretikett-element for å merke medieressurser i innholdet."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Figurnummer",
+        "description": "Nummer eller kort etikett for figuren, f.eks. 1.3"
+      },
+      {
+        "title": "Beskrivelse",
+        "description": "Kort beskrivelse av figuren"
+      }
+    ]
   }
 }

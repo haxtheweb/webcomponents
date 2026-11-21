@@ -6,6 +6,8 @@
   "faviconDescription": "Pārlūka cilnes attēls / tālruņos izmantots kā mazs vietnes logotips",
   "domain": "Domēns",
   "domainDescription": "Šīs vietnes domēns",
+  "sameAs": "Citi šīs vietnes profili",
+  "sameAsDescription": "Pa vienai saitei rindā uz šīs vietnes vai organizācijas profiliem citur (GitHub, LinkedIn, YouTube, Mastodon). Meklētājprogrammas tās izmanto, lai saistītu šos profilus ar šo vietni.",
   "language": "Valoda",
   "languageDescription": "Šīs vietnes valoda. Meklējiet pēc nosaukuma vai koda vai ievadiet citu kodu, piemēram, fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

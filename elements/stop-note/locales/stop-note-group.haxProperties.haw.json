@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Pūʻulu Stop Note",
+    "description": "E hoʻopaʻa i kekahi mau stop note i hoʻokahi poloka e hōʻike ana i hoʻokahi moʻolelo i ka manawa, e like me Nā aʻoaʻo a i ʻole Nā mea hou. Hiki ke hoʻopaʻa pū ʻia nā kāleka kuhikuhi, nā moʻolelo ʻaoʻao a me nā ʻōlelo ʻōlelo ʻia i hoʻopahu ʻia me lākou."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lepili",
+        "description": "Inoa no ka pūʻulu e hoʻolaha ai nā mea heluhelu pakuhi, e like me Nā aʻoaʻo a i ʻole Nā mea hou."
+      },
+      {
+        "title": "Nā moʻolelo",
+        "description": "Nā stop note ma ka pūʻulu. Hiki ke hoʻohui pū ʻia nā kāleka kuhikuhi, nā moʻolelo ʻaoʻao a me nā ʻōlelo ʻōlelo ʻia i hoʻopahu ʻia."
+      }
+    ]
+  }
+}

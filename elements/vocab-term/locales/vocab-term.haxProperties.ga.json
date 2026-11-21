@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Téarma"
+        "title": "Téarma",
+        "description": "An focal nó an frása a chliceálann léitheoirí chun a shainmhíniú a fheiceáil."
       },
       {
         "property": "information",

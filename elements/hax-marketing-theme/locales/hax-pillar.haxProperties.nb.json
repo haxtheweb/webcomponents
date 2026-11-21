@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "En pilar: navn, frase, ikon, farge og hvorfor den er viktig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navn"
+      },
+      {
+        "title": "Frase"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Farge (DDD-navn)"
+      },
+      {
+        "title": "Hvilken pilar, 1 til 7"
+      },
+      {
+        "title": "Lite kort"
+      },
+      {
+        "title": "Hvor navnet går"
+      }
+    ]
+  }
+}

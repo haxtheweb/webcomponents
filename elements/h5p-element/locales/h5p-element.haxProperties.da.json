@@ -4,7 +4,12 @@
     "description": "Afspiller interaktivt H5P-indhold fra en uploadet .h5p-fil uden behov for en H5P-server"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-fil",
+        "description": "Upload eller link til en .h5p-fil. Den pakkes ud i browseren; der kræves ingen H5P-server."
+      }
+    ],
     "advanced": [
       {
         "title": "Ældre iframe-indlejringskode",

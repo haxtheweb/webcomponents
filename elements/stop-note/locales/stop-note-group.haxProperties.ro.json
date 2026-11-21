@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grup de note stop",
+    "description": "Grupați mai multe note stop într-un singur bloc care arată câte o notă pe rând, de exemplu Sfaturi sau Noutăți. Fișele de instrucțiuni, notele laterale și citatele încadrate pot fi grupate împreună cu ele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetă",
+        "description": "Numele grupului anunțat de cititoarele de ecran, de exemplu Sfaturi sau Noutăți."
+      },
+      {
+        "title": "Note",
+        "description": "Notele stop din grup. Se pot adăuga și fișe de instrucțiuni, note laterale și citate încadrate."
+      }
+    ]
+  }
+}

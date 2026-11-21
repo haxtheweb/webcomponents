@@ -9,5 +9,7 @@
   "slidePages": "Tudalennau sleidiau",
   "goToSlide": "Mynd i sleid {number}",
   "slides": "Sleidiau",
-  "position": "{number} o {total}"
+  "position": "{number} o {total}",
+  "fullScreen": "Sgrin lawn",
+  "exitFullScreen": "Gadael sgrin lawn"
 }

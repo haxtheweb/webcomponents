@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są rozwinięte"
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są rozwinięte",
+        "description": "Tekst przycisku, gdy opis jest ukryty, np. Pokaż opis."
       },
       {
         "property": "closeText",
-        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są zwinięte"
+        "title": "Opcjonalny tekst podsumowania, gdy szczegóły są zwinięte",
+        "description": "Tekst przycisku, gdy opis jest widoczny, np. Ukryj opis."
       }
     ]
   }

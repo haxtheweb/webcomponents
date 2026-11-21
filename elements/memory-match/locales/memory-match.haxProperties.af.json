@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Geheuespeletjie",
+    "description": "Draai kaarte om om pare te vind. Paar 'n term met sy betekenis sodat 'n paar begrip toon, of gebruik twee ooreenstemmende tekste of beelde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Die opdrag wat in die opskrif gewys word, byvoorbeeld: Pas die term by sy taak."
+      },
+      {
+        "title": "Pare",
+        "description": "Elke paar is twee kaarte wat bymekaar hoort, gewoonlik 'n term en sy betekenis. 'n Kant benodig teks, 'n beeld, of albei."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksentkleur",
+        "description": "Opsionele kleur vir die opskrifskyfie, die kaartagterkante en die knoppie."
+      }
+    ]
+  }
+}

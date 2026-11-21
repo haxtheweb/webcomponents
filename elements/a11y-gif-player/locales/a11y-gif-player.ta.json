@@ -2,5 +2,9 @@
   "toggleAnimation": "அனிமேஷனை மாற்று",
   "info": "தகவல்",
   "image": "படம்",
-  "animatedGif": "அசைவூட்டப்பட்ட GIF"
+  "animatedGif": "அசைவூட்டப்பட்ட GIF",
+  "playAnimation": "அனிமேஷனை இயக்கு",
+  "pauseAnimation": "அனிமேஷனை இடைநிறுத்து",
+  "showDescription": "விளக்கத்தைக் காட்டு",
+  "hideDescription": "விளக்கத்தை மறை"
 }

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tayilo ya chiwerengero",
+    "description": "Nambala imodzi yofunika, ndi chilembo chake ndi momwe inasinthira. Ikani zingapo mu gululi kuti mupange mzere wa dashibodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chilembo",
+        "description": "Zomwe nambala ikuyeza."
+      },
+      {
+        "title": "Mtengo",
+        "description": "Nambala. Nambala wamba imagawidwa motsatira chilankhulo cha tsamba; china chilichonse chimawonetsedwa monga chalembedwera."
+      },
+      {
+        "title": "Kusintha",
+        "description": "Momwe inasinthira, m'mawu, monga 6% teremu ino."
+      },
+      {
+        "title": "Kolowera",
+        "description": "Ngati kusintha ndi kokwera kapena kotsika.",
+        "options": {
+          "": "Palibe",
+          "up": "Mmwamba",
+          "down": "Pansi"
+        }
+      }
+    ]
+  }
+}

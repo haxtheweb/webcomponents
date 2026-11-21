@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Veľký obrázok, GIF alebo video s nadpisom a textom navrchu, umiestnené kdekoľvek na stránke."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázok alebo video",
+        "description": "Súbor JPG, PNG, WebP, GIF, MP4 alebo WebM."
+      },
+      {
+        "title": "Alternatívny text",
+        "description": "Opíšte obrázok. Ak je iba dekoráciou, nechajte prázdne."
+      },
+      {
+        "title": "Nadpis",
+        "description": "Nadpis zobrazený na médiu. Ak žiadny nechcete, nechajte prázdne."
+      },
+      {
+        "title": "Text",
+        "description": "Text zobrazený pod nadpisom, na médiu."
+      },
+      {
+        "title": "Plná šírka",
+        "description": "Roztiahnuť od okraja po okraj namiesto umiestnenia v stĺpci obsahu."
+      },
+      {
+        "title": "Výška",
+        "options": {
+          "tall": "Vysoký",
+          "medium": "Stredný",
+          "short": "Nízky"
+        }
+      },
+      {
+        "title": "Kompozícia",
+        "description": "Ako sa fotografia zobrazí pri každej veľkosti obrazovky"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Prekrytie",
+        "description": "Farba položená cez médium. S nadpisom alebo textom je vždy prítomná, aby text zostal čitateľný.",
+        "options": {
+          "blue": "Modrá",
+          "bottom": "Tmavé dole",
+          "none": "Žiadne"
+        }
+      },
+      {
+        "title": "Pozícia textu",
+        "options": {
+          "bottom": "Dole",
+          "middle": "Uprostred"
+        }
+      },
+      {
+        "title": "Ohniskový bod vodorovne",
+        "description": "Časť obrázka, ktorá zostane viditeľná pri orezaní, od 0 (vľavo) po 100 (vpravo)."
+      },
+      {
+        "title": "Ohniskový bod zvisle",
+        "description": "Časť obrázka, ktorá zostane viditeľná pri orezaní, od 0 (hore) po 100 (dole)."
+      }
+    ]
+  }
+}

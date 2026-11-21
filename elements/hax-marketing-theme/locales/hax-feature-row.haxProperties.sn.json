@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mutsara wechimiro",
+    "description": "Skrini yechigadzirwa padivi pezvachinoreva kwauri"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita diki"
+      },
+      {
+        "title": "Musoro"
+      },
+      {
+        "title": "Mufananidzo"
+      },
+      {
+        "title": "Zvinoratidzwa nemufananidzo"
+      },
+      {
+        "title": "Mufananidzo kurudyi"
+      },
+      {
+        "title": "Ruvara rwemumvuri (zita reDDD, pasina chinhu rinotevera paleti)"
+      }
+    ]
+  }
+}

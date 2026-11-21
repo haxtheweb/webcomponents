@@ -4,7 +4,12 @@
     "description": "Spilar gagnvirkt H5P-efni úr innhlaðinni .h5p skrá, án þess að H5P-þjónn sé nauðsynlegur"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-skrá",
+        "description": "Hladdu upp eða tengdu .h5p-skrá. Hún er afþjöppuð í vafranum; enginn H5P-netþjónn er nauðsynlegur."
+      }
+    ],
     "advanced": [
       {
         "title": "Eldri iframe-ísetningarkóði",

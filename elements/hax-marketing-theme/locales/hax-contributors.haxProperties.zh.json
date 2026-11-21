@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "贡献者",
+    "description": "构建该项目的人员，来自名单文件"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "名单文件（JSON）"
+      },
+      {
+        "title": "视图：landed、lab 或 code"
+      },
+      {
+        "title": "最多显示人数（0 表示全部）"
+      }
+    ]
+  }
+}

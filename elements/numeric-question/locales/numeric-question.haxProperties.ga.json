@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Ceist uimhriúil",
+    "description": "Ceist a bhfreagraítear le huimhir. Is uimhir sheasta nó foirmle a oibrítear amach ó athróga an freagra, agus comhairtear é nuair atá sé laistigh de lamháltas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ceist",
+        "description": "An rud a iarrtar ar fhoghlaimeoirí. Scríobh ainm athróige idir lúibíní slabhracha, mar {d}, chun a luach a thaispeáint."
+      },
+      {
+        "title": "Aonad",
+        "description": "Taispeántar mar théacs é in aice le réimse an fhreagra, mar shampla km/h."
+      },
+      {
+        "title": "Freagra",
+        "description": "An uimhir cheart. Fág folamh nuair a oibríonn foirmle an freagra amach."
+      },
+      {
+        "title": "Foirmle",
+        "description": "Oibríonn sí an freagra amach ó na hathróga, mar shampla d / (t / 60). Is féidir + - * / ^, lúibíní, sqrt() agus abs() a úsáid. Úsáidtear í in ionad an fhreagra nuair atá sí socraithe."
+      },
+      {
+        "title": "Athróga",
+        "description": "Uimhreacha a úsáideann an fhoirmle agus an cheist. Glacann gach ceann luach idir a luach is ísle agus is airde, i gcéimeanna."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lamháltas",
+        "description": "Cé chomh fada ón bhfreagra beacht a chomhairtear fós. Ciallaíonn 0 beacht, nó slánaithe go dtí na hionaid deachúlacha thíos."
+      },
+      {
+        "title": "Cineál lamháltais",
+        "description": "Absalóideach: móide nó lúide an lamháltas. Céatadán: móide nó lúide an céatadán sin den fhreagra beacht.",
+        "options": {
+          "absolute": "Absalóideach",
+          "percent": "Céatadán"
+        }
+      },
+      {
+        "title": "Ionaid deachúlacha",
+        "description": "Iarrtar ar fhoghlaimeoirí slánú go dtí an líon seo ionad, agus taispeántar an freagra slánaithe dó. Fág folamh gan slánú."
+      },
+      {
+        "title": "Iarrachtaí",
+        "description": "Cé mhéad uair is féidir le foghlaimeoir seiceáil. Ciallaíonn 0 gan teorainn."
+      },
+      {
+        "title": "Uimhreacha nua ar gach iarracht",
+        "description": "Tarraing luachanna athróige nua gach uair a dhéanann foghlaimeoir iarracht arís. Ansin ní thaispeántar a fhreagra roimhe nuair a thagann sé ar ais, ach cé acu an raibh sé ceart."
+      },
+      {
+        "title": "In-laghdaithe",
+        "description": "Taispeáin an cheist seo mar ró a osclaíonn agus a dhúnann. Dúnann oscailt ceann amháin na ceisteanna in-laghdaithe eile in aice leis."
+      },
+      {
+        "title": "Tosaigh laghdaithe",
+        "description": "Nuair atá sé in-laghdaithe, tosaigh mar ró dúnta nach dtaispeánann ach an cheist agus a stádas."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ainm an tráth na gceist",
+        "description": "Ainm an tráth na gceist a úsáidtear le haghaidh aitheantais xAPI i gcórais anailísíochta."
+      }
+    ]
+  }
+}

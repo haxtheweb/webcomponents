@@ -2,5 +2,9 @@
   "toggleAnimation": "I-toggle ang animation",
   "info": "impormasyon",
   "image": "Larawan",
-  "animatedGif": "Animated GIF"
+  "animatedGif": "Animated GIF",
+  "playAnimation": "I-play ang animation",
+  "pauseAnimation": "I-pause ang animation",
+  "showDescription": "Ipakita ang paglalarawan",
+  "hideDescription": "Itago ang paglalarawan"
 }

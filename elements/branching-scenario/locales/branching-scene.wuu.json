@@ -1,0 +1,14 @@
+{
+  "scene": "场景",
+  "ending": "结局",
+  "goodEnding": "好结局",
+  "mixedEnding": "一般结局",
+  "poorEnding": "坏结局",
+  "scoreOf": "得分 {score} / {max}",
+  "scoreOnly": "得分 {score}",
+  "startScene": "开始",
+  "sceneIdLabel": "场景 id",
+  "needsId": "添一个场景 id，选择才好链接到迭个场景。",
+  "orphan": "呒没选择链接到迭个场景。",
+  "deadLinks": "迭眼链接指向勿存在个场景："
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "Senario",
+  "directions": "Cyfarwyddiadau",
+  "showDirections": "Dangos cyfarwyddiadau",
+  "hideDirections": "Cuddio cyfarwyddiadau",
+  "directionsRead": "Darllenwch bob golygfa a dewiswch beth fyddech chi'n ei wneud.",
+  "directionsEndings": "Mae sawl diweddglo. Rhowch gynnig ar lwybr arall ar ôl gorffen.",
+  "startOver": "Dechrau eto",
+  "back": "Un cam yn ôl",
+  "tryAnother": "Rhoi cynnig ar lwybr arall",
+  "path": "Llwybr",
+  "scene": "Golygfa",
+  "ending": "Diweddglo",
+  "end": "diwedd",
+  "scenesSeen": "Wedi gweld {seen} o {total} golygfa",
+  "endingReached": "Wedi cyrraedd diweddglo",
+  "addScene": "Ychwanegu golygfa",
+  "newScene": "Golygfa newydd",
+  "newSceneText": "Disgrifiwch beth sy'n digwydd, yna cysylltwch bob dewis â golygfa.",
+  "editingNote": "Golygu: dangosir pob golygfa. Mae dewis yn ddolen i # wedi'i dilyn gan ID golygfa.",
+  "noScenes": "Ychwanegwch olygfa i ddechrau'r senario."
+}

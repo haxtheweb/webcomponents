@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista de verificación con viñetas",
+    "description": "Unha lista de caixas de verificación. Os lectores marcan elementos e o seu progreso lémbrase no seu propio dispositivo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome da lista. Lese en voz alta como etiqueta do grupo de caixas de verificación."
+      },
+      {
+        "title": "Elementos",
+        "description": "Cada elemento é unha caixa de verificación. Os lectores non poden cambiar os elementos marcados ou desactivados."
+      },
+      {
+        "title": "Numerada",
+        "description": "Mostrar unha lista numerada en vez dunha con viñetas."
+      },
+      {
+        "title": "Estado",
+        "description": "Cambia as cores para que coincidan con stop-note.",
+        "options": {
+          "info": "Aviso",
+          "success": "Confirmación",
+          "warning": "Advertencia",
+          "stop": "Alto"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id de almacenamento",
+        "description": "Id único usado para lembrar o progreso do lector no seu dispositivo. Xérase automaticamente; cámbiao só para compartir progreso entre listas ou para comezar de cero."
+      }
+    ]
+  }
+}

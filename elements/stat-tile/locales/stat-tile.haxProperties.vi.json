@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ô số liệu",
+    "description": "Một con số quan trọng, kèm nhãn và mức thay đổi của nó. Đặt nhiều ô trong lưới để tạo hàng bảng điều khiển."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhãn",
+        "description": "Con số đo lường điều gì."
+      },
+      {
+        "title": "Giá trị",
+        "description": "Con số. Số thường được nhóm theo ngôn ngữ của trang; mọi thứ khác hiển thị như đã viết."
+      },
+      {
+        "title": "Thay đổi",
+        "description": "Mức thay đổi bằng lời, ví dụ 6% học kỳ này."
+      },
+      {
+        "title": "Hướng",
+        "description": "Thay đổi tăng hay giảm.",
+        "options": {
+          "": "Không có",
+          "up": "Tăng",
+          "down": "Giảm"
+        }
+      }
+    ]
+  }
+}

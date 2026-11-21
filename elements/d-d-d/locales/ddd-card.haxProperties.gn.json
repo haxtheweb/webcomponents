@@ -52,6 +52,20 @@
           "_top": "Ovetã yvategua - _top",
           "_parent": "Ovetã ru - _parent"
         }
+      },
+      {
+        "title": "Hu'y'ỹre",
+        "description": "Emokañy botõ hu'y."
+      },
+      {
+        "title": "Juajuha: oñehundiha",
+        "description": "Mamópa ojepe'áta juajuha.",
+        "options": {
+          "": "Ventana peteĩchagua",
+          "_blank": "Ventana pyahu - _blank",
+          "_top": "Ventana yvategua - _top",
+          "_parent": "Ventana ru - _parent"
+        }
       }
     ],
     "developer": [

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Pemilih kegunaan",
+    "description": "Pilih tujuan laman dan dapatkan pautan yang membuka HAX dalam pelayar dengan laman permulaan itu, serta arahan CLI yang sepadan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Alamat HAX dalam pelayar",
+        "description": "Destinasi pautan; ?skeleton= dan &name= ditambahkan padanya"
+      },
+      {
+        "title": "Laman permulaan untuk dikecualikan",
+        "description": "Nama mesin, dipisahkan dengan koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Senarai laman permulaan",
+        "description": "Alamat senarai rangka (format yang dibaca oleh app-hax)"
+      }
+    ]
+  }
+}

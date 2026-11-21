@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Xogo de memoria",
+    "description": "Dálle a volta ás cartas para atopar parellas. Emparella un termo co seu significado para que unha coincidencia mostre comprensión, ou usa dous textos ou imaxes iguais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O enunciado mostrado na cabeceira, por exemplo: Relaciona o termo coa súa función."
+      },
+      {
+        "title": "Parellas",
+        "description": "Cada parella son dúas cartas que van xuntas, normalmente un termo e o seu significado. Cada lado precisa texto, unha imaxe ou ambos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cor de realce",
+        "description": "Cor opcional para a etiqueta da cabeceira, o dorso das cartas e o botón."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX কনফিগারেশন ও সম্পাদনাযোগ্য প্রপার্টি দেখাতে ব্যবহৃত উদাহরণ স্টার্টার এলিমেন্ট।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "শিরোনাম"
+      }
+    ]
+  }
+}

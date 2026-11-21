@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopieer as CSV.",
   "printTable": "Druk tabel",
   "selectColumn": "Kies kolom",
-  "dataTable": "Data · Tabel"
+  "dataTable": "Data · Tabel",
+  "filterStatus": "Wys {shown} van {total} rye, gefiltreer volgens {column}: {text}",
+  "columnNumber": "Kolom {column}",
+  "clearFilter": "Vee filter uit"
 }

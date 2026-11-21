@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline egoera",
+    "description": "Erakutsi web plataformako ezaugarri baten Baseline arakatzaile-euskarriaren egoera."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ezaugarriaren IDa",
+        "description": "Web ezaugarriaren IDa, adibidez anchor-positioning. Aurkitu IDak webstatus.dev-en; IDa ezaugarri-orri baten URLaren azken zatia da."
+      }
+    ]
+  }
+}

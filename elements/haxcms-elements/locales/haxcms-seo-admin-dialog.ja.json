@@ -6,6 +6,8 @@
   "faviconDescription": "ブラウザーのタブ画像 / スマートフォンでは小さなサイトロゴとして使用",
   "domain": "ドメイン",
   "domainDescription": "この Web サイトのドメイン",
+  "sameAs": "このサイトのほかのプロフィール",
+  "sameAsDescription": "このサイトや組織のほかの場所のプロフィール（GitHub、LinkedIn、YouTube、Mastodon）へのリンクを 1 行に 1 つ。検索エンジンはこれを使ってそれらのプロフィールをこのサイトと結び付けます。",
   "language": "言語",
   "languageDescription": "このサイトの言語です。名前またはコードで検索するか、fr-CA などの別のコードを入力してください。",
   "googleAnalyticsId": "Google Analytics ID",

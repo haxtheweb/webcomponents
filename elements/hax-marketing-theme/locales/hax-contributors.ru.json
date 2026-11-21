@@ -1,0 +1,10 @@
+{
+  "loading": "Загружаем участников.",
+  "now": "Сейчас:",
+  "personOn": "{name} в {place}",
+  "github": "GitHub",
+  "linkedin": "LinkedIn",
+  "ownSite": "свой сайт",
+  "commit": "коммит",
+  "commits": "коммиты"
+}

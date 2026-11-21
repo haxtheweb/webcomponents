@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Rubutun Madadi"
+        "title": "Rubutun Madadi",
+        "description": "Bayyana hoton don mutanen da ba sa iya ganinsa."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a buɗe suke"
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a buɗe suke",
+        "description": "Rubutun maɓalli yayin da bayani ke ɓoye, kamar Nuna bayani."
       },
       {
         "property": "closeText",
-        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a rufe suke"
+        "title": "Rubutun taƙaitawa na zaɓi idan cikakkun bayanai a rufe suke",
+        "description": "Rubutun maɓalli yayin da bayani ke bayyane, kamar Ɓoye bayani."
       }
     ]
   }

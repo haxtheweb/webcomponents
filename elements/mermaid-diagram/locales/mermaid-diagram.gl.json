@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagrama",
+  "flowchart": "diagrama de fluxo",
+  "sequence": "secuencia",
+  "source": "Fonte",
+  "textAlternative": "Alternativa textual",
+  "present": "Presentar",
+  "exitPresent": "Saír da presentación",
+  "loading": "Cargando o diagrama",
+  "empty": "Aínda non hai nada que debuxar. Engade a fonte do diagrama.",
+  "error": "Erro",
+  "parseError": "Non se puido debuxar este diagrama. Revisa a fonte.",
+  "loadError": "Non se puido cargar a biblioteca de diagramas.",
+  "srcError": "Non se puido cargar o ficheiro do diagrama.",
+  "decision": "decisión",
+  "end": "fin",
+  "goTo": "ir a {target}",
+  "ifGoTo": "se {label}, ir a {target}",
+  "describedBySource": "Diagrama descrito pola súa fonte.",
+  "scrollable": "Diagrama, desprazable"
+}

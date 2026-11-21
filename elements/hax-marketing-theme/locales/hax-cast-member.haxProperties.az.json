@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aktyor heyəti üzvü",
+    "description": "Personajın canlandırdığı bir auditoriya, sözlər və düymə ilə"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bu kimdir"
+      },
+      {
+        "title": "Personaj növü"
+      },
+      {
+        "title": "Personaj toxumu"
+      },
+      {
+        "title": "Səhnə rəngi (DDD adı)"
+      },
+      {
+        "title": "Düymənin apardığı yer"
+      },
+      {
+        "title": "Düymə mətni"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Batani la nkhani",
+    "description": "Batani lomwe limatsegula nkhani yomwe ili kumbuyo kwa zonena pa hax.cloud, kapena malo ofanana pa tsamba lina la netiweki ya HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Komwe limapita",
+        "options": {
+          "cloud": "hax.cloud, nkhani",
+          "learn": "learn.hax.cloud, phunziro",
+          "try": "browser.hax.cloud, yesani",
+          "elements": "webcomponents.hax.cloud, gawo",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adiresi pa tsamba limenelo (nkhani pa hax.cloud imaoneka ngati stories/ee450a19)"
+      },
+      {
+        "title": "Zomwe ikunena"
+      },
+      {
+        "title": "Chip chaching'ono"
+      },
+      {
+        "title": "Onetsani zomwe ikunena mu batani"
+      }
+    ]
+  }
+}

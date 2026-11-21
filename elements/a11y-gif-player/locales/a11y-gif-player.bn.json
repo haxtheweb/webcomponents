@@ -2,5 +2,9 @@
   "toggleAnimation": "অ্যানিমেশন চালু/বন্ধ করুন",
   "info": "তথ্য",
   "image": "ছবি",
-  "animatedGif": "অ্যানিমেটেড GIF"
+  "animatedGif": "অ্যানিমেটেড GIF",
+  "playAnimation": "অ্যানিমেশন চালান",
+  "pauseAnimation": "অ্যানিমেশন বিরতি দিন",
+  "showDescription": "বিবরণ দেখান",
+  "hideDescription": "বিবরণ লুকান"
 }

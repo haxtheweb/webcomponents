@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mediawysiger",
-        "description": "Opsionele mediadomeinwysiger. Spesifiseer die soort media waarop hierdie lisensie van toepassing is."
+        "description": "Opsionele mediadomeinwysiger. Spesifiseer die soort media waarop hierdie lisensie van toepassing is.",
+        "options": {
+          "": "Geen wysiger"
+        }
       },
       {
         "property": "uri",

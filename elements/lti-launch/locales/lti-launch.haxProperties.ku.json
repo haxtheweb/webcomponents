@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Destpêkirina amûra derve",
+    "description": "Blokek ku amûreke fêrbûnê ya derve di pencereyeke nû de an li ser rûpelê vedike, wekî girêdaneke sade an bi daxwaza têketina LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Navê amûrê. Ew di serî û li ser bişkokê de tê nîşandan."
+      },
+      {
+        "title": "Rave",
+        "description": "Fêrxwaz di amûrê de çi dikin, li jora bişkokê tê nîşandan."
+      },
+      {
+        "title": "URL-ya destpêkirinê",
+        "description": "Navnîşana amûrê. Divê navnîşaneke tevahî be ku bi https:// an http:// dest pê dike."
+      },
+      {
+        "title": "Veke di",
+        "description": "Pencereyeke nû bi her amûrê re dixebite. Li ser vê rûpelê tenê bi amûrên ku destûr didin di hundirê malpereke din de bên nîşandan dixebite.",
+        "options": {
+          "window": "Pencereyeke nû",
+          "embed": "Li ser vê rûpelê"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL-ya têketina LTI",
+        "description": "Tenê LTI 1.3: navnîşana destpêkirina têketinê ya amûrê. Bi vê, ID-yeke klientê û ID-yeke bicihkirinê, bişkok li şûna vekirina girêdaneke sade daxwaza têketina LTI dişîne. Ji bo qedandina destpêkirinê xizmeta LTI ya vê malperê divê."
+      },
+      {
+        "title": "ID-ya klientê ya LTI",
+        "description": "ID-ya klientê ku amûrê daye vê malperê. Nasnameyeke giştî ye, ne veşartî: tu carî mift an veşartiyan li vir nenivîse."
+      },
+      {
+        "title": "ID-ya bicihkirinê ya LTI",
+        "description": "ID-ya bicihkirinê ku amûrê daye vê malperê. Nasnameyeke giştî ye, ne veşartî."
+      },
+      {
+        "title": "Weşanerê LTI",
+        "description": "Navnîşana ku vê malperê ji amûrê re dide naskirin. Vala bihêle da ku navnîşana malpera ku rûpel lê ye bê bikaranîn."
+      },
+      {
+        "title": "Bilindahî li ser rûpelê",
+        "description": "Bilindahiya amûrê dema li ser vê rûpelê vedibe, bi pîkselan (200 heta 2000)."
+      },
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê çîpa serî û bişkokê. Vala bihêle da ku li pey temayê biçe."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Şîreta têketina LTI",
+        "description": "Nirxekî nezelal ku xizmeta LTI ya vê malperê bi kar tîne da ku fêrxwaz nas bike. Bi gelemperî ji aliyê malperê ve bi bûyera lti-launch-request tê dayîn, ne li vir tê tomarkirin. Tu carî ne şîfre an mift e."
+      },
+      {
+        "title": "Şîreta peyama LTI",
+        "description": "Nirxekî nezelal ku xizmeta LTI ya vê malperê bi kar tîne da ku vê destpêkirinê nas bike. Bi gelemperî ji aliyê malperê ve tê dayîn, ne li vir tê tomarkirin."
+      }
+    ]
+  }
+}

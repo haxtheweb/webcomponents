@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Gebrûksgefalkiezer",
+    "description": "Kies wêr't in side foar is en krij in keppeling dy't HAX yn de browser iepenet mei dy startside, plus it passende CLI-kommando."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adres fan HAX yn de browser",
+        "description": "Wêr't de keppeling iepenet; der wurde ?skeleton= en &name= oan tafoege"
+      },
+      {
+        "title": "Startsiden om wei te litten",
+        "description": "Masinenammen, skieden troch komma's"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "List mei startsiden",
+        "description": "Adres fan de skeletlist (it formaat dat app-hax lêst)"
+      }
+    ]
+  }
+}

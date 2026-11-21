@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentasiespeler",
+    "description": "Deurloop, demo en verwysing vir 'n webkomponent, met kopieerknoppies vir HTML, invoer, npm en CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentasiedatalêer",
+        "description": "Die dokumentasiedata wat saam met die element gelewer word (lib/tag.docs.json)."
+      },
+      {
+        "title": "Deurloop-storiebord",
+        "description": "Die bewegingstoriebord wat saam met die element gelewer word (tag.motion.json). Opsioneel."
+      },
+      {
+        "title": "Videotutoriaal",
+        "description": "'n Kort video oor die element (YouTube, Vimeo of 'n videolêer). Oorheers die video in die dokumentasiedata."
+      },
+      {
+        "title": "Maak oop op oortjie",
+        "description": "Watter oortjie eerste wys.",
+        "options": {
+          "motion": "Deurloop",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasie",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Speel deurloop outomaties",
+        "description": "Begin die deurloop sodra die speler wys. Geïgnoreer wanneer die leser verminderde beweging verkies."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Deurloop-onderwerp",
+        "description": "Vir elemente met verskeie deurlope, watter onderwerp eerste oopgemaak word (byvoorbeeld add-blocks). Laat leeg vir die hoofeen."
+      },
+      {
+        "title": "Regstreekse demo-skakel",
+        "description": "Waarheen die Maak demobron oop-knoppie gaan. Verstek is die demo-vouer in die bewaarplek."
+      },
+      {
+        "title": "Dokumentasieskakel",
+        "description": "Waarheen die volle dokumentasie-knoppie gaan, byvoorbeeld die ooreenstemmende Learn HAX-bladsy."
+      }
+    ]
+  }
+}

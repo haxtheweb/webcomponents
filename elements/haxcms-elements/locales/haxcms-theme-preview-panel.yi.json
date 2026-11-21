@@ -8,5 +8,9 @@
   "theme": "טעמע",
   "palette": "פּאַליטרע",
   "cancel": "אָפּזאָגן",
-  "openAppearanceSettings": "עפֿן אויסזען־באַשטימונגען"
+  "openAppearanceSettings": "עפֿן אויסזען־באַשטימונגען",
+  "designSystem": "פּלאַן־סיסטעם",
+  "designSystemDefault": "DDD (פֿאַרויסגעשטעלט)",
+  "designSystemThemeDefault": "{name} (טעמע־פֿאַרויסשטעלונג)",
+  "designSystemHelp": "פֿאַרב, שריפֿט, עקן און געדיכטקייט. די טעמע באַשליסט נאָך אַלץ דעם אויסלייג."
 }

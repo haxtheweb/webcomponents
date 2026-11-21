@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ukuqaliswa kwesixhobo sangaphandle",
+    "description": "Ibhloko evula isixhobo sokufunda sangaphandle kwifestile entsha okanye ephepheni, njengekhonkco eliqhelekileyo okanye ngesicelo sokungena se-LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lesixhobo. Liboniswa kwisihloko nakwiqhosha."
+      },
+      {
+        "title": "Inkcazelo",
+        "description": "Oko abafundi bakwenzayo kwisixhobo, kuboniswa ngaphezulu kweqhosha."
+      },
+      {
+        "title": "I-URL yokuqalisa",
+        "description": "Idilesi yesixhobo. Kufuneka ibe yidilesi epheleleyo eqala nge-https:// okanye http://."
+      },
+      {
+        "title": "Vula kwi",
+        "description": "Ifestile entsha isebenza nazo zonke izixhobo. Kweli phepha kusebenza kuphela nezixhobo ezivumela ukuboniswa ngaphakathi kwenye isayithi.",
+        "options": {
+          "window": "Ifestile entsha",
+          "embed": "Kweli phepha"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "I-URL yokungena ye-LTI",
+        "description": "LTI 1.3 kuphela: idilesi yokuqalisa ukungena kwesixhobo. Ngale, i-ID yomthengi ne-ID yokusasaza, iqhosha lithumela isicelo sokungena se-LTI endaweni yokuvula ikhonkco eliqhelekileyo. Ukugqiba ukuqaliswa kufuna inkonzo ye-LTI yale sayithi."
+      },
+      {
+        "title": "I-ID yomthengi ye-LTI",
+        "description": "I-ID yomthengi isixhobo esiyinike le sayithi. Isichongi sikawonke-wonke, ayiyonto eyimfihlo: ungaze ubeke izitshixo okanye iimfihlo apha."
+      },
+      {
+        "title": "I-ID yokusasaza ye-LTI",
+        "description": "I-ID yokusasaza isixhobo esiyinike le sayithi. Isichongi sikawonke-wonke, ayiyonto eyimfihlo."
+      },
+      {
+        "title": "Umkhuphi we-LTI",
+        "description": "Idilesi echonga le sayithi kwisixhobo. Shiya kungenanto ukusebenzisa idilesi yesayithi ekuyo iphepha."
+      },
+      {
+        "title": "Ukuphakama ephepheni",
+        "description": "Ukuphakama kwesixhobo xa sivuleka kweli phepha, ngeepikseli (200 ukuya ku-2000)."
+      },
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala wetshiphu yesihloko neqhosha. Shiya kungenanto ukulandela umxholo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ingcebiso yokungena ye-LTI",
+        "description": "Ixabiso elingacacanga elisetyenziswa yinkonzo ye-LTI yale sayithi ukuqonda umfundi. Ngesiqhelo linikezelwa yisayithi ngesiganeko se-lti-launch-request kunokuba ligcinwe apha. Asingoze ligama lokugqitha okanye isitshixo."
+      },
+      {
+        "title": "Ingcebiso yomyalezo ye-LTI",
+        "description": "Ixabiso elingacacanga elisetyenziswa yinkonzo ye-LTI yale sayithi ukuqonda oku kuqaliswa. Ngesiqhelo linikezelwa yisayithi kunokuba ligcinwe apha."
+      }
+    ]
+  }
+}

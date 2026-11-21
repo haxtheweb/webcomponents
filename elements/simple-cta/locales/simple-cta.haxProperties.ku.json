@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Îkonê veşêre",
         "description": "Îkona ku ji bo aksenta nivîsê tê bikaranîn veşêre"
+      },
+      {
+        "title": "Xuyang",
+        "description": "Bişkok çiqas girîngî heye.",
+        "options": {
+          "": "Dagirtî",
+          "tonal": "Tonal",
+          "outlined": "Bi xêza derve",
+          "plain": "Sade"
+        }
+      },
+      {
+        "title": "Mezinahî",
+        "description": "Mezinahiya bişkokê.",
+        "options": {
+          "s": "Biçûk",
+          "": "Navîn",
+          "l": "Mezin"
+        }
       }
     ],
     "advanced": [

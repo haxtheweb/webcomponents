@@ -1,0 +1,22 @@
+{
+  "scenario": "Escenario",
+  "directions": "Pusaykuna",
+  "showDirections": "Pusaykunata rikuchiy",
+  "hideDirections": "Pusaykunata pakay",
+  "directionsRead": "Sapa rikhuriyta ñawinchay, imatachus rurawaq chayta akllay.",
+  "directionsEndings": "Achka tukukuykuna kan. Tukuspa huk ñanta pruebay.",
+  "startOver": "Hukmanta qallariy",
+  "back": "Huk thatki qhipaman",
+  "tryAnother": "Huk ñanta pruebay",
+  "path": "Ñan",
+  "scene": "Rikhuriy",
+  "ending": "Tukukuy",
+  "end": "tukuy",
+  "scenesSeen": "{seen} {total} manta rikhuriykuna rikusqa",
+  "endingReached": "Tukukuyman chayasqa",
+  "addScene": "Rikhuriyta yapay",
+  "newScene": "Musuq rikhuriy",
+  "newSceneText": "Imachus pasakun chayta willay, chaymanta sapa akllayta huk rikhuriywan t'inkiy.",
+  "editingNote": "Allichachkan: llapan rikhuriykuna rikuchisqa. Huk akllayqa # nisqaman t'inkim, chaymanta rikhuriyp id-nin.",
+  "noScenes": "Escenariota qallarinaykipaq huk rikhuriyta yapay."
+}

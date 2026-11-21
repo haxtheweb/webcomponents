@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Chigadzirisi chemidhiya",
-        "description": "Chigadzirisi chemhando yemidhiya chingasarudzwa. Chinotsanangura mhando yemidhiya inoshanda nayo rezinesi iri."
+        "description": "Chigadzirisi chemhando yemidhiya chingasarudzwa. Chinotsanangura mhando yemidhiya inoshanda nayo rezinesi iri.",
+        "options": {
+          "": "Hapana shanduko"
+        }
       },
       {
         "property": "uri",

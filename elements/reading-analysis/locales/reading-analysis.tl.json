@@ -60,6 +60,8 @@
   "flagsFound": "{correct} sa {total} ang nahanap",
   "toRethink": "{count} na pag-iisipang muli",
   "notEvidence": "hindi ebidensya para sa watawat na ito",
+  "isEvidence": "ebidensya para sa flag na ito",
+  "readingKeys": "Gamitin ang mga arrow key para lumipat mula sa isang {unit} papunta sa susunod.",
   "markAnswers": "Markahan ang mga sagot",
   "doneMarking": "Tapos na sa pagmamarka ng mga sagot",
   "editHint": "I-edit ang babasahin sa ibaba. Gamitin ang Markahan ang mga sagot sa menu ng block para piliin kung saan nababagay ang bawat watawat.",

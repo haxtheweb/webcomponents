@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Mạng lưới hệ sinh thái",
+    "description": "Một mạng lưới tương tác cho thấy các phần của dự án kết nối thế nào, với mạng con và các chuyến tham quan từng bước."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dữ liệu mạng lưới",
+        "description": "URL của gói JSON chứa các mạng lưới (được xây dựng trong PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Mạng lưới",
+        "description": "ID của mạng lưới hiển thị đầu tiên; main là mạng lưới hệ sinh thái."
+      },
+      {
+        "title": "Ô được chọn",
+        "description": "ID của ô cần chọn khi mạng lưới mở."
+      },
+      {
+        "title": "Chuyến tham quan",
+        "description": "ID của chuyến tham quan để bắt đầu."
+      },
+      {
+        "title": "Bắt đầu ở chế độ danh sách",
+        "description": "Hiển thị mạng lưới dưới dạng danh sách lồng nhau thay vì hình vẽ."
+      },
+      {
+        "title": "Chỉ hình vẽ",
+        "description": "Chỉ hiển thị hình vẽ, như một hình minh họa: không có phần đầu, chuyến tham quan, chi tiết hay thanh bước."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Đọc theo",
+        "description": "Bắt đầu với mọi ô được đọc theo một thước đo.",
+        "options": {
+          "": "Chỉ kết nối",
+          "fresh": "Độ mới",
+          "bus": "Bus factor",
+          "impact": "Tác động",
+          "evidence": "Bằng chứng",
+          "parity": "Tương đương"
+        }
+      }
+    ]
+  }
+}

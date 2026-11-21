@@ -3,5 +3,8 @@
   "copyAsCsv": "Copiază ca CSV.",
   "printTable": "Imprimă tabelul",
   "selectColumn": "Selectează coloana",
-  "dataTable": "Date · Tabel"
+  "dataTable": "Date · Tabel",
+  "filterStatus": "Se afișează {shown} din {total} rânduri, filtrate după {column}: {text}",
+  "columnNumber": "Coloana {column}",
+  "clearFilter": "Ștergeți filtrul"
 }

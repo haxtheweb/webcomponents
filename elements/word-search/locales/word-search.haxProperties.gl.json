@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sopa de letras",
+    "description": "Unha grella de letras con palabras agochadas. O alumnado toca a primeira e a última letra de cada palabra. Practica recoñecer como se escribe un termo, non o que significa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O que se lle pide ao alumnado que atope, mostrado na cabeceira."
+      },
+      {
+        "title": "Palabras",
+        "description": "As palabras que agochar. Os espazos e a puntuación quedan fóra da grella. As palabras que non caben lístanse mentres editas e quedan fóra para o alumnado."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tamaño da grella",
+        "description": "Letras por lado, de 4 a 16. Déixao baleiro para axustar á palabra máis longa (ata 12). Máis de 12 desprázase de lado nun móbil."
+      },
+      {
+        "title": "Palabras en diagonal",
+        "description": "Agochar tamén palabras en diagonal. Máis difícil."
+      },
+      {
+        "title": "Palabras do revés",
+        "description": "Agochar tamén palabras escritas do revés. Máis difícil."
+      },
+      {
+        "title": "Cor de realce",
+        "description": "Cor opcional para a etiqueta da cabeceira, a primeira letra escollida e o botón."
+      }
+    ]
+  }
+}

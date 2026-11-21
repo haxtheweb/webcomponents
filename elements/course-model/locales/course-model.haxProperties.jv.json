@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "judhul"
+        "title": "judhul",
+        "description": "Irah-irahan sing ditampilake ing ndhuwur model kursus."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Alamat berkas model 3D (.glb utawa .gltf) sing arep ditampilake."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Gambarake model 3D kanggo wong sing ora bisa ndeleng."
       },
       {
         "title": "Area informasi"

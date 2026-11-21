@@ -1,0 +1,16 @@
+{
+  "theme": "主题",
+  "designSystem": "设计系统",
+  "dddDefault": "DDD（默认）",
+  "designSystemHelp": "颜色、字体、圆角搭焦点。主题保留版式。",
+  "designSystemFixed": "迭个主题用伊自家个设计系统。",
+  "palette": "调色板",
+  "themeDefault": "主题默认",
+  "paletteNumber": "调色板 {n}",
+  "siteTheme": "{name}（迭个网站个主题）",
+  "restyle": "重新设计迭个网站个样子",
+  "close": "关脱",
+  "reset": "回到迭个网站原来个样子",
+  "random": "给我惊喜",
+  "about": "迭搭显示 HAX 里头几种内置样子。页面从来勿变：结构放辣 JSON Outline Schema 里，每块积木侪是标准 Web 组件，所以设计好随便换。"
+}

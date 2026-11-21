@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagrama a partir de texto",
+    "description": "Escribe un diagrama como texto (Mermaid): un diagrama de flujo, de secuencia, una línea de tiempo y más. Se dibuja en la página con una alternativa textual."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Se muestra sobre el diagrama y se usa como su nombre."
+      },
+      {
+        "title": "Código del diagrama",
+        "description": "Texto Mermaid, por ejemplo: flowchart TD, y luego una línea por enlace, como A[Draft] --> B{Ready?}. Añade |etiqueta| después de una flecha para etiquetarla. El dibujo se actualiza mientras escribes."
+      },
+      {
+        "title": "Alternativa textual",
+        "description": "Describe lo que muestra el diagrama para las personas que no pueden verlo. Déjalo vacío en un diagrama de flujo para que se enumeren sus pasos automáticamente."
+      },
+      {
+        "title": "Pie de foto",
+        "description": "Pie opcional que se muestra bajo el diagrama."
+      },
+      {
+        "title": "Mostrar el código",
+        "description": "Mostrar el texto del diagrama junto al dibujo."
+      },
+      {
+        "title": "Mostrar la alternativa textual",
+        "description": "Mostrar la alternativa textual bajo el dibujo. Siempre está disponible para los lectores de pantalla."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Archivo de origen",
+        "description": "Dirección de un archivo .mmd que se dibujará en lugar del texto de arriba (https o una ruta de este sitio)."
+      },
+      {
+        "title": "Color de acento",
+        "description": "Color de la etiqueta del icono en la cabecera."
+      }
+    ]
+  }
+}

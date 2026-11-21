@@ -6,6 +6,8 @@
   "faviconDescription": "Imaxe da lapela do navegador / usada nos teléfonos como logotipo pequeno do sitio",
   "domain": "Dominio",
   "domainDescription": "Dominio deste sitio web",
+  "sameAs": "Outros perfís deste sitio",
+  "sameAsDescription": "Unha ligazón por liña aos perfís deste sitio ou organización noutros lugares (GitHub, LinkedIn, YouTube, Mastodon). Os buscadores úsanos para conectar eses perfís con este sitio.",
   "language": "Idioma",
   "languageDescription": "Idioma deste sitio. Busca por nome ou código, ou introduce outro código como fr-CA.",
   "googleAnalyticsId": "ID de Google Analytics",

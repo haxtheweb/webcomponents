@@ -1,0 +1,14 @@
+{
+  "scene": "Rikhuriy",
+  "ending": "Tukukuy",
+  "goodEnding": "Allin tukukuy",
+  "mixedEnding": "Chaqrusqa tukukuy",
+  "poorEnding": "Mana allin tukukuy",
+  "scoreOf": "Puntaje {score} {max} manta",
+  "scoreOnly": "Puntaje {score}",
+  "startScene": "Qallariy",
+  "sceneIdLabel": "Rikhuriyp id-nin",
+  "needsId": "Rikhuriyp id-ninta yapay akllaykuna kay rikhuriyman t'inkikunanpaq.",
+  "orphan": "Manam ni huk akllaypas kay rikhuriyman t'inkisqachu.",
+  "deadLinks": "Kay t'inkikunaqa mana kaq rikhuriyta rikuchinku:"
+}

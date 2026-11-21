@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Lettore di documentazione",
+    "description": "Guida, dimustrazione è riferenza per un cumpunente web, cù buttoni di copia per HTML, impurtazione, npm è CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Schedariu di dati di documentazione",
+        "description": "I dati di documentazione furniti cù l'elementu (lib/tag.docs.json)."
+      },
+      {
+        "title": "Sceneghjatura di a guida",
+        "description": "A sceneghjatura di muvimentu furnita cù l'elementu (tag.motion.json). Facultativa."
+      },
+      {
+        "title": "Tutoriale in filmettu",
+        "description": "Un filmettu cortu nant'à l'elementu (YouTube, Vimeo o un schedariu video). Rimpiazza u filmettu in i dati di documentazione."
+      },
+      {
+        "title": "Apre nant'à a tabula",
+        "description": "Chì tabula si mostra prima.",
+        "options": {
+          "motion": "Guida",
+          "video": "Filmettu",
+          "demo": "Dimustrazione",
+          "docs": "Documentazione",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Guida in lettura autumatica",
+        "description": "Principià a guida appena u lettore si mostra. Ignuratu quandu u lettore preferisce menu muvimentu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sughjettu di a guida",
+        "description": "Per l'elementi cù parechje guide, chì sughjettu apre prima (per esempiu add-blocks). Lasciate biotu per quella principale."
+      },
+      {
+        "title": "Liame di dimustrazione in diretta",
+        "description": "Induve và u buttone Apre a fonte di a dimustrazione. Per difettu, u cartulare demo di u dipositu."
+      },
+      {
+        "title": "Liame di documentazione",
+        "description": "Induve và u buttone di documentazione cumpleta, per esempiu a pagina Learn HAX currispundente."
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Įspėjimas",
   "status_success": "Sėkmė",
-  "status_info": "Pastaba"
+  "status_info": "Pastaba",
+  "status_tip": "Ar žinojote?",
+  "status_new": "Kas naujo"
 }

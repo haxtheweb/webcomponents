@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Gráfico de radar",
+    "description": "Gráfico de radar (de araña) para modelos de madurez y puntuación por facetas, como HEOSAT. Incluye una alternativa textual y una tabla de datos."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Encabezado del gráfico; también se usa como su nombre accesible."
+      },
+      {
+        "title": "Puntuación máxima",
+        "description": "Valor más alto de la escala."
+      },
+      {
+        "title": "Categorías",
+        "description": "Una categoría por línea. Se necesitan al menos 3."
+      },
+      {
+        "title": "Puntuaciones",
+        "description": "Números separados por comas, uno por categoría y en el mismo orden."
+      },
+      {
+        "title": "Puntuaciones objetivo",
+        "description": "Números separados por comas, uno por categoría y en el mismo orden."
+      },
+      {
+        "title": "Mostrar leyenda",
+        "description": "Mostrar una leyenda que nombre las puntuaciones y los objetivos."
+      },
+      {
+        "title": "Compacto",
+        "description": "Gráfico más pequeño sin etiquetas, leyenda ni tabla de datos. Pasa el cursor sobre un punto para ver sus valores."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etiqueta de puntuación",
+        "description": "Etiqueta de la leyenda y la tabla para las puntuaciones."
+      },
+      {
+        "title": "Etiqueta del objetivo",
+        "description": "Etiqueta de la leyenda y la tabla para los objetivos."
+      }
+    ]
+  }
+}

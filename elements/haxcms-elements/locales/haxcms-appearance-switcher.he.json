@@ -1,0 +1,8 @@
+{
+  "theme": "ערכת עיצוב",
+  "palette": "פלטה",
+  "themeDefault": "ברירת המחדל של ערכת העיצוב",
+  "designSystem": "מערכת עיצוב",
+  "designSystemDefault": "DDD (ברירת מחדל)",
+  "designSystemUnavailable": "ערכת עיצוב זו שומרת על מערכת העיצוב שלה"
+}

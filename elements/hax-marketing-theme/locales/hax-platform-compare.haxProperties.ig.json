@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ntụnyere ikpo okwu",
+    "description": "Isi na isi: họrọ ikpo okwu abụọ ọ bụla site na faịlụ data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data ntụnyere (JSON)"
+      },
+      {
+        "title": "Id ikpo okwu aka ekpe"
+      },
+      {
+        "title": "Id ikpo okwu aka nri"
+      }
+    ]
+  }
+}

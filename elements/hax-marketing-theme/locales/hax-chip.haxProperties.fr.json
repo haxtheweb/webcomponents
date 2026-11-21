@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Pastille",
+    "description": "Une petite icône avec libellé"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Icône"
+      },
+      {
+        "title": "Libellé"
+      }
+    ]
+  }
+}

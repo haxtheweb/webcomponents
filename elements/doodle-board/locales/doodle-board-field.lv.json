@@ -1,0 +1,16 @@
+{
+  "drawing": "Zīmējums",
+  "edit": "Rediģēt zīmējumu",
+  "start": "Sākt zīmēt",
+  "remove": "Noņemt zīmējumu",
+  "empty": "Vēl nekas nav uzzīmēts",
+  "save": "Saglabāt",
+  "cancel": "Atcelt",
+  "close": "Aizvērt",
+  "discard": "Atmest izmaiņas",
+  "discardConfirm": "Atmest nesaglabātās izmaiņas?",
+  "keepEditing": "Turpināt rediģēt",
+  "draw": "Zīmējums",
+  "feedback": "Atgriezeniskā saite",
+  "signature": "Paraksts"
+}

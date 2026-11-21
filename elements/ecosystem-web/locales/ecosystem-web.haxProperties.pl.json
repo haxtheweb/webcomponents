@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Sieć ekosystemu",
+    "description": "Interaktywna sieć pokazująca, jak łączą się części projektu, z podsieciami i wycieczkami krok po kroku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dane sieci",
+        "description": "URL pakietu JSON z sieciami (budowany w PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Sieć",
+        "description": "ID sieci pokazywanej najpierw; main to sieć ekosystemu."
+      },
+      {
+        "title": "Wybrany kafelek",
+        "description": "ID kafelka do zaznaczenia po otwarciu sieci."
+      },
+      {
+        "title": "Wycieczka",
+        "description": "ID wycieczki, od której zacząć."
+      },
+      {
+        "title": "Zacznij w widoku listy",
+        "description": "Pokaż sieć jako zagnieżdżone listy zamiast rysunku."
+      },
+      {
+        "title": "Tylko rysunek",
+        "description": "Pokaż sam rysunek jako ilustrację: bez nagłówka, wycieczek, szczegółów i paska kroków."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Odczyt według",
+        "description": "Zacznij od odczytu każdego kafelka według jednej miary.",
+        "options": {
+          "": "Tylko połączenia",
+          "fresh": "Aktualność",
+          "bus": "Bus factor",
+          "impact": "Wpływ",
+          "evidence": "Dowody",
+          "parity": "Parytet"
+        }
+      }
+    ]
+  }
+}

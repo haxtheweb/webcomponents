@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scenariu ramificat",
+    "description": "O poveste în care fiecare alegere duce la o scenă și un final diferit. Cursanții pot face un pas înapoi și încerca alte drumuri; finalul atins stabilește scorul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Numele scenariului, afișat în antet."
+      },
+      {
+        "title": "Scena de start",
+        "description": "Id-ul scenei de la care încep cursanții. Lăsați gol pentru a începe de la prima scenă."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culoare de accent",
+        "description": "Culoare opțională pentru eticheta din antet, butoane și marginea unei alegeri."
+      }
+    ]
+  }
+}

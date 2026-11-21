@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Hujjatlar pleyeri",
+    "description": "Veb-komponent uchun qo‘llanma, demo va ma’lumotnoma, HTML, import, npm va CDN uchun nusxa olish tugmalari bilan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hujjatlar ma’lumot fayli",
+        "description": "Element bilan birga keladigan hujjatlar ma’lumoti (lib/tag.docs.json)."
+      },
+      {
+        "title": "Qo‘llanma raskadrovkasi",
+        "description": "Element bilan birga keladigan harakat raskadrovkasi (tag.motion.json). Ixtiyoriy."
+      },
+      {
+        "title": "Video qo‘llanma",
+        "description": "Element haqida qisqa video (YouTube, Vimeo yoki video fayl). Hujjatlar ma’lumotidagi videoni almashtiradi."
+      },
+      {
+        "title": "Ochiladigan yorliq",
+        "description": "Qaysi yorliq birinchi ko‘rsatiladi.",
+        "options": {
+          "motion": "Qo‘llanma",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Hujjatlar",
+          "schema": "Sxema"
+        }
+      },
+      {
+        "title": "Qo‘llanmani avtomatik ijro etish",
+        "description": "Pleyer ko‘ringan zahoti qo‘llanmani boshlash. O‘quvchi kamroq harakatni afzal ko‘rsa, e’tiborga olinmaydi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Qo‘llanma mavzusi",
+        "description": "Bir nechta qo‘llanmasi bor elementlar uchun qaysi mavzu birinchi ochiladi (masalan add-blocks). Asosiysi uchun bo‘sh qoldiring."
+      },
+      {
+        "title": "Jonli demo havolasi",
+        "description": "Demo manbasini ochish tugmasi qayerga olib boradi. Standart bo‘yicha repozitoriydagi demo papkasi."
+      },
+      {
+        "title": "Hujjatlar havolasi",
+        "description": "To‘liq hujjatlar tugmasi qayerga olib boradi, masalan mos Learn HAX sahifasi."
+      }
+    ]
+  }
+}

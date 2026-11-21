@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pitakon angka",
+    "description": "Pitakon sing diwangsuli nganggo angka. Wangsulane angka tetep utawa rumus sing diitung saka variabel, lan dianggep bener yen ana ing toleransi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pitakon",
+        "description": "Apa sing ditakokake marang siswa. Tulis jeneng variabel ing kurung kurawal, kaya {d}, kanggo nampilake nilaine."
+      },
+      {
+        "title": "Satuan",
+        "description": "Ditampilake minangka teks ing sandhinge kolom wangsulan, contone km/h."
+      },
+      {
+        "title": "Wangsulan",
+        "description": "Angka sing bener. Kosongake yen rumus sing ngitung wangsulane."
+      },
+      {
+        "title": "Rumus",
+        "description": "Ngitung wangsulan saka variabel, contone d / (t / 60). Bisa nggunakake + - * / ^, kurung, sqrt() lan abs(). Dienggo tinimbang wangsulan yen disetel."
+      },
+      {
+        "title": "Variabel",
+        "description": "Angka sing dienggo rumus lan pitakon. Saben siji njupuk nilai antarane paling endhek lan paling dhuwur, miturut langkah."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleransi",
+        "description": "Sepira adohe saka wangsulan pas sing isih dianggep bener. 0 tegese pas, utawa dibunderake menyang angka desimal ing ngisor."
+      },
+      {
+        "title": "Jinis toleransi",
+        "description": "Absolut: plus utawa minus toleransi. Persen: plus utawa minus persen kasebut saka wangsulan pas.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Persen"
+        }
+      },
+      {
+        "title": "Angka desimal",
+        "description": "Siswa dijaluk mbunderake menyang semono angka, lan wangsulan ditampilake dibunderake semono. Kosongake kanggo tanpa pambunderan."
+      },
+      {
+        "title": "Upaya",
+        "description": "Kaping pira siswa bisa mriksa. 0 tegese tanpa wates."
+      },
+      {
+        "title": "Angka anyar saben nyoba",
+        "description": "Gawe nilai variabel anyar saben siswa nyoba maneh. Wangsulan sadurunge banjur ora ditampilake nalika bali, mung apa wis bener."
+      },
+      {
+        "title": "Bisa dilempit",
+        "description": "Tampilake pitakon iki minangka baris sing bisa dibukak lan ditutup. Mbukak siji nutup pitakon lempitan liyane ing sandhinge."
+      },
+      {
+        "title": "Wiwiti kalempit",
+        "description": "Yen bisa dilempit, wiwiti minangka baris ketutup sing mung nampilake pitakon lan statuse."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dienggo kanggo identifikasi xAPI ing sistem analitik."
+      }
+    ]
+  }
+}

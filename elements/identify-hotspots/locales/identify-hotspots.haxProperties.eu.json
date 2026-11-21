@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifikatu guneak",
+    "description": "Ikasleek irudi bateko leku zuzenak aurkitzen dituzte klik eginez, ukituz edo teklatuko gurutze bat mugituz. Irudi-mapa baten bertsio kalifikatua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irudia",
+        "description": "Ikasleek arakatzen duten irudia."
+      },
+      {
+        "title": "Testu alternatiboa",
+        "description": "Irudia deskribatzen du ikusi ezin dutenentzat. Ez da inoiz izenburu gisa erakusten."
+      },
+      {
+        "title": "Izenburua",
+        "description": "Irudiaren gainean erakusten den izenburu labur ikusgai bat."
+      },
+      {
+        "title": "Galdera",
+        "description": "Ikasleei irudian aurkitzeko eskatzen zaiena."
+      },
+      {
+        "title": "Erantzunak",
+        "description": "Erantzun bakoitza irudiko obalo izendun bat da. Posizioa eta tamaina irudiaren ehunekoak dira, goiko ezkerreko izkinatik neurtuta. Editatzen den bitartean, erantzun guztiak irudian inguratuta daude."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saiakerak",
+        "description": "Zenbat aldiz saia daitekeen ikasle bat. 0k mugagabea esan nahi du."
+      },
+      {
+        "title": "Baimendutako hutsak",
+        "description": "Zenbat hutsek amaitzen duten saiakera bat. 0k mugagabea esan nahi du, eta ikasleek Amaitu botoi bat dute."
+      },
+      {
+        "title": "Tolesgarria",
+        "description": "Erakutsi galdera hau ireki eta ixten den errenkada gisa. Bat irekitzeak ondoko beste galdera tolesgarriak ixten ditu."
+      },
+      {
+        "title": "Hasi tolestuta",
+        "description": "Tolesgarria denean, hasi galdera eta haren egoera soilik erakusten dituen errenkada itxi gisa."
+      },
+      {
+        "title": "Kalifikazio-formatua",
+        "description": "OER Schema: ebaluazio honen kalifikazio-formatua (adib. puntuak, letra, ehunekoa, osaketa)."
+      },
+      {
+        "title": "Ikaskuntza-helburua",
+        "description": "OER Schema: ebaluazio honekin lotutako ikaskuntza-helburua."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Galdetegiaren izena",
+        "description": "xAPI bidezko inguruneetan elementu hau identifikatzeko pasatzen den galdetegiaren izena"
+      },
+      {
+        "title": "Ikastaroa",
+        "description": "OER Schema: ebaluazio hau zein ikastarorentzat den."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fótnota",
+    "description": "Ein nota skrivað, har hon hoyrir heima í tekstinum. Hon verður víst sum eitt tal, og talsetti listin við notum byggir seg sjálvan niðast á síðuni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "Teksturin í fótnotuni."
+      },
+      {
+        "title": "Eingin forsýning",
+        "description": "Vís ikki notuna, tá ið ein lesari heldur músina yvir ella setur fokus á talið."
+      }
+    ]
+  }
+}

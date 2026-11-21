@@ -64,9 +64,21 @@ describe("a11y-gif-player rendering", () => {
     expect(button.hasAttribute("disabled")).to.be.false;
     expect(button.getAttribute("aria-controls")).to.equal("gif");
     expect(button.style.backgroundImage).to.include(STATIC_URL);
+    // the description waits behind the header's (i) action
     const longdesc = el.shadowRoot.querySelector("#longdesc");
     expect(longdesc).to.exist;
+    expect(longdesc.hasAttribute("hidden")).to.be.true;
+    const info = el.shadowRoot.querySelector("#info-toggle");
+    expect(info.hasAttribute("hidden")).to.be.false;
+    expect(info.getAttribute("aria-expanded")).to.equal("false");
+    expect(info.getAttribute("aria-controls")).to.equal("longdesc");
+    info.click();
+    await el.updateComplete;
+    expect(info.getAttribute("aria-expanded")).to.equal("true");
     expect(longdesc.hasAttribute("hidden")).to.be.false;
+    expect(longdesc.textContent.trim()).to.equal(
+      "Longer description of the gif",
+    );
     expect(
       el.shadowRoot.querySelector("#svg").getAttribute("aria-hidden"),
     ).to.equal("true");
@@ -130,10 +142,10 @@ describe("a11y-gif-player playback", () => {
     // the visible image stays on the static source until the gif has loaded
     expect(gif.getAttribute("src")).to.equal(STATIC_URL);
     expect(button.getAttribute("aria-pressed")).to.equal("true");
-    // the long description fades out while playing
-    expect(el.shadowRoot.querySelector("#longdesc").style.opacity).to.equal(
-      "0",
-    );
+    // the header's play/pause action follows the same state
+    const headerPlay = el.shadowRoot.querySelector("#play-toggle");
+    expect(headerPlay.getAttribute("aria-pressed")).to.equal("true");
+    expect(headerPlay.getAttribute("aria-label")).to.equal("Pause animation");
     const loaded = await poll(() => el.__gifLoaded === true);
     expect(loaded).to.be.true;
     await el.updateComplete;
@@ -235,7 +247,7 @@ describe("a11y-gif-player slot adoption", () => {
 });
 
 describe("a11y-gif-player print and lifecycle", () => {
-  it("opens the long description on print events", async () => {
+  it("opens the long description for printing", async () => {
     const el = await playerFixture(
       html`<a11y-gif-player
         src="${DATA_URL}"
@@ -244,21 +256,18 @@ describe("a11y-gif-player print and lifecycle", () => {
       ></a11y-gif-player>`,
     );
     const longdesc = el.shadowRoot.querySelector("#longdesc");
-    // wait for the dynamically imported a11y-details to define toggleOpen
-    const ready = await poll(() => typeof longdesc.toggleOpen === "function");
-    expect(ready).to.be.true;
-    let opened = 0;
-    longdesc.toggleOpen = () => {
-      opened = opened + 1;
-    };
+    expect(longdesc.hasAttribute("hidden")).to.be.true;
     globalThis.dispatchEvent(new Event("beforeprint"));
-    expect(opened).to.equal(1);
+    await el.updateComplete;
+    expect(longdesc.hasAttribute("hidden")).to.be.false;
     globalThis.dispatchEvent(new Event("afterprint"));
-    expect(opened).to.equal(2);
+    await el.updateComplete;
+    expect(longdesc.hasAttribute("hidden")).to.be.true;
     // disconnecting removes the print listeners
     el.remove();
     globalThis.dispatchEvent(new Event("beforeprint"));
-    expect(opened).to.equal(2);
+    await el.updateComplete;
+    expect(el.__infoOpen).to.be.false;
   });
 });
 

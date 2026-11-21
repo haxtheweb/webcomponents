@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Szereplő",
+    "description": "Egy célközönség, egy karakter alakításában, szöveggel és gombbal"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ki ez"
+      },
+      {
+        "title": "Karaktertípus"
+      },
+      {
+        "title": "Karakter kezdőértéke"
+      },
+      {
+        "title": "Színpad színe (DDD név)"
+      },
+      {
+        "title": "Hová vezet a gomb"
+      },
+      {
+        "title": "Gomb szövege"
+      }
+    ]
+  }
+}

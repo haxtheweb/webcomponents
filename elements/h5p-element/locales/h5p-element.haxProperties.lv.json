@@ -4,7 +4,12 @@
     "description": "Atskaņo interaktīvu H5P saturu no augšupielādēta .h5p faila, H5P serveris nav vajadzīgs"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P fails",
+        "description": "Augšupielādējiet vai norādiet saiti uz .h5p failu. Tas tiek atarhivēts pārlūkā; H5P serveris nav nepieciešams."
+      }
+    ],
     "advanced": [
       {
         "title": "Vecais iframe iegulšanas kods",

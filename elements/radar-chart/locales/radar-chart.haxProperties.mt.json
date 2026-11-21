@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Grafika radar",
+    "description": "Grafika radar (brimba) għal mudelli tal-maturità u punteġġ tal-aspetti, bħal HEOSAT. Tinkludi alternattiva testwali u tabella tad-data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Intestatura għall-grafika; użata wkoll bħala l-isem aċċessibbli tagħha."
+      },
+      {
+        "title": "Punteġġ massimu",
+        "description": "L-ogħla valur fuq l-iskala."
+      },
+      {
+        "title": "Kategoriji",
+        "description": "Kategorija waħda għal kull linja. Jeħtieġ mill-inqas 3."
+      },
+      {
+        "title": "Punteġġi",
+        "description": "Numri separati b'virgoli, wieħed għal kull kategorija fl-istess ordni."
+      },
+      {
+        "title": "Punteġġi fil-mira",
+        "description": "Numri separati b'virgoli, wieħed għal kull kategorija fl-istess ordni."
+      },
+      {
+        "title": "Uri l-leġġenda",
+        "description": "Uri leġġenda li ssemmi l-punteġġi u l-miri."
+      },
+      {
+        "title": "Kompatta",
+        "description": "Grafika iżgħar mingħajr tikketti, leġġenda jew tabella tad-data. Għaddi fuq punt biex tara l-valuri tiegħu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tikketta tal-punteġġ",
+        "description": "Tikketta tal-leġġenda u tat-tabella għall-punteġġi."
+      },
+      {
+        "title": "Tikketta tal-mira",
+        "description": "Tikketta tal-leġġenda u tat-tabella għall-miri."
+      }
+    ]
+  }
+}

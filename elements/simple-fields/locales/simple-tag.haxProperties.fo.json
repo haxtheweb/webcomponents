@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Sjálvvirkin dámlitur",
         "description": "Avleið dámlitin sjálvvirkið úr heitistekstinum."
+      },
+      {
+        "title": "Týdningur",
+        "description": "Gev frámerkinum ein týdningarlit. Lat vera tómt fyri eitt hjálutt frámerki.",
+        "options": {
+          "": "Hjáluttur",
+          "brand": "Vørumerki",
+          "success": "Eydnast",
+          "warning": "Ávaring",
+          "danger": "Vandi"
+        }
       }
     ],
     "advanced": [

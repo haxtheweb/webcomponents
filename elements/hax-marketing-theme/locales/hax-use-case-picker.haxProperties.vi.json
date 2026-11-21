@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Bộ chọn mục đích sử dụng",
+    "description": "Chọn mục đích của trang web và nhận một liên kết mở HAX trong trình duyệt với trang web khởi đầu đó, kèm lệnh CLI tương ứng."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Địa chỉ HAX trong trình duyệt",
+        "description": "Nơi liên kết mở ra; nó được thêm ?skeleton= và &name="
+      },
+      {
+        "title": "Các trang web khởi đầu cần loại bỏ",
+        "description": "Tên máy, phân tách bằng dấu phẩy"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Danh sách trang web khởi đầu",
+        "description": "Địa chỉ của danh sách skeleton (định dạng mà app-hax đọc)"
+      }
+    ]
+  }
+}

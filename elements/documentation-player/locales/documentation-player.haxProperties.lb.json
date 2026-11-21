@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentatiounsplayer",
+    "description": "Uleedung, Demo a Referenz fir e Webkomponent, mat Kopéierknäppercher fir HTML, Import, npm an CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentatiounsdatefichier",
+        "description": "D'Dokumentatiounsdaten, déi mam Element geliwwert ginn (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard vun der Uleedung",
+        "description": "D'Beweegungs-Storyboard, dat mam Element geliwwert gëtt (tag.motion.json). Optional."
+      },
+      {
+        "title": "Video-Tutorial",
+        "description": "E kuerze Video iwwer d'Element (YouTube, Vimeo oder e Videofichier). Ersetzt de Video an den Dokumentatiounsdaten."
+      },
+      {
+        "title": "Op Tab opmaachen",
+        "description": "Wéi en Tab als éischt gewise gëtt.",
+        "options": {
+          "motion": "Uleedung",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentatioun",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Uleedung automatesch ofspillen",
+        "description": "D'Uleedung starten, soubal de Player gewise gëtt. Gëtt ignoréiert, wann de Lieser manner Beweegung léiwer huet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Thema vun der Uleedung",
+        "description": "Fir Elementer mat e puer Uleedungen: wéi een Thema als éischt opgemaach gëtt (zum Beispill add-blocks). Eidel loossen fir dat Haaptthema."
+      },
+      {
+        "title": "Link op d'Live-Demo",
+        "description": "Wouhi de Knäppchen „Demo-Quell opmaachen“ féiert. Standardméisseg den Demo-Dossier am Repository."
+      },
+      {
+        "title": "Dokumentatiounslink",
+        "description": "Wouhi de Knäppchen fir déi ganz Dokumentatioun féiert, zum Beispill déi passend Learn HAX-Säit."
+      }
+    ]
+  }
+}

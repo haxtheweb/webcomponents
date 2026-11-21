@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramme",
+  "flowchart": "organigramme",
+  "sequence": "séquence",
+  "source": "Source",
+  "textAlternative": "Alternative textuelle",
+  "present": "Présenter",
+  "exitPresent": "Quitter la présentation",
+  "loading": "Chargement du diagramme",
+  "empty": "Rien à dessiner pour l'instant. Ajoutez la source du diagramme.",
+  "error": "Erreur",
+  "parseError": "Ce diagramme n'a pas pu être dessiné. Vérifiez la source.",
+  "loadError": "La bibliothèque de diagrammes n'a pas pu être chargée.",
+  "srcError": "Le fichier du diagramme n'a pas pu être chargé.",
+  "decision": "décision",
+  "end": "fin",
+  "goTo": "aller à {target}",
+  "ifGoTo": "si {label}, aller à {target}",
+  "describedBySource": "Diagramme décrit par sa source.",
+  "scrollable": "Diagramme, défilable"
+}

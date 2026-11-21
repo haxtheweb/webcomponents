@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram uit teks",
+    "description": "Skryf 'n diagram as teks (Mermaid): 'n vloeidiagram, volgorde, tydlyn en meer. Dit word op die bladsy geteken met 'n teksalternatief."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Bo die diagram gewys en as sy naam gebruik."
+      },
+      {
+        "title": "Diagrambron",
+        "description": "Mermaid-teks, byvoorbeeld: flowchart TD, dan een reël per skakel soos A[Draft] --> B{Ready?}. Voeg |label| ná 'n pyl by om dit te etiketteer. Die tekening word opgedateer terwyl jy tik."
+      },
+      {
+        "title": "Teksalternatief",
+        "description": "Beskryf wat die diagram wys vir mense wat dit nie kan sien nie. Laat leeg op 'n vloeidiagram om sy stappe vir jou te laat lys."
+      },
+      {
+        "title": "Onderskrif",
+        "description": "Opsionele onderskrif onder die diagram."
+      },
+      {
+        "title": "Wys die bron",
+        "description": "Wys die diagramteks langs die tekening."
+      },
+      {
+        "title": "Wys die teksalternatief",
+        "description": "Wys die teksalternatief onder die tekening. Dit is altyd vir skermlesers beskikbaar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bronlêer",
+        "description": "Adres van 'n .mmd-lêer om te teken in plaas van die teks hierbo (https of 'n pad op hierdie webwerf)."
+      },
+      {
+        "title": "Aksentkleur",
+        "description": "Kleur van die ikoonskyfie in die opskrif."
+      }
+    ]
+  }
+}

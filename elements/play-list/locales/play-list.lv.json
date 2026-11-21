@@ -9,5 +9,7 @@
   "slidePages": "Slaidu lapas",
   "goToSlide": "Doties uz slaidu {number}",
   "slides": "Slaidi",
-  "position": "{number} no {total}"
+  "position": "{number} no {total}",
+  "fullScreen": "Pilnekrāna režīms",
+  "exitFullScreen": "Iziet no pilnekrāna režīma"
 }

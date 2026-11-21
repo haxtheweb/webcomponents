@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Figyelmeztetés",
   "status_success": "Siker",
-  "status_info": "Megjegyzés"
+  "status_info": "Megjegyzés",
+  "status_tip": "Tudta?",
+  "status_new": "Újdonságok"
 }

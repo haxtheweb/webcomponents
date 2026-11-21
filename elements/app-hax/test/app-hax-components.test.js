@@ -246,15 +246,16 @@ describe("app-hax-use-case", () => {
     expect(placeholder).to.exist;
   });
 
-  it("toggleDisplay flips isSelected and showContinue", async () => {
+  it("toggleDisplay does not leave the card pressed", async () => {
     const el = await fixture(
       html`<app-hax-use-case title="Test"></app-hax-use-case>`,
     );
     await el.updateComplete;
-    expect(el.isSelected).to.be.false;
     el.toggleDisplay();
-    expect(el.isSelected).to.be.true;
-    expect(el.showContinue).to.be.true;
+    el.toggleDisplay();
+    await el.updateComplete;
+    expect(el.isSelected).to.be.false;
+    expect(el.hasAttribute("isselected")).to.be.false;
   });
 
   it("toggleDisplay dispatches toggle-display event", async () => {

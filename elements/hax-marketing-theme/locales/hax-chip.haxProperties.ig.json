@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Obere akara ngosi nwere akara aha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akara ngosi"
+      },
+      {
+        "title": "Akara aha"
+      }
+    ]
+  }
+}

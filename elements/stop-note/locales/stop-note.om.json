@@ -3,5 +3,7 @@
   "status_stop": "Dhaabi",
   "status_warning": "Akeekkachiisa",
   "status_success": "Milkaa'ina",
-  "status_info": "Yaadannoo"
+  "status_info": "Yaadannoo",
+  "status_tip": "Beekta turtee?",
+  "status_new": "Maaltu haaraa"
 }

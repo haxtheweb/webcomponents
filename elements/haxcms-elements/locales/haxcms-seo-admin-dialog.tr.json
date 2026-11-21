@@ -6,6 +6,8 @@
   "faviconDescription": "Tarayıcı sekmesi görseli / telefonlarda küçük site logosu olarak kullanılır",
   "domain": "Alan adı",
   "domainDescription": "Bu web sitesinin alan adı",
+  "sameAs": "Bu sitenin diğer profilleri",
+  "sameAsDescription": "Bu sitenin veya kuruluşun başka yerlerdeki profillerine her satıra bir bağlantı (GitHub, LinkedIn, YouTube, Mastodon). Arama motorları bu profilleri bu siteyle ilişkilendirmek için bunları kullanır.",
   "language": "Dil",
   "languageDescription": "Bu sitenin dili. Ada veya koda göre arayın ya da fr-CA gibi başka bir kod girin.",
   "googleAnalyticsId": "Google Analytics Kimliği",

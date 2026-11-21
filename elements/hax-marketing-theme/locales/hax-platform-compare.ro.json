@@ -1,0 +1,15 @@
+{
+  "loading": "Se încarcă comparația.",
+  "yes": "Da",
+  "partly": "Parțial",
+  "no": "Nu",
+  "compare": "Comparați",
+  "with": "Cu",
+  "vs": "vs",
+  "caption": "{a} și {b}, funcție cu funcție",
+  "feature": "Funcție",
+  "clearYes": "{count} din {total} un da clar",
+  "seeForYourself": "Vedeți singur:",
+  "and": "și",
+  "why": "De ce"
+}

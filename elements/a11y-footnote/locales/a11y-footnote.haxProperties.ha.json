@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Bayanin ƙasa",
+    "description": "Bayanin da aka rubuta a inda ya dace a cikin rubutu. Yana bayyana a matsayin lamba, kuma jerin bayanan masu lamba yana gina kansa a ƙasan shafin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bayani",
+        "description": "Rubutun bayanin ƙasa."
+      },
+      {
+        "title": "Babu samfoti",
+        "description": "Kada ka nuna bayanin idan mai karatu ya shawagi ko ya mayar da hankali kan lambar."
+      }
+    ]
+  }
+}

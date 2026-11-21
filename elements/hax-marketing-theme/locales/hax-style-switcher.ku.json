@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Pergala sêwiranê",
+  "dddDefault": "DDD (standard)",
+  "designSystemHelp": "Reng, tîpnivîs, quncik û fokus. Tema dirûvê diparêze.",
+  "designSystemFixed": "Ev tema pergala sêwiranê ya xwe diparêze.",
+  "palette": "Palet",
+  "themeDefault": "Standarda temayê",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (temaya vê malperê)",
+  "restyle": "Şêwaza vê malperê biguherîne",
+  "close": "Bigire",
+  "reset": "Vegere dîmena vê malperê ya xwe",
+  "random": "Min surprîz bike",
+  "about": "Ev çend dîmenên ku di HAX de hene nîşan dide. Rûpel qet naguherin: avahî di JSON Outline Schema de ye û her blok pêkhateyeke webê ya standard e, ji ber vê yekê sêwiran azad e ku biguhere."
+}

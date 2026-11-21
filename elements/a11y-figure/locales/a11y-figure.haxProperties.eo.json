@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternativa teksto"
+        "title": "Alternativa teksto",
+        "description": "Priskribu la bildon por homoj, kiuj ne povas vidi ĝin."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Nedeviga resuma teksto kiam la detaloj estas malfermitaj"
+        "title": "Nedeviga resuma teksto kiam la detaloj estas malfermitaj",
+        "description": "Butona teksto dum la priskribo estas kaŝita, ekzemple Montri priskribon."
       },
       {
         "property": "closeText",
-        "title": "Nedeviga resuma teksto kiam la detaloj estas fermitaj"
+        "title": "Nedeviga resuma teksto kiam la detaloj estas fermitaj",
+        "description": "Butona teksto dum la priskribo estas montrata, ekzemple Kaŝi priskribon."
       }
     ]
   }

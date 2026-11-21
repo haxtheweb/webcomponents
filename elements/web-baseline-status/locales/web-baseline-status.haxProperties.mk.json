@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline статус",
+    "description": "Прикажи го Baseline статусот на поддршка во прелистувачите за можност на веб-платформата."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID на можноста",
+        "description": "ID на веб-можноста, на пример anchor-positioning. Пронајдете ID-а на webstatus.dev; ID-то е последниот дел од URL-то на страницата на можноста."
+      }
+    ]
+  }
+}

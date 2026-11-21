@@ -40,5 +40,7 @@
   "hideDirections": "Emokañy tapykuéra",
   "showRelatedContent": "Ehechauka mba'e ojoajúva",
   "hideRelatedContent": "Emokañy mba'e ojoajúva",
-  "notAttempted": "Ndojeprobái"
+  "notAttempted": "Ndojeprobái",
+  "cardsDirections": "Emoĩ kártakuéra hekopete botõ emongu'e tenondeve ha emongu'e tapykueve reheve peteĩteĩ kártape, térã eraha mouse reheve. Rerovia jave oĩporãmaha, ehecha ne mbohovái eiporavóvo {checkAnswer}.",
+  "movedToPosition": "{item} oñemongu'e tenda {position}-pe {total} apytégui"
 }

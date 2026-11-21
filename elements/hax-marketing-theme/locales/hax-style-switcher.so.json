@@ -1,0 +1,16 @@
+{
+  "theme": "Theme",
+  "designSystem": "Nidaamka naqshadda",
+  "dddDefault": "DDD (caadi)",
+  "designSystemHelp": "Midab, far, geesaha iyo diiradda. Theme-ku wuxuu hayaa qaabka.",
+  "designSystemFixed": "Theme-kan wuxuu hayaa nidaamkiisa naqshadda.",
+  "palette": "Midabo",
+  "themeDefault": "Caadiga theme-ka",
+  "paletteNumber": "Midabo {n}",
+  "siteTheme": "{name} (theme-ka goobtan)",
+  "restyle": "Dib u qaabee goobtan",
+  "close": "Xir",
+  "reset": "Ku noqo muuqaalka goobtan",
+  "random": "I yaab",
+  "about": "Tani waxay muujinaysaa dhowr muuqaal oo HAX ku dhex dhisan. Bogaggu weligood isma beddelaan: qaab-dhismeedku wuxuu ku jiraa JSON Outline Schema, block kastana waa web component caadi ah, sidaas darteed naqshadda si xor ah ayaa loo beddeli karaa."
+}

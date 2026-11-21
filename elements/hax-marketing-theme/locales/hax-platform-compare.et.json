@@ -1,0 +1,15 @@
+{
+  "loading": "Võrdluse laadimine.",
+  "yes": "Jah",
+  "partly": "Osaliselt",
+  "no": "Ei",
+  "compare": "Võrdle",
+  "with": "Millega",
+  "vs": "vs",
+  "caption": "{a} ja {b}, funktsioon funktsiooni haaval",
+  "feature": "Funktsioon",
+  "clearYes": "{count}/{total} selge jah",
+  "seeForYourself": "Vaata ise:",
+  "and": "ja",
+  "why": "Miks"
+}

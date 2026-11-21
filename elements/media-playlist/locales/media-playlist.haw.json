@@ -5,5 +5,7 @@
   "editModeLabel": "Ke ʻano hoʻoponopono o ka papa hoʻokani media",
   "position": "{current} o {total}",
   "previousItem": "Mea i hala",
-  "nextItem": "Mea aʻe"
+  "nextItem": "Mea aʻe",
+  "fullScreen": "Pakuhi piha",
+  "exitFullScreen": "Haʻalele i ka pakuhi piha"
 }

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Markerli yoxlama siyahısı",
+    "description": "Qeyd qutularının siyahısı. Oxucular elementləri işarələyir və onların irəliləyişi öz cihazlarında yadda saxlanılır."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Siyahının adı. Qeyd qutuları qrupunun etiketi kimi səsli oxunur."
+      },
+      {
+        "title": "Elementlər",
+        "description": "Hər element bir qeyd qutusudur. İşarələnmiş və ya deaktiv elementləri oxucular dəyişə bilməz."
+      },
+      {
+        "title": "Nömrəli",
+        "description": "Markerli siyahı əvəzinə nömrəli siyahı göstər."
+      },
+      {
+        "title": "Status",
+        "description": "Rəngləri stop-note-a uyğunlaşdırır.",
+        "options": {
+          "info": "Bildiriş",
+          "success": "Təsdiq",
+          "warning": "Xəbərdarlıq",
+          "stop": "Dayan"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Yaddaş id-si",
+        "description": "Oxucunun irəliləyişini cihazında yadda saxlamaq üçün istifadə olunan unikal id. Avtomatik yaradılır; yalnız siyahılar arasında irəliləyişi paylaşmaq və ya yenidən başlamaq üçün dəyişin."
+      }
+    ]
+  }
+}

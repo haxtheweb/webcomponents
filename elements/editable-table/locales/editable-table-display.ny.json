@@ -3,5 +3,8 @@
   "copyAsCsv": "Koperani ngati CSV.",
   "printTable": "Sindikizani Tebulo",
   "selectColumn": "Sankhani Mzati",
-  "dataTable": "Deta · Tebulo"
+  "dataTable": "Deta · Tebulo",
+  "filterStatus": "Kuwonetsa mizere {shown} mwa {total}, yosefedwa ndi {column}: {text}",
+  "columnNumber": "Gawo {column}",
+  "clearFilter": "Chotsani zosefera"
 }

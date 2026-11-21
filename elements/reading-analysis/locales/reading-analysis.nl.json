@@ -60,6 +60,8 @@
   "flagsFound": "{correct} van {total} gevonden",
   "toRethink": "{count} om te heroverwegen",
   "notEvidence": "geen bewijs voor dit vlaggetje",
+  "isEvidence": "bewijs voor deze markering",
+  "readingKeys": "Gebruik de pijltoetsen om van de ene {unit} naar de volgende te gaan.",
   "markAnswers": "Antwoorden markeren",
   "doneMarking": "Klaar met antwoorden markeren",
   "editHint": "Bewerk de tekst hieronder. Gebruik Antwoorden markeren in het blokmenu om te kiezen waar elk vlaggetje hoort.",

@@ -23,7 +23,9 @@
           "stop": "Misa",
           "warning": "Isilumkiso",
           "success": "Isiqinisekiso",
-          "info": "Isaziso"
+          "info": "Isaziso",
+          "tip": "Ingcebiso",
+          "new": "Yintoni entsha"
         }
       },
       {

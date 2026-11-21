@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Deebiin tartiiba sirrii irra jira",
   "answerInIncorrectOrder": "Deebiin tartiiba dogoggoraa irra jira",
   "moveOptionUp": "Filannoo tartiiba keessatti ol socho'uuf fili",
-  "moveOptionDown": "Filannoo tartiiba keessatti gadi socho'uuf fili"
+  "moveOptionDown": "Filannoo tartiiba keessatti gadi socho'uuf fili",
+  "moveEarlier": "Gara duraatti socho'i",
+  "moveLater": "Gara boodaatti socho'i",
+  "correct": "Sirrii",
+  "incorrect": "Dogoggora"
 }

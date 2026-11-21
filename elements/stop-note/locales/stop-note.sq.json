@@ -3,5 +3,7 @@
   "status_stop": "Ndalo",
   "status_warning": "Kujdes",
   "status_success": "Sukses",
-  "status_info": "Shënim"
+  "status_info": "Shënim",
+  "status_tip": "A e dinit?",
+  "status_new": "Çfarë ka të re"
 }

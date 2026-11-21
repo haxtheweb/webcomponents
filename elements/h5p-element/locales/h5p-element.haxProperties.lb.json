@@ -4,7 +4,12 @@
     "description": "Spillt interaktiven H5P-Inhalt vun enger eropgeluedener .h5p-Datei of, ouni H5P-Server"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-Fichier",
+        "description": "Luet en .h5p-Fichier erop oder verlinkt en. E gëtt am Browser ausgepakt; keen H5P-Server ass néideg."
+      }
+    ],
     "advanced": [
       {
         "title": "Ale iframe-Embed-Code",

@@ -3,5 +3,7 @@
   "status_stop": "நிறுத்து",
   "status_warning": "எச்சரிக்கை",
   "status_success": "வெற்றி",
-  "status_info": "குறிப்பு"
+  "status_info": "குறிப்பு",
+  "status_tip": "உங்களுக்குத் தெரியுமா?",
+  "status_new": "புதியவை"
 }

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Számolási gyakorlat",
+    "description": "Rövid, generált számolási feladatsor azonnali visszajelzéssel. Válassza ki a műveleteket és a számtartományt; minden kör új."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A gyakorlat neve, a fejlécében jelenik meg."
+      },
+      {
+        "title": "Műveletek",
+        "description": "Milyen feladatok szerepeljenek. A tanulók kezdés előtt bármelyiket kikapcsolhatják.",
+        "options": {
+          "add": "Összeadás",
+          "subtract": "Kivonás",
+          "multiply": "Szorzás",
+          "divide": "Osztás",
+          "add subtract": "Összeadás és kivonás",
+          "multiply divide": "Szorzás és osztás",
+          "add multiply": "Összeadás és szorzás",
+          "add divide": "Összeadás és osztás",
+          "subtract multiply": "Kivonás és szorzás",
+          "subtract divide": "Kivonás és osztás",
+          "add subtract multiply": "Összeadás, kivonás és szorzás",
+          "add subtract divide": "Összeadás, kivonás és osztás",
+          "add multiply divide": "Összeadás, szorzás és osztás",
+          "subtract multiply divide": "Kivonás, szorzás és osztás",
+          "add subtract multiply divide": "Mind a négy"
+        }
+      },
+      {
+        "title": "Legkisebb szám",
+        "description": "A feladatokban használt legkisebb szám. Egész szám, 0 vagy több."
+      },
+      {
+        "title": "Legnagyobb szám",
+        "description": "A feladatokban használt legnagyobb szám. Az osztás eredményei és osztói is ebben a tartományban maradnak."
+      },
+      {
+        "title": "Feladatok száma",
+        "description": "Hány feladat legyen egy körben (1–100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Időkorlát",
+        "description": "Egy teljes körre engedélyezett másodpercek. A 0 azt jelenti, hogy nincs időzítő, ez az alapértelmezés: az időre menő gyakorlatok cserben hagyják azokat a tanulókat, akiknek több idő kell. Ha be van állítva, a tanulók maguknak továbbra is kikapcsolhatják az időzítőt."
+      },
+      {
+        "title": "Kiemelőszín",
+        "description": "A fejléccímke és a gombok színe. Hagyja üresen, hogy a témát kövesse."
+      }
+    ]
+  }
+}

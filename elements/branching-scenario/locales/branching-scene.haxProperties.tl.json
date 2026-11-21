@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Eksena ng senaryo",
+    "description": "Isang eksena ng branching scenario. I-link ang bawat pagpipilian sa ibang eksena gamit ang # na sinusundan ng id ng eksena nito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id ng eksena",
+        "description": "Kung saan nagli-link ang mga pagpipilian: ang link sa # na sinusundan ng id na ito ay humahantong sa eksenang ito. Mga titik, numero at gitling."
+      },
+      {
+        "title": "Heading",
+        "description": "Heading ng eksena."
+      },
+      {
+        "title": "Wakas",
+        "description": "Kung tinatapos ng eksenang ito ang isang landas, at kung paano ito nagwakas.",
+        "options": {
+          "": "Hindi wakas",
+          "good": "Magandang wakas",
+          "mixed": "Halong wakas",
+          "poor": "Mahinang wakas"
+        }
+      },
+      {
+        "title": "Iskor",
+        "description": "Iskor sa pag-abot sa wakas na ito. Ang pinakamataas na iskor ng wakas sa senaryo ang maximum."
+      }
+    ]
+  }
+}

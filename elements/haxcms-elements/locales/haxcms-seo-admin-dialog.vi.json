@@ -6,6 +6,8 @@
   "faviconDescription": "Hình ảnh trên thẻ trình duyệt / dùng làm logo nhỏ của trang web trên điện thoại",
   "domain": "Tên miền",
   "domainDescription": "Tên miền của trang web này",
+  "sameAs": "Các hồ sơ khác của trang web này",
+  "sameAsDescription": "Mỗi dòng một liên kết tới hồ sơ của trang web hoặc tổ chức này ở nơi khác (GitHub, LinkedIn, YouTube, Mastodon). Công cụ tìm kiếm dùng chúng để liên kết các hồ sơ đó với trang web này.",
   "language": "Ngôn ngữ",
   "languageDescription": "Ngôn ngữ của trang này. Tìm theo tên hoặc mã, hoặc nhập mã khác như fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

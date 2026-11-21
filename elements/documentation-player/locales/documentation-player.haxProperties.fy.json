@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumintaasjespiler",
+    "description": "Rûnlieding, demo en referinsje foar in webkomponint, mei kopiearknoppen foar HTML, ymport, npm en CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumintaasjegegevensbestân",
+        "description": "De dokumintaasjegegevens dy't mei it elemint meikomme (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard fan de rûnlieding",
+        "description": "It bewegingsstoryboard dat mei it elemint meikomt (tag.motion.json). Opsjoneel."
+      },
+      {
+        "title": "Fideotutorial",
+        "description": "In koarte fideo oer it elemint (YouTube, Vimeo of in fideobestân). Giet boppe de fideo yn de dokumintaasjegegevens."
+      },
+      {
+        "title": "Iepenje op ljepper",
+        "description": "Hokker ljepper earst toand wurdt.",
+        "options": {
+          "motion": "Rûnlieding",
+          "video": "Fideo",
+          "demo": "Demo",
+          "docs": "Dokumintaasje",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Rûnlieding automatysk ôfspylje",
+        "description": "De rûnlieding begjinne sa gau't de spiler ferskynt. Negearre as de lêzer leaver minder beweging hat."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Underwerp fan de rûnlieding",
+        "description": "Foar eleminten mei ferskate rûnliedings, hokker ûnderwerp earst iepene wurdt (bygelyks add-blocks). Lit leech foar de wichtichste."
+      },
+      {
+        "title": "Keppeling nei live demo",
+        "description": "Wêr't de knop Demoboarne iepenje hinne giet. Standert de demomap yn de repository."
+      },
+      {
+        "title": "Dokumintaasjekeppeling",
+        "description": "Wêr't de knop foar de folsleine dokumintaasje hinne giet, bygelyks de passende Learn HAX-side."
+      }
+    ]
+  }
+}

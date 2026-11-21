@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "diagram poteka",
+  "sequence": "zaporedje",
+  "source": "Vir",
+  "textAlternative": "Besedilna alternativa",
+  "present": "Predstavi",
+  "exitPresent": "Končaj predstavitev",
+  "loading": "Nalaganje diagrama",
+  "empty": "Še ni ničesar za risanje. Dodajte vir diagrama.",
+  "error": "Napaka",
+  "parseError": "Tega diagrama ni bilo mogoče narisati. Preverite vir.",
+  "loadError": "Knjižnice diagramov ni bilo mogoče naložiti.",
+  "srcError": "Datoteke diagrama ni bilo mogoče naložiti.",
+  "decision": "odločitev",
+  "end": "konec",
+  "goTo": "pojdi na {target}",
+  "ifGoTo": "če {label}, pojdi na {target}",
+  "describedBySource": "Diagram, opisan z virom.",
+  "scrollable": "Diagram, drsen"
+}

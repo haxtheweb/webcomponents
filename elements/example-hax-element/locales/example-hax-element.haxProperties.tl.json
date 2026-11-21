@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Halimbawang starter element na ginagamit para ipakita ang configuration ng HAX at mga nae-edit na property."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat"
+      }
+    ]
+  }
+}

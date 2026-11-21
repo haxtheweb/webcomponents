@@ -40,5 +40,7 @@
   "hideDirections": "መመሪያዎችን ደብቅ",
   "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
   "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
-  "notAttempted": "አልተሞከረም"
+  "notAttempted": "አልተሞከረም",
+  "cardsDirections": "በእያንዳንዱ ካርድ ላይ ባሉት ወደ ፊት አንቀሳቅስ እና ወደ ኋላ አንቀሳቅስ አዝራሮች ካርዶቹን በትክክለኛው ቅደም ተከተል ያስቀምጡ፣ ወይም በመዳፊት ይጎትቷቸው። በትክክለኛው ቅደም ተከተል እንዳስቀመጧቸው ሲያምኑ {checkAnswer} በመምረጥ መልስዎን ይፈትሹ።",
+  "movedToPosition": "{item} ወደ ቦታ {position} ከ {total} ተንቀሳቅሷል"
 }

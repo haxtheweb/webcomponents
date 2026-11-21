@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kaastöötajad",
+    "description": "Projekti ehitanud inimesed, nimekirjafailist"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimekirjafail (JSON)"
+      },
+      {
+        "title": "Vaade: landed, lab või code"
+      },
+      {
+        "title": "Kõige rohkem kuvatavaid inimesi (0 tähendab kõiki)"
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Tuhia mā te tohu pāngarau LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Papamuri pikitia",
+        "description": "He papamuri kei muri i ngā pikitia kua tuhia. Ka tāpiri te Aunoa i tētahi anake mēnā ka uaua te kite i te tuhinga i te whārangi, pērā i ngā rārangi pōuri i te aratau pōuri.",
+        "options": {
+          "auto": "Aunoa",
+          "light": "Mārama",
+          "dark": "Pōuri",
+          "none": "Kore"
+        }
+      }
+    ]
   }
 }

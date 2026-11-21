@@ -5,5 +5,7 @@
   "editModeLabel": "ميڊيا پلي لسٽ ايڊٽ موڊ",
   "position": "{total} مان {current}",
   "previousItem": "پويون شيءِ",
-  "nextItem": "اڳيون شيءِ"
+  "nextItem": "اڳيون شيءِ",
+  "fullScreen": "پوري اسڪرين",
+  "exitFullScreen": "پوري اسڪرين مان نڪرو"
 }

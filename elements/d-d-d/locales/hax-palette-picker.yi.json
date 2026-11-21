@@ -5,5 +5,6 @@
   "selected": "אויסגעקליבן",
   "currentlyActiveAndSelectedPalette": "איצט אַקטיווע און אויסגעקליבענע פּאַליטרע",
   "currentlyActivePalette": "איצט אַקטיווע פּאַליטרע",
-  "selectedPaletteToApply": "אויסגעקליבענע פּאַליטרע צו אָנווענדן"
+  "selectedPaletteToApply": "אויסגעקליבענע פּאַליטרע צו אָנווענדן",
+  "paletteNumber": "פּאַליטרע {number}"
 }

@@ -8,5 +8,9 @@
   "theme": "Mavzu",
   "palette": "Palitra",
   "cancel": "Bekor qilish",
-  "openAppearanceSettings": "Tashqi koʻrinish sozlamalarini ochish"
+  "openAppearanceSettings": "Tashqi koʻrinish sozlamalarini ochish",
+  "designSystem": "Dizayn tizimi",
+  "designSystemDefault": "DDD (standart)",
+  "designSystemThemeDefault": "{name} (mavzu standarti)",
+  "designSystemHelp": "Rang, shrift, burchaklar va zichlik. Maketni baribir mavzu belgilaydi."
 }

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Beeld-losarea",
+    "description": "Leerders plaas etikette op sones wat oor 'n beeld gelê is, en kontroleer dan hul antwoord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beeld",
+        "description": "Die beeld waarop leerders etikette plaas."
+      },
+      {
+        "title": "Alternatiewe teks",
+        "description": "Beskryf die beeld vir mense wat dit nie kan sien nie. Moenie verklap waar die etikette gaan nie."
+      },
+      {
+        "title": "Beeldtitel",
+        "description": "'n Kort sigbare titel vir die beeld, bo dit gewys."
+      },
+      {
+        "title": "Vraag",
+        "description": "Wat leerders gevra word om met die etikette te doen."
+      },
+      {
+        "title": "Etikette en sones",
+        "description": "Elke item is 'n etiket wat leerders kan plaas. Gee 'n etiket 'n sonenaam om sy sone op die beeld te plaas; 'n etiket sonder sonenaam is 'n ekstra wat nêrens hoort nie. Sonegetalle is persentasies van die beeld."
+      },
+      {
+        "title": "Onderskrif",
+        "description": "Opsionele onderskrif onder die beeld."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogings",
+        "description": "Hoeveel keer 'n leerder kan kontroleer. 0 beteken onbeperk."
+      },
+      {
+        "title": "Skommel etikette",
+        "description": "Wys die etikette elke besoek in 'n ander volgorde."
+      },
+      {
+        "title": "Invoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. Om een oop te maak, maak die ander invoubare vrae langsaan toe."
+      },
+      {
+        "title": "Begin ingevou",
+        "description": "Wanneer invoubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      },
+      {
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persent, voltooiing)."
+      },
+      {
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering geassosieer word."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat vir xAPI-identifikasie in analitiese stelsels gebruik word."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      }
+    ]
+  }
+}

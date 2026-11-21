@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tuile de statistique",
+    "description": "Un nombre qui compte, avec son libellé et son évolution. Placez-en plusieurs dans une grille pour une ligne de tableau de bord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Libellé",
+        "description": "Ce que mesure le nombre."
+      },
+      {
+        "title": "Valeur",
+        "description": "Le nombre. Un nombre simple est formaté selon la langue de la page ; tout le reste s'affiche tel qu'écrit."
+      },
+      {
+        "title": "Évolution",
+        "description": "Comment il a évolué, en mots, par exemple 6 % ce trimestre."
+      },
+      {
+        "title": "Sens",
+        "description": "Si l'évolution est à la hausse ou à la baisse.",
+        "options": {
+          "": "Aucun",
+          "up": "Hausse",
+          "down": "Baisse"
+        }
+      }
+    ]
+  }
+}

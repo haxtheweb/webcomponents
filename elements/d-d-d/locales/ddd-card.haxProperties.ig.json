@@ -52,6 +52,20 @@
           "_top": "Windo kachasị elu - _top",
           "_parent": "Windo nne - _parent"
         }
+      },
+      {
+        "title": "Enweghị akụ",
+        "description": "Zoo akụ bọtịnụ."
+      },
+      {
+        "title": "Njikọ: ebe ọ ga-aga",
+        "description": "Ebe a ga-emepe njikọ ahụ.",
+        "options": {
+          "": "Otu windo ahụ",
+          "_blank": "Windo ọhụrụ - _blank",
+          "_top": "Windo elu - _top",
+          "_parent": "Windo nne na nna - _parent"
+        }
       }
     ],
     "developer": [

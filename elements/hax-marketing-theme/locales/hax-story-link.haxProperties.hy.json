@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Պատմության կոճակ",
+    "description": "Կոճակը, որը բացում է պնդման հետևում կանգնած պատմությունը hax.cloud-ում կամ համապատասխան տեղը HAX ցանցի այլ կայքում"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ուր է տանում",
+        "options": {
+          "cloud": "hax.cloud, պատմությունը",
+          "learn": "learn.hax.cloud, ուսուցողական նյութ",
+          "try": "browser.hax.cloud, փորձեք",
+          "elements": "webcomponents.hax.cloud, բլոկ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Հասցեն այդ կայքում (hax.cloud-ում պատմությունն ունի այսպիսի տեսք՝ stories/ee450a19)"
+      },
+      {
+        "title": "Ինչի մասին է"
+      },
+      {
+        "title": "Փոքր չիպ"
+      },
+      {
+        "title": "Ցույց տալ, թե ինչի մասին է, կոճակում"
+      }
+    ]
+  }
+}

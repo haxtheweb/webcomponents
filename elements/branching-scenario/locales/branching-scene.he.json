@@ -1,0 +1,14 @@
+{
+  "scene": "סצנה",
+  "ending": "סוף",
+  "goodEnding": "סוף טוב",
+  "mixedEnding": "סוף מעורב",
+  "poorEnding": "סוף גרוע",
+  "scoreOf": "ניקוד {score} מתוך {max}",
+  "scoreOnly": "ניקוד {score}",
+  "startScene": "התחלה",
+  "sceneIdLabel": "מזהה סצנה",
+  "needsId": "הוסיפו מזהה סצנה כדי שבחירות יוכלו לקשר לסצנה זו.",
+  "orphan": "אף בחירה לא מקשרת לסצנה זו.",
+  "deadLinks": "הקישורים האלה מפנים לסצנה שלא קיימת:"
+}

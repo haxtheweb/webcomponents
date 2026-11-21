@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "통계",
+    "description": "레이블과 관련 이야기 링크가 있는, 올라가며 세는 숫자"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "세어 올라갈 숫자"
+      },
+      {
+        "title": "숫자 앞"
+      },
+      {
+        "title": "숫자 뒤"
+      },
+      {
+        "title": "숫자 대신 쓸 단어"
+      },
+      {
+        "title": "세는 대상"
+      },
+      {
+        "title": "hax.cloud의 이야기 주소(stories/ee450a19)"
+      }
+    ]
+  }
+}

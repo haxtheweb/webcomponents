@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Àdojúrú ọ̀rọ̀ agbelébùú",
+    "description": "Àdojúrú ọ̀rọ̀ agbelébùú tí a ṣe láti inú àkójọ àwọn ọ̀rọ̀ àti àmì-ọ̀rọ̀. A ń ṣẹ̀dá àwọ̀n náà fún ọ; àwọn akẹ́kọ̀ọ́ ń tẹ àwọn ọ̀rọ̀ wọlé, wọ́n sì ń ṣàyẹ̀wò wọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Àkọlé tàbí ìbéèrè tí a fihàn lókè àdojúrú náà."
+      },
+      {
+        "title": "Àwọn ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ kọ̀ọ̀kan àti àmì-ọ̀rọ̀ rẹ̀. A ń ṣẹ̀dá àwọ̀n láti inú àkójọ yìí: ọ̀rọ̀ tó gùn jù ni a kọ́kọ́ gbé, àwọn yòókù sì ń gé e kọjá lórí àwọn lẹ́tà tí wọ́n pín."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àwọn ìgbìyànjú",
+        "description": "Iye ìgbà tí akẹ́kọ̀ọ́ lè ṣàyẹ̀wò. 0 túmọ̀ sí láìní ààlà."
+      },
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ àṣàyàn fún chip àkọlé, ọ̀rọ̀ tó ń ṣiṣẹ́ àti àwọn bọ́tìnnì iṣẹ́."
+      },
+      {
+        "title": "Ó ṣeé ká",
+        "description": "Fi àdojúrú yìí hàn gẹ́gẹ́ bí ìlà tó ń ṣí tí ó sì ń tì. Ṣíṣí ọ̀kan ń ti àwọn ìbéèrè tó ṣeé ká mìíràn lẹ́gbẹ̀ẹ́ rẹ̀."
+      },
+      {
+        "title": "Bẹ̀rẹ̀ ní kíká",
+        "description": "Nígbà tí ó bá ṣeé ká, bẹ̀rẹ̀ gẹ́gẹ́ bí ìlà tí a tì tí ó ń fi àkọlé àti ipò rẹ̀ nìkan hàn."
+      },
+      {
+        "title": "Fọ́ọ̀mù ìdíwọ̀n",
+        "description": "OER Schema: fọ́ọ̀mù ìdíwọ̀n fún ìgbéléwọ̀n yìí (fún àpẹẹrẹ àmì, lẹ́tà, ìdá-ọgọ́rùn-ún, ìparí)."
+      },
+      {
+        "title": "Èròǹgbà ẹ̀kọ́",
+        "description": "OER Schema: èròǹgbà ẹ̀kọ́ tó jọmọ́ ìgbéléwọ̀n yìí."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Orúkọ ìdánwò náà",
+        "description": "Orúkọ ìdánwò tí a ń lò fún ìdánimọ̀ xAPI nínú àwọn ètò ìtúpalẹ̀."
+      },
+      {
+        "title": "Ẹ̀kọ́",
+        "description": "OER Schema: ẹ̀kọ́ tí a pète ìgbéléwọ̀n yìí fún."
+      }
+    ]
+  }
+}

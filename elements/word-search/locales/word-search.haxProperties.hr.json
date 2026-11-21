@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Osmosmjerka",
+    "description": "Mreža slova sa skrivenim riječima. Polaznici dodiruju prvo i zadnje slovo svake riječi. Vježba prepoznavanje kako se pojam piše, a ne što znači."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Što polaznici trebaju pronaći, prikazano u zaglavlju."
+      },
+      {
+        "title": "Riječi",
+        "description": "Riječi za skrivanje. Razmaci i interpunkcija izostavljaju se iz mreže. Riječi koje ne stanu navode se tijekom uređivanja i izostavljaju za polaznike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Veličina mreže",
+        "description": "Slova po strani, 4 do 16. Ostavite prazno za prilagodbu najduljoj riječi (do 12). Više od 12 pomiče se bočno na mobitelu."
+      },
+      {
+        "title": "Dijagonalne riječi",
+        "description": "Skrivaj riječi i dijagonalno. Teže."
+      },
+      {
+        "title": "Riječi unatrag",
+        "description": "Skrivaj i riječi napisane unatrag. Teže."
+      },
+      {
+        "title": "Naglasna boja",
+        "description": "Neobavezna boja za oznaku u zaglavlju, odabrano prvo slovo i gumb."
+      }
+    ]
+  }
+}

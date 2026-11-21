@@ -3,5 +3,8 @@
   "copyAsCsv": "ចម្លងជា CSV។",
   "printTable": "បោះពុម្ពតារាង",
   "selectColumn": "ជ្រើសរើសជួរឈរ",
-  "dataTable": "ទិន្នន័យ · តារាង"
+  "dataTable": "ទិន្នន័យ · តារាង",
+  "filterStatus": "កំពុងបង្ហាញ {shown} នៃ {total} ជួរដេក ត្រងតាម {column}៖ {text}",
+  "columnNumber": "ជួរឈរ {column}",
+  "clearFilter": "សម្អាតតម្រង"
 }

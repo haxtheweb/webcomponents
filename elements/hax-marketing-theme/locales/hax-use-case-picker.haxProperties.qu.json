@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Llamk'ana akllaq",
+    "description": "Huk kiti imapaqchus kasqanta akllay, HAX-ta navegadorpi chay qallariy kitiwan kichaq t'inkita hap'iy, tupaq CLI kamachiytawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX navegadorpi tiyana",
+        "description": "T'inki maypichus kichakun; ?skeleton= &name= yapasqa"
+      },
+      {
+        "title": "Saqinapaq qallariy kitikuna",
+        "description": "Máquina sutikuna, comawan t'aqasqa"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Qallariy kitikuna lista",
+        "description": "Skeleton listap tiyanan (app-hax ñawinchasqan laya)"
+      }
+    ]
+  }
+}

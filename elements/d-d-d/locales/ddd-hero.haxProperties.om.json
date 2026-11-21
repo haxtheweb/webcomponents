@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Suuraa, GIF ykn viidiyoo guddaa mata-duree fi barreeffama isa irra jiru qabu, fuula keessatti bakka kamiyyuu kaa'ame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suuraa ykn viidiyoo",
+        "description": "Faayilii JPG, PNG, WebP, GIF, MP4 ykn WebM."
+      },
+      {
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Suuraa ibsi. Yoo faayaa qofa ta'e duwwaa dhiisi."
+      },
+      {
+        "title": "Mata-duree",
+        "description": "Mata-duree miidiyaa irratti mul'atu. Yoo hin barbaachifne duwwaa dhiisi."
+      },
+      {
+        "title": "Barreeffama",
+        "description": "Barreeffama mata-duree jalatti, miidiyaa irratti mul'atu."
+      },
+      {
+        "title": "Bal'ina guutuu",
+        "description": "Utubaa qabiyyee keessa taa'uu mannaa qarqara irraa hanga qarqaraatti diriiri."
+      },
+      {
+        "title": "Dheerina",
+        "options": {
+          "tall": "Dheeraa",
+          "medium": "Giddugaleessa",
+          "short": "Gabaabaa"
+        }
+      },
+      {
+        "title": "Gaaddisa keessa galchuu",
+        "description": "Hamma iskiriinii tokkoon tokkoon irratti suuraan akkamitti akka taa'u"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dhabamuu",
+        "description": "Halluu miidiyaa irra kaa'ame. Yeroo mata-dureen ykn barreeffamni jiru yeroo hunda tokko jira, akka barreeffamni dubbifamaa ta'ee hafuuf.",
+        "options": {
+          "blue": "Cuquliisa",
+          "bottom": "Gadi irratti dukkana",
+          "none": "Homaa"
+        }
+      },
+      {
+        "title": "Bakka barreeffamaa",
+        "options": {
+          "bottom": "Gadi",
+          "middle": "Gidduu"
+        }
+      },
+      {
+        "title": "Qabxii xiyyeeffannaa gara ceesaa",
+        "description": "Kutaa suuraa yeroo muramu mul'atee hafu, 0 (bitaa) irraa hanga 100 (mirga)."
+      },
+      {
+        "title": "Qabxii xiyyeeffannaa gara gadii",
+        "description": "Kutaa suuraa yeroo muramu mul'atee hafu, 0 (gubbaa) irraa hanga 100 (jala)."
+      }
+    ]
+  }
+}

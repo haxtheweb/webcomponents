@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Статус Baseline",
+    "description": "Показывает статус поддержки Baseline в браузерах для возможности веб-платформы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID возможности",
+        "description": "ID веб-возможности, например anchor-positioning. ID можно найти на webstatus.dev; это последняя часть URL страницы возможности."
+      }
+    ]
+  }
+}

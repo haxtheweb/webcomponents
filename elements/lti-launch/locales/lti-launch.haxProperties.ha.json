@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ƙaddamar da kayan aiki na waje",
+    "description": "Tubali da ke buɗe kayan aikin koyo na waje a sabuwar taga ko a shafin, a matsayin mahaɗi mai sauƙi ko tare da buƙatar shiga ta LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Sunan kayan aikin. Ana nuna shi a kai da kan maɓallin."
+      },
+      {
+        "title": "Bayani",
+        "description": "Abin da masu koyo ke yi a kayan aikin, ana nuna shi a saman maɓallin."
+      },
+      {
+        "title": "URL na ƙaddamarwa",
+        "description": "Adireshin kayan aikin. Dole ya zama cikakken adireshi da ya fara da https:// ko http://."
+      },
+      {
+        "title": "Buɗe a",
+        "description": "Sabuwar taga tana aiki da kowane kayan aiki. A wannan shafi yana aiki ne kawai da kayan aikin da suka yarda a nuna su a cikin wani shafi.",
+        "options": {
+          "window": "Sabuwar taga",
+          "embed": "A wannan shafi"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL na shiga LTI",
+        "description": "LTI 1.3 kawai: adireshin fara shiga na kayan aikin. Da wannan, client ID da deployment ID maɓallin yana aika buƙatar shiga ta LTI maimakon buɗe mahaɗi mai sauƙi. Kammala ƙaddamarwar yana buƙatar sabis ɗin LTI na wannan shafi."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID da kayan aikin ya ba wannan shafi. Mai ganowa na jama'a, ba sirri ba: kada ka taɓa sanya maɓallai ko sirri a nan."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID da kayan aikin ya ba wannan shafi. Mai ganowa na jama'a, ba sirri ba."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Adireshin da ke gabatar da wannan shafi ga kayan aikin. Bar shi babu komai don amfani da adireshin shafin da wannan shafi yake a kai."
+      },
+      {
+        "title": "Tsayi a shafi",
+        "description": "Tsayin kayan aikin idan ya buɗe a wannan shafi, a pixels (200 zuwa 2000)."
+      },
+      {
+        "title": "Launin ƙawa",
+        "description": "Launin guntun kai da maɓallin. Bar shi babu komai don bin jigo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Alamar shiga LTI",
+        "description": "Ƙima mara bayyana da sabis ɗin LTI na wannan shafi ke amfani da ita don gane mai koyo. Galibi shafin ne ke samar da ita ta hanyar taron lti-launch-request maimakon a ajiye ta a nan. Ba kalmar sirri ko maɓalli ba ce."
+      },
+      {
+        "title": "Alamar saƙon LTI",
+        "description": "Ƙima mara bayyana da sabis ɗin LTI na wannan shafi ke amfani da ita don gane wannan ƙaddamarwa. Galibi shafin ne ke samar da ita maimakon a ajiye ta a nan."
+      }
+    ]
+  }
+}

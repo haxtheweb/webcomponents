@@ -6,6 +6,8 @@
   "faviconDescription": "ব্রাউজার ট্যাবের ছবি / ফোনে ছোট সাইট লোগো হিসেবে ব্যবহৃত",
   "domain": "ডোমেইন",
   "domainDescription": "এই ওয়েবসাইটের ডোমেইন",
+  "sameAs": "এই সাইটের অন্যান্য প্রোফাইল",
+  "sameAsDescription": "প্রতি লাইনে একটি করে লিংক, অন্য জায়গায় এই সাইট বা প্রতিষ্ঠানের প্রোফাইলে (GitHub, LinkedIn, YouTube, Mastodon)। সার্চ ইঞ্জিন এগুলো দিয়ে সেই প্রোফাইলগুলোকে এই সাইটের সাথে যুক্ত করে।",
   "language": "ভাষা",
   "languageDescription": "এই সাইটের ভাষা। নাম বা কোড দিয়ে খুঁজুন, অথবা fr-CA এর মতো অন্য কোড লিখুন।",
   "googleAnalyticsId": "Google Analytics ID",

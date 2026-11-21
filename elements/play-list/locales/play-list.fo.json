@@ -9,5 +9,7 @@
   "slidePages": "Glærusíður",
   "goToSlide": "Far til glæru {number}",
   "slides": "Skyggnur",
-  "position": "{number} av {total}"
+  "position": "{number} av {total}",
+  "fullScreen": "Fullur skíggi",
+  "exitFullScreen": "Far úr fullum skíggja"
 }

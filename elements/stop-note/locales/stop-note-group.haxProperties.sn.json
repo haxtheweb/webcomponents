@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Boka reStop Note",
+    "description": "Unganidza stop note dzakawanda mubhuroko rimwe rinoratidza chinyorwa chimwe panguva, seMazano kana Zvitsva. Makadhi emirayiridzo, zvinyorwa zvepadivi nemitsara ine furemu zvinogona kuunganidzwa nazvo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita",
+        "description": "Zita reboka rinoziviswa nevaverengi veskrini, seMazano kana Zvitsva."
+      },
+      {
+        "title": "Zvinyorwa",
+        "description": "Stop note dziri muboka. Makadhi emirayiridzo, zvinyorwa zvepadivi nemitsara ine furemu zvinogona kuwedzerwawo."
+      }
+    ]
+  }
+}

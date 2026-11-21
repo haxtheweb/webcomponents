@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Multivides modifikators",
-        "description": "Neobligāts multivides jomas modifikators. Norāda, uz kāda veida multividi attiecas šī licence."
+        "description": "Neobligāts multivides jomas modifikators. Norāda, uz kāda veida multividi attiecas šī licence.",
+        "options": {
+          "": "Bez modifikatora"
+        }
       },
       {
         "property": "uri",

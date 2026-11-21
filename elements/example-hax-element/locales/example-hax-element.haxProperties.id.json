@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Elemen awal contoh untuk menunjukkan konfigurasi HAX dan properti yang dapat disunting."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul"
+      }
+    ]
+  }
+}

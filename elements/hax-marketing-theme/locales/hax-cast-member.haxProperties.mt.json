@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membru tal-kast",
+    "description": "Udjenza waħda, interpretata minn karattru, bi kliem u buttuna"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Min hu dan"
+      },
+      {
+        "title": "Tip ta' karattru"
+      },
+      {
+        "title": "Żerriegħa tal-karattru"
+      },
+      {
+        "title": "Kulur tal-palk (isem DDD)"
+      },
+      {
+        "title": "Fejn tmur il-buttuna"
+      },
+      {
+        "title": "Test tal-buttuna"
+      }
+    ]
+  }
+}

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Téacs Malartach"
+        "title": "Téacs Malartach",
+        "description": "Déan cur síos ar an íomhá do dhaoine nach féidir leo í a fheiceáil."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte"
+        "title": "Téacs achoimre roghnach nuair atá na sonraí oscailte",
+        "description": "Téacs an chnaipe fad atá an cur síos i bhfolach, mar shampla Taispeáin cur síos."
       },
       {
         "property": "closeText",
-        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta"
+        "title": "Téacs achoimre roghnach nuair atá na sonraí dúnta",
+        "description": "Téacs an chnaipe fad atá an cur síos á thaispeáint, mar shampla Folaigh cur síos."
       }
     ]
   }

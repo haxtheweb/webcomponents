@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistemaren sarea",
+    "description": "Proiektu baten atalak nola lotzen diren erakusten duen sare interaktiboa, azpisareekin eta urratsez urratseko bisitekin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarearen datuak",
+        "description": "Sareen JSON sortaren URLa (PRAW-en eraikia, ecosystem-webs.json)."
+      },
+      {
+        "title": "Sarea",
+        "description": "Lehenik erakutsi beharreko sarearen IDa; main ekosistemaren sarea da."
+      },
+      {
+        "title": "Hautatutako lauza",
+        "description": "Sarea irekitzean hautatu beharreko lauza baten IDa."
+      },
+      {
+        "title": "Bisita",
+        "description": "Hasteko bisita baten IDa."
+      },
+      {
+        "title": "Hasi zerrenda-ikuspegian",
+        "description": "Erakutsi sarea zerrenda habiaratu gisa marrazkiaren ordez."
+      },
+      {
+        "title": "Marrazkia soilik",
+        "description": "Erakutsi marrazkia bakarrik, irudi gisa: goibururik, bisitarik, xehetasunik edo urrats-barrarik gabe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Irakurketa-irizpidea",
+        "description": "Hasi lauza guztiak neurri bakar baten arabera irakurrita.",
+        "options": {
+          "": "Loturak soilik",
+          "fresh": "Freskotasuna",
+          "bus": "Bus faktorea",
+          "impact": "Eragina",
+          "evidence": "Ebidentzia",
+          "parity": "Parekotasuna"
+        }
+      }
+    ]
+  }
+}

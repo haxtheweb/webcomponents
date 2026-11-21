@@ -9,5 +9,7 @@
   "slidePages": "Paginile diapozitivelor",
   "goToSlide": "Mergi la diapozitivul {number}",
   "slides": "Diapozitive",
-  "position": "{number} din {total}"
+  "position": "{number} din {total}",
+  "fullScreen": "Ecran complet",
+  "exitFullScreen": "Ieșiți din ecranul complet"
 }

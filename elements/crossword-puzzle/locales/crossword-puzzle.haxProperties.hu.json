@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Keresztrejtvény",
+    "description": "Szavak és meghatározások listájából készült keresztrejtvény. A rács automatikusan elkészül; a tanulók beírják a szavakat és ellenőrzik őket."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A keresztrejtvény fölött megjelenő cím vagy kérdés."
+      },
+      {
+        "title": "Szavak",
+        "description": "Minden szó és a meghatározása. A rács ebből a listából készül: a leghosszabb szó kerül elsőként a helyére, a többi a közös betűknél keresztezi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Próbálkozások",
+        "description": "Hányszor ellenőrizhet a tanuló. A 0 korlátlant jelent."
+      },
+      {
+        "title": "Kiemelőszín",
+        "description": "Opcionális szín a fejléccímkéhez, az aktív szóhoz és a műveletgombokhoz."
+      },
+      {
+        "title": "Összecsukható",
+        "description": "A keresztrejtvény nyitható-csukható sorként jelenik meg. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "title": "Összecsukva induljon",
+        "description": "Összecsukható módban zárt sorként indul, amely csak a címet és az állapotát mutatja."
+      },
+      {
+        "title": "Értékelési forma",
+        "description": "OER Schema: az értékelés formája (pl. pontok, osztályzat, százalék, teljesítés)."
+      },
+      {
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez tartozó tanulási cél."
+      }
+    ],
+    "developer": [
+      {
+        "title": "A kvíz neve",
+        "description": "Az elemzőrendszerekben xAPI-azonosításra használt kvíznév."
+      },
+      {
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez ez az értékelés készült."
+      }
+    ]
+  }
+}

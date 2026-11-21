@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Escenario rikhuriy",
+    "description": "Ramayuq escenariop huk rikhuriynin. Sapa akllayta huk rikhuriywan t'inkiy # nisqawan, chaymanta id-ninwan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikhuriyp id-nin",
+        "description": "Akllaykunap t'inkisqan: # nisqaman kay id-wan t'inkiqa kay rikhuriymanmi apan. Siq'ikuna, yupaykuna, guionkuna."
+      },
+      {
+        "title": "Uma siq'i",
+        "description": "Rikhuriyp uma siq'in."
+      },
+      {
+        "title": "Tukukuy",
+        "description": "Kay rikhuriychus huk ñanta tukuchin, imaynataq tukurqan.",
+        "options": {
+          "": "Manam tukukuychu",
+          "good": "Allin tukukuy",
+          "mixed": "Chaqrusqa tukukuy",
+          "poor": "Mana allin tukukuy"
+        }
+      },
+      {
+        "title": "Puntaje",
+        "description": "Kay tukukuyman chayasqamanta puntaje. Escenariopi aswan hatun tukukuy puntajeqa aswan hatun kaqmi."
+      }
+    ]
+  }
+}

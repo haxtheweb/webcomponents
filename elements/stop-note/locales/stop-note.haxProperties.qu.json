@@ -23,7 +23,9 @@
           "stop": "Sayay",
           "warning": "Paqtataq",
           "success": "Chiqanchay",
-          "info": "Willakuy"
+          "info": "Willakuy",
+          "tip": "Yanapay",
+          "new": "Ima musuq"
         }
       },
       {

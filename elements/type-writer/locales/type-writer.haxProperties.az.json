@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Yazı makinası",
     "description": "Özünü bir-bir simvolla yazan mətn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mətn",
+        "description": "Element görünüşə sürüşdükdə yazılacaq mətn."
+      },
+      {
+        "title": "Yazılır",
+        "description": "Yanıb-sönən kursoru göstər; element yazarkən bunu özü təyin edir."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gecikmə",
+        "description": "Yazma başlamazdan əvvəl gözləmə millisaniyələri."
+      },
+      {
+        "title": "Kursorun müddəti",
+        "description": "Mətn yazıldıqdan sonra kursorun yanıb-sönməyə davam etdiyi millisaniyələr."
+      },
+      {
+        "title": "Sürət",
+        "description": "Hər simvol üçün millisaniyələr; kiçik ədədlər daha sürətli yazır."
+      }
+    ]
   }
 }

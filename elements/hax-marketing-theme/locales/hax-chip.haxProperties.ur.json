@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "چِپ",
+    "description": "لیبل والا چھوٹا آئیکن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "آئیکن"
+      },
+      {
+        "title": "لیبل"
+      }
+    ]
+  }
+}

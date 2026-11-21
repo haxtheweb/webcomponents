@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kēmu mahara",
+    "description": "Hurihia ngā kāri hei kimi takirua. Whakatakiruatia tētahi kupu me tōna tikanga kia whakaatu te ōritenga i te māramatanga, whakamahia rānei ētahi kuputuhi, atahanga ōrite e rua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te tohu ka whakaaturia ki te pane, hei tauira: Whakahāngaitia te kupu ki tōna mahi."
+      },
+      {
+        "title": "Ngā takirua",
+        "description": "E rua ngā kāri o ia takirua e hāngai ana ki a rāua anō, ko te nuinga he kupu me tōna tikanga. Me whai kuputuhi, atahanga, ērā e rua rānei tētahi taha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tae arotahi",
+        "description": "He tae kōwhiri mō te maramara pane, ngā tuarā kāri me te pātene."
+      }
+    ]
+  }
+}

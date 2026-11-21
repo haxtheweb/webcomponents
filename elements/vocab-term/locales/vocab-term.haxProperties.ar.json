@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "المصطلح"
+        "title": "المصطلح",
+        "description": "الكلمة أو العبارة التي ينقر عليها القرّاء لرؤية تعريفها."
       },
       {
         "property": "information",

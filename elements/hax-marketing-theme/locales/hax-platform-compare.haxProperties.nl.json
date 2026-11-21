@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platformvergelijking",
+    "description": "Kop aan kop: kies twee platforms uit een gegevensbestand"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vergelijkingsgegevens (JSON)"
+      },
+      {
+        "title": "ID van linkerplatform"
+      },
+      {
+        "title": "ID van rechterplatform"
+      }
+    ]
+  }
+}

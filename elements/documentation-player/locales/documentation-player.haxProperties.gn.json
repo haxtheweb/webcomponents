@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kuatia'atã moñe'ẽha",
+    "description": "Jeguata, jehechauka ha jehechapyrã peteĩ ñanduti pehẽme g̃uarã, botõ embokuatia hag̃ua HTML, import, npm ha CDN reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuatia'atã marandurenda",
+        "description": "Kuatia'atã marandu oúva pehẽ ndive (lib/tag.docs.json)."
+      },
+      {
+        "title": "Jeguata ta'ãnga rysýi",
+        "description": "Ñemongu'e ta'ãnga rysýi oúva pehẽ ndive (tag.motion.json). Ojeiporavokuaáva."
+      },
+      {
+        "title": "Video mbo'esyry",
+        "description": "Peteĩ video mbyky pehẽ rehegua (YouTube, Vimeo térã video marandurenda). Omyengovia video kuatia'atã marandúpe."
+      },
+      {
+        "title": "Eipe'a tendápe",
+        "description": "Mba'e tendápa ojehechauka raẽ.",
+        "options": {
+          "motion": "Jeguata",
+          "video": "Video",
+          "demo": "Jehechauka",
+          "docs": "Kuatia'atã",
+          "schema": "Esquema"
+        }
+      },
+      {
+        "title": "Jeguata oñepyrũ ijeheguínte",
+        "description": "Eñepyrũ jeguata moñe'ẽha ojehechauka pya'e. Noñemoĩri moñe'ẽhára oipotávéramo sa'ive ñemongu'e."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Jeguata mba'e",
+        "description": "Pehẽ oguerekóva heta jeguata peg̃uarã, mba'e mba'épa ojepe'áta raẽ (techapyrã add-blocks). Eheja nandi tenondeguápe g̃uarã."
+      },
+      {
+        "title": "Jehechauka ko'ág̃agua juajuha",
+        "description": "Mamópa oho botõ Eipe'a jehechauka ypykue. Ypy ha'e demo carpeta ñongatuhápe."
+      },
+      {
+        "title": "Kuatia'atã juajuha",
+        "description": "Mamópa oho kuatia'atã henyhẽva botõ, techapyrã Learn HAX kuatiarogue ojoguáva."
+      }
+    ]
+  }
+}

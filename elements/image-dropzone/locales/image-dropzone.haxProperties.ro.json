@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zonă de plasare pe imagine",
+    "description": "Cursanții plasează etichete pe zone suprapuse peste o imagine, apoi își verifică răspunsul."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagine",
+        "description": "Imaginea pe care cursanții plasează etichete."
+      },
+      {
+        "title": "Text alternativ",
+        "description": "Descrie imaginea pentru persoanele care nu o pot vedea. Nu dezvăluiți unde merg etichetele."
+      },
+      {
+        "title": "Titlul imaginii",
+        "description": "Un titlu scurt vizibil pentru imagine, afișat deasupra ei."
+      },
+      {
+        "title": "Întrebare",
+        "description": "Ce li se cere cursanților să facă cu etichetele."
+      },
+      {
+        "title": "Etichete și zone",
+        "description": "Fiecare element este o etichetă pe care cursanții o pot plasa. Dați unei etichete un nume de zonă pentru a-i pune zona pe imagine; o etichetă fără nume de zonă este în plus și nu aparține nicăieri. Numerele zonelor sunt procente din imagine."
+      },
+      {
+        "title": "Legendă",
+        "description": "Legendă opțională afișată sub imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Încercări",
+        "description": "De câte ori poate verifica un cursant. 0 înseamnă nelimitat."
+      },
+      {
+        "title": "Amestecați etichetele",
+        "description": "Afișați etichetele în altă ordine la fiecare vizită."
+      },
+      {
+        "title": "Pliabil",
+        "description": "Afișați această întrebare ca un rând care se deschide și se închide. Deschiderea uneia le închide pe celelalte întrebări pliabile de lângă ea."
+      },
+      {
+        "title": "Începeți restrâns",
+        "description": "Când este pliabilă, începe ca un rând închis care arată doar întrebarea și starea."
+      },
+      {
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numele testului",
+        "description": "Numele testului folosit pentru identificarea xAPI în sistemele de analiză."
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      }
+    ]
+  }
+}

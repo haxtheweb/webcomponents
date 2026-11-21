@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Majibu",
-        "description": "Mpangilio wa majibu unabainisha mfuatano sahihi."
+        "description": "Mpangilio wa majibu unabainisha mfuatano sahihi.",
+        "options": {
+          "": "Orodha",
+          "cards": "Kadi za picha"
+        }
+      },
+      {
+        "title": "Majibu",
+        "description": "Mpangilio wa majibu unafafanua mfuatano sahihi."
       }
     ],
     "advanced": [

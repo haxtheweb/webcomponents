@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenario",
+  "directions": "Instruktioner",
+  "showDirections": "Visa instruktioner",
+  "hideDirections": "Dölj instruktioner",
+  "directionsRead": "Läs varje scen och välj vad du skulle göra.",
+  "directionsEndings": "Det finns flera slut. Prova en annan väg när du är klar.",
+  "startOver": "Börja om",
+  "back": "Ett steg tillbaka",
+  "tryAnother": "Prova en annan väg",
+  "path": "Väg",
+  "scene": "Scen",
+  "ending": "Slut",
+  "end": "slut",
+  "scenesSeen": "{seen} av {total} scener sedda",
+  "endingReached": "Du har nått ett slut",
+  "addScene": "Lägg till scen",
+  "newScene": "Ny scen",
+  "newSceneText": "Beskriv vad som händer och länka sedan varje val till en scen.",
+  "editingNote": "Redigering: alla scener visas. Ett val är en länk till # följt av ett scen-id.",
+  "noScenes": "Lägg till en scen för att starta scenariot."
+}

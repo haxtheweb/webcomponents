@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kontribuantoj",
+    "description": "La homoj, kiuj konstruis la projekton, el listodosiero"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Listodosiero (JSON)"
+      },
+      {
+        "title": "Vido: landed, lab aŭ code"
+      },
+      {
+        "title": "Plej multe da homoj por montri (0 estas ĉiuj)"
+      }
+    ]
+  }
+}

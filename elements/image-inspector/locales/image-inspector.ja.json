@@ -3,5 +3,6 @@
   "zoomOut": "縮小",
   "rotateRight": "右に回転",
   "mirrorImage": "画像を反転",
-  "openInNewWindow": "新しいウィンドウで開く"
+  "openInNewWindow": "新しいウィンドウで開く",
+  "imageTools": "画像ツール"
 }

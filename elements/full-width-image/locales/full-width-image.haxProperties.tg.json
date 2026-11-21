@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Тасвири замина."
+        "description": "Тасвири замина.",
+        "title": "Тасвир"
       },
       {
         "property": "caption",
-        "description": "Сарлавҳаи матнӣ."
+        "description": "Сарлавҳаи матнӣ.",
+        "title": "Зерсарлавҳа"
       }
     ]
   }

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Pūnaewele kaiaola",
+    "description": "He pūnaewele launa e hōʻike ana pehea e pili ai nā ʻāpana o kekahi papahana, me nā pūnaewele lalo a me nā huakaʻi ʻanuʻu ma ʻanuʻu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ʻIkepili pūnaewele",
+        "description": "URL o ka pūʻolo JSON o nā pūnaewele (kūkulu ʻia ma PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Pūnaewele",
+        "description": "Id o ka pūnaewele e hōʻike mua ai; ʻo main ka pūnaewele kaiaola."
+      },
+      {
+        "title": "Kile i koho ʻia",
+        "description": "Id o kekahi kile e koho ai ke wehe ka pūnaewele."
+      },
+      {
+        "title": "Huakaʻi",
+        "description": "Id o kekahi huakaʻi e hoʻomaka ai."
+      },
+      {
+        "title": "Hoʻomaka ma ka nānaina papa inoa",
+        "description": "Hōʻike i ka pūnaewele ma ke ʻano he mau papa inoa pūnana ma kahi o ke kaha kiʻi."
+      },
+      {
+        "title": "Kaha kiʻi wale nō",
+        "description": "Hōʻike i ke kaha kiʻi wale nō, ma ke ʻano he kiʻi: ʻaʻohe poʻo, nā huakaʻi, nā kikoʻī a i ʻole ka pahu ʻanuʻu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Heluhelu ma",
+        "description": "Hoʻomaka me nā kile a pau i heluhelu ʻia ma hoʻokahi ana.",
+        "options": {
+          "": "Nā pilina wale nō",
+          "fresh": "Hou",
+          "bus": "Bus factor",
+          "impact": "Hopena",
+          "evidence": "Hōʻike",
+          "parity": "Kaulike"
+        }
+      }
+    ]
+  }
+}

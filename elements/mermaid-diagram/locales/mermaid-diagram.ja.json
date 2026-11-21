@@ -1,0 +1,21 @@
+{
+  "diagram": "図",
+  "flowchart": "フローチャート",
+  "sequence": "シーケンス",
+  "source": "ソース",
+  "textAlternative": "代替テキスト",
+  "present": "プレゼンテーション",
+  "exitPresent": "プレゼンテーションを終了",
+  "loading": "図を読み込み中",
+  "empty": "まだ描くものがありません。図のソースを追加してください。",
+  "error": "エラー",
+  "parseError": "この図を描けませんでした。ソースを確認してください。",
+  "loadError": "図のライブラリーを読み込めませんでした。",
+  "srcError": "図のファイルを読み込めませんでした。",
+  "decision": "分岐",
+  "end": "終わり",
+  "goTo": "{target} へ進む",
+  "ifGoTo": "{label} の場合、{target} へ進む",
+  "describedBySource": "ソースで説明された図。",
+  "scrollable": "図、スクロール可能"
+}

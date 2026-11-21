@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatisk accentfarve",
         "description": "Udled accentfarven automatisk fra etiketteksten."
+      },
+      {
+        "title": "Betydning",
+        "description": "Giv tagget en betydningsfarve. Lad være tom for et neutralt tag.",
+        "options": {
+          "": "Neutral",
+          "brand": "Brand",
+          "success": "Succes",
+          "warning": "Advarsel",
+          "danger": "Fare"
+        }
       }
     ],
     "advanced": [

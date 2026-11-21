@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramma",
+  "flowchart": "blokshēma",
+  "sequence": "secība",
+  "source": "Avots",
+  "textAlternative": "Teksta alternatīva",
+  "present": "Prezentēt",
+  "exitPresent": "Iziet no prezentācijas",
+  "loading": "Ielādē diagrammu",
+  "empty": "Vēl nav ko zīmēt. Pievienojiet diagrammas pirmkodu.",
+  "error": "Kļūda",
+  "parseError": "Šo diagrammu neizdevās uzzīmēt. Pārbaudiet pirmkodu.",
+  "loadError": "Neizdevās ielādēt diagrammu bibliotēku.",
+  "srcError": "Neizdevās ielādēt diagrammas failu.",
+  "decision": "lēmums",
+  "end": "beigas",
+  "goTo": "pāriet uz {target}",
+  "ifGoTo": "ja {label}, pāriet uz {target}",
+  "describedBySource": "Diagramma, ko apraksta tās pirmkods.",
+  "scrollable": "Diagramma, ritināma"
+}

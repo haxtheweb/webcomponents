@@ -52,6 +52,20 @@
           "_top": "Hwindo repamusoro - _top",
           "_parent": "Hwindo remubereki - _parent"
         }
+      },
+      {
+        "title": "Hapana Museve",
+        "description": "Viga museve webhatani."
+      },
+      {
+        "title": "Link: kwainoenda",
+        "description": "Pekuvhura link.",
+        "options": {
+          "": "Hwindo rimwe chete",
+          "_blank": "Hwindo idzva - _blank",
+          "_top": "Hwindo repamusoro - _top",
+          "_parent": "Hwindo remubereki - _parent"
+        }
       }
     ],
     "developer": [

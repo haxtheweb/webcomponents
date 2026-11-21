@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Sonraí na spotaí te",
         "description": "Na spotaí te idirghníomhacha ar an léarscáil íomhá."
+      },
+      {
+        "title": "Sonraí na spotaí te",
+        "description": "Na spotaí te idirghníomhacha ar an léarscáil íomhá."
       }
     ]
   }

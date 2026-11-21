@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "शीर्षक"
+        "title": "शीर्षक",
+        "description": "कोर्स मोडेलमाथि देखाइने शीर्षक।"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "देखाउनुपर्ने 3D मोडेल फाइल (.glb वा .gltf) को ठेगाना।"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "देख्न नसक्ने मानिसहरूका लागि 3D मोडेलको वर्णन गर्नुहोस्।"
       },
       {
         "title": "जानकारी क्षेत्र"

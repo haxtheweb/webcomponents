@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Gambar, GIF utawa video gedhe karo irah-irahan lan teks ing ndhuwure, dipapanake ing ngendi wae ing kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar utawa video",
+        "description": "Berkas JPG, PNG, WebP, GIF, MP4 utawa WebM."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Gambarake gambar iki. Kosongake yen mung dekorasi."
+      },
+      {
+        "title": "Irah-irahan",
+        "description": "Irah-irahan sing ditampilake ing ndhuwur media. Kosongake yen ora ana."
+      },
+      {
+        "title": "Teks",
+        "description": "Teks sing ditampilake ing sangisore irah-irahan, ing ndhuwur media."
+      },
+      {
+        "title": "Amba wutuh",
+        "description": "Mlaku saka pinggir menyang pinggir tinimbang ana ing kolom isi."
+      },
+      {
+        "title": "Dhuwur",
+        "options": {
+          "tall": "Dhuwur",
+          "medium": "Sedheng",
+          "short": "Cendhak"
+        }
+      },
+      {
+        "title": "Pambingkaian",
+        "description": "Kepiye foto dipapanake ing saben ukuran layar"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lamur",
+        "description": "Warna sing dilapisake ing media. Yen ana irah-irahan utawa teks mesthi ana, supaya teks tetep bisa diwaca.",
+        "options": {
+          "blue": "Biru",
+          "bottom": "Peteng ing ngisor",
+          "none": "Ora ana"
+        }
+      },
+      {
+        "title": "Posisi teks",
+        "options": {
+          "bottom": "Ngisor",
+          "middle": "Tengah"
+        }
+      },
+      {
+        "title": "Titik fokus mendatar",
+        "description": "Bagean gambar sing tetep katon nalika dipotong, saka 0 (kiwa) nganti 100 (tengen)."
+      },
+      {
+        "title": "Titik fokus mudhun",
+        "description": "Bagean gambar sing tetep katon nalika dipotong, saka 0 (ndhuwur) nganti 100 (ngisor)."
+      }
+    ]
+  }
+}

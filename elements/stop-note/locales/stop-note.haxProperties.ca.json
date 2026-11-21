@@ -23,7 +23,9 @@
           "stop": "Atura't",
           "warning": "Advertència",
           "success": "Confirmació",
-          "info": "Avís"
+          "info": "Avís",
+          "tip": "Consell",
+          "new": "Novetats"
         }
       },
       {

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Kruiswoordpuzzel",
+    "description": "Een kruiswoordpuzzel gemaakt van een lijst woorden en omschrijvingen. Het rooster wordt voor je gemaakt; leerlingen typen de woorden en controleren ze."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "De titel of vraag die boven de kruiswoordpuzzel wordt getoond."
+      },
+      {
+        "title": "Woorden",
+        "description": "Elk woord en de omschrijving ervan. Het rooster wordt uit deze lijst gemaakt: het langste woord wordt eerst geplaatst en de andere kruisen het op gedeelde letters."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoe vaak een leerling kan controleren. 0 betekent onbeperkt."
+      },
+      {
+        "title": "Accentkleur",
+        "description": "Optionele kleur voor het kopetiket, het actieve woord en de actieknoppen."
+      },
+      {
+        "title": "Inklapbaar",
+        "description": "Toon deze kruiswoordpuzzel als een rij die open- en dichtgaat. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "title": "Ingeklapt beginnen",
+        "description": "Als hij inklapbaar is, begin dan als een gesloten rij die alleen de titel en de status toont."
+      },
+      {
+        "title": "Beoordelingsformaat",
+        "description": "OER Schema: beoordelingsformaat voor deze toets (bijv. punten, letter, percentage, voltooiing)."
+      },
+      {
+        "title": "Leerdoel",
+        "description": "OER Schema: leerdoel dat bij deze toets hoort."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van de quiz",
+        "description": "Quiznaam voor xAPI-identificatie in analysesystemen."
+      },
+      {
+        "title": "Cursus",
+        "description": "OER Schema: cursus waarvoor deze toets bedoeld is."
+      }
+    ]
+  }
+}

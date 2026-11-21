@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Cor de realce automática",
         "description": "Obter automaticamente a cor de realce a partir do texto da etiqueta."
+      },
+      {
+        "title": "Significado",
+        "description": "Dálle á etiqueta unha cor con significado. Déixao baleiro para unha etiqueta neutra.",
+        "options": {
+          "": "Neutro",
+          "brand": "Marca",
+          "success": "Éxito",
+          "warning": "Advertencia",
+          "danger": "Perigo"
+        }
       }
     ],
     "advanced": [

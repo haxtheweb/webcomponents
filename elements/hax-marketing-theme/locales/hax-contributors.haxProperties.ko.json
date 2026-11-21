@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "기여자",
+    "description": "명단 파일에서 가져온, 프로젝트를 만든 사람들"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "명단 파일(JSON)"
+      },
+      {
+        "title": "보기: landed, lab 또는 code"
+      },
+      {
+        "title": "표시할 최대 인원(0은 전체)"
+      }
+    ]
+  }
+}

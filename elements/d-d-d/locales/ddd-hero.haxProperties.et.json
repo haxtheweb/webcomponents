@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Päisepilt",
+    "description": "Suur pilt, GIF või video, mille peal on pealkiri ja tekst ning mille saab paigutada lehel kuhu tahes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pilt või video",
+        "description": "JPG-, PNG-, WebP-, GIF-, MP4- või WebM-fail."
+      },
+      {
+        "title": "Alternatiivtekst",
+        "description": "Kirjelda pilti. Jäta tühjaks, kui see on ainult kaunistus."
+      },
+      {
+        "title": "Pealkiri",
+        "description": "Meedia peal kuvatav pealkiri. Jäta tühjaks, kui pealkirja pole vaja."
+      },
+      {
+        "title": "Tekst",
+        "description": "Pealkirja all, meedia peal kuvatav tekst."
+      },
+      {
+        "title": "Täislaius",
+        "description": "Ulatu servast servani, mitte sisuveerus."
+      },
+      {
+        "title": "Kõrgus",
+        "options": {
+          "tall": "Kõrge",
+          "medium": "Keskmine",
+          "short": "Madal"
+        }
+      },
+      {
+        "title": "Kadreerimine",
+        "description": "Kuidas foto igas ekraanisuuruses paikneb"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hajutus",
+        "description": "Meedia peale laotud värv. Pealkirja või teksti korral on see alati olemas, et tekst jääks loetavaks.",
+        "options": {
+          "blue": "Sinine",
+          "bottom": "Allosas tume",
+          "none": "Puudub"
+        }
+      },
+      {
+        "title": "Teksti asukoht",
+        "options": {
+          "bottom": "All",
+          "middle": "Keskel"
+        }
+      },
+      {
+        "title": "Fookuspunkt horisontaalselt",
+        "description": "Pildi osa, mis jääb kärpimisel nähtavaks, vahemikus 0 (vasak) kuni 100 (parem)."
+      },
+      {
+        "title": "Fookuspunkt vertikaalselt",
+        "description": "Pildi osa, mis jääb kärpimisel nähtavaks, vahemikus 0 (üleval) kuni 100 (all)."
+      }
+    ]
+  }
+}

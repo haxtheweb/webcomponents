@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Cavablar",
-        "description": "Cavabların sırası düzgün ardıcıllığı müəyyən edir."
+        "description": "Cavabların sırası düzgün ardıcıllığı müəyyən edir.",
+        "options": {
+          "": "Siyahı",
+          "cards": "Şəkil kartları"
+        }
+      },
+      {
+        "title": "Cavablar",
+        "description": "Cavabların ardıcıllığı düzgün sıranı müəyyən edir."
       }
     ],
     "advanced": [

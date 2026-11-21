@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "શીર્ષક"
+        "title": "શીર્ષક",
+        "description": "કોર્સ મૉડલની ઉપર બતાવાતું મથાળું."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "બતાવવાની 3D મૉડલ ફાઇલ (.glb અથવા .gltf) નું સરનામું."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "જે લોકો 3D મૉડલ જોઈ શકતા નથી તેમના માટે તેનું વર્ણન કરો."
       },
       {
         "title": "માહિતી વિસ્તાર"

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Külső eszköz indítása",
+    "description": "Blokk, amely egy külső tanulási eszközt nyit meg új ablakban vagy az oldalon, egyszerű hivatkozásként vagy LTI 1.3 bejelentkezési kéréssel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "Az eszköz neve. A fejlécben és a gombon jelenik meg."
+      },
+      {
+        "title": "Leírás",
+        "description": "Mit csinálnak a tanulók az eszközben, a gomb fölött jelenik meg."
+      },
+      {
+        "title": "Indítási URL",
+        "description": "Az eszköz címe. Teljes címnek kell lennie, amely https:// vagy http:// kezdetű."
+      },
+      {
+        "title": "Megnyitás itt",
+        "description": "Az új ablak minden eszközzel működik. Az ezen az oldalon lehetőség csak olyan eszközökkel működik, amelyek engedik, hogy más webhelyen belül jelenjenek meg.",
+        "options": {
+          "window": "Új ablakban",
+          "embed": "Ezen az oldalon"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI bejelentkezési URL",
+        "description": "Csak LTI 1.3: az eszköz bejelentkezés-indítási címe. Ezzel, egy kliensazonosítóval és egy telepítési azonosítóval a gomb LTI bejelentkezési kérést küld egyszerű hivatkozás megnyitása helyett. Az indítás befejezéséhez a webhely LTI szolgáltatása szükséges."
+      },
+      {
+        "title": "LTI kliensazonosító",
+        "description": "Az eszköz által ennek a webhelynek adott kliensazonosító. Nyilvános azonosító, nem titok: soha ne tegyen ide kulcsokat vagy titkokat."
+      },
+      {
+        "title": "LTI telepítési azonosító",
+        "description": "Az eszköz által ennek a webhelynek adott telepítési azonosító. Nyilvános azonosító, nem titok."
+      },
+      {
+        "title": "LTI kibocsátó",
+        "description": "A cím, amely azonosítja ezt a webhelyet az eszköz számára. Hagyja üresen, hogy annak a webhelynek a címét használja, amelyen az oldal van."
+      },
+      {
+        "title": "Magasság az oldalon",
+        "description": "Az eszköz magassága, amikor ezen az oldalon nyílik meg, képpontban (200–2000)."
+      },
+      {
+        "title": "Kiemelőszín",
+        "description": "A fejléccímke és a gomb színe. Hagyja üresen, hogy a témát kövesse."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI bejelentkezési tipp",
+        "description": "Átlátszatlan érték, amellyel a webhely LTI szolgáltatása felismeri a tanulót. Általában a webhely adja meg az lti-launch-request eseményen keresztül, nem itt mentik. Soha nem jelszó vagy kulcs."
+      },
+      {
+        "title": "LTI üzenettipp",
+        "description": "Átlátszatlan érték, amellyel a webhely LTI szolgáltatása felismeri ezt az indítást. Általában a webhely adja meg, nem itt mentik."
+      }
+    ]
+  }
+}

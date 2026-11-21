@@ -4,7 +4,12 @@
     "description": "Ombopu H5P marandu ojejuhúva joapykuépe peteĩ marandurenda .h5p ojehupytýva guive, ndojeroviái servidor H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Marandurenda H5P",
+        "description": "Ejupi térã embojoaju peteĩ marandurenda .h5p. Oñembosarambi kundahárape; ndojeikotevẽi servidor H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Iframe ñemoĩ ayvu yma",

@@ -1,0 +1,8 @@
+{
+  "theme": "Giao diện",
+  "palette": "Bảng màu",
+  "themeDefault": "Mặc định của giao diện",
+  "designSystem": "Hệ thống thiết kế",
+  "designSystemDefault": "DDD (mặc định)",
+  "designSystemUnavailable": "Giao diện này giữ hệ thống thiết kế riêng"
+}

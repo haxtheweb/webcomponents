@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kasutusjuhu valija",
+    "description": "Vali, milleks sait on, ja saa link, mis avab HAX-i brauseris selle alustussaidiga, ning vastav CLI-käsk."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX-i aadress brauseris",
+        "description": "Kus link avaneb; sellele lisatakse ?skeleton= ja &name="
+      },
+      {
+        "title": "Välja jäetavad alustussaidid",
+        "description": "Masinanimed, komadega eraldatud"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Alustussaitide loend",
+        "description": "Skeletiloendi aadress (vorming, mida app-hax loeb)"
+      }
+    ]
+  }
+}

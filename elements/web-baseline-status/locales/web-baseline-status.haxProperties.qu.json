@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline kaqnin",
+    "description": "Huk web plataforma kaqninpa Baseline navegador yanapay kaqninta rikuchiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kaqnin ID",
+        "description": "Web kaqninpa ID-nin, kayhina anchor-positioning. ID-kunata webstatus.dev nisqapi tariy; ID-qa huk kaqnin p'anqap URL-ninpa qhipa t'aqanmi."
+      }
+    ]
+  }
+}

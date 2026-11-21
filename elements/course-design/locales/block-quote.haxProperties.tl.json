@@ -20,6 +20,12 @@
         "title": "Larawan",
         "description": "Larawang ipinapakita kasama ng sipi."
       }
+    ],
+    "advanced": [
+      {
+        "title": "May frame",
+        "description": "Iguhit ang sipi sa pinagsasaluhang block frame, na may icon at label sa itaas nito, para tumugma ito sa mga tala at instruction card."
+      }
     ]
   }
 }

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Piattà l'icona",
         "description": "Piattà l'icona aduprata per mette in risaltu u testu"
+      },
+      {
+        "title": "Aspettu",
+        "description": "Quantu enfasi hà u buttone.",
+        "options": {
+          "": "Pienu",
+          "tonal": "Tunale",
+          "outlined": "Cuntornatu",
+          "plain": "Simplice"
+        }
+      },
+      {
+        "title": "Dimensione",
+        "description": "Dimensione di u buttone.",
+        "options": {
+          "s": "Chjucu",
+          "": "Mezanu",
+          "l": "Grande"
+        }
       }
     ],
     "advanced": [

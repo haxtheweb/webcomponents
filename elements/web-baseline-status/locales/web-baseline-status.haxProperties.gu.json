@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline સ્થિતિ",
+    "description": "વેબ પ્લેટફોર્મ સુવિધાની Baseline બ્રાઉઝર સપોર્ટ સ્થિતિ બતાવો."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "સુવિધા ID",
+        "description": "વેબ સુવિધાનું ID, ઉદાહરણ તરીકે anchor-positioning. webstatus.dev પર ID શોધો; ID એ સુવિધા પેજના URL નો છેલ્લો ભાગ છે."
+      }
+    ]
+  }
+}

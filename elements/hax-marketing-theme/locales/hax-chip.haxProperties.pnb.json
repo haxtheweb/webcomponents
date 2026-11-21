@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "چپ",
+    "description": "لیبل والا نکا آئیکن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "آئیکن"
+      },
+      {
+        "title": "لیبل"
+      }
+    ]
+  }
+}

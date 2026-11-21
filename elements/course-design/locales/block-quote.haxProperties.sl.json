@@ -20,6 +20,12 @@
         "title": "Slika",
         "description": "Slika, prikazana s citatom."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Uokvirjeno",
+        "description": "Nariši citat na skupnem okvirju blokov z ikono in oznako nad njim, da se ujema z opombami in karticami z navodili."
+      }
     ]
   }
 }

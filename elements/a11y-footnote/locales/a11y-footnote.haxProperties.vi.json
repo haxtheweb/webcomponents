@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Chú thích",
+    "description": "Một ghi chú viết ngay tại chỗ nó thuộc về trong văn bản. Nó hiển thị dưới dạng số, và danh sách ghi chú đánh số tự tạo ở cuối trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ghi chú",
+        "description": "Nội dung của chú thích."
+      },
+      {
+        "title": "Không xem trước",
+        "description": "Không hiển thị ghi chú khi người đọc di chuột hoặc đặt tiêu điểm vào số."
+      }
+    ]
+  }
+}

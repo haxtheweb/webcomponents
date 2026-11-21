@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Miðlabreytir",
-        "description": "Valfrjáls breytir fyrir miðlasvið. Tilgreinir þá tegund miðils sem þetta leyfi gildir um."
+        "description": "Valfrjáls breytir fyrir miðlasvið. Tilgreinir þá tegund miðils sem þetta leyfi gildir um.",
+        "options": {
+          "": "Enginn breytir"
+        }
       },
       {
         "property": "uri",

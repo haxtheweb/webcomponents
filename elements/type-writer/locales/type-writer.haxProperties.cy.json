@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Teipiadur",
     "description": "Testun sy'n ei deipio ei hun un nod ar y tro."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Testun",
+        "description": "Y testun i'w deipio unwaith y bydd yr elfen yn sgrolio i'r golwg."
+      },
+      {
+        "title": "Yn teipio",
+        "description": "Dangos y cyrchwr sy'n fflachio; mae'r elfen yn gosod hwn tra mae'n teipio."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Oedi",
+        "description": "Milieiliadau i aros cyn i'r teipio ddechrau."
+      },
+      {
+        "title": "Hyd y cyrchwr",
+        "description": "Milieiliadau y mae'r cyrchwr yn dal i fflachio ar ôl i'r testun gael ei deipio."
+      },
+      {
+        "title": "Cyflymder",
+        "description": "Milieiliadau fesul nod; mae rhifau is yn teipio'n gynt."
+      }
+    ]
   }
 }

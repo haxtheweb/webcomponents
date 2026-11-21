@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopyahin bilang CSV.",
   "printTable": "I-print ang Table",
   "selectColumn": "Pumili ng Column",
-  "dataTable": "Data · Talahanayan"
+  "dataTable": "Data · Talahanayan",
+  "filterStatus": "Ipinapakita ang {shown} sa {total} hanay, sinala ayon sa {column}: {text}",
+  "columnNumber": "Column {column}",
+  "clearFilter": "I-clear ang filter"
 }

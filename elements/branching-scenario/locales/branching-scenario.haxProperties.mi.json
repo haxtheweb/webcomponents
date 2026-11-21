@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Tauwhāiti peka",
+    "description": "He kōrero e arahina ai ia kōwhiringa ki tētahi whakaaturanga me tētahi mutunga rerekē. Ka taea e ngā ākonga te hoki whakamuri ka whakamātau i ētahi atu ara; mā te mutunga i tae atu ai e whakatau te kaute."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te ingoa o te tauwhāiti, ka whakaaturia ki tōna pane."
+      },
+      {
+        "title": "Whakaaturanga tīmatanga",
+        "description": "Te ID o te whakaaturanga e tīmata ai ngā ākonga. Waiho kia wātea hei tīmata i te whakaaturanga tuatahi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tae arotahi",
+        "description": "He tae kōwhiri mō te maramara pane, ngā pātene me te tapa o tētahi kōwhiringa."
+      }
+    ]
+  }
+}

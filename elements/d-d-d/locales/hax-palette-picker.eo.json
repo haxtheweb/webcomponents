@@ -5,5 +5,6 @@
   "selected": "Elektita",
   "currentlyActiveAndSelectedPalette": "Nuntempe aktiva kaj elektita paletro",
   "currentlyActivePalette": "Nuntempe aktiva paletro",
-  "selectedPaletteToApply": "Elektita paletro por apliki"
+  "selectedPaletteToApply": "Elektita paletro por apliki",
+  "paletteNumber": "Paletro {number}"
 }

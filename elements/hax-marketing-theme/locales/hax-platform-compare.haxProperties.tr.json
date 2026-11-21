@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platform karşılaştırma",
+    "description": "Karşı karşıya: bir veri dosyasından herhangi iki platformu seçin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Karşılaştırma verileri (JSON)"
+      },
+      {
+        "title": "Sol platform kimliği"
+      },
+      {
+        "title": "Sağ platform kimliği"
+      }
+    ]
+  }
+}

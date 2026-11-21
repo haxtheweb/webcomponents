@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Aŭdvida modifilo",
-        "description": "Nedeviga modifilo de aŭdvida domajno. Indikas la tipon de aŭdvidaĵo al kiu ĉi tiu permesilo validas."
+        "description": "Nedeviga modifilo de aŭdvida domajno. Indikas la tipon de aŭdvidaĵo al kiu ĉi tiu permesilo validas.",
+        "options": {
+          "": "Sen modifilo"
+        }
       },
       {
         "property": "uri",

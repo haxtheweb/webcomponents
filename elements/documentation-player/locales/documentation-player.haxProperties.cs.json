@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Přehrávač dokumentace",
+    "description": "Průvodce, ukázka a reference webové komponenty s tlačítky pro kopírování HTML, importu, npm a CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datový soubor dokumentace",
+        "description": "Data dokumentace dodávaná s prvkem (lib/tag.docs.json)."
+      },
+      {
+        "title": "Scénář průvodce",
+        "description": "Pohybový scénář dodávaný s prvkem (tag.motion.json). Volitelné."
+      },
+      {
+        "title": "Videonávod",
+        "description": "Krátké video o prvku (YouTube, Vimeo nebo videosoubor). Přepíše video v datech dokumentace."
+      },
+      {
+        "title": "Otevřít na kartě",
+        "description": "Která karta se zobrazí jako první.",
+        "options": {
+          "motion": "Průvodce",
+          "video": "Video",
+          "demo": "Ukázka",
+          "docs": "Dokumentace",
+          "schema": "Schéma"
+        }
+      },
+      {
+        "title": "Automaticky spustit průvodce",
+        "description": "Spustit průvodce, jakmile se přehrávač zobrazí. Ignoruje se, pokud čtenář preferuje omezený pohyb."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Téma průvodce",
+        "description": "U prvků s více průvodci téma, které otevřít jako první (například add-blocks). Ponechte prázdné pro hlavní."
+      },
+      {
+        "title": "Odkaz na živou ukázku",
+        "description": "Kam vede tlačítko Otevřít zdroj ukázky. Výchozí je složka demo v repozitáři."
+      },
+      {
+        "title": "Odkaz na dokumentaci",
+        "description": "Kam vede tlačítko úplné dokumentace, například na odpovídající stránku Learn HAX."
+      }
+    ]
+  }
+}

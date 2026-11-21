@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kõrvalmärkus",
+    "description": "Ümbritsevast sisust eraldatud märkus valikulise ikooni ja sildiga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Silt",
+        "description": "Kõrvalmärkuse silt."
+      },
+      {
+        "title": "Ikoon",
+        "description": "Kõrvalmärkuse ikoon."
+      },
+      {
+        "title": "Sisu",
+        "description": "Kõrvalmärkuse sisu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Värv",
+        "description": "Värv, millega kõrvalmärkus on toonitud."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ñembosarái apohára",
+    "description": "Peteĩ ohecháva, peteĩ tapicha ohechaukáva, ñe'ẽ ha botõ reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mávapa kóva"
+      },
+      {
+        "title": "Tapicha reko"
+      },
+      {
+        "title": "Tapicha ra'ỹi"
+      },
+      {
+        "title": "Escenario sa'y (DDD réra)"
+      },
+      {
+        "title": "Mamópa oho botõ"
+      },
+      {
+        "title": "Botõ moñe'ẽrã"
+      }
+    ]
+  }
+}

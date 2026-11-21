@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Forgrenet scenarie",
+    "description": "En historie, hvor hvert valg fører til en anden scene og slutning. Deltagerne kan gå et skridt tilbage og prøve andre veje; den nåede slutning bestemmer scoren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Navnet på scenariet, vist i dets overskrift."
+      },
+      {
+        "title": "Startscene",
+        "description": "Scene-id for den scene, deltagerne starter ved. Lad være tom for at starte ved den første scene."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentfarve",
+        "description": "Valgfri farve til overskriftsmærket, knapperne og kanten af et valg."
+      }
+    ]
+  }
+}

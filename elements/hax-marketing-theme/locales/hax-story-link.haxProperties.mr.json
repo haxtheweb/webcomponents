@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "कथा बटण",
+    "description": "hax.cloud वर एखाद्या दाव्यामागील कथा, किंवा दुसऱ्या HAX नेटवर्क साइटवरील जुळणारे ठिकाण उघडणारे बटण"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ते कुठे जाते",
+        "options": {
+          "cloud": "hax.cloud, कथा",
+          "learn": "learn.hax.cloud, एक ट्यूटोरियल",
+          "try": "browser.hax.cloud, वापरून पहा",
+          "elements": "webcomponents.hax.cloud, एक ब्लॉक",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "त्या साइटवरील पत्ता (hax.cloud वरील कथा stories/ee450a19 सारखी दिसते)"
+      },
+      {
+        "title": "ते कशाबद्दल आहे"
+      },
+      {
+        "title": "लहान चिप"
+      },
+      {
+        "title": "ते कशाबद्दल आहे ते बटणात दाखवा"
+      }
+    ]
+  }
+}

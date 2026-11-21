@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kastlid",
+    "description": "Ien publyk, spile troch in personaazje, mei wurden en in knop"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wa't dit is"
+      },
+      {
+        "title": "Personaazjetype"
+      },
+      {
+        "title": "Personaazjesied"
+      },
+      {
+        "title": "Poadiumkleur (DDD-namme)"
+      },
+      {
+        "title": "Wêr't de knop hinne giet"
+      },
+      {
+        "title": "Knoptekst"
+      }
+    ]
+  }
+}

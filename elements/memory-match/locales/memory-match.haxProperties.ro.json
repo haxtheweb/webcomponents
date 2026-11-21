@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Joc de memorie",
+    "description": "Întoarceți cărți pentru a găsi perechi. Asociați un termen cu sensul său ca o potrivire să arate înțelegere sau folosiți două texte sau imagini identice."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Cerința afișată în antet, de exemplu: Asociați termenul cu rolul său."
+      },
+      {
+        "title": "Perechi",
+        "description": "Fiecare pereche este formată din două cărți care se potrivesc, de obicei un termen și sensul său. O parte are nevoie de text, de o imagine sau de ambele."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culoare de accent",
+        "description": "Culoare opțională pentru eticheta din antet, spatele cărților și buton."
+      }
+    ]
+  }
+}

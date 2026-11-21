@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zone de dépôt sur image",
+    "description": "Les apprenants placent des étiquettes sur des zones posées sur une image, puis vérifient leur réponse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Image",
+        "description": "L'image sur laquelle les apprenants placent les étiquettes."
+      },
+      {
+        "title": "Texte alternatif",
+        "description": "Décrit l'image pour les personnes qui ne peuvent pas la voir. Ne révélez pas où vont les étiquettes."
+      },
+      {
+        "title": "Titre de l'image",
+        "description": "Un court titre visible pour l'image, affiché au-dessus."
+      },
+      {
+        "title": "Question",
+        "description": "Ce que les apprenants doivent faire avec les étiquettes."
+      },
+      {
+        "title": "Étiquettes et zones",
+        "description": "Chaque élément est une étiquette que les apprenants peuvent placer. Donnez un nom de zone à une étiquette pour placer sa zone sur l'image ; une étiquette sans nom de zone est en trop et n'a pas de place. Les nombres des zones sont des pourcentages de l'image."
+      },
+      {
+        "title": "Légende",
+        "description": "Légende facultative affichée sous l'image."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentatives",
+        "description": "Combien de fois un apprenant peut vérifier. 0 signifie illimité."
+      },
+      {
+        "title": "Mélanger les étiquettes",
+        "description": "Afficher les étiquettes dans un ordre différent à chaque visite."
+      },
+      {
+        "title": "Repliable",
+        "description": "Afficher cette question sous forme de ligne qui s'ouvre et se ferme. En ouvrir une ferme les autres questions repliables à côté."
+      },
+      {
+        "title": "Démarrer replié",
+        "description": "Si repliable, commencer comme une ligne fermée qui n'affiche que la question et son état."
+      },
+      {
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (par ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom du quiz",
+        "description": "Nom du quiz utilisé pour l'identification xAPI dans les systèmes d'analyse."
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      }
+    ]
+  }
+}

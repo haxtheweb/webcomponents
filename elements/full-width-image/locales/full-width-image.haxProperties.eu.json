@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Atzeko irudia."
+        "description": "Atzeko irudia.",
+        "title": "Irudia"
       },
       {
         "property": "caption",
-        "description": "Izenburuaren testua."
+        "description": "Izenburuaren testua.",
+        "title": "Irudi-oina"
       }
     ]
   }

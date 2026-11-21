@@ -9,5 +9,7 @@
   "slidePages": "Слайд беттері",
   "goToSlide": "{number}-слайдқа өту",
   "slides": "Слайдтар",
-  "position": "{total} ішінен {number}"
+  "position": "{total} ішінен {number}",
+  "fullScreen": "Толық экран",
+  "exitFullScreen": "Толық экраннан шығу"
 }

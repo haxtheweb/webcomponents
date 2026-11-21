@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Gátlisti með punktum",
+    "description": "Listi með gátreitum. Lesendur haka við atriði og framvinda þeirra er munuð í þeirra eigin tæki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Heiti listans. Lesið upphátt sem merki hóps gátreitanna."
+      },
+      {
+        "title": "Atriði",
+        "description": "Hvert atriði er gátreitur. Lesendur geta ekki breytt atriðum sem eru hökuð eða óvirk."
+      },
+      {
+        "title": "Númerað",
+        "description": "Sýna númeraðan lista í stað punktalista."
+      },
+      {
+        "title": "Staða",
+        "description": "Breytir litunum til samræmis við stop-note.",
+        "options": {
+          "info": "Tilkynning",
+          "success": "Staðfesting",
+          "warning": "Viðvörun",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Auðkenni geymslu",
+        "description": "Einkvæmt auðkenni sem notað er til að muna framvindu lesanda í tæki hans. Búið til sjálfkrafa; breyttu aðeins til að deila framvindu milli lista eða byrja upp á nýtt."
+      }
+    ]
+  }
+}

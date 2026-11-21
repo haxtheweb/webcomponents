@@ -20,6 +20,12 @@
         "title": "Íomhá",
         "description": "Íomhá a thaispeántar leis an athfhriotal."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Frámaithe",
+        "description": "Tarraing an t-athfhriotal ar fhráma comhroinnte na mbloc, le deilbhín agus lipéad os a chionn, ionas go dtagann sé le nótaí agus cártaí treoracha."
+      }
     ]
   }
 }

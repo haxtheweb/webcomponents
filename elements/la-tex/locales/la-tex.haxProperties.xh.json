@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Bhala usebenzisa iimpawu zezibalo ze-LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umva womfanekiso",
+        "description": "Umva ongemva kwemifanekiso ezotyiweyo. Okuzenzekelayo kongeza omnye kuphela xa umzobo unokuba nzima ukubonwa ephepheni, njengemigca emnyama kwimowudi emnyama.",
+        "options": {
+          "auto": "Okuzenzekelayo",
+          "light": "Ekhanyayo",
+          "dark": "Emnyama",
+          "none": "Akukho"
+        }
+      }
+    ]
   }
 }

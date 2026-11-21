@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Tavolozza",
+  "themeDefault": "Predefinito del tema",
+  "designSystem": "Sistema di design",
+  "designSystemDefault": "DDD (predefinito)",
+  "designSystemUnavailable": "Questo tema mantiene il proprio design system"
+}

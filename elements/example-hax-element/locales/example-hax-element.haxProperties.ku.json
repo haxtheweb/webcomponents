@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Hêmana destpêkê ya mînak ku ji bo nîşandana mîhengên HAX û taybetmendiyên sererastkirî tê bikaranîn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav"
+      }
+    ]
+  }
+}

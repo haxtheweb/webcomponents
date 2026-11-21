@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krossgáta",
+    "description": "Krossgáta búin til úr lista af orðum og vísbendingum. Netið er búið til fyrir þig; nemendur skrifa orðin og athuga þau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Titillinn eða spurningin sem sýnd er fyrir ofan krossgátuna."
+      },
+      {
+        "title": "Orð",
+        "description": "Hvert orð og vísbending þess. Netið er búið til úr þessum lista: lengsta orðið er sett fyrst og hin krossa það á sameiginlegum stöfum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tilraunir",
+        "description": "Hversu oft nemandi getur athugað. 0 þýðir ótakmarkað."
+      },
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls litur fyrir haus-merkið, virka orðið og aðgerðahnappana."
+      },
+      {
+        "title": "Fellanlegt",
+        "description": "Sýna þessa krossgátu sem röð sem opnast og lokast. Að opna eina lokar hinum fellanlegu spurningunum við hliðina."
+      },
+      {
+        "title": "Byrja samanfellt",
+        "description": "Þegar fellanlegt, byrja sem lokuð röð sem sýnir aðeins titilinn og stöðu hans."
+      },
+      {
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta námsmat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "title": "Hæfniviðmið",
+        "description": "OER Schema: hæfniviðmið tengt þessu námsmati."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Heiti prófsins",
+        "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
+      },
+      {
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta námsmat er ætlað fyrir."
+      }
+    ]
+  }
+}

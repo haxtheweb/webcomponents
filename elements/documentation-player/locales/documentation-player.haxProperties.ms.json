@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Pemain dokumentasi",
+    "description": "Panduan, demo dan rujukan untuk komponen web, dengan butang salin untuk HTML, import, npm dan CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fail data dokumen",
+        "description": "Data dokumen yang disertakan dengan elemen (lib/tag.docs.json)."
+      },
+      {
+        "title": "Papan cerita panduan",
+        "description": "Papan cerita gerakan yang disertakan dengan elemen (tag.motion.json). Pilihan."
+      },
+      {
+        "title": "Tutorial video",
+        "description": "Video pendek tentang elemen (YouTube, Vimeo atau fail video). Mengatasi video dalam data dokumen."
+      },
+      {
+        "title": "Buka pada tab",
+        "description": "Tab mana yang dipaparkan dahulu.",
+        "options": {
+          "motion": "Panduan",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasi",
+          "schema": "Skema"
+        }
+      },
+      {
+        "title": "Main panduan secara automatik",
+        "description": "Mulakan panduan sebaik sahaja pemain dipaparkan. Diabaikan apabila pembaca memilih gerakan dikurangkan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Topik panduan",
+        "description": "Untuk elemen dengan beberapa panduan, topik mana yang dibuka dahulu (contohnya add-blocks). Biarkan kosong untuk yang utama."
+      },
+      {
+        "title": "Pautan demo langsung",
+        "description": "Destinasi butang Buka sumber demo. Lalai kepada folder demo dalam repositori."
+      },
+      {
+        "title": "Pautan dokumentasi",
+        "description": "Destinasi butang dokumentasi penuh, contohnya halaman Learn HAX yang sepadan."
+      }
+    ]
+  }
+}

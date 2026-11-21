@@ -20,6 +20,12 @@
         "title": "Kiʻi",
         "description": "Kiʻi i hōʻike ʻia me ka ʻōlelo ʻōlelo ʻia."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Hoʻopahu ʻia",
+        "description": "E kaha i ka ʻōlelo ʻōlelo ʻia ma ke kiʻi poloka like, me kahi kiʻi ikona a me ka lepili ma luna ona, i like me nā moʻolelo a me nā kāleka kuhikuhi."
+      }
     ]
   }
 }

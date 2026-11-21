@@ -1,0 +1,19 @@
+{
+  "label": "Għodda esterna",
+  "labelLti": "Għodda esterna · LTI 1.3",
+  "theTool": "l-għodda",
+  "directions": "Struzzjonijiet",
+  "showDirections": "Uri l-istruzzjonijiet",
+  "hideDirections": "Aħbi l-istruzzjonijiet",
+  "directionsWindow": "Il-buttuna tiftaħ tieqa ġdida bl-għodda fiha.",
+  "directionsEmbed": "Il-buttuna tiftaħ l-għodda f'din il-paġna. Jekk ma titgħabbiex, iftaħha f'tieqa ġdida minflok.",
+  "directionsLti": "Dan is-sit jdaħħlek fl-għodda, għalhekk m'għandekx bżonn kont separat.",
+  "openWindow": "Iftaħ {title} (tieqa ġdida)",
+  "openEmbed": "Iftaħ {title}",
+  "openInstead": "Iftaħ f'tieqa ġdida minflok",
+  "frameTitle": "{title} (għodda esterna)",
+  "openedWindow": "Infetħet tieqa ġdida bl-għodda.",
+  "openedEmbed": "L-għodda nfetħet f'din il-paġna.",
+  "needsUrl": "Dan il-blokk jeħtieġ indirizz tat-tnedija li jibda b'http:// jew https://.",
+  "needsSignIn": "Din l-għodda teħtieġ is-servizz tad-dħul ta' dan is-sit, li mhux disponibbli hawn. Xejn ma nfetaħ."
+}

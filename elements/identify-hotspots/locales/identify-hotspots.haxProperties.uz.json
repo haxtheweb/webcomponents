@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Nuqtalarni aniqlash",
+    "description": "O‘quvchilar tasvirdagi to‘g‘ri joylarni bosish, teginish yoki klaviatura nishonini siljitish orqali topadi. Tasvir xaritasining baholanadigan varianti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tasvir",
+        "description": "O‘quvchilar qidiradigan rasm."
+      },
+      {
+        "title": "Muqobil matn",
+        "description": "Rasmni ko‘ra olmaydigan odamlar uchun tavsiflaydi. Hech qachon sarlavha sifatida ko‘rsatilmaydi."
+      },
+      {
+        "title": "Sarlavha",
+        "description": "Rasm ustida ko‘rsatiladigan qisqa sarlavha."
+      },
+      {
+        "title": "Savol",
+        "description": "O‘quvchilardan rasmda nimani topish so‘raladi."
+      },
+      {
+        "title": "Javoblar",
+        "description": "Har bir javob rasmdagi nomlangan oval. Joylashuv va o‘lcham rasmning foizlarida, uning yuqori chap burchagidan o‘lchanadi. Tahrirlash paytida har bir javob rasmda ajratib ko‘rsatiladi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Urinishlar",
+        "description": "O‘quvchi necha marta urinishi mumkin. 0 cheklanmagan degani."
+      },
+      {
+        "title": "Ruxsat etilgan xatolar",
+        "description": "Nechta xato urinishni tugatadi. 0 cheklanmagan degani va o‘quvchilarga Yakunlash tugmasi beriladi."
+      },
+      {
+        "title": "Yig‘iladigan",
+        "description": "Bu savolni ochilib-yopiladigan qator sifatida ko‘rsatish. Birini ochish yonidagi boshqa yig‘iladigan savollarni yopadi."
+      },
+      {
+        "title": "Yig‘ilgan holda boshlash",
+        "description": "Yig‘iladigan bo‘lsa, faqat savol va holatni ko‘rsatadigan yopiq qator sifatida boshlanadi."
+      },
+      {
+        "title": "Baholash formati",
+        "description": "OER Schema: bu baholash uchun baholash formati (masalan, ballar, harf, foiz, bajarilganlik)."
+      },
+      {
+        "title": "O‘quv maqsadi",
+        "description": "OER Schema: bu baholash bilan bog‘liq o‘quv maqsadi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Test nomi",
+        "description": "xAPI asosidagi muhitlarda bu elementni identifikatsiya qilish uchun uzatiladigan test nomi"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baholash mo‘ljallangan kurs."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stan Baseline",
+    "description": "Pokaż stan obsługi Baseline w przeglądarkach dla funkcji platformy webowej."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID funkcji",
+        "description": "ID funkcji webowej, np. anchor-positioning. Identyfikatory znajdziesz na webstatus.dev; ID to ostatnia część adresu URL strony funkcji."
+      }
+    ]
+  }
+}

@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Chi tiết điểm nóng",
         "description": "Các điểm nóng tương tác trên bản đồ hình ảnh."
+      },
+      {
+        "title": "Chi tiết điểm nóng",
+        "description": "Các điểm nóng tương tác trên bản đồ hình ảnh."
       }
     ]
   }

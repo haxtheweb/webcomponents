@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Pišite z matematično notacijo LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ozadje slike",
+        "description": "Ozadje za narisanimi slikami. Samodejno ga doda le, ko bi bila risba na strani slabo vidna, na primer temne črte v temnem načinu.",
+        "options": {
+          "auto": "Samodejno",
+          "light": "Svetlo",
+          "dark": "Temno",
+          "none": "Brez"
+        }
+      }
+    ]
   }
 }

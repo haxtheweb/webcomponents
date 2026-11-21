@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerisk fråga",
+    "description": "En fråga som besvaras med ett tal. Svaret är ett fast tal eller en formel som räknas ut från variabler, och räknas när det ligger inom en tolerans."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fråga",
+        "description": "Vad eleverna tillfrågas. Skriv ett variabelnamn inom klammerparenteser, som {d}, för att visa dess värde."
+      },
+      {
+        "title": "Enhet",
+        "description": "Visas som text bredvid svarsfältet, till exempel km/h."
+      },
+      {
+        "title": "Svar",
+        "description": "Det rätta talet. Lämna tomt när en formel räknar ut svaret."
+      },
+      {
+        "title": "Formel",
+        "description": "Räknar ut svaret från variablerna, till exempel d / (t / 60). Kan använda + - * / ^, parenteser, sqrt() och abs(). Används i stället för svaret när den är angiven."
+      },
+      {
+        "title": "Variabler",
+        "description": "Tal som formeln och frågan använder. Vart och ett får ett värde mellan sitt lägsta och högsta, i steg."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerans",
+        "description": "Hur långt från det exakta svaret som fortfarande räknas. 0 betyder exakt, eller avrundat till antalet decimaler nedan."
+      },
+      {
+        "title": "Toleranstyp",
+        "description": "Absolut: plus eller minus toleransen. Procent: plus eller minus den procentandelen av det exakta svaret.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Procent"
+        }
+      },
+      {
+        "title": "Decimaler",
+        "description": "Eleverna ombeds avrunda till så många decimaler, och svaret visas avrundat till det. Lämna tomt för ingen avrundning."
+      },
+      {
+        "title": "Försök",
+        "description": "Hur många gånger en elev kan kontrollera. 0 betyder obegränsat."
+      },
+      {
+        "title": "Nya tal vid varje försök",
+        "description": "Dra nya variabelvärden varje gång en elev försöker igen. Deras tidigare svar visas då inte när de kommer tillbaka, bara om de hade rätt."
+      },
+      {
+        "title": "Hopfällbar",
+        "description": "Visa frågan som en rad som öppnas och stängs. När en öppnas stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "title": "Börja hopfälld",
+        "description": "När den är hopfällbar börjar den som en stängd rad som bara visar frågan och dess status."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizets namn",
+        "description": "Quiznamn som används för xAPI-identifiering i analyssystem."
+      }
+    ]
+  }
+}

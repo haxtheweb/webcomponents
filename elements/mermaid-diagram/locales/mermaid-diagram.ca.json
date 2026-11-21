@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagrama",
+  "flowchart": "diagrama de flux",
+  "sequence": "seqüència",
+  "source": "Font",
+  "textAlternative": "Alternativa textual",
+  "present": "Presenta",
+  "exitPresent": "Surt de la presentació",
+  "loading": "S'està carregant el diagrama",
+  "empty": "Encara no hi ha res a dibuixar. Afegeix el codi font del diagrama.",
+  "error": "Error",
+  "parseError": "No s'ha pogut dibuixar aquest diagrama. Revisa el codi font.",
+  "loadError": "No s'ha pogut carregar la biblioteca de diagrames.",
+  "srcError": "No s'ha pogut carregar el fitxer del diagrama.",
+  "decision": "decisió",
+  "end": "fi",
+  "goTo": "ves a {target}",
+  "ifGoTo": "si {label}, ves a {target}",
+  "describedBySource": "Diagrama descrit pel seu codi font.",
+  "scrollable": "Diagrama, desplaçable"
+}

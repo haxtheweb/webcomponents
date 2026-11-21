@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Note latérale",
+    "description": "Une note mise à part du contenu environnant, avec une icône et un libellé facultatifs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Libellé",
+        "description": "Le libellé de la note latérale."
+      },
+      {
+        "title": "Icône",
+        "description": "L'icône de la note latérale."
+      },
+      {
+        "title": "Contenu",
+        "description": "Contenu de la note latérale."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Couleur",
+        "description": "La couleur dont la note latérale est teintée."
+      }
+    ]
+  }
+}

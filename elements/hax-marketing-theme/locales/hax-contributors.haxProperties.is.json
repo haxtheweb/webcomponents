@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Þátttakendur",
+    "description": "Fólkið sem byggði verkefnið, úr nafnalistaskrá"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nafnalistaskrá (JSON)"
+      },
+      {
+        "title": "Sýn: landed, lab eða code"
+      },
+      {
+        "title": "Hámarksfjöldi fólks að sýna (0 er allir)"
+      }
+    ]
+  }
+}

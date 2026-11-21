@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Chizindikiro chaching'ono chokhala ndi chilembo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chizindikiro"
+      },
+      {
+        "title": "Chilembo"
+      }
+    ]
+  }
+}

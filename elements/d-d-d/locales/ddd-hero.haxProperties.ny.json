@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Chithunzi chachikulu, GIF kapena kanema yokhala ndi mutu ndi zolemba pamwamba pake, yoyikidwa paliponse patsamba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chithunzi kapena kanema",
+        "description": "Fayilo ya JPG, PNG, WebP, GIF, MP4 kapena WebM."
+      },
+      {
+        "title": "Zolemba zina",
+        "description": "Fotokozani chithunzi. Siyani chopanda kanthu ngati ndi chokongoletsa chokha."
+      },
+      {
+        "title": "Mutu",
+        "description": "Mutu wowonetsedwa pamwamba pa media. Siyani chopanda kanthu kuti pasakhale."
+      },
+      {
+        "title": "Zolemba",
+        "description": "Zolemba zowonetsedwa pansi pa mutu, pamwamba pa media."
+      },
+      {
+        "title": "M'lifupi mwathunthu",
+        "description": "Yendani kuchokera m'mbali mpaka m'mbali m'malo mokhala mu gawo la zomwe zili mkati."
+      },
+      {
+        "title": "Kutalika",
+        "options": {
+          "tall": "Chachitali",
+          "medium": "Chapakati",
+          "short": "Chachifupi"
+        }
+      },
+      {
+        "title": "Kuyika m'chimango",
+        "description": "Momwe chithunzi chimakhalira pa kukula kulikonse kwa sikirini"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuzimiririka",
+        "description": "Mtundu woyikidwa pamwamba pa media. Pakakhala mutu kapena zolemba umakhalapo nthawi zonse, kuti zolemba zikhalebe zowerengeka.",
+        "options": {
+          "blue": "Buluu",
+          "bottom": "Mdima pansi",
+          "none": "Palibe"
+        }
+      },
+      {
+        "title": "Malo a zolemba",
+        "options": {
+          "bottom": "Pansi",
+          "middle": "Pakati"
+        }
+      },
+      {
+        "title": "Malo ofunikira modutsa",
+        "description": "Gawo la chithunzi lomwe limakhalabe lowonekera chikadulidwa, kuchokera 0 (kumanzere) mpaka 100 (kumanja)."
+      },
+      {
+        "title": "Malo ofunikira motsika",
+        "description": "Gawo la chithunzi lomwe limakhalabe lowonekera chikadulidwa, kuchokera 0 (pamwamba) mpaka 100 (pansi)."
+      }
+    ]
+  }
+}

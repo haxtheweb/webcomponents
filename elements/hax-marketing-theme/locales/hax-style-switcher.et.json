@@ -1,0 +1,16 @@
+{
+  "theme": "Kujundus",
+  "designSystem": "Disainisüsteem",
+  "dddDefault": "DDD (vaikimisi)",
+  "designSystemHelp": "Värv, kiri, nurgad ja fookus. Kujundus säilitab paigutuse.",
+  "designSystemFixed": "See kujundus säilitab oma disainisüsteemi.",
+  "palette": "Palett",
+  "themeDefault": "Kujunduse vaikeväärtus",
+  "paletteNumber": "Palett {n}",
+  "siteTheme": "{name} (selle saidi kujundus)",
+  "restyle": "Muuda selle saidi stiili",
+  "close": "Sulge",
+  "reset": "Tagasi selle saidi enda välimuse juurde",
+  "random": "Üllata mind",
+  "about": "Siin on näha mõned HAX-i sisseehitatud välimused. Lehed ei muutu kunagi: struktuur elab JSON Outline Schema's ja iga plokk on standardne veebikomponent, nii et kujundust saab vabalt vahetada."
+}

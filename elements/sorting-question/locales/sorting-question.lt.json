@@ -40,5 +40,7 @@
   "hideDirections": "Slėpti nurodymus",
   "showRelatedContent": "Rodyti susijusį turinį",
   "hideRelatedContent": "Slėpti susijusį turinį",
-  "notAttempted": "Nebandyta"
+  "notAttempted": "Nebandyta",
+  "cardsDirections": "Sudėliokite korteles teisinga tvarka naudodami kiekvienos kortelės mygtukus „Perkelti anksčiau“ ir „Perkelti vėliau“ arba vilkite jas pele. Kai manote, kad jos teisinga tvarka, patikrinkite atsakymą pasirinkdami {checkAnswer}.",
+  "movedToPosition": "{item} perkeltas į {position} vietą iš {total}"
 }

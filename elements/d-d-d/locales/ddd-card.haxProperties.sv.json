@@ -52,6 +52,20 @@
           "_top": "Översta fönstret - _top",
           "_parent": "Överordnat fönster - _parent"
         }
+      },
+      {
+        "title": "Ingen pil",
+        "description": "Dölj knappens pil."
+      },
+      {
+        "title": "Länk: mål",
+        "description": "Var länken ska öppnas.",
+        "options": {
+          "": "Samma fönster",
+          "_blank": "Nytt fönster - _blank",
+          "_top": "Översta fönstret - _top",
+          "_parent": "Överordnat fönster - _parent"
+        }
       }
     ],
     "developer": [

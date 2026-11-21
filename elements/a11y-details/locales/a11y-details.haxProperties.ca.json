@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Text de resum opcional quan els detalls estan oberts"
+        "title": "Text de resum opcional quan els detalls estan oberts",
+        "description": "Text del botó mentre la descripció està amagada, com ara Mostra la descripció."
       },
       {
         "property": "closeText",
-        "title": "Text de resum opcional quan els detalls estan tancats"
+        "title": "Text de resum opcional quan els detalls estan tancats",
+        "description": "Text del botó mentre la descripció es mostra, com ara Amaga la descripció."
       }
     ]
   }

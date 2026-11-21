@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Find hotspots",
+    "description": "Deltagerne finder de rigtige steder på et billede ved at klikke, trykke eller flytte et trådkors med tastaturet. Den bedømte pendant til et billedkort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Billede",
+        "description": "Billedet, deltagerne søger i."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriver billedet for personer, der ikke kan se det. Vises aldrig som titel."
+      },
+      {
+        "title": "Titel",
+        "description": "En kort synlig titel vist over billedet."
+      },
+      {
+        "title": "Spørgsmål",
+        "description": "Hvad deltagerne bliver bedt om at finde på billedet."
+      },
+      {
+        "title": "Svar",
+        "description": "Hvert svar er en navngivet oval på billedet. Placering og størrelse er procenter af billedet, målt fra dets øverste venstre hjørne. Under redigering er hvert svar markeret med omrids på billedet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøg",
+        "description": "Hvor mange gange en deltager kan prøve. 0 betyder ubegrænset."
+      },
+      {
+        "title": "Tilladte forbiskud",
+        "description": "Hvor mange forbiskud der afslutter et forsøg. 0 betyder ubegrænset, og deltagerne får en Afslut-knap."
+      },
+      {
+        "title": "Sammenklappelig",
+        "description": "Vis dette spørgsmål som en række, der åbner og lukker. Når ét åbnes, lukkes de andre sammenklappelige spørgsmål ved siden af."
+      },
+      {
+        "title": "Start sammenklappet",
+        "description": "Når det er sammenklappeligt, startes det som en lukket række, der kun viser spørgsmålet og dets status."
+      },
+      {
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne opgave (f.eks. point, bogstavkarakter, procent, gennemførelse)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne opgave."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der videregives til brug i xAPI-drevne miljøer til identifikation af dette element"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: det kursus, denne opgave er beregnet til."
+      }
+    ]
+  }
+}

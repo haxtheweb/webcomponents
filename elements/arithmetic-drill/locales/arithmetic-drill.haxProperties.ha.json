@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Atisayen lissafi",
+    "description": "Gajeren zagaye na matsalolin lissafi da aka samar tare da ra'ayi nan take. Zaɓi ayyukan lissafi da kewayon lambobi; kowane zagaye sabo ne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Sunan wannan atisaye, ana nuna shi a kansa."
+      },
+      {
+        "title": "Ayyukan lissafi",
+        "description": "Irin matsalolin da ake tambaya. Masu koyo za su iya kashe kowane daga cikinsu kafin su fara.",
+        "options": {
+          "add": "Tarawa",
+          "subtract": "Ragi",
+          "multiply": "Ninkawa",
+          "divide": "Rabawa",
+          "add subtract": "Tarawa da ragi",
+          "multiply divide": "Ninkawa da rabawa",
+          "add multiply": "Tarawa da ninkawa",
+          "add divide": "Tarawa da rabawa",
+          "subtract multiply": "Ragi da ninkawa",
+          "subtract divide": "Ragi da rabawa",
+          "add subtract multiply": "Tarawa, ragi da ninkawa",
+          "add subtract divide": "Tarawa, ragi da rabawa",
+          "add multiply divide": "Tarawa, ninkawa da rabawa",
+          "subtract multiply divide": "Ragi, ninkawa da rabawa",
+          "add subtract multiply divide": "Duka huɗu"
+        }
+      },
+      {
+        "title": "Mafi ƙanƙantar lamba",
+        "description": "Mafi ƙanƙantar lambar da ake amfani da ita a matsala. Cikakkun lambobi, 0 ko sama."
+      },
+      {
+        "title": "Mafi girman lamba",
+        "description": "Mafi girman lambar da ake amfani da ita a matsala. Amsoshin rabawa da masu raba suna zama a cikin wannan kewayon ma."
+      },
+      {
+        "title": "Yawan matsaloli",
+        "description": "Matsaloli nawa ne a zagaye ɗaya (1 zuwa 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iyakar lokaci",
+        "description": "Daƙiƙoƙin da aka yarda don gaba ɗaya zagaye. 0 yana nufin babu agogo, wanda shi ne tsoho: atisayen da ke da lokaci suna kayar da masu koyo da ke buƙatar ƙarin lokaci. Idan an saita, masu koyo za su iya kashe agogo don kansu."
+      },
+      {
+        "title": "Launin ƙawa",
+        "description": "Launin guntun kai da maɓallai. Bar shi babu komai don bin jigo."
+      }
+    ]
+  }
+}

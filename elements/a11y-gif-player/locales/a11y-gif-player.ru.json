@@ -2,5 +2,9 @@
   "toggleAnimation": "Включить/выключить анимацию",
   "info": "инфо",
   "image": "Изображение",
-  "animatedGif": "Анимированный GIF"
+  "animatedGif": "Анимированный GIF",
+  "playAnimation": "Воспроизвести анимацию",
+  "pauseAnimation": "Приостановить анимацию",
+  "showDescription": "Показать описание",
+  "hideDescription": "Скрыть описание"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Qarshi",
+    "description": "Ikki personajli yuzma-yuz tugma yonidagi so‘zlar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha"
+      },
+      {
+        "title": "Tugma qayerga olib boradi"
+      },
+      {
+        "title": "Tugma matni"
+      },
+      {
+        "title": "Chap personaj urug‘i"
+      },
+      {
+        "title": "O‘ng personaj urug‘i"
+      }
+    ]
+  }
+}

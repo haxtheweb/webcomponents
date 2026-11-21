@@ -4,7 +4,12 @@
     "description": "用上传额 .h5p 文件放 H5P 互动内容，覅 H5P 服务器"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P 文件",
+        "description": "上传或者链接一个 .h5p 文件。伊辣浏览器里解包；勿要 H5P 服务器。"
+      }
+    ],
     "advanced": [
       {
         "title": "老式 iframe 嵌入代码",

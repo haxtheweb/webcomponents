@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Người đóng góp",
+    "description": "Những người đã xây dựng dự án, từ một tệp danh sách"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tệp danh sách (JSON)"
+      },
+      {
+        "title": "Chế độ xem: landed, lab hoặc code"
+      },
+      {
+        "title": "Số người tối đa hiển thị (0 là tất cả)"
+      }
+    ]
+  }
+}

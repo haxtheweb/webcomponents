@@ -60,6 +60,8 @@
   "flagsFound": "{correct} van {total} gevind",
   "toRethink": "{count} om oor te dink",
   "notEvidence": "nie bewys vir hierdie vlaggie nie",
+  "isEvidence": "bewys vir hierdie vlag",
+  "readingKeys": "Gebruik die pyltjiesleutels om van een {unit} na die volgende te beweeg.",
   "markAnswers": "Merk antwoorde",
   "doneMarking": "Klaar met merk van antwoorde",
   "editHint": "Wysig die leesstuk hieronder. Gebruik Merk antwoorde in die blokkieskieslys om te kies waar elke vlaggie hoort.",

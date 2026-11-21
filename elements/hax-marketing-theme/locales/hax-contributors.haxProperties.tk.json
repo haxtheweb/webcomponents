@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Goşant goşanlar",
+    "description": "Taslamany guran adamlar, sanaw faýlyndan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sanaw faýly (JSON)"
+      },
+      {
+        "title": "Görnüş: landed, lab ýa-da code"
+      },
+      {
+        "title": "Görkezilmeli iň köp adam (0 ählisi)"
+      }
+    ]
+  }
+}

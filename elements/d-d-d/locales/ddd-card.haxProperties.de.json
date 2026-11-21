@@ -52,6 +52,20 @@
           "_top": "Oberstes Fenster - _top",
           "_parent": "Übergeordnetes Fenster - _parent"
         }
+      },
+      {
+        "title": "Kein Pfeil",
+        "description": "Den Pfeil der Schaltfläche ausblenden."
+      },
+      {
+        "title": "Link: Ziel",
+        "description": "Wo der Link geöffnet wird.",
+        "options": {
+          "": "Gleiches Fenster",
+          "_blank": "Neues Fenster - _blank",
+          "_top": "Oberstes Fenster - _top",
+          "_parent": "Übergeordnetes Fenster - _parent"
+        }
       }
     ],
     "developer": [

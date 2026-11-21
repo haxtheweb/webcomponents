@@ -1,0 +1,22 @@
+{
+  "scenario": "Ssenariy",
+  "directions": "Ko‘rsatmalar",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "directionsRead": "Har bir sahnani o‘qing va nima qilishingizni tanlang.",
+  "directionsEndings": "Bir nechta yakun bor. Tugatgach, boshqa yo‘lni sinab ko‘ring.",
+  "startOver": "Qaytadan boshlash",
+  "back": "Bir qadam orqaga",
+  "tryAnother": "Boshqa yo‘lni sinash",
+  "path": "Yo‘l",
+  "scene": "Sahna",
+  "ending": "Yakun",
+  "end": "oxiri",
+  "scenesSeen": "{total} ta sahnadan {seen} tasi ko‘rildi",
+  "endingReached": "Yakunga yetildi",
+  "addScene": "Sahna qo‘shish",
+  "newScene": "Yangi sahna",
+  "newSceneText": "Nima sodir bo‘lishini tasvirlang, so‘ng har bir tanlovni sahnaga bog‘lang.",
+  "editingNote": "Tahrirlash: barcha sahnalar ko‘rsatiladi. Tanlov — # va undan keyin sahna ID siga havola.",
+  "noScenes": "Ssenariyni boshlash uchun sahna qo‘shing."
+}

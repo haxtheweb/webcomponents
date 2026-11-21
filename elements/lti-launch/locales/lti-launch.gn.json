@@ -1,0 +1,19 @@
+{
+  "label": "Tembiporu okágua",
+  "labelLti": "Tembiporu okágua · LTI 1.3",
+  "theTool": "tembiporu",
+  "directions": "Tape",
+  "showDirections": "Ehechauka tape",
+  "hideDirections": "Emokañy tape",
+  "directionsWindow": "Botõ oipe'a peteĩ ventana pyahu tembiporu reheve.",
+  "directionsEmbed": "Botõ oipe'a tembiporu ko kuatiaroguépe. Ndojehupytýiramo, eipe'a ventana pyahúpe hendaguépe.",
+  "directionsLti": "Ko tenda nemoinge tembiporúpe, upévare ndereikotevẽi ambue cuenta.",
+  "openWindow": "Eipe'a {title} (ventana pyahu)",
+  "openEmbed": "Eipe'a {title}",
+  "openInstead": "Eipe'a ventana pyahúpe hendaguépe",
+  "frameTitle": "{title} (tembiporu okágua)",
+  "openedWindow": "Ojepe'a peteĩ ventana pyahu tembiporu reheve.",
+  "openedEmbed": "Tembiporu ojepe'a ko kuatiaroguépe.",
+  "needsUrl": "Ko bloque oikotevẽ peteĩ kundaharape ñepyrũrã oñepyrũva http:// térã https:// reheve.",
+  "needsSignIn": "Ko tembiporu oikotevẽ ko tenda jeike servicio, ndaipóriva ko'ápe. Mba'eve nojepe'ái."
+}

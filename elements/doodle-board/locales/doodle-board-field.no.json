@@ -1,0 +1,16 @@
+{
+  "drawing": "Tegning",
+  "edit": "Rediger tegning",
+  "start": "Begynn å tegne",
+  "remove": "Fjern tegning",
+  "empty": "Ingenting tegnet ennå",
+  "save": "Lagre",
+  "cancel": "Avbryt",
+  "close": "Lukk",
+  "discard": "Forkast endringer",
+  "discardConfirm": "Forkaste endringene som ikke er lagret?",
+  "keepEditing": "Fortsett å redigere",
+  "draw": "Tegning",
+  "feedback": "Tilbakemelding",
+  "signature": "Signatur"
+}

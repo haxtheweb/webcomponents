@@ -1,0 +1,21 @@
+{
+  "diagram": "Eserese",
+  "flowchart": "eserese usoro",
+  "sequence": "usoro",
+  "source": "Isi mmalite",
+  "textAlternative": "Ederede nnọchi",
+  "present": "Gosi",
+  "exitPresent": "Pụọ na ngosi",
+  "loading": "Na-ebulite eserese",
+  "empty": "Ọ dịbeghị ihe a ga-ese. Tinye isi eserese ahụ.",
+  "error": "Njehie",
+  "parseError": "Enweghị ike ise eserese a. Lelee isi ya.",
+  "loadError": "Enweghị ike ibulite ọbá akwụkwọ eserese.",
+  "srcError": "Enweghị ike ibulite faịlụ eserese ahụ.",
+  "decision": "mkpebi",
+  "end": "njedebe",
+  "goTo": "gaa na {target}",
+  "ifGoTo": "ọ bụrụ {label}, gaa na {target}",
+  "describedBySource": "Eserese nke isi ya kọwara.",
+  "scrollable": "Eserese, enwere ike ịkpụgharị"
+}

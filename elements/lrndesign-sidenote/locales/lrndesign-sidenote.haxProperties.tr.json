@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Yan not",
+    "description": "Çevredeki içerikten ayrı duran, isteğe bağlı simge ve etiketli bir not."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Yan notun etiketi."
+      },
+      {
+        "title": "Simge",
+        "description": "Yan notun simgesi."
+      },
+      {
+        "title": "İçerik",
+        "description": "Yan notun içeriği."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Renk",
+        "description": "Yan notun renk tonu."
+      }
+    ]
+  }
+}

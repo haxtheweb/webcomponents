@@ -1,0 +1,21 @@
+{
+  "diagram": "Schema",
+  "flowchart": "urganigramma",
+  "sequence": "sequenza",
+  "source": "Fonte",
+  "textAlternative": "Alternativa testuale",
+  "present": "Prisentà",
+  "exitPresent": "Esce da a presentazione",
+  "loading": "Caricamentu di u schema",
+  "empty": "Nunda à disegnà per avà. Aghjunghjite a fonte di u schema.",
+  "error": "Sbagliu",
+  "parseError": "Stu schema ùn s'hè pussutu disegnà. Verificate a fonte.",
+  "loadError": "A biblioteca di schemi ùn s'hè pussuta caricà.",
+  "srcError": "U schedariu di u schema ùn s'hè pussutu caricà.",
+  "decision": "decisione",
+  "end": "fine",
+  "goTo": "andà à {target}",
+  "ifGoTo": "s'è {label}, andà à {target}",
+  "describedBySource": "Schema discrittu da a so fonte.",
+  "scrollable": "Schema, scurrevule"
+}

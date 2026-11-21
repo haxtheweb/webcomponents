@@ -6,6 +6,8 @@
   "faviconDescription": "浏览器标签页图片 / 辣手机上当小个网站标志用",
   "domain": "域名",
   "domainDescription": "搿只网站个域名",
+  "sameAs": "迭个网站个别个主页",
+  "sameAsDescription": "每行一只链接，指向迭个网站或者组织辣别个地方个主页（GitHub、LinkedIn、YouTube、Mastodon）。搜索引擎用伊拉拿迭眼主页搭迭个网站连起来。",
   "language": "语言",
   "languageDescription": "该个站点个语言。可以照名字或者代码搜，也可以输入别个代码，比如 fr-CA。",
   "googleAnalyticsId": "Google Analytics ID",

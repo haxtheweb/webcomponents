@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "flowchart",
+  "sequence": "sequence",
+  "source": "Source",
+  "textAlternative": "Alternatibong teksto",
+  "present": "Ipresenta",
+  "exitPresent": "Lumabas sa presentasyon",
+  "loading": "Nilo-load ang diagram",
+  "empty": "Wala pang iguguhit. Idagdag ang source ng diagram.",
+  "error": "Error",
+  "parseError": "Hindi maiguhit ang diagram na ito. Suriin ang source.",
+  "loadError": "Hindi ma-load ang diagram library.",
+  "srcError": "Hindi ma-load ang diagram file.",
+  "decision": "desisyon",
+  "end": "wakas",
+  "goTo": "pumunta sa {target}",
+  "ifGoTo": "kung {label}, pumunta sa {target}",
+  "describedBySource": "Diagram na inilalarawan ng source nito.",
+  "scrollable": "Diagram, nai-scroll"
+}

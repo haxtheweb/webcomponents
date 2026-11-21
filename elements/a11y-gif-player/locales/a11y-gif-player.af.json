@@ -2,5 +2,9 @@
   "toggleAnimation": "Wissel animasie",
   "info": "inligting",
   "image": "Beeld",
-  "animatedGif": "Geanimeerde GIF"
+  "animatedGif": "Geanimeerde GIF",
+  "playAnimation": "Speel animasie",
+  "pauseAnimation": "Pouseer animasie",
+  "showDescription": "Wys beskrywing",
+  "hideDescription": "Versteek beskrywing"
 }

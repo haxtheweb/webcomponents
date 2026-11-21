@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Tikketta tal-figura",
     "description": "Element ta' tikketta tal-figura biex jimmarka assi tal-midja fil-kontenut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numru tal-figura",
+        "description": "Numru jew tikketta qasira għall-figura, eż. 1.3"
+      },
+      {
+        "title": "Deskrizzjoni",
+        "description": "Deskrizzjoni qasira tal-figura"
+      }
+    ]
   }
 }

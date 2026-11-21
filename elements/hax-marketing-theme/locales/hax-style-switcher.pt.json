@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema de design",
+  "dddDefault": "DDD (padrão)",
+  "designSystemHelp": "Cor, tipografia, cantos e foco. O tema mantém o layout.",
+  "designSystemFixed": "Este tema mantém seu próprio sistema de design.",
+  "palette": "Paleta",
+  "themeDefault": "Padrão do tema",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (tema deste site)",
+  "restyle": "Mudar o estilo deste site",
+  "close": "Fechar",
+  "reset": "Voltar ao visual próprio deste site",
+  "random": "Surpreenda-me",
+  "about": "Isto mostra alguns dos visuais incluídos no HAX. As páginas nunca mudam: a estrutura fica no JSON Outline Schema e cada bloco é um web component padrão, então o design pode ser trocado livremente."
+}

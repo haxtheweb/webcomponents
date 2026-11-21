@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modificatore del media",
-        "description": "Modificatore facoltativo del dominio multimediale. Specifica il tipo di media a cui si applica questa licenza."
+        "description": "Modificatore facoltativo del dominio multimediale. Specifica il tipo di media a cui si applica questa licenza.",
+        "options": {
+          "": "Nessun modificatore"
+        }
       },
       {
         "property": "uri",

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Schema da un testu",
+    "description": "Scrivite un schema cum'è testu (Mermaid): un urganigramma, una sequenza, una cronulugia è altru. Hè disegnatu in a pagina cù un'alternativa testuale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Mustratu sopra u schema è adupratu cum'è u so nome."
+      },
+      {
+        "title": "Fonte di u schema",
+        "description": "Testu Mermaid, per esempiu: flowchart TD, po una linea per ogni liame cum'è A[Draft] --> B{Ready?}. Aghjunghjite |label| dopu à una freccia per dalli un'etichetta. U disegnu s'aghjorna mentre chì scrivite."
+      },
+      {
+        "title": "Alternativa testuale",
+        "description": "Discrivite ciò chì mostra u schema per e persone chì ùn u ponu vede. Lasciate biotu nant'à un urganigramma per avè i so passi elencati per voi."
+      },
+      {
+        "title": "Legenda",
+        "description": "Legenda facultativa mustrata sottu à u schema."
+      },
+      {
+        "title": "Mustrà a fonte",
+        "description": "Mustrà u testu di u schema accantu à u disegnu."
+      },
+      {
+        "title": "Mustrà l'alternativa testuale",
+        "description": "Mustrà l'alternativa testuale sottu à u disegnu. Hè sempre dispunibule per i lettori di screnu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Schedariu fonte",
+        "description": "Indirizzu d'un schedariu .mmd à disegnà invece di u testu quì sopra (https o un chjassu nant'à stu situ)."
+      },
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore di l'etichetta d'icona in u capu."
+      }
+    ]
+  }
+}

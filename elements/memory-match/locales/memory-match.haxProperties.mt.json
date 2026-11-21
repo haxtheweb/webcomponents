@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Logħba tal-memorja",
+    "description": "Aqleb il-karti biex issib pari. Qabbel terminu mat-tifsira tiegħu biex taqbila turi fehim, jew uża żewġ testi jew immaġnijiet li jaqblu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Il-prompt muri fl-intestatura, pereżempju: Qabbel it-terminu mal-funzjoni tiegħu."
+      },
+      {
+        "title": "Pari",
+        "description": "Kull par huwa żewġ karti li jmorru flimkien, normalment terminu u t-tifsira tiegħu. Naħa teħtieġ test, immaġni, jew it-tnejn."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur fakultattiv għaċ-ċippa tal-intestatura, wara l-karti u l-buttuna."
+      }
+    ]
+  }
+}

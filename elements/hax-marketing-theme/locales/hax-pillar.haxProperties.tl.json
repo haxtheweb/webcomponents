@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Haligi",
+    "description": "Isang haligi: pangalan, parirala, icon, kulay at kung bakit ito mahalaga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pangalan"
+      },
+      {
+        "title": "Parirala"
+      },
+      {
+        "title": "Icon"
+      },
+      {
+        "title": "Kulay (pangalan sa DDD)"
+      },
+      {
+        "title": "Aling haligi, 1 hanggang 7"
+      },
+      {
+        "title": "Maliit na card"
+      },
+      {
+        "title": "Kung saan ilalagay ang pangalan"
+      }
+    ]
+  }
+}

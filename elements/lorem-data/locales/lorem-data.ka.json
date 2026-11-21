@@ -1,4 +1,6 @@
 {
   "saveAll": "ყველას შენახვა",
-  "saveTheFollowing": "შევინახოთ შემდეგი: {list}?"
+  "saveTheFollowing": "შევინახოთ შემდეგი: {list}?",
+  "save": "შენახვა",
+  "cancel": "გაუქმება"
 }

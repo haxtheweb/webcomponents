@@ -1,4 +1,6 @@
 {
   "saveAll": "සියල්ල සුරකින්න",
-  "saveTheFollowing": "පහත ඒවා සුරකින්නද: {list}?"
+  "saveTheFollowing": "පහත ඒවා සුරකින්නද: {list}?",
+  "save": "සුරකින්න",
+  "cancel": "අවලංගු කරන්න"
 }

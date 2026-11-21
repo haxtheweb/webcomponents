@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilier",
+    "description": "Un pilier : nom, phrase, icône, couleur et pourquoi il compte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nom"
+      },
+      {
+        "title": "Phrase"
+      },
+      {
+        "title": "Icône"
+      },
+      {
+        "title": "Couleur (nom DDD)"
+      },
+      {
+        "title": "Quel pilier, de 1 à 7"
+      },
+      {
+        "title": "Petite carte"
+      },
+      {
+        "title": "Emplacement du nom"
+      }
+    ]
+  }
+}

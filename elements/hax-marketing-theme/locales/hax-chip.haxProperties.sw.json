@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Kibandiko",
+    "description": "Ikoni ndogo yenye lebo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikoni"
+      },
+      {
+        "title": "Lebo"
+      }
+    ]
+  }
+}

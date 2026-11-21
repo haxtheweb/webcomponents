@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Soļu saraksts",
     "description": "Numurēti soļi uzdevuma izpildei."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Soļu indikators",
+        "description": "Rādīt soļus kā kompaktu virsrakstu rindu, kas atzīmē progresu. Šajā izkārtojumā soļu saturs netiek rādīts."
+      },
+      {
+        "title": "Pašreizējais solis",
+        "description": "Solis, pie kura atrodas lasītājs, skaitot no 1. Iepriekšējie soļi tiek rādīti kā pabeigti. Izmanto soļu indikators."
+      }
+    ]
   }
 }

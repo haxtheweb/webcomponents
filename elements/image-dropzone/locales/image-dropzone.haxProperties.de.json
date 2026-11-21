@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Bild-Ablagezone",
+    "description": "Lernende legen Beschriftungen auf Zonen über einem Bild ab und prüfen dann ihre Antwort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "Das Bild, auf das Lernende Beschriftungen legen."
+      },
+      {
+        "title": "Alternativtext",
+        "description": "Beschreibt das Bild für Menschen, die es nicht sehen können. Verrate nicht, wohin die Beschriftungen gehören."
+      },
+      {
+        "title": "Bildtitel",
+        "description": "Ein kurzer sichtbarer Titel für das Bild, darüber angezeigt."
+      },
+      {
+        "title": "Frage",
+        "description": "Was Lernende mit den Beschriftungen tun sollen."
+      },
+      {
+        "title": "Beschriftungen und Zonen",
+        "description": "Jeder Eintrag ist eine Beschriftung, die Lernende platzieren können. Gib einer Beschriftung einen Zonennamen, um ihre Zone auf das Bild zu setzen; eine Beschriftung ohne Zonennamen ist überzählig und gehört nirgendwohin. Zonenwerte sind Prozentwerte des Bildes."
+      },
+      {
+        "title": "Bildunterschrift",
+        "description": "Optionale Bildunterschrift unter dem Bild."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versuche",
+        "description": "Wie oft Lernende prüfen dürfen. 0 bedeutet unbegrenzt."
+      },
+      {
+        "title": "Beschriftungen mischen",
+        "description": "Die Beschriftungen bei jedem Besuch in anderer Reihenfolge anzeigen."
+      },
+      {
+        "title": "Einklappbar",
+        "description": "Diese Frage als auf- und zuklappbare Zeile anzeigen. Das Öffnen einer Zeile schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, als geschlossene Zeile starten, die nur die Frage und ihren Status zeigt."
+      },
+      {
+        "title": "Bewertungsformat",
+        "description": "OER Schema: Bewertungsformat dieser Prüfung (z. B. Punkte, Note, Prozent, Abschluss)."
+      },
+      {
+        "title": "Lernziel",
+        "description": "OER Schema: Lernziel, das mit dieser Prüfung verknüpft ist."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Name des Quiz",
+        "description": "Quizname zur xAPI-Identifikation in Analysesystemen."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: Kurs, für den diese Prüfung gedacht ist."
+      }
+    ]
+  }
+}

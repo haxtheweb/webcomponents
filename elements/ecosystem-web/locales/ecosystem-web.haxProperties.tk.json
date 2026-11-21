@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekoulgam tory",
+    "description": "Taslamanyň bölekleriniň nähili baglanyşýandygynyň interaktiw tory, kiçi torlar we ädimme-ädim gezelençler bilen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tor maglumatlary",
+        "description": "Torlaryň JSON toplumynyň URL-i (PRAW-da gurlan, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tor",
+        "description": "Ilki görkezilmeli toruň id-si; main ekoulgam torudyr."
+      },
+      {
+        "title": "Saýlanan plitka",
+        "description": "Tor açylanda saýlanmaly plitkanyň id-si."
+      },
+      {
+        "title": "Gezelenç",
+        "description": "Başlanmaly gezelenjiň id-si."
+      },
+      {
+        "title": "Sanaw görnüşinde başla",
+        "description": "Tory çyzgynyň ýerine içki sanawlar hökmünde görkez."
+      },
+      {
+        "title": "Diňe çyzgy",
+        "description": "Diňe çyzgyny surat hökmünde görkez: sözbaşy, gezelençler, jikme-jiklikler ýa-da ädim zolagy ýok."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Okalyşy",
+        "description": "Ähli plitkalary bir ölçeg boýunça okap başla.",
+        "options": {
+          "": "Diňe baglanyşyklar",
+          "fresh": "Täzelik",
+          "bus": "Bus factor",
+          "impact": "Täsir",
+          "evidence": "Subutnama",
+          "parity": "Deňlik"
+        }
+      }
+    ]
+  }
+}

@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Term"
+        "title": "Term",
+        "description": "It wurd of de sin dêr't lêzers op klikke om de definysje te sjen."
       },
       {
         "slot": "",

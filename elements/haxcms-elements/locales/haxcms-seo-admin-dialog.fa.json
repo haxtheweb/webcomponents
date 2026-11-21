@@ -6,6 +6,8 @@
   "faviconDescription": "تصویر زبانه مرورگر / در تلفن‌ها به‌عنوان نشان کوچک سایت استفاده می‌شود",
   "domain": "دامنه",
   "domainDescription": "دامنه این وب‌سایت",
+  "sameAs": "دیگر نمایه‌های این سایت",
+  "sameAsDescription": "در هر خط یک پیوند به نمایه‌های این سایت یا سازمان در جاهای دیگر (GitHub، LinkedIn، YouTube، Mastodon). موتورهای جست‌وجو از آن‌ها برای ربط دادن آن نمایه‌ها به این سایت استفاده می‌کنند.",
   "language": "زبان",
   "languageDescription": "زبان این سایت. بر اساس نام یا کد جستجو کنید یا کد دیگری مانند fr-CA وارد کنید.",
   "googleAnalyticsId": "شناسه Google Analytics",

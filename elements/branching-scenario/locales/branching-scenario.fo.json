@@ -1,0 +1,22 @@
+{
+  "scenario": "Støða",
+  "directions": "Vegleiðing",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "directionsRead": "Les hvørja senu og vel, hvat tú vildi gjørt.",
+  "directionsEndings": "Tað eru fleiri endar. Royn ein annan veg, tá ið tú ert liðug/ur.",
+  "startOver": "Byrja av nýggjum",
+  "back": "Eitt stig aftur",
+  "tryAnother": "Royn ein annan veg",
+  "path": "Vegur",
+  "scene": "Sena",
+  "ending": "Endi",
+  "end": "endi",
+  "scenesSeen": "{seen} av {total} senum sæddar",
+  "endingReached": "Endi røkkur",
+  "addScene": "Legg senu afturat",
+  "newScene": "Nýggj sena",
+  "newSceneText": "Lýs, hvat hendir, og leinkja síðan hvørt val til eina senu.",
+  "editingNote": "Rættan: allar senur verða vístar. Eitt val er eitt leinki til # fylgt av einum senu-id.",
+  "noScenes": "Legg eina senu afturat fyri at byrja støðuna."
+}

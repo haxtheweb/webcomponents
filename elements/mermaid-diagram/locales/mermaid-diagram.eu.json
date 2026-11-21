@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagrama",
+  "flowchart": "fluxu-diagrama",
+  "sequence": "sekuentzia",
+  "source": "Iturburua",
+  "textAlternative": "Testu-alternatiba",
+  "present": "Aurkeztu",
+  "exitPresent": "Irten aurkezpenetik",
+  "loading": "Diagrama kargatzen",
+  "empty": "Oraindik ez dago marrazteko ezer. Gehitu diagramaren iturburua.",
+  "error": "Errorea",
+  "parseError": "Ezin izan da diagrama hau marraztu. Egiaztatu iturburua.",
+  "loadError": "Ezin izan da diagrama-liburutegia kargatu.",
+  "srcError": "Ezin izan da diagrama-fitxategia kargatu.",
+  "decision": "erabakia",
+  "end": "amaiera",
+  "goTo": "joan {target}(e)ra",
+  "ifGoTo": "{label} bada, joan {target}(e)ra",
+  "describedBySource": "Iturburuak deskribatutako diagrama.",
+  "scrollable": "Diagrama, korritu daitekeena"
+}

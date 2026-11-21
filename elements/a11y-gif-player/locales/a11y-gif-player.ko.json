@@ -2,5 +2,9 @@
   "toggleAnimation": "애니메이션 전환",
   "info": "정보",
   "image": "이미지",
-  "animatedGif": "애니메이션 GIF"
+  "animatedGif": "애니메이션 GIF",
+  "playAnimation": "애니메이션 재생",
+  "pauseAnimation": "애니메이션 일시 정지",
+  "showDescription": "설명 표시",
+  "hideDescription": "설명 숨기기"
 }

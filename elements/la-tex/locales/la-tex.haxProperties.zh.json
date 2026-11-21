@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "使用 LaTeX 数学符号书写"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片背景",
+        "description": "绘制图形后面的背景。“自动”仅在图形在页面上难以看清时才添加背景，例如深色模式下的深色线条。",
+        "options": {
+          "auto": "自动",
+          "light": "浅色",
+          "dark": "深色",
+          "none": "无"
+        }
+      }
+    ]
   }
 }

@@ -60,6 +60,8 @@
   "flagsFound": "{correct} fan {total} fûn",
   "toRethink": "{count} om oer nei te tinken",
   "notEvidence": "gjin bewiis foar dizze flagge",
+  "isEvidence": "bewiis foar dizze markearring",
+  "readingKeys": "Brûk de pylktoetsen om fan de iene {unit} nei de oare te gean.",
   "markAnswers": "Antwurden markearje",
   "doneMarking": "Klear mei antwurden markearjen",
   "editHint": "Bewurkje de tekst hjirûnder. Brûk Antwurden markearje yn it blokmenu om te kiezen wêr't elke flagge heart.",

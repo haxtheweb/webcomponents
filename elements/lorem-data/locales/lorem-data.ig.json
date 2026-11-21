@@ -1,4 +1,6 @@
 {
   "saveAll": "Chekwaa ha niile",
-  "saveTheFollowing": "Chekwaa ndị a: {list}?"
+  "saveTheFollowing": "Chekwaa ndị a: {list}?",
+  "save": "Chekwaa",
+  "cancel": "Kagbuo"
 }

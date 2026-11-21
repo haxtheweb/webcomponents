@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Amsoshi",
-        "description": "Tsarin amsoshi yana ayyana jerin da ya dace."
+        "description": "Tsarin amsoshi yana ayyana jerin da ya dace.",
+        "options": {
+          "": "Jeri",
+          "cards": "Katunan hoto"
+        }
+      },
+      {
+        "title": "Amsoshi",
+        "description": "Tsarin amsoshi yana ƙayyade jerin daidai."
       }
     ],
     "advanced": [

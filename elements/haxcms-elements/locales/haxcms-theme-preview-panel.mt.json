@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paletta",
   "cancel": "Ikkanċella",
-  "openAppearanceSettings": "Iftaħ l-Issettjar tad-Dehra"
+  "openAppearanceSettings": "Iftaħ l-Issettjar tad-Dehra",
+  "designSystem": "Sistema tad-disinn",
+  "designSystemDefault": "DDD (default)",
+  "designSystemThemeDefault": "{name} (default tat-tema)",
+  "designSystemHelp": "Kulur, tipa, kantunieri u densità. It-tema xorta tiddeċiedi t-tqassim."
 }

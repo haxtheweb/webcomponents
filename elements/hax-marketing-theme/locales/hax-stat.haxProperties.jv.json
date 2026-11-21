@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistik",
+    "description": "Angka sing ngitung munggah, karo label lan pranala menyang critane"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Angka tujuan itungan"
+      },
+      {
+        "title": "Sadurunge angka"
+      },
+      {
+        "title": "Sawise angka"
+      },
+      {
+        "title": "Tembung tinimbang angka"
+      },
+      {
+        "title": "Apa sing diitung"
+      },
+      {
+        "title": "Alamat crita ing hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

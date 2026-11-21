@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "生态系统网络",
+    "description": "展示项目各部分如何相互关联的交互式网络，包含子网络和分步导览。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "网络数据",
+        "description": "网络 JSON 数据包的 URL（在 PRAW 中构建，ecosystem-webs.json）。"
+      },
+      {
+        "title": "网络",
+        "description": "最先显示的网络 ID；main 是生态系统网络。"
+      },
+      {
+        "title": "选中的图块",
+        "description": "网络打开时要选中的图块 ID。"
+      },
+      {
+        "title": "导览",
+        "description": "开始时使用的导览 ID。"
+      },
+      {
+        "title": "以列表视图开始",
+        "description": "以嵌套列表而非图形显示网络。"
+      },
+      {
+        "title": "仅图形",
+        "description": "只将图形作为插图显示：没有标题、导览、详情或步骤栏。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "解读方式",
+        "description": "开始时按某一指标解读每个图块。",
+        "options": {
+          "": "仅连接",
+          "fresh": "新鲜度",
+          "bus": "巴士因子",
+          "impact": "影响力",
+          "evidence": "依据",
+          "parity": "一致性"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Dijagram iz teksta",
+    "description": "Napišite dijagram kao tekst (Mermaid): dijagram toka, slijed, vremensku crtu i drugo. Crta se na stranici s tekstnom alternativom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Prikazuje se iznad dijagrama i koristi kao njegov naziv."
+      },
+      {
+        "title": "Izvor dijagrama",
+        "description": "Mermaid tekst, npr.: flowchart TD, zatim jedan redak po vezi, kao A[Draft] --> B{Ready?}. Dodajte |label| nakon strelice da joj date oznaku. Crtež se ažurira dok tipkate."
+      },
+      {
+        "title": "Tekstna alternativa",
+        "description": "Opišite što dijagram prikazuje za osobe koje ga ne mogu vidjeti. Kod dijagrama toka ostavite prazno da se koraci navedu automatski."
+      },
+      {
+        "title": "Opis slike",
+        "description": "Neobavezni opis prikazan ispod dijagrama."
+      },
+      {
+        "title": "Prikaži izvor",
+        "description": "Prikaži tekst dijagrama pokraj crteža."
+      },
+      {
+        "title": "Prikaži tekstnu alternativu",
+        "description": "Prikaži tekstnu alternativu ispod crteža. Čitačima zaslona uvijek je dostupna."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Izvorna datoteka",
+        "description": "Adresa .mmd datoteke za crtanje umjesto gornjeg teksta (https ili put na ovom web-mjestu)."
+      },
+      {
+        "title": "Naglasna boja",
+        "description": "Boja oznake ikone u zaglavlju."
+      }
+    ]
+  }
+}

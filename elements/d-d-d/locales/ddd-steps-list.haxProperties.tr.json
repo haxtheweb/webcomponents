@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Adım listesi",
     "description": "Bir görevi tamamlamak için numaralı adımlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adım göstergesi",
+        "description": "Adımları ilerlemeyi işaretleyen kompakt bir başlık satırı olarak göster. Bu düzende adım içeriği gösterilmez."
+      },
+      {
+        "title": "Geçerli adım",
+        "description": "Okuyucunun bulunduğu adım, 1'den sayarak. Önceki adımlar tamamlanmış olarak gösterilir. Adım göstergesi tarafından kullanılır."
+      }
+    ]
   }
 }

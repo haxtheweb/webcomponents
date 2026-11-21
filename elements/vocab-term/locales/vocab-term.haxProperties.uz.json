@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Atama"
+        "title": "Atama",
+        "description": "O‘quvchilar ta’rifini ko‘rish uchun bosadigan so‘z yoki ibora."
       },
       {
         "property": "information",

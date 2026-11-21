@@ -2,5 +2,9 @@
   "toggleAnimation": "యానిమేషన్‌ను టోగుల్ చేయండి",
   "info": "సమాచారం",
   "image": "చిత్రం",
-  "animatedGif": "యానిమేటెడ్ GIF"
+  "animatedGif": "యానిమేటెడ్ GIF",
+  "playAnimation": "యానిమేషన్ ప్లే చేయండి",
+  "pauseAnimation": "యానిమేషన్ పాజ్ చేయండి",
+  "showDescription": "వివరణను చూపించు",
+  "hideDescription": "వివరణను దాచు"
 }

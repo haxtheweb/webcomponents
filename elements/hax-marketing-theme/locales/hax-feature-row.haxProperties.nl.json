@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Functierij",
+    "description": "Een scherm van het product naast wat het voor jou betekent"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Klein label"
+      },
+      {
+        "title": "Kop"
+      },
+      {
+        "title": "Afbeelding"
+      },
+      {
+        "title": "Wat de afbeelding toont"
+      },
+      {
+        "title": "Afbeelding rechts"
+      },
+      {
+        "title": "Schaduwkleur (DDD-naam, leeg volgt het palet)"
+      }
+    ]
+  }
+}

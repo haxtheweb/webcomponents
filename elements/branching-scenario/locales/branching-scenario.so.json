@@ -1,0 +1,22 @@
+{
+  "scenario": "Xaalad",
+  "directions": "Tilmaamo",
+  "showDirections": "Muuji tilmaamaha",
+  "hideDirections": "Qari tilmaamaha",
+  "directionsRead": "Akhri muuqaal kasta oo dooro waxa aad samayn lahayd.",
+  "directionsEndings": "Waxaa jira dhammaadyo badan. Isku day waddo kale marka aad dhammayso.",
+  "startOver": "Dib u bilow",
+  "back": "Hal tallaabo dib",
+  "tryAnother": "Isku day waddo kale",
+  "path": "Waddo",
+  "scene": "Muuqaal",
+  "ending": "Dhammaad",
+  "end": "dhammaad",
+  "scenesSeen": "{seen} ee {total} muuqaal ayaa la arkay",
+  "endingReached": "Dhammaadka waa la gaaray",
+  "addScene": "Ku dar muuqaal",
+  "newScene": "Muuqaal cusub",
+  "newSceneText": "Sharax waxa dhaca, kadibna doorasho kasta ku xir muuqaal.",
+  "editingNote": "Tafatir: muuqaal kasta waa la muujiyay. Doorashadu waa link u socda # oo ay ku xigto id-ga muuqaalka.",
+  "noScenes": "Ku dar muuqaal si aad u bilowdo xaaladda."
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Sumulat gamit ang math notation na LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Backdrop ng larawan",
+        "description": "Background sa likod ng mga iginuhit na larawan. Nagdadagdag lang ang Awtomatiko kapag mahirap makita ang drowing sa pahina, gaya ng madidilim na linya sa dark mode.",
+        "options": {
+          "auto": "Awtomatiko",
+          "light": "Maliwanag",
+          "dark": "Madilim",
+          "none": "Wala"
+        }
+      }
+    ]
   }
 }

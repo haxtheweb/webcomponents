@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scenariusz rozgałęziony",
+    "description": "Historia, w której każdy wybór prowadzi do innej sceny i zakończenia. Uczący się mogą cofać się i próbować innych ścieżek; osiągnięte zakończenie ustala wynik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Nazwa scenariusza, widoczna w nagłówku."
+      },
+      {
+        "title": "Scena startowa",
+        "description": "ID sceny, od której zaczynają uczący się. Pozostaw puste, aby zacząć od pierwszej sceny."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor etykiety nagłówka, przycisków i krawędzi wyboru."
+      }
+    ]
+  }
+}

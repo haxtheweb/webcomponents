@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Práctica de aritmética",
+    "description": "Una breve serie de problemas aritméticos generados con respuesta inmediata. Elige las operaciones y el rango de números; cada ronda es nueva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nombre de esta práctica, que se muestra en su cabecera."
+      },
+      {
+        "title": "Operaciones",
+        "description": "Qué tipos de problemas se plantean. Los estudiantes pueden desactivar cualquiera antes de empezar.",
+        "options": {
+          "add": "Suma",
+          "subtract": "Resta",
+          "multiply": "Multiplicación",
+          "divide": "División",
+          "add subtract": "Suma y resta",
+          "multiply divide": "Multiplicación y división",
+          "add multiply": "Suma y multiplicación",
+          "add divide": "Suma y división",
+          "subtract multiply": "Resta y multiplicación",
+          "subtract divide": "Resta y división",
+          "add subtract multiply": "Suma, resta y multiplicación",
+          "add subtract divide": "Suma, resta y división",
+          "add multiply divide": "Suma, multiplicación y división",
+          "subtract multiply divide": "Resta, multiplicación y división",
+          "add subtract multiply divide": "Las cuatro"
+        }
+      },
+      {
+        "title": "Número mínimo",
+        "description": "El número más pequeño usado en un problema. Números enteros, 0 o más."
+      },
+      {
+        "title": "Número máximo",
+        "description": "El número más grande usado en un problema. Los resultados de las divisiones y los divisores también quedan en este rango."
+      },
+      {
+        "title": "Número de problemas",
+        "description": "Cuántos problemas hay en una ronda (de 1 a 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Límite de tiempo",
+        "description": "Segundos permitidos para toda la ronda. 0 significa sin temporizador, que es lo predeterminado: las prácticas cronometradas perjudican a quienes necesitan más tiempo. Si se define, los estudiantes pueden igualmente desactivar el temporizador para sí mismos."
+      },
+      {
+        "title": "Color de acento",
+        "description": "Color de la etiqueta de la cabecera y de los botones. Déjalo vacío para seguir el tema."
+      }
+    ]
+  }
+}

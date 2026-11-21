@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Ofbyldingsdropsône",
+    "description": "Learlingen pleatse labels op sônes oer in ôfbylding, en kontrolearje dan harren antwurd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ofbylding",
+        "description": "De ôfbylding dêr't learlingen labels op pleatse."
+      },
+      {
+        "title": "Alternative tekst",
+        "description": "Beskriuwt de ôfbylding foar minsken dy't him net sjen kinne. Ferrie net wêr't de labels hinne moatte."
+      },
+      {
+        "title": "Ofbyldingstitel",
+        "description": "In koarte sichtbere titel foar de ôfbylding, derboppe toand."
+      },
+      {
+        "title": "Fraach",
+        "description": "Wat learlingen mei de labels dwaan moatte."
+      },
+      {
+        "title": "Labels en sônes",
+        "description": "Elk item is in label dat learlingen pleatse kinne. Jou in label in sônenamme om syn sône op de ôfbylding te setten; in label sûnder sônenamme is ekstra en heart nearne. Sônenûmers binne persintaazjes fan de ôfbylding."
+      },
+      {
+        "title": "Byskrift",
+        "description": "Opsjoneel byskrift ûnder de ôfbylding."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoefolle kear in learling kontrolearje kin. 0 betsjut ûnbeheind."
+      },
+      {
+        "title": "Labels skodzje",
+        "description": "De labels by elke besite yn in oare folchoarder sjen litte."
+      },
+      {
+        "title": "Ynklapber",
+        "description": "Dizze fraach sjen litte as in rige dy't iepen en ticht giet. As jo der ien iepenje, slute de oare ynklapbere fragen dêrneist."
+      },
+      {
+        "title": "Ynklapt begjinne",
+        "description": "As it ynklapber is, begjinne as in sletten rige dy't allinnich de fraach en de status toant."
+      },
+      {
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toetsing (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toetsing heart."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't brûkt wurdt foar xAPI-identifikaasje yn analysesystemen."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toetsing foar bedoeld is."
+      }
+    ]
+  }
+}

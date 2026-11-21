@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "数式記法LaTeXで記述します"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "図の背景",
+        "description": "描画された図の後ろの背景。「自動」は、ダークモードでの暗い線など、ページ上で図が見えにくい場合にだけ背景を追加します。",
+        "options": {
+          "auto": "自動",
+          "light": "ライト",
+          "dark": "ダーク",
+          "none": "なし"
+        }
+      }
+    ]
   }
 }

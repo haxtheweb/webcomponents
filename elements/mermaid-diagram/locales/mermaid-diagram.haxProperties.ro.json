@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramă din text",
+    "description": "Scrieți o diagramă ca text (Mermaid): diagramă de flux, secvență, cronologie și altele. Este desenată în pagină cu o alternativă text."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Afișat deasupra diagramei și folosit ca nume al ei."
+      },
+      {
+        "title": "Sursa diagramei",
+        "description": "Text Mermaid, de exemplu: flowchart TD, apoi câte o linie pentru fiecare legătură, cum ar fi A[Draft] --> B{Ready?}. Adăugați |label| după o săgeată pentru a o eticheta. Desenul se actualizează pe măsură ce tastați."
+      },
+      {
+        "title": "Alternativă text",
+        "description": "Descrieți ce arată diagrama pentru persoanele care nu o pot vedea. Lăsați gol la o diagramă de flux pentru ca pașii să fie listați automat."
+      },
+      {
+        "title": "Legendă",
+        "description": "Legendă opțională afișată sub diagramă."
+      },
+      {
+        "title": "Afișați sursa",
+        "description": "Afișați textul diagramei lângă desen."
+      },
+      {
+        "title": "Afișați alternativa text",
+        "description": "Afișați alternativa text sub desen. Este mereu disponibilă cititoarelor de ecran."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fișier sursă",
+        "description": "Adresa unui fișier .mmd de desenat în locul textului de mai sus (https sau o cale pe acest site)."
+      },
+      {
+        "title": "Culoare de accent",
+        "description": "Culoarea etichetei pictogramei din antet."
+      }
+    ]
+  }
+}

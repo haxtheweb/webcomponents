@@ -3,5 +3,7 @@
   "status_stop": "Stopp",
   "status_warning": "Viðvörun",
   "status_success": "Tókst",
-  "status_info": "Athugið"
+  "status_info": "Athugið",
+  "status_tip": "Vissir þú?",
+  "status_new": "Nýjungar"
 }

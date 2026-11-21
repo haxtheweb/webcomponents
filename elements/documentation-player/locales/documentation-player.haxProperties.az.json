@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Sənədləşmə pleyeri",
+    "description": "Veb komponent üçün izah, demo və arayış, HTML, import, npm və CDN üçün kopyalama düymələri ilə."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sənəd məlumat faylı",
+        "description": "Elementlə birlikdə gələn sənəd məlumatları (lib/tag.docs.json)."
+      },
+      {
+        "title": "İzahın ssenari lövhəsi",
+        "description": "Elementlə birlikdə gələn hərəkət ssenari lövhəsi (tag.motion.json). İxtiyari."
+      },
+      {
+        "title": "Video dərslik",
+        "description": "Element haqqında qısa video (YouTube, Vimeo və ya video faylı). Sənəd məlumatlarındakı videonu əvəz edir."
+      },
+      {
+        "title": "Açılış tabı",
+        "description": "İlk hansı tabın göstərildiyi.",
+        "options": {
+          "motion": "İzah",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Sənədləşmə",
+          "schema": "Sxem"
+        }
+      },
+      {
+        "title": "İzahı avtomatik oynat",
+        "description": "Pleyer göstərilən kimi izaha başla. Oxucu azaldılmış hərəkətə üstünlük verirsə nəzərə alınmır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "İzah mövzusu",
+        "description": "Bir neçə izahı olan elementlər üçün ilk açılacaq mövzu (məsələn, add-blocks). Əsas olan üçün boş saxlayın."
+      },
+      {
+        "title": "Canlı demo keçidi",
+        "description": "Demo mənbəyini aç düyməsinin apardığı yer. Standart olaraq repozitoriyadakı demo qovluğu."
+      },
+      {
+        "title": "Sənədləşmə keçidi",
+        "description": "Tam sənədləşmə düyməsinin apardığı yer, məsələn uyğun Learn HAX səhifəsi."
+      }
+    ]
+  }
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "mata duree"
+        "title": "mata duree",
+        "description": "Mata-duree moodeela koorsii ol mul'atu."
       },
       {
         "property": "src",
-        "title": "madda"
+        "title": "madda",
+        "description": "Teessoo faayilii moodeela 3D (.glb ykn .gltf) agarsiifamu."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Namoota arguu hin dandeenyeef moodeela 3D ibsi."
       },
       {
         "title": "Naannoo odeeffannoo"

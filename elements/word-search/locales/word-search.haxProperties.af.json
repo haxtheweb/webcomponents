@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Woordsoek",
+    "description": "'n Letterrooster met versteekte woorde. Leerders tik op die eerste en laaste letter van elke woord. Oefen om raak te sien hoe 'n term gespel word, nie wat dit beteken nie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Wat leerders gevra word om te vind, in die opskrif gewys."
+      },
+      {
+        "title": "Woorde",
+        "description": "Die woorde om te versteek. Spasies en leestekens word uit die rooster gelaat. Woorde wat nie pas nie, word gelys terwyl jy redigeer en vir leerders uitgelaat."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Roostergrootte",
+        "description": "Letters per kant, 4 tot 16. Laat leeg om by die langste woord te pas (tot 12). Meer as 12 rol sywaarts op 'n foon."
+      },
+      {
+        "title": "Diagonale woorde",
+        "description": "Versteek ook woorde diagonaal. Moeiliker."
+      },
+      {
+        "title": "Agterstevoor woorde",
+        "description": "Versteek ook woorde wat agterstevoor geskryf is. Moeiliker."
+      },
+      {
+        "title": "Aksentkleur",
+        "description": "Opsionele kleur vir die opskrifskyfie, die gekose eerste letter en die knoppie."
+      }
+    ]
+  }
+}

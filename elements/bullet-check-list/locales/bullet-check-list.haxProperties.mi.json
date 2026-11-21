@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Rārangi taki matatā",
+    "description": "He rārangi pouaka taki. Ka tohu ngā kaipānui i ngā tūemi, ā, ka maharatia tō rātou ahunga whakamua ki tō rātou ake pūrere."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Te ingoa o te rārangi. Ka pānuitia ā-waha hei tapanga mō te rōpū pouaka taki."
+      },
+      {
+        "title": "Ngā tūemi",
+        "description": "He pouaka taki ia tūemi. Kāore e taea e ngā kaipānui te panoni i ngā tūemi kua tohua, kua monokia rānei."
+      },
+      {
+        "title": "Kua tauhia",
+        "description": "Whakaaturia he rārangi tau, kaua he rārangi matatā."
+      },
+      {
+        "title": "Tūnga",
+        "description": "Ka huri i ngā tae kia hāngai ki te stop-note.",
+        "options": {
+          "info": "Pānui",
+          "success": "Whakaūnga",
+          "warning": "Whakatūpato",
+          "stop": "Kāti"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID rokiroki",
+        "description": "He ID ahurei hei mahara i te ahunga whakamua o te kaipānui ki tōna pūrere. Ka waihangatia aunoatia; panonitia anake hei tiri i te ahunga whakamua i waenga i ngā rārangi, hei tīmata hou rānei."
+      }
+    ]
+  }
+}

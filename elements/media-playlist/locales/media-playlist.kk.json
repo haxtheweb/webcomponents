@@ -5,5 +5,7 @@
   "editModeLabel": "Медиа ойнату тізімін өңдеу режимі",
   "position": "{total} ішінен {current}",
   "previousItem": "Алдыңғы элемент",
-  "nextItem": "Келесі элемент"
+  "nextItem": "Келесі элемент",
+  "fullScreen": "Толық экран",
+  "exitFullScreen": "Толық экраннан шығу"
 }

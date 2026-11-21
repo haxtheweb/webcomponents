@@ -2,5 +2,9 @@
   "toggleAnimation": "Pārslēgt animāciju",
   "info": "info",
   "image": "Attēls",
-  "animatedGif": "Animēts GIF"
+  "animatedGif": "Animēts GIF",
+  "playAnimation": "Atskaņot animāciju",
+  "pauseAnimation": "Pauzēt animāciju",
+  "showDescription": "Rādīt aprakstu",
+  "hideDescription": "Slēpt aprakstu"
 }

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Chati yeradar",
+    "description": "Chati yeradar (buwe) yemienzaniso yekukura nekuisa mamakisi pamativi, seHEOSAT. Inosanganisira imwe nzira yemavara netafura yedata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Musoro wechati; unoshandiswawo sezita rayo rinowanikwa."
+      },
+      {
+        "title": "Mamakisi epamusoro",
+        "description": "Kukosha kwepamusoro pachiyero."
+      },
+      {
+        "title": "Mapoka",
+        "description": "Boka rimwe pamutsara. Inoda angangoita 3."
+      },
+      {
+        "title": "Mamakisi",
+        "description": "Nhamba dzakaparadzaniswa nekoma, imwe paboka muhurongwa hwakafanana."
+      },
+      {
+        "title": "Mamakisi ekunangwa",
+        "description": "Nhamba dzakaparadzaniswa nekoma, imwe paboka muhurongwa hwakafanana."
+      },
+      {
+        "title": "Ratidza tsananguro",
+        "description": "Ratidza tsananguro inotumidza mamakisi nezvinangwa."
+      },
+      {
+        "title": "Yakadzvanyirwa",
+        "description": "Chati diki isina mazita, tsananguro kana tafura yedata. Isa mbeva papoinzi kuti uone kukosha kwayo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zita remamakisi",
+        "description": "Zita retsananguro netafura remamakisi."
+      },
+      {
+        "title": "Zita rechinangwa",
+        "description": "Zita retsananguro netafura rezvinangwa."
+      }
+    ]
+  }
+}

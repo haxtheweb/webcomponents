@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kontrolni seznam z oznakami",
+    "description": "Seznam potrditvenih polj. Bralci odkljukajo elemente, njihov napredek pa se zapomni na njihovi napravi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Ime seznama. Prebere se na glas kot oznaka skupine potrditvenih polj."
+      },
+      {
+        "title": "Elementi",
+        "description": "Vsak element je potrditveno polje. Odkljukanih ali onemogočenih elementov bralci ne morejo spreminjati."
+      },
+      {
+        "title": "Oštevilčeno",
+        "description": "Prikaži oštevilčen seznam namesto seznama z oznakami."
+      },
+      {
+        "title": "Stanje",
+        "description": "Spremeni barve, da se ujemajo s stop-note.",
+        "options": {
+          "info": "Obvestilo",
+          "success": "Potrditev",
+          "warning": "Opozorilo",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID shrambe",
+        "description": "Enolični ID za pomnjenje napredka bralca na njegovi napravi. Ustvari se samodejno; spremenite ga le za deljenje napredka med seznami ali za začetek na novo."
+      }
+    ]
+  }
+}

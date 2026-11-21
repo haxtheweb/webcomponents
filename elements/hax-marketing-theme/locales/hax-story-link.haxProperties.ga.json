@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Cnaipe scéil",
+    "description": "An cnaipe a osclaíonn an scéal taobh thiar d'éileamh ar hax.cloud, nó an áit chuí ar shuíomh eile de líonra HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cá dtéann sé",
+        "options": {
+          "cloud": "hax.cloud, an scéal",
+          "learn": "learn.hax.cloud, rang teagaisc",
+          "try": "browser.hax.cloud, bain triail as",
+          "elements": "webcomponents.hax.cloud, bloc",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Seoladh ar an suíomh sin (bíonn cuma stories/ee450a19 ar scéal ar hax.cloud)"
+      },
+      {
+        "title": "Cad faoi a bhfuil sé"
+      },
+      {
+        "title": "Slis bheag"
+      },
+      {
+        "title": "Taispeáin cad faoi a bhfuil sé sa chnaipe"
+      }
+    ]
+  }
+}

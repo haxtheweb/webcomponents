@@ -52,6 +52,20 @@
           "_top": "Pinakamataas na window - _top",
           "_parent": "Parent na window - _parent"
         }
+      },
+      {
+        "title": "Walang arrow",
+        "description": "Itago ang arrow ng button."
+      },
+      {
+        "title": "Link: target",
+        "description": "Kung saan bubuksan ang link.",
+        "options": {
+          "": "Parehong window",
+          "_blank": "Bagong window - _blank",
+          "_top": "Pinakamataas na window - _top",
+          "_parent": "Magulang na window - _parent"
+        }
       }
     ],
     "developer": [

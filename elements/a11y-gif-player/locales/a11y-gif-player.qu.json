@@ -2,5 +2,9 @@
   "toggleAnimation": "Kuyuchiyta tikray",
   "info": "willakuy",
   "image": "Rikchay",
-  "animatedGif": "Kuyuq GIF"
+  "animatedGif": "Kuyuq GIF",
+  "playAnimation": "Kuyuchiyta puklachiy",
+  "pauseAnimation": "Kuyuchiyta sayachiy",
+  "showDescription": "Willakuyta rikuchiy",
+  "hideDescription": "Willakuyta pakay"
 }

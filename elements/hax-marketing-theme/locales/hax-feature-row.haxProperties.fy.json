@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funksjerige",
+    "description": "In skerm fan it produkt neist wat it foar jo betsjut"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lyts label"
+      },
+      {
+        "title": "Koptekst"
+      },
+      {
+        "title": "Ofbylding"
+      },
+      {
+        "title": "Wat de ôfbylding toant"
+      },
+      {
+        "title": "Ofbylding rjochts"
+      },
+      {
+        "title": "Skaadkleur (DDD-namme, leech folget it palet)"
+      }
+    ]
+  }
+}

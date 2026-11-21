@@ -1,0 +1,14 @@
+{
+  "scene": "Escena",
+  "ending": "Final",
+  "goodEnding": "Buen final",
+  "mixedEnding": "Final mixto",
+  "poorEnding": "Mal final",
+  "scoreOf": "Puntuación {score} de {max}",
+  "scoreOnly": "Puntuación {score}",
+  "startScene": "Empezar",
+  "sceneIdLabel": "Id de la escena",
+  "needsId": "Añade un id de escena para que las opciones puedan enlazar a esta escena.",
+  "orphan": "Ninguna opción enlaza a esta escena.",
+  "deadLinks": "Estos enlaces apuntan a una escena que no existe:"
+}

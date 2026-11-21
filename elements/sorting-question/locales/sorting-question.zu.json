@@ -40,5 +40,7 @@
   "hideDirections": "Fihla iziqondiso",
   "showRelatedContent": "Bonisa okuhlobene",
   "hideRelatedContent": "Fihla okuhlobene",
-  "notAttempted": "Akwenziwanga"
+  "notAttempted": "Akwenziwanga",
+  "cardsDirections": "Beka amakhadi ngokulandelana okulungile ngezinkinobho zokuhambisa ngaphambili nokuhambisa ngemuva ekhadini ngalinye, noma uwahudule ngegundane. Uma ukholwa ukuthi asendaweni efanele, hlola impendulo yakho ngokukhetha u-{checkAnswer}.",
+  "movedToPosition": "I-{item} ihanjiswe endaweni {position} kwezingu-{total}"
 }

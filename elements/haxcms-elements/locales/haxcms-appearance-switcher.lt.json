@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Paletė",
+  "themeDefault": "Temos numatytoji",
+  "designSystem": "Dizaino sistema",
+  "designSystemDefault": "DDD (numatytoji)",
+  "designSystemUnavailable": "Ši tema išlaiko savo dizaino sistemą"
+}

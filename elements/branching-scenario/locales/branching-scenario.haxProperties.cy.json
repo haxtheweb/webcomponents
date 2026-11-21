@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Senario canghennog",
+    "description": "Stori lle mae pob dewis yn arwain at olygfa a diweddglo gwahanol. Gall dysgwyr gamu'n ôl a rhoi cynnig ar lwybrau eraill; mae'r diweddglo a gyrhaeddir yn gosod y sgôr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Enw'r senario, wedi'i ddangos yn ei bennawd."
+      },
+      {
+        "title": "Golygfa gychwynnol",
+        "description": "ID golygfa'r olygfa y mae dysgwyr yn dechrau arni. Gadewch yn wag i ddechrau ar yr olygfa gyntaf."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lliw acen",
+        "description": "Lliw dewisol ar gyfer sglodyn y pennawd, y botymau ac ymyl dewis."
+      }
+    ]
+  }
+}

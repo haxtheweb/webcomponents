@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Crossword",
+    "description": "Isang crossword na ginawa mula sa listahan ng mga salita at clue. Ginagawa ang grid para sa iyo; tina-type ng mga mag-aaral ang mga salita at sinusuri ang mga ito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Ang pamagat o tanong na ipinapakita sa itaas ng crossword."
+      },
+      {
+        "title": "Mga salita",
+        "description": "Bawat salita at ang clue nito. Ginagawa ang grid mula sa listahang ito: unang inilalagay ang pinakamahabang salita at tinatawid ito ng iba sa magkaparehong titik."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mga pagsubok",
+        "description": "Ilang beses makakapag-check ang isang mag-aaral. Ang 0 ay walang limitasyon."
+      },
+      {
+        "title": "Kulay ng accent",
+        "description": "Opsyonal na kulay para sa header chip, aktibong salita at mga action button."
+      },
+      {
+        "title": "Nako-collapse",
+        "description": "Ipakita ang crossword na ito bilang hanay na bumubukas at sumasara. Ang pagbukas ng isa ay nagsasara sa ibang nako-collapse na tanong sa tabi nito."
+      },
+      {
+        "title": "Magsimulang naka-collapse",
+        "description": "Kapag nako-collapse, magsimula bilang saradong hanay na nagpapakita lang ng pamagat at status nito."
+      },
+      {
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "title": "Layunin sa pag-aaral",
+        "description": "OER Schema: layunin sa pag-aaral na kaugnay ng pagtatasang ito."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pangalan ng pagsusulit",
+        "description": "Pangalan ng pagsusulit na ginagamit para sa xAPI identification sa mga analytics system."
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kursong para sa pagtatasang ito."
+      }
+    ]
+  }
+}

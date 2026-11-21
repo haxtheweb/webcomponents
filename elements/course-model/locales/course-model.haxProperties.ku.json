@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "sernav"
+        "title": "sernav",
+        "description": "Sernavê ku li jora modela dersê tê nîşandan."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Navnîşana pela modela 3D (.glb an .gltf) ji bo nîşandanê."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Modela 3D ji bo kesên ku nikarin wê bibînin rave bike."
       },
       {
         "title": "Qada agahiyê"

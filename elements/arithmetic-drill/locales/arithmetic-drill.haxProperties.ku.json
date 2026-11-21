@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rahênana hejmarzaniyê",
+    "description": "Rêzeke kurt a pirsgirêkên hejmarzaniyê yên çêkirî bi bersivdana tavilê. Kiryar û rêza hejmaran hilbijêre; her car nû ye."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Navê vê rahênanê, di serê wê de tê nîşandan."
+      },
+      {
+        "title": "Kiryar",
+        "description": "Kîjan celeb pirsgirêk tên pirsîn. Fêrxwaz dikarin berî destpêkirinê her yekê ji van bigirin.",
+        "options": {
+          "add": "Komkirin",
+          "subtract": "Derxistin",
+          "multiply": "Carkirin",
+          "divide": "Parvekirin",
+          "add subtract": "Komkirin û derxistin",
+          "multiply divide": "Carkirin û parvekirin",
+          "add multiply": "Komkirin û carkirin",
+          "add divide": "Komkirin û parvekirin",
+          "subtract multiply": "Derxistin û carkirin",
+          "subtract divide": "Derxistin û parvekirin",
+          "add subtract multiply": "Komkirin, derxistin û carkirin",
+          "add subtract divide": "Komkirin, derxistin û parvekirin",
+          "add multiply divide": "Komkirin, carkirin û parvekirin",
+          "subtract multiply divide": "Derxistin, carkirin û parvekirin",
+          "add subtract multiply divide": "Her çar"
+        }
+      },
+      {
+        "title": "Hejmara herî biçûk",
+        "description": "Hejmara herî biçûk a di pirsgirêkekê de tê bikaranîn. Hejmarên tam, 0 an zêdetir."
+      },
+      {
+        "title": "Hejmara herî mezin",
+        "description": "Hejmara herî mezin a di pirsgirêkekê de tê bikaranîn. Bersivên parvekirinê û parveker jî di vê rêzê de dimînin."
+      },
+      {
+        "title": "Hejmara pirsgirêkan",
+        "description": "Di yek carê de çend pirsgirêk hene (1 heta 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sînorê demê",
+        "description": "Çirkeyên ji bo tevahiya carekê. 0 tê wateya bê demjimêr, ku standard e: rahênanên bi dem fêrxwazên ku dema zêdetir hewce dikin têk dibin. Dema were diyarkirin, fêrxwaz hêj dikarin demjimêrê ji bo xwe bigirin."
+      },
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê çîpa serî û bişkokan. Vala bihêle da ku li pey temayê biçe."
+      }
+    ]
+  }
+}

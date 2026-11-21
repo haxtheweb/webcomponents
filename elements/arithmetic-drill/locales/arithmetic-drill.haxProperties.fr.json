@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Exercice d'arithmétique",
+    "description": "Une courte série de problèmes d'arithmétique générés, avec un retour immédiat. Choisissez les opérations et la plage de nombres ; chaque série est nouvelle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Nom de cet exercice, affiché dans son en-tête."
+      },
+      {
+        "title": "Opérations",
+        "description": "Les types de problèmes posés. Les apprenants peuvent désactiver chacun d'eux avant de commencer.",
+        "options": {
+          "add": "Addition",
+          "subtract": "Soustraction",
+          "multiply": "Multiplication",
+          "divide": "Division",
+          "add subtract": "Addition et soustraction",
+          "multiply divide": "Multiplication et division",
+          "add multiply": "Addition et multiplication",
+          "add divide": "Addition et division",
+          "subtract multiply": "Soustraction et multiplication",
+          "subtract divide": "Soustraction et division",
+          "add subtract multiply": "Addition, soustraction et multiplication",
+          "add subtract divide": "Addition, soustraction et division",
+          "add multiply divide": "Addition, multiplication et division",
+          "subtract multiply divide": "Soustraction, multiplication et division",
+          "add subtract multiply divide": "Les quatre"
+        }
+      },
+      {
+        "title": "Plus petit nombre",
+        "description": "Le plus petit nombre utilisé dans un problème. Nombres entiers, 0 ou plus."
+      },
+      {
+        "title": "Plus grand nombre",
+        "description": "Le plus grand nombre utilisé dans un problème. Les résultats et diviseurs des divisions restent aussi dans cette plage."
+      },
+      {
+        "title": "Nombre de problèmes",
+        "description": "Combien de problèmes compte une série (de 1 à 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limite de temps",
+        "description": "Secondes accordées pour une série entière. 0 signifie pas de minuteur, ce qui est la valeur par défaut : les exercices chronométrés pénalisent les apprenants qui ont besoin de plus de temps. Si elle est définie, les apprenants peuvent quand même désactiver le minuteur pour eux-mêmes."
+      },
+      {
+        "title": "Couleur d'accent",
+        "description": "Couleur de la pastille d'en-tête et des boutons. Laissez vide pour suivre le thème."
+      }
+    ]
+  }
+}

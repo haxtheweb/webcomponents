@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Àmì-àwòrán kékeré tí a fi àmì sí"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àmì-àwòrán"
+      },
+      {
+        "title": "Àmì"
+      }
+    ]
+  }
+}

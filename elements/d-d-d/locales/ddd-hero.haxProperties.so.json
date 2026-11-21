@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Sawir weyn, GIF ama fiidiyow leh cinwaan iyo qoraal korkiisa ah, oo meel kasta oo bogga lagu dhigo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sawir ama fiidiyow",
+        "description": "Fayl JPG, PNG, WebP, GIF, MP4 ama WebM ah."
+      },
+      {
+        "title": "Qoraal beddel ah",
+        "description": "Sharax sawirka. Ka tag madhan marka uu qurxin oo keliya yahay."
+      },
+      {
+        "title": "Cinwaan",
+        "description": "Cinwaanka ka muuqda warbaahinta korkeeda. Ka tag madhan haddii aadan rabin."
+      },
+      {
+        "title": "Qoraal",
+        "description": "Qoraalka ka muuqda cinwaanka hoostiisa, warbaahinta korkeeda."
+      },
+      {
+        "title": "Ballac buuxa",
+        "description": "Ka socod geeska ilaa geeska halkii uu ku fadhiyi lahaa tiirka nuxurka."
+      },
+      {
+        "title": "Dherer",
+        "options": {
+          "tall": "Dheer",
+          "medium": "Dhexdhexaad",
+          "short": "Gaaban"
+        }
+      },
+      {
+        "title": "Qaabaynta",
+        "description": "Sida sawirku u fadhiyo cabbir kasta oo shaashad ah"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dabcin",
+        "description": "Midab la dul dhigo warbaahinta. Marka cinwaan ama qoraal jiro had iyo jeer mid ayaa jira, si qoraalku u ahaado mid la akhriyi karo.",
+        "options": {
+          "blue": "Buluug",
+          "bottom": "Mugdi xagga hoose",
+          "none": "Midna"
+        }
+      },
+      {
+        "title": "Booska qoraalka",
+        "options": {
+          "bottom": "Hoos",
+          "middle": "Dhexda"
+        }
+      },
+      {
+        "title": "Barta diiradda dhinac",
+        "description": "Qaybta sawirka ee muuqata marka la jaro, laga bilaabo 0 (bidix) ilaa 100 (midig)."
+      },
+      {
+        "title": "Barta diiradda hoos",
+        "description": "Qaybta sawirka ee muuqata marka la jaro, laga bilaabo 0 (kor) ilaa 100 (hoos)."
+      }
+    ]
+  }
+}

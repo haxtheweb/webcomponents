@@ -3,5 +3,8 @@
   "copyAsCsv": "קאָפּיר ווי CSV.",
   "printTable": "דרוק די טאַבעלע",
   "selectColumn": "קלײַב אויס אַ זײַל",
-  "dataTable": "דאַטן · טאַבעלע"
+  "dataTable": "דאַטן · טאַבעלע",
+  "filterStatus": "מע װײַזט {shown} פֿון {total} שורות, געפֿילטערט לויט {column}: {text}",
+  "columnNumber": "קאָלומנע {column}",
+  "clearFilter": "מעק אויס פֿילטער"
 }

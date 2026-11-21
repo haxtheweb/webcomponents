@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistem reka bentuk",
+  "dddDefault": "DDD (lalai)",
+  "designSystemHelp": "Warna, tipografi, bucu dan fokus. Tema mengekalkan susun atur.",
+  "designSystemFixed": "Tema ini mengekalkan sistem reka bentuknya sendiri.",
+  "palette": "Palet",
+  "themeDefault": "Lalai tema",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (tema laman ini)",
+  "restyle": "Gayakan semula laman ini",
+  "close": "Tutup",
+  "reset": "Kembali ke rupa asal laman ini",
+  "random": "Kejutkan saya",
+  "about": "Ini menunjukkan beberapa rupa yang terbina dalam HAX. Halaman tidak pernah berubah: struktur disimpan dalam JSON Outline Schema dan setiap blok ialah komponen web standard, jadi reka bentuk bebas ditukar."
+}

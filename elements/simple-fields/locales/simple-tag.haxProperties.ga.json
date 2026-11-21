@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Dath aibhsithe uathoibríoch",
         "description": "Faigh an dath aibhsithe ó théacs an lipéid go huathoibríoch."
+      },
+      {
+        "title": "Brí",
+        "description": "Tabhair dath brí don chlib. Fág folamh do chlib neodrach.",
+        "options": {
+          "": "Neodrach",
+          "brand": "Branda",
+          "success": "Rath",
+          "warning": "Rabhadh",
+          "danger": "Contúirt"
+        }
       }
     ],
     "advanced": [

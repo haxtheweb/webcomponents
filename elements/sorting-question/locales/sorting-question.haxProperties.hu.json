@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Válaszok",
+        "description": "A válaszok sorrendje határozza meg a helyes sorrendet.",
+        "options": {
+          "": "Lista",
+          "cards": "Képkártyák"
+        }
+      },
+      {
+        "title": "Válaszok",
         "description": "A válaszok sorrendje határozza meg a helyes sorrendet."
       }
     ],

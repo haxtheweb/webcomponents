@@ -1,0 +1,14 @@
+{
+  "scene": "Scenă",
+  "ending": "Final",
+  "goodEnding": "Final bun",
+  "mixedEnding": "Final mixt",
+  "poorEnding": "Final slab",
+  "scoreOf": "Scor {score} din {max}",
+  "scoreOnly": "Scor {score}",
+  "startScene": "Start",
+  "sceneIdLabel": "Id scenă",
+  "needsId": "Adăugați un id de scenă pentru ca alegerile să poată trimite la această scenă.",
+  "orphan": "Nicio alegere nu trimite la această scenă.",
+  "deadLinks": "Aceste linkuri trimit la o scenă care nu există:"
+}

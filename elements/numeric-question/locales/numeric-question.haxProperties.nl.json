@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerieke vraag",
+    "description": "Een vraag die met een getal wordt beantwoord. Het antwoord is een vast getal of een formule berekend uit variabelen, en telt als het binnen een tolerantie valt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vraag",
+        "description": "Wat leerlingen wordt gevraagd. Schrijf een variabelenaam tussen accolades, zoals {d}, om de waarde te tonen."
+      },
+      {
+        "title": "Eenheid",
+        "description": "Getoond als tekst naast het antwoordveld, bijvoorbeeld km/u."
+      },
+      {
+        "title": "Antwoord",
+        "description": "Het juiste getal. Laat leeg als een formule het antwoord berekent."
+      },
+      {
+        "title": "Formule",
+        "description": "Berekent het antwoord uit de variabelen, bijvoorbeeld d / (t / 60). Kan + - * / ^, haakjes, sqrt() en abs() gebruiken. Wordt in plaats van het antwoord gebruikt als die is ingesteld."
+      },
+      {
+        "title": "Variabelen",
+        "description": "Getallen die de formule en de vraag gebruiken. Elk krijgt een waarde tussen het laagste en het hoogste, in stappen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerantie",
+        "description": "Hoe ver van het exacte antwoord nog telt. 0 betekent exact, of afgerond op de decimalen hieronder."
+      },
+      {
+        "title": "Type tolerantie",
+        "description": "Absoluut: plus of min de tolerantie. Percentage: plus of min dat percentage van het exacte antwoord.",
+        "options": {
+          "absolute": "Absoluut",
+          "percent": "Percentage"
+        }
+      },
+      {
+        "title": "Decimalen",
+        "description": "Leerlingen moeten afronden op dit aantal decimalen, en het antwoord wordt zo afgerond getoond. Laat leeg voor geen afronding."
+      },
+      {
+        "title": "Pogingen",
+        "description": "Hoe vaak een leerling kan controleren. 0 betekent onbeperkt."
+      },
+      {
+        "title": "Nieuwe getallen bij elke poging",
+        "description": "Kies nieuwe waarden voor de variabelen telkens als een leerling het opnieuw probeert. Het eerdere antwoord wordt dan niet getoond als ze terugkomen, alleen of het goed was."
+      },
+      {
+        "title": "Inklapbaar",
+        "description": "Toon deze vraag als een rij die open- en dichtgaat. Als je er een opent, sluiten de andere inklapbare vragen ernaast."
+      },
+      {
+        "title": "Ingeklapt beginnen",
+        "description": "Als ze inklapbaar is, begin dan als een gesloten rij die alleen de vraag en de status toont."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van de quiz",
+        "description": "Quiznaam voor xAPI-identificatie in analysesystemen."
+      }
+    ]
+  }
+}

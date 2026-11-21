@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ndetu ala ala",
+    "description": "Ndetu e dere ebe ọ dabara n'ederede. Ọ na-egosi dịka ọnụọgụ, ndepụta ndetu nwere nọmba na-ewukwa onwe ya n'ala peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ndetu",
+        "description": "Ederede nke ndetu ala ala."
+      },
+      {
+        "title": "Enweghị nlele mbụ",
+        "description": "Egosila ndetu ahụ mgbe onye na-agụ akwụkwọ dọrọ mmasị n'elu ma ọ bụ lekwasị anya na ọnụọgụ ahụ."
+      }
+    ]
+  }
+}

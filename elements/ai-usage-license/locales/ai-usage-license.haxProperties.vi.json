@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Bổ ngữ phương tiện",
-        "description": "Bổ ngữ lĩnh vực phương tiện (tùy chọn). Xác định loại phương tiện mà giấy phép này áp dụng."
+        "description": "Bổ ngữ lĩnh vực phương tiện (tùy chọn). Xác định loại phương tiện mà giấy phép này áp dụng.",
+        "options": {
+          "": "Không có biến thể"
+        }
       },
       {
         "property": "uri",

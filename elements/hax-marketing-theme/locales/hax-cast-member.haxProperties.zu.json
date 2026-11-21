@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ilungu labadlali",
+    "description": "Izethameli ezithile, ezidlalwa ngumlingiswa, ezinamazwi nenkinobho"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ubani lo"
+      },
+      {
+        "title": "Uhlobo lomlingiswa"
+      },
+      {
+        "title": "Imbewu yomlingiswa"
+      },
+      {
+        "title": "Umbala wesiteji (igama le-DDD)"
+      },
+      {
+        "title": "Lapho inkinobho iya khona"
+      },
+      {
+        "title": "Umbhalo wenkinobho"
+      }
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Umzobo ovela kwisicatshulwa",
+    "description": "Bhala umzobo njengesicatshulwa (Mermaid): itshati yokuhamba, ulandelelwano, umgca wexesha nokunye. Uzotywa ephepheni nesicatshulwa esingenye indlela."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Kuboniswa ngaphezulu komzobo kwaye kusetyenziswa njengegama lawo."
+      },
+      {
+        "title": "Umthombo womzobo",
+        "description": "Isicatshulwa se-Mermaid, umzekelo: flowchart TD, emva koko umgca omnye ngekhonkco ngalinye elifana no-A[Draft] --> B{Ready?}. Yongeza |label| emva kotolo ukulunika ilebhile. Umzobo uyahlaziyeka njengoko uchwetheza."
+      },
+      {
+        "title": "Enye indlela yesicatshulwa",
+        "description": "Chaza oko kuboniswa ngumzobo kubantu abangakwaziyo ukuwubona. Shiya kungenanto kwitshati yokuhamba ukuze amanyathelo ayo adweliswe wena."
+      },
+      {
+        "title": "Ingcaciso",
+        "description": "Ingcaciso engakhethwa eboniswa ngezantsi komzobo."
+      },
+      {
+        "title": "Bonisa umthombo",
+        "description": "Bonisa isicatshulwa somzobo ecaleni komzobo."
+      },
+      {
+        "title": "Bonisa isicatshulwa esingenye indlela",
+        "description": "Bonisa isicatshulwa esingenye indlela ngezantsi komzobo. Sihlala sifumaneka kubafundi besikrini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ifayile yomthombo",
+        "description": "Idilesi yefayile ye-.mmd eza kuzotywa endaweni yesicatshulwa esingentla (https okanye indlela kule sayithi)."
+      },
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala wetshiphu yempawu kwisihloko."
+      }
+    ]
+  }
+}

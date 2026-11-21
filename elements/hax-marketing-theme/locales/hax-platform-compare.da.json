@@ -1,0 +1,15 @@
+{
+  "loading": "Indlæser sammenligningen.",
+  "yes": "Ja",
+  "partly": "Delvist",
+  "no": "Nej",
+  "compare": "Sammenlign",
+  "with": "Med",
+  "vs": "vs.",
+  "caption": "{a} og {b}, funktion for funktion",
+  "feature": "Funktion",
+  "clearYes": "{count} af {total} et klart ja",
+  "seeForYourself": "Se selv:",
+  "and": "og",
+  "why": "Hvorfor"
+}

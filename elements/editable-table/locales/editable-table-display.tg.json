@@ -3,5 +3,8 @@
   "copyAsCsv": "Нусхабардорӣ ҳамчун CSV.",
   "printTable": "Чопи ҷадвал",
   "selectColumn": "Интихоби сутун",
-  "dataTable": "Маълумот · Ҷадвал"
+  "dataTable": "Маълумот · Ҷадвал",
+  "filterStatus": "{shown} аз {total} сатр нишон дода мешавад, аз рӯи {column} филтр шудааст: {text}",
+  "columnNumber": "Сутуни {column}",
+  "clearFilter": "Пок кардани филтр"
 }

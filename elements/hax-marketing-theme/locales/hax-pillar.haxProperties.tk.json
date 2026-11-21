@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Sütün",
+    "description": "Sütün: ady, jümlesi, ikonkasy, reňki we näme üçin möhümdigi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ady"
+      },
+      {
+        "title": "Jümle"
+      },
+      {
+        "title": "Ikonka"
+      },
+      {
+        "title": "Reňk (DDD ady)"
+      },
+      {
+        "title": "Haýsy sütün, 1-den 7-ä çenli"
+      },
+      {
+        "title": "Kiçi kart"
+      },
+      {
+        "title": "Adyň ýerleşýän ýeri"
+      }
+    ]
+  }
+}

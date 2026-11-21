@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Thuật ngữ"
+        "title": "Thuật ngữ",
+        "description": "Từ hoặc cụm từ người đọc nhấp vào để xem định nghĩa."
       },
       {
         "property": "information",

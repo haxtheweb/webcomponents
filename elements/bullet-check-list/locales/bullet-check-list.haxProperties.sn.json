@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Rondedzero yekutarisa ine mabhureti",
+    "description": "Rondedzero yemabhokisi ekumaka. Vaverengi vanomaka zvinhu uye fambiro yavo inorangarirwa pamudziyo wavo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Zita rerondedzero. Rinoverengwa zvinonzwika sezita reboka remabhokisi ekumaka."
+      },
+      {
+        "title": "Zvinhu",
+        "description": "Chinhu chimwe nechimwe ibhokisi rekumaka. Zvinhu zvakamakwa kana zvakadzimwa hazvigone kuchinjwa nevaverengi."
+      },
+      {
+        "title": "Zvine nhamba",
+        "description": "Ratidza rondedzero ine nhamba panzvimbo peine mabhureti."
+      },
+      {
+        "title": "Mamiriro",
+        "description": "Inochinja mavara kuti aenderane nestop-note.",
+        "options": {
+          "info": "Chiziviso",
+          "success": "Kusimbisa",
+          "warning": "Yambiro",
+          "stop": "Mira"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID yekuchengetedza",
+        "description": "ID yakasiyana inoshandiswa kurangarira fambiro yemuverengi pamudziyo wavo. Inogadzirwa yega; ichinje chete kugovana fambiro pakati perondedzero kana kutanga patsva."
+      }
+    ]
+  }
+}

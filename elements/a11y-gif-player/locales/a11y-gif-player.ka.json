@@ -2,5 +2,9 @@
   "toggleAnimation": "ანიმაციის ჩართვა/გამორთვა",
   "info": "ინფო",
   "image": "სურათი",
-  "animatedGif": "ანიმირებული GIF"
+  "animatedGif": "ანიმირებული GIF",
+  "playAnimation": "ანიმაციის დაკვრა",
+  "pauseAnimation": "ანიმაციის დაპაუზება",
+  "showDescription": "აღწერის ჩვენება",
+  "hideDescription": "აღწერის დამალვა"
 }

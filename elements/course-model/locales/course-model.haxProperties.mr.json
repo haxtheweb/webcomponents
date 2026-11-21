@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "शीर्षक"
+        "title": "शीर्षक",
+        "description": "अभ्यासक्रम मॉडेलच्या वर दाखवले जाणारे शीर्षक."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "दाखवायच्या 3D मॉडेल फाइलचा (.glb किंवा .gltf) पत्ता."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ज्यांना दिसत नाही त्यांच्यासाठी 3D मॉडेलचे वर्णन करा."
       },
       {
         "title": "माहिती क्षेत्र"

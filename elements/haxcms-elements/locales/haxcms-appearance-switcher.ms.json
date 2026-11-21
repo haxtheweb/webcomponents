@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Lalai tema",
+  "designSystem": "Sistem reka bentuk",
+  "designSystemDefault": "DDD (lalai)",
+  "designSystemUnavailable": "Tema ini mengekalkan sistem reka bentuknya sendiri"
+}

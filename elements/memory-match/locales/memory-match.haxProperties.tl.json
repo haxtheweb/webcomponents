@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Larong memorya",
+    "description": "Baligtarin ang mga card para maghanap ng pares. Ipares ang isang termino sa kahulugan nito para magpakita ng pag-unawa ang tugma, o gumamit ng dalawang magkatugmang teksto o larawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Ang prompt na ipinapakita sa header, halimbawa: Itugma ang termino sa trabaho nito."
+      },
+      {
+        "title": "Mga pares",
+        "description": "Bawat pares ay dalawang card na magkapareha, karaniwang termino at kahulugan nito. Kailangan ng bawat panig ng teksto, larawan, o pareho."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulay ng accent",
+        "description": "Opsyonal na kulay para sa header chip, likod ng mga card at button."
+      }
+    ]
+  }
+}

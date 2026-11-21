@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Чып",
+    "description": "Маленькі значок з подпісам"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Значок"
+      },
+      {
+        "title": "Метка"
+      }
+    ]
+  }
+}

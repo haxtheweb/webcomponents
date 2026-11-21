@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramă",
+  "flowchart": "diagramă de flux",
+  "sequence": "secvență",
+  "source": "Sursă",
+  "textAlternative": "Alternativă text",
+  "present": "Prezentați",
+  "exitPresent": "Ieșiți din prezentare",
+  "loading": "Se încarcă diagrama",
+  "empty": "Nimic de desenat încă. Adăugați sursa diagramei.",
+  "error": "Eroare",
+  "parseError": "Această diagramă nu a putut fi desenată. Verificați sursa.",
+  "loadError": "Biblioteca de diagrame nu a putut fi încărcată.",
+  "srcError": "Fișierul diagramei nu a putut fi încărcat.",
+  "decision": "decizie",
+  "end": "sfârșit",
+  "goTo": "mergeți la {target}",
+  "ifGoTo": "dacă {label}, mergeți la {target}",
+  "describedBySource": "Diagramă descrisă prin sursa ei.",
+  "scrollable": "Diagramă, derulabilă"
+}

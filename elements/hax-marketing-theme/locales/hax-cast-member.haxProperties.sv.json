@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rollfigur",
+    "description": "En målgrupp, spelad av en karaktär, med ord och en knapp"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vem det här är"
+      },
+      {
+        "title": "Karaktärstyp"
+      },
+      {
+        "title": "Karaktärsfrö"
+      },
+      {
+        "title": "Scenfärg (DDD-namn)"
+      },
+      {
+        "title": "Vart knappen går"
+      },
+      {
+        "title": "Knapptext"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Obrázková zóna na pustenie",
+    "description": "Študenti umiestňujú štítky do zón položených na obrázku a potom si skontrolujú odpoveď."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázok",
+        "description": "Obrázok, na ktorý študenti umiestňujú štítky."
+      },
+      {
+        "title": "Alternatívny text",
+        "description": "Opisuje obrázok pre ľudí, ktorí ho nevidia. Neprezrádzajte, kam štítky patria."
+      },
+      {
+        "title": "Názov obrázka",
+        "description": "Krátky viditeľný názov obrázka zobrazený nad ním."
+      },
+      {
+        "title": "Otázka",
+        "description": "Čo majú študenti so štítkami urobiť."
+      },
+      {
+        "title": "Štítky a zóny",
+        "description": "Každá položka je štítok, ktorý môžu študenti umiestniť. Dajte štítku názov zóny, aby sa jeho zóna objavila na obrázku; štítok bez názvu zóny je navyše a nepatrí nikam. Čísla zón sú percentá obrázka."
+      },
+      {
+        "title": "Popisok",
+        "description": "Voliteľný popisok zobrazený pod obrázkom."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokusy",
+        "description": "Koľkokrát môže študent kontrolovať. 0 znamená neobmedzene."
+      },
+      {
+        "title": "Zamiešať štítky",
+        "description": "Pri každej návšteve zobraziť štítky v inom poradí."
+      },
+      {
+        "title": "Zbaliteľné",
+        "description": "Zobraziť túto otázku ako riadok, ktorý sa otvára a zatvára. Otvorením jednej sa zatvoria ostatné zbaliteľné otázky vedľa nej."
+      },
+      {
+        "title": "Začať zbalené",
+        "description": "Ak je zbaliteľná, začať ako zatvorený riadok, ktorý zobrazuje iba otázku a jej stav."
+      },
+      {
+        "title": "Formát hodnotenia",
+        "description": "OER Schema: formát hodnotenia tohto hodnotenia (napr. body, známka, percentá, dokončenie)."
+      },
+      {
+        "title": "Vzdelávací cieľ",
+        "description": "OER Schema: vzdelávací cieľ spojený s týmto hodnotením."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Názov kvízu",
+        "description": "Názov kvízu použitý na identifikáciu xAPI v analytických systémoch."
+      },
+      {
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pre ktorý je toto hodnotenie určené."
+      }
+    ]
+  }
+}

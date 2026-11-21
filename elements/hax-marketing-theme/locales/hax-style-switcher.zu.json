@@ -1,0 +1,16 @@
+{
+  "theme": "Itimu",
+  "designSystem": "Isistimu yokuklama",
+  "dddDefault": "DDD (okuzenzakalelayo)",
+  "designSystemHelp": "Umbala, uhlobo lombhalo, amakhona nokugxila. Itimu igcina isakhiwo.",
+  "designSystemFixed": "Le timu igcina isistimu yayo yokuklama.",
+  "palette": "Iphalethi",
+  "themeDefault": "Okuzenzakalelayo kwetimu",
+  "paletteNumber": "Iphalethi {n}",
+  "siteTheme": "{name} (itimu yale sayithi)",
+  "restyle": "Shintsha isitayela sale sayithi",
+  "close": "Vala",
+  "reset": "Buyela ekubukekeni kwale sayithi",
+  "random": "Ngimangaze",
+  "about": "Lokhu kubonisa ezimbalwa zezindlela zokubukeka ezakhelwe ku-HAX. Amakhasi awalokothi ashintshe: isakhiwo sihlala ku-JSON Outline Schema futhi yonke ibhlokhi iyingxenye yewebhu ejwayelekile, ngakho ukuklama kukhululekile ukushintshwa."
+}

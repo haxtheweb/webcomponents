@@ -1,0 +1,19 @@
+{
+  "label": "Väline tööriist",
+  "labelLti": "Väline tööriist · LTI 1.3",
+  "theTool": "tööriist",
+  "directions": "Juhised",
+  "showDirections": "Näita juhiseid",
+  "hideDirections": "Peida juhised",
+  "directionsWindow": "Nupp avab tööriista uues aknas.",
+  "directionsEmbed": "Nupp avab tööriista sellel lehel. Kui see ei laadi, ava see hoopis uues aknas.",
+  "directionsLti": "See sait logib sind tööriista sisse, nii et eraldi kontot pole vaja.",
+  "openWindow": "Ava {title} (uus aken)",
+  "openEmbed": "Ava {title}",
+  "openInstead": "Ava hoopis uues aknas",
+  "frameTitle": "{title} (väline tööriist)",
+  "openedWindow": "Tööriist avanes uues aknas.",
+  "openedEmbed": "Tööriist avanes sellel lehel.",
+  "needsUrl": "See plokk vajab käivitusaadressi, mis algab http:// või https://.",
+  "needsSignIn": "See tööriist vajab selle saidi sisselogimisteenust, mis pole siin saadaval. Midagi ei avatud."
+}

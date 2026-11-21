@@ -40,5 +40,7 @@
   "hideDirections": "Cuddio'r cyfarwyddiadau",
   "showRelatedContent": "Dangos y cynnwys cysylltiedig",
   "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
-  "notAttempted": "Heb roi cynnig"
+  "notAttempted": "Heb roi cynnig",
+  "cardsDirections": "Rhowch y cardiau yn y drefn gywir gyda'r botymau symud yn gynharach a symud yn hwyrach ar bob cerdyn, neu llusgwch nhw gyda llygoden. Pan gredwch eu bod yn y drefn gywir, profwch eich ateb drwy ddewis {checkAnswer}.",
+  "movedToPosition": "{item} wedi'i symud i safle {position} o {total}"
 }

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mionathraitheoir meán",
-        "description": "Mionathraitheoir roghnach ar fhearann na meán. Sonraíonn sé an cineál meán lena mbaineann an ceadúnas seo."
+        "description": "Mionathraitheoir roghnach ar fhearann na meán. Sonraíonn sé an cineál meán lena mbaineann an ceadúnas seo.",
+        "options": {
+          "": "Gan mionathraitheoir"
+        }
       },
       {
         "property": "uri",

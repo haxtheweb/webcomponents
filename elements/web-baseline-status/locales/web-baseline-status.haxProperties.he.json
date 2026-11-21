@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "מצב Baseline",
+    "description": "הצגת מצב התמיכה של Baseline בדפדפנים עבור תכונה של פלטפורמת הרשת."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "מזהה תכונה",
+        "description": "מזהה תכונת הרשת, למשל anchor-positioning. מוצאים מזהים ב־webstatus.dev; המזהה הוא החלק האחרון בכתובת URL של דף תכונה."
+      }
+    ]
+  }
+}

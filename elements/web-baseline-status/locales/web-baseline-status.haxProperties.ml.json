@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline നില",
+    "description": "ഒരു വെബ് പ്ലാറ്റ്ഫോം സവിശേഷതയുടെ Baseline ബ്രൗസർ പിന്തുണ നില കാണിക്കുക."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "സവിശേഷത ID",
+        "description": "വെബ് സവിശേഷതയുടെ ID, ഉദാഹരണത്തിന് anchor-positioning. webstatus.dev-ൽ ID-കൾ കണ്ടെത്തുക; സവിശേഷത പേജ് URL-ന്റെ അവസാന ഭാഗമാണ് ID."
+      }
+    ]
+  }
+}

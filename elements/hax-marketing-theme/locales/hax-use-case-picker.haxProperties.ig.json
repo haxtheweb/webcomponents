@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ihe nhọrọ ojiji",
+    "description": "Họrọ ihe saịtị dị maka ya ma nweta njikọ na-emepe HAX na brawụza nwere saịtị mmalite ahụ, gbakwunyere iwu CLI kwekọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adreesị HAX na brawụza",
+        "description": "Ebe njikọ ahụ na-emepe; a na-agbakwunye ?skeleton= na &name= na ya"
+      },
+      {
+        "title": "Saịtị mmalite a ga-ahapụ",
+        "description": "Aha igwe, kewara site na rịkọm"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ndepụta saịtị mmalite",
+        "description": "Adreesị ndepụta skeleton (ụdị app-hax na-agụ)"
+      }
+    ]
+  }
+}

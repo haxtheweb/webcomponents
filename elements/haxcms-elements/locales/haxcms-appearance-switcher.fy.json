@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palet",
+  "themeDefault": "Temastandert",
+  "designSystem": "Untwerpsysteem",
+  "designSystemDefault": "DDD (standert)",
+  "designSystemUnavailable": "Dit tema hâldt syn eigen ûntwerpsysteem"
+}

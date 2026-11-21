@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Rețeaua ecosistemului",
+    "description": "O rețea interactivă a modului în care se leagă părțile unui proiect, cu subrețele și tururi pas cu pas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datele rețelei",
+        "description": "URL-ul pachetului JSON de rețele (construit în PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Rețea",
+        "description": "Id-ul rețelei afișate prima; main este rețeaua ecosistemului."
+      },
+      {
+        "title": "Dală selectată",
+        "description": "Id-ul unei dale de selectat când se deschide rețeaua."
+      },
+      {
+        "title": "Tur",
+        "description": "Id-ul unui tur cu care să se înceapă."
+      },
+      {
+        "title": "Începeți în vizualizare listă",
+        "description": "Afișați rețeaua ca liste imbricate în locul desenului."
+      },
+      {
+        "title": "Doar desenul",
+        "description": "Afișați doar desenul, ca figură: fără antet, tururi, detalii sau bara de pași."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Citit după",
+        "description": "Începeți cu fiecare dală citită după o singură măsură.",
+        "options": {
+          "": "Doar conexiuni",
+          "fresh": "Prospețime",
+          "bus": "Factor de autobuz",
+          "impact": "Impact",
+          "evidence": "Dovezi",
+          "parity": "Paritate"
+        }
+      }
+    ]
+  }
+}

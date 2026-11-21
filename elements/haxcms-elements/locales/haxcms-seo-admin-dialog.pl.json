@@ -6,6 +6,8 @@
   "faviconDescription": "Obraz karty przeglądarki / używany na telefonach jako małe logo witryny",
   "domain": "Domena",
   "domainDescription": "Domena tej witryny",
+  "sameAs": "Inne profile tej witryny",
+  "sameAsDescription": "Jeden link w wierszu do profili tej witryny lub organizacji w innych miejscach (GitHub, LinkedIn, YouTube, Mastodon). Wyszukiwarki używają ich, by powiązać te profile z tą witryną.",
   "language": "Język",
   "languageDescription": "Język tej witryny. Szukaj według nazwy lub kodu albo wpisz inny kod, na przykład fr-CA.",
   "googleAnalyticsId": "Identyfikator Google Analytics",

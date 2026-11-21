@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentācijas atskaņotājs",
+    "description": "Ceļvedis, demonstrācija un atsauce tīmekļa komponentam ar kopēšanas pogām HTML, importam, npm un CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentācijas datu fails",
+        "description": "Dokumentācijas dati, kas nāk kopā ar elementu (lib/tag.docs.json)."
+      },
+      {
+        "title": "Ceļveža scenārijs",
+        "description": "Kustību scenārijs, kas nāk kopā ar elementu (tag.motion.json). Neobligāts."
+      },
+      {
+        "title": "Video pamācība",
+        "description": "Īss video par elementu (YouTube, Vimeo vai video fails). Aizstāj video dokumentācijas datos."
+      },
+      {
+        "title": "Atvērt cilnē",
+        "description": "Kura cilne tiek rādīta pirmā.",
+        "options": {
+          "motion": "Ceļvedis",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentācija",
+          "schema": "Shēma"
+        }
+      },
+      {
+        "title": "Automātiski atskaņot ceļvedi",
+        "description": "Sākt ceļvedi, tiklīdz atskaņotājs parādās. Netiek ņemts vērā, ja lasītājs dod priekšroku samazinātai kustībai."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ceļveža tēma",
+        "description": "Elementiem ar vairākiem ceļvežiem — kuru tēmu atvērt vispirms (piemēram, add-blocks). Atstājiet tukšu galvenajam."
+      },
+      {
+        "title": "Tiešās demonstrācijas saite",
+        "description": "Kur ved poga “Atvērt demonstrācijas avotu”. Pēc noklusējuma — demonstrācijas mape repozitorijā."
+      },
+      {
+        "title": "Dokumentācijas saite",
+        "description": "Kur ved pilnās dokumentācijas poga, piemēram, atbilstošā Learn HAX lapa."
+      }
+    ]
+  }
+}

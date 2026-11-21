@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ìṣirò",
+    "description": "Nọ́mbà tó ń kà sókè, pẹ̀lú àmì àti ìjápọ̀ sí ìtàn rẹ̀"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nọ́mbà tí a ó kà dé"
+      },
+      {
+        "title": "Ṣáájú nọ́mbà náà"
+      },
+      {
+        "title": "Lẹ́yìn nọ́mbà náà"
+      },
+      {
+        "title": "Ọ̀rọ̀ dípò nọ́mbà"
+      },
+      {
+        "title": "Ohun tí ó ń kà"
+      },
+      {
+        "title": "Àdírẹ́sì ìtàn lórí hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

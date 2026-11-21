@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Kata-kata di samping tombol adu langsung dengan dua karakter"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul"
+      },
+      {
+        "title": "Tujuan tombol"
+      },
+      {
+        "title": "Teks tombol"
+      },
+      {
+        "title": "Seed karakter kiri"
+      },
+      {
+        "title": "Seed karakter kanan"
+      }
+    ]
+  }
+}

@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Izimpendulo",
+        "description": "Ukulandelana kwezimpendulo kuchaza ukulandelana okulungile.",
+        "options": {
+          "": "Uhlu",
+          "cards": "Amakhadi ezithombe"
+        }
+      },
+      {
+        "title": "Izimpendulo",
         "description": "Ukulandelana kwezimpendulo kuchaza ukulandelana okulungile."
       }
     ],

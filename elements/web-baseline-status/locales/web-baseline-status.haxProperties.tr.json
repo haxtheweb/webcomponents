@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline durumu",
+    "description": "Bir web platformu özelliğinin Baseline tarayıcı desteği durumunu göster."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Özellik kimliği",
+        "description": "Web özelliğinin kimliği, örneğin anchor-positioning. Kimlikleri webstatus.dev'de bulun; kimlik, bir özellik sayfası URL'sinin son kısmıdır."
+      }
+    ]
+  }
+}

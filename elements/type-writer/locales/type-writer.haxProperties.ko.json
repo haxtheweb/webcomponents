@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "타자기",
     "description": "한 글자씩 스스로 입력되는 텍스트."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "텍스트",
+        "description": "요소가 화면에 스크롤되어 보이면 타이핑할 텍스트."
+      },
+      {
+        "title": "타이핑 중",
+        "description": "깜박이는 커서를 표시합니다. 요소가 타이핑하는 동안 자동으로 설정됩니다."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "지연",
+        "description": "타이핑이 시작되기 전 기다릴 밀리초."
+      },
+      {
+        "title": "커서 지속 시간",
+        "description": "텍스트를 다 친 뒤 커서가 계속 깜박이는 밀리초."
+      },
+      {
+        "title": "속도",
+        "description": "글자당 밀리초. 숫자가 작을수록 빨리 칩니다."
+      }
+    ]
   }
 }

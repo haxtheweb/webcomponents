@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Vastamisi",
+    "description": "Tekst kahe tegelasega vastamisi-nupu kõrval"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri"
+      },
+      {
+        "title": "Kuhu nupp viib"
+      },
+      {
+        "title": "Nupu tekst"
+      },
+      {
+        "title": "Vasaku tegelase seeme"
+      },
+      {
+        "title": "Parema tegelase seeme"
+      }
+    ]
+  }
+}

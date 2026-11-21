@@ -52,6 +52,20 @@
           "_top": "Bovenste venster - _top",
           "_parent": "Bovenliggend venster - _parent"
         }
+      },
+      {
+        "title": "Geen pijl",
+        "description": "De pijl van de knop verbergen."
+      },
+      {
+        "title": "Link: doel",
+        "description": "Waar de link moet openen.",
+        "options": {
+          "": "Hetzelfde venster",
+          "_blank": "Nieuw venster - _blank",
+          "_top": "Bovenste venster - _top",
+          "_parent": "Bovenliggend venster - _parent"
+        }
       }
     ],
     "developer": [

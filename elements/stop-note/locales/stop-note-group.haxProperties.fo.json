@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note-bólkur",
+    "description": "Stabla fleiri stop notes í ein blokk, sum vísir eina notu í senn, sum Ráð ella Hvat er nýtt. Vegleiðingarkort, síðunotur og innrammað sitat kunnu stablast saman við teimum."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Navn á bólkinum, sum skíggjalesarar kunngera, sum Ráð ella Hvat er nýtt."
+      },
+      {
+        "title": "Notur",
+        "description": "Stop notes í bólkinum. Vegleiðingarkort, síðunotur og innrammað sitat kunnu eisini leggjast afturat."
+      }
+    ]
+  }
+}

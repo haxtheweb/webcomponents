@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "LaTeX matematik yozuvi yordamida yozish"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rasm foni",
+        "description": "Chizilgan rasmlar ortidagi fon. Avtomatik rejim faqat chizma sahifada qiyin ko‘rinadigan bo‘lsa fon qo‘shadi, masalan tungi rejimdagi qorong‘i chiziqlar.",
+        "options": {
+          "auto": "Avtomatik",
+          "light": "Yorug‘",
+          "dark": "Qorong‘i",
+          "none": "Yo‘q"
+        }
+      }
+    ]
   }
 }

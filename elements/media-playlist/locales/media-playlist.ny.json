@@ -5,5 +5,7 @@
   "editModeLabel": "Njira yosinthira mndandanda wa makanema ndi mawu",
   "position": "{current} mwa {total}",
   "previousItem": "Chinthu chapitacho",
-  "nextItem": "Chinthu chotsatira"
+  "nextItem": "Chinthu chotsatira",
+  "fullScreen": "Sikirini yonse",
+  "exitFullScreen": "Tulukani mu sikirini yonse"
 }

@@ -23,7 +23,9 @@
           "stop": "Pysähdy",
           "warning": "Varoitus",
           "success": "Vahvistus",
-          "info": "Huomautus"
+          "info": "Huomautus",
+          "tip": "Vinkki",
+          "new": "Uutta"
         }
       },
       {

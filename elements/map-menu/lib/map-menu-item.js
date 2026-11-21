@@ -43,10 +43,18 @@ class MapMenuItem extends I18NMixin(LitElement) {
           --simple-icon-width: var(--map-menu-item-icon-height);
           margin-right: 8px;
         }
+        /* an unpublished page: struck through with its icon, in a red that
+           keeps its contrast on light and dark menus (half-opacity red was
+           close to invisible on a dark menu) */
         :host(:not([published])) {
           text-decoration: line-through;
-          color: red;
-          opacity: 0.5;
+          color: var(
+            --map-menu-item-unpublished-color,
+            light-dark(
+              var(--ddd-theme-default-original87Pink, #bc204b),
+              var(--ddd-theme-default-discoveryCoral, #f2665e)
+            )
+          );
         }
 
         :host([hide-in-menu]) {
@@ -165,7 +173,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           margin-left: -8px;
         }
         #unpublished {
-          color: red;
+          color: inherit;
         }
         .no-icon {
           display: inline-flex;

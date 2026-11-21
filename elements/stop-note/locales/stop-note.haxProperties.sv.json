@@ -23,7 +23,9 @@
           "stop": "Stopp",
           "warning": "Varning",
           "success": "Bekräftelse",
-          "info": "Meddelande"
+          "info": "Meddelande",
+          "tip": "Tips",
+          "new": "Nyheter"
         }
       },
       {

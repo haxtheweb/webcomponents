@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Senaryo sahnesi",
+    "description": "Dallanan bir senaryonun bir sahnesi. Her seçeneği # ve ardından sahne kimliğiyle başka bir sahneye bağlayın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sahne kimliği",
+        "description": "Seçeneklerin bağlandığı şey: # ve ardından bu kimliğe giden bir bağlantı bu sahneye götürür. Harfler, rakamlar ve tireler."
+      },
+      {
+        "title": "Başlık",
+        "description": "Sahnenin başlığı."
+      },
+      {
+        "title": "Son",
+        "description": "Bu sahnenin bir yolu bitirip bitirmediği ve nasıl sonuçlandığı.",
+        "options": {
+          "": "Son değil",
+          "good": "İyi son",
+          "mixed": "Karışık son",
+          "poor": "Kötü son"
+        }
+      },
+      {
+        "title": "Puan",
+        "description": "Bu sona ulaşmanın puanı. Senaryodaki en yüksek son puanı maksimumdur."
+      }
+    ]
+  }
+}

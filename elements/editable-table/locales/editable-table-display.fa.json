@@ -3,5 +3,8 @@
   "copyAsCsv": "کپی به‌صورت CSV.",
   "printTable": "چاپ جدول",
   "selectColumn": "انتخاب ستون",
-  "dataTable": "داده · جدول"
+  "dataTable": "داده · جدول",
+  "filterStatus": "نمایش {shown} از {total} ردیف، پالایش‌شده بر اساس {column}: {text}",
+  "columnNumber": "ستون {column}",
+  "clearFilter": "پاک کردن پالایه"
 }

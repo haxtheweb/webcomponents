@@ -3,5 +3,7 @@
   "status_stop": "رکو",
   "status_warning": "خبردار",
   "status_success": "کامیابی",
-  "status_info": "نوٹ"
+  "status_info": "نوٹ",
+  "status_tip": "کیہ تسیں جاندے او؟",
+  "status_new": "نواں کیہ اے"
 }

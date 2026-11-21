@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Šoninė pastaba",
+    "description": "Nuo aplinkinio turinio atskirta pastaba su pasirinktine piktograma ir etikete."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketė",
+        "description": "Šoninės pastabos etiketė."
+      },
+      {
+        "title": "Piktograma",
+        "description": "Šoninės pastabos piktograma."
+      },
+      {
+        "title": "Turinys",
+        "description": "Šoninės pastabos turinys."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Spalva",
+        "description": "Spalva, kuria nuspalvinama šoninė pastaba."
+      }
+    ]
+  }
+}

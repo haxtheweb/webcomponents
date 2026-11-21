@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plattformvergläich",
+    "description": "Kapp un Kapp: wielt zwou Plattformen aus engem Datefichier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vergläichsdaten (JSON)"
+      },
+      {
+        "title": "ID vun der lénker Plattform"
+      },
+      {
+        "title": "ID vun der rietser Plattform"
+      }
+    ]
+  }
+}

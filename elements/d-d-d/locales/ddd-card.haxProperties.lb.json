@@ -52,6 +52,20 @@
           "_top": "Iewescht Fënster - _top",
           "_parent": "Iwwergeuerdent Fënster - _parent"
         }
+      },
+      {
+        "title": "Kee Feil",
+        "description": "De Feil vum Knäppchen verstoppen."
+      },
+      {
+        "title": "Link: Zil",
+        "description": "Wou de Link opgemaach gëtt.",
+        "options": {
+          "": "Selwecht Fënster",
+          "_blank": "Nei Fënster - _blank",
+          "_top": "Iewescht Fënster - _top",
+          "_parent": "Elterefënster - _parent"
+        }
       }
     ],
     "developer": [

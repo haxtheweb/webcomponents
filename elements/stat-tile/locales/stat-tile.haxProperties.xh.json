@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ithayile yenani",
+    "description": "Inani elinye elibalulekileyo, nelebhile yalo nendlela elitshintshe ngayo. Beka ezininzi kwigridi ukwenza umqolo wedeshibhodi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebhile",
+        "description": "Oko kulinganiswa linani."
+      },
+      {
+        "title": "Ixabiso",
+        "description": "Inani. Inani eliqhelekileyo liqokelelwa ngokolwimi lwephepha; nantoni na enye iboniswa njengoko ibhaliwe."
+      },
+      {
+        "title": "Utshintsho",
+        "description": "Indlela elitshintshe ngayo, ngamagama, njenge-6% kule kota."
+      },
+      {
+        "title": "Icala",
+        "description": "Ingaba utshintsho luphezulu okanye luphantsi.",
+        "options": {
+          "": "Akukho",
+          "up": "Phezulu",
+          "down": "Ezantsi"
+        }
+      }
+    ]
+  }
+}

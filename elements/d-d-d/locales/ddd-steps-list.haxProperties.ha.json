@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Jerin matakai",
     "description": "Matakai masu lamba don kammala aiki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mai nuna matakai",
+        "description": "Nuna matakan a matsayin ƙaramin layin take da ke alamta ci gaba. Ba a nuna abun cikin matakai a wannan tsari ba."
+      },
+      {
+        "title": "Mataki na yanzu",
+        "description": "Matakin da mai karatu yake a kai, ana ƙirga daga 1. Matakan da suka gabata suna bayyana a matsayin an kammala. Mai nuna matakai ke amfani da shi."
+      }
+    ]
   }
 }

@@ -60,6 +60,8 @@
   "flagsFound": "Kutholwe {correct} kwezingu-{total}",
   "toRethink": "{count} okufanele kucatshangwe kabusha",
   "notEvidence": "akubona ubufakazi baleli fulegi",
+  "isEvidence": "ubufakazi bale fulegi",
+  "readingKeys": "Sebenzisa okhiye bemicibisholo ukuze usuke ku-{unit} uye kokulandelayo.",
   "markAnswers": "Maka izimpendulo",
   "doneMarking": "Sengiqedile ukumaka izimpendulo",
   "editHint": "Hlela okufundwayo okungezansi. Sebenzisa u-Maka izimpendulo kumenyu yebhulokhi ukukhetha lapho ifulegi ngalinye lifanele khona.",

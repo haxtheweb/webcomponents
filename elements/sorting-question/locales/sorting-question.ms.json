@@ -40,5 +40,7 @@
   "hideDirections": "Sembunyikan arahan",
   "showRelatedContent": "Tunjukkan kandungan berkaitan",
   "hideRelatedContent": "Sembunyikan kandungan berkaitan",
-  "notAttempted": "Belum dicuba"
+  "notAttempted": "Belum dicuba",
+  "cardsDirections": "Susun kad dalam urutan yang betul dengan butang alih lebih awal dan alih lebih lewat pada setiap kad, atau seretnya dengan tetikus. Apabila anda yakin urutannya betul, uji jawapan anda dengan memilih {checkAnswer}.",
+  "movedToPosition": "{item} dialihkan ke kedudukan {position} daripada {total}"
 }

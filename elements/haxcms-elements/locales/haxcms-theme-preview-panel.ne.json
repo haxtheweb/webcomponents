@@ -8,5 +8,9 @@
   "theme": "थिम",
   "palette": "प्यालेट",
   "cancel": "रद्द गर्नुहोस्",
-  "openAppearanceSettings": "रूपरङ सेटिङहरू खोल्नुहोस्"
+  "openAppearanceSettings": "रूपरङ सेटिङहरू खोल्नुहोस्",
+  "designSystem": "डिजाइन प्रणाली",
+  "designSystemDefault": "DDD (पूर्वनिर्धारित)",
+  "designSystemThemeDefault": "{name} (थिमको पूर्वनिर्धारित)",
+  "designSystemHelp": "रङ, टाइप, कुना र घनत्व। लेआउट भने थिमले नै तय गर्छ।"
 }

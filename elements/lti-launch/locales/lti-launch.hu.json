@@ -1,0 +1,19 @@
+{
+  "label": "Külső eszköz",
+  "labelLti": "Külső eszköz · LTI 1.3",
+  "theTool": "az eszköz",
+  "directions": "Útmutató",
+  "showDirections": "Útmutató megjelenítése",
+  "hideDirections": "Útmutató elrejtése",
+  "directionsWindow": "A gomb új ablakot nyit az eszközzel.",
+  "directionsEmbed": "A gomb ezen az oldalon nyitja meg az eszközt. Ha nem töltődik be, nyissa meg inkább új ablakban.",
+  "directionsLti": "Ez a webhely bejelentkezteti Önt az eszközbe, így nincs szükség külön fiókra.",
+  "openWindow": "{title} megnyitása (új ablak)",
+  "openEmbed": "{title} megnyitása",
+  "openInstead": "Megnyitás inkább új ablakban",
+  "frameTitle": "{title} (külső eszköz)",
+  "openedWindow": "Új ablak nyílt meg az eszközzel.",
+  "openedEmbed": "Az eszköz ezen az oldalon nyílt meg.",
+  "needsUrl": "Ennek a blokknak http:// vagy https:// kezdetű indítási cím kell.",
+  "needsSignIn": "Ehhez az eszközhöz a webhely bejelentkezési szolgáltatása kell, amely itt nem érhető el. Semmi sem nyílt meg."
+}

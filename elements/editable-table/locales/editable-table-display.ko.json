@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV로 복사.",
   "printTable": "표 인쇄",
   "selectColumn": "열 선택",
-  "dataTable": "데이터 · 표"
+  "dataTable": "데이터 · 표",
+  "filterStatus": "{total}개 행 중 {shown}개 표시, {column} 기준 필터: {text}",
+  "columnNumber": "{column}열",
+  "clearFilter": "필터 지우기"
 }

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Pelancaran alat luaran",
+    "description": "Blok yang membuka alat pembelajaran luaran dalam tetingkap baharu atau pada halaman, sebagai pautan biasa atau dengan permintaan log masuk LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Nama alat. Ia dipaparkan dalam pengepala dan pada butang."
+      },
+      {
+        "title": "Keterangan",
+        "description": "Apa yang dilakukan oleh pelajar dalam alat, dipaparkan di atas butang."
+      },
+      {
+        "title": "URL pelancaran",
+        "description": "Alamat alat. Ia mesti alamat penuh yang bermula dengan https:// atau http://."
+      },
+      {
+        "title": "Buka dalam",
+        "description": "Tetingkap baharu berfungsi dengan setiap alat. Pada halaman ini hanya berfungsi dengan alat yang membenarkan dirinya dipaparkan di dalam laman lain.",
+        "options": {
+          "window": "Tetingkap baharu",
+          "embed": "Pada halaman ini"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL log masuk LTI",
+        "description": "LTI 1.3 sahaja: alamat permulaan log masuk alat. Dengan ini, ID klien dan ID pengerahan, butang menghantar permintaan log masuk LTI dan bukannya membuka pautan biasa. Menyelesaikan pelancaran memerlukan perkhidmatan LTI laman ini."
+      },
+      {
+        "title": "ID klien LTI",
+        "description": "ID klien yang diberikan oleh alat kepada laman ini. Pengecam awam, bukan rahsia: jangan sekali-kali letakkan kunci atau rahsia di sini."
+      },
+      {
+        "title": "ID pengerahan LTI",
+        "description": "ID pengerahan yang diberikan oleh alat kepada laman ini. Pengecam awam, bukan rahsia."
+      },
+      {
+        "title": "Pengeluar LTI",
+        "description": "Alamat yang mengenal pasti laman ini kepada alat. Biarkan kosong untuk menggunakan alamat laman tempat halaman ini berada."
+      },
+      {
+        "title": "Ketinggian pada halaman",
+        "description": "Ketinggian alat apabila ia dibuka pada halaman ini, dalam piksel (200 hingga 2000)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna cip pengepala dan butang. Biarkan kosong untuk mengikut tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Petunjuk log masuk LTI",
+        "description": "Nilai legap yang digunakan oleh perkhidmatan LTI laman ini untuk mengenali pelajar. Biasanya dibekalkan oleh laman melalui peristiwa lti-launch-request dan bukannya disimpan di sini. Jangan sekali-kali kata laluan atau kunci."
+      },
+      {
+        "title": "Petunjuk mesej LTI",
+        "description": "Nilai legap yang digunakan oleh perkhidmatan LTI laman ini untuk mengenali pelancaran ini. Biasanya dibekalkan oleh laman dan bukannya disimpan di sini."
+      }
+    ]
+  }
+}

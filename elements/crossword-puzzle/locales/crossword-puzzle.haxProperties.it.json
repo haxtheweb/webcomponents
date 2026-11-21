@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Cruciverba",
+    "description": "Un cruciverba creato da un elenco di parole e definizioni. La griglia viene generata per te; gli studenti digitano le parole e le verificano."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Il titolo o la domanda mostrati sopra il cruciverba."
+      },
+      {
+        "title": "Parole",
+        "description": "Ogni parola e la sua definizione. La griglia è generata da questo elenco: la parola più lunga viene inserita per prima e le altre la incrociano su lettere comuni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte uno studente può verificare. 0 significa illimitato."
+      },
+      {
+        "title": "Colore di accento",
+        "description": "Colore facoltativo per l'etichetta dell'intestazione, la parola attiva e i pulsanti di azione."
+      },
+      {
+        "title": "Comprimibile",
+        "description": "Mostra questo cruciverba come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "title": "Inizia compresso",
+        "description": "Se comprimibile, inizia come riga chiusa che mostra solo il titolo e il suo stato."
+      },
+      {
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (ad es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome del quiz",
+        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
+      },
+      {
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      }
+    ]
+  }
+}

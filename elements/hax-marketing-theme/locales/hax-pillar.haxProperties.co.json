@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilastru",
+    "description": "Un pilastru: nome, frase, icona, culore è perchè conta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nome"
+      },
+      {
+        "title": "Frase"
+      },
+      {
+        "title": "Icona"
+      },
+      {
+        "title": "Culore (nome DDD)"
+      },
+      {
+        "title": "Chì pilastru, da 1 à 7"
+      },
+      {
+        "title": "Piccula carta"
+      },
+      {
+        "title": "Induve và u nome"
+      }
+    ]
+  }
+}

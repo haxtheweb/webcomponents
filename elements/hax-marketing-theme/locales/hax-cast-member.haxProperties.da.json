@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rolle",
+    "description": "Én målgruppe, spillet af en karakter, med tekst og en knap"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvem dette er"
+      },
+      {
+        "title": "Karaktertype"
+      },
+      {
+        "title": "Karakterfrø"
+      },
+      {
+        "title": "Scenefarve (DDD-navn)"
+      },
+      {
+        "title": "Hvor knappen fører hen"
+      },
+      {
+        "title": "Knaptekst"
+      }
+    ]
+  }
+}

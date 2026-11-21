@@ -5,5 +5,7 @@
   "editModeLabel": "媒体播放列表编辑模式",
   "position": "{current} / {total}",
   "previousItem": "上一项",
-  "nextItem": "下一项"
+  "nextItem": "下一项",
+  "fullScreen": "全屏",
+  "exitFullScreen": "退出全屏"
 }

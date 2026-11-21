@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "શબ્દ"
+        "title": "શબ્દ",
+        "description": "વાચકો જેની વ્યાખ્યા જોવા ક્લિક કરે છે તે શબ્દ અથવા શબ્દસમૂહ."
       },
       {
         "property": "information",

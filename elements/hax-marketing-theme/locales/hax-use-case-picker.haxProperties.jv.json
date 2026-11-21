@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Pamilih kagunan",
+    "description": "Pilih kanggo apa situs iki lan entuk pranala sing mbukak HAX ing browser karo situs wiwitan kasebut, uga prentah CLI sing cocog."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Alamat HAX ing browser",
+        "description": "Panggonan pranala dibukak; ditambahi ?skeleton= lan &name="
+      },
+      {
+        "title": "Situs wiwitan sing ora dilebokake",
+        "description": "Jeneng mesin, dipisah koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dhaptar situs wiwitan",
+        "description": "Alamat dhaptar kerangka (format sing diwaca app-hax)"
+      }
+    ]
+  }
+}

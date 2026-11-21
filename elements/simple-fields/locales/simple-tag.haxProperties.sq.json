@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Ngjyrë theksuese automatike",
         "description": "Nxirre ngjyrën theksuese automatikisht nga teksti i etiketës."
+      },
+      {
+        "title": "Kuptimi",
+        "description": "Jepi etiketës një ngjyrë kuptimi. Lëre bosh për etiketë neutrale.",
+        "options": {
+          "": "Neutrale",
+          "brand": "Marka",
+          "success": "Sukses",
+          "warning": "Paralajmërim",
+          "danger": "Rrezik"
+        }
       }
     ],
     "advanced": [

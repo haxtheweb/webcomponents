@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mea koho hoʻohana",
+    "description": "E koho i ke kumu o kekahi kahua a loaʻa iā ʻoe kahi loulou e wehe ana iā HAX ma ka polokalamu kele me kēlā kahua hoʻomaka, a me ke kauoha CLI kūlike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Helu wahi HAX ma ka polokalamu kele",
+        "description": "Ma hea e wehe ai ka loulou; hoʻohui ʻia ʻo ?skeleton= a me &name="
+      },
+      {
+        "title": "Nā kahua hoʻomaka e waiho ai",
+        "description": "Nā inoa mīkini, hoʻokaʻawale ʻia me ke koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Papa inoa kahua hoʻomaka",
+        "description": "Helu wahi o ka papa inoa skeleton (ke ʻano a app-hax e heluhelu ai)"
+      }
+    ]
+  }
+}

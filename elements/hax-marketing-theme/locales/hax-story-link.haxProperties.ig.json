@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Bọtịnụ akụkọ",
+    "description": "Bọtịnụ na-emepe akụkọ dị n'azụ nkwupụta na hax.cloud, ma ọ bụ ebe kwekọrọ na saịtị netwọk HAX ọzọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ebe ọ na-aga",
+        "options": {
+          "cloud": "hax.cloud, akụkọ ahụ",
+          "learn": "learn.hax.cloud, nkuzi",
+          "try": "browser.hax.cloud, nwaa ya",
+          "elements": "webcomponents.hax.cloud, ngọngọ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adreesị na saịtị ahụ (akụkọ na hax.cloud dị ka stories/ee450a19)"
+      },
+      {
+        "title": "Ihe ọ bụ banyere"
+      },
+      {
+        "title": "Obere chip"
+      },
+      {
+        "title": "Gosi ihe ọ bụ banyere na bọtịnụ"
+      }
+    ]
+  }
+}

@@ -9,5 +9,7 @@
   "slidePages": "Bildsidor",
   "goToSlide": "Gå till bild {number}",
   "slides": "Bilder",
-  "position": "{number} av {total}"
+  "position": "{number} av {total}",
+  "fullScreen": "Helskärm",
+  "exitFullScreen": "Avsluta helskärm"
 }

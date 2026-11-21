@@ -8,5 +8,9 @@
   "theme": "ਥੀਮ",
   "palette": "ਪੈਲੇਟ",
   "cancel": "ਰੱਦ ਕਰੋ",
-  "openAppearanceSettings": "ਦਿੱਖ ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ"
+  "openAppearanceSettings": "ਦਿੱਖ ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ",
+  "designSystem": "ਡਿਜ਼ਾਈਨ ਸਿਸਟਮ",
+  "designSystemDefault": "DDD (ਮੂਲ)",
+  "designSystemThemeDefault": "{name} (ਥੀਮ ਮੂਲ)",
+  "designSystemHelp": "ਰੰਗ, ਅੱਖਰ ਸ਼ੈਲੀ, ਕੋਨੇ ਅਤੇ ਘਣਤਾ। ਲੇਆਉਟ ਅਜੇ ਵੀ ਥੀਮ ਤੈਅ ਕਰਦਾ ਹੈ।"
 }

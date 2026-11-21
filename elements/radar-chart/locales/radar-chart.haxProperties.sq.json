@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Grafik radar",
+    "description": "Grafik radar (merimangë) për modele pjekurie dhe vlerësim aspektesh, si HEOSAT. Përfshin alternativë tekstuale dhe tabelë të dhënash."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Titulli i grafikut; përdoret edhe si emri i tij i aksesueshëm."
+      },
+      {
+        "title": "Pikët maksimale",
+        "description": "Vlera më e lartë në shkallë."
+      },
+      {
+        "title": "Kategoritë",
+        "description": "Një kategori për rresht. Kërkon të paktën 3."
+      },
+      {
+        "title": "Pikët",
+        "description": "Numra të ndarë me presje, një për kategori në të njëjtin rend."
+      },
+      {
+        "title": "Pikët e synuara",
+        "description": "Numra të ndarë me presje, një për kategori në të njëjtin rend."
+      },
+      {
+        "title": "Shfaq legjendën",
+        "description": "Shfaq një legjendë që emërton pikët dhe objektivat."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Grafik më i vogël pa etiketa, legjendë ose tabelë të dhënash. Kalo mbi një pikë për të parë vlerat e saj."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etiketa e pikëve",
+        "description": "Etiketa e legjendës dhe tabelës për pikët."
+      },
+      {
+        "title": "Etiketa e objektivit",
+        "description": "Etiketa e legjendës dhe tabelës për objektivat."
+      }
+    ]
+  }
+}

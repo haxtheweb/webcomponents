@@ -5,5 +5,7 @@
   "editModeLabel": "Imowudi yokuhlela uluhlu lokudlala lwemidiya",
   "position": "{current} / {total}",
   "previousItem": "Into eyandulelayo",
-  "nextItem": "Into elandelayo"
+  "nextItem": "Into elandelayo",
+  "fullScreen": "Isikrini esipheleleyo",
+  "exitFullScreen": "Phuma kwisikrini esipheleleyo"
 }

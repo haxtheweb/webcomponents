@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tarinapainike",
+    "description": "Painike, joka avaa väitteen taustalla olevan tarinan hax.cloudissa tai vastaavan kohdan toisella HAX-verkoston sivustolla"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mihin se vie",
+        "options": {
+          "cloud": "hax.cloud, tarina",
+          "learn": "learn.hax.cloud, opetusohjelma",
+          "try": "browser.hax.cloud, kokeile",
+          "elements": "webcomponents.hax.cloud, lohko",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Osoite kyseisellä sivustolla (hax.cloudin tarina on muotoa stories/ee450a19)"
+      },
+      {
+        "title": "Mistä on kyse"
+      },
+      {
+        "title": "Pieni merkki"
+      },
+      {
+        "title": "Näytä painikkeessa, mistä on kyse"
+      }
+    ]
+  }
+}

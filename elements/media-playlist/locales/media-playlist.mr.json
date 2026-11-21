@@ -5,5 +5,7 @@
   "editModeLabel": "मीडिया प्लेलिस्ट संपादन मोड",
   "position": "{current}/{total}",
   "previousItem": "मागील घटक",
-  "nextItem": "पुढील घटक"
+  "nextItem": "पुढील घटक",
+  "fullScreen": "पूर्ण स्क्रीन",
+  "exitFullScreen": "पूर्ण स्क्रीनमधून बाहेर पडा"
 }

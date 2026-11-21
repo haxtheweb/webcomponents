@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Qillqakuna purichiq",
+    "description": "Huk web componentpaq pusay, rikuchiy, qhawarinapas, HTML, import, npm, CDN kikinchana ñit'inakunawan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qillqakuna willay willañiqi",
+        "description": "Elementowan hamuq qillqakuna willay (lib/tag.docs.json)."
+      },
+      {
+        "title": "Pusay storyboard",
+        "description": "Elementowan hamuq kuyuy storyboard (tag.motion.json). Munaspalla."
+      },
+      {
+        "title": "Video yachachiy",
+        "description": "Elementomanta huk pisi video (YouTube, Vimeo utaq video willañiqi). Qillqakuna willaypi kaq videota rantin."
+      },
+      {
+        "title": "Pestañapi kichay",
+        "description": "Mayqin pestañam ñawpaqta rikuchikun.",
+        "options": {
+          "motion": "Pusay",
+          "video": "Video",
+          "demo": "Rikuchiy",
+          "docs": "Qillqakuna",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Pusayta kikillanmanta purichiy",
+        "description": "Purichiq rikhuriqtinlla pusayta qallariy. Ñawinchaq pisi kuyuyta munaptinqa manam kasukunchu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pusay yachaywa",
+        "description": "Achka pusayniyuq elementokunapaq, mayqin yachaywatam ñawpaqta kichana (kayhina add-blocks). Ch'usaqta saqiy hatun kaqpaq."
+      },
+      {
+        "title": "Kawsaq rikuchiy t'inki",
+        "description": "Rikuchiy pukyuta kichay ñit'ina maymanchus rin. Ñawpaqmanta repositoriopi demo q'ipiman."
+      },
+      {
+        "title": "Qillqakuna t'inki",
+        "description": "Hunt'asqa qillqakuna ñit'ina maymanchus rin, kayhina tupaq Learn HAX p'anqa."
+      }
+    ]
+  }
+}

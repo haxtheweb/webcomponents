@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerike fraach",
+    "description": "In fraach dy't mei in getal beantwurde wurdt. It antwurd is in fêst getal of in formule útrekkene út fariabelen, en telt as it binnen in tolerânsje falt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fraach",
+        "description": "Wat learlingen frege wurdt. Skriuw in fariabelenamme tusken akkolades, lykas {d}, om de wearde sjen te litten."
+      },
+      {
+        "title": "Ienheid",
+        "description": "Toand as tekst neist it antwurdfjild, bygelyks km/h."
+      },
+      {
+        "title": "Antwurd",
+        "description": "It goede getal. Lit leech as in formule it antwurd útrekkenet."
+      },
+      {
+        "title": "Formule",
+        "description": "Rekkenet it antwurd út fan de fariabelen, bygelyks d / (t / 60). Kin + - * / ^, heakjes, sqrt() en abs() brûke. Wurdt ynstee fan it antwurd brûkt as it ynsteld is."
+      },
+      {
+        "title": "Fariabelen",
+        "description": "Getallen dy't de formule en de fraach brûke. Elk nimt in wearde tusken it leechste en heechste, yn stappen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerânsje",
+        "description": "Hoe fier fan it krekte antwurd ôf noch telt. 0 betsjut krekt, of ôfrûne op de desimalen hjirûnder."
+      },
+      {
+        "title": "Tolerânsjetype",
+        "description": "Absolút: plus of min de tolerânsje. Persintaazje: plus of min dat persintaazje fan it krekte antwurd.",
+        "options": {
+          "absolute": "Absolút",
+          "percent": "Persintaazje"
+        }
+      },
+      {
+        "title": "Desimalen",
+        "description": "Learlingen wurdt frege ôf te rûnen op safolle desimalen, en it antwurd wurdt dêrop ôfrûne toand. Lit leech foar gjin ôfrûning."
+      },
+      {
+        "title": "Pogingen",
+        "description": "Hoefolle kear in learling kontrolearje kin. 0 betsjut ûnbeheind."
+      },
+      {
+        "title": "Nije getallen by elke poging",
+        "description": "Nije fariabelewearden lûke elke kear dat in learling it opnij besiket. Harren eardere antwurd wurdt dan net toand as se weromkomme, allinnich oft se it goed hiene."
+      },
+      {
+        "title": "Ynklapber",
+        "description": "Dizze fraach sjen litte as in rige dy't iepen en ticht giet. As jo der ien iepenje, slute de oare ynklapbere fragen dêrneist."
+      },
+      {
+        "title": "Ynklapt begjinne",
+        "description": "As it ynklapber is, begjinne as in sletten rige dy't allinnich de fraach en de status toant."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't brûkt wurdt foar xAPI-identifikaasje yn analysesystemen."
+      }
+    ]
+  }
+}

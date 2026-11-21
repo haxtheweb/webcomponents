@@ -20,6 +20,12 @@
         "title": "Image",
         "description": "Image affichée avec la citation."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Encadrée",
+        "description": "Dessiner la citation dans le cadre de bloc commun, avec une icône et un libellé au-dessus, pour qu'elle corresponde aux notes et aux fiches d'instructions."
+      }
     ]
   }
 }

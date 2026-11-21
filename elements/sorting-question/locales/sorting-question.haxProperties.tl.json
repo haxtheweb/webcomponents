@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Mga Sagot",
-        "description": "Ang pagkakasunod ng mga sagot ang nagtatakda ng tamang pagkakasunod-sunod."
+        "description": "Ang pagkakasunod ng mga sagot ang nagtatakda ng tamang pagkakasunod-sunod.",
+        "options": {
+          "": "Listahan",
+          "cards": "Mga image card"
+        }
+      },
+      {
+        "title": "Mga sagot",
+        "description": "Ang pagkakasunod-sunod ng sagot ang nagtatakda ng tamang pagkakasunod-sunod."
       }
     ],
     "advanced": [

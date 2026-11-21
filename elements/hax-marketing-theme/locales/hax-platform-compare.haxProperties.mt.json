@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Tqabbil tal-pjattaformi",
+    "description": "Wiċċ imb wiċċ: agħżel kwalunkwe żewġ pjattaformi minn fajl tad-data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data tat-tqabbil (JSON)"
+      },
+      {
+        "title": "ID tal-pjattaforma tax-xellug"
+      },
+      {
+        "title": "ID tal-pjattaforma tal-lemin"
+      }
+    ]
+  }
+}

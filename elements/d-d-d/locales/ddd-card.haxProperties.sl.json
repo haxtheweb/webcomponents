@@ -52,6 +52,20 @@
           "_top": "Najvišje okno - _top",
           "_parent": "Nadrejeno okno - _parent"
         }
+      },
+      {
+        "title": "Brez puščice",
+        "description": "Skrij puščico gumba."
+      },
+      {
+        "title": "Povezava: cilj",
+        "description": "Kje odpreti povezavo.",
+        "options": {
+          "": "Isto okno",
+          "_blank": "Novo okno - _blank",
+          "_top": "Zgornje okno - _top",
+          "_parent": "Nadrejeno okno - _parent"
+        }
       }
     ],
     "developer": [

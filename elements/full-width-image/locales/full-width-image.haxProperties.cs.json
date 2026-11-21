@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Obrázek pozadí."
+        "description": "Obrázek pozadí.",
+        "title": "Obrázek"
       },
       {
         "property": "caption",
-        "description": "Textový nadpis."
+        "description": "Textový nadpis.",
+        "title": "Popisek"
       }
     ]
   }

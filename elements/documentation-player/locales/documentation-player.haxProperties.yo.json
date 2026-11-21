@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Olùṣàfihàn ìwé-àlàyé",
+    "description": "Ìtọ́sọ́nà, àfihàn àti ìtọ́kasí fún ẹ̀yà wẹ́ẹ̀bù, pẹ̀lú àwọn bọ́tìnnì ẹ̀dà fún HTML, import, npm àti CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fáìlì dátà ìwé-àlàyé",
+        "description": "Dátà ìwé-àlàyé tó wá pẹ̀lú ẹ̀yà náà (lib/tag.docs.json)."
+      },
+      {
+        "title": "Àtẹ ìtàn ìtọ́sọ́nà",
+        "description": "Àtẹ ìtàn ìṣípòpadà tó wá pẹ̀lú ẹ̀yà náà (tag.motion.json). Àṣàyàn."
+      },
+      {
+        "title": "Ẹ̀kọ́ fídíò",
+        "description": "Fídíò kúkúrú nípa ẹ̀yà náà (YouTube, Vimeo tàbí fáìlì fídíò). Ó borí fídíò tó wà nínú dátà ìwé-àlàyé."
+      },
+      {
+        "title": "Ṣí lórí táàbù",
+        "description": "Táàbù tí yóò kọ́kọ́ hàn.",
+        "options": {
+          "motion": "Ìtọ́sọ́nà",
+          "video": "Fídíò",
+          "demo": "Àfihàn",
+          "docs": "Ìwé-àlàyé",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Ìtọ́sọ́nà aládàáṣe",
+        "description": "Bẹ̀rẹ̀ ìtọ́sọ́nà ní kété tí olùṣàfihàn bá hàn. A kò kà á sí nígbà tí òǹkàwé bá fẹ́ ìṣípòpadà díẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kókó ìtọ́sọ́nà",
+        "description": "Fún àwọn ẹ̀yà tó ní ìtọ́sọ́nà púpọ̀, kókó wo ni a ó kọ́kọ́ ṣí (fún àpẹẹrẹ add-blocks). Fi sílẹ̀ ní òfo fún èyí pàtàkì."
+      },
+      {
+        "title": "Ìjápọ̀ àfihàn láàyè",
+        "description": "Ibi tí bọ́tìnnì Ṣí orísun àfihàn ń lọ. Àìyípadà rẹ̀ ni fódà demo nínú ibi-ìpamọ́."
+      },
+      {
+        "title": "Ìjápọ̀ ìwé-àlàyé",
+        "description": "Ibi tí bọ́tìnnì ìwé-àlàyé kíkún ń lọ, fún àpẹẹrẹ ojú-ìwé Learn HAX tó bá a mu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Vježba aritmetike",
+    "description": "Kratak niz generiranih aritmetičkih zadataka s trenutačnom povratnom informacijom. Odaberite operacije i raspon brojeva; svaki krug je nov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv ove vježbe, prikazan u njezinu zaglavlju."
+      },
+      {
+        "title": "Operacije",
+        "description": "Koje se vrste zadataka postavljaju. Polaznici mogu isključiti bilo koju od njih prije početka.",
+        "options": {
+          "add": "Zbrajanje",
+          "subtract": "Oduzimanje",
+          "multiply": "Množenje",
+          "divide": "Dijeljenje",
+          "add subtract": "Zbrajanje i oduzimanje",
+          "multiply divide": "Množenje i dijeljenje",
+          "add multiply": "Zbrajanje i množenje",
+          "add divide": "Zbrajanje i dijeljenje",
+          "subtract multiply": "Oduzimanje i množenje",
+          "subtract divide": "Oduzimanje i dijeljenje",
+          "add subtract multiply": "Zbrajanje, oduzimanje i množenje",
+          "add subtract divide": "Zbrajanje, oduzimanje i dijeljenje",
+          "add multiply divide": "Zbrajanje, množenje i dijeljenje",
+          "subtract multiply divide": "Oduzimanje, množenje i dijeljenje",
+          "add subtract multiply divide": "Sve četiri"
+        }
+      },
+      {
+        "title": "Najmanji broj",
+        "description": "Najmanji broj koji se koristi u zadatku. Cijeli brojevi, 0 ili više."
+      },
+      {
+        "title": "Najveći broj",
+        "description": "Najveći broj koji se koristi u zadatku. Rezultati dijeljenja i djelitelji također ostaju u tom rasponu."
+      },
+      {
+        "title": "Broj zadataka",
+        "description": "Koliko zadataka ima u jednom krugu (1 do 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vremensko ograničenje",
+        "description": "Sekunde dopuštene za cijeli krug. 0 znači bez mjerača vremena, što je zadano: vježbe s vremenskim ograničenjem ne odgovaraju polaznicima kojima treba više vremena. Kad je postavljeno, polaznici i dalje mogu sami isključiti mjerač vremena."
+      },
+      {
+        "title": "Naglasna boja",
+        "description": "Boja oznake u zaglavlju i gumba. Ostavite prazno da prati temu."
+      }
+    ]
+  }
+}

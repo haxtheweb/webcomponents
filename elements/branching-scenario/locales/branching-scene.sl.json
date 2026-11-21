@@ -1,0 +1,14 @@
+{
+  "scene": "Prizor",
+  "ending": "Konec",
+  "goodEnding": "Dober konec",
+  "mixedEnding": "Mešan konec",
+  "poorEnding": "Slab konec",
+  "scoreOf": "Rezultat {score} od {max}",
+  "scoreOnly": "Rezultat {score}",
+  "startScene": "Začetek",
+  "sceneIdLabel": "ID prizora",
+  "needsId": "Dodajte ID prizora, da se lahko izbire povežejo nanj.",
+  "orphan": "Na ta prizor ne vodi nobena izbira.",
+  "deadLinks": "Te povezave kažejo na prizor, ki ne obstaja:"
+}

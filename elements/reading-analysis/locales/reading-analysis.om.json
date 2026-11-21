@@ -60,6 +60,8 @@
   "flagsFound": "{total} keessaa {correct} argame",
   "toRethink": "{count} irra deebi'anii yaaduu",
   "notEvidence": "ragaa alaabaa kanaa miti",
+  "isEvidence": "ragaa alaabaa kanaa",
+  "readingKeys": "{unit} tokko irraa gara isa itti aanutti socho'uuf furtuuwwan xiyyaa fayyadami.",
   "markAnswers": "Deebii mallatteessi",
   "doneMarking": "Deebii mallatteessuun xumurameera",
   "editHint": "Barreeffama armaan gadii gulaali. Iddoo alaabaan hundi itti argamu filachuuf baafata cufaa keessatti Deebii mallatteessi fayyadami.",

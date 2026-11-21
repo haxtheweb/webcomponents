@@ -3,5 +3,7 @@
   "status_stop": "थांबा",
   "status_warning": "इशारा",
   "status_success": "यशस्वी",
-  "status_info": "टीप"
+  "status_info": "टीप",
+  "status_tip": "तुम्हाला माहीत आहे का?",
+  "status_new": "नवीन काय"
 }

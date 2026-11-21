@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Daktilo",
     "description": "Kendini karakter karakter yazan metin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Metin",
+        "description": "Öğe görünür alana kaydırıldığında yazılacak metin."
+      },
+      {
+        "title": "Yazıyor",
+        "description": "Yanıp sönen imleci göster; öğe yazarken bunu ayarlar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gecikme",
+        "description": "Yazma başlamadan önce beklenecek milisaniye."
+      },
+      {
+        "title": "İmleç süresi",
+        "description": "Metin yazıldıktan sonra imlecin yanıp sönmeye devam ettiği milisaniye."
+      },
+      {
+        "title": "Hız",
+        "description": "Karakter başına milisaniye; daha düşük sayılar daha hızlı yazar."
+      }
+    ]
   }
 }

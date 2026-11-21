@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "উত্তর সঠিক ক্রমে আছে",
   "answerInIncorrectOrder": "উত্তর ভুল ক্রমে আছে",
   "moveOptionUp": "অপশনটি ক্রমে উপরে সরাতে নির্বাচন করুন",
-  "moveOptionDown": "অপশনটি ক্রমে নিচে সরাতে নির্বাচন করুন"
+  "moveOptionDown": "অপশনটি ক্রমে নিচে সরাতে নির্বাচন করুন",
+  "moveEarlier": "আগে সরান",
+  "moveLater": "পরে সরান",
+  "correct": "সঠিক",
+  "incorrect": "ভুল"
 }

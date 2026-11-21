@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Budaqlanan ssenari",
+    "description": "Hər seçimin fərqli səhnəyə və sonluğa apardığı hekayə. Öyrənənlər geri qayıdıb başqa yollar sınaya bilər; çatılan sonluq xalı müəyyən edir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Ssenarinin adı, başlığında göstərilir."
+      },
+      {
+        "title": "Başlanğıc səhnə",
+        "description": "Öyrənənlərin başladığı səhnənin id-si. İlk səhnədən başlamaq üçün boş saxlayın."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanı, düymələr və seçimin kənarı üçün ixtiyari rəng."
+      }
+    ]
+  }
+}

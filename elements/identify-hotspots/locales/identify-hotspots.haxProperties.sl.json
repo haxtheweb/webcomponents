@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Prepoznaj vroče točke",
+    "description": "Učenci poiščejo prava mesta na sliki s klikom, tapom ali premikanjem merka s tipkovnico. Ocenjeni dvojnik slikovnega zemljevida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika",
+        "description": "Slika, ki jo učenci preiskujejo."
+      },
+      {
+        "title": "Nadomestno besedilo",
+        "description": "Opiše sliko za ljudi, ki je ne vidijo. Nikoli ni prikazan kot naslov."
+      },
+      {
+        "title": "Naslov",
+        "description": "Kratek viden naslov, prikazan nad sliko."
+      },
+      {
+        "title": "Vprašanje",
+        "description": "Kaj morajo učenci najti na sliki."
+      },
+      {
+        "title": "Odgovori",
+        "description": "Vsak odgovor je poimenovan oval na sliki. Položaj in velikost sta odstotka slike, merjeno od zgornjega levega kota. Med urejanjem je vsak odgovor na sliki obrobljen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poskusi",
+        "description": "Kolikokrat lahko učenec poskusi. 0 pomeni neomejeno."
+      },
+      {
+        "title": "Dovoljene zgrešitve",
+        "description": "Koliko zgrešitev konča poskus. 0 pomeni neomejeno, učenci pa dobijo gumb Končaj."
+      },
+      {
+        "title": "Zložljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Odpiranje enega zapre druga zložljiva vprašanja ob njem."
+      },
+      {
+        "title": "Začni zloženo",
+        "description": "Ko je zložljivo, začni kot zaprta vrstica, ki prikazuje le vprašanje in njegovo stanje."
+      },
+      {
+        "title": "Oblika ocenjevanja",
+        "description": "OER Schema: oblika ocenjevanja za to preverjanje (npr. točke, ocena, odstotek, dokončanje)."
+      },
+      {
+        "title": "Učni cilj",
+        "description": "OER Schema: učni cilj, povezan s tem preverjanjem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ime kviza",
+        "description": "Ime kviza, posredovano za uporabo v okoljih xAPI za identifikacijo tega elementa"
+      },
+      {
+        "title": "Tečaj",
+        "description": "OER Schema: tečaj, ki mu je to preverjanje namenjeno."
+      }
+    ]
+  }
+}

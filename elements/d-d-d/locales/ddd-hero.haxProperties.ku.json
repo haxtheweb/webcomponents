@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Wêne, GIF an vîdyoyeke mezin bi sernav û nivîsê li ser, li her derê rûpelê tê bicihkirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wêne an vîdyo",
+        "description": "Pelek JPG, PNG, WebP, GIF, MP4 an WebM."
+      },
+      {
+        "title": "Nivîsa alternatîf",
+        "description": "Wêneyê rave bike. Dema ku tenê xemilandin e vala bihêle."
+      },
+      {
+        "title": "Sernav",
+        "description": "Sernavê ku li ser medyayê tê nîşandan. Ji bo tune vala bihêle."
+      },
+      {
+        "title": "Nivîs",
+        "description": "Nivîsa ku di bin sernavê de, li ser medyayê tê nîşandan."
+      },
+      {
+        "title": "Firehiya tevahî",
+        "description": "Ji qeraxê heta qeraxê dirêj bibe li şûna ku di stûna naverokê de bimîne."
+      },
+      {
+        "title": "Bilindahî",
+        "options": {
+          "tall": "Bilind",
+          "medium": "Navîn",
+          "short": "Kurt"
+        }
+      },
+      {
+        "title": "Çarçovekirin",
+        "description": "Wêne li her mezinahiya ekranê çawa bicih dibe"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kalbûn",
+        "description": "Rengê ku li ser medyayê tê danîn. Bi sernav an nivîsê her tim yek heye, da ku nivîs xwendbar bimîne.",
+        "options": {
+          "blue": "Şîn",
+          "bottom": "Li jêr tarî",
+          "none": "Tune"
+        }
+      },
+      {
+        "title": "Cihê nivîsê",
+        "options": {
+          "bottom": "Jêr",
+          "middle": "Navîn"
+        }
+      },
+      {
+        "title": "Xala navendî ya asoyî",
+        "description": "Beşa wêneyê ku dema tê birîn xuya dimîne, ji 0 (çep) heta 100 (rast)."
+      },
+      {
+        "title": "Xala navendî ya stûnî",
+        "description": "Beşa wêneyê ku dema tê birîn xuya dimîne, ji 0 (jor) heta 100 (jêr)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Kapbildo",
+    "description": "Granda bildo, GIF aŭ video kun titolo kaj teksto super ĝi, metebla ie ajn en paĝo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bildo aŭ video",
+        "description": "Dosiero JPG, PNG, WebP, GIF, MP4 aŭ WebM."
+      },
+      {
+        "title": "Alternativa teksto",
+        "description": "Priskribu la bildon. Lasu malplena, kiam ĝi estas nur ornamo."
+      },
+      {
+        "title": "Titolo",
+        "description": "Titolo montrata super la aŭdvidaĵo. Lasu malplena por neniu."
+      },
+      {
+        "title": "Teksto",
+        "description": "Teksto montrata sub la titolo, super la aŭdvidaĵo."
+      },
+      {
+        "title": "Plena larĝo",
+        "description": "Etendiĝi de rando ĝis rando anstataŭ sidi en la enhava kolumno."
+      },
+      {
+        "title": "Alto",
+        "options": {
+          "tall": "Alta",
+          "medium": "Meza",
+          "short": "Malalta"
+        }
+      },
+      {
+        "title": "Kadrigo",
+        "description": "Kiel la foto sidas ĉe ĉiu ekrana grandeco"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Velo",
+        "description": "Koloro metita super la aŭdvidaĵo. Kun titolo aŭ teksto ĉiam estas unu, por ke la teksto restu legebla.",
+        "options": {
+          "blue": "Blua",
+          "bottom": "Malhela malsupre",
+          "none": "Neniu"
+        }
+      },
+      {
+        "title": "Teksta pozicio",
+        "options": {
+          "bottom": "Malsupre",
+          "middle": "Meze"
+        }
+      },
+      {
+        "title": "Fokuspunkto laŭlarĝe",
+        "description": "Parto de la bildo, kiu restas videbla kiam ĝi estas stucita, de 0 (maldekstre) ĝis 100 (dekstre)."
+      },
+      {
+        "title": "Fokuspunkto laŭalte",
+        "description": "Parto de la bildo, kiu restas videbla kiam ĝi estas stucita, de 0 (supre) ĝis 100 (malsupre)."
+      }
+    ]
+  }
+}

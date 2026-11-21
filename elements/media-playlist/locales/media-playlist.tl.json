@@ -5,5 +5,7 @@
   "editModeLabel": "Edit mode ng media playlist",
   "position": "{current} sa {total}",
   "previousItem": "Nakaraang aytem",
-  "nextItem": "Susunod na aytem"
+  "nextItem": "Susunod na aytem",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Lumabas sa full screen"
 }

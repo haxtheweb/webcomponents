@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Cathetan sikil",
+    "description": "Cathetan sing ditulis ing panggonane ing teks. Katon minangka nomer, lan dhaptar cathetan sing nganggo nomer digawe dhewe ing ngisor kaca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cathetan",
+        "description": "Teks cathetan sikil."
+      },
+      {
+        "title": "Tanpa pratinjau",
+        "description": "Aja tampilake cathetan nalika pamaca nglayang utawa fokus ing nomer."
+      }
+    ]
+  }
+}

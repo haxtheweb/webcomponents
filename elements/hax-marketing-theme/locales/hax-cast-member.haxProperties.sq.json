@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Anëtar i kastit",
+    "description": "Një publik, i luajtur nga një personazh, me fjalë dhe një buton"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kush është ky"
+      },
+      {
+        "title": "Lloji i personazhit"
+      },
+      {
+        "title": "Fara e personazhit"
+      },
+      {
+        "title": "Ngjyra e skenës (emër DDD)"
+      },
+      {
+        "title": "Ku të çon butoni"
+      },
+      {
+        "title": "Teksti i butonit"
+      }
+    ]
+  }
+}

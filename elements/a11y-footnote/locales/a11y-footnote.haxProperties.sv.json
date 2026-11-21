@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fotnot",
+    "description": "En anteckning som skrivs där den hör hemma i texten. Den visas som en siffra, och den numrerade listan med anteckningar byggs automatiskt längst ned på sidan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Anteckning",
+        "description": "Fotnotens text."
+      },
+      {
+        "title": "Ingen förhandsvisning",
+        "description": "Visa inte anteckningen när en läsare hovrar över eller fokuserar siffran."
+      }
+    ]
+  }
+}

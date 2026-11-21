@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Porównanie platform",
+    "description": "Pojedynek: wybierz dowolne dwie platformy z pliku danych"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dane porównania (JSON)"
+      },
+      {
+        "title": "ID lewej platformy"
+      },
+      {
+        "title": "ID prawej platformy"
+      }
+    ]
+  }
+}

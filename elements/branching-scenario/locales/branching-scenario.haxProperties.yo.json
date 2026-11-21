@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ìṣẹ̀lẹ̀ onípẹ̀ka",
+    "description": "Ìtàn kan níbi tí àṣàyàn kọ̀ọ̀kan ti ń yọrí sí ìran àti ìparí ọ̀tọ̀ọ̀tọ̀. Àwọn akẹ́kọ̀ọ́ lè padà sẹ́yìn kí wọ́n sì gbìyànjú ọ̀nà mìíràn; ìparí tí a dé ló ń pinnu àmì."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Orúkọ ìṣẹ̀lẹ̀ náà, tí a fihàn nínú àkọlé rẹ̀."
+      },
+      {
+        "title": "Ìran ìbẹ̀rẹ̀",
+        "description": "ID ìran tí àwọn akẹ́kọ̀ọ́ ti ń bẹ̀rẹ̀. Fi sílẹ̀ ní òfo láti bẹ̀rẹ̀ ní ìran àkọ́kọ́."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ àṣàyàn fún chip àkọlé, àwọn bọ́tìnnì àti etí àṣàyàn kan."
+      }
+    ]
+  }
+}

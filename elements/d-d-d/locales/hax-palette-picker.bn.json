@@ -5,5 +5,6 @@
   "selected": "নির্বাচিত",
   "currentlyActiveAndSelectedPalette": "বর্তমানে সক্রিয় ও নির্বাচিত প্যালেট",
   "currentlyActivePalette": "বর্তমানে সক্রিয় প্যালেট",
-  "selectedPaletteToApply": "প্রয়োগের জন্য নির্বাচিত প্যালেট"
+  "selectedPaletteToApply": "প্রয়োগের জন্য নির্বাচিত প্যালেট",
+  "paletteNumber": "প্যালেট {number}"
 }

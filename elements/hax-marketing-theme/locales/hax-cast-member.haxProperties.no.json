@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rollemedlem",
+    "description": "Ett publikum, spilt av en figur, med tekst og en knapp"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvem dette er"
+      },
+      {
+        "title": "Figurtype"
+      },
+      {
+        "title": "Figurfrø"
+      },
+      {
+        "title": "Scenefarge (DDD-navn)"
+      },
+      {
+        "title": "Hvor knappen går"
+      },
+      {
+        "title": "Knappetekst"
+      }
+    ]
+  }
+}

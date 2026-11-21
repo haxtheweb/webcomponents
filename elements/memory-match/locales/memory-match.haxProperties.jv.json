@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Dolanan memori",
+    "description": "Walik kertu kanggo nemokake pasangan. Pasangake istilah karo tegese supaya kecocokan nuduhake pangerten, utawa gunakake rong teks utawa gambar sing cocog."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Pitakon sing ditampilake ing judhul, contone: Cocokake istilah karo gaweane."
+      },
+      {
+        "title": "Pasangan",
+        "description": "Saben pasangan yaiku rong kertu sing sagandhengan, biasane istilah lan tegese. Siji sisih butuh teks, gambar utawa loro-lorone."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan kanggo chip judhul, mburine kertu lan tombol."
+      }
+    ]
+  }
+}

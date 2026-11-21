@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Statws Baseline",
+    "description": "Dangos statws cymorth porwyr Baseline ar gyfer nodwedd o'r platfform gwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID nodwedd",
+        "description": "ID y nodwedd we, er enghraifft anchor-positioning. Dewch o hyd i IDs ar webstatus.dev; yr ID yw rhan olaf URL tudalen nodwedd."
+      }
+    ]
+  }
+}

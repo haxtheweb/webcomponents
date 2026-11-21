@@ -23,7 +23,9 @@
           "stop": "Henti",
           "warning": "Amaran",
           "success": "Pengesahan",
-          "info": "Notis"
+          "info": "Notis",
+          "tip": "Petua",
+          "new": "Apa yang baharu"
         }
       },
       {

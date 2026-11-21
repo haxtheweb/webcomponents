@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifikujte aktívne body",
+    "description": "Študenti nachádzajú správne miesta na obrázku kliknutím, ťuknutím alebo posúvaním zameriavača klávesnicou. Hodnotený protějšok obrázkovej mapy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obrázok",
+        "description": "Obrázok, ktorý študenti prehľadávajú."
+      },
+      {
+        "title": "Alternatívny text",
+        "description": "Opisuje obrázok pre ľudí, ktorí ho nevidia. Nikdy sa nezobrazuje ako názov."
+      },
+      {
+        "title": "Názov",
+        "description": "Krátky viditeľný názov zobrazený nad obrázkom."
+      },
+      {
+        "title": "Otázka",
+        "description": "Čo majú študenti na obrázku nájsť."
+      },
+      {
+        "title": "Odpovede",
+        "description": "Každá odpoveď je pomenovaný ovál na obrázku. Pozícia a veľkosť sú percentá obrázka merané od jeho ľavého horného rohu. Počas úprav je každá odpoveď na obrázku ohraničená."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokusy",
+        "description": "Koľkokrát môže študent skúšať. 0 znamená neobmedzene."
+      },
+      {
+        "title": "Povolené mine",
+        "description": "Koľko miňov ukončí pokus. 0 znamená neobmedzene a študenti dostanú tlačidlo Dokončiť."
+      },
+      {
+        "title": "Zbaliteľné",
+        "description": "Zobraziť túto otázku ako riadok, ktorý sa otvára a zatvára. Otvorením jednej sa zatvoria ostatné zbaliteľné otázky vedľa nej."
+      },
+      {
+        "title": "Začať zbalené",
+        "description": "Ak je zbaliteľná, začať ako zatvorený riadok, ktorý zobrazuje iba otázku a jej stav."
+      },
+      {
+        "title": "Formát hodnotenia",
+        "description": "OER Schema: formát hodnotenia tohto hodnotenia (napr. body, známka, percentá, dokončenie)."
+      },
+      {
+        "title": "Vzdelávací cieľ",
+        "description": "OER Schema: vzdelávací cieľ spojený s týmto hodnotením."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Názov kvízu",
+        "description": "Názov kvízu odovzdávaný na použitie v prostrediach riadených xAPI na identifikáciu tejto položky"
+      },
+      {
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pre ktorý je toto hodnotenie určené."
+      }
+    ]
+  }
+}

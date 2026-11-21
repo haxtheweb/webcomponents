@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scenariu à rami",
+    "description": "Una storia induve ogni scelta porta à una scena è una fine sfarente. I studienti ponu turnà in daretu è pruvà altri camini; a fine ghjunta fissa u puntu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Nome di u scenariu, mustratu in u so capu."
+      },
+      {
+        "title": "Scena di partenza",
+        "description": "ID di a scena induve principianu i studienti. Lasciate biotu per principià à a prima scena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore facultativu per l'etichetta di u capu, i buttoni è u bordu d'una scelta."
+      }
+    ]
+  }
+}

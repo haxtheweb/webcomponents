@@ -8,5 +8,9 @@
   "theme": "Thema",
   "palette": "Palet",
   "cancel": "Annuleren",
-  "openAppearanceSettings": "Instellingen voor uiterlijk openen"
+  "openAppearanceSettings": "Instellingen voor uiterlijk openen",
+  "designSystem": "Ontwerpsysteem",
+  "designSystemDefault": "DDD (standaard)",
+  "designSystemThemeDefault": "{name} (standaard van het thema)",
+  "designSystemHelp": "Kleur, typografie, hoeken en dichtheid. Het thema bepaalt nog steeds de lay-out."
 }

@@ -20,6 +20,12 @@
         "title": "Şəkil",
         "description": "Sitatla birlikdə göstərilən şəkil."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Çərçivəli",
+        "description": "Sitatı qeydlər və təlimat kartlarına uyğun olması üçün yuxarıda ikon və etiketlə ortaq blok çərçivəsində çək."
+      }
     ]
   }
 }

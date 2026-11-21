@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Křížovka",
+    "description": "Křížovka vytvořená ze seznamu slov a legend. Mřížka se vygeneruje za vás; studenti píší slova a kontrolují je."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Název nebo otázka zobrazená nad křížovkou."
+      },
+      {
+        "title": "Slova",
+        "description": "Každé slovo a jeho legenda. Mřížka se generuje z tohoto seznamu: nejdelší slovo se umístí první a ostatní ho kříží ve sdílených písmenech."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokusy",
+        "description": "Kolikrát může student kontrolovat. 0 znamená neomezeně."
+      },
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Volitelná barva štítku záhlaví, aktivního slova a akčních tlačítek."
+      },
+      {
+        "title": "Sbalitelné",
+        "description": "Zobrazit tuto křížovku jako řádek, který se otevírá a zavírá. Otevření jednoho zavře ostatní sbalitelné otázky vedle něj."
+      },
+      {
+        "title": "Začít sbalené",
+        "description": "Je-li sbalitelné, začít jako zavřený řádek, který ukazuje jen název a stav."
+      },
+      {
+        "title": "Formát hodnocení",
+        "description": "OER Schema: formát hodnocení tohoto testu (např. body, známka, procenta, dokončení)."
+      },
+      {
+        "title": "Vzdělávací cíl",
+        "description": "OER Schema: vzdělávací cíl spojený s tímto testem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Název kvízu",
+        "description": "Název kvízu používaný k identifikaci xAPI v analytických systémech."
+      },
+      {
+        "title": "Kurz",
+        "description": "OER Schema: kurz, pro který je tento test určen."
+      }
+    ]
+  }
+}

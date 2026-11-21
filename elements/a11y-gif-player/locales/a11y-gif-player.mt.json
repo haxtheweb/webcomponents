@@ -2,5 +2,9 @@
   "toggleAnimation": "Ixgħel/itfi l-animazzjoni",
   "info": "info",
   "image": "Immaġni",
-  "animatedGif": "GIF animata"
+  "animatedGif": "GIF animata",
+  "playAnimation": "Ħaddem l-animazzjoni",
+  "pauseAnimation": "Waqqaf l-animazzjoni temporanjament",
+  "showDescription": "Uri d-deskrizzjoni",
+  "hideDescription": "Aħbi d-deskrizzjoni"
 }

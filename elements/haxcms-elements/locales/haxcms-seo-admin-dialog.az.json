@@ -6,6 +6,8 @@
   "faviconDescription": "Brauzer tabı şəkli / telefonlarda kiçik sayt loqosu kimi istifadə olunur",
   "domain": "Domen",
   "domainDescription": "Bu veb-saytın domeni",
+  "sameAs": "Bu saytın digər profilləri",
+  "sameAsDescription": "Hər sətirdə bu saytın və ya təşkilatın başqa yerlərdəki profillərinə bir keçid (GitHub, LinkedIn, YouTube, Mastodon). Axtarış sistemləri onlardan həmin profilləri bu saytla əlaqələndirmək üçün istifadə edir.",
   "language": "Dil",
   "languageDescription": "Bu saytın dili. Ad və ya kod üzrə axtarın, yaxud fr-CA kimi başqa kod daxil edin.",
   "googleAnalyticsId": "Google Analytics ID",

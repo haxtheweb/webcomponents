@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tunnista kohteet",
+    "description": "Oppijat löytävät kuvasta oikeat kohdat napsauttamalla, napauttamalla tai liikuttamalla näppäimistön tähtäintä. Kuvakartan arvioitava vastine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuva",
+        "description": "Kuva, jota oppijat tutkivat."
+      },
+      {
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvailee kuvan niille, jotka eivät näe sitä. Sitä ei koskaan näytetä otsikkona."
+      },
+      {
+        "title": "Otsikko",
+        "description": "Lyhyt näkyvä otsikko kuvan yläpuolella."
+      },
+      {
+        "title": "Kysymys",
+        "description": "Mitä oppijoita pyydetään löytämään kuvasta."
+      },
+      {
+        "title": "Vastaukset",
+        "description": "Jokainen vastaus on nimetty soikio kuvassa. Sijainti ja koko ovat prosentteja kuvasta, mitattuna sen vasemmasta yläkulmasta. Muokattaessa jokainen vastaus on ääriviivattu kuvaan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yritykset",
+        "description": "Montako kertaa oppija voi yrittää. 0 tarkoittaa rajoittamatonta."
+      },
+      {
+        "title": "Sallitut ohilyönnit",
+        "description": "Montako ohilyöntiä päättää yrityksen. 0 tarkoittaa rajoittamatonta, ja oppijat saavat Lopeta-painikkeen."
+      },
+      {
+        "title": "Kutistettava",
+        "description": "Näytä tämä kysymys avautuvana ja sulkeutuvana rivinä. Yhden avaaminen sulkee viereiset kutistettavat kysymykset."
+      },
+      {
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, aloita suljettuna rivinä, joka näyttää vain kysymyksen ja tilan."
+      },
+      {
+        "title": "Arviointimuoto",
+        "description": "OER Schema: tämän arvioinnin arviointimuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, joka välitetään xAPI-pohjaisiin ympäristöihin tämän kohteen tunnistamista varten"
+      },
+      {
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      }
+    ]
+  }
+}

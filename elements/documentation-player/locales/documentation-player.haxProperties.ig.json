@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Ihe ọkpụkpọ akwụkwọ ntụziaka",
+    "description": "Ntụziaka, ngosi na ntụaka maka web component, nwere bọtịnụ idetuo maka HTML, import, npm na CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faịlụ data akwụkwọ ntụziaka",
+        "description": "Data akwụkwọ ntụziaka na-abịa na ihe ahụ (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard ntụziaka",
+        "description": "Storyboard mmegharị na-abịa na ihe ahụ (tag.motion.json). Nhọrọ."
+      },
+      {
+        "title": "Vidiyo nkuzi",
+        "description": "Vidiyo dị mkpụmkpụ banyere ihe ahụ (YouTube, Vimeo ma ọ bụ faịlụ vidiyo). Ọ na-anọchi vidiyo dị na data akwụkwọ ntụziaka."
+      },
+      {
+        "title": "Mepee na taabụ",
+        "description": "Taabụ nke na-ebu ụzọ egosi.",
+        "options": {
+          "motion": "Ntụziaka",
+          "video": "Vidiyo",
+          "demo": "Ngosi",
+          "docs": "Akwụkwọ ntụziaka",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Kpọọ ntụziaka na-akpaghị aka",
+        "description": "Malite ntụziaka ozugbo ihe ọkpụkpọ ahụ pụtara. A na-eleghara ya anya mgbe onye na-agụ akwụkwọ họọrọ mmegharị belatara."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isiokwu ntụziaka",
+        "description": "Maka ihe nwere ọtụtụ ntụziaka, isiokwu nke a ga-ebu ụzọ meghee (dịka add-blocks). Hapụ ya efu maka nke isi."
+      },
+      {
+        "title": "Njikọ ngosi ndụ",
+        "description": "Ebe bọtịnụ Mepee isi ngosi na-aga. Ndabara ya bụ folda demo dị n'ebe nchekwa."
+      },
+      {
+        "title": "Njikọ akwụkwọ ntụziaka",
+        "description": "Ebe bọtịnụ akwụkwọ ntụziaka zuru ezu na-aga, dịka peeji Learn HAX kwekọrọ."
+      }
+    ]
+  }
+}

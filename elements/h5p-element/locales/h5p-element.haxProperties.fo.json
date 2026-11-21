@@ -4,7 +4,12 @@
     "description": "Spælir H5P samvirkandi innihald úr eini upplatnari .h5p fílu, uttan at brúka H5P ambætara"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-fíla",
+        "description": "Legg upp ella leinkja eina .h5p-fílu. Hon verður pakkað út í kaganum; eingin H5P-ambætari er neyðugur."
+      }
+    ],
     "advanced": [
       {
         "title": "Gamal iframe innbyggingarkota",

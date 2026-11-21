@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Nkọwa ebe ọkụ",
         "description": "Ebe ọkụ na-emekọrịta ihe na maapụ onyonyo ahụ."
+      },
+      {
+        "title": "Nkọwa ebe ọkụ",
+        "description": "Ebe ọkụ mmekọrịta dị na maapụ onyonyo."
       }
     ]
   }

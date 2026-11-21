@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Drill sa aritmetika",
+    "description": "Maikling serye ng awtomatikong ginawang problema sa aritmetika na may agarang feedback. Piliin ang mga operasyon at ang saklaw ng numero; bago ang bawat takbo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Pangalan ng drill na ito, ipinapakita sa header nito."
+      },
+      {
+        "title": "Mga operasyon",
+        "description": "Kung anong uri ng problema ang itinatanong. Maaaring i-off ng mga mag-aaral ang alinman sa mga ito bago sila magsimula.",
+        "options": {
+          "add": "Pagdaragdag",
+          "subtract": "Pagbabawas",
+          "multiply": "Pagpaparami",
+          "divide": "Paghahati",
+          "add subtract": "Pagdaragdag at pagbabawas",
+          "multiply divide": "Pagpaparami at paghahati",
+          "add multiply": "Pagdaragdag at pagpaparami",
+          "add divide": "Pagdaragdag at paghahati",
+          "subtract multiply": "Pagbabawas at pagpaparami",
+          "subtract divide": "Pagbabawas at paghahati",
+          "add subtract multiply": "Pagdaragdag, pagbabawas at pagpaparami",
+          "add subtract divide": "Pagdaragdag, pagbabawas at paghahati",
+          "add multiply divide": "Pagdaragdag, pagpaparami at paghahati",
+          "subtract multiply divide": "Pagbabawas, pagpaparami at paghahati",
+          "add subtract multiply divide": "Lahat ng apat"
+        }
+      },
+      {
+        "title": "Pinakamaliit na numero",
+        "description": "Ang pinakamaliit na numerong ginagamit sa problema. Buong numero, 0 o higit pa."
+      },
+      {
+        "title": "Pinakamalaking numero",
+        "description": "Ang pinakamalaking numerong ginagamit sa problema. Nananatili rin sa saklaw na ito ang mga sagot at divisor sa paghahati."
+      },
+      {
+        "title": "Bilang ng problema",
+        "description": "Ilang problema ang nasa isang takbo (1 hanggang 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limitasyon sa oras",
+        "description": "Mga segundong pinapayagan para sa buong takbo. Ang 0 ay nangangahulugang walang timer, na siyang default: ibinabagsak ng mga drill na may oras ang mga mag-aaral na nangangailangan ng mas maraming oras. Kapag nakatakda, maaari pa ring i-off ng mga mag-aaral ang timer para sa kanilang sarili."
+      },
+      {
+        "title": "Kulay ng accent",
+        "description": "Kulay ng header chip at mga button. Iwanang blangko para sundan ang tema."
+      }
+    ]
+  }
+}

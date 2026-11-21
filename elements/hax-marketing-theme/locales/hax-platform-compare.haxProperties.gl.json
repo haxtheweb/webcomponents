@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Comparación de plataformas",
+    "description": "Cara a cara: escolle dúas plataformas calquera dun ficheiro de datos"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datos da comparación (JSON)"
+      },
+      {
+        "title": "Id da plataforma da esquerda"
+      },
+      {
+        "title": "Id da plataforma da dereita"
+      }
+    ]
+  }
+}

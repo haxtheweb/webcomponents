@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Elementu di partenza d'esempiu adupratu per dimustrà a cunfigurazione HAX è e pruprietà mudificabile."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu"
+      }
+    ]
+  }
+}

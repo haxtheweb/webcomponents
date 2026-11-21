@@ -60,6 +60,8 @@
   "flagsFound": "{correct} de {total} encontradas",
   "toRethink": "{count} por replantear",
   "notEvidence": "no es evidencia para esta banderita",
+  "isEvidence": "evidencia de esta marca",
+  "readingKeys": "Usa las flechas para pasar de una unidad ({unit}) a la siguiente.",
   "markAnswers": "Marcar respuestas",
   "doneMarking": "Terminar de marcar respuestas",
   "editHint": "Edita la lectura de abajo. Usa Marcar respuestas en el menú del bloque para elegir dónde va cada banderita.",

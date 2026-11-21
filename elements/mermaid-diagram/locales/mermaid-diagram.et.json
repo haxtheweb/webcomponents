@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramm",
+  "flowchart": "vooskeem",
+  "sequence": "jada",
+  "source": "Allikas",
+  "textAlternative": "Tekstiline alternatiiv",
+  "present": "Esitle",
+  "exitPresent": "Välju esitlusest",
+  "loading": "Diagrammi laadimine",
+  "empty": "Veel pole midagi joonistada. Lisa diagrammi lähtekood.",
+  "error": "Viga",
+  "parseError": "Seda diagrammi ei õnnestunud joonistada. Kontrolli lähtekoodi.",
+  "loadError": "Diagrammiteeki ei õnnestunud laadida.",
+  "srcError": "Diagrammifaili ei õnnestunud laadida.",
+  "decision": "otsus",
+  "end": "lõpp",
+  "goTo": "mine: {target}",
+  "ifGoTo": "kui {label}, mine: {target}",
+  "describedBySource": "Diagramm, mida kirjeldab selle lähtekood.",
+  "scrollable": "Diagramm, keritav"
+}

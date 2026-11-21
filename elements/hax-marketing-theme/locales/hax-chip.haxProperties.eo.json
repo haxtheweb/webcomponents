@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Ĉipo",
+    "description": "Malgranda etikedita piktogramo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Piktogramo"
+      },
+      {
+        "title": "Etikedo"
+      }
+    ]
+  }
+}

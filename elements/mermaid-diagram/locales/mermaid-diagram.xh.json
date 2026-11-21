@@ -1,0 +1,21 @@
+{
+  "diagram": "Umzobo",
+  "flowchart": "itshati yokuhamba",
+  "sequence": "ulandelelwano",
+  "source": "Umthombo",
+  "textAlternative": "Enye indlela yesicatshulwa",
+  "present": "Nikezela",
+  "exitPresent": "Phuma kwinkcazelo",
+  "loading": "Kulayishwa umzobo",
+  "empty": "Akukho nto yokuzoba okwangoku. Yongeza umthombo womzobo.",
+  "error": "Impazamo",
+  "parseError": "Lo mzobo awukwazanga ukuzotywa. Jonga umthombo.",
+  "loadError": "Ithala lemizobo alikwazanga ukulayishwa.",
+  "srcError": "Ifayile yomzobo ayikwazanga ukulayishwa.",
+  "decision": "isigqibo",
+  "end": "isiphelo",
+  "goTo": "yiya ku-{target}",
+  "ifGoTo": "ukuba {label}, yiya ku-{target}",
+  "describedBySource": "Umzobo uchazwe ngumthombo wawo.",
+  "scrollable": "Umzobo, unokuskrolwa"
+}

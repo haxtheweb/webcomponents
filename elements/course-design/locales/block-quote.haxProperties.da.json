@@ -20,6 +20,12 @@
         "title": "Billede",
         "description": "Billede vist sammen med citatet."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Indrammet",
+        "description": "Tegn citatet på den fælles blokramme med et ikon og en etiket over, så det matcher noter og instruktionskort."
+      }
     ]
   }
 }

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagramm úr teksti",
+    "description": "Skriva eitt diagramm sum tekst (Mermaid): eitt flóðrit, røð, tíðarlinja og meira. Tað verður teknað á síðuni við teksti í staðin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Víst omanfyri diagrammið og brúkt sum navn tess."
+      },
+      {
+        "title": "Diagrammkelda",
+        "description": "Mermaid-tekstur, til dømis: flowchart TD, síðan ein linja fyri hvørt leinki sum A[Draft] --> B{Ready?}. Legg |label| aftan á ein píl fyri at geva honum heiti. Tekningin dagførist, meðan tú skrivar."
+      },
+      {
+        "title": "Tekstur í staðin",
+        "description": "Lýs, hvat diagrammið vísir, fyri fólki, sum ikki kunnu síggja tað. Lat vera tómt á einum flóðriti fyri at fáa stigini listað fyri teg."
+      },
+      {
+        "title": "Myndatekstur",
+        "description": "Valfrír myndatekstur víst undir diagramminum."
+      },
+      {
+        "title": "Vís keldina",
+        "description": "Vís diagrammtekstin við síðuna av tekningini."
+      },
+      {
+        "title": "Vís tekstin í staðin",
+        "description": "Vís tekstin í staðin undir tekningini. Hann er altíð tøkur fyri skíggjalesarum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Keldufíla",
+        "description": "Adressa á eini .mmd-fílu at tekna í staðin fyri tekstin omanfyri (https ella ein slóð á hesi síðuni)."
+      },
+      {
+        "title": "Áherðslulitur",
+        "description": "Litur á ímyndarmerkinum í høvdinum."
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pregunta numèrica",
+    "description": "Una pregunta que es respon amb un nombre. La resposta és un nombre fix o una fórmula calculada a partir de variables, i compta quan és dins d'una tolerància."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pregunta",
+        "description": "Què se'ls demana als alumnes. Escriu el nom d'una variable entre claus, com {d}, per mostrar-ne el valor."
+      },
+      {
+        "title": "Unitat",
+        "description": "Es mostra com a text al costat del camp de resposta, per exemple km/h."
+      },
+      {
+        "title": "Resposta",
+        "description": "El nombre correcte. Deixa-ho buit quan una fórmula calcula la resposta."
+      },
+      {
+        "title": "Fórmula",
+        "description": "Calcula la resposta a partir de les variables, per exemple d / (t / 60). Pot fer servir + - * / ^, parèntesis, sqrt() i abs(). S'utilitza en lloc de la resposta si s'estableix."
+      },
+      {
+        "title": "Variables",
+        "description": "Nombres que fan servir la fórmula i la pregunta. Cadascun pren un valor entre el mínim i el màxim, en increments."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerància",
+        "description": "Fins a quina distància de la resposta exacta encara compta. 0 vol dir exacta, o arrodonida als decimals de sota."
+      },
+      {
+        "title": "Tipus de tolerància",
+        "description": "Absoluta: més o menys la tolerància. Percentatge: més o menys aquest percentatge de la resposta exacta.",
+        "options": {
+          "absolute": "Absoluta",
+          "percent": "Percentatge"
+        }
+      },
+      {
+        "title": "Decimals",
+        "description": "Es demana als alumnes que arrodoneixin a aquests decimals, i la resposta es mostra arrodonida així. Deixa-ho buit per no arrodonir."
+      },
+      {
+        "title": "Intents",
+        "description": "Quantes vegades pot comprovar un alumne. 0 vol dir il·limitades."
+      },
+      {
+        "title": "Nombres nous a cada intent",
+        "description": "Genera valors nous de les variables cada vegada que un alumne torna a provar. Llavors la resposta anterior no es mostra quan torna, només si l'ha encertat."
+      },
+      {
+        "title": "Plegable",
+        "description": "Mostra aquesta pregunta com una fila que s'obre i es tanca. En obrir-ne una es tanquen les altres preguntes plegables del costat."
+      },
+      {
+        "title": "Comença plegat",
+        "description": "Si és plegable, comença com una fila tancada que només mostra la pregunta i el seu estat."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari utilitzat per a la identificació xAPI en sistemes d'analítica."
+      }
+    ]
+  }
+}

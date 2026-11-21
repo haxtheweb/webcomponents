@@ -8,5 +8,9 @@
   "theme": "Temo",
   "palette": "Paletro",
   "cancel": "Nuligi",
-  "openAppearanceSettings": "Malfermi aspektajn agordojn"
+  "openAppearanceSettings": "Malfermi aspektajn agordojn",
+  "designSystem": "Dezajnsistemo",
+  "designSystemDefault": "DDD (defaŭlta)",
+  "designSystemThemeDefault": "{name} (defaŭlto de la etoso)",
+  "designSystemHelp": "Koloro, tiparo, anguloj kaj denseco. La etoso ankoraŭ decidas la aranĝon."
 }

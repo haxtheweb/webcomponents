@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Wurin jefa hoto",
+    "description": "Masu koyo suna sanya lakabi a kan yankunan da aka shimfiɗa a kan hoto, sannan su duba amsarsu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hoto",
+        "description": "Hoton da masu koyo ke sanya lakabi a kai."
+      },
+      {
+        "title": "Madadin rubutu",
+        "description": "Yana bayyana hoton don mutanen da ba sa iya ganinsa. Kada ka bayyana inda lakabin ke zuwa."
+      },
+      {
+        "title": "Taken hoto",
+        "description": "Gajeren take da ake gani don hoton, ana nuna shi a samansa."
+      },
+      {
+        "title": "Tambaya",
+        "description": "Abin da ake tambayar masu koyo su yi da lakabin."
+      },
+      {
+        "title": "Lakabi da yankuna",
+        "description": "Kowane abu lakabi ne da masu koyo za su iya sanyawa. Ba lakabi sunan yanki don sanya yankinsa a kan hoton; lakabi ba tare da sunan yanki ba ƙari ne da ba shi da wuri. Lambobin yanki kashi ne na hoton."
+      },
+      {
+        "title": "Taken hoto",
+        "description": "Taken zaɓi da ake nunawa ƙarƙashin hoton."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ƙoƙari",
+        "description": "Sau nawa mai koyo zai iya dubawa. 0 yana nufin mara iyaka."
+      },
+      {
+        "title": "Gauraya lakabi",
+        "description": "Nuna lakabin a tsari daban kowace ziyara."
+      },
+      {
+        "title": "Ana iya naɗewa",
+        "description": "Nuna wannan tambaya a matsayin layi da ke buɗewa da rufewa. Buɗe ɗaya yana rufe sauran tambayoyin da ake iya naɗewa da ke kusa da shi."
+      },
+      {
+        "title": "Fara a naɗe",
+        "description": "Idan ana iya naɗewa, fara a matsayin layi a rufe da ke nuna tambayar da matsayinta kawai."
+      },
+      {
+        "title": "Tsarin bayar da maki",
+        "description": "OER Schema: tsarin bayar da maki don wannan kimantawa (misali maki, harafi, kashi, kammalawa)."
+      },
+      {
+        "title": "Manufar koyo",
+        "description": "OER Schema: manufar koyo da ke da alaƙa da wannan kimantawa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Sunan tambayoyin",
+        "description": "Sunan tambayoyin da ake amfani da shi don gano xAPI a tsarin nazari."
+      },
+      {
+        "title": "Kwas",
+        "description": "OER Schema: kwas ɗin da aka yi wannan kimantawa domin shi."
+      }
+    ]
+  }
+}

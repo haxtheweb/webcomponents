@@ -6,6 +6,8 @@
   "faviconDescription": "Imazhi i skedës së shfletuesit / përdoret në telefona si logo e vogël e sajtit",
   "domain": "Domeni",
   "domainDescription": "Domeni i këtij sajti",
+  "sameAs": "Profile të tjera të këtij sajti",
+  "sameAsDescription": "Një lidhje për rresht drejt profileve të këtij sajti ose organizate gjetkë (GitHub, LinkedIn, YouTube, Mastodon). Motorët e kërkimit i përdorin për t'i lidhur ato profile me këtë sajt.",
   "language": "Gjuha",
   "languageDescription": "Gjuha e këtij faqeje. Kërko sipas emrit ose kodit, ose fut një kod tjetër si fr-CA.",
   "googleAnalyticsId": "ID-ja e Google Analytics",

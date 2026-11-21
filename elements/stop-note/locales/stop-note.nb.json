@@ -3,5 +3,7 @@
   "status_stop": "Stopp",
   "status_warning": "Advarsel",
   "status_success": "Suksess",
-  "status_info": "Merknad"
+  "status_info": "Merknad",
+  "status_tip": "Visste du?",
+  "status_new": "Hva er nytt"
 }

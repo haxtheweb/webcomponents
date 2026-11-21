@@ -1,4 +1,6 @@
 {
   "saveAll": "Tiaki Katoa",
-  "saveTheFollowing": "Tiaki i ēnei: {list}?"
+  "saveTheFollowing": "Tiaki i ēnei: {list}?",
+  "save": "Tiaki",
+  "cancel": "Whakakore"
 }

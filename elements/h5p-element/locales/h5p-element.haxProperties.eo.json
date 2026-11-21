@@ -4,7 +4,12 @@
     "description": "Ludas interagan H5P-enhavon el alŝutita .h5p-dosiero, sen bezono de H5P-servilo"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P-dosiero",
+        "description": "Alŝutu aŭ ligu .h5p-dosieron. Ĝi estas malpakita en la retumilo; neniu H5P-servilo estas bezonata."
+      }
+    ],
     "advanced": [
       {
         "title": "Malnova enkorpiga kodo de iframe",

@@ -1,0 +1,21 @@
+{
+  "diagram": "Léaráid",
+  "flowchart": "sreabhchairt",
+  "sequence": "seicheamh",
+  "source": "Foinse",
+  "textAlternative": "Malairt téacs",
+  "present": "Cuir i láthair",
+  "exitPresent": "Scoir den chur i láthair",
+  "loading": "An léaráid á luchtú",
+  "empty": "Níl aon rud le tarraingt fós. Cuir foinse na léaráide leis.",
+  "error": "Earráid",
+  "parseError": "Níorbh fhéidir an léaráid seo a tharraingt. Seiceáil an fhoinse.",
+  "loadError": "Níorbh fhéidir leabharlann na léaráidí a luchtú.",
+  "srcError": "Níorbh fhéidir comhad na léaráide a luchtú.",
+  "decision": "cinneadh",
+  "end": "deireadh",
+  "goTo": "téigh go {target}",
+  "ifGoTo": "má tá {label}, téigh go {target}",
+  "describedBySource": "Léaráid a ndéantar cur síos uirthi ag a foinse.",
+  "scrollable": "Léaráid, inscrollaithe"
+}

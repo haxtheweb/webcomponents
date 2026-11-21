@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Välise tööriista käivitus",
+    "description": "Plokk, mis avab välise õppetööriista uues aknas või lehel, lihtsa lingina või LTI 1.3 sisselogimispäringuga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Tööriista nimi. Kuvatakse päises ja nupul."
+      },
+      {
+        "title": "Kirjeldus",
+        "description": "Mida õppijad tööriistas teevad, kuvatakse nupu kohal."
+      },
+      {
+        "title": "Käivitus-URL",
+        "description": "Tööriista aadress. See peab olema täielik aadress, mis algab https:// või http://."
+      },
+      {
+        "title": "Ava",
+        "description": "Uus aken töötab iga tööriistaga. Sellel lehel töötab ainult tööriistadega, mis lubavad end teise saidi sees kuvada.",
+        "options": {
+          "window": "Uues aknas",
+          "embed": "Sellel lehel"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI sisselogimise URL",
+        "description": "Ainult LTI 1.3: tööriista sisselogimise algatamise aadress. Selle, kliendi ID ja juurutuse ID-ga saadab nupp lihtsa lingi avamise asemel LTI sisselogimispäringu. Käivituse lõpetamiseks on vaja selle saidi LTI-teenust."
+      },
+      {
+        "title": "LTI kliendi ID",
+        "description": "Kliendi ID, mille tööriist sellele saidile andis. Avalik identifikaator, mitte saladus: ära kunagi pane siia võtmeid ega saladusi."
+      },
+      {
+        "title": "LTI juurutuse ID",
+        "description": "Juurutuse ID, mille tööriist sellele saidile andis. Avalik identifikaator, mitte saladus."
+      },
+      {
+        "title": "LTI väljastaja",
+        "description": "Aadress, mis tuvastab selle saidi tööriista jaoks. Jäta tühjaks, et kasutada selle saidi aadressi, kus leht asub."
+      },
+      {
+        "title": "Kõrgus lehel",
+        "description": "Tööriista kõrgus, kui see avaneb sellel lehel, pikslites (200 kuni 2000)."
+      },
+      {
+        "title": "Rõhuvärv",
+        "description": "Päise sildi ja nupu värv. Jäta tühjaks, et järgida kujundust."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI sisselogimise vihje",
+        "description": "Läbipaistmatu väärtus, mida selle saidi LTI-teenus kasutab õppija tuvastamiseks. Tavaliselt annab selle sait sündmuse lti-launch-request kaudu, mitte ei salvestata siia. Mitte kunagi parool ega võti."
+      },
+      {
+        "title": "LTI sõnumi vihje",
+        "description": "Läbipaistmatu väärtus, mida selle saidi LTI-teenus kasutab selle käivituse tuvastamiseks. Tavaliselt annab selle sait, mitte ei salvestata siia."
+      }
+    ]
+  }
+}

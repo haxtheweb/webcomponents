@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Sammude loend",
     "description": "Nummerdatud sammud ülesande täitmiseks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sammunäidik",
+        "description": "Näita samme kompaktse pealkirjareana, mis märgib edenemist. Selles paigutuses sammude sisu ei kuvata."
+      },
+      {
+        "title": "Praegune samm",
+        "description": "Samm, mille juures lugeja on, loendades 1-st. Varasemad sammud kuvatakse lõpetatuna. Kasutab sammunäidik."
+      }
+    ]
   }
 }

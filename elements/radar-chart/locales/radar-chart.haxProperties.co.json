@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Graficu radar",
+    "description": "Graficu radar (ragnu) per i mudelli di maturità è a valutazione di facette, cum'è HEOSAT. Include un'alternativa testuale è una tavula di dati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Titulu di u graficu; adupratu dinò cum'è u so nome accessibile."
+      },
+      {
+        "title": "Puntu massimu",
+        "description": "Valore u più altu nant'à a scala."
+      },
+      {
+        "title": "Categurie",
+        "description": "Una categuria per linea. Ci ne volenu almenu 3."
+      },
+      {
+        "title": "Punti",
+        "description": "Numeri siparati da virgule, unu per categuria in u listessu ordine."
+      },
+      {
+        "title": "Punti di destinazione",
+        "description": "Numeri siparati da virgule, unu per categuria in u listessu ordine."
+      },
+      {
+        "title": "Mustrà a legenda",
+        "description": "Mustrà una legenda chì nomina i punti è e destinazioni."
+      },
+      {
+        "title": "Compattu",
+        "description": "Graficu più chjucu senza etichette, legenda nè tavula di dati. Passate nant'à un puntu per vede i so valori."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etichetta di i punti",
+        "description": "Etichetta di legenda è di tavula per i punti."
+      },
+      {
+        "title": "Etichetta di destinazione",
+        "description": "Etichetta di legenda è di tavula per e destinazioni."
+      }
+    ]
+  }
+}

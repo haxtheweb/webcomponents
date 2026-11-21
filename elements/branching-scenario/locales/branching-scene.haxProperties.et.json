@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Stsenaariumi stseen",
+    "description": "Hargneva stsenaariumi üks stseen. Seo iga valik teise stseeniga, kasutades # ja selle stseeni ID-d."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stseeni ID",
+        "description": "Millele valikud viitavad: link kujul # ja see ID viib selle stseenini. Tähed, numbrid ja sidekriipsud."
+      },
+      {
+        "title": "Pealkiri",
+        "description": "Stseeni pealkiri."
+      },
+      {
+        "title": "Lõpp",
+        "description": "Kas see stseen lõpetab tee ja kuidas see lõppes.",
+        "options": {
+          "": "Pole lõpp",
+          "good": "Hea lõpp",
+          "mixed": "Segane lõpp",
+          "poor": "Halb lõpp"
+        }
+      },
+      {
+        "title": "Punktid",
+        "description": "Punktid selle lõpuni jõudmise eest. Stsenaariumi kõrgeim lõpupunktisumma on maksimum."
+      }
+    ]
+  }
+}
