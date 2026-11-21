@@ -205,16 +205,24 @@ class A11yMediaTranscriptCue extends LitElement {
           font-variant-numeric: tabular-nums;
           line-height: var(--ddd-lh-140);
           white-space: nowrap;
-          color: light-dark(
-            var(--ddd-theme-default-slateGray),
-            var(--ddd-theme-default-limestoneLight)
+          /* the player's muted and heading ink, so the time reads on
+             whatever surface the player was given */
+          color: var(
+            --a11y-media-muted-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
           );
         }
         :host(:not([disabled]):hover) #time,
         :host([active]) #time {
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
+          color: var(
+            --a11y-media-heading-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
           );
         }
         :host([hide-timestamps]) #time {
