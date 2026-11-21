@@ -1212,8 +1212,27 @@
       "path": "lib/rpg-character-builder.js",
       "declarations": [
         {
+          "kind": "variable",
+          "name": "PAGE_SIZE",
+          "type": {
+            "text": "number"
+          },
+          "default": "12",
+          "description": "tiles per page of the option grid"
+        },
+        {
+          "kind": "function",
+          "name": "characterFromParams",
+          "parameters": [
+            {
+              "name": "search"
+            }
+          ],
+          "description": "A character from an address like rpg.art.hax.cloud's: ?code= wins; otherwise\n?seed= as a name, or as the 8-digit seed old rpg-me links carry (body, face,\nglasses, hair, pants, shirt, skin, hair color), plus the old &hat= and\n&fire= choices. Returns { code, seed, walking }, or null."
+        },
+        {
           "kind": "class",
-          "description": "`rpg-character-builder`\nPick every part of an rpg-character with a live preview, and get back a\ncharacter code that recreates it anywhere (`<rpg-character code=\"...\">`).",
+          "description": "`rpg-character-builder`\nBuild an rpg-character by picture, the way the Wii's Mii editor worked:\npicture tabs (named on hover / focus), a paged grid of tiles that show each\noption on your own character, colors beside the shapes, and a big preview\nthat tries an option on while you hover or focus it. Gives back a character\ncode that recreates it anywhere (`<rpg-character code=\"...\">`).\n\nThe same builder runs in HAXcms (the user menu's character, in a dialog\nwith `actions`) and on rpg.art.hax.cloud, which adds `sync-url` so the\naddress bar is always a share link to what is on screen.",
           "name": "RpgCharacterBuilder",
           "members": [
             {
@@ -1234,30 +1253,33 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "character",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_query"
+            },
+            {
+              "kind": "field",
+              "name": "shareLink",
+              "description": "a link to this character, when the page keeps its address in step",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "embedCode",
+              "description": "markup that shows this character on any page that loads HAX",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_save"
             },
             {
               "kind": "method",
               "name": "_cancel"
-            },
-            {
-              "kind": "method",
-              "name": "_step",
-              "parameters": [
-                {
-                  "name": "name"
-                },
-                {
-                  "name": "delta"
-                }
-              ],
-              "description": "step a numbered look choice (body, skin...) to the previous or next"
-            },
-            {
-              "kind": "field",
-              "name": "character",
-              "readonly": true
             },
             {
               "kind": "method",
@@ -1279,6 +1301,11 @@
                   "name": "code"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "undo",
+              "description": "go back to the code before the last change"
             },
             {
               "kind": "method",
@@ -1304,16 +1331,17 @@
             },
             {
               "kind": "method",
-              "name": "copyCode"
+              "name": "_copy",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
             },
             {
               "kind": "method",
-              "name": "_slotValues",
-              "parameters": [
-                {
-                  "name": "name"
-                }
-              ]
+              "name": "copyCode",
+              "description": "copy the character code"
             },
             {
               "kind": "method",
@@ -1329,43 +1357,252 @@
             },
             {
               "kind": "method",
-              "name": "_title",
+              "name": "_fill",
               "parameters": [
                 {
-                  "name": "name"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "renderSelect",
-              "parameters": [
-                {
-                  "name": "name"
+                  "name": "text"
                 },
                 {
-                  "name": "title"
+                  "name": "values"
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "renderLook",
+              "name": "_with",
               "parameters": [
                 {
-                  "name": "name"
+                  "name": "set"
                 },
                 {
-                  "name": "key"
+                  "name": "clears"
+                }
+              ],
+              "description": "the code with some slots changed (and one slot cleared, if asked)"
+            },
+            {
+              "kind": "method",
+              "name": "_isOn",
+              "parameters": [
+                {
+                  "name": "option"
                 }
               ]
             },
             {
               "kind": "method",
-              "name": "renderToggle",
+              "name": "_offValue",
               "parameters": [
                 {
-                  "name": "name"
+                  "name": "slot"
+                }
+              ],
+              "description": "what a slot goes back to when its chosen tile is clicked again, if anything"
+            },
+            {
+              "kind": "method",
+              "name": "_slotOptions",
+              "parameters": [
+                {
+                  "name": "slot"
+                },
+                {
+                  "name": "region"
+                },
+                {
+                  "name": "named"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tabs",
+              "description": "the tabs, in order: id, label, icon (a code and region), sections of tiles, side swatches",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tabDef",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_setTab",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_tabKey",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_goPage",
+              "parameters": [
+                {
+                  "name": "page"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_result",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "section"
+                }
+              ],
+              "description": "What clicking (or trying) a tile does: a toggle flips; a chosen tile of a\nslot that can be empty goes back to empty; anything else is picked."
+            },
+            {
+              "kind": "method",
+              "name": "_optionOn",
+              "parameters": [
+                {
+                  "name": "option"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_try",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "section"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_untry"
+            },
+            {
+              "kind": "method",
+              "name": "_pick",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "section"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_swatchTry",
+              "parameters": [
+                {
+                  "name": "side"
+                },
+                {
+                  "name": "i"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_crop",
+              "parameters": [
+                {
+                  "name": "code"
+                },
+                {
+                  "name": "region"
+                },
+                {
+                  "name": "size"
+                }
+              ],
+              "description": "a square window onto a character, zoomed to a region of its art"
+            },
+            {
+              "kind": "method",
+              "name": "renderPreview"
+            },
+            {
+              "kind": "method",
+              "name": "renderBoard",
+              "parameters": [
+                {
+                  "name": "character"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderTile",
+              "parameters": [
+                {
+                  "name": "option"
+                },
+                {
+                  "name": "section"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderPager",
+              "parameters": [
+                {
+                  "name": "page"
+                },
+                {
+                  "name": "pages"
+                },
+                {
+                  "name": "first"
+                },
+                {
+                  "name": "shown"
+                },
+                {
+                  "name": "total"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderHints",
+              "parameters": [
+                {
+                  "name": "tab"
+                },
+                {
+                  "name": "section"
+                },
+                {
+                  "name": "character"
+                },
+                {
+                  "name": "removable"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSwatches",
+              "parameters": [
+                {
+                  "name": "side"
+                },
+                {
+                  "name": "character"
                 }
               ]
             },
@@ -1442,6 +1679,110 @@
             },
             {
               "kind": "field",
+              "name": "syncUrl",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Keep the page address in step with the character (?code=, &walking=)\nand load from it, so the address is a share link. Off by default:\nonly a page that is the builder (rpg.art.hax.cloud) turns it on.",
+              "default": "false",
+              "attribute": "sync-url"
+            },
+            {
+              "kind": "field",
+              "name": "walking",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Preview only: walk in place (not part of the code)",
+              "default": "false",
+              "attribute": "walking",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tab",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Builder tab on screen",
+              "default": "\"hair\"",
+              "attribute": "tab"
+            },
+            {
+              "kind": "field",
+              "name": "_section",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "_section"
+            },
+            {
+              "kind": "field",
+              "name": "_page",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "_page"
+            },
+            {
+              "kind": "field",
+              "name": "_preview",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_preview"
+            },
+            {
+              "kind": "field",
+              "name": "_trying",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_trying"
+            },
+            {
+              "kind": "field",
+              "name": "_history",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "_history"
+            },
+            {
+              "kind": "field",
+              "name": "_share",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_share"
+            },
+            {
+              "kind": "field",
+              "name": "_tileSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "84",
+              "attribute": "_tileSize"
+            },
+            {
+              "kind": "field",
               "name": "_labels",
               "privacy": "public",
               "type": {
@@ -1460,11 +1801,24 @@
             },
             {
               "kind": "field",
+              "name": "_slide",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ characterBuilder: \"Character builder\", name: \"Name\", randomize: \"Randomize\", look: \"Look\", style: \"Style\", gear: \"Gear\", extras: \"Extras\", body: \"Body\", skin: \"Skin\", hair: \"Hair\", hairColor: \"Hair color\", face: \"Face\", faceItem: \"Glasses\", accessory: \"Neckwear\", shirt: \"Shirt\", pants: \"Pants\", circle: \"Circle background\", copyCode: \"Copy code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", preview: \"Character preview\", previous: \"Previous {name}\", next: \"Next {name}\", variant: \"{current} of {total}\", save: \"Save\", cancel: \"Cancel\", unsavedChanges: \"Unsaved changes\", noUnsavedChanges: \"No unsaved changes\", codeHelp: \"Paste a code to load a character, or copy this one to use it anywhere.\", }"
+              "default": "{ characterBuilder: \"Character builder\", preview: \"Character preview\", name: \"Name\", nameHelp: \"A name picks a look. Your other choices stay.\", randomize: \"Surprise me\", undo: \"Undo\", undid: \"Undid the last change.\", walk: \"Walk\", stopWalking: \"Stop walking\", share: \"Done, share it\", codeAndEmbed: \"Code and embed\", code: \"Character code\", codeHelp: \"Paste a code to load that character.\", copyCode: \"Copy code\", copyLink: \"Copy share link\", copyEmbed: \"Copy embed code\", copied: \"Copied!\", invalidCode: \"That is not a character code.\", save: \"Save\", cancel: \"Cancel\", unsavedChanges: \"Unsaved changes\", noUnsavedChanges: \"No unsaved changes\", trying: \"Trying on: {name}\", picked: \"{section}: {name}\", removed: \"{section}: took off {name}\", showing: \"{first}-{last} of {total}\", page: \"Page {page} of {pages}\", previousPage: \"Previous page\", nextPage: \"Next page\", on: \"On\", off: \"Off\", none: \"None\", takeOffHint: \"Click a chosen one again to take it off.\", presetHint: \"You're wearing the {preset} outfit. Picking your own {part} swaps it for your own clothes.\", hatHint: \"Picking a hairstyle takes off your {hat} so you can see it.\", longHairHint: \"Pick Long in Hairstyle to color it.\", seasonalHint: \"Seasonal look changes with the time of year.\", tabCharacters: \"Characters\", readyMade: \"Ready-made characters\", noneType: \"Your own look\", tabBody: \"Body and skin\", pose: \"Pose\", skin: \"Skin\", hair: \"Hair\", hairstyle: \"Hairstyle\", short: \"Short\", long: \"Long\", shaved: \"Shaved\", hairColor: \"Hair color\", longHairColor: \"Long hair color\", face: \"Face\", mouth: \"Mouth\", expression: \"Expression\", glasses: \"Glasses\", hats: \"Hats\", disguise: \"Masks and makeup\", masks: \"Masks\", makeup: \"Makeup\", outfit: \"Outfit\", shirt: \"Shirt\", pants: \"Pants\", neckwear: \"Neckwear\", heldItems: \"Held items\", rightHand: \"Right hand\", leftHand: \"Left hand\", flagText: \"Flag text\", flagTextHelp: \"Up to 4 letters on the flag.\", feet: \"Feet\", pets: \"Pets\", effects: \"Effects\", fire: \"Fire\", circle: \"Circle background\", seasonal: \"Seasonal look\", walking: \"Walking\", }"
+            },
+            {
+              "kind": "field",
+              "name": "_resizer",
+              "default": "new ResizeObserver((entries) => { const width = entries[0].contentRect.width; const size = width < 420 ? 58 : width < 720 ? 68 : 84; if (size !== this._tileSize) { this._tileSize = size; } })"
             }
           ],
           "events": [
@@ -1472,13 +1826,15 @@
               "name": "rpg-character-builder-save",
               "type": {
                 "text": "CustomEvent"
-              }
+              },
+              "description": "Save in the action bar; detail.code"
             },
             {
               "name": "rpg-character-builder-cancel",
               "type": {
                 "text": "CustomEvent"
-              }
+              },
+              "description": "Cancel in the action bar; detail.code"
             },
             {
               "name": "value-changed",
@@ -1543,6 +1899,89 @@
               "fieldName": "cancelLabel"
             },
             {
+              "name": "sync-url",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Keep the page address in step with the character (?code=, &walking=)\nand load from it, so the address is a share link. Off by default:\nonly a page that is the builder (rpg.art.hax.cloud) turns it on.",
+              "default": "false",
+              "fieldName": "syncUrl"
+            },
+            {
+              "name": "walking",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Preview only: walk in place (not part of the code)",
+              "default": "false",
+              "fieldName": "walking"
+            },
+            {
+              "name": "tab",
+              "type": {
+                "text": "string"
+              },
+              "description": "Builder tab on screen",
+              "default": "\"hair\"",
+              "fieldName": "tab"
+            },
+            {
+              "name": "_section",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "_section"
+            },
+            {
+              "name": "_page",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "_page"
+            },
+            {
+              "name": "_preview",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_preview"
+            },
+            {
+              "name": "_trying",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_trying"
+            },
+            {
+              "name": "_history",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "_history"
+            },
+            {
+              "name": "_share",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_share"
+            },
+            {
+              "name": "_tileSize",
+              "type": {
+                "text": "number"
+              },
+              "default": "84",
+              "fieldName": "_tileSize"
+            },
+            {
               "name": "_labels",
               "type": {
                 "text": "object"
@@ -1566,6 +2005,22 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "PAGE_SIZE",
+          "declaration": {
+            "name": "PAGE_SIZE",
+            "module": "lib/rpg-character-builder.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "characterFromParams",
+          "declaration": {
+            "name": "characterFromParams",
+            "module": "lib/rpg-character-builder.js"
+          }
+        },
         {
           "kind": "custom-element-definition",
           "declaration": {

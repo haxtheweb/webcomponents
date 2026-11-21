@@ -5,8 +5,11 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiAdminStyles } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
+import { HaxUiAdminSimpleFields } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/i18n-manager.js";
+import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import {
   RpgCharacter,
   traitsFromSeed,
@@ -15,30 +18,252 @@ import {
   codeSlots,
 } from "../rpg-character.js";
 
-// numeric look traits, in display order, with how many variants each has
+// numeric look traits a name (seed) picks; every other choice is kept
 const lookSlots = [
-  ["base", "body"],
-  ["skin", "skin"],
-  ["hair", "hair"],
-  ["hatColor", "hairColor"],
-  ["face", "face"],
-  ["faceItem", "faceItem"],
-  ["accessories", "accessory"],
-  ["shirt", "shirt"],
-  ["pants", "pants"],
+  "base",
+  "skin",
+  "hair",
+  "hatColor",
+  "face",
+  "faceItem",
+  "accessories",
+  "shirt",
+  "pants",
 ];
-const styleSlots = ["preset", "hat", "mask", "makeup", "expression", "pose"];
-const gearSlots = ["item", "offhand", "feet", "pet"];
-const toggleSlots = ["shaved", "seasonal", "fire", "circle"];
+// slots Surprise me fills about a third of the time
+const extraSlots = [
+  "preset",
+  "hat",
+  "mask",
+  "makeup",
+  "expression",
+  "pose",
+  "item",
+  "offhand",
+  "feet",
+  "pet",
+];
+// hats that are really hairstyles, offered in the Hair tab
+const hairHats = ["messy-hair", "wild-hair", "flat-top", "wig"];
+// on / off effects, each one tile that flips when clicked
+const toggleSlots = ["fire", "circle", "seasonal"];
+/** tiles per page of the option grid */
+export const PAGE_SIZE = 12;
+
+// regions of rpg-character's 113 x 142 art, [x, y, w, h], that a tile zooms to
+const R = {
+  full: [0, 0, 113, 142],
+  head: [8, 0, 97, 97],
+  face: [20, 42, 73, 56],
+  torso: [8, 70, 97, 72],
+  legs: [16, 92, 81, 50],
+  hands: [10, 40, 103, 102],
+  pet: [0, 56, 113, 86],
+};
+// swatch colors (hex, no #), read from rpg-character's own art: lib/skin, lib/hatColor, lib/hair
+const swatches = {
+  skin: [
+    "F7DECE",
+    "F3D2A2",
+    "A7A7A7",
+    "D5AB88",
+    "AF7E57",
+    "7C533E",
+    "FFDC5D",
+    "5DB1FF",
+    "66DE52",
+    "D772C7",
+  ],
+  hatColor: [
+    "979797",
+    "E40101",
+    "1390EB",
+    "484848",
+    "89EDD5",
+    "E6EB13",
+    "8C13EB",
+    "13EB1B",
+    "E46001",
+    "EB1387",
+  ],
+  hair: [
+    "F8F8F8",
+    "282828",
+    "A42424",
+    "C47328",
+    "D5EF38",
+    "32923B",
+    "3DAAB1",
+    "46299B",
+    "745336",
+    "E3CE96",
+  ],
+};
+// English names for numbered art, read off the art itself; each is a this.t key (shirt3)
+const artNames = {
+  face: ["Plain", "Frown", "Straight", "Smirk", "Mustache", "Grin"],
+  faceItem: [
+    "None",
+    "Monocle, tinted",
+    "Monocle, right",
+    "Monocle, left",
+    "Eye patch",
+    "Eye patch, left",
+    "Brown shades",
+    "Silver glasses",
+    "Gold glasses",
+    "Sunglasses",
+  ],
+  accessories: [
+    "None",
+    "Gold necklace",
+    "Red bow tie",
+    "Black bow tie",
+    "Blue bow tie",
+    "Blue tie",
+    "Red tie",
+    "Purple tie",
+    "Gold chain",
+    "Silver chain",
+  ],
+  shirt: [
+    "Black tee",
+    "Lace top",
+    "White button-up",
+    "Red tee",
+    "Red long sleeve",
+    "Blue long sleeve",
+    "White long sleeve",
+    "Blue tee",
+    "White tee",
+    "Black long sleeve",
+  ],
+  pants: [
+    "Black pants",
+    "Denim",
+    "Charcoal",
+    "White pants",
+    "White cuffed",
+    "Black cuffed",
+    "Denim cuffed",
+    "Faded denim",
+    "Black worn",
+    "White worn",
+  ],
+  skin: [
+    "Porcelain",
+    "Sand",
+    "Stone",
+    "Tan",
+    "Bronze",
+    "Umber",
+    "Sunny",
+    "Sky",
+    "Leaf",
+    "Orchid",
+  ],
+  hatColor: [
+    "Gray",
+    "Red",
+    "Blue",
+    "Black",
+    "Mint",
+    "Yellow",
+    "Purple",
+    "Green",
+    "Orange",
+    "Pink",
+  ],
+  hair: [
+    "White",
+    "Black",
+    "Red",
+    "Copper",
+    "Lime",
+    "Green",
+    "Teal",
+    "Indigo",
+    "Brown",
+    "Blonde",
+  ],
+};
+const artKey = (slot, i) => `${slot}${i}`;
+
+const slotValues = (name) => {
+  const slot = codeSlots.find((s) => s.name === name);
+  // "random" is not something a code can keep
+  return slot ? slot.values.filter((v) => v !== "random") : [];
+};
+
+/**
+ * A character from an address like rpg.art.hax.cloud's: ?code= wins; otherwise
+ * ?seed= as a name, or as the 8-digit seed old rpg-me links carry (body, face,
+ * glasses, hair, pants, shirt, skin, hair color), plus the old &hat= and
+ * &fire= choices. Returns { code, seed, walking }, or null.
+ */
+export function characterFromParams(search) {
+  const params = new URLSearchParams(search || "");
+  const walking = params.get("walking") === "true";
+  const code = (params.get("code") || "").trim();
+  if (code && decodeCharacter(code)) {
+    return { code, seed: "", walking };
+  }
+  const seed = (params.get("seed") || "").trim();
+  if (!seed) {
+    return null;
+  }
+  let character;
+  if (/^\d{1,8}$/.test(seed)) {
+    const d = seed.padStart(8, "0").split("").map(Number);
+    const clamp = (name, v) => {
+      const values = slotValues(name);
+      return values.includes(v) ? v : values[values.length - 1];
+    };
+    character = {
+      base: clamp("base", d[0]),
+      face: clamp("face", d[1]),
+      faceItem: d[2],
+      hair: d[3],
+      pants: d[4],
+      shirt: d[5],
+      skin: d[6],
+      hatColor: d[7],
+    };
+  } else {
+    character = traitsFromSeed(seed);
+    character.base = Number(character.base);
+  }
+  const hat = params.get("hat");
+  if (hat && slotValues("hat").includes(hat)) {
+    character.hat = hat;
+  }
+  if (params.get("fire") === "true") {
+    character.fire = true;
+  }
+  return {
+    code: encodeCharacter(character),
+    seed: /^\d+$/.test(seed) ? "" : seed,
+    walking,
+  };
+}
 
 /**
  * `rpg-character-builder`
- * Pick every part of an rpg-character with a live preview, and get back a
- * character code that recreates it anywhere (`<rpg-character code="...">`).
+ * Build an rpg-character by picture, the way the Wii's Mii editor worked:
+ * picture tabs (named on hover / focus), a paged grid of tiles that show each
+ * option on your own character, colors beside the shapes, and a big preview
+ * that tries an option on while you hover or focus it. Gives back a character
+ * code that recreates it anywhere (`<rpg-character code="...">`).
+ *
+ * The same builder runs in HAXcms (the user menu's character, in a dialog
+ * with `actions`) and on rpg.art.hax.cloud, which adds `sync-url` so the
+ * address bar is always a share link to what is on screen.
  *
  * @demo demo/builder.html
  * @element rpg-character-builder
  * @fires value-changed - detail.value is the new character code
+ * @fires rpg-character-builder-save - Save in the action bar; detail.code
+ * @fires rpg-character-builder-cancel - Cancel in the action bar; detail.code
  */
 class RpgCharacterBuilder extends I18NMixin(DDD) {
   static get tag() {
@@ -53,40 +278,101 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     this.actions = false;
     this.saveLabel = "";
     this.cancelLabel = "";
+    this.syncUrl = false;
+    this.walking = false;
+    this.tab = "hair";
+    this._section = 0;
+    this._page = 0;
+    this._preview = "";
+    this._trying = "";
+    this._history = [];
+    this._share = false;
+    this._tileSize = 84;
     this._labels = {};
     this._initialCode = null;
+    this._slide = 0;
     this.t = {
       characterBuilder: "Character builder",
+      preview: "Character preview",
       name: "Name",
-      randomize: "Randomize",
-      look: "Look",
-      style: "Style",
-      gear: "Gear",
-      extras: "Extras",
-      body: "Body",
-      skin: "Skin",
-      hair: "Hair",
-      hairColor: "Hair color",
-      face: "Face",
-      faceItem: "Glasses",
-      accessory: "Neckwear",
-      shirt: "Shirt",
-      pants: "Pants",
-      circle: "Circle background",
+      nameHelp: "A name picks a look. Your other choices stay.",
+      randomize: "Surprise me",
+      undo: "Undo",
+      undid: "Undid the last change.",
+      walk: "Walk",
+      stopWalking: "Stop walking",
+      share: "Done, share it",
+      codeAndEmbed: "Code and embed",
+      code: "Character code",
+      codeHelp: "Paste a code to load that character.",
       copyCode: "Copy code",
+      copyLink: "Copy share link",
+      copyEmbed: "Copy embed code",
       copied: "Copied!",
       invalidCode: "That is not a character code.",
-      preview: "Character preview",
-      previous: "Previous {name}",
-      next: "Next {name}",
-      variant: "{current} of {total}",
       save: "Save",
       cancel: "Cancel",
       unsavedChanges: "Unsaved changes",
       noUnsavedChanges: "No unsaved changes",
-      codeHelp:
-        "Paste a code to load a character, or copy this one to use it anywhere.",
+      trying: "Trying on: {name}",
+      picked: "{section}: {name}",
+      removed: "{section}: took off {name}",
+      showing: "{first}-{last} of {total}",
+      page: "Page {page} of {pages}",
+      previousPage: "Previous page",
+      nextPage: "Next page",
+      on: "On",
+      off: "Off",
+      none: "None",
+      takeOffHint: "Click a chosen one again to take it off.",
+      presetHint:
+        "You're wearing the {preset} outfit. Picking your own {part} swaps it for your own clothes.",
+      hatHint: "Picking a hairstyle takes off your {hat} so you can see it.",
+      longHairHint: "Pick Long in Hairstyle to color it.",
+      seasonalHint: "Seasonal look changes with the time of year.",
+      tabCharacters: "Characters",
+      readyMade: "Ready-made characters",
+      noneType: "Your own look",
+      tabBody: "Body and skin",
+      pose: "Pose",
+      skin: "Skin",
+      hair: "Hair",
+      hairstyle: "Hairstyle",
+      short: "Short",
+      long: "Long",
+      shaved: "Shaved",
+      hairColor: "Hair color",
+      longHairColor: "Long hair color",
+      face: "Face",
+      mouth: "Mouth",
+      expression: "Expression",
+      glasses: "Glasses",
+      hats: "Hats",
+      disguise: "Masks and makeup",
+      masks: "Masks",
+      makeup: "Makeup",
+      outfit: "Outfit",
+      shirt: "Shirt",
+      pants: "Pants",
+      neckwear: "Neckwear",
+      heldItems: "Held items",
+      rightHand: "Right hand",
+      leftHand: "Left hand",
+      flagText: "Flag text",
+      flagTextHelp: "Up to 4 letters on the flag.",
+      feet: "Feet",
+      pets: "Pets",
+      effects: "Effects",
+      fire: "Fire",
+      circle: "Circle background",
+      seasonal: "Seasonal look",
+      walking: "Walking",
     };
+    Object.keys(artNames).forEach((slot) => {
+      artNames[slot].forEach((name, i) => {
+        this.t[artKey(slot, i)] = name;
+      });
+    });
     this.registerLocalization({
       context: this,
       localesPath: new URL("../locales", import.meta.url).href,
@@ -96,6 +382,14 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     I18NManagerStore.registerLocalization({
       namespace: "rpg-character.haxProperties",
       localesPath: new URL("../locales", import.meta.url).href,
+    });
+    // tile size follows the builder's own width (a dialog or a page)
+    this._resizer = new ResizeObserver((entries) => {
+      const width = entries[0].contentRect.width;
+      const size = width < 420 ? 58 : width < 720 ? 68 : 84;
+      if (size !== this._tileSize) {
+        this._tileSize = size;
+      }
     });
   }
 
@@ -116,6 +410,23 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       saveLabel: { type: String, attribute: "save-label" },
       /** Label for Cancel in the action bar */
       cancelLabel: { type: String, attribute: "cancel-label" },
+      /**
+       * Keep the page address in step with the character (?code=, &walking=)
+       * and load from it, so the address is a share link. Off by default:
+       * only a page that is the builder (rpg.art.hax.cloud) turns it on.
+       */
+      syncUrl: { type: Boolean, attribute: "sync-url" },
+      /** Preview only: walk in place (not part of the code) */
+      walking: { type: Boolean, reflect: true },
+      /** Builder tab on screen */
+      tab: { type: String },
+      _section: { type: Number, state: true },
+      _page: { type: Number, state: true },
+      _preview: { type: String, state: true },
+      _trying: { type: String, state: true },
+      _history: { type: Array, state: true },
+      _share: { type: Boolean, state: true },
+      _tileSize: { type: Number, state: true },
       _labels: { type: Object, state: true },
     };
   }
@@ -124,9 +435,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     return [
       super.styles,
       ...HaxUiAdminStyles,
+      ...HaxUiAdminSimpleFields,
       css`
-        /* the HAX UI admin look (hax-ui-admin.md): tokens and controls come
-           from HaxUiAdminStyles in d-d-d, so no editor dependency */
+        /* the HAX UI admin look: tokens and controls come from
+           HaxUiAdminStyles in d-d-d. Selection reads green, as in the Mii
+           editor this builder takes after. */
         :host {
           display: block;
           box-sizing: border-box;
@@ -136,6 +449,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           font-size: var(--hax-ui-admin-font-size);
           color: var(--hax-ui-text);
           background-color: var(--hax-ui-surface);
+          --rpgb-on: var(--hax-ui-success);
+          --rpgb-on-bg: var(--hax-ui-success-soft);
+          --rpgb-on-ink: var(--hax-ui-surface);
+          --rpgb-tile-a: var(--hax-ui-surface);
+          --rpgb-tile-b: var(--hax-ui-sunken);
         }
         /* in a dialog: fill it below its titlebar, the options scroll and
            the action bar stays */
@@ -153,12 +471,62 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         *::after {
           box-sizing: border-box;
         }
+        button {
+          font-family: inherit;
+        }
         .frame {
           display: flex;
           flex-direction: column;
           height: 100%;
           min-height: 0;
         }
+
+        /* picture tabs */
+        .tabs {
+          flex: none;
+          overflow-x: auto;
+          scrollbar-width: thin;
+          border-bottom: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-sunken);
+        }
+        [role="tablist"] {
+          display: flex;
+          gap: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-5, 20px);
+        }
+        [role="tab"] {
+          flex: none;
+          width: 60px;
+          height: 56px;
+          padding: 0;
+          display: grid;
+          place-items: center;
+          border-radius: var(--hax-ui-radius);
+          border: 2px solid var(--hax-ui-line);
+          background: linear-gradient(var(--rpgb-tile-a), var(--rpgb-tile-b));
+          cursor: pointer;
+          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+        }
+        [role="tab"]:hover {
+          transform: translateY(-2px);
+          border-color: var(--hax-ui-line-strong);
+        }
+        [role="tab"]:active {
+          transform: translateY(1px);
+        }
+        [role="tab"][aria-selected="true"] {
+          background: var(--rpgb-on);
+          border-color: var(--rpgb-on);
+        }
+        [role="tab"][aria-selected="true"] .crop {
+          background-color: var(--ddd-theme-default-white, #fff);
+          border-radius: var(--ddd-radius-sm, 4px);
+        }
+        button:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+        }
+
         .builder {
           flex: 1;
           min-height: 0;
@@ -166,56 +534,69 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           grid-template-columns: 300px minmax(0, 1fr);
         }
 
-        /* preview panel */
+        /* preview */
         .preview {
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-4, 16px);
+          gap: var(--ddd-spacing-3, 12px);
           padding: var(--ddd-spacing-5, 20px);
           border-right: 1px solid var(--hax-ui-line);
           background-color: var(--hax-ui-sunken);
           overflow: auto;
         }
         .stage {
-          display: grid;
-          place-items: center;
+          position: relative;
           margin: 0;
-          padding: var(--ddd-spacing-3, 12px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          aspect-ratio: 1 / 1.05;
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--hax-ui-radius-lg);
-          background-color: var(--hax-ui-surface);
+          background: radial-gradient(
+            circle at 50% 42%,
+            var(--hax-ui-surface) 0,
+            var(--hax-ui-sunken) 70%
+          );
         }
         .stage rpg-character {
           display: block;
           max-width: 100%;
         }
-        .stacked {
+        .trying {
+          position: absolute;
+          bottom: var(--ddd-spacing-3, 12px);
+          left: 50%;
+          transform: translateX(-50%);
+          max-width: 92%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: 2px 12px;
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          background-color: var(--hax-ui-text);
+          color: var(--hax-ui-surface);
+        }
+        .buttons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: var(--ddd-spacing-2, 8px);
+        }
+        .sharebox {
           display: flex;
           flex-direction: column;
-          gap: 6px;
-        }
-        .stacked > label,
-        .label {
-          font-size: 12px;
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text-muted);
-        }
-        .inline {
-          display: flex;
-          gap: 8px;
-        }
-        .inline input {
-          flex: 1;
-          min-width: 0;
-        }
-        .help {
-          margin: 0;
-          font-size: 12px;
-          color: var(--hax-ui-text-muted);
+          gap: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-3, 12px);
+          border: 1px dashed var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius);
         }
         .status {
           min-height: 18px;
-          font-size: 12px;
+          margin: 0;
+          text-align: center;
+          font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
         }
         .status.error {
@@ -223,116 +604,262 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold, 700);
         }
 
-        /* options */
-        .options {
+        /* option board */
+        .board {
           overflow: auto;
-          padding: 4px var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px);
+          padding: var(--ddd-spacing-4, 16px) var(--ddd-spacing-5, 20px);
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) auto;
+          gap: var(--ddd-spacing-5, 20px);
+          align-content: start;
         }
-        section {
-          margin: 0;
-          padding: 0;
+        .board.noside {
+          grid-template-columns: minmax(0, 1fr);
         }
-        h3 {
+        .board-head {
+          grid-column: 1 / -1;
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: 12px;
-          margin: var(--ddd-spacing-5, 20px) 0 4px;
-          font-size: 11px;
+          gap: var(--ddd-spacing-2, 8px);
+        }
+        .board-head h3 {
+          margin: 0 auto 0 0;
+          font-size: var(--hax-ui-admin-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
-          letter-spacing: 0.04em;
-          text-transform: uppercase;
-          color: var(--hax-ui-text-muted);
         }
-        h3::after {
-          content: "";
-          flex: 1;
-          border-top: 1px solid var(--hax-ui-line);
-        }
-        .rows {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-          column-gap: var(--ddd-spacing-6, 24px);
-        }
-        .row {
-          display: grid;
-          grid-template-columns: 112px minmax(0, 1fr);
-          align-items: center;
-          gap: 12px;
-          min-height: 44px;
-          border-bottom: 1px solid var(--hax-ui-line);
-        }
-        .row > label,
-        .row > .label {
-          font-size: 14px;
-          font-weight: var(--ddd-font-weight-medium, 500);
+        .seg {
+          min-height: 36px;
+          padding: 0 12px;
+          border-radius: var(--hax-ui-radius-pill);
+          border: 2px solid var(--hax-ui-line);
+          background-color: transparent;
           color: var(--hax-ui-text);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          cursor: pointer;
         }
-        .control {
+        .seg:hover {
+          border-color: var(--hax-ui-line-strong);
+        }
+        .seg[aria-pressed="true"] {
+          background-color: var(--rpgb-on-bg);
+          border-color: var(--rpgb-on);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: repeat(4, max-content);
+          gap: var(--ddd-spacing-3, 12px);
+          padding-bottom: var(--ddd-spacing-6, 24px);
+        }
+        .tile {
+          position: relative;
+          display: block;
+          padding: 4px;
+          border-radius: var(--hax-ui-radius);
+          border: 2px solid var(--hax-ui-line);
+          background: linear-gradient(var(--rpgb-tile-a), var(--rpgb-tile-b));
+          cursor: pointer;
+          transition:
+            transform 0.14s ease,
+            box-shadow 0.14s ease;
+        }
+        .tile[aria-pressed="true"] {
+          background: var(--rpgb-on-bg);
+          border-color: var(--rpgb-on);
+          box-shadow: inset 0 0 0 2px var(--rpgb-on);
+        }
+        .tile:hover,
+        .tile:focus-visible {
+          transform: scale(1.28);
+          z-index: 3;
+          box-shadow: var(--hax-ui-shadow-popover);
+        }
+        .tile:active {
+          transform: scale(1.2);
+        }
+        .check {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          width: 22px;
+          height: 22px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          background-color: var(--rpgb-on);
+          color: var(--rpgb-on-ink);
+        }
+        .state {
+          position: absolute;
+          top: 4px;
+          left: 4px;
+          z-index: 1;
+          padding: 0 6px;
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          background-color: var(--hax-ui-text);
+          color: var(--hax-ui-surface);
+        }
+        .tile[aria-pressed="true"] .state {
+          background-color: var(--rpgb-on);
+          color: var(--rpgb-on-ink);
+        }
+        .lbl {
+          position: absolute;
+          left: 50%;
+          top: calc(100% + 4px);
+          transform: translateX(-50%) scale(0.8);
+          z-index: 4;
+          opacity: 0;
+          pointer-events: none;
+          white-space: nowrap;
+          padding: 2px 9px;
+          border-radius: var(--hax-ui-radius-pill);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          background-color: var(--hax-ui-text);
+          color: var(--hax-ui-surface);
+          transition: opacity 0.12s ease;
+        }
+        .sw .lbl {
+          transform: translateX(-50%);
+          font-size: var(--hax-ui-admin-font-size-xs);
+        }
+        .tile:hover .lbl,
+        .tile:focus-visible .lbl,
+        .sw:hover .lbl,
+        .sw:focus-visible .lbl {
+          opacity: 1;
+        }
+        .crop {
+          position: relative;
+          display: block;
+          overflow: hidden;
+        }
+        .crop rpg-character {
+          position: absolute;
+          pointer-events: none;
+        }
+        .pager {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
-          gap: 4px;
-          min-width: 0;
+          gap: var(--ddd-spacing-2, 8px);
+          margin-top: var(--ddd-spacing-2, 8px);
         }
-        .control .hax-ui-select {
-          flex: 1;
-          min-width: 0;
-        }
-        .inline .hax-ui-input {
-          flex: 1;
-          width: auto;
-          min-width: 0;
-        }
-        /* the look steppers are square .hax-ui-btn */
-        .step {
-          flex: none;
-          width: var(--hax-ui-row-height);
-          padding: 0;
-          font-size: 16px;
-          line-height: var(--ddd-lh-100, 1);
-        }
-        .variant {
-          flex: none;
-          min-width: 52px;
-          font-size: 12px;
-          text-align: center;
+        .count {
+          margin-right: var(--ddd-spacing-2, 8px);
+          font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
           font-variant-numeric: tabular-nums;
         }
-        /* extras are native checkbox switches drawn as .hax-ui-switch is
-           (that class needs a button with aria-checked) */
-        input[type="checkbox"] {
-          appearance: none;
-          flex: none;
-          position: relative;
-          width: 36px;
-          height: 20px;
-          margin: 0;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--hax-ui-text-muted);
-          cursor: pointer;
-          transition: background-color var(--hax-ui-duration)
-            var(--hax-ui-easing);
-        }
-        input[type="checkbox"]::after {
-          content: "";
-          position: absolute;
-          top: 2px;
-          left: 2px;
-          width: 16px;
-          height: 16px;
+        .arrow {
+          width: var(--hax-ui-target, 44px);
+          height: var(--hax-ui-target, 44px);
+          display: grid;
+          place-items: center;
           border-radius: 50%;
+          border: 2px solid var(--hax-ui-line);
+          background: linear-gradient(var(--rpgb-tile-a), var(--rpgb-tile-b));
+          color: var(--hax-ui-text);
+          cursor: pointer;
+        }
+        .arrow:hover {
+          border-color: var(--hax-ui-line-strong);
+        }
+        .arrow:active {
+          transform: translateY(1px);
+        }
+        .arrow:disabled {
+          opacity: 0.35;
+          cursor: not-allowed;
+          transform: none;
+        }
+        .dots {
+          display: flex;
+          gap: 2px;
+        }
+        .dot {
+          width: 28px;
+          height: 28px;
+          padding: 0;
+          display: grid;
+          place-items: center;
+          border: 0;
+          background: transparent;
+          cursor: pointer;
+        }
+        .dot span {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          border: 2px solid var(--hax-ui-text-muted);
+        }
+        .dot:hover span {
+          border-color: var(--hax-ui-text);
+        }
+        .dot[aria-current="true"] span {
+          width: 22px;
+          border-radius: var(--hax-ui-radius-pill);
+          background-color: var(--rpgb-on);
+          border-color: var(--rpgb-on);
+        }
+        .hint {
+          max-width: 60ch;
+          margin: 0 0 var(--ddd-spacing-2, 8px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+
+        /* colors beside the shapes */
+        .side {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-4, 16px);
+        }
+        .side h4 {
+          margin: 0 0 var(--ddd-spacing-2, 8px);
+          font-size: var(--hax-ui-admin-font-size-xs);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .swatches {
+          display: grid;
+          grid-template-columns: repeat(5, 44px);
+          gap: 6px;
+        }
+        .sw {
+          position: relative;
+          width: 44px;
+          height: 44px;
+          padding: 5px;
+          border-radius: var(--ddd-radius-sm, 4px);
+          border: 2px solid var(--hax-ui-line);
           background-color: var(--hax-ui-surface);
-          transition: transform var(--hax-ui-duration) var(--hax-ui-easing);
+          cursor: pointer;
+          transition: transform 0.12s ease;
         }
-        input[type="checkbox"]:checked {
-          background-color: var(--hax-ui-accent-strong);
+        .sw .c {
+          display: block;
+          width: 100%;
+          height: 100%;
+          border-radius: 3px;
+          box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.14);
         }
-        input[type="checkbox"]:checked::after {
-          transform: translateX(16px);
+        .sw[aria-pressed="true"] {
+          border-color: var(--rpgb-on);
+          box-shadow: 0 0 0 2px var(--rpgb-on);
         }
-        input[type="checkbox"]:focus-visible {
-          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
-          outline-offset: 2px;
+        .sw:hover,
+        .sw:focus-visible {
+          transform: scale(1.18);
+          z-index: 3;
+        }
+        .sw:disabled {
+          opacity: 0.35;
+          cursor: not-allowed;
+          transform: none;
         }
 
         /* action bar (in a dialog) */
@@ -352,68 +879,63 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 13px;
+          font-size: var(--hax-ui-admin-font-size-xs);
           color: var(--hax-ui-text-muted);
         }
         .ftr .st.dirty {
           color: var(--hax-ui-text);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
-        .dot {
+        .ftr .mark {
           width: 8px;
           height: 8px;
           border-radius: 50%;
           background-color: var(--hax-ui-accent-strong);
         }
 
-        /* narrow (a phone): the preview sits on top, beside the name, and
-           everything scrolls above the action bar */
+        @container rpgb (min-width: 1100px) {
+          .board.noside .grid {
+            grid-template-columns: repeat(6, max-content);
+          }
+        }
+        /* narrow (a phone): the preview sits on top and everything scrolls
+           above the action bar */
         @container rpgb (max-width: 720px) {
           .builder {
             display: block;
             overflow: auto;
           }
           .preview {
-            display: grid;
-            grid-template-columns: 112px minmax(0, 1fr);
-            align-items: start;
-            gap: 12px;
-            padding: 12px;
             border-right: 0;
             border-bottom: 1px solid var(--hax-ui-line);
-            overflow: visible;
           }
           .stage {
-            grid-row: span 3;
-            padding: 4px;
+            aspect-ratio: auto;
+            height: 268px;
           }
-          .stage rpg-character {
-            width: 100px;
-            height: 126px;
-          }
-          .code-field {
-            grid-column: 1 / -1;
-          }
-          .options {
-            overflow: visible;
-            padding: 0 12px 12px;
-          }
-          .rows {
+          .board,
+          .board.noside {
             grid-template-columns: minmax(0, 1fr);
+            overflow: visible;
+            padding: var(--ddd-spacing-3, 12px);
           }
-          .row {
-            grid-template-columns: 96px minmax(0, 1fr);
-          }
-          .ftr {
-            position: sticky;
-            bottom: 0;
-            padding: 8px 12px;
+          .grid {
+            gap: var(--ddd-spacing-2, 8px);
           }
         }
         @media (prefers-reduced-motion: reduce) {
-          input[type="checkbox"],
-          input[type="checkbox"]::after {
+          [role="tab"],
+          .tile,
+          .sw,
+          .lbl {
             transition: none;
+          }
+          .tile:hover,
+          .tile:focus-visible,
+          .sw:hover,
+          .sw:focus-visible,
+          [role="tab"]:hover {
+            transform: none;
           }
         }
       `,
@@ -422,7 +944,21 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
 
   connectedCallback() {
     super.connectedCallback();
+    if (this.syncUrl) {
+      const fromUrl = characterFromParams(globalThis.location.search);
+      if (fromUrl) {
+        this.code = fromUrl.code;
+        this.seed = fromUrl.seed;
+        this.walking = fromUrl.walking;
+      }
+    }
+    this._resizer.observe(this);
     this._loadLabels();
+  }
+
+  disconnectedCallback() {
+    this._resizer.disconnect();
+    super.disconnectedCallback();
   }
 
   /**
@@ -470,9 +1006,10 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       this._loadLabels();
     }
     // a character to start from: the code if given, else the seed's look
-    if (!this.code && !decodeCharacter(this.code)) {
-      const start = this.seed || "rpg";
-      this.code = encodeCharacter(traitsFromSeed(start));
+    if (!decodeCharacter(this.code)) {
+      const traits = traitsFromSeed(this.seed || "rpg");
+      traits.base = Number(traits.base);
+      this.code = encodeCharacter(traits);
     }
     // with an action bar, changes are staged against what it opened with
     if (this.actions && this._initialCode === null && this.code) {
@@ -480,9 +1017,70 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     }
   }
 
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (
+      this.syncUrl &&
+      (changedProperties.has("code") || changedProperties.has("walking"))
+    ) {
+      // the address bar stays a link to what is on screen
+      try {
+        globalThis.history.replaceState(
+          globalThis.history.state,
+          "",
+          `${globalThis.location.pathname}?${this._query()}${globalThis.location.hash}`,
+        );
+      } catch {
+        // some embedded contexts refuse history changes
+      }
+    }
+    if (this._slide) {
+      // slide a new page of tiles in from the side it came from, so it reads
+      // as more options and not the same grid changing
+      const grid = this.shadowRoot.querySelector(".grid");
+      const still =
+        globalThis.matchMedia &&
+        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (grid && grid.animate && !still) {
+        grid.animate(
+          [
+            { transform: `translateX(${this._slide * 48}px)`, opacity: 0 },
+            { transform: "translateX(0)", opacity: 1 },
+          ],
+          { duration: 220, easing: "ease-out" },
+        );
+      }
+      this._slide = 0;
+    }
+  }
+
   /** true when the code differs from what the builder opened with */
   get dirty() {
     return this._initialCode !== null && this.code !== this._initialCode;
+  }
+
+  get character() {
+    return decodeCharacter(this.code) || decodeCharacter("1-");
+  }
+
+  _query() {
+    const params = new URLSearchParams({ code: this.code });
+    if (this.walking) {
+      params.set("walking", "true");
+    }
+    return params.toString();
+  }
+
+  /** a link to this character, when the page keeps its address in step */
+  get shareLink() {
+    return `${globalThis.location.origin}${globalThis.location.pathname}?${this._query()}`;
+  }
+
+  /** markup that shows this character on any page that loads HAX */
+  get embedCode() {
+    return `<rpg-character code="${this.code}"${this.walking ? " walking" : ""}></rpg-character>`;
   }
 
   _save() {
@@ -505,20 +1103,6 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     );
   }
 
-  /** step a numbered look choice (body, skin...) to the previous or next */
-  _step(name, delta) {
-    const slot = codeSlots.find((s) => s.name === name);
-    const total = slot.values.length;
-    const current = Number(this.character[name]);
-    const index = slot.values.indexOf(current);
-    const next = slot.values[(index + delta + total) % total];
-    this._set(name, next);
-  }
-
-  get character() {
-    return decodeCharacter(this.code) || decodeCharacter("1-");
-  }
-
   _set(name, value) {
     const character = this.character;
     character[name] = value;
@@ -526,9 +1110,12 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
   }
 
   _commit(code) {
+    this._preview = "";
+    this._trying = "";
     if (code === this.code) {
       return;
     }
+    this._history = [...this._history.slice(-29), this.code];
     this.code = code;
     this.status = "";
     this.dispatchEvent(
@@ -540,19 +1127,43 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     );
   }
 
+  /** go back to the code before the last change */
+  undo() {
+    if (this._history.length) {
+      const code = this._history[this._history.length - 1];
+      this._history = this._history.slice(0, -1);
+      this.code = code;
+      this.status = this.t.undid;
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          composed: true,
+          detail: { value: code },
+        }),
+      );
+    }
+  }
+
   _seedChanged(e) {
-    this.seed = e.target.value;
-    // a new name gives a new look; style and gear choices are kept
+    const value = e.detail.value || "";
+    if (value === this.seed) {
+      return;
+    }
+    this.seed = value;
+    // a new name gives a new look; every other choice is kept
     const character = this.character;
     const traits = traitsFromSeed(this.seed || "rpg");
-    lookSlots.forEach(([slot]) => {
-      character[slot] = traits[slot];
+    lookSlots.forEach((slot) => {
+      character[slot] = Number(traits[slot]);
     });
     this._commit(encodeCharacter(character));
   }
 
   _codeTyped(e) {
-    const value = e.target.value.trim();
+    const value = (e.detail.value || "").trim();
+    if (value === this.code) {
+      return;
+    }
     if (decodeCharacter(value)) {
       this._commit(value);
     } else {
@@ -564,32 +1175,28 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     const pick = (list) => list[Math.floor(Math.random() * list.length)];
     const character = traitsFromSeed(Math.random().toString(36).substring(2));
     character.base = Number(character.base);
-    styleSlots.concat(gearSlots).forEach((name) => {
+    extraSlots.forEach((name) => {
       // mostly keep it simple: each slot is set about a third of the time
-      const values = this._slotValues(name);
+      const values = slotValues(name).filter((v) => v !== "none");
       character[name] = Math.random() < 0.33 ? pick(values) : "none";
     });
     character.flagText = "";
     this._commit(encodeCharacter(character));
   }
 
-  async copyCode() {
+  async _copy(text) {
     try {
-      await globalThis.navigator.clipboard.writeText(this.code);
+      await globalThis.navigator.clipboard.writeText(text);
       this.status = this.t.copied;
     } catch {
-      // clipboard blocked: select the text so it can be copied by hand
-      const field = this.shadowRoot.querySelector("#code");
-      if (field) {
-        field.select();
-      }
+      // clipboard blocked: show it so it can be copied by hand
+      this.status = text;
     }
   }
 
-  _slotValues(name) {
-    const slot = codeSlots.find((s) => s.name === name);
-    // "random" is not something a builder can save
-    return slot.values.filter((v) => v !== "none" && v !== "random");
+  /** copy the character code */
+  copyCode() {
+    return this._copy(this.code);
   }
 
   _label(name, value) {
@@ -597,146 +1204,492 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     if (entry && entry.options && entry.options[value]) {
       return entry.options[value];
     }
-    return value;
+    if (value === "none") {
+      return this.t.none;
+    }
+    const text = String(value).replace(/-/g, " ");
+    return text.charAt(0).toUpperCase() + text.substring(1);
   }
 
-  _title(name) {
-    const entry = this._labels[name];
-    return entry && entry.title ? entry.title : name;
+  _fill(text, values) {
+    return Object.keys(values).reduce(
+      (out, key) => out.replace(`{${key}}`, () => values[key]),
+      text,
+    );
   }
 
-  renderSelect(name, title) {
-    const current = this.character[name];
-    const none = this._label(name, "none");
-    const id = `opt-${name}`;
-    return html`<div class="row">
-      <label for="${id}">${title || this._title(name)}</label>
-      <div class="control">
-        <select
-          class="hax-ui-select compact"
-          id="${id}"
-          data-slot="${name}"
-          @change="${(e) => this._set(name, e.target.value)}"
-        >
-          <option value="none" ?selected="${current === "none"}">
-            ${none === "none" ? "-" : none}
-          </option>
-          ${this._slotValues(name).map(
-            (value) =>
-              html`<option value="${value}" ?selected="${current === value}">
-                ${this._label(name, value)}
-              </option>`,
-          )}
-        </select>
-      </div>
-    </div>`;
+  /** the code with some slots changed (and one slot cleared, if asked) */
+  _with(set, clears) {
+    const character = { ...this.character, ...set };
+    if (clears) {
+      character[clears] = "none";
+    }
+    return encodeCharacter(character);
   }
 
-  renderLook(name, key) {
-    const slot = codeSlots.find((s) => s.name === name);
-    const current = Number(this.character[name]);
-    const label = this.t[key];
-    const id = `opt-${name}`;
-    const total = slot.values.length;
-    const at = slot.values.indexOf(current) + 1;
-    return html`<div class="row">
-      <label for="${id}">${label}</label>
-      <div class="control">
-        <button
-          type="button"
-          class="hax-ui-btn step"
-          data-step="${name}"
-          aria-label="${this.t.previous.replace("{name}", () => label)}"
-          @click="${() => this._step(name, -1)}"
-        >
-          ‹
-        </button>
-        <select
-          class="hax-ui-select compact"
-          id="${id}"
-          data-slot="${name}"
-          @change="${(e) => this._set(name, Number(e.target.value))}"
-        >
-          ${slot.values.map(
-            (value) =>
-              html`<option value="${value}" ?selected="${current === value}">
-                ${value + 1}
-              </option>`,
-          )}
-        </select>
-        <span class="variant" aria-hidden="true"
-          >${this.t.variant
-            .replace("{current}", () => at)
-            .replace("{total}", () => total)}</span
-        >
-        <button
-          type="button"
-          class="hax-ui-btn step"
-          aria-label="${this.t.next.replace("{name}", () => label)}"
-          @click="${() => this._step(name, 1)}"
-        >
-          ›
-        </button>
-      </div>
-    </div>`;
+  _isOn(option) {
+    const character = this.character;
+    return Object.keys(option.set).every((k) => character[k] === option.set[k]);
   }
 
-  renderToggle(name) {
-    const title = name === "circle" ? this.t.circle : this._title(name);
-    const id = `opt-${name}`;
-    return html`<div class="row">
-      <label for="${id}">${title}</label>
-      <div class="control">
-        <input
-          id="${id}"
-          type="checkbox"
-          role="switch"
-          data-slot="${name}"
-          .checked="${this.character[name]}"
-          @change="${(e) => this._set(name, e.target.checked)}"
-        />
-      </div>
-    </div>`;
+  /** what a slot goes back to when its chosen tile is clicked again, if anything */
+  _offValue(slot) {
+    const values = slotValues(slot);
+    if (values[0] === "none") {
+      return "none";
+    }
+    if (slot === "faceItem" || slot === "accessories") {
+      return 0;
+    }
+    return null;
+  }
+
+  // ---------- builder model ----------
+
+  _slotOptions(slot, region, named) {
+    return slotValues(slot).map((value, i) => ({
+      key: `${slot}-${value}`,
+      slot,
+      label: named ? this.t[artKey(slot, i)] : this._label(slot, value),
+      set: { [slot]: value },
+      region,
+    }));
+  }
+
+  /** the tabs, in order: id, label, icon (a code and region), sections of tiles, side swatches */
+  get tabs() {
+    const t = this.t;
+    const icon = (set, region) => ({
+      code: encodeCharacter({
+        base: 0,
+        skin: 0,
+        hatColor: 3,
+        shirt: 7,
+        pants: 1,
+        ...set,
+      }),
+      region,
+    });
+    const styles = [
+      {
+        key: "short",
+        label: t.short,
+        set: { base: 0, shaved: false, hat: "none" },
+      },
+      {
+        key: "long",
+        label: t.long,
+        set: { base: 1, shaved: false, hat: "none" },
+      },
+      { key: "shaved", label: t.shaved, set: { shaved: true, hat: "none" } },
+      ...hairHats.map((hat) => ({
+        key: hat,
+        label: this._label("hat", hat),
+        set: { hat, shaved: false },
+      })),
+    ].map((o) => ({ ...o, region: R.head }));
+    return [
+      {
+        id: "character",
+        label: t.tabCharacters,
+        icon: icon({ preset: "knight" }, R.full),
+        sections: [
+          {
+            name: t.readyMade,
+            options: slotValues("preset").map((preset) => ({
+              key: `preset-${preset}`,
+              slot: "preset",
+              label:
+                preset === "none" ? t.noneType : this._label("preset", preset),
+              set: { preset },
+              region: R.full,
+            })),
+          },
+        ],
+      },
+      {
+        id: "body",
+        label: t.tabBody,
+        icon: icon({}, R.full),
+        sections: [
+          { name: t.pose, options: this._slotOptions("pose", R.full) },
+        ],
+        side: [{ slot: "skin", name: t.skin }],
+      },
+      {
+        id: "hair",
+        label: t.hair,
+        icon: icon({ base: 1, hair: 3 }, [8, 40, 97, 70]),
+        sections: [{ name: t.hairstyle, options: styles, fixed: true }],
+        side: [
+          { slot: "hatColor", name: t.hairColor },
+          { slot: "hair", name: t.longHairColor, long: true },
+        ],
+      },
+      {
+        id: "face",
+        label: t.face,
+        icon: icon({ face: 5 }, [14, 46, 85, 50]),
+        sections: [
+          {
+            name: t.mouth,
+            options: this._slotOptions("face", R.face, true),
+            fixed: true,
+          },
+          {
+            name: t.expression,
+            options: this._slotOptions("expression", R.face),
+          },
+        ],
+      },
+      {
+        id: "glasses",
+        label: t.glasses,
+        icon: icon({ faceItem: 9 }, [20, 52, 73, 36]),
+        sections: [
+          {
+            name: t.glasses,
+            options: this._slotOptions("faceItem", R.face, true),
+          },
+        ],
+      },
+      {
+        id: "hat",
+        label: t.hats,
+        icon: icon({ hat: "top-hat" }, [8, 0, 97, 62]),
+        sections: [{ name: t.hats, options: this._slotOptions("hat", R.head) }],
+      },
+      {
+        id: "disguise",
+        label: t.disguise,
+        icon: icon({ mask: "theater" }, R.head),
+        sections: [
+          { name: t.masks, options: this._slotOptions("mask", R.head) },
+          { name: t.makeup, options: this._slotOptions("makeup", R.face) },
+        ],
+      },
+      {
+        id: "outfit",
+        label: t.outfit,
+        icon: icon({ shirt: 3, accessories: 6 }, [18, 78, 77, 40]),
+        sections: [
+          {
+            name: t.shirt,
+            options: this._slotOptions("shirt", R.torso, true),
+            clears: "preset",
+            fixed: true,
+          },
+          {
+            name: t.pants,
+            options: this._slotOptions("pants", R.legs, true),
+            clears: "preset",
+            fixed: true,
+          },
+          {
+            name: t.neckwear,
+            options: this._slotOptions("accessories", R.torso, true),
+          },
+        ],
+      },
+      {
+        id: "hands",
+        label: t.heldItems,
+        icon: icon({ item: "sword" }, [56, 36, 57, 90]),
+        sections: [
+          { name: t.rightHand, options: this._slotOptions("item", R.hands) },
+          { name: t.leftHand, options: this._slotOptions("offhand", R.hands) },
+        ],
+      },
+      {
+        id: "feet",
+        label: t.feet,
+        icon: icon({ feet: "skateboard" }, [12, 100, 89, 42]),
+        sections: [
+          { name: t.feet, options: this._slotOptions("feet", R.legs) },
+        ],
+      },
+      {
+        id: "pet",
+        label: t.pets,
+        icon: icon({ pet: "cat" }, [0, 90, 52, 52]),
+        sections: [{ name: t.pets, options: this._slotOptions("pet", R.pet) }],
+      },
+      {
+        id: "effects",
+        label: t.effects,
+        icon: icon({ fire: true }, R.full),
+        sections: [
+          {
+            name: t.effects,
+            toggles: true,
+            options: [
+              ...toggleSlots.map((slot) => ({
+                key: slot,
+                slot,
+                label: t[slot],
+                set: { [slot]: true },
+                region: R.full,
+              })),
+              {
+                key: "walking",
+                label: t.walking,
+                walking: true,
+                region: R.full,
+              },
+            ],
+          },
+        ],
+      },
+    ];
+  }
+
+  get tabDef() {
+    const tabs = this.tabs;
+    return tabs.find((tab) => tab.id === this.tab) || tabs[0];
+  }
+
+  _setTab(id) {
+    this.tab = id;
+    this._section = 0;
+    this._page = 0;
+    this._untry();
+  }
+
+  _tabKey(e) {
+    const ids = this.tabs.map((tab) => tab.id);
+    const at = ids.indexOf(this.tab);
+    let next = null;
+    if (e.key === "ArrowRight") next = ids[(at + 1) % ids.length];
+    if (e.key === "ArrowLeft") next = ids[(at - 1 + ids.length) % ids.length];
+    if (e.key === "Home") next = ids[0];
+    if (e.key === "End") next = ids[ids.length - 1];
+    if (next) {
+      e.preventDefault();
+      this._setTab(next);
+      this.updateComplete.then(() => {
+        const button = this.shadowRoot.querySelector(`#tab-${next}`);
+        if (button) {
+          button.focus();
+        }
+      });
+    }
+  }
+
+  _goPage(page) {
+    if (page === this._page) {
+      return;
+    }
+    this._slide = page > this._page ? 1 : -1;
+    this._page = page;
+    this._untry();
+  }
+
+  /**
+   * What clicking (or trying) a tile does: a toggle flips; a chosen tile of a
+   * slot that can be empty goes back to empty; anything else is picked.
+   */
+  _result(option, section) {
+    if (option.walking) {
+      return { code: this.code, walking: !this.walking, on: !this.walking };
+    }
+    if (section.toggles) {
+      const on = !this.character[option.slot];
+      return { code: this._with({ [option.slot]: on }), on };
+    }
+    if (this._isOn(option) && option.slot && !section.fixed) {
+      const off = this._offValue(option.slot);
+      if (off !== null && option.set[option.slot] !== off) {
+        return { code: this._with({ [option.slot]: off }), removed: true };
+      }
+    }
+    return { code: this._with(option.set, section.clears) };
+  }
+
+  _optionOn(option) {
+    return option.walking ? this.walking : this._isOn(option);
+  }
+
+  _try(option, section) {
+    this._preview = option.walking ? "" : this._result(option, section).code;
+    this._trying = option.label;
+  }
+
+  _untry() {
+    this._preview = "";
+    this._trying = "";
+  }
+
+  _pick(option, section) {
+    const result = this._result(option, section);
+    if (option.walking) {
+      this.walking = result.walking;
+      this._untry();
+    } else {
+      this._commit(result.code);
+    }
+    let text = this._fill(this.t.picked, {
+      section: section.name,
+      name: option.label,
+    });
+    if (section.toggles) {
+      text = this._fill(this.t.picked, {
+        section: option.label,
+        name: result.on ? this.t.on : this.t.off,
+      });
+    } else if (result.removed) {
+      text = this._fill(this.t.removed, {
+        section: section.name,
+        name: option.label,
+      });
+    }
+    this.status = text;
+  }
+
+  _swatchTry(side, i) {
+    this._preview = this._with({ [side.slot]: i });
+    this._trying = `${side.name}: ${this.t[artKey(side.slot, i)]}`;
+  }
+
+  /** a square window onto a character, zoomed to a region of its art */
+  _crop(code, region, size) {
+    const [x, y, w, h] = region;
+    const most = Math.max(w, h);
+    const scale = size / most;
+    const left = (-x + (most - w) / 2) * scale;
+    const top = (-y + (most - h) / 2) * scale;
+    return html`<span class="crop" style="width:${size}px;height:${size}px"
+      ><rpg-character
+        aria-hidden="true"
+        code="${code}"
+        width="${Math.round(113 * scale)}"
+        height="${Math.round(142 * scale)}"
+        style="left:${left}px;top:${top}px"
+      ></rpg-character
+    ></span>`;
   }
 
   render() {
     const character = this.character;
-    const invalid = this.status === this.t.invalidCode;
+    const tabs = this.tabs;
     return html`
       <div class="frame">
+        <div class="tabs">
+          <div
+            role="tablist"
+            aria-label="${this.t.characterBuilder}"
+            @keydown="${this._tabKey}"
+          >
+            ${tabs.map(
+              (tab) =>
+                html`<button
+                  type="button"
+                  role="tab"
+                  id="tab-${tab.id}"
+                  aria-controls="panel"
+                  aria-label="${tab.label}"
+                  aria-selected="${this.tab === tab.id ? "true" : "false"}"
+                  tabindex="${this.tab === tab.id ? "0" : "-1"}"
+                  @click="${() => this._setTab(tab.id)}"
+                >
+                  ${this._crop(tab.icon.code, tab.icon.region, 40)}
+                </button>`,
+            )}
+          </div>
+          ${tabs.map(
+            (tab) =>
+              html`<simple-tooltip
+                for="tab-${tab.id}"
+                position="bottom"
+                offset="4"
+                >${tab.label}</simple-tooltip
+              >`,
+          )}
+        </div>
         <div class="builder">
-          <div class="preview">
-            <figure class="stage" aria-label="${this.t.preview}">
-              <rpg-character
-                code="${this.code}"
-                width="226"
-                height="284"
-              ></rpg-character>
-            </figure>
-            <div class="stacked">
-              <label for="seed">${this.t.name}</label>
-              <div class="inline">
-                <input
-                  class="hax-ui-input compact"
-                  id="seed"
-                  .value="${this.seed}"
-                  @input="${this._seedChanged}"
-                />
-              </div>
-            </div>
-            <button type="button" class="hax-ui-btn" @click="${this.randomize}">
-              <span aria-hidden="true">⚄</span> ${this.t.randomize}
-            </button>
-            <div class="stacked code-field">
-              <label for="code">${this._title("code")}</label>
-              <div class="inline">
-                <input
-                  class="hax-ui-input compact"
-                  id="code"
-                  aria-describedby="code-help code-status"
-                  .value="${this.code}"
-                  @change="${this._codeTyped}"
-                />
+          ${this.renderPreview()} ${this.renderBoard(character)}
+        </div>
+        ${this.actions ? this.renderActions() : ""}
+      </div>
+    `;
+  }
+
+  renderPreview() {
+    const invalid = this.status === this.t.invalidCode;
+    const big = this._tileSize > 70;
+    return html`<div class="preview">
+      <figure class="stage" aria-label="${this.t.preview}">
+        <rpg-character
+          code="${this._preview || this.code}"
+          ?walking="${this.walking}"
+          width="${big ? 226 : 190}"
+          height="${big ? 284 : 239}"
+        ></rpg-character>
+        ${
+          this._trying
+            ? html`<figcaption class="trying">
+                ${this._fill(this.t.trying, { name: this._trying })}
+              </figcaption>`
+            : ""
+        }
+      </figure>
+      <simple-fields-field
+        class="hax-ui-simple-field"
+        id="seed"
+        label="${this.t.name}"
+        description="${this.t.nameHelp}"
+        .value="${this.seed}"
+        @value-changed="${this._seedChanged}"
+      ></simple-fields-field>
+      <div class="buttons">
+        <button
+          type="button"
+          class="hax-ui-btn undo"
+          ?disabled="${!this._history.length}"
+          @click="${this.undo}"
+        >
+          ${this.t.undo}
+        </button>
+        <button
+          type="button"
+          class="hax-ui-btn randomize"
+          @click="${this.randomize}"
+        >
+          ${this.t.randomize}
+        </button>
+        <button
+          type="button"
+          class="hax-ui-btn"
+          aria-pressed="${this.walking ? "true" : "false"}"
+          @click="${() => {
+            this.walking = !this.walking;
+          }}"
+        >
+          ${this.walking ? this.t.stopWalking : this.t.walk}
+        </button>
+        <button
+          type="button"
+          class="hax-ui-btn ${this.actions ? "" : "primary"} share"
+          aria-expanded="${this._share ? "true" : "false"}"
+          aria-controls="sharebox"
+          @click="${() => {
+            this._share = !this._share;
+          }}"
+        >
+          ${this.actions ? this.t.codeAndEmbed : this.t.share}
+        </button>
+      </div>
+      ${
+        this._share
+          ? html`<div class="sharebox" id="sharebox">
+              <simple-fields-field
+                class="hax-ui-simple-field"
+                id="code"
+                label="${this.t.code}"
+                description="${this.t.codeHelp}"
+                .value="${this.code}"
+                @value-changed="${this._codeTyped}"
+              ></simple-fields-field>
+              <div class="buttons">
                 <button
                   type="button"
                   class="hax-ui-btn"
@@ -744,61 +1697,291 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
                 >
                   ${this.t.copyCode}
                 </button>
+                ${
+                  this.syncUrl
+                    ? html`<button
+                        type="button"
+                        class="hax-ui-btn"
+                        @click="${() => this._copy(this.shareLink)}"
+                      >
+                        ${this.t.copyLink}
+                      </button>`
+                    : ""
+                }
+                <button
+                  type="button"
+                  class="hax-ui-btn"
+                  @click="${() => this._copy(this.embedCode)}"
+                >
+                  ${this.t.copyEmbed}
+                </button>
               </div>
-              <p class="help" id="code-help">${this.t.codeHelp}</p>
-              <div
-                class="status ${invalid ? "error" : ""}"
-                id="code-status"
-                role="status"
-                aria-live="polite"
-              >
-                ${this.status}
-              </div>
-            </div>
-          </div>
-          <div class="options">
-            <section aria-labelledby="h-look">
-              <h3 id="h-look">${this.t.look}</h3>
-              <div class="rows">
-                ${lookSlots.map(([name, key]) => this.renderLook(name, key))}
-              </div>
-            </section>
-            <section aria-labelledby="h-style">
-              <h3 id="h-style">${this.t.style}</h3>
-              <div class="rows">
-                ${styleSlots.map((name) => this.renderSelect(name))}
-              </div>
-            </section>
-            <section aria-labelledby="h-gear">
-              <h3 id="h-gear">${this.t.gear}</h3>
-              <div class="rows">
-                ${gearSlots.map((name) => this.renderSelect(name))}
-                <div class="row">
-                  <label for="opt-flagText">${this._title("flagText")}</label>
-                  <div class="control">
-                    <input
-                      class="hax-ui-input compact"
-                      id="opt-flagText"
-                      maxlength="4"
-                      data-slot="flagText"
-                      .value="${character.flagText}"
-                      @input="${(e) => this._set("flagText", e.target.value)}"
-                    />
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section aria-labelledby="h-extras">
-              <h3 id="h-extras">${this.t.extras}</h3>
-              <div class="rows">
-                ${toggleSlots.map((name) => this.renderToggle(name))}
-              </div>
-            </section>
-          </div>
-        </div>
-        ${this.actions ? this.renderActions() : ""}
+            </div>`
+          : ""
+      }
+      <p
+        class="status ${invalid ? "error" : ""}"
+        id="code-status"
+        role="status"
+        aria-live="polite"
+      >
+        ${this.status}
+      </p>
+    </div>`;
+  }
+
+  renderBoard(character) {
+    const tab = this.tabDef;
+    const section = tab.sections[this._section] || tab.sections[0];
+    const total = section.options.length;
+    const pages = Math.ceil(total / PAGE_SIZE);
+    const page = Math.min(this._page, pages - 1);
+    const first = page * PAGE_SIZE;
+    const options = section.options.slice(first, first + PAGE_SIZE);
+    const removable =
+      !section.fixed &&
+      !section.toggles &&
+      section.options.some((o) => o.slot && this._offValue(o.slot) !== null);
+    const flag = ["flag", "sparkle-flag"].includes(character.item);
+    const hasSide = tab.side || (tab.id === "hands" && flag);
+    return html`<div
+      class="board ${hasSide ? "" : "noside"}"
+      role="tabpanel"
+      id="panel"
+      aria-labelledby="tab-${tab.id}"
+    >
+      <div class="board-head">
+        <h3>${tab.label}</h3>
+        ${
+          tab.sections.length > 1
+            ? tab.sections.map(
+                (s, i) =>
+                  html`<button
+                    type="button"
+                    class="seg"
+                    aria-pressed="${i === this._section ? "true" : "false"}"
+                    @click="${() => {
+                      this._section = i;
+                      this._page = 0;
+                      this._untry();
+                    }}"
+                  >
+                    ${s.name}
+                  </button>`,
+              )
+            : ""
+        }
       </div>
-    `;
+      <div>
+        <div class="grid" role="group" aria-label="${section.name}">
+          ${options.map((option) => this.renderTile(option, section))}
+        </div>
+        ${
+          pages > 1
+            ? this.renderPager(page, pages, first, options.length, total)
+            : ""
+        }
+        ${this.renderHints(tab, section, character, removable)}
+      </div>
+      ${
+        hasSide
+          ? html`<div class="side">
+              ${(tab.side || []).map((side) =>
+                this.renderSwatches(side, character),
+              )}
+              ${
+                tab.id === "hands" && flag
+                  ? html`<simple-fields-field
+                      class="hax-ui-simple-field"
+                      id="flag-text"
+                      label="${this.t.flagText}"
+                      description="${this.t.flagTextHelp}"
+                      maxlength="4"
+                      .value="${character.flagText}"
+                      @value-changed="${(e) => {
+                        const value = (e.detail.value || "").substring(0, 4);
+                        if (value !== this.character.flagText) {
+                          this._set("flagText", value);
+                        }
+                      }}"
+                    ></simple-fields-field>`
+                  : ""
+              }
+            </div>`
+          : ""
+      }
+    </div>`;
+  }
+
+  renderTile(option, section) {
+    const on = this._optionOn(option);
+    // toggles always show the effect on, so the tile says what it does
+    const code =
+      section.toggles && option.slot
+        ? this._with({ [option.slot]: true })
+        : this._with(option.set || {}, section.clears);
+    return html`<button
+      type="button"
+      class="tile"
+      data-option="${option.key}"
+      aria-pressed="${on ? "true" : "false"}"
+      @pointerenter="${() => this._try(option, section)}"
+      @pointerleave="${this._untry}"
+      @focus="${() => this._try(option, section)}"
+      @blur="${this._untry}"
+      @click="${() => this._pick(option, section)}"
+    >
+      ${
+        section.toggles
+          ? html`<span class="state" aria-hidden="true"
+              >${on ? this.t.on : this.t.off}</span
+            >`
+          : ""
+      }
+      ${this._crop(code, option.region, this._tileSize)}
+      ${
+        on && !section.toggles
+          ? html`<span class="check" aria-hidden="true"
+              ><svg width="12" height="12" viewBox="0 0 12 12">
+                <path
+                  d="M2 6.5 5 9.5 10 3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                ></path></svg
+            ></span>`
+          : ""
+      }
+      <span class="lbl">${option.label}</span>
+    </button>`;
+  }
+
+  renderPager(page, pages, first, shown, total) {
+    const showing = this._fill(this.t.showing, {
+      first: first + 1,
+      last: first + shown,
+      total,
+    });
+    return html`<div class="pager">
+      <span class="count" aria-live="polite">${showing}</span>
+      <button
+        type="button"
+        class="arrow"
+        aria-label="${this.t.previousPage}"
+        ?disabled="${page === 0}"
+        @click="${() => this._goPage(page - 1)}"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="M10 2 4 8l6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          ></path>
+        </svg>
+      </button>
+      <span class="dots">
+        ${Array.from({ length: pages }, (_, i) => i).map(
+          (i) =>
+            html`<button
+              type="button"
+              class="dot"
+              aria-label="${this._fill(this.t.page, { page: i + 1, pages })}"
+              aria-current="${i === page ? "true" : "false"}"
+              @click="${() => this._goPage(i)}"
+            >
+              <span></span>
+            </button>`,
+        )}
+      </span>
+      <button
+        type="button"
+        class="arrow"
+        aria-label="${this.t.nextPage}"
+        ?disabled="${page >= pages - 1}"
+        @click="${() => this._goPage(page + 1)}"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="m6 2 6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          ></path>
+        </svg>
+      </button>
+    </div>`;
+  }
+
+  renderHints(tab, section, character, removable) {
+    const hints = [];
+    if (removable) {
+      hints.push(this.t.takeOffHint);
+    }
+    if (section.clears && character.preset !== "none") {
+      hints.push(
+        this._fill(this.t.presetHint, {
+          preset: this._label("preset", character.preset),
+          part: section.name.toLowerCase(),
+        }),
+      );
+    }
+    if (
+      tab.id === "hair" &&
+      character.hat !== "none" &&
+      !hairHats.includes(character.hat)
+    ) {
+      hints.push(
+        this._fill(this.t.hatHint, {
+          hat: this._label("hat", character.hat).toLowerCase(),
+        }),
+      );
+    }
+    if (tab.id === "effects") {
+      hints.push(this.t.seasonalHint);
+    }
+    return hints.map((hint) => html`<p class="hint">${hint}</p>`);
+  }
+
+  renderSwatches(side, character) {
+    const off = side.long && character.base !== 1;
+    return html`<div role="group" aria-labelledby="side-${side.slot}">
+      <h4 id="side-${side.slot}">${side.name}</h4>
+      <div class="swatches">
+        ${swatches[side.slot].map((hex, i) => {
+          const name = this.t[artKey(side.slot, i)];
+          return html`<button
+            type="button"
+            class="sw"
+            data-swatch="${side.slot}-${i}"
+            aria-label="${side.name}: ${name}"
+            aria-pressed="${
+              Number(character[side.slot]) === i ? "true" : "false"
+            }"
+            ?disabled="${off}"
+            @pointerenter="${() => {
+              if (!off) {
+                this._swatchTry(side, i);
+              }
+            }}"
+            @pointerleave="${this._untry}"
+            @focus="${() => this._swatchTry(side, i)}"
+            @blur="${this._untry}"
+            @click="${() => {
+              this._set(side.slot, i);
+              this.status = this._fill(this.t.picked, {
+                section: side.name,
+                name,
+              });
+            }}"
+          >
+            <span class="c" style="background-color:#${hex}"></span
+            ><span class="lbl" aria-hidden="true">${name}</span>
+          </button>`;
+        })}
+      </div>
+      ${off ? html`<p class="hint">${this.t.longHairHint}</p>` : ""}
+    </div>`;
   }
 
   renderActions() {
@@ -807,7 +1990,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       <div class="st ${dirty ? "dirty" : ""}" role="status" aria-live="polite">
         ${
           dirty
-            ? html`<span class="dot" aria-hidden="true"></span>${
+            ? html`<span class="mark" aria-hidden="true"></span>${
                   this.t.unsavedChanges
                 }`
             : this.t.noUnsavedChanges
@@ -831,6 +2014,5 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     </div>`;
   }
 }
-
 globalThis.customElements.define(RpgCharacterBuilder.tag, RpgCharacterBuilder);
 export { RpgCharacterBuilder };
