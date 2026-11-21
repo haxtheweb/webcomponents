@@ -38,13 +38,22 @@ const schema = JSON.parse(
   readFileSync(join(root, "lib/rpg-character.haxProperties.json"), "utf8"),
 );
 const labelsFor = (property) => {
-  const field = schema.settings.configure.find((f) => f.property === property);
+  // settings live on both the configure and advanced tabs
+  const field = [
+    ...(schema.settings.configure || []),
+    ...(schema.settings.advanced || []),
+  ].find((f) => f.property === property);
   return (field && field.options) || {};
 };
 const presetLabels = labelsFor("preset");
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ deviceScaleFactor: 2 });
+// characters only draw once they are near the screen, so make the screen
+// tall enough to hold the whole sheet
+const page = await browser.newPage({
+  deviceScaleFactor: 2,
+  viewport: { width: 1280, height: 6000 },
+});
 await page.goto(url, { waitUntil: "networkidle" });
 const presets = await page.evaluate(
   async ({ cols, size, presetLabels }) => {
@@ -74,8 +83,14 @@ const presets = await page.evaluate(
   },
   { cols, size, presetLabels },
 );
+// wait until every character has drawn its art, then for the art to load
+await page.waitForFunction(() =>
+  Array.from(document.querySelectorAll("#sheet rpg-character")).every(
+    (el) => el.shadowRoot && el.shadowRoot.querySelector(".wrapper svg image"),
+  ),
+);
 await page.waitForLoadState("networkidle");
-await page.waitForTimeout(500);
+await page.waitForTimeout(1000);
 await page.locator("#sheet").screenshot({ path: join(root, "characters.png") });
 await browser.close();
 

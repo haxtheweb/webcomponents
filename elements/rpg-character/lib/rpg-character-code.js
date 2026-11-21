@@ -107,6 +107,9 @@ export const codeSlots = [
       "icers",
       "icers-away",
       "future-traveler",
+      "pilgrim-boy",
+      "pilgrim-girl",
+      "turkey",
     ],
   },
   {
@@ -177,6 +180,9 @@ export const codeSlots = [
       "sparkle-selects",
       "saber-cats",
       "future-traveler",
+      "pilgrim",
+      "bonnet",
+      "turkey",
     ],
   },
   {
@@ -266,6 +272,8 @@ export const codeSlots = [
       "hockey-stick-pink",
       "hockey-stick-green",
       "sparkle-flag",
+      "corn",
+      "drumstick",
     ],
   },
   { name: "offhand", values: ["none", "shield", "palette", "proton-pack"] },

@@ -25,8 +25,9 @@ import {
   seasonFor,
   seasonalPick,
   easterSunday,
+  thanksgivingDay,
 } from "./lib/rpg-character-seasons.js";
-export { seasonFor, seasonalPick, easterSunday };
+export { seasonFor, seasonalPick, easterSunday, thanksgivingDay };
 // face expressions drawn over the eyes and mouth
 export const expressionList = Object.keys(expressionArt);
 // arm poses; a raised arm puts down whatever that hand was holding
@@ -94,6 +95,9 @@ export const hatList = [
   "sparkle-selects",
   "saber-cats",
   "future-traveler",
+  "pilgrim",
+  "bonnet",
+  "turkey",
 ];
 // what hat="random" picks from: everyday hats, leaving costume and holiday
 // hats to explicit choices and presets
@@ -120,6 +124,9 @@ const costumeHats = [
   "sparkle-selects",
   "saber-cats",
   "future-traveler",
+  "pilgrim",
+  "bonnet",
+  "turkey",
 ];
 export const randomHatList = hatList.filter((h) => !costumeHats.includes(h));
 // full-head or face masks, drawn between the hair and the hat
@@ -201,6 +208,8 @@ export const itemList = [
   "hockey-stick-pink",
   "hockey-stick-green",
   "sparkle-flag",
+  "corn",
+  "drumstick",
 ];
 // flag items: the pennant carries flag-text; a team flag shows its team
 // letters when no text is set
@@ -339,6 +348,10 @@ export const presets = {
   // the HAX Future Traveler as a character: red HAX helmet with an idea bulb
   // and big goggles, Beaver blue coat over a cyan shirt
   "future-traveler": { hat: "future-traveler" },
+  // Thanksgiving: two pilgrim outfits and a turkey costume
+  "pilgrim-boy": { hat: "pilgrim", item: "drumstick" },
+  "pilgrim-girl": { hat: "bonnet", item: "corn" },
+  turkey: { hat: "turkey", item: "corn" },
 };
 // Special seeds that dress the character in a team kit. The seed still makes
 // the character underneath; this only fills in the preset when none is

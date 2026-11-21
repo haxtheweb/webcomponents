@@ -28,6 +28,16 @@ export function easterSunday(year) {
   return [month, day];
 }
 
+/**
+ * US Thanksgiving for a year: the fourth Thursday of November.
+ * Returns [month (1-12), day].
+ */
+export function thanksgivingDay(year) {
+  const firstWeekday = new Date(year, 10, 1).getDay();
+  const firstThursday = 1 + ((4 - firstWeekday + 7) % 7);
+  return [11, firstThursday + 21];
+}
+
 const DAY = 24 * 60 * 60 * 1000;
 
 /**
@@ -52,6 +62,23 @@ export function seasonFor(date) {
         "pumpkin",
         "zombie",
       ],
+    };
+  }
+  // Nov 15 through the Sunday after Thanksgiving (which can be Dec 1)
+  const thanksgiving = new Date(
+    date.getFullYear(),
+    10,
+    thanksgivingDay(date.getFullYear())[1],
+  );
+  // the last moment of that Sunday
+  const sunday = new Date(thanksgiving.getTime() + 4 * DAY - 1);
+  if (
+    ((month === 11 && day >= 15) || month === 12) &&
+    date.getTime() <= sunday.getTime()
+  ) {
+    return {
+      name: "thanksgiving",
+      preset: ["pilgrim-boy", "pilgrim-girl", "turkey"],
     };
   }
   if (month === 12 && day <= 25) {
