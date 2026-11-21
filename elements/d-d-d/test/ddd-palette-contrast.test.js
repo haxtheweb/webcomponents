@@ -52,7 +52,12 @@ describe("DDD palettes contrast", () => {
         `<div data-palette="${key}">${DDDPaletteSwatches.map(
           (n) =>
             `<span data-n="${n}" style="background-color: var(--ddd-palette-color-${n}); color: var(--ddd-palette-text-color-${n})">Aa</span>`,
-        ).join("")}</div>`,
+        ).join("")}${["accent", "chip"]
+          .map(
+            (role) =>
+              `<i data-role="${role}" style="background-color: var(--ddd-palette-${role}); color: var(--ddd-palette-${role}-ink)">Aa</i>`,
+          )
+          .join("")}</div>`,
     ).join("");
   });
   after(() => {
@@ -86,6 +91,30 @@ describe("DDD palettes contrast", () => {
           `${key} fill ${span.dataset.n}`,
         ).to.not.equal("rgba(0, 0, 0, 0)");
         expect(ratio(bg, fg), `${key} ${span.dataset.n}`).to.be.at.least(4.5);
+      });
+    });
+  });
+
+  // an accent or chip fill is one of the palette's colors; its ink is that
+  // color's paired text color, so it reads the same in DDD and under a
+  // design system bridge (which keeps every text pair at 4.5:1)
+  ALL_PALETTES.forEach((key) => {
+    it(`${key}: accent and chip ink are their fill's paired text color`, () => {
+      const row = host.shadowRoot.querySelector(`[data-palette="${key}"]`);
+      const pairs = Array.from(row.querySelectorAll("span")).map((span) => {
+        const cs = globalThis.getComputedStyle(span);
+        return `${cs.color} on ${cs.backgroundColor}`;
+      });
+      row.querySelectorAll("i").forEach((el) => {
+        const cs = globalThis.getComputedStyle(el);
+        const role = el.dataset.role;
+        expect(pairs, `${key} ${role}`).to.include(
+          `${cs.color} on ${cs.backgroundColor}`,
+        );
+        expect(
+          ratio(channels(cs.backgroundColor), channels(cs.color)),
+          `${key} ${role}`,
+        ).to.be.at.least(4.5);
       });
     });
   });
