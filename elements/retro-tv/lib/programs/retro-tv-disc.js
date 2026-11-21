@@ -143,15 +143,17 @@ export class RetroTvDisc extends RetroTvLocalizedProgram {
         }
         @media (prefers-reduced-motion: no-preference) {
           :host(:not([still])) .spiral {
-            animation: retro-tv-spiral 9s linear infinite;
+            animation: retro-tv-spiral 9s var(--ddd-timing-linear, linear)
+              infinite;
           }
           :host(:not([still])) .disc {
             animation:
-              retro-tv-spin 4s linear infinite,
+              retro-tv-spin 4s var(--ddd-timing-linear, linear) infinite,
               retro-tv-sink 7s ease-in-out infinite alternate;
           }
           :host(:not([still])) .scope path {
-            animation: retro-tv-scope 2.4s linear infinite;
+            animation: retro-tv-scope 2.4s var(--ddd-timing-linear, linear)
+              infinite;
           }
           :host(:not([still])) .bw {
             animation: retro-tv-hold 6s steps(1) infinite;

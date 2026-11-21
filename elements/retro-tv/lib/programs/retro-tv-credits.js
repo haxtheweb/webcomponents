@@ -113,10 +113,10 @@ export class RetroTvCredits extends RetroTvLocalizedProgram {
         }
         @media (prefers-reduced-motion: no-preference) {
           :host(:not([still])) .run-a .roll {
-            animation: retro-tv-roll-a 14s linear both;
+            animation: retro-tv-roll-a 14s var(--ddd-timing-linear, linear) both;
           }
           :host(:not([still])) .run-b .roll {
-            animation: retro-tv-roll-b 14s linear both;
+            animation: retro-tv-roll-b 14s var(--ddd-timing-linear, linear) both;
           }
           :host(:not([still])) img {
             animation: retro-tv-hop 1.4s ease-in-out infinite;

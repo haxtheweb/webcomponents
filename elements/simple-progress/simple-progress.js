@@ -43,7 +43,7 @@ class SimpleProgress extends HTMLElement {
       left: 0;
       transform: scaleX(0);
       transform-origin: right center;
-      animation: indeterminate-bar var(--simple-progress-duration, 2s) var(--simple-progress-delay, 0s) linear infinite;
+      animation: indeterminate-bar var(--simple-progress-duration, 2s) var(--simple-progress-delay, 0s) var(--ddd-timing-linear, linear) infinite;
     }
 
     #primaryProgress.finished {
@@ -53,7 +53,7 @@ class SimpleProgress extends HTMLElement {
     #primaryProgress::after {
       content: "";
       transform-origin: center center;
-      animation: indeterminate-splitter var(--simple-progress-duration, 2s) var(--simple-progress-delay, 0s) linear infinite;
+      animation: indeterminate-splitter var(--simple-progress-duration, 2s) var(--simple-progress-delay, 0s) var(--ddd-timing-linear, linear) infinite;
     }
 
     #primaryProgress.finished::after {

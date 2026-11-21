@@ -188,7 +188,7 @@ class PageSection extends I18NMixin(DDD) {
           position: relative;
           background-position: 50%;
           background-size: cover;
-          transition: background-color 1s linear;
+          transition: background-color 1s var(--ddd-timing-linear, linear);
         }
         /* veil over the background image (preset textures in dark mode);
            painted above the background, under the content */

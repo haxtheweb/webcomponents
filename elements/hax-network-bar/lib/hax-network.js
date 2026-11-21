@@ -226,7 +226,7 @@ export const HaxNetworkGlyphStyles = css`
     }
     .glyph-host:hover svg.glyph .g-scan,
     .glyph-host:focus-visible svg.glyph .g-scan {
-      animation: g-scan 0.7s linear infinite;
+      animation: g-scan 0.7s var(--ddd-timing-linear, linear) infinite;
     }
     .glyph-host:hover svg.glyph .g-scan2,
     .glyph-host:focus-visible svg.glyph .g-scan2 {

@@ -86,7 +86,8 @@ export class IframeLoader extends LitElement {
           --iframe-loader-disabled-background,
           var(--ddd-theme-default-white)
         );
-        transition: var(--ddd-duration-normal, 0.3s) linear all;
+        transition: var(--ddd-duration-normal, 0.3s)
+          var(--ddd-timing-linear, linear) all;
       }
       :host([disabled]) #container:hover {
         opacity: var(--ddd-opacity-60, 0.6);

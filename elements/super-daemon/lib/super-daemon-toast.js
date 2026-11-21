@@ -425,7 +425,8 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
         @media (prefers-reduced-motion: no-preference) {
           .timer span {
             animation: super-daemon-toast-time
-              var(--super-daemon-toast-duration, 3000ms) linear forwards;
+              var(--super-daemon-toast-duration, 3000ms)
+              var(--ddd-timing-linear, linear) forwards;
           }
         }
         @keyframes super-daemon-toast-time {

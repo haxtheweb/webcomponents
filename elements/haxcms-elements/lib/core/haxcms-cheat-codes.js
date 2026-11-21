@@ -995,7 +995,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           top: ${Math.random() * (globalThis.innerHeight - 50)}px;
           font-size: 30px;
           z-index: 9999;
-          animation: nyan-fly 2s linear;
+          animation: nyan-fly 2s var(--ddd-timing-linear, linear);
           pointer-events: none;
         `;
 
@@ -2177,7 +2177,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     imageContainer.style.cssText = `
       width: 300px;
       height: 300px;
-      animation: ytmnd-spin 2s linear infinite, ytmnd-zoom 3s ease-in-out infinite alternate;
+      animation: ytmnd-spin 2s var(--ddd-timing-linear, linear) infinite, ytmnd-zoom 3s ease-in-out infinite alternate;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2216,7 +2216,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       color: yellow;
       text-shadow: 2px 2px 0px red, -2px -2px 0px red, 2px -2px 0px red, -2px 2px 0px red;
       text-align: center;
-      animation: ytmnd-text-flash 0.6s linear infinite;
+      animation: ytmnd-text-flash 0.6s var(--ddd-timing-linear, linear) infinite;
     `;
 
     ytmndOverlay.appendChild(imageContainer);
@@ -2327,7 +2327,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     // Create Geocities content
     geocitiesOverlay.innerHTML = `
       <div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-        <h1 style="font-size: 48px; animation: geocities-blink 1s linear infinite; margin: 20px 0;">🏗️ UNDER CONSTRUCTION 🏗️</h1>
+        <h1 style="font-size: 48px; animation: geocities-blink 1s var(--ddd-timing-linear, linear) infinite; margin: 20px 0;">🏗️ UNDER CONSTRUCTION 🏗️</h1>
         
         <div style="background: rgba(255,255,0,0.9); color: black; padding: 10px; margin: 20px auto; width: fit-content; border: 3px dashed red; animation: geocities-bounce 2s ease-in-out infinite;">
           <h2>Welcome to My HomePage!!!</h2>
@@ -2349,7 +2349,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
         <div style="background: rgba(255,0,255,0.7); padding: 20px; margin: 20px auto; width: 80%; max-width: 500px; border: 3px ridge gold;">
           <h3>🎵 NOW PLAYING 🎵</h3>
-          <p style="font-size: 14px; animation: geocities-scroll 10s linear infinite;">♪ Hamster Dance - The Ultimate Web Experience ♪ ~ Welcome to my site, please sign my guestbook! ~ ♪ MIDI music playing in background ♪</p>
+          <p style="font-size: 14px; animation: geocities-scroll 10s var(--ddd-timing-linear, linear) infinite;">♪ Hamster Dance - The Ultimate Web Experience ♪ ~ Welcome to my site, please sign my guestbook! ~ ♪ MIDI music playing in background ♪</p>
         </div>
 
         <div style="margin: 30px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -2358,13 +2358,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite 1s;">🔗 Cool Links</div>
         </div>
 
-        <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,0,0.9); color: black; padding: 10px; border: 2px solid red; animation: geocities-blink 2s linear infinite;">
+        <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,0,0.9); color: black; padding: 10px; border: 2px solid red; animation: geocities-blink 2s var(--ddd-timing-linear, linear) infinite;">
           <div style="font-weight: bold;">Best viewed in:</div>
           <div>Netscape Navigator 4.0</div>
           <div>800x600 Resolution</div>
         </div>
 
-        <div style="margin-top: 40px; font-size: 12px; animation: geocities-blink 3s linear infinite;">
+        <div style="margin-top: 40px; font-size: 12px; animation: geocities-blink 3s var(--ddd-timing-linear, linear) infinite;">
           <p>This site is part of the WebRing!</p>
           <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
             <button style="background: lime; border: 2px outset gray; padding: 5px;">⬅️ Prev</button>
