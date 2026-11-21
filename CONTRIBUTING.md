@@ -618,9 +618,17 @@ We don't tree shake, so every line in a shipped element file reaches every brows
 
 HAX serves elements as unbundled ES modules, so what a page downloads for a tag is every file in its eager import closure (static `import`, not `import()`), each sent separately. `yarn size-report` ([`scripts/size-report.mjs`](scripts/size-report.mjs)) measures that, as the sum of each file's gzip size, for every package main file and every tag in `wc-registry.json`. Third-party packages like lit are not counted.
 
-On pull requests that change element JavaScript, the `size-report` workflow measures the PR and its base and lists the entries whose download changed in the job summary. It is report only: it never fails and posts no comments. Budgets are deferred until the platform is stable ([haxtheweb/issues#3283](https://github.com/haxtheweb/issues/issues/3283)). When the report shows an element growing, check whether the new code needs to load up front or could be an `import()` when first used.
+On pull requests that change element JavaScript, the `size-report` workflow measures the PR and its base and lists the entries whose download changed in the job summary. It posts no comments. When the report shows an element growing, check whether the new code needs to load up front or could be an `import()` when first used.
 
 To compare two checkouts by hand: `yarn size-report --json head.json`, `yarn size-report --root ../other-checkout --json base.json`, then `yarn size-report --compare base.json head.json`.
+
+#### Size budgets
+
+[`scripts/size-budgets.json`](scripts/size-budgets.json) holds a byte budget, raw and gzip, for each entry's own size: the entry file plus the files of its own element folder it statically imports. Shared code (lit, d-d-d, any other HAX package) is not counted, so a change to a shared file does not move every element. The budgets were generated from the measured sizes with headroom (10%, at least 2 KB raw and 1 KB gzip).
+
+`yarn size-report --check-budgets` checks every entry and exits 1 only when one is over its budget. The `size-report` workflow runs it for the entries a pull request changed and writes the result to the job summary; for now it reports and does not block ([haxtheweb/issues#3283](https://github.com/haxtheweb/issues/issues/3283)).
+
+When an element is meant to grow, raise its budget in the same pull request and commit the file: `yarn size-report --update-budgets elements/<name>`. The same command adds budgets for a new element.
 
 ## Security
 
