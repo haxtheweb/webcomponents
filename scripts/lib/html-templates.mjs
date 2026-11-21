@@ -247,9 +247,45 @@ const label = (list, k) =>
     .join(" ");
 
 /**
+ * A binding written inside the text of a <style> element. Lit only supports
+ * bindings in the text of raw-text elements in the browser, and only loosely
+ * (ShadyCSS cannot see them); Lit SSR cannot render them at all, so the
+ * element throws when rendered on a server (haxtheweb/issues#3161). Put the
+ * value in a CSS custom property set from a style attribute or on the host,
+ * and keep the <style> text static.
+ * @returns {null|{line:number, message:string}}
+ */
+export function styleBinding(template) {
+  let before = "";
+  for (let i = 0; i < template.strings.length - 1; i += 1) {
+    before += template.strings[i].toLowerCase();
+    const open = before.lastIndexOf("<style");
+    if (open === -1 || before.indexOf("</style", open) !== -1) continue;
+    // "<style" has to be the tag itself with its start tag closed, so
+    // <style-guide> and <style .textContent=${x}> are not reported
+    const after = before[open + 6];
+    if (
+      (after !== ">" && !/\s/.test(after || "")) ||
+      before.indexOf(">", open) === -1
+    ) {
+      continue;
+    }
+    const base = template.lines ? template.lines[i] : template.line;
+    return {
+      line: base + (template.strings[i].match(/\n/g) || []).length,
+      message:
+        "binding inside <style>: Lit SSR cannot render it; set a CSS custom property instead and keep the style text static",
+    };
+  }
+  return null;
+}
+
+/**
  * @returns {Promise<null|{message:string}>}
  */
 export async function checkHtmlTemplate(template) {
+  const inStyle = styleBinding(template);
+  if (inStyle) return inStyle;
   const L = await lit();
   let htmlText;
   try {

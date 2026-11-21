@@ -5,7 +5,8 @@ name: template-lint
 # - css``: rules and declarations a browser discards (bad selectors, typos,
 #   invalid var() math). Known cases: scripts/css-template-check.baseline.json
 # - html`` / svg``: markup parsed into a different DOM tree (block in <p>,
-#   <x-el/> swallowing siblings, nested <button>, stray end tags).
+#   <x-el/> swallowing siblings, nested <button>, stray end tags), and
+#   bindings inside <style> text, which cannot be server rendered.
 #   Known cases: scripts/html-template-check.baseline.json
 # Only problems missing from the baselines fail. To accept one on purpose,
 # run `yarn lint:css-templates --update-baseline` or

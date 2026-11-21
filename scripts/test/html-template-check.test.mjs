@@ -51,3 +51,20 @@ test("an expression in an unquoted value is not read as a self-closing tag", asy
 test("only html and svg tags are checked", () => {
   assert.equal(findHtmlTemplates("css`:host{}`; other`<p><div>`").length, 0);
 });
+
+test("a binding inside <style> is reported on its own line", async () => {
+  const r = await check(
+    "html`<style>\n:host {\n  width: ${w}px;\n}\n</style><div></div>`",
+  );
+  assert.match(r.message, /binding inside <style>/);
+  assert.equal(r.line, 3);
+});
+
+test("static <style>, bindings around it and a property binding on it pass", async () => {
+  assert.equal(
+    await check(
+      'html`<style>:host{display:block}</style><div style="width:${w}px">${x}</div><style .textContent="${css}"></style><style-guide>${y}</style-guide>`',
+    ),
+    null,
+  );
+});

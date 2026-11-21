@@ -1831,7 +1831,8 @@ globalThis.HAXCMSTrackingLens = TrackingLens;
 // listen from the start, so the statements list has the whole visit
 if (globalThis.document.body) {
   HAXCMSTrackingLens.instance;
-} else {
+} else if (globalThis.addEventListener) {
+  // no global event target when the module is loaded on a server
   globalThis.addEventListener(
     "DOMContentLoaded",
     () => HAXCMSTrackingLens.instance,
