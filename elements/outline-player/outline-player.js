@@ -215,8 +215,8 @@ class OutlinePlayer extends I18NMixin(
         .nav-btns site-modal,
         .nav-btns simple-icon-button-lite {
           display: inline-flex;
-          height: 32px;
-          width: 32px;
+          height: var(--ddd-control-height-xs, 32px);
+          width: var(--ddd-control-height-xs, 32px);
           margin: 0 16px;
           padding: 0;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));

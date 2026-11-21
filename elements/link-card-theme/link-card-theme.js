@@ -244,7 +244,7 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          min-height: 48px;
+          min-height: var(--ddd-control-height-md, 48px);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-rounded);
           border: var(--ddd-border-size-sm) solid var(--link-card-outline);
