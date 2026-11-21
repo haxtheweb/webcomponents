@@ -10,7 +10,15 @@ const z = (name) => {
 
 describe("DDD z-index scale", () => {
   it("stacks every layer above the one before it", () => {
-    const order = ["base", "dropdown", "sticky", "overlay", "modal", "tooltip"];
+    const order = [
+      "base",
+      "dropdown",
+      "sticky",
+      "overlay",
+      "modal",
+      "tooltip",
+      "toast",
+    ];
     order.slice(1).forEach((layer, i) => {
       expect(z(layer), `${layer} above ${order[i]}`).to.be.above(z(order[i]));
     });
@@ -18,5 +26,9 @@ describe("DDD z-index scale", () => {
 
   it("puts tooltips above modals so a tooltip inside a modal is visible", () => {
     expect(z("tooltip")).to.be.above(z("modal"));
+  });
+
+  it("keeps toasts above every other layer", () => {
+    expect(z("toast")).to.be.above(z("tooltip"));
   });
 });
