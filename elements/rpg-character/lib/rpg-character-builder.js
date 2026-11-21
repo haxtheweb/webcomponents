@@ -388,7 +388,10 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       const width = entries[0].contentRect.width;
       const size = width < 420 ? 58 : width < 720 ? 68 : 84;
       if (size !== this._tileSize) {
-        this._tileSize = size;
+        // next frame: resizing tiles inside the observer would loop it
+        globalThis.requestAnimationFrame(() => {
+          this._tileSize = size;
+        });
       }
     });
   }
