@@ -32,6 +32,7 @@ import { DDDBorders } from "@haxtheweb/d-d-d/lib/DDDBorders.js";
 import { DDDMarginPadding } from "@haxtheweb/d-d-d/lib/DDDMarginPadding.js";
 import { DDDFontSizing } from "@haxtheweb/d-d-d/lib/DDDFontSizing.js";
 import { DDDLineHeight } from "@haxtheweb/d-d-d/lib/DDDLineHeight.js";
+import { DDDMotionIconStyles } from "@haxtheweb/d-d-d/lib/DDDMotion.js";
 import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 // DDD Atomic Design pattern library (single source of truth)
 import {
@@ -99,6 +100,7 @@ export const styleGuideTopics = {
   Gradients: "Gradients",
   Radius: "Radius",
   Shadows: "Shadows",
+  Motion: "Motion",
   Spacing: "Spacing",
   HeaderSample: "HeaderSample",
   Typography: "Typography",
@@ -250,6 +252,33 @@ class DDDocs extends I18NMixin(DDD) {
       contractAppliesTo: "Applies to: {elements}",
       selectOptionToRender: "Select an option to render",
       fullStyleguide: "Full styleguide",
+      iconMotionLibrary: "Icon motion library",
+      iconMotionIntro:
+        "Nine named motions an icon can play once when it is hovered or takes keyboard focus. Hover a tile or tab to it.",
+      iconMotionRules:
+        "Motion is decoration: it plays once, lasts under a second, never carries meaning on its own, and does not play when reduced motion is turned on.",
+      iconMotionUsage:
+        "Put the motion attribute on the icon to play it on the icon's own hover. Put the ddd-motion-trigger class on the card, tile or button around it to play it on theirs. Any other element takes the class ddd-motion- followed by the motion name.",
+      iconMotionPulseNote:
+        "beat is the scale motion. pulse stays the ring that asks for attention (data-pulse).",
+      iconMotionPop: "Scales up and settles.",
+      iconMotionPopUse: "Hubs: the thing the page or card is about.",
+      iconMotionWiggle: "Quick side to side rotation.",
+      iconMotionWiggleUse: "Things you edit or report.",
+      iconMotionTilt: "Tips back and returns.",
+      iconMotionTiltUse: "Tools in hand.",
+      iconMotionBeat: "Two soft scale beats.",
+      iconMotionBeatUse: "Living things and status.",
+      iconMotionLift: "Rises a little and comes back.",
+      iconMotionLiftUse: "Layers, storage and files.",
+      iconMotionSpin: "One full turn.",
+      iconMotionSpinUse: "Reserved: at most one per view.",
+      iconMotionNudge: "Slides forward and back.",
+      iconMotionNudgeUse: "Flows, pipes and next steps.",
+      iconMotionStrike: "Swings down and back.",
+      iconMotionStrikeUse: "Gavel-like actions and rules.",
+      iconMotionGlow: "Brightens with a soft halo.",
+      iconMotionGlowUse: "Ideas and magic.",
     };
     this.registerLocalization({
       context: this,
@@ -283,7 +312,45 @@ class DDDocs extends I18NMixin(DDD) {
       DDDMarginPadding,
       DDDFontSizing,
       DDDLineHeight,
+      DDDMotionIconStyles,
       css`
+        .motion-tiles {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: var(--ddd-spacing-4);
+        }
+        .motion-tile {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          align-items: center;
+          column-gap: var(--ddd-spacing-3);
+          row-gap: var(--ddd-spacing-1);
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+          padding: var(--ddd-spacing-3);
+          align-content: center;
+          border: var(--ddd-border-sm);
+          border-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          border-radius: var(--ddd-radius-md);
+          background: transparent;
+          color: inherit;
+          font: inherit;
+          text-align: start;
+          cursor: pointer;
+        }
+        .motion-tile:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        .motion-tile simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
+          grid-row: span 2;
+        }
         /* used for demo */
         :host {
           display: block;
@@ -1673,6 +1740,44 @@ class DDDocs extends I18NMixin(DDD) {
           </p>
         </div>
       </div>
+    `;
+  }
+
+  renderMotion() {
+    const motions = [
+      { name: "pop", key: "Pop", icon: "hax:site-map" },
+      { name: "wiggle", key: "Wiggle", icon: "hax:page-edit" },
+      { name: "tilt", key: "Tilt", icon: "hax:wand" },
+      { name: "beat", key: "Beat", icon: "icons:dashboard" },
+      { name: "lift", key: "Lift", icon: "icons:folder-open" },
+      { name: "spin", key: "Spin", icon: "mdextra:hexagon-outline" },
+      { name: "nudge", key: "Nudge", icon: "hax:code-json" },
+      { name: "strike", key: "Strike", icon: "icons:gavel" },
+      { name: "glow", key: "Glow", icon: "icons:lightbulb-outline" },
+    ];
+    return html`
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">${this.t.iconMotionLibrary}</h2>
+      <p class="my-4">${this.t.iconMotionIntro}</p>
+      <div class="motion-tiles my-8">
+        ${motions.map(
+          (m) =>
+            html`<button class="motion-tile ddd-motion-trigger">
+              <simple-icon-lite
+                icon="${m.icon}"
+                motion="${m.name}"
+                aria-hidden="true"
+              ></simple-icon-lite>
+              <span class="fw-3">${m.name}</span>
+              <span
+                >${this.t[`iconMotion${m.key}`]}
+                ${this.t[`iconMotion${m.key}Use`]}</span
+              >
+            </button>`,
+        )}
+      </div>
+      <p class="my-4">${this.t.iconMotionRules}</p>
+      <p class="my-4">${this.t.iconMotionUsage}</p>
+      <p class="my-4">${this.t.iconMotionPulseNote}</p>
     `;
   }
 
