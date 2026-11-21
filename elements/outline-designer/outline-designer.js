@@ -432,7 +432,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           height: var(--hax-ui-drop-width);
           background-color: var(--hax-ui-drop);
           animation: outline-designer-press var(--outline-designer-press-ms)
-            linear forwards;
+            var(--ddd-timing-linear, linear) forwards;
         }
         @keyframes outline-designer-press {
           from {

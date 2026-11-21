@@ -90,7 +90,7 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
           border-radius: 50%;
           width: var(--ddd-spacing-6);
           height: var(--ddd-spacing-6);
-          animation: spin 2s linear infinite;
+          animation: spin 2s var(--ddd-timing-linear, linear) infinite;
         }
         @keyframes spin {
           0% {

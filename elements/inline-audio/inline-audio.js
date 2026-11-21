@@ -138,7 +138,7 @@ class InlineAudio extends I18NMixin(DDD) {
         }
 
         .progress {
-          animation: progress-bar 1s linear forwards;
+          animation: progress-bar 1s var(--ddd-timing-linear, linear) forwards;
         }
 
         .container:focus-within {

@@ -202,7 +202,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
         .loading simple-icon {
           --simple-icon-width: var(--hax-ui-icon);
           --simple-icon-height: var(--hax-ui-icon);
-          animation: spin 1s linear infinite;
+          animation: spin 1s var(--ddd-timing-linear, linear) infinite;
         }
 
         @keyframes spin {

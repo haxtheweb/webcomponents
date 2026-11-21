@@ -917,6 +917,9 @@ export const DDDVariables = css`
        Layering system for proper element stacking, lowest to highest.
        Each layer must sit above the one before it: a tooltip or popover
        opened from inside a modal has to render on top of that modal.
+       Pick the token by what the element is, not by its number, and keep
+       a deliberate order inside a layer with calc(var(--ddd-z-toast) + n).
+       Role by role: docs/stacking-order.md
        Usage: z-index: var(--ddd-z-modal);
        =========================================== */
     --ddd-z-base: 0; /* Base layer */
@@ -925,6 +928,7 @@ export const DDDVariables = css`
     --ddd-z-overlay: 300; /* Background overlays */
     --ddd-z-modal: 10000; /* Modal dialogs and critical UI */
     --ddd-z-tooltip: 10100; /* Tooltips and popovers, above modals */
+    --ddd-z-toast: 100000000; /* Always on top: toasts and the system UI beside them */
 
     /* ===========================================
        OPACITY SCALE

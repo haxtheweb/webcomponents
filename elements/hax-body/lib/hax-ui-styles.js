@@ -319,7 +319,7 @@ export const HaxUiSingletons = [
       --simple-modal-z-index: 100000001 !important;
     }
     simple-modal[opened] {
-      z-index: 100000001 !important;
+      z-index: calc(var(--ddd-z-toast, 100000000) + 1) !important;
       position: fixed;
     }
     /* the editor's dialogs (app picker, view source, cancel) wear the HAX

@@ -223,7 +223,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           width: 300px;
           height: 100vh;
           overflow-y: auto;
-          transition: var(--ddd-duration-normal, 0.3s) linear all;
+          transition: var(--ddd-duration-normal, 0.3s)
+            var(--ddd-timing-linear, linear) all;
           box-shadow: var(
             --learn-two-theme-drawer-box-shadow,
             var(--ddd-boxShadow-sm)
@@ -441,7 +442,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             z-index: 999999;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.2s linear;
+            transition: opacity 0.2s var(--ddd-timing-linear, linear);
           }
           .scrim.opened {
             opacity: 1;

@@ -187,10 +187,10 @@ export class RetroTvTitleSequence extends RetroTvProgram {
         }
         @media (prefers-reduced-motion: no-preference) {
           :host(:not([still])) .run-a .scene {
-            animation: vhs-fade-a 1.8s linear both;
+            animation: vhs-fade-a 1.8s var(--ddd-timing-linear, linear) both;
           }
           :host(:not([still])) .run-b .scene {
-            animation: vhs-fade-b 1.8s linear both;
+            animation: vhs-fade-b 1.8s var(--ddd-timing-linear, linear) both;
           }
           :host(:not([still])) .run-a .crawl {
             animation: vhs-crawl-a 6.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.4s both;
@@ -205,7 +205,7 @@ export class RetroTvTitleSequence extends RetroTvProgram {
             animation: vhs-osd-b 1s steps(2) 7.5s both;
           }
           :host(:not([still])) .floor {
-            animation: vhs-grid 1.2s linear 7;
+            animation: vhs-grid 1.2s var(--ddd-timing-linear, linear) 7;
           }
         }
         @keyframes vhs-fade-a {

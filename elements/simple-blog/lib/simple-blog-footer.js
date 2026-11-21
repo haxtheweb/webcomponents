@@ -31,7 +31,8 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           position: relative;
           overflow: hidden;
           opacity: 1;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
           font-family: inherit;
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }

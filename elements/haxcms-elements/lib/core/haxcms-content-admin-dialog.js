@@ -1013,7 +1013,8 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           border: 2px solid var(--hax-ui-line-strong);
           border-top-color: var(--hax-ui-accent-strong);
           border-radius: 50%;
-          animation: haxcms-content-spin 0.8s linear infinite;
+          animation: haxcms-content-spin 0.8s var(--ddd-timing-linear, linear)
+            infinite;
         }
         @keyframes haxcms-content-spin {
           to {

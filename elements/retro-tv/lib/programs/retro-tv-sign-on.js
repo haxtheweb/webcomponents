@@ -158,7 +158,8 @@ export class RetroTvSignOn extends RetroTvLocalizedProgram {
         }
         @media (prefers-reduced-motion: no-preference) {
           :host(:not([still])) .sweep {
-            animation: retro-tv-sweep 5s linear infinite;
+            animation: retro-tv-sweep 5s var(--ddd-timing-linear, linear)
+              infinite;
           }
         }
         @keyframes retro-tv-sweep {

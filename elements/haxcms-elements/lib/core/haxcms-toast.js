@@ -127,7 +127,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           /* where it sits: under the top bar on the right; on a phone,
              under the bar across the width */
           --haxcms-toast-gap: var(--hax-ui-gap-lg, 12px);
-          --simple-toast-z-index: 100000004;
+          --simple-toast-z-index: calc(var(--ddd-z-toast, 100000000) + 4);
           position: fixed;
           top: var(
             --haxcms-toast-top,
@@ -280,7 +280,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           --simple-icon-height: 13px;
         }
         :host([tone="working"]) .badge simple-icon-lite {
-          animation: haxcms-toast-spin 1s linear infinite;
+          animation: haxcms-toast-spin 1s var(--ddd-timing-linear, linear)
+            infinite;
         }
         @keyframes haxcms-toast-spin {
           to {
@@ -429,7 +430,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           transform-origin: left center;
           background-color: var(--haxcms-toast-tone);
           animation: haxcms-toast-time var(--haxcms-toast-duration, 4000ms)
-            linear forwards;
+            var(--ddd-timing-linear, linear) forwards;
         }
         :host([paused]) .timer span {
           animation-play-state: paused;

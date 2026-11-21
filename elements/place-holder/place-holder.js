@@ -52,8 +52,10 @@ class PlaceHolder extends I18NMixin(DDD) {
           );
           border-radius: var(--ddd-radius-md);
           transition:
-            background-color var(--ddd-duration-normal, 0.3s) linear,
-            border-color var(--ddd-duration-normal, 0.3s) linear;
+            background-color var(--ddd-duration-normal, 0.3s)
+              var(--ddd-timing-linear, linear),
+            border-color var(--ddd-duration-normal, 0.3s)
+              var(--ddd-timing-linear, linear);
         }
         /* drop target: navy dashed border and a light blue fill */
         :host([drag-over]) .wrapper {

@@ -18,7 +18,8 @@ class SiteFooter extends LitElement {
       css`
         :host {
           display: block;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
           opacity: 1;
         }
         :host([edit-mode]) {

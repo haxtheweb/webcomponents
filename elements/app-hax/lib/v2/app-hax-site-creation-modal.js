@@ -700,7 +700,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           width: 10px;
           height: 10px;
           background: var(--ddd-theme-default-futureLime, #99cc33);
-          animation: confetti-fall 3s linear infinite;
+          animation: confetti-fall 3s var(--ddd-timing-linear, linear) infinite;
         }
 
         .confetti-piece:nth-child(2n) {

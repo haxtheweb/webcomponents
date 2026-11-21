@@ -3233,7 +3233,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           border: 2px solid var(--hax-ui-line-strong);
           border-top-color: var(--haxcms-goggles-lens);
           border-radius: 50%;
-          animation: spin 800ms linear infinite;
+          animation: spin 800ms var(--ddd-timing-linear, linear) infinite;
         }
         @keyframes spin {
           to {
@@ -3437,7 +3437,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
             var(--ddd-theme-default-potentialMidnight, #000321) 70%,
             transparent
           );
-          animation: puton-fade 1700ms linear both;
+          animation: puton-fade 1700ms var(--ddd-timing-linear, linear) both;
         }
         .traveler {
           position: absolute;
@@ -3460,7 +3460,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           inset: 0;
           background: var(--haxcms-goggles-lens);
           opacity: 0;
-          animation: puton-flash 1700ms linear both;
+          animation: puton-flash 1700ms var(--ddd-timing-linear, linear) both;
         }
         @keyframes puton-zoom {
           0% {
@@ -3518,14 +3518,16 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           animation: rims-in 500ms var(--hax-ui-easing, ease-in) reverse both;
         }
         :host([phase="takeoff"]) .puton {
-          animation: puton-fade 1300ms linear reverse both;
+          animation: puton-fade 1300ms var(--ddd-timing-linear, linear) reverse
+            both;
         }
         :host([phase="takeoff"]) .traveler {
           animation: puton-zoom 1150ms cubic-bezier(0.1, 0.6, 0.4, 1) 150ms
             reverse both;
         }
         :host([phase="takeoff"]) .flash {
-          animation: puton-flash 1300ms linear reverse both;
+          animation: puton-flash 1300ms var(--ddd-timing-linear, linear) reverse
+            both;
         }
 
         @media (max-width: 719px) {

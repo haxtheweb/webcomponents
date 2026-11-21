@@ -256,7 +256,7 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     :host {
       display: block;
       opacity: .2;
-      transition: .3s linear opacity,.3s linear outline,.3s linear visibility,.3s linear display;
+      transition: .3s var(--ddd-timing-linear, linear) opacity,.3s var(--ddd-timing-linear, linear) outline,.3s var(--ddd-timing-linear, linear) visibility,.3s var(--ddd-timing-linear, linear) display;
     }
     :host([import]) {
       opacity: .1 !important;

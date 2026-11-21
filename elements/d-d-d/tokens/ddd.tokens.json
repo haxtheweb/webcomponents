@@ -3126,6 +3126,16 @@
             "cssVar": "--ddd-z-tooltip"
           }
         }
+      },
+      "toast": {
+        "$type": "number",
+        "$value": 100000000,
+        "$description": "Always on top: toasts and the system UI beside them",
+        "$extensions": {
+          "org.haxtheweb.ddd": {
+            "cssVar": "--ddd-z-toast"
+          }
+        }
       }
     },
     "opacity": {
