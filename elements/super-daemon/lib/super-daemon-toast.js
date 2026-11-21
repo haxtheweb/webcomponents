@@ -111,7 +111,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           /* where it sits: with the other HAX toasts (haxcms-toast), under
              the top bar on the right; on a phone, under the bar across the
              width. It drops in from above like they do. */
-          --simple-toast-z-index: 100000003;
+          --simple-toast-z-index: calc(var(--ddd-z-toast, 100000000) + 3);
           --simple-toast-slide-offset-y: -12px;
           --super-daemon-toast-gap: var(--hax-ui-gap-lg, 12px);
           position: fixed;

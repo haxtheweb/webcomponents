@@ -35,7 +35,7 @@ export class Hal9000UI extends SimpleColors {
           position: fixed;
           left: var(--ddd-spacing-5);
           bottom: var(--ddd-spacing-5);
-          z-index: 100000002;
+          z-index: calc(var(--ddd-z-toast, 100000000) + 2);
           background-color: var(--ddd-theme-default-coalyGray);
           border-radius: 15px;
         }

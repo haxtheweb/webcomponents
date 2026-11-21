@@ -184,7 +184,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
            at 100000001 once the editor loads. Merlin (super-daemon) shares
            this layer and comes later in the page, so it stays on top. */
         :host([admin-docked]) {
-          z-index: 100000002;
+          z-index: calc(var(--ddd-z-toast, 100000000) + 2);
         }
         :host *[hidden] {
           display: none;

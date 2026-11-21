@@ -1134,7 +1134,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         :host([admin-docked]) .bar-wrap {
           position: sticky;
           top: 0;
-          z-index: 100000002;
+          z-index: calc(var(--ddd-z-toast, 100000000) + 2);
         }
 
         /* the same bar as the site editor's: Coaly gray and HAX UI dark

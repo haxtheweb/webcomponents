@@ -127,7 +127,7 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           /* where it sits: under the top bar on the right; on a phone,
              under the bar across the width */
           --haxcms-toast-gap: var(--hax-ui-gap-lg, 12px);
-          --simple-toast-z-index: 100000004;
+          --simple-toast-z-index: calc(var(--ddd-z-toast, 100000000) + 4);
           position: fixed;
           top: var(
             --haxcms-toast-top,

@@ -786,7 +786,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         pointer-events: none;
         /* over the page and the HAX UI, under Merlin's toast so what he
            says stays readable */
-        z-index: 100000000;
+        z-index: var(--ddd-z-toast, 100000000);
         overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
       `;
