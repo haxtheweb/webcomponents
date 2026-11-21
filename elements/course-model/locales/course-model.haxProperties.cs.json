@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "název"
+        "title": "název",
+        "description": "Nadpis zobrazený nad modelem kurzu."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adresa souboru 3D modelu (.glb nebo .gltf) k zobrazení."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Popište 3D model pro lidi, kteří ho nevidí."
       },
       {
         "title": "Informační oblast"

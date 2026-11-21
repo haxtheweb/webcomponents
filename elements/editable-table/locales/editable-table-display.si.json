@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV ලෙස පිටපත් කරන්න.",
   "printTable": "වගුව මුද්‍රණය කරන්න",
   "selectColumn": "තීරුව තෝරන්න",
-  "dataTable": "දත්ත · වගුව"
+  "dataTable": "දත්ත · වගුව",
+  "filterStatus": "පේළි {total} න් {shown} ක් පෙන්වයි, {column} අනුව පෙරහන් කර ඇත: {text}",
+  "columnNumber": "තීරුව {column}",
+  "clearFilter": "පෙරහන හිස් කරන්න"
 }

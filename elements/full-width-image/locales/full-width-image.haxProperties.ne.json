@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "पृष्ठभूमि तस्बिर।"
+        "description": "पृष्ठभूमि तस्बिर।",
+        "title": "छवि"
       },
       {
         "property": "caption",
-        "description": "पाठ शीर्षक।"
+        "description": "पाठ शीर्षक।",
+        "title": "क्याप्सन"
       }
     ]
   }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Label gambar",
     "description": "Elemen label gambar kanggo menehi tandha aset media ing isi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomer figur",
+        "description": "Nomer utawa label cendhak kanggo figur, contone 1.3"
+      },
+      {
+        "title": "Katrangan",
+        "description": "Katrangan cendhak figur"
+      }
+    ]
   }
 }

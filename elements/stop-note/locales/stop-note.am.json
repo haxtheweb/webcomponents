@@ -3,5 +3,7 @@
   "status_stop": "አቁም",
   "status_warning": "ማስጠንቀቂያ",
   "status_success": "ስኬት",
-  "status_info": "ማስታወሻ"
+  "status_info": "ማስታወሻ",
+  "status_tip": "ያውቃሉ?",
+  "status_new": "አዲስ ነገሮች"
 }

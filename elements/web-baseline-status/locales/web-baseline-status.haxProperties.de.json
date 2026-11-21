@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-Status",
+    "description": "Den Baseline-Status der Browserunterstützung einer Webplattform-Funktion anzeigen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funktions-ID",
+        "description": "ID der Webfunktion, zum Beispiel anchor-positioning. IDs findest du auf webstatus.dev; die ID ist der letzte Teil der URL einer Funktionsseite."
+      }
+    ]
+  }
+}

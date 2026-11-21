@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Teka-teki silang",
+    "description": "Teka-teki silang yang dibuat dari daftar kata dan petunjuk. Kisinya dibuat otomatis; pelajar mengetik kata-katanya lalu memeriksanya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Judul atau pertanyaan yang ditampilkan di atas teka-teki silang."
+      },
+      {
+        "title": "Kata",
+        "description": "Setiap kata dan petunjuknya. Kisi dibuat dari daftar ini: kata terpanjang ditempatkan pertama dan kata lain menyilanginya pada huruf yang sama."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Percobaan",
+        "description": "Berapa kali pelajar dapat memeriksa. 0 berarti tidak terbatas."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna opsional untuk label judul, kata aktif, dan tombol aksi."
+      },
+      {
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan teka-teki silang ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "title": "Mulai dalam keadaan tertutup",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan judul dan statusnya."
+      },
+      {
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuis",
+        "description": "Nama kuis yang digunakan untuk identifikasi xAPI dalam sistem analitik."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dituju oleh asesmen ini."
+      }
+    ]
+  }
+}

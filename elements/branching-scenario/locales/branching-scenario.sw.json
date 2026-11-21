@@ -1,0 +1,22 @@
+{
+  "scenario": "Hali",
+  "directions": "Maelekezo",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "directionsRead": "Soma kila tukio na uchague ungefanya nini.",
+  "directionsEndings": "Kuna miisho kadhaa. Jaribu njia nyingine ukimaliza.",
+  "startOver": "Anza upya",
+  "back": "Rudi hatua moja",
+  "tryAnother": "Jaribu njia nyingine",
+  "path": "Njia",
+  "scene": "Tukio",
+  "ending": "Mwisho",
+  "end": "mwisho",
+  "scenesSeen": "Matukio {seen} kati ya {total} yameonekana",
+  "endingReached": "Umefika mwisho",
+  "addScene": "Ongeza tukio",
+  "newScene": "Tukio jipya",
+  "newSceneText": "Eleza kinachotokea, kisha unganisha kila chaguo na tukio.",
+  "editingNote": "Kuhariri: kila tukio linaonyeshwa. Chaguo ni kiungo cha # kikifuatiwa na id ya tukio.",
+  "noScenes": "Ongeza tukio kuanza hali hii."
+}

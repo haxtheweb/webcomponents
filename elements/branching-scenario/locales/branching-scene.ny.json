@@ -1,0 +1,14 @@
+{
+  "scene": "Chochitika",
+  "ending": "Mathero",
+  "goodEnding": "Mathero abwino",
+  "mixedEnding": "Mathero osakanikirana",
+  "poorEnding": "Mathero oipa",
+  "scoreOf": "Zigoli {score} mwa {max}",
+  "scoreOnly": "Zigoli {score}",
+  "startScene": "Yambani",
+  "sceneIdLabel": "ID ya chochitika",
+  "needsId": "Onjezani ID ya chochitika kuti zisankho zilumikizane ndi chochitika ichi.",
+  "orphan": "Palibe chisankho cholumikizana ndi chochitika ichi.",
+  "deadLinks": "Maulalo awa akulozera ku chochitika chomwe kulibe:"
+}

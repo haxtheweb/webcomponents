@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram nga teksti",
+    "description": "Shkruaj një diagram si tekst (Mermaid): flowchart, sequence, timeline e më shumë. Vizatohet në faqe me alternativë tekstuale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Shfaqet mbi diagramin dhe përdoret si emri i tij."
+      },
+      {
+        "title": "Burimi i diagramit",
+        "description": "Tekst Mermaid, për shembull: flowchart TD, pastaj një rresht për çdo lidhje si A[Draft] --> B{Ready?}. Shto |label| pas një shigjete për t'i vënë etiketë. Vizatimi përditësohet ndërsa shkruan."
+      },
+      {
+        "title": "Alternativë tekstuale",
+        "description": "Përshkruaj çfarë tregon diagrami për njerëzit që nuk mund ta shohin. Lëre bosh në një flowchart që hapat e tij të listohen për ty."
+      },
+      {
+        "title": "Legjenda",
+        "description": "Legjendë opsionale e shfaqur nën diagram."
+      },
+      {
+        "title": "Shfaq burimin",
+        "description": "Shfaq tekstin e diagramit pranë vizatimit."
+      },
+      {
+        "title": "Shfaq alternativën tekstuale",
+        "description": "Shfaq alternativën tekstuale nën vizatim. Është gjithmonë e disponueshme për lexuesit e ekranit."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Skedari burim",
+        "description": "Adresa e një skedari .mmd për t'u vizatuar në vend të tekstit më sipër (https ose shteg në këtë sajt)."
+      },
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyra e etiketës së ikonës në kokë."
+      }
+    ]
+  }
+}

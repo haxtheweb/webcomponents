@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona di rilascio su immagine",
+    "description": "Gli studenti posizionano etichette su zone sovrapposte a un'immagine, poi verificano la risposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Immagine",
+        "description": "L'immagine su cui gli studenti posizionano le etichette."
+      },
+      {
+        "title": "Testo alternativo",
+        "description": "Descrive l'immagine per chi non può vederla. Non rivelare dove vanno le etichette."
+      },
+      {
+        "title": "Titolo dell'immagine",
+        "description": "Un breve titolo visibile per l'immagine, mostrato sopra di essa."
+      },
+      {
+        "title": "Domanda",
+        "description": "Cosa viene chiesto agli studenti di fare con le etichette."
+      },
+      {
+        "title": "Etichette e zone",
+        "description": "Ogni elemento è un'etichetta che gli studenti possono posizionare. Dai a un'etichetta un nome di zona per collocare la sua zona sull'immagine; un'etichetta senza nome di zona è un'aggiunta che non appartiene a nessun posto. I numeri delle zone sono percentuali dell'immagine."
+      },
+      {
+        "title": "Didascalia",
+        "description": "Didascalia facoltativa mostrata sotto l'immagine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte uno studente può verificare. 0 significa illimitato."
+      },
+      {
+        "title": "Mescola le etichette",
+        "description": "Mostra le etichette in un ordine diverso a ogni visita."
+      },
+      {
+        "title": "Comprimibile",
+        "description": "Mostra questa domanda come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "title": "Inizia compresso",
+        "description": "Se comprimibile, inizia come riga chiusa che mostra solo la domanda e il suo stato."
+      },
+      {
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (ad es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome del quiz",
+        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
+      },
+      {
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      }
+    ]
+  }
+}

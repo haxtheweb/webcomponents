@@ -6,6 +6,8 @@
   "faviconDescription": "Brauseri vahekaardi pilt / telefonides väike saidi logo",
   "domain": "Domeen",
   "domainDescription": "Selle veebisaidi domeen",
+  "sameAs": "Selle saidi muud profiilid",
+  "sameAsDescription": "Üks link rea kohta selle saidi või organisatsiooni profiilidele mujal (GitHub, LinkedIn, YouTube, Mastodon). Otsingumootorid kasutavad neid, et siduda need profiilid selle saidiga.",
   "language": "Keel",
   "languageDescription": "Selle saidi keel. Otsige nime või koodi järgi või sisestage muu kood, näiteks fr-CA.",
   "googleAnalyticsId": "Google Analyticsi ID",

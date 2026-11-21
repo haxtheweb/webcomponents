@@ -52,6 +52,20 @@
           "_top": "Fèrèsé òkè - _top",
           "_parent": "Fèrèsé òbí - _parent"
         }
+      },
+      {
+        "title": "Kò sí Ọfà",
+        "description": "Fi ọfà bọ́tìnnì pamọ́."
+      },
+      {
+        "title": "Ìjápọ̀: ibi-àfojúsùn",
+        "description": "Ibi tí a ó ti ṣí ìjápọ̀ náà.",
+        "options": {
+          "": "Fèrèsé kan náà",
+          "_blank": "Fèrèsé tuntun - _blank",
+          "_top": "Fèrèsé òkè - _top",
+          "_parent": "Fèrèsé òbí - _parent"
+        }
       }
     ],
     "developer": [

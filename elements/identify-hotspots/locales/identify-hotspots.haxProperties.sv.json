@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hitta punkterna",
+    "description": "Eleverna hittar rätt ställen i en bild genom att klicka, trycka eller flytta ett hårkors med tangentbordet. Den bedömda motsvarigheten till en bildkarta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "Bilden som eleverna söker i."
+      },
+      {
+        "title": "Alternativ text",
+        "description": "Beskriver bilden för personer som inte kan se den. Den visas aldrig som titel."
+      },
+      {
+        "title": "Titel",
+        "description": "En kort synlig titel som visas ovanför bilden."
+      },
+      {
+        "title": "Fråga",
+        "description": "Vad eleverna ombeds hitta i bilden."
+      },
+      {
+        "title": "Svar",
+        "description": "Varje svar är en namngiven oval i bilden. Position och storlek är procent av bilden, mätt från dess övre vänstra hörn. Under redigering markeras varje svar i bilden."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Försök",
+        "description": "Hur många gånger en elev kan försöka. 0 betyder obegränsat."
+      },
+      {
+        "title": "Tillåtna missar",
+        "description": "Hur många missar som avslutar ett försök. 0 betyder obegränsat, och eleverna får en Slutför-knapp."
+      },
+      {
+        "title": "Hopfällbar",
+        "description": "Visa frågan som en rad som öppnas och stängs. När en öppnas stängs de andra hopfällbara frågorna bredvid."
+      },
+      {
+        "title": "Börja hopfälld",
+        "description": "När den är hopfällbar börjar den som en stängd rad som bara visar frågan och dess status."
+      },
+      {
+        "title": "Bedömningsformat",
+        "description": "OER Schema: bedömningsformat för den här bedömningen (t.ex. poäng, bokstav, procent, slutförande)."
+      },
+      {
+        "title": "Lärandemål",
+        "description": "OER Schema: lärandemål som hör till den här bedömningen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizets namn",
+        "description": "Quiznamn som skickas in för användning i xAPI-drivna miljöer för att identifiera det här objektet"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs som den här bedömningen är avsedd för."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "label": "Hawa llamk'ana",
+  "labelLti": "Hawa llamk'ana · LTI 1.3",
+  "theTool": "llamk'ana",
+  "directions": "Pusaykuna",
+  "showDirections": "Pusaykunata rikuchiy",
+  "hideDirections": "Pusaykunata pakay",
+  "directionsWindow": "Ñit'inaqa llamk'anayuq musuq ventanata kichan.",
+  "directionsEmbed": "Ñit'inaqa llamk'anata kay p'anqapi kichan. Mana cargakuptinqa, aswanpas musuq ventanapi kichay.",
+  "directionsLti": "Kay kitim llamk'anaman yaykuchisunki, chaymi mana sapaq cuentata necesitankichu.",
+  "openWindow": "{title} kichay (musuq ventana)",
+  "openEmbed": "{title} kichay",
+  "openInstead": "Aswanpas musuq ventanapi kichay",
+  "frameTitle": "{title} (hawa llamk'ana)",
+  "openedWindow": "Llamk'anayuq musuq ventana kichakurqan.",
+  "openedEmbed": "Llamk'anaqa kay p'anqapi kichakurqan.",
+  "needsUrl": "Kay bloqueqa http:// utaq https:// nisqawan qallariq huk qallariy tiyanata munan.",
+  "needsSignIn": "Kay llamk'anaqa kay kitip yaykuy servicionta munan, kaypitaq mana kanchu. Manam imapas kichakurqanchu."
+}

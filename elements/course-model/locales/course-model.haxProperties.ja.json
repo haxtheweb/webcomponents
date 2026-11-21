@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "タイトル"
+        "title": "タイトル",
+        "description": "コースモデルの上に表示する見出し。"
       },
       {
         "property": "src",
-        "title": "ソース"
+        "title": "ソース",
+        "description": "表示する 3D モデルファイル（.glb または .gltf）のアドレス。"
       },
       {
         "property": "alt",
-        "title": "代替テキスト"
+        "title": "代替テキスト",
+        "description": "3D モデルが見えない人のためにモデルを説明してください。"
       },
       {
         "title": "情報エリア"

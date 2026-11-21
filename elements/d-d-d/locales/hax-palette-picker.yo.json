@@ -5,5 +5,6 @@
   "selected": "A ti yàn án",
   "currentlyActiveAndSelectedPalette": "Àkójọ àwọ̀ tó ń ṣiṣẹ́ tí a sì ti yàn lọ́wọ́lọ́wọ́",
   "currentlyActivePalette": "Àkójọ àwọ̀ tó ń ṣiṣẹ́ lọ́wọ́lọ́wọ́",
-  "selectedPaletteToApply": "Àkójọ àwọ̀ tí a yàn láti lò"
+  "selectedPaletteToApply": "Àkójọ àwọ̀ tí a yàn láti lò",
+  "paletteNumber": "Àpò àwọ̀ {number}"
 }

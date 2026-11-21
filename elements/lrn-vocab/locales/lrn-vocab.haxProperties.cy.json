@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Term"
+        "title": "Term",
+        "description": "Y gair neu'r ymadrodd y mae darllenwyr yn ei glicio i weld ei ddiffiniad."
       },
       {
         "slot": "",

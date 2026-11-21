@@ -40,5 +40,7 @@
   "hideDirections": "Ascunde instrucțiunile",
   "showRelatedContent": "Afișează conținutul asociat",
   "hideRelatedContent": "Ascunde conținutul asociat",
-  "notAttempted": "Neîncercată"
+  "notAttempted": "Neîncercată",
+  "cardsDirections": "Puneți cărțile în ordinea corectă cu butoanele mutați mai devreme și mutați mai târziu de pe fiecare carte sau trageți-le cu mouse-ul. Când credeți că sunt în ordinea corectă, verificați răspunsul selectând {checkAnswer}.",
+  "movedToPosition": "{item} mutat pe poziția {position} din {total}"
 }

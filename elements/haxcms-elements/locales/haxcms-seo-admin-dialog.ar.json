@@ -6,6 +6,8 @@
   "faviconDescription": "صورة علامة تبويب المتصفح / تُستخدم على الهواتف كشعار صغير للموقع",
   "domain": "النطاق",
   "domainDescription": "نطاق هذا الموقع",
+  "sameAs": "ملفات تعريف أخرى لهذا الموقع",
+  "sameAsDescription": "رابط واحد في كل سطر إلى ملفات تعريف هذا الموقع أو المؤسسة في أماكن أخرى (GitHub وLinkedIn وYouTube وMastodon). تستخدمها محركات البحث لربط تلك الملفات بهذا الموقع.",
   "language": "اللغة",
   "languageDescription": "لغة هذا الموقع. ابحث بالاسم أو الرمز، أو أدخل رمزًا آخر مثل fr-CA.",
   "googleAnalyticsId": "معرّف Google Analytics",

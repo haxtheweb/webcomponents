@@ -1,0 +1,16 @@
+{
+  "drawing": "Crtež",
+  "edit": "Uredi crtež",
+  "start": "Počni crtati",
+  "remove": "Ukloni crtež",
+  "empty": "Još ništa nije nacrtano",
+  "save": "Sačuvaj",
+  "cancel": "Otkaži",
+  "close": "Zatvori",
+  "discard": "Odbaci promjene",
+  "discardConfirm": "Odbaciti nesačuvane promjene?",
+  "keepEditing": "Nastavi uređivati",
+  "draw": "Crtež",
+  "feedback": "Povratna informacija",
+  "signature": "Potpis"
+}

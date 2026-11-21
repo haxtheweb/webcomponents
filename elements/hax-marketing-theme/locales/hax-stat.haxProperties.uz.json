@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Yorliq va hikoyasiga havola bilan sanab ko‘tariladigan son"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qaysi songacha sanash"
+      },
+      {
+        "title": "Sondan oldin"
+      },
+      {
+        "title": "Sondan keyin"
+      },
+      {
+        "title": "Son o‘rniga so‘zlar"
+      },
+      {
+        "title": "Nimani sanaydi"
+      },
+      {
+        "title": "hax.cloud dagi hikoya manzili (stories/ee450a19)"
+      }
+    ]
+  }
+}

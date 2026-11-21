@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Koma notên rawestanê",
+    "description": "Çend notên rawestanê bike yek blokek ku her car notekê nîşan dide, wek Şîret an Çi nû ye. Kartên rêwerzê, notên kêlekê û gotinên bi çarçove dikarin bi wan re bên kom kirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etîket",
+        "description": "Navê komê ku xwînerên ekranê ragihînin, wek Şîret an Çi nû ye."
+      },
+      {
+        "title": "Not",
+        "description": "Notên rawestanê di komê de. Kartên rêwerzê, notên kêlekê û gotinên bi çarçove jî dikarin bên zêdekirin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Surat taşlama meýdany",
+    "description": "Öwrenijiler belliklerini suratyň üstündäki zolaklara goýýarlar, soňra jogabyny barlaýarlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Surat",
+        "description": "Öwrenijileriň bellik goýýan suraty."
+      },
+      {
+        "title": "Alternatiw tekst",
+        "description": "Suraty görüp bilmeýänler üçin ony beýan edýär. Bellikleriň nirä gidýändigini aýtmaň."
+      },
+      {
+        "title": "Suratyň ady",
+        "description": "Surat üçin gysga görünýän at, onuň üstünde görkezilýär."
+      },
+      {
+        "title": "Sorag",
+        "description": "Öwrenijilerden bellikler bilen näme etmek soralýar."
+      },
+      {
+        "title": "Bellikler we zolaklar",
+        "description": "Her element öwrenijileriň goýup biljek belligi. Zolagyny suratda ýerleşdirmek üçin bellige zolak adyny beriň; zolak ady bolmadyk bellik hiç ýere degişli däl artykmaç bellikdir. Zolak sanlary suratyň göterimleri."
+      },
+      {
+        "title": "Ýazgy",
+        "description": "Suratyň aşagynda görkezilýän goşmaça ýazgy."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Synanyşyklar",
+        "description": "Öwreniji näçe gezek barlap biler. 0 çäksiz diýmegi aňladýar."
+      },
+      {
+        "title": "Bellikleri garyşdyr",
+        "description": "Bellikleri her girişde başga tertipde görkez."
+      },
+      {
+        "title": "Ýygnalýan",
+        "description": "Bu soragy açylýan we ýapylýan setir hökmünde görkez. Birini açmak onuň ýanyndaky beýleki ýygnalýan soraglary ýapýar."
+      },
+      {
+        "title": "Ýygnalan görnüşde başla",
+        "description": "Ýygnalýan bolanda, diňe soragy we ýagdaýy görkezilýän ýapyk setir hökmünde başla."
+      },
+      {
+        "title": "Bahalandyryş formaty",
+        "description": "OER Schema: bu baha bermek üçin bahalandyryş formaty (meselem ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha bermek bilen baglanyşykly okuw maksady."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testiň ady",
+        "description": "Analitika ulgamlarynda xAPI kesgitlemesi üçin ulanylýan testiň ady."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baha bermegiň niýetlenen kursy."
+      }
+    ]
+  }
+}

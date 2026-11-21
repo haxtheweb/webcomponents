@@ -9,5 +9,7 @@
   "slidePages": "Ngā whārangi kiriata",
   "goToSlide": "Haere ki te kiriata {number}",
   "slides": "Ngā waituhi",
-  "position": "{number} o {total}"
+  "position": "{number} o {total}",
+  "fullScreen": "Mata katoa",
+  "exitFullScreen": "Puta i te mata katoa"
 }

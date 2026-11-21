@@ -1,0 +1,19 @@
+{
+  "label": "外部ツール",
+  "labelLti": "外部ツール · LTI 1.3",
+  "theTool": "ツール",
+  "directions": "説明",
+  "showDirections": "説明を表示",
+  "hideDirections": "説明を隠す",
+  "directionsWindow": "ボタンを押すと、ツールが新しいウィンドウで開きます。",
+  "directionsEmbed": "ボタンを押すと、このページでツールが開きます。読み込まれない場合は、新しいウィンドウで開いてください。",
+  "directionsLti": "このサイトがツールへのサインインを行うため、別のアカウントは不要です。",
+  "openWindow": "{title} を開く（新しいウィンドウ）",
+  "openEmbed": "{title} を開く",
+  "openInstead": "代わりに新しいウィンドウで開く",
+  "frameTitle": "{title}（外部ツール）",
+  "openedWindow": "ツールを新しいウィンドウで開きました。",
+  "openedEmbed": "ツールをこのページで開きました。",
+  "needsUrl": "このブロックには http:// または https:// で始まる起動アドレスが必要です。",
+  "needsSignIn": "このツールにはこのサイトのサインインサービスが必要ですが、ここでは利用できません。何も開いていません。"
+}

@@ -2,5 +2,9 @@
   "toggleAnimation": "Animatie aan/uit",
   "info": "info",
   "image": "Afbeelding",
-  "animatedGif": "Geanimeerde GIF"
+  "animatedGif": "Geanimeerde GIF",
+  "playAnimation": "Animatie afspelen",
+  "pauseAnimation": "Animatie pauzeren",
+  "showDescription": "Beschrijving tonen",
+  "hideDescription": "Beschrijving verbergen"
 }

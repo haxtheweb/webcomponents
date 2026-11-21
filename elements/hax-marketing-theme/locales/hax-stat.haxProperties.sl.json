@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Število, ki narašča, z oznako in povezavo do svoje zgodbe"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Število, do katerega šteje"
+      },
+      {
+        "title": "Pred številom"
+      },
+      {
+        "title": "Za številom"
+      },
+      {
+        "title": "Besede namesto števila"
+      },
+      {
+        "title": "Kaj šteje"
+      },
+      {
+        "title": "Naslov zgodbe na hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

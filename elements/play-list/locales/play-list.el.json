@@ -9,5 +9,7 @@
   "slidePages": "Σελίδες διαφανειών",
   "goToSlide": "Μετάβαση στη διαφάνεια {number}",
   "slides": "Διαφάνειες",
-  "position": "{number} από {total}"
+  "position": "{number} από {total}",
+  "fullScreen": "Πλήρης οθόνη",
+  "exitFullScreen": "Έξοδος από πλήρη οθόνη"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistik",
+    "description": "Eng Zuel, déi eropzielt, mat enger Bezeechnung an engem Link op hir Geschicht"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zuel, bis wou gezielt gëtt"
+      },
+      {
+        "title": "Virun der Zuel"
+      },
+      {
+        "title": "No der Zuel"
+      },
+      {
+        "title": "Wierder amplaz vun enger Zuel"
+      },
+      {
+        "title": "Wat se zielt"
+      },
+      {
+        "title": "Adress vun der Geschicht op hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

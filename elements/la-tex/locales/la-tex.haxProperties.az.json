@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "LaTeX riyazi notasiyasından istifadə edərək yazın"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəkil fonu",
+        "description": "Çəkilmiş şəkillərin arxasındakı fon. Avtomatik yalnız rəsm səhifədə çətin görünəcəksə fon əlavə edir, məsələn qaranlıq rejimdə tünd xətlər.",
+        "options": {
+          "auto": "Avtomatik",
+          "light": "İşıqlı",
+          "dark": "Qaranlıq",
+          "none": "Yoxdur"
+        }
+      }
+    ]
   }
 }

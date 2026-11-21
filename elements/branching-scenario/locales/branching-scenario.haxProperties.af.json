@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vertakkende scenario",
+    "description": "'n Storie waar elke keuse na 'n ander toneel en einde lei. Leerders kan terugstap en ander paaie probeer; die einde wat bereik word, bepaal die telling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van die scenario, in sy opskrif gewys."
+      },
+      {
+        "title": "Begintoneel",
+        "description": "Toneel-ID van die toneel waar leerders begin. Laat leeg om by die eerste toneel te begin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksentkleur",
+        "description": "Opsionele kleur vir die opskrifskyfie, knoppies en die rand van 'n keuse."
+      }
+    ]
+  }
+}

@@ -3,5 +3,7 @@
   "status_stop": "Стоп",
   "status_warning": "Упозорење",
   "status_success": "Успех",
-  "status_info": "Напомена"
+  "status_info": "Напомена",
+  "status_tip": "Да ли сте знали?",
+  "status_new": "Шта је ново"
 }

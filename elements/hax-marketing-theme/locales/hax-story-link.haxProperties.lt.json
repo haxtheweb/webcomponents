@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Istorijos mygtukas",
+    "description": "Mygtukas, atidarantis istoriją už teiginio hax.cloud svetainėje arba atitinkamą vietą kitoje HAX tinklo svetainėje"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kur jis veda",
+        "options": {
+          "cloud": "hax.cloud, istorija",
+          "learn": "learn.hax.cloud, pamoka",
+          "try": "browser.hax.cloud, išbandykite",
+          "elements": "webcomponents.hax.cloud, blokas",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresas toje svetainėje (istorija hax.cloud atrodo taip: stories/ee450a19)"
+      },
+      {
+        "title": "Apie ką tai"
+      },
+      {
+        "title": "Maža žymė"
+      },
+      {
+        "title": "Rodyti mygtuke, apie ką tai"
+      }
+    ]
+  }
+}

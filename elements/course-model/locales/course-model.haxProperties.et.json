@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "pealkiri"
+        "title": "pealkiri",
+        "description": "Kursusemudeli kohal kuvatav pealkiri."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Kuvatava 3D-mudeli faili (.glb või .gltf) aadress."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Kirjelda 3D-mudelit inimestele, kes seda näha ei saa."
       },
       {
         "title": "Teabeala"

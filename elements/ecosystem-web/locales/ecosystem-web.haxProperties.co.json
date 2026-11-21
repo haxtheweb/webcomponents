@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Reta di l'ecusistema",
+    "description": "Una reta interattiva di cumu si liganu e parte d'un prughjettu, cù sottureti è visite passu à passu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dati di a reta",
+        "description": "URL di u pacchettu JSON di reti (custruitu in PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Reta",
+        "description": "ID di a reta à mustrà prima; main hè a reta di l'ecusistema."
+      },
+      {
+        "title": "Casella selezziunata",
+        "description": "ID d'una casella à selezziunà quandu a reta s'apre."
+      },
+      {
+        "title": "Visita",
+        "description": "ID d'una visita da principià."
+      },
+      {
+        "title": "Principià in vista lista",
+        "description": "Mustrà a reta cum'è liste annidate invece di u disegnu."
+      },
+      {
+        "title": "Solu u disegnu",
+        "description": "Mustrà solu u disegnu, cum'è figura: senza capu, visite, ditagli nè barra di passi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Leghje per",
+        "description": "Principià cù ogni casella letta secondu una misura.",
+        "options": {
+          "": "Solu e cunnessioni",
+          "fresh": "Freschezza",
+          "bus": "Fattore autobus",
+          "impact": "Impattu",
+          "evidence": "Prova",
+          "parity": "Parità"
+        }
+      }
+    ]
+  }
+}

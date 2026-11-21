@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistică",
+    "description": "Un număr care crește, cu o etichetă și un link către povestea sa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numărul până la care se numără"
+      },
+      {
+        "title": "Înainte de număr"
+      },
+      {
+        "title": "După număr"
+      },
+      {
+        "title": "Cuvinte în locul unui număr"
+      },
+      {
+        "title": "Ce numără"
+      },
+      {
+        "title": "Adresa poveștii pe hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

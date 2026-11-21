@@ -1,0 +1,15 @@
+{
+  "loading": "Chargement de la comparaison.",
+  "yes": "Oui",
+  "partly": "En partie",
+  "no": "Non",
+  "compare": "Comparer",
+  "with": "Avec",
+  "vs": "vs",
+  "caption": "{a} et {b}, fonctionnalité par fonctionnalité",
+  "feature": "Fonctionnalité",
+  "clearYes": "{count} sur {total} : un oui franc",
+  "seeForYourself": "Voyez par vous-même :",
+  "and": "et",
+  "why": "Pourquoi"
+}

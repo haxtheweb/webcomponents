@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Bi nîşaneya matematîkê ya LaTeX binivîse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Paşxana wêneyê",
+        "description": "Paşxana li pişt wêneyên xêzkirî. Otomatîk tenê dema ku xêzkirin li ser rûpelê zehmet xuya bibe yekê zêde dike, wek xêzên tarî di moda tarî de.",
+        "options": {
+          "auto": "Otomatîk",
+          "light": "Ronî",
+          "dark": "Tarî",
+          "none": "Tune"
+        }
+      }
+    ]
   }
 }

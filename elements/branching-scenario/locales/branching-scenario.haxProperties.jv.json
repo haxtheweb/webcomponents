@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Skenario bercabang",
+    "description": "Crita sing saben pilihane tumuju adegan lan pungkasan sing beda. Siswa bisa mundur lan nyoba dalan liya; pungkasan sing digayuh nemtokake skor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Jeneng skenario, ditampilake ing judhule."
+      },
+      {
+        "title": "Adegan wiwitan",
+        "description": "ID adegan papan siswa miwiti. Kosongake kanggo miwiti saka adegan kapisan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan kanggo chip judhul, tombol lan pinggiran pilihan."
+      }
+    ]
+  }
+}

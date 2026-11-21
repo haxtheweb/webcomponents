@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifica zones",
+    "description": "Els alumnes troben els punts correctes d'una imatge fent clic, tocant o movent un punt de mira amb el teclat. La versió avaluable d'un mapa d'imatge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imatge",
+        "description": "La imatge on busquen els alumnes."
+      },
+      {
+        "title": "Text alternatiu",
+        "description": "Descriu la imatge per a les persones que no la poden veure. No es mostra mai com a títol."
+      },
+      {
+        "title": "Títol",
+        "description": "Un títol breu visible que es mostra a sobre de la imatge."
+      },
+      {
+        "title": "Pregunta",
+        "description": "Què se'ls demana als alumnes que trobin a la imatge."
+      },
+      {
+        "title": "Respostes",
+        "description": "Cada resposta és un oval amb nom sobre la imatge. La posició i la mida són percentatges de la imatge, mesurats des de la cantonada superior esquerra. Mentre edites, cada resposta es ressalta a la imatge."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intents",
+        "description": "Quantes vegades pot provar un alumne. 0 vol dir il·limitades."
+      },
+      {
+        "title": "Errades permeses",
+        "description": "Quantes errades acaben un intent. 0 vol dir il·limitades, i els alumnes tenen un botó Acaba."
+      },
+      {
+        "title": "Plegable",
+        "description": "Mostra aquesta pregunta com una fila que s'obre i es tanca. En obrir-ne una es tanquen les altres preguntes plegables del costat."
+      },
+      {
+        "title": "Comença plegat",
+        "description": "Si és plegable, comença com una fila tancada que només mostra la pregunta i el seu estat."
+      },
+      {
+        "title": "Format de qualificació",
+        "description": "OER Schema: format de qualificació d'aquesta avaluació (p. ex. punts, lletra, percentatge, compleció)."
+      },
+      {
+        "title": "Objectiu d'aprenentatge",
+        "description": "OER Schema: objectiu d'aprenentatge associat a aquesta avaluació."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom del qüestionari",
+        "description": "Nom del qüestionari que es passa per utilitzar-lo en entorns basats en xAPI per identificar aquest element"
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: curs al qual està destinada aquesta avaluació."
+      }
+    ]
+  }
+}

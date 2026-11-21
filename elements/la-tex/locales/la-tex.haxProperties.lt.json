@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Rašykite matematine notacija LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Piešinio fonas",
+        "description": "Fonas už nupieštų piešinių. „Automatinis“ jį prideda tik tada, kai piešinį puslapyje būtų sunku matyti, pavyzdžiui, tamsios linijos tamsiuoju režimu.",
+        "options": {
+          "auto": "Automatinis",
+          "light": "Šviesus",
+          "dark": "Tamsus",
+          "none": "Nėra"
+        }
+      }
+    ]
   }
 }

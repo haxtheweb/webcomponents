@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status ta' Baseline",
+    "description": "Uri l-istatus tal-appoġġ tal-browser Baseline ta' karatteristika tal-pjattaforma web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID tal-karatteristika",
+        "description": "ID tal-karatteristika web, pereżempju anchor-positioning. Sib l-IDs fuq webstatus.dev; l-ID hija l-aħħar parti tal-URL ta' paġna ta' karatteristika."
+      }
+    ]
+  }
+}

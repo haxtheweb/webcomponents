@@ -9,5 +9,7 @@
   "slidePages": "Pagine delle diapositive",
   "goToSlide": "Vai alla diapositiva {number}",
   "slides": "Diapositive",
-  "position": "{number} di {total}"
+  "position": "{number} di {total}",
+  "fullScreen": "Schermo intero",
+  "exitFullScreen": "Esci da schermo intero"
 }

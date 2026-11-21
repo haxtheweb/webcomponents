@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Cerca parole",
+    "description": "Una griglia di lettere con parole nascoste. Gli studenti toccano la prima e l'ultima lettera di ogni parola. Allena a riconoscere come si scrive un termine, non cosa significa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Cosa viene chiesto agli studenti di trovare, mostrato nell'intestazione."
+      },
+      {
+        "title": "Parole",
+        "description": "Le parole da nascondere. Spazi e punteggiatura vengono esclusi dalla griglia. Le parole che non entrano vengono elencate durante la modifica ed escluse per gli studenti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dimensione della griglia",
+        "description": "Lettere per lato, da 4 a 16. Lascia vuoto per adattarla alla parola più lunga (fino a 12). Oltre 12 scorre lateralmente su un telefono."
+      },
+      {
+        "title": "Parole in diagonale",
+        "description": "Nascondi anche parole in diagonale. Più difficile."
+      },
+      {
+        "title": "Parole al contrario",
+        "description": "Nascondi anche parole scritte al contrario. Più difficile."
+      },
+      {
+        "title": "Colore di accento",
+        "description": "Colore facoltativo per l'etichetta dell'intestazione, la prima lettera scelta e il pulsante."
+      }
+    ]
+  }
+}

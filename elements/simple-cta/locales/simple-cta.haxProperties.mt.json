@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Aħbi l-ikona",
         "description": "Aħbi l-ikona użata biex tenfasizza t-test"
+      },
+      {
+        "title": "Dehra",
+        "description": "Kemm għandha enfasi l-buttuna.",
+        "options": {
+          "": "Mimlija",
+          "tonal": "Tonali",
+          "outlined": "Bil-kontorn",
+          "plain": "Sempliċi"
+        }
+      },
+      {
+        "title": "Daqs",
+        "description": "Daqs tal-buttuna.",
+        "options": {
+          "s": "Żgħir",
+          "": "Medju",
+          "l": "Kbir"
+        }
       }
     ],
     "advanced": [

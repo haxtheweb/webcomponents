@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identificà i punti attivi",
+    "description": "I studienti trovanu i punti ghjusti nant'à una maghjina cliccendu, tuccendu o muvendu un mirinu à a tastiera. A versione valutata d'una carta di maghjina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maghjina",
+        "description": "A maghjina induve circanu i studienti."
+      },
+      {
+        "title": "Testu alternativu",
+        "description": "Discrive a maghjina per e persone chì ùn a ponu vede. Ùn hè mai mustrata cum'è titulu."
+      },
+      {
+        "title": "Titulu",
+        "description": "Un titulu cortu visibile mustratu sopra a maghjina."
+      },
+      {
+        "title": "Quistione",
+        "description": "Ciò chì si dumanda à i studienti di truvà in a maghjina."
+      },
+      {
+        "title": "Risposte",
+        "description": "Ogni risposta hè un ovale numinatu nant'à a maghjina. Pusizione è dimensione sò percentuali di a maghjina, misurate da u so cantu d'insù à manca. Durante a mudificazione, ogni risposta hè cuntornata nant'à a maghjina."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte un studiente pò pruvà. 0 vole dì senza limitu."
+      },
+      {
+        "title": "Sbaglii permessi",
+        "description": "Quanti sbaglii finiscenu un tentativu. 0 vole dì senza limitu, è i studienti anu un buttone Finisce."
+      },
+      {
+        "title": "Pieghevule",
+        "description": "Mustrà sta quistione cum'è una linea chì s'apre è si chjode. Apre ne una chjode l'altre quistioni pieghevule vicinu."
+      },
+      {
+        "title": "Principià piegatu",
+        "description": "Quand'ellu hè pieghevule, principià cum'è una linea chjosa chì mostra solu a quistione è u so statu."
+      },
+      {
+        "title": "Furmatu di valutazione",
+        "description": "OER Schema: furmatu di valutazione per sta prova (per esempiu punti, lettera, percentuale, cumpiimentu)."
+      },
+      {
+        "title": "Ugettivu d'amparera",
+        "description": "OER Schema: ugettivu d'amparera assuciatu à sta prova."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz passatu per esse adupratu in ambienti guidati da xAPI per identificà st'elementu"
+      },
+      {
+        "title": "Corsu",
+        "description": "OER Schema: corsu per u quale hè destinata sta prova."
+      }
+    ]
+  }
+}

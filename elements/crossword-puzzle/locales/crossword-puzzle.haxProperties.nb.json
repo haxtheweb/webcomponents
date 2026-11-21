@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Kryssord",
+    "description": "Et kryssord laget fra en liste med ord og ledetråder. Rutenettet lages for deg; elevene skriver ordene og sjekker dem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Tittelen eller spørsmålet som vises over kryssordet."
+      },
+      {
+        "title": "Ord",
+        "description": "Hvert ord og ledetråden. Rutenettet genereres fra denne listen: det lengste ordet plasseres først, og de andre krysser det på felles bokstaver."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøk",
+        "description": "Hvor mange ganger en elev kan sjekke. 0 betyr ubegrenset."
+      },
+      {
+        "title": "Aksentfarge",
+        "description": "Valgfri farge for toppetiketten, det aktive ordet og handlingsknappene."
+      },
+      {
+        "title": "Sammenleggbar",
+        "description": "Vis dette kryssordet som en rad som åpnes og lukkes. Når én åpnes, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "title": "Start sammenlagt",
+        "description": "Når den er sammenleggbar, start som en lukket rad som bare viser tittelen og statusen."
+      },
+      {
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurset denne vurderingen er ment for."
+      }
+    ]
+  }
+}

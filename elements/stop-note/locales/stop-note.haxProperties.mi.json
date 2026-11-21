@@ -23,7 +23,9 @@
           "stop": "Kati",
           "warning": "Whakatūpato",
           "success": "Whakaūnga",
-          "info": "Pānui"
+          "info": "Pānui",
+          "tip": "Tohutohu",
+          "new": "He aha ngā mea hou"
         }
       },
       {

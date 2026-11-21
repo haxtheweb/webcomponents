@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ɗan wasa",
+    "description": "Masu sauraro ɗaya, wani hali ya wakilta, tare da kalmomi da maɓalli"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wanene wannan"
+      },
+      {
+        "title": "Nau'in hali"
+      },
+      {
+        "title": "Irin hali"
+      },
+      {
+        "title": "Launin dandamali (sunan DDD)"
+      },
+      {
+        "title": "Inda maɓallin ke zuwa"
+      },
+      {
+        "title": "Rubutun maɓalli"
+      }
+    ]
+  }
+}

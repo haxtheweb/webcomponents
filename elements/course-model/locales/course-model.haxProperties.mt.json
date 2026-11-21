@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titlu"
+        "title": "titlu",
+        "description": "Intestatura murija fuq il-mudell tal-kors."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Indirizz tal-fajl tal-mudell 3D (.glb jew .gltf) li jintwera."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Iddeskrivi l-mudell 3D għal nies li ma jistgħux jarawh."
       },
       {
         "title": "Żona tal-informazzjoni"

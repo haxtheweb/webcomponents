@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ukrštenica",
+    "description": "Ukrštenica napravljena od liste riječi i pojmova. Mreža se generiše za vas; učenici upisuju riječi i provjeravaju ih."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naslov ili pitanje prikazano iznad ukrštenice."
+      },
+      {
+        "title": "Riječi",
+        "description": "Svaka riječ i njen pojam. Mreža se generiše iz ove liste: najduža riječ se postavlja prva, a ostale je ukrštaju na zajedničkim slovima."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta učenik može provjeriti. 0 znači neograničeno."
+      },
+      {
+        "title": "Akcentna boja",
+        "description": "Opcionalna boja za oznaku u zaglavlju, aktivnu riječ i dugmad za radnje."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovu ukrštenicu kao red koji se otvara i zatvara. Otvaranje jednog zatvara druga sklopiva pitanja pored njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni red koji prikazuje samo naslov i status."
+      },
+      {
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovo, postotak, završenost)."
+      },
+      {
+        "title": "Cilj učenja",
+        "description": "OER Schema: cilj učenja povezan s ovom procjenom."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se koristi za xAPI identifikaciju u analitičkim sistemima."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      }
+    ]
+  }
+}

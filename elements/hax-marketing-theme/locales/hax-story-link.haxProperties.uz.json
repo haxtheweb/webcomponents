@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Hikoya tugmasi",
+    "description": "hax.cloud dagi da’vo ortidagi hikoyani yoki boshqa HAX tarmog‘i saytidagi mos joyni ochadigan tugma"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qayerga olib boradi",
+        "options": {
+          "cloud": "hax.cloud, hikoya",
+          "learn": "learn.hax.cloud, qo‘llanma",
+          "try": "browser.hax.cloud, sinab ko‘ring",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "O‘sha saytdagi manzil (hax.cloud dagi hikoya stories/ee450a19 ko‘rinishida bo‘ladi)"
+      },
+      {
+        "title": "Nima haqida"
+      },
+      {
+        "title": "Kichik chip"
+      },
+      {
+        "title": "Tugmada nima haqida ekanini ko‘rsatish"
+      }
+    ]
+  }
+}

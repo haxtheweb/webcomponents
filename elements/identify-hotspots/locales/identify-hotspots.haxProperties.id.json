@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifikasi titik",
+    "description": "Pelajar menemukan titik yang tepat pada gambar dengan mengklik, mengetuk, atau menggerakkan bidikan keyboard. Padanan bernilai dari peta gambar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar",
+        "description": "Gambar yang dicari pelajar."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Menjelaskan gambar untuk orang yang tidak dapat melihatnya. Tidak pernah ditampilkan sebagai judul."
+      },
+      {
+        "title": "Judul",
+        "description": "Judul singkat yang terlihat di atas gambar."
+      },
+      {
+        "title": "Pertanyaan",
+        "description": "Apa yang diminta untuk ditemukan pelajar pada gambar."
+      },
+      {
+        "title": "Jawaban",
+        "description": "Setiap jawaban adalah oval bernama pada gambar. Posisi dan ukuran berupa persentase gambar, diukur dari sudut kiri atas. Saat menyunting, setiap jawaban diberi garis tepi pada gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Percobaan",
+        "description": "Berapa kali pelajar dapat mencoba. 0 berarti tidak terbatas."
+      },
+      {
+        "title": "Batas meleset",
+        "description": "Berapa kali meleset yang mengakhiri percobaan. 0 berarti tidak terbatas, dan pelajar mendapat tombol Selesai."
+      },
+      {
+        "title": "Dapat diciutkan",
+        "description": "Tampilkan pertanyaan ini sebagai baris yang dapat dibuka dan ditutup. Membuka satu akan menutup pertanyaan lain yang dapat diciutkan di sebelahnya."
+      },
+      {
+        "title": "Mulai dalam keadaan tertutup",
+        "description": "Jika dapat diciutkan, mulai sebagai baris tertutup yang hanya menampilkan pertanyaan dan statusnya."
+      },
+      {
+        "title": "Format penilaian",
+        "description": "OER Schema: format penilaian untuk asesmen ini (mis. poin, huruf, persen, penyelesaian)."
+      },
+      {
+        "title": "Tujuan pembelajaran",
+        "description": "OER Schema: tujuan pembelajaran yang terkait dengan asesmen ini."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nama kuis",
+        "description": "Nama kuis yang diteruskan untuk digunakan di lingkungan berbasis xAPI guna mengidentifikasi item ini"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus yang dituju oleh asesmen ini."
+      }
+    ]
+  }
+}

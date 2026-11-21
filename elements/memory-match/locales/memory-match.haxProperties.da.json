@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vendespil",
+    "description": "Vend kort for at finde par. Par et begreb med dets betydning, så et match viser forståelse, eller brug to ens tekster eller billeder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Opgaveteksten vist i overskriften, for eksempel: Match begrebet med dets funktion."
+      },
+      {
+        "title": "Par",
+        "description": "Hvert par er to kort, der hører sammen, normalt et begreb og dets betydning. En side skal have tekst, et billede eller begge dele."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentfarve",
+        "description": "Valgfri farve til overskriftsmærket, kortenes bagsider og knappen."
+      }
+    ]
+  }
+}

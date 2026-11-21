@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ilungu labadlali",
+    "description": "Abaphulaphuli abanye, abadlalwa ngumlinganiswa, namagama neqhosha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ngubani lo"
+      },
+      {
+        "title": "Uhlobo lomlinganiswa"
+      },
+      {
+        "title": "Imbewu yomlinganiswa"
+      },
+      {
+        "title": "Umbala weqonga (igama le-DDD)"
+      },
+      {
+        "title": "Apho iqhosha liya khona"
+      },
+      {
+        "title": "Isicatshulwa seqhosha"
+      }
+    ]
+  }
+}

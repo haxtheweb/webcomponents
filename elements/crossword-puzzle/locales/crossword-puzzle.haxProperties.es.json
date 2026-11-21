@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Crucigrama",
+    "description": "Un crucigrama hecho a partir de una lista de palabras y pistas. La cuadrícula se genera automáticamente; los estudiantes escriben las palabras y las comprueban."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "El título o la pregunta que se muestra sobre el crucigrama."
+      },
+      {
+        "title": "Palabras",
+        "description": "Cada palabra y su pista. La cuadrícula se genera a partir de esta lista: la palabra más larga se coloca primero y las demás la cruzan en letras compartidas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intentos",
+        "description": "Cuántas veces puede comprobar un estudiante. 0 significa ilimitado."
+      },
+      {
+        "title": "Color de acento",
+        "description": "Color opcional para la etiqueta de la cabecera, la palabra activa y los botones de acción."
+      },
+      {
+        "title": "Plegable",
+        "description": "Muestra este crucigrama como una fila que se abre y se cierra. Abrir una cierra las demás preguntas plegables que tenga al lado."
+      },
+      {
+        "title": "Empezar plegado",
+        "description": "Si es plegable, empieza como una fila cerrada que solo muestra el título y su estado."
+      },
+      {
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso al que va destinada esta evaluación."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Chaartii raadaraa",
+    "description": "Chaartii raadaraa (sardiidaa) moodeela bilchina fi qabxii amaloota, kan akka HEOSAT. Barreeffama bakka bu'aa fi gabatee daataa of keessaa qaba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Mata-duree chaartii; akka maqaa isaa dhaqqabamaattis fayyada."
+      },
+      {
+        "title": "Qabxii olaanaa",
+        "description": "Gatii olaanaa safartuu irra jiru."
+      },
+      {
+        "title": "Ramaddiiwwan",
+        "description": "Sarara tokkotti ramaddii tokko. Yoo xiqqaate 3 barbaachisa."
+      },
+      {
+        "title": "Qabxiiwwan",
+        "description": "Lakkoofsota qooddiidhaan gargar ba'an, ramaddii tokkoof tokko tartiiba walfakkaatuun."
+      },
+      {
+        "title": "Qabxii galmaa",
+        "description": "Lakkoofsota qooddiidhaan gargar ba'an, ramaddii tokkoof tokko tartiiba walfakkaatuun."
+      },
+      {
+        "title": "Ibsa mallattoolee agarsiisi",
+        "description": "Ibsa mallattoolee qabxiiwwanii fi galmoota maqaa dhahu agarsiisi."
+      },
+      {
+        "title": "Xiqqaa",
+        "description": "Chaartii xiqqaa maqaa, ibsa mallattoolee ykn gabatee daataa hin qabne. Gatii isaa arguuf qabxii irra maawusii kaa'i."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Maqaa qabxii",
+        "description": "Maqaa ibsa mallattoolee fi gabatee qabxiiwwaniif."
+      },
+      {
+        "title": "Maqaa galmaa",
+        "description": "Maqaa ibsa mallattoolee fi gabatee galmootaaf."
+      }
+    ]
+  }
+}

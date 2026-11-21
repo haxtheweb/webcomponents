@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modifikator medija",
-        "description": "Neobavezni modifikator medijske domene. Određuje vrstu medija na koju se ova licenca odnosi."
+        "description": "Neobavezni modifikator medijske domene. Određuje vrstu medija na koju se ova licenca odnosi.",
+        "options": {
+          "": "Bez modifikatora"
+        }
       },
       {
         "property": "uri",

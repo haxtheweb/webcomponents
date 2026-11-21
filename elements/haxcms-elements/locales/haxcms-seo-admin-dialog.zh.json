@@ -6,6 +6,8 @@
   "faviconDescription": "浏览器标签页图片 / 在手机上用作小型站点标志",
   "domain": "域名",
   "domainDescription": "此网站的域名",
+  "sameAs": "此网站的其他个人资料",
+  "sameAsDescription": "每行一个链接，指向此网站或组织在其他地方的个人资料（GitHub、LinkedIn、YouTube、Mastodon）。搜索引擎会用它们将这些资料与此网站关联起来。",
   "language": "语言",
   "languageDescription": "此站点的语言。可按名称或代码搜索，也可输入其他代码，例如 fr-CA。",
   "googleAnalyticsId": "Google Analytics ID",

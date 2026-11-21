@@ -8,5 +8,9 @@
   "theme": "Itimu",
   "palette": "Iphalethi",
   "cancel": "Khansela",
-  "openAppearanceSettings": "Vula Izilungiselelo Zokubukeka"
+  "openAppearanceSettings": "Vula Izilungiselelo Zokubukeka",
+  "designSystem": "Isistimu yokuklama",
+  "designSystemDefault": "DDD (okuzenzakalelayo)",
+  "designSystemThemeDefault": "{name} (okuzenzakalelayo kwetimu)",
+  "designSystemHelp": "Umbala, uhlobo lombhalo, amakhona nokuminyana. Itimu isanquma isakhiwo."
 }

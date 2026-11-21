@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "平台对比",
+    "description": "正面对比：从数据文件中任选两个平台"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "对比数据（JSON）"
+      },
+      {
+        "title": "左侧平台 ID"
+      },
+      {
+        "title": "右侧平台 ID"
+      }
+    ]
+  }
+}

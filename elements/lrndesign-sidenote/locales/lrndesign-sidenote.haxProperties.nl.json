@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kanttekening",
+    "description": "Een notitie die apart staat van de omliggende inhoud, met een optioneel pictogram en label."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Het label van de kanttekening."
+      },
+      {
+        "title": "Pictogram",
+        "description": "Het pictogram van de kanttekening."
+      },
+      {
+        "title": "Inhoud",
+        "description": "Inhoud van de kanttekening."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kleur",
+        "description": "De kleur waarmee de kanttekening getint is."
+      }
+    ]
+  }
+}

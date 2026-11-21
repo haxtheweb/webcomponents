@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tuhipoka",
+    "description": "He tuhipoka i tuhia ki te wāhi e tika ai i te kuputuhi. Ka whakaaturia hei tau, ā, ka hanga aunoa te rārangi tuhipoka kua tauhia ki te pito o te whārangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tuhipoka",
+        "description": "Te kuputuhi o te tuhipoka."
+      },
+      {
+        "title": "Kāore he arokite",
+        "description": "Kaua e whakaatu i te tuhipoka ina tau te kiore a te kaipānui ki runga i te tau, ina arotahia rānei."
+      }
+    ]
+  }
+}

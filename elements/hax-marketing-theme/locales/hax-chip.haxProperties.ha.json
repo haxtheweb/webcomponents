@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Gunta",
+    "description": "Ƙaramin gunki mai lakabi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gunki"
+      },
+      {
+        "title": "Lakabi"
+      }
+    ]
+  }
+}

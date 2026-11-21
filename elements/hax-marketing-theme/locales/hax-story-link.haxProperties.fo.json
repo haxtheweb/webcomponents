@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Søguknøttur",
+    "description": "Knøtturin, sum letur søguna aftan fyri eina staðhesting upp á hax.cloud, ella samsvarandi staðin á aðrari síðu í HAX-netverkinum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvar tað fer",
+        "options": {
+          "cloud": "hax.cloud, søgan",
+          "learn": "learn.hax.cloud, ein vegleiðing",
+          "try": "browser.hax.cloud, royn tað",
+          "elements": "webcomponents.hax.cloud, ein blokkur",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adressa á teirri síðuni (ein søga á hax.cloud sær út sum stories/ee450a19)"
+      },
+      {
+        "title": "Hvat tað snýr seg um"
+      },
+      {
+        "title": "Lítið merki"
+      },
+      {
+        "title": "Vís í knøttinum, hvat tað snýr seg um"
+      }
+    ]
+  }
+}

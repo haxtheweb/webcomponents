@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "플랫폼 비교",
+    "description": "일대일 비교: 데이터 파일에서 두 플랫폼을 고르세요"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "비교 데이터(JSON)"
+      },
+      {
+        "title": "왼쪽 플랫폼 ID"
+      },
+      {
+        "title": "오른쪽 플랫폼 ID"
+      }
+    ]
+  }
+}

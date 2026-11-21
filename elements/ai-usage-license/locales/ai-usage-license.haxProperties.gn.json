@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Momarandu'i moambueha",
-        "description": "Momarandu'i ñemohenda moambueha ndaha'éiva tekotevẽ. Ohechauka mba'eichagua momarandu'ípe g̃uarãpa ko ñemoneĩ."
+        "description": "Momarandu'i ñemohenda moambueha ndaha'éiva tekotevẽ. Ohechauka mba'eichagua momarandu'ípe g̃uarãpa ko ñemoneĩ.",
+        "options": {
+          "": "Ndaipóri moambueha"
+        }
       },
       {
         "property": "uri",

@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Neobavezni tekst sažetka kada su pojedinosti otvorene"
+        "title": "Neobavezni tekst sažetka kada su pojedinosti otvorene",
+        "description": "Tekst gumba dok je opis skriven, npr. Prikaži opis."
       },
       {
         "property": "closeText",
-        "title": "Neobavezni tekst sažetka kada su pojedinosti zatvorene"
+        "title": "Neobavezni tekst sažetka kada su pojedinosti zatvorene",
+        "description": "Tekst gumba dok je opis prikazan, npr. Sakrij opis."
       }
     ]
   }

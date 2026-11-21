@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Yorliqli kichik belgi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Belgi"
+      },
+      {
+        "title": "Yorliq"
+      }
+    ]
+  }
+}

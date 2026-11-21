@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Web ng ecosystem",
+    "description": "Isang interactive na web kung paano magkakaugnay ang mga bahagi ng isang proyekto, na may mga sub-web at hakbang-hakbang na tour."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Web data",
+        "description": "URL ng JSON bundle ng mga web (binuo sa PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "Id ng web na unang ipapakita; ang main ay ang ecosystem web."
+      },
+      {
+        "title": "Napiling tile",
+        "description": "Id ng tile na pipiliin kapag bumukas ang web."
+      },
+      {
+        "title": "Tour",
+        "description": "Id ng tour na sisimulan."
+      },
+      {
+        "title": "Magsimula sa list view",
+        "description": "Ipakita ang web bilang mga nested na listahan sa halip na drowing."
+      },
+      {
+        "title": "Drowing lang",
+        "description": "Ipakita lang ang drowing, bilang figure: walang header, tour, detalye o step bar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Basahin ayon sa",
+        "description": "Magsimula nang binabasa ang bawat tile ayon sa isang sukatan.",
+        "options": {
+          "": "Mga koneksyon lang",
+          "fresh": "Kasariwaan",
+          "bus": "Bus factor",
+          "impact": "Epekto",
+          "evidence": "Ebidensya",
+          "parity": "Parity"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "Senario",
+  "directions": "Oanwizings",
+  "showDirections": "Oanwizings sjen litte",
+  "hideDirections": "Oanwizings ferbergje",
+  "directionsRead": "Lês elke sêne en kies wat jo dwaan soene.",
+  "directionsEndings": "Der binne ferskate einen. Besykje in oar paad as jo klear binne.",
+  "startOver": "Opnij begjinne",
+  "back": "Ien stap werom",
+  "tryAnother": "In oar paad besykje",
+  "path": "Paad",
+  "scene": "Sêne",
+  "ending": "Ein",
+  "end": "ein",
+  "scenesSeen": "{seen} fan {total} sênes sjoen",
+  "endingReached": "Ein berikt",
+  "addScene": "Sêne tafoegje",
+  "newScene": "Nije sêne",
+  "newSceneText": "Beskriuw wat der bart, en keppelje dan elke kar oan in sêne.",
+  "editingNote": "Bewurkje: elke sêne wurdt toand. In kar is in keppeling nei # mei dêrnei in sêne-id.",
+  "noScenes": "Foegje in sêne ta om it senario te begjinnen."
+}

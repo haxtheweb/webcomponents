@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Jawaban",
+        "description": "Urutan jawaban menentukan urutan yang benar.",
+        "options": {
+          "": "Daftar",
+          "cards": "Kartu gambar"
+        }
+      },
+      {
+        "title": "Jawaban",
         "description": "Urutan jawaban menentukan urutan yang benar."
       }
     ],

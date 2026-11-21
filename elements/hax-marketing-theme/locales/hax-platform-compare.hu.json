@@ -1,0 +1,15 @@
+{
+  "loading": "Az összehasonlítás betöltése.",
+  "yes": "Igen",
+  "partly": "Részben",
+  "no": "Nem",
+  "compare": "Összehasonlítás",
+  "with": "Ezzel:",
+  "vs": "vs",
+  "caption": "{a} és {b}, funkcióról funkcióra",
+  "feature": "Funkció",
+  "clearYes": "{total} közül {count} egyértelmű igen",
+  "seeForYourself": "Győződjön meg saját maga:",
+  "and": "és",
+  "why": "Miért"
+}

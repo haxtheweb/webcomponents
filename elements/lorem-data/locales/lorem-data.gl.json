@@ -1,4 +1,6 @@
 {
   "saveAll": "Gardar todo",
-  "saveTheFollowing": "Gardar o seguinte: {list}?"
+  "saveTheFollowing": "Gardar o seguinte: {list}?",
+  "save": "Gardar",
+  "cancel": "Cancelar"
 }

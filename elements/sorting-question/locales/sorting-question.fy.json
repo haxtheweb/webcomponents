@@ -40,5 +40,7 @@
   "hideDirections": "Oanwizings ferbergje",
   "showRelatedContent": "Besibbe ynhâld toane",
   "hideRelatedContent": "Besibbe ynhâld ferbergje",
-  "notAttempted": "Net besocht"
+  "notAttempted": "Net besocht",
+  "cardsDirections": "Set de kaarten yn de goede folchoarder mei de knoppen earder pleatse en letter pleatse op elke kaart, of sleep se mei in mûs. As jo tinke dat se yn de goede folchoarder steane, test jo antwurd dan troch {checkAnswer} te selektearjen.",
+  "movedToPosition": "{item} ferpleatst nei posysje {position} fan {total}"
 }

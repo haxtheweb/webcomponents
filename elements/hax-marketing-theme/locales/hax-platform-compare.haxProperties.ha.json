@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kwatanta dandali",
+    "description": "Fuska da fuska: zaɓi kowane dandali biyu daga fayil ɗin bayanai"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bayanan kwatance (JSON)"
+      },
+      {
+        "title": "Id na dandalin hagu"
+      },
+      {
+        "title": "Id na dandalin dama"
+      }
+    ]
+  }
+}

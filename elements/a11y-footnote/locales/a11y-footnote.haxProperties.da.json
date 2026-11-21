@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fodnote",
+    "description": "En note skrevet der, hvor den hører hjemme i teksten. Den vises som et tal, og den nummererede liste over noter opbygges automatisk nederst på siden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Note",
+        "description": "Fodnotens tekst."
+      },
+      {
+        "title": "Ingen forhåndsvisning",
+        "description": "Vis ikke noten, når en læser holder musen over eller fokuserer på tallet."
+      }
+    ]
+  }
+}

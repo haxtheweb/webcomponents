@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nhóm ghi chú dừng",
+    "description": "Gộp nhiều ghi chú dừng vào một khối hiển thị từng ghi chú một, như Mẹo hoặc Có gì mới. Thẻ hướng dẫn, ghi chú bên lề và trích dẫn có khung cũng có thể gộp chung."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhãn",
+        "description": "Tên nhóm mà trình đọc màn hình thông báo, như Mẹo hoặc Có gì mới."
+      },
+      {
+        "title": "Ghi chú",
+        "description": "Các ghi chú dừng trong nhóm. Cũng có thể thêm thẻ hướng dẫn, ghi chú bên lề và trích dẫn có khung."
+      }
+    ]
+  }
+}

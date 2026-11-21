@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Intsika",
+    "description": "Intsika: igama, ibinzana, impawu, umbala nokuba kutheni ibalulekile"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Igama"
+      },
+      {
+        "title": "Ibinzana"
+      },
+      {
+        "title": "Impawu"
+      },
+      {
+        "title": "Umbala (igama le-DDD)"
+      },
+      {
+        "title": "Yeyiphi intsika, 1 ukuya ku-7"
+      },
+      {
+        "title": "Ikhadi elincinci"
+      },
+      {
+        "title": "Apho igama liya khona"
+      }
+    ]
+  }
+}

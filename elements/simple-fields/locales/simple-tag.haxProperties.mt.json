@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Kulur tal-enfasi awtomatiku",
         "description": "Oħroġ il-kulur tal-enfasi mit-test tat-tikketta awtomatikament."
+      },
+      {
+        "title": "Tifsira",
+        "description": "Agħti lit-tikketta kulur b'tifsira. Ħallih vojt għal tikketta newtrali.",
+        "options": {
+          "": "Newtrali",
+          "brand": "Marka",
+          "success": "Suċċess",
+          "warning": "Twissija",
+          "danger": "Periklu"
+        }
       }
     ],
     "advanced": [

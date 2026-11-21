@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Szenario-Szene",
+    "description": "Eine Szene eines verzweigten Szenarios. Verknüpfe jede Wahl mit einer anderen Szene über # gefolgt von deren Szenen-ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Szenen-ID",
+        "description": "Worauf Wahlmöglichkeiten verlinken: Ein Link auf # gefolgt von dieser ID führt zu dieser Szene. Buchstaben, Ziffern und Bindestriche."
+      },
+      {
+        "title": "Überschrift",
+        "description": "Überschrift der Szene."
+      },
+      {
+        "title": "Ende",
+        "description": "Ob diese Szene einen Weg beendet und wie er ausgegangen ist.",
+        "options": {
+          "": "Kein Ende",
+          "good": "Gutes Ende",
+          "mixed": "Gemischtes Ende",
+          "poor": "Schlechtes Ende"
+        }
+      },
+      {
+        "title": "Punktzahl",
+        "description": "Punktzahl für das Erreichen dieses Endes. Die höchste End-Punktzahl im Szenario ist das Maximum."
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "Peteĩ pilar: téra, ñe'ẽjoapy, ta'ãngachu'i, sa'y ha mba'érepa iñimportante"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra"
+      },
+      {
+        "title": "Ñe'ẽjoapy"
+      },
+      {
+        "title": "Ta'ãngachu'i"
+      },
+      {
+        "title": "Sa'y (DDD réra)"
+      },
+      {
+        "title": "Mba'e pilar, 1 guive 7 peve"
+      },
+      {
+        "title": "Kárta michĩ"
+      },
+      {
+        "title": "Mamópa oho téra"
+      }
+    ]
+  }
+}

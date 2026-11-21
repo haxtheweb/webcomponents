@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detalii zone interactive",
         "description": "Zonele interactive de pe harta de imagine."
+      },
+      {
+        "title": "Detaliile zonelor active",
+        "description": "Zonele active interactive de pe harta imaginii."
       }
     ]
   }

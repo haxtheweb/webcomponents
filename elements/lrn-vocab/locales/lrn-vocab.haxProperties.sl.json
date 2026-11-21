@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Izraz"
+        "title": "Izraz",
+        "description": "Beseda ali fraza, ki jo bralci kliknejo, da vidijo njeno definicijo."
       },
       {
         "slot": "",

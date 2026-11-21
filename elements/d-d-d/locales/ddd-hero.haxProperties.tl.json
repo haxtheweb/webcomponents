@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Isang malaking larawan, GIF o video na may heading at teksto sa ibabaw nito, inilalagay kahit saan sa pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Larawan o video",
+        "description": "Isang JPG, PNG, WebP, GIF, MP4 o WebM na file."
+      },
+      {
+        "title": "Alternatibong teksto",
+        "description": "Ilarawan ang larawan. Iwanang blangko kung dekorasyon lang ito."
+      },
+      {
+        "title": "Heading",
+        "description": "Heading na ipinapakita sa ibabaw ng media. Iwanang blangko kung wala."
+      },
+      {
+        "title": "Teksto",
+        "description": "Tekstong ipinapakita sa ilalim ng heading, sa ibabaw ng media."
+      },
+      {
+        "title": "Buong lapad",
+        "description": "Umabot mula gilid hanggang gilid sa halip na nasa column ng nilalaman."
+      },
+      {
+        "title": "Taas",
+        "options": {
+          "tall": "Mataas",
+          "medium": "Katamtaman",
+          "short": "Maikli"
+        }
+      },
+      {
+        "title": "Framing",
+        "description": "Kung paano nakapuwesto ang larawan sa bawat laki ng screen"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fade",
+        "description": "Kulay na nakapatong sa media. Kapag may heading o teksto, palaging mayroon, para manatiling nababasa ang teksto.",
+        "options": {
+          "blue": "Asul",
+          "bottom": "Madilim sa ibaba",
+          "none": "Wala"
+        }
+      },
+      {
+        "title": "Posisyon ng teksto",
+        "options": {
+          "bottom": "Ibaba",
+          "middle": "Gitna"
+        }
+      },
+      {
+        "title": "Focal point pahalang",
+        "description": "Bahagi ng larawan na nananatiling nakikita kapag na-crop, mula 0 (kaliwa) hanggang 100 (kanan)."
+      },
+      {
+        "title": "Focal point pababa",
+        "description": "Bahagi ng larawan na nananatiling nakikita kapag na-crop, mula 0 (itaas) hanggang 100 (ibaba)."
+      }
+    ]
+  }
+}

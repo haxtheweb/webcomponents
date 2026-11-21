@@ -9,5 +9,7 @@
   "slidePages": "Kaca slide",
   "goToSlide": "Menyang slide {number}",
   "slides": "Slide",
-  "position": "{number} saka {total}"
+  "position": "{number} saka {total}",
+  "fullScreen": "Layar wutuh",
+  "exitFullScreen": "Metu saka layar wutuh"
 }

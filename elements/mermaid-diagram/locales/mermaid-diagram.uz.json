@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramma",
+  "flowchart": "blok-sxema",
+  "sequence": "ketma-ketlik",
+  "source": "Manba",
+  "textAlternative": "Matnli muqobil",
+  "present": "Taqdim etish",
+  "exitPresent": "Taqdimotdan chiqish",
+  "loading": "Diagramma yuklanmoqda",
+  "empty": "Hali chizadigan narsa yo‘q. Diagramma manbasini qo‘shing.",
+  "error": "Xato",
+  "parseError": "Bu diagrammani chizib bo‘lmadi. Manbani tekshiring.",
+  "loadError": "Diagramma kutubxonasini yuklab bo‘lmadi.",
+  "srcError": "Diagramma faylini yuklab bo‘lmadi.",
+  "decision": "qaror",
+  "end": "oxiri",
+  "goTo": "{target} ga o‘tish",
+  "ifGoTo": "agar {label} bo‘lsa, {target} ga o‘tish",
+  "describedBySource": "Diagramma o‘z manbasi bilan tavsiflangan.",
+  "scrollable": "Diagramma, aylantiriladigan"
+}

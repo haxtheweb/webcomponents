@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Maramara",
+    "description": "He ata iti whai tapanga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ata"
+      },
+      {
+        "title": "Tapanga"
+      }
+    ]
+  }
+}

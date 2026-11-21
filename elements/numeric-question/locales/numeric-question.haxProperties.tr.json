@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Sayısal soru",
+    "description": "Bir sayıyla yanıtlanan soru. Yanıt sabit bir sayı veya değişkenlerden hesaplanan bir formüldür ve bir tolerans içinde olduğunda kabul edilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Soru",
+        "description": "Öğrenenlere sorulan. Değerini göstermek için {d} gibi bir değişken adını süslü parantez içinde yazın."
+      },
+      {
+        "title": "Birim",
+        "description": "Yanıt alanının yanında metin olarak gösterilir, örneğin km/h."
+      },
+      {
+        "title": "Yanıt",
+        "description": "Doğru sayı. Yanıtı bir formül hesaplıyorsa boş bırakın."
+      },
+      {
+        "title": "Formül",
+        "description": "Yanıtı değişkenlerden hesaplar, örneğin d / (t / 60). + - * / ^, parantezler, sqrt() ve abs() kullanılabilir. Ayarlandığında yanıtın yerine kullanılır."
+      },
+      {
+        "title": "Değişkenler",
+        "description": "Formülün ve sorunun kullandığı sayılar. Her biri en düşük ve en yüksek değeri arasında, adımlarla bir değer alır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerans",
+        "description": "Kesin yanıttan ne kadar uzağın hâlâ kabul edildiği. 0 kesin veya aşağıdaki ondalık basamaklara yuvarlanmış demektir."
+      },
+      {
+        "title": "Tolerans türü",
+        "description": "Mutlak: artı veya eksi tolerans. Yüzde: kesin yanıtın artı veya eksi o yüzdesi.",
+        "options": {
+          "absolute": "Mutlak",
+          "percent": "Yüzde"
+        }
+      },
+      {
+        "title": "Ondalık basamaklar",
+        "description": "Öğrenenlerden bu kadar basamağa yuvarlamaları istenir ve yanıt buna yuvarlanmış olarak gösterilir. Yuvarlama olmaması için boş bırakın."
+      },
+      {
+        "title": "Denemeler",
+        "description": "Bir öğrenenin kaç kez denetleyebileceği. 0 sınırsız demektir."
+      },
+      {
+        "title": "Her denemede yeni sayılar",
+        "description": "Öğrenen her yeniden denediğinde yeni değişken değerleri üret. Geri döndüklerinde önceki yanıtları gösterilmez, yalnızca doğru yapıp yapmadıkları gösterilir."
+      },
+      {
+        "title": "Daraltılabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak yanındaki diğer daraltılabilir soruları kapatır."
+      },
+      {
+        "title": "Daraltılmış başla",
+        "description": "Daraltılabilir olduğunda yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analiz sistemlerinde xAPI tanımlaması için kullanılan test adı."
+      }
+    ]
+  }
+}

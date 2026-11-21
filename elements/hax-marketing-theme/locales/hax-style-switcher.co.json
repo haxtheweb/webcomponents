@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema di cuncepimentu",
+  "dddDefault": "DDD (predefinitu)",
+  "designSystemHelp": "Culore, caratteri, anguli è focus. U tema mantene a dispusizione.",
+  "designSystemFixed": "Stu tema mantene u so propiu sistema di cuncepimentu.",
+  "palette": "Tavuletta",
+  "themeDefault": "Predefinitu di u tema",
+  "paletteNumber": "Tavuletta {n}",
+  "siteTheme": "{name} (tema di stu situ)",
+  "restyle": "Cambià u stile di stu situ",
+  "close": "Chjode",
+  "reset": "Ritornu à l'aspettu propiu di stu situ",
+  "random": "Surpresa",
+  "about": "Quì si vedenu uni pochi d'aspetti integrati in HAX. E pagine ùn cambianu mai: a struttura stà in JSON Outline Schema è ogni bloccu hè un cumpunente web standard, dunque u cuncepimentu si pò cambià liberamente."
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kontribuuesit",
+    "description": "Njerëzit që ndërtuan projektin, nga një skedar liste"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skedari i listës (JSON)"
+      },
+      {
+        "title": "Pamja: landed, lab ose code"
+      },
+      {
+        "title": "Numri maksimal i njerëzve për t'u shfaqur (0 është të gjithë)"
+      }
+    ]
+  }
+}

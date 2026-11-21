@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "شارة",
+    "description": "أيقونة صغيرة بتسمية"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "الأيقونة"
+      },
+      {
+        "title": "التسمية"
+      }
+    ]
+  }
+}

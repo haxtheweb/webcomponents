@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Léaráid ó théacs",
+    "description": "Scríobh léaráid mar théacs (Mermaid): sreabhchairt, seicheamh, amlíne agus tuilleadh. Tarraingítear ar an leathanach í le malairt téacs."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Taispeántar os cionn na léaráide é agus úsáidtear mar a hainm é."
+      },
+      {
+        "title": "Foinse na léaráide",
+        "description": "Téacs Mermaid, mar shampla: flowchart TD, ansin líne amháin in aghaidh an naisc mar A[Draft] --> B{Ready?}. Cuir |label| tar éis saighde chun lipéad a chur uirthi. Nuashonraítear an líníocht de réir mar a chlóscríobhann tú."
+      },
+      {
+        "title": "Malairt téacs",
+        "description": "Déan cur síos ar a dtaispeánann an léaráid do dhaoine nach féidir leo í a fheiceáil. Fág folamh ar shreabhchairt chun a céimeanna a liostú duit."
+      },
+      {
+        "title": "Fotheideal",
+        "description": "Fotheideal roghnach a thaispeántar faoin léaráid."
+      },
+      {
+        "title": "Taispeáin an fhoinse",
+        "description": "Taispeáin téacs na léaráide in aice leis an líníocht."
+      },
+      {
+        "title": "Taispeáin an mhalairt téacs",
+        "description": "Taispeáin an mhalairt téacs faoin líníocht. Bíonn sí ar fáil i gcónaí do léitheoirí scáileáin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Comhad foinse",
+        "description": "Seoladh comhaid .mmd le tarraingt in ionad an téacs thuas (https nó cosán ar an suíomh seo)."
+      },
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath shlis an deilbhín sa cheanntásc."
+      }
+    ]
+  }
+}

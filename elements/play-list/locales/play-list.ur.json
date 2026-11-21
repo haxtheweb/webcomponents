@@ -9,5 +9,7 @@
   "slidePages": "سلائیڈ صفحات",
   "goToSlide": "سلائیڈ {number} پر جائیں",
   "slides": "سلائیڈز",
-  "position": "{number} از {total}"
+  "position": "{number} از {total}",
+  "fullScreen": "پوری اسکرین",
+  "exitFullScreen": "پوری اسکرین سے باہر نکلیں"
 }

@@ -60,6 +60,8 @@
   "flagsFound": "{correct} ka mid ah {total} ayaa la helay",
   "toRethink": "{count} dib loo eego",
   "notEvidence": "maaha caddayn calankan",
+  "isEvidence": "caddaynta calankan",
+  "readingKeys": "Isticmaal furayaasha fallaadhaha si aad uga gudubto hal {unit} kan xiga.",
   "markAnswers": "Calaamadee jawaabaha",
   "doneMarking": "Dhammee calaamadinta jawaabaha",
   "editHint": "Wax ka beddel qoraalka hoose. Isticmaal Calaamadee jawaabaha ee liiska qaybta si aad u doorato meesha calan kasta ka tirsan yahay.",

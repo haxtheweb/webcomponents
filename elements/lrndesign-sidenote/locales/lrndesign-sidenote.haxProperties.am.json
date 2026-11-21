@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "የጎን ማስታወሻ",
+    "description": "ከአካባቢው ይዘት ተለይቶ የተቀመጠ ማስታወሻ፣ ከአማራጭ አዶ እና መለያ ጋር።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "መለያ",
+        "description": "የጎን ማስታወሻው መለያ።"
+      },
+      {
+        "title": "አዶ",
+        "description": "የጎን ማስታወሻው አዶ።"
+      },
+      {
+        "title": "ይዘት",
+        "description": "የጎን ማስታወሻው ይዘት።"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "ቀለም",
+        "description": "የጎን ማስታወሻው የሚቀባበት ቀለም።"
+      }
+    ]
+  }
+}

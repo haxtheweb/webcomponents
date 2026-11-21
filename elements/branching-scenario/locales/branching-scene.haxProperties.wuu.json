@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "情景场景",
+    "description": "分支情景里个一个场景。用 # 加场景 id 拿每个选择链接到别个场景。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "场景 id",
+        "description": "选择链接到啥：链接到 # 加迭个 id 就到迭个场景。字母、数字搭连字符。"
+      },
+      {
+        "title": "标题",
+        "description": "场景个标题。"
+      },
+      {
+        "title": "结局",
+        "description": "迭个场景是勿是一条路线个结局，结果哪能。",
+        "options": {
+          "": "勿是结局",
+          "good": "好结局",
+          "mixed": "一般结局",
+          "poor": "坏结局"
+        }
+      },
+      {
+        "title": "得分",
+        "description": "到迭个结局个得分。情景里最高个结局得分就是满分。"
+      }
+    ]
+  }
+}

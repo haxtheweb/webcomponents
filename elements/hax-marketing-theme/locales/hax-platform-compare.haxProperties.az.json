@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platforma müqayisəsi",
+    "description": "Üz-üzə: məlumat faylından istənilən iki platformanı seçin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Müqayisə məlumatları (JSON)"
+      },
+      {
+        "title": "Sol platformanın id-si"
+      },
+      {
+        "title": "Sağ platformanın id-si"
+      }
+    ]
+  }
+}

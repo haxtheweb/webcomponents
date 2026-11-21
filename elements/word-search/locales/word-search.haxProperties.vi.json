@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Tìm chữ",
+    "description": "Một lưới chữ cái chứa các từ ẩn. Người học chạm vào chữ cái đầu và cuối của mỗi từ. Luyện nhận ra cách viết của thuật ngữ, không phải nghĩa của nó."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Những gì người học được yêu cầu tìm, hiển thị ở phần đầu."
+      },
+      {
+        "title": "Từ",
+        "description": "Các từ cần ẩn. Dấu cách và dấu câu bị loại khỏi lưới. Các từ không vừa được liệt kê khi bạn chỉnh sửa và bị bỏ qua đối với người học."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kích thước lưới",
+        "description": "Số chữ cái mỗi cạnh, 4 đến 16. Để trống để vừa với từ dài nhất (tối đa 12). Trên 12 sẽ cuộn ngang trên điện thoại."
+      },
+      {
+        "title": "Từ chéo",
+        "description": "Cũng ẩn từ theo đường chéo. Khó hơn."
+      },
+      {
+        "title": "Từ viết ngược",
+        "description": "Cũng ẩn từ viết ngược. Khó hơn."
+      },
+      {
+        "title": "Màu nhấn",
+        "description": "Màu tùy chọn cho nhãn đầu, chữ cái đầu đã chọn và nút."
+      }
+    ]
+  }
+}

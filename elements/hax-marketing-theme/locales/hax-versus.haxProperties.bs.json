@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Protiv",
+    "description": "Riječi pored dugmeta za dvoboj s dva lika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Kuda vodi dugme"
+      },
+      {
+        "title": "Tekst dugmeta"
+      },
+      {
+        "title": "Sjeme lijevog lika"
+      },
+      {
+        "title": "Sjeme desnog lika"
+      }
+    ]
+  }
+}

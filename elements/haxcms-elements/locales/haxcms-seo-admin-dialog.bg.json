@@ -6,6 +6,8 @@
   "faviconDescription": "Изображение в раздела на браузъра / използва се на телефони като малко лого на сайта",
   "domain": "Домейн",
   "domainDescription": "Домейн на този уебсайт",
+  "sameAs": "Други профили на този сайт",
+  "sameAsDescription": "По една връзка на ред към профилите на този сайт или организация другаде (GitHub, LinkedIn, YouTube, Mastodon). Търсачките ги използват, за да свържат тези профили с този сайт.",
   "language": "Език",
   "languageDescription": "Език на този сайт. Търсете по име или код или въведете друг код, например fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Klompok Stop Note",
+    "description": "Tumpuk sawetara stop note dadi siji blok sing nampilake siji cathetan saben wektu, kayata Tips utawa Apa sing anyar. Kertu instruksi, cathetan pinggir lan kutipan dibingkai bisa ditumpuk bebarengan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Jeneng klompok sing diwara-warakake pamaca layar, kayata Tips utawa Apa sing anyar."
+      },
+      {
+        "title": "Cathetan",
+        "description": "Stop note ing klompok. Kertu instruksi, cathetan pinggir lan kutipan dibingkai uga bisa ditambahake."
+      }
+    ]
+  }
+}

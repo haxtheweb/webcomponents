@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Foydalanish holatini tanlash",
+    "description": "Sayt nima uchun ekanini tanlang va HAX ni brauzerda o‘sha boshlang‘ich sayt bilan ochadigan havolani hamda mos CLI buyrug‘ini oling."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Brauzerdagi HAX manzili",
+        "description": "Havola qayerda ochiladi; unga ?skeleton= va &name= qo‘shiladi"
+      },
+      {
+        "title": "Chiqarib tashlanadigan boshlang‘ich saytlar",
+        "description": "Mashina nomlari, vergul bilan ajratilgan"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Boshlang‘ich saytlar ro‘yxati",
+        "description": "Skeleton ro‘yxati manzili (app-hax o‘qiydigan format)"
+      }
+    ]
+  }
+}

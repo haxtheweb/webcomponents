@@ -3,5 +3,7 @@
   "status_stop": "Steðga",
   "status_warning": "Ávaring",
   "status_success": "Eydnaðist",
-  "status_info": "Viðmerking"
+  "status_info": "Viðmerking",
+  "status_tip": "Visti tú?",
+  "status_new": "Hvat er nýtt"
 }

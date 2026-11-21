@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ehechakuaa tenda tee",
+    "description": "Temimbo'ekuéra ojuhu tenda hekopetéva peteĩ ta'ãngápe oikutúvo, ojopývo térã omongu'évo teclado kurusu. Ta'ãnga mapa kytã reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãnga",
+        "description": "Ta'ãnga temimbo'ekuéra ohekáva."
+      },
+      {
+        "title": "Moñe'ẽrã ambue",
+        "description": "Omombe'u ta'ãnga umi tapicha ndaikatúivape ohecha. Araka'eve ndojehechaukái téra ramo."
+      },
+      {
+        "title": "Téra",
+        "description": "Peteĩ téra mbyky ojehecháva ta'ãnga ári."
+      },
+      {
+        "title": "Porandu",
+        "description": "Mba'épa ojejerure temimbo'ekuérape ojuhu hag̃ua ta'ãngápe."
+      },
+      {
+        "title": "Mbohováikuéra",
+        "description": "Peteĩteĩ mbohovái ha'e peteĩ óvalo hérava ta'ãnga ári. Tenda ha tuichakue ha'e ta'ãnga porcentaje, oñemoha'ãngáva ijyke yvate asu guive. Rembosako'i aja, opaite mbohovái oñembojerepa ta'ãngápe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ñeha'ãkuéra",
+        "description": "Mboy jey temimbo'e ikatu oñeha'ã. 0 he'ise ndaipóri ñemboja'i."
+      },
+      {
+        "title": "Jejavy oñemoneĩva",
+        "description": "Mboy jejavypa omohu'ã peteĩ ñeha'ã. 0 he'ise ndaipóri ñemboja'i, ha temimbo'ekuéra ohupyty botõ Emohu'ã."
+      },
+      {
+        "title": "Ikatúva oñemboty",
+        "description": "Ehechauka ko porandu tysýi ramo ojepe'a ha oñembotýva. Peteĩ jepe'a omboty ambue porandu ikatúva oñemboty hi'ykére oĩva."
+      },
+      {
+        "title": "Eñepyrũ oñembotývo",
+        "description": "Ikatúramo oñemboty, eñepyrũ tysýi oñembotýva ramo ohechaukáva porandu ha hekotee añoite."
+      },
+      {
+        "title": "Kytã reko",
+        "description": "OER Schema: kytã reko ko jeha'ãme g̃uarã (techapyrã kytã, tai, porcentaje, ñemohu'ã)."
+      },
+      {
+        "title": "Jehekombo'e jehupytyrã",
+        "description": "OER Schema: jehekombo'e jehupytyrã ojoajúva ko jeha'ã rehe."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Porandupy réra",
+        "description": "Porandupy réra oñemondóva ojeipuru hag̃ua tenda xAPI rupive omba'apóvape ojehechakuaa hag̃ua ko mba'e"
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso ko jeha'ã oñembosako'ihápe."
+      }
+    ]
+  }
+}

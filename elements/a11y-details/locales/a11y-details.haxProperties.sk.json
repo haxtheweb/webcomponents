@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Voliteľný text súhrnu, keď sú podrobnosti otvorené"
+        "title": "Voliteľný text súhrnu, keď sú podrobnosti otvorené",
+        "description": "Text tlačidla, keď je popis skrytý, napríklad Zobraziť popis."
       },
       {
         "property": "closeText",
-        "title": "Voliteľný text súhrnu, keď sú podrobnosti zatvorené"
+        "title": "Voliteľný text súhrnu, keď sú podrobnosti zatvorené",
+        "description": "Text tlačidla, keď je popis zobrazený, napríklad Skryť popis."
       }
     ]
   }

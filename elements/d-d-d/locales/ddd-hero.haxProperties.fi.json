@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Suuri kuva, GIF tai video, jonka päällä on otsikko ja tekstiä, sijoitettuna mihin tahansa sivulla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuva tai video",
+        "description": "JPG-, PNG-, WebP-, GIF-, MP4- tai WebM-tiedosto."
+      },
+      {
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvaile kuva. Jätä tyhjäksi, jos se on pelkkää koristetta."
+      },
+      {
+        "title": "Otsikko",
+        "description": "Median päällä näytettävä otsikko. Jätä tyhjäksi, jos et halua otsikkoa."
+      },
+      {
+        "title": "Teksti",
+        "description": "Otsikon alla median päällä näytettävä teksti."
+      },
+      {
+        "title": "Koko leveys",
+        "description": "Ulotu reunasta reunaan sisältösarakkeen sijaan."
+      },
+      {
+        "title": "Korkeus",
+        "options": {
+          "tall": "Korkea",
+          "medium": "Keskikokoinen",
+          "short": "Matala"
+        }
+      },
+      {
+        "title": "Rajaus",
+        "description": "Miten kuva asettuu kullakin näyttökoolla"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Häivytys",
+        "description": "Median päälle asetettu väri. Kun mukana on otsikko tai tekstiä, sellainen on aina, jotta teksti pysyy luettavana.",
+        "options": {
+          "blue": "Sininen",
+          "bottom": "Tumma alhaalla",
+          "none": "Ei mitään"
+        }
+      },
+      {
+        "title": "Tekstin sijainti",
+        "options": {
+          "bottom": "Alhaalla",
+          "middle": "Keskellä"
+        }
+      },
+      {
+        "title": "Polttopiste vaakasuunnassa",
+        "description": "Kuvan osa, joka pysyy näkyvissä rajattaessa, 0:sta (vasen) 100:aan (oikea)."
+      },
+      {
+        "title": "Polttopiste pystysuunnassa",
+        "description": "Kuvan osa, joka pysyy näkyvissä rajattaessa, 0:sta (ylä) 100:aan (ala)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Kräizwuerträtsel",
+    "description": "E Kräizwuerträtsel aus enger Lëscht vu Wierder an Hiweiser. D'Gitter gëtt fir Iech generéiert; d'Léierender tippen d'Wierder an a kontrolléieren se."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Den Titel oder d'Fro iwwer dem Kräizwuerträtsel."
+      },
+      {
+        "title": "Wierder",
+        "description": "All Wuert a säin Hiweis. D'Gitter gëtt aus dëser Lëscht generéiert: dat längste Wuert gëtt als éischt placéiert, an déi aner kräizen et op gemeinsame Buschtawen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versich",
+        "description": "Wéi oft e Léierende kontrolléiere kann. 0 heescht onbegrenzt."
+      },
+      {
+        "title": "Akzentfaarf",
+        "description": "Optional Faarf fir de Kapp-Chip, dat aktiivt Wuert an d'Aktiounsknäppercher."
+      },
+      {
+        "title": "Zouklappbar",
+        "description": "Dëst Kräizwuerträtsel als Zeil weisen, déi op- an zougeet. Wann een opgeet, ginn déi aner zouklappbar Froen dernieft zou."
+      },
+      {
+        "title": "Zougeklappt ufänken",
+        "description": "Wann zouklappbar, als zou Zeil ufänken, déi just den Titel a säi Status weist."
+      },
+      {
+        "title": "Bewäertungsformat",
+        "description": "OER Schema: Bewäertungsformat fir dës Evaluatioun (z. B. Punkten, Buschtaf, Prozent, Ofschloss)."
+      },
+      {
+        "title": "Léierzil",
+        "description": "OER Schema: Léierzil, dat mat dëser Evaluatioun verbonnen ass."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema: Cours, fir deen dës Evaluatioun geduecht ass."
+      }
+    ]
+  }
+}

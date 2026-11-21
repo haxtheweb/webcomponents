@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerische Frage",
+    "description": "Eine Frage, die mit einer Zahl beantwortet wird. Die Antwort ist eine feste Zahl oder eine aus Variablen berechnete Formel und zählt, wenn sie innerhalb einer Toleranz liegt."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Frage",
+        "description": "Was Lernende gefragt werden. Schreibe einen Variablennamen in geschweifte Klammern, etwa {d}, um ihren Wert anzuzeigen."
+      },
+      {
+        "title": "Einheit",
+        "description": "Wird als Text neben dem Antwortfeld angezeigt, zum Beispiel km/h."
+      },
+      {
+        "title": "Antwort",
+        "description": "Die richtige Zahl. Leer lassen, wenn eine Formel die Antwort berechnet."
+      },
+      {
+        "title": "Formel",
+        "description": "Berechnet die Antwort aus den Variablen, zum Beispiel d / (t / 60). Kann + - * / ^, Klammern, sqrt() und abs() verwenden. Wird statt der Antwort verwendet, wenn gesetzt."
+      },
+      {
+        "title": "Variablen",
+        "description": "Zahlen, die die Formel und die Frage verwenden. Jede nimmt in Schritten einen Wert zwischen ihrem kleinsten und größten Wert an."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranz",
+        "description": "Wie weit von der exakten Antwort entfernt noch zählt. 0 bedeutet exakt oder auf die Nachkommastellen unten gerundet."
+      },
+      {
+        "title": "Toleranzart",
+        "description": "Absolut: plus oder minus die Toleranz. Prozent: plus oder minus diesen Prozentsatz der exakten Antwort.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Prozent"
+        }
+      },
+      {
+        "title": "Nachkommastellen",
+        "description": "Lernende sollen auf so viele Stellen runden, und die Antwort wird entsprechend gerundet angezeigt. Leer lassen für keine Rundung."
+      },
+      {
+        "title": "Versuche",
+        "description": "Wie oft Lernende prüfen dürfen. 0 bedeutet unbegrenzt."
+      },
+      {
+        "title": "Neue Zahlen bei jedem Versuch",
+        "description": "Bei jedem neuen Versuch neue Variablenwerte ziehen. Die frühere Antwort wird dann beim Zurückkehren nicht angezeigt, nur ob sie richtig war."
+      },
+      {
+        "title": "Einklappbar",
+        "description": "Diese Frage als auf- und zuklappbare Zeile anzeigen. Das Öffnen einer Zeile schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, als geschlossene Zeile starten, die nur die Frage und ihren Status zeigt."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Name des Quiz",
+        "description": "Quizname zur xAPI-Identifikation in Analysesystemen."
+      }
+    ]
+  }
+}

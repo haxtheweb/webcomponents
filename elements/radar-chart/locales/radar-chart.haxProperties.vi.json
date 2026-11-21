@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Biểu đồ radar",
+    "description": "Biểu đồ radar (mạng nhện) cho các mô hình trưởng thành và chấm điểm theo khía cạnh, như HEOSAT. Bao gồm văn bản thay thế và bảng dữ liệu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tiêu đề của biểu đồ; cũng được dùng làm tên truy cập."
+      },
+      {
+        "title": "Điểm tối đa",
+        "description": "Giá trị cao nhất trên thang đo."
+      },
+      {
+        "title": "Danh mục",
+        "description": "Mỗi dòng một danh mục. Cần ít nhất 3."
+      },
+      {
+        "title": "Điểm số",
+        "description": "Các số phân tách bằng dấu phẩy, mỗi số cho một danh mục theo cùng thứ tự."
+      },
+      {
+        "title": "Điểm mục tiêu",
+        "description": "Các số phân tách bằng dấu phẩy, mỗi số cho một danh mục theo cùng thứ tự."
+      },
+      {
+        "title": "Hiện chú giải",
+        "description": "Hiển thị chú giải ghi tên điểm số và mục tiêu."
+      },
+      {
+        "title": "Gọn",
+        "description": "Biểu đồ nhỏ hơn không có nhãn, chú giải hay bảng dữ liệu. Di chuột lên một điểm để xem giá trị."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nhãn điểm số",
+        "description": "Nhãn chú giải và bảng cho điểm số."
+      },
+      {
+        "title": "Nhãn mục tiêu",
+        "description": "Nhãn chú giải và bảng cho mục tiêu."
+      }
+    ]
+  }
+}

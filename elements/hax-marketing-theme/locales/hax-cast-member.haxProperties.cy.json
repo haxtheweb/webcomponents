@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aelod o'r cast",
+    "description": "Un gynulleidfa, wedi'i chwarae gan gymeriad, gyda geiriau a botwm"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pwy yw hwn"
+      },
+      {
+        "title": "Math o gymeriad"
+      },
+      {
+        "title": "Hedyn y cymeriad"
+      },
+      {
+        "title": "Lliw'r llwyfan (enw DDD)"
+      },
+      {
+        "title": "Ble mae'r botwm yn mynd"
+      },
+      {
+        "title": "Testun y botwm"
+      }
+    ]
+  }
+}

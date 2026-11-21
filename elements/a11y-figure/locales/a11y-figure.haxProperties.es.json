@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Texto alternativo"
+        "title": "Texto alternativo",
+        "description": "Describe la imagen para las personas que no pueden verla."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Texto de resumen opcional cuando los detalles están abiertos"
+        "title": "Texto de resumen opcional cuando los detalles están abiertos",
+        "description": "Texto del botón mientras la descripción está oculta, como Mostrar descripción."
       },
       {
         "property": "closeText",
-        "title": "Texto de resumen opcional cuando los detalles están cerrados"
+        "title": "Texto de resumen opcional cuando los detalles están cerrados",
+        "description": "Texto del botón mientras la descripción está visible, como Ocultar descripción."
       }
     ]
   }

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentationsspelare",
+    "description": "Genomgång, demo och referens för en webbkomponent, med kopieringsknappar för HTML, import, npm och CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentationsdatafil",
+        "description": "Dokumentationsdata som följer med elementet (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard för genomgång",
+        "description": "Rörelse-storyboarden som följer med elementet (tag.motion.json). Valfri."
+      },
+      {
+        "title": "Videohandledning",
+        "description": "En kort video om elementet (YouTube, Vimeo eller en videofil). Ersätter videon i dokumentationsdatan."
+      },
+      {
+        "title": "Öppna på flik",
+        "description": "Vilken flik som visas först.",
+        "options": {
+          "motion": "Genomgång",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentation",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Spela upp genomgången automatiskt",
+        "description": "Starta genomgången så snart spelaren visas. Ignoreras när läsaren föredrar reducerad rörelse."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Genomgångens ämne",
+        "description": "För element med flera genomgångar: vilket ämne som öppnas först (till exempel add-blocks). Lämna tomt för huvudgenomgången."
+      },
+      {
+        "title": "Länk till livedemo",
+        "description": "Vart knappen Öppna demokällan går. Standard är demomappen i repot."
+      },
+      {
+        "title": "Länk till dokumentation",
+        "description": "Vart knappen för fullständig dokumentation går, till exempel motsvarande Learn HAX-sida."
+      }
+    ]
+  }
+}

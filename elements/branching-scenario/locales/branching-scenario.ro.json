@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenariu",
+  "directions": "Instrucțiuni",
+  "showDirections": "Afișați instrucțiunile",
+  "hideDirections": "Ascundeți instrucțiunile",
+  "directionsRead": "Citiți fiecare scenă și alegeți ce ați face.",
+  "directionsEndings": "Există mai multe finaluri. Încercați alt drum după ce terminați.",
+  "startOver": "Începeți din nou",
+  "back": "Înapoi un pas",
+  "tryAnother": "Încercați alt drum",
+  "path": "Drum",
+  "scene": "Scenă",
+  "ending": "Final",
+  "end": "sfârșit",
+  "scenesSeen": "{seen} din {total} scene văzute",
+  "endingReached": "Final atins",
+  "addScene": "Adăugați scenă",
+  "newScene": "Scenă nouă",
+  "newSceneText": "Descrieți ce se întâmplă, apoi legați fiecare alegere de o scenă.",
+  "editingNote": "Editare: sunt afișate toate scenele. O alegere este un link către # urmat de un id de scenă.",
+  "noScenes": "Adăugați o scenă pentru a începe scenariul."
+}

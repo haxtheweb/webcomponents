@@ -1,4 +1,6 @@
 {
   "saveAll": "Salvà tuttu",
-  "saveTheFollowing": "Salvà ciò chì seguita: {list}?"
+  "saveTheFollowing": "Salvà ciò chì seguita: {list}?",
+  "save": "Salvà",
+  "cancel": "Abbandunà"
 }

@@ -60,6 +60,8 @@
   "flagsFound": "An samo {correct} cikin {total}",
   "toRethink": "{count} don sake tunani",
   "notEvidence": "ba shaida ba ce ga wannan tutar",
+  "isEvidence": "shaida don wannan tuta",
+  "readingKeys": "Yi amfani da maɓallan kibiya don motsawa daga {unit} ɗaya zuwa na gaba.",
   "markAnswers": "Yi alamar amsoshi",
   "doneMarking": "An gama alamar amsoshi",
   "editHint": "Gyara karatun da ke ƙasa. Yi amfani da Yi alamar amsoshi a menu na bulo don zaɓar inda kowace tuta ta dace.",

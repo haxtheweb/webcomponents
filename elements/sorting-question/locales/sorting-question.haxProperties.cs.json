@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Odpovědi",
+        "description": "Pořadí odpovědí určuje správnou posloupnost.",
+        "options": {
+          "": "Seznam",
+          "cards": "Obrázkové karty"
+        }
+      },
+      {
+        "title": "Odpovědi",
         "description": "Pořadí odpovědí určuje správnou posloupnost."
       }
     ],

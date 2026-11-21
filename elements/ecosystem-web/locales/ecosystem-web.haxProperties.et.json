@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ökosüsteemi võrk",
+    "description": "Interaktiivne võrk sellest, kuidas projekti osad omavahel seotud on, koos alamvõrkude ja samm-sammuliste tuuridega."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Võrgu andmed",
+        "description": "Võrkude JSON-kogumi URL (ehitatud PRAW-is, ecosystem-webs.json)."
+      },
+      {
+        "title": "Võrk",
+        "description": "Esimesena kuvatava võrgu ID; main on ökosüsteemi võrk."
+      },
+      {
+        "title": "Valitud paan",
+        "description": "Paani ID, mis võrgu avamisel valitakse."
+      },
+      {
+        "title": "Tuur",
+        "description": "Tuuri ID, millega alustada."
+      },
+      {
+        "title": "Alusta loendivaates",
+        "description": "Näita võrku joonise asemel pesastatud loenditena."
+      },
+      {
+        "title": "Ainult joonis",
+        "description": "Näita ainult joonist, joonisena: ilma päise, tuuride, üksikasjade ja sammuribata."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Loe mõõdiku järgi",
+        "description": "Alusta nii, et kõiki paane loetakse ühe mõõdiku järgi.",
+        "options": {
+          "": "Ainult ühendused",
+          "fresh": "Värskus",
+          "bus": "Bussifaktor",
+          "impact": "Mõju",
+          "evidence": "Tõendid",
+          "parity": "Pariteet"
+        }
+      }
+    ]
+  }
+}

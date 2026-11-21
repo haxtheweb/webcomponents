@@ -3,5 +3,7 @@
   "status_stop": "Mira",
   "status_warning": "Yambiro",
   "status_success": "Budiriro",
-  "status_info": "Cherechedza"
+  "status_info": "Cherechedza",
+  "status_tip": "Waizviziva here?",
+  "status_new": "Zvitsva"
 }

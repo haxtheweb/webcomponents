@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "flödesschema",
+  "sequence": "sekvens",
+  "source": "Källa",
+  "textAlternative": "Textalternativ",
+  "present": "Presentera",
+  "exitPresent": "Avsluta presentationen",
+  "loading": "Läser in diagrammet",
+  "empty": "Inget att rita än. Lägg till diagramkällan.",
+  "error": "Fel",
+  "parseError": "Diagrammet kunde inte ritas. Kontrollera källan.",
+  "loadError": "Diagrambiblioteket kunde inte läsas in.",
+  "srcError": "Diagramfilen kunde inte läsas in.",
+  "decision": "beslut",
+  "end": "slut",
+  "goTo": "gå till {target}",
+  "ifGoTo": "om {label}, gå till {target}",
+  "describedBySource": "Diagram som beskrivs av sin källa.",
+  "scrollable": "Diagram, rullningsbart"
+}

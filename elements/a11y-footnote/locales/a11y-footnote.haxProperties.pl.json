@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Przypis",
+    "description": "Notatka zapisana w miejscu, do którego należy w tekście. Wyświetla się jako numer, a numerowana lista notatek tworzy się sama na dole strony."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notatka",
+        "description": "Treść przypisu."
+      },
+      {
+        "title": "Bez podglądu",
+        "description": "Nie pokazuj notatki, gdy czytelnik najedzie na numer lub ustawi na nim fokus."
+      }
+    ]
+  }
+}

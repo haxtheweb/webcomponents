@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupo de notas destacadas",
+    "description": "Agrupa varias notas destacadas en un bloque que muestra una nota a la vez, como Consejos o Novedades. También se pueden agrupar con ellas tarjetas de instrucciones, notas al margen y citas enmarcadas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Nombre del grupo que anuncian los lectores de pantalla, como Consejos o Novedades."
+      },
+      {
+        "title": "Notas",
+        "description": "Las notas destacadas del grupo. También se pueden añadir tarjetas de instrucciones, notas al margen y citas enmarcadas."
+      }
+    ]
+  }
+}

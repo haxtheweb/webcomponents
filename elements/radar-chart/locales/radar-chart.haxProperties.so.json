@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Jaantus radar",
+    "description": "Jaantus radar (caarocaaro) oo loogu talagalay moodeellada bislaanshaha iyo dhibcaynta wejiyada, sida HEOSAT. Wuxuu ka kooban yahay beddel qoraal ah iyo shax xog."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Cinwaanka jaantuska; sidoo kale waxaa loo isticmaalaa magaciisa la heli karo."
+      },
+      {
+        "title": "Dhibcaha ugu badan",
+        "description": "Qiimaha ugu sarreeya ee miisaanka."
+      },
+      {
+        "title": "Qaybaha",
+        "description": "Hal qayb sadarkiiba. Wuxuu u baahan yahay ugu yaraan 3."
+      },
+      {
+        "title": "Dhibcaha",
+        "description": "Tirooyin hakad lagu kala saaray, mid qayb kasta oo isla habka ah."
+      },
+      {
+        "title": "Dhibcaha bartilmaameedka",
+        "description": "Tirooyin hakad lagu kala saaray, mid qayb kasta oo isla habka ah."
+      },
+      {
+        "title": "Muuji sharraxaadda",
+        "description": "Muuji sharraxaad magacaabaysa dhibcaha iyo bartilmaameedyada."
+      },
+      {
+        "title": "Koobban",
+        "description": "Jaantus ka yar oo aan lahayn calaamado, sharraxaad ama shax xog. Dul saar barta si aad u aragto qiimayaasheeda."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Calaamadda dhibcaha",
+        "description": "Calaamadda sharraxaadda iyo shaxda ee dhibcaha."
+      },
+      {
+        "title": "Calaamadda bartilmaameedka",
+        "description": "Calaamadda sharraxaadda iyo shaxda ee bartilmaameedyada."
+      }
+    ]
+  }
+}

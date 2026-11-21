@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Orðaleiting",
+    "description": "Eitt bókstavanet við fjaldum orðum. Lesandi trýsta á fyrsta og seinasta bókstav í hvørjum orði. Venur at síggja, hvussu eitt hugtak verður stavað, ikki hvat tað merkir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Hvat lesandi verða biðin um at finna, víst í høvdinum."
+      },
+      {
+        "title": "Orð",
+        "description": "Orðini at fjala. Millumrúm og teknseting verða tikin úr netinum. Orð, sum ikki passa, verða listað, meðan tú rættar, og ikki tikin við fyri lesandi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Stødd á neti",
+        "description": "Bókstavir fyri hvørja síðu, 4 til 16. Lat vera tómt fyri at passa til longsta orðið (upp til 12). Meira enn 12 rullar til síðuna á telefon."
+      },
+      {
+        "title": "Orð á skák",
+        "description": "Fjal eisini orð á skák. Truplari."
+      },
+      {
+        "title": "Orð aftureftir",
+        "description": "Fjal eisini orð skrivað aftureftir. Truplari."
+      },
+      {
+        "title": "Áherðslulitur",
+        "description": "Valfríur litur til høvuðsmerkið, valda fyrsta bókstavin og knøttin."
+      }
+    ]
+  }
+}

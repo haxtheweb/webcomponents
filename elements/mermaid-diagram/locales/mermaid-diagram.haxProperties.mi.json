@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Hoahoa mai i te kuputuhi",
+    "description": "Tuhia he hoahoa hei kuputuhi (Mermaid): he tūtohi rere, he raupapa, he rārangi wā me ētahi atu. Ka tuhia ki te whārangi me tētahi kuputuhi kē."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taitara",
+        "description": "Ka whakaaturia i runga ake i te hoahoa, ā, ka whakamahia hei ingoa mōna."
+      },
+      {
+        "title": "Pūtake hoahoa",
+        "description": "Kuputuhi Mermaid, hei tauira: flowchart TD, kātahi kotahi te rārangi mō ia hono pērā i A[Draft] --> B{Ready?}. Tāpirihia te |label| i muri i tētahi pere hei tapanga. Ka whakahoutia te tuhinga i a koe e patopato ana."
+      },
+      {
+        "title": "Kuputuhi kē",
+        "description": "Whakaahuatia te mea e whakaaturia ana e te hoahoa mō te hunga kāore e kite. Waiho kia wātea i tētahi tūtohi rere kia whakarārangitia ōna hipanga mōu."
+      },
+      {
+        "title": "Tapanga",
+        "description": "He tapanga kōwhiri ka whakaaturia i raro i te hoahoa."
+      },
+      {
+        "title": "Whakaatu i te pūtake",
+        "description": "Whakaaturia te kuputuhi hoahoa i te taha o te tuhinga."
+      },
+      {
+        "title": "Whakaatu i te kuputuhi kē",
+        "description": "Whakaaturia te kuputuhi kē i raro i te tuhinga. E wātea ana i ngā wā katoa ki ngā kaipānui mata."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kōnae pūtake",
+        "description": "Te wāhitau o tētahi kōnae .mmd hei tuhi hei whakakapi i te kuputuhi i runga ake (https, he ara rānei i tēnei pae)."
+      },
+      {
+        "title": "Tae arotahi",
+        "description": "Te tae o te maramara ata i te pane."
+      }
+    ]
+  }
+}

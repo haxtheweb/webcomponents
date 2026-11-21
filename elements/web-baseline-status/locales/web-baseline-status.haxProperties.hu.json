@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline állapot",
+    "description": "Egy webplatform-funkció Baseline böngészőtámogatási állapotának megjelenítése."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funkcióazonosító",
+        "description": "A webes funkció azonosítója, például anchor-positioning. Az azonosítókat a webstatus.dev oldalon találja; az azonosító a funkcióoldal URL-jének utolsó része."
+      }
+    ]
+  }
+}

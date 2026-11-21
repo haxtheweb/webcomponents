@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Sidenotat",
+    "description": "Et notat satt adskilt fra innholdet rundt, med valgfritt ikon og etikett."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikett",
+        "description": "Etiketten til sidenotatet."
+      },
+      {
+        "title": "Ikon",
+        "description": "Ikonet til sidenotatet."
+      },
+      {
+        "title": "Innhold",
+        "description": "Innholdet i sidenotatet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Farge",
+        "description": "Fargen sidenotatet tones med."
+      }
+    ]
+  }
+}

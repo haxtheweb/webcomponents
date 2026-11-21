@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Isiguquli semidiya",
-        "description": "Isiguquli sesizinda semidiya esingaphoqelekile. Sicacisa uhlobo lwemidiya esebenza kulo le layisensi."
+        "description": "Isiguquli sesizinda semidiya esingaphoqelekile. Sicacisa uhlobo lwemidiya esebenza kulo le layisensi.",
+        "options": {
+          "": "Asikho isiguquli"
+        }
       },
       {
         "property": "uri",

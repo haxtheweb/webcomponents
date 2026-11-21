@@ -1,4 +1,6 @@
 {
   "saveAll": "Eñongatu Opavave",
-  "saveTheFollowing": "Eñongatúpa ko'ã: {list}?"
+  "saveTheFollowing": "Eñongatúpa ko'ã: {list}?",
+  "save": "Eñongatu",
+  "cancel": "Ejeheja"
 }

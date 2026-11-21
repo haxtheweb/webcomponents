@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Svar",
-        "description": "Svarens ordning anger den rätta sekvensen."
+        "description": "Svarens ordning anger den rätta sekvensen.",
+        "options": {
+          "": "Lista",
+          "cards": "Bildkort"
+        }
+      },
+      {
+        "title": "Svar",
+        "description": "Svarens ordning anger den rätta följden."
       }
     ],
     "advanced": [

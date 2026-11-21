@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grup de notes destacades",
+    "description": "Apila diverses notes destacades en un sol bloc que mostra una nota cada vegada, com ara Consells o Novetats. També s'hi poden apilar targetes d'instruccions, notes laterals i cites emmarcades."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Nom del grup que anuncien els lectors de pantalla, com ara Consells o Novetats."
+      },
+      {
+        "title": "Notes",
+        "description": "Les notes destacades del grup. També s'hi poden afegir targetes d'instruccions, notes laterals i cites emmarcades."
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ristisanatehtävä",
+    "description": "Sana- ja vihjeluettelosta tehty ristisanatehtävä. Ruudukko luodaan puolestasi; oppijat kirjoittavat sanat ja tarkistavat ne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Ristisanatehtävän yläpuolella näytettävä otsikko tai kysymys."
+      },
+      {
+        "title": "Sanat",
+        "description": "Jokainen sana ja sen vihje. Ruudukko luodaan tästä luettelosta: pisin sana sijoitetaan ensin ja muut risteävät sen kanssa yhteisissä kirjaimissa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yritykset",
+        "description": "Montako kertaa oppija voi tarkistaa. 0 tarkoittaa rajoittamatonta."
+      },
+      {
+        "title": "Korostusväri",
+        "description": "Valinnainen väri otsakemerkille, aktiiviselle sanalle ja toimintopainikkeille."
+      },
+      {
+        "title": "Kutistettava",
+        "description": "Näytä tämä ristisanatehtävä avautuvana ja sulkeutuvana rivinä. Yhden avaaminen sulkee viereiset kutistettavat kysymykset."
+      },
+      {
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, aloita suljettuna rivinä, joka näyttää vain otsikon ja tilan."
+      },
+      {
+        "title": "Arviointimuoto",
+        "description": "OER Schema: tämän arvioinnin arviointimuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      },
+      {
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      }
+    ]
+  }
+}

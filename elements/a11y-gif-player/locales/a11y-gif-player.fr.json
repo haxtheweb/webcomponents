@@ -2,5 +2,9 @@
   "toggleAnimation": "Activer/désactiver l'animation",
   "info": "info",
   "image": "Image",
-  "animatedGif": "GIF animé"
+  "animatedGif": "GIF animé",
+  "playAnimation": "Lire l'animation",
+  "pauseAnimation": "Mettre l'animation en pause",
+  "showDescription": "Afficher la description",
+  "hideDescription": "Masquer la description"
 }

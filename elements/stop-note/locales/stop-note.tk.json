@@ -3,5 +3,7 @@
   "status_stop": "Dur",
   "status_warning": "Duýduryş",
   "status_success": "Üstünlik",
-  "status_info": "Bellik"
+  "status_info": "Bellik",
+  "status_tip": "Bilýärsiňizmi?",
+  "status_new": "Näme täzelik"
 }

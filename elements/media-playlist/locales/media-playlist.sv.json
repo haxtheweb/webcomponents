@@ -5,5 +5,7 @@
   "editModeLabel": "Redigeringsläge för mediespellista",
   "position": "{current} av {total}",
   "previousItem": "Föregående objekt",
-  "nextItem": "Nästa objekt"
+  "nextItem": "Nästa objekt",
+  "fullScreen": "Helskärm",
+  "exitFullScreen": "Avsluta helskärm"
 }

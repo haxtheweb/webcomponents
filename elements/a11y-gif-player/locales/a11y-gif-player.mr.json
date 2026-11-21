@@ -2,5 +2,9 @@
   "toggleAnimation": "अ‍ॅनिमेशन चालू/बंद करा",
   "info": "माहिती",
   "image": "प्रतिमा",
-  "animatedGif": "अॅनिमेटेड GIF"
+  "animatedGif": "अॅनिमेटेड GIF",
+  "playAnimation": "अ‍ॅनिमेशन प्ले करा",
+  "pauseAnimation": "अ‍ॅनिमेशनला विराम द्या",
+  "showDescription": "वर्णन दाखवा",
+  "hideDescription": "वर्णन लपवा"
 }

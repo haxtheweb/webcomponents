@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Nchọta okwu",
+    "description": "Grid mkpụrụedemede nwere okwu zoro ezo. Ndị mmụta na-emetụ mkpụrụedemede mbụ na nke ikpeazụ nke okwu ọ bụla. Ọ na-akụzi ịhụ otu e si asụpe okwu, ọ bụghị ihe ọ pụtara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Ihe a na-ajụ ndị mmụta ka ha chọta, e gosiri n'isi."
+      },
+      {
+        "title": "Okwu",
+        "description": "Okwu a ga-ezo. A na-ahapụ oghere na akara edemede na grid. A na-edepụta okwu na-adabaghị mgbe ị na-edezi, a na-ahapụkwa ha maka ndị mmụta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nha grid",
+        "description": "Mkpụrụedemede n'akụkụ ọ bụla, 4 ruo 16. Hapụ ya efu ka o kwekọọ n'okwu kacha ogologo (ruo 12). Karịa 12 na-akpụgharị n'akụkụ na ekwentị."
+      },
+      {
+        "title": "Okwu n'akụkụ",
+        "description": "Zoo kwa okwu n'akụkụ. Siri ike karịa."
+      },
+      {
+        "title": "Okwu azụ azụ",
+        "description": "Zoo kwa okwu e dere azụ azụ. Siri ike karịa."
+      },
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba nhọrọ maka akara isi, mkpụrụedemede mbụ ahọpụtara na bọtịnụ."
+      }
+    ]
+  }
+}

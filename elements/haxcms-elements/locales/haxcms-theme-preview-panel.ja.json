@@ -8,5 +8,9 @@
   "theme": "テーマ",
   "palette": "パレット",
   "cancel": "キャンセル",
-  "openAppearanceSettings": "外観設定を開く"
+  "openAppearanceSettings": "外観設定を開く",
+  "designSystem": "デザインシステム",
+  "designSystemDefault": "DDD（デフォルト）",
+  "designSystemThemeDefault": "{name}（テーマのデフォルト）",
+  "designSystemHelp": "色、書体、角、密度。レイアウトは引き続きテーマが決めます。"
 }

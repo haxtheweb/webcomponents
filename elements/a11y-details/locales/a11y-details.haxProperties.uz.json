@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Tafsilotlar ochiq boʻlganda ixtiyoriy qisqacha matn"
+        "title": "Tafsilotlar ochiq boʻlganda ixtiyoriy qisqacha matn",
+        "description": "Tavsif yashirilganda tugma matni, masalan Tavsifni ko‘rsatish."
       },
       {
         "property": "closeText",
-        "title": "Tafsilotlar yopiq boʻlganda ixtiyoriy qisqacha matn"
+        "title": "Tafsilotlar yopiq boʻlganda ixtiyoriy qisqacha matn",
+        "description": "Tavsif ko‘rinib turganda tugma matni, masalan Tavsifni yashirish."
       }
     ]
   }

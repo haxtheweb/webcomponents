@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Eżerċizzju tal-aritmetika",
+    "description": "Sensiela qasira ta' problemi aritmetiċi ġġenerati b'feedback immedjat. Agħżel l-operazzjonijiet u l-firxa tan-numri; kull run huwa ġdid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Isem dan l-eżerċizzju, jidher fl-intestatura tiegħu."
+      },
+      {
+        "title": "Operazzjonijiet",
+        "description": "Liema tipi ta' problemi jiġu mistoqsija. L-istudenti jistgħu jitfu kwalunkwe minnhom qabel jibdew.",
+        "options": {
+          "add": "Żieda",
+          "subtract": "Tnaqqis",
+          "multiply": "Multiplikazzjoni",
+          "divide": "Diviżjoni",
+          "add subtract": "Żieda u tnaqqis",
+          "multiply divide": "Multiplikazzjoni u diviżjoni",
+          "add multiply": "Żieda u multiplikazzjoni",
+          "add divide": "Żieda u diviżjoni",
+          "subtract multiply": "Tnaqqis u multiplikazzjoni",
+          "subtract divide": "Tnaqqis u diviżjoni",
+          "add subtract multiply": "Żieda, tnaqqis u multiplikazzjoni",
+          "add subtract divide": "Żieda, tnaqqis u diviżjoni",
+          "add multiply divide": "Żieda, multiplikazzjoni u diviżjoni",
+          "subtract multiply divide": "Tnaqqis, multiplikazzjoni u diviżjoni",
+          "add subtract multiply divide": "L-erbgħa"
+        }
+      },
+      {
+        "title": "L-iżgħar numru",
+        "description": "L-iżgħar numru użat fi problema. Numri sħaħ, 0 jew aktar."
+      },
+      {
+        "title": "L-akbar numru",
+        "description": "L-akbar numru użat fi problema. It-tweġibiet u d-diviżuri tad-diviżjoni jibqgħu wkoll f'din il-firxa."
+      },
+      {
+        "title": "Numru ta' problemi",
+        "description": "Kemm hemm problemi f'run wieħed (1 sa 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limitu ta' ħin",
+        "description": "Sekondi permessi għal run sħiħ. 0 tfisser l-ebda tajmer, li huwa d-default: eżerċizzji bil-ħin ifallu lill-istudenti li jeħtieġu aktar ħin. Meta jkun issettjat, l-istudenti xorta jistgħu jitfu t-tajmer għalihom infushom."
+      },
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur taċ-ċippa tal-intestatura u l-buttuni. Ħallih vojt biex isegwi t-tema."
+      }
+    ]
+  }
+}

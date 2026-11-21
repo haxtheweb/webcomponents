@@ -40,5 +40,7 @@
   "hideDirections": "Skryť pokyny",
   "showRelatedContent": "Zobraziť súvisiaci obsah",
   "hideRelatedContent": "Skryť súvisiaci obsah",
-  "notAttempted": "Nepokúšané"
+  "notAttempted": "Nepokúšané",
+  "cardsDirections": "Zoraďte karty do správneho poradia tlačidlami posunúť skôr a posunúť neskôr na každej karte alebo ich presuňte myšou. Keď si myslíte, že sú v správnom poradí, overte odpoveď výberom {checkAnswer}.",
+  "movedToPosition": "{item} presunuté na pozíciu {position} z {total}"
 }

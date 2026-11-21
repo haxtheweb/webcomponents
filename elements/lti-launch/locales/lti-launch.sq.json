@@ -1,0 +1,19 @@
+{
+  "label": "Mjet i jashtëm",
+  "labelLti": "Mjet i jashtëm · LTI 1.3",
+  "theTool": "mjeti",
+  "directions": "Udhëzime",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "directionsWindow": "Butoni hap një dritare të re me mjetin brenda.",
+  "directionsEmbed": "Butoni e hap mjetin në këtë faqe. Nëse nuk ngarkohet, hape në një dritare të re.",
+  "directionsLti": "Ky sajt të identifikon në mjet, ndaj nuk të duhet llogari e veçantë.",
+  "openWindow": "Hap {title} (dritare e re)",
+  "openEmbed": "Hap {title}",
+  "openInstead": "Hape në një dritare të re në vend të kësaj",
+  "frameTitle": "{title} (mjet i jashtëm)",
+  "openedWindow": "U hap një dritare e re me mjetin.",
+  "openedEmbed": "Mjeti u hap në këtë faqe.",
+  "needsUrl": "Ky bllok kërkon një adresë nisjeje që fillon me http:// ose https://.",
+  "needsSignIn": "Ky mjet kërkon shërbimin e identifikimit të këtij sajti, që nuk është i disponueshëm këtu. Asgjë nuk u hap."
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Кнопка історії",
+    "description": "Кнопка, що відкриває історію, яка стоїть за твердженням, на hax.cloud або відповідне місце на іншому сайті мережі HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Куди веде",
+        "options": {
+          "cloud": "hax.cloud, історія",
+          "learn": "learn.hax.cloud, посібник",
+          "try": "browser.hax.cloud, спробувати",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Адреса на тому сайті (історія на hax.cloud має вигляд stories/ee450a19)"
+      },
+      {
+        "title": "Про що це"
+      },
+      {
+        "title": "Маленький чип"
+      },
+      {
+        "title": "Показувати в кнопці, про що це"
+      }
+    ]
+  }
+}

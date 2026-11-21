@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifiko pikat",
+    "description": "Nxënësit gjejnë pikat e duhura në një imazh duke klikuar, prekur ose lëvizur një shënjues me tastierë. Homologu me vlerësim i hartës së imazhit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imazh",
+        "description": "Fotoja që kërkojnë nxënësit."
+      },
+      {
+        "title": "Tekst alternativ",
+        "description": "Përshkruan foton për njerëzit që nuk mund ta shohin. Nuk shfaqet kurrë si titull."
+      },
+      {
+        "title": "Titulli",
+        "description": "Një titull i shkurtër i dukshëm i shfaqur mbi foto."
+      },
+      {
+        "title": "Pyetje",
+        "description": "Çfarë u kërkohet nxënësve të gjejnë në foto."
+      },
+      {
+        "title": "Përgjigjet",
+        "description": "Çdo përgjigje është një oval me emër në foto. Pozicioni dhe madhësia janë përqindje të fotos, të matura nga këndi i sipërm majtas. Gjatë redaktimit, çdo përgjigje konturohet në foto."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Përpjekjet",
+        "description": "Sa herë mund të provojë një nxënës. 0 do të thotë pa kufi."
+      },
+      {
+        "title": "Gabimet e lejuara",
+        "description": "Sa gabime e mbyllin një përpjekje. 0 do të thotë pa kufi, dhe nxënësit marrin butonin Përfundo."
+      },
+      {
+        "title": "I palosshëm",
+        "description": "Shfaqe këtë pyetje si rresht që hapet dhe mbyllet. Hapja e njërës mbyll pyetjet e tjera të palosshme pranë saj."
+      },
+      {
+        "title": "Fillo i palosur",
+        "description": "Kur është e palosshme, fillo si rresht i mbyllur që shfaq vetëm pyetjen dhe statusin."
+      },
+      {
+        "title": "Formati i vlerësimit",
+        "description": "OER Schema: formati i vlerësimit për këtë test (p.sh. pikë, shkronjë, përqindje, përfundim)."
+      },
+      {
+        "title": "Objektivi mësimor",
+        "description": "OER Schema: objektivi mësimor i lidhur me këtë test."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Emri i kuizit",
+        "description": "Emri i kuizit që kalohet për përdorim në mjedise të drejtuara nga xAPI për identifikimin e këtij elementi"
+      },
+      {
+        "title": "Kursi",
+        "description": "OER Schema: kursi për të cilin është menduar ky test."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentacijos grotuvas",
+    "description": "Žiniatinklio komponento vadovas, demonstracija ir žinynas su HTML, importo, npm ir CDN kopijavimo mygtukais."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentacijos duomenų failas",
+        "description": "Kartu su elementu pateikiami dokumentacijos duomenys (lib/tag.docs.json)."
+      },
+      {
+        "title": "Vadovo siužetinė linija",
+        "description": "Kartu su elementu pateikiama judesio siužetinė linija (tag.motion.json). Neprivaloma."
+      },
+      {
+        "title": "Vaizdo pamoka",
+        "description": "Trumpas vaizdo įrašas apie elementą (YouTube, Vimeo arba vaizdo failas). Pakeičia vaizdo įrašą dokumentacijos duomenyse."
+      },
+      {
+        "title": "Atidaryti skirtuke",
+        "description": "Kuris skirtukas rodomas pirmas.",
+        "options": {
+          "motion": "Vadovas",
+          "video": "Vaizdo įrašas",
+          "demo": "Demonstracija",
+          "docs": "Dokumentacija",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Automatiškai paleisti vadovą",
+        "description": "Pradėti vadovą vos tik grotuvas pasirodo. Nepaisoma, jei skaitytojas renkasi mažiau judesio."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vadovo tema",
+        "description": "Elementams su keliais vadovais – kurią temą atidaryti pirmą (pavyzdžiui, add-blocks). Palikite tuščią pagrindiniam."
+      },
+      {
+        "title": "Gyvos demonstracijos nuoroda",
+        "description": "Kur veda mygtukas „Atidaryti demonstracijos šaltinį“. Pagal numatytuosius nustatymus – į demonstracijos aplanką saugykloje."
+      },
+      {
+        "title": "Dokumentacijos nuoroda",
+        "description": "Kur veda visos dokumentacijos mygtukas, pavyzdžiui, į atitinkamą Learn HAX puslapį."
+      }
+    ]
+  }
+}

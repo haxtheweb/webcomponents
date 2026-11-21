@@ -6,6 +6,8 @@
   "faviconDescription": "Bild für den Browser-Tab / auf Smartphones als kleines Website-Logo verwendet",
   "domain": "Domain",
   "domainDescription": "Domain dieser Website",
+  "sameAs": "Weitere Profile dieser Website",
+  "sameAsDescription": "Ein Link pro Zeile zu Profilen dieser Website oder Organisation an anderen Orten (GitHub, LinkedIn, YouTube, Mastodon). Suchmaschinen nutzen sie, um diese Profile mit dieser Website zu verknüpfen.",
   "language": "Sprache",
   "languageDescription": "Sprache dieser Website. Nach Name oder Code suchen oder einen anderen Code wie fr-CA eingeben.",
   "googleAnalyticsId": "Google-Analytics-ID",

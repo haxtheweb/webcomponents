@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Toepassingskiezer",
+    "description": "Kies waar een site voor is en krijg een link die HAX in de browser opent met die startsite, plus de bijbehorende CLI-opdracht."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adres van HAX in de browser",
+        "description": "Waar de link opent; er wordt ?skeleton= en &name= aan toegevoegd"
+      },
+      {
+        "title": "Startsites om weg te laten",
+        "description": "Machinenamen, gescheiden door komma's"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lijst met startsites",
+        "description": "Adres van de skeletonlijst (het formaat dat app-hax leest)"
+      }
+    ]
+  }
+}

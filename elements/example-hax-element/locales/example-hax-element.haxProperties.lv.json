@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Sākuma elementa piemērs, ko izmanto, lai demonstrētu HAX konfigurāciju un rediģējamus rekvizītus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts"
+      }
+    ]
+  }
+}

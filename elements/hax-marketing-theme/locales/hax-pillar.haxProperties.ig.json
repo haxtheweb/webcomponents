@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ogidi",
+    "description": "Ogidi: aha, nkebi ahịrịokwu, akara ngosi, agba na ihe mere o ji dị mkpa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha"
+      },
+      {
+        "title": "Nkebi ahịrịokwu"
+      },
+      {
+        "title": "Akara ngosi"
+      },
+      {
+        "title": "Agba (aha DDD)"
+      },
+      {
+        "title": "Ogidi nke ole, 1 ruo 7"
+      },
+      {
+        "title": "Obere kaadị"
+      },
+      {
+        "title": "Ebe aha ga-aga"
+      }
+    ]
+  }
+}

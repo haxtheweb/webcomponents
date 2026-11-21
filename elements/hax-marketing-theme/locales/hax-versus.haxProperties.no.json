@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mot",
+    "description": "Tekst ved siden av en side-om-side-knapp med to figurer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Overskrift"
+      },
+      {
+        "title": "Hvor knappen går"
+      },
+      {
+        "title": "Knappetekst"
+      },
+      {
+        "title": "Figurfrø til venstre"
+      },
+      {
+        "title": "Figurfrø til høyre"
+      }
+    ]
+  }
+}

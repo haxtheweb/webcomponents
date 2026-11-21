@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Berhevdana platforman",
+    "description": "Rû bi rû: ji pela daneyan her du platforman hilbijêre"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daneyên berhevdanê (JSON)"
+      },
+      {
+        "title": "ID-ya platforma çep"
+      },
+      {
+        "title": "ID-ya platforma rast"
+      }
+    ]
+  }
+}

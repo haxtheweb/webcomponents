@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modifikatur tal-midja",
-        "description": "Modifikatur fakultattiv tad-dominju tal-midja. Jispeċifika t-tip ta' midja li għalih tapplika din il-liċenzja."
+        "description": "Modifikatur fakultattiv tad-dominju tal-midja. Jispeċifika t-tip ta' midja li għalih tapplika din il-liċenzja.",
+        "options": {
+          "": "L-ebda modifikatur"
+        }
       },
       {
         "property": "uri",

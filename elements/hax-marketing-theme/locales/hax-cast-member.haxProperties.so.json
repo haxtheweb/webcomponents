@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Jilaa",
+    "description": "Hal dhegaystayaal, oo uu jilayo shakhsi, leh erayo iyo badhan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kani waa ayo"
+      },
+      {
+        "title": "Nooca shakhsiga"
+      },
+      {
+        "title": "Abuurka shakhsiga"
+      },
+      {
+        "title": "Midabka masraxa (magaca DDD)"
+      },
+      {
+        "title": "Meesha badhanku u socdo"
+      },
+      {
+        "title": "Qoraalka badhanka"
+      }
+    ]
+  }
+}

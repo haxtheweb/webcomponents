@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fuotnoat",
+    "description": "In notysje skreaun dêr't er yn de tekst heart. Hy wurdt toand as in nûmer, en de nûmere list mei notysjes bout himsels ûnderoan de side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notysje",
+        "description": "De tekst fan de fuotnoat."
+      },
+      {
+        "title": "Gjin foarbyld",
+        "description": "De notysje net sjen litte as in lêzer mei de mûs oer it nûmer giet of der fokus op set."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Vistkerfisvefur",
+    "description": "Gagnvirkur vefur um hvernig hlutar verkefnis tengjast, með undirvefjum og ferðum skref fyrir skref."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gögn vefs",
+        "description": "URL JSON-pakka vefjanna (byggður í PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Vefur",
+        "description": "Auðkenni vefsins sem á að sýna fyrst; main er vistkerfisvefurinn."
+      },
+      {
+        "title": "Valin flís",
+        "description": "Auðkenni flísar sem á að velja þegar vefurinn opnast."
+      },
+      {
+        "title": "Ferð",
+        "description": "Auðkenni ferðar til að byrja á."
+      },
+      {
+        "title": "Byrja í listasýn",
+        "description": "Sýna vefinn sem hreiðraða lista í stað teikningarinnar."
+      },
+      {
+        "title": "Aðeins teikning",
+        "description": "Sýna aðeins teikninguna, sem mynd: enginn haus, ferðir, upplýsingar eða skrefastika."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lesið eftir",
+        "description": "Byrja með hverja flís lesna eftir einum mælikvarða.",
+        "options": {
+          "": "Aðeins tengingar",
+          "fresh": "Ferskleiki",
+          "bus": "Rútustuðull",
+          "impact": "Áhrif",
+          "evidence": "Rökstuðningur",
+          "parity": "Jöfnuður"
+        }
+      }
+    ]
+  }
+}

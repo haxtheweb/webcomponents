@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Gra w pamięć",
+    "description": "Odwracaj karty, aby znaleźć pary. Połącz pojęcie z jego znaczeniem, aby dopasowanie świadczyło o zrozumieniu, albo użyj dwóch pasujących tekstów lub obrazów."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Polecenie wyświetlane w nagłówku, np.: Dopasuj pojęcie do jego zadania."
+      },
+      {
+        "title": "Pary",
+        "description": "Każda para to dwie karty, które do siebie należą, zwykle pojęcie i jego znaczenie. Strona wymaga tekstu, obrazu lub obu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor etykiety nagłówka, rewersów kart i przycisku."
+      }
+    ]
+  }
+}

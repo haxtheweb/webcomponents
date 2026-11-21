@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radardiagram (spindeldiagram) för mognadsmodeller och bedömning av aspekter, som HEOSAT. Innehåller ett textalternativ och en datatabell."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Rubrik för diagrammet; används även som dess tillgängliga namn."
+      },
+      {
+        "title": "Maxpoäng",
+        "description": "Högsta värdet på skalan."
+      },
+      {
+        "title": "Kategorier",
+        "description": "En kategori per rad. Minst 3 krävs."
+      },
+      {
+        "title": "Poäng",
+        "description": "Kommaseparerade tal, ett per kategori i samma ordning."
+      },
+      {
+        "title": "Målpoäng",
+        "description": "Kommaseparerade tal, ett per kategori i samma ordning."
+      },
+      {
+        "title": "Visa teckenförklaring",
+        "description": "Visa en teckenförklaring som namnger poängen och målen."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Mindre diagram utan etiketter, teckenförklaring eller datatabell. Hovra över en punkt för att se dess värden."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poängetikett",
+        "description": "Etikett i teckenförklaring och tabell för poängen."
+      },
+      {
+        "title": "Måletikett",
+        "description": "Etikett i teckenförklaring och tabell för målen."
+      }
+    ]
+  }
+}

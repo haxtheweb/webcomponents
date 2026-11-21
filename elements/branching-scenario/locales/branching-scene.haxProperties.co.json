@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scena di scenariu",
+    "description": "Una scena d'un scenariu à rami. Ligate ogni scelta à un'altra scena cù # seguitatu da u so ID di scena."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID di a scena",
+        "description": "À chì liganu e scelte: un liame versu # seguitatu da st'ID porta à sta scena. Lettere, numeri è trattini."
+      },
+      {
+        "title": "Titulu",
+        "description": "Titulu di a scena."
+      },
+      {
+        "title": "Fine",
+        "description": "S'è sta scena finisce un caminu, è cumu hè andata.",
+        "options": {
+          "": "Micca una fine",
+          "good": "Bona fine",
+          "mixed": "Fine mischjata",
+          "poor": "Fine scarsa"
+        }
+      },
+      {
+        "title": "Puntu",
+        "description": "Puntu per ghjunghje à sta fine. U puntu di fine u più altu in u scenariu hè u massimu."
+      }
+    ]
+  }
+}

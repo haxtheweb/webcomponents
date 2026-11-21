@@ -1,0 +1,16 @@
+{
+  "theme": "Motyw",
+  "designSystem": "System projektowy",
+  "dddDefault": "DDD (domyślny)",
+  "designSystemHelp": "Kolor, typografia, narożniki i fokus. Motyw zachowuje układ.",
+  "designSystemFixed": "Ten motyw zachowuje własny system projektowy.",
+  "palette": "Paleta",
+  "themeDefault": "Domyślne motywu",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (motyw tej witryny)",
+  "restyle": "Zmień styl tej witryny",
+  "close": "Zamknij",
+  "reset": "Wróć do własnego wyglądu tej witryny",
+  "random": "Zaskocz mnie",
+  "about": "To kilka wyglądów wbudowanych w HAX. Strony się nie zmieniają: struktura jest w JSON Outline Schema, a każdy blok to standardowy komponent sieciowy, więc wygląd można swobodnie zamieniać."
+}

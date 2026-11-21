@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "دکمهٔ داستان",
+    "description": "دکمه‌ای که داستان پشت یک ادعا را در hax.cloud، یا جای متناظر در سایت دیگری از شبکهٔ HAX را باز می‌کند"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "به کجا می‌رود",
+        "options": {
+          "cloud": "hax.cloud، داستان",
+          "learn": "learn.hax.cloud، یک آموزش",
+          "try": "browser.hax.cloud، امتحانش کنید",
+          "elements": "webcomponents.hax.cloud، یک بلوک",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "نشانی در آن سایت (یک داستان در hax.cloud شبیه stories/ee450a19 است)"
+      },
+      {
+        "title": "دربارهٔ چیست"
+      },
+      {
+        "title": "تراشهٔ کوچک"
+      },
+      {
+        "title": "نشان بده دربارهٔ چیست در دکمه"
+      }
+    ]
+  }
+}

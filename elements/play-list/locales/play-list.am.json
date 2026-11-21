@@ -9,5 +9,7 @@
   "slidePages": "የስላይድ ገጾች",
   "goToSlide": "ወደ ስላይድ {number} ሂድ",
   "slides": "ስላይዶች",
-  "position": "{number} ከ{total}"
+  "position": "{number} ከ{total}",
+  "fullScreen": "ሙሉ ማያ ገጽ",
+  "exitFullScreen": "ከሙሉ ማያ ገጽ ውጣ"
 }

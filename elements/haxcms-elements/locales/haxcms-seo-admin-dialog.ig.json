@@ -6,6 +6,8 @@
   "faviconDescription": "Onyonyo taabụ nchọgharị / a na-eji ya na ekwentị dị ka obere akara saịtị",
   "domain": "Ngalaba",
   "domainDescription": "Ngalaba nke weebụsaịtị a",
+  "sameAs": "Profaịlụ ndị ọzọ nke saịtị a",
+  "sameAsDescription": "Otu njikọ n'ahịrị ọ bụla gaa na profaịlụ saịtị a ma ọ bụ nzukọ a n'ebe ndị ọzọ (GitHub, LinkedIn, YouTube, Mastodon). Igwe nchọta na-eji ha ejikọ profaịlụ ndị ahụ na saịtị a.",
   "language": "Asụsụ",
   "languageDescription": "Asụsụ nke weebụsaịtị a. Chọọ site n'aha ma ọ bụ koodu, ma ọ bụ tinye koodu ọzọ dịka fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

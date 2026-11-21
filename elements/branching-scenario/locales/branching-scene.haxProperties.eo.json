@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Sceno de scenaro",
+    "description": "Unu sceno de branĉiĝanta scenaro. Ligu ĉiun elekton al alia sceno per # sekvata de ĝia identigilo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Identigilo de sceno",
+        "description": "Al kio elektoj ligas: ligilo al # sekvata de ĉi tiu identigilo kondukas al ĉi tiu sceno. Literoj, ciferoj kaj streketoj."
+      },
+      {
+        "title": "Titolo",
+        "description": "Titolo de la sceno."
+      },
+      {
+        "title": "Fino",
+        "description": "Ĉu ĉi tiu sceno finas vojon, kaj kiel ĝi rezultis.",
+        "options": {
+          "": "Ne fino",
+          "good": "Bona fino",
+          "mixed": "Miksita fino",
+          "poor": "Malbona fino"
+        }
+      },
+      {
+        "title": "Poentoj",
+        "description": "Poentoj por atingi ĉi tiun finon. La plej alta fina poentaro en la scenaro estas la maksimumo."
+      }
+    ]
+  }
+}

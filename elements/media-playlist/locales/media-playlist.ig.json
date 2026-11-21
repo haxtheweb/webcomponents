@@ -5,5 +5,7 @@
   "editModeLabel": "Ọnọdụ ndezi ndepụta mgbasa ozi",
   "position": "{current} n'ime {total}",
   "previousItem": "Ihe gara aga",
-  "nextItem": "Ihe na-esote"
+  "nextItem": "Ihe na-esote",
+  "fullScreen": "Ihuenyo zuru ezu",
+  "exitFullScreen": "Pụọ n'ihuenyo zuru ezu"
 }

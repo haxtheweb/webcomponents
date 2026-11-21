@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Othandizira",
+    "description": "Anthu omwe anamanga pulojekiti, kuchokera ku fayilo ya mayina"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fayilo ya mayina (JSON)"
+      },
+      {
+        "title": "Mawonekedwe: landed, lab kapena code"
+      },
+      {
+        "title": "Anthu ochuluka kwambiri owonetsa (0 ndi onse)"
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Tavuletta",
   "cancel": "Abbandunà",
-  "openAppearanceSettings": "Apre i parametri d'aspettu"
+  "openAppearanceSettings": "Apre i parametri d'aspettu",
+  "designSystem": "Sistema di cuncepimentu",
+  "designSystemDefault": "DDD (predefinitu)",
+  "designSystemThemeDefault": "{name} (predefinitu di u tema)",
+  "designSystemHelp": "Culore, caratteri, anguli è densità. U tema decide sempre a dispusizione."
 }

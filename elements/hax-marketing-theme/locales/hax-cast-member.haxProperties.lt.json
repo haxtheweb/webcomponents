@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aktorius",
+    "description": "Viena auditorija, kurią vaidina personažas, su tekstu ir mygtuku"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kas tai"
+      },
+      {
+        "title": "Personažo tipas"
+      },
+      {
+        "title": "Personažo sėkla"
+      },
+      {
+        "title": "Scenos spalva (DDD pavadinimas)"
+      },
+      {
+        "title": "Kur veda mygtukas"
+      },
+      {
+        "title": "Mygtuko tekstas"
+      }
+    ]
+  }
+}

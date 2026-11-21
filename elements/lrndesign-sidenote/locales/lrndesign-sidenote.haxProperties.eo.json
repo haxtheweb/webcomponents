@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Flanka noto",
+    "description": "Noto apartigita de la ĉirkaŭa enhavo, kun nedevigaj piktogramo kaj etikedo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikedo",
+        "description": "La etikedo de la flanka noto."
+      },
+      {
+        "title": "Piktogramo",
+        "description": "La piktogramo de la flanka noto."
+      },
+      {
+        "title": "Enhavo",
+        "description": "Enhavo de la flanka noto."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Koloro",
+        "description": "La koloro, per kiu la flanka noto estas nuancita."
+      }
+    ]
+  }
+}

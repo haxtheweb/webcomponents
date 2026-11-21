@@ -60,6 +60,8 @@
   "flagsFound": "Najdeno: {correct} od {total}",
   "toRethink": "Za premislek: {count}",
   "notEvidence": "ni dokaz za to zastavico",
+  "isEvidence": "dokaz za to zastavico",
+  "readingKeys": "S puščicami se premikajte od ene enote {unit} do naslednje.",
   "markAnswers": "Označi odgovore",
   "doneMarking": "Končaj označevanje odgovorov",
   "editHint": "Uredite besedilo spodaj. Z možnostjo Označi odgovore v meniju bloka izberite, kam spada vsaka zastavica.",

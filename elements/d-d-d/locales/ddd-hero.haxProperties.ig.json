@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Onyonyo, GIF ma ọ bụ vidiyo buru ibu nwere isiokwu na ederede n'elu ya, etinyere ebe ọ bụla na peeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Onyonyo ma ọ bụ vidiyo",
+        "description": "Faịlụ JPG, PNG, WebP, GIF, MP4 ma ọ bụ WebM."
+      },
+      {
+        "title": "Ederede nnọchi",
+        "description": "Kọwaa onyonyo ahụ. Hapụ ya efu ma ọ bụrụ naanị ihe ịchọ mma."
+      },
+      {
+        "title": "Isiokwu",
+        "description": "Isiokwu e gosiri n'elu mgbasa ozi ahụ. Hapụ ya efu maka ọ dịghị."
+      },
+      {
+        "title": "Ederede",
+        "description": "Ederede e gosiri n'okpuru isiokwu, n'elu mgbasa ozi ahụ."
+      },
+      {
+        "title": "Obosara zuru ezu",
+        "description": "Gbatịa site n'otu nsọtụ ruo na nke ọzọ kama ịnọ n'ime kọlụm ọdịnaya."
+      },
+      {
+        "title": "Ogo",
+        "options": {
+          "tall": "Ogologo",
+          "medium": "Etiti",
+          "short": "Mkpụmkpụ"
+        }
+      },
+      {
+        "title": "Nhazi okpokolo",
+        "description": "Otu foto ahụ si anọ na nha ihuenyo ọ bụla"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ịchapụ",
+        "description": "Agba etinyere n'elu mgbasa ozi ahụ. Mgbe e nwere isiokwu ma ọ bụ ederede, a na-enwe otu mgbe niile, ka ederede ahụ nwee ike ịgụ.",
+        "options": {
+          "blue": "Acha anụnụ",
+          "bottom": "Ọchịchịrị n'ala",
+          "none": "Ọ dịghị"
+        }
+      },
+      {
+        "title": "Ọnọdụ ederede",
+        "options": {
+          "bottom": "Ala",
+          "middle": "Etiti"
+        }
+      },
+      {
+        "title": "Ebe nlebara anya n'obosara",
+        "description": "Akụkụ onyonyo na-anọgide na-ahụ anya mgbe a bechapụrụ ya, site na 0 (aka ekpe) ruo 100 (aka nri)."
+      },
+      {
+        "title": "Ebe nlebara anya n'ogologo",
+        "description": "Akụkụ onyonyo na-anọgide na-ahụ anya mgbe a bechapụrụ ya, site na 0 (elu) ruo 100 (ala)."
+      }
+    ]
+  }
+}

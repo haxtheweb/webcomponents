@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Prieš",
+    "description": "Tekstas šalia mygtuko „akis į akį“ su dviem personažais"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Antraštė"
+      },
+      {
+        "title": "Kur veda mygtukas"
+      },
+      {
+        "title": "Mygtuko tekstas"
+      },
+      {
+        "title": "Kairiojo personažo sėkla"
+      },
+      {
+        "title": "Dešiniojo personažo sėkla"
+      }
+    ]
+  }
+}

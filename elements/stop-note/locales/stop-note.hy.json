@@ -3,5 +3,7 @@
   "status_stop": "Կանգ",
   "status_warning": "Զգուշացում",
   "status_success": "Հաջողություն",
-  "status_info": "Նշում"
+  "status_info": "Նշում",
+  "status_tip": "Գիտե՞ք արդյոք",
+  "status_new": "Ինչ նոր կա"
 }

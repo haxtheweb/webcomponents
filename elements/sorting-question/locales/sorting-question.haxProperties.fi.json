@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Vastaukset",
+        "description": "Vastausten järjestys määrittää oikean järjestyksen.",
+        "options": {
+          "": "Luettelo",
+          "cards": "Kuvakortit"
+        }
+      },
+      {
+        "title": "Vastaukset",
         "description": "Vastausten järjestys määrittää oikean järjestyksen."
       }
     ],

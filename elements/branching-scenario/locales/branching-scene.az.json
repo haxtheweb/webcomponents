@@ -1,0 +1,14 @@
+{
+  "scene": "Səhnə",
+  "ending": "Sonluq",
+  "goodEnding": "Yaxşı sonluq",
+  "mixedEnding": "Qarışıq sonluq",
+  "poorEnding": "Pis sonluq",
+  "scoreOf": "Xal: {score} / {max}",
+  "scoreOnly": "Xal: {score}",
+  "startScene": "Başla",
+  "sceneIdLabel": "Səhnə id-si",
+  "needsId": "Seçimlərin bu səhnəyə bağlana bilməsi üçün səhnə id-si əlavə edin.",
+  "orphan": "Heç bir seçim bu səhnəyə bağlanmır.",
+  "deadLinks": "Bu keçidlər mövcud olmayan səhnəyə işarə edir:"
+}

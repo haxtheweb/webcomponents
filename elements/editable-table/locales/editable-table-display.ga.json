@@ -3,5 +3,8 @@
   "copyAsCsv": "Cóipeáil mar CSV.",
   "printTable": "Priontáil an Tábla",
   "selectColumn": "Roghnaigh Colún",
-  "dataTable": "Sonraí · Tábla"
+  "dataTable": "Sonraí · Tábla",
+  "filterStatus": "Ag taispeáint {shown} as {total} ró, scagtha de réir {column}: {text}",
+  "columnNumber": "Colún {column}",
+  "clearFilter": "Glan an scagaire"
 }

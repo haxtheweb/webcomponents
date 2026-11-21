@@ -1,0 +1,16 @@
+{
+  "drawing": "Tekening",
+  "edit": "Redigeer tekening",
+  "start": "Begin teken",
+  "remove": "Verwyder tekening",
+  "empty": "Nog niks geteken nie",
+  "save": "Stoor",
+  "cancel": "Kanselleer",
+  "close": "Maak toe",
+  "discard": "Gooi veranderinge weg",
+  "discardConfirm": "Gooi jou ongestoorde veranderinge weg?",
+  "keepEditing": "Hou aan redigeer",
+  "draw": "Tekening",
+  "feedback": "Terugvoer",
+  "signature": "Handtekening"
+}

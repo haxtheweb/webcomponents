@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Chiitiko chemamiriro",
+    "description": "Chiitiko chimwe chemamiriro ane mapazi. Batanidza sarudzo imwe neimwe nechimwe chiitiko ne # inoteverwa ne id yechiitiko."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID yechiitiko",
+        "description": "Zvinobatanidzwa nesarudzo: link ku # inoteverwa ne id iyi inotungamira kuchiitiko ichi. Mavara, nhamba nemahyphen."
+      },
+      {
+        "title": "Musoro",
+        "description": "Musoro wechiitiko."
+      },
+      {
+        "title": "Magumo",
+        "description": "Kana chiitiko ichi chichipedzisa nzira, uye kuti zvakazopera sei.",
+        "options": {
+          "": "Haisi magumo",
+          "good": "Magumo akanaka",
+          "mixed": "Magumo akasanganiswa",
+          "poor": "Magumo akaipa"
+        }
+      },
+      {
+        "title": "Mamakisi",
+        "description": "Mamakisi ekusvika pamagumo aya. Mamakisi makuru emagumo mumamiriro ndiwo epamusoro."
+      }
+    ]
+  }
+}

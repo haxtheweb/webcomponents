@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Shaakala herregaa",
+    "description": "Rakkoolee herregaa ofumaan uumaman gabaabaa duubdeebii battalaa qaban. Hojiiwwan herregaa fi daangaa lakkoofsaa filadhu; marsaan hundi haaraa dha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Maqaa shaakala kanaa, mata-duree isaa keessatti kan mul'atu."
+      },
+      {
+        "title": "Hojiiwwan",
+        "description": "Gosoota rakkoolee gaafataman. Barattoonni osoo hin jalqabin dura kanneen keessaa kamiyyuu dhaamsuu danda'u.",
+        "options": {
+          "add": "Ida'uu",
+          "subtract": "Hir'isuu",
+          "multiply": "Baay'isuu",
+          "divide": "Qooduu",
+          "add subtract": "Ida'uu fi hir'isuu",
+          "multiply divide": "Baay'isuu fi qooduu",
+          "add multiply": "Ida'uu fi baay'isuu",
+          "add divide": "Ida'uu fi qooduu",
+          "subtract multiply": "Hir'isuu fi baay'isuu",
+          "subtract divide": "Hir'isuu fi qooduu",
+          "add subtract multiply": "Ida'uu, hir'isuu fi baay'isuu",
+          "add subtract divide": "Ida'uu, hir'isuu fi qooduu",
+          "add multiply divide": "Ida'uu, baay'isuu fi qooduu",
+          "subtract multiply divide": "Hir'isuu, baay'isuu fi qooduu",
+          "add subtract multiply divide": "Afran hunda"
+        }
+      },
+      {
+        "title": "Lakkoofsa xiqqaa",
+        "description": "Lakkoofsa xiqqaa rakkoo keessatti fayyadamu. Lakkoofsota guutuu, 0 ykn isaa ol."
+      },
+      {
+        "title": "Lakkoofsa guddaa",
+        "description": "Lakkoofsa guddaa rakkoo keessatti fayyadamu. Deebiiwwan qoodaa fi qoodduun daangaa kana keessa turu."
+      },
+      {
+        "title": "Baay'ina rakkoolee",
+        "description": "Marsaa tokko keessatti rakkoolee meeqatu jira (1 hanga 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daangaa yeroo",
+        "description": "Sekondii marsaa guutuuf hayyamaman. 0 jechuun sa'aatiin lakkaa'u hin jiru, kunis durtii dha: shaakalli yeroon daangeffame barattoota yeroo dabalataa barbaadan ni miidha. Yeroo kaa'amu, barattoonni ammallee ofii isaaniif sa'aatii lakkaa'u dhaamsuu danda'u."
+      },
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu mallattoo mata-duree fi qabduuwwanii. Dhaabbii hordofuuf duwwaa dhiisi."
+      }
+    ]
+  }
+}

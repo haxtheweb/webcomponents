@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Aurka",
+    "description": "Bi pertsonaia dituen aurrez aurreko botoi baten ondoko hitzak"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua"
+      },
+      {
+        "title": "Nora doan botoia"
+      },
+      {
+        "title": "Botoiaren testua"
+      },
+      {
+        "title": "Ezkerreko pertsonaiaren hazia"
+      },
+      {
+        "title": "Eskuineko pertsonaiaren hazia"
+      }
+    ]
+  }
+}

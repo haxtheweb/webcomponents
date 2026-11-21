@@ -5,5 +5,7 @@
   "editModeLabel": "Način uređivanja medijske liste za reprodukciju",
   "position": "{current} od {total}",
   "previousItem": "Prethodna stavka",
-  "nextItem": "Sljedeća stavka"
+  "nextItem": "Sljedeća stavka",
+  "fullScreen": "Cijeli ekran",
+  "exitFullScreen": "Izađi iz cijelog ekrana"
 }

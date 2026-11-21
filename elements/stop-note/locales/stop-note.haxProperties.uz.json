@@ -23,7 +23,9 @@
           "stop": "Toʻxtash",
           "warning": "Ogohlantirish",
           "success": "Tasdiqlash",
-          "info": "Bildirishnoma"
+          "info": "Bildirishnoma",
+          "tip": "Maslahat",
+          "new": "Yangiliklar"
         }
       },
       {

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Myndamerki",
     "description": "Myndamerkiseining til að merkja miðlaskrár innan efnis."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Myndanúmer",
+        "description": "Númer eða stutt merki fyrir myndina, t.d. 1.3"
+      },
+      {
+        "title": "Lýsing",
+        "description": "Stutt lýsing á myndinni"
+      }
+    ]
   }
 }

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista de verificação",
+    "description": "Uma lista de caixas de seleção. Os leitores marcam os itens e o progresso fica salvo no próprio dispositivo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome da lista. Lido em voz alta como rótulo do grupo de caixas de seleção."
+      },
+      {
+        "title": "Itens",
+        "description": "Cada item é uma caixa de seleção. Itens marcados ou desativados não podem ser alterados pelos leitores."
+      },
+      {
+        "title": "Numerada",
+        "description": "Mostrar uma lista numerada em vez de uma com marcadores."
+      },
+      {
+        "title": "Status",
+        "description": "Muda as cores para combinar com stop-note.",
+        "options": {
+          "info": "Aviso",
+          "success": "Confirmação",
+          "warning": "Alerta",
+          "stop": "Pare"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id de armazenamento",
+        "description": "Id único usado para lembrar o progresso do leitor no dispositivo dele. Gerado automaticamente; altere apenas para compartilhar o progresso entre listas ou para recomeçar do zero."
+      }
+    ]
+  }
+}

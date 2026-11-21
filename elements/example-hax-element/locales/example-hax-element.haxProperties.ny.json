@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Chitsanzo cha chinthu choyambira chogwiritsidwa ntchito kusonyeza makonzedwe a HAX ndi makhalidwe osinthika."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu"
+      }
+    ]
+  }
+}

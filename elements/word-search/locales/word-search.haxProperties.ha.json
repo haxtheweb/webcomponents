@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Neman kalmomi",
+    "description": "Grid na haruffa mai ɓoyayyun kalmomi. Masu koyo suna taɓa harafin farko da na ƙarshe na kowace kalma. Yana atisayen gane yadda ake rubuta kalma, ba ma'anarta ba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Abin da ake tambayar masu koyo su samu, ana nuna shi a kai."
+      },
+      {
+        "title": "Kalmomi",
+        "description": "Kalmomin da za a ɓoye. Ana barin sarari da alamomin rubutu a wajen grid. Kalmomin da ba su dace ba ana jera su yayin da kake gyarawa kuma ana barin su ga masu koyo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Girman grid",
+        "description": "Haruffa a kowane gefe, 4 zuwa 16. Bar shi babu komai don dacewa da kalma mafi tsayi (har zuwa 12). Fiye da 12 yana gungurawa gefe a waya."
+      },
+      {
+        "title": "Kalmomi a karkace",
+        "description": "Ɓoye kalmomi a karkace ma. Ya fi wuya."
+      },
+      {
+        "title": "Kalmomi a baya",
+        "description": "Ɓoye kalmomin da aka rubuta a baya ma. Ya fi wuya."
+      },
+      {
+        "title": "Launin ƙawa",
+        "description": "Launi na zaɓi don guntun kai, harafin farko da aka zaɓa da maɓallin."
+      }
+    ]
+  }
+}

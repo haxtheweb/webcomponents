@@ -2,5 +2,9 @@
   "toggleAnimation": "Växla animering",
   "info": "info",
   "image": "Bild",
-  "animatedGif": "Animerad GIF"
+  "animatedGif": "Animerad GIF",
+  "playAnimation": "Spela upp animering",
+  "pauseAnimation": "Pausa animering",
+  "showDescription": "Visa beskrivning",
+  "hideDescription": "Dölj beskrivning"
 }

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skribi per la matematika notacio LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bilda fono",
+        "description": "Fono malantaŭ desegnitaj bildoj. Aŭtomata aldonas unu nur kiam la desegnaĵo estus malfacile videbla sur la paĝo, ekzemple malhelaj linioj en malhela reĝimo.",
+        "options": {
+          "auto": "Aŭtomata",
+          "light": "Hela",
+          "dark": "Malhela",
+          "none": "Neniu"
+        }
+      }
+    ]
   }
 }

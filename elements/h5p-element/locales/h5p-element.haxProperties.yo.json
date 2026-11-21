@@ -4,7 +4,12 @@
     "description": "Ń ṣe àfihàn àkóónú alájọṣepọ̀ H5P láti inú fáìlì .h5p tí a gbé sókè, láìsí àìní olupin H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fáìlì H5P",
+        "description": "Gbé fáìlì .h5p sókè tàbí so mọ́ ọn. A ń tú u nínú aṣàwákiri; a kò nílò olupin H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Kóòdù ìfisíbẹ̀ iframe àtijọ́",

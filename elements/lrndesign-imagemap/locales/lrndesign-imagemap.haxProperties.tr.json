@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Sıcak nokta ayrıntıları",
         "description": "Görsel haritasındaki etkileşimli sıcak noktalar."
+      },
+      {
+        "title": "Etkin nokta ayrıntıları",
+        "description": "Görsel haritadaki etkileşimli etkin noktalar."
       }
     ]
   }

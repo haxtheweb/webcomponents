@@ -52,6 +52,20 @@
           "_top": "Taga ta sama - _top",
           "_parent": "Taga uwa - _parent"
         }
+      },
+      {
+        "title": "Babu kibiya",
+        "description": "Ɓoye kibiyar maɓalli."
+      },
+      {
+        "title": "Mahaɗi: inda zai buɗe",
+        "description": "Inda za a buɗe mahaɗin.",
+        "options": {
+          "": "Taga ɗaya",
+          "_blank": "Sabuwar taga - _blank",
+          "_top": "Taga ta sama - _top",
+          "_parent": "Taga ta iyaye - _parent"
+        }
       }
     ],
     "developer": [

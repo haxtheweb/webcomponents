@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternatyvusis tekstas"
+        "title": "Alternatyvusis tekstas",
+        "description": "Aprašykite paveikslėlį tiems, kurie jo nemato."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Neprivalomas santraukos tekstas, kai detalės atidarytos"
+        "title": "Neprivalomas santraukos tekstas, kai detalės atidarytos",
+        "description": "Mygtuko tekstas, kai aprašymas paslėptas, pvz., „Rodyti aprašymą“."
       },
       {
         "property": "closeText",
-        "title": "Neprivalomas santraukos tekstas, kai detalės uždarytos"
+        "title": "Neprivalomas santraukos tekstas, kai detalės uždarytos",
+        "description": "Mygtuko tekstas, kai aprašymas rodomas, pvz., „Slėpti aprašymą“."
       }
     ]
   }

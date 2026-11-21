@@ -1,0 +1,14 @@
+{
+  "scene": "Isigcawu",
+  "ending": "Isiphetho",
+  "goodEnding": "Isiphetho esihle",
+  "mixedEnding": "Isiphetho esixubile",
+  "poorEnding": "Isiphetho esibi",
+  "scoreOf": "Amaphuzu {score} kwangu-{max}",
+  "scoreOnly": "Amaphuzu {score}",
+  "startScene": "Qala",
+  "sceneIdLabel": "I-ID yesigcawu",
+  "needsId": "Engeza i-ID yesigcawu ukuze ukukhetha kukwazi ukuxhuma kulesi sigcawu.",
+  "orphan": "Akukho ukukhetha okuxhuma kulesi sigcawu.",
+  "deadLinks": "Lezi zixhumanisi zikhomba esigcawini esingekho:"
+}

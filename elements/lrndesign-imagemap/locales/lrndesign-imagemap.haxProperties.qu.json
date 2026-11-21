@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Ruraq chimpukunapa willakuynin",
         "description": "Rikch'a mapapi ruraq chimpukuna."
+      },
+      {
+        "title": "Punto willaykuna",
+        "description": "Rikch'a mapapi kuyuq puntokuna."
       }
     ]
   }

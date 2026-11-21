@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Gulu la Stop Note",
+    "description": "Ikani ma stop note angapo mu gawo limodzi lomwe limawonetsa cholemba chimodzi pa nthawi, monga Malangizo kapena Zatsopano. Makadi a malangizo, zolemba zam'mbali ndi mawu ogwidwa a m'chimango angaikidwe pamodzi nawo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chilembo",
+        "description": "Dzina la gulu lomwe owerenga sikirini amalengeza, monga Malangizo kapena Zatsopano."
+      },
+      {
+        "title": "Zolemba",
+        "description": "Ma stop note a mu gulu. Makadi a malangizo, zolemba zam'mbali ndi mawu ogwidwa a m'chimango angawonjezeredwenso."
+      }
+    ]
+  }
+}

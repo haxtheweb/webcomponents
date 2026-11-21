@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pllakë statistike",
+    "description": "Një numër që ka rëndësi, me etiketën e tij dhe si ndryshoi. Vendos disa në një rrjetë për një rresht paneli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Çfarë mat numri."
+      },
+      {
+        "title": "Vlera",
+        "description": "Numri. Një numër i thjeshtë grupohet sipas gjuhës së faqes; çdo gjë tjetër shfaqet siç është shkruar."
+      },
+      {
+        "title": "Ndryshimi",
+        "description": "Si ndryshoi, me fjalë, si 6% këtë semestër."
+      },
+      {
+        "title": "Drejtimi",
+        "description": "Nëse ndryshimi është lart apo poshtë.",
+        "options": {
+          "": "Asnjë",
+          "up": "Lart",
+          "down": "Poshtë"
+        }
+      }
+    ]
+  }
+}

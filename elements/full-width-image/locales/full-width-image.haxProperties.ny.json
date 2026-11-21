@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Chithunzi chakumbuyo."
+        "description": "Chithunzi chakumbuyo.",
+        "title": "Chithunzi"
       },
       {
         "property": "caption",
-        "description": "Mutu wa mawu."
+        "description": "Mutu wa mawu.",
+        "title": "Mawu ofotokozera"
       }
     ]
   }

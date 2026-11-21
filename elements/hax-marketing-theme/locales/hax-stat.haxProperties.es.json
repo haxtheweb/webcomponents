@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Cifra",
+    "description": "Un número que cuenta hacia arriba, con una etiqueta y un enlace a su historia"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Número hasta el que contar"
+      },
+      {
+        "title": "Antes del número"
+      },
+      {
+        "title": "Después del número"
+      },
+      {
+        "title": "Palabras en lugar de un número"
+      },
+      {
+        "title": "Qué cuenta"
+      },
+      {
+        "title": "Dirección de la historia en hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -3,5 +3,8 @@
   "copyAsCsv": "Akka CSV tti garagalchi.",
   "printTable": "Gabatee Maxxansi",
   "selectColumn": "Utubaa Fili",
-  "dataTable": "Daataa · Gabatee"
+  "dataTable": "Daataa · Gabatee",
+  "filterStatus": "Tarreewwan {total} keessaa {shown} agarsiisaa jira, {column}n calalame: {text}",
+  "columnNumber": "Utubaa {column}",
+  "clearFilter": "Calaltuu haqi"
 }

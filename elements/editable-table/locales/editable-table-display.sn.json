@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopa se CSV.",
   "printTable": "Dhinda Tafura",
   "selectColumn": "Sarudza Koramu",
-  "dataTable": "Data · Tebhura"
+  "dataTable": "Data · Tebhura",
+  "filterStatus": "Kuratidza mitsara {shown} pa{total}, yakasefa ne{column}: {text}",
+  "columnNumber": "Koramu {column}",
+  "clearFilter": "Bvisa sefa"
 }

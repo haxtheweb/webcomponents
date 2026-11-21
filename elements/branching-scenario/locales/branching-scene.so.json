@@ -1,0 +1,14 @@
+{
+  "scene": "Muuqaal",
+  "ending": "Dhammaad",
+  "goodEnding": "Dhammaad wanaagsan",
+  "mixedEnding": "Dhammaad isku dhafan",
+  "poorEnding": "Dhammaad liita",
+  "scoreOf": "Dhibcaha {score} ee {max}",
+  "scoreOnly": "Dhibcaha {score}",
+  "startScene": "Bilow",
+  "sceneIdLabel": "ID-ga muuqaalka",
+  "needsId": "Ku dar ID muuqaal si doorashooyinku ugu xirmaan muuqaalkan.",
+  "orphan": "Ma jiro doorasho ku xiran muuqaalkan.",
+  "deadLinks": "Linkiyadan waxay tilmaamayaan muuqaal aan jirin:"
+}

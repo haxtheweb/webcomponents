@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Dizaino sistema",
+  "dddDefault": "DDD (numatytoji)",
+  "designSystemHelp": "Spalvos, šriftai, kampai ir fokusas. Tema išlaiko išdėstymą.",
+  "designSystemFixed": "Ši tema išlaiko savo dizaino sistemą.",
+  "palette": "Paletė",
+  "themeDefault": "Temos numatytoji",
+  "paletteNumber": "Paletė {n}",
+  "siteTheme": "{name} (šios svetainės tema)",
+  "restyle": "Pakeisti šios svetainės stilių",
+  "close": "Uždaryti",
+  "reset": "Grįžti į šios svetainės išvaizdą",
+  "random": "Nustebinkite mane",
+  "about": "Čia rodomos kelios į HAX įtrauktos išvaizdos. Puslapiai niekada nesikeičia: struktūra saugoma JSON Outline Schema, o kiekvienas blokas yra standartinis žiniatinklio komponentas, todėl dizainą galima laisvai keisti."
+}

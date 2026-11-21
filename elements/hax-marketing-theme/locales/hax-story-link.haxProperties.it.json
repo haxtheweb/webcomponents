@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Pulsante storia",
+    "description": "Il pulsante che apre la storia dietro un'affermazione su hax.cloud, o il punto corrispondente su un altro sito della rete HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dove porta",
+        "options": {
+          "cloud": "hax.cloud, la storia",
+          "learn": "learn.hax.cloud, un tutorial",
+          "try": "browser.hax.cloud, provalo",
+          "elements": "webcomponents.hax.cloud, un blocco",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Indirizzo su quel sito (una storia su hax.cloud ha la forma stories/ee450a19)"
+      },
+      {
+        "title": "Di cosa parla"
+      },
+      {
+        "title": "Chip piccolo"
+      },
+      {
+        "title": "Mostra di cosa parla nel pulsante"
+      }
+    ]
+  }
+}

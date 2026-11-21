@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Alaviite",
+    "description": "Huomautus, joka kirjoitetaan omalle paikalleen tekstissä. Se näkyy numerona, ja numeroitu huomautusluettelo muodostuu itsestään sivun alaosaan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Huomautus",
+        "description": "Alaviitteen teksti."
+      },
+      {
+        "title": "Ei esikatselua",
+        "description": "Älä näytä huomautusta, kun lukija vie osoittimen numeron päälle tai kohdistaa siihen."
+      }
+    ]
+  }
+}

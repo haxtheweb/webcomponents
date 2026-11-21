@@ -3,5 +3,8 @@
   "copyAsCsv": "Копирај као CSV.",
   "printTable": "Одштампај табелу",
   "selectColumn": "Изабери колону",
-  "dataTable": "Подаци · Табела"
+  "dataTable": "Подаци · Табела",
+  "filterStatus": "Приказано {shown} од {total} редова, филтрирано по {column}: {text}",
+  "columnNumber": "Колона {column}",
+  "clearFilter": "Обриши филтер"
 }

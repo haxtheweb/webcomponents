@@ -9,5 +9,7 @@
   "slidePages": "עמודי שקופיות",
   "goToSlide": "מעבר לשקופית {number}",
   "slides": "שקופיות",
-  "position": "{number} מתוך {total}"
+  "position": "{number} מתוך {total}",
+  "fullScreen": "מסך מלא",
+  "exitFullScreen": "יציאה ממסך מלא"
 }

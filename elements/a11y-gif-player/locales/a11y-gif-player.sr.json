@@ -2,5 +2,9 @@
   "toggleAnimation": "Укључи/искључи анимацију",
   "info": "инфо",
   "image": "Слика",
-  "animatedGif": "Анимирани GIF"
+  "animatedGif": "Анимирани GIF",
+  "playAnimation": "Пусти анимацију",
+  "pauseAnimation": "Паузирај анимацију",
+  "showDescription": "Прикажи опис",
+  "hideDescription": "Сакриј опис"
 }

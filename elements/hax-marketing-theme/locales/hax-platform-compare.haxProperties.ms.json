@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Perbandingan platform",
+    "description": "Bersemuka: pilih mana-mana dua platform daripada fail data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data perbandingan (JSON)"
+      },
+      {
+        "title": "ID platform kiri"
+      },
+      {
+        "title": "ID platform kanan"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Voetnoot",
+    "description": "Een notitie die staat waar ze in de tekst hoort. Ze verschijnt als een nummer, en de genummerde lijst met notities wordt vanzelf onderaan de pagina opgebouwd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Notitie",
+        "description": "De tekst van de voetnoot."
+      },
+      {
+        "title": "Geen voorbeeld",
+        "description": "Toon de notitie niet wanneer een lezer over het nummer beweegt of het focus geeft."
+      }
+    ]
+  }
+}

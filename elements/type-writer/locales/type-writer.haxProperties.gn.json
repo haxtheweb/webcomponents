@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mákina jehaiha",
     "description": "Jehaipy ojehaíva ijehegui peteĩ tai peteĩ jey."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Moñe'ẽrã",
+        "description": "Moñe'ẽrã ojehaitaha pehẽ oike jehechápe."
+      },
+      {
+        "title": "Ohai",
+        "description": "Ehechauka cursor ohesapéva; pehẽ omoĩ kóva ohai aja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ñembopuku",
+        "description": "Milisegundo oha'arõ hag̃ua jehai oñepyrũ mboyve."
+      },
+      {
+        "title": "Cursor puku",
+        "description": "Milisegundo cursor ohesape meme moñe'ẽrã ojehai rire."
+      },
+      {
+        "title": "Pya'e",
+        "description": "Milisegundo peteĩteĩ taípe; papapy michĩvéva ohai pya'eve."
+      }
+    ]
   }
 }

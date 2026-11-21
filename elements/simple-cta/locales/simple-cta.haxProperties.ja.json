@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "アイコンを非表示",
         "description": "テキストを強調するアイコンを非表示にします"
+      },
+      {
+        "title": "外観",
+        "description": "ボタンをどれだけ強調するか。",
+        "options": {
+          "": "塗りつぶし",
+          "tonal": "トーナル",
+          "outlined": "アウトライン",
+          "plain": "プレーン"
+        }
+      },
+      {
+        "title": "サイズ",
+        "description": "ボタンのサイズ。",
+        "options": {
+          "s": "小",
+          "": "中",
+          "l": "大"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ecosysteemweb",
+    "description": "Een interactief web van hoe de onderdelen van een project samenhangen, met subwebs en stapsgewijze rondleidingen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Webgegevens",
+        "description": "URL van de JSON-bundel met webs (gebouwd in PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "ID van het web dat eerst wordt getoond; main is het ecosysteemweb."
+      },
+      {
+        "title": "Geselecteerde tegel",
+        "description": "ID van een tegel die wordt geselecteerd als het web opent."
+      },
+      {
+        "title": "Rondleiding",
+        "description": "ID van een rondleiding om mee te beginnen."
+      },
+      {
+        "title": "Beginnen in lijstweergave",
+        "description": "Toon het web als geneste lijsten in plaats van de tekening."
+      },
+      {
+        "title": "Alleen tekening",
+        "description": "Toon alleen de tekening, als figuur: geen kop, rondleidingen, details of stappenbalk."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gelezen op",
+        "description": "Begin met elke tegel gelezen op één maatstaf.",
+        "options": {
+          "": "Alleen verbindingen",
+          "fresh": "Actualiteit",
+          "bus": "Busfactor",
+          "impact": "Impact",
+          "evidence": "Bewijs",
+          "parity": "Pariteit"
+        }
+      }
+    ]
+  }
+}

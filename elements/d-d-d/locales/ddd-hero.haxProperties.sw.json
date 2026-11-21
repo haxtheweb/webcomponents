@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Bango kuu",
+    "description": "Picha kubwa, GIF au video yenye kichwa na maandishi juu yake, iliyowekwa popote kwenye ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Picha au video",
+        "description": "Faili ya JPG, PNG, WebP, GIF, MP4 au WebM."
+      },
+      {
+        "title": "Maandishi mbadala",
+        "description": "Eleza picha. Acha tupu ikiwa ni pambo tu."
+      },
+      {
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa juu ya media. Acha tupu kwa kutokuwa na kichwa."
+      },
+      {
+        "title": "Maandishi",
+        "description": "Maandishi yanayoonyeshwa chini ya kichwa, juu ya media."
+      },
+      {
+        "title": "Upana kamili",
+        "description": "Enea ukingo hadi ukingo badala ya kukaa ndani ya safu wima ya maudhui."
+      },
+      {
+        "title": "Urefu",
+        "options": {
+          "tall": "Ndefu",
+          "medium": "Wastani",
+          "short": "Fupi"
+        }
+      },
+      {
+        "title": "Uwekaji fremu",
+        "description": "Jinsi picha inavyokaa kwa kila ukubwa wa skrini"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fifisha",
+        "description": "Rangi iliyowekwa juu ya media. Kukiwa na kichwa au maandishi huwa ipo kila wakati, ili maandishi yabaki yanasomeka.",
+        "options": {
+          "blue": "Bluu",
+          "bottom": "Giza upande wa chini",
+          "none": "Hakuna"
+        }
+      },
+      {
+        "title": "Nafasi ya maandishi",
+        "options": {
+          "bottom": "Chini",
+          "middle": "Katikati"
+        }
+      },
+      {
+        "title": "Sehemu ya kulenga kwa upana",
+        "description": "Sehemu ya picha inayobaki ikionekana inapokatwa, kutoka 0 (kushoto) hadi 100 (kulia)."
+      },
+      {
+        "title": "Sehemu ya kulenga kwenda chini",
+        "description": "Sehemu ya picha inayobaki ikionekana inapokatwa, kutoka 0 (juu) hadi 100 (chini)."
+      }
+    ]
+  }
+}

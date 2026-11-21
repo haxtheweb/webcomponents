@@ -2,5 +2,9 @@
   "toggleAnimation": "Prepnúť animáciu",
   "info": "info",
   "image": "Obrázok",
-  "animatedGif": "Animovaný GIF"
+  "animatedGif": "Animovaný GIF",
+  "playAnimation": "Prehrať animáciu",
+  "pauseAnimation": "Pozastaviť animáciu",
+  "showDescription": "Zobraziť popis",
+  "hideDescription": "Skryť popis"
 }

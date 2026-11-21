@@ -1,4 +1,6 @@
 {
   "saveAll": "সব সেভ করুন",
-  "saveTheFollowing": "নিচেরগুলো সেভ করবেন: {list}?"
+  "saveTheFollowing": "নিচেরগুলো সেভ করবেন: {list}?",
+  "save": "সংরক্ষণ করুন",
+  "cancel": "বাতিল"
 }

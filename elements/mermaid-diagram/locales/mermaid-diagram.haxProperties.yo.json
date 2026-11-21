@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Àwòrán àtòjọ láti inú ọ̀rọ̀",
+    "description": "Kọ àwòrán àtòjọ gẹ́gẹ́ bí ọ̀rọ̀ (Mermaid): àtẹ ìṣàn, ìtẹ̀léra, ìlà àkókò àti púpọ̀ sí i. A ń yà á nínú ojú-ìwé pẹ̀lú ọ̀rọ̀ àfidípò."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "A fihàn lókè àwòrán àtòjọ, a sì ń lò ó gẹ́gẹ́ bí orúkọ rẹ̀."
+      },
+      {
+        "title": "Orísun àwòrán àtòjọ",
+        "description": "Ọ̀rọ̀ Mermaid, fún àpẹẹrẹ: flowchart TD, lẹ́yìn náà ìlà kan fún ìsopọ̀ kọ̀ọ̀kan bí A[Draft] --> B{Ready?}. Ṣàfikún |label| lẹ́yìn ọfà láti fi àmì sí i. Àwòrán ń di tuntun bí o ṣe ń tẹ̀."
+      },
+      {
+        "title": "Ọ̀rọ̀ dípò àwòrán",
+        "description": "Ṣàpèjúwe ohun tí àwòrán àtòjọ fihàn fún àwọn tí kò lè rí i. Fi sílẹ̀ ní òfo lórí àtẹ ìṣàn kí a lè ṣe àkójọ àwọn ìgbésẹ̀ rẹ̀ fún ọ."
+      },
+      {
+        "title": "Àkọlé àwòrán",
+        "description": "Àkọlé àṣàyàn tí a fihàn lábẹ́ àwòrán àtòjọ."
+      },
+      {
+        "title": "Fi orísun hàn",
+        "description": "Fi ọ̀rọ̀ àwòrán àtòjọ hàn lẹ́gbẹ̀ẹ́ àwòrán náà."
+      },
+      {
+        "title": "Fi ọ̀rọ̀ àfidípò hàn",
+        "description": "Fi ọ̀rọ̀ àfidípò hàn lábẹ́ àwòrán náà. Ó máa ń wà fún àwọn olùka ojú-ìbòjú nígbà gbogbo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fáìlì orísun",
+        "description": "Àdírẹ́sì fáìlì .mmd láti yà dípò ọ̀rọ̀ lókè (https tàbí ọ̀nà kan lórí ojú-òpó yìí)."
+      },
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ chip àmì-àwòrán nínú àkọlé."
+      }
+    ]
+  }
+}

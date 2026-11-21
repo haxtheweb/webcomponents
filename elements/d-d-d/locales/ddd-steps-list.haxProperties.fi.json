@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Vaiheluettelo",
     "description": "Numeroidut vaiheet tehtävän suorittamiseen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vaiheilmaisin",
+        "description": "Näytä vaiheet tiiviinä otsikkorivinä, joka merkitsee edistymisen. Vaiheiden sisältöä ei näytetä tässä asettelussa."
+      },
+      {
+        "title": "Nykyinen vaihe",
+        "description": "Vaihe, jossa lukija on, 1:stä laskien. Aiemmat vaiheet näkyvät valmiina. Vaiheilmaisin käyttää tätä."
+      }
+    ]
   }
 }

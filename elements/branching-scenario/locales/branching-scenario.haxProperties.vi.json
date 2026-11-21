@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Tình huống phân nhánh",
+    "description": "Một câu chuyện trong đó mỗi lựa chọn dẫn tới cảnh và kết thúc khác nhau. Người học có thể lùi lại và thử các hướng khác; kết thúc đạt được quyết định điểm số."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tên của tình huống, hiển thị ở phần đầu."
+      },
+      {
+        "title": "Cảnh bắt đầu",
+        "description": "ID của cảnh mà người học bắt đầu. Để trống để bắt đầu ở cảnh đầu tiên."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Màu nhấn",
+        "description": "Màu tùy chọn cho nhãn đầu, các nút và viền của một lựa chọn."
+      }
+    ]
+  }
+}

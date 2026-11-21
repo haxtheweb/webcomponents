@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetika ekzercado",
+    "description": "Mallonga serio de generitaj aritmetikaj problemoj kun tuja reago. Elektu la operaciojn kaj la nombran gamon; ĉiu rondo estas nova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nomo de ĉi tiu ekzercado, montrata en ĝia kapo."
+      },
+      {
+        "title": "Operacioj",
+        "description": "Kiuj specoj de problemoj estas demandataj. Lernantoj povas malŝalti iun ajn el ili antaŭ ol komenci.",
+        "options": {
+          "add": "Adicio",
+          "subtract": "Subtraho",
+          "multiply": "Multipliko",
+          "divide": "Divido",
+          "add subtract": "Adicio kaj subtraho",
+          "multiply divide": "Multipliko kaj divido",
+          "add multiply": "Adicio kaj multipliko",
+          "add divide": "Adicio kaj divido",
+          "subtract multiply": "Subtraho kaj multipliko",
+          "subtract divide": "Subtraho kaj divido",
+          "add subtract multiply": "Adicio, subtraho kaj multipliko",
+          "add subtract divide": "Adicio, subtraho kaj divido",
+          "add multiply divide": "Adicio, multipliko kaj divido",
+          "subtract multiply divide": "Subtraho, multipliko kaj divido",
+          "add subtract multiply divide": "Ĉiuj kvar"
+        }
+      },
+      {
+        "title": "Plej malgranda nombro",
+        "description": "La plej malgranda nombro uzata en problemo. Entjeroj, 0 aŭ pli."
+      },
+      {
+        "title": "Plej granda nombro",
+        "description": "La plej granda nombro uzata en problemo. Dividaj respondoj kaj dividantoj ankaŭ restas en ĉi tiu gamo."
+      },
+      {
+        "title": "Nombro de problemoj",
+        "description": "Kiom da problemoj estas en unu rondo (1 ĝis 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tempolimo",
+        "description": "Sekundoj permesitaj por tuta rondo. 0 signifas sen tempomezurilo, kio estas la defaŭlto: tempolimigitaj ekzercoj malfavoras lernantojn, kiuj bezonas pli da tempo. Se agordita, lernantoj ankoraŭ povas malŝalti la tempomezurilon por si mem."
+      },
+      {
+        "title": "Akcenta koloro",
+        "description": "Koloro de la kapa ĉipo kaj de la butonoj. Lasu malplena por sekvi la etoson."
+      }
+    ]
+  }
+}

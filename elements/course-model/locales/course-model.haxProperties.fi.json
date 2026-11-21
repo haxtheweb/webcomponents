@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "otsikko"
+        "title": "otsikko",
+        "description": "Kurssimallin yläpuolella näytettävä otsikko."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Näytettävän 3D-mallitiedoston (.glb tai .gltf) osoite."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Kuvaile 3D-malli niille, jotka eivät näe sitä."
       },
       {
         "title": "Tietoalue"

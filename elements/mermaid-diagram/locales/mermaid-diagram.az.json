@@ -1,0 +1,21 @@
+{
+  "diagram": "Diaqram",
+  "flowchart": "axın diaqramı",
+  "sequence": "ardıcıllıq",
+  "source": "Mənbə",
+  "textAlternative": "Mətn alternativi",
+  "present": "Təqdim et",
+  "exitPresent": "Təqdimatdan çıx",
+  "loading": "Diaqram yüklənir",
+  "empty": "Hələ çəkiləcək heç nə yoxdur. Diaqram mənbəyini əlavə edin.",
+  "error": "Xəta",
+  "parseError": "Bu diaqramı çəkmək mümkün olmadı. Mənbəni yoxlayın.",
+  "loadError": "Diaqram kitabxanasını yükləmək mümkün olmadı.",
+  "srcError": "Diaqram faylını yükləmək mümkün olmadı.",
+  "decision": "qərar",
+  "end": "son",
+  "goTo": "{target} hissəsinə keç",
+  "ifGoTo": "əgər {label}, {target} hissəsinə keç",
+  "describedBySource": "Mənbəsi ilə təsvir olunan diaqram.",
+  "scrollable": "Diaqram, sürüşdürülə bilən"
+}

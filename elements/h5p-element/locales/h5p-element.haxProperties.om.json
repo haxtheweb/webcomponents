@@ -4,7 +4,12 @@
     "description": "Qabiyyee walquunnamtii H5P faayilii .h5p ol-fe'ame irraa taphata, sarvarii H5P malee"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Faayilii H5P",
+        "description": "Faayilii .h5p ol kaasi ykn liinkii godhi. Barbaadduu keessatti banama; sarvariin H5P hin barbaachisu."
+      }
+    ],
     "advanced": [
       {
         "title": "Koodii iframe dulloo galchuu",

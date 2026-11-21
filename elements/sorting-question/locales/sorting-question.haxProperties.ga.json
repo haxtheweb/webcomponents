@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Freagraí",
+        "description": "Sainmhíníonn ord na bhfreagraí an seicheamh ceart.",
+        "options": {
+          "": "Liosta",
+          "cards": "Cártaí íomhá"
+        }
+      },
+      {
+        "title": "Freagraí",
         "description": "Sainmhíníonn ord na bhfreagraí an seicheamh ceart."
       }
     ],

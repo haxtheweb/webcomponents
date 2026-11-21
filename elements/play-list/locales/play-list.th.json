@@ -9,5 +9,7 @@
   "slidePages": "หน้าสไลด์",
   "goToSlide": "ไปที่สไลด์ {number}",
   "slides": "สไลด์",
-  "position": "{number} จาก {total}"
+  "position": "{number} จาก {total}",
+  "fullScreen": "เต็มหน้าจอ",
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ"
 }

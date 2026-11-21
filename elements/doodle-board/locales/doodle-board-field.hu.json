@@ -1,0 +1,16 @@
+{
+  "drawing": "Rajz",
+  "edit": "Rajz szerkesztése",
+  "start": "Rajzolás indítása",
+  "remove": "Rajz eltávolítása",
+  "empty": "Még nincs rajz",
+  "save": "Mentés",
+  "cancel": "Mégse",
+  "close": "Bezárás",
+  "discard": "Módosítások elvetése",
+  "discardConfirm": "Elveti a nem mentett módosításokat?",
+  "keepEditing": "Szerkesztés folytatása",
+  "draw": "Rajz",
+  "feedback": "Visszajelzés",
+  "signature": "Aláírás"
+}

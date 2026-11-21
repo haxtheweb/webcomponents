@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "文档播放器",
+    "description": "Web 组件个讲解、演示搭参考，带 HTML、import、npm 搭 CDN 个复制按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "文档数据文件",
+        "description": "跟元素一道发布个文档数据（lib/tag.docs.json）。"
+      },
+      {
+        "title": "讲解故事板",
+        "description": "跟元素一道发布个动效故事板（tag.motion.json）。可选。"
+      },
+      {
+        "title": "视频教程",
+        "description": "关于迭个元素个短视频（YouTube、Vimeo 或者视频文件）。会覆盖文档数据里个视频。"
+      },
+      {
+        "title": "打开辣标签页",
+        "description": "先显示哪只标签页。",
+        "options": {
+          "motion": "讲解",
+          "video": "视频",
+          "demo": "演示",
+          "docs": "文档",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "自动播放讲解",
+        "description": "播放器一显示就开始讲解。读者偏好减少动效个辰光忽略。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "讲解主题",
+        "description": "有几段讲解个元素，先打开哪个主题（比方 add-blocks）。主讲解就空辣海。"
+      },
+      {
+        "title": "实时演示链接",
+        "description": "“打开演示源码”按钮去个地方。默认是仓库里个演示文件夹。"
+      },
+      {
+        "title": "文档链接",
+        "description": "完整文档按钮去个地方，比方对应个 Learn HAX 页面。"
+      }
+    ]
+  }
+}

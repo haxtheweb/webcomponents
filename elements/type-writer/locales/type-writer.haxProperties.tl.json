@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Makinilya",
     "description": "Tekstong kusang nagta-type, isang karakter sa bawat pagkakataon."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teksto",
+        "description": "Ang tekstong ita-type kapag na-scroll na sa view ang element."
+      },
+      {
+        "title": "Nagta-type",
+        "description": "Ipakita ang kumikislap na cursor; itinatakda ito ng element habang nagta-type."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Antala",
+        "description": "Mga millisecond na hihintayin bago magsimulang mag-type."
+      },
+      {
+        "title": "Tagal ng cursor",
+        "description": "Mga millisecond na patuloy na kumikislap ang cursor pagkatapos ma-type ang teksto."
+      },
+      {
+        "title": "Bilis",
+        "description": "Mga millisecond bawat karakter; mas mabilis mag-type ang mas mababang numero."
+      }
+    ]
   }
 }

@@ -1,4 +1,6 @@
 {
   "saveAll": "Vista allt",
-  "saveTheFollowing": "Vista eftirfarandi: {list}?"
+  "saveTheFollowing": "Vista eftirfarandi: {list}?",
+  "save": "Vista",
+  "cancel": "Hætta við"
 }

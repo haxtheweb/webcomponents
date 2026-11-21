@@ -52,6 +52,20 @@
           "_top": "Üst pəncərə - _top",
           "_parent": "Ana pəncərə - _parent"
         }
+      },
+      {
+        "title": "Oxsuz",
+        "description": "Düymənin oxunu gizlət."
+      },
+      {
+        "title": "Keçid: hədəf",
+        "description": "Keçidin harada açılacağı.",
+        "options": {
+          "": "Eyni pəncərə",
+          "_blank": "Yeni pəncərə - _blank",
+          "_top": "Üst pəncərə - _top",
+          "_parent": "Valideyn pəncərə - _parent"
+        }
       }
     ],
     "developer": [

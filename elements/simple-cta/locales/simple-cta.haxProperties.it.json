@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Nascondi icona",
         "description": "Nasconde l'icona usata per mettere in risalto il testo"
+      },
+      {
+        "title": "Aspetto",
+        "description": "Quanta enfasi ha il pulsante.",
+        "options": {
+          "": "Pieno",
+          "tonal": "Tonale",
+          "outlined": "Con contorno",
+          "plain": "Semplice"
+        }
+      },
+      {
+        "title": "Dimensione",
+        "description": "Dimensione del pulsante.",
+        "options": {
+          "s": "Piccolo",
+          "": "Medio",
+          "l": "Grande"
+        }
       }
     ],
     "advanced": [

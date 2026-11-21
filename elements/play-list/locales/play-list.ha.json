@@ -9,5 +9,7 @@
   "slidePages": "Shafukan nunin faifai",
   "goToSlide": "Je zuwa nunin faifai {number}",
   "slides": "Silaid",
-  "position": "{number} cikin {total}"
+  "position": "{number} cikin {total}",
+  "fullScreen": "Cikakken allo",
+  "exitFullScreen": "Fita daga cikakken allo"
 }

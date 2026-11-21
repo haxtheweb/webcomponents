@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Estadística",
+    "description": "Un nombre que compta cap amunt, amb una etiqueta i un enllaç a la seva història"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nombre fins on comptar"
+      },
+      {
+        "title": "Abans del nombre"
+      },
+      {
+        "title": "Després del nombre"
+      },
+      {
+        "title": "Paraules en lloc d'un nombre"
+      },
+      {
+        "title": "Què compta"
+      },
+      {
+        "title": "Adreça de la història a hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -3,5 +3,8 @@
   "copyAsCsv": "Cupià in CSV.",
   "printTable": "Stampà a tavula",
   "selectColumn": "Selezziunà una colonna",
-  "dataTable": "Dati · Tabella"
+  "dataTable": "Dati · Tabella",
+  "filterStatus": "{shown} linee mustrate nant'à {total}, filtrate per {column}: {text}",
+  "columnNumber": "Culonna {column}",
+  "clearFilter": "Sguassà u filtru"
 }

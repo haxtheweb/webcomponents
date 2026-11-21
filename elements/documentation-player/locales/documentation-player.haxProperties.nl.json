@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Documentatiespeler",
+    "description": "Uitleg, demo en naslag voor een webcomponent, met kopieerknoppen voor HTML, import, npm en CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Documentatiegegevensbestand",
+        "description": "De documentatiegegevens die met het element worden meegeleverd (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard van de uitleg",
+        "description": "Het bewegingsstoryboard dat met het element wordt meegeleverd (tag.motion.json). Optioneel."
+      },
+      {
+        "title": "Videotutorial",
+        "description": "Een korte video over het element (YouTube, Vimeo of een videobestand). Overschrijft de video in de documentatiegegevens."
+      },
+      {
+        "title": "Openen op tabblad",
+        "description": "Welk tabblad eerst wordt getoond.",
+        "options": {
+          "motion": "Uitleg",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Documentatie",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Uitleg automatisch afspelen",
+        "description": "Start de uitleg zodra de speler verschijnt. Wordt genegeerd als de lezer de voorkeur geeft aan minder beweging."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Onderwerp van de uitleg",
+        "description": "Voor elementen met meerdere uitleggen: welk onderwerp eerst opent (bijvoorbeeld add-blocks). Laat leeg voor het hoofdonderwerp."
+      },
+      {
+        "title": "Link naar live demo",
+        "description": "Waar de knop Demobron openen naartoe gaat. Standaard de demomap in de repository."
+      },
+      {
+        "title": "Documentatielink",
+        "description": "Waar de knop voor volledige documentatie naartoe gaat, bijvoorbeeld de bijbehorende Learn HAX-pagina."
+      }
+    ]
+  }
+}

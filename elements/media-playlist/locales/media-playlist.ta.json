@@ -5,5 +5,7 @@
   "editModeLabel": "மீடியா பிளேலிஸ்ட் திருத்தும் பயன்முறை",
   "position": "{total} இல் {current}",
   "previousItem": "முந்தைய உருப்படி",
-  "nextItem": "அடுத்த உருப்படி"
+  "nextItem": "அடுத்த உருப்படி",
+  "fullScreen": "முழுத் திரை",
+  "exitFullScreen": "முழுத் திரையிலிருந்து வெளியேறு"
 }

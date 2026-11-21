@@ -5,5 +5,7 @@
   "editModeLabel": "Медиа тоглуулах жагсаалтын засварлах горим",
   "position": "{current}/{total}",
   "previousItem": "Өмнөх зүйл",
-  "nextItem": "Дараагийн зүйл"
+  "nextItem": "Дараагийн зүйл",
+  "fullScreen": "Бүтэн дэлгэц",
+  "exitFullScreen": "Бүтэн дэлгэцээс гарах"
 }

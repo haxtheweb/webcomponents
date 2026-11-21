@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Catatan samping",
+    "description": "Catatan yang dipisahkan dari konten sekitarnya, dengan ikon dan label opsional."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Label catatan samping."
+      },
+      {
+        "title": "Ikon",
+        "description": "Ikon catatan samping."
+      },
+      {
+        "title": "Konten",
+        "description": "Konten catatan samping."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna",
+        "description": "Warna rona catatan samping."
+      }
+    ]
+  }
+}

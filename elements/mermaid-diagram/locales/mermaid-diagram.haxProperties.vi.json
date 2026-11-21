@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Sơ đồ từ văn bản",
+    "description": "Viết sơ đồ dưới dạng văn bản (Mermaid): lưu đồ, tuần tự, dòng thời gian và hơn thế. Nó được vẽ trong trang kèm văn bản thay thế."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Hiển thị phía trên sơ đồ và dùng làm tên của nó."
+      },
+      {
+        "title": "Mã nguồn sơ đồ",
+        "description": "Văn bản Mermaid, ví dụ: flowchart TD, rồi mỗi dòng một liên kết như A[Draft] --> B{Ready?}. Thêm |label| sau mũi tên để gắn nhãn. Hình vẽ cập nhật khi bạn gõ."
+      },
+      {
+        "title": "Văn bản thay thế",
+        "description": "Mô tả những gì sơ đồ thể hiện cho những người không thể nhìn thấy nó. Để trống với lưu đồ để các bước được liệt kê tự động."
+      },
+      {
+        "title": "Chú thích",
+        "description": "Chú thích tùy chọn hiển thị dưới sơ đồ."
+      },
+      {
+        "title": "Hiện mã nguồn",
+        "description": "Hiển thị văn bản sơ đồ bên cạnh hình vẽ."
+      },
+      {
+        "title": "Hiện văn bản thay thế",
+        "description": "Hiển thị văn bản thay thế dưới hình vẽ. Nó luôn có sẵn cho trình đọc màn hình."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tệp nguồn",
+        "description": "Địa chỉ của tệp .mmd để vẽ thay cho văn bản phía trên (https hoặc một đường dẫn trên trang web này)."
+      },
+      {
+        "title": "Màu nhấn",
+        "description": "Màu của chip biểu tượng ở phần đầu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Statu Baseline",
+    "description": "Mustrà u statu di supportu Baseline in i navigatori d'una funzione di a piattaforma web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID di a funzione",
+        "description": "ID di a funzione web, per esempiu anchor-positioning. Truvate l'ID nant'à webstatus.dev; l'ID hè l'ultima parte di l'URL d'una pagina di funzione."
+      }
+    ]
+  }
+}

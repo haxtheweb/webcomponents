@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Imininingwane yezindawo",
         "description": "Izindawo ezisebenzisanayo emephini yesithombe."
+      },
+      {
+        "title": "Imininingwane yezindawo ezibalulekile",
+        "description": "Izindawo ezibalulekile ezisebenzisanayo kumephu yesithombe."
       }
     ]
   }

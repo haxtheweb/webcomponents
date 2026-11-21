@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV તરીકે કૉપિ કરો.",
   "printTable": "કોષ્ટક પ્રિન્ટ કરો",
   "selectColumn": "કૉલમ પસંદ કરો",
-  "dataTable": "ડેટા · ટેબલ"
+  "dataTable": "ડેટા · ટેબલ",
+  "filterStatus": "{total} માંથી {shown} પંક્તિઓ બતાવી રહ્યા છીએ, {column} દ્વારા ફિલ્ટર: {text}",
+  "columnNumber": "કૉલમ {column}",
+  "clearFilter": "ફિલ્ટર સાફ કરો"
 }

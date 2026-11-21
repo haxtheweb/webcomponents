@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "이야기 버튼",
+    "description": "hax.cloud에서 주장 뒤의 이야기를 여는 버튼, 또는 다른 HAX 네트워크 사이트의 해당 위치로 가는 버튼"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "이동할 곳",
+        "options": {
+          "cloud": "hax.cloud, 이야기",
+          "learn": "learn.hax.cloud, 튜토리얼",
+          "try": "browser.hax.cloud, 사용해 보기",
+          "elements": "webcomponents.hax.cloud, 블록",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "해당 사이트의 주소(hax.cloud의 이야기는 stories/ee450a19 형식)"
+      },
+      {
+        "title": "무엇에 관한 것인지"
+      },
+      {
+        "title": "작은 칩"
+      },
+      {
+        "title": "버튼에 무엇에 관한 것인지 표시"
+      }
+    ]
+  }
+}

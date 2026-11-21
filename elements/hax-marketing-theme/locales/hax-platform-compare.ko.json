@@ -1,0 +1,15 @@
+{
+  "loading": "비교 내용을 불러오는 중입니다.",
+  "yes": "예",
+  "partly": "부분적",
+  "no": "아니요",
+  "compare": "비교",
+  "with": "비교 대상",
+  "vs": "vs",
+  "caption": "{a}와(과) {b}의 기능별 비교",
+  "feature": "기능",
+  "clearYes": "{total}개 중 {count}개 확실히 예",
+  "seeForYourself": "직접 확인하세요:",
+  "and": "및",
+  "why": "이유"
+}

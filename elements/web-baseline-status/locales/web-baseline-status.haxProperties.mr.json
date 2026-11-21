@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline स्थिती",
+    "description": "वेब प्लॅटफॉर्म वैशिष्ट्याची Baseline ब्राउझर समर्थन स्थिती दाखवा."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "वैशिष्ट्य ID",
+        "description": "वेब वैशिष्ट्याचा ID, उदाहरणार्थ anchor-positioning. ID webstatus.dev वर शोधा; ID हा वैशिष्ट्य पानाच्या URL चा शेवटचा भाग असतो."
+      }
+    ]
+  }
+}

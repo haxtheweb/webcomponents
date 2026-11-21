@@ -1,0 +1,22 @@
+{
+  "scenario": "시나리오",
+  "directions": "안내",
+  "showDirections": "안내 보기",
+  "hideDirections": "안내 숨기기",
+  "directionsRead": "각 장면을 읽고 내가 할 행동을 고르세요.",
+  "directionsEndings": "결말이 여러 개 있습니다. 끝나면 다른 경로도 시도해 보세요.",
+  "startOver": "처음부터 다시",
+  "back": "한 단계 뒤로",
+  "tryAnother": "다른 경로 시도",
+  "path": "경로",
+  "scene": "장면",
+  "ending": "결말",
+  "end": "끝",
+  "scenesSeen": "장면 {total}개 중 {seen}개 봄",
+  "endingReached": "결말에 도달함",
+  "addScene": "장면 추가",
+  "newScene": "새 장면",
+  "newSceneText": "무슨 일이 일어나는지 설명한 다음 각 선택지를 장면에 연결하세요.",
+  "editingNote": "편집 중: 모든 장면이 표시됩니다. 선택지는 # 뒤에 장면 ID가 붙은 링크입니다.",
+  "noScenes": "시나리오를 시작하려면 장면을 추가하세요."
+}

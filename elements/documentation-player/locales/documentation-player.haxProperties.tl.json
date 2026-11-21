@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Player ng dokumentasyon",
+    "description": "Walkthrough, demo at reference para sa isang web component, na may mga copy button para sa HTML, import, npm at CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "File ng docs data",
+        "description": "Ang docs data na kasama ng element (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard ng walkthrough",
+        "description": "Ang motion storyboard na kasama ng element (tag.motion.json). Opsyonal."
+      },
+      {
+        "title": "Video na tutorial",
+        "description": "Isang maikling video tungkol sa element (YouTube, Vimeo o video file). Pinapalitan ang video sa docs data."
+      },
+      {
+        "title": "Buksan sa tab",
+        "description": "Aling tab ang unang ipinapakita.",
+        "options": {
+          "motion": "Walkthrough",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentasyon",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Awtomatikong i-play ang walkthrough",
+        "description": "Simulan ang walkthrough sa sandaling lumabas ang player. Hindi pinapansin kapag mas gusto ng mambabasa ang mas kaunting galaw."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Paksa ng walkthrough",
+        "description": "Para sa mga element na may ilang walkthrough, aling paksa ang unang bubuksan (halimbawa add-blocks). Iwanang blangko para sa pangunahin."
+      },
+      {
+        "title": "Link ng live demo",
+        "description": "Kung saan pupunta ang button na Buksan ang demo source. Default ang demo folder sa repository."
+      },
+      {
+        "title": "Link ng dokumentasyon",
+        "description": "Kung saan pupunta ang button ng buong dokumentasyon, halimbawa ang katugmang pahina ng Learn HAX."
+      }
+    ]
+  }
+}

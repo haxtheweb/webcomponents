@@ -60,6 +60,8 @@
   "flagsFound": "Pronađeno {correct} od {total}",
   "toRethink": "Za ponovno promišljanje: {count}",
   "notEvidence": "nije dokaz za ovu zastavicu",
+  "isEvidence": "dokaz za ovu oznaku",
+  "readingKeys": "Tipkama sa strelicama prelazite s jedne jedinice ({unit}) na sljedeću.",
   "markAnswers": "Označi odgovore",
   "doneMarking": "Označavanje odgovora završeno",
   "editHint": "Uredite tekst u nastavku. Upotrijebite Označi odgovore u izborniku bloka da odaberete kamo pripada svaka zastavica.",

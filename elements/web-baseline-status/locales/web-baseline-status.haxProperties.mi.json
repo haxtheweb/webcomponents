@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Tūnga Baseline",
+    "description": "Whakaaturia te tūnga tautoko pūtirotiro Baseline o tētahi āhuatanga pūhara tukutuku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID āhuatanga",
+        "description": "Te ID o te āhuatanga tukutuku, hei tauira anchor-positioning. Kimihia ngā ID i webstatus.dev; ko te ID te wāhanga whakamutunga o te URL o tētahi whārangi āhuatanga."
+      }
+    ]
+  }
+}

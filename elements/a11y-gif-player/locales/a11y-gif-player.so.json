@@ -2,5 +2,9 @@
   "toggleAnimation": "Shid/dami dhaqdhaqaaqa",
   "info": "macluumaad",
   "image": "Sawir",
-  "animatedGif": "GIF dhaqdhaqaaq leh"
+  "animatedGif": "GIF dhaqdhaqaaq leh",
+  "playAnimation": "Daar animation-ka",
+  "pauseAnimation": "Hakad animation-ka",
+  "showDescription": "Muuji sharaxaadda",
+  "hideDescription": "Qari sharaxaadda"
 }

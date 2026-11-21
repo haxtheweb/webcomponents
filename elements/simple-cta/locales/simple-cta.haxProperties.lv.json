@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Paslēpt ikonu",
         "description": "Paslēpt teksta izcelšanai izmantoto ikonu"
+      },
+      {
+        "title": "Izskats",
+        "description": "Cik izcelta ir poga.",
+        "options": {
+          "": "Aizpildīta",
+          "tonal": "Toņa",
+          "outlined": "Ar kontūru",
+          "plain": "Vienkārša"
+        }
+      },
+      {
+        "title": "Izmērs",
+        "description": "Pogas izmērs.",
+        "options": {
+          "s": "Mazs",
+          "": "Vidējs",
+          "l": "Liels"
+        }
       }
     ],
     "advanced": [

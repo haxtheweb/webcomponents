@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Exercicio de aritmética",
+    "description": "Unha serie curta de problemas de aritmética xerados con resposta inmediata. Escolle as operacións e o intervalo de números; cada partida é nova."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome deste exercicio, mostrado na súa cabeceira."
+      },
+      {
+        "title": "Operacións",
+        "description": "Que tipos de problemas se preguntan. O alumnado pode desactivar calquera deles antes de comezar.",
+        "options": {
+          "add": "Suma",
+          "subtract": "Resta",
+          "multiply": "Multiplicación",
+          "divide": "División",
+          "add subtract": "Suma e resta",
+          "multiply divide": "Multiplicación e división",
+          "add multiply": "Suma e multiplicación",
+          "add divide": "Suma e división",
+          "subtract multiply": "Resta e multiplicación",
+          "subtract divide": "Resta e división",
+          "add subtract multiply": "Suma, resta e multiplicación",
+          "add subtract divide": "Suma, resta e división",
+          "add multiply divide": "Suma, multiplicación e división",
+          "subtract multiply divide": "Resta, multiplicación e división",
+          "add subtract multiply divide": "As catro"
+        }
+      },
+      {
+        "title": "Número máis pequeno",
+        "description": "O número máis pequeno usado nun problema. Números enteiros, 0 ou máis."
+      },
+      {
+        "title": "Número máis grande",
+        "description": "O número máis grande usado nun problema. As respostas e os divisores das divisións tamén quedan neste intervalo."
+      },
+      {
+        "title": "Número de problemas",
+        "description": "Cantos problemas hai nunha partida (de 1 a 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Límite de tempo",
+        "description": "Segundos permitidos para unha partida completa. 0 significa sen temporizador, que é o predeterminado: os exercicios cronometrados fan fallar ao alumnado que precisa máis tempo. Cando se define, o alumnado aínda pode desactivar o temporizador para si."
+      },
+      {
+        "title": "Cor de realce",
+        "description": "Cor da etiqueta da cabeceira e dos botóns. Déixao baleiro para seguir o tema."
+      }
+    ]
+  }
+}

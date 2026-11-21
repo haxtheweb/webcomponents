@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "flowchart",
+  "sequence": "sequence",
+  "source": "Burimi",
+  "textAlternative": "Alternativë tekstuale",
+  "present": "Prezanto",
+  "exitPresent": "Dil nga prezantimi",
+  "loading": "Po ngarkohet diagrami",
+  "empty": "Ende asgjë për të vizatuar. Shto burimin e diagramit.",
+  "error": "Gabim",
+  "parseError": "Ky diagram nuk mund të vizatohej. Kontrollo burimin.",
+  "loadError": "Biblioteka e diagramit nuk mund të ngarkohej.",
+  "srcError": "Skedari i diagramit nuk mund të ngarkohej.",
+  "decision": "vendim",
+  "end": "fund",
+  "goTo": "shko te {target}",
+  "ifGoTo": "nëse {label}, shko te {target}",
+  "describedBySource": "Diagram i përshkruar nga burimi i tij.",
+  "scrollable": "Diagram, i lëvizshëm"
+}

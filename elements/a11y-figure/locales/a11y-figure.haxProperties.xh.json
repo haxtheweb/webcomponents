@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Umbhalo Ongenayo"
+        "title": "Umbhalo Ongenayo",
+        "description": "Chaza umfanekiso kubantu abangakwaziyo ukuwubona."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivuliwe"
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivuliwe",
+        "description": "Isicatshulwa seqhosha xa inkcazelo ifihliwe, njenge-Bonisa inkcazelo."
       },
       {
         "property": "closeText",
-        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivaliwe"
+        "title": "Umbhalo wesishwankathelo ongenyanzelekanga xa iinkcukacha zivaliwe",
+        "description": "Isicatshulwa seqhosha xa inkcazelo iboniswa, njenge-Fihla inkcazelo."
       }
     ]
   }

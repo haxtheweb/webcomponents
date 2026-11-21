@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lépéslista",
     "description": "Számozott lépések egy feladat elvégzéséhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lépésjelző",
+        "description": "A lépések tömör, a haladást jelölő címsorként jelennek meg. Ebben az elrendezésben a lépések tartalma nem látható."
+      },
+      {
+        "title": "Aktuális lépés",
+        "description": "A lépés, amelynél az olvasó tart, 1-től számolva. A korábbi lépések befejezettként jelennek meg. A lépésjelző használja."
+      }
+    ]
   }
 }

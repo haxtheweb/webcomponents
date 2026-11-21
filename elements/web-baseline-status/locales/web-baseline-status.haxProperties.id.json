@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status Baseline",
+    "description": "Tampilkan status dukungan browser Baseline untuk fitur platform web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID fitur",
+        "description": "ID fitur web, misalnya anchor-positioning. Temukan ID di webstatus.dev; ID adalah bagian terakhir dari URL halaman fitur."
+      }
+    ]
+  }
+}

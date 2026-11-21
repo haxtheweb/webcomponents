@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "用途选择器",
+    "description": "拣一个网站是做啥用个，得到一只链接，辣浏览器里用迭个起步网站打开 HAX，还有对应个 CLI 命令。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "浏览器版 HAX 个地址",
+        "description": "链接打开个地方；会加上 ?skeleton= 搭 &name="
+      },
+      {
+        "title": "要排除个起步网站",
+        "description": "机器名，用逗号隔开"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "起步网站列表",
+        "description": "骨架列表个地址（app-hax 读个格式）"
+      }
+    ]
+  }
+}

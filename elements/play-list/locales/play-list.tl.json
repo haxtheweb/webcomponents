@@ -9,5 +9,7 @@
   "slidePages": "Mga pahina ng slide",
   "goToSlide": "Pumunta sa slide {number}",
   "slides": "Mga slide",
-  "position": "{number} sa {total}"
+  "position": "{number} sa {total}",
+  "fullScreen": "Full screen",
+  "exitFullScreen": "Lumabas sa full screen"
 }

@@ -4,7 +4,12 @@
     "description": "Lit du contenu interactif H5P à partir d'un fichier .h5p téléversé, sans serveur H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fichier H5P",
+        "description": "Envoyez ou liez un fichier .h5p. Il est décompressé dans le navigateur ; aucun serveur H5P n'est nécessaire."
+      }
+    ],
     "advanced": [
       {
         "title": "Ancien code d'intégration iframe",

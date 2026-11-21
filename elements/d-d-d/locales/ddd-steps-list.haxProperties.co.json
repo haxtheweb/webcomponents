@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lista di tappe",
     "description": "Tappe numerate per compie un compitu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicatore di passi",
+        "description": "Mustrà i passi cum'è una linea compatta di tituli chì marca u prugressu. U cuntenutu di i passi ùn hè micca mustratu in sta dispusizione."
+      },
+      {
+        "title": "Passu attuale",
+        "description": "U passu induve hè u lettore, cuntendu da 1. I passi precedenti si mostranu cum'è compii. Adupratu da l'indicatore di passi."
+      }
+    ]
   }
 }

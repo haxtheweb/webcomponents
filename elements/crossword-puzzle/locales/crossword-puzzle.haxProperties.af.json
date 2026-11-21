@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Blokkiesraaisel",
+    "description": "'n Blokkiesraaisel gemaak uit 'n lys woorde en leidrade. Die rooster word vir jou gegenereer; leerders tik die woorde en kontroleer hulle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Die titel of vraag wat bo die blokkiesraaisel gewys word."
+      },
+      {
+        "title": "Woorde",
+        "description": "Elke woord en sy leidraad. Die rooster word uit hierdie lys gegenereer: die langste woord word eerste geplaas en die ander kruis dit op gedeelde letters."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogings",
+        "description": "Hoeveel keer 'n leerder kan kontroleer. 0 beteken onbeperk."
+      },
+      {
+        "title": "Aksentkleur",
+        "description": "Opsionele kleur vir die opskrifskyfie, die aktiewe woord en die aksieknoppies."
+      },
+      {
+        "title": "Invoubaar",
+        "description": "Wys hierdie blokkiesraaisel as 'n ry wat oop- en toemaak. Om een oop te maak, maak die ander invoubare vrae langsaan toe."
+      },
+      {
+        "title": "Begin ingevou",
+        "description": "Wanneer invoubaar, begin as 'n toe ry wat net die titel en sy status wys."
+      },
+      {
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persent, voltooiing)."
+      },
+      {
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering geassosieer word."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat vir xAPI-identifikasie in analitiese stelsels gebruik word."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      }
+    ]
+  }
+}

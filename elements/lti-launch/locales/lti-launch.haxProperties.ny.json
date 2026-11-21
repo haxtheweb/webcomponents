@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Kuyambitsa chida chakunja",
+    "description": "Gawo lomwe limatsegula chida chakunja cha maphunziro mu zenera latsopano kapena patsamba, ngati ulalo wamba kapena ndi pempho lolowera la LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Dzina la chida. Limawonetsedwa pamutu ndi pa batani."
+      },
+      {
+        "title": "Kufotokozera",
+        "description": "Zomwe ophunzira amachita mu chida, zowonetsedwa pamwamba pa batani."
+      },
+      {
+        "title": "URL yoyambira",
+        "description": "Adiresi ya chida. Iyenera kukhala adiresi yonse yomwe imayamba ndi https:// kapena http://."
+      },
+      {
+        "title": "Tsegulani mu",
+        "description": "Zenera latsopano limagwira ntchito ndi chida chilichonse. Patsamba ili limagwira ntchito kokha ndi zida zomwe zimalola kuwonetsedwa mkati mwa tsamba lina.",
+        "options": {
+          "window": "Zenera latsopano",
+          "embed": "Patsamba ili"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL yolowera ya LTI",
+        "description": "LTI 1.3 yokha: adiresi yoyambitsa kulowa ya chida. Ndi iyi, ID ya kasitomala ndi ID ya kuyika, batani limatumiza pempho lolowera la LTI m'malo motsegula ulalo wamba. Kumaliza kuyambitsa kumafunika ntchito ya LTI ya tsamba ili."
+      },
+      {
+        "title": "ID ya kasitomala ya LTI",
+        "description": "ID ya kasitomala yomwe chida chinapatsa tsamba ili. Chizindikiritso cha poyera, osati chinsinsi: musayike makiyi kapena zinsinsi pano."
+      },
+      {
+        "title": "ID ya kuyika ya LTI",
+        "description": "ID ya kuyika yomwe chida chinapatsa tsamba ili. Chizindikiritso cha poyera, osati chinsinsi."
+      },
+      {
+        "title": "Wopereka wa LTI",
+        "description": "Adiresi yomwe imazindikiritsa tsamba ili ku chida. Siyani chopanda kanthu kuti mugwiritse ntchito adiresi ya tsamba lomwe tsambali lilimo."
+      },
+      {
+        "title": "Kutalika patsamba",
+        "description": "Kutalika kwa chida chikatseguka patsamba ili, mu ma pixel (200 mpaka 2000)."
+      },
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wa chizindikiro cha pamutu ndi batani. Siyani chopanda kanthu kuti chitsatire mutu wa mawonekedwe."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Chizindikiro cholowera cha LTI",
+        "description": "Mtengo wobisika womwe ntchito ya LTI ya tsamba ili imagwiritsa ntchito kuzindikira wophunzira. Nthawi zambiri umaperekedwa ndi tsamba kudzera mu chochitika cha lti-launch-request m'malo mosungidwa pano. Si mawu achinsinsi kapena kiyi."
+      },
+      {
+        "title": "Chizindikiro cha uthenga cha LTI",
+        "description": "Mtengo wobisika womwe ntchito ya LTI ya tsamba ili imagwiritsa ntchito kuzindikira kuyambitsa uku. Nthawi zambiri umaperekedwa ndi tsamba m'malo mosungidwa pano."
+      }
+    ]
+  }
+}

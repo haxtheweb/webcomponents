@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Išorinio įrankio paleidimas",
+    "description": "Blokas, atidarantis išorinį mokymosi įrankį naujame lange arba puslapyje kaip paprastą nuorodą arba su LTI 1.3 prisijungimo užklausa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Įrankio pavadinimas. Rodomas antraštėje ir ant mygtuko."
+      },
+      {
+        "title": "Aprašymas",
+        "description": "Ką besimokantieji daro įrankyje, rodoma virš mygtuko."
+      },
+      {
+        "title": "Paleidimo URL",
+        "description": "Įrankio adresas. Tai turi būti visas adresas, prasidedantis https:// arba http://."
+      },
+      {
+        "title": "Atidaryti",
+        "description": "Naujas langas veikia su kiekvienu įrankiu. Šiame puslapyje veikia tik su įrankiais, kuriuos leidžiama rodyti kitoje svetainėje.",
+        "options": {
+          "window": "Naujame lange",
+          "embed": "Šiame puslapyje"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI prisijungimo URL",
+        "description": "Tik LTI 1.3: įrankio prisijungimo inicijavimo adresas. Su juo, kliento ID ir diegimo ID mygtukas siunčia LTI prisijungimo užklausą, užuot atidaręs paprastą nuorodą. Paleidimui užbaigti reikia šios svetainės LTI paslaugos."
+      },
+      {
+        "title": "LTI kliento ID",
+        "description": "Kliento ID, kurį įrankis suteikė šiai svetainei. Viešas identifikatorius, ne paslaptis: niekada nedėkite čia raktų ar slaptų duomenų."
+      },
+      {
+        "title": "LTI diegimo ID",
+        "description": "Diegimo ID, kurį įrankis suteikė šiai svetainei. Viešas identifikatorius, ne paslaptis."
+      },
+      {
+        "title": "LTI išdavėjas",
+        "description": "Adresas, kuriuo ši svetainė identifikuojama įrankiui. Palikite tuščią, kad būtų naudojamas svetainės, kurioje yra puslapis, adresas."
+      },
+      {
+        "title": "Aukštis puslapyje",
+        "description": "Įrankio aukštis, kai jis atidaromas šiame puslapyje, pikseliais (nuo 200 iki 2000)."
+      },
+      {
+        "title": "Akcento spalva",
+        "description": "Antraštės žymės ir mygtuko spalva. Palikite tuščią, kad būtų naudojama temos spalva."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI prisijungimo užuomina",
+        "description": "Neperskaitoma reikšmė, kurią šios svetainės LTI paslauga naudoja besimokančiajam atpažinti. Paprastai pateikiama svetainės per įvykį lti-launch-request, o ne saugoma čia. Niekada ne slaptažodis ar raktas."
+      },
+      {
+        "title": "LTI pranešimo užuomina",
+        "description": "Neperskaitoma reikšmė, kurią šios svetainės LTI paslauga naudoja šiam paleidimui atpažinti. Paprastai pateikiama svetainės, o ne saugoma čia."
+      }
+    ]
+  }
+}

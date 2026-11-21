@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Figuurlabel",
     "description": "Figuurlabelelement om media-items in inhoud te markeren."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Figuurnummer",
+        "description": "Nummer of kort label voor de figuur, bijv. 1.3"
+      },
+      {
+        "title": "Beschrijving",
+        "description": "Korte beschrijving van de figuur"
+      }
+    ]
   }
 }

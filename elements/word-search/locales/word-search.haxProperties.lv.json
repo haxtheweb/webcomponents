@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Vārdu meklēšana",
+    "description": "Burtu režģis ar paslēptiem vārdiem. Izglītojamie pieskaras katra vārda pirmajam un pēdējam burtam. Trenē prasmi pamanīt, kā termins tiek rakstīts, nevis ko tas nozīmē."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Kas izglītojamajiem jāatrod; tiek rādīts galvenē."
+      },
+      {
+        "title": "Vārdi",
+        "description": "Paslēpjamie vārdi. Atstarpes un pieturzīmes režģī netiek iekļautas. Vārdi, kas neietilpst, rediģēšanas laikā tiek uzskaitīti un izglītojamajiem netiek rādīti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Režģa izmērs",
+        "description": "Burti katrā pusē, no 4 līdz 16. Atstājiet tukšu, lai pielāgotu garākajam vārdam (līdz 12). Vairāk nekā 12 tālrunī ritina uz sāniem."
+      },
+      {
+        "title": "Diagonāli vārdi",
+        "description": "Slēpt vārdus arī pa diagonāli. Grūtāk."
+      },
+      {
+        "title": "Otrādi rakstīti vārdi",
+        "description": "Slēpt arī otrādi rakstītus vārdus. Grūtāk."
+      },
+      {
+        "title": "Akcenta krāsa",
+        "description": "Neobligāta krāsa galvenes etiķetei, izvēlētajam pirmajam burtam un pogai."
+      }
+    ]
+  }
+}

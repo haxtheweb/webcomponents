@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV としてコピー。",
   "printTable": "表を印刷",
   "selectColumn": "列を選択",
-  "dataTable": "データ · 表"
+  "dataTable": "データ · 表",
+  "filterStatus": "{total} 行中 {shown} 行を表示中（{column} で絞り込み: {text}）",
+  "columnNumber": "列 {column}",
+  "clearFilter": "絞り込みを解除"
 }

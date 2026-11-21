@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pelare",
+    "description": "En pelare: namn, fras, ikon, färg och varför den är viktig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namn"
+      },
+      {
+        "title": "Fras"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Färg (DDD-namn)"
+      },
+      {
+        "title": "Vilken pelare, 1 till 7"
+      },
+      {
+        "title": "Litet kort"
+      },
+      {
+        "title": "Var namnet placeras"
+      }
+    ]
+  }
+}

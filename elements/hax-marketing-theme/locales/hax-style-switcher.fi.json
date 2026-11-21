@@ -1,0 +1,16 @@
+{
+  "theme": "Teema",
+  "designSystem": "Suunnittelujärjestelmä",
+  "dddDefault": "DDD (oletus)",
+  "designSystemHelp": "Väri, typografia, kulmat ja kohdistus. Teema säilyttää asettelun.",
+  "designSystemFixed": "Tämä teema säilyttää oman suunnittelujärjestelmänsä.",
+  "palette": "Paletti",
+  "themeDefault": "Teeman oletus",
+  "paletteNumber": "Paletti {n}",
+  "siteTheme": "{name} (tämän sivuston teema)",
+  "restyle": "Muotoile tämä sivusto uudelleen",
+  "close": "Sulje",
+  "reset": "Takaisin tämän sivuston omaan ilmeeseen",
+  "random": "Yllätä minut",
+  "about": "Tämä näyttää muutamia HAXiin sisäänrakennettuja ilmeitä. Sivut eivät koskaan muutu: rakenne on JSON Outline Schemassa ja jokainen lohko on standardi web-komponentti, joten ulkoasua voi vaihtaa vapaasti."
+}

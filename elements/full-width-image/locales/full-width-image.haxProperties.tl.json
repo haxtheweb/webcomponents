@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Larawan sa background."
+        "description": "Larawan sa background.",
+        "title": "Larawan"
       },
       {
         "property": "caption",
-        "description": "Heading ng teksto."
+        "description": "Heading ng teksto.",
+        "title": "Caption"
       }
     ]
   }

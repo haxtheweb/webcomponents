@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valgfri sammendragstekst når detaljene er åpne"
+        "title": "Valgfri sammendragstekst når detaljene er åpne",
+        "description": "Knappetekst mens beskrivelsen er skjult, for eksempel Vis beskrivelse."
       },
       {
         "property": "closeText",
-        "title": "Valgfri sammendragstekst når detaljene er lukket"
+        "title": "Valgfri sammendragstekst når detaljene er lukket",
+        "description": "Knappetekst mens beskrivelsen vises, for eksempel Skjul beskrivelse."
       }
     ]
   }

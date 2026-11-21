@@ -9,5 +9,7 @@
   "slidePages": "Саҳифаҳои слайд",
   "goToSlide": "Ба слайди {number} гузаштан",
   "slides": "Слайдҳо",
-  "position": "{number} аз {total}"
+  "position": "{number} аз {total}",
+  "fullScreen": "Экрани пурра",
+  "exitFullScreen": "Баромадан аз экрани пурра"
 }

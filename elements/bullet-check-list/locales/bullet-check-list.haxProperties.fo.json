@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Punktkannilisti",
+    "description": "Ein listi við avkrossingarpuntum. Lesarar krossa lutir av, og framgongdin verður goymd á teirra egna tóli."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Navnið á listanum. Lisið upphátt sum heitið á bólkinum av avkrossingarpuntum."
+      },
+      {
+        "title": "Lutir",
+        "description": "Hvør lutur er ein avkrossingarpuntur. Avkrossaðir ella óvirknir lutir kunnu ikki broytast av lesarum."
+      },
+      {
+        "title": "Talsettur",
+        "description": "Vís ein talsettan lista í staðin fyri ein punktlista."
+      },
+      {
+        "title": "Støða",
+        "description": "Broytir litirnar, so teir passa til stop-note.",
+        "options": {
+          "info": "Fráboðan",
+          "success": "Váttan",
+          "warning": "Ávaring",
+          "stop": "Steðga"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Goymslu-id",
+        "description": "Eintýtt id, brúkt til at minnast framgongd lesarans á tóli teirra. Gjørt sjálvvirkið; broyt bert fyri at deila framgongd millum listar ella fyri at byrja av nýggjum."
+      }
+    ]
+  }
+}

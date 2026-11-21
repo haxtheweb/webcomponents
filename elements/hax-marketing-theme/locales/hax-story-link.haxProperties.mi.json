@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Pātene kōrero",
+    "description": "Te pātene e whakatuwhera ana i te kōrero kei muri i tētahi kerēme i hax.cloud, i te wāhi hāngai rānei i tētahi atu pae o te whatunga HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Te wāhi e haere ai",
+        "options": {
+          "cloud": "hax.cloud, te kōrero",
+          "learn": "learn.hax.cloud, he akoranga",
+          "try": "browser.hax.cloud, whakamātauria",
+          "elements": "webcomponents.hax.cloud, he paraka",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Wāhitau i taua pae (ko te āhua o tētahi kōrero i hax.cloud ko stories/ee450a19)"
+      },
+      {
+        "title": "He aha te kaupapa"
+      },
+      {
+        "title": "Maramara iti"
+      },
+      {
+        "title": "Whakaaturia te kaupapa i roto i te pātene"
+      }
+    ]
+  }
+}

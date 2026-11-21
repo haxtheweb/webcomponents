@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Ikteb bin-notazzjoni matematika LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sfond tal-istampa",
+        "description": "Sfond wara stampi mpinġija. Awtomatiku jżid wieħed biss meta t-tpinġija tkun diffiċli tidher fuq il-paġna, bħal linji skuri fil-modalità skura.",
+        "options": {
+          "auto": "Awtomatiku",
+          "light": "Ċar",
+          "dark": "Skur",
+          "none": "Xejn"
+        }
+      }
+    ]
   }
 }

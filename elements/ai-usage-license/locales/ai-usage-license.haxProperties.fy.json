@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Mediamodifikator",
-        "description": "Opsjonele modifikator foar it mediadomein. Jout oan op hokker soarte media dizze lisinsje fan tapassing is."
+        "description": "Opsjonele modifikator foar it mediadomein. Jout oan op hokker soarte media dizze lisinsje fan tapassing is.",
+        "options": {
+          "": "Gjin modifier"
+        }
       },
       {
         "property": "uri",

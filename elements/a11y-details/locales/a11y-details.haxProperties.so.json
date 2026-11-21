@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu furan tahay"
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu furan tahay",
+        "description": "Qoraalka badhanka marka sharraxaadda la qariyo, sida Muuji sharraxaadda."
       },
       {
         "property": "closeText",
-        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu xidhan tahay"
+        "title": "Qoraal soo koobid ikhtiyaari ah marka faahfaahintu xidhan tahay",
+        "description": "Qoraalka badhanka marka sharraxaadda la muujiyo, sida Qari sharraxaadda."
       }
     ]
   }

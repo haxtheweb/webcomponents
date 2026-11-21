@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ordsök",
+    "description": "Ett bokstavsrutnät med gömda ord. Eleverna trycker på första och sista bokstaven i varje ord. Övar på att känna igen hur ett begrepp stavas, inte vad det betyder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Vad eleverna ombeds hitta, visas i sidhuvudet."
+      },
+      {
+        "title": "Ord",
+        "description": "Orden som ska gömmas. Mellanslag och skiljetecken utelämnas ur rutnätet. Ord som inte får plats listas medan du redigerar och utelämnas för eleverna."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rutnätets storlek",
+        "description": "Bokstäver per sida, 4 till 16. Lämna tomt för att passa det längsta ordet (upp till 12). Mer än 12 rullar i sidled på en telefon."
+      },
+      {
+        "title": "Diagonala ord",
+        "description": "Göm även ord diagonalt. Svårare."
+      },
+      {
+        "title": "Baklänges ord",
+        "description": "Göm även ord skrivna baklänges. Svårare."
+      },
+      {
+        "title": "Accentfärg",
+        "description": "Valfri färg för rubriketiketten, den valda första bokstaven och knappen."
+      }
+    ]
+  }
+}

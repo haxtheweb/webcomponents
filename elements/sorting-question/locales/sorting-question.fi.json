@@ -40,5 +40,7 @@
   "hideDirections": "Piilota ohjeet",
   "showRelatedContent": "Näytä liittyvä sisältö",
   "hideRelatedContent": "Piilota liittyvä sisältö",
-  "notAttempted": "Ei yritetty"
+  "notAttempted": "Ei yritetty",
+  "cardsDirections": "Järjestä kortit oikeaan järjestykseen kunkin kortin Siirrä aiemmaksi- ja Siirrä myöhemmäksi -painikkeilla tai vetämällä hiirellä. Kun uskot järjestyksen olevan oikea, testaa vastauksesi valitsemalla {checkAnswer}.",
+  "movedToPosition": "{item} siirretty kohtaan {position}/{total}"
 }

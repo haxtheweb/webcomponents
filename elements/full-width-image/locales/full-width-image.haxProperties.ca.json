@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imatge de fons."
+        "description": "Imatge de fons.",
+        "title": "Imatge"
       },
       {
         "property": "caption",
-        "description": "Encapçalament de text."
+        "description": "Encapçalament de text.",
+        "title": "Peu"
       }
     ]
   }

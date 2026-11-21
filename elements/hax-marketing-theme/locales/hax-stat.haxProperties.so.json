@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tirakoob",
+    "description": "Tiro kor u tirisa, leh calaamad iyo link sheekadeeda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tirada loo tirinayo"
+      },
+      {
+        "title": "Tirada ka hor"
+      },
+      {
+        "title": "Tirada kadib"
+      },
+      {
+        "title": "Erayo halkii tiro"
+      },
+      {
+        "title": "Waxa ay tiriso"
+      },
+      {
+        "title": "Cinwaanka sheekada ee hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ka-qaybgalayaasha",
+    "description": "Dadka dhisay mashruuca, oo laga soo qaaday fayl liis magacyo ah"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faylka liiska magacyada (JSON)"
+      },
+      {
+        "title": "Muuqaal: landed, lab ama code"
+      },
+      {
+        "title": "Inta ugu badan ee dad la muujinayo (0 waa dhammaan)"
+      }
+    ]
+  }
+}

@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "ფონის სურათი."
+        "description": "ფონის სურათი.",
+        "title": "სურათი"
       },
       {
         "property": "caption",
-        "description": "ტექსტური სათაური."
+        "description": "ტექსტური სათაური.",
+        "title": "წარწერა"
       }
     ]
   }

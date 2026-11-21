@@ -1,4 +1,6 @@
 {
   "saveAll": "سارے سانبھو",
-  "saveTheFollowing": "ایہہ سانبھݨے نیں: {list}؟"
+  "saveTheFollowing": "ایہہ سانبھݨے نیں: {list}؟",
+  "save": "محفوظ کرو",
+  "cancel": "منسوخ کرو"
 }

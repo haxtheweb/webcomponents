@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Hukniray qillqa"
+        "title": "Hukniray qillqa",
+        "description": "Mana rikuyta atiqkunapaq rikch'ata willay."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Detallekuna kichasqa kaptin munaspalla pisichasqa qillqa"
+        "title": "Detallekuna kichasqa kaptin munaspalla pisichasqa qillqa",
+        "description": "Willakuy pakasqa kaptin ñit'inap qillqan, Willakuyta rikuchiy hina."
       },
       {
         "property": "closeText",
-        "title": "Detallekuna wichq'asqa kaptin munaspalla pisichasqa qillqa"
+        "title": "Detallekuna wichq'asqa kaptin munaspalla pisichasqa qillqa",
+        "description": "Willakuy rikuchisqa kaptin ñit'inap qillqan, Willakuyta pakay hina."
       }
     ]
   }

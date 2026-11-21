@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Gambar, GIF, atau video besar dengan judul dan teks di atasnya, dapat ditempatkan di mana saja di halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar atau video",
+        "description": "File JPG, PNG, WebP, GIF, MP4, atau WebM."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Jelaskan gambarnya. Biarkan kosong jika hanya hiasan."
+      },
+      {
+        "title": "Judul",
+        "description": "Judul yang ditampilkan di atas media. Biarkan kosong jika tidak ada."
+      },
+      {
+        "title": "Teks",
+        "description": "Teks yang ditampilkan di bawah judul, di atas media."
+      },
+      {
+        "title": "Lebar penuh",
+        "description": "Membentang dari tepi ke tepi alih-alih berada di kolom konten."
+      },
+      {
+        "title": "Tinggi",
+        "options": {
+          "tall": "Tinggi",
+          "medium": "Sedang",
+          "short": "Pendek"
+        }
+      },
+      {
+        "title": "Pembingkaian",
+        "description": "Posisi foto di setiap ukuran layar"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pudar",
+        "description": "Warna yang dilapiskan di atas media. Jika ada judul atau teks, lapisan ini selalu ada agar teks tetap terbaca.",
+        "options": {
+          "blue": "Biru",
+          "bottom": "Gelap di bagian bawah",
+          "none": "Tidak ada"
+        }
+      },
+      {
+        "title": "Posisi teks",
+        "options": {
+          "bottom": "Bawah",
+          "middle": "Tengah"
+        }
+      },
+      {
+        "title": "Titik fokus mendatar",
+        "description": "Bagian gambar yang tetap terlihat saat dipangkas, dari 0 (kiri) sampai 100 (kanan)."
+      },
+      {
+        "title": "Titik fokus menurun",
+        "description": "Bagian gambar yang tetap terlihat saat dipangkas, dari 0 (atas) sampai 100 (bawah)."
+      }
+    ]
+  }
+}

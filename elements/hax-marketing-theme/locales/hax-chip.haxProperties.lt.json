@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Žymė",
+    "description": "Maža piktograma su etikete"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Piktograma"
+      },
+      {
+        "title": "Etiketė"
+      }
+    ]
+  }
+}

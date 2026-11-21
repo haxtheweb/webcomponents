@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Palavras cruzadas",
+    "description": "Palavras cruzadas feitas a partir de uma lista de palavras e pistas. A grade é gerada para você; os alunos digitam as palavras e as verificam."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O título ou a pergunta mostrada acima das palavras cruzadas."
+      },
+      {
+        "title": "Palavras",
+        "description": "Cada palavra e sua pista. A grade é gerada a partir desta lista: a palavra mais longa é posicionada primeiro e as outras a cruzam em letras compartilhadas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativas",
+        "description": "Quantas vezes um aluno pode verificar. 0 significa ilimitado."
+      },
+      {
+        "title": "Cor de destaque",
+        "description": "Cor opcional para o chip do cabeçalho, a palavra ativa e os botões de ação."
+      },
+      {
+        "title": "Recolhível",
+        "description": "Mostrar estas palavras cruzadas como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra só o título e o status."
+      },
+      {
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade avaliativa (por ex. pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do questionário",
+        "description": "Nome do questionário usado para identificação xAPI em sistemas de análise."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso a que esta avaliação se destina."
+      }
+    ]
+  }
+}

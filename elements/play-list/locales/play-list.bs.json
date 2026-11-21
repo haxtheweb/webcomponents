@@ -9,5 +9,7 @@
   "slidePages": "Stranice slajdova",
   "goToSlide": "Idi na slajd {number}",
   "slides": "Slajdovi",
-  "position": "{number} od {total}"
+  "position": "{number} od {total}",
+  "fullScreen": "Cijeli ekran",
+  "exitFullScreen": "Izađi iz cijelog ekrana"
 }

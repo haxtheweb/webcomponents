@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tsjin",
+    "description": "Wurden neist in kop-oan-kop-knop mei twa personaazjes"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Koptekst"
+      },
+      {
+        "title": "Wêr't de knop hinne giet"
+      },
+      {
+        "title": "Knoptekst"
+      },
+      {
+        "title": "Sied fan it linker personaazje"
+      },
+      {
+        "title": "Sied fan it rjochter personaazje"
+      }
+    ]
+  }
+}

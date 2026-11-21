@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Testo di riepilogo facoltativo quando i dettagli sono aperti"
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono aperti",
+        "description": "Testo del pulsante quando la descrizione è nascosta, ad esempio Mostra descrizione."
       },
       {
         "property": "closeText",
-        "title": "Testo di riepilogo facoltativo quando i dettagli sono chiusi"
+        "title": "Testo di riepilogo facoltativo quando i dettagli sono chiusi",
+        "description": "Testo del pulsante quando la descrizione è visibile, ad esempio Nascondi descrizione."
       }
     ]
   }

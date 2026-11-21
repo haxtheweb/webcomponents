@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Səhifənin istənilən yerində yerləşdirilən, üzərində başlıq və mətn olan böyük şəkil, GIF və ya video."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəkil və ya video",
+        "description": "JPG, PNG, WebP, GIF, MP4 və ya WebM faylı."
+      },
+      {
+        "title": "Alternativ mətn",
+        "description": "Şəkli təsvir edin. Yalnız bəzək olduqda boş saxlayın."
+      },
+      {
+        "title": "Başlıq",
+        "description": "Media üzərində göstərilən başlıq. Lazım deyilsə boş saxlayın."
+      },
+      {
+        "title": "Mətn",
+        "description": "Başlığın altında, media üzərində göstərilən mətn."
+      },
+      {
+        "title": "Tam en",
+        "description": "Məzmun sütununda durmaq əvəzinə kənardan kənara uzan."
+      },
+      {
+        "title": "Hündürlük",
+        "options": {
+          "tall": "Hündür",
+          "medium": "Orta",
+          "short": "Qısa"
+        }
+      },
+      {
+        "title": "Kadrlama",
+        "description": "Fotonun hər ekran ölçüsündə necə yerləşdiyi"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Solğunlaşma",
+        "description": "Media üzərinə çəkilən rəng. Başlıq və ya mətn olduqda həmişə biri var ki, mətn oxunaqlı qalsın.",
+        "options": {
+          "blue": "Mavi",
+          "bottom": "Aşağıda tünd",
+          "none": "Yoxdur"
+        }
+      },
+      {
+        "title": "Mətnin mövqeyi",
+        "options": {
+          "bottom": "Aşağı",
+          "middle": "Orta"
+        }
+      },
+      {
+        "title": "Üfüqi fokus nöqtəsi",
+        "description": "Şəkil kəsildikdə görünüşdə qalan hissəsi, 0-dan (sol) 100-ə (sağ) qədər."
+      },
+      {
+        "title": "Şaquli fokus nöqtəsi",
+        "description": "Şəkil kəsildikdə görünüşdə qalan hissəsi, 0-dan (yuxarı) 100-ə (aşağı) qədər."
+      }
+    ]
+  }
+}

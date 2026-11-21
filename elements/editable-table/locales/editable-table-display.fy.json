@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiearje as CSV.",
   "printTable": "Tabel printsje",
   "selectColumn": "Kolom selektearje",
-  "dataTable": "Gegevens · Tabel"
+  "dataTable": "Gegevens · Tabel",
+  "filterStatus": "{shown} fan {total} rigen toand, filtere op {column}: {text}",
+  "columnNumber": "Kolom {column}",
+  "clearFilter": "Filter wiskje"
 }

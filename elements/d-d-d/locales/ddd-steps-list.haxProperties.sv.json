@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Steglista",
     "description": "Numrerade steg för att slutföra en uppgift."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stegindikator",
+        "description": "Visa stegen som en kompakt rad med titlar som markerar framsteg. Steginnehållet visas inte i den här layouten."
+      },
+      {
+        "title": "Aktuellt steg",
+        "description": "Steget läsaren befinner sig på, räknat från 1. Tidigare steg visas som slutförda. Används av stegindikatorn."
+      }
+    ]
   }
 }

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "替代文字"
+        "title": "替代文字",
+        "description": "为看勿见个人描述迭张图片。"
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "详情打开辰光个可选摘要文字"
+        "title": "详情打开辰光个可选摘要文字",
+        "description": "描述隐藏个辰光按钮上个文字，比方“显示描述”。"
       },
       {
         "property": "closeText",
-        "title": "详情关牢辰光个可选摘要文字"
+        "title": "详情关牢辰光个可选摘要文字",
+        "description": "描述显示个辰光按钮上个文字，比方“隐藏描述”。"
       }
     ]
   }

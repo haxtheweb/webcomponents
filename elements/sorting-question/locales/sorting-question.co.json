@@ -40,5 +40,7 @@
   "hideDirections": "Piattà l'istruzzioni",
   "showRelatedContent": "Mustrà u cuntenutu currelatu",
   "hideRelatedContent": "Piattà u cuntenutu currelatu",
-  "notAttempted": "Micca pruvatu"
+  "notAttempted": "Micca pruvatu",
+  "cardsDirections": "Mettite e carte in l'ordine ghjustu cù i buttoni move più nanzu è move più tardi nant'à ogni carta, o trascinatele cù un topu. Quandu pensate d'avelle in l'ordine ghjustu, pruvate a vostra risposta selezziunendu {checkAnswer}.",
+  "movedToPosition": "{item} spustatu à a pusizione {position} di {total}"
 }

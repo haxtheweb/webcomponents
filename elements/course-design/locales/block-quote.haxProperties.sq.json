@@ -20,6 +20,12 @@
         "title": "Imazhi",
         "description": "Imazhi i shfaqur me citatin."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Me kornizë",
+        "description": "Vizato citimin në kornizën e përbashkët të bllokut, me ikonë dhe etiketë sipër, që të përputhet me shënimet dhe kartat e udhëzimeve."
+      }
     ]
   }
 }

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stanje Baseline",
+    "description": "Prikaži stanje podpore Baseline v brskalnikih za funkcijo spletne platforme."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID funkcije",
+        "description": "ID spletne funkcije, na primer anchor-positioning. ID-je najdete na webstatus.dev; ID je zadnji del URL-ja strani funkcije."
+      }
+    ]
+  }
+}

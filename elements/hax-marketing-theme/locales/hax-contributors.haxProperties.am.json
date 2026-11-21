@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "አስተዋጽዖ አበርካቾች",
+    "description": "ፕሮጀክቱን የገነቡት ሰዎች፣ ከዝርዝር ፋይል"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "የዝርዝር ፋይል (JSON)"
+      },
+      {
+        "title": "እይታ፦ landed፣ lab ወይም code"
+      },
+      {
+        "title": "የሚታዩ ከፍተኛ ሰዎች ብዛት (0 ሁሉም ነው)"
+      }
+    ]
+  }
+}

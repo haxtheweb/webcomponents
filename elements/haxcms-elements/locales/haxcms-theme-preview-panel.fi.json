@@ -8,5 +8,9 @@
   "theme": "Teema",
   "palette": "Paletti",
   "cancel": "Peruuta",
-  "openAppearanceSettings": "Avaa ulkoasuasetukset"
+  "openAppearanceSettings": "Avaa ulkoasuasetukset",
+  "designSystem": "Suunnittelujärjestelmä",
+  "designSystemDefault": "DDD (oletus)",
+  "designSystemThemeDefault": "{name} (teeman oletus)",
+  "designSystemHelp": "Väri, typografia, kulmat ja tiheys. Teema päättää edelleen asettelusta."
 }

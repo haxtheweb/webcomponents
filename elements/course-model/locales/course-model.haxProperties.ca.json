@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "títol"
+        "title": "títol",
+        "description": "Encapçalament que es mostra a sobre del model del curs."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adreça del fitxer del model 3D (.glb o .gltf) que es mostrarà."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Descriu el model 3D per a les persones que no el poden veure."
       },
       {
         "title": "Àrea d'informació"

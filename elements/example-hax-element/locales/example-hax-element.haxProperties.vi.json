@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Phần tử khởi đầu mẫu dùng để minh họa cấu hình HAX và các thuộc tính có thể chỉnh sửa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề"
+      }
+    ]
+  }
+}

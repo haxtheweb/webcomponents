@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Checklist na may bullet",
+    "description": "Isang listahan ng mga checkbox. Tsine-check ng mga mambabasa ang mga item at naaalala ang kanilang progreso sa sarili nilang device."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Pangalan ng listahan. Binabasa nang malakas bilang label ng grupo ng mga checkbox."
+      },
+      {
+        "title": "Mga item",
+        "description": "Bawat item ay isang checkbox. Hindi mababago ng mga mambabasa ang mga naka-check o naka-disable na item."
+      },
+      {
+        "title": "May numero",
+        "description": "Magpakita ng listahang may numero sa halip na may bullet."
+      },
+      {
+        "title": "Status",
+        "description": "Binabago ang mga kulay para tumugma sa stop-note.",
+        "options": {
+          "info": "Paunawa",
+          "success": "Kumpirmasyon",
+          "warning": "Babala",
+          "stop": "Huminto"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Storage id",
+        "description": "Natatanging id na ginagamit para alalahanin ang progreso ng mambabasa sa kanilang device. Awtomatikong ginagawa; baguhin lang para magbahagi ng progreso sa pagitan ng mga listahan o para magsimulang muli."
+      }
+    ]
+  }
+}

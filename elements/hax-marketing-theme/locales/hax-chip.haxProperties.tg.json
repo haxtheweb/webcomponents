@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Нишона",
+    "description": "Нишонаи хурди тамғадор"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Нишона"
+      },
+      {
+        "title": "Тамға"
+      }
+    ]
+  }
+}

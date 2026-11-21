@@ -1,0 +1,21 @@
+{
+  "diagram": "Zane-zane",
+  "flowchart": "zanen gudana",
+  "sequence": "jerin",
+  "source": "Tushe",
+  "textAlternative": "Madadin rubutu",
+  "present": "Gabatar",
+  "exitPresent": "Fita daga gabatarwa",
+  "loading": "Ana loda zane-zanen",
+  "empty": "Babu abin da za a zana tukuna. Ƙara tushen zane-zanen.",
+  "error": "Kuskure",
+  "parseError": "Ba a iya zana wannan zane-zane ba. Duba tushen.",
+  "loadError": "Ba a iya loda ɗakin karatun zane-zane ba.",
+  "srcError": "Ba a iya loda fayil ɗin zane-zane ba.",
+  "decision": "yanke shawara",
+  "end": "ƙarshe",
+  "goTo": "je zuwa {target}",
+  "ifGoTo": "idan {label}, je zuwa {target}",
+  "describedBySource": "Zane-zanen da tushensa ya bayyana.",
+  "scrollable": "Zane-zane, ana iya gungurawa"
+}

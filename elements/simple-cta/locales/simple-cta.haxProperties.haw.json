@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Hūnā i ka ikona",
         "description": "Hūnā i ka ikona i hoʻohana ʻia e hoʻonani ai i ke kikokikona"
+      },
+      {
+        "title": "Helehelena",
+        "description": "Ka nui o ke koʻikoʻi o ke pihi.",
+        "options": {
+          "": "Hoʻopiha ʻia",
+          "tonal": "Leo waihoʻoluʻu",
+          "outlined": "Kahakaha ʻia",
+          "plain": "Maʻalahi"
+        }
+      },
+      {
+        "title": "Nui",
+        "description": "Nui o ke pihi.",
+        "options": {
+          "s": "Liʻiliʻi",
+          "": "Waena",
+          "l": "Nui"
+        }
       }
     ],
     "advanced": [

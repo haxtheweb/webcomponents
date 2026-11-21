@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "د بېلګې پیلیز عنصر چې د HAX تنظیمات او د سمون وړ ځانګړتیاوې ښيي."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "سرلیک"
+      }
+    ]
+  }
+}

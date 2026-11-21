@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Temokake hotspot",
+    "description": "Siswa nemokake titik sing bener ing gambar kanthi ngeklik, nutul utawa ngobahake crosshair keyboard. Pasangan sing dibiji saka peta gambar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Gambar",
+        "description": "Gambar sing digoleki siswa."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Nggambarake gambar kanggo wong sing ora bisa ndeleng. Ora tau ditampilake minangka judhul."
+      },
+      {
+        "title": "Judhul",
+        "description": "Judhul cendhak sing katon ing ndhuwur gambar."
+      },
+      {
+        "title": "Pitakon",
+        "description": "Apa sing kudu ditemokake siswa ing gambar."
+      },
+      {
+        "title": "Wangsulan",
+        "description": "Saben wangsulan yaiku oval sing duwe jeneng ing gambar. Posisi lan ukuran yaiku persen saka gambar, diukur saka pojok kiwa ndhuwur. Nalika nyunting, saben wangsulan ditandhani garis ing gambar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Upaya",
+        "description": "Kaping pira siswa bisa nyoba. 0 tegese tanpa wates."
+      },
+      {
+        "title": "Luput sing diidini",
+        "description": "Pira luput sing mungkasi upaya. 0 tegese tanpa wates, lan siswa entuk tombol Rampung."
+      },
+      {
+        "title": "Bisa dilempit",
+        "description": "Tampilake pitakon iki minangka baris sing bisa dibukak lan ditutup. Mbukak siji nutup pitakon lempitan liyane ing sandhinge."
+      },
+      {
+        "title": "Wiwiti kalempit",
+        "description": "Yen bisa dilempit, wiwiti minangka baris ketutup sing mung nampilake pitakon lan statuse."
+      },
+      {
+        "title": "Format biji",
+        "description": "OER Schema: format biji kanggo penilaian iki (contone poin, huruf, persen, rampung)."
+      },
+      {
+        "title": "Tujuan sinau",
+        "description": "OER Schema: tujuan sinau sing gegandhengan karo penilaian iki."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Jeneng kuis",
+        "description": "Jeneng kuis sing dikirim kanggo dienggo ing lingkungan xAPI kanggo identifikasi item iki"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus sing dituju penilaian iki."
+      }
+    ]
+  }
+}

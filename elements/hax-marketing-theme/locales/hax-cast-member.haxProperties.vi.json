@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Thành viên dàn diễn viên",
+    "description": "Một nhóm đối tượng, được thể hiện bởi một nhân vật, kèm lời và một nút"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Đây là ai"
+      },
+      {
+        "title": "Loại nhân vật"
+      },
+      {
+        "title": "Hạt giống nhân vật"
+      },
+      {
+        "title": "Màu sân khấu (tên DDD)"
+      },
+      {
+        "title": "Nút dẫn tới đâu"
+      },
+      {
+        "title": "Chữ trên nút"
+      }
+    ]
+  }
+}

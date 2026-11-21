@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "ຄຳຕອບຢູ່ໃນລຳດັບທີ່ຖືກຕ້ອງ",
   "answerInIncorrectOrder": "ຄຳຕອບຢູ່ໃນລຳດັບທີ່ບໍ່ຖືກຕ້ອງ",
   "moveOptionUp": "ເລືອກເພື່ອຍ້າຍຕົວເລືອກຂຶ້ນໃນລຳດັບ",
-  "moveOptionDown": "ເລືອກເພື່ອຍ້າຍຕົວເລືອກລົງໃນລຳດັບ"
+  "moveOptionDown": "ເລືອກເພື່ອຍ້າຍຕົວເລືອກລົງໃນລຳດັບ",
+  "moveEarlier": "ຍ້າຍໄປກ່ອນ",
+  "moveLater": "ຍ້າຍໄປຫຼັງ",
+  "correct": "ຖືກຕ້ອງ",
+  "incorrect": "ບໍ່ຖືກຕ້ອງ"
 }

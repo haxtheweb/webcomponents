@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "መልሱ በትክክለኛ ቅደም ተከተል ነው",
   "answerInIncorrectOrder": "መልሱ በተሳሳተ ቅደም ተከተል ነው",
   "moveOptionUp": "አማራጩን በቅደም ተከተሉ ወደ ላይ ለማንቀሳቀስ ይምረጡ",
-  "moveOptionDown": "አማራጩን በቅደም ተከተሉ ወደ ታች ለማንቀሳቀስ ይምረጡ"
+  "moveOptionDown": "አማራጩን በቅደም ተከተሉ ወደ ታች ለማንቀሳቀስ ይምረጡ",
+  "moveEarlier": "ወደ ፊት አንቀሳቅስ",
+  "moveLater": "ወደ ኋላ አንቀሳቅስ",
+  "correct": "ትክክል",
+  "incorrect": "ትክክል አይደለም"
 }

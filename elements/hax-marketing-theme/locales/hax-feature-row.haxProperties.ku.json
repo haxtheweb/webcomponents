@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rêza taybetmendiyê",
+    "description": "Ekraneke berhemê li kêleka wateya wê ji bo te"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etîketa biçûk"
+      },
+      {
+        "title": "Sernav"
+      },
+      {
+        "title": "Wêne"
+      },
+      {
+        "title": "Wêne çi nîşan dide"
+      },
+      {
+        "title": "Wêne li rastê"
+      },
+      {
+        "title": "Rengê siyê (navê DDD, vala li pey paletê diçe)"
+      }
+    ]
+  }
+}

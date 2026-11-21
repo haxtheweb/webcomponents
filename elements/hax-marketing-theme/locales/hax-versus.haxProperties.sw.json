@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Dhidi ya",
+    "description": "Maneno kando ya kitufe cha ana kwa ana chenye wahusika wawili"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa"
+      },
+      {
+        "title": "Mahali kitufe kinapoelekea"
+      },
+      {
+        "title": "Maandishi ya kitufe"
+      },
+      {
+        "title": "Mbegu ya mhusika wa kushoto"
+      },
+      {
+        "title": "Mbegu ya mhusika wa kulia"
+      }
+    ]
+  }
+}

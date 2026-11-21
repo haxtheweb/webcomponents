@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kullanım amacı seçici",
+    "description": "Bir sitenin ne için olduğunu seçin ve HAX'ı tarayıcıda o başlangıç sitesiyle açan bir bağlantı ile ilgili CLI komutunu alın."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tarayıcıdaki HAX adresi",
+        "description": "Bağlantının açıldığı yer; ?skeleton= ve &name= eklenir"
+      },
+      {
+        "title": "Dışarıda bırakılacak başlangıç siteleri",
+        "description": "Makine adları, virgülle ayrılmış"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Başlangıç sitesi listesi",
+        "description": "İskelet listesinin adresi (app-hax'ın okuduğu biçim)"
+      }
+    ]
+  }
+}

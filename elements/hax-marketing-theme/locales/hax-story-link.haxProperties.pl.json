@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Przycisk historii",
+    "description": "Przycisk otwierający historię stojącą za twierdzeniem na hax.cloud lub odpowiednie miejsce w innej witrynie sieci HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokąd prowadzi",
+        "options": {
+          "cloud": "hax.cloud, historia",
+          "learn": "learn.hax.cloud, samouczek",
+          "try": "browser.hax.cloud, wypróbuj",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adres w tej witrynie (historia na hax.cloud wygląda jak stories/ee450a19)"
+      },
+      {
+        "title": "O czym to jest"
+      },
+      {
+        "title": "Mała etykieta"
+      },
+      {
+        "title": "Pokaż w przycisku, o czym to jest"
+      }
+    ]
+  }
+}

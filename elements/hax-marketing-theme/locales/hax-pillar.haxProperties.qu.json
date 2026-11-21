@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilar",
+    "description": "Huk pilar: suti, rimay, icono, llimp'i, imarayku ancha chaniyuq"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti"
+      },
+      {
+        "title": "Rimay"
+      },
+      {
+        "title": "Icono"
+      },
+      {
+        "title": "Llimp'i (DDD suti)"
+      },
+      {
+        "title": "Mayqin pilar, 1 manta 7 kama"
+      },
+      {
+        "title": "Huch'uy tarjeta"
+      },
+      {
+        "title": "Suti maypichus rin"
+      }
+    ]
+  }
+}

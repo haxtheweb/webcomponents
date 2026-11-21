@@ -40,5 +40,7 @@
   "hideDirections": "Qari tilmaamaha",
   "showRelatedContent": "Muuji nuxurka la xiriira",
   "hideRelatedContent": "Qari nuxurka la xiriira",
-  "notAttempted": "Lama isku dayin"
+  "notAttempted": "Lama isku dayin",
+  "cardsDirections": "Kaararka u dhig habka saxda ah adigoo isticmaalaya badhamada hore u dhaqaaji iyo gadaal u dhaqaaji ee kaar kasta, ama ku jiid mouse. Markaad aaminsan tahay inay habka saxda ah ku jiraan, tijaabi jawaabtaada adigoo dooranaya {checkAnswer}.",
+  "movedToPosition": "{item} waxaa loo raray booska {position} ee {total}"
 }

@@ -4,7 +4,12 @@
     "description": "Hoʻokani i ka maʻamau launa pāpā H5P mai kahi waihona .h5p i hoʻouka ʻia, me ka makemake ʻole i kahi kikowaena H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Waihona H5P",
+        "description": "E hoʻouka a i ʻole e loulou i kahi waihona .h5p. Wehe ʻia ma ka polokalamu kele; ʻaʻole pono kekahi kikowaena H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Ke kumu iframe kahiko",

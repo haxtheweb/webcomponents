@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "标题"
+        "title": "标题",
+        "description": "课程模型上头显示个标题。"
       },
       {
         "property": "src",
-        "title": "来源"
+        "title": "来源",
+        "description": "要显示个 3D 模型文件（.glb 或者 .gltf）个地址。"
       },
       {
         "property": "alt",
-        "title": "替代文字"
+        "title": "替代文字",
+        "description": "为看勿见个人描述迭个 3D 模型。"
       },
       {
         "title": "信息区域"

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Mavara Anotsiva Mufananidzo"
+        "title": "Mavara Anotsiva Mufananidzo",
+        "description": "Tsanangura mufananidzo kuvanhu vasingagoni kuuona."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavhurwa"
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavhurwa",
+        "description": "Mavara ebhatani tsananguro yakavigwa, akadai seRatidza tsananguro."
       },
       {
         "property": "closeText",
-        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavharwa"
+        "title": "Mavara epfupiso asingamanikidzwe kana ruzivo rwakavharwa",
+        "description": "Mavara ebhatani tsananguro ichiratidzwa, akadai seViga tsananguro."
       }
     ]
   }

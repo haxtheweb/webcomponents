@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Chosintha cha mtundu wa media",
-        "description": "Chosintha cha gawo la media chosakakamizidwa. Chimafotokoza mtundu wa media umene layisensi iyi ikugwira ntchito."
+        "description": "Chosintha cha gawo la media chosakakamizidwa. Chimafotokoza mtundu wa media umene layisensi iyi ikugwira ntchito.",
+        "options": {
+          "": "Palibe chosintha"
+        }
       },
       {
         "property": "uri",

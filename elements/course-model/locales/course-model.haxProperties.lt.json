@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "pavadinimas"
+        "title": "pavadinimas",
+        "description": "Antraštė, rodoma virš kurso modelio."
       },
       {
         "property": "src",
-        "title": "šaltinis"
+        "title": "šaltinis",
+        "description": "Rodomo 3D modelio failo (.glb arba .gltf) adresas."
       },
       {
         "property": "alt",
-        "title": "alternatyvusis tekstas"
+        "title": "alternatyvusis tekstas",
+        "description": "Aprašykite 3D modelį tiems, kurie jo nemato."
       },
       {
         "title": "Informacijos sritis"

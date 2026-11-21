@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Līdzautori",
+    "description": "Cilvēki, kas veidoja projektu, no saraksta faila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Saraksta fails (JSON)"
+      },
+      {
+        "title": "Skats: landed, lab vai code"
+      },
+      {
+        "title": "Maksimālais rādāmo cilvēku skaits (0 ir visi)"
+      }
+    ]
+  }
+}

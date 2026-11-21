@@ -52,6 +52,20 @@
           "_top": "Ylin ikkuna - _top",
           "_parent": "Yläikkuna - _parent"
         }
+      },
+      {
+        "title": "Ei nuolta",
+        "description": "Piilota painikkeen nuoli."
+      },
+      {
+        "title": "Linkki: kohde",
+        "description": "Missä linkki avataan.",
+        "options": {
+          "": "Sama ikkuna",
+          "_blank": "Uusi ikkuna - _blank",
+          "_top": "Ylin ikkuna - _top",
+          "_parent": "Yläikkuna - _parent"
+        }
       }
     ],
     "developer": [

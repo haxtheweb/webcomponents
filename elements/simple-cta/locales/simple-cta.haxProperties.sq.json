@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fshih ikonën",
         "description": "Fshih ikonën që përdoret për të theksuar tekstin"
+      },
+      {
+        "title": "Pamja",
+        "description": "Sa theks ka butoni.",
+        "options": {
+          "": "I mbushur",
+          "tonal": "Tonal",
+          "outlined": "Me kontur",
+          "plain": "I thjeshtë"
+        }
+      },
+      {
+        "title": "Madhësia",
+        "description": "Madhësia e butonit.",
+        "options": {
+          "s": "I vogël",
+          "": "Mesatar",
+          "l": "I madh"
+        }
       }
     ],
     "advanced": [

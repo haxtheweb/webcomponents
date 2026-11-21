@@ -1,0 +1,8 @@
+{
+  "theme": "Тэма",
+  "palette": "Палітра",
+  "themeDefault": "Па змаўчанні тэмы",
+  "designSystem": "Дызайн-сістэма",
+  "designSystemDefault": "DDD (па змаўчанні)",
+  "designSystemUnavailable": "Гэта тэма захоўвае ўласную дызайн-сістэму"
+}

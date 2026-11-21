@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Heltebanner",
+    "description": "Et stort bilde, en GIF eller en video med overskrift og tekst over, plassert hvor som helst på en side."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bilde eller video",
+        "description": "En JPG-, PNG-, WebP-, GIF-, MP4- eller WebM-fil."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriv bildet. La stå tomt når det bare er pynt."
+      },
+      {
+        "title": "Overskrift",
+        "description": "Overskrift som vises over mediet. La stå tomt for ingen."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst som vises under overskriften, over mediet."
+      },
+      {
+        "title": "Full bredde",
+        "description": "Gå fra kant til kant i stedet for å ligge i innholdskolonnen."
+      },
+      {
+        "title": "Høyde",
+        "options": {
+          "tall": "Høy",
+          "medium": "Middels",
+          "short": "Lav"
+        }
+      },
+      {
+        "title": "Utsnitt",
+        "description": "Hvordan bildet plasseres ved hver skjermstørrelse"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toning",
+        "description": "Farge lagt over mediet. Med overskrift eller tekst er det alltid en, så teksten forblir lesbar.",
+        "options": {
+          "blue": "Blå",
+          "bottom": "Mørk nederst",
+          "none": "Ingen"
+        }
+      },
+      {
+        "title": "Tekstplassering",
+        "options": {
+          "bottom": "Nederst",
+          "middle": "Midten"
+        }
+      },
+      {
+        "title": "Fokuspunkt bortover",
+        "description": "Den delen av bildet som forblir synlig når det beskjæres, fra 0 (venstre) til 100 (høyre)."
+      },
+      {
+        "title": "Fokuspunkt nedover",
+        "description": "Den delen av bildet som forblir synlig når det beskjæres, fra 0 (topp) til 100 (bunn)."
+      }
+    ]
+  }
+}

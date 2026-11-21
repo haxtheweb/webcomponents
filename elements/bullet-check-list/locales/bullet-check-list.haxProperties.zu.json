@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Uhlu lokuhlola lwezinhlamvu",
+    "description": "Uhlu lwamabhokisi okumaka. Abafundi bamaka izinto futhi inqubekelaphambili yabo ikhunjulwa edivayisini yabo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Igama lohlu. Lifundwa ngokuzwakalayo njengelebula yeqembu lamabhokisi okumaka."
+      },
+      {
+        "title": "Izinto",
+        "description": "Into ngayinye iyibhokisi lokumaka. Izinto ezimakiwe noma ezikhutshaziwe azikwazi ukushintshwa abafundi."
+      },
+      {
+        "title": "Kunezinombolo",
+        "description": "Bonisa uhlu olunezinombolo esikhundleni sohlu lwezinhlamvu."
+      },
+      {
+        "title": "Isimo",
+        "description": "Ishintsha imibala ukuze ifane ne-stop-note.",
+        "options": {
+          "info": "Isaziso",
+          "success": "Ukuqinisekisa",
+          "warning": "Isexwayiso",
+          "stop": "Yima"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "I-ID yokugcina",
+        "description": "I-ID eyingqayizivele esetshenziselwa ukukhumbula inqubekelaphambili yomfundi edivayisini yakhe. Ikhiqizwa ngokuzenzakalelayo; yishintshe kuphela ukuze wabelane ngenqubekelaphambili phakathi kwezinhlu noma uqale kabusha."
+      }
+    ]
+  }
+}

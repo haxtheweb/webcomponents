@@ -2,5 +2,9 @@
   "toggleAnimation": "Bật/tắt hoạt ảnh",
   "info": "thông tin",
   "image": "Hình ảnh",
-  "animatedGif": "GIF động"
+  "animatedGif": "GIF động",
+  "playAnimation": "Phát hoạt ảnh",
+  "pauseAnimation": "Tạm dừng hoạt ảnh",
+  "showDescription": "Hiện mô tả",
+  "hideDescription": "Ẩn mô tả"
 }

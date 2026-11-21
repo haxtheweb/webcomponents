@@ -5,5 +5,7 @@
   "editModeLabel": "Medijos grojaraščio redagavimo režimas",
   "position": "{current} iš {total}",
   "previousItem": "Ankstesnis elementas",
-  "nextItem": "Kitas elementas"
+  "nextItem": "Kitas elementas",
+  "fullScreen": "Visas ekranas",
+  "exitFullScreen": "Išeiti iš viso ekrano"
 }

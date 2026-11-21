@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Rikch'a wikch'una suyukuna",
+    "description": "Yachaqaqkunaqa rikch'a patapi kaq suyukunaman etiquetakunata churanku, chaymanta kutichiyninkuta qhawanku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikch'a",
+        "description": "Yachaqaqkuna etiquetakunata churasqanku rikch'a."
+      },
+      {
+        "title": "Rantin qillqa",
+        "description": "Mana rikuyta atiqkunapaq rikch'ata willan. Ama etiquetakuna maymanchus rinanta willaychu."
+      },
+      {
+        "title": "Rikch'ap sutin",
+        "description": "Rikch'apaq pisi rikukuq suti, hanaqninpi rikuchisqa."
+      },
+      {
+        "title": "Tapuy",
+        "description": "Yachaqaqkunata etiquetakunawan imatachus rurananpaq mañakun."
+      },
+      {
+        "title": "Etiquetakuna suyukuna ima",
+        "description": "Sapa kaq yachaqaqkuna churanankupaq etiqueta. Huk etiquetaman suyu sutita quy suyunta rikch'api churanapaq; mana suyu sutiyuq etiquetaqa yapasqam, mana maymanpas kanchu. Suyu yupaykunaqa rikch'ap porcentajenmi."
+      },
+      {
+        "title": "Rikch'a willay",
+        "description": "Rikch'ap uranpi munaspa rikuchina willay."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruraykuykuna",
+        "description": "Huk yachaqaq hayk'a kutitam qhawanman. 0 niyta munan mana saywayuq."
+      },
+      {
+        "title": "Etiquetakunata chaqruy",
+        "description": "Sapa watukuypi etiquetakunata huk siq'ipi rikuchiy."
+      },
+      {
+        "title": "K'uyunalla",
+        "description": "Kay tapuyta kichakuq wichq'akuq siq'i hina rikuchiy. Hukta kichayqa waqtanpi kaq huk k'uyunalla tapuykunata wichq'an."
+      },
+      {
+        "title": "K'uyusqa qallariy",
+        "description": "K'uyunalla kaptinqa, tapuyllata kaqnintawan rikuchiq wichq'asqa siq'i hina qallariy."
+      },
+      {
+        "title": "Chaninchay laya",
+        "description": "OER Schema: kay chaninchaypa chaninchay layan (kayhina puntokuna, siq'i, porcentaje, tukuchay)."
+      },
+      {
+        "title": "Yachay munay",
+        "description": "OER Schema: kay chaninchaywan t'inkisqa yachay munay."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tapukuyp sutin",
+        "description": "Análisis sistemakunapi xAPI riqsinapaq llamk'achisqa tapukuy suti."
+      },
+      {
+        "title": "Yachaqay",
+        "description": "OER Schema: kay chaninchay maymanchus rinan yachaqay."
+      }
+    ]
+  }
+}

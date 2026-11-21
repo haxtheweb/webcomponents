@@ -1,0 +1,22 @@
+{
+  "scenario": "Haala fakkeessaa",
+  "directions": "Qajeelfama",
+  "showDirections": "Qajeelfama agarsiisi",
+  "hideDirections": "Qajeelfama dhoksi",
+  "directionsRead": "Taatee tokkoon tokkoon dubbisii maal akka gootu filadhu.",
+  "directionsEndings": "Xumuraaleen hedduun jiru. Erga xumurtee booda karaa biraa yaali.",
+  "startOver": "Jalqabaa eegali",
+  "back": "Tarkaanfii tokko duubatti",
+  "tryAnother": "Karaa biraa yaali",
+  "path": "Karaa",
+  "scene": "Taatee",
+  "ending": "Xumura",
+  "end": "dhuma",
+  "scenesSeen": "Taateewwan {total} keessaa {seen} ilaalameera",
+  "endingReached": "Xumura irra gahameera",
+  "addScene": "Taatee dabali",
+  "newScene": "Taatee haaraa",
+  "newSceneText": "Maal akka ta'u ibsi, achiis filannoo tokkoon tokkoon taatee tokkotti hidhi.",
+  "editingNote": "Gulaallii: taateen hundi ni mul'ata. Filannoon liinkii gara # kan ID taatee hordofuu dha.",
+  "noScenes": "Haala fakkeessaa jalqabuuf taatee dabali."
+}

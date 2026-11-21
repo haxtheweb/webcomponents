@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Botó d'història",
+    "description": "El botó que obre la història darrere d'una afirmació a hax.cloud, o el lloc corresponent en un altre lloc de la xarxa HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "On porta",
+        "options": {
+          "cloud": "hax.cloud, la història",
+          "learn": "learn.hax.cloud, un tutorial",
+          "try": "browser.hax.cloud, prova-ho",
+          "elements": "webcomponents.hax.cloud, un bloc",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adreça en aquell lloc (una història a hax.cloud té l'aspecte stories/ee450a19)"
+      },
+      {
+        "title": "De què tracta"
+      },
+      {
+        "title": "Xip petit"
+      },
+      {
+        "title": "Mostra de què tracta al botó"
+      }
+    ]
+  }
+}

@@ -60,6 +60,8 @@
   "flagsFound": "{correct} av {total} funnin",
   "toRethink": "{count} at hugsa umaftur",
   "notEvidence": "ikki prógv fyri hetta flaggið",
+  "isEvidence": "prógv fyri hesum merkinum",
+  "readingKeys": "Brúka pílaknøttarnar fyri at flyta frá einum {unit} til tað næsta.",
   "markAnswers": "Merk svar",
   "doneMarking": "Liðugt at merkja svar",
   "editHint": "Rætta tekstin niðanfyri. Brúka Merk svar í blokkvalmyndini fyri at velja, hvar hvørt flagg hoyrir heima.",

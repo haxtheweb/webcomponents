@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Qhipa rikch'a."
+        "description": "Qhipa rikch'a.",
+        "title": "Rikch'a"
       },
       {
         "property": "caption",
-        "description": "Qillqapa uman."
+        "description": "Qillqapa uman.",
+        "title": "Rikch'a willay"
       }
     ]
   }

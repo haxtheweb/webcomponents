@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Kahraman alanı",
+    "description": "Bir sayfanın herhangi bir yerine yerleştirilen, üzerinde başlık ve metin bulunan büyük bir görsel, GIF veya video."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Görsel veya video",
+        "description": "JPG, PNG, WebP, GIF, MP4 veya WebM dosyası."
+      },
+      {
+        "title": "Alternatif metin",
+        "description": "Görseli açıklayın. Yalnızca süs amaçlıysa boş bırakın."
+      },
+      {
+        "title": "Başlık",
+        "description": "Medyanın üzerinde gösterilen başlık. İstemiyorsanız boş bırakın."
+      },
+      {
+        "title": "Metin",
+        "description": "Başlığın altında, medyanın üzerinde gösterilen metin."
+      },
+      {
+        "title": "Tam genişlik",
+        "description": "İçerik sütununda durmak yerine kenardan kenara uzansın."
+      },
+      {
+        "title": "Yükseklik",
+        "options": {
+          "tall": "Uzun",
+          "medium": "Orta",
+          "short": "Kısa"
+        }
+      },
+      {
+        "title": "Çerçeveleme",
+        "description": "Fotoğrafın her ekran boyutunda nasıl durduğu"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Soldurma",
+        "description": "Medyanın üzerine yerleştirilen renk. Başlık veya metin varsa metin okunabilir kalsın diye her zaman bir tane bulunur.",
+        "options": {
+          "blue": "Mavi",
+          "bottom": "Altta koyu",
+          "none": "Yok"
+        }
+      },
+      {
+        "title": "Metin konumu",
+        "options": {
+          "bottom": "Alt",
+          "middle": "Orta"
+        }
+      },
+      {
+        "title": "Yatay odak noktası",
+        "description": "Kırpıldığında görselde görünür kalan kısım, 0 (sol) ile 100 (sağ) arası."
+      },
+      {
+        "title": "Dikey odak noktası",
+        "description": "Kırpıldığında görselde görünür kalan kısım, 0 (üst) ile 100 (alt) arası."
+      }
+    ]
+  }
+}

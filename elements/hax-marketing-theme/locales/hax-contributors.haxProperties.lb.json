@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Matwierkender",
+    "description": "D'Leit, déi de Projet gebaut hunn, aus engem Lëschtefichier"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lëschtefichier (JSON)"
+      },
+      {
+        "title": "Usiicht: landed, lab oder code"
+      },
+      {
+        "title": "Maximal Zuel vu Leit, déi gewise ginn (0 ass all)"
+      }
+    ]
+  }
+}

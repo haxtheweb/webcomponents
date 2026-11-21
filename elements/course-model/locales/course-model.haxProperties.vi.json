@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "tiêu đề"
+        "title": "tiêu đề",
+        "description": "Tiêu đề hiển thị phía trên mô hình khóa học."
       },
       {
         "property": "src",
-        "title": "nguồn"
+        "title": "nguồn",
+        "description": "Địa chỉ của tệp mô hình 3D (.glb hoặc .gltf) cần hiển thị."
       },
       {
         "property": "alt",
-        "title": "văn bản thay thế"
+        "title": "văn bản thay thế",
+        "description": "Mô tả mô hình 3D cho những người không thể nhìn thấy nó."
       },
       {
         "title": "Vùng thông tin"

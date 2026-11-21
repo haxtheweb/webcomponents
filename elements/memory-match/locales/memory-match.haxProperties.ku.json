@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Lîstika bîrê",
+    "description": "Kartan biqulipîne da ku cotan bibînî. Têgehekê bi wateya wê re bike cot da ku lihevhatin têgihîştinê nîşan bide, an du nivîs an wêneyên lihevhatî bi kar bîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Daxwaza ku di serî de tê nîşandan, wek: Têgehê bi karê wê re li hev bîne."
+      },
+      {
+        "title": "Cot",
+        "description": "Her cot du kart in ku bi hev re ne, bi gelemperî têgehek û wateya wê. Aliyek nivîs, wêne an herduyan hewce dike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê vebijarkî ji bo çîpa serî, pişta kartan û bişkokê."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Pytyvõhára",
+    "description": "Umi tapicha omopu'ãva proyecto, peteĩ lista marandurenda guive"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lista marandurenda (JSON)"
+      },
+      {
+        "title": "Jehecha: landed, lab térã code"
+      },
+      {
+        "title": "Hetave tapicha ojehechauka hag̃ua (0 ha'e opavave)"
+      }
+    ]
+  }
+}

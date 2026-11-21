@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Razvejani scenarij",
+    "description": "Zgodba, v kateri vsaka izbira vodi do drugega prizora in konca. Učenci se lahko vrnejo in poskusijo druge poti; doseženi konec določi rezultat."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Ime scenarija, prikazano v glavi."
+      },
+      {
+        "title": "Začetni prizor",
+        "description": "ID prizora, na katerem učenci začnejo. Pustite prazno, da začnete s prvim prizorom."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Poudarjalna barva",
+        "description": "Izbirna barva za značko v glavi, gumbe in rob izbire."
+      }
+    ]
+  }
+}

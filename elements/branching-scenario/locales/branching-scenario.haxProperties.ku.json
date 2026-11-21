@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Senaryoya şaxdar",
+    "description": "Çîrokek ku her bijare ber bi dîmen û dawiyeke cuda ve diçe. Fêrxwaz dikarin paşve gav biavêjin û rêyên din biceribînin; dawiya gihîştî puanê diyar dike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Navê senaryoyê, di serê wê de tê nîşandan."
+      },
+      {
+        "title": "Dîmena destpêkê",
+        "description": "ID-ya dîmena ku fêrxwaz jê dest pê dikin. Vala bihêle da ku ji dîmena yekem dest pê bike."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rengê balkêş",
+        "description": "Rengê vebijarkî ji bo çîpa serî, bişkokan û qeraxa bijarekê."
+      }
+    ]
+  }
+}

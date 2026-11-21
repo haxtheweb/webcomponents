@@ -60,6 +60,8 @@
   "flagsFound": "Rasta {correct} iš {total}",
   "toRethink": "Reikia permąstyti: {count}",
   "notEvidence": "nėra šios vėliavėlės įrodymas",
+  "isEvidence": "šios žymės įrodymas",
+  "readingKeys": "Rodyklių klavišais pereikite nuo vieno {unit} prie kito.",
   "markAnswers": "Pažymėti atsakymus",
   "doneMarking": "Baigti žymėti atsakymus",
   "editHint": "Redaguokite tekstą žemiau. Bloko meniu naudokite „Pažymėti atsakymus“, kad pasirinktumėte, kur turi būti kiekviena vėliavėlė.",

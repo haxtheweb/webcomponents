@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "چپ",
+    "description": "ليبل سان ننڍو آئڪن"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "آئڪن"
+      },
+      {
+        "title": "ليبل"
+      }
+    ]
+  }
+}

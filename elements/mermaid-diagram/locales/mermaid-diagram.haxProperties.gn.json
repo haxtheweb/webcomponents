@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Ta'ãngarysýi moñe'ẽrã guive",
+    "description": "Ehai peteĩ ta'ãngarysýi moñe'ẽrã ramo (Mermaid): jeku'e ta'ãngarysýi, jehasa ñemoĩ, ára rysýi ha hetave. Oñeta'ãngahai kuatiaroguépe moñe'ẽrã ambue reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Ojehechauka ta'ãngarysýi ári ha ojeipuru héra ramo."
+      },
+      {
+        "title": "Ta'ãngarysýi ypykue",
+        "description": "Moñe'ẽrã Mermaid, techapyrã: flowchart TD, upéi peteĩ tysýi peteĩteĩ juajuhápe g̃uarã A[Draft] --> B{Ready?}-icha. Embojoapy |label| peteĩ hu'y rire emoĩ hag̃ua teraguã. Ta'ãngahaipy oñembopyahu rehai aja."
+      },
+      {
+        "title": "Moñe'ẽrã ambue",
+        "description": "Emombe'u mba'épa ohechauka ta'ãngarysýi umi tapicha ndaikatúivape ohecha. Eheja nandi jeku'e ta'ãngarysýipe ojehai hag̃ua ndéve ijehasakuéra."
+      },
+      {
+        "title": "Ta'ãnga rehegua",
+        "description": "Ta'ãnga rehegua ojeiporavokuaáva ojehechaukáva ta'ãngarysýi guýpe."
+      },
+      {
+        "title": "Ehechauka ypykue",
+        "description": "Ehechauka ta'ãngarysýi moñe'ẽrã ta'ãngahaipy ykére."
+      },
+      {
+        "title": "Ehechauka moñe'ẽrã ambue",
+        "description": "Ehechauka moñe'ẽrã ambue ta'ãngahaipy guýpe. Oĩ meme mba'erechaha moñe'ẽhárape g̃uarã."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ypykue marandurenda",
+        "description": "Peteĩ marandurenda .mmd kundaharape oñeta'ãngahai hag̃ua moñe'ẽrã yvategua rendaguépe (https térã tape ko tendápe)."
+      },
+      {
+        "title": "Sa'y mbohesakãha",
+        "description": "Ta'ãngachu'i chip sa'y iñakãme."
+      }
+    ]
+  }
+}

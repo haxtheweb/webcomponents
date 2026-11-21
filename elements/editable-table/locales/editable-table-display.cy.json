@@ -3,5 +3,8 @@
   "copyAsCsv": "Copïo fel CSV.",
   "printTable": "Argraffu'r Tabl",
   "selectColumn": "Dewis Colofn",
-  "dataTable": "Data · Tabl"
+  "dataTable": "Data · Tabl",
+  "filterStatus": "Yn dangos {shown} o {total} rhes, wedi'u hidlo yn ôl {column}: {text}",
+  "columnNumber": "Colofn {column}",
+  "clearFilter": "Clirio'r hidlydd"
 }

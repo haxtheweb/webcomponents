@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifiseer kolle",
+    "description": "Leerders vind die regte kolle op 'n beeld deur te klik, te tik of 'n sleutelbord-kruisdraad te beweeg. Die geëvalueerde eweknie van 'n beeldkaart."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beeld",
+        "description": "Die prent wat leerders deursoek."
+      },
+      {
+        "title": "Alternatiewe teks",
+        "description": "Beskryf die prent vir mense wat dit nie kan sien nie. Dit word nooit as die titel gewys nie."
+      },
+      {
+        "title": "Titel",
+        "description": "'n Kort sigbare titel wat bo die prent gewys word."
+      },
+      {
+        "title": "Vraag",
+        "description": "Wat leerders gevra word om in die prent te vind."
+      },
+      {
+        "title": "Antwoorde",
+        "description": "Elke antwoord is 'n benoemde ovaal op die prent. Posisie en grootte is persentasies van die prent, gemeet vanaf sy boonste linkerhoek. Tydens redigering word elke antwoord op die prent omlyn."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogings",
+        "description": "Hoeveel keer 'n leerder kan probeer. 0 beteken onbeperk."
+      },
+      {
+        "title": "Toegelate mis",
+        "description": "Hoeveel mis 'n poging beëindig. 0 beteken onbeperk, en leerders kry 'n Voltooi-knoppie."
+      },
+      {
+        "title": "Invoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. Om een oop te maak, maak die ander invoubare vrae langsaan toe."
+      },
+      {
+        "title": "Begin ingevou",
+        "description": "Wanneer invoubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      },
+      {
+        "title": "Nasienformaat",
+        "description": "OER Schema: nasienformaat vir hierdie assessering (bv. punte, letter, persent, voltooiing)."
+      },
+      {
+        "title": "Leeruitkoms",
+        "description": "OER Schema: leeruitkoms wat met hierdie assessering geassosieer word."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat deurgegee word vir gebruik in xAPI-gedrewe omgewings vir identifikasie van hierdie item"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus waarvoor hierdie assessering bedoel is."
+      }
+    ]
+  }
+}

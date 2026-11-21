@@ -5,5 +5,6 @@
   "selected": "ရွေးထားသည်",
   "currentlyActiveAndSelectedPalette": "လက်ရှိ အသက်ဝင်ပြီး ရွေးထားသော အရောင်စု",
   "currentlyActivePalette": "လက်ရှိ အသက်ဝင် အရောင်စု",
-  "selectedPaletteToApply": "အသုံးချရန် ရွေးထားသော အရောင်စု"
+  "selectedPaletteToApply": "အသုံးချရန် ရွေးထားသော အရောင်စု",
+  "paletteNumber": "အရောင်စု {number}"
 }

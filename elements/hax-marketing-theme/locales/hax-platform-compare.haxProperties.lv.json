@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platformu salīdzinājums",
+    "description": "Viens pret vienu: izvēlieties jebkuras divas platformas no datu faila"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Salīdzinājuma dati (JSON)"
+      },
+      {
+        "title": "Kreisās platformas ID"
+      },
+      {
+        "title": "Labās platformas ID"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Történet gomb",
+    "description": "A gomb, amely megnyitja egy állítás mögötti történetet a hax.cloud oldalon, vagy a megfelelő helyet egy másik HAX hálózati webhelyen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hová vezet",
+        "options": {
+          "cloud": "hax.cloud, a történet",
+          "learn": "learn.hax.cloud, egy oktatóanyag",
+          "try": "browser.hax.cloud, próbálja ki",
+          "elements": "webcomponents.hax.cloud, egy blokk",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Cím azon a webhelyen (egy történet a hax.cloud oldalon így néz ki: stories/ee450a19)"
+      },
+      {
+        "title": "Miről szól"
+      },
+      {
+        "title": "Kis címke"
+      },
+      {
+        "title": "Mutassa a gombban, miről szól"
+      }
+    ]
+  }
+}

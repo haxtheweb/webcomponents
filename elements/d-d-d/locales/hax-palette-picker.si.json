@@ -5,5 +5,6 @@
   "selected": "තෝරාගත්",
   "currentlyActiveAndSelectedPalette": "දැනට සක්‍රිය සහ තෝරාගත් වර්ණ තලය",
   "currentlyActivePalette": "දැනට සක්‍රිය වර්ණ තලය",
-  "selectedPaletteToApply": "යෙදීමට තෝරාගත් වර්ණ තලය"
+  "selectedPaletteToApply": "යෙදීමට තෝරාගත් වර්ණ තලය",
+  "paletteNumber": "වර්ණ තලය {number}"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kennzahl",
+    "description": "Eine hochzählende Zahl mit Beschriftung und Link zu ihrer Geschichte"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zahl, bis zu der gezählt wird"
+      },
+      {
+        "title": "Vor der Zahl"
+      },
+      {
+        "title": "Nach der Zahl"
+      },
+      {
+        "title": "Wörter statt einer Zahl"
+      },
+      {
+        "title": "Was gezählt wird"
+      },
+      {
+        "title": "Adresse der Geschichte auf hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

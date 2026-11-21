@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagramm",
+    "description": "Radar- (ämblikuvõrk-) diagramm küpsusmudelite ja tahkude hindamiseks, näiteks HEOSAT. Sisaldab tekstilist alternatiivi ja andmetabelit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Diagrammi pealkiri; kasutatakse ka selle ligipääsetava nimena."
+      },
+      {
+        "title": "Maksimaalne tulemus",
+        "description": "Skaala kõrgeim väärtus."
+      },
+      {
+        "title": "Kategooriad",
+        "description": "Üks kategooria rea kohta. Vaja on vähemalt 3."
+      },
+      {
+        "title": "Tulemused",
+        "description": "Komadega eraldatud arvud, üks iga kategooria kohta samas järjekorras."
+      },
+      {
+        "title": "Sihttulemused",
+        "description": "Komadega eraldatud arvud, üks iga kategooria kohta samas järjekorras."
+      },
+      {
+        "title": "Näita legendi",
+        "description": "Näita legendi, mis nimetab tulemused ja sihid."
+      },
+      {
+        "title": "Kompaktne",
+        "description": "Väiksem diagramm ilma siltide, legendi ja andmetabelita. Väärtuste nägemiseks vii kursor punktile."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tulemuse silt",
+        "description": "Legendi ja tabeli silt tulemuste jaoks."
+      },
+      {
+        "title": "Sihi silt",
+        "description": "Legendi ja tabeli silt sihtide jaoks."
+      }
+    ]
+  }
+}

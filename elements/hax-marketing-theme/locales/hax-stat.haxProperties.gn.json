@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Estadística",
+    "description": "Peteĩ papapy oñembopapáva yvate gotyo, teraguã ha hembiasakue juajuha reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Papapy oñembopapa hag̃ua peve"
+      },
+      {
+        "title": "Papapy mboyve"
+      },
+      {
+        "title": "Papapy rire"
+      },
+      {
+        "title": "Ñe'ẽ papapy rendaguépe"
+      },
+      {
+        "title": "Mba'épa oipapa"
+      },
+      {
+        "title": "Tembiasakue kundaharape hax.cloud-pe (stories/ee450a19)"
+      }
+    ]
+  }
+}

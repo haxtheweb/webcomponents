@@ -2,5 +2,9 @@
   "toggleAnimation": "એનિમેશન ચાલુ/બંધ કરો",
   "info": "માહિતી",
   "image": "છબી",
-  "animatedGif": "એનિમેટેડ GIF"
+  "animatedGif": "એનિમેટેડ GIF",
+  "playAnimation": "એનિમેશન ચલાવો",
+  "pauseAnimation": "એનિમેશન થોભાવો",
+  "showDescription": "વર્ણન બતાવો",
+  "hideDescription": "વર્ણન છુપાવો"
 }

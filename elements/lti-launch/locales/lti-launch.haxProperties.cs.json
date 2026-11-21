@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Spuštění externího nástroje",
+    "description": "Blok, který otevře externí výukový nástroj v novém okně nebo na stránce, jako prostý odkaz nebo s přihlašovacím požadavkem LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Název nástroje. Zobrazuje se v záhlaví a na tlačítku."
+      },
+      {
+        "title": "Popis",
+        "description": "Co studenti v nástroji dělají, zobrazeno nad tlačítkem."
+      },
+      {
+        "title": "Spouštěcí URL",
+        "description": "Adresa nástroje. Musí to být úplná adresa začínající https:// nebo http://."
+      },
+      {
+        "title": "Otevřít v",
+        "description": "Nové okno funguje s každým nástrojem. Na této stránce funguje jen s nástroji, které dovolují zobrazení uvnitř jiného webu.",
+        "options": {
+          "window": "Nové okno",
+          "embed": "Na této stránce"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Přihlašovací URL LTI",
+        "description": "Jen LTI 1.3: adresa pro zahájení přihlášení k nástroji. S ní, ID klienta a ID nasazení tlačítko odešle přihlašovací požadavek LTI místo otevření prostého odkazu. K dokončení spuštění je potřeba služba LTI tohoto webu."
+      },
+      {
+        "title": "ID klienta LTI",
+        "description": "ID klienta, které nástroj dal tomuto webu. Veřejný identifikátor, ne tajemství: nikdy sem nedávejte klíče ani tajné údaje."
+      },
+      {
+        "title": "ID nasazení LTI",
+        "description": "ID nasazení, které nástroj dal tomuto webu. Veřejný identifikátor, ne tajemství."
+      },
+      {
+        "title": "Vydavatel LTI",
+        "description": "Adresa, která tento web identifikuje vůči nástroji. Ponechte prázdné pro použití adresy webu, na kterém stránka je."
+      },
+      {
+        "title": "Výška na stránce",
+        "description": "Výška nástroje, když se otevře na této stránce, v pixelech (200 až 2000)."
+      },
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Barva štítku záhlaví a tlačítka. Ponechte prázdné, aby se řídila motivem."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nápověda přihlášení LTI",
+        "description": "Neprůhledná hodnota, podle které služba LTI tohoto webu rozpozná studenta. Obvykle ji web dodá přes událost lti-launch-request, místo aby se ukládala zde. Nikdy heslo ani klíč."
+      },
+      {
+        "title": "Nápověda zprávy LTI",
+        "description": "Neprůhledná hodnota, podle které služba LTI tohoto webu rozpozná toto spuštění. Obvykle ji dodá web, místo aby se ukládala zde."
+      }
+    ]
+  }
+}

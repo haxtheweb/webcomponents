@@ -3,5 +3,7 @@
   "status_stop": "Dúró",
   "status_warning": "Ìkìlọ̀",
   "status_success": "Àṣeyọrí",
-  "status_info": "Àkíyèsí"
+  "status_info": "Àkíyèsí",
+  "status_tip": "Ṣé o mọ̀?",
+  "status_new": "Ohun tuntun"
 }

@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Wax-ka-beddelaha warbaahinta",
-        "description": "Wax-ka-beddele ikhtiyaari ah oo nooca warbaahinta. Wuxuu qeexayaa nooca warbaahinta uu shatigani khuseeyo."
+        "description": "Wax-ka-beddele ikhtiyaari ah oo nooca warbaahinta. Wuxuu qeexayaa nooca warbaahinta uu shatigani khuseeyo.",
+        "options": {
+          "": "Beddele ma jiro"
+        }
       },
       {
         "property": "uri",

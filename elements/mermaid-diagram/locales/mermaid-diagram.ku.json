@@ -1,0 +1,21 @@
+{
+  "diagram": "Diyagram",
+  "flowchart": "nexşeya herikînê",
+  "sequence": "rêzik",
+  "source": "Çavkanî",
+  "textAlternative": "Alternatîfa nivîsê",
+  "present": "Pêşkêş bike",
+  "exitPresent": "Ji pêşkêşiyê derkeve",
+  "loading": "Diyagram tê barkirin",
+  "empty": "Hêj tiştek tune ku bê xêzkirin. Çavkaniya diyagramê zêde bike.",
+  "error": "Çewtî",
+  "parseError": "Ev diyagram nehate xêzkirin. Çavkaniyê kontrol bike.",
+  "loadError": "Pirtûkxaneya diyagramê nehate barkirin.",
+  "srcError": "Pela diyagramê nehate barkirin.",
+  "decision": "biryar",
+  "end": "dawî",
+  "goTo": "here {target}",
+  "ifGoTo": "heke {label}, here {target}",
+  "describedBySource": "Diyagram ji aliyê çavkaniya xwe ve tê ravekirin.",
+  "scrollable": "Diyagram, dikare were gerandin"
+}

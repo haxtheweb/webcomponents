@@ -5,5 +5,6 @@
   "selected": "Filatame",
   "currentlyActiveAndSelectedPalette": "Paaleetii amma hojii irra jiruu fi filatame",
   "currentlyActivePalette": "Paaleetii amma hojii irra jiru",
-  "selectedPaletteToApply": "Paaleetii raawwachuuf filatame"
+  "selectedPaletteToApply": "Paaleetii raawwachuuf filatame",
+  "paletteNumber": "Paleetii {number}"
 }

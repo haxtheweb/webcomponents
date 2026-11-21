@@ -2,5 +2,9 @@
   "toggleAnimation": "បិទ/បើកចលនា",
   "info": "ព័ត៌មាន",
   "image": "រូបភាព",
-  "animatedGif": "GIF មានចលនា"
+  "animatedGif": "GIF មានចលនា",
+  "playAnimation": "ចាក់ចលនា",
+  "pauseAnimation": "ផ្អាកចលនា",
+  "showDescription": "បង្ហាញការពិពណ៌នា",
+  "hideDescription": "លាក់ការពិពណ៌នា"
 }

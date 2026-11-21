@@ -40,5 +40,7 @@
   "hideDirections": "إخفاء التعليمات",
   "showRelatedContent": "عرض المحتوى ذي الصلة",
   "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
-  "notAttempted": "لم تتم المحاولة"
+  "notAttempted": "لم تتم المحاولة",
+  "cardsDirections": "رتّب البطاقات بالترتيب الصحيح باستخدام زرّي النقل إلى الأمام والنقل إلى الخلف على كل بطاقة، أو اسحبها بالفأرة. عندما تعتقد أنها بالترتيب الصحيح، اختبر إجابتك بتحديد {checkAnswer}.",
+  "movedToPosition": "نُقل {item} إلى الموضع {position} من {total}"
 }

@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Yanıtlar",
-        "description": "Yanıtların sırası doğru diziyi belirler."
+        "description": "Yanıtların sırası doğru diziyi belirler.",
+        "options": {
+          "": "Liste",
+          "cards": "Görsel kartlar"
+        }
+      },
+      {
+        "title": "Yanıtlar",
+        "description": "Yanıt sırası doğru diziyi belirler."
       }
     ],
     "advanced": [

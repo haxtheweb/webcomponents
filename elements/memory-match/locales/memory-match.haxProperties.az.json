@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Yaddaş oyunu",
+    "description": "Cütləri tapmaq üçün kartları çevirin. Uyğunluğun anlayışı göstərməsi üçün termini onun mənası ilə cütləyin və ya iki uyğun mətn və ya şəkildən istifadə edin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Başlıqda göstərilən tapşırıq, məsələn: Termini onun funksiyası ilə uyğunlaşdırın."
+      },
+      {
+        "title": "Cütlər",
+        "description": "Hər cüt bir-birinə aid olan iki kartdır, adətən termin və onun mənası. Tərəfdə mətn, şəkil və ya hər ikisi olmalıdır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanı, kartların arxası və düymə üçün ixtiyari rəng."
+      }
+    ]
+  }
+}

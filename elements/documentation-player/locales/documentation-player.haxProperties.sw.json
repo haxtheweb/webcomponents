@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kicheza nyaraka",
+    "description": "Maelekezo, onyesho na rejeleo la kijenzi cha wavuti, pamoja na vitufe vya kunakili HTML, import, npm na CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faili ya data ya nyaraka",
+        "description": "Data ya nyaraka inayokuja na kipengele (lib/tag.docs.json)."
+      },
+      {
+        "title": "Ubao wa hadithi wa maelekezo",
+        "description": "Ubao wa hadithi wa mwendo unaokuja na kipengele (tag.motion.json). Hiari."
+      },
+      {
+        "title": "Mafunzo ya video",
+        "description": "Video fupi kuhusu kipengele (YouTube, Vimeo au faili ya video). Inachukua nafasi ya video iliyo kwenye data ya nyaraka."
+      },
+      {
+        "title": "Fungua kwenye kichupo",
+        "description": "Kichupo kipi kinaonyeshwa kwanza.",
+        "options": {
+          "motion": "Maelekezo",
+          "video": "Video",
+          "demo": "Onyesho",
+          "docs": "Nyaraka",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Cheza maelekezo kiotomatiki",
+        "description": "Anza maelekezo mara kicheza kinapoonekana. Hupuuzwa msomaji anapopendelea mwendo uliopunguzwa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mada ya maelekezo",
+        "description": "Kwa vipengele vyenye maelekezo kadhaa, mada ipi ifunguliwe kwanza (kwa mfano add-blocks). Acha tupu kwa kuu."
+      },
+      {
+        "title": "Kiungo cha onyesho la moja kwa moja",
+        "description": "Mahali kitufe cha Fungua chanzo cha onyesho kinapoelekea. Chaguo-msingi ni folda ya demo kwenye hazina."
+      },
+      {
+        "title": "Kiungo cha nyaraka",
+        "description": "Mahali kitufe cha nyaraka kamili kinapoelekea, kwa mfano ukurasa unaolingana wa Learn HAX."
+      }
+    ]
+  }
+}

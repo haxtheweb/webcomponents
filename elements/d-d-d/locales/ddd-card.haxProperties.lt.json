@@ -52,6 +52,20 @@
           "_top": "Viršutinis langas – _top",
           "_parent": "Tėvinis langas – _parent"
         }
+      },
+      {
+        "title": "Be rodyklės",
+        "description": "Slėpti mygtuko rodyklę."
+      },
+      {
+        "title": "Nuoroda: tikslas",
+        "description": "Kur atidaryti nuorodą.",
+        "options": {
+          "": "Tas pats langas",
+          "_blank": "Naujas langas - _blank",
+          "_top": "Viršutinis langas - _top",
+          "_parent": "Tėvinis langas - _parent"
+        }
       }
     ],
     "developer": [

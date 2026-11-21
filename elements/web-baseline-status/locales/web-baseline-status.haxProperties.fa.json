@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "وضعیت Baseline",
+    "description": "وضعیت پشتیبانی مرورگر Baseline برای یک ویژگی پلتفرم وب را نشان بده."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "شناسهٔ ویژگی",
+        "description": "شناسهٔ ویژگی وب، مثلاً anchor-positioning. شناسه‌ها را در webstatus.dev پیدا کنید؛ شناسه بخش آخر URL صفحهٔ ویژگی است."
+      }
+    ]
+  }
+}

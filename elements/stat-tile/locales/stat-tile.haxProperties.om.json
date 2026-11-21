@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Taayilii istaatistiksii",
+    "description": "Lakkoofsa barbaachisaa tokko, maqaa isaa fi akkamitti akka jijjiirame waliin. Tarree daashboordiitiif hedduu kaartaa keessa kaa'i."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa",
+        "description": "Waan lakkoofsichi safaru."
+      },
+      {
+        "title": "Gatii",
+        "description": "Lakkoofsicha. Lakkoofsi salphaan akka afaan fuulaatti garee'ama; kan biraan akkuma barreeffametti mul'ata."
+      },
+      {
+        "title": "Jijjiirama",
+        "description": "Akkamitti akka jijjiirame, jechootaan, kan akka 6% semisteera kana."
+      },
+      {
+        "title": "Kallattii",
+        "description": "Jijjiiramni ol ykn gadi ta'uu isaa.",
+        "options": {
+          "": "Homaa",
+          "up": "Ol",
+          "down": "Gad"
+        }
+      }
+    ]
+  }
+}

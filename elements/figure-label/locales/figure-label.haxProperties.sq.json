@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etiketa e figurës",
     "description": "Element etikete figure për të shënuar asetet mediatike brenda përmbajtjes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numri i figurës",
+        "description": "Numër ose etiketë e shkurtër për figurën, p.sh. 1.3"
+      },
+      {
+        "title": "Përshkrimi",
+        "description": "Përshkrim i shkurtër i figurës"
+      }
+    ]
   }
 }

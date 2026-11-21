@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mchoro kutoka kwa maandishi",
+    "description": "Andika mchoro kama maandishi (Mermaid): chati mtiririko, mfuatano, ratiba ya matukio na zaidi. Unachorwa kwenye ukurasa pamoja na mbadala wa maandishi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Kinaonyeshwa juu ya mchoro na kutumika kama jina lake."
+      },
+      {
+        "title": "Chanzo cha mchoro",
+        "description": "Maandishi ya Mermaid, kwa mfano: flowchart TD, kisha mstari mmoja kwa kila kiungo kama A[Draft] --> B{Ready?}. Ongeza |label| baada ya mshale kuupa lebo. Mchoro husasishwa unapoandika."
+      },
+      {
+        "title": "Mbadala wa maandishi",
+        "description": "Eleza kile mchoro unachoonyesha kwa watu wasioweza kuuona. Acha tupu kwenye chati mtiririko ili hatua zake ziorodheshwe kwa ajili yako."
+      },
+      {
+        "title": "Maelezo mafupi",
+        "description": "Maelezo mafupi ya hiari yanayoonyeshwa chini ya mchoro."
+      },
+      {
+        "title": "Onyesha chanzo",
+        "description": "Onyesha maandishi ya mchoro kando ya mchoro."
+      },
+      {
+        "title": "Onyesha mbadala wa maandishi",
+        "description": "Onyesha mbadala wa maandishi chini ya mchoro. Daima unapatikana kwa visoma skrini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faili ya chanzo",
+        "description": "Anwani ya faili ya .mmd ya kuchora badala ya maandishi yaliyo juu (https au njia kwenye tovuti hii)."
+      },
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya kibandiko cha ikoni kwenye kichwa."
+      }
+    ]
+  }
+}

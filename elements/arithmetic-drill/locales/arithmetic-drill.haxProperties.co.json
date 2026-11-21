@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Eserciziu d'aritmetica",
+    "description": "Una seria corta di prublemi d'aritmetica generati cù un ritornu immediatu. Sceglite l'operazioni è a gamma di numeri; ogni giru hè novu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Nome di st'eserciziu, mustratu in u so capu."
+      },
+      {
+        "title": "Operazioni",
+        "description": "Chì tipi di prublemi sò dumandati. I studienti ponu spegne unu qualunque di questi nanzu di principià.",
+        "options": {
+          "add": "Addizione",
+          "subtract": "Suttrazzione",
+          "multiply": "Multiplicazione",
+          "divide": "Divisione",
+          "add subtract": "Addizione è suttrazzione",
+          "multiply divide": "Multiplicazione è divisione",
+          "add multiply": "Addizione è multiplicazione",
+          "add divide": "Addizione è divisione",
+          "subtract multiply": "Suttrazzione è multiplicazione",
+          "subtract divide": "Suttrazzione è divisione",
+          "add subtract multiply": "Addizione, suttrazzione è multiplicazione",
+          "add subtract divide": "Addizione, suttrazzione è divisione",
+          "add multiply divide": "Addizione, multiplicazione è divisione",
+          "subtract multiply divide": "Suttrazzione, multiplicazione è divisione",
+          "add subtract multiply divide": "Tutte e quattru"
+        }
+      },
+      {
+        "title": "Numeru u più chjucu",
+        "description": "U numeru u più chjucu adupratu in un prublema. Numeri sani, 0 o più."
+      },
+      {
+        "title": "Numeru u più grande",
+        "description": "U numeru u più grande adupratu in un prublema. I risultati di divisione è i divisori fermanu dinò in sta gamma."
+      },
+      {
+        "title": "Numeru di prublemi",
+        "description": "Quanti prublemi ci sò in un giru (da 1 à 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Limitu di tempu",
+        "description": "Seconde permesse per un giru sanu. 0 vole dì senza cronometru, ciò chì hè u predefinitu: l'esercizii à tempu penalizeghjanu i studienti chì anu bisognu di più tempu. Quand'ellu hè definitu, i studienti ponu sempre spegne u cronometru per elli stessi."
+      },
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore di l'etichetta di u capu è di i buttoni. Lasciate biotu per seguità u tema."
+      }
+    ]
+  }
+}

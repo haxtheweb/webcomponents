@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etichetă de figură",
     "description": "Element de etichetă de figură pentru marcarea resurselor media din conținut."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numărul figurii",
+        "description": "Număr sau etichetă scurtă pentru figură, de ex. 1.3"
+      },
+      {
+        "title": "Descriere",
+        "description": "Descrierea scurtă a figurii"
+      }
+    ]
   }
 }

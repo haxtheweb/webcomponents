@@ -5,5 +5,7 @@
   "editModeLabel": "Modd golygu'r rhestr chwarae cyfryngau",
   "position": "{current} o {total}",
   "previousItem": "Yr eitem flaenorol",
-  "nextItem": "Yr eitem nesaf"
+  "nextItem": "Yr eitem nesaf",
+  "fullScreen": "Sgrin lawn",
+  "exitFullScreen": "Gadael sgrin lawn"
 }

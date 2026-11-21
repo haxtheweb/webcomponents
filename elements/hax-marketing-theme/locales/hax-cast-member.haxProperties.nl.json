@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Castlid",
+    "description": "Eén doelgroep, gespeeld door een personage, met tekst en een knop"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wie dit is"
+      },
+      {
+        "title": "Type personage"
+      },
+      {
+        "title": "Personage-seed"
+      },
+      {
+        "title": "Podiumkleur (DDD-naam)"
+      },
+      {
+        "title": "Waar de knop naartoe gaat"
+      },
+      {
+        "title": "Knoptekst"
+      }
+    ]
+  }
+}

@@ -52,6 +52,20 @@
           "_top": "Ülemises aknas - _top",
           "_parent": "Ülemaknas - _parent"
         }
+      },
+      {
+        "title": "Noolt pole",
+        "description": "Peida nupu nool."
+      },
+      {
+        "title": "Link: sihtkoht",
+        "description": "Kus link avada.",
+        "options": {
+          "": "Sama aken",
+          "_blank": "Uus aken - _blank",
+          "_top": "Ülemine aken - _top",
+          "_parent": "Ülemaken - _parent"
+        }
       }
     ],
     "developer": [

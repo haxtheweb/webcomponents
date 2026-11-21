@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ileyibhile yomzobo",
     "description": "Into yeleyibhile yomzobo yokuphawula izixhobo zemidiya ngaphakathi komxholo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inani lomfanekiso",
+        "description": "Inani okanye ilebhile emfutshane yomfanekiso, umz. 1.3"
+      },
+      {
+        "title": "Inkcazelo",
+        "description": "Inkcazelo emfutshane yomfanekiso"
+      }
+    ]
   }
 }

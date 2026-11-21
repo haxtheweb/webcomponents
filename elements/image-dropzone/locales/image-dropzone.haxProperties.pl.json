@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Strefy upuszczania na obrazie",
+    "description": "Uczący się umieszczają etykiety w strefach nałożonych na obraz, a potem sprawdzają odpowiedź."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obraz",
+        "description": "Obraz, na którym uczący się umieszczają etykiety."
+      },
+      {
+        "title": "Tekst alternatywny",
+        "description": "Opisuje obraz dla osób, które go nie widzą. Nie zdradzaj, gdzie trafiają etykiety."
+      },
+      {
+        "title": "Tytuł obrazu",
+        "description": "Krótki widoczny tytuł obrazu, wyświetlany nad nim."
+      },
+      {
+        "title": "Pytanie",
+        "description": "Co uczący się mają zrobić z etykietami."
+      },
+      {
+        "title": "Etykiety i strefy",
+        "description": "Każda pozycja to etykieta, którą uczący się mogą umieścić. Nadaj etykiecie nazwę strefy, aby umieścić jej strefę na obrazie; etykieta bez nazwy strefy jest dodatkowa i nigdzie nie należy. Liczby stref to procenty obrazu."
+      },
+      {
+        "title": "Podpis",
+        "description": "Opcjonalny podpis wyświetlany pod obrazem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Próby",
+        "description": "Ile razy uczący się może sprawdzić. 0 oznacza bez limitu."
+      },
+      {
+        "title": "Tasuj etykiety",
+        "description": "Pokazuj etykiety w innej kolejności przy każdej wizycie."
+      },
+      {
+        "title": "Zwijana",
+        "description": "Pokaż to pytanie jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka inne zwijane pytania obok."
+      },
+      {
+        "title": "Zacznij zwinięte",
+        "description": "Gdy jest zwijane, zacznij od zamkniętego wiersza pokazującego tylko pytanie i jego stan."
+      },
+      {
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tej oceny (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "title": "Cel kształcenia",
+        "description": "OER Schema: cel kształcenia powiązany z tą oceną."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczona jest ta ocena."
+      }
+    ]
+  }
+}

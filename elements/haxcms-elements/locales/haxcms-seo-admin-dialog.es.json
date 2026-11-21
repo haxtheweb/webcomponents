@@ -6,6 +6,8 @@
   "faviconDescription": "Imagen de la pestaña del navegador / se usa en teléfonos como logotipo pequeño del sitio",
   "domain": "Dominio",
   "domainDescription": "Dominio de este sitio web",
+  "sameAs": "Otros perfiles de este sitio",
+  "sameAsDescription": "Un enlace por línea a los perfiles de este sitio u organización en otros lugares (GitHub, LinkedIn, YouTube, Mastodon). Los buscadores los usan para relacionar esos perfiles con este sitio.",
   "language": "Idioma",
   "languageDescription": "Idioma de este sitio. Busca por nombre o código, o introduce otro código como fr-CA.",
   "googleAnalyticsId": "ID de Google Analytics",

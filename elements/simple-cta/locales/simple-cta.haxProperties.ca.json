@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Amaga la icona",
         "description": "Amaga la icona utilitzada per destacar el text"
+      },
+      {
+        "title": "Aparença",
+        "description": "Quant d'èmfasi té el botó.",
+        "options": {
+          "": "Emplenat",
+          "tonal": "Tonal",
+          "outlined": "Amb contorn",
+          "plain": "Senzill"
+        }
+      },
+      {
+        "title": "Mida",
+        "description": "Mida del botó.",
+        "options": {
+          "s": "Petit",
+          "": "Mitjana",
+          "l": "Gran"
+        }
       }
     ],
     "advanced": [

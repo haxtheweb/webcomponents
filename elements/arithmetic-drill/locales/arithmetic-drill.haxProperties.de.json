@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rechentraining",
+    "description": "Eine kurze Reihe generierter Rechenaufgaben mit sofortigem Feedback. Wähle die Rechenarten und den Zahlenbereich; jeder Durchgang ist neu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Name dieses Trainings, in seiner Kopfzeile angezeigt."
+      },
+      {
+        "title": "Rechenarten",
+        "description": "Welche Arten von Aufgaben gestellt werden. Lernende können jede davon vor dem Start ausschalten.",
+        "options": {
+          "add": "Addition",
+          "subtract": "Subtraktion",
+          "multiply": "Multiplikation",
+          "divide": "Division",
+          "add subtract": "Addition und Subtraktion",
+          "multiply divide": "Multiplikation und Division",
+          "add multiply": "Addition und Multiplikation",
+          "add divide": "Addition und Division",
+          "subtract multiply": "Subtraktion und Multiplikation",
+          "subtract divide": "Subtraktion und Division",
+          "add subtract multiply": "Addition, Subtraktion und Multiplikation",
+          "add subtract divide": "Addition, Subtraktion und Division",
+          "add multiply divide": "Addition, Multiplikation und Division",
+          "subtract multiply divide": "Subtraktion, Multiplikation und Division",
+          "add subtract multiply divide": "Alle vier"
+        }
+      },
+      {
+        "title": "Kleinste Zahl",
+        "description": "Die kleinste Zahl in einer Aufgabe. Ganze Zahlen, 0 oder größer."
+      },
+      {
+        "title": "Größte Zahl",
+        "description": "Die größte Zahl in einer Aufgabe. Ergebnisse und Divisoren bei Divisionen bleiben ebenfalls in diesem Bereich."
+      },
+      {
+        "title": "Anzahl der Aufgaben",
+        "description": "Wie viele Aufgaben ein Durchgang hat (1 bis 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zeitlimit",
+        "description": "Erlaubte Sekunden für einen ganzen Durchgang. 0 bedeutet kein Timer, das ist die Voreinstellung: Zeitgebundene Übungen benachteiligen Lernende, die mehr Zeit brauchen. Wenn gesetzt, können Lernende den Timer trotzdem für sich ausschalten."
+      },
+      {
+        "title": "Akzentfarbe",
+        "description": "Farbe des Kopfzeilen-Chips und der Schaltflächen. Leer lassen, um dem Theme zu folgen."
+      }
+    ]
+  }
+}

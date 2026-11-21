@@ -1,0 +1,19 @@
+{
+  "label": "Công cụ bên ngoài",
+  "labelLti": "Công cụ bên ngoài · LTI 1.3",
+  "theTool": "công cụ",
+  "directions": "Hướng dẫn",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "directionsWindow": "Nút này mở một cửa sổ mới chứa công cụ.",
+  "directionsEmbed": "Nút này mở công cụ ngay trên trang này. Nếu không tải được, hãy mở nó trong cửa sổ mới.",
+  "directionsLti": "Trang web này đăng nhập bạn vào công cụ, nên bạn không cần tài khoản riêng.",
+  "openWindow": "Mở {title} (cửa sổ mới)",
+  "openEmbed": "Mở {title}",
+  "openInstead": "Mở trong cửa sổ mới thay thế",
+  "frameTitle": "{title} (công cụ bên ngoài)",
+  "openedWindow": "Một cửa sổ mới đã mở với công cụ.",
+  "openedEmbed": "Công cụ đã mở trên trang này.",
+  "needsUrl": "Khối này cần một địa chỉ khởi chạy bắt đầu bằng http:// hoặc https://.",
+  "needsSignIn": "Công cụ này cần dịch vụ đăng nhập của trang web, nhưng dịch vụ đó không có ở đây. Không có gì được mở."
+}

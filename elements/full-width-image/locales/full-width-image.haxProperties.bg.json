@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Фоново изображение."
+        "description": "Фоново изображение.",
+        "title": "Изображение"
       },
       {
         "property": "caption",
-        "description": "Текстово заглавие."
+        "description": "Текстово заглавие.",
+        "title": "Надпис"
       }
     ]
   }

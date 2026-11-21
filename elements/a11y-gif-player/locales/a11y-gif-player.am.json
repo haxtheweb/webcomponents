@@ -2,5 +2,9 @@
   "toggleAnimation": "እነማን ቀያይር",
   "info": "መረጃ",
   "image": "ምስል",
-  "animatedGif": "አኒሜሽን GIF"
+  "animatedGif": "አኒሜሽን GIF",
+  "playAnimation": "እነማውን አጫውት",
+  "pauseAnimation": "እነማውን ለአፍታ አቁም",
+  "showDescription": "መግለጫ አሳይ",
+  "hideDescription": "መግለጫ ደብቅ"
 }

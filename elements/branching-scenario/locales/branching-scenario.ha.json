@@ -1,0 +1,22 @@
+{
+  "scenario": "Yanayi",
+  "directions": "Umarni",
+  "showDirections": "Nuna umarni",
+  "hideDirections": "Ɓoye umarni",
+  "directionsRead": "Karanta kowane fage ka zaɓi abin da za ka yi.",
+  "directionsEndings": "Akwai ƙarshe da yawa. Gwada wata hanya bayan ka gama.",
+  "startOver": "Fara daga farko",
+  "back": "Koma mataki ɗaya",
+  "tryAnother": "Gwada wata hanya",
+  "path": "Hanya",
+  "scene": "Fage",
+  "ending": "Ƙarshe",
+  "end": "ƙarshe",
+  "scenesSeen": "An ga fage {seen} cikin {total}",
+  "endingReached": "An kai ƙarshe",
+  "addScene": "Ƙara fage",
+  "newScene": "Sabon fage",
+  "newSceneText": "Bayyana abin da ke faruwa, sannan ka haɗa kowane zaɓi da fage.",
+  "editingNote": "Gyarawa: ana nuna kowane fage. Zaɓi mahaɗi ne zuwa # sannan id na fage.",
+  "noScenes": "Ƙara fage don fara yanayin."
+}

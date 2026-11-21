@@ -9,5 +9,7 @@
   "slidePages": "Strony slajdów",
   "goToSlide": "Przejdź do slajdu {number}",
   "slides": "Slajdy",
-  "position": "{number} z {total}"
+  "position": "{number} z {total}",
+  "fullScreen": "Pełny ekran",
+  "exitFullScreen": "Wyjdź z pełnego ekranu"
 }

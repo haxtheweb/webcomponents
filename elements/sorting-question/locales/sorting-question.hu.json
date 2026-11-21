@@ -40,5 +40,7 @@
   "hideDirections": "Útmutató elrejtése",
   "showRelatedContent": "Kapcsolódó tartalom megjelenítése",
   "hideRelatedContent": "Kapcsolódó tartalom elrejtése",
-  "notAttempted": "Nem próbálkozott"
+  "notAttempted": "Nem próbálkozott",
+  "cardsDirections": "Állítsa a kártyákat helyes sorrendbe az egyes kártyákon lévő Előrébb és Hátrébb gombokkal, vagy húzza őket egérrel. Ha úgy gondolja, hogy helyes a sorrend, ellenőrizze a válaszát ezzel: {checkAnswer}.",
+  "movedToPosition": "{item} áthelyezve a(z) {position}. helyre ({total} közül)"
 }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Etichetta di figura",
     "description": "Elementu d'etichetta di figura per marcà e risorse media in u cuntenutu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numeru di a figura",
+        "description": "Numeru o etichetta corta per a figura, per esempiu 1.3"
+      },
+      {
+        "title": "Discrizzione",
+        "description": "Discrizzione corta di a figura"
+      }
+    ]
   }
 }

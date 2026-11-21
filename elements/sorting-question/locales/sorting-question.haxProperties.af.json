@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Antwoorde",
-        "description": "Die antwoordvolgorde bepaal die korrekte reeks."
+        "description": "Die antwoordvolgorde bepaal die korrekte reeks.",
+        "options": {
+          "": "Lys",
+          "cards": "Beeldkaarte"
+        }
+      },
+      {
+        "title": "Antwoorde",
+        "description": "Antwoordvolgorde bepaal die korrekte volgorde."
       }
     ],
     "advanced": [

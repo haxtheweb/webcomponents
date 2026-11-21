@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "图片拖放区",
+    "description": "学习者把标签放到图片上的区域中，然后检查答案。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "图片",
+        "description": "学习者放置标签的图片。"
+      },
+      {
+        "title": "替代文本",
+        "description": "为看不到图片的人描述它。不要透露标签应放在哪里。"
+      },
+      {
+        "title": "图片标题",
+        "description": "图片的简短可见标题，显示在图片上方。"
+      },
+      {
+        "title": "问题",
+        "description": "要求学习者用标签做什么。"
+      },
+      {
+        "title": "标签和区域",
+        "description": "每个项目都是学习者可以放置的标签。给标签设置区域名称，即可在图片上放置其区域；没有区域名称的标签是不属于任何地方的多余项。区域数值是图片的百分比。"
+      },
+      {
+        "title": "说明文字",
+        "description": "显示在图片下方的可选说明文字。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "尝试次数",
+        "description": "学习者可以检查的次数。0 表示不限次数。"
+      },
+      {
+        "title": "打乱标签",
+        "description": "每次访问时以不同顺序显示标签。"
+      },
+      {
+        "title": "可折叠",
+        "description": "将此问题显示为可展开和收起的一行。展开一个会收起旁边的其他可折叠问题。"
+      },
+      {
+        "title": "初始折叠",
+        "description": "可折叠时，初始为只显示问题及其状态的收起行。"
+      },
+      {
+        "title": "评分方式",
+        "description": "OER Schema：此评估的评分方式（例如分数、等级、百分比、完成度）。"
+      },
+      {
+        "title": "学习目标",
+        "description": "OER Schema：与此评估相关的学习目标。"
+      }
+    ],
+    "developer": [
+      {
+        "title": "测验名称",
+        "description": "在分析系统中用于 xAPI 识别的测验名称。"
+      },
+      {
+        "title": "课程",
+        "description": "OER Schema：此评估所针对的课程。"
+      }
+    ]
+  }
+}

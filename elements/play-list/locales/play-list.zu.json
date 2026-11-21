@@ -9,5 +9,7 @@
   "slidePages": "Amakhasi ezilayidi",
   "goToSlide": "Iya esilayidini {number}",
   "slides": "Amaslayidi",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Isikrini esigcwele",
+  "exitFullScreen": "Phuma esikrinini esigcwele"
 }

@@ -3,5 +3,7 @@
   "status_stop": "To‘xtang",
   "status_warning": "Ogohlantirish",
   "status_success": "Muvaffaqiyat",
-  "status_info": "Eslatma"
+  "status_info": "Eslatma",
+  "status_tip": "Bilasizmi?",
+  "status_new": "Yangiliklar"
 }

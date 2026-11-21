@@ -1,0 +1,14 @@
+{
+  "scene": "Dîmen",
+  "ending": "Dawî",
+  "goodEnding": "Dawiya baş",
+  "mixedEnding": "Dawiya tevlihev",
+  "poorEnding": "Dawiya xirab",
+  "scoreOf": "Puan {score} ji {max}",
+  "scoreOnly": "Puan {score}",
+  "startScene": "Destpêk",
+  "sceneIdLabel": "ID-ya dîmenê",
+  "needsId": "ID-yeke dîmenê zêde bike da ku bijare bikaribin bi vê dîmenê ve girê bidin.",
+  "orphan": "Tu bijare bi vê dîmenê ve girê nade.",
+  "deadLinks": "Ev girêdan nîşanî dîmeneke ku tune ye didin:"
+}

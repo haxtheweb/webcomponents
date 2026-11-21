@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Avertisment",
   "status_success": "Succes",
-  "status_info": "Notă"
+  "status_info": "Notă",
+  "status_tip": "Știați că?",
+  "status_new": "Noutăți"
 }

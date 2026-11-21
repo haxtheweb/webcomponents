@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Zagon zunanjega orodja",
+    "description": "Blok, ki odpre zunanje učno orodje v novem oknu ali na strani, kot navadno povezavo ali z zahtevo za prijavo LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Ime orodja. Prikazano je v glavi in na gumbu."
+      },
+      {
+        "title": "Opis",
+        "description": "Kaj učenci počnejo v orodju, prikazano nad gumbom."
+      },
+      {
+        "title": "Zagonski URL",
+        "description": "Naslov orodja. Biti mora polni naslov, ki se začne s https:// ali http://."
+      },
+      {
+        "title": "Odpri v",
+        "description": "Novo okno deluje z vsemi orodji. Na tej strani deluje le z orodji, ki dovolijo prikaz znotraj drugega spletišča.",
+        "options": {
+          "window": "Novem oknu",
+          "embed": "Na tej strani"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL za prijavo LTI",
+        "description": "Samo LTI 1.3: naslov za začetek prijave orodja. S tem, client ID in deployment ID gumb pošlje zahtevo za prijavo LTI namesto odpiranja navadne povezave. Dokončanje zagona potrebuje storitev LTI tega spletišča."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID, ki ga je orodje dalo temu spletišču. Javni identifikator, ne skrivnost: nikoli ne vpisujte ključev ali skrivnosti sem."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID, ki ga je orodje dalo temu spletišču. Javni identifikator, ne skrivnost."
+      },
+      {
+        "title": "Izdajatelj LTI",
+        "description": "Naslov, ki to spletišče identificira orodju. Pustite prazno, da uporabite naslov spletišča, na katerem je stran."
+      },
+      {
+        "title": "Višina na strani",
+        "description": "Višina orodja, ko se odpre na tej strani, v pikslih (200 do 2000)."
+      },
+      {
+        "title": "Poudarjalna barva",
+        "description": "Barva značke v glavi in gumba. Pustite prazno, da sledi temi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Namig za prijavo LTI",
+        "description": "Neprozorna vrednost, po kateri storitev LTI tega spletišča prepozna učenca. Običajno jo spletišče posreduje prek dogodka lti-launch-request, namesto da bi bila shranjena tu. Nikoli geslo ali ključ."
+      },
+      {
+        "title": "Namig sporočila LTI",
+        "description": "Neprozorna vrednost, po kateri storitev LTI tega spletišča prepozna ta zagon. Običajno jo posreduje spletišče, namesto da bi bila shranjena tu."
+      }
+    ]
+  }
+}

@@ -20,6 +20,12 @@
         "title": "Pilt",
         "description": "Tsitaadiga koos kuvatav pilt."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Raamitud",
+        "description": "Joonista tsitaat ühisele plokiraamile, ikooni ja sildiga selle kohal, et see sobiks märkmete ja juhendikaartidega."
+      }
     ]
   }
 }

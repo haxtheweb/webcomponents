@@ -5,5 +5,6 @@
   "selected": "Magħżula",
   "currentlyActiveAndSelectedPalette": "Paletta attiva u magħżula bħalissa",
   "currentlyActivePalette": "Paletta attiva bħalissa",
-  "selectedPaletteToApply": "Paletta magħżula biex tiġi applikata"
+  "selectedPaletteToApply": "Paletta magħżula biex tiġi applikata",
+  "paletteNumber": "Paletta {number}"
 }

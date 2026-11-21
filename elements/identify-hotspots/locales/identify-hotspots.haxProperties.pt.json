@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identificar pontos",
+    "description": "Os alunos encontram os pontos certos em uma imagem clicando, tocando ou movendo uma mira com o teclado. A versão avaliada de um mapa de imagem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagem",
+        "description": "A imagem em que os alunos procuram."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Descreve a imagem para pessoas que não podem vê-la. Nunca é mostrado como título."
+      },
+      {
+        "title": "Título",
+        "description": "Um título curto visível mostrado acima da imagem."
+      },
+      {
+        "title": "Pergunta",
+        "description": "O que os alunos devem encontrar na imagem."
+      },
+      {
+        "title": "Respostas",
+        "description": "Cada resposta é uma oval com nome na imagem. Posição e tamanho são porcentagens da imagem, medidas a partir do canto superior esquerdo. Durante a edição, todas as respostas aparecem contornadas na imagem."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativas",
+        "description": "Quantas vezes um aluno pode tentar. 0 significa ilimitado."
+      },
+      {
+        "title": "Erros permitidos",
+        "description": "Quantos erros encerram uma tentativa. 0 significa ilimitado, e os alunos recebem um botão Concluir."
+      },
+      {
+        "title": "Recolhível",
+        "description": "Mostrar esta pergunta como uma linha que abre e fecha. Abrir uma fecha as outras perguntas recolhíveis ao lado."
+      },
+      {
+        "title": "Começar recolhido",
+        "description": "Quando recolhível, começar como uma linha fechada que mostra só a pergunta e o status."
+      },
+      {
+        "title": "Formato de avaliação",
+        "description": "OER Schema: formato de avaliação desta atividade avaliativa (por ex. pontos, letra, porcentagem, conclusão)."
+      },
+      {
+        "title": "Objetivo de aprendizagem",
+        "description": "OER Schema: objetivo de aprendizagem associado a esta avaliação."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do questionário",
+        "description": "Nome do questionário repassado para identificar este item em ambientes baseados em xAPI"
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso a que esta avaliação se destina."
+      }
+    ]
+  }
+}

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "替代文本"
+        "title": "替代文本",
+        "description": "为看不到图片的人描述这张图片。"
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "详情展开时的可选摘要文本"
+        "title": "详情展开时的可选摘要文本",
+        "description": "描述隐藏时的按钮文本，例如“显示描述”。"
       },
       {
         "property": "closeText",
-        "title": "详情收起时的可选摘要文本"
+        "title": "详情收起时的可选摘要文本",
+        "description": "描述显示时的按钮文本，例如“隐藏描述”。"
       }
     ]
   }

@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Răspunsuri",
+        "description": "Ordinea răspunsurilor definește secvența corectă.",
+        "options": {
+          "": "Listă",
+          "cards": "Cărți cu imagini"
+        }
+      },
+      {
+        "title": "Răspunsuri",
         "description": "Ordinea răspunsurilor definește secvența corectă."
       }
     ],

@@ -1,0 +1,14 @@
+{
+  "scene": "Whakaaturanga",
+  "ending": "Mutunga",
+  "goodEnding": "Mutunga pai",
+  "mixedEnding": "Mutunga kōnatunatu",
+  "poorEnding": "Mutunga kino",
+  "scoreOf": "Kaute {score} o {max}",
+  "scoreOnly": "Kaute {score}",
+  "startScene": "Tīmatanga",
+  "sceneIdLabel": "ID whakaaturanga",
+  "needsId": "Tāpirihia he ID whakaaturanga kia taea ai e ngā kōwhiringa te hono ki tēnei whakaaturanga.",
+  "orphan": "Kāore he kōwhiringa e hono ana ki tēnei whakaaturanga.",
+  "deadLinks": "Ka tohu ēnei hono ki tētahi whakaaturanga kāore i te tīari:"
+}

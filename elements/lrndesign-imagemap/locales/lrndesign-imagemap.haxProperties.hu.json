@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Aktív pontok részletei",
         "description": "A képtérkép interaktív aktív pontjai."
+      },
+      {
+        "title": "Pontok részletei",
+        "description": "A képtérkép interaktív pontjai."
       }
     ]
   }

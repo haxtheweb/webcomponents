@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikapaan",
+    "description": "Üks oluline arv koos sildi ja sellega, kuidas see muutus. Armatuurlaua rea jaoks paiguta mitu ruudustikku."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Silt",
+        "description": "Mida arv mõõdab."
+      },
+      {
+        "title": "Väärtus",
+        "description": "Arv. Lihtne arv rühmitatakse lehe keele järgi; kõik muu kuvatakse nii, nagu on kirjutatud."
+      },
+      {
+        "title": "Muutus",
+        "description": "Kuidas see muutus, sõnadega, näiteks 6% sel semestril."
+      },
+      {
+        "title": "Suund",
+        "description": "Kas muutus on üles või alla.",
+        "options": {
+          "": "Puudub",
+          "up": "Üles",
+          "down": "Alla"
+        }
+      }
+    ]
+  }
+}

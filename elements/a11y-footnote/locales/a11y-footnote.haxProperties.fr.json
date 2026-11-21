@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Note de bas de page",
+    "description": "Une note écrite à l'endroit du texte où elle se rapporte. Elle s'affiche sous forme de numéro, et la liste numérotée des notes se construit toute seule en bas de la page."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Note",
+        "description": "Le texte de la note de bas de page."
+      },
+      {
+        "title": "Pas d'aperçu",
+        "description": "Ne pas afficher la note quand un lecteur survole le numéro ou y place le focus."
+      }
+    ]
+  }
+}

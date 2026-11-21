@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ọnọdụ nwere alaka",
+    "description": "Akụkọ ebe nhọrọ ọ bụla na-eduga n'ihe nkiri na njedebe dị iche. Ndị mmụta nwere ike ịlaghachi azụ ma nwaa ụzọ ndị ọzọ; njedebe eruru na-ekpebi akara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Aha ọnọdụ ahụ, e gosiri n'isi ya."
+      },
+      {
+        "title": "Ihe nkiri mmalite",
+        "description": "Id ihe nkiri ndị mmụta na-amalite na ya. Hapụ ya efu ka ịmalite n'ihe nkiri mbụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba nhọrọ maka akara isi, bọtịnụ na ọnụ nhọrọ."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "场景",
+  "ending": "结局",
+  "goodEnding": "好结局",
+  "mixedEnding": "一般结局",
+  "poorEnding": "差结局",
+  "scoreOf": "得分 {score} / {max}",
+  "scoreOnly": "得分 {score}",
+  "startScene": "开始",
+  "sceneIdLabel": "场景 ID",
+  "needsId": "添加场景 ID，以便选项可以链接到此场景。",
+  "orphan": "没有选项链接到此场景。",
+  "deadLinks": "这些链接指向不存在的场景："
+}

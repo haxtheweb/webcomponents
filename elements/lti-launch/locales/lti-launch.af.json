@@ -1,0 +1,19 @@
+{
+  "label": "Eksterne hulpmiddel",
+  "labelLti": "Eksterne hulpmiddel · LTI 1.3",
+  "theTool": "die hulpmiddel",
+  "directions": "Aanwysings",
+  "showDirections": "Wys aanwysings",
+  "hideDirections": "Versteek aanwysings",
+  "directionsWindow": "Die knoppie maak 'n nuwe venster met die hulpmiddel daarin oop.",
+  "directionsEmbed": "Die knoppie maak die hulpmiddel op hierdie bladsy oop. As dit nie laai nie, maak dit eerder in 'n nuwe venster oop.",
+  "directionsLti": "Hierdie webwerf meld jou by die hulpmiddel aan, so jy het nie 'n aparte rekening nodig nie.",
+  "openWindow": "Maak {title} oop (nuwe venster)",
+  "openEmbed": "Maak {title} oop",
+  "openInstead": "Maak eerder in 'n nuwe venster oop",
+  "frameTitle": "{title} (eksterne hulpmiddel)",
+  "openedWindow": "'n Nuwe venster het met die hulpmiddel oopgemaak.",
+  "openedEmbed": "Die hulpmiddel het op hierdie bladsy oopgemaak.",
+  "needsUrl": "Hierdie blok benodig 'n lanseeradres wat met http:// of https:// begin.",
+  "needsSignIn": "Hierdie hulpmiddel benodig hierdie webwerf se aanmelddiens, wat nie hier beskikbaar is nie. Niks is oopgemaak nie."
+}

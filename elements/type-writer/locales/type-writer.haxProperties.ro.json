@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mașină de scris",
     "description": "Text care se scrie singur, caracter cu caracter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Text",
+        "description": "Textul de tastat odată ce elementul ajunge în vizualizare."
+      },
+      {
+        "title": "Tastare",
+        "description": "Afișați cursorul care clipește; elementul setează aceasta în timp ce tastează."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Întârziere",
+        "description": "Milisecunde de așteptat înainte de începerea tastării."
+      },
+      {
+        "title": "Durata cursorului",
+        "description": "Milisecunde în care cursorul continuă să clipească după ce textul a fost tastat."
+      },
+      {
+        "title": "Viteză",
+        "description": "Milisecunde pe caracter; numerele mai mici tastează mai repede."
+      }
+    ]
   }
 }

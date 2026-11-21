@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mesin ketik",
     "description": "Teks sing ngetik dhewe siji-siji karakter."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teks",
+        "description": "Teks sing diketik sawise elemen digulung katon."
+      },
+      {
+        "title": "Ngetik",
+        "description": "Tampilake kursor kedhip; elemen nyetel iki nalika ngetik."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tundha",
+        "description": "Milidetik ngenteni sadurunge wiwit ngetik."
+      },
+      {
+        "title": "Suwene kursor",
+        "description": "Milidetik kursor tetep kedhip sawise teks diketik."
+      },
+      {
+        "title": "Kacepetan",
+        "description": "Milidetik saben karakter; angka luwih cilik ngetik luwih cepet."
+      }
+    ]
   }
 }

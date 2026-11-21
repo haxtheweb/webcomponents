@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statîstîk",
+    "description": "Hejmarek ku zêde dibe, bi etîketek û girêdanek bo çîroka wê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hejmara ku heta wê bijmêre"
+      },
+      {
+        "title": "Berî hejmarê"
+      },
+      {
+        "title": "Piştî hejmarê"
+      },
+      {
+        "title": "Peyv li şûna hejmarê"
+      },
+      {
+        "title": "Çi dijmêre"
+      },
+      {
+        "title": "Navnîşana çîrokê li ser hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

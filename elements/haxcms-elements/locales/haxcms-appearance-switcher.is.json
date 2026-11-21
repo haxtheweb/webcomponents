@@ -1,0 +1,8 @@
+{
+  "theme": "Þema",
+  "palette": "Litaspjald",
+  "themeDefault": "Sjálfgefið í þema",
+  "designSystem": "Hönnunarkerfi",
+  "designSystemDefault": "DDD (sjálfgefið)",
+  "designSystemUnavailable": "Þetta þema heldur eigin hönnunarkerfi"
+}

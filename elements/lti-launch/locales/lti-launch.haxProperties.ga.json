@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Seoladh uirlise seachtraí",
+    "description": "Bloc a osclaíonn uirlis foghlama sheachtrach i bhfuinneog nua nó ar an leathanach, mar nasc simplí nó le hiarratas logála isteach LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Ainm na huirlise. Taispeántar sa cheanntásc agus ar an gcnaipe é."
+      },
+      {
+        "title": "Cur síos",
+        "description": "An rud a dhéanann foghlaimeoirí san uirlis, taispeánta os cionn an chnaipe."
+      },
+      {
+        "title": "URL seolta",
+        "description": "Seoladh na huirlise. Caithfidh sé a bheith ina sheoladh iomlán a thosaíonn le https:// nó http://."
+      },
+      {
+        "title": "Oscail i",
+        "description": "Oibríonn fuinneog nua le gach uirlis. Ní oibríonn Ar an leathanach seo ach le huirlisí a cheadaíonn iad féin a thaispeáint taobh istigh de shuíomh eile.",
+        "options": {
+          "window": "Fuinneog nua",
+          "embed": "Ar an leathanach seo"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL logála isteach LTI",
+        "description": "LTI 1.3 amháin: seoladh tionscanta logála isteach na huirlise. Leis seo, aitheantas cliaint agus aitheantas imscartha, seolann an cnaipe iarratas logála isteach LTI in ionad nasc simplí a oscailt. Teastaíonn seirbhís LTI an tsuímh seo chun an seoladh a chríochnú."
+      },
+      {
+        "title": "Aitheantas cliaint LTI",
+        "description": "An t-aitheantas cliaint a thug an uirlis don suíomh seo. Aitheantóir poiblí, ní rún: ná cuir eochracha ná rúin anseo choíche."
+      },
+      {
+        "title": "Aitheantas imscartha LTI",
+        "description": "An t-aitheantas imscartha a thug an uirlis don suíomh seo. Aitheantóir poiblí, ní rún."
+      },
+      {
+        "title": "Eisitheoir LTI",
+        "description": "An seoladh a aithníonn an suíomh seo don uirlis. Fág folamh chun seoladh an tsuímh ar a bhfuil an leathanach a úsáid."
+      },
+      {
+        "title": "Airde ar an leathanach",
+        "description": "Airde na huirlise nuair a osclaíonn sí ar an leathanach seo, i bpicteilíní (200 go 2000)."
+      },
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath shlis an cheanntáisc agus an chnaipe. Fág folamh chun an téama a leanúint."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Leid logála isteach LTI",
+        "description": "Luach teimhneach a úsáideann seirbhís LTI an tsuímh seo chun an foghlaimeoir a aithint. De ghnáth soláthraíonn an suíomh é tríd an imeacht lti-launch-request seachas é a shábháil anseo. Ní pasfhocal ná eochair é choíche."
+      },
+      {
+        "title": "Leid teachtaireachta LTI",
+        "description": "Luach teimhneach a úsáideann seirbhís LTI an tsuímh seo chun an seoladh seo a aithint. De ghnáth soláthraíonn an suíomh é seachas é a shábháil anseo."
+      }
+    ]
+  }
+}

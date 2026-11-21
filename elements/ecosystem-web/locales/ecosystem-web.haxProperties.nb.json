@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Økosystemnett",
+    "description": "Et interaktivt nett over hvordan delene av et prosjekt henger sammen, med undernett og trinnvise omvisninger."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nettdata",
+        "description": "URL til JSON-pakken med nett (bygget i PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Nett",
+        "description": "ID-en til nettet som skal vises først; main er økosystemnettet."
+      },
+      {
+        "title": "Valgt flis",
+        "description": "ID-en til en flis som skal velges når nettet åpnes."
+      },
+      {
+        "title": "Omvisning",
+        "description": "ID-en til en omvisning å starte på."
+      },
+      {
+        "title": "Start i listevisning",
+        "description": "Vis nettet som nestede lister i stedet for tegningen."
+      },
+      {
+        "title": "Bare tegning",
+        "description": "Vis bare tegningen, som en figur: ingen topptekst, omvisninger, detaljer eller trinnlinje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lest etter",
+        "description": "Start med alle fliser lest etter ett mål.",
+        "options": {
+          "": "Bare forbindelser",
+          "fresh": "Ferskhet",
+          "bus": "Bussfaktor",
+          "impact": "Innvirkning",
+          "evidence": "Bevis",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

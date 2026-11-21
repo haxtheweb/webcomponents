@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note grubu",
+    "description": "Birkaç stop note'u, İpuçları veya Yenilikler gibi her seferinde bir not gösteren tek bir blokta toplayın. Yönerge kartları, yan notlar ve çerçeveli alıntılar da onlarla birlikte istiflenebilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiket",
+        "description": "Ekran okuyucuların duyurduğu grup adı, örneğin İpuçları veya Yenilikler."
+      },
+      {
+        "title": "Notlar",
+        "description": "Gruptaki stop note'lar. Yönerge kartları, yan notlar ve çerçeveli alıntılar da eklenebilir."
+      }
+    ]
+  }
+}

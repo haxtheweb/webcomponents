@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Hliðarathugasemd",
+    "description": "Athugasemd aðskilin frá efninu í kring, með valfrjálsu tákni og merki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Merki",
+        "description": "Merki hliðarathugasemdarinnar."
+      },
+      {
+        "title": "Tákn",
+        "description": "Tákn hliðarathugasemdarinnar."
+      },
+      {
+        "title": "Efni",
+        "description": "Efni hliðarathugasemdarinnar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Litur",
+        "description": "Liturinn sem hliðarathugasemdin er lituð með."
+      }
+    ]
+  }
+}

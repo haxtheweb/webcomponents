@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Àwòrán ńlá, GIF tàbí fídíò pẹ̀lú àkọlé àti ọ̀rọ̀ lórí rẹ̀, tí a gbé síbikíbi nínú ojú-ìwé."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àwòrán tàbí fídíò",
+        "description": "Fáìlì JPG, PNG, WebP, GIF, MP4 tàbí WebM."
+      },
+      {
+        "title": "Ọ̀rọ̀ àfidípò",
+        "description": "Ṣàpèjúwe àwòrán náà. Fi sílẹ̀ ní òfo tí ó bá jẹ́ ọ̀ṣọ́ lásán."
+      },
+      {
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fihàn lórí media náà. Fi sílẹ̀ ní òfo fún kò sí."
+      },
+      {
+        "title": "Ọ̀rọ̀",
+        "description": "Ọ̀rọ̀ tí a fihàn lábẹ́ àkọlé, lórí media náà."
+      },
+      {
+        "title": "Fífẹ̀ kíkún",
+        "description": "Nà án láti etí dé etí dípò kí ó jókòó sínú ọ̀wọ̀n àkóónú."
+      },
+      {
+        "title": "Gíga",
+        "options": {
+          "tall": "Gíga",
+          "medium": "Àárín",
+          "short": "Kúkúrú"
+        }
+      },
+      {
+        "title": "Ìfiránṣẹ́ sí férémù",
+        "description": "Bí fọ́tò ṣe jókòó ní ìwọ̀n ojú-ìbòjú kọ̀ọ̀kan"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ìpòórá",
+        "description": "Àwọ̀ tí a tẹ́ lé media náà. Pẹ̀lú àkọlé tàbí ọ̀rọ̀ ọ̀kan máa ń wà nígbà gbogbo, kí ọ̀rọ̀ lè ṣeé kà.",
+        "options": {
+          "blue": "Búlúù",
+          "bottom": "Dúdú ní ìsàlẹ̀",
+          "none": "Kò sí"
+        }
+      },
+      {
+        "title": "Ipò ọ̀rọ̀",
+        "options": {
+          "bottom": "Ìsàlẹ̀",
+          "middle": "Àárín"
+        }
+      },
+      {
+        "title": "Ojú-ìfojúsùn ní ìbú",
+        "description": "Apá àwòrán tó ń wà ní ojú nígbà tí a bá gé e, láti 0 (òsì) sí 100 (ọ̀tún)."
+      },
+      {
+        "title": "Ojú-ìfojúsùn ní ìsàlẹ̀",
+        "description": "Apá àwòrán tó ń wà ní ojú nígbà tí a bá gé e, láti 0 (òkè) sí 100 (ìsàlẹ̀)."
+      }
+    ]
+  }
+}

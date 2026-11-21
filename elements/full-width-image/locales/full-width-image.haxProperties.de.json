@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Hintergrundbild."
+        "description": "Hintergrundbild.",
+        "title": "Bild"
       },
       {
         "property": "caption",
-        "description": "Überschriftentext."
+        "description": "Überschriftentext.",
+        "title": "Bildunterschrift"
       }
     ]
   }

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Skriuw mei de wiskundige notaasje LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ofbyldingseftergrûn",
+        "description": "Eftergrûn efter tekene ôfbyldings. Automatysk foeget der allinnich ien ta as de tekening min te sjen wêze soe op de side, lykas tsjustere linen yn tsjustere modus.",
+        "options": {
+          "auto": "Automatysk",
+          "light": "Ljocht",
+          "dark": "Tsjuster",
+          "none": "Gjin"
+        }
+      }
+    ]
   }
 }

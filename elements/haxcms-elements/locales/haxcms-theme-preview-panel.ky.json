@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палитра",
   "cancel": "Жокко чыгаруу",
-  "openAppearanceSettings": "Көрүнүш жөндөөлөрүн ачуу"
+  "openAppearanceSettings": "Көрүнүш жөндөөлөрүн ачуу",
+  "designSystem": "Дизайн тутуму",
+  "designSystemDefault": "DDD (демейки)",
+  "designSystemThemeDefault": "{name} (теманын демейкиси)",
+  "designSystemHelp": "Түс, шрифт, бурчтар жана тыгыздык. Макетти дагы эле тема аныктайт."
 }

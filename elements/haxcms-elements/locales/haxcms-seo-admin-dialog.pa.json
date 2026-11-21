@@ -6,6 +6,8 @@
   "faviconDescription": "ਬ੍ਰਾਊਜ਼ਰ ਟੈਬ ਚਿੱਤਰ / ਫ਼ੋਨਾਂ 'ਤੇ ਛੋਟੇ ਸਾਈਟ ਲੋਗੋ ਵਜੋਂ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ",
   "domain": "ਡੋਮੇਨ",
   "domainDescription": "ਇਸ ਵੈੱਬਸਾਈਟ ਦਾ ਡੋਮੇਨ",
+  "sameAs": "ਇਸ ਸਾਈਟ ਦੇ ਹੋਰ ਪ੍ਰੋਫਾਈਲ",
+  "sameAsDescription": "ਹੋਰ ਥਾਵਾਂ (GitHub, LinkedIn, YouTube, Mastodon) ਤੇ ਇਸ ਸਾਈਟ ਜਾਂ ਸੰਸਥਾ ਦੇ ਪ੍ਰੋਫਾਈਲਾਂ ਦਾ ਹਰ ਲਾਈਨ ਵਿੱਚ ਇੱਕ ਲਿੰਕ। ਖੋਜ ਇੰਜਣ ਇਨ੍ਹਾਂ ਨਾਲ ਉਹ ਪ੍ਰੋਫਾਈਲ ਇਸ ਸਾਈਟ ਨਾਲ ਜੋੜਦੇ ਹਨ।",
   "language": "ਭਾਸ਼ਾ",
   "languageDescription": "ਇਸ ਸਾਈਟ ਦੀ ਭਾਸ਼ਾ। ਨਾਮ ਜਾਂ ਕੋਡ ਨਾਲ ਖੋਜੋ, ਜਾਂ fr-CA ਵਰਗਾ ਹੋਰ ਕੋਡ ਦਰਜ ਕਰੋ।",
   "googleAnalyticsId": "Google Analytics ID",

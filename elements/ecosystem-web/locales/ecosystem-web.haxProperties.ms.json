@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Web ekosistem",
+    "description": "Web interaktif tentang cara bahagian-bahagian projek berhubung, dengan sub-web dan lawatan langkah demi langkah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data web",
+        "description": "URL himpunan JSON web (dibina dalam PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "ID web yang dipaparkan dahulu; main ialah web ekosistem."
+      },
+      {
+        "title": "Jubin dipilih",
+        "description": "ID jubin untuk dipilih apabila web dibuka."
+      },
+      {
+        "title": "Lawatan",
+        "description": "ID lawatan untuk dimulakan."
+      },
+      {
+        "title": "Mula dalam paparan senarai",
+        "description": "Tunjukkan web sebagai senarai bersarang dan bukannya lukisan."
+      },
+      {
+        "title": "Lukisan sahaja",
+        "description": "Tunjukkan lukisan sahaja, sebagai rajah: tiada pengepala, lawatan, butiran atau bar langkah."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dibaca mengikut",
+        "description": "Mula dengan setiap jubin dibaca mengikut satu ukuran.",
+        "options": {
+          "": "Sambungan sahaja",
+          "fresh": "Kesegaran",
+          "bus": "Faktor bas",
+          "impact": "Impak",
+          "evidence": "Bukti",
+          "parity": "Pariti"
+        }
+      }
+    ]
+  }
+}

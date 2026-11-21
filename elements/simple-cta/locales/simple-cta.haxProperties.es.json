@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ocultar icono",
         "description": "Oculta el icono usado para acentuar el texto"
+      },
+      {
+        "title": "Apariencia",
+        "description": "Cuánto énfasis tiene el botón.",
+        "options": {
+          "": "Relleno",
+          "tonal": "Tonal",
+          "outlined": "Contorneado",
+          "plain": "Simple"
+        }
+      },
+      {
+        "title": "Tamaño",
+        "description": "Tamaño del botón.",
+        "options": {
+          "s": "Pequeño",
+          "": "Media",
+          "l": "Grande"
+        }
       }
     ],
     "advanced": [

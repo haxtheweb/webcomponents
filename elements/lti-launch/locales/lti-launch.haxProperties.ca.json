@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Inici d'eina externa",
+    "description": "Un bloc que obre una eina d'aprenentatge externa en una finestra nova o a la pàgina, com un enllaç normal o amb una sol·licitud d'inici de sessió LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Nom de l'eina. Es mostra a la capçalera i al botó."
+      },
+      {
+        "title": "Descripció",
+        "description": "Què fan els alumnes a l'eina, que es mostra a sobre del botó."
+      },
+      {
+        "title": "URL d'inici",
+        "description": "Adreça de l'eina. Ha de ser una adreça completa que comenci per https:// o http://."
+      },
+      {
+        "title": "Obre a",
+        "description": "Una finestra nova funciona amb totes les eines. En aquesta pàgina només funciona amb eines que permeten mostrar-se dins d'un altre lloc.",
+        "options": {
+          "window": "Una finestra nova",
+          "embed": "En aquesta pàgina"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL d'inici de sessió LTI",
+        "description": "Només LTI 1.3: l'adreça d'inici de sessió de l'eina. Amb aquesta, un client ID i un deployment ID, el botó envia una sol·licitud d'inici de sessió LTI en lloc d'obrir un enllaç normal. Per completar l'inici cal el servei LTI d'aquest lloc."
+      },
+      {
+        "title": "Client ID de LTI",
+        "description": "El client ID que l'eina ha donat a aquest lloc. És un identificador públic, no un secret: no hi posis mai claus ni secrets."
+      },
+      {
+        "title": "Deployment ID de LTI",
+        "description": "El deployment ID que l'eina ha donat a aquest lloc. És un identificador públic, no un secret."
+      },
+      {
+        "title": "Emissor LTI",
+        "description": "L'adreça que identifica aquest lloc davant l'eina. Deixa-ho buit per utilitzar l'adreça del lloc on és la pàgina."
+      },
+      {
+        "title": "Alçada a la pàgina",
+        "description": "Alçada de l'eina quan s'obre en aquesta pàgina, en píxels (de 200 a 2000)."
+      },
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color de l'etiqueta de la capçalera i del botó. Deixa-ho buit per seguir el tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pista d'inici de sessió LTI",
+        "description": "Un valor opac que el servei LTI d'aquest lloc fa servir per reconèixer l'alumne. Normalment el proporciona el lloc mitjançant l'esdeveniment lti-launch-request en lloc de desar-se aquí. Mai una contrasenya ni una clau."
+      },
+      {
+        "title": "Pista de missatge LTI",
+        "description": "Un valor opac que el servei LTI d'aquest lloc fa servir per reconèixer aquest inici. Normalment el proporciona el lloc en lloc de desar-se aquí."
+      }
+    ]
+  }
+}

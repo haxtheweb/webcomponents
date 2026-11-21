@@ -8,5 +8,9 @@
   "theme": "Téma",
   "palette": "Paletta",
   "cancel": "Mégse",
-  "openAppearanceSettings": "Megjelenési beállítások megnyitása"
+  "openAppearanceSettings": "Megjelenési beállítások megnyitása",
+  "designSystem": "Dizájnrendszer",
+  "designSystemDefault": "DDD (alapértelmezett)",
+  "designSystemThemeDefault": "{name} (téma alapértelmezése)",
+  "designSystemHelp": "Szín, betűtípus, sarkok és sűrűség. Az elrendezésről továbbra is a téma dönt."
 }

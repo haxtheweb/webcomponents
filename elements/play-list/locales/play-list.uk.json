@@ -9,5 +9,7 @@
   "slidePages": "Сторінки слайдів",
   "goToSlide": "Перейти до слайда {number}",
   "slides": "Слайди",
-  "position": "{number} з {total}"
+  "position": "{number} з {total}",
+  "fullScreen": "На весь екран",
+  "exitFullScreen": "Вийти з повноекранного режиму"
 }

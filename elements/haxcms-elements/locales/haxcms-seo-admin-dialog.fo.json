@@ -6,6 +6,8 @@
   "faviconDescription": "Mynd á kagateigi / nýtt á telefonum sum lítið vevstaðsmerki",
   "domain": "Navnaøki",
   "domainDescription": "Navnaøki hjá hesi heimasíðuni",
+  "sameAs": "Aðrir vangar hjá hesi síðuni",
+  "sameAsDescription": "Eitt leinki fyri hvørja linju til vangar hjá hesi síðuni ella felagsskapinum aðrastaðni (GitHub, LinkedIn, YouTube, Mastodon). Leitimaskinur brúka tey til at knýta hesar vangar at hesi síðuni.",
   "language": "Mál",
   "languageDescription": "Mál á hesi síðuni. Leita eftir navni ella kodu, ella skriva aðra kodu sum fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

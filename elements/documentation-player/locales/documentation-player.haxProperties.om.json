@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Taphachiisaa sanadaa",
+    "description": "Qajeelfama, agarsiisa fi wabii web component tokkoof, qabduuwwan garagalchaa HTML, import, npm fi CDN waliin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Faayilii daataa sanadaa",
+        "description": "Daataa sanadaa elementicha waliin dhufu (lib/tag.docs.json)."
+      },
+      {
+        "title": "Karoora fakkii qajeelfamaa",
+        "description": "Karoora sochii elementicha waliin dhufu (tag.motion.json). Filannoo."
+      },
+      {
+        "title": "Barnoota viidiyoo",
+        "description": "Viidiyoo gabaabaa waa'ee elementichaa (YouTube, Vimeo ykn faayilii viidiyoo). Viidiyoo daataa sanadaa keessa jiru bakka bu'a."
+      },
+      {
+        "title": "Tabii irratti bani",
+        "description": "Tabiin kam dura akka mul'atu.",
+        "options": {
+          "motion": "Qajeelfama",
+          "video": "Viidiyoo",
+          "demo": "Agarsiisa",
+          "docs": "Sanada",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Qajeelfama ofumaan taphachiisi",
+        "description": "Akkuma taphachiisaan mul'ateen qajeelfama jalqabi. Yoo dubbisaan sochii xiqqaa filate hin hojjetu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mata-duree qajeelfamaa",
+        "description": "Elementoota qajeelfama hedduu qabaniif, mata-duree kam dura akka banamu (fakkeenyaaf add-blocks). Isa ijooof duwwaa dhiisi."
+      },
+      {
+        "title": "Liinkii agarsiisa kallattii",
+        "description": "Qabduun Madda agarsiisaa bani eessa akka deemu. Durtiin isaa kuusaa agarsiisaa kuusaa koodii keessa jiru dha."
+      },
+      {
+        "title": "Liinkii sanadaa",
+        "description": "Qabduun sanada guutuu eessa akka deemu, fakkeenyaaf fuula Learn HAX walsimu."
+      }
+    ]
+  }
+}

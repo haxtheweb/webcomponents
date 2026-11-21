@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Liste de cases à cocher",
+    "description": "Une liste de cases à cocher. Les lecteurs cochent les éléments et leur progression est mémorisée sur leur propre appareil."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre",
+        "description": "Nom de la liste. Lu à voix haute comme libellé du groupe de cases à cocher."
+      },
+      {
+        "title": "Éléments",
+        "description": "Chaque élément est une case à cocher. Les éléments cochés ou désactivés ne peuvent pas être modifiés par les lecteurs."
+      },
+      {
+        "title": "Numérotée",
+        "description": "Afficher une liste numérotée au lieu d'une liste à puces."
+      },
+      {
+        "title": "État",
+        "description": "Change les couleurs pour correspondre à stop-note.",
+        "options": {
+          "info": "Avis",
+          "success": "Confirmation",
+          "warning": "Avertissement",
+          "stop": "Arrêt"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id de stockage",
+        "description": "Id unique utilisé pour mémoriser la progression du lecteur sur son appareil. Généré automatiquement ; ne le modifiez que pour partager la progression entre des listes ou pour repartir de zéro."
+      }
+    ]
+  }
+}

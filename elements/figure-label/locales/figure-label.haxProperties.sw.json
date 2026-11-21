@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lebo ya kielelezo",
     "description": "Kipengele cha lebo ya kielelezo cha kuweka alama kwenye rasilimali za midia ndani ya maudhui."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Namba ya kielelezo",
+        "description": "Namba au lebo fupi ya kielelezo, k.m. 1.3"
+      },
+      {
+        "title": "Maelezo",
+        "description": "Maelezo mafupi ya kielelezo"
+      }
+    ]
   }
 }

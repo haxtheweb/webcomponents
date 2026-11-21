@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mosaic d'estadística",
+    "description": "Un nombre que importa, amb la seva etiqueta i com ha canviat. Col·loca'n diversos en una graella per fer una fila de tauler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Què mesura el nombre."
+      },
+      {
+        "title": "Valor",
+        "description": "El nombre. Un nombre simple s'agrupa segons l'idioma de la pàgina; qualsevol altra cosa es mostra tal com està escrita."
+      },
+      {
+        "title": "Canvi",
+        "description": "Com ha canviat, en paraules, com ara 6% aquest trimestre."
+      },
+      {
+        "title": "Direcció",
+        "description": "Si el canvi és a l'alça o a la baixa.",
+        "options": {
+          "": "Cap",
+          "up": "Amunt",
+          "down": "Avall"
+        }
+      }
+    ]
+  }
+}

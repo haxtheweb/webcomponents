@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Estatística",
+    "description": "Um número que conta para cima, com um rótulo e um link para a história dele"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Número até o qual contar"
+      },
+      {
+        "title": "Antes do número"
+      },
+      {
+        "title": "Depois do número"
+      },
+      {
+        "title": "Palavras em vez de um número"
+      },
+      {
+        "title": "O que ele conta"
+      },
+      {
+        "title": "Endereço da história em hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

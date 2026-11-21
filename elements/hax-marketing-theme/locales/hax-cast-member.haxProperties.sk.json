@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Člen obsadenia",
+    "description": "Jedno publikum stvárnené postavou, so slovami a tlačidlom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kto to je"
+      },
+      {
+        "title": "Typ postavy"
+      },
+      {
+        "title": "Semienko postavy"
+      },
+      {
+        "title": "Farba scény (názov DDD)"
+      },
+      {
+        "title": "Kam vedie tlačidlo"
+      },
+      {
+        "title": "Text tlačidla"
+      }
+    ]
+  }
+}

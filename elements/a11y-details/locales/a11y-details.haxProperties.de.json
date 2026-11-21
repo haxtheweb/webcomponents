@@ -24,11 +24,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Optionaler Zusammenfassungstext bei geöffneten Details"
+        "title": "Optionaler Zusammenfassungstext bei geöffneten Details",
+        "description": "Schaltflächentext, während die Beschreibung ausgeblendet ist, z. B. Beschreibung anzeigen."
       },
       {
         "property": "closeText",
-        "title": "Optionaler Zusammenfassungstext bei geschlossenen Details"
+        "title": "Optionaler Zusammenfassungstext bei geschlossenen Details",
+        "description": "Schaltflächentext, während die Beschreibung angezeigt wird, z. B. Beschreibung ausblenden."
       }
     ]
   }

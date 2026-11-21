@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternatif Metin"
+        "title": "Alternatif Metin",
+        "description": "Görseli göremeyen kişiler için açıklayın."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Ayrıntılar açıkken isteğe bağlı özet metni"
+        "title": "Ayrıntılar açıkken isteğe bağlı özet metni",
+        "description": "Açıklama gizliyken düğme metni, örneğin Açıklamayı göster."
       },
       {
         "property": "closeText",
-        "title": "Ayrıntılar kapalıyken isteğe bağlı özet metni"
+        "title": "Ayrıntılar kapalıyken isteğe bağlı özet metni",
+        "description": "Açıklama gösterilirken düğme metni, örneğin Açıklamayı gizle."
       }
     ]
   }

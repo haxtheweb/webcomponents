@@ -8,5 +8,9 @@
   "theme": "Тема",
   "palette": "Палітра",
   "cancel": "Скасувати",
-  "openAppearanceSettings": "Відкрити налаштування зовнішнього вигляду"
+  "openAppearanceSettings": "Відкрити налаштування зовнішнього вигляду",
+  "designSystem": "Дизайн-система",
+  "designSystemDefault": "DDD (типово)",
+  "designSystemThemeDefault": "{name} (типово для теми)",
+  "designSystemHelp": "Колір, шрифт, кути й щільність. Макет і далі визначає тема."
 }

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Suradnici",
+    "description": "Ljudi koji su izgradili projekt, iz datoteke popisa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datoteka popisa (JSON)"
+      },
+      {
+        "title": "Prikaz: landed, lab ili code"
+      },
+      {
+        "title": "Najviše osoba za prikaz (0 znači sve)"
+      }
+    ]
+  }
+}

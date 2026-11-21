@@ -3,5 +3,7 @@
   "status_stop": "Berhenti",
   "status_warning": "Amaran",
   "status_success": "Berjaya",
-  "status_info": "Nota"
+  "status_info": "Nota",
+  "status_tip": "Tahukah anda?",
+  "status_new": "Apa yang baharu"
 }

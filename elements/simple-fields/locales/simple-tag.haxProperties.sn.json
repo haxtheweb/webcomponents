@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Ruvara rwekusimbisa rwega",
         "description": "Tora ruvara rwekusimbisa kubva kumavara ezita zvega."
+      },
+      {
+        "title": "Revo",
+        "description": "Ipa tag ruvara rune revo. Siya pasina chinhu kuti ive tag isina divi.",
+        "options": {
+          "": "Isina divi",
+          "brand": "Brand",
+          "success": "Kubudirira",
+          "warning": "Yambiro",
+          "danger": "Njodzi"
+        }
       }
     ],
     "advanced": [

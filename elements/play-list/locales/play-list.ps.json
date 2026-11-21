@@ -9,5 +9,7 @@
   "slidePages": "د سلایډ پاڼې",
   "goToSlide": "سلایډ {number} ته لاړ شئ",
   "slides": "سلایډونه",
-  "position": "{number} له {total}"
+  "position": "{number} له {total}",
+  "fullScreen": "بشپړه پرده",
+  "exitFullScreen": "له بشپړې پردې وتل"
 }

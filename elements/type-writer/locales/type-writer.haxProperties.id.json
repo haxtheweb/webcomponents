@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mesin tik",
     "description": "Teks yang mengetik sendiri, satu karakter setiap kali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teks",
+        "description": "Teks yang diketik setelah elemen digulir ke dalam tampilan."
+      },
+      {
+        "title": "Mengetik",
+        "description": "Tampilkan kursor berkedip; elemen mengatur ini saat mengetik."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Jeda",
+        "description": "Milidetik menunggu sebelum mulai mengetik."
+      },
+      {
+        "title": "Durasi kursor",
+        "description": "Milidetik kursor tetap berkedip setelah teks selesai diketik."
+      },
+      {
+        "title": "Kecepatan",
+        "description": "Milidetik per karakter; angka lebih kecil mengetik lebih cepat."
+      }
+    ]
   }
 }

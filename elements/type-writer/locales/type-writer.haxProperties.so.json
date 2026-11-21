@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Makiinadda qoraalka",
     "description": "Qoraal isaga is qora hal xaraf markiiba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Qoraal",
+        "description": "Qoraalka la qorayo marka element-ku soo muuqdo."
+      },
+      {
+        "title": "Qorid",
+        "description": "Muuji cursor-ka libdhaya; element-ku wuxuu dejiyaa tan inta uu qorayo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dib u dhac",
+        "description": "Milliseconds la sugayo ka hor inta aan qoridda la bilaabin."
+      },
+      {
+        "title": "Muddada cursor-ka",
+        "description": "Milliseconds uu cursor-ku sii libdhayo kadib marka qoraalka la qoro."
+      },
+      {
+        "title": "Xawaare",
+        "description": "Milliseconds xaraf kasta; tirooyinka hoose way ka dhakhso badan yihiin."
+      }
+    ]
   }
 }

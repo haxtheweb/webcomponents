@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Abanikeli",
+    "description": "Abantu abakhe iprojekthi, ukusuka kwifayile yoluhlu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayile yoluhlu (JSON)"
+      },
+      {
+        "title": "Imbonakalo: landed, lab okanye code"
+      },
+      {
+        "title": "Elona nani labantu liboniswayo (0 lithetha bonke)"
+      }
+    ]
+  }
+}

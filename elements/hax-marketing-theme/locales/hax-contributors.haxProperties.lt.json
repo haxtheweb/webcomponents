@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Prisidėjusieji",
+    "description": "Žmonės, kurie kūrė projektą, iš sąrašo failo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sąrašo failas (JSON)"
+      },
+      {
+        "title": "Rodinys: landed, lab arba code"
+      },
+      {
+        "title": "Daugiausia rodomų žmonių (0 – visi)"
+      }
+    ]
+  }
+}

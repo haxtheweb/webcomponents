@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Anwendungsfall-Auswahl",
+    "description": "Wähle, wofür eine Website gedacht ist, und erhalte einen Link, der HAX im Browser mit dieser Start-Website öffnet, plus den passenden CLI-Befehl."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresse von HAX im Browser",
+        "description": "Wo der Link öffnet; ?skeleton= und &name= werden angehängt"
+      },
+      {
+        "title": "Auszulassende Start-Websites",
+        "description": "Maschinennamen, durch Kommas getrennt"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liste der Start-Websites",
+        "description": "Adresse der Skeleton-Liste (das Format, das app-hax liest)"
+      }
+    ]
+  }
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "שמירת הכול",
-  "saveTheFollowing": "לשמור את הפריטים הבאים: {list}?"
+  "saveTheFollowing": "לשמור את הפריטים הבאים: {list}?",
+  "save": "שמירה",
+  "cancel": "ביטול"
 }

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Neðanmálsgrein",
+    "description": "Athugasemd skrifuð þar sem hún á heima í textanum. Hún birtist sem tala, og númeraður listi athugasemda byggist sjálfkrafa neðst á síðunni."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Athugasemd",
+        "description": "Texti neðanmálsgreinarinnar."
+      },
+      {
+        "title": "Engin forskoðun",
+        "description": "Ekki sýna athugasemdina þegar lesandi bendir á eða setur fókus á töluna."
+      }
+    ]
+  }
+}

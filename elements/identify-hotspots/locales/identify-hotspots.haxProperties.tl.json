@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tukuyin ang mga hotspot",
+    "description": "Hinahanap ng mga mag-aaral ang tamang lugar sa larawan sa pamamagitan ng pag-click, pag-tap o paggalaw ng keyboard crosshair. Ang may-markang katapat ng image map."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Larawan",
+        "description": "Ang larawang hinahanapan ng mga mag-aaral."
+      },
+      {
+        "title": "Alternatibong teksto",
+        "description": "Inilalarawan ang larawan para sa mga taong hindi nakakakita nito. Hindi ito kailanman ipinapakita bilang pamagat."
+      },
+      {
+        "title": "Pamagat",
+        "description": "Maikling nakikitang pamagat na ipinapakita sa itaas ng larawan."
+      },
+      {
+        "title": "Tanong",
+        "description": "Kung ano ang ipinapahanap sa mga mag-aaral sa larawan."
+      },
+      {
+        "title": "Mga sagot",
+        "description": "Bawat sagot ay isang may-pangalang oval sa larawan. Ang posisyon at laki ay porsyento ng larawan, sinusukat mula sa kaliwang itaas na sulok nito. Habang nag-e-edit, naka-outline ang bawat sagot sa larawan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mga pagsubok",
+        "description": "Ilang beses makakasubok ang isang mag-aaral. Ang 0 ay walang limitasyon."
+      },
+      {
+        "title": "Pinapayagang mintis",
+        "description": "Ilang mintis ang tatapos sa isang pagsubok. Ang 0 ay walang limitasyon, at makakakuha ang mga mag-aaral ng button na Tapusin."
+      },
+      {
+        "title": "Nako-collapse",
+        "description": "Ipakita ang tanong na ito bilang hanay na bumubukas at sumasara. Ang pagbukas ng isa ay nagsasara sa ibang nako-collapse na tanong sa tabi nito."
+      },
+      {
+        "title": "Magsimulang naka-collapse",
+        "description": "Kapag nako-collapse, magsimula bilang saradong hanay na nagpapakita lang ng tanong at status nito."
+      },
+      {
+        "title": "Format ng pagmamarka",
+        "description": "OER Schema: format ng pagmamarka para sa pagtatasang ito (hal. puntos, letra, porsyento, pagkumpleto)."
+      },
+      {
+        "title": "Layunin sa pag-aaral",
+        "description": "OER Schema: layunin sa pag-aaral na kaugnay ng pagtatasang ito."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pangalan ng pagsusulit",
+        "description": "Pangalan ng pagsusulit na ipinapasa para gamitin sa mga xAPI-driven na kapaligiran para tukuyin ang item na ito"
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kursong para sa pagtatasang ito."
+      }
+    ]
+  }
+}

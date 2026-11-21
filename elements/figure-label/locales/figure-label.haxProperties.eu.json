@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Irudi-etiketa",
     "description": "Edukiaren barruko multimedia baliabideak markatzeko irudi-etiketa elementua."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irudiaren zenbakia",
+        "description": "Irudiaren zenbakia edo etiketa laburra, adib. 1.3"
+      },
+      {
+        "title": "Deskribapena",
+        "description": "Irudiaren deskribapen laburra"
+      }
+    ]
   }
 }

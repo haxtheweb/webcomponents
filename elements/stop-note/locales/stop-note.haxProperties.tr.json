@@ -23,7 +23,9 @@
           "stop": "Dur",
           "warning": "Uyarı",
           "success": "Onay",
-          "info": "Duyuru"
+          "info": "Duyuru",
+          "tip": "İpucu",
+          "new": "Yenilikler"
         }
       },
       {

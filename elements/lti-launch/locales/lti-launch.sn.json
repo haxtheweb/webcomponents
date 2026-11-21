@@ -1,0 +1,19 @@
+{
+  "label": "Mudziyo wekunze",
+  "labelLti": "Mudziyo wekunze · LTI 1.3",
+  "theTool": "mudziyo",
+  "directions": "Mirayiridzo",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Viga mirayiridzo",
+  "directionsWindow": "Bhatani rinovhura hwindo idzva rine mudziyo mukati.",
+  "directionsEmbed": "Bhatani rinovhura mudziyo papeji iri. Kana usingavhuriki, uvhure muhwindo idzva panzvimbo pacho.",
+  "directionsLti": "Saiti iyi inokupinza mumudziyo, saka haudi akaundi yakasiyana.",
+  "openWindow": "Vhura {title} (hwindo idzva)",
+  "openEmbed": "Vhura {title}",
+  "openInstead": "Vhura muhwindo idzva panzvimbo pacho",
+  "frameTitle": "{title} (mudziyo wekunze)",
+  "openedWindow": "Hwindo idzva rine mudziyo ravhurika.",
+  "openedEmbed": "Mudziyo wavhurika papeji iri.",
+  "needsUrl": "Bhuroko iri rinoda kero yekutanga inotanga ne http:// kana https://.",
+  "needsSignIn": "Mudziyo uyu unoda sevhisi yekupinda yesaiti iyi, isipo pano. Hapana chakavhurwa."
+}

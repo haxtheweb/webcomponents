@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Piilota kuvake",
         "description": "Piilota tekstiä korostava kuvake"
+      },
+      {
+        "title": "Ulkoasu",
+        "description": "Kuinka paljon painikkeella on painoarvoa.",
+        "options": {
+          "": "Täytetty",
+          "tonal": "Sävytetty",
+          "outlined": "Ääriviivattu",
+          "plain": "Pelkistetty"
+        }
+      },
+      {
+        "title": "Koko",
+        "description": "Painikkeen koko.",
+        "options": {
+          "s": "Pieni",
+          "": "Keskikokoinen",
+          "l": "Suuri"
+        }
       }
     ],
     "advanced": [

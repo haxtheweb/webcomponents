@@ -6,6 +6,8 @@
   "faviconDescription": "Imatge de la pestanya del navegador / s'utilitza als telèfons com a logotip petit del lloc",
   "domain": "Domini",
   "domainDescription": "Domini d'aquest lloc web",
+  "sameAs": "Altres perfils d'aquest lloc",
+  "sameAsDescription": "Un enllaç per línia als perfils d'aquest lloc o organització en altres llocs (GitHub, LinkedIn, YouTube, Mastodon). Els cercadors els fan servir per connectar aquests perfils amb aquest lloc.",
   "language": "Idioma",
   "languageDescription": "Idioma d'aquest lloc. Cerca per nom o codi, o introdueix un altre codi com fr-CA.",
   "googleAnalyticsId": "ID de Google Analytics",

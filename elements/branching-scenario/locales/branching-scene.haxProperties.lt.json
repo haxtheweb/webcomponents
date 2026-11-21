@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenarijaus scena",
+    "description": "Viena išsišakojančio scenarijaus scena. Susiekite kiekvieną pasirinkimą su kita scena naudodami #, po kurio eina jos scenos ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Scenos ID",
+        "description": "Į ką veda pasirinkimai: nuoroda į #, po kurio eina šis ID, veda į šią sceną. Raidės, skaičiai ir brūkšneliai."
+      },
+      {
+        "title": "Antraštė",
+        "description": "Scenos antraštė."
+      },
+      {
+        "title": "Pabaiga",
+        "description": "Ar ši scena užbaigia kelią ir kaip jis baigėsi.",
+        "options": {
+          "": "Ne pabaiga",
+          "good": "Gera pabaiga",
+          "mixed": "Mišri pabaiga",
+          "poor": "Prasta pabaiga"
+        }
+      },
+      {
+        "title": "Rezultatas",
+        "description": "Rezultatas už šios pabaigos pasiekimą. Didžiausias scenarijaus pabaigos rezultatas yra maksimumas."
+      }
+    ]
+  }
+}

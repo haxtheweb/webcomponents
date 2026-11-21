@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Tekst ved siden af en duelknap med to karakterer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Overskrift"
+      },
+      {
+        "title": "Hvor knappen fører hen"
+      },
+      {
+        "title": "Knaptekst"
+      },
+      {
+        "title": "Frø for venstre karakter"
+      },
+      {
+        "title": "Frø for højre karakter"
+      }
+    ]
+  }
+}

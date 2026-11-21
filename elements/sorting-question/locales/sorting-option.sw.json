@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Jibu liko katika mpangilio sahihi",
   "answerInIncorrectOrder": "Jibu liko katika mpangilio usio sahihi",
   "moveOptionUp": "Chagua ili kusogeza chaguo juu katika mpangilio",
-  "moveOptionDown": "Chagua ili kusogeza chaguo chini katika mpangilio"
+  "moveOptionDown": "Chagua ili kusogeza chaguo chini katika mpangilio",
+  "moveEarlier": "Sogeza mapema",
+  "moveLater": "Sogeza baadaye",
+  "correct": "Sahihi",
+  "incorrect": "Si sahihi"
 }

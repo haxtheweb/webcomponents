@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Ysgrifennu gan ddefnyddio'r nodiant mathemategol LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cefndir y llun",
+        "description": "Cefndir y tu ôl i luniau wedi'u lluniadu. Mae Awtomatig yn ychwanegu un dim ond pan fyddai'r llun yn anodd ei weld ar y dudalen, fel llinellau tywyll yn y modd tywyll.",
+        "options": {
+          "auto": "Awtomatig",
+          "light": "Golau",
+          "dark": "Tywyll",
+          "none": "Dim"
+        }
+      }
+    ]
   }
 }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Liosta céimeanna",
     "description": "Céimeanna uimhrithe chun tasc a chur i gcrích."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Táscaire céime",
+        "description": "Taispeáin na céimeanna mar ró dlúth teideal a mharcálann dul chun cinn. Ní thaispeántar ábhar na gcéimeanna sa leagan amach seo."
+      },
+      {
+        "title": "Céim reatha",
+        "description": "An chéim ina bhfuil an léitheoir, ag comhaireamh ó 1. Taispeántar céimeanna níos luaithe mar chríochnaithe. Úsáideann an táscaire céime é."
+      }
+    ]
   }
 }

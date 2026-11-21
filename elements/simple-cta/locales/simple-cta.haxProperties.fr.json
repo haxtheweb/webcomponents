@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Masquer l'icône",
         "description": "Masquer l'icône utilisée pour accentuer le texte"
+      },
+      {
+        "title": "Apparence",
+        "description": "Le degré d'emphase du bouton.",
+        "options": {
+          "": "Plein",
+          "tonal": "Tonal",
+          "outlined": "Contour",
+          "plain": "Simple"
+        }
+      },
+      {
+        "title": "Taille",
+        "description": "Taille du bouton.",
+        "options": {
+          "s": "Petit",
+          "": "Moyenne",
+          "l": "Grand"
+        }
       }
     ],
     "advanced": [

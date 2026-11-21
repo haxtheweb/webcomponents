@@ -1,4 +1,6 @@
 {
   "saveAll": "Adana Duka",
-  "saveTheFollowing": "A adana waɗannan: {list}?"
+  "saveTheFollowing": "A adana waɗannan: {list}?",
+  "save": "Ajiye",
+  "cancel": "Soke"
 }

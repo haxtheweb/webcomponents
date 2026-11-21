@@ -3,5 +3,7 @@
   "status_stop": "Таваққуф",
   "status_warning": "Огоҳӣ",
   "status_success": "Муваффақият",
-  "status_info": "Эзоҳ"
+  "status_info": "Эзоҳ",
+  "status_tip": "Медонистед?",
+  "status_new": "Чӣ нав аст"
 }

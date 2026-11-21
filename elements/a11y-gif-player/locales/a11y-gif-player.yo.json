@@ -2,5 +2,9 @@
   "toggleAnimation": "Yí eré-ìṣípòpadà padà",
   "info": "àlàyé",
   "image": "Àwòrán",
-  "animatedGif": "GIF alààyè"
+  "animatedGif": "GIF alààyè",
+  "playAnimation": "Ṣe eré ìdárayá",
+  "pauseAnimation": "Dá eré ìdárayá dúró",
+  "showDescription": "Fi àpèjúwe hàn",
+  "hideDescription": "Fi àpèjúwe pamọ́"
 }

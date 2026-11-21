@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Høvuðsmynd",
+    "description": "Ein stór mynd, GIF ella sjónband við yvirskrift og teksti oman á, sett hvar sum helst á eini síðu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd ella sjónband",
+        "description": "Ein JPG-, PNG-, WebP-, GIF-, MP4- ella WebM-fíla."
+      },
+      {
+        "title": "Annar tekstur",
+        "description": "Lýs myndina. Lat vera tómt, tá ið hon bert er prýði."
+      },
+      {
+        "title": "Yvirskrift",
+        "description": "Yvirskrift víst oman á miðlinum. Lat vera tómt fyri onga."
+      },
+      {
+        "title": "Tekstur",
+        "description": "Tekstur víst undir yvirskriftini, oman á miðlinum."
+      },
+      {
+        "title": "Full breidd",
+        "description": "Gakk frá kanti til kant í staðin fyri at sita í innihaldsteiginum."
+      },
+      {
+        "title": "Hædd",
+        "options": {
+          "tall": "Høg",
+          "medium": "Miðal",
+          "short": "Lág"
+        }
+      },
+      {
+        "title": "Innramming",
+        "description": "Hvussu myndin situr við hvørja skíggjastødd"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fjaring",
+        "description": "Litur lagdur oman á miðilin. Við yvirskrift ella teksti er altíð ein, so teksturin verður lesiligur.",
+        "options": {
+          "blue": "Bláur",
+          "bottom": "Myrkt niðast",
+          "none": "Eingin"
+        }
+      },
+      {
+        "title": "Tekststaður",
+        "options": {
+          "bottom": "Niðast",
+          "middle": "Í miðjuni"
+        }
+      },
+      {
+        "title": "Brennidepil vatnrætt",
+        "description": "Parturin av myndini, sum verður verandi sjónligur, tá ið hon verður skorin til, frá 0 (vinstru) til 100 (høgru)."
+      },
+      {
+        "title": "Brennidepil loddrætt",
+        "description": "Parturin av myndini, sum verður verandi sjónligur, tá ið hon verður skorin til, frá 0 (ovast) til 100 (niðast)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Comparació de plataformes",
+    "description": "Cara a cara: tria dues plataformes qualssevol d'un fitxer de dades"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dades de la comparació (JSON)"
+      },
+      {
+        "title": "Id de la plataforma esquerra"
+      },
+      {
+        "title": "Id de la plataforma dreta"
+      }
+    ]
+  }
+}

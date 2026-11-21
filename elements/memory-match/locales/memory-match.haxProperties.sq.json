@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Lojë kujtese",
+    "description": "Kthe letrat për të gjetur çifte. Çifto një term me kuptimin e tij që përputhja të tregojë kuptim, ose përdor dy tekste ose imazhe që përputhen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulli",
+        "description": "Kërkesa e shfaqur në kokë, për shembull: Përputh termin me funksionin e tij."
+      },
+      {
+        "title": "Çiftet",
+        "description": "Çdo çift janë dy letra që shkojnë bashkë, zakonisht një term dhe kuptimi i tij. Një anë kërkon tekst, imazh ose të dyja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngjyra theksuese",
+        "description": "Ngjyrë opsionale për etiketën e kokës, pjesën e pasme të letrave dhe butonin."
+      }
+    ]
+  }
+}

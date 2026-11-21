@@ -6,6 +6,8 @@
   "faviconDescription": "Nabigatzailearen fitxako irudia / telefonoetan guneko logotipo txiki gisa erabilia",
   "domain": "Domeinua",
   "domainDescription": "Webgune honen domeinua",
+  "sameAs": "Gune honen beste profil batzuk",
+  "sameAsDescription": "Esteka bat lerro bakoitzeko gune edo erakunde honek beste leku batzuetan dituen profiletara (GitHub, LinkedIn, YouTube, Mastodon). Bilatzaileek profil horiek gune honekin lotzeko erabiltzen dituzte.",
   "language": "Hizkuntza",
   "languageDescription": "Gune honen hizkuntza. Bilatu izenaren edo kodearen arabera, edo idatzi beste kode bat, adibidez fr-CA.",
   "googleAnalyticsId": "Google Analytics IDa",

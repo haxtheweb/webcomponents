@@ -3,5 +3,7 @@
   "status_stop": "നിർത്തുക",
   "status_warning": "മുന്നറിയിപ്പ്",
   "status_success": "വിജയം",
-  "status_info": "കുറിപ്പ്"
+  "status_info": "കുറിപ്പ്",
+  "status_tip": "നിങ്ങൾക്കറിയാമോ?",
+  "status_new": "പുതിയതെന്ത്"
 }

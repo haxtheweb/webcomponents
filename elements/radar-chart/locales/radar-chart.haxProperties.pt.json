@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Gráfico de radar",
+    "description": "Gráfico de radar (teia) para modelos de maturidade e pontuação por facetas, como o HEOSAT. Inclui uma alternativa em texto e uma tabela de dados."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Título do gráfico; também usado como nome acessível."
+      },
+      {
+        "title": "Pontuação máxima",
+        "description": "Maior valor da escala."
+      },
+      {
+        "title": "Categorias",
+        "description": "Uma categoria por linha. Precisa de pelo menos 3."
+      },
+      {
+        "title": "Pontuações",
+        "description": "Números separados por vírgula, um por categoria na mesma ordem."
+      },
+      {
+        "title": "Pontuações-alvo",
+        "description": "Números separados por vírgula, um por categoria na mesma ordem."
+      },
+      {
+        "title": "Mostrar legenda",
+        "description": "Mostrar uma legenda com as pontuações e os alvos."
+      },
+      {
+        "title": "Compacto",
+        "description": "Gráfico menor sem rótulos, legenda nem tabela de dados. Passe o mouse sobre um ponto para ver os valores."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rótulo das pontuações",
+        "description": "Rótulo das pontuações na legenda e na tabela."
+      },
+      {
+        "title": "Rótulo dos alvos",
+        "description": "Rótulo dos alvos na legenda e na tabela."
+      }
+    ]
+  }
+}

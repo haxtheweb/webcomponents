@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Atbildes",
-        "description": "Atbilžu secība nosaka pareizo kārtību."
+        "description": "Atbilžu secība nosaka pareizo kārtību.",
+        "options": {
+          "": "Saraksts",
+          "cards": "Attēlu kartītes"
+        }
+      },
+      {
+        "title": "Atbildes",
+        "description": "Atbilžu secība nosaka pareizo secību."
       }
     ],
     "advanced": [

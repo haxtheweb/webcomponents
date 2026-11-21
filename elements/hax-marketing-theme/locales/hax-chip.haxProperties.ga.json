@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Slis",
+    "description": "Deilbhín beag le lipéad"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deilbhín"
+      },
+      {
+        "title": "Lipéad"
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Jigo",
   "palette": "Palet",
   "cancel": "Soke",
-  "openAppearanceSettings": "Buɗe Saitunan Kamanni"
+  "openAppearanceSettings": "Buɗe Saitunan Kamanni",
+  "designSystem": "Tsarin ƙira",
+  "designSystemDefault": "DDD (tsoho)",
+  "designSystemThemeDefault": "{name} (tsohon jigo)",
+  "designSystemHelp": "Launi, nau'in rubutu, kusurwoyi da yawa. Jigon ne har yanzu ke yanke shawarar tsarin shimfiɗa."
 }

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistema de disseny",
+  "dddDefault": "DDD (per defecte)",
+  "designSystemHelp": "Color, tipografia, cantonades i focus. El tema conserva la disposició.",
+  "designSystemFixed": "Aquest tema conserva el seu propi sistema de disseny.",
+  "palette": "Paleta",
+  "themeDefault": "Per defecte del tema",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (el tema d'aquest lloc)",
+  "restyle": "Canvia l'estil d'aquest lloc",
+  "close": "Tanca",
+  "reset": "Torna a l'aspecte propi d'aquest lloc",
+  "random": "Sorprèn-me",
+  "about": "Això mostra alguns dels aspectes integrats a HAX. Les pàgines no canvien mai: l'estructura viu a JSON Outline Schema i cada bloc és un component web estàndard, així que el disseny es pot canviar lliurement."
+}

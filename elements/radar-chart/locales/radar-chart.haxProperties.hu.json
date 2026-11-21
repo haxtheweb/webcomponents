@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radar- (pók-) diagram érettségi modellekhez és szempontok szerinti pontozáshoz, például a HEOSAT-hoz. Szöveges alternatívát és adattáblát tartalmaz."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A diagram címsora; akadálymentes neveként is szolgál."
+      },
+      {
+        "title": "Maximális pontszám",
+        "description": "A skála legmagasabb értéke."
+      },
+      {
+        "title": "Kategóriák",
+        "description": "Soronként egy kategória. Legalább 3 kell."
+      },
+      {
+        "title": "Pontszámok",
+        "description": "Vesszővel elválasztott számok, kategóriánként egy, ugyanabban a sorrendben."
+      },
+      {
+        "title": "Célpontszámok",
+        "description": "Vesszővel elválasztott számok, kategóriánként egy, ugyanabban a sorrendben."
+      },
+      {
+        "title": "Jelmagyarázat megjelenítése",
+        "description": "Jelmagyarázat megjelenítése a pontszámok és a célok megnevezésével."
+      },
+      {
+        "title": "Tömör",
+        "description": "Kisebb diagram címkék, jelmagyarázat és adattábla nélkül. Egy pont fölé víve látszanak az értékei."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pontszám címkéje",
+        "description": "A pontszámok jelmagyarázat- és táblázatcímkéje."
+      },
+      {
+        "title": "Cél címkéje",
+        "description": "A célok jelmagyarázat- és táblázatcímkéje."
+      }
+    ]
+  }
+}

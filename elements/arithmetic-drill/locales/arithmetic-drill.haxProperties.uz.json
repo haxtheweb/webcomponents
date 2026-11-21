@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Arifmetika mashqi",
+    "description": "Darhol fikr-mulohaza beradigan avtomatik yaratilgan arifmetik misollarning qisqa to‘plami. Amallar va sonlar oralig‘ini tanlang; har safar yangi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Mashq nomi, sarlavhasida ko‘rsatiladi."
+      },
+      {
+        "title": "Amallar",
+        "description": "Qaysi turdagi misollar so‘raladi. O‘quvchilar boshlashdan oldin istalganini o‘chirib qo‘yishi mumkin.",
+        "options": {
+          "add": "Qo‘shish",
+          "subtract": "Ayirish",
+          "multiply": "Ko‘paytirish",
+          "divide": "Bo‘lish",
+          "add subtract": "Qo‘shish va ayirish",
+          "multiply divide": "Ko‘paytirish va bo‘lish",
+          "add multiply": "Qo‘shish va ko‘paytirish",
+          "add divide": "Qo‘shish va bo‘lish",
+          "subtract multiply": "Ayirish va ko‘paytirish",
+          "subtract divide": "Ayirish va bo‘lish",
+          "add subtract multiply": "Qo‘shish, ayirish va ko‘paytirish",
+          "add subtract divide": "Qo‘shish, ayirish va bo‘lish",
+          "add multiply divide": "Qo‘shish, ko‘paytirish va bo‘lish",
+          "subtract multiply divide": "Ayirish, ko‘paytirish va bo‘lish",
+          "add subtract multiply divide": "To‘rttalasi"
+        }
+      },
+      {
+        "title": "Eng kichik son",
+        "description": "Misolda ishlatiladigan eng kichik son. Butun sonlar, 0 yoki undan katta."
+      },
+      {
+        "title": "Eng katta son",
+        "description": "Misolda ishlatiladigan eng katta son. Bo‘lish javoblari va bo‘luvchilar ham shu oraliqda qoladi."
+      },
+      {
+        "title": "Misollar soni",
+        "description": "Bir mashqdagi misollar soni (1 dan 100 gacha)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vaqt chegarasi",
+        "description": "Butun mashq uchun ajratilgan soniyalar. 0 taymer yo‘qligini bildiradi va bu standart: vaqtli mashqlar ko‘proq vaqt kerak bo‘lgan o‘quvchilarga qiyin. O‘rnatilganda ham o‘quvchilar taymerni o‘zlari uchun o‘chirishi mumkin."
+      },
+      {
+        "title": "Urg‘u rangi",
+        "description": "Sarlavha belgisi va tugmalar rangi. Mavzuga ergashish uchun bo‘sh qoldiring."
+      }
+    ]
+  }
+}

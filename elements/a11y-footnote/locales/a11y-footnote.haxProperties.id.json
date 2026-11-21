@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Catatan kaki",
+    "description": "Catatan yang ditulis di tempatnya dalam teks. Catatan tampil sebagai angka, dan daftar catatan bernomor tersusun sendiri di bagian bawah halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Catatan",
+        "description": "Teks catatan kaki."
+      },
+      {
+        "title": "Tanpa pratinjau",
+        "description": "Jangan tampilkan catatan saat pembaca mengarahkan kursor atau fokus ke angkanya."
+      }
+    ]
+  }
+}

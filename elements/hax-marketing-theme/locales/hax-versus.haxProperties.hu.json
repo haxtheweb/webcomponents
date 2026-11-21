@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Párharc",
+    "description": "Szöveg egy két karaktert felvonultató párharc-gomb mellett"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Címsor"
+      },
+      {
+        "title": "Hová vezet a gomb"
+      },
+      {
+        "title": "Gomb szövege"
+      },
+      {
+        "title": "Bal oldali karakter kezdőértéke"
+      },
+      {
+        "title": "Jobb oldali karakter kezdőértéke"
+      }
+    ]
+  }
+}

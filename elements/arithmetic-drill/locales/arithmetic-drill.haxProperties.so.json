@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Layli xisaabeed",
+    "description": "Taxane gaaban oo masalooyin xisaabeed la sameeyay oo leh jawaab-celin degdeg ah. Dooro hawlgallada iyo xadka tirooyinka; mar kasta waa cusub."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Magaca laylisan, oo ka muuqda madaxiisa."
+      },
+      {
+        "title": "Hawlgallada",
+        "description": "Noocyada masalooyinka la weydiiyo. Ardaydu way demin karaan mid kasta ka hor intaysan bilaabin.",
+        "options": {
+          "add": "Isku dar",
+          "subtract": "Ka jar",
+          "multiply": "Isku dhufasho",
+          "divide": "Qaybin",
+          "add subtract": "Isku dar iyo ka jar",
+          "multiply divide": "Isku dhufasho iyo qaybin",
+          "add multiply": "Isku dar iyo isku dhufasho",
+          "add divide": "Isku dar iyo qaybin",
+          "subtract multiply": "Ka jar iyo isku dhufasho",
+          "subtract divide": "Ka jar iyo qaybin",
+          "add subtract multiply": "Isku dar, ka jar iyo isku dhufasho",
+          "add subtract divide": "Isku dar, ka jar iyo qaybin",
+          "add multiply divide": "Isku dar, isku dhufasho iyo qaybin",
+          "subtract multiply divide": "Ka jar, isku dhufasho iyo qaybin",
+          "add subtract multiply divide": "Dhammaan afarta"
+        }
+      },
+      {
+        "title": "Tirada ugu yar",
+        "description": "Tirada ugu yar ee masalada lagu isticmaalo. Tirooyin dhan, 0 ama ka badan."
+      },
+      {
+        "title": "Tirada ugu weyn",
+        "description": "Tirada ugu weyn ee masalada lagu isticmaalo. Jawaabaha qaybinta iyo qaybiyeyaashuna waxay ku jiraan xadkan."
+      },
+      {
+        "title": "Tirada masalooyinka",
+        "description": "Immisa masalo ayaa ku jira hal mar (1 ilaa 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Xadka waqtiga",
+        "description": "Ilbiriqsiyada loo oggol yahay hal mar oo dhan. 0 macnaheedu waa saacad la'aan, taasoo caadi ah: laylisyada waqtiga leh waxay guuldarreeyaan ardayda u baahan waqti dheeraad ah. Marka la dejiyo, ardaydu weli way demin karaan saacadda."
+      },
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midabka chip-ka madaxa iyo badhamada. Ka tag madhan si aad u raacdo theme-ka."
+      }
+    ]
+  }
+}

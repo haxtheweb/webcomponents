@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram saka teks",
+    "description": "Tulis diagram minangka teks (Mermaid): bagan alir, urutan, garis wektu lan liyane. Digambar ing kaca karo alternatif teks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Ditampilake ing ndhuwur diagram lan dienggo minangka jenenge."
+      },
+      {
+        "title": "Sumber diagram",
+        "description": "Teks Mermaid, contone: flowchart TD, banjur siji baris saben pranala kayata A[Draft] --> B{Ready?}. Tambah |label| sawise panah kanggo menehi label. Gambar dianyari nalika panjenengan ngetik."
+      },
+      {
+        "title": "Alternatif teks",
+        "description": "Gambarake apa sing dituduhake diagram kanggo wong sing ora bisa ndeleng. Kosongake ing bagan alir supaya langkah-langkahe didhaptar otomatis."
+      },
+      {
+        "title": "Katrangan",
+        "description": "Katrangan pilihan sing ditampilake ing sangisore diagram."
+      },
+      {
+        "title": "Tampilake sumber",
+        "description": "Tampilake teks diagram ing sandhinge gambar."
+      },
+      {
+        "title": "Tampilake alternatif teks",
+        "description": "Tampilake alternatif teks ing sangisore gambar. Tansah kasedhiya kanggo pamaca layar."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Berkas sumber",
+        "description": "Alamat berkas .mmd sing digambar tinimbang teks ing ndhuwur (https utawa path ing situs iki)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna chip lambang ing judhul."
+      }
+    ]
+  }
+}

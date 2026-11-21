@@ -20,6 +20,12 @@
         "title": "Attēls",
         "description": "Attēls, kas tiek rādīts kopā ar citātu."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Ierāmēts",
+        "description": "Zīmēt citātu kopīgajā bloka rāmī ar ikonu un etiķeti virs tā, lai tas atbilstu piezīmēm un norādījumu kartītēm."
+      }
     ]
   }
 }

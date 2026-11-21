@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Attēla etiķete",
     "description": "Attēla etiķetes elements multivides resursu atzīmēšanai saturā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Attēla numurs",
+        "description": "Attēla numurs vai īsa etiķete, piemēram, 1.3"
+      },
+      {
+        "title": "Apraksts",
+        "description": "Īss attēla apraksts"
+      }
+    ]
   }
 }

@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Luyện tập số học",
+    "description": "Một loạt ngắn các bài toán số học được tạo tự động với phản hồi tức thì. Chọn các phép tính và phạm vi số; mỗi lượt đều mới."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tên của bài luyện tập, hiển thị ở phần đầu."
+      },
+      {
+        "title": "Phép tính",
+        "description": "Những loại bài toán được hỏi. Người học có thể tắt bất kỳ loại nào trước khi bắt đầu.",
+        "options": {
+          "add": "Phép cộng",
+          "subtract": "Phép trừ",
+          "multiply": "Phép nhân",
+          "divide": "Phép chia",
+          "add subtract": "Cộng và trừ",
+          "multiply divide": "Nhân và chia",
+          "add multiply": "Cộng và nhân",
+          "add divide": "Cộng và chia",
+          "subtract multiply": "Trừ và nhân",
+          "subtract divide": "Trừ và chia",
+          "add subtract multiply": "Cộng, trừ và nhân",
+          "add subtract divide": "Cộng, trừ và chia",
+          "add multiply divide": "Cộng, nhân và chia",
+          "subtract multiply divide": "Trừ, nhân và chia",
+          "add subtract multiply divide": "Cả bốn"
+        }
+      },
+      {
+        "title": "Số nhỏ nhất",
+        "description": "Số nhỏ nhất dùng trong một bài toán. Số nguyên, từ 0 trở lên."
+      },
+      {
+        "title": "Số lớn nhất",
+        "description": "Số lớn nhất dùng trong một bài toán. Đáp án và số chia của phép chia cũng nằm trong phạm vi này."
+      },
+      {
+        "title": "Số bài toán",
+        "description": "Có bao nhiêu bài toán trong một lượt (1 đến 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Giới hạn thời gian",
+        "description": "Số giây cho phép cho cả lượt. 0 nghĩa là không hẹn giờ, đây là mặc định: bài luyện tập tính giờ làm khó những người học cần thêm thời gian. Khi được đặt, người học vẫn có thể tự tắt hẹn giờ."
+      },
+      {
+        "title": "Màu nhấn",
+        "description": "Màu của nhãn đầu và các nút. Để trống để theo giao diện."
+      }
+    ]
+  }
+}

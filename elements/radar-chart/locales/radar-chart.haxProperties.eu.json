@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar-diagrama",
+    "description": "Radar (armiarma) diagrama heldutasun-ereduetarako eta faseen puntuaziorako, HEOSAT bezala. Testu-alternatiba eta datu-taula ditu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Diagramaren izenburua; haren izen irisgarri gisa ere erabiltzen da."
+      },
+      {
+        "title": "Gehienezko puntuazioa",
+        "description": "Eskalaren baliorik altuena."
+      },
+      {
+        "title": "Kategoriak",
+        "description": "Kategoria bat lerro bakoitzeko. Gutxienez 3 behar dira."
+      },
+      {
+        "title": "Puntuazioak",
+        "description": "Komaz bereizitako zenbakiak, bat kategoria bakoitzeko ordena berean."
+      },
+      {
+        "title": "Helburu-puntuazioak",
+        "description": "Komaz bereizitako zenbakiak, bat kategoria bakoitzeko ordena berean."
+      },
+      {
+        "title": "Erakutsi legenda",
+        "description": "Erakutsi puntuazioak eta helburuak izendatzen dituen legenda."
+      },
+      {
+        "title": "Trinkoa",
+        "description": "Diagrama txikiagoa etiketarik, legendarik edo datu-taularik gabe. Pasatu sagua puntu baten gainetik haren balioak ikusteko."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Puntuazioaren etiketa",
+        "description": "Puntuazioen legenda- eta taula-etiketa."
+      },
+      {
+        "title": "Helburuaren etiketa",
+        "description": "Helburuen legenda- eta taula-etiketa."
+      }
+    ]
+  }
+}

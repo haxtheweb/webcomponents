@@ -1,4 +1,6 @@
 {
   "saveAll": "حفظ الكل",
-  "saveTheFollowing": "حفظ ما يلي: {list}؟"
+  "saveTheFollowing": "حفظ ما يلي: {list}؟",
+  "save": "حفظ",
+  "cancel": "إلغاء"
 }

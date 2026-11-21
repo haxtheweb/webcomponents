@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistem ağı",
+    "description": "Bir projenin parçalarının nasıl bağlandığını gösteren, alt ağlar ve adım adım turlar içeren etkileşimli bir ağ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ağ verileri",
+        "description": "Ağların JSON paketinin URL'si (PRAW'da oluşturulur, ecosystem-webs.json)."
+      },
+      {
+        "title": "Ağ",
+        "description": "Önce gösterilecek ağın kimliği; main ekosistem ağıdır."
+      },
+      {
+        "title": "Seçili kutucuk",
+        "description": "Ağ açıldığında seçilecek kutucuğun kimliği."
+      },
+      {
+        "title": "Tur",
+        "description": "Başlanacak turun kimliği."
+      },
+      {
+        "title": "Liste görünümünde başla",
+        "description": "Ağı çizim yerine iç içe listeler olarak göster."
+      },
+      {
+        "title": "Yalnızca çizim",
+        "description": "Yalnızca çizimi bir şekil olarak göster: başlık, turlar, ayrıntılar veya adım çubuğu olmadan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Okuma ölçütü",
+        "description": "Her kutucuğu tek bir ölçüte göre okunur şekilde başlat.",
+        "options": {
+          "": "Yalnızca bağlantılar",
+          "fresh": "Güncellik",
+          "bus": "Otobüs faktörü",
+          "impact": "Etki",
+          "evidence": "Kanıt",
+          "parity": "Eşdeğerlik"
+        }
+      }
+    ]
+  }
+}

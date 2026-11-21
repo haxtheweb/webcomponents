@@ -1,4 +1,6 @@
 {
   "saveAll": "ሁሉንም አስቀምጥ",
-  "saveTheFollowing": "የሚከተሉት ይቀመጡ: {list}?"
+  "saveTheFollowing": "የሚከተሉት ይቀመጡ: {list}?",
+  "save": "አስቀምጥ",
+  "cancel": "ይቅር"
 }

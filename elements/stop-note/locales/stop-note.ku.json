@@ -3,5 +3,7 @@
   "status_stop": "Rawestîne",
   "status_warning": "Hişyarî",
   "status_success": "Serkeftin",
-  "status_info": "Nîşe"
+  "status_info": "Nîşe",
+  "status_tip": "Te dizanî?",
+  "status_new": "Çi nû ye"
 }

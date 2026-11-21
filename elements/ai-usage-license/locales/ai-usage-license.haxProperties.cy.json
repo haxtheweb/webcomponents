@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Addasydd cyfryngau",
-        "description": "Addasydd parth cyfryngau dewisol. Yn nodi'r math o gyfryngau y mae'r drwydded hon yn berthnasol iddynt."
+        "description": "Addasydd parth cyfryngau dewisol. Yn nodi'r math o gyfryngau y mae'r drwydded hon yn berthnasol iddynt.",
+        "options": {
+          "": "Dim addasydd"
+        }
       },
       {
         "property": "uri",

@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "En stor bild, GIF eller video med en rubrik och text ovanpå, placerad var som helst på en sida."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild eller video",
+        "description": "En JPG-, PNG-, WebP-, GIF-, MP4- eller WebM-fil."
+      },
+      {
+        "title": "Alternativ text",
+        "description": "Beskriv bilden. Lämna tomt när den bara är dekoration."
+      },
+      {
+        "title": "Rubrik",
+        "description": "Rubrik som visas ovanpå mediet. Lämna tomt för ingen."
+      },
+      {
+        "title": "Text",
+        "description": "Text som visas under rubriken, ovanpå mediet."
+      },
+      {
+        "title": "Full bredd",
+        "description": "Gå från kant till kant i stället för att ligga i innehållskolumnen."
+      },
+      {
+        "title": "Höjd",
+        "options": {
+          "tall": "Hög",
+          "medium": "Medel",
+          "short": "Låg"
+        }
+      },
+      {
+        "title": "Utsnitt",
+        "description": "Hur fotot placeras vid varje skärmstorlek"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toning",
+        "description": "Färg som läggs över mediet. Med en rubrik eller text finns det alltid en, så att texten förblir läsbar.",
+        "options": {
+          "blue": "Blå",
+          "bottom": "Mörk nertill",
+          "none": "Ingen"
+        }
+      },
+      {
+        "title": "Textposition",
+        "options": {
+          "bottom": "Nederst",
+          "middle": "Mitten"
+        }
+      },
+      {
+        "title": "Fokuspunkt i sidled",
+        "description": "Den del av bilden som syns när den beskärs, från 0 (vänster) till 100 (höger)."
+      },
+      {
+        "title": "Fokuspunkt i höjdled",
+        "description": "Den del av bilden som syns när den beskärs, från 0 (överst) till 100 (nederst)."
+      }
+    ]
+  }
+}

@@ -52,6 +52,20 @@
           "_top": "Üst pencere - _top",
           "_parent": "Ana pencere - _parent"
         }
+      },
+      {
+        "title": "Ok yok",
+        "description": "Düğme okunu gizle."
+      },
+      {
+        "title": "Bağlantı: hedef",
+        "description": "Bağlantının nerede açılacağı.",
+        "options": {
+          "": "Aynı pencere",
+          "_blank": "Yeni pencere - _blank",
+          "_top": "Üst pencere - _top",
+          "_parent": "Üst öğe penceresi - _parent"
+        }
       }
     ],
     "developer": [

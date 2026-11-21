@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mbiru",
+    "description": "Mbiru: zita, mutsara, icon, ruvara uye kukosha kwayo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita"
+      },
+      {
+        "title": "Mutsara"
+      },
+      {
+        "title": "Icon"
+      },
+      {
+        "title": "Ruvara (zita reDDD)"
+      },
+      {
+        "title": "Mbiru ipi, 1 kusvika 7"
+      },
+      {
+        "title": "Kadhi diki"
+      },
+      {
+        "title": "Panoenda zita"
+      }
+    ]
+  }
+}

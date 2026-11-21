@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Iinkcukacha zeendawo ezisebenzayo",
         "description": "Iindawo ezisebenzisanayo kwimephu yomfanekiso."
+      },
+      {
+        "title": "Iinkcukacha zendawo ebalulekileyo",
+        "description": "Iindawo ezibalulekileyo ezisebenzisanayo kwimephu yomfanekiso."
       }
     ]
   }

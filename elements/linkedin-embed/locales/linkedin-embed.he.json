@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "הצגת {name} ב-LinkedIn"
+  "viewOnLinkedin": "הצגת {name} ב-LinkedIn",
+  "badgeTitle": "תג פרופיל LinkedIn של {name}"
 }

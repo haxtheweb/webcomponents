@@ -5,5 +5,7 @@
   "editModeLabel": "Bewurkingsmodus foar mediaofspyllist",
   "position": "{current} fan {total}",
   "previousItem": "Foarige item",
-  "nextItem": "Folgjend item"
+  "nextItem": "Folgjend item",
+  "fullScreen": "Folslein skerm",
+  "exitFullScreen": "Folslein skerm ferlitte"
 }

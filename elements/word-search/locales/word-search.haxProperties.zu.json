@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ukusesha amagama",
+    "description": "Igridi yezinhlamvu enamagama afihliwe. Abafundi bathepha uhlamvu lokuqala nolokugcina lwegama ngalinye. Kuzilolongela ukubona ukuthi igama lipelwa kanjani, hhayi ukuthi lisho ukuthini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Lokho abafundi abacelwa ukuthi bakuthole, okuboniswa esihlokweni."
+      },
+      {
+        "title": "Amagama",
+        "description": "Amagama okufanele afihlwe. Izikhala nezimpawu zokuloba zishiywa ngaphandle kwegridi. Amagama angangeni aboniswa ohlwini ngenkathi uhlela futhi ashiywa ngaphandle kubafundi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Usayizi wegridi",
+        "description": "Izinhlamvu ohlangothini ngalunye, 4 kuya ku-16. Shiya kungenalutho ukuze kulingane negama elide kakhulu (kuze kufike ku-12). Ngaphezu kuka-12 kuskroleka eceleni efonini."
+      },
+      {
+        "title": "Amagama atshekile",
+        "description": "Futhi fihla amagama ngokutsheka. Kunzima kakhulu."
+      },
+      {
+        "title": "Amagama ahlehlayo",
+        "description": "Futhi fihla amagama abhalwe ngokuhlehla. Kunzima kakhulu."
+      },
+      {
+        "title": "Umbala wokugcizelela",
+        "description": "Umbala ongakhethwa we-chip yesihloko, uhlamvu lokuqala olukhethiwe nenkinobho."
+      }
+    ]
+  }
+}

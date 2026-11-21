@@ -5,5 +5,7 @@
   "editModeLabel": "Redakta reĝimo de aŭdvida ludlisto",
   "position": "{current} el {total}",
   "previousItem": "Antaŭa ero",
-  "nextItem": "Sekva ero"
+  "nextItem": "Sekva ero",
+  "fullScreen": "Plenekrane",
+  "exitFullScreen": "Eliri el plenekrana reĝimo"
 }

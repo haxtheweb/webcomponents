@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Rede do ecossistema",
+    "description": "Uma rede interativa de como as partes de um projeto se conectam, com sub-redes e tours passo a passo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dados da rede",
+        "description": "URL do pacote JSON de redes (gerado no PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Rede",
+        "description": "Id da rede a mostrar primeiro; main é a rede do ecossistema."
+      },
+      {
+        "title": "Bloco selecionado",
+        "description": "Id de um bloco a selecionar quando a rede abrir."
+      },
+      {
+        "title": "Tour",
+        "description": "Id de um tour para começar."
+      },
+      {
+        "title": "Começar na visualização em lista",
+        "description": "Mostrar a rede como listas aninhadas em vez do desenho."
+      },
+      {
+        "title": "Só o desenho",
+        "description": "Mostrar apenas o desenho, como uma figura: sem cabeçalho, tours, detalhes nem barra de passos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ler por",
+        "description": "Começar com todos os blocos lidos por uma métrica.",
+        "options": {
+          "": "Só conexões",
+          "fresh": "Atualidade",
+          "bus": "Fator ônibus",
+          "impact": "Impacto",
+          "evidence": "Evidência",
+          "parity": "Paridade"
+        }
+      }
+    ]
+  }
+}

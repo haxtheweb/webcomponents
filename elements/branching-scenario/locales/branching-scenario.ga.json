@@ -1,0 +1,22 @@
+{
+  "scenario": "Cás",
+  "directions": "Treoracha",
+  "showDirections": "Taispeáin treoracha",
+  "hideDirections": "Folaigh treoracha",
+  "directionsRead": "Léigh gach radharc agus roghnaigh cad a dhéanfá.",
+  "directionsEndings": "Tá roinnt deireadh ann. Bain triail as cosán eile nuair a chríochnaíonn tú.",
+  "startOver": "Tosaigh as an nua",
+  "back": "Céim amháin siar",
+  "tryAnother": "Bain triail as cosán eile",
+  "path": "Cosán",
+  "scene": "Radharc",
+  "ending": "Deireadh",
+  "end": "deireadh",
+  "scenesSeen": "{seen} as {total} radharc feicthe",
+  "endingReached": "Deireadh bainte amach",
+  "addScene": "Cuir radharc leis",
+  "newScene": "Radharc nua",
+  "newSceneText": "Déan cur síos ar a dtarlaíonn, ansin nasc gach rogha le radharc.",
+  "editingNote": "Eagarthóireacht: taispeántar gach radharc. Is nasc é rogha go # agus aitheantas radhairc ina dhiaidh.",
+  "noScenes": "Cuir radharc leis chun an cás a thosú."
+}

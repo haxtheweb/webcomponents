@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistema reto",
+    "description": "Interaga reto de kiel la partoj de projekto konektiĝas, kun subretoj kaj paŝon-post-paŝaj gvidataj vizitoj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Retaj datumoj",
+        "description": "URL de la JSON-pakaĵo de retoj (konstruita en PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Reto",
+        "description": "Identigilo de la reto por montri unue; main estas la ekosistema reto."
+      },
+      {
+        "title": "Elektita kahelo",
+        "description": "Identigilo de kahelo por elekti, kiam la reto malfermiĝas."
+      },
+      {
+        "title": "Gvidata vizito",
+        "description": "Identigilo de gvidata vizito por komenci."
+      },
+      {
+        "title": "Komenci en lista vido",
+        "description": "Montri la reton kiel nestitajn listojn anstataŭ la desegnaĵon."
+      },
+      {
+        "title": "Nur desegnaĵo",
+        "description": "Montri nur la desegnaĵon, kiel figuron: sen kapo, gvidataj vizitoj, detaloj aŭ paŝobreto."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Legi laŭ",
+        "description": "Komenci kun ĉiu kahelo legata laŭ unu mezuro.",
+        "options": {
+          "": "Nur konektoj",
+          "fresh": "Freŝeco",
+          "bus": "Busfaktoro",
+          "impact": "Efiko",
+          "evidence": "Pruvo",
+          "parity": "Egaleco"
+        }
+      }
+    ]
+  }
+}

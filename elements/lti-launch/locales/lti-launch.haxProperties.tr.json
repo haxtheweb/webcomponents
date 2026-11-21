@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Harici araç başlatma",
+    "description": "Harici bir öğrenme aracını düz bir bağlantı olarak veya LTI 1.3 oturum açma isteğiyle yeni bir pencerede ya da sayfada açan blok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Aracın adı. Başlıkta ve düğmede gösterilir."
+      },
+      {
+        "title": "Açıklama",
+        "description": "Öğrenenlerin araçta ne yaptığı, düğmenin üstünde gösterilir."
+      },
+      {
+        "title": "Başlatma URL'si",
+        "description": "Aracın adresi. https:// veya http:// ile başlayan tam bir adres olmalıdır."
+      },
+      {
+        "title": "Açılacak yer",
+        "description": "Yeni pencere her araçla çalışır. Bu sayfada seçeneği yalnızca başka bir site içinde gösterilmeye izin veren araçlarla çalışır.",
+        "options": {
+          "window": "Yeni pencere",
+          "embed": "Bu sayfada"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI oturum açma URL'si",
+        "description": "Yalnızca LTI 1.3: aracın oturum açma başlatma adresi. Bununla birlikte bir istemci kimliği ve dağıtım kimliğiyle düğme, düz bir bağlantı açmak yerine bir LTI oturum açma isteği gönderir. Başlatmayı tamamlamak için bu sitenin LTI hizmeti gerekir."
+      },
+      {
+        "title": "LTI istemci kimliği",
+        "description": "Aracın bu siteye verdiği istemci kimliği. Gizli değil, herkese açık bir tanımlayıcıdır: buraya asla anahtar veya gizli bilgi koymayın."
+      },
+      {
+        "title": "LTI dağıtım kimliği",
+        "description": "Aracın bu siteye verdiği dağıtım kimliği. Gizli değil, herkese açık bir tanımlayıcıdır."
+      },
+      {
+        "title": "LTI yayıncısı",
+        "description": "Bu siteyi araca tanıtan adres. Sayfanın bulunduğu sitenin adresini kullanmak için boş bırakın."
+      },
+      {
+        "title": "Sayfadaki yükseklik",
+        "description": "Araç bu sayfada açıldığında piksel cinsinden yüksekliği (200 ile 2000 arası)."
+      },
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketinin ve düğmenin rengi. Temayı izlemek için boş bırakın."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI oturum açma ipucu",
+        "description": "Bu sitenin LTI hizmetinin öğreneni tanımak için kullandığı opak bir değer. Genellikle burada kaydedilmek yerine site tarafından lti-launch-request olayıyla sağlanır. Asla parola veya anahtar değildir."
+      },
+      {
+        "title": "LTI mesaj ipucu",
+        "description": "Bu sitenin LTI hizmetinin bu başlatmayı tanımak için kullandığı opak bir değer. Genellikle burada kaydedilmek yerine site tarafından sağlanır."
+      }
+    ]
+  }
+}

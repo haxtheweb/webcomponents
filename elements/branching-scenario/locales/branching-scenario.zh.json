@@ -1,0 +1,22 @@
+{
+  "scenario": "情景",
+  "directions": "说明",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "directionsRead": "阅读每个场景，选择您会怎么做。",
+  "directionsEndings": "有多个结局。完成后可以尝试另一条路径。",
+  "startOver": "重新开始",
+  "back": "后退一步",
+  "tryAnother": "尝试另一条路径",
+  "path": "路径",
+  "scene": "场景",
+  "ending": "结局",
+  "end": "结束",
+  "scenesSeen": "已看过 {total} 个场景中的 {seen} 个",
+  "endingReached": "已到达结局",
+  "addScene": "添加场景",
+  "newScene": "新场景",
+  "newSceneText": "描述发生了什么，然后将每个选项链接到一个场景。",
+  "editingNote": "编辑中：显示所有场景。选项是指向 # 加场景 ID 的链接。",
+  "noScenes": "添加一个场景以开始情景。"
+}

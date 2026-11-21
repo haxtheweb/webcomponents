@@ -3,5 +3,8 @@
   "copyAsCsv": "Salin sebagai CSV.",
   "printTable": "Cetak Tabel",
   "selectColumn": "Pilih Kolom",
-  "dataTable": "Data · Tabel"
+  "dataTable": "Data · Tabel",
+  "filterStatus": "Menampilkan {shown} dari {total} baris, difilter menurut {column}: {text}",
+  "columnNumber": "Kolom {column}",
+  "clearFilter": "Hapus filter"
 }

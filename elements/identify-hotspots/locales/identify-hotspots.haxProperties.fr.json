@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identifier les zones",
+    "description": "Les apprenants trouvent les bons endroits sur une image en cliquant, en touchant ou en déplaçant un réticule au clavier. La version notée d'une image cliquable."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Image",
+        "description": "L'image dans laquelle les apprenants cherchent."
+      },
+      {
+        "title": "Texte alternatif",
+        "description": "Décrit l'image pour les personnes qui ne peuvent pas la voir. Elle n'est jamais affichée comme titre."
+      },
+      {
+        "title": "Titre",
+        "description": "Un court titre visible affiché au-dessus de l'image."
+      },
+      {
+        "title": "Question",
+        "description": "Ce que les apprenants doivent trouver dans l'image."
+      },
+      {
+        "title": "Réponses",
+        "description": "Chaque réponse est un ovale nommé sur l'image. La position et la taille sont des pourcentages de l'image, mesurés depuis son coin supérieur gauche. Pendant la modification, chaque réponse est encadrée sur l'image."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentatives",
+        "description": "Combien de fois un apprenant peut essayer. 0 signifie illimité."
+      },
+      {
+        "title": "Erreurs autorisées",
+        "description": "Combien d'erreurs mettent fin à une tentative. 0 signifie illimité, et les apprenants ont un bouton Terminer."
+      },
+      {
+        "title": "Repliable",
+        "description": "Afficher cette question sous forme de ligne qui s'ouvre et se ferme. En ouvrir une ferme les autres questions repliables à côté."
+      },
+      {
+        "title": "Démarrer replié",
+        "description": "Si repliable, commencer comme une ligne fermée qui n'affiche que la question et son état."
+      },
+      {
+        "title": "Format de notation",
+        "description": "OER Schema : format de notation de cette évaluation (par ex. points, lettre, pourcentage, achèvement)."
+      },
+      {
+        "title": "Objectif d'apprentissage",
+        "description": "OER Schema : objectif d'apprentissage associé à cette évaluation."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nom du quiz",
+        "description": "Nom du quiz transmis aux environnements pilotés par xAPI pour identifier cet élément"
+      },
+      {
+        "title": "Cours",
+        "description": "OER Schema : cours auquel cette évaluation est destinée."
+      }
+    ]
+  }
+}

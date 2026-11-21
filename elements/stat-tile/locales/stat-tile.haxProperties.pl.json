@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kafelek statystyki",
+    "description": "Jedna ważna liczba z etykietą i informacją, jak się zmieniła. Umieść kilka w siatce, aby utworzyć wiersz panelu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etykieta",
+        "description": "Co mierzy liczba."
+      },
+      {
+        "title": "Wartość",
+        "description": "Liczba. Zwykła liczba jest grupowana według języka strony; wszystko inne wyświetla się tak, jak zapisano."
+      },
+      {
+        "title": "Zmiana",
+        "description": "Jak się zmieniła, słowami, np. 6% w tym semestrze."
+      },
+      {
+        "title": "Kierunek",
+        "description": "Czy zmiana jest w górę, czy w dół.",
+        "options": {
+          "": "Brak",
+          "up": "W górę",
+          "down": "W dół"
+        }
+      }
+    ]
+  }
+}

@@ -20,6 +20,12 @@
         "title": "Bildo",
         "description": "Bildo montrata kun la citaĵo."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Kadrita",
+        "description": "Desegni la citaĵon sur la komuna bloka kadro, kun piktogramo kaj etikedo super ĝi, por ke ĝi kongruu kun notoj kaj instrukciaj kartoj."
+      }
     ]
   }
 }

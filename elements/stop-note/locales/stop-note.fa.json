@@ -3,5 +3,7 @@
   "status_stop": "توقف",
   "status_warning": "هشدار",
   "status_success": "موفقیت",
-  "status_info": "یادداشت"
+  "status_info": "یادداشت",
+  "status_tip": "آیا می‌دانستید؟",
+  "status_new": "تازه‌ها"
 }

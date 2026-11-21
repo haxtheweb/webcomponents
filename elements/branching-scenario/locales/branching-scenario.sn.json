@@ -1,0 +1,22 @@
+{
+  "scenario": "Mamiriro",
+  "directions": "Mirayiridzo",
+  "showDirections": "Ratidza mirayiridzo",
+  "hideDirections": "Viga mirayiridzo",
+  "directionsRead": "Verenga chiitiko chimwe nechimwe usarudze zvawaizoita.",
+  "directionsEndings": "Pane magumo akawanda. Edza imwe nzira kana wapedza.",
+  "startOver": "Tanga patsva",
+  "back": "Dzokera nhanho imwe",
+  "tryAnother": "Edza imwe nzira",
+  "path": "Nzira",
+  "scene": "Chiitiko",
+  "ending": "Magumo",
+  "end": "magumo",
+  "scenesSeen": "Zviitiko {seen} pa{total} zvaonekwa",
+  "endingReached": "Wasvika pamagumo",
+  "addScene": "Wedzera chiitiko",
+  "newScene": "Chiitiko chitsva",
+  "newSceneText": "Tsanangura zvinoitika, wobva wabatanidza sarudzo imwe neimwe nechiitiko.",
+  "editingNote": "Kugadzirisa: chiitiko chese chinoratidzwa. Sarudzo i link ku # inoteverwa ne id yechiitiko.",
+  "noScenes": "Wedzera chiitiko kuti utange mamiriro."
+}

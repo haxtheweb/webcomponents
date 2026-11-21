@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Yupay tawa k'uchu",
+    "description": "Chaniyuq huk yupay, etiquetanwan imayna tikrasqanwan. Achkata huk mallapi churay tablero siq'ipaq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Yupay imatam tupun."
+      },
+      {
+        "title": "Chanin",
+        "description": "Yupay. Ch'uya yupayqa p'anqap siminman hina huñusqa; huk kaqkunataq qillqasqa hinalla rikuchikun."
+      },
+      {
+        "title": "Tikray",
+        "description": "Imaynatam tikrarqan, simikunapi, kay periodopi 6% hina."
+      },
+      {
+        "title": "Ñan",
+        "description": "Tikrayqa hanaqmanchus uraqmanchus.",
+        "options": {
+          "": "Mana imapas",
+          "up": "Hanaq",
+          "down": "Uray"
+        }
+      }
+    ]
+  }
+}

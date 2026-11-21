@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Gêm gof",
+    "description": "Trowch gardiau drosodd i ganfod parau. Parwch derm â'i ystyr fel bod cyfatebiaeth yn dangos dealltwriaeth, neu defnyddiwch ddau destun neu ddelwedd sy'n cyfateb."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Yr anogwr a ddangosir yn y pennawd, er enghraifft: Cyfatebwch y term i'w swydd."
+      },
+      {
+        "title": "Parau",
+        "description": "Mae pob pâr yn ddau gerdyn sy'n perthyn i'w gilydd, fel arfer term a'i ystyr. Mae angen testun, delwedd, neu'r ddau ar ochr."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lliw acen",
+        "description": "Lliw dewisol ar gyfer sglodyn y pennawd, cefnau'r cardiau a'r botwm."
+      }
+    ]
+  }
+}

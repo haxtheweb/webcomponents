@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Qoraal dhinac",
+    "description": "Qoraal ka sooc ah nuxurka ku xeeran, oo leh astaan iyo calaamad ikhtiyaari ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Calaamad",
+        "description": "Calaamadda qoraalka dhinaca."
+      },
+      {
+        "title": "Astaan",
+        "description": "Astaanta qoraalka dhinaca."
+      },
+      {
+        "title": "Nuxur",
+        "description": "Nuxurka qoraalka dhinaca."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Midab",
+        "description": "Midabka qoraalka dhinaca lagu tilmaamo."
+      }
+    ]
+  }
+}

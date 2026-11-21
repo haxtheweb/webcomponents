@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ubin statistik",
+    "description": "Satu angka penting, dengan label dan perubahannya. Tempatkan beberapa dalam kisi untuk baris dasbor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Apa yang diukur angka ini."
+      },
+      {
+        "title": "Nilai",
+        "description": "Angkanya. Angka biasa dikelompokkan sesuai bahasa halaman; selain itu ditampilkan sesuai yang ditulis."
+      },
+      {
+        "title": "Perubahan",
+        "description": "Bagaimana perubahannya, dalam kata-kata, misalnya 6% semester ini."
+      },
+      {
+        "title": "Arah",
+        "description": "Apakah perubahannya naik atau turun.",
+        "options": {
+          "": "Tidak ada",
+          "up": "Naik",
+          "down": "Turun"
+        }
+      }
+    ]
+  }
+}

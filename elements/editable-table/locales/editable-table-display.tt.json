@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV итеп күчерү.",
   "printTable": "Таблицаны бастыру",
   "selectColumn": "Багананы сайлау",
-  "dataTable": "Мәгълүмат · Таблица"
+  "dataTable": "Мәгълүмат · Таблица",
+  "filterStatus": "{total} юлдан {shown} күрсәтелә, {column} баганасы буенча фильтрланган: {text}",
+  "columnNumber": "{column} баганасы",
+  "clearFilter": "Фильтрны чистарту"
 }

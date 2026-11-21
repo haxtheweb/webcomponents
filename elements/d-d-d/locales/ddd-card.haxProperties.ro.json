@@ -52,6 +52,20 @@
           "_top": "Fereastra de sus - _top",
           "_parent": "Fereastra părinte - _parent"
         }
+      },
+      {
+        "title": "Fără săgeată",
+        "description": "Ascundeți săgeata butonului."
+      },
+      {
+        "title": "Link: țintă",
+        "description": "Unde să se deschidă linkul.",
+        "options": {
+          "": "Aceeași fereastră",
+          "_blank": "Fereastră nouă - _blank",
+          "_top": "Fereastra de sus - _top",
+          "_parent": "Fereastra părinte - _parent"
+        }
       }
     ],
     "developer": [

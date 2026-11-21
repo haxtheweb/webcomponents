@@ -1,0 +1,21 @@
+{
+  "diagram": "Dayaagiraamii",
+  "flowchart": "chaartii yaa'insaa",
+  "sequence": "tartiiba",
+  "source": "Madda",
+  "textAlternative": "Barreeffama bakka bu'aa",
+  "present": "Dhiyeessi",
+  "exitPresent": "Dhiyeessa keessaa ba'i",
+  "loading": "Dayaagiraamii fe'aa jira",
+  "empty": "Ammaaf wanti kaafamu hin jiru. Madda dayaagiraamii dabali.",
+  "error": "Dogoggora",
+  "parseError": "Dayaagiraamiin kun kaafamuu hin dandeenye. Madda isaa sakatta'i.",
+  "loadError": "Laayibiraariin dayaagiraamii fe'amuu hin dandeenye.",
+  "srcError": "Faayiliin dayaagiraamii fe'amuu hin dandeenye.",
+  "decision": "murtoo",
+  "end": "dhuma",
+  "goTo": "gara {target} deemi",
+  "ifGoTo": "yoo {label} ta'e, gara {target} deemi",
+  "describedBySource": "Dayaagiraamii maddaan ibsame.",
+  "scrollable": "Dayaagiraamii, kan sochoofamu"
+}

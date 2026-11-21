@@ -1,4 +1,6 @@
 {
   "saveAll": "सर्व जतन करा",
-  "saveTheFollowing": "पुढील जतन करायचे: {list}?"
+  "saveTheFollowing": "पुढील जतन करायचे: {list}?",
+  "save": "जतन करा",
+  "cancel": "रद्द करा"
 }

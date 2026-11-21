@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista za provjeru s oznakama",
+    "description": "Lista polja za potvrdu. Čitaoci označavaju stavke, a njihov napredak se pamti na njihovom uređaju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv liste. Čita se naglas kao oznaka grupe polja za potvrdu."
+      },
+      {
+        "title": "Stavke",
+        "description": "Svaka stavka je polje za potvrdu. Čitaoci ne mogu mijenjati označene ili onemogućene stavke."
+      },
+      {
+        "title": "Numerisano",
+        "description": "Prikaži numerisanu listu umjesto liste s oznakama."
+      },
+      {
+        "title": "Status",
+        "description": "Mijenja boje da odgovaraju stop-note.",
+        "options": {
+          "info": "Obavijest",
+          "success": "Potvrda",
+          "warning": "Upozorenje",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id pohrane",
+        "description": "Jedinstveni id koji se koristi za pamćenje napretka čitaoca na njegovom uređaju. Generiše se automatski; mijenjajte ga samo da dijelite napredak između lista ili da počnete ispočetka."
+      }
+    ]
+  }
+}

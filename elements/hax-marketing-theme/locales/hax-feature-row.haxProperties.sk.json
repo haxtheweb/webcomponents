@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Riadok funkcie",
+    "description": "Obrazovka produktu vedľa toho, čo pre vás znamená"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Malé označenie"
+      },
+      {
+        "title": "Nadpis"
+      },
+      {
+        "title": "Obrázok"
+      },
+      {
+        "title": "Čo obrázok zobrazuje"
+      },
+      {
+        "title": "Obrázok vpravo"
+      },
+      {
+        "title": "Farba tieňa (názov DDD, prázdne sa riadi paletou)"
+      }
+    ]
+  }
+}

@@ -20,6 +20,12 @@
         "title": "Àwòrán",
         "description": "Àwòrán tí a fi hàn pẹ̀lú àyọkà náà."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Ní férémù",
+        "description": "Ya àyọlò náà sórí férémù búlọ́ọ̀kù tí a pín, pẹ̀lú àmì-àwòrán àti àmì lókè rẹ̀, kí ó bá àwọn àkọsílẹ̀ àti káàdì ìtọ́ni mu."
+      }
     ]
   }
 }

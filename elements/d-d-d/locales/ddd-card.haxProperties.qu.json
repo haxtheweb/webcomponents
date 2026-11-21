@@ -52,6 +52,20 @@
           "_top": "Hanaq ventana - _top",
           "_parent": "Tayta ventana - _parent"
         }
+      },
+      {
+        "title": "Mana wach'iyuq",
+        "description": "Ñit'inap wach'inta pakay."
+      },
+      {
+        "title": "T'inki: maymanchus",
+        "description": "Maypichus t'inkita kichana.",
+        "options": {
+          "": "Kikin ventana",
+          "_blank": "Musuq ventana - _blank",
+          "_top": "Hanaq ventana - _top",
+          "_parent": "Tayta ventana - _parent"
+        }
       }
     ],
     "developer": [

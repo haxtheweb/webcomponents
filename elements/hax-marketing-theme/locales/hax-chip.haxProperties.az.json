@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Nişan",
+    "description": "Kiçik etiketli ikon"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "İkon"
+      },
+      {
+        "title": "Etiket"
+      }
+    ]
+  }
+}

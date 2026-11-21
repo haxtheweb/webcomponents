@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX कन्फिगरेसन र सम्पादनयोग्य गुणहरू देखाउन प्रयोग हुने उदाहरण सुरुआती एलिमेन्ट।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "शीर्षक"
+      }
+    ]
+  }
+}

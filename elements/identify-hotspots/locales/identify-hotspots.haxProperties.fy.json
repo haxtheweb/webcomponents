@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hotspots identifisearje",
+    "description": "Learlingen fine de goede plakken op in ôfbylding troch te klikken, te tikken of in toetseboerd-dradekrús te bewegen. De beoardiele tsjinhinger fan in image map."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ofbylding",
+        "description": "De ôfbylding dêr't learlingen yn sykje."
+      },
+      {
+        "title": "Alternative tekst",
+        "description": "Beskriuwt de ôfbylding foar minsken dy't him net sjen kinne. It wurdt nea as titel toand."
+      },
+      {
+        "title": "Titel",
+        "description": "In koarte sichtbere titel toand boppe de ôfbylding."
+      },
+      {
+        "title": "Fraach",
+        "description": "Wat learlingen yn de ôfbylding fine moatte."
+      },
+      {
+        "title": "Antwurden",
+        "description": "Elk antwurd is in oval mei in namme op de ôfbylding. Posysje en grutte binne persintaazjes fan de ôfbylding, mjitten fan de hoeke linksboppe. By it bewurkjen wurdt elk antwurd op de ôfbylding omlijne."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pogingen",
+        "description": "Hoefolle kear in learling besykje kin. 0 betsjut ûnbeheind."
+      },
+      {
+        "title": "Tastiene misses",
+        "description": "Hoefolle misses in poging beëinigje. 0 betsjut ûnbeheind, en learlingen krije in knop Ofmeitsje."
+      },
+      {
+        "title": "Ynklapber",
+        "description": "Dizze fraach sjen litte as in rige dy't iepen en ticht giet. As jo der ien iepenje, slute de oare ynklapbere fragen dêrneist."
+      },
+      {
+        "title": "Ynklapt begjinne",
+        "description": "As it ynklapber is, begjinne as in sletten rige dy't allinnich de fraach en de status toant."
+      },
+      {
+        "title": "Beoardielingsformaat",
+        "description": "OER Schema: beoardielingsformaat foar dizze toetsing (bgl. punten, letter, persintaazje, foltôging)."
+      },
+      {
+        "title": "Leardoel",
+        "description": "OER Schema: leardoel dat by dizze toetsing heart."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Namme fan de kwis",
+        "description": "Kwisnamme dy't trochjûn wurdt foar gebrûk yn xAPI-stjoerde omjouwings om dit item te identifisearjen"
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus dêr't dizze toetsing foar bedoeld is."
+      }
+    ]
+  }
+}

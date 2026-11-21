@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "የታሪክ አዝራር",
+    "description": "በ hax.cloud ላይ ከአንድ የይገባኛል ጥያቄ ጀርባ ያለውን ታሪክ፣ ወይም በሌላ የ HAX አውታረ መረብ ድረ-ገጽ ላይ ተዛማጁን ቦታ የሚከፍት አዝራር"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "የሚሄድበት",
+        "options": {
+          "cloud": "hax.cloud፣ ታሪኩ",
+          "learn": "learn.hax.cloud፣ መማሪያ",
+          "try": "browser.hax.cloud፣ ይሞክሩት",
+          "elements": "webcomponents.hax.cloud፣ ብሎክ",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "በዚያ ድረ-ገጽ ላይ ያለ አድራሻ (በ hax.cloud ላይ ያለ ታሪክ stories/ee450a19 ይመስላል)"
+      },
+      {
+        "title": "ስለ ምን እንደሆነ"
+      },
+      {
+        "title": "ትንሽ ቺፕ"
+      },
+      {
+        "title": "ስለ ምን እንደሆነ በአዝራሩ ውስጥ አሳይ"
+      }
+    ]
+  }
+}

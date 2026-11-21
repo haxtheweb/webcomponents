@@ -5,5 +5,6 @@
   "selected": "Napili",
   "currentlyActiveAndSelectedPalette": "Kasalukuyang aktibo at napiling palette",
   "currentlyActivePalette": "Kasalukuyang aktibong palette",
-  "selectedPaletteToApply": "Napiling palette na ilalapat"
+  "selectedPaletteToApply": "Napiling palette na ilalapat",
+  "paletteNumber": "Palette {number}"
 }

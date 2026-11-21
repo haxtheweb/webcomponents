@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Symbol ausblenden",
         "description": "Das Symbol ausblenden, das den Text akzentuiert"
+      },
+      {
+        "title": "Darstellung",
+        "description": "Wie stark die Schaltfläche betont wird.",
+        "options": {
+          "": "Gefüllt",
+          "tonal": "Getönt",
+          "outlined": "Umrandet",
+          "plain": "Schlicht"
+        }
+      },
+      {
+        "title": "Größe",
+        "description": "Größe der Schaltfläche.",
+        "options": {
+          "s": "Klein",
+          "": "Mittel",
+          "l": "Groß"
+        }
       }
     ],
     "advanced": [

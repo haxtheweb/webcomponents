@@ -1,4 +1,6 @@
 {
   "saveAll": "Mālama i nā mea a pau",
-  "saveTheFollowing": "Mālama i kēia mau mea: {list}?"
+  "saveTheFollowing": "Mālama i kēia mau mea: {list}?",
+  "save": "Mālama",
+  "cancel": "Hoʻopau"
 }

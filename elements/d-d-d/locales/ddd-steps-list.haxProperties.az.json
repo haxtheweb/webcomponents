@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Addımlar siyahısı",
     "description": "Tapşırığı tamamlamaq üçün nömrələnmiş addımlar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Addım göstəricisi",
+        "description": "Addımları irəliləyişi qeyd edən yığcam başlıqlar sırası kimi göstər. Bu tərtibatda addımların məzmunu göstərilmir."
+      },
+      {
+        "title": "Cari addım",
+        "description": "Oxucunun olduğu addım, 1-dən sayılaraq. Əvvəlki addımlar tamamlanmış kimi göstərilir. Addım göstəricisi tərəfindən istifadə olunur."
+      }
+    ]
   }
 }

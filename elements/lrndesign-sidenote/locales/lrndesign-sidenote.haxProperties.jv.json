@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Cathetan pinggir",
+    "description": "Cathetan sing dipisah saka isi ing sakubenge, karo lambang lan label pilihan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Label cathetan pinggir."
+      },
+      {
+        "title": "Lambang",
+        "description": "Lambang cathetan pinggir."
+      },
+      {
+        "title": "Isi",
+        "description": "Isi cathetan pinggir."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna",
+        "description": "Warna sing menehi semu cathetan pinggir."
+      }
+    ]
+  }
+}

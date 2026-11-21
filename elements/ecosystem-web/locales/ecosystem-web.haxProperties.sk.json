@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Sieť ekosystému",
+    "description": "Interaktívna sieť toho, ako sú časti projektu prepojené, s podsieťami a prehliadkami krok za krokom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dáta siete",
+        "description": "URL balíka sietí JSON (vytvorený v PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Sieť",
+        "description": "ID siete, ktorá sa zobrazí ako prvá; main je sieť ekosystému."
+      },
+      {
+        "title": "Vybraná dlaždica",
+        "description": "ID dlaždice, ktorá sa vyberie pri otvorení siete."
+      },
+      {
+        "title": "Prehliadka",
+        "description": "ID prehliadky, ktorou sa začne."
+      },
+      {
+        "title": "Začať v zobrazení zoznamu",
+        "description": "Zobraziť sieť ako vnorené zoznamy namiesto kresby."
+      },
+      {
+        "title": "Iba kresba",
+        "description": "Zobraziť iba kresbu ako obrázok: bez záhlavia, prehliadok, podrobností či panela krokov."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Čítať podľa",
+        "description": "Začať s každou dlaždicou čítanou podľa jednej metriky.",
+        "options": {
+          "": "Iba prepojenia",
+          "fresh": "Aktuálnosť",
+          "bus": "Faktor autobusu",
+          "impact": "Vplyv",
+          "evidence": "Dôkaz",
+          "parity": "Parita"
+        }
+      }
+    ]
+  }
+}

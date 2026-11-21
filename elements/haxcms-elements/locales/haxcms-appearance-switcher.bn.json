@@ -1,0 +1,8 @@
+{
+  "theme": "থিম",
+  "palette": "প্যালেট",
+  "themeDefault": "থিমের ডিফল্ট",
+  "designSystem": "ডিজাইন সিস্টেম",
+  "designSystemDefault": "DDD (ডিফল্ট)",
+  "designSystemUnavailable": "এই থিমটি নিজের ডিজাইন সিস্টেম রাখে"
+}

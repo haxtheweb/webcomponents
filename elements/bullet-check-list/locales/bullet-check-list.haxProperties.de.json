@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Aufzählungs-Checkliste",
+    "description": "Eine Liste mit Kontrollkästchen. Lesende haken Punkte ab, und ihr Fortschritt wird auf ihrem eigenen Gerät gespeichert."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Name der Liste. Wird als Beschriftung der Kontrollkästchen-Gruppe vorgelesen."
+      },
+      {
+        "title": "Einträge",
+        "description": "Jeder Eintrag ist ein Kontrollkästchen. Abgehakte oder deaktivierte Einträge können von Lesenden nicht geändert werden."
+      },
+      {
+        "title": "Nummeriert",
+        "description": "Eine nummerierte Liste statt einer Aufzählung anzeigen."
+      },
+      {
+        "title": "Status",
+        "description": "Passt die Farben an stop-note an.",
+        "options": {
+          "info": "Hinweis",
+          "success": "Bestätigung",
+          "warning": "Warnung",
+          "stop": "Stopp"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Speicher-ID",
+        "description": "Eindeutige ID, mit der der Fortschritt auf dem Gerät der Lesenden gespeichert wird. Wird automatisch erzeugt; nur ändern, um Fortschritt zwischen Listen zu teilen oder neu zu beginnen."
+      }
+    ]
+  }
+}

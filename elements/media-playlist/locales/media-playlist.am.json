@@ -5,5 +5,7 @@
   "editModeLabel": "የሚዲያ አጫዋች ዝርዝር የማርትዕ ሁነታ",
   "position": "{current} ከ{total}",
   "previousItem": "ቀዳሚ ንጥል",
-  "nextItem": "ቀጣይ ንጥል"
+  "nextItem": "ቀጣይ ንጥል",
+  "fullScreen": "ሙሉ ማያ ገጽ",
+  "exitFullScreen": "ከሙሉ ማያ ገጽ ውጣ"
 }

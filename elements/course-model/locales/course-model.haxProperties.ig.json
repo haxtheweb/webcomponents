@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "aha"
+        "title": "aha",
+        "description": "Isiokwu e gosiri n'elu ụdị ọmụmụ ahụ."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adreesị faịlụ ụdị 3D (.glb ma ọ bụ .gltf) a ga-egosi."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Kọwaa ụdị 3D ahụ maka ndị na-enweghị ike ịhụ ya."
       },
       {
         "title": "Mpaghara ozi"

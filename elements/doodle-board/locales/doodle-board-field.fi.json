@@ -1,0 +1,16 @@
+{
+  "drawing": "Piirros",
+  "edit": "Muokkaa piirrosta",
+  "start": "Aloita piirtäminen",
+  "remove": "Poista piirros",
+  "empty": "Mitään ei ole vielä piirretty",
+  "save": "Tallenna",
+  "cancel": "Peruuta",
+  "close": "Sulje",
+  "discard": "Hylkää muutokset",
+  "discardConfirm": "Hylätäänkö tallentamattomat muutokset?",
+  "keepEditing": "Jatka muokkausta",
+  "draw": "Piirros",
+  "feedback": "Palaute",
+  "signature": "Allekirjoitus"
+}

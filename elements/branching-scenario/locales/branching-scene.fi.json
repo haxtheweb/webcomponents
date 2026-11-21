@@ -1,0 +1,14 @@
+{
+  "scene": "Kohtaus",
+  "ending": "Loppu",
+  "goodEnding": "Hyvä loppu",
+  "mixedEnding": "Vaihteleva loppu",
+  "poorEnding": "Huono loppu",
+  "scoreOf": "Pisteet {score}/{max}",
+  "scoreOnly": "Pisteet {score}",
+  "startScene": "Alku",
+  "sceneIdLabel": "Kohtauksen tunnus",
+  "needsId": "Lisää kohtauksen tunnus, jotta valinnat voivat linkittää tähän kohtaukseen.",
+  "orphan": "Mikään valinta ei linkitä tähän kohtaukseen.",
+  "deadLinks": "Nämä linkit osoittavat kohtaukseen, jota ei ole olemassa:"
+}

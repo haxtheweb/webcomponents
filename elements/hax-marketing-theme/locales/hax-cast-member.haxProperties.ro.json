@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membru al distribuției",
+    "description": "Un public, jucat de un personaj, cu text și un buton"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cine este"
+      },
+      {
+        "title": "Tipul personajului"
+      },
+      {
+        "title": "Seed-ul personajului"
+      },
+      {
+        "title": "Culoarea scenei (nume DDD)"
+      },
+      {
+        "title": "Unde duce butonul"
+      },
+      {
+        "title": "Textul butonului"
+      }
+    ]
+  }
+}

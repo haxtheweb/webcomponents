@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ordleting",
+    "description": "Et bokstavrutenett med skjulte ord. Elevene trykker på første og siste bokstav i hvert ord. Øver på å se hvordan et begrep staves, ikke hva det betyr."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Hva elevene blir bedt om å finne, vist i toppteksten."
+      },
+      {
+        "title": "Ord",
+        "description": "Ordene som skal skjules. Mellomrom og tegnsetting utelates fra rutenettet. Ord som ikke får plass, listes opp mens du redigerer og utelates for elevene."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rutenettstørrelse",
+        "description": "Bokstaver per side, 4 til 16. La stå tomt for å tilpasse det lengste ordet (opptil 12). Mer enn 12 ruller sidelengs på en telefon."
+      },
+      {
+        "title": "Diagonale ord",
+        "description": "Skjul også ord diagonalt. Vanskeligere."
+      },
+      {
+        "title": "Baklengs ord",
+        "description": "Skjul også ord skrevet baklengs. Vanskeligere."
+      },
+      {
+        "title": "Aksentfarge",
+        "description": "Valgfri farge for toppetiketten, den valgte første bokstaven og knappen."
+      }
+    ]
+  }
+}

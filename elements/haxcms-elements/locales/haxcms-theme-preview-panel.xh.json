@@ -8,5 +8,9 @@
   "theme": "Umxholo",
   "palette": "Iphalethi",
   "cancel": "Rhoxisa",
-  "openAppearanceSettings": "Vula iiSetingi zeNkangeleko"
+  "openAppearanceSettings": "Vula iiSetingi zeNkangeleko",
+  "designSystem": "Inkqubo yoyilo",
+  "designSystemDefault": "DDD (okumiselweyo)",
+  "designSystemThemeDefault": "{name} (okumiselweyo komxholo)",
+  "designSystemHelp": "Umbala, uhlobo lwamagama, iikona nokuxinana. Umxholo usagqiba uyilo."
 }

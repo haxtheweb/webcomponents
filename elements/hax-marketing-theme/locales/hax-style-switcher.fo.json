@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sniðgevingarkervi",
+  "dddDefault": "DDD (vanligt)",
+  "designSystemHelp": "Litur, stavsnið, horn og fokus. Temað varðveitir uppsetingina.",
+  "designSystemFixed": "Hetta temað varðveitir sítt egna sniðgevingarkervi.",
+  "palette": "Litaborð",
+  "themeDefault": "Vanligt fyri temað",
+  "paletteNumber": "Litaborð {n}",
+  "siteTheme": "{name} (temað hjá hesi síðuni)",
+  "restyle": "Gev hesi síðuni nýggjan stíl",
+  "close": "Lat aftur",
+  "reset": "Aftur til egnu útsjóndina hjá hesi síðuni",
+  "random": "Kom mær á óvart",
+  "about": "Hetta vísir nakrar av teimum útsjóndum, sum eru innbygdar í HAX. Síðurnar broytast ongantíð: bygnaðurin býr í JSON Outline Schema, og hvør blokkur er ein vanligur vevlutur, so sniðið kann frítt skiftast."
+}

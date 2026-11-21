@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ta'ãnga techaukaha",
     "description": "Ta'ãnga techaukaha pehẽ ohechauka hag̃ua momarandu ñemyasãi tetepy ryepýpe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ta'ãnga papapy",
+        "description": "Papapy térã teraguã mbyky ta'ãngape g̃uarã, techapyrã 1.3"
+      },
+      {
+        "title": "Ñemombe'u",
+        "description": "Ta'ãnga ñemombe'u mbyky"
+      }
+    ]
   }
 }

@@ -5,5 +5,7 @@
   "editModeLabel": "وضع تحرير قائمة تشغيل الوسائط",
   "position": "{current} من {total}",
   "previousItem": "العنصر السابق",
-  "nextItem": "العنصر التالي"
+  "nextItem": "العنصر التالي",
+  "fullScreen": "ملء الشاشة",
+  "exitFullScreen": "الخروج من ملء الشاشة"
 }

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Nzvimbo yekudonhedza pamufananidzo",
+    "description": "Vadzidzi vanoisa mazita panzvimbo dziri pamusoro pemufananidzo, vozotarisa mhinduro yavo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mufananidzo",
+        "description": "Mufananidzo unoiswa mazita nevadzidzi."
+      },
+      {
+        "title": "Mamwe mavara",
+        "description": "Inotsanangura mufananidzo kuvanhu vasingagoni kuuona. Usaburitsa kuti mazita anoenda kupi."
+      },
+      {
+        "title": "Musoro wemufananidzo",
+        "description": "Musoro mupfupi unooneka wemufananidzo, unoratidzwa pamusoro pawo."
+      },
+      {
+        "title": "Mubvunzo",
+        "description": "Zvinokumbirwa vadzidzi kuti vaite nemazita."
+      },
+      {
+        "title": "Mazita nenzvimbo",
+        "description": "Chinhu chimwe nechimwe izita rinogona kuiswa nevadzidzi. Ipa zita zita renzvimbo kuti uise nzvimbo yaro pamufananidzo; zita risina zita renzvimbo nderekuwedzera risingaenderani nekupi. Nhamba dzenzvimbo zvikamu muzana zvemufananidzo."
+      },
+      {
+        "title": "Zita remufananidzo",
+        "description": "Zita remufananidzo risingamanikidzwe rinoratidzwa pasi pemufananidzo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuedza",
+        "description": "Kangani mudzidzi anogona kutarisa. 0 zvinoreva kusingaperi."
+      },
+      {
+        "title": "Sanganisa mazita",
+        "description": "Ratidza mazita muhurongwa hwakasiyana pakushanya kwese."
+      },
+      {
+        "title": "Inopetwa",
+        "description": "Ratidza mubvunzo uyu semutsara unovhurika nekuvhara. Kuvhura imwe kunovhara mimwe mibvunzo inopetwa iri padhuze nayo."
+      },
+      {
+        "title": "Tanga yakapetwa",
+        "description": "Kana ichipetwa, tanga semutsara wakavharwa unoratidza mubvunzo nemamiriro awo chete."
+      },
+      {
+        "title": "Fomati yemamakisi",
+        "description": "OER Schema: fomati yemamakisi eongororo iyi (semuenzaniso mapoinzi, tsamba, muzana, kupedza)."
+      },
+      {
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Zita rekuyedzwa",
+        "description": "Zita rekuyedzwa rinoshandiswa pakuzivisa xAPI muhurongwa hwekuongorora."
+      },
+      {
+        "title": "Kosi",
+        "description": "OER Schema: kosi iyo ongororo iyi yakagadzirirwa."
+      }
+    ]
+  }
+}

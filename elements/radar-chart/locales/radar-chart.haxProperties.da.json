@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radardiagram (edderkoppediagram) til modenhedsmodeller og facetscoring, såsom HEOSAT. Indeholder et tekstalternativ og en datatabel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Overskrift for diagrammet; bruges også som dets tilgængelige navn."
+      },
+      {
+        "title": "Maksimal score",
+        "description": "Højeste værdi på skalaen."
+      },
+      {
+        "title": "Kategorier",
+        "description": "Én kategori pr. linje. Kræver mindst 3."
+      },
+      {
+        "title": "Scorer",
+        "description": "Kommaseparerede tal, ét pr. kategori i samme rækkefølge."
+      },
+      {
+        "title": "Målscorer",
+        "description": "Kommaseparerede tal, ét pr. kategori i samme rækkefølge."
+      },
+      {
+        "title": "Vis forklaring",
+        "description": "Vis en forklaring, der navngiver scorerne og målene."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Mindre diagram uden etiketter, forklaring eller datatabel. Hold musen over et punkt for at se dets værdier."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etiket for score",
+        "description": "Forklarings- og tabeletiket for scorerne."
+      },
+      {
+        "title": "Etiket for mål",
+        "description": "Forklarings- og tabeletiket for målene."
+      }
+    ]
+  }
+}

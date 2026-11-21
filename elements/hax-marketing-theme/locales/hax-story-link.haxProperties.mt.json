@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Buttuna tal-istorja",
+    "description": "Il-buttuna li tiftaħ l-istorja wara stqarrija fuq hax.cloud, jew il-post li jaqbel fuq sit ieħor tan-netwerk HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fejn tmur",
+        "options": {
+          "cloud": "hax.cloud, l-istorja",
+          "learn": "learn.hax.cloud, tutorial",
+          "try": "browser.hax.cloud, ipprovah",
+          "elements": "webcomponents.hax.cloud, blokk",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Indirizz fuq dak is-sit (storja fuq hax.cloud tidher bħal stories/ee450a19)"
+      },
+      {
+        "title": "Dwar xiex inhu"
+      },
+      {
+        "title": "Ċippa żgħira"
+      },
+      {
+        "title": "Uri dwar xiex inhu fil-buttuna"
+      }
+    ]
+  }
+}

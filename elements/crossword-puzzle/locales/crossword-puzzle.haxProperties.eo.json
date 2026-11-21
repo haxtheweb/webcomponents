@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krucvortenigmo",
+    "description": "Krucvortenigmo farita el listo de vortoj kaj indikoj. La krado estas generata por vi; lernantoj tajpas la vortojn kaj kontrolas ilin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "La titolo aŭ demando montrata super la krucvortenigmo."
+      },
+      {
+        "title": "Vortoj",
+        "description": "Ĉiu vorto kaj ĝia indiko. La krado estas generata el ĉi tiu listo: la plej longa vorto estas metita unue, kaj la aliaj krucas ĝin ĉe komunaj literoj."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Provoj",
+        "description": "Kiom da fojoj lernanto povas kontroli. 0 signifas senlime."
+      },
+      {
+        "title": "Akcenta koloro",
+        "description": "Nedeviga koloro por la kapa ĉipo, la aktiva vorto kaj la agobutonoj."
+      },
+      {
+        "title": "Faldebla",
+        "description": "Montri ĉi tiun krucvortenigmon kiel vicon, kiu malfermiĝas kaj fermiĝas. Malfermi unu fermas la aliajn faldeblajn demandojn apud ĝi."
+      },
+      {
+        "title": "Komenci faldita",
+        "description": "Se faldebla, komenci kiel fermita vico, kiu montras nur la titolon kaj ĝian staton."
+      },
+      {
+        "title": "Taksada formato",
+        "description": "OER Schema: taksada formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo uzata por xAPI-identigo en analizaj sistemoj."
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
+      }
+    ]
+  }
+}

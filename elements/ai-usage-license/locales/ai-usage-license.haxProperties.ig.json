@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Ihe ngbanwe mgbasa ozi",
-        "description": "Ihe ngbanwe ngalaba mgbasa ozi nhọrọ. Ọ na-akọwa ụdị mgbasa ozi ikikere a metụtara."
+        "description": "Ihe ngbanwe ngalaba mgbasa ozi nhọrọ. Ọ na-akọwa ụdị mgbasa ozi ikikere a metụtara.",
+        "options": {
+          "": "Enweghị ihe mgbanwe"
+        }
       },
       {
         "property": "uri",

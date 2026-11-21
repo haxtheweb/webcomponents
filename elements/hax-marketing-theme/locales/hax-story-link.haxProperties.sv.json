@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Berättelseknapp",
+    "description": "Knappen som öppnar berättelsen bakom ett påstående på hax.cloud, eller motsvarande ställe på en annan webbplats i HAX-nätverket"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vart den går",
+        "options": {
+          "cloud": "hax.cloud, berättelsen",
+          "learn": "learn.hax.cloud, en handledning",
+          "try": "browser.hax.cloud, prova det",
+          "elements": "webcomponents.hax.cloud, ett block",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adress på den webbplatsen (en berättelse på hax.cloud ser ut som stories/ee450a19)"
+      },
+      {
+        "title": "Vad det handlar om"
+      },
+      {
+        "title": "Litet chip"
+      },
+      {
+        "title": "Visa vad det handlar om i knappen"
+      }
+    ]
+  }
+}

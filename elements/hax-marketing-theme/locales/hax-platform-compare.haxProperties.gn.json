@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plataforma ñembojoja",
+    "description": "Ojovake: eiporavo mokõi plataforma oimeraẽva marandu marandurenda guive"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ñembojoja marandu (JSON)"
+      },
+      {
+        "title": "Plataforma asu gotyo id"
+      },
+      {
+        "title": "Plataforma akatúa gotyo id"
+      }
+    ]
+  }
+}

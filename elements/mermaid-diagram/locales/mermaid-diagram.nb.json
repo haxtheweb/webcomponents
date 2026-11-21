@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "flytdiagram",
+  "sequence": "sekvens",
+  "source": "Kilde",
+  "textAlternative": "Tekstalternativ",
+  "present": "Presenter",
+  "exitPresent": "Avslutt presentasjon",
+  "loading": "Laster inn diagrammet",
+  "empty": "Ingenting å tegne ennå. Legg til diagramkilden.",
+  "error": "Feil",
+  "parseError": "Dette diagrammet kunne ikke tegnes. Sjekk kilden.",
+  "loadError": "Diagrambiblioteket kunne ikke lastes inn.",
+  "srcError": "Diagramfilen kunne ikke lastes inn.",
+  "decision": "beslutning",
+  "end": "slutt",
+  "goTo": "gå til {target}",
+  "ifGoTo": "hvis {label}, gå til {target}",
+  "describedBySource": "Diagram beskrevet av kilden.",
+  "scrollable": "Diagram, kan rulles"
+}

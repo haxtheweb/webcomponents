@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline կարգավիճակ",
+    "description": "Ցույց տալ վեբ հարթակի հնարավորության Baseline դիտարկիչային աջակցության կարգավիճակը։"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Հնարավորության ID",
+        "description": "Վեբ հնարավորության ID-ն, օրինակ՝ anchor-positioning։ ID-ները գտեք webstatus.dev-ում. ID-ն հնարավորության էջի URL-ի վերջին մասն է։"
+      }
+    ]
+  }
+}

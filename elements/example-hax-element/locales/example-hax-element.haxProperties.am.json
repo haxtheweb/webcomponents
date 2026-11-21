@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "የ HAX ውቅረትን እና ሊታረሙ የሚችሉ ንብረቶችን ለማሳየት የሚያገለግል የምሳሌ መነሻ ኤለመንት።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ርዕስ"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "label": "Daşarky gural",
+  "labelLti": "Daşarky gural · LTI 1.3",
+  "theTool": "gural",
+  "directions": "Görkezmeler",
+  "showDirections": "Görkezmeleri görkez",
+  "hideDirections": "Görkezmeleri gizle",
+  "directionsWindow": "Düwme gurally täze penjire açýar.",
+  "directionsEmbed": "Düwme guraly şu sahypada açýar. Ýüklenmese, ýerine ony täze penjirede açyň.",
+  "directionsLti": "Bu saýt sizi gurala girizýär, şonuň üçin aýratyn hasap gerek däl.",
+  "openWindow": "{title} aç (täze penjire)",
+  "openEmbed": "{title} aç",
+  "openInstead": "Ýerine täze penjirede aç",
+  "frameTitle": "{title} (daşarky gural)",
+  "openedWindow": "Gurally täze penjire açyldy.",
+  "openedEmbed": "Gural şu sahypada açyldy.",
+  "needsUrl": "Bu bloka http:// ýa-da https:// bilen başlanýan işe giriziş salgysy gerek.",
+  "needsSignIn": "Bu gurala bu saýtyň giriş hyzmaty gerek, ol bu ýerde elýeterli däl. Hiç zat açylmady."
+}

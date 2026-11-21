@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Palette",
   "cancel": "Kanselahin",
-  "openAppearanceSettings": "Buksan ang Mga Setting ng Hitsura"
+  "openAppearanceSettings": "Buksan ang Mga Setting ng Hitsura",
+  "designSystem": "Sistema ng disenyo",
+  "designSystemDefault": "DDD (default)",
+  "designSystemThemeDefault": "{name} (default ng tema)",
+  "designSystemHelp": "Kulay, type, mga sulok at density. Ang tema pa rin ang nagpapasya ng layout."
 }

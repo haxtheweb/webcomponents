@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Teilsen ystadegyn",
+    "description": "Un rhif sy'n bwysig, gyda'i label a sut y newidiodd. Rhowch sawl un mewn grid ar gyfer rhes dangosfwrdd."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Yr hyn y mae'r rhif yn ei fesur."
+      },
+      {
+        "title": "Gwerth",
+        "description": "Y rhif. Mae rhif plaen yn cael ei grwpio ar gyfer iaith y dudalen; dangosir unrhyw beth arall fel y'i hysgrifennwyd."
+      },
+      {
+        "title": "Newid",
+        "description": "Sut y newidiodd, mewn geiriau, fel 6% y tymor hwn."
+      },
+      {
+        "title": "Cyfeiriad",
+        "description": "A yw'r newid i fyny neu i lawr.",
+        "options": {
+          "": "Dim",
+          "up": "I fyny",
+          "down": "I lawr"
+        }
+      }
+    ]
+  }
+}

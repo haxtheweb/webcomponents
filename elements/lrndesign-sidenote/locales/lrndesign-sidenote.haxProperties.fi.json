@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Sivuhuomautus",
+    "description": "Ympäröivästä sisällöstä erotettu huomautus, valinnaisella kuvakkeella ja nimiöllä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimiö",
+        "description": "Sivuhuomautuksen nimiö."
+      },
+      {
+        "title": "Kuvake",
+        "description": "Sivuhuomautuksen kuvake."
+      },
+      {
+        "title": "Sisältö",
+        "description": "Sivuhuomautuksen sisältö."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Väri",
+        "description": "Väri, jolla sivuhuomautus sävytetään."
+      }
+    ]
+  }
+}

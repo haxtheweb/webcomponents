@@ -5,5 +5,7 @@
   "editModeLabel": "Redigeringsmodus for mediespilleliste",
   "position": "{current} av {total}",
   "previousItem": "Forrige element",
-  "nextItem": "Neste element"
+  "nextItem": "Neste element",
+  "fullScreen": "Fullskjerm",
+  "exitFullScreen": "Avslutt fullskjerm"
 }

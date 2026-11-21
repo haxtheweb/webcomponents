@@ -52,6 +52,20 @@
           "_top": "Janela superior - _top",
           "_parent": "Janela pai - _parent"
         }
+      },
+      {
+        "title": "Sem seta",
+        "description": "Ocultar a seta do botão."
+      },
+      {
+        "title": "Link: destino",
+        "description": "Onde abrir o link.",
+        "options": {
+          "": "Mesma janela",
+          "_blank": "Nova janela - _blank",
+          "_top": "Janela superior - _top",
+          "_parent": "Janela pai - _parent"
+        }
       }
     ],
     "developer": [

@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "တံဆိပ်ပါ အိုင်ကွန်ငယ်"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "အိုင်ကွန်"
+      },
+      {
+        "title": "တံဆိပ်"
+      }
+    ]
+  }
+}

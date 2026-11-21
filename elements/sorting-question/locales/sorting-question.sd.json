@@ -40,5 +40,7 @@
   "hideDirections": "هدايتون لڪايو",
   "showRelatedContent": "لاڳاپيل مواد ڏيکاريو",
   "hideRelatedContent": "لاڳاپيل مواد لڪايو",
-  "notAttempted": "ڪوشش نه ڪئي وئي"
+  "notAttempted": "ڪوشش نه ڪئي وئي",
+  "cardsDirections": "هر ڪارڊ تي اڳ ۾ آڻيو ۽ پوءِ ۾ آڻيو بٽڻن سان ڪارڊن کي درست ترتيب ۾ رکو، يا انهن کي مائوس سان ڇڪيو. جڏهن توهان کي يقين ٿئي ته اهي درست ترتيب ۾ آهن، {checkAnswer} چونڊي پنهنجو جواب جانچيو.",
+  "movedToPosition": "{item} کي {total} مان {position} جاءِ تي منتقل ڪيو ويو"
 }

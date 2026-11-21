@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Vanza aikoni",
         "description": "Vanza aikoni inoshandiswa kusimbisa mavara"
+      },
+      {
+        "title": "Chitarisiko",
+        "description": "Kusimbiswa kwakadii kunoitwa bhatani.",
+        "options": {
+          "": "Rakazadzwa",
+          "tonal": "Remavara",
+          "outlined": "Rakatenderedzwa",
+          "plain": "Rakapusa"
+        }
+      },
+      {
+        "title": "Saizi",
+        "description": "Saizi yebhatani.",
+        "options": {
+          "s": "Diki",
+          "": "Yepakati",
+          "l": "Hombe"
+        }
       }
     ],
     "advanced": [

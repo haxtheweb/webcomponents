@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ilebula lesithombe",
     "description": "Isakhi selebula lesithombe sokumaka izinsiza zemidiya ngaphakathi kokuqukethwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inombolo yomfanekiso",
+        "description": "Inombolo noma ilebula emfushane yomfanekiso, isb. 1.3"
+      },
+      {
+        "title": "Incazelo",
+        "description": "Incazelo emfushane yomfanekiso"
+      }
+    ]
   }
 }

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Gebruiksgevalkieser",
+    "description": "Kies waarvoor 'n webwerf is en kry 'n skakel wat HAX in die blaaier met daardie beginwebwerf oopmaak, plus die ooreenstemmende CLI-opdrag."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "HAX-in-die-blaaier-adres",
+        "description": "Waar die skakel oopmaak; ?skeleton= en &name= word bygevoeg"
+      },
+      {
+        "title": "Beginwebwerwe om uit te laat",
+        "description": "Masjienname, kommageskei"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Beginwebwerflys",
+        "description": "Adres van die skeletlys (die formaat wat app-hax lees)"
+      }
+    ]
+  }
+}

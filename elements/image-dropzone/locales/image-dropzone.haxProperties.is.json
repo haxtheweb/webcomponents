@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Sleppisvæði á mynd",
+    "description": "Nemendur setja merkimiða á svæði sem liggja yfir mynd og athuga svo svarið."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd",
+        "description": "Myndin sem nemendur setja merkimiða á."
+      },
+      {
+        "title": "Textalýsing",
+        "description": "Lýsir myndinni fyrir fólk sem sér hana ekki. Ekki gefa upp hvert merkimiðarnir fara."
+      },
+      {
+        "title": "Titill myndar",
+        "description": "Stuttur sýnilegur titill fyrir myndina, sýndur fyrir ofan hana."
+      },
+      {
+        "title": "Spurning",
+        "description": "Hvað nemendur eru beðnir um að gera við merkimiðana."
+      },
+      {
+        "title": "Merkimiðar og svæði",
+        "description": "Hvert atriði er merkimiði sem nemendur geta sett. Gefðu merkimiða svæðisheiti til að setja svæði hans á myndina; merkimiði án svæðisheitis er aukamiði sem á hvergi heima. Svæðistölur eru prósentur af myndinni."
+      },
+      {
+        "title": "Myndatexti",
+        "description": "Valfrjáls myndatexti sýndur undir myndinni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tilraunir",
+        "description": "Hversu oft nemandi getur athugað. 0 þýðir ótakmarkað."
+      },
+      {
+        "title": "Stokka merkimiða",
+        "description": "Sýna merkimiðana í annarri röð í hverri heimsókn."
+      },
+      {
+        "title": "Fellanlegt",
+        "description": "Sýna þessa spurningu sem röð sem opnast og lokast. Að opna eina lokar hinum fellanlegu spurningunum við hliðina."
+      },
+      {
+        "title": "Byrja samanfellt",
+        "description": "Þegar fellanlegt, byrja sem lokuð röð sem sýnir aðeins spurninguna og stöðu hennar."
+      },
+      {
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta námsmat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "title": "Hæfniviðmið",
+        "description": "OER Schema: hæfniviðmið tengt þessu námsmati."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Heiti prófsins",
+        "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
+      },
+      {
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta námsmat er ætlað fyrir."
+      }
+    ]
+  }
+}

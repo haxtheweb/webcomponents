@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Sananhaku",
+    "description": "Kirjainruudukko, jossa on piilotettuja sanoja. Oppijat napauttavat kunkin sanan ensimmäistä ja viimeistä kirjainta. Harjoittaa termin kirjoitusasun tunnistamista, ei sen merkitystä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Mitä oppijoita pyydetään löytämään, näytetään otsakkeessa."
+      },
+      {
+        "title": "Sanat",
+        "description": "Piilotettavat sanat. Välilyönnit ja välimerkit jätetään pois ruudukosta. Sanat, jotka eivät mahdu, luetellaan muokattaessa ja jätetään pois oppijoilta."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruudukon koko",
+        "description": "Kirjaimia sivua kohden, 4–16. Jätä tyhjäksi sovittaaksesi pisimmän sanan mukaan (enintään 12). Yli 12 vierii puhelimessa sivusuunnassa."
+      },
+      {
+        "title": "Vinottaiset sanat",
+        "description": "Piilota sanoja myös vinottain. Vaikeampi."
+      },
+      {
+        "title": "Takaperin kirjoitetut sanat",
+        "description": "Piilota myös takaperin kirjoitettuja sanoja. Vaikeampi."
+      },
+      {
+        "title": "Korostusväri",
+        "description": "Valinnainen väri otsakemerkille, valitulle ensimmäiselle kirjaimelle ja painikkeelle."
+      }
+    ]
+  }
+}

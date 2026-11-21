@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Àkọsílẹ̀ ẹ̀gbẹ́",
+    "description": "Àkọsílẹ̀ tí a yà sọ́tọ̀ kúrò nínú àkóónú àyíká rẹ̀, pẹ̀lú àmì-àwòrán àti àmì àṣàyàn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àmì",
+        "description": "Àmì àkọsílẹ̀ ẹ̀gbẹ́."
+      },
+      {
+        "title": "Àmì-àwòrán",
+        "description": "Àmì-àwòrán àkọsílẹ̀ ẹ̀gbẹ́."
+      },
+      {
+        "title": "Àkóónú",
+        "description": "Àkóónú àkọsílẹ̀ ẹ̀gbẹ́."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Àwọ̀",
+        "description": "Àwọ̀ tí a fi kun àkọsílẹ̀ ẹ̀gbẹ́."
+      }
+    ]
+  }
+}

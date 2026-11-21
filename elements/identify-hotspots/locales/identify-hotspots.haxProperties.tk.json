@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Nokatlary tap",
+    "description": "Öwrenijiler basyp, degip ýa-da klawiatura nyşanyny süýşürip suratdaky dogry nokatlary tapýarlar. Surat kartasynyň bahalandyrylýan görnüşi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Surat",
+        "description": "Öwrenijileriň gözleýän suraty."
+      },
+      {
+        "title": "Alternatiw tekst",
+        "description": "Suraty görüp bilmeýänler üçin ony beýan edýär. Ol hiç haçan at hökmünde görkezilmeýär."
+      },
+      {
+        "title": "Sözbaşy",
+        "description": "Suratyň üstünde görkezilýän gysga görünýän at."
+      },
+      {
+        "title": "Sorag",
+        "description": "Öwrenijilerden suratda näme tapmak soralýar."
+      },
+      {
+        "title": "Jogaplar",
+        "description": "Her jogap suratdaky atly ellips. Ýeri we ölçegi suratyň çep ýokarky burçundan ölçenen göterimlerde. Redaktirlenende her jogap suratda çyzykly görkezilýär."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Synanyşyklar",
+        "description": "Öwreniji näçe gezek synanyşyp biler. 0 çäksiz diýmegi aňladýar."
+      },
+      {
+        "title": "Rugsat berlen ýalňyşlar",
+        "description": "Näçe ýalňyşlyk synanyşygy tamamlaýar. 0 çäksiz diýmegi aňladýar we öwrenijiler Tamamla düwmesini alýarlar."
+      },
+      {
+        "title": "Ýygnalýan",
+        "description": "Bu soragy açylýan we ýapylýan setir hökmünde görkez. Birini açmak onuň ýanyndaky beýleki ýygnalýan soraglary ýapýar."
+      },
+      {
+        "title": "Ýygnalan görnüşde başla",
+        "description": "Ýygnalýan bolanda, diňe soragy we ýagdaýy görkezilýän ýapyk setir hökmünde başla."
+      },
+      {
+        "title": "Bahalandyryş formaty",
+        "description": "OER Schema: bu baha bermek üçin bahalandyryş formaty (meselem ballar, harp, göterim, tamamlama)."
+      },
+      {
+        "title": "Okuw maksady",
+        "description": "OER Schema: bu baha bermek bilen baglanyşykly okuw maksady."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testiň ady",
+        "description": "Bu elementi kesgitlemek üçin xAPI esasly gurşawlarda ulanylmak üçin berilýän testiň ady"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: bu baha bermegiň niýetlenen kursy."
+      }
+    ]
+  }
+}

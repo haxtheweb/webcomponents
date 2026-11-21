@@ -1,0 +1,19 @@
+{
+  "label": "Ekstern ark",
+  "labelLti": "Ekstern ark · LTI 1.3",
+  "theTool": "it ark",
+  "directions": "Oanwizings",
+  "showDirections": "Oanwizings sjen litte",
+  "hideDirections": "Oanwizings ferbergje",
+  "directionsWindow": "De knop iepenet in nij finster mei it ark deryn.",
+  "directionsEmbed": "De knop iepenet it ark op dizze side. As it net laadt, iepenje it dan ynstee yn in nij finster.",
+  "directionsLti": "Dizze side meldt jo oan by it ark, dus jo hawwe gjin apart akkount nedich.",
+  "openWindow": "{title} iepenje (nij finster)",
+  "openEmbed": "{title} iepenje",
+  "openInstead": "Ynstee yn in nij finster iepenje",
+  "frameTitle": "{title} (ekstern ark)",
+  "openedWindow": "Der is in nij finster mei it ark iepene.",
+  "openedEmbed": "It ark is op dizze side iepene.",
+  "needsUrl": "Dit blok hat in startadres nedich dat begjint mei http:// of https://.",
+  "needsSignIn": "Dit ark hat de oanmeldtsjinst fan dizze side nedich, dy't hjir net beskikber is. Der is neat iepene."
+}

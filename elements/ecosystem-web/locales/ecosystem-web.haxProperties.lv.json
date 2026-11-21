@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistēmas tīkls",
+    "description": "Interaktīvs tīkls, kas parāda, kā projekta daļas ir saistītas, ar apakštīkliem un soli pa solim tūrēm."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tīkla dati",
+        "description": "Tīklu JSON pakotnes URL (veidots PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Tīkls",
+        "description": "Vispirms rādāmā tīkla ID; main ir ekosistēmas tīkls."
+      },
+      {
+        "title": "Atlasītā flīze",
+        "description": "Flīzes ID, kas jāatlasa, kad tīkls atveras."
+      },
+      {
+        "title": "Tūre",
+        "description": "Tūres ID, ar kuru sākt."
+      },
+      {
+        "title": "Sākt saraksta skatā",
+        "description": "Rādīt tīklu kā ligzdotus sarakstus, nevis zīmējumu."
+      },
+      {
+        "title": "Tikai zīmējums",
+        "description": "Rādīt tikai zīmējumu kā attēlu: bez galvenes, tūrēm, detaļām vai soļu joslas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lasīt pēc",
+        "description": "Sākt ar to, ka katra flīze tiek nolasīta pēc viena rādītāja.",
+        "options": {
+          "": "Tikai savienojumi",
+          "fresh": "Svaigums",
+          "bus": "Autobusa faktors",
+          "impact": "Ietekme",
+          "evidence": "Pierādījumi",
+          "parity": "Paritāte"
+        }
+      }
+    ]
+  }
+}

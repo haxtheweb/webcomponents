@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Llista de passos",
     "description": "Passos numerats per completar una tasca."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indicador de passos",
+        "description": "Mostra els passos com una fila compacta de títols que marca el progrés. El contingut dels passos no es mostra en aquesta disposició."
+      },
+      {
+        "title": "Pas actual",
+        "description": "El pas on és el lector, comptant des de 1. Els passos anteriors es mostren com a completats. L'utilitza l'indicador de passos."
+      }
+    ]
   }
 }

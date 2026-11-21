@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Joc de memòria",
+    "description": "Gira cartes per trobar parelles. Aparella un terme amb el seu significat perquè una coincidència demostri comprensió, o fes servir dos textos o imatges iguals."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "La consigna que es mostra a la capçalera, per exemple: Relaciona el terme amb la seva funció."
+      },
+      {
+        "title": "Parelles",
+        "description": "Cada parella són dues cartes que van juntes, normalment un terme i el seu significat. Un costat necessita text, una imatge o tots dos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color opcional per a l'etiqueta de la capçalera, el revers de les cartes i el botó."
+      }
+    ]
+  }
+}

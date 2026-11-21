@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Dală statistică",
+    "description": "Un număr care contează, cu eticheta sa și cum s-a schimbat. Plasați mai multe într-o grilă pentru un rând de tablou de bord."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetă",
+        "description": "Ce măsoară numărul."
+      },
+      {
+        "title": "Valoare",
+        "description": "Numărul. Un număr simplu este grupat după limba paginii; orice altceva apare așa cum este scris."
+      },
+      {
+        "title": "Schimbare",
+        "description": "Cum s-a schimbat, în cuvinte, de exemplu 6% în acest semestru."
+      },
+      {
+        "title": "Direcție",
+        "description": "Dacă schimbarea este în creștere sau în scădere.",
+        "options": {
+          "": "Niciuna",
+          "up": "În creștere",
+          "down": "În scădere"
+        }
+      }
+    ]
+  }
+}

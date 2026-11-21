@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiera som CSV.",
   "printTable": "Skriv ut tabell",
   "selectColumn": "Välj kolumn",
-  "dataTable": "Data · Tabell"
+  "dataTable": "Data · Tabell",
+  "filterStatus": "Visar {shown} av {total} rader, filtrerat på {column}: {text}",
+  "columnNumber": "Kolumn {column}",
+  "clearFilter": "Rensa filter"
 }

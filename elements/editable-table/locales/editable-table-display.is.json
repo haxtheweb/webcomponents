@@ -3,5 +3,8 @@
   "copyAsCsv": "Afrita sem CSV.",
   "printTable": "Prenta töflu",
   "selectColumn": "Velja dálk",
-  "dataTable": "Gögn · Tafla"
+  "dataTable": "Gögn · Tafla",
+  "filterStatus": "Sýni {shown} af {total} röðum, síað eftir {column}: {text}",
+  "columnNumber": "Dálkur {column}",
+  "clearFilter": "Hreinsa síu"
 }

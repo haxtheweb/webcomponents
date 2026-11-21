@@ -60,6 +60,8 @@
   "flagsFound": "{total} sanydan {correct} tapyldy",
   "toRethink": "Gaýtadan pikirlenmeli: {count}",
   "notEvidence": "bu baýdakjyk üçin subutnama däl",
+  "isEvidence": "bu bellik üçin subutnama",
+  "readingKeys": "Bir {unit}-dan indikisine geçmek üçin ok düwmelerini ulanyň.",
   "markAnswers": "Jogaplary belle",
   "doneMarking": "Jogaplary bellemegi tamamla",
   "editHint": "Aşakdaky teksti redaktirläň. Her baýdakjygyň ýerini saýlamak üçin blok menýusyndaky Jogaplary belle bölümini ulanyň.",

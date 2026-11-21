@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ssenariy sahnasi",
+    "description": "Tarmoqlanuvchi ssenariyning bitta sahnasi. Har bir tanlovni # va undan keyin sahna ID si bilan boshqa sahnaga bog‘lang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sahna ID si",
+        "description": "Tanlovlar nimaga bog‘lanadi: # va undan keyin shu ID ga havola shu sahnaga olib boradi. Harflar, raqamlar va defislar."
+      },
+      {
+        "title": "Sarlavha",
+        "description": "Sahna sarlavhasi."
+      },
+      {
+        "title": "Yakun",
+        "description": "Bu sahna yo‘lni yakunlaydimi va natija qanday bo‘ldi.",
+        "options": {
+          "": "Yakun emas",
+          "good": "Yaxshi yakun",
+          "mixed": "Aralash yakun",
+          "poor": "Yomon yakun"
+        }
+      },
+      {
+        "title": "Ball",
+        "description": "Shu yakunga yetganlik uchun ball. Ssenariydagi eng yuqori yakun bali maksimal ball hisoblanadi."
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Momwe Baseline ilili",
+    "description": "Onetsani momwe thandizo la msakatuli la Baseline lilili pa chinthu cha nsanja ya intaneti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ya chinthu",
+        "description": "ID ya chinthu cha intaneti, mwachitsanzo anchor-positioning. Pezani ma ID pa webstatus.dev; ID ndi gawo lomaliza la URL ya tsamba la chinthucho."
+      }
+    ]
+  }
+}

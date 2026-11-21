@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Dizaýn ulgamy",
+  "dddDefault": "DDD (deslapky)",
+  "designSystemHelp": "Reňk, şrift, burçlar we fokus. Tema ýerleşişini saklaýar.",
+  "designSystemFixed": "Bu tema öz dizaýn ulgamyny saklaýar.",
+  "palette": "Palitra",
+  "themeDefault": "Temanyň deslapky sazlamasy",
+  "paletteNumber": "Palitra {n}",
+  "siteTheme": "{name} (bu saýtyň temasy)",
+  "restyle": "Bu saýtyň stilini üýtget",
+  "close": "Ýap",
+  "reset": "Bu saýtyň öz görnüşine gaýt",
+  "random": "Meni geň galdyr",
+  "about": "Bu HAX-a gurlan görnüşleriň käbirini görkezýär. Sahypalar hiç haçan üýtgemeýär: gurluş JSON Outline Schema-da saklanýar we her blok standart web komponent, şonuň üçin dizaýny erkin çalşyp bolýar."
+}

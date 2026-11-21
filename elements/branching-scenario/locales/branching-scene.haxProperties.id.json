@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Adegan skenario",
+    "description": "Satu adegan dari skenario bercabang. Tautkan setiap pilihan ke adegan lain dengan # diikuti ID adegannya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID adegan",
+        "description": "Tujuan tautan pilihan: tautan ke # diikuti ID ini mengarah ke adegan ini. Huruf, angka, dan tanda hubung."
+      },
+      {
+        "title": "Judul",
+        "description": "Judul adegan."
+      },
+      {
+        "title": "Akhir",
+        "description": "Apakah adegan ini mengakhiri jalur, dan bagaimana hasilnya.",
+        "options": {
+          "": "Bukan akhir",
+          "good": "Akhir yang baik",
+          "mixed": "Akhir campuran",
+          "poor": "Akhir yang buruk"
+        }
+      },
+      {
+        "title": "Skor",
+        "description": "Skor untuk mencapai akhir ini. Skor akhir tertinggi dalam skenario menjadi nilai maksimum."
+      }
+    ]
+  }
+}

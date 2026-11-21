@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Shënim anësor",
+    "description": "Një shënim i ndarë nga përmbajtja përreth, me ikonë dhe etiketë opsionale."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Etiketa e shënimit anësor."
+      },
+      {
+        "title": "Ikona",
+        "description": "Ikona e shënimit anësor."
+      },
+      {
+        "title": "Përmbajtja",
+        "description": "Përmbajtja e shënimit anësor."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngjyra",
+        "description": "Ngjyra me të cilën ngjyroset shënimi anësor."
+      }
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentations-Player",
+    "description": "Rundgang, Demo und Referenz für eine Webkomponente, mit Kopierschaltflächen für HTML, Import, npm und CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentationsdatei",
+        "description": "Die Dokumentationsdaten, die mit dem Element ausgeliefert werden (lib/tag.docs.json)."
+      },
+      {
+        "title": "Rundgang-Storyboard",
+        "description": "Das Bewegungs-Storyboard, das mit dem Element ausgeliefert wird (tag.motion.json). Optional."
+      },
+      {
+        "title": "Video-Tutorial",
+        "description": "Ein kurzes Video über das Element (YouTube, Vimeo oder eine Videodatei). Ersetzt das Video in den Dokumentationsdaten."
+      },
+      {
+        "title": "Auf Tab öffnen",
+        "description": "Welcher Tab zuerst angezeigt wird.",
+        "options": {
+          "motion": "Rundgang",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentation",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Rundgang automatisch abspielen",
+        "description": "Den Rundgang starten, sobald der Player erscheint. Wird ignoriert, wenn reduzierte Bewegung bevorzugt wird."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rundgang-Thema",
+        "description": "Bei Elementen mit mehreren Rundgängen: welches Thema zuerst geöffnet wird (zum Beispiel add-blocks). Leer lassen für den Hauptrundgang."
+      },
+      {
+        "title": "Link zur Live-Demo",
+        "description": "Wohin die Schaltfläche „Demo-Quelle öffnen“ führt. Standard ist der Demo-Ordner im Repository."
+      },
+      {
+        "title": "Link zur Dokumentation",
+        "description": "Wohin die Schaltfläche zur vollständigen Dokumentation führt, zum Beispiel die passende Learn HAX-Seite."
+      }
+    ]
+  }
+}

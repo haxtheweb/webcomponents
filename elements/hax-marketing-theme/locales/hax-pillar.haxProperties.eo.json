@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Kolono",
+    "description": "Kolono: nomo, frazo, piktogramo, koloro kaj kial ĝi gravas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nomo"
+      },
+      {
+        "title": "Frazo"
+      },
+      {
+        "title": "Piktogramo"
+      },
+      {
+        "title": "Koloro (DDD-nomo)"
+      },
+      {
+        "title": "Kiu kolono, 1 ĝis 7"
+      },
+      {
+        "title": "Malgranda karto"
+      },
+      {
+        "title": "Kie la nomo iras"
+      }
+    ]
+  }
+}

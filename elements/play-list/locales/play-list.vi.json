@@ -9,5 +9,7 @@
   "slidePages": "Các trang chiếu",
   "goToSlide": "Đi đến trang chiếu {number}",
   "slides": "Trang trình bày",
-  "position": "{number}/{total}"
+  "position": "{number}/{total}",
+  "fullScreen": "Toàn màn hình",
+  "exitFullScreen": "Thoát toàn màn hình"
 }

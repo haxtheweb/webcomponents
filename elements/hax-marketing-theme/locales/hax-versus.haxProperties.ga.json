@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "In aghaidh",
+    "description": "Focail in aice le cnaipe ceann ar cheann le dhá charachtar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ceannteideal"
+      },
+      {
+        "title": "Cá dtéann an cnaipe"
+      },
+      {
+        "title": "Téacs an chnaipe"
+      },
+      {
+        "title": "Síol an charachtair chlé"
+      },
+      {
+        "title": "Síol an charachtair dheis"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kontraŭ",
+    "description": "Vortoj apud kap-al-kapa butono kun du roluloj"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo"
+      },
+      {
+        "title": "Kien la butono iras"
+      },
+      {
+        "title": "Butona teksto"
+      },
+      {
+        "title": "Semo de la maldekstra rolulo"
+      },
+      {
+        "title": "Semo de la dekstra rolulo"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "label": "Zana ya nje",
+  "labelLti": "Zana ya nje · LTI 1.3",
+  "theTool": "zana",
+  "directions": "Maelekezo",
+  "showDirections": "Onyesha maelekezo",
+  "hideDirections": "Ficha maelekezo",
+  "directionsWindow": "Kitufe hufungua dirisha jipya lenye zana ndani yake.",
+  "directionsEmbed": "Kitufe hufungua zana kwenye ukurasa huu. Isipopakia, ifungue kwenye dirisha jipya badala yake.",
+  "directionsLti": "Tovuti hii inakuingiza kwenye zana, kwa hivyo huhitaji akaunti tofauti.",
+  "openWindow": "Fungua {title} (dirisha jipya)",
+  "openEmbed": "Fungua {title}",
+  "openInstead": "Fungua kwenye dirisha jipya badala yake",
+  "frameTitle": "{title} (zana ya nje)",
+  "openedWindow": "Dirisha jipya limefunguka lenye zana.",
+  "openedEmbed": "Zana imefunguka kwenye ukurasa huu.",
+  "needsUrl": "Kizuizi hiki kinahitaji anwani ya kuzindua inayoanza na http:// au https://.",
+  "needsSignIn": "Zana hii inahitaji huduma ya kuingia ya tovuti hii, ambayo haipatikani hapa. Hakuna kilichofunguliwa."
+}

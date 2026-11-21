@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Gruppo di stop note",
+    "description": "Raggruppa più stop note in un unico blocco che mostra una nota alla volta, come Suggerimenti o Novità. Schede di istruzioni, note a margine e citazioni con cornice possono essere raggruppate con esse."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "Nome del gruppo annunciato dai lettori di schermo, come Suggerimenti o Novità."
+      },
+      {
+        "title": "Note",
+        "description": "Le stop note del gruppo. Si possono aggiungere anche schede di istruzioni, note a margine e citazioni con cornice."
+      }
+    ]
+  }
+}

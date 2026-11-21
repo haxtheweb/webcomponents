@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stare Baseline",
+    "description": "Afișați starea de suport Baseline în browsere a unei funcții a platformei web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID funcție",
+        "description": "ID-ul funcției web, de exemplu anchor-positioning. Găsiți ID-urile pe webstatus.dev; ID-ul este ultima parte a URL-ului paginii unei funcții."
+      }
+    ]
+  }
+}

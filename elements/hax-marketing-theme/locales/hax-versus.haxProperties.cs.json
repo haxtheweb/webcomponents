@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Proti sobě",
+    "description": "Slova vedle tlačítka souboje dvou postav"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nadpis"
+      },
+      {
+        "title": "Kam vede tlačítko"
+      },
+      {
+        "title": "Text tlačítka"
+      },
+      {
+        "title": "Seed levé postavy"
+      },
+      {
+        "title": "Seed pravé postavy"
+      }
+    ]
+  }
+}

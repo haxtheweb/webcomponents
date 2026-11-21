@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "पद"
+        "title": "पद",
+        "description": "पाठकहरूले परिभाषा हेर्न क्लिक गर्ने शब्द वा वाक्यांश।"
       },
       {
         "slot": "",

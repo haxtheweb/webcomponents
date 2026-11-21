@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ndetu n'akụkụ",
+    "description": "Ndetu dị iche na ọdịnaya gbara ya gburugburu, nwere akara ngosi na akara aha nhọrọ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Akara aha",
+        "description": "Akara aha nke ndetu n'akụkụ."
+      },
+      {
+        "title": "Akara ngosi",
+        "description": "Akara ngosi nke ndetu n'akụkụ."
+      },
+      {
+        "title": "Ọdịnaya",
+        "description": "Ọdịnaya nke ndetu n'akụkụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Agba",
+        "description": "Agba e ji tee ndetu n'akụkụ."
+      }
+    ]
+  }
+}

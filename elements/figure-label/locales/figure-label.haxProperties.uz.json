@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Rasm yorligʻi",
     "description": "Kontent ichidagi media resurslarni belgilash uchun rasm yorligʻi elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rasm raqami",
+        "description": "Rasm uchun raqam yoki qisqa yorliq, masalan 1.3"
+      },
+      {
+        "title": "Tavsif",
+        "description": "Rasmning qisqa tavsifi"
+      }
+    ]
   }
 }

@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "പശ്ചാത്തല ചിത്രം."
+        "description": "പശ്ചാത്തല ചിത്രം.",
+        "title": "ചിത്രം"
       },
       {
         "property": "caption",
-        "description": "വാചക തലക്കെട്ട്."
+        "description": "വാചക തലക്കെട്ട്.",
+        "title": "അടിക്കുറിപ്പ്"
       }
     ]
   }

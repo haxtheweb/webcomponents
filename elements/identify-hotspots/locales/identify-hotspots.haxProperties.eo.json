@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identigi punktojn",
+    "description": "Lernantoj trovas la ĝustajn lokojn en bildo per klako, tuŝeto aŭ movado de klavara celkruceto. La taksata ekvivalento de bildmapo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bildo",
+        "description": "La bildo, kiun lernantoj traserĉas."
+      },
+      {
+        "title": "Alternativa teksto",
+        "description": "Priskribas la bildon por homoj, kiuj ne povas vidi ĝin. Ĝi neniam montriĝas kiel la titolo."
+      },
+      {
+        "title": "Titolo",
+        "description": "Mallonga videbla titolo montrata super la bildo."
+      },
+      {
+        "title": "Demando",
+        "description": "Kion lernantoj devas trovi en la bildo."
+      },
+      {
+        "title": "Respondoj",
+        "description": "Ĉiu respondo estas nomita ovalo sur la bildo. Pozicio kaj grandeco estas procentoj de la bildo, mezuritaj de ĝia supra maldekstra angulo. Dum redaktado, ĉiu respondo estas konturita sur la bildo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Provoj",
+        "description": "Kiom da fojoj lernanto povas provi. 0 signifas senlime."
+      },
+      {
+        "title": "Permesitaj maltrafoj",
+        "description": "Kiom da maltrafoj finas provon. 0 signifas senlime, kaj lernantoj ricevas butonon Fini."
+      },
+      {
+        "title": "Faldebla",
+        "description": "Montri ĉi tiun demandon kiel vicon, kiu malfermiĝas kaj fermiĝas. Malfermi unu fermas la aliajn faldeblajn demandojn apud ĝi."
+      },
+      {
+        "title": "Komenci faldita",
+        "description": "Se faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      },
+      {
+        "title": "Taksada formato",
+        "description": "OER Schema: taksada formato por ĉi tiu takso (ekz. poentoj, litero, procento, kompletigo)."
+      },
+      {
+        "title": "Lerncelo",
+        "description": "OER Schema: lerncelo asociita kun ĉi tiu takso."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo transdonita por uzo en xAPI-bazitaj medioj por identigi ĉi tiun eron"
+      },
+      {
+        "title": "Kurso",
+        "description": "OER Schema: kurso, por kiu ĉi tiu takso estas celita."
+      }
+    ]
+  }
+}

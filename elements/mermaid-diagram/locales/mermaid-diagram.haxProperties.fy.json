@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram út tekst",
+    "description": "Skriuw in diagram as tekst (Mermaid): in streamdiagram, folchoarder, tiidline en mear. It wurdt op de side tekene mei in tekstalternatyf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Toand boppe it diagram en brûkt as syn namme."
+      },
+      {
+        "title": "Diagramboarne",
+        "description": "Mermaid-tekst, bygelyks: flowchart TD, dan ien rigel per keppeling lykas A[Draft] --> B{Ready?}. Foegje |label| ta nei in pylk om him in label te jaan. De tekening wurdt bywurke wylst jo typje."
+      },
+      {
+        "title": "Tekstalternatyf",
+        "description": "Beskriuw wat it diagram toant foar minsken dy't it net sjen kinne. Lit leech by in streamdiagram om de stappen foar jo opsomje te litten."
+      },
+      {
+        "title": "Byskrift",
+        "description": "Opsjoneel byskrift ûnder it diagram."
+      },
+      {
+        "title": "De boarne sjen litte",
+        "description": "De diagramtekst neist de tekening sjen litte."
+      },
+      {
+        "title": "It tekstalternatyf sjen litte",
+        "description": "It tekstalternatyf ûnder de tekening sjen litte. It is altyd beskikber foar skermlêzers."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Boarnebestân",
+        "description": "Adres fan in .mmd-bestân om te tekenjen ynstee fan de tekst hjirboppe (https of in paad op dizze side)."
+      },
+      {
+        "title": "Aksintkleur",
+        "description": "Kleur fan it ikoantsjip yn de koptekst."
+      }
+    ]
+  }
+}

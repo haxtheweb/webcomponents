@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Palette",
+  "themeDefault": "Default ng tema",
+  "designSystem": "Sistema ng disenyo",
+  "designSystemDefault": "DDD (default)",
+  "designSystemUnavailable": "May sariling design system ang temang ito"
+}

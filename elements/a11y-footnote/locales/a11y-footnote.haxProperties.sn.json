@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tsanangudzo yepazasi",
+    "description": "Chinyorwa chakanyorwa pachinofanira kuva murugwaro. Chinoratidzwa senhamba, uye rondedzero ine nhamba yezvinyorwa inozvivaka pazasi pepeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chinyorwa",
+        "description": "Mavara etsanangudzo yepazasi."
+      },
+      {
+        "title": "Hapana ongororo",
+        "description": "Usaratidze chinyorwa kana muverengi akaisa mbeva kana pfungwa panhamba."
+      }
+    ]
+  }
+}

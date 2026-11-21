@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Raadinta erayada",
+    "description": "Shabakad xarfo ah oo leh erayo qarsoon. Ardaydu waxay taabtaan xarafka ugu horreeya iyo kan ugu dambeeya ee erey kasta. Waxay ku layliyaan aqoonsiga sida erey loo higgaadiyo, ma aha macnihiisa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Waxa ardayda laga codsanayo inay helaan, oo ka muuqda madaxa."
+      },
+      {
+        "title": "Erayada",
+        "description": "Erayada la qarinayo. Meelaha bannaan iyo calaamadaha waa laga reebaa shabakadda. Erayada aan ku habboonayn waa la taxaa inta aad wax beddelayso waana laga reebaa ardayda."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cabbirka shabakadda",
+        "description": "Xarfo dhinackiiba, 4 ilaa 16. Ka tag madhan si uu ugu habboonaado ereyga ugu dheer (ilaa 12). In ka badan 12 waxay dhinac u rogmataa taleefanka."
+      },
+      {
+        "title": "Erayo qalloocan",
+        "description": "Sidoo kale erayada u qari si qalloocan. Ka adag."
+      },
+      {
+        "title": "Erayo gadaal ah",
+        "description": "Sidoo kale qari erayo gadaal loo qoray. Ka adag."
+      },
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midab ikhtiyaari ah oo loogu talagalay chip-ka madaxa, xarafka koowaad ee la doortay iyo badhanka."
+      }
+    ]
+  }
+}

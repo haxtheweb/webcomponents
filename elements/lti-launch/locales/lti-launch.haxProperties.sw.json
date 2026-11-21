@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Uzinduzi wa zana ya nje",
+    "description": "Kizuizi kinachofungua zana ya nje ya kujifunzia kwenye dirisha jipya au kwenye ukurasa, kama kiungo cha kawaida au kwa ombi la kuingia la LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Jina la zana. Linaonyeshwa kwenye kichwa na kwenye kitufe."
+      },
+      {
+        "title": "Maelezo",
+        "description": "Kile wanafunzi wanachofanya kwenye zana, kinachoonyeshwa juu ya kitufe."
+      },
+      {
+        "title": "URL ya kuzindua",
+        "description": "Anwani ya zana. Lazima iwe anwani kamili inayoanza na https:// au http://."
+      },
+      {
+        "title": "Fungua katika",
+        "description": "Dirisha jipya linafanya kazi na kila zana. Kwenye ukurasa huu inafanya kazi tu na zana zinazoruhusu kuonyeshwa ndani ya tovuti nyingine.",
+        "options": {
+          "window": "Dirisha jipya",
+          "embed": "Kwenye ukurasa huu"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL ya kuingia ya LTI",
+        "description": "LTI 1.3 pekee: anwani ya zana ya kuanzisha kuingia. Pamoja na hii, client ID na deployment ID, kitufe hutuma ombi la kuingia la LTI badala ya kufungua kiungo cha kawaida. Kukamilisha uzinduzi kunahitaji huduma ya LTI ya tovuti hii."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID ambayo zana iliipa tovuti hii. Kitambulisho cha umma, si siri: usiweke kamwe funguo au siri hapa."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID ambayo zana iliipa tovuti hii. Kitambulisho cha umma, si siri."
+      },
+      {
+        "title": "Mtoaji wa LTI",
+        "description": "Anwani inayotambulisha tovuti hii kwa zana. Acha tupu kutumia anwani ya tovuti ambayo ukurasa uko."
+      },
+      {
+        "title": "Urefu kwenye ukurasa",
+        "description": "Urefu wa zana inapofunguka kwenye ukurasa huu, kwa pikseli (200 hadi 2000)."
+      },
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya kibandiko cha kichwa na kitufe. Acha tupu ili kufuata mandhari."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Kidokezo cha kuingia cha LTI",
+        "description": "Thamani isiyoonekana ambayo huduma ya LTI ya tovuti hii hutumia kumtambua mwanafunzi. Kwa kawaida hutolewa na tovuti kupitia tukio la lti-launch-request badala ya kuhifadhiwa hapa. Kamwe si nenosiri wala ufunguo."
+      },
+      {
+        "title": "Kidokezo cha ujumbe cha LTI",
+        "description": "Thamani isiyoonekana ambayo huduma ya LTI ya tovuti hii hutumia kutambua uzinduzi huu. Kwa kawaida hutolewa na tovuti badala ya kuhifadhiwa hapa."
+      }
+    ]
+  }
+}

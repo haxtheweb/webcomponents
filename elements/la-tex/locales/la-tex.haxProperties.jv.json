@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Nulis nganggo notasi matematika LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Latar gambar",
+        "description": "Latar ing mburine gambar sing digambar. Otomatis mung nambah latar yen gambar angel katon ing kaca, kayata garis peteng ing mode peteng.",
+        "options": {
+          "auto": "Otomatis",
+          "light": "Padhang",
+          "dark": "Peteng",
+          "none": "Ora ana"
+        }
+      }
+    ]
   }
 }

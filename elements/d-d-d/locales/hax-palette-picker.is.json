@@ -5,5 +5,6 @@
   "selected": "Valið",
   "currentlyActiveAndSelectedPalette": "Núverandi virkt og valið litaspjald",
   "currentlyActivePalette": "Núverandi virkt litaspjald",
-  "selectedPaletteToApply": "Valið litaspjald til að beita"
+  "selectedPaletteToApply": "Valið litaspjald til að beita",
+  "paletteNumber": "Litaspjald {number}"
 }

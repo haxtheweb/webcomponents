@@ -9,5 +9,7 @@
   "slidePages": "Leathanaigh sleamhnán",
   "goToSlide": "Téigh go sleamhnán {number}",
   "slides": "Sleamhnáin",
-  "position": "{number} as {total}"
+  "position": "{number} as {total}",
+  "fullScreen": "Lánscáileán",
+  "exitFullScreen": "Scoir den lánscáileán"
 }

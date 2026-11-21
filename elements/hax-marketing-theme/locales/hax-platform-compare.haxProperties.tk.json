@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platforma deňeşdirmesi",
+    "description": "Ýüzbe-ýüz: maglumat faýlyndan islendik iki platformany saýlaň"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deňeşdirme maglumatlary (JSON)"
+      },
+      {
+        "title": "Çep platformanyň id-si"
+      },
+      {
+        "title": "Sag platformanyň id-si"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Trajta vico",
+    "description": "Ekrano de la produkto apud tio, kion ĝi signifas por vi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Malgranda etikedo"
+      },
+      {
+        "title": "Titolo"
+      },
+      {
+        "title": "Bildo"
+      },
+      {
+        "title": "Kion la bildo montras"
+      },
+      {
+        "title": "Bildo dekstre"
+      },
+      {
+        "title": "Ombra koloro (DDD-nomo, malplena sekvas la paletron)"
+      }
+    ]
+  }
+}

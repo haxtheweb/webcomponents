@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Teksti alternativ"
+        "title": "Teksti alternativ",
+        "description": "Përshkruaje imazhin për njerëzit që nuk mund ta shohin."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Tekst përmbledhës opsional kur detajet janë të hapura"
+        "title": "Tekst përmbledhës opsional kur detajet janë të hapura",
+        "description": "Teksti i butonit kur përshkrimi është i fshehur, si Shfaq përshkrimin."
       },
       {
         "property": "closeText",
-        "title": "Tekst përmbledhës opsional kur detajet janë të mbyllura"
+        "title": "Tekst përmbledhës opsional kur detajet janë të mbyllura",
+        "description": "Teksti i butonit kur përshkrimi shfaqet, si Fshih përshkrimin."
       }
     ]
   }

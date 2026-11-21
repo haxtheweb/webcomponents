@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Guherkerê medyayê",
-        "description": "Guherkerê qada medyayê yê vebijarkî. Cureyê medyaya ku ev lîsans lê derbas dibe diyar dike."
+        "description": "Guherkerê qada medyayê yê vebijarkî. Cureyê medyaya ku ev lîsans lê derbas dibe diyar dike.",
+        "options": {
+          "": "Bê guherker"
+        }
       },
       {
         "property": "uri",

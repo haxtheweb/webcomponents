@@ -6,6 +6,8 @@
   "faviconDescription": "Immaġni tat-tab tal-browser / użata fuq it-telefowns bħala logo żgħir tas-sit",
   "domain": "Dominju",
   "domainDescription": "Dominju ta' dan is-sit web",
+  "sameAs": "Profili oħra ta' dan is-sit",
+  "sameAsDescription": "Link waħda għal kull linja għall-profili ta' dan is-sit jew l-organizzazzjoni x'imkien ieħor (GitHub, LinkedIn, YouTube, Mastodon). Il-magni tat-tfittxija jużawhom biex jgħaqqdu dawk il-profili ma' dan is-sit.",
   "language": "Lingwa",
   "languageDescription": "Il-lingwa ta' dan is-sit. Fittex skont l-isem jew il-kodiċi, jew daħħal kodiċi ieħor bħal fr-CA.",
   "googleAnalyticsId": "ID ta' Google Analytics",

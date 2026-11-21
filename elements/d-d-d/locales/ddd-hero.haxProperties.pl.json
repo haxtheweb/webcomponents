@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Baner",
+    "description": "Duży obraz, GIF lub wideo z nagłówkiem i tekstem na nim, umieszczony w dowolnym miejscu strony."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Obraz lub wideo",
+        "description": "Plik JPG, PNG, WebP, GIF, MP4 lub WebM."
+      },
+      {
+        "title": "Tekst alternatywny",
+        "description": "Opisz obraz. Pozostaw puste, jeśli jest tylko dekoracją."
+      },
+      {
+        "title": "Nagłówek",
+        "description": "Nagłówek wyświetlany na multimediach. Pozostaw puste, jeśli ma go nie być."
+      },
+      {
+        "title": "Tekst",
+        "description": "Tekst wyświetlany pod nagłówkiem, na multimediach."
+      },
+      {
+        "title": "Pełna szerokość",
+        "description": "Rozciągnij od krawędzi do krawędzi zamiast w kolumnie treści."
+      },
+      {
+        "title": "Wysokość",
+        "options": {
+          "tall": "Wysoki",
+          "medium": "Średni",
+          "short": "Niski"
+        }
+      },
+      {
+        "title": "Kadrowanie",
+        "description": "Jak zdjęcie układa się przy każdym rozmiarze ekranu"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Przyciemnienie",
+        "description": "Kolor nałożony na multimedia. Przy nagłówku lub tekście zawsze jakiś jest, aby tekst był czytelny.",
+        "options": {
+          "blue": "Niebieski",
+          "bottom": "Ciemny u dołu",
+          "none": "Brak"
+        }
+      },
+      {
+        "title": "Położenie tekstu",
+        "options": {
+          "bottom": "Dół",
+          "middle": "Środek"
+        }
+      },
+      {
+        "title": "Punkt centralny w poziomie",
+        "description": "Część obrazu, która pozostaje widoczna po przycięciu, od 0 (lewa) do 100 (prawa)."
+      },
+      {
+        "title": "Punkt centralny w pionie",
+        "description": "Część obrazu, która pozostaje widoczna po przycięciu, od 0 (góra) do 100 (dół)."
+      }
+    ]
+  }
+}

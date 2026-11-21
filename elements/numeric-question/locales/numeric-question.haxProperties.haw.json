@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Nīnau helu",
+    "description": "He nīnau i pane ʻia me ka helu. He helu paʻa ka pane a i ʻole he kumulā i helu ʻia mai nā hualoli, a helu ʻia ke aia i loko o ka palena ʻae."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nīnau",
+        "description": "Ka mea i nīnau ʻia i nā haumāna. E kākau i ka inoa o kekahi hualoli i loko o nā kahaapo ʻōniʻoniʻo, e like me {d}, e hōʻike ai i kona waiwai."
+      },
+      {
+        "title": "Anakahi",
+        "description": "Hōʻike ʻia ma ke ʻano he kikokikona ma ka ʻaoʻao o ke kahua pane, no ka laʻana km/h."
+      },
+      {
+        "title": "Pane",
+        "description": "Ka helu pololei. E waiho hakahaka ke helu ke kumulā i ka pane."
+      },
+      {
+        "title": "Kumulā",
+        "description": "Helu i ka pane mai nā hualoli, no ka laʻana d / (t / 60). Hiki ke hoʻohana i + - * / ^, nā kahaapo, sqrt() a me abs(). Hoʻohana ʻia ma kahi o ka pane ke hoʻonohonoho ʻia."
+      },
+      {
+        "title": "Nā hualoli",
+        "description": "Nā helu a ke kumulā a me ka nīnau e hoʻohana ai. Lawe kēlā me kēia i kekahi waiwai ma waena o kona haʻahaʻa loa a me kona kiʻekiʻe loa, ma nā ʻanuʻu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Palena ʻae",
+        "description": "Ka mamao mai ka pane pololei e helu ʻia nō. ʻO ka 0, pololei, a i ʻole hoʻopuni ʻia i nā wahi kekimala ma lalo."
+      },
+      {
+        "title": "ʻAno palena ʻae",
+        "description": "Paʻa: hui a lawe paha i ka palena ʻae. Pakeneka: hui a lawe paha i kēlā pakeneka o ka pane pololei.",
+        "options": {
+          "absolute": "Paʻa",
+          "percent": "Pakeneka"
+        }
+      },
+      {
+        "title": "Nā wahi kekimala",
+        "description": "Noi ʻia nā haumāna e hoʻopuni i kēia nui o nā wahi, a hōʻike ʻia ka pane i hoʻopuni ʻia pēlā. E waiho hakahaka no ka hoʻopuni ʻole."
+      },
+      {
+        "title": "Nā hoʻāʻo",
+        "description": "ʻEhia manawa e hiki ai i kekahi haumāna ke nānā. ʻO ka 0, palena ʻole."
+      },
+      {
+        "title": "Nā helu hou i kēlā me kēia hoʻāʻo",
+        "description": "E lawe i nā waiwai hualoli hou i kēlā me kēia manawa e hoʻāʻo hou ai ka haumāna. ʻAʻole hōʻike ʻia kā lākou pane mua ke hoʻi mai lākou, inā pololei wale nō."
+      },
+      {
+        "title": "Hiki ke ʻōpiʻi",
+        "description": "Hōʻike i kēia nīnau ma ke ʻano he lālani e wehe a pani ai. Ke wehe ʻia kekahi, pani ʻia nā nīnau ʻōpiʻi ʻē aʻe ma kona ʻaoʻao."
+      },
+      {
+        "title": "Hoʻomaka me ka ʻōpiʻi",
+        "description": "Ke hiki ke ʻōpiʻi, e hoʻomaka ma ke ʻano he lālani pani e hōʻike ana i ka nīnau a me kona kūlana wale nō."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Inoa o ka hoʻokolohua",
+        "description": "Inoa hoʻokolohua i hoʻohana ʻia no ka hōʻike xAPI ma nā ʻōnaehana kālailai."
+      }
+    ]
+  }
+}

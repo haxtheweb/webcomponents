@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Rokniváttur",
+    "description": "Ein stutt røð av gjørdum rokniuppgávum við beinleiðis afturboðan. Vel roknihættir og talvídd; hvør røð er nýggj."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Navnið á hesum váttinum, víst í høvdinum."
+      },
+      {
+        "title": "Roknihættir",
+        "description": "Hvørji sløg av uppgávum verða spurd. Lesandi kunnu sløkkja hvørt av teimum, áðrenn tey byrja.",
+        "options": {
+          "add": "Samanlegging",
+          "subtract": "Frádráttur",
+          "multiply": "Falding",
+          "divide": "Býting",
+          "add subtract": "Samanlegging og frádráttur",
+          "multiply divide": "Falding og býting",
+          "add multiply": "Samanlegging og falding",
+          "add divide": "Samanlegging og býting",
+          "subtract multiply": "Frádráttur og falding",
+          "subtract divide": "Frádráttur og býting",
+          "add subtract multiply": "Samanlegging, frádráttur og falding",
+          "add subtract divide": "Samanlegging, frádráttur og býting",
+          "add multiply divide": "Samanlegging, falding og býting",
+          "subtract multiply divide": "Frádráttur, falding og býting",
+          "add subtract multiply divide": "Øll fýra"
+        }
+      },
+      {
+        "title": "Minsta tal",
+        "description": "Minsta talið, sum verður brúkt í eini uppgávu. Heiltøl, 0 ella meira."
+      },
+      {
+        "title": "Størsta tal",
+        "description": "Størsta talið, sum verður brúkt í eini uppgávu. Býtingarsvar og býtarar verða eisini innan fyri hesa vídd."
+      },
+      {
+        "title": "Tal av uppgávum",
+        "description": "Hvussu nógvar uppgávur eru í eini røð (1 til 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tíðarmark",
+        "description": "Sekund loyvd til eina heila røð. 0 merkir ongan tíðarmátara, sum er vanligt: tíðaravmarkaðir vættir gera tað ringt fyri lesandi, sum hava brúk fyri meira tíð. Tá ið tað er sett, kunnu lesandi enn sløkkja tíðarmátaran fyri seg sjálvi."
+      },
+      {
+        "title": "Áherðslulitur",
+        "description": "Litur á høvuðsmerkinum og knøttunum. Lat vera tómt fyri at fylgja temanum."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Umdlalo wenkumbulo",
+    "description": "Jika amakhadi ukufumana izibini. Dibanisa igama nentsingiselo yalo ukuze ukuhambelana kubonise ukuqonda, okanye usebenzise izicatshulwa ezimbini okanye imifanekiso ehambelanayo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Umyalelo oboniswa kwisihloko, umzekelo: Dibanisa igama nomsebenzi walo."
+      },
+      {
+        "title": "Izibini",
+        "description": "Isibini ngasinye ngamakhadi amabini ahambelanayo, ngesiqhelo igama nentsingiselo yalo. Icala lifuna isicatshulwa, umfanekiso, okanye zombini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala ongakhethwa wetshiphu yesihloko, umva wamakhadi neqhosha."
+      }
+    ]
+  }
+}

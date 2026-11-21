@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Moʻolelo ʻaoʻao",
+    "description": "He moʻolelo i hoʻokaʻawale ʻia mai ka ʻike a puni, me kahi kiʻi ikona a me ka lepili koho."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lepili",
+        "description": "Ka lepili o ka moʻolelo ʻaoʻao."
+      },
+      {
+        "title": "Kiʻi ikona",
+        "description": "Ke kiʻi ikona o ka moʻolelo ʻaoʻao."
+      },
+      {
+        "title": "ʻIke",
+        "description": "ʻIke o ka moʻolelo ʻaoʻao."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Waihoʻoluʻu",
+        "description": "Ka waihoʻoluʻu e hoʻoʻano ʻia ai ka moʻolelo ʻaoʻao."
+      }
+    ]
+  }
+}

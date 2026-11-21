@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imej latar belakang."
+        "description": "Imej latar belakang.",
+        "title": "Imej"
       },
       {
         "property": "caption",
-        "description": "Tajuk teks."
+        "description": "Tajuk teks.",
+        "title": "Kapsyen"
       }
     ]
   }

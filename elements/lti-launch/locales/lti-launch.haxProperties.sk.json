@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Spustenie externého nástroja",
+    "description": "Blok, ktorý otvorí externý vzdelávací nástroj v novom okne alebo na stránke, ako obyčajný odkaz alebo s prihlasovacou požiadavkou LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Názov nástroja. Zobrazuje sa v záhlaví a na tlačidle."
+      },
+      {
+        "title": "Popis",
+        "description": "Čo študenti v nástroji robia, zobrazené nad tlačidlom."
+      },
+      {
+        "title": "Spúšťacia URL",
+        "description": "Adresa nástroja. Musí to byť úplná adresa, ktorá začína https:// alebo http://."
+      },
+      {
+        "title": "Otvoriť v",
+        "description": "Nové okno funguje s každým nástrojom. Na tejto stránke funguje iba s nástrojmi, ktoré povoľujú zobrazenie vnútri inej stránky.",
+        "options": {
+          "window": "Nové okno",
+          "embed": "Na tejto stránke"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Prihlasovacia URL LTI",
+        "description": "Iba LTI 1.3: adresa iniciácie prihlásenia nástroja. S ňou, client ID a deployment ID tlačidlo namiesto otvorenia obyčajného odkazu odošle prihlasovaciu požiadavku LTI. Dokončenie spustenia vyžaduje službu LTI tejto stránky."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID, ktoré nástroj pridelil tejto stránke. Verejný identifikátor, nie tajomstvo: nikdy sem nedávajte kľúče ani tajomstvá."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID, ktoré nástroj pridelil tejto stránke. Verejný identifikátor, nie tajomstvo."
+      },
+      {
+        "title": "Vydavateľ LTI",
+        "description": "Adresa, ktorá identifikuje túto stránku pre nástroj. Ak chcete použiť adresu stránky, na ktorej je táto stránka, nechajte prázdne."
+      },
+      {
+        "title": "Výška na stránke",
+        "description": "Výška nástroja pri otvorení na tejto stránke v pixeloch (200 až 2000)."
+      },
+      {
+        "title": "Farba zvýraznenia",
+        "description": "Farba štítka v záhlaví a tlačidla. Ak chcete použiť motív, nechajte prázdne."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Prihlasovací hint LTI",
+        "description": "Nepriehľadná hodnota, podľa ktorej služba LTI tejto stránky rozpozná študenta. Zvyčajne ju dodáva stránka cez udalosť lti-launch-request, nie je tu uložená. Nikdy nie heslo ani kľúč."
+      },
+      {
+        "title": "Hint správy LTI",
+        "description": "Nepriehľadná hodnota, podľa ktorej služba LTI tejto stránky rozpozná toto spustenie. Zvyčajne ju dodáva stránka, nie je tu uložená."
+      }
+    ]
+  }
+}

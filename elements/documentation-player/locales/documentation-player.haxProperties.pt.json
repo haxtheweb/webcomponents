@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Player de documentação",
+    "description": "Tutorial, demonstração e referência de um web component, com botões de cópia para HTML, import, npm e CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Arquivo de dados da documentação",
+        "description": "Os dados de documentação que acompanham o elemento (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboard do tutorial",
+        "description": "O storyboard de animação que acompanha o elemento (tag.motion.json). Opcional."
+      },
+      {
+        "title": "Tutorial em vídeo",
+        "description": "Um vídeo curto sobre o elemento (YouTube, Vimeo ou um arquivo de vídeo). Substitui o vídeo dos dados de documentação."
+      },
+      {
+        "title": "Abrir na aba",
+        "description": "Qual aba aparece primeiro.",
+        "options": {
+          "motion": "Tutorial",
+          "video": "Vídeo",
+          "demo": "Demonstração",
+          "docs": "Documentação",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "Reproduzir tutorial automaticamente",
+        "description": "Iniciar o tutorial assim que o player aparecer. Ignorado quando o leitor prefere movimento reduzido."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tópico do tutorial",
+        "description": "Para elementos com vários tutoriais, qual tópico abrir primeiro (por exemplo add-blocks). Deixe vazio para o principal."
+      },
+      {
+        "title": "Link da demonstração ao vivo",
+        "description": "Para onde vai o botão Abrir fonte da demonstração. Por padrão, a pasta demo no repositório."
+      },
+      {
+        "title": "Link da documentação",
+        "description": "Para onde vai o botão da documentação completa, por exemplo a página correspondente do Learn HAX."
+      }
+    ]
+  }
+}

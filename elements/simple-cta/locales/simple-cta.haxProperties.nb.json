@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Skjul ikon",
         "description": "Skjul ikonet som brukes til å fremheve teksten"
+      },
+      {
+        "title": "Utseende",
+        "description": "Hvor mye vekt knappen har.",
+        "options": {
+          "": "Fylt",
+          "tonal": "Tonet",
+          "outlined": "Omriss",
+          "plain": "Enkel"
+        }
+      },
+      {
+        "title": "Størrelse",
+        "description": "Knappestørrelse.",
+        "options": {
+          "s": "Liten",
+          "": "Middels",
+          "l": "Stor"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Fagen yanayi",
+    "description": "Fage ɗaya na yanayi mai rassa. Haɗa kowane zaɓi da wani fage da # sannan id na fagensa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Id na fage",
+        "description": "Abin da zaɓuɓɓuka ke haɗuwa da shi: mahaɗi zuwa # sannan wannan id yana kai wa wannan fage. Haruffa, lambobi da layuka."
+      },
+      {
+        "title": "Kanun labari",
+        "description": "Kanun labarin fage."
+      },
+      {
+        "title": "Ƙarshe",
+        "description": "Ko wannan fage yana kawo ƙarshen hanya, da yadda ya ƙare.",
+        "options": {
+          "": "Ba ƙarshe ba ne",
+          "good": "Ƙarshe mai kyau",
+          "mixed": "Ƙarshe gauraye",
+          "poor": "Ƙarshe mara kyau"
+        }
+      },
+      {
+        "title": "Maki",
+        "description": "Maki don kai wa wannan ƙarshe. Mafi girman makin ƙarshe a cikin yanayin shi ne matsakaicin."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "skipToContent": "Перейти к содержимому",
+  "site": "Сайт",
+  "recentPosts": "Последние записи",
+  "moreInArchive": "Ещё в архиве",
+  "byTag": "По тегу",
+  "posted": "Опубликовано",
+  "updated": "Обновлено",
+  "tags": "Теги",
+  "postsTagged": "Записи с тегом {tag}",
+  "allPosts": "Все записи",
+  "madeWithHax": "Сделано с HAX"
+}

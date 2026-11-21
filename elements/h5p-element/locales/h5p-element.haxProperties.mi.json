@@ -4,7 +4,12 @@
     "description": "Ka purei i ngā ihirangi whakawhitiwhiti H5P mai i tētahi kōnae .h5p kua tukuna ake, kāore he tūmau H5P e hiahiatia"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Kōnae H5P",
+        "description": "Tukuake, honoa rānei he kōnae .h5p. Ka wetekōpia i te pūtirotiro; kāore he tūmau H5P e hiahiatia ana."
+      }
+    ],
     "advanced": [
       {
         "title": "Waehere iframe tāmi tawhito",

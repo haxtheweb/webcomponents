@@ -1,0 +1,15 @@
+{
+  "loading": "Karşılaştırma yükleniyor.",
+  "yes": "Evet",
+  "partly": "Kısmen",
+  "no": "Hayır",
+  "compare": "Karşılaştır",
+  "with": "İle",
+  "vs": "vs",
+  "caption": "{a} ve {b}, özellik özellik",
+  "feature": "Özellik",
+  "clearYes": "{total} özellikten {count} tanesi net evet",
+  "seeForYourself": "Kendiniz görün:",
+  "and": "ve",
+  "why": "Neden"
+}

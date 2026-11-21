@@ -4,7 +4,12 @@
     "description": "Wuxuu ciyaaraa nuxurka is-dhexgalka ee H5P ee ka yimid faylka .h5p ee la geliyay, iyadoo aan loo baahnayn server H5P ah"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Faylka H5P",
+        "description": "Soo geli ama ku xir fayl .h5p ah. Browser-ka ayaa lagu furaa; server H5P looma baahna."
+      }
+    ],
     "advanced": [
       {
         "title": "Koodhka hore ee gelinta iframe",

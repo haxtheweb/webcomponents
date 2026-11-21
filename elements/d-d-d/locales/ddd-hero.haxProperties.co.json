@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Bandone",
+    "description": "Una maghjina, un GIF o un filmettu grande cù un titulu è un testu sopra, piazzatu in ogni locu d'una pagina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maghjina o filmettu",
+        "description": "Un schedariu JPG, PNG, WebP, GIF, MP4 o WebM."
+      },
+      {
+        "title": "Testu alternativu",
+        "description": "Discrivite a maghjina. Lasciate biotu quand'ella hè solu decurazione."
+      },
+      {
+        "title": "Titulu",
+        "description": "Titulu mustratu sopra u media. Lasciate biotu per nisunu."
+      },
+      {
+        "title": "Testu",
+        "description": "Testu mustratu sottu à u titulu, sopra u media."
+      },
+      {
+        "title": "Larghezza sana",
+        "description": "Andà da un bordu à l'altru invece di stà in a culonna di cuntenutu."
+      },
+      {
+        "title": "Altezza",
+        "options": {
+          "tall": "Altu",
+          "medium": "Mezanu",
+          "short": "Bassu"
+        }
+      },
+      {
+        "title": "Inquadratura",
+        "description": "Cumu si piazza a foto à ogni dimensione di screnu"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sfumatura",
+        "description": "Culore stesu sopra u media. Cù un titulu o un testu ce n'hè sempre unu, cusì u testu ferma leghjibule.",
+        "options": {
+          "blue": "Turchinu",
+          "bottom": "Scuru in fondu",
+          "none": "Nisunu"
+        }
+      },
+      {
+        "title": "Pusizione di u testu",
+        "options": {
+          "bottom": "In fondu",
+          "middle": "À u mezu"
+        }
+      },
+      {
+        "title": "Puntu focale in largu",
+        "description": "Parte di a maghjina chì ferma visibile quand'ella hè tagliata, da 0 (manca) à 100 (diritta)."
+      },
+      {
+        "title": "Puntu focale in altu",
+        "description": "Parte di a maghjina chì ferma visibile quand'ella hè tagliata, da 0 (in cima) à 100 (in fondu)."
+      }
+    ]
+  }
+}

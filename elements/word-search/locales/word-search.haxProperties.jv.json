@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Golek tembung",
+    "description": "Kothak aksara karo tembung sing didhelikake. Siswa nutul aksara kapisan lan pungkasan saben tembung. Nglatih ndeleng ejaan istilah, dudu tegese."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Apa sing kudu ditemokake siswa, ditampilake ing judhul."
+      },
+      {
+        "title": "Tembung",
+        "description": "Tembung sing didhelikake. Spasi lan tandha waca ora dilebokake ing kothak. Tembung sing ora muat didhaptar nalika nyunting lan ora ditampilake kanggo siswa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukuran kothak",
+        "description": "Aksara saben sisih, 4 nganti 16. Kosongake supaya cocog karo tembung paling dawa (nganti 12). Luwih saka 12 digulung mangiwa-manengen ing telpon."
+      },
+      {
+        "title": "Tembung diagonal",
+        "description": "Uga ndhelikake tembung kanthi diagonal. Luwih angel."
+      },
+      {
+        "title": "Tembung kuwalik",
+        "description": "Uga ndhelikake tembung sing ditulis kuwalik. Luwih angel."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna pilihan kanggo chip judhul, aksara kapisan sing dipilih lan tombol."
+      }
+    ]
+  }
+}

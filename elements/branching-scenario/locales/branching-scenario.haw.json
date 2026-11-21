@@ -1,0 +1,22 @@
+{
+  "scenario": "Hanana",
+  "directions": "Nā kuhikuhi",
+  "showDirections": "Hōʻike i nā kuhikuhi",
+  "hideDirections": "Hūnā i nā kuhikuhi",
+  "directionsRead": "E heluhelu i kēlā me kēia kiʻina a koho i ka mea āu e hana ai.",
+  "directionsEndings": "Nui nā hopena. E hoʻāʻo i ala ʻē aʻe ma hope o kou pau ʻana.",
+  "startOver": "Hoʻomaka hou",
+  "back": "Hoʻi i hope hoʻokahi ʻanuʻu",
+  "tryAnother": "Hoʻāʻo i ala ʻē aʻe",
+  "path": "Ala",
+  "scene": "Kiʻina",
+  "ending": "Hopena",
+  "end": "hope",
+  "scenesSeen": "{seen} o {total} kiʻina i ʻike ʻia",
+  "endingReached": "Ua hiki i ka hopena",
+  "addScene": "Hoʻohui i kiʻina",
+  "newScene": "Kiʻina hou",
+  "newSceneText": "E wehewehe i ka mea e hana ʻia nei, a laila e hoʻopili i kēlā me kēia koho i kekahi kiʻina.",
+  "editingNote": "Hoʻoponopono ʻana: hōʻike ʻia nā kiʻina a pau. ʻO ke koho he loulou i # a ukali ʻia e kahi id kiʻina.",
+  "noScenes": "Hoʻohui i kiʻina e hoʻomaka ai i ka hanana."
+}

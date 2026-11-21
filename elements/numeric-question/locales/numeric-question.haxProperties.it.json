@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Domanda numerica",
+    "description": "Una domanda a cui si risponde con un numero. La risposta è un numero fisso o una formula calcolata da variabili, ed è valida se rientra in una tolleranza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Domanda",
+        "description": "Cosa viene chiesto agli studenti. Scrivi il nome di una variabile tra graffe, come {d}, per mostrarne il valore."
+      },
+      {
+        "title": "Unità",
+        "description": "Mostrata come testo accanto al campo della risposta, ad esempio km/h."
+      },
+      {
+        "title": "Risposta",
+        "description": "Il numero corretto. Lascia vuoto se la risposta è calcolata da una formula."
+      },
+      {
+        "title": "Formula",
+        "description": "Calcola la risposta dalle variabili, ad esempio d / (t / 60). Può usare + - * / ^, parentesi, sqrt() e abs(). Se impostata, viene usata al posto della risposta."
+      },
+      {
+        "title": "Variabili",
+        "description": "Numeri usati dalla formula e dalla domanda. Ognuno assume un valore tra il minimo e il massimo, a passi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolleranza",
+        "description": "Quanto lontano dalla risposta esatta è ancora valido. 0 significa esatta, o arrotondata alle cifre decimali indicate sotto."
+      },
+      {
+        "title": "Tipo di tolleranza",
+        "description": "Assoluta: più o meno la tolleranza. Percentuale: più o meno quella percentuale della risposta esatta.",
+        "options": {
+          "absolute": "Assoluta",
+          "percent": "Percentuale"
+        }
+      },
+      {
+        "title": "Cifre decimali",
+        "description": "Agli studenti viene chiesto di arrotondare a questo numero di cifre, e la risposta viene mostrata arrotondata così. Lascia vuoto per nessun arrotondamento."
+      },
+      {
+        "title": "Tentativi",
+        "description": "Quante volte uno studente può verificare. 0 significa illimitato."
+      },
+      {
+        "title": "Nuovi numeri a ogni tentativo",
+        "description": "Genera nuovi valori delle variabili ogni volta che uno studente riprova. La risposta precedente non viene quindi mostrata al ritorno, solo se era corretta."
+      },
+      {
+        "title": "Comprimibile",
+        "description": "Mostra questa domanda come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "title": "Inizia compresso",
+        "description": "Se comprimibile, inizia come riga chiusa che mostra solo la domanda e il suo stato."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome del quiz",
+        "description": "Nome del quiz usato per l'identificazione xAPI nei sistemi di analisi."
+      }
+    ]
+  }
+}

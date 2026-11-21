@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Latih tubi aritmetik",
+    "description": "Satu siri pendek soalan aritmetik yang dijana dengan maklum balas segera. Pilih operasi dan julat nombor; setiap pusingan adalah baharu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Nama latih tubi ini, dipaparkan dalam pengepalanya."
+      },
+      {
+        "title": "Operasi",
+        "description": "Jenis soalan yang ditanya. Pelajar boleh mematikan mana-mana daripadanya sebelum bermula.",
+        "options": {
+          "add": "Tambah",
+          "subtract": "Tolak",
+          "multiply": "Darab",
+          "divide": "Bahagi",
+          "add subtract": "Tambah dan tolak",
+          "multiply divide": "Darab dan bahagi",
+          "add multiply": "Tambah dan darab",
+          "add divide": "Tambah dan bahagi",
+          "subtract multiply": "Tolak dan darab",
+          "subtract divide": "Tolak dan bahagi",
+          "add subtract multiply": "Tambah, tolak dan darab",
+          "add subtract divide": "Tambah, tolak dan bahagi",
+          "add multiply divide": "Tambah, darab dan bahagi",
+          "subtract multiply divide": "Tolak, darab dan bahagi",
+          "add subtract multiply divide": "Keempat-empatnya"
+        }
+      },
+      {
+        "title": "Nombor terkecil",
+        "description": "Nombor terkecil yang digunakan dalam soalan. Nombor bulat, 0 atau lebih."
+      },
+      {
+        "title": "Nombor terbesar",
+        "description": "Nombor terbesar yang digunakan dalam soalan. Jawapan dan pembahagi bahagi juga kekal dalam julat ini."
+      },
+      {
+        "title": "Bilangan soalan",
+        "description": "Berapa banyak soalan dalam satu pusingan (1 hingga 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Had masa",
+        "description": "Saat yang dibenarkan untuk satu pusingan. 0 bermaksud tiada pemasa, iaitu lalai: latih tubi bermasa menggagalkan pelajar yang memerlukan lebih masa. Apabila ditetapkan, pelajar masih boleh mematikan pemasa untuk diri mereka sendiri."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna cip pengepala dan butang. Biarkan kosong untuk mengikut tema."
+      }
+    ]
+  }
+}

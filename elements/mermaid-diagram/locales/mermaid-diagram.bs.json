@@ -1,0 +1,21 @@
+{
+  "diagram": "Dijagram",
+  "flowchart": "dijagram toka",
+  "sequence": "sekvenca",
+  "source": "Izvor",
+  "textAlternative": "Tekstualna alternativa",
+  "present": "Prezentuj",
+  "exitPresent": "Izađi iz prezentacije",
+  "loading": "Učitavanje dijagrama",
+  "empty": "Još nema ništa za crtanje. Dodajte izvor dijagrama.",
+  "error": "Greška",
+  "parseError": "Ovaj dijagram nije bilo moguće nacrtati. Provjerite izvor.",
+  "loadError": "Biblioteku za dijagrame nije bilo moguće učitati.",
+  "srcError": "Datoteku dijagrama nije bilo moguće učitati.",
+  "decision": "odluka",
+  "end": "kraj",
+  "goTo": "idi na {target}",
+  "ifGoTo": "ako {label}, idi na {target}",
+  "describedBySource": "Dijagram opisan svojim izvorom.",
+  "scrollable": "Dijagram, može se pomjerati"
+}

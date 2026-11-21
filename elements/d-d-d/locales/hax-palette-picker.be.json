@@ -5,5 +5,6 @@
   "selected": "Выбрана",
   "currentlyActiveAndSelectedPalette": "Бягучая актыўная і выбраная палітра",
   "currentlyActivePalette": "Бягучая актыўная палітра",
-  "selectedPaletteToApply": "Палітра, выбраная для ўжывання"
+  "selectedPaletteToApply": "Палітра, выбраная для ўжывання",
+  "paletteNumber": "Палітра {number}"
 }

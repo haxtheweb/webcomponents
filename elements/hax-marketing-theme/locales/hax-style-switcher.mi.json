@@ -1,0 +1,16 @@
+{
+  "theme": "Kaupapa",
+  "designSystem": "Pūnaha hoahoa",
+  "dddDefault": "DDD (taunoa)",
+  "designSystemHelp": "Tae, momotuhi, kokonga me te arotahi. Ka mau tonu te kaupapa i te tahora.",
+  "designSystemFixed": "Ka mau tonu tēnei kaupapa i tōna ake pūnaha hoahoa.",
+  "palette": "Papatae",
+  "themeDefault": "Taunoa o te kaupapa",
+  "paletteNumber": "Papatae {n}",
+  "siteTheme": "{name} (te kaupapa o tēnei pae)",
+  "restyle": "Whakahou i te kāhua o tēnei pae",
+  "close": "Kati",
+  "reset": "Hoki ki te āhua ake o tēnei pae",
+  "random": "Mīharo mai",
+  "about": "Ka whakaatu tēnei i ētahi o ngā āhua kua hangaia ki roto i a HAX. Kāore rawa ngā whārangi e panoni: kei te JSON Outline Schema te hanganga, ā, he wāhanga tukutuku paerewa ia paraka, nō reira e wātea ana te hoahoa kia whakawhitia."
+}

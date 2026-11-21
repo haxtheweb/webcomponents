@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Nguzo",
+    "description": "Nguzo: jina, kirai, ikoni, rangi na kwa nini ni muhimu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jina"
+      },
+      {
+        "title": "Kirai"
+      },
+      {
+        "title": "Ikoni"
+      },
+      {
+        "title": "Rangi (jina la DDD)"
+      },
+      {
+        "title": "Nguzo ipi, 1 hadi 7"
+      },
+      {
+        "title": "Kadi ndogo"
+      },
+      {
+        "title": "Mahali jina linapokaa"
+      }
+    ]
+  }
+}

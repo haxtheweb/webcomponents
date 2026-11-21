@@ -2,5 +2,9 @@
   "toggleAnimation": "Фаъол/ғайрифаъол кардани аниматсия",
   "info": "маълумот",
   "image": "Тасвир",
-  "animatedGif": "GIF-и аниматсионӣ"
+  "animatedGif": "GIF-и аниматсионӣ",
+  "playAnimation": "Пахши аниматсия",
+  "pauseAnimation": "Таваққуфи аниматсия",
+  "showDescription": "Нишон додани тавсиф",
+  "hideDescription": "Пинҳон кардани тавсиф"
 }

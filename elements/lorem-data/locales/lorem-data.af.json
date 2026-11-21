@@ -1,4 +1,6 @@
 {
   "saveAll": "Stoor alles",
-  "saveTheFollowing": "Stoor die volgende: {list}?"
+  "saveTheFollowing": "Stoor die volgende: {list}?",
+  "save": "Stoor",
+  "cancel": "Kanselleer"
 }

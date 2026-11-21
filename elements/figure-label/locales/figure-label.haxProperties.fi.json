@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Kuvion nimike",
     "description": "Kuvion nimike -elementti mediasisältöjen merkitsemiseen sisällössä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuvan numero",
+        "description": "Kuvan numero tai lyhyt nimiö, esim. 1.3"
+      },
+      {
+        "title": "Kuvaus",
+        "description": "Kuvan lyhyt kuvaus"
+      }
+    ]
   }
 }

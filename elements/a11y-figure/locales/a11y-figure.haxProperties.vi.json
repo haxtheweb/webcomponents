@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Văn bản thay thế"
+        "title": "Văn bản thay thế",
+        "description": "Mô tả hình ảnh cho những người không thể nhìn thấy nó."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang mở"
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang mở",
+        "description": "Chữ trên nút khi mô tả đang ẩn, ví dụ Hiện mô tả."
       },
       {
         "property": "closeText",
-        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang đóng"
+        "title": "Văn bản tóm tắt tùy chọn khi chi tiết đang đóng",
+        "description": "Chữ trên nút khi mô tả đang hiện, ví dụ Ẩn mô tả."
       }
     ]
   }

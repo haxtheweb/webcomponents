@@ -8,5 +8,9 @@
   "theme": "ገጽታ",
   "palette": "የቀለም ስብስብ",
   "cancel": "ሰርዝ",
-  "openAppearanceSettings": "የመልክ ቅንብሮችን ክፈት"
+  "openAppearanceSettings": "የመልክ ቅንብሮችን ክፈት",
+  "designSystem": "የንድፍ ስርዓት",
+  "designSystemDefault": "DDD (ነባሪ)",
+  "designSystemThemeDefault": "{name} (የገጽታው ነባሪ)",
+  "designSystemHelp": "ቀለም፣ ፊደል፣ ማዕዘኖች እና ጥግግት። ገጽታው አሁንም አቀማመጡን ይወስናል።"
 }

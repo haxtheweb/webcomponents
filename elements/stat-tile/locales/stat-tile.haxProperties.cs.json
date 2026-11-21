@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Dlaždice statistiky",
+    "description": "Jedno důležité číslo s popiskem a tím, jak se změnilo. Několik jich umístěte do mřížky pro řádek nástěnky."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Popisek",
+        "description": "Co číslo měří."
+      },
+      {
+        "title": "Hodnota",
+        "description": "Číslo. Prosté číslo se seskupí podle jazyka stránky; cokoli jiného se zobrazí tak, jak je napsáno."
+      },
+      {
+        "title": "Změna",
+        "description": "Jak se změnilo, slovy, například 6 % tento semestr."
+      },
+      {
+        "title": "Směr",
+        "description": "Zda je změna nahoru nebo dolů.",
+        "options": {
+          "": "Žádná",
+          "up": "Nahoru",
+          "down": "Dolů"
+        }
+      }
+    ]
+  }
+}

@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ชื่อเรื่อง"
+        "title": "ชื่อเรื่อง",
+        "description": "หัวข้อที่แสดงเหนือโมเดลรายวิชา"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "ที่อยู่ของไฟล์โมเดล 3D (.glb หรือ .gltf) ที่จะแสดง"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "อธิบายโมเดล 3D สำหรับผู้ที่มองไม่เห็น"
       },
       {
         "title": "พื้นที่ข้อมูล"

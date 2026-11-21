@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Chiwerengero",
+    "description": "Nambala yomwe imawerengera mmwamba, ndi chilembo ndi ulalo wopita ku nkhani yake"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nambala yowerengera mpaka"
+      },
+      {
+        "title": "Nambala isanafike"
+      },
+      {
+        "title": "Pambuyo pa nambala"
+      },
+      {
+        "title": "Mawu m'malo mwa nambala"
+      },
+      {
+        "title": "Zomwe ikuwerengera"
+      },
+      {
+        "title": "Adiresi ya nkhani pa hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

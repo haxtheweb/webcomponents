@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Yupay tapuy",
+    "description": "Huk yupaywan kutichina tapuy. Kutichiyqa takyasqa yupay utaq variablekunamanta yupasqa formula, saqisqa saywa ukhupi kaptintaq chaskikun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tapuy",
+        "description": "Yachaqaqkunata imatachus tapukun. Huk variablep sutinta llavekuna ukhupi qillqay, {d} hina, chaninnin rikuchinanpaq."
+      },
+      {
+        "title": "Tupu",
+        "description": "Kutichiy campop waqtanpi qillqa hina rikuchisqa, kayhina km/h."
+      },
+      {
+        "title": "Kutichiy",
+        "description": "Allin yupay. Huk formula kutichiyta yupaptinqa ch'usaqta saqiy."
+      },
+      {
+        "title": "Formula",
+        "description": "Variablekunamanta kutichiyta yupan, kayhina d / (t / 60). + - * / ^, paréntesis, sqrt(), abs() ima llamk'achinman. Churasqa kaptinqa kutichiy rantinpi llamk'achikun."
+      },
+      {
+        "title": "Variablekuna",
+        "description": "Formulap tapuypa llamk'achisqan yupaykuna. Sapakaq aswan uray aswan hanaq chawpipi chaninta hap'in, thatkinpi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Saqiy saywa",
+        "description": "Chiqap kutichiymanta hayk'a karupas chaskikullanraq. 0 niyta munan chiqap, utaq uranpi kaq decimalkunaman muyuchisqa."
+      },
+      {
+        "title": "Saqiy saywap layan",
+        "description": "Absoluto: saqiy saywa yapasqa utaq qichusqa. Porcentaje: chiqap kutichiypa chay porcentajen yapasqa utaq qichusqa.",
+        "options": {
+          "absolute": "Absoluto",
+          "percent": "Porcentaje"
+        }
+      },
+      {
+        "title": "Decimalkuna",
+        "description": "Yachaqaqkunata kay hayk'a decimalkunaman muyuchinankupaq mañakun, kutichiytaq chayman muyuchisqa rikuchikun. Ch'usaqta saqiy mana muyuchinapaq."
+      },
+      {
+        "title": "Ruraykuykuna",
+        "description": "Huk yachaqaq hayk'a kutitam qhawanman. 0 niyta munan mana saywayuq."
+      },
+      {
+        "title": "Sapa ruraykuypi musuq yupaykuna",
+        "description": "Huk yachaqaq hukmanta ruraykuptin sapa kuti musuq variable chaninkunata hurquy. Kutimuptinqa ñawpaq kutichiyninqa manam rikuchikunchu, allintachus kutichirqan chayllam."
+      },
+      {
+        "title": "K'uyunalla",
+        "description": "Kay tapuyta kichakuq wichq'akuq siq'i hina rikuchiy. Hukta kichayqa waqtanpi kaq huk k'uyunalla tapuykunata wichq'an."
+      },
+      {
+        "title": "K'uyusqa qallariy",
+        "description": "K'uyunalla kaptinqa, tapuyllata kaqnintawan rikuchiq wichq'asqa siq'i hina qallariy."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tapukuyp sutin",
+        "description": "Análisis sistemakunapi xAPI riqsinapaq llamk'achisqa tapukuy suti."
+      }
+    ]
+  }
+}

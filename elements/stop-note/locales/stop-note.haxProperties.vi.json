@@ -23,7 +23,9 @@
           "stop": "Dừng",
           "warning": "Cảnh báo",
           "success": "Xác nhận",
-          "info": "Thông báo"
+          "info": "Thông báo",
+          "tip": "Mẹo",
+          "new": "Có gì mới"
         }
       },
       {

@@ -40,5 +40,7 @@
   "hideDirections": "Instruktiounen verstoppen",
   "showRelatedContent": "Verbonnen Inhalter weisen",
   "hideRelatedContent": "Verbonnen Inhalter verstoppen",
-  "notAttempted": "Net probéiert"
+  "notAttempted": "Net probéiert",
+  "cardsDirections": "Leet d'Kaarten an déi richteg Reiefolleg mat de Knäppercher „Méi no vir réckelen“ a „Méi no hannen réckelen“ op all Kaart, oder zitt se mat der Maus. Wann Dir mengt, datt se an der richteger Reiefolleg sinn, iwwerpréift Är Äntwert mat {checkAnswer}.",
+  "movedToPosition": "{item} op Positioun {position} vun {total} geréckelt"
 }

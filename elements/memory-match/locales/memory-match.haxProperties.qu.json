@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Yuyay pukllay",
+    "description": "Tarjetakunata tikray yanantinkunata tarinaykipaq. Huk simita sut'inchayninwan tupachiy tupay yuyayta rikuchinanpaq, utaq iskay kikin qillqakunata rikch'akunata llamk'achiy."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Uma siq'ipi rikuchisqa mañakuy, kayhina: Simita llamk'ayninwan tupachiy."
+      },
+      {
+        "title": "Yanantinkuna",
+        "description": "Sapa yanantin kuska kaq iskay tarjetakuna, sapa kutilla huk simi sut'inchayninwan. Huk ladoqa qillqata, rikch'ata utaq iskayninta munan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, tarjetakunap qhipan, ñit'inapaq munaspa churana llimp'i."
+      }
+    ]
+  }
+}

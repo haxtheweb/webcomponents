@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Nā Pane",
+        "description": "Na ke kaʻina pane e wehewehe i ke kaʻina pololei.",
+        "options": {
+          "": "Papa inoa",
+          "cards": "Nā kāleka kiʻi"
+        }
+      },
+      {
+        "title": "Nā pane",
         "description": "Na ke kaʻina pane e wehewehe i ke kaʻina pololei."
       }
     ],

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Encrucillado",
+    "description": "Un encrucillado feito a partir dunha lista de palabras e pistas. A grella xérase por ti; o alumnado escribe as palabras e compróbaas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "O título ou a pregunta que se mostra enriba do encrucillado."
+      },
+      {
+        "title": "Palabras",
+        "description": "Cada palabra e a súa pista. A grella xérase a partir desta lista: a palabra máis longa colócase primeiro e as outras crúzana en letras compartidas."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intentos",
+        "description": "Cantas veces pode comprobar unha persoa. 0 significa ilimitado."
+      },
+      {
+        "title": "Cor de realce",
+        "description": "Cor opcional para a etiqueta da cabeceira, a palabra activa e os botóns de acción."
+      },
+      {
+        "title": "Contraíble",
+        "description": "Mostrar este encrucillado como unha fila que se abre e se pecha. Abrir unha pecha as outras preguntas contraíbles do seu carón."
+      },
+      {
+        "title": "Comezar contraído",
+        "description": "Cando é contraíble, comeza como unha fila pechada que só mostra o título e o seu estado."
+      },
+      {
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      }
+    ]
+  }
+}

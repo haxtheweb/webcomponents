@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "titlu"
+        "title": "titlu",
+        "description": "Titlul afișat deasupra modelului cursului."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adresa fișierului model 3D (.glb sau .gltf) de afișat."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Descrieți modelul 3D pentru persoanele care nu îl pot vedea."
       },
       {
         "title": "Zona de informații"

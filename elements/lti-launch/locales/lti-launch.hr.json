@@ -1,0 +1,19 @@
+{
+  "label": "Vanjski alat",
+  "labelLti": "Vanjski alat · LTI 1.3",
+  "theTool": "alat",
+  "directions": "Upute",
+  "showDirections": "Prikaži upute",
+  "hideDirections": "Sakrij upute",
+  "directionsWindow": "Gumb otvara novi prozor s alatom.",
+  "directionsEmbed": "Gumb otvara alat na ovoj stranici. Ako se ne učita, otvorite ga u novom prozoru.",
+  "directionsLti": "Ovo web-mjesto vas prijavljuje u alat, pa vam ne treba zaseban račun.",
+  "openWindow": "Otvori {title} (novi prozor)",
+  "openEmbed": "Otvori {title}",
+  "openInstead": "Umjesto toga otvori u novom prozoru",
+  "frameTitle": "{title} (vanjski alat)",
+  "openedWindow": "Otvoren je novi prozor s alatom.",
+  "openedEmbed": "Alat je otvoren na ovoj stranici.",
+  "needsUrl": "Ovaj blok treba adresu pokretanja koja počinje s http:// ili https://.",
+  "needsSignIn": "Ovaj alat treba uslugu prijave ovog web-mjesta, koja ovdje nije dostupna. Ništa nije otvoreno."
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Išnaša",
+    "description": "Pastaba, parašyta ten, kur jai vieta tekste. Ji rodoma kaip skaičius, o sunumeruotas pastabų sąrašas susidaro pats puslapio apačioje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pastaba",
+        "description": "Išnašos tekstas."
+      },
+      {
+        "title": "Be peržiūros",
+        "description": "Nerodyti pastabos, kai skaitytojas užveda pelę ant skaičiaus ar jį sufokusuoja."
+      }
+    ]
+  }
+}

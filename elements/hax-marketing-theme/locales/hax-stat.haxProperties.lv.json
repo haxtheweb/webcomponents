@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Skaitlis, kas skaitās uz augšu, ar etiķeti un saiti uz tā stāstu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Skaitlis, līdz kuram skaitīt"
+      },
+      {
+        "title": "Pirms skaitļa"
+      },
+      {
+        "title": "Pēc skaitļa"
+      },
+      {
+        "title": "Vārdi skaitļa vietā"
+      },
+      {
+        "title": "Ko tas skaita"
+      },
+      {
+        "title": "Stāsta adrese vietnē hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

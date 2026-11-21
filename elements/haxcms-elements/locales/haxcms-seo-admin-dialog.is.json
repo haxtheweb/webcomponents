@@ -6,6 +6,8 @@
   "faviconDescription": "Mynd á flipa vafra / notuð í símum sem lítið merki vefsins",
   "domain": "Lén",
   "domainDescription": "Lén þessa vefs",
+  "sameAs": "Aðrir prófílar þessa vefs",
+  "sameAsDescription": "Einn tengill í hverri línu á prófíla þessa vefs eða stofnunar annars staðar (GitHub, LinkedIn, YouTube, Mastodon). Leitarvélar nota þá til að tengja þá prófíla við þennan vef.",
   "language": "Tungumál",
   "languageDescription": "Tungumál þessa vefs. Leitaðu eftir nafni eða kóða, eða sláðu inn annan kóða eins og fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

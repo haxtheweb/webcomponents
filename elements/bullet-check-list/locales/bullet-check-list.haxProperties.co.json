@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Lista di cuntrollu à puntini",
+    "description": "Una lista di caselle à spuntà. I lettori spuntanu l'elementi è u so prugressu hè ricurdatu nant'à u so propiu apparechju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Nome di a lista. Lettu à voce alta cum'è etichetta di u gruppu di caselle."
+      },
+      {
+        "title": "Elementi",
+        "description": "Ogni elementu hè una casella à spuntà. L'elementi spuntati o disattivati ùn ponu esse cambiati da i lettori."
+      },
+      {
+        "title": "Numerata",
+        "description": "Mustrà una lista numerata invece d'una lista à puntini."
+      },
+      {
+        "title": "Statu",
+        "description": "Cambia i culori per currisponde à stop-note.",
+        "options": {
+          "info": "Avisu",
+          "success": "Cunfirmazione",
+          "warning": "Attenzione",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID di almacenamentu",
+        "description": "ID unicu adupratu per ricurdà u prugressu di i lettori nant'à u so apparechju. Generatu autumaticamente; cambiatelu solu per sparte u prugressu trà liste o per ricumincià da novu."
+      }
+    ]
+  }
+}

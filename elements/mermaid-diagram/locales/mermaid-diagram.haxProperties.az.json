@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Mətndən diaqram",
+    "description": "Diaqramı mətn kimi yazın (Mermaid): axın diaqramı, ardıcıllıq, zaman xətti və s. O, səhifədə mətn alternativi ilə çəkilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Diaqramın üstündə göstərilir və onun adı kimi istifadə olunur."
+      },
+      {
+        "title": "Diaqram mənbəyi",
+        "description": "Mermaid mətni, məsələn: flowchart TD, sonra hər keçid üçün bir sətir, məsələn A[Draft] --> B{Ready?}. Oxu etiketləmək üçün ondan sonra |label| əlavə edin. Rəsm siz yazdıqca yenilənir."
+      },
+      {
+        "title": "Mətn alternativi",
+        "description": "Diaqramın nə göstərdiyini onu görə bilməyən insanlar üçün təsvir edin. Axın diaqramında addımların sizin üçün sadalanması üçün boş saxlayın."
+      },
+      {
+        "title": "Başlıq yazısı",
+        "description": "Diaqramın altında göstərilən ixtiyari başlıq yazısı."
+      },
+      {
+        "title": "Mənbəni göstər",
+        "description": "Diaqram mətnini rəsmin yanında göstər."
+      },
+      {
+        "title": "Mətn alternativini göstər",
+        "description": "Mətn alternativini rəsmin altında göstər. O, ekran oxuyucuları üçün həmişə əlçatandır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mənbə faylı",
+        "description": "Yuxarıdakı mətn əvəzinə çəkiləcək .mmd faylının ünvanı (https və ya bu saytdakı yol)."
+      },
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıqdakı ikon nişanının rəngi."
+      }
+    ]
+  }
+}

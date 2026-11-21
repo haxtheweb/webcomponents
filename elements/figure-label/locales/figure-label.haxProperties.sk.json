@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Označenie obrázka",
     "description": "Prvok označenia obrázka na označenie mediálnych prvkov v obsahu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Číslo obrázka",
+        "description": "Číslo alebo krátke označenie obrázka, napr. 1.3"
+      },
+      {
+        "title": "Popis",
+        "description": "Krátky popis obrázka"
+      }
+    ]
   }
 }

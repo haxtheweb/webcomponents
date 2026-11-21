@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "อิลิเมนต์เริ่มต้นตัวอย่างที่ใช้สาธิตการกำหนดค่า HAX และคุณสมบัติที่แก้ไขได้"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ชื่อเรื่อง"
+      }
+    ]
+  }
+}

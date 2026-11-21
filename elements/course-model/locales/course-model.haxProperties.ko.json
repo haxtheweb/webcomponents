@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "제목"
+        "title": "제목",
+        "description": "강의 모델 위에 표시되는 제목."
       },
       {
         "property": "src",
-        "title": "소스"
+        "title": "소스",
+        "description": "표시할 3D 모델 파일(.glb 또는 .gltf)의 주소."
       },
       {
         "property": "alt",
-        "title": "대체 텍스트"
+        "title": "대체 텍스트",
+        "description": "3D 모델을 볼 수 없는 사람을 위해 모델을 설명하세요."
       },
       {
         "title": "정보 영역"

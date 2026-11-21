@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Finna staði",
+    "description": "Nemendur finna réttu staðina á mynd með því að smella, pikka eða færa krosshár með lyklaborði. Einkunnagefin hliðstæða myndakorts."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd",
+        "description": "Myndin sem nemendur leita í."
+      },
+      {
+        "title": "Textalýsing",
+        "description": "Lýsir myndinni fyrir fólk sem sér hana ekki. Hún er aldrei sýnd sem titill."
+      },
+      {
+        "title": "Titill",
+        "description": "Stuttur sýnilegur titill sýndur fyrir ofan myndina."
+      },
+      {
+        "title": "Spurning",
+        "description": "Hvað nemendur eru beðnir um að finna á myndinni."
+      },
+      {
+        "title": "Svör",
+        "description": "Hvert svar er nefndur sporöskjulaga reitur á myndinni. Staðsetning og stærð eru prósentur af myndinni, mældar frá efra vinstra horni hennar. Við breytingu er hvert svar afmarkað á myndinni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tilraunir",
+        "description": "Hversu oft nemandi getur reynt. 0 þýðir ótakmarkað."
+      },
+      {
+        "title": "Leyfð feilskot",
+        "description": "Hve mörg feilskot ljúka tilraun. 0 þýðir ótakmarkað, og nemendur fá hnappinn Ljúka."
+      },
+      {
+        "title": "Fellanlegt",
+        "description": "Sýna þessa spurningu sem röð sem opnast og lokast. Að opna eina lokar hinum fellanlegu spurningunum við hliðina."
+      },
+      {
+        "title": "Byrja samanfellt",
+        "description": "Þegar fellanlegt, byrja sem lokuð röð sem sýnir aðeins spurninguna og stöðu hennar."
+      },
+      {
+        "title": "Einkunnasnið",
+        "description": "OER Schema: einkunnasnið fyrir þetta námsmat (t.d. stig, bókstafur, prósenta, lokið)."
+      },
+      {
+        "title": "Hæfniviðmið",
+        "description": "OER Schema: hæfniviðmið tengt þessu námsmati."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Heiti prófsins",
+        "description": "Heiti prófs sent inn til notkunar í xAPI-umhverfum til að auðkenna þetta atriði"
+      },
+      {
+        "title": "Námskeið",
+        "description": "OER Schema: námskeiðið sem þetta námsmat er ætlað fyrir."
+      }
+    ]
+  }
+}

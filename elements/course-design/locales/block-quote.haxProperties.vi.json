@@ -20,6 +20,12 @@
         "title": "Hình ảnh",
         "description": "Hình ảnh hiển thị cùng trích dẫn."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Có khung",
+        "description": "Vẽ trích dẫn trên khung khối dùng chung, với biểu tượng và nhãn phía trên, để khớp với ghi chú và thẻ hướng dẫn."
+      }
     ]
   }
 }

@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram o destun",
+    "description": "Ysgrifennwch ddiagram fel testun (Mermaid): siart llif, dilyniant, llinell amser a mwy. Caiff ei luniadu yn y dudalen gyda dewis amgen testun."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Wedi'i ddangos uwchben y diagram a'i ddefnyddio fel ei enw."
+      },
+      {
+        "title": "Ffynhonnell y diagram",
+        "description": "Testun Mermaid, er enghraifft: flowchart TD, yna un llinell fesul dolen fel A[Draft] --> B{Ready?}. Ychwanegwch |label| ar ôl saeth i'w labelu. Mae'r llun yn diweddaru wrth i chi deipio."
+      },
+      {
+        "title": "Dewis amgen testun",
+        "description": "Disgrifiwch beth mae'r diagram yn ei ddangos ar gyfer pobl na allant ei weld. Gadewch yn wag ar siart llif i gael ei gamau wedi'u rhestru i chi."
+      },
+      {
+        "title": "Capsiwn",
+        "description": "Capsiwn dewisol a ddangosir o dan y diagram."
+      },
+      {
+        "title": "Dangos y ffynhonnell",
+        "description": "Dangos testun y diagram wrth ymyl y llun."
+      },
+      {
+        "title": "Dangos y dewis amgen testun",
+        "description": "Dangos y dewis amgen testun o dan y llun. Mae bob amser ar gael i ddarllenwyr sgrin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ffeil ffynhonnell",
+        "description": "Cyfeiriad ffeil .mmd i'w lluniadu yn lle'r testun uchod (https neu lwybr ar y wefan hon)."
+      },
+      {
+        "title": "Lliw acen",
+        "description": "Lliw sglodyn yr eicon yn y pennawd."
+      }
+    ]
+  }
+}

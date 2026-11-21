@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bidragsytere",
+    "description": "Personene som bygde prosjektet, fra en deltakerfil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deltakerfil (JSON)"
+      },
+      {
+        "title": "Visning: landed, lab eller code"
+      },
+      {
+        "title": "Maks antall personer å vise (0 er alle)"
+      }
+    ]
+  }
+}

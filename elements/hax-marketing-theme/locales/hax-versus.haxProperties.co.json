@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Contru",
+    "description": "Parolle accantu à un buttone faccia à faccia cù dui persunaghji"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu"
+      },
+      {
+        "title": "Induve và u buttone"
+      },
+      {
+        "title": "Testu di u buttone"
+      },
+      {
+        "title": "Sumente di u persunaghju di manca"
+      },
+      {
+        "title": "Sumente di u persunaghju di diritta"
+      }
+    ]
+  }
+}

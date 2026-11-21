@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ቺፕ",
+    "description": "መለያ ያለው ትንሽ አዶ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "አዶ"
+      },
+      {
+        "title": "መለያ"
+      }
+    ]
+  }
+}

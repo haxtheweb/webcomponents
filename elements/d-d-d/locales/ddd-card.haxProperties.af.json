@@ -52,6 +52,20 @@
           "_top": "Boonste venster - _top",
           "_parent": "Ouervenster - _parent"
         }
+      },
+      {
+        "title": "Geen pyl",
+        "description": "Versteek die knoppiepyl."
+      },
+      {
+        "title": "Skakel: teiken",
+        "description": "Waar om die skakel oop te maak.",
+        "options": {
+          "": "Dieselfde venster",
+          "_blank": "Nuwe venster - _blank",
+          "_top": "Boonste venster - _top",
+          "_parent": "Ouervenster - _parent"
+        }
       }
     ],
     "developer": [

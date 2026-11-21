@@ -5,5 +5,6 @@
   "selected": "Dipilih",
   "currentlyActiveAndSelectedPalette": "Palet yang sedang aktif dan dipilih",
   "currentlyActivePalette": "Palet yang sedang aktif",
-  "selectedPaletteToApply": "Palet dipilih untuk digunakan"
+  "selectedPaletteToApply": "Palet dipilih untuk digunakan",
+  "paletteNumber": "Palet {number}"
 }

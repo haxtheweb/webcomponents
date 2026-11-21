@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Pipálós lista",
+    "description": "Jelölőnégyzetek listája. Az olvasók kipipálhatják az elemeket, és a haladásukat a saját eszközük megjegyzi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cím",
+        "description": "A lista neve. A jelölőnégyzet-csoport címkéjeként hangzik el."
+      },
+      {
+        "title": "Elemek",
+        "description": "Minden elem egy jelölőnégyzet. A bejelölt vagy letiltott elemeket az olvasók nem módosíthatják."
+      },
+      {
+        "title": "Számozott",
+        "description": "Számozott lista megjelenítése felsorolásos helyett."
+      },
+      {
+        "title": "Állapot",
+        "description": "A színeket a stop-note-hoz igazítja.",
+        "options": {
+          "info": "Értesítés",
+          "success": "Megerősítés",
+          "warning": "Figyelmeztetés",
+          "stop": "Állj"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tárolási azonosító",
+        "description": "Egyedi azonosító, amellyel az olvasó haladása az eszközén megmarad. Automatikusan jön létre; csak akkor módosítsa, ha listák között szeretné megosztani a haladást, vagy elölről kezdené."
+      }
+    ]
+  }
+}

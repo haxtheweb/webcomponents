@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmētikas treniņš",
+    "description": "Īsa ģenerētu aritmētikas uzdevumu sērija ar tūlītēju atgriezenisko saiti. Izvēlieties darbības un skaitļu diapazonu; katra kārta ir jauna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Šī treniņa nosaukums, kas tiek rādīts tā galvenē."
+      },
+      {
+        "title": "Darbības",
+        "description": "Kāda veida uzdevumi tiek uzdoti. Izglītojamie var jebkuru no tiem izslēgt pirms sākšanas.",
+        "options": {
+          "add": "Saskaitīšana",
+          "subtract": "Atņemšana",
+          "multiply": "Reizināšana",
+          "divide": "Dalīšana",
+          "add subtract": "Saskaitīšana un atņemšana",
+          "multiply divide": "Reizināšana un dalīšana",
+          "add multiply": "Saskaitīšana un reizināšana",
+          "add divide": "Saskaitīšana un dalīšana",
+          "subtract multiply": "Atņemšana un reizināšana",
+          "subtract divide": "Atņemšana un dalīšana",
+          "add subtract multiply": "Saskaitīšana, atņemšana un reizināšana",
+          "add subtract divide": "Saskaitīšana, atņemšana un dalīšana",
+          "add multiply divide": "Saskaitīšana, reizināšana un dalīšana",
+          "subtract multiply divide": "Atņemšana, reizināšana un dalīšana",
+          "add subtract multiply divide": "Visas četras"
+        }
+      },
+      {
+        "title": "Mazākais skaitlis",
+        "description": "Mazākais uzdevumā izmantotais skaitlis. Veseli skaitļi, 0 vai vairāk."
+      },
+      {
+        "title": "Lielākais skaitlis",
+        "description": "Lielākais uzdevumā izmantotais skaitlis. Arī dalīšanas atbildes un dalītāji paliek šajā diapazonā."
+      },
+      {
+        "title": "Uzdevumu skaits",
+        "description": "Cik uzdevumu ir vienā kārtā (no 1 līdz 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Laika ierobežojums",
+        "description": "Sekundes, kas atļautas visai kārtai. 0 nozīmē bez taimera, un tas ir noklusējums: treniņi ar laika ierobežojumu liek izgāzties izglītojamajiem, kuriem vajag vairāk laika. Ja iestatīts, izglītojamie joprojām var paši izslēgt taimeri."
+      },
+      {
+        "title": "Akcenta krāsa",
+        "description": "Galvenes etiķetes un pogu krāsa. Atstājiet tukšu, lai sekotu motīvam."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Eilimint tosaigh shamplach a úsáidtear chun cumraíocht HAX agus airíonna in-eagarthóireachta a léiriú."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal"
+      }
+    ]
+  }
+}

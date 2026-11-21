@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Endamê lîstikvanan",
+    "description": "Temaşevanek, ji aliyê karakterekê ve tê lîstin, bi gotin û bişkokekê"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ev kî ye"
+      },
+      {
+        "title": "Celebê karakterê"
+      },
+      {
+        "title": "Tova karakterê"
+      },
+      {
+        "title": "Rengê sehneyê (navê DDD)"
+      },
+      {
+        "title": "Bişkok diçe ku derê"
+      },
+      {
+        "title": "Nivîsa bişkokê"
+      }
+    ]
+  }
+}

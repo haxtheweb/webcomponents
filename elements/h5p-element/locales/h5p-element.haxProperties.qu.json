@@ -4,7 +4,12 @@
     "description": "Kachasqa .h5p willaymanta H5P tinkuq yachayta ruwachin, mana H5P servidor necesitaspa"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P willañiqi",
+        "description": "Huk .h5p willañiqita wichachiy utaq t'inkiy. Navegadorpim kichakun; manam H5P servidor munakunchu."
+      }
+    ],
     "advanced": [
       {
         "title": "Ñawpaq iframe embed código",

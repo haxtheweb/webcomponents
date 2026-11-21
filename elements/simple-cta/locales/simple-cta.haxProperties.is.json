@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fela tákn",
         "description": "Fela táknið sem notað er til að leggja áherslu á texta"
+      },
+      {
+        "title": "Útlit",
+        "description": "Hversu mikla áherslu hnappurinn hefur.",
+        "options": {
+          "": "Fyllt",
+          "tonal": "Tónað",
+          "outlined": "Útlínur",
+          "plain": "Einfalt"
+        }
+      },
+      {
+        "title": "Stærð",
+        "description": "Stærð hnapps.",
+        "options": {
+          "s": "Lítill",
+          "": "Miðlungs",
+          "l": "Stór"
+        }
       }
     ],
     "advanced": [

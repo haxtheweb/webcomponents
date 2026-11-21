@@ -1,0 +1,19 @@
+{
+  "label": "Ithuluzi langaphandle",
+  "labelLti": "Ithuluzi langaphandle · LTI 1.3",
+  "theTool": "ithuluzi",
+  "directions": "Iziqondiso",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "directionsWindow": "Inkinobho ivula iwindi elisha elinethuluzi.",
+  "directionsEmbed": "Inkinobho ivula ithuluzi kuleli khasi. Uma lingalayishi, livule ewindini elisha esikhundleni salokho.",
+  "directionsLti": "Le sayithi ikungenisa kuthuluzi, ngakho awudingi i-akhawunti ehlukile.",
+  "openWindow": "Vula i-{title} (iwindi elisha)",
+  "openEmbed": "Vula i-{title}",
+  "openInstead": "Vula ewindini elisha esikhundleni salokho",
+  "frameTitle": "{title} (ithuluzi langaphandle)",
+  "openedWindow": "Kuvuleke iwindi elisha elinethuluzi.",
+  "openedEmbed": "Ithuluzi livuleke kuleli khasi.",
+  "needsUrl": "Le bhlokhi idinga ikheli lokuqalisa eliqala nge-http:// noma nge-https://.",
+  "needsSignIn": "Leli thuluzi lidinga isevisi yokungena yale sayithi, engatholakali lapha. Akukho okuvuliwe."
+}

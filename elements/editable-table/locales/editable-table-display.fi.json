@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopioi CSV-muodossa.",
   "printTable": "Tulosta taulukko",
   "selectColumn": "Valitse sarake",
-  "dataTable": "Data · Taulukko"
+  "dataTable": "Data · Taulukko",
+  "filterStatus": "Näytetään {shown}/{total} riviä, suodatettu sarakkeen {column} mukaan: {text}",
+  "columnNumber": "Sarake {column}",
+  "clearFilter": "Tyhjennä suodatin"
 }

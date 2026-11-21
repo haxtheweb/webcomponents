@@ -6,6 +6,8 @@
   "faviconDescription": "Blaaieroortjie-prent / op fone as klein webwerflogo gebruik",
   "domain": "Domein",
   "domainDescription": "Domein van hierdie webwerf",
+  "sameAs": "Ander profiele van hierdie webwerf",
+  "sameAsDescription": "Een skakel per reël na hierdie webwerf of organisasie se profiele elders (GitHub, LinkedIn, YouTube, Mastodon). Soekenjins gebruik dit om daardie profiele aan hierdie webwerf te koppel.",
   "language": "Taal",
   "languageDescription": "Taal van hierdie webwerf. Soek volgens naam of kode, of voer 'n ander kode in soos fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

@@ -2,5 +2,9 @@
   "toggleAnimation": "Уключыць/выключыць анімацыю",
   "info": "інфармацыя",
   "image": "Відарыс",
-  "animatedGif": "Анімаваны GIF"
+  "animatedGif": "Анімаваны GIF",
+  "playAnimation": "Прайграць анімацыю",
+  "pauseAnimation": "Прыпыніць анімацыю",
+  "showDescription": "Паказаць апісанне",
+  "hideDescription": "Схаваць апісанне"
 }

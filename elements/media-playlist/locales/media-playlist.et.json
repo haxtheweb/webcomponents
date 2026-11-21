@@ -5,5 +5,7 @@
   "editModeLabel": "Meedia esitusloendi muutmisrežiim",
   "position": "{current} / {total}",
   "previousItem": "Eelmine kirje",
-  "nextItem": "Järgmine kirje"
+  "nextItem": "Järgmine kirje",
+  "fullScreen": "Täisekraan",
+  "exitFullScreen": "Välju täisekraanist"
 }

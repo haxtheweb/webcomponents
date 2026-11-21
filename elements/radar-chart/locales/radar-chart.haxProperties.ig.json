@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Chaatị radar",
+    "description": "Chaatị radar (ududo) maka ụdị ntozu na akara akụkụ, dịka HEOSAT. Gụnyere ederede nnọchi na tebụl data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Isiokwu maka chaatị ahụ; a na-ejikwa ya dịka aha enwere ike ịnweta."
+      },
+      {
+        "title": "Akara kacha elu",
+        "description": "Uru kacha elu n'ọ̀tụ̀tụ̀ ahụ."
+      },
+      {
+        "title": "Ngalaba",
+        "description": "Otu ngalaba n'ahịrị ọ bụla. Chọrọ opekata mpe 3."
+      },
+      {
+        "title": "Akara",
+        "description": "Ọnụọgụ kewara site na rịkọm, otu maka ngalaba ọ bụla n'otu usoro ahụ."
+      },
+      {
+        "title": "Akara ebumnuche",
+        "description": "Ọnụọgụ kewara site na rịkọm, otu maka ngalaba ọ bụla n'otu usoro ahụ."
+      },
+      {
+        "title": "Gosi nkọwa akara",
+        "description": "Gosi nkọwa akara na-akpọ aha akara na ebumnuche."
+      },
+      {
+        "title": "Kọmpat",
+        "description": "Chaatị dị obere na-enweghị akara aha, nkọwa akara ma ọ bụ tebụl data. Dọrọ mmasị n'elu ntụpọ ka ị hụ uru ya."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Akara aha akara",
+        "description": "Akara aha nkọwa na tebụl maka akara."
+      },
+      {
+        "title": "Akara aha ebumnuche",
+        "description": "Akara aha nkọwa na tebụl maka ebumnuche."
+      }
+    ]
+  }
+}

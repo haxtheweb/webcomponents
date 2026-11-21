@@ -1,4 +1,6 @@
 {
   "saveAll": "Goym alt",
-  "saveTheFollowing": "Goyma hetta: {list}?"
+  "saveTheFollowing": "Goyma hetta: {list}?",
+  "save": "Goym",
+  "cancel": "Angra"
 }

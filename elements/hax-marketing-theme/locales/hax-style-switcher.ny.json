@@ -1,0 +1,16 @@
+{
+  "theme": "Mutu wa mawonekedwe",
+  "designSystem": "Dongosolo la kapangidwe",
+  "dddDefault": "DDD (yokhazikika)",
+  "designSystemHelp": "Mtundu, zilembo, makona ndi kuyang'ana. Mutu wa mawonekedwe umasunga kapangidwe.",
+  "designSystemFixed": "Mutu wa mawonekedwe uwu umasunga dongosolo lake la kapangidwe.",
+  "palette": "Mitundu",
+  "themeDefault": "Yokhazikika ya mutu",
+  "paletteNumber": "Mitundu {n}",
+  "siteTheme": "{name} (mutu wa tsamba ili)",
+  "restyle": "Sinthani mawonekedwe a tsamba ili",
+  "close": "Tsekani",
+  "reset": "Bwererani ku mawonekedwe a tsamba ili",
+  "random": "Ndidabwitseni",
+  "about": "Izi zikuwonetsa mawonekedwe ochepa omwe ali mu HAX. Masamba sasintha konse: kapangidwe kali mu JSON Outline Schema ndipo gawo lililonse ndi web component yokhazikika, choncho kapangidwe kamatha kusinthidwa mwaufulu."
+}

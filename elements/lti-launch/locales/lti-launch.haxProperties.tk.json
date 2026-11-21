@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Daşarky guraly işe giriz",
+    "description": "Daşarky okuw guralyny täze penjirede ýa-da sahypada ýönekeý baglanyşyk hökmünde ýa-da LTI 1.3 giriş haýyşy bilen açýan blok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Guralyň ady. Ol sözbaşyda we düwmede görkezilýär."
+      },
+      {
+        "title": "Düşündiriş",
+        "description": "Öwrenijileriň guralda näme edýändigi, düwmäniň üstünde görkezilýär."
+      },
+      {
+        "title": "Işe giriziş URL-i",
+        "description": "Guralyň salgysy. Ol https:// ýa-da http:// bilen başlanýan doly salgy bolmaly."
+      },
+      {
+        "title": "Şu ýerde aç",
+        "description": "Täze penjire ähli gurallar bilen işleýär. Şu sahypada diňe başga saýtyň içinde görkezilmäge rugsat berýän gurallar bilen işleýär.",
+        "options": {
+          "window": "Täze penjire",
+          "embed": "Bu sahypada"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI giriş URL-i",
+        "description": "Diňe LTI 1.3: guralyň giriş başlangyç salgysy. Muny, client ID we deployment ID bilen düwme ýönekeý baglanyşygy açmagyň ýerine LTI giriş haýyşyny iberýär. Işe girizmegi tamamlamak üçin bu saýtyň LTI hyzmaty gerek."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Guralyň bu saýta beren client ID-si. Gizlin däl, köpçülikleýin kesgitleýji: bu ýere hiç haçan açar ýa-da gizlin maglumat goýmaň."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Guralyň bu saýta beren deployment ID-si. Gizlin däl, köpçülikleýin kesgitleýji."
+      },
+      {
+        "title": "LTI berijisi",
+        "description": "Bu saýty gurala tanadýan salgy. Sahypanyň ýerleşýän saýtynyň salgysyny ulanmak üçin boş goýuň."
+      },
+      {
+        "title": "Sahypadaky beýikligi",
+        "description": "Gural şu sahypada açylanda onuň beýikligi, pikselde (200-den 2000-e çenli)."
+      },
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşanynyň we düwmäniň reňki. Tema eýermek üçin boş goýuň."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI giriş ugry",
+        "description": "Bu saýtyň LTI hyzmatynyň öwrenijini tanamak üçin ulanýan ýapyk bahasy. Adatça bu ýerde saklanman, saýt tarapyndan lti-launch-request wakasy arkaly berilýär. Hiç haçan parol ýa-da açar däl."
+      },
+      {
+        "title": "LTI habar ugry",
+        "description": "Bu saýtyň LTI hyzmatynyň bu işe girizmäni tanamak üçin ulanýan ýapyk bahasy. Adatça bu ýerde saklanman, saýt tarapyndan berilýär."
+      }
+    ]
+  }
+}

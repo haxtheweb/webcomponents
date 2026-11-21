@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Image d'arrière-plan."
+        "description": "Image d'arrière-plan.",
+        "title": "Image"
       },
       {
         "property": "caption",
-        "description": "Titre textuel."
+        "description": "Titre textuel.",
+        "title": "Légende"
       }
     ]
   }

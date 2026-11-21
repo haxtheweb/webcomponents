@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Antworten",
+        "description": "Die Reihenfolge der Antworten legt die richtige Abfolge fest.",
+        "options": {
+          "": "Liste",
+          "cards": "Bildkarten"
+        }
+      },
+      {
+        "title": "Antworten",
         "description": "Die Reihenfolge der Antworten legt die richtige Abfolge fest."
       }
     ],

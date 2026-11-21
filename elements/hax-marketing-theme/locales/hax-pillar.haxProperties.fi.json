@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilari",
+    "description": "Pilari: nimi, fraasi, kuvake, väri ja miksi se on tärkeä"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimi"
+      },
+      {
+        "title": "Fraasi"
+      },
+      {
+        "title": "Kuvake"
+      },
+      {
+        "title": "Väri (DDD-nimi)"
+      },
+      {
+        "title": "Mikä pilari, 1–7"
+      },
+      {
+        "title": "Pieni kortti"
+      },
+      {
+        "title": "Mihin nimi tulee"
+      }
+    ]
+  }
+}

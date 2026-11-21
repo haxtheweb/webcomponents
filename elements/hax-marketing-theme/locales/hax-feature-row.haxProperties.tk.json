@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Aýratynlyk setiri",
+    "description": "Önümiň ekrany we onuň siziň üçin näme aňladýandygy ýanaşyk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiçi bellik"
+      },
+      {
+        "title": "Sözbaşy"
+      },
+      {
+        "title": "Surat"
+      },
+      {
+        "title": "Suratyň görkezýän zady"
+      },
+      {
+        "title": "Surat sagda"
+      },
+      {
+        "title": "Kölege reňki (DDD ady, boş bolsa palitra eýerýär)"
+      }
+    ]
+  }
+}

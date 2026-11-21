@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Fonóta",
+    "description": "Nóta scríofa san áit a mbaineann sé sa téacs. Taispeántar mar uimhir é, agus tógann an liosta uimhrithe nótaí é féin ag bun an leathanaigh."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nóta",
+        "description": "Téacs na fonóta."
+      },
+      {
+        "title": "Gan réamhamharc",
+        "description": "Ná taispeáin an nóta nuair a ainlíonn léitheoir thar an uimhir nó a dhíríonn sé uirthi."
+      }
+    ]
+  }
+}

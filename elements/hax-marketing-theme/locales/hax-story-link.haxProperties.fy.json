@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Ferhaalknop",
+    "description": "De knop dy't it ferhaal efter in bewearing iepenet op hax.cloud, of it passende plak op in oare side fan it HAX-netwurk"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wêr't it hinne giet",
+        "options": {
+          "cloud": "hax.cloud, it ferhaal",
+          "learn": "learn.hax.cloud, in tutorial",
+          "try": "browser.hax.cloud, besykje it",
+          "elements": "webcomponents.hax.cloud, in blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adres op dy side (in ferhaal op hax.cloud sjocht der út as stories/ee450a19)"
+      },
+      {
+        "title": "Wêr't it oer giet"
+      },
+      {
+        "title": "Lyts tsjip"
+      },
+      {
+        "title": "Lit yn de knop sjen wêr't it oer giet"
+      }
+    ]
+  }
+}

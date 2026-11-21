@@ -9,5 +9,7 @@
   "slidePages": "Страници със слайдове",
   "goToSlide": "Към слайд {number}",
   "slides": "Слайдове",
-  "position": "{number} от {total}"
+  "position": "{number} от {total}",
+  "fullScreen": "Цял екран",
+  "exitFullScreen": "Изход от цял екран"
 }

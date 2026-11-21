@@ -4,7 +4,12 @@
     "description": "Idlala umxholo osebenzisanayo we-H5P kwifayile ye-.h5p elayishiweyo, ngaphandle kwemfuneko yeseva ye-H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Ifayile ye-H5P",
+        "description": "Layisha okanye unxibelelanise ifayile ye-.h5p. Ivulwa kwibhrawuza; akufuneki seva ye-H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Ikhowudi endala yokufakwa ye-iframe",

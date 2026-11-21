@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mamiriro ane mapazi",
+    "description": "Nyaya iyo sarudzo imwe neimwe inotungamira kuchiitiko nemagumo akasiyana. Vadzidzi vanogona kudzokera shure vachiedza dzimwe nzira; magumo asvikwa anoisa mamakisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Zita remamiriro, rinoratidzwa pamusoro pawo."
+      },
+      {
+        "title": "Chiitiko chekutanga",
+        "description": "ID yechiitiko chinotangira vadzidzi. Siya pasina chinhu kuti utange pachiitiko chekutanga."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwesarudzo rwechip yemusoro, mabhatani nemucheto wesarudzo."
+      }
+    ]
+  }
+}

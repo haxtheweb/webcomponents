@@ -1,0 +1,14 @@
+{
+  "scene": "Eksena",
+  "ending": "Wakas",
+  "goodEnding": "Magandang wakas",
+  "mixedEnding": "Halong wakas",
+  "poorEnding": "Mahinang wakas",
+  "scoreOf": "Iskor {score} sa {max}",
+  "scoreOnly": "Iskor {score}",
+  "startScene": "Simula",
+  "sceneIdLabel": "Id ng eksena",
+  "needsId": "Magdagdag ng id ng eksena para maka-link ang mga pagpipilian sa eksenang ito.",
+  "orphan": "Walang pagpipiliang naka-link sa eksenang ito.",
+  "deadLinks": "Tumuturo ang mga link na ito sa eksenang hindi umiiral:"
+}

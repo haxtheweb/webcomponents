@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Quistione numerica",
+    "description": "Una quistione à a quale si risponde cù un numeru. A risposta hè un numeru fissu o una formula calculata da variabile, è conta quand'ella hè in una tulleranza."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Quistione",
+        "description": "Ciò chì si dumanda à i studienti. Scrivite u nome d'una variabile trà graffe, cum'è {d}, per mustrà u so valore."
+      },
+      {
+        "title": "Unità",
+        "description": "Mustratu cum'è testu accantu à u campu di risposta, per esempiu km/h."
+      },
+      {
+        "title": "Risposta",
+        "description": "U numeru ghjustu. Lasciate biotu quandu una formula calcula a risposta."
+      },
+      {
+        "title": "Formula",
+        "description": "Calcula a risposta da e variabile, per esempiu d / (t / 60). Pò aduprà + - * / ^, parentesi, sqrt() è abs(). Aduprata invece di a risposta quand'ella hè definita."
+      },
+      {
+        "title": "Variabile",
+        "description": "Numeri aduprati da a formula è da a quistione. Ognunu piglia un valore trà u so più bassu è u so più altu, à passi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tulleranza",
+        "description": "Quantu luntanu da a risposta esatta conta sempre. 0 vole dì esattu, o arrotundatu à i decimali quì sottu."
+      },
+      {
+        "title": "Tipu di tulleranza",
+        "description": "Assuluta: più o menu a tulleranza. Percentuale: più o menu quellu percentuale di a risposta esatta.",
+        "options": {
+          "absolute": "Assuluta",
+          "percent": "Percentuale"
+        }
+      },
+      {
+        "title": "Decimali",
+        "description": "Si dumanda à i studienti d'arrotundà à quessi decimali, è a risposta hè mustrata arrotundata cusì. Lasciate biotu per nisun arrotundamentu."
+      },
+      {
+        "title": "Tentativi",
+        "description": "Quante volte un studiente pò verificà. 0 vole dì senza limitu."
+      },
+      {
+        "title": "Numeri novi à ogni tentativu",
+        "description": "Tirà valori novi di variabile ogni volta chì un studiente prova torna. A so risposta precedente ùn hè tandu più mustrata quand'ellu torna, solu s'ellu hà rispostu ghjustu."
+      },
+      {
+        "title": "Pieghevule",
+        "description": "Mustrà sta quistione cum'è una linea chì s'apre è si chjode. Apre ne una chjode l'altre quistioni pieghevule vicinu."
+      },
+      {
+        "title": "Principià piegatu",
+        "description": "Quand'ellu hè pieghevule, principià cum'è una linea chjosa chì mostra solu a quistione è u so statu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome di u quiz",
+        "description": "Nome di u quiz adupratu per l'identificazione xAPI in i sistemi d'analisi."
+      }
+    ]
+  }
+}

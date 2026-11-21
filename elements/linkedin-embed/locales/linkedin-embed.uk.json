@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "Переглянути {name} у LinkedIn"
+  "viewOnLinkedin": "Переглянути {name} у LinkedIn",
+  "badgeTitle": "Значок профілю LinkedIn для {name}"
 }

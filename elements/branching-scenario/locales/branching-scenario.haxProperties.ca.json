@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Escenari ramificat",
+    "description": "Una història on cada opció porta a una escena i un final diferents. Els alumnes poden tornar enrere i provar altres camins; el final assolit determina la puntuació."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Nom de l'escenari, que es mostra a la capçalera."
+      },
+      {
+        "title": "Escena inicial",
+        "description": "Id de l'escena on comencen els alumnes. Deixa-ho buit per començar a la primera escena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color opcional per a l'etiqueta de la capçalera, els botons i la vora d'una opció."
+      }
+    ]
+  }
+}

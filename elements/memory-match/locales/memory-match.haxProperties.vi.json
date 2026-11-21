@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Trò chơi trí nhớ",
+    "description": "Lật thẻ để tìm các cặp. Ghép một thuật ngữ với nghĩa của nó để một cặp khớp thể hiện sự hiểu biết, hoặc dùng hai văn bản hay hình ảnh giống nhau."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Lời nhắc hiển thị ở phần đầu, ví dụ: Ghép thuật ngữ với chức năng của nó."
+      },
+      {
+        "title": "Cặp",
+        "description": "Mỗi cặp là hai thẻ thuộc về nhau, thường là một thuật ngữ và nghĩa của nó. Mỗi mặt cần văn bản, hình ảnh hoặc cả hai."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Màu nhấn",
+        "description": "Màu tùy chọn cho nhãn đầu, mặt sau thẻ và nút."
+      }
+    ]
+  }
+}

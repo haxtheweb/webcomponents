@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Mzati",
+    "description": "Mzati: dzina, mawu, chizindikiro, mtundu ndi chifukwa chake ndi wofunika"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dzina"
+      },
+      {
+        "title": "Mawu"
+      },
+      {
+        "title": "Chizindikiro"
+      },
+      {
+        "title": "Mtundu (dzina la DDD)"
+      },
+      {
+        "title": "Mzati uti, 1 mpaka 7"
+      },
+      {
+        "title": "Khadi laling'ono"
+      },
+      {
+        "title": "Komwe dzina limapita"
+      }
+    ]
+  }
+}

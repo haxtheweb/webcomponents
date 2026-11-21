@@ -20,6 +20,12 @@
         "title": "Prent",
         "description": "Prent wat saam met die aanhaling gewys word."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Geraam",
+        "description": "Teken die aanhaling op die gedeelde blokraam, met 'n ikoon en etiket daarbo, sodat dit by notas en instruksiekaarte pas."
+      }
     ]
   }
 }

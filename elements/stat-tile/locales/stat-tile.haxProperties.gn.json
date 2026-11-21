@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Estadística azulejo",
+    "description": "Peteĩ papapy iñimportantéva, iteraguã ha mba'éichapa oñemoambue reheve. Emoĩ heta peteĩ kuadrícula-pe peteĩ tablero tysýipe g̃uarã."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teraguã",
+        "description": "Mba'épa ohecha papapy."
+      },
+      {
+        "title": "Hepy",
+        "description": "Papapy. Peteĩ papapy soke oñembyaty kuatiarogue ñe'ẽ rupive; ambue mba'e ojehechauka ojehaiháicha."
+      },
+      {
+        "title": "Moambue",
+        "description": "Mba'éichapa oñemoambue, ñe'ẽme, techapyrã 6% ko periodo-pe."
+      },
+      {
+        "title": "Tape",
+        "description": "Moambue ojupípa térã oguejy.",
+        "options": {
+          "": "Mba'eve",
+          "up": "Yvate",
+          "down": "Yvy gotyo"
+        }
+      }
+    ]
+  }
+}

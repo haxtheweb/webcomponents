@@ -1,4 +1,6 @@
 {
   "saveAll": "Gem alle",
-  "saveTheFollowing": "Gem følgende: {list}?"
+  "saveTheFollowing": "Gem følgende: {list}?",
+  "save": "Gem",
+  "cancel": "Annuller"
 }

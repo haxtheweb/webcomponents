@@ -9,5 +9,7 @@
   "slidePages": "Lysbildesider",
   "goToSlide": "Gå til lysbilde {number}",
   "slides": "Lysbilder",
-  "position": "{number} av {total}"
+  "position": "{number} av {total}",
+  "fullScreen": "Fullskjerm",
+  "exitFullScreen": "Avslutt fullskjerm"
 }

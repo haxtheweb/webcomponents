@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "cím"
+        "title": "cím",
+        "description": "A kurzusmodell fölött megjelenő címsor."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "A megjelenítendő 3D-modellfájl (.glb vagy .gltf) címe."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Írja le a 3D-modellt azok számára, akik nem látják."
       },
       {
         "title": "Információs terület"

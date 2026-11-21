@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Color d'accent automàtic",
         "description": "Obté automàticament el color d'accent a partir del text de l'etiqueta."
+      },
+      {
+        "title": "Significat",
+        "description": "Dona a l'etiqueta un color amb significat. Deixa-ho buit per a una etiqueta neutra.",
+        "options": {
+          "": "Neutre",
+          "brand": "Marca",
+          "success": "Èxit",
+          "warning": "Advertència",
+          "danger": "Perill"
+        }
       }
     ],
     "advanced": [

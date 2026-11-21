@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "LaTeX yupay qillqawan qillqay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rikch'ap qhipa pampan",
+        "description": "Siq'isqa rikch'akunap qhipanpi pampa. Kikillanmanta kaqqa siq'iy p'anqapi sasa rikukunanpaq kaptinlla hukta yapan, tutayaq layapi tutayaq siq'ikuna hina.",
+        "options": {
+          "auto": "Kikillanmanta",
+          "light": "K'anchay",
+          "dark": "Tutayaq",
+          "none": "Mana imapas"
+        }
+      }
+    ]
   }
 }

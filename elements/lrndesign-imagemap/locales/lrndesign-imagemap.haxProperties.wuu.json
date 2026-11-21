@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "热点详情",
         "description": "图片热区图浪个互动热点。"
+      },
+      {
+        "title": "热点详情",
+        "description": "图片热区上个互动热点。"
       }
     ]
   }

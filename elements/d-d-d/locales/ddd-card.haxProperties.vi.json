@@ -52,6 +52,20 @@
           "_top": "Cửa sổ trên cùng - _top",
           "_parent": "Cửa sổ cha - _parent"
         }
+      },
+      {
+        "title": "Không có mũi tên",
+        "description": "Ẩn mũi tên của nút."
+      },
+      {
+        "title": "Liên kết: đích",
+        "description": "Nơi mở liên kết.",
+        "options": {
+          "": "Cùng cửa sổ",
+          "_blank": "Cửa sổ mới - _blank",
+          "_top": "Cửa sổ trên cùng - _top",
+          "_parent": "Cửa sổ cha - _parent"
+        }
       }
     ],
     "developer": [

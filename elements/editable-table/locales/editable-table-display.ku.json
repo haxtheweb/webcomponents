@@ -3,5 +3,8 @@
   "copyAsCsv": "Wek CSV kopî bike.",
   "printTable": "Tabloyê çap bike",
   "selectColumn": "Stûnê hilbijêre",
-  "dataTable": "Dane · Tablo"
+  "dataTable": "Dane · Tablo",
+  "filterStatus": "{shown} ji {total} rêzan tên nîşandan, li gorî {column} parzûnkirî: {text}",
+  "columnNumber": "Stûna {column}",
+  "clearFilter": "Parzûnê paqij bike"
 }

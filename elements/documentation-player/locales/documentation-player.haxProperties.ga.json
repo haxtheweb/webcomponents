@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Seinnteoir doiciméadúcháin",
+    "description": "Siúlóid tríd, taispeántas agus tagairt do chomhpháirt ghréasáin, le cnaipí cóipeála do HTML, import, npm agus CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Comhad sonraí doiciméad",
+        "description": "Na sonraí doiciméad a sheoltar leis an eilimint (lib/tag.docs.json)."
+      },
+      {
+        "title": "Clár scéil na siúlóide",
+        "description": "An clár scéil gluaisne a sheoltar leis an eilimint (tag.motion.json). Roghnach."
+      },
+      {
+        "title": "Rang teagaisc físe",
+        "description": "Físeán gearr faoin eilimint (YouTube, Vimeo nó comhad físe). Sáraíonn sé an físeán sna sonraí doiciméad."
+      },
+      {
+        "title": "Oscail ar an gcluaisín",
+        "description": "An cluaisín a thaispeántar ar dtús.",
+        "options": {
+          "motion": "Siúlóid tríd",
+          "video": "Físeán",
+          "demo": "Taispeántas",
+          "docs": "Doiciméadúchán",
+          "schema": "Scéimre"
+        }
+      },
+      {
+        "title": "Seinn an tsiúlóid go huathoibríoch",
+        "description": "Tosaigh an tsiúlóid a luaithe a thaispeántar an seinnteoir. Déantar neamhaird de nuair is fearr leis an léitheoir gluaisne laghdaithe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ábhar na siúlóide",
+        "description": "D'eilimintí le roinnt siúlóidí, cén t-ábhar le hoscailt ar dtús (mar shampla add-blocks). Fág folamh don phríomhcheann."
+      },
+      {
+        "title": "Nasc taispeántais bheo",
+        "description": "Cá dtéann an cnaipe Oscail foinse an taispeántais. Is é an fillteán demo sa stór an réamhshocrú."
+      },
+      {
+        "title": "Nasc doiciméadúcháin",
+        "description": "Cá dtéann an cnaipe doiciméadúcháin iomláin, mar shampla an leathanach Learn HAX cuí."
+      }
+    ]
+  }
+}

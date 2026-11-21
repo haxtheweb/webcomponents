@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note-groep",
+    "description": "Stapelje ferskate stop notes yn ien blok dat ien notysje tagelyk toant, lykas Tips of Wat is nij. Ynstruksjekaarten, kanttekeningen en ynramme sitaten kinne dêrmei stapele wurde."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Namme foar de groep dy't skermlêzers oankundigje, lykas Tips of Wat is nij."
+      },
+      {
+        "title": "Notysjes",
+        "description": "De stop notes yn de groep. Ynstruksjekaarten, kanttekeningen en ynramme sitaten kinne ek tafoege wurde."
+      }
+    ]
+  }
+}

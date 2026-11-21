@@ -5,5 +5,7 @@
   "editModeLabel": "Media pleylistni tahrirlash rejimi",
   "position": "{current} / {total}",
   "previousItem": "Oldingi element",
-  "nextItem": "Keyingi element"
+  "nextItem": "Keyingi element",
+  "fullScreen": "To‘liq ekran",
+  "exitFullScreen": "To‘liq ekrandan chiqish"
 }

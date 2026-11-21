@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Tulis menggunakan notasi matematika LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Latar gambar",
+        "description": "Latar di belakang gambar yang digambar. Otomatis hanya menambahkannya jika gambar akan sulit terlihat di halaman, misalnya garis gelap dalam mode gelap.",
+        "options": {
+          "auto": "Otomatis",
+          "light": "Terang",
+          "dark": "Gelap",
+          "none": "Tidak ada"
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ngā kaiwhai wāhi",
+    "description": "Ngā tāngata nā rātou i hanga te kaupapa, mai i tētahi kōnae rārangi ingoa"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kōnae rārangi ingoa (JSON)"
+      },
+      {
+        "title": "Tirohanga: landed, lab, code rānei"
+      },
+      {
+        "title": "Te nuinga o ngā tāngata hei whakaatu (ko te 0 te katoa)"
+      }
+    ]
+  }
+}

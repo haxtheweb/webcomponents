@@ -1,0 +1,8 @@
+{
+  "theme": "Thema",
+  "palette": "Palet",
+  "themeDefault": "Standaard van het thema",
+  "designSystem": "Ontwerpsysteem",
+  "designSystemDefault": "DDD (standaard)",
+  "designSystemUnavailable": "Dit thema houdt zijn eigen ontwerpsysteem"
+}

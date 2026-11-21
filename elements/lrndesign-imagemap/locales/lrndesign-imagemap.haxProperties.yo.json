@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Àlàyé ibi-gbígbóná",
         "description": "Àwọn ibi-gbígbóná aláṣepọ̀ lórí máàpù àwòrán."
+      },
+      {
+        "title": "Àlàyé ibi pàtàkì",
+        "description": "Àwọn ibi pàtàkì ìbánisọ̀rọ̀ lórí àwòrán-máàpù náà."
       }
     ]
   }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Listë hapash",
     "description": "Hapa të numëruar për të përfunduar një detyrë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Treguesi i hapave",
+        "description": "Shfaq hapat si një rresht kompakt titujsh që shënon përparimin. Përmbajtja e hapave nuk shfaqet në këtë paraqitje."
+      },
+      {
+        "title": "Hapi aktual",
+        "description": "Hapi ku ndodhet lexuesi, duke numëruar nga 1. Hapat e mëparshëm shfaqen si të përfunduar. Përdoret nga treguesi i hapave."
+      }
+    ]
   }
 }

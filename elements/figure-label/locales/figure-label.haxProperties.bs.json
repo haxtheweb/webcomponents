@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Oznaka slike",
     "description": "Element oznake slike za označavanje medijskih sadržaja unutar sadržaja."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Broj slike",
+        "description": "Broj ili kratka oznaka slike, npr. 1.3"
+      },
+      {
+        "title": "Opis",
+        "description": "Kratak opis slike"
+      }
+    ]
   }
 }

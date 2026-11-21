@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funktionsrad",
+    "description": "En skärm i produkten bredvid vad den betyder för dig"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Liten etikett"
+      },
+      {
+        "title": "Rubrik"
+      },
+      {
+        "title": "Bild"
+      },
+      {
+        "title": "Vad bilden visar"
+      },
+      {
+        "title": "Bild till höger"
+      },
+      {
+        "title": "Skuggfärg (DDD-namn, tomt följer paletten)"
+      }
+    ]
+  }
+}

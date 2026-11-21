@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Picha ya usuli."
+        "description": "Picha ya usuli.",
+        "title": "Picha"
       },
       {
         "property": "caption",
-        "description": "Kichwa cha maandishi."
+        "description": "Kichwa cha maandishi.",
+        "title": "Maelezo mafupi"
       }
     ]
   }

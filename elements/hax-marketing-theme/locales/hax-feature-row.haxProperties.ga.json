@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ró gné",
+    "description": "Scáileán den táirge in aice lena gciallaíonn sé duitse"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lipéad beag"
+      },
+      {
+        "title": "Ceannteideal"
+      },
+      {
+        "title": "Pictiúr"
+      },
+      {
+        "title": "Cad a thaispeánann an pictiúr"
+      },
+      {
+        "title": "Pictiúr ar dheis"
+      },
+      {
+        "title": "Dath an scátha (ainm DDD, leanann bán an pailéad)"
+      }
+    ]
+  }
+}

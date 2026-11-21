@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Dhaptar priksa butir",
+    "description": "Dhaptar kothak centhang. Pamaca nyenthang item lan kemajuane dieling-eling ing piranti dhewe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Jeneng dhaptar. Diwaca banter minangka label klompok kothak centhang."
+      },
+      {
+        "title": "Item",
+        "description": "Saben item yaiku kothak centhang. Item sing wis dicenthang utawa dipateni ora bisa diowahi pamaca."
+      },
+      {
+        "title": "Nganggo nomer",
+        "description": "Tampilake dhaptar nomer tinimbang dhaptar butir."
+      },
+      {
+        "title": "Status",
+        "description": "Ngowahi warna supaya cocog karo stop-note.",
+        "options": {
+          "info": "Wara-wara",
+          "success": "Konfirmasi",
+          "warning": "Pènget",
+          "stop": "Mandheg"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID panyimpenan",
+        "description": "ID unik kanggo ngeling-eling kemajuan pamaca ing pirantine. Digawe otomatis; owahi mung kanggo nuduhake kemajuan antarane dhaptar utawa miwiti anyar."
+      }
+    ]
+  }
+}

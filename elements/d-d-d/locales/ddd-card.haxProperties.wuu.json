@@ -52,6 +52,20 @@
           "_top": "顶层窗口 - _top",
           "_parent": "父窗口 - _parent"
         }
+      },
+      {
+        "title": "呒没箭头",
+        "description": "隐藏按钮箭头。"
+      },
+      {
+        "title": "链接：目标",
+        "description": "辣啥地方打开链接。",
+        "options": {
+          "": "同一个窗口",
+          "_blank": "新窗口 - _blank",
+          "_top": "顶层窗口 - _top",
+          "_parent": "父窗口 - _parent"
+        }
       }
     ],
     "developer": [

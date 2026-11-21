@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Nombra demando",
+    "description": "Demando respondata per nombro. La respondo estas fiksa nombro aŭ formulo kalkulita el variabloj, kaj validas kiam ĝi estas ene de toleremo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Demando",
+        "description": "Kion oni demandas al lernantoj. Skribu variablan nomon en kunigaj krampoj, kiel {d}, por montri ĝian valoron."
+      },
+      {
+        "title": "Unuo",
+        "description": "Montrata kiel teksto apud la responda kampo, ekzemple km/h."
+      },
+      {
+        "title": "Respondo",
+        "description": "La ĝusta nombro. Lasu malplena, kiam formulo kalkulas la respondon."
+      },
+      {
+        "title": "Formulo",
+        "description": "Kalkulas la respondon el la variabloj, ekzemple d / (t / 60). Povas uzi + - * / ^, krampojn, sqrt() kaj abs(). Uzata anstataŭ la respondo, kiam agordita."
+      },
+      {
+        "title": "Variabloj",
+        "description": "Nombroj, kiujn la formulo kaj la demando uzas. Ĉiu prenas valoron inter sia plej malalta kaj plej alta, laŭ paŝoj."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleremo",
+        "description": "Kiom for de la ĝusta respondo ankoraŭ validas. 0 signifas ĝuste, aŭ rondigite al la decimaloj sube."
+      },
+      {
+        "title": "Tipo de toleremo",
+        "description": "Absoluta: plus aŭ minus la toleremo. Procenta: plus aŭ minus tiu procento de la ĝusta respondo.",
+        "options": {
+          "absolute": "Absoluta",
+          "percent": "Procenta"
+        }
+      },
+      {
+        "title": "Decimaloj",
+        "description": "Lernantoj devas rondigi al tiom da decimaloj, kaj la respondo montriĝas rondigita al tio. Lasu malplena por neniu rondigo."
+      },
+      {
+        "title": "Provoj",
+        "description": "Kiom da fojoj lernanto povas kontroli. 0 signifas senlime."
+      },
+      {
+        "title": "Novaj nombroj ĉe ĉiu provo",
+        "description": "Tiri novajn variablajn valorojn ĉiufoje kiam lernanto provas denove. Ilia antaŭa respondo tiam ne montriĝas kiam ili revenas, nur ĉu ili trafis."
+      },
+      {
+        "title": "Faldebla",
+        "description": "Montri ĉi tiun demandon kiel vicon, kiu malfermiĝas kaj fermiĝas. Malfermi unu fermas la aliajn faldeblajn demandojn apud ĝi."
+      },
+      {
+        "title": "Komenci faldita",
+        "description": "Se faldebla, komenci kiel fermita vico, kiu montras nur la demandon kaj ĝian staton."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nomo de la kvizo",
+        "description": "Nomo de la kvizo uzata por xAPI-identigo en analizaj sistemoj."
+      }
+    ]
+  }
+}

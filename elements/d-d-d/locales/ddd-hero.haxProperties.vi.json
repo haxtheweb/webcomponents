@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Một hình ảnh, GIF hoặc video lớn với tiêu đề và văn bản phía trên, đặt ở bất kỳ đâu trong trang."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hình ảnh hoặc video",
+        "description": "Một tệp JPG, PNG, WebP, GIF, MP4 hoặc WebM."
+      },
+      {
+        "title": "Văn bản thay thế",
+        "description": "Mô tả hình ảnh. Để trống nếu nó chỉ để trang trí."
+      },
+      {
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hiển thị trên phương tiện. Để trống nếu không cần."
+      },
+      {
+        "title": "Văn bản",
+        "description": "Văn bản hiển thị dưới tiêu đề, trên phương tiện."
+      },
+      {
+        "title": "Toàn chiều rộng",
+        "description": "Trải từ mép này sang mép kia thay vì nằm trong cột nội dung."
+      },
+      {
+        "title": "Chiều cao",
+        "options": {
+          "tall": "Cao",
+          "medium": "Vừa",
+          "short": "Thấp"
+        }
+      },
+      {
+        "title": "Bố cục khung hình",
+        "description": "Cách ảnh được đặt ở mỗi kích thước màn hình"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lớp phủ",
+        "description": "Màu phủ lên phương tiện. Khi có tiêu đề hoặc văn bản thì luôn có một lớp phủ, để văn bản dễ đọc.",
+        "options": {
+          "blue": "Xanh lam",
+          "bottom": "Tối ở phía dưới",
+          "none": "Không có"
+        }
+      },
+      {
+        "title": "Vị trí văn bản",
+        "options": {
+          "bottom": "Dưới",
+          "middle": "Giữa"
+        }
+      },
+      {
+        "title": "Tiêu điểm ngang",
+        "description": "Phần của hình ảnh vẫn hiển thị khi bị cắt, từ 0 (trái) đến 100 (phải)."
+      },
+      {
+        "title": "Tiêu điểm dọc",
+        "description": "Phần của hình ảnh vẫn hiển thị khi bị cắt, từ 0 (trên) đến 100 (dưới)."
+      }
+    ]
+  }
+}

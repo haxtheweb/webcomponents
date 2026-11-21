@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Тугмаи ҳикоя",
+    "description": "Тугмае, ки ҳикояи паси иддаоро дар hax.cloud ё ҷои мувофиқро дар дигар сомонаи шабакаи HAX мекушояд"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ба куҷо меравад",
+        "options": {
+          "cloud": "hax.cloud, ҳикоя",
+          "learn": "learn.hax.cloud, дарс",
+          "try": "browser.hax.cloud, санҷед",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Суроға дар он сомона (ҳикоя дар hax.cloud ба монанди stories/ee450a19 аст)"
+      },
+      {
+        "title": "Дар бораи чист"
+      },
+      {
+        "title": "Нишонаи хурд"
+      },
+      {
+        "title": "Дар тугма нишон диҳед, ки дар бораи чист"
+      }
+    ]
+  }
+}

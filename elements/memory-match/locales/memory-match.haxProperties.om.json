@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Tapha yaadannoo",
+    "description": "Cimdiiwwan argachuuf kaardiiwwan garagalchi. Akka walsimuun hubannaa agarsiisuuf jecha hiika isaa waliin walsimsiisi, ykn barreeffamoota ykn suuraawwan wal fakkaatan lama fayyadami."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Gaaffii mata-duree keessatti mul'atu, fakkeenyaaf: Jecha hojii isaa waliin walsimsiisi."
+      },
+      {
+        "title": "Cimdiiwwan",
+        "description": "Cimdiin tokkoon tokkoon kaardiiwwan lama walitti dhufan, yeroo baay'ee jechaa fi hiika isaa ti. Gamni tokko barreeffama, suuraa ykn lachuu barbaada."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu filannoo mallattoo mata-duree, duuba kaardiiwwanii fi qabduutiif."
+      }
+    ]
+  }
+}

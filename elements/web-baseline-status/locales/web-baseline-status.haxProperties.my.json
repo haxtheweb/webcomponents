@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline အခြေအနေ",
+    "description": "ဝဘ်ပလက်ဖောင်း လုပ်ဆောင်ချက်တစ်ခု၏ Baseline ဘရောက်ဆာ ပံ့ပိုးမှုအခြေအနေကို ပြပါ။"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "လုပ်ဆောင်ချက် ID",
+        "description": "ဝဘ်လုပ်ဆောင်ချက်၏ ID၊ ဥပမာ anchor-positioning။ webstatus.dev တွင် ID များ ရှာပါ; ID သည် လုပ်ဆောင်ချက်စာမျက်နှာ URL ၏ နောက်ဆုံးအပိုင်း ဖြစ်သည်။"
+      }
+    ]
+  }
+}

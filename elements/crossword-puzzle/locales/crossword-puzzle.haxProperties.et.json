@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ristsõna",
+    "description": "Sõnade ja vihjete loendist tehtud ristsõna. Ruudustik genereeritakse sinu eest; õppijad kirjutavad sõnad ja kontrollivad neid."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pealkiri",
+        "description": "Ristsõna kohal kuvatav pealkiri või küsimus."
+      },
+      {
+        "title": "Sõnad",
+        "description": "Iga sõna ja selle vihje. Ruudustik genereeritakse sellest loendist: kõige pikem sõna paigutatakse esimesena ja teised ristuvad sellega ühiste tähtede kohal."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Katsed",
+        "description": "Mitu korda õppija saab kontrollida. 0 tähendab piiramatut."
+      },
+      {
+        "title": "Rõhuvärv",
+        "description": "Valikuline värv päise sildile, aktiivsele sõnale ja toimingunuppudele."
+      },
+      {
+        "title": "Kokkupandav",
+        "description": "Näita seda ristsõna reana, mis avaneb ja sulgub. Ühe avamine sulgeb kõrvalolevad teised kokkupandavad küsimused."
+      },
+      {
+        "title": "Alusta kokkupandult",
+        "description": "Kokkupandavana alusta suletud reana, mis näitab ainult pealkirja ja olekut."
+      },
+      {
+        "title": "Hindamisvorming",
+        "description": "OER Schema: selle hindamise hindamisvorming (nt punktid, täht, protsent, sooritus)."
+      },
+      {
+        "title": "Õpieesmärk",
+        "description": "OER Schema: selle hindamisega seotud õpieesmärk."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Viktoriini nimi",
+        "description": "Viktoriini nimi, mida kasutatakse xAPI-tuvastuseks analüütikasüsteemides."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: kursus, mille jaoks see hindamine on mõeldud."
+      }
+    ]
+  }
+}

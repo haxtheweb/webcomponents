@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Gràfic de radar",
+    "description": "Gràfic de radar (teranyina) per a models de maduresa i puntuació per facetes, com HEOSAT. Inclou una alternativa textual i una taula de dades."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Encapçalament del gràfic; també s'utilitza com a nom accessible."
+      },
+      {
+        "title": "Puntuació màxima",
+        "description": "Valor més alt de l'escala."
+      },
+      {
+        "title": "Categories",
+        "description": "Una categoria per línia. En calen almenys 3."
+      },
+      {
+        "title": "Puntuacions",
+        "description": "Nombres separats per comes, un per categoria en el mateix ordre."
+      },
+      {
+        "title": "Puntuacions objectiu",
+        "description": "Nombres separats per comes, un per categoria en el mateix ordre."
+      },
+      {
+        "title": "Mostra la llegenda",
+        "description": "Mostra una llegenda que anomena les puntuacions i els objectius."
+      },
+      {
+        "title": "Compacte",
+        "description": "Gràfic més petit sense etiquetes, llegenda ni taula de dades. Passa el cursor per un punt per veure'n els valors."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etiqueta de la puntuació",
+        "description": "Etiqueta de la llegenda i la taula per a les puntuacions."
+      },
+      {
+        "title": "Etiqueta de l'objectiu",
+        "description": "Etiqueta de la llegenda i la taula per als objectius."
+      }
+    ]
+  }
+}

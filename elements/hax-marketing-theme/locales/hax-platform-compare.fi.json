@@ -1,0 +1,15 @@
+{
+  "loading": "Ladataan vertailua.",
+  "yes": "Kyllä",
+  "partly": "Osittain",
+  "no": "Ei",
+  "compare": "Vertaa",
+  "with": "Kanssa",
+  "vs": "vs",
+  "caption": "{a} ja {b} ominaisuus ominaisuudelta",
+  "feature": "Ominaisuus",
+  "clearYes": "{count}/{total} selvä kyllä",
+  "seeForYourself": "Katso itse:",
+  "and": "ja",
+  "why": "Miksi"
+}

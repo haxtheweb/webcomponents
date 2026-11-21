@@ -20,6 +20,12 @@
         "title": "Umfanekiso",
         "description": "Umfanekiso oboniswa nesicatshulwa."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Inesakhelo",
+        "description": "Zoba isicatshulwa kwisakhelo sebhloko ekwabelwana ngaso, nempawu nelebhile ngaphezulu kwaso, ukuze sihambelane namanqaku namakhadi emiyalelo."
+      }
     ]
   }
 }

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Schrijf met de wiskundige notatie LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Achtergrond voor afbeeldingen",
+        "description": "Achtergrond achter getekende afbeeldingen. Automatisch voegt er alleen een toe als de tekening anders moeilijk te zien is op de pagina, zoals donkere lijnen in donkere modus.",
+        "options": {
+          "auto": "Automatisch",
+          "light": "Licht",
+          "dark": "Donker",
+          "none": "Geen"
+        }
+      }
+    ]
   }
 }

@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenaro",
+  "directions": "Instrukcioj",
+  "showDirections": "Montri instrukciojn",
+  "hideDirections": "Kaŝi instrukciojn",
+  "directionsRead": "Legu ĉiun scenon kaj elektu, kion vi farus.",
+  "directionsEndings": "Estas pluraj finoj. Provu alian vojon post kiam vi finos.",
+  "startOver": "Rekomenci",
+  "back": "Unu paŝon reen",
+  "tryAnother": "Provi alian vojon",
+  "path": "Vojo",
+  "scene": "Sceno",
+  "ending": "Fino",
+  "end": "fino",
+  "scenesSeen": "{seen} el {total} scenoj viditaj",
+  "endingReached": "Fino atingita",
+  "addScene": "Aldoni scenon",
+  "newScene": "Nova sceno",
+  "newSceneText": "Priskribu, kio okazas, poste ligu ĉiun elekton al sceno.",
+  "editingNote": "Redaktado: ĉiu sceno estas montrata. Elekto estas ligilo al # sekvata de identigilo de sceno.",
+  "noScenes": "Aldonu scenon por komenci la scenaron."
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "外部工具启动",
+    "description": "一块积木，辣新窗口或者页面上打开外部学习工具，用普通链接或者 LTI 1.3 登录请求。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "工具个名字。显示辣标题搭按钮上。"
+      },
+      {
+        "title": "描述",
+        "description": "学习者辣工具里做啥，显示辣按钮上头。"
+      },
+      {
+        "title": "启动 URL",
+        "description": "工具个地址。必须是以 https:// 或者 http:// 开头个完整地址。"
+      },
+      {
+        "title": "打开方式",
+        "description": "新窗口对所有工具侪好用。“辣迭页”只对允许辣别个网站里显示个工具好用。",
+        "options": {
+          "window": "新窗口",
+          "embed": "本页内容"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI 登录 URL",
+        "description": "只限 LTI 1.3：工具个登录发起地址。有了迭个、客户端 ID 搭部署 ID，按钮会发 LTI 登录请求，勿开普通链接。完成启动要迭个网站个 LTI 服务。"
+      },
+      {
+        "title": "LTI 客户端 ID",
+        "description": "工具拨迭个网站个客户端 ID。是公开标识，勿是秘密：千万勿要辣迭搭放密钥或者秘密。"
+      },
+      {
+        "title": "LTI 部署 ID",
+        "description": "工具拨迭个网站个部署 ID。是公开标识，勿是秘密。"
+      },
+      {
+        "title": "LTI 签发者",
+        "description": "向工具标识迭个网站个地址。空辣海就用页面所辣网站个地址。"
+      },
+      {
+        "title": "页面上个高度",
+        "description": "工具辣迭页打开个辰光个高度，单位像素（200 到 2000）。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题标签搭按钮个颜色。空辣海就跟主题走。"
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI 登录提示",
+        "description": "迭个网站个 LTI 服务用来认出学习者个一个不透明值。通常由网站通过 lti-launch-request 事件提供，勿辣迭搭保存。从来勿是密码或者密钥。"
+      },
+      {
+        "title": "LTI 消息提示",
+        "description": "迭个网站个 LTI 服务用来认出迭次启动个一个不透明值。通常由网站提供，勿辣迭搭保存。"
+      }
+    ]
+  }
+}

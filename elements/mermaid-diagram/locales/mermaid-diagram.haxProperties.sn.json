@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Dhayagiramu kubva pamavara",
+    "description": "Nyora dhayagiramu semavara (Mermaid): flowchart, sequence, timeline nezvimwe. Inodhirowewa mupeji ine imwe nzira yemavara."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Inoratidzwa pamusoro pedhayagiramu uye inoshandiswa sezita rayo."
+      },
+      {
+        "title": "Kodhi yedhayagiramu",
+        "description": "Mavara eMermaid, semuenzaniso: flowchart TD, wobva wanyora mutsara mumwe pa link yakaita sa A[Draft] --> B{Ready?}. Wedzera |label| mushure memuseve kuti uupe zita. Mufananidzo unogadziridzwa paunonyora."
+      },
+      {
+        "title": "Imwe nzira yemavara",
+        "description": "Tsanangura zvinoratidzwa nedhayagiramu kuvanhu vasingagoni kuiona. Siya pasina chinhu paflowchart kuti matanho ayo anyorwe kwauri."
+      },
+      {
+        "title": "Zita remufananidzo",
+        "description": "Zita risingamanikidzwe rinoratidzwa pasi pedhayagiramu."
+      },
+      {
+        "title": "Ratidza kodhi",
+        "description": "Ratidza mavara edhayagiramu padivi pemufananidzo."
+      },
+      {
+        "title": "Ratidza imwe nzira yemavara",
+        "description": "Ratidza imwe nzira yemavara pasi pemufananidzo. Inogara iripo kuvaverengi veskrini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faira rekodhi",
+        "description": "Kero yefaira re.mmd rekudhirowa panzvimbo pemavara ari pamusoro (https kana nzira pasaiti iyi)."
+      },
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwechip yeicon pamusoro."
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "테마",
   "palette": "팔레트",
   "cancel": "취소",
-  "openAppearanceSettings": "모양 설정 열기"
+  "openAppearanceSettings": "모양 설정 열기",
+  "designSystem": "디자인 시스템",
+  "designSystemDefault": "DDD(기본값)",
+  "designSystemThemeDefault": "{name}(테마 기본값)",
+  "designSystemHelp": "색상, 글꼴, 모서리, 밀도. 레이아웃은 여전히 테마가 정합니다."
 }

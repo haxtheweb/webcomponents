@@ -5,5 +5,6 @@
   "selected": "Seçili",
   "currentlyActiveAndSelectedPalette": "Şu anda etkin ve seçili palet",
   "currentlyActivePalette": "Şu anda etkin palet",
-  "selectedPaletteToApply": "Uygulanacak seçili palet"
+  "selectedPaletteToApply": "Uygulanacak seçili palet",
+  "paletteNumber": "Palet {number}"
 }

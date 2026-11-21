@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Chati ya rada",
+    "description": "Chati ya rada (buibui) kwa modeli za ukomavu na upimaji wa vipengele, kama HEOSAT. Inajumuisha mbadala wa maandishi na jedwali la data."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Kichwa cha chati; pia kinatumika kama jina lake linalofikika."
+      },
+      {
+        "title": "Alama ya juu zaidi",
+        "description": "Thamani ya juu zaidi kwenye kipimo."
+      },
+      {
+        "title": "Kategoria",
+        "description": "Kategoria moja kwa kila mstari. Inahitaji angalau 3."
+      },
+      {
+        "title": "Alama",
+        "description": "Namba zilizotenganishwa kwa koma, moja kwa kila kategoria kwa mpangilio ule ule."
+      },
+      {
+        "title": "Alama lengwa",
+        "description": "Namba zilizotenganishwa kwa koma, moja kwa kila kategoria kwa mpangilio ule ule."
+      },
+      {
+        "title": "Onyesha ufunguo",
+        "description": "Onyesha ufunguo unaotaja alama na malengo."
+      },
+      {
+        "title": "Fupi",
+        "description": "Chati ndogo isiyo na lebo, ufunguo wala jedwali la data. Elea juu ya nukta kuona thamani zake."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lebo ya alama",
+        "description": "Lebo ya ufunguo na jedwali kwa alama."
+      },
+      {
+        "title": "Lebo ya lengo",
+        "description": "Lebo ya ufunguo na jedwali kwa malengo."
+      }
+    ]
+  }
+}

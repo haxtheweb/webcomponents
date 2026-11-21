@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenarioscene",
+    "description": "Én scene i et forgreinet scenario. Lenk hvert valg til en annen scene med # etterfulgt av scene-ID-en."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Scene-ID",
+        "description": "Det valg lenker til: en lenke til # etterfulgt av denne ID-en fører til denne scenen. Bokstaver, tall og bindestreker."
+      },
+      {
+        "title": "Overskrift",
+        "description": "Overskriften til scenen."
+      },
+      {
+        "title": "Avslutning",
+        "description": "Om denne scenen avslutter en vei, og hvordan det gikk.",
+        "options": {
+          "": "Ikke en avslutning",
+          "good": "God avslutning",
+          "mixed": "Blandet avslutning",
+          "poor": "Dårlig avslutning"
+        }
+      },
+      {
+        "title": "Poeng",
+        "description": "Poeng for å nå denne avslutningen. Den høyeste avslutningspoengsummen i scenarioet er maksimum."
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Írás a LaTeX matematikai jelölésrendszerrel"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kép háttere",
+        "description": "Háttér a rajzolt képek mögött. Az Automatikus csak akkor ad hozzá egyet, ha a rajz nehezen látszana az oldalon, például sötét vonalak sötét módban.",
+        "options": {
+          "auto": "Automatikus",
+          "light": "Világos",
+          "dark": "Sötét",
+          "none": "Nincs"
+        }
+      }
+    ]
   }
 }

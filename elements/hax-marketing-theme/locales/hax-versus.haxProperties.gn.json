@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ojovake",
+    "description": "Ñe'ẽ peteĩ botõ ojovake ykére mokõi tapicha reheve"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Omoakãva"
+      },
+      {
+        "title": "Mamópa oho botõ"
+      },
+      {
+        "title": "Botõ moñe'ẽrã"
+      },
+      {
+        "title": "Tapicha asu gotyo ra'ỹi"
+      },
+      {
+        "title": "Tapicha akatúa gotyo ra'ỹi"
+      }
+    ]
+  }
+}

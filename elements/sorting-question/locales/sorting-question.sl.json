@@ -40,5 +40,7 @@
   "hideDirections": "Skrij navodila",
   "showRelatedContent": "Prikaži povezano vsebino",
   "hideRelatedContent": "Skrij povezano vsebino",
-  "notAttempted": "Ni poskusa"
+  "notAttempted": "Ni poskusa",
+  "cardsDirections": "Razvrstite karte v pravilni vrstni red z gumboma premakni prej in premakni pozneje na vsaki karti ali jih povlecite z miško. Ko menite, da so v pravilnem vrstnem redu, preverite odgovor z izbiro {checkAnswer}.",
+  "movedToPosition": "{item} premaknjeno na mesto {position} od {total}"
 }

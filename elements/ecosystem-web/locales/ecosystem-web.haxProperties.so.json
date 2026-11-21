@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Web-ka nidaamka",
+    "description": "Web is-dhexgal ah oo muujinaya sida qaybaha mashruucu isugu xiran yihiin, oo leh web-yo hoose iyo socdaalo tallaabo tallaabo ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xogta web-ka",
+        "description": "URL-ka JSON bundle-ka web-yada (lagu dhisay PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "ID-ga web-ka marka hore la muujinayo; main waa web-ka nidaamka."
+      },
+      {
+        "title": "Tile la doortay",
+        "description": "ID-ga tile la dooranayo marka web-ku furmo."
+      },
+      {
+        "title": "Socdaal",
+        "description": "ID-ga socdaal laga bilaabayo."
+      },
+      {
+        "title": "Ku bilow muuqaalka liiska",
+        "description": "Muuji web-ka sida liisas is-dhex galay halkii sawirka."
+      },
+      {
+        "title": "Sawirka oo keliya",
+        "description": "Muuji sawirka oo keliya, sida jaantus: madax, socdaalo, faahfaahin ama bar tallaabo midna ma jiro."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ku akhri",
+        "description": "Ku bilow tile kasta oo lagu akhriyay hal cabbir.",
+        "options": {
+          "": "Xiriirada oo keliya",
+          "fresh": "Cusbooni",
+          "bus": "Bus factor",
+          "impact": "Saamayn",
+          "evidence": "Caddayn",
+          "parity": "Siman"
+        }
+      }
+    ]
+  }
+}

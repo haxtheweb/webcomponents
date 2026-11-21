@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "سرناواں"
+        "title": "سرناواں",
+        "description": "کورس ماڈل دے اتے وکھایا سرناواں۔"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "وکھان لئی 3D ماڈل فائل (.glb یا .gltf) دا پتہ۔"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "اوہناں لوکاں لئی 3D ماڈل بیان کرو جیہڑے ایہنوں نہیں ویکھ سکدے۔"
       },
       {
         "title": "معلومات والا حصہ"

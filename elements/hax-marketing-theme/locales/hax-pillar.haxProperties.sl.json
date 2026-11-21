@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Steber",
+    "description": "Steber: ime, fraza, ikona, barva in zakaj je pomemben"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ime"
+      },
+      {
+        "title": "Fraza"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Barva (ime DDD)"
+      },
+      {
+        "title": "Kateri steber, 1 do 7"
+      },
+      {
+        "title": "Majhna kartica"
+      },
+      {
+        "title": "Kam gre ime"
+      }
+    ]
+  }
+}

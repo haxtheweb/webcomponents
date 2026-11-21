@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop note -ryhmä",
+    "description": "Pinoa useita stop noteja yhteen lohkoon, joka näyttää yhden huomautuksen kerrallaan, kuten Vinkit tai Uutta. Ohjekortteja, sivuhuomautuksia ja kehystettyjä lainauksia voi pinota niiden kanssa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimiö",
+        "description": "Ryhmän nimi, jonka ruudunlukijat ilmoittavat, kuten Vinkit tai Uutta."
+      },
+      {
+        "title": "Huomautukset",
+        "description": "Ryhmän stop notet. Myös ohjekortteja, sivuhuomautuksia ja kehystettyjä lainauksia voi lisätä."
+      }
+    ]
+  }
+}

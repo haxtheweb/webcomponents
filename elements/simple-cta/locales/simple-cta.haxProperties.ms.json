@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Sembunyikan ikon",
         "description": "Sembunyikan ikon yang digunakan untuk menyerikan teks"
+      },
+      {
+        "title": "Penampilan",
+        "description": "Sejauh mana butang ditonjolkan.",
+        "options": {
+          "": "Berisi",
+          "tonal": "Tonal",
+          "outlined": "Bergaris",
+          "plain": "Biasa"
+        }
+      },
+      {
+        "title": "Saiz",
+        "description": "Saiz butang.",
+        "options": {
+          "s": "Kecil",
+          "": "Sederhana",
+          "l": "Besar"
+        }
       }
     ],
     "advanced": [

@@ -5,5 +5,7 @@
   "editModeLabel": "โหมดแก้ไขเพลย์ลิสต์สื่อ",
   "position": "{current} จาก {total}",
   "previousItem": "รายการก่อนหน้า",
-  "nextItem": "รายการถัดไป"
+  "nextItem": "รายการถัดไป",
+  "fullScreen": "เต็มหน้าจอ",
+  "exitFullScreen": "ออกจากโหมดเต็มหน้าจอ"
 }

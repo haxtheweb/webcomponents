@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Стан Baseline",
+    "description": "Паказаць стан падтрымкі браўзерамі Baseline для функцыі вэб-платформы."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID функцыі",
+        "description": "ID вэб-функцыі, напрыклад anchor-positioning. Шукайце ID на webstatus.dev; ID — гэта апошняя частка URL старонкі функцыі."
+      }
+    ]
+  }
+}

@@ -2,5 +2,9 @@
   "toggleAnimation": "Slå animasjon av/på",
   "info": "info",
   "image": "Bilde",
-  "animatedGif": "Animert GIF"
+  "animatedGif": "Animert GIF",
+  "playAnimation": "Spill av animasjon",
+  "pauseAnimation": "Sett animasjon på pause",
+  "showDescription": "Vis beskrivelse",
+  "hideDescription": "Skjul beskrivelse"
 }

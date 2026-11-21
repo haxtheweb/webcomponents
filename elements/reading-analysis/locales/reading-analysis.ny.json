@@ -60,6 +60,8 @@
   "flagsFound": "{correct} mwa {total} zapezeka",
   "toRethink": "{count} zoti muganizirenso",
   "notEvidence": "si umboni wa mbendera iyi",
+  "isEvidence": "umboni wa chizindikiro ichi",
+  "readingKeys": "Gwiritsani ntchito makiyi a mivi kusuntha kuchoka pa {unit} imodzi kupita ina.",
   "markAnswers": "Lembani mayankho",
   "doneMarking": "Kulemba mayankho kwatha",
   "editHint": "Sinthani nkhani ili m'munsiyi. Gwiritsani ntchito Lembani mayankho mu menyu ya chipika kuti musankhe komwe mbendera iliyonse ikuyenera kukhala.",

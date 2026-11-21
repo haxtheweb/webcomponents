@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Wuertsich",
+    "description": "E Buschtawegitter mat verstoppte Wierder. D'Léierender tippen op den éischten a leschte Buschtaf vun all Wuert. Übt, ze erkennen, wéi e Begrëff geschriwwe gëtt, net wat en bedeit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Wat d'Léierender solle fannen, am Kapp gewisen."
+      },
+      {
+        "title": "Wierder",
+        "description": "D'Wierder, déi verstoppt ginn. Espacen a Punktuatioun ginn aus dem Gitter erausgelooss. Wierder, déi net passen, ginn opgelëscht, während Dir beaarbecht, a fir d'Léierender ausgelooss."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gréisst vum Gitter",
+        "description": "Buschtawen pro Säit, 4 bis 16. Eidel loossen, fir dat längste Wuert ze fassen (bis zu 12). Méi wéi 12 scrollt op engem Handy sälwärts."
+      },
+      {
+        "title": "Diagonal Wierder",
+        "description": "Wierder och diagonal verstoppen. Méi schwéier."
+      },
+      {
+        "title": "Réckwäerts Wierder",
+        "description": "Och Wierder verstoppen, déi réckwäerts geschriwwe sinn. Méi schwéier."
+      },
+      {
+        "title": "Akzentfaarf",
+        "description": "Optional Faarf fir de Kapp-Chip, den éischte gewielte Buschtaf an de Knäppchen."
+      }
+    ]
+  }
+}

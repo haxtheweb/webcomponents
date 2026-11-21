@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "打字机",
     "description": "一个字符一个字符自家打出来个文字。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "文字",
+        "description": "元素滚动到视野里以后要打出来个文字。"
+      },
+      {
+        "title": "打字中",
+        "description": "显示闪烁个光标；元素打字个辰光会设迭个。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "延迟",
+        "description": "开始打字之前要等个毫秒数。"
+      },
+      {
+        "title": "光标持续时间",
+        "description": "文字打好以后光标继续闪个毫秒数。"
+      },
+      {
+        "title": "速度",
+        "description": "每个字符个毫秒数；数字越小打得越快。"
+      }
+    ]
   }
 }

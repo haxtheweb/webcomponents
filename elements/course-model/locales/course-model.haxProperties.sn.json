@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "zita"
+        "title": "zita",
+        "description": "Musoro unoratidzwa pamusoro pemuenzaniso wekosi."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Kero yefaira remuenzaniso we3D (.glb kana .gltf) rekuratidza."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Tsanangura muenzaniso we3D kuvanhu vasingagoni kuuona."
       },
       {
         "title": "Nzvimbo yeruzivo"

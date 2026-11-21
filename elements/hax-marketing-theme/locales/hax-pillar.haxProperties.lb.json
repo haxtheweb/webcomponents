@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Pilier",
+    "description": "E Pilier: Numm, Saz, Ikon, Faarf a firwat en wichteg ass"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numm"
+      },
+      {
+        "title": "Saz"
+      },
+      {
+        "title": "Ikon"
+      },
+      {
+        "title": "Faarf (DDD-Numm)"
+      },
+      {
+        "title": "Wéi e Pilier, 1 bis 7"
+      },
+      {
+        "title": "Kleng Kaart"
+      },
+      {
+        "title": "Wou den Numm hikënnt"
+      }
+    ]
+  }
+}

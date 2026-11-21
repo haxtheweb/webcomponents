@@ -23,7 +23,9 @@
           "stop": "Imani",
           "warning": "Chenjezo",
           "success": "Chitsimikizo",
-          "info": "Chidziwitso"
+          "info": "Chidziwitso",
+          "tip": "Langizo",
+          "new": "Zatsopano"
         }
       },
       {

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Helyettesítő szöveg"
+        "title": "Helyettesítő szöveg",
+        "description": "Írja le a képet azok számára, akik nem látják."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Opcionális összefoglaló szöveg, amikor a részletek nyitva vannak"
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek nyitva vannak",
+        "description": "A gomb szövege, amíg a leírás rejtve van, például Leírás megjelenítése."
       },
       {
         "property": "closeText",
-        "title": "Opcionális összefoglaló szöveg, amikor a részletek zárva vannak"
+        "title": "Opcionális összefoglaló szöveg, amikor a részletek zárva vannak",
+        "description": "A gomb szövege, amíg a leírás látható, például Leírás elrejtése."
       }
     ]
   }

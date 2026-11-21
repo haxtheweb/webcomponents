@@ -1,0 +1,22 @@
+{
+  "scenario": "Imeko",
+  "directions": "Imiyalelo",
+  "showDirections": "Bonisa imiyalelo",
+  "hideDirections": "Fihla imiyalelo",
+  "directionsRead": "Funda umboniso ngamnye ukhethe into onokuyenza.",
+  "directionsEndings": "Kukho iziphelo ezininzi. Zama enye indlela emva kokugqiba.",
+  "startOver": "Qala kwakhona",
+  "back": "Buyela umva inyathelo elinye",
+  "tryAnother": "Zama enye indlela",
+  "path": "Indlela",
+  "scene": "Umboniso",
+  "ending": "Isiphelo",
+  "end": "isiphelo",
+  "scenesSeen": "Kubonwe imiboniso eli-{seen} kwe-{total}",
+  "endingReached": "Ufike esiphelweni",
+  "addScene": "Yongeza umboniso",
+  "newScene": "Umboniso omtsha",
+  "newSceneText": "Chaza okwenzekayo, emva koko unxibelelanise ukhetho ngalunye nomboniso.",
+  "editingNote": "Ukuhlela: yonke imiboniso iyaboniswa. Ukhetho likhonkco eliya ku-# lilandelwa yi-id yomboniso.",
+  "noScenes": "Yongeza umboniso ukuqalisa imeko."
+}

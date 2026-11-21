@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Stádas Baseline",
+    "description": "Taispeáin stádas tacaíochta brabhsálaí Baseline do ghné d'ardán an ghréasáin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID na gné",
+        "description": "ID na gné gréasáin, mar shampla anchor-positioning. Aimsigh IDanna ag webstatus.dev; is é an ID an chuid dheireanach de URL leathanach gné."
+      }
+    ]
+  }
+}

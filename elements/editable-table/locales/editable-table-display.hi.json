@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV के रूप में कॉपी करें।",
   "printTable": "तालिका प्रिंट करें",
   "selectColumn": "कॉलम चुनें",
-  "dataTable": "डेटा · तालिका"
+  "dataTable": "डेटा · तालिका",
+  "filterStatus": "{total} में से {shown} पंक्तियाँ दिखाई जा रही हैं, {column} द्वारा फ़िल्टर: {text}",
+  "columnNumber": "कॉलम {column}",
+  "clearFilter": "फ़िल्टर साफ़ करें"
 }

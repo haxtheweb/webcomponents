@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Baris fitur",
+    "description": "Tampilan layar produk di samping maknanya bagi Anda"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label kecil"
+      },
+      {
+        "title": "Judul"
+      },
+      {
+        "title": "Gambar"
+      },
+      {
+        "title": "Apa yang ditampilkan gambar"
+      },
+      {
+        "title": "Gambar di sebelah kanan"
+      },
+      {
+        "title": "Warna bayangan (nama DDD, kosong mengikuti palet)"
+      }
+    ]
+  }
+}

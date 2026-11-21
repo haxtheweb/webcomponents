@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bandhingake platform",
+    "description": "Adu langsung: pilih rong platform apa wae saka berkas data"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data perbandingan (JSON)"
+      },
+      {
+        "title": "ID platform kiwa"
+      },
+      {
+        "title": "ID platform tengen"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Hali yenye matawi",
+    "description": "Hadithi ambapo kila chaguo huelekea tukio na mwisho tofauti. Wanafunzi wanaweza kurudi nyuma na kujaribu njia nyingine; mwisho uliofikiwa huweka alama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Jina la hali, linaloonyeshwa kwenye kichwa chake."
+      },
+      {
+        "title": "Tukio la kuanzia",
+        "description": "ID ya tukio ambalo wanafunzi huanzia. Acha tupu kuanza kwenye tukio la kwanza."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya hiari ya kibandiko cha kichwa, vitufe na ukingo wa chaguo."
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "loading": "正辣载入对比。",
+  "yes": "是",
+  "partly": "部分",
+  "no": "勿是",
+  "compare": "对比",
+  "with": "搭",
+  "vs": "对",
+  "caption": "{a} 搭 {b}，逐项功能对比",
+  "feature": "功能",
+  "clearYes": "{total} 项里 {count} 项明确是",
+  "seeForYourself": "自家看看：",
+  "and": "搭",
+  "why": "为啥"
+}

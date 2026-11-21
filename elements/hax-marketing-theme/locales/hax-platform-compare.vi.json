@@ -1,0 +1,15 @@
+{
+  "loading": "Đang tải bảng so sánh.",
+  "yes": "Có",
+  "partly": "Một phần",
+  "no": "Không",
+  "compare": "So sánh",
+  "with": "Với",
+  "vs": "vs",
+  "caption": "{a} và {b}, theo từng tính năng",
+  "feature": "Tính năng",
+  "clearYes": "{count} / {total} là có rõ ràng",
+  "seeForYourself": "Tự mình xem:",
+  "and": "và",
+  "why": "Tại sao"
+}

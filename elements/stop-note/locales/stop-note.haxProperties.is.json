@@ -23,7 +23,9 @@
           "stop": "Stöðva",
           "warning": "Viðvörun",
           "success": "Staðfesting",
-          "info": "Tilkynning"
+          "info": "Tilkynning",
+          "tip": "Ábending",
+          "new": "Nýjungar"
         }
       },
       {

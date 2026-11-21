@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Bhatani renyaya",
+    "description": "Bhatani rinovhura nyaya iri shure kwechirevo pa hax.cloud, kana nzvimbo inoenderana pane imwe saiti yenetwork yeHAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kwainoenda",
+        "options": {
+          "cloud": "hax.cloud, nyaya",
+          "learn": "learn.hax.cloud, chidzidzo",
+          "try": "browser.hax.cloud, iedze",
+          "elements": "webcomponents.hax.cloud, bhuroko",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Kero pasaiti iyoyo (nyaya pa hax.cloud inoita se stories/ee450a19)"
+      },
+      {
+        "title": "Zvainotaura nezvazvo"
+      },
+      {
+        "title": "Chip diki"
+      },
+      {
+        "title": "Ratidza zvainotaura nezvazvo mubhatani"
+      }
+    ]
+  }
+}

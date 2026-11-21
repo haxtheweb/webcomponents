@@ -1,0 +1,19 @@
+{
+  "label": "Amûra derve",
+  "labelLti": "Amûra derve · LTI 1.3",
+  "theTool": "amûr",
+  "directions": "Rêwerz",
+  "showDirections": "Rêwerzan nîşan bide",
+  "hideDirections": "Rêwerzan veşêre",
+  "directionsWindow": "Bişkok pencereyeke nû bi amûrê vedike.",
+  "directionsEmbed": "Bişkok amûrê li ser vê rûpelê vedike. Heke bar nebe, li şûna wê di pencereyeke nû de veke.",
+  "directionsLti": "Ev malper te dixe nav amûrê, ji ber vê yekê hesabeke cuda ne hewce ye.",
+  "openWindow": "{title} veke (pencereya nû)",
+  "openEmbed": "{title} veke",
+  "openInstead": "Li şûna wê di pencereyeke nû de veke",
+  "frameTitle": "{title} (amûra derve)",
+  "openedWindow": "Pencereyeke nû bi amûrê vebû.",
+  "openedEmbed": "Amûr li ser vê rûpelê vebû.",
+  "needsUrl": "Ev blok hewcedarê navnîşaneke destpêkirinê ye ku bi http:// an https:// dest pê dike.",
+  "needsSignIn": "Ev amûr hewcedarê xizmeta têketinê ya vê malperê ye, ku li vir tune ye. Tiştek venebû."
+}

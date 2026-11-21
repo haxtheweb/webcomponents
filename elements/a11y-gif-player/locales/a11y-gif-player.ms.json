@@ -2,5 +2,9 @@
   "toggleAnimation": "Togol animasi",
   "info": "maklumat",
   "image": "Imej",
-  "animatedGif": "GIF animasi"
+  "animatedGif": "GIF animasi",
+  "playAnimation": "Main animasi",
+  "pauseAnimation": "Jeda animasi",
+  "showDescription": "Tunjukkan penerangan",
+  "hideDescription": "Sembunyikan penerangan"
 }

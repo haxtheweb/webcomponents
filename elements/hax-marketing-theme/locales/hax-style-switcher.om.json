@@ -1,0 +1,16 @@
+{
+  "theme": "Dhaabbii",
+  "designSystem": "Sirna dizaayinii",
+  "dddDefault": "DDD (durtii)",
+  "designSystemHelp": "Halluu, qubee, golee fi xiyyeeffannaa. Dhaabbiin qindaa'ina ni eega.",
+  "designSystemFixed": "Dhaabbiin kun sirna dizaayinii mataa isaa eega.",
+  "palette": "Paleetii",
+  "themeDefault": "Durtii dhaabbii",
+  "paletteNumber": "Paleetii {n}",
+  "siteTheme": "{name} (dhaabbii marsariitii kanaa)",
+  "restyle": "Marsariitii kana bifa haaraa kenni",
+  "close": "Cufi",
+  "reset": "Gara bifa marsariitii kanaa isa duraatti deebi'i",
+  "random": "Na dinqisiisi",
+  "about": "Kun bifa HAX keessatti ijaaraman muraasa agarsiisa. Fuulonni gonkumaa hin jijjiiraman: caasaan JSON Outline Schema keessa jira, kutaan hundis web component istaandaardii dha, kanaaf dizaayiniin bilisaan jijjiiramuu danda'a."
+}

@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Fi àmì pamọ́",
         "description": "Fi àmì tí a ń lò láti ṣe ọ̀ṣọ́ ọ̀rọ̀ pamọ́"
+      },
+      {
+        "title": "Ìrísí",
+        "description": "Bí bọ́tìnnì ṣe ní ìtẹnumọ́ tó.",
+        "options": {
+          "": "Tí a kún",
+          "tonal": "Olóhùn-àwọ̀",
+          "outlined": "Tí a fi ìlà yí ká",
+          "plain": "Lásán"
+        }
+      },
+      {
+        "title": "Ìwọ̀n",
+        "description": "Ìwọ̀n bọ́tìnnì.",
+        "options": {
+          "s": "Kékeré",
+          "": "Àárín",
+          "l": "Ńlá"
+        }
       }
     ],
     "advanced": [

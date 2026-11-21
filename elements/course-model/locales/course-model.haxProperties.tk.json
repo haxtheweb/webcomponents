@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "at"
+        "title": "at",
+        "description": "Kurs modeliniň üstünde görkezilýän sözbaşy."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Görkeziljek 3D model faýlynyň (.glb ýa-da .gltf) salgysy."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D modeli görüp bilmeýänler üçin ony beýan ediň."
       },
       {
         "title": "Maglumat meýdany"

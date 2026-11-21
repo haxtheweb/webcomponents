@@ -1,0 +1,14 @@
+{
+  "scene": "ትዕይንት",
+  "ending": "መጨረሻ",
+  "goodEnding": "ጥሩ መጨረሻ",
+  "mixedEnding": "የተደበላለቀ መጨረሻ",
+  "poorEnding": "ደካማ መጨረሻ",
+  "scoreOf": "ውጤት {score} ከ {max}",
+  "scoreOnly": "ውጤት {score}",
+  "startScene": "መጀመሪያ",
+  "sceneIdLabel": "የትዕይንት ID",
+  "needsId": "ምርጫዎች ወደዚህ ትዕይንት እንዲያገናኙ የትዕይንት ID ያክሉ።",
+  "orphan": "ወደዚህ ትዕይንት የሚያገናኝ ምርጫ የለም።",
+  "deadLinks": "እነዚህ አገናኞች ወደሌለ ትዕይንት ያመለክታሉ፦"
+}

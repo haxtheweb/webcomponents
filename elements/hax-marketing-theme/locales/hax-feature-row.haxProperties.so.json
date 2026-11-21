@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Safka astaanta",
+    "description": "Shaashad ka mid ah badeecada oo ku ag taal waxa ay kuu tahay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Calaamad yar"
+      },
+      {
+        "title": "Cinwaan"
+      },
+      {
+        "title": "Sawir"
+      },
+      {
+        "title": "Waxa sawirku muujinayo"
+      },
+      {
+        "title": "Sawirka midigta"
+      },
+      {
+        "title": "Midabka hooska (magaca DDD, madhan wuxuu raacaa midabada)"
+      }
+    ]
+  }
+}

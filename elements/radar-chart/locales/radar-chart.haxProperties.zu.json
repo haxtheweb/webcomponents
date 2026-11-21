@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ishadi le-radar",
+    "description": "Ishadi le-radar (lesicabucabu) lamamodeli okuvuthwa nokunikeza amaphuzu ezici, njenge-HEOSAT. Lifaka umbhalo ongenye indlela nethebula ledatha."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Isihloko seshadi; futhi sisetshenziswa njengegama lalo elifinyelelekayo."
+      },
+      {
+        "title": "Amaphuzu aphezulu",
+        "description": "Inani eliphezulu esikalini."
+      },
+      {
+        "title": "Izigaba",
+        "description": "Isigaba esisodwa emugqeni ngamunye. Kudingeka okungenani ezi-3."
+      },
+      {
+        "title": "Amaphuzu",
+        "description": "Izinombolo ezihlukaniswe ngokhefana, eyodwa isigaba ngasinye ngokulandelana okufanayo."
+      },
+      {
+        "title": "Amaphuzu okuhlosiwe",
+        "description": "Izinombolo ezihlukaniswe ngokhefana, eyodwa isigaba ngasinye ngokulandelana okufanayo."
+      },
+      {
+        "title": "Bonisa isichasiselo",
+        "description": "Bonisa isichasiselo esiqamba amaphuzu nokuhlosiwe."
+      },
+      {
+        "title": "Kuhlangene",
+        "description": "Ishadi elincane elingenawo amalebula, isichasiselo noma ithebula ledatha. Zulazula phezu kwephuzu ukuze ubone amanani alo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ilebula yamaphuzu",
+        "description": "Ilebula yesichasiselo neyethebula yamaphuzu."
+      },
+      {
+        "title": "Ilebula yokuhlosiwe",
+        "description": "Ilebula yesichasiselo neyethebula yokuhlosiwe."
+      }
+    ]
+  }
+}

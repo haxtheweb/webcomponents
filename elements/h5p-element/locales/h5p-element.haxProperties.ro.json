@@ -4,7 +4,12 @@
     "description": "Redă conținut interactiv H5P dintr-un fișier .h5p încărcat, fără server H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fișier H5P",
+        "description": "Încărcați sau legați un fișier .h5p. Este despachetat în browser; nu este nevoie de server H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Cod de încorporare iframe vechi",

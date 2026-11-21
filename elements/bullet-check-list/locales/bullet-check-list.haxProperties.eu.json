@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Buletdun egiaztapen-zerrenda",
+    "description": "Kontrol-laukien zerrenda. Irakurleek elementuak markatzen dituzte eta haien aurrerapena beren gailuan gogoratzen da."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Zerrendaren izena. Kontrol-laukien taldearen etiketa gisa ozen irakurtzen da."
+      },
+      {
+        "title": "Elementuak",
+        "description": "Elementu bakoitza kontrol-lauki bat da. Irakurleek ezin dituzte markatutako edo desgaitutako elementuak aldatu."
+      },
+      {
+        "title": "Zenbakiduna",
+        "description": "Erakutsi zerrenda zenbakidun bat buletdun baten ordez."
+      },
+      {
+        "title": "Egoera",
+        "description": "Koloreak stop-note-ekin bat etortzeko aldatzen ditu.",
+        "options": {
+          "info": "Oharra",
+          "success": "Berrespena",
+          "warning": "Abisua",
+          "stop": "Gelditu"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Biltegiratze-IDa",
+        "description": "Irakurlearen aurrerapena haren gailuan gogoratzeko erabiltzen den ID bakarra. Automatikoki sortua; aldatu soilik zerrenden artean aurrerapena partekatzeko edo hutsetik hasteko."
+      }
+    ]
+  }
+}

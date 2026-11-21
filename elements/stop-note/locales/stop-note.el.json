@@ -3,5 +3,7 @@
   "status_stop": "Στοπ",
   "status_warning": "Προειδοποίηση",
   "status_success": "Επιτυχία",
-  "status_info": "Σημείωση"
+  "status_info": "Σημείωση",
+  "status_tip": "Το ξέρατε;",
+  "status_new": "Τι νέο υπάρχει"
 }

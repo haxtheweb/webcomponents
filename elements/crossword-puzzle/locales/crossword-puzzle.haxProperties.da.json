@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krydsord",
+    "description": "Et krydsord lavet ud fra en liste med ord og stikord. Gitteret genereres for dig; deltagerne skriver ordene og tjekker dem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Titlen eller spørgsmålet, der vises over krydsordet."
+      },
+      {
+        "title": "Ord",
+        "description": "Hvert ord og dets stikord. Gitteret genereres ud fra denne liste: det længste ord placeres først, og de andre krydser det på fælles bogstaver."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøg",
+        "description": "Hvor mange gange en deltager kan tjekke. 0 betyder ubegrænset."
+      },
+      {
+        "title": "Accentfarve",
+        "description": "Valgfri farve til overskriftsmærket, det aktive ord og handlingsknapperne."
+      },
+      {
+        "title": "Sammenklappelig",
+        "description": "Vis dette krydsord som en række, der åbner og lukker. Når én åbnes, lukkes de andre sammenklappelige spørgsmål ved siden af."
+      },
+      {
+        "title": "Start sammenklappet",
+        "description": "Når den er sammenklappelig, startes den som en lukket række, der kun viser titlen og dens status."
+      },
+      {
+        "title": "Bedømmelsesformat",
+        "description": "OER Schema: bedømmelsesformat for denne opgave (f.eks. point, bogstavkarakter, procent, gennemførelse)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne opgave."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Quizzens navn",
+        "description": "Quiznavn, der bruges til xAPI-identifikation i analysesystemer."
+      },
+      {
+        "title": "Kursus",
+        "description": "OER Schema: det kursus, denne opgave er beregnet til."
+      }
+    ]
+  }
+}

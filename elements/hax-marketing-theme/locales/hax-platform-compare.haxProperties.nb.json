@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plattformsammenligning",
+    "description": "Mann mot mann: velg to plattformer fra en datafil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sammenligningsdata (JSON)"
+      },
+      {
+        "title": "ID for venstre plattform"
+      },
+      {
+        "title": "ID for høyre plattform"
+      }
+    ]
+  }
+}

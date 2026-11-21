@@ -20,6 +20,12 @@
         "title": "Ta'ãnga",
         "description": "Ta'ãnga ojehechaukáva ñe'ẽ jeguerupyre ndive."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Marco reheve",
+        "description": "Eta'ãngahai jehe'ijey bloque marco ojeipurúvape, peteĩ ta'ãngachu'i ha teraguã ijyvatégui, ojogua hag̃ua jehaipy ha tape kárta ndive."
+      }
     ]
   }
 }

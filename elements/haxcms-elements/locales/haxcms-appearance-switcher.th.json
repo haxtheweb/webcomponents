@@ -1,0 +1,8 @@
+{
+  "theme": "ธีม",
+  "palette": "ชุดสี",
+  "themeDefault": "ค่าเริ่มต้นของธีม",
+  "designSystem": "ระบบการออกแบบ",
+  "designSystemDefault": "DDD (ค่าเริ่มต้น)",
+  "designSystemUnavailable": "ธีมนี้ใช้ระบบการออกแบบของตัวเอง"
+}

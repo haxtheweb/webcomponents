@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Belgilanadigan ro‘yxat",
+    "description": "Belgilash katakchalari ro‘yxati. O‘quvchilar bandlarni belgilaydi va ularning yutuqlari o‘z qurilmasida eslab qolinadi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha",
+        "description": "Ro‘yxat nomi. Katakchalar guruhining yorlig‘i sifatida ovoz chiqarib o‘qiladi."
+      },
+      {
+        "title": "Bandlar",
+        "description": "Har bir band — belgilash katakchasi. Belgilangan yoki o‘chirilgan bandlarni o‘quvchilar o‘zgartira olmaydi."
+      },
+      {
+        "title": "Raqamlangan",
+        "description": "Belgili ro‘yxat o‘rniga raqamli ro‘yxatni ko‘rsatish."
+      },
+      {
+        "title": "Holat",
+        "description": "Ranglarni stop-note ga moslab o‘zgartiradi.",
+        "options": {
+          "info": "Bildirishnoma",
+          "success": "Tasdiq",
+          "warning": "Ogohlantirish",
+          "stop": "To‘xta"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Saqlash ID si",
+        "description": "O‘quvchi yutuqlarini uning qurilmasida eslab qolish uchun noyob ID. Avtomatik yaratiladi; faqat ro‘yxatlar orasida yutuqlarni ulashish yoki noldan boshlash uchun o‘zgartiring."
+      }
+    ]
+  }
+}

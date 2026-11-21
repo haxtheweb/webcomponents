@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "数据",
+    "description": "一个往上数个数字，带标签搭指向伊故事个链接"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "要数到个数字"
+      },
+      {
+        "title": "数字前头"
+      },
+      {
+        "title": "数字后头"
+      },
+      {
+        "title": "用文字代替数字"
+      },
+      {
+        "title": "伊数个是啥"
+      },
+      {
+        "title": "hax.cloud 上个故事地址（stories/ee450a19）"
+      }
+    ]
+  }
+}

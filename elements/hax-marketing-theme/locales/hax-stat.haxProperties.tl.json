@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Stat",
+    "description": "Isang numerong nagbibilang pataas, na may label at link sa kuwento nito"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numerong bibilangin pataas"
+      },
+      {
+        "title": "Bago ang numero"
+      },
+      {
+        "title": "Pagkatapos ng numero"
+      },
+      {
+        "title": "Mga salita sa halip na numero"
+      },
+      {
+        "title": "Ano ang binibilang nito"
+      },
+      {
+        "title": "Address ng kuwento sa hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

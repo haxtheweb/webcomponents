@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ìlà ẹ̀yà",
+    "description": "Ojú-ìbòjú ọjà náà lẹ́gbẹ̀ẹ́ ohun tí ó túmọ̀ sí fún ọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àmì kékeré"
+      },
+      {
+        "title": "Àkọlé"
+      },
+      {
+        "title": "Àwòrán"
+      },
+      {
+        "title": "Ohun tí àwòrán náà fihàn"
+      },
+      {
+        "title": "Àwòrán ní ọ̀tún"
+      },
+      {
+        "title": "Àwọ̀ òjìji (orúkọ DDD, òfo ń tẹ̀lé àpò àwọ̀)"
+      }
+    ]
+  }
+}

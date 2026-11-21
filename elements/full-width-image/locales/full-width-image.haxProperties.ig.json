@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Onyonyo azụ."
+        "description": "Onyonyo azụ.",
+        "title": "Onyonyo"
       },
       {
         "property": "caption",
-        "description": "Isiokwu ederede."
+        "description": "Isiokwu ederede.",
+        "title": "Nkọwa onyonyo"
       }
     ]
   }

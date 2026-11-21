@@ -60,6 +60,8 @@
   "flagsFound": "{correct} el {total} trovitaj",
   "toRethink": "{count} por repripensi",
   "notEvidence": "ne estas pruvo por ĉi tiu flageto",
+  "isEvidence": "pruvo por ĉi tiu flago",
+  "readingKeys": "Uzu la sagoklavojn por moviĝi de unu {unit} al la sekva.",
   "markAnswers": "Marki respondojn",
   "doneMarking": "Fini marki respondojn",
   "editHint": "Redaktu la tekston sube. Uzu Marki respondojn en la bloka menuo por elekti kie apartenas ĉiu flageto.",

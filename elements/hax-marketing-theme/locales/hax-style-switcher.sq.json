@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistemi i dizajnit",
+  "dddDefault": "DDD (parazgjedhje)",
+  "designSystemHelp": "Ngjyra, shkronjat, qoshet dhe fokusi. Tema ruan paraqitjen.",
+  "designSystemFixed": "Kjo temë ruan sistemin e vet të dizajnit.",
+  "palette": "Paleta",
+  "themeDefault": "Parazgjedhja e temës",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (tema e këtij sajti)",
+  "restyle": "Ristilo këtë sajt",
+  "close": "Mbyll",
+  "reset": "Kthehu te pamja e vetë këtij sajti",
+  "random": "Më surprizo",
+  "about": "Kjo tregon disa nga pamjet e ndërtuara në HAX. Faqet nuk ndryshojnë kurrë: struktura jeton në JSON Outline Schema dhe çdo bllok është web component standard, ndaj dizajni mund të ndërrohet lirshëm."
+}

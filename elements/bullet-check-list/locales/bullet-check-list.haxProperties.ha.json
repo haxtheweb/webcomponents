@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Jerin dubawa mai ɗigo",
+    "description": "Jerin akwatunan dubawa. Masu karatu suna yi wa abubuwa alama kuma ana tuna ci gabansu a na'urarsu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Sunan jerin. Ana karanta shi da babbar murya a matsayin lakabin rukunin akwatunan dubawa."
+      },
+      {
+        "title": "Abubuwa",
+        "description": "Kowane abu akwatin dubawa ne. Masu karatu ba za su iya canza abubuwan da aka duba ko aka kashe ba."
+      },
+      {
+        "title": "Mai lamba",
+        "description": "Nuna jeri mai lamba maimakon mai ɗigo."
+      },
+      {
+        "title": "Matsayi",
+        "description": "Yana canza launuka don su dace da stop-note.",
+        "options": {
+          "info": "Sanarwa",
+          "success": "Tabbatarwa",
+          "warning": "Gargaɗi",
+          "stop": "Tsaya"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id na ajiya",
+        "description": "Id na musamman da ake amfani da shi don tuna ci gaban mai karatu a na'urarsa. Ana samar da shi kai tsaye; canza shi kawai don raba ci gaba tsakanin jeri ko don sake farawa."
+      }
+    ]
+  }
+}

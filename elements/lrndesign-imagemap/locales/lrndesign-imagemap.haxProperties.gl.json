@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detalles dos puntos interactivos",
         "description": "Os puntos interactivos do mapa de imaxe."
+      },
+      {
+        "title": "Detalles dos puntos clave",
+        "description": "Os puntos clave interactivos do mapa de imaxe."
       }
     ]
   }

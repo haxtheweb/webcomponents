@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Kutanga mudziyo wekunze",
+    "description": "Bhuroko rinovhura mudziyo wekudzidza wekunze muhwindo idzva kana papeji, se link yakapusa kana nechikumbiro chekupinda cheLTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Zita remudziyo. Rinoratidzwa pamusoro nepabhatani."
+      },
+      {
+        "title": "Tsananguro",
+        "description": "Zvinoitwa nevadzidzi mumudziyo, zvinoratidzwa pamusoro pebhatani."
+      },
+      {
+        "title": "URL yekutanga",
+        "description": "Kero yemudziyo. Inofanira kuva kero yakazara inotanga ne https:// kana http://."
+      },
+      {
+        "title": "Vhura mu",
+        "description": "Hwindo idzva rinoshanda nemudziyo wese. Papeji iri rinoshanda chete nemidziyo inobvumira kuratidzwa mukati meimwe saiti.",
+        "options": {
+          "window": "Hwindo idzva",
+          "embed": "Papeji iri"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL yekupinda yeLTI",
+        "description": "LTI 1.3 chete: kero yekutanga kupinda yemudziyo. Nayo, client ID ne deployment ID bhatani rinotumira chikumbiro chekupinda cheLTI panzvimbo pekuvhura link yakapusa. Kupedzisa kutanga kunoda sevhisi yeLTI yesaiti iyi."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID yakapihwa saiti iyi nemudziyo. Chiziviso cheruzhinji, kwete chakavanzika: usambofa wakaisa makiyi kana zvakavanzika pano."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID yakapihwa saiti iyi nemudziyo. Chiziviso cheruzhinji, kwete chakavanzika."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Kero inozivisa saiti iyi kumudziyo. Siya pasina chinhu kuti ushandise kero yesaiti iripo peji."
+      },
+      {
+        "title": "Kureba papeji",
+        "description": "Kureba kwemudziyo kana wavhurika papeji iri, mumapixel (200 kusvika 2000)."
+      },
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwechip yemusoro nebhatani. Siya pasina chinhu kuti utevere theme."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Chiratidzo chekupinda cheLTI",
+        "description": "Kukosha kusinganzwisisike kunoshandiswa nesevhisi yeLTI yesaiti iyi kuziva mudzidzi. Kazhinji kunopihwa nesaiti kuburikidza nechiitiko che lti-launch-request pane kuchengetedzwa pano. Haisi pasiwedhi kana kiyi."
+      },
+      {
+        "title": "Chiratidzo chemeseji cheLTI",
+        "description": "Kukosha kusinganzwisisike kunoshandiswa nesevhisi yeLTI yesaiti iyi kuziva kutanga uku. Kazhinji kunopihwa nesaiti pane kuchengetedzwa pano."
+      }
+    ]
+  }
+}

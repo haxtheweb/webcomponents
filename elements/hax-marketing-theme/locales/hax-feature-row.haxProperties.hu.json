@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Funkciósor",
+    "description": "A termék egy képernyője, mellette az, hogy mit jelent Önnek"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kis címke"
+      },
+      {
+        "title": "Címsor"
+      },
+      {
+        "title": "Kép"
+      },
+      {
+        "title": "Mit ábrázol a kép"
+      },
+      {
+        "title": "Kép a jobb oldalon"
+      },
+      {
+        "title": "Árnyék színe (DDD név, üresen a palettát követi)"
+      }
+    ]
+  }
+}

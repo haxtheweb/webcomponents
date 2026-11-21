@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Talababa",
+    "description": "Isang talang isinulat kung saan ito nababagay sa teksto. Lumalabas ito bilang numero, at kusang nabubuo ang may-numerong listahan ng mga tala sa ibaba ng pahina."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tala",
+        "description": "Ang teksto ng talababa."
+      },
+      {
+        "title": "Walang preview",
+        "description": "Huwag ipakita ang tala kapag nag-hover o nag-focus ang mambabasa sa numero."
+      }
+    ]
+  }
+}

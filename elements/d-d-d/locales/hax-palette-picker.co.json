@@ -5,5 +5,6 @@
   "selected": "Selezziunata",
   "currentlyActiveAndSelectedPalette": "Tavuletta attualmente attiva è selezziunata",
   "currentlyActivePalette": "Tavuletta attualmente attiva",
-  "selectedPaletteToApply": "Tavuletta selezziunata da appiecà"
+  "selectedPaletteToApply": "Tavuletta selezziunata da appiecà",
+  "paletteNumber": "Tavuletta {number}"
 }

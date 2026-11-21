@@ -6,6 +6,8 @@
   "faviconDescription": "Atahanga ripa pūtirotiro / ka whakamahia ki ngā waea hei moko pae iti",
   "domain": "Rohe",
   "domainDescription": "Rohe o tēnei paetukutuku",
+  "sameAs": "Ētahi atu kōtaha o tēnei pae",
+  "sameAsDescription": "Kotahi te hono mō ia rārangi ki ngā kōtaha o tēnei pae, o te whakahaere rānei kei wāhi kē (GitHub, LinkedIn, YouTube, Mastodon). Ka whakamahia e ngā pūkaha rapu hei hono i aua kōtaha ki tēnei pae.",
   "language": "Reo",
   "languageDescription": "Te reo o tēnei pae. Rapua mā te ingoa, mā te waehere rānei, tāuruhia rānei tētahi atu waehere pēnei i te fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

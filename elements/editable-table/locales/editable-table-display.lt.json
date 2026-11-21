@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopijuoti kaip CSV.",
   "printTable": "Spausdinti lentelę",
   "selectColumn": "Pasirinkti stulpelį",
-  "dataTable": "Duomenys · Lentelė"
+  "dataTable": "Duomenys · Lentelė",
+  "filterStatus": "Rodoma {shown} iš {total} eilučių, filtruota pagal {column}: {text}",
+  "columnNumber": "Stulpelis {column}",
+  "clearFilter": "Išvalyti filtrą"
 }

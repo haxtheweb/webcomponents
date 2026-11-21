@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota kêlekê",
+    "description": "Notek ku ji naveroka derdorê cuda ye, bi îkon û etîketeke vebijarkî."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etîket",
+        "description": "Etîketa nota kêlekê."
+      },
+      {
+        "title": "Îkon",
+        "description": "Îkona nota kêlekê."
+      },
+      {
+        "title": "Naverok",
+        "description": "Naveroka nota kêlekê."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Reng",
+        "description": "Rengê ku nota kêlekê pê tê rengkirin."
+      }
+    ]
+  }
+}

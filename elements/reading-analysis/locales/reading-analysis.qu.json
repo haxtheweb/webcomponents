@@ -60,6 +60,8 @@
   "flagsFound": "{total} manta {correct} tarisqa",
   "toRethink": "{count} watiqmanta yuyaykunapaq",
   "notEvidence": "manam kay unanchapaq rikuchiqchu",
+  "isEvidence": "kay señalpaq rikuchiy",
+  "readingKeys": "Wach'i llavekunata llamk'achiy huk {unit} manta qatiqman kuyunaykipaq.",
   "markAnswers": "Kutichiykunata unanchay",
   "doneMarking": "Kutichiykunata unanchayta tukuni",
   "editHint": "Uraypi ñawinchayta allichay. Bloque menúpi Kutichiykunata unanchay llamk'achiy, sapa unancha maypi kananta akllanaykipaq.",

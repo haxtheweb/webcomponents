@@ -20,6 +20,12 @@
         "title": "Gambar",
         "description": "Gambar yang ditampilkan bersama kutipan."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Berbingkai",
+        "description": "Tampilkan kutipan pada bingkai blok bersama, dengan ikon dan label di atasnya, agar serasi dengan catatan dan kartu instruksi."
+      }
     ]
   }
 }

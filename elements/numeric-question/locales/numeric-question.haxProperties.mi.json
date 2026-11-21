@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Pātai tau",
+    "description": "He pātai e whakautua ana ki tētahi tau. Ko te whakautu he tau pūmau, he tātai rānei ka tātaihia mai i ngā taurangi, ā, ka whakaaetia mēnā kei roto i te āwhanga."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pātai",
+        "description": "Te mea e pātaihia ana ki ngā ākonga. Tuhia te ingoa o tētahi taurangi ki roto i ngā taiapa kōrua, pērā i {d}, hei whakaatu i tōna uara."
+      },
+      {
+        "title": "Waeine",
+        "description": "Ka whakaaturia hei kuputuhi i te taha o te āpure whakautu, hei tauira km/h."
+      },
+      {
+        "title": "Whakautu",
+        "description": "Te tau tika. Waiho kia wātea mēnā mā tētahi tātai e tātai te whakautu."
+      },
+      {
+        "title": "Tātai",
+        "description": "Ka tātai i te whakautu mai i ngā taurangi, hei tauira d / (t / 60). Ka taea te whakamahi i te + - * / ^, ngā taiapa, sqrt() me abs(). Ka whakamahia hei whakakapi i te whakautu ina tautuhia."
+      },
+      {
+        "title": "Ngā taurangi",
+        "description": "Ngā tau e whakamahia ana e te tātai me te pātai. Ka whiwhi ia mea i tētahi uara i waenga i tōna iti rawa me tōna teitei rawa, ā-hipanga."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Āwhanga",
+        "description": "Te tawhiti mai i te whakautu tika e whakaaetia tonu ana. Ko te 0 te tikanga he tika rawa, kua whakaawhiwhia rānei ki ngā ira ā-ira i raro."
+      },
+      {
+        "title": "Momo āwhanga",
+        "description": "Pūmau: tāpiri, tango rānei i te āwhanga. Ōrau: tāpiri, tango rānei i taua ōrau o te whakautu tika.",
+        "options": {
+          "absolute": "Pūmau",
+          "percent": "Ōrau"
+        }
+      },
+      {
+        "title": "Ngā ira ā-ira",
+        "description": "Ka tonoa ngā ākonga kia whakaawhiwhia ki tēnei maha o ngā ira, ā, ka whakaaturia te whakautu kua whakaawhiwhia. Waiho kia wātea mō te kore whakaawhiwhi."
+      },
+      {
+        "title": "Ngā ngana",
+        "description": "E hia ngā wā ka taea e te ākonga te arowhai. Ko te 0 te tikanga kāore he tepe."
+      },
+      {
+        "title": "He tau hou i ia ngana",
+        "description": "Tōia he uara taurangi hou ia wā ka ngana anō tētahi ākonga. Kāore tā rātou whakautu o mua e whakaaturia ina hoki mai, ko te mea anake mēnā i tika."
+      },
+      {
+        "title": "Ka taea te kōpaki",
+        "description": "Whakaaturia tēnei pātai hei rārangi ka tuwhera, ka kati hoki. Ka kati te whakatuwhera i tētahi i ētahi atu pātai kōpaki i tōna taha."
+      },
+      {
+        "title": "Tīmata kua kōpakina",
+        "description": "Ina taea te kōpaki, tīmata hei rārangi kua kati e whakaatu ana i te pātai me tōna tūnga anake."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ingoa o te pātaitai",
+        "description": "Te ingoa pātaitai e whakamahia ana mō te tautohu xAPI i ngā pūnaha tātari."
+      }
+    ]
+  }
+}

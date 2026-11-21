@@ -1,0 +1,15 @@
+{
+  "loading": "טוען את ההשוואה.",
+  "yes": "כן",
+  "partly": "חלקית",
+  "no": "לא",
+  "compare": "השוואה",
+  "with": "עם",
+  "vs": "מול",
+  "caption": "{a} ו־{b}, תכונה מול תכונה",
+  "feature": "תכונה",
+  "clearYes": "{count} מתוך {total} בבירור כן",
+  "seeForYourself": "ראו בעצמכם:",
+  "and": "ו",
+  "why": "למה"
+}

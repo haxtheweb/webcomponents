@@ -6,6 +6,8 @@
   "faviconDescription": "Ofbylding foar blêderljepper / op tillefoans brûkt as lyts websteelogo",
   "domain": "Domein",
   "domainDescription": "Domein fan dizze webstee",
+  "sameAs": "Oare profilen fan dizze side",
+  "sameAsDescription": "Ien keppeling per rigel nei de profilen fan dizze side of organisaasje earne oars (GitHub, LinkedIn, YouTube, Mastodon). Sykmasines brûke se om dy profilen oan dizze side te keppeljen.",
   "language": "Taal",
   "languageDescription": "Taal fan dizze side. Sykje op namme of koade, of fier in oare koade yn lykas fr-CA.",
   "googleAnalyticsId": "Google Analytics-ID",

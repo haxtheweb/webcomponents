@@ -5,5 +5,6 @@
   "selected": "انتخاب‌شده",
   "currentlyActiveAndSelectedPalette": "پالت فعال و انتخاب‌شده کنونی",
   "currentlyActivePalette": "پالت فعال کنونی",
-  "selectedPaletteToApply": "پالت انتخاب‌شده برای اعمال"
+  "selectedPaletteToApply": "پالت انتخاب‌شده برای اعمال",
+  "paletteNumber": "پالت {number}"
 }

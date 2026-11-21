@@ -23,7 +23,9 @@
           "stop": "Stopp",
           "warning": "Hoiatus",
           "success": "Kinnitus",
-          "info": "Teade"
+          "info": "Teade",
+          "tip": "Nõuanne",
+          "new": "Mis on uut"
         }
       },
       {

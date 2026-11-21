@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Listahan ng mga hakbang",
     "description": "Mga hakbang na may bilang para tapusin ang isang gawain."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Step indicator",
+        "description": "Ipakita ang mga hakbang bilang siksik na hanay ng mga pamagat na nagmamarka ng progreso. Hindi ipinapakita ang nilalaman ng hakbang sa layout na ito."
+      },
+      {
+        "title": "Kasalukuyang hakbang",
+        "description": "Ang hakbang kung nasaan ang mambabasa, nagbibilang mula 1. Ipinapakitang nakumpleto ang mga naunang hakbang. Ginagamit ng step indicator."
+      }
+    ]
   }
 }

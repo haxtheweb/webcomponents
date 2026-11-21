@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota kaki",
+    "description": "Nota yang ditulis di tempatnya dalam teks. Ia dipaparkan sebagai nombor, dan senarai nota bernombor terbina sendiri di bahagian bawah halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "Teks nota kaki."
+      },
+      {
+        "title": "Tiada pratonton",
+        "description": "Jangan tunjukkan nota apabila pembaca melayang atau memfokus pada nombor."
+      }
+    ]
+  }
+}

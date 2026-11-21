@@ -52,6 +52,20 @@
           "_top": "Øverste vindu - _top",
           "_parent": "Overordnet vindu - _parent"
         }
+      },
+      {
+        "title": "Ingen pil",
+        "description": "Skjul knappens pil."
+      },
+      {
+        "title": "Lenke: mål",
+        "description": "Hvor lenken skal åpnes.",
+        "options": {
+          "": "Samme vindu",
+          "_blank": "Nytt vindu - _blank",
+          "_top": "Øverste vindu - _top",
+          "_parent": "Overordnet vindu - _parent"
+        }
       }
     ],
     "developer": [

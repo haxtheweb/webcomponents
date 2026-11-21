@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Chọpụta ebe ndị ahụ",
+    "description": "Ndị mmụta na-achọta ebe ziri ezi na onyonyo site n'ịpị, imetụ ma ọ bụ ịkpali crosshair kiibọọdụ. Ụdị nwere akara nke maapụ onyonyo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Onyonyo",
+        "description": "Foto ndị mmụta na-achọ n'ime ya."
+      },
+      {
+        "title": "Ederede nnọchi",
+        "description": "Na-akọwa foto ahụ maka ndị na-enweghị ike ịhụ ya. A naghị egosi ya dịka aha ma ọlị."
+      },
+      {
+        "title": "Aha",
+        "description": "Aha dị mkpụmkpụ a na-ahụ anya e gosiri n'elu foto ahụ."
+      },
+      {
+        "title": "Ajụjụ",
+        "description": "Ihe a na-ajụ ndị mmụta ka ha chọta na foto ahụ."
+      },
+      {
+        "title": "Azịza",
+        "description": "Azịza ọ bụla bụ oval nwere aha na foto ahụ. Ọnọdụ na nha bụ pasentị nke foto ahụ, a tụrụ site na nkuku elu aka ekpe ya. Mgbe a na-edezi, a na-akpụchi azịza ọ bụla na foto ahụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ngbalị",
+        "description": "Ugboro ole onye mmụta nwere ike ịnwa. 0 pụtara enweghị oke."
+      },
+      {
+        "title": "Ntụfu ekwere",
+        "description": "Ntụfu ole na-akwụsị ngbalị. 0 pụtara enweghị oke, ndị mmụta na-enwetakwa bọtịnụ Mechaa."
+      },
+      {
+        "title": "Enwere ike ịkpachi",
+        "description": "Gosi ajụjụ a dịka ahịrị na-emeghe ma na-emechi. Imeghe otu na-emechi ajụjụ ndị ọzọ enwere ike ịkpachi dị n'akụkụ ya."
+      },
+      {
+        "title": "Malite emechiri emechi",
+        "description": "Mgbe enwere ike ịkpachi, malite dịka ahịrị emechiri emechi na-egosi naanị ajụjụ na ọnọdụ ya."
+      },
+      {
+        "title": "Ụdị akara",
+        "description": "OER Schema: ụdị akara maka nyocha a (dịka akara, mkpụrụedemede, pasentị, mmecha)."
+      },
+      {
+        "title": "Ebumnuche mmụta",
+        "description": "OER Schema: ebumnuche mmụta metụtara nyocha a."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Aha ajụjụ ule",
+        "description": "Aha ajụjụ ule enyere maka ojiji na gburugburu xAPI iji chọpụta ihe a"
+      },
+      {
+        "title": "Ọmụmụ",
+        "description": "OER Schema: ọmụmụ e bu n'obi maka nyocha a."
+      }
+    ]
+  }
+}

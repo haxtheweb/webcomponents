@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Wykres radarowy",
+    "description": "Wykres radarowy (pajęczynowy) dla modeli dojrzałości i ocen wymiarów, takich jak HEOSAT. Zawiera alternatywę tekstową i tabelę danych."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Nagłówek wykresu; używany też jako jego dostępna nazwa."
+      },
+      {
+        "title": "Maksymalny wynik",
+        "description": "Najwyższa wartość na skali."
+      },
+      {
+        "title": "Kategorie",
+        "description": "Jedna kategoria w wierszu. Wymagane co najmniej 3."
+      },
+      {
+        "title": "Wyniki",
+        "description": "Liczby oddzielone przecinkami, po jednej na kategorię, w tej samej kolejności."
+      },
+      {
+        "title": "Wyniki docelowe",
+        "description": "Liczby oddzielone przecinkami, po jednej na kategorię, w tej samej kolejności."
+      },
+      {
+        "title": "Pokaż legendę",
+        "description": "Pokaż legendę nazywającą wyniki i cele."
+      },
+      {
+        "title": "Kompaktowy",
+        "description": "Mniejszy wykres bez etykiet, legendy i tabeli danych. Najedź na punkt, aby zobaczyć jego wartości."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etykieta wyników",
+        "description": "Etykieta wyników w legendzie i tabeli."
+      },
+      {
+        "title": "Etykieta celów",
+        "description": "Etykieta celów w legendzie i tabeli."
+      }
+    ]
+  }
+}

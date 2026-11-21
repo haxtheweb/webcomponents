@@ -1,0 +1,16 @@
+{
+  "drawing": "描画",
+  "edit": "描画を編集",
+  "start": "描画を開始",
+  "remove": "描画を削除",
+  "empty": "まだ何も描かれていません",
+  "save": "保存",
+  "cancel": "キャンセル",
+  "close": "閉じる",
+  "discard": "変更を破棄",
+  "discardConfirm": "保存していない変更を破棄しますか？",
+  "keepEditing": "編集を続ける",
+  "draw": "描画",
+  "feedback": "フィードバック",
+  "signature": "署名"
+}

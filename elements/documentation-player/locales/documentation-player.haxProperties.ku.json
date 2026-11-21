@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Lîstikvana belgeyan",
+    "description": "Rêberî, demo û referans ji bo pêkhateyeke webê, bi bişkokên kopîkirinê ji bo HTML, import, npm û CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pela daneyên belgeyan",
+        "description": "Daneyên belgeyan ên ku bi hêmanê re tên (lib/tag.docs.json)."
+      },
+      {
+        "title": "Storyboarda rêberiyê",
+        "description": "Storyboarda tevgerê ya ku bi hêmanê re tê (tag.motion.json). Vebijarkî."
+      },
+      {
+        "title": "Dersa vîdyoyî",
+        "description": "Vîdyoyeke kurt derbarê hêmanê de (YouTube, Vimeo an pela vîdyoyê). Li şûna vîdyoya di daneyên belgeyan de tê."
+      },
+      {
+        "title": "Li ser tabê veke",
+        "description": "Kîjan tab pêşî tê nîşandan.",
+        "options": {
+          "motion": "Rêberî",
+          "video": "Vîdyo",
+          "demo": "Demo",
+          "docs": "Belge",
+          "schema": "Şema"
+        }
+      },
+      {
+        "title": "Rêberiya bixweber",
+        "description": "Rêberiyê dest pê bike gava lîstikvan xuya dibe. Dema xwîner tevgera kêm tercîh dike tê paşguhkirin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mijara rêberiyê",
+        "description": "Ji bo hêmanên bi çend rêberiyan, kîjan mijar pêşî vebe (wek add-blocks). Ji bo ya sereke vala bihêle."
+      },
+      {
+        "title": "Girêdana demoya zindî",
+        "description": "Bişkoka Çavkaniya demoyê veke diçe ku derê. Bi standardî peldanka demo di depoyê de ye."
+      },
+      {
+        "title": "Girêdana belgeyan",
+        "description": "Bişkoka belgeyên tevahî diçe ku derê, wek rûpela Learn HAX ya guncaw."
+      }
+    ]
+  }
+}

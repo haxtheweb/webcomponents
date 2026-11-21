@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX konfiguratsiyasi va tahrirlanadigan xususiyatlarni namoyish qilish uchun ishlatiladigan namunaviy boshlang‘ich element."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sarlavha"
+      }
+    ]
+  }
+}

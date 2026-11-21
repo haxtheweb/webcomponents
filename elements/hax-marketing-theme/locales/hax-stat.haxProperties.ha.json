@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ƙididdiga",
+    "description": "Lamba da ke ƙirgawa sama, tare da lakabi da mahaɗi zuwa labarinta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lambar da za a ƙirga zuwa"
+      },
+      {
+        "title": "Kafin lambar"
+      },
+      {
+        "title": "Bayan lambar"
+      },
+      {
+        "title": "Kalmomi maimakon lamba"
+      },
+      {
+        "title": "Abin da yake ƙirgawa"
+      },
+      {
+        "title": "Adireshin labari a hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

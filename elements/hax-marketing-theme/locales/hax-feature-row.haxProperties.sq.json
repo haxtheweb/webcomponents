@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rresht veçorish",
+    "description": "Një ekran i produktit pranë asaj që do të thotë për ty"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketë e vogël"
+      },
+      {
+        "title": "Titulli"
+      },
+      {
+        "title": "Foto"
+      },
+      {
+        "title": "Çfarë tregon fotoja"
+      },
+      {
+        "title": "Fotoja djathtas"
+      },
+      {
+        "title": "Ngjyra e hijes (emër DDD, bosh ndjek paletën)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Shtyllë",
+    "description": "Një shtyllë: emri, fraza, ikona, ngjyra dhe pse ka rëndësi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Emri"
+      },
+      {
+        "title": "Fraza"
+      },
+      {
+        "title": "Ikona"
+      },
+      {
+        "title": "Ngjyra (emër DDD)"
+      },
+      {
+        "title": "Cila shtyllë, 1 deri në 7"
+      },
+      {
+        "title": "Kartë e vogël"
+      },
+      {
+        "title": "Ku vendoset emri"
+      }
+    ]
+  }
+}

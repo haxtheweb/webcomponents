@@ -3,5 +3,8 @@
   "copyAsCsv": "د CSV په توګه کاپي کړئ.",
   "printTable": "جدول چاپ کړئ",
   "selectColumn": "ستون وټاکئ",
-  "dataTable": "معلومات · جدول"
+  "dataTable": "معلومات · جدول",
+  "filterStatus": "{shown} له {total} قطارونو ښودل کېږي، د {column} له مخې فلټر شوي: {text}",
+  "columnNumber": "ستنه {column}",
+  "clearFilter": "فلټر پاک کړئ"
 }

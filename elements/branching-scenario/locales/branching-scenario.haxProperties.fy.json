@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Fertakkend senario",
+    "description": "In ferhaal dêr't elke kar liedt ta in oare sêne en in oar ein. Learlingen kinne werom gean en oare paden besykje; it berikte ein bepaalt de skoare."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Namme fan it senario, toand yn de koptekst."
+      },
+      {
+        "title": "Startsêne",
+        "description": "Sêne-id fan de sêne dêr't learlingen begjinne. Lit leech om by de earste sêne te begjinnen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksintkleur",
+        "description": "Opsjonele kleur foar it kopteksttsjip, de knoppen en de râne fan in kar."
+      }
+    ]
+  }
+}

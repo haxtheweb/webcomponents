@@ -1,0 +1,14 @@
+{
+  "scene": "Tukio",
+  "ending": "Mwisho",
+  "goodEnding": "Mwisho mzuri",
+  "mixedEnding": "Mwisho mchanganyiko",
+  "poorEnding": "Mwisho mbaya",
+  "scoreOf": "Alama {score} kati ya {max}",
+  "scoreOnly": "Alama {score}",
+  "startScene": "Anza",
+  "sceneIdLabel": "ID ya tukio",
+  "needsId": "Ongeza ID ya tukio ili chaguo ziweze kuunganishwa na tukio hili.",
+  "orphan": "Hakuna chaguo linalounganishwa na tukio hili.",
+  "deadLinks": "Viungo hivi vinaelekeza kwenye tukio lisilokuwepo:"
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Vortserĉo",
+    "description": "Litera krado kun kaŝitaj vortoj. Lernantoj tuŝetas la unuan kaj la lastan literon de ĉiu vorto. Ekzercas rimarki, kiel termino estas literumata, ne kion ĝi signifas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Kion lernantoj devas trovi, montrata en la kapo."
+      },
+      {
+        "title": "Vortoj",
+        "description": "La vortoj por kaŝi. Spacoj kaj interpunkcio estas ellasitaj el la krado. Vortoj, kiuj ne enkadriĝas, estas listigitaj dum vi redaktas kaj ellasitaj por lernantoj."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Grandeco de la krado",
+        "description": "Literoj po flanko, 4 ĝis 16. Lasu malplena por adapti al la plej longa vorto (ĝis 12). Pli ol 12 rulumiĝas flanken en telefono."
+      },
+      {
+        "title": "Diagonalaj vortoj",
+        "description": "Ankaŭ kaŝi vortojn diagonale. Pli malfacile."
+      },
+      {
+        "title": "Inversaj vortoj",
+        "description": "Ankaŭ kaŝi vortojn skribitajn inverse. Pli malfacile."
+      },
+      {
+        "title": "Akcenta koloro",
+        "description": "Nedeviga koloro por la kapa ĉipo, la elektita unua litero kaj la butono."
+      }
+    ]
+  }
+}

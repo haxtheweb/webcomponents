@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Özellik satırı",
+    "description": "Ürünün bir ekranı ve yanında sizin için ne anlama geldiği"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Küçük etiket"
+      },
+      {
+        "title": "Başlık"
+      },
+      {
+        "title": "Resim"
+      },
+      {
+        "title": "Resmin gösterdiği"
+      },
+      {
+        "title": "Resim sağda"
+      },
+      {
+        "title": "Gölge rengi (DDD adı, boş bırakılırsa paleti izler)"
+      }
+    ]
+  }
+}

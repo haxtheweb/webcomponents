@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Regnedrill",
+    "description": "En kort runde med genererte regneoppgaver med umiddelbar tilbakemelding. Velg regneartene og tallområdet; hver runde er ny."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Navnet på denne drillen, vist i toppteksten."
+      },
+      {
+        "title": "Regnearter",
+        "description": "Hvilke typer oppgaver som stilles. Elevene kan slå av hvilke som helst av disse før de starter.",
+        "options": {
+          "add": "Addisjon",
+          "subtract": "Subtraksjon",
+          "multiply": "Multiplikasjon",
+          "divide": "Divisjon",
+          "add subtract": "Addisjon og subtraksjon",
+          "multiply divide": "Multiplikasjon og divisjon",
+          "add multiply": "Addisjon og multiplikasjon",
+          "add divide": "Addisjon og divisjon",
+          "subtract multiply": "Subtraksjon og multiplikasjon",
+          "subtract divide": "Subtraksjon og divisjon",
+          "add subtract multiply": "Addisjon, subtraksjon og multiplikasjon",
+          "add subtract divide": "Addisjon, subtraksjon og divisjon",
+          "add multiply divide": "Addisjon, multiplikasjon og divisjon",
+          "subtract multiply divide": "Subtraksjon, multiplikasjon og divisjon",
+          "add subtract multiply divide": "Alle fire"
+        }
+      },
+      {
+        "title": "Minste tall",
+        "description": "Det minste tallet som brukes i en oppgave. Heltall, 0 eller mer."
+      },
+      {
+        "title": "Største tall",
+        "description": "Det største tallet som brukes i en oppgave. Svar og divisorer i divisjon holder seg også innenfor dette området."
+      },
+      {
+        "title": "Antall oppgaver",
+        "description": "Hvor mange oppgaver det er i én runde (1 til 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tidsgrense",
+        "description": "Sekunder tillatt for en hel runde. 0 betyr ingen tidtaker, som er standard: tidsbegrensede driller svikter elever som trenger mer tid. Når den er satt, kan elevene fortsatt slå av tidtakeren for seg selv."
+      },
+      {
+        "title": "Aksentfarge",
+        "description": "Farge på toppetiketten og knappene. La stå tomt for å følge temaet."
+      }
+    ]
+  }
+}

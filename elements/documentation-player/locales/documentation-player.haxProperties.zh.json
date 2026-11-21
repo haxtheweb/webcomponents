@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "文档播放器",
+    "description": "Web 组件的演练、演示和参考，带有复制 HTML、import、npm 和 CDN 的按钮。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "文档数据文件",
+        "description": "随元素一起提供的文档数据（lib/tag.docs.json）。"
+      },
+      {
+        "title": "演练故事板",
+        "description": "随元素一起提供的动效故事板（tag.motion.json）。可选。"
+      },
+      {
+        "title": "视频教程",
+        "description": "关于该元素的短视频（YouTube、Vimeo 或视频文件）。会覆盖文档数据中的视频。"
+      },
+      {
+        "title": "打开时的标签页",
+        "description": "最先显示哪个标签页。",
+        "options": {
+          "motion": "演练",
+          "video": "视频",
+          "demo": "演示",
+          "docs": "文档",
+          "schema": "Schema"
+        }
+      },
+      {
+        "title": "自动播放演练",
+        "description": "播放器一显示就开始演练。读者偏好减少动效时会忽略此设置。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "演练主题",
+        "description": "对于有多个演练的元素，最先打开哪个主题（例如 add-blocks）。留空则使用主演练。"
+      },
+      {
+        "title": "实时演示链接",
+        "description": "“打开演示源码”按钮指向的位置。默认为仓库中的 demo 文件夹。"
+      },
+      {
+        "title": "文档链接",
+        "description": "完整文档按钮指向的位置，例如对应的 Learn HAX 页面。"
+      }
+    ]
+  }
+}

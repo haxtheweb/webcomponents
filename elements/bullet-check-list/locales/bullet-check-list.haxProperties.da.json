@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Tjekliste med punkter",
+    "description": "En liste med afkrydsningsfelter. Læserne krydser punkter af, og deres fremskridt huskes på deres egen enhed."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Listens navn. Læses højt som etiket for gruppen af afkrydsningsfelter."
+      },
+      {
+        "title": "Punkter",
+        "description": "Hvert punkt er et afkrydsningsfelt. Afkrydsede eller deaktiverede punkter kan ikke ændres af læserne."
+      },
+      {
+        "title": "Nummereret",
+        "description": "Vis en nummereret liste i stedet for en punktopstilling."
+      },
+      {
+        "title": "Status",
+        "description": "Ændrer farverne, så de matcher stop-note.",
+        "options": {
+          "info": "Bemærk",
+          "success": "Bekræftelse",
+          "warning": "Advarsel",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Lager-id",
+        "description": "Unikt id, der bruges til at huske læserens fremskridt på enheden. Genereres automatisk; ændr det kun for at dele fremskridt mellem lister eller for at starte forfra."
+      }
+    ]
+  }
+}

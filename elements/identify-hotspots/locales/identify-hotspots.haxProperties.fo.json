@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Finn heitar blettir",
+    "description": "Lesandi finna røttu blettirnar á eini mynd við at klikkja, trýsta ella flyta eitt knappaborðskross. Metta mótpartur til eitt myndakort."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mynd",
+        "description": "Myndin, sum lesandi leita í."
+      },
+      {
+        "title": "Annar tekstur",
+        "description": "Lýsir myndina fyri fólki, sum ikki kunnu síggja hana. Hon verður ongantíð víst sum heiti."
+      },
+      {
+        "title": "Heiti",
+        "description": "Eitt stutt sjónligt heiti víst omanfyri myndina."
+      },
+      {
+        "title": "Spurningur",
+        "description": "Hvat lesandi verða biðin um at finna á myndini."
+      },
+      {
+        "title": "Svar",
+        "description": "Hvørt svar er ein navngivin sporlkringur á myndini. Staður og stødd eru prosent av myndini, mátað frá vinstra ovara horni. Meðan tú rættar, verður hvørt svar umrammað á myndini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Royndir",
+        "description": "Hvussu nógvar ferðir ein lesandi kann royna. 0 merkir óavmarkað."
+      },
+      {
+        "title": "Loyvdar bommingar",
+        "description": "Hvussu nógvar bommingar enda eina roynd. 0 merkir óavmarkað, og lesandi fáa ein Lúka-knøtt."
+      },
+      {
+        "title": "Kann leggjast saman",
+        "description": "Vís henda spurningin sum eina røð, ið letst upp og aftur. At lata ein upp letur hinar samanleggjandi spurningarnar við síðuna av aftur."
+      },
+      {
+        "title": "Byrja samanlagt",
+        "description": "Tá ið hann kann leggjast saman, byrja sum ein afturlatin røð, ið bert vísir spurningin og støðuna."
+      },
+      {
+        "title": "Metingarsnið",
+        "description": "OER Schema: metingarsnið fyri hesa meting (t.d. stig, bókstavur, prosent, liðugt)."
+      },
+      {
+        "title": "Lærumál",
+        "description": "OER Schema: lærumál, sum hoyrir til hesa meting."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn á spurnarkappingini",
+        "description": "Navn á spurnarkapping, sent víðari til brúk í xAPI-stýrdum umhvørvum til at eyðmerkja henda lutin"
+      },
+      {
+        "title": "Skeið",
+        "description": "OER Schema: skeiðið, sum henda metingin er ætlað til."
+      }
+    ]
+  }
+}

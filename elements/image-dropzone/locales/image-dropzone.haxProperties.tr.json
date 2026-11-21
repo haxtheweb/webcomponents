@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Görsel bırakma alanı",
+    "description": "Öğrenenler bir görselin üzerine yerleştirilmiş bölgelere etiketler koyar, ardından yanıtlarını denetler."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Görsel",
+        "description": "Öğrenenlerin etiket koyduğu görsel."
+      },
+      {
+        "title": "Alternatif metin",
+        "description": "Görseli göremeyen kişiler için açıklar. Etiketlerin nereye gittiğini ele vermeyin."
+      },
+      {
+        "title": "Görsel başlığı",
+        "description": "Görselin üstünde gösterilen kısa, görünür bir başlık."
+      },
+      {
+        "title": "Soru",
+        "description": "Öğrenenlerden etiketlerle ne yapmalarının istendiği."
+      },
+      {
+        "title": "Etiketler ve bölgeler",
+        "description": "Her öğe, öğrenenlerin yerleştirebileceği bir etikettir. Bölgesini görsele koymak için etikete bir bölge adı verin; bölge adı olmayan etiket hiçbir yere ait olmayan fazladan bir etikettir. Bölge sayıları görselin yüzdeleridir."
+      },
+      {
+        "title": "Altyazı",
+        "description": "Görselin altında gösterilen isteğe bağlı altyazı."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Denemeler",
+        "description": "Bir öğrenenin kaç kez denetleyebileceği. 0 sınırsız demektir."
+      },
+      {
+        "title": "Etiketleri karıştır",
+        "description": "Etiketleri her ziyarette farklı sırada göster."
+      },
+      {
+        "title": "Daraltılabilir",
+        "description": "Bu soruyu açılıp kapanan bir satır olarak göster. Birini açmak yanındaki diğer daraltılabilir soruları kapatır."
+      },
+      {
+        "title": "Daraltılmış başla",
+        "description": "Daraltılabilir olduğunda yalnızca soruyu ve durumunu gösteren kapalı bir satır olarak başla."
+      },
+      {
+        "title": "Notlandırma biçimi",
+        "description": "OER Schema: bu değerlendirmenin notlandırma biçimi (ör. puan, harf, yüzde, tamamlama)."
+      },
+      {
+        "title": "Öğrenme hedefi",
+        "description": "OER Schema: bu değerlendirmeyle ilişkili öğrenme hedefi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testin adı",
+        "description": "Analiz sistemlerinde xAPI tanımlaması için kullanılan test adı."
+      },
+      {
+        "title": "Ders",
+        "description": "OER Schema: bu değerlendirmenin amaçlandığı ders."
+      }
+    ]
+  }
+}

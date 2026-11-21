@@ -40,5 +40,7 @@
   "hideDirections": "Fela leiðbeiningar",
   "showRelatedContent": "Sýna tengt efni",
   "hideRelatedContent": "Fela tengt efni",
-  "notAttempted": "Ekki reynt"
+  "notAttempted": "Ekki reynt",
+  "cardsDirections": "Raðaðu spjöldunum í rétta röð með hnöppunum færa framar og færa aftar á hverju spjaldi, eða dragðu þau með mús. Þegar þú telur þau vera í réttri röð, prófaðu svarið með því að velja {checkAnswer}.",
+  "movedToPosition": "{item} fært í sæti {position} af {total}"
 }

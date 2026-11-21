@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Członek obsady",
+    "description": "Jedna grupa odbiorców grana przez postać, z tekstem i przyciskiem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kto to jest"
+      },
+      {
+        "title": "Typ postaci"
+      },
+      {
+        "title": "Ziarno postaci"
+      },
+      {
+        "title": "Kolor sceny (nazwa DDD)"
+      },
+      {
+        "title": "Dokąd prowadzi przycisk"
+      },
+      {
+        "title": "Tekst przycisku"
+      }
+    ]
+  }
+}

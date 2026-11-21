@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ficha de cifra",
+    "description": "Un número importante, con su etiqueta y cómo ha cambiado. Coloca varias en una cuadrícula para una fila de panel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Qué mide el número."
+      },
+      {
+        "title": "Valor",
+        "description": "El número. Un número simple se agrupa según el idioma de la página; cualquier otra cosa se muestra tal cual."
+      },
+      {
+        "title": "Cambio",
+        "description": "Cómo cambió, en palabras, como 6 % este trimestre."
+      },
+      {
+        "title": "Dirección",
+        "description": "Si el cambio es al alza o a la baja.",
+        "options": {
+          "": "Ninguno",
+          "up": "Al alza",
+          "down": "A la baja"
+        }
+      }
+    ]
+  }
+}

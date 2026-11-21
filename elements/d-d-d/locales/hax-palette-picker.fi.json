@@ -5,5 +5,6 @@
   "selected": "Valittu",
   "currentlyActiveAndSelectedPalette": "Tällä hetkellä aktiivinen ja valittu paletti",
   "currentlyActivePalette": "Tällä hetkellä aktiivinen paletti",
-  "selectedPaletteToApply": "Käyttöön otettavaksi valittu paletti"
+  "selectedPaletteToApply": "Käyttöön otettavaksi valittu paletti",
+  "paletteNumber": "Paletti {number}"
 }

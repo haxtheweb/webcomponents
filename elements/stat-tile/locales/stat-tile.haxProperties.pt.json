@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Bloco de estatística",
+    "description": "Um número que importa, com seu rótulo e como mudou. Coloque vários em uma grade para uma linha de painel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rótulo",
+        "description": "O que o número mede."
+      },
+      {
+        "title": "Valor",
+        "description": "O número. Um número simples é agrupado conforme o idioma da página; qualquer outra coisa aparece como escrita."
+      },
+      {
+        "title": "Variação",
+        "description": "Como mudou, em palavras, como 6% neste período."
+      },
+      {
+        "title": "Direção",
+        "description": "Se a variação é para cima ou para baixo.",
+        "options": {
+          "": "Nenhum",
+          "up": "Para cima",
+          "down": "Para baixo"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Iphazili yamagama",
+    "description": "Iphazili yamagama eyenziwe ngoluhlu lwamagama nezikhokelo. Igridi yenzelwa wena; abafundi bachwetheza amagama baze bawajonge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Isihloko okanye umbuzo oboniswa ngaphezulu kwephazili."
+      },
+      {
+        "title": "Amagama",
+        "description": "Igama ngalinye nesikhokelo salo. Igridi yenziwa ngolu luhlu: elona gama lide libekwa kuqala kwaye amanye aliwela koonobumba ekwabelwana ngabo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Iinzame",
+        "description": "Kangaphi umfundi anokujonga. 0 kuthetha akunamda."
+      },
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala ongakhethwa wetshiphu yesihloko, igama elisebenzayo namaqhosha esenzo."
+      },
+      {
+        "title": "Iyasongeka",
+        "description": "Bonisa le phazili njengomqolo ovulekayo novalekayo. Ukuvula omnye kuvala eminye imibuzo esongekayo ecaleni kwawo."
+      },
+      {
+        "title": "Qala usongiwe",
+        "description": "Xa isongeka, qala njengomqolo ovaliweyo obonisa isihloko nesimo saso kuphela."
+      },
+      {
+        "title": "Ifomathi yokumaka",
+        "description": "OER Schema: ifomathi yokumaka yolu vavanyo (umz. amanqaku, unobumba, ipesenti, ukugqitywa)."
+      },
+      {
+        "title": "Injongo yokufunda",
+        "description": "OER Schema: injongo yokufunda enxulumene nolu vavanyo."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lovavanyo",
+        "description": "Igama lovavanyo elisetyenziselwa ukuchonga kwe-xAPI kwiinkqubo zohlalutyo."
+      },
+      {
+        "title": "Ikhosi",
+        "description": "OER Schema: ikhosi olu vavanyo lwenzelwe yona."
+      }
+    ]
+  }
+}

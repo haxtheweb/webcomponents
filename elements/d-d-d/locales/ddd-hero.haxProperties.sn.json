@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Mufananidzo mukuru, GIF kana vhidhiyo ine musoro nemavara pamusoro payo, inoiswa chero kupi mupeji."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mufananidzo kana vhidhiyo",
+        "description": "Faira reJPG, PNG, WebP, GIF, MP4 kana WebM."
+      },
+      {
+        "title": "Mamwe mavara",
+        "description": "Tsanangura mufananidzo. Siya pasina chinhu kana uri wekushongedza chete."
+      },
+      {
+        "title": "Musoro",
+        "description": "Musoro unoratidzwa pamusoro pemedia. Siya pasina chinhu kana usingadi."
+      },
+      {
+        "title": "Mavara",
+        "description": "Mavara anoratidzwa pasi pemusoro, pamusoro pemedia."
+      },
+      {
+        "title": "Upamhi hwakazara",
+        "description": "Mhanya kubva kumucheto kusvika kumucheto panzvimbo pekugara mukoramu yezviri mukati."
+      },
+      {
+        "title": "Kureba",
+        "options": {
+          "tall": "Yakareba",
+          "medium": "Yepakati",
+          "short": "Pfupi"
+        }
+      },
+      {
+        "title": "Kuronga furemu",
+        "description": "Magariro emufananidzo pasaizi imwe neimwe yeskrini"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kupera",
+        "description": "Ruvara runoiswa pamusoro pemedia. Kana paine musoro kana mavara panogara paine rumwe, kuti mavara arambe achiverengeka.",
+        "options": {
+          "blue": "Bhuruu",
+          "bottom": "Rima pazasi",
+          "none": "Hapana"
+        }
+      },
+      {
+        "title": "Nzvimbo yemavara",
+        "options": {
+          "bottom": "Pazasi",
+          "middle": "Pakati"
+        }
+      },
+      {
+        "title": "Nzvimbo yekutarisa kuyambuka",
+        "description": "Chikamu chemufananidzo chinoramba chichionekwa kana chakachekwa, kubva pa0 (kuruboshwe) kusvika pa100 (kurudyi)."
+      },
+      {
+        "title": "Nzvimbo yekutarisa kudzika",
+        "description": "Chikamu chemufananidzo chinoramba chichionekwa kana chakachekwa, kubva pa0 (pamusoro) kusvika pa100 (pazasi)."
+      }
+    ]
+  }
+}

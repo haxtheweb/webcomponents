@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "শিরোনাম"
+        "title": "শিরোনাম",
+        "description": "কোর্স মডেলের উপরে দেখানো শিরোনাম।"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "দেখানোর জন্য 3D মডেল ফাইলের (.glb বা .gltf) ঠিকানা।"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "যারা 3D মডেলটি দেখতে পান না তাদের জন্য এটি বর্ণনা করুন।"
       },
       {
         "title": "তথ্য এলাকা"

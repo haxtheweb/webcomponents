@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "ራስ-ሰር የአጽንዖት ቀለም",
         "description": "የአጽንዖት ቀለሙን ከመለያው ጽሑፍ በራስ-ሰር አውጣ።"
+      },
+      {
+        "title": "ትርጉም",
+        "description": "ለመለያው የትርጉም ቀለም ይስጡት። ለገለልተኛ መለያ ባዶ ይተዉት።",
+        "options": {
+          "": "ገለልተኛ",
+          "brand": "የምርት ስም",
+          "success": "ስኬት",
+          "warning": "ማስጠንቀቂያ",
+          "danger": "አደጋ"
+        }
       }
     ],
     "advanced": [

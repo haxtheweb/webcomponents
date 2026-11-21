@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vertakkend scenario",
+    "description": "Een verhaal waarin elke keuze naar een andere scène en een ander einde leidt. Leerlingen kunnen terugstappen en andere paden proberen; het bereikte einde bepaalt de score."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van het scenario, getoond in de kop."
+      },
+      {
+        "title": "Beginscène",
+        "description": "Scène-ID van de scène waar leerlingen beginnen. Laat leeg om bij de eerste scène te beginnen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentkleur",
+        "description": "Optionele kleur voor het kopetiket, de knoppen en de rand van een keuze."
+      }
+    ]
+  }
+}

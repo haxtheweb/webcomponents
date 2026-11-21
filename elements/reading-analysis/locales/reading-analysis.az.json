@@ -60,6 +60,8 @@
   "flagsFound": "{total} içindən {correct} tapıldı",
   "toRethink": "Yenidən düşünmək üçün {count}",
   "notEvidence": "bu bayraq üçün sübut deyil",
+  "isEvidence": "bu bayraq üçün sübut",
+  "readingKeys": "Bir {unit} digərinə keçmək üçün ox düymələrindən istifadə edin.",
   "markAnswers": "Cavabları işarələ",
   "doneMarking": "Cavabların işarələnməsi bitdi",
   "editHint": "Aşağıdakı mətni redaktə edin. Hər bayrağın harada olduğunu seçmək üçün blok menyusunda Cavabları işarələ əmrindən istifadə edin.",

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona de soltar sobre imaxe",
+    "description": "O alumnado coloca etiquetas en zonas sobre unha imaxe e despois comproba a súa resposta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imaxe",
+        "description": "A imaxe sobre a que o alumnado coloca as etiquetas."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Describe a imaxe para as persoas que non a poden ver. Non reveles onde van as etiquetas."
+      },
+      {
+        "title": "Título da imaxe",
+        "description": "Un título curto visible para a imaxe, mostrado enriba dela."
+      },
+      {
+        "title": "Pregunta",
+        "description": "O que se lle pide ao alumnado que faga coas etiquetas."
+      },
+      {
+        "title": "Etiquetas e zonas",
+        "description": "Cada elemento é unha etiqueta que o alumnado pode colocar. Dálle a unha etiqueta un nome de zona para poñer a súa zona na imaxe; unha etiqueta sen nome de zona é unha extra que non vai en ningures. Os números das zonas son porcentaxes da imaxe."
+      },
+      {
+        "title": "Lenda",
+        "description": "Lenda opcional mostrada baixo a imaxe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intentos",
+        "description": "Cantas veces pode comprobar unha persoa. 0 significa ilimitado."
+      },
+      {
+        "title": "Mesturar as etiquetas",
+        "description": "Mostrar as etiquetas nunha orde diferente en cada visita."
+      },
+      {
+        "title": "Contraíble",
+        "description": "Mostrar esta pregunta como unha fila que se abre e se pecha. Abrir unha pecha as outras preguntas contraíbles do seu carón."
+      },
+      {
+        "title": "Comezar contraído",
+        "description": "Cando é contraíble, comeza como unha fila pechada que só mostra a pregunta e o seu estado."
+      },
+      {
+        "title": "Formato de cualificación",
+        "description": "OER Schema: formato de cualificación desta avaliación (p. ex. puntos, letra, porcentaxe, completado)."
+      },
+      {
+        "title": "Obxectivo de aprendizaxe",
+        "description": "OER Schema: obxectivo de aprendizaxe asociado a esta avaliación."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome do cuestionario",
+        "description": "Nome do cuestionario usado para a identificación xAPI en sistemas de analítica."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso ao que se destina esta avaliación."
+      }
+    ]
+  }
+}

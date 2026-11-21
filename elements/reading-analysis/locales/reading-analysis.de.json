@@ -60,6 +60,8 @@
   "flagsFound": "{correct} von {total} gefunden",
   "toRethink": "{count} zum Überdenken",
   "notEvidence": "kein Beleg für dieses Fähnchen",
+  "isEvidence": "Beleg für diese Markierung",
+  "readingKeys": "Mit den Pfeiltasten von einer {unit} zur nächsten wechseln.",
   "markAnswers": "Antworten markieren",
   "doneMarking": "Markieren der Antworten beenden",
   "editHint": "Bearbeite den Text unten. Verwende Antworten markieren im Blockmenü, um festzulegen, wo jedes Fähnchen hingehört.",

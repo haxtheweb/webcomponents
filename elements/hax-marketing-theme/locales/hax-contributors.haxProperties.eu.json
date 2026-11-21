@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Kolaboratzaileak",
+    "description": "Proiektua eraiki zuten pertsonak, zerrenda-fitxategi batetik"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zerrenda-fitxategia (JSON)"
+      },
+      {
+        "title": "Ikuspegia: landed, lab edo code"
+      },
+      {
+        "title": "Erakutsi beharreko pertsona kopuru maximoa (0 = guztiak)"
+      }
+    ]
+  }
+}

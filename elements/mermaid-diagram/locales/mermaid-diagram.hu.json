@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "folyamatábra",
+  "sequence": "szekvencia",
+  "source": "Forrás",
+  "textAlternative": "Szöveges alternatíva",
+  "present": "Bemutatás",
+  "exitPresent": "Kilépés a bemutatóból",
+  "loading": "A diagram betöltése",
+  "empty": "Még nincs mit megrajzolni. Adja meg a diagram forrását.",
+  "error": "Hiba",
+  "parseError": "Ezt a diagramot nem sikerült megrajzolni. Ellenőrizze a forrást.",
+  "loadError": "A diagramkönyvtárat nem sikerült betölteni.",
+  "srcError": "A diagramfájlt nem sikerült betölteni.",
+  "decision": "döntés",
+  "end": "vége",
+  "goTo": "ugrás ide: {target}",
+  "ifGoTo": "ha {label}, ugrás ide: {target}",
+  "describedBySource": "A diagramot a forrása írja le.",
+  "scrollable": "Diagram, görgethető"
+}

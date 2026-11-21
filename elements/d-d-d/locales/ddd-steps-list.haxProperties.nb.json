@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Trinnliste",
     "description": "Nummererte trinn for å fullføre en oppgave."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Trinnindikator",
+        "description": "Vis trinnene som en kompakt rad med titler som markerer fremdriften. Trinnenes innhold vises ikke i dette oppsettet."
+      },
+      {
+        "title": "Gjeldende trinn",
+        "description": "Trinnet leseren er på, regnet fra 1. Tidligere trinn vises som fullført. Brukes av trinnindikatoren."
+      }
+    ]
   }
 }

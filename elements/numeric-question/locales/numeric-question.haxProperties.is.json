@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Töluleg spurning",
+    "description": "Spurning sem svarað er með tölu. Svarið er föst tala eða formúla reiknuð út frá breytum, og telst rétt þegar það er innan vikmarka."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Spurning",
+        "description": "Hvað nemendur eru spurðir. Skrifaðu heiti breytu innan slaufusviga, eins og {d}, til að sýna gildi hennar."
+      },
+      {
+        "title": "Eining",
+        "description": "Sýnt sem texti við hlið svarreitsins, til dæmis km/klst."
+      },
+      {
+        "title": "Svar",
+        "description": "Rétta talan. Skildu eftir autt þegar formúla reiknar svarið."
+      },
+      {
+        "title": "Formúla",
+        "description": "Reiknar svarið út frá breytunum, til dæmis d / (t / 60). Getur notað + - * / ^, sviga, sqrt() og abs(). Notuð í stað svarsins þegar hún er stillt."
+      },
+      {
+        "title": "Breytur",
+        "description": "Tölur sem formúlan og spurningin nota. Hver fær gildi á milli lægsta og hæsta gildis síns, í skrefum."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vikmörk",
+        "description": "Hversu langt frá nákvæma svarinu telst enn rétt. 0 þýðir nákvæmt, eða námundað að aukastöfunum hér að neðan."
+      },
+      {
+        "title": "Tegund vikmarka",
+        "description": "Algild: plús eða mínus vikmörkin. Prósenta: plús eða mínus þá prósentu af nákvæma svarinu.",
+        "options": {
+          "absolute": "Algild",
+          "percent": "Prósenta"
+        }
+      },
+      {
+        "title": "Aukastafir",
+        "description": "Nemendur eru beðnir um að námunda að þessum fjölda aukastafa, og svarið er sýnt námundað að honum. Skildu eftir autt fyrir enga námundun."
+      },
+      {
+        "title": "Tilraunir",
+        "description": "Hversu oft nemandi getur athugað. 0 þýðir ótakmarkað."
+      },
+      {
+        "title": "Nýjar tölur í hverri tilraun",
+        "description": "Draga ný gildi breyta í hvert sinn sem nemandi reynir aftur. Fyrra svar hans er þá ekki sýnt þegar hann kemur aftur, aðeins hvort það var rétt."
+      },
+      {
+        "title": "Fellanlegt",
+        "description": "Sýna þessa spurningu sem röð sem opnast og lokast. Að opna eina lokar hinum fellanlegu spurningunum við hliðina."
+      },
+      {
+        "title": "Byrja samanfellt",
+        "description": "Þegar fellanlegt, byrja sem lokuð röð sem sýnir aðeins spurninguna og stöðu hennar."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Heiti prófsins",
+        "description": "Heiti prófs notað til xAPI-auðkenningar í greiningarkerfum."
+      }
+    ]
+  }
+}

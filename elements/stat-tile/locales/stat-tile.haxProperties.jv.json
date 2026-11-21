@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ubin statistik",
+    "description": "Siji angka sing penting, karo label lan kepiye owahe. Papanake sawetara ing kothak kanggo baris dasbor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Apa sing diukur angka iki."
+      },
+      {
+        "title": "Nilai",
+        "description": "Angkane. Angka biasa diklompokake miturut basa kaca; liyane ditampilake kaya sing ditulis."
+      },
+      {
+        "title": "Owahan",
+        "description": "Kepiye owahe, nganggo tembung, kayata 6% semester iki."
+      },
+      {
+        "title": "Arah",
+        "description": "Apa owahane munggah utawa mudhun.",
+        "options": {
+          "": "Ora ana",
+          "up": "Munggah",
+          "down": "Mudhun"
+        }
+      }
+    ]
+  }
+}

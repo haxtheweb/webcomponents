@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "کہانی بٹن",
+    "description": "اوہ بٹن جیہڑا hax.cloud تے کسے دعوے پچھے دی کہانی، یا کسے ہور HAX نیٹ ورک سائٹ تے میل کھاندی تھاں کھولدا اے"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ایہہ کتھے جاندا اے",
+        "options": {
+          "cloud": "hax.cloud، کہانی",
+          "learn": "learn.hax.cloud، اک ٹیوٹوریل",
+          "try": "browser.hax.cloud، ازماؤ",
+          "elements": "webcomponents.hax.cloud، اک بلاک",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "اوس سائٹ تے پتہ (hax.cloud تے کہانی stories/ee450a19 ورگی وکھدی اے)"
+      },
+      {
+        "title": "ایہہ کس بارے اے"
+      },
+      {
+        "title": "نکی چپ"
+      },
+      {
+        "title": "بٹن وچ وکھاؤ کہ ایہہ کس بارے اے"
+      }
+    ]
+  }
+}

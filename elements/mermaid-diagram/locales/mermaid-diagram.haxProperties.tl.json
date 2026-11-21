@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram mula sa teksto",
+    "description": "Sumulat ng diagram bilang teksto (Mermaid): flowchart, sequence, timeline at iba pa. Iginuguhit ito sa pahina na may alternatibong teksto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Ipinapakita sa itaas ng diagram at ginagamit bilang pangalan nito."
+      },
+      {
+        "title": "Source ng diagram",
+        "description": "Mermaid na teksto, halimbawa: flowchart TD, pagkatapos isang linya bawat link tulad ng A[Draft] --> B{Ready?}. Magdagdag ng |label| pagkatapos ng arrow para lagyan ito ng label. Nag-a-update ang drowing habang nagta-type ka."
+      },
+      {
+        "title": "Alternatibong teksto",
+        "description": "Ilarawan kung ano ang ipinapakita ng diagram para sa mga taong hindi nakakakita nito. Iwanang blangko sa flowchart para mailista ang mga hakbang nito para sa iyo."
+      },
+      {
+        "title": "Caption",
+        "description": "Opsyonal na caption na ipinapakita sa ilalim ng diagram."
+      },
+      {
+        "title": "Ipakita ang source",
+        "description": "Ipakita ang teksto ng diagram sa tabi ng drowing."
+      },
+      {
+        "title": "Ipakita ang alternatibong teksto",
+        "description": "Ipakita ang alternatibong teksto sa ilalim ng drowing. Palagi itong available sa mga screen reader."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Source na file",
+        "description": "Address ng .mmd na file na iguguhit sa halip ng teksto sa itaas (https o path sa site na ito)."
+      },
+      {
+        "title": "Kulay ng accent",
+        "description": "Kulay ng icon chip sa header."
+      }
+    ]
+  }
+}

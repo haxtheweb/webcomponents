@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Skenario bercabang",
+    "description": "Cerita di mana setiap pilihan mengarah ke adegan dan akhir yang berbeda. Pelajar dapat mundur dan mencoba jalur lain; akhir yang dicapai menentukan skor."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Nama skenario, ditampilkan di judulnya."
+      },
+      {
+        "title": "Adegan awal",
+        "description": "ID adegan tempat pelajar memulai. Biarkan kosong untuk memulai dari adegan pertama."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Warna aksen",
+        "description": "Warna opsional untuk label judul, tombol, dan tepi pilihan."
+      }
+    ]
+  }
+}

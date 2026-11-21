@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikkflis",
+    "description": "Ett tall som betyr noe, med etikett og hvordan det endret seg. Plasser flere i et rutenett for en dashbordrad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etikett",
+        "description": "Hva tallet måler."
+      },
+      {
+        "title": "Verdi",
+        "description": "Tallet. Et vanlig tall grupperes etter sidens språk; alt annet vises som skrevet."
+      },
+      {
+        "title": "Endring",
+        "description": "Hvordan det endret seg, med ord, for eksempel 6 % dette semesteret."
+      },
+      {
+        "title": "Retning",
+        "description": "Om endringen går opp eller ned.",
+        "options": {
+          "": "Ingen",
+          "up": "Opp",
+          "down": "Ned"
+        }
+      }
+    ]
+  }
+}

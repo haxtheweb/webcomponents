@@ -52,6 +52,20 @@
           "_top": "An fhuinneog uachtarach - _top",
           "_parent": "An máthairfhuinneog - _parent"
         }
+      },
+      {
+        "title": "Gan saighead",
+        "description": "Folaigh saighead an chnaipe."
+      },
+      {
+        "title": "Nasc: sprioc",
+        "description": "Cá háit le hoscailt an naisc.",
+        "options": {
+          "": "An fhuinneog chéanna",
+          "_blank": "Fuinneog nua - _blank",
+          "_top": "Fuinneog bharr - _top",
+          "_parent": "Fuinneog thuismitheora - _parent"
+        }
       }
     ],
     "developer": [

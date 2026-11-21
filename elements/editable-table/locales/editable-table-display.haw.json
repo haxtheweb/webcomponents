@@ -3,5 +3,8 @@
   "copyAsCsv": "Kope ma ke ʻano CSV.",
   "printTable": "Paʻi i ka papa",
   "selectColumn": "Koho i ke kolamu",
-  "dataTable": "Ka ʻikepili · Papa"
+  "dataTable": "Ka ʻikepili · Papa",
+  "filterStatus": "Hōʻike ʻia ana {shown} o {total} lālani, kānana ʻia e {column}: {text}",
+  "columnNumber": "Kolamu {column}",
+  "clearFilter": "Holoi i ke kānana"
 }

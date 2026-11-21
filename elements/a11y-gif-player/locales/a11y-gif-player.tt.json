@@ -2,5 +2,9 @@
   "toggleAnimation": "Анимацияне кабызу/сүндерү",
   "info": "мәгълүмат",
   "image": "Рәсем",
-  "animatedGif": "Анимацияле GIF"
+  "animatedGif": "Анимацияле GIF",
+  "playAnimation": "Анимацияне уйнату",
+  "pauseAnimation": "Анимацияне туктатып тору",
+  "showDescription": "Тасвирламаны күрсәтү",
+  "hideDescription": "Тасвирламаны яшерү"
 }

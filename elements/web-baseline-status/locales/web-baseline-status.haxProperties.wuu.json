@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline 状态",
+    "description": "显示一个 Web 平台功能个 Baseline 浏览器支持状态。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "功能 ID",
+        "description": "Web 功能个 ID，比方 anchor-positioning。辣 webstatus.dev 上寻 ID；ID 是功能页面 URL 个最后一段。"
+      }
+    ]
+  }
+}

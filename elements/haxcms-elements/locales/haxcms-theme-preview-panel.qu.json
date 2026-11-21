@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Llimpikuna",
   "cancel": "Chinkachiy",
-  "openAppearanceSettings": "Rikch'ay Churanakunata Kichay"
+  "openAppearanceSettings": "Rikch'ay Churanakunata Kichay",
+  "designSystem": "Diseño sistema",
+  "designSystemDefault": "DDD (ñawpaqmanta kaq)",
+  "designSystemThemeDefault": "{name} (rikchaypa ñawpaqmanta kaqnin)",
+  "designSystemHelp": "Llimp'i, qillqa laya, k'uchukuna, t'iqway ima. Rikchayllaraqmi churakuyta akllan."
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Kenmerkry",
+    "description": "'n Skerm van die produk langs wat dit vir jou beteken"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Klein etiket"
+      },
+      {
+        "title": "Opskrif"
+      },
+      {
+        "title": "Prent"
+      },
+      {
+        "title": "Wat die prent wys"
+      },
+      {
+        "title": "Prent aan die regterkant"
+      },
+      {
+        "title": "Skaduwee-kleur (DDD-naam, leeg volg die palet)"
+      }
+    ]
+  }
+}

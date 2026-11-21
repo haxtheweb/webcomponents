@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Nexşeya radarê",
+    "description": "Nexşeya radarê (pîrik) ji bo modelên gihîştinê û puandana aliyan, wek HEOSAT. Alternatîfa nivîsê û tabloya daneyan dihewîne."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sernav",
+        "description": "Sernavê nexşeyê; wekî navê wê yê gihîştbar jî tê bikaranîn."
+      },
+      {
+        "title": "Puana herî zêde",
+        "description": "Nirxa herî bilind a pîvanê."
+      },
+      {
+        "title": "Kategorî",
+        "description": "Her rêzekê kategoriyek. Herî kêm 3 divê."
+      },
+      {
+        "title": "Puan",
+        "description": "Hejmarên bi bêhnokê veqetandî, ji bo her kategoriyê yek bi heman rêzê."
+      },
+      {
+        "title": "Puanên armanc",
+        "description": "Hejmarên bi bêhnokê veqetandî, ji bo her kategoriyê yek bi heman rêzê."
+      },
+      {
+        "title": "Ravekirinê nîşan bide",
+        "description": "Ravekirinekê nîşan bide ku puan û armancan bi nav dike."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Nexşeyeke biçûktir bê etîket, ravekirin an tabloya daneyan. Li ser xalekê bisekine da ku nirxên wê bibînî."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Etîketa puanê",
+        "description": "Etîketa ravekirin û tabloyê ji bo puanan."
+      },
+      {
+        "title": "Etîketa armancê",
+        "description": "Etîketa ravekirin û tabloyê ji bo armancan."
+      }
+    ]
+  }
+}

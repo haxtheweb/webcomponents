@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "تراشه",
+    "description": "نماد کوچک برچسب‌دار"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "نماد"
+      },
+      {
+        "title": "برچسب"
+      }
+    ]
+  }
+}

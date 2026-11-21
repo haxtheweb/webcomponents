@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Ihe mmalite ihe atụ e ji egosi nhazi HAX na njirimara enwere ike idezi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha"
+      }
+    ]
+  }
+}

@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Ýazuw maşynkasy",
     "description": "Özüni bir-birden nyşan bilen ýazýan tekst."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Element görnüşe girende ýazyljak tekst."
+      },
+      {
+        "title": "Ýazylýar",
+        "description": "Ýalpyldaýan kursory görkez; element ýazýarka muny belleýär."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gijikdirme",
+        "description": "Ýazmak başlamazdan öň garaşylýan millisekuntlar."
+      },
+      {
+        "title": "Kursoryň dowamlylygy",
+        "description": "Tekst ýazylandan soň kursoryň ýalpyldamagyny dowam edýän millisekuntlary."
+      },
+      {
+        "title": "Tizlik",
+        "description": "Her nyşan üçin millisekuntlar; kiçi sanlar has çalt ýazýar."
+      }
+    ]
   }
 }

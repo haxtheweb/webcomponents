@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Dayaagiraamii barreeffama irraa",
+    "description": "Dayaagiraamii akka barreeffamaatti barreessi (Mermaid): chaartii yaa'insaa, tartiiba, sarara yeroo fi kanneen biroo. Fuula keessatti barreeffama bakka bu'aa waliin kaafama."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Dayaagiraamii ol mul'ata, akka maqaa isaattis fayyada."
+      },
+      {
+        "title": "Madda dayaagiraamii",
+        "description": "Barreeffama Mermaid, fakkeenyaaf: flowchart TD, achiis walqunnamtii tokkoof sarara tokko kan akka A[Draft] --> B{Ready?}. Maqaa kennuuf xiyya booda |label| dabali. Yeroo barreessitu fakkiin ni haaromfama."
+      },
+      {
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Namoota arguu hin dandeenyeef waan dayaagiraamiin agarsiisu ibsi. Tarkaanfiiwwan isaa akka siif tarreeffamaniif chaartii yaa'insaa irratti duwwaa dhiisi."
+      },
+      {
+        "title": "Ibsa suuraa",
+        "description": "Ibsa suuraa filannoo dayaagiraamii jala mul'atu."
+      },
+      {
+        "title": "Madda agarsiisi",
+        "description": "Barreeffama dayaagiraamii fakkii cinaatti agarsiisi."
+      },
+      {
+        "title": "Barreeffama bakka bu'aa agarsiisi",
+        "description": "Barreeffama bakka bu'aa fakkii jalatti agarsiisi. Dubbistoota iskiriiniitiif yeroo hunda ni argama."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Faayilii maddaa",
+        "description": "Teessoo faayilii .mmd barreeffama olitti jiru mannaa kaafamu (https ykn karaa marsariitii kana irratti)."
+      },
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu chip mallattoo mata-duree keessaa."
+      }
+    ]
+  }
+}

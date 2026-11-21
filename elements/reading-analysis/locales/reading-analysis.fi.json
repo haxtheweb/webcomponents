@@ -60,6 +60,8 @@
   "flagsFound": "{correct}/{total} löydetty",
   "toRethink": "Mietittävää: {count}",
   "notEvidence": "ei ole todiste tälle lipulle",
+  "isEvidence": "perustelu tälle merkinnälle",
+  "readingKeys": "Siirry nuolinäppäimillä kohteesta {unit} seuraavaan.",
   "markAnswers": "Merkitse vastaukset",
   "doneMarking": "Vastausten merkitseminen valmis",
   "editHint": "Muokkaa alla olevaa tekstiä. Valitse lohkovalikon Merkitse vastaukset -toiminnolla, mihin kukin lippu kuuluu.",

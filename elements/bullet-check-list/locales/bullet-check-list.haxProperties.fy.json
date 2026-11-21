@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kontrôlelist mei opsommingstekens",
+    "description": "In list mei karfakjes. Lêzers finkje items ôf en harren fuortgong wurdt op harren eigen apparaat ûnthâlden."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Namme fan de list. Lûdop foarlêzen as it label fan de groep karfakjes."
+      },
+      {
+        "title": "Items",
+        "description": "Elk item is in karfakje. Ofkrúste of útskeakele items kinne net troch lêzers feroare wurde."
+      },
+      {
+        "title": "Nûmere",
+        "description": "In nûmere list sjen litte ynstee fan in list mei opsommingstekens."
+      },
+      {
+        "title": "Status",
+        "description": "Feroaret de kleuren sadat se by stop-note passe.",
+        "options": {
+          "info": "Meidieling",
+          "success": "Befêstiging",
+          "warning": "Warskôging",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Opslach-id",
+        "description": "Unike id dy't brûkt wurdt om de fuortgong fan de lêzer op harren apparaat te ûnthâlden. Automatysk generearre; feroarje allinnich om fuortgong tusken listen te dielen of om fris te begjinnen."
+      }
+    ]
+  }
+}

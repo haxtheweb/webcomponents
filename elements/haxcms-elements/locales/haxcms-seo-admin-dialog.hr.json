@@ -6,6 +6,8 @@
   "faviconDescription": "Slika kartice preglednika / na telefonima se koristi kao mali logotip mjesta",
   "domain": "Domena",
   "domainDescription": "Domena ovog web-mjesta",
+  "sameAs": "Drugi profili ovog web-mjesta",
+  "sameAsDescription": "Jedna poveznica po retku na profile ovog web-mjesta ili organizacije na drugim mjestima (GitHub, LinkedIn, YouTube, Mastodon). Tražilice ih koriste za povezivanje tih profila s ovim web-mjestom.",
   "language": "Jezik",
   "languageDescription": "Jezik ove web-stranice. Pretražite po nazivu ili kodu ili unesite drugi kod, na primjer fr-CA.",
   "googleAnalyticsId": "Google Analytics ID",

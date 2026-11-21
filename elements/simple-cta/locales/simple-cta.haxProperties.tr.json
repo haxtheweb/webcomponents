@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Simgeyi gizle",
         "description": "Metni vurgulamak için kullanılan simgeyi gizle"
+      },
+      {
+        "title": "Görünüm",
+        "description": "Düğmenin ne kadar vurgulandığı.",
+        "options": {
+          "": "Dolgulu",
+          "tonal": "Tonlu",
+          "outlined": "Çerçeveli",
+          "plain": "Sade"
+        }
+      },
+      {
+        "title": "Boyut",
+        "description": "Düğme boyutu.",
+        "options": {
+          "s": "Küçük",
+          "": "Orta",
+          "l": "Büyük"
+        }
       }
     ],
     "advanced": [

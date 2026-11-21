@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Kreuzworträtsel",
+    "description": "Ein Kreuzworträtsel aus einer Liste von Wörtern und Hinweisen. Das Raster wird für dich erzeugt; Lernende tippen die Wörter ein und prüfen sie."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Titel oder Frage über dem Kreuzworträtsel."
+      },
+      {
+        "title": "Wörter",
+        "description": "Jedes Wort und sein Hinweis. Das Raster wird aus dieser Liste erzeugt: Das längste Wort wird zuerst platziert, die anderen kreuzen es an gemeinsamen Buchstaben."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versuche",
+        "description": "Wie oft Lernende prüfen dürfen. 0 bedeutet unbegrenzt."
+      },
+      {
+        "title": "Akzentfarbe",
+        "description": "Optionale Farbe für den Kopfzeilen-Chip, das aktive Wort und die Aktionsschaltflächen."
+      },
+      {
+        "title": "Einklappbar",
+        "description": "Dieses Kreuzworträtsel als auf- und zuklappbare Zeile anzeigen. Das Öffnen einer Zeile schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, als geschlossene Zeile starten, die nur den Titel und seinen Status zeigt."
+      },
+      {
+        "title": "Bewertungsformat",
+        "description": "OER Schema: Bewertungsformat dieser Prüfung (z. B. Punkte, Note, Prozent, Abschluss)."
+      },
+      {
+        "title": "Lernziel",
+        "description": "OER Schema: Lernziel, das mit dieser Prüfung verknüpft ist."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Name des Quiz",
+        "description": "Quizname zur xAPI-Identifikation in Analysesystemen."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: Kurs, für den diese Prüfung gedacht ist."
+      }
+    ]
+  }
+}

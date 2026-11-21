@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Àwọ̀n ètò-àyíká",
+    "description": "Àwọ̀n ìbánisọ̀rọ̀ ti bí àwọn apá iṣẹ́ àkànṣe ṣe so pọ̀, pẹ̀lú àwọn àwọ̀n-kékeré àti ìrìn-àjò ìgbésẹ̀-ìgbésẹ̀."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dátà àwọ̀n",
+        "description": "URL àkójọ JSON àwọn àwọ̀n (tí a kọ́ nínú PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Àwọ̀n",
+        "description": "ID àwọ̀n tí a ó kọ́kọ́ fihàn; main ni àwọ̀n ètò-àyíká."
+      },
+      {
+        "title": "Táìlì tí a yàn",
+        "description": "ID táìlì kan láti yàn nígbà tí àwọ̀n bá ṣí."
+      },
+      {
+        "title": "Ìrìn-àjò",
+        "description": "ID ìrìn-àjò kan láti bẹ̀rẹ̀ lórí rẹ̀."
+      },
+      {
+        "title": "Bẹ̀rẹ̀ nínú ìwò àkójọ",
+        "description": "Fi àwọ̀n hàn gẹ́gẹ́ bí àwọn àkójọ inú-ara-wọn dípò àwòrán."
+      },
+      {
+        "title": "Àwòrán nìkan",
+        "description": "Fi àwòrán nìkan hàn, gẹ́gẹ́ bí àpẹẹrẹ: kò sí àkọlé, ìrìn-àjò, àlàyé tàbí ọ̀pá ìgbésẹ̀."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kà á nípasẹ̀",
+        "description": "Bẹ̀rẹ̀ pẹ̀lú gbogbo táìlì tí a kà nípasẹ̀ òṣùwọ̀n kan.",
+        "options": {
+          "": "Ìsopọ̀ nìkan",
+          "fresh": "Ìtuntun",
+          "bus": "Bus factor",
+          "impact": "Ipa",
+          "evidence": "Ẹ̀rí",
+          "parity": "Ìbámu"
+        }
+      }
+    ]
+  }
+}

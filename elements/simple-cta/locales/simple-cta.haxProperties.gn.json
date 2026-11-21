@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Emokañy ta'ãnga'i",
         "description": "Emokañy ta'ãnga'i ojepurúva moñe'ẽrã jehechaukave hag̃ua"
+      },
+      {
+        "title": "Jehecha",
+        "description": "Mboy mbohesakãpa oguereko botõ.",
+        "options": {
+          "": "Henyhẽva",
+          "tonal": "Sa'y rekóva",
+          "outlined": "Jerepa reheve",
+          "plain": "Soke"
+        }
+      },
+      {
+        "title": "Tuichakue",
+        "description": "Botõ tuichakue.",
+        "options": {
+          "s": "Michĩ",
+          "": "Mbytegua",
+          "l": "Tuicha"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Meiwurkers",
+    "description": "De minsken dy't it projekt boud hawwe, út in rosterbestân"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Rosterbestân (JSON)"
+      },
+      {
+        "title": "Werjefte: landed, lab of code"
+      },
+      {
+        "title": "Measte minsken om te sjen (0 is allegear)"
+      }
+    ]
+  }
+}

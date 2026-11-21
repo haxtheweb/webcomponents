@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Xenarju bil-fergħat",
+    "description": "Storja fejn kull għażla twassal għal xena u tmiem differenti. L-istudenti jistgħu jmorru lura u jippruvaw toroq oħra; it-tmiem milħuq jiddetermina l-punteġġ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Isem ix-xenarju, jidher fl-intestatura tiegħu."
+      },
+      {
+        "title": "Xena tal-bidu",
+        "description": "ID tax-xena fejn jibdew l-istudenti. Ħallih vojt biex tibda mill-ewwel xena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur fakultattiv għaċ-ċippa tal-intestatura, il-buttuni u t-tarf ta' għażla."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX ગોઠવણી અને સંપાદનયોગ્ય ગુણધર્મો દર્શાવવા માટે વપરાતું ઉદાહરણ શરૂઆતી તત્વ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "શીર્ષક"
+      }
+    ]
+  }
+}

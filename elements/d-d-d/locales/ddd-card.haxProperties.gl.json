@@ -52,6 +52,20 @@
           "_top": "Xanela superior - _top",
           "_parent": "Xanela nai - _parent"
         }
+      },
+      {
+        "title": "Sen frecha",
+        "description": "Ocultar a frecha do botón."
+      },
+      {
+        "title": "Ligazón: destino",
+        "description": "Onde abrir a ligazón.",
+        "options": {
+          "": "A mesma xanela",
+          "_blank": "Nova xanela - _blank",
+          "_top": "Xanela superior - _top",
+          "_parent": "Xanela pai - _parent"
+        }
       }
     ],
     "developer": [

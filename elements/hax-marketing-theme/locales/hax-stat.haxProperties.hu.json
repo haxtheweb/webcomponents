@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statisztika",
+    "description": "Felfelé számoló szám címkével és a történetére mutató hivatkozással"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "A szám, ameddig számol"
+      },
+      {
+        "title": "A szám előtt"
+      },
+      {
+        "title": "A szám után"
+      },
+      {
+        "title": "Szavak szám helyett"
+      },
+      {
+        "title": "Mit számol"
+      },
+      {
+        "title": "A történet címe a hax.cloud oldalon (stories/ee450a19)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "ሁኔታ",
+  "directions": "መመሪያዎች",
+  "showDirections": "መመሪያዎችን አሳይ",
+  "hideDirections": "መመሪያዎችን ደብቅ",
+  "directionsRead": "እያንዳንዱን ትዕይንት ያንብቡ እና ምን እንደሚያደርጉ ይምረጡ።",
+  "directionsEndings": "በርካታ መጨረሻዎች አሉ። ከጨረሱ በኋላ ሌላ መንገድ ይሞክሩ።",
+  "startOver": "እንደገና ጀምር",
+  "back": "አንድ ደረጃ ወደ ኋላ",
+  "tryAnother": "ሌላ መንገድ ሞክር",
+  "path": "መንገድ",
+  "scene": "ትዕይንት",
+  "ending": "መጨረሻ",
+  "end": "መጨረሻ",
+  "scenesSeen": "ከ {total} ትዕይንቶች {seen} ታይተዋል",
+  "endingReached": "መጨረሻ ላይ ደርሰዋል",
+  "addScene": "ትዕይንት አክል",
+  "newScene": "አዲስ ትዕይንት",
+  "newSceneText": "የሚሆነውን ይግለጹ፣ ከዚያ እያንዳንዱን ምርጫ ከትዕይንት ጋር ያገናኙ።",
+  "editingNote": "አርትዖት፦ ሁሉም ትዕይንቶች ይታያሉ። ምርጫ ማለት ወደ # እና ከዚያ የትዕይንት ID የሚያመለክት አገናኝ ነው።",
+  "noScenes": "ሁኔታውን ለመጀመር ትዕይንት ያክሉ።"
+}

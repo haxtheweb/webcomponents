@@ -52,6 +52,20 @@
           "_top": "Dirisha la juu - _top",
           "_parent": "Dirisha mzazi - _parent"
         }
+      },
+      {
+        "title": "Bila mshale",
+        "description": "Ficha mshale wa kitufe."
+      },
+      {
+        "title": "Kiungo: lengo",
+        "description": "Mahali pa kufungua kiungo.",
+        "options": {
+          "": "Dirisha lile lile",
+          "_blank": "Dirisha jipya - _blank",
+          "_top": "Dirisha la juu - _top",
+          "_parent": "Dirisha mzazi - _parent"
+        }
       }
     ],
     "developer": [

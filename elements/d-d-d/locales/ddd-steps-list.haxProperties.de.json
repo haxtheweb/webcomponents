@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Schrittliste",
     "description": "Nummerierte Schritte zum Erledigen einer Aufgabe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Schrittanzeige",
+        "description": "Die Schritte als kompakte Titelzeile anzeigen, die den Fortschritt markiert. Der Inhalt der Schritte wird in diesem Layout nicht angezeigt."
+      },
+      {
+        "title": "Aktueller Schritt",
+        "description": "Der Schritt, bei dem die lesende Person ist, ab 1 gezählt. Frühere Schritte erscheinen als abgeschlossen. Wird von der Schrittanzeige verwendet."
+      }
+    ]
   }
 }

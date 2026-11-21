@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Hali ya Baseline",
+    "description": "Onyesha hali ya Baseline ya usaidizi wa vivinjari kwa kipengele cha jukwaa la wavuti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ya kipengele",
+        "description": "ID ya kipengele cha wavuti, kwa mfano anchor-positioning. Pata ID kwenye webstatus.dev; ID ni sehemu ya mwisho ya URL ya ukurasa wa kipengele."
+      }
+    ]
+  }
+}

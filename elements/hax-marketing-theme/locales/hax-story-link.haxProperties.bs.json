@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Dugme priče",
+    "description": "Dugme koje otvara priču iza tvrdnje na hax.cloud, ili odgovarajuće mjesto na drugoj stranici HAX mreže"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuda vodi",
+        "options": {
+          "cloud": "hax.cloud, priča",
+          "learn": "learn.hax.cloud, tutorijal",
+          "try": "browser.hax.cloud, isprobajte",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa na toj stranici (priča na hax.cloud izgleda kao stories/ee450a19)"
+      },
+      {
+        "title": "O čemu se radi"
+      },
+      {
+        "title": "Mali čip"
+      },
+      {
+        "title": "Prikaži o čemu se radi u dugmetu"
+      }
+    ]
+  }
+}

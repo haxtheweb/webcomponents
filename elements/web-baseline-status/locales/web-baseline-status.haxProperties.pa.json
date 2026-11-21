@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline ਸਥਿਤੀ",
+    "description": "ਵੈੱਬ ਪਲੇਟਫਾਰਮ ਵਿਸ਼ੇਸ਼ਤਾ ਦੀ Baseline ਬ੍ਰਾਊਜ਼ਰ ਸਹਾਇਤਾ ਸਥਿਤੀ ਦਿਖਾਓ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ਵਿਸ਼ੇਸ਼ਤਾ ID",
+        "description": "ਵੈੱਬ ਵਿਸ਼ੇਸ਼ਤਾ ਦਾ ID, ਉਦਾਹਰਨ ਲਈ anchor-positioning। ID webstatus.dev ਤੇ ਲੱਭੋ; ID ਵਿਸ਼ੇਸ਼ਤਾ ਪੰਨੇ ਦੇ URL ਦਾ ਆਖਰੀ ਹਿੱਸਾ ਹੈ।"
+      }
+    ]
+  }
+}

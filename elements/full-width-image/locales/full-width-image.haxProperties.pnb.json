@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "پچھوکڑ دی تصویر۔"
+        "description": "پچھوکڑ دی تصویر۔",
+        "title": "تصویر"
       },
       {
         "property": "caption",
-        "description": "متن دی سرخی۔"
+        "description": "متن دی سرخی۔",
+        "title": "کیپشن"
       }
     ]
   }

@@ -9,5 +9,7 @@
   "slidePages": "Àwọn ojú-ìwé ìfàwòránhàn",
   "goToSlide": "Lọ sí ìfàwòránhàn {number}",
   "slides": "Àwọn ìgbékalẹ̀",
-  "position": "{number} nínú {total}"
+  "position": "{number} nínú {total}",
+  "fullScreen": "Ojú-ìbòjú kíkún",
+  "exitFullScreen": "Jáde kúrò ní ojú-ìbòjú kíkún"
 }

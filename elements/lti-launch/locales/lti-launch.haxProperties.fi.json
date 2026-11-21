@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ulkoisen työkalun käynnistys",
+    "description": "Lohko, joka avaa ulkoisen oppimistyökalun uuteen ikkunaan tai sivulle, tavallisena linkkinä tai LTI 1.3 -kirjautumispyynnöllä."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Työkalun nimi. Näytetään otsakkeessa ja painikkeessa."
+      },
+      {
+        "title": "Kuvaus",
+        "description": "Mitä oppijat tekevät työkalussa, näytetään painikkeen yläpuolella."
+      },
+      {
+        "title": "Käynnistys-URL",
+        "description": "Työkalun osoite. Sen on oltava täydellinen osoite, joka alkaa https:// tai http://."
+      },
+      {
+        "title": "Avaa kohteessa",
+        "description": "Uusi ikkuna toimii kaikkien työkalujen kanssa. Tällä sivulla toimii vain työkaluilla, jotka sallivat näyttämisen toisen sivuston sisällä.",
+        "options": {
+          "window": "Uusi ikkuna",
+          "embed": "Tällä sivulla"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-kirjautumis-URL",
+        "description": "Vain LTI 1.3: työkalun kirjautumisen aloitusosoite. Tämän, asiakastunnuksen ja käyttöönottotunnuksen kanssa painike lähettää LTI-kirjautumispyynnön tavallisen linkin avaamisen sijaan. Käynnistyksen viimeistely vaatii tämän sivuston LTI-palvelun."
+      },
+      {
+        "title": "LTI-asiakastunnus",
+        "description": "Asiakastunnus, jonka työkalu antoi tälle sivustolle. Julkinen tunniste, ei salaisuus: älä koskaan laita tähän avaimia tai salaisuuksia."
+      },
+      {
+        "title": "LTI-käyttöönottotunnus",
+        "description": "Käyttöönottotunnus, jonka työkalu antoi tälle sivustolle. Julkinen tunniste, ei salaisuus."
+      },
+      {
+        "title": "LTI-myöntäjä",
+        "description": "Osoite, joka tunnistaa tämän sivuston työkalulle. Jätä tyhjäksi käyttääksesi sen sivuston osoitetta, jolla sivu on."
+      },
+      {
+        "title": "Korkeus sivulla",
+        "description": "Työkalun korkeus, kun se avautuu tälle sivulle, pikseleinä (200–2000)."
+      },
+      {
+        "title": "Korostusväri",
+        "description": "Otsakemerkin ja painikkeen väri. Jätä tyhjäksi noudattaaksesi teemaa."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-kirjautumisvihje",
+        "description": "Läpinäkymätön arvo, jolla tämän sivuston LTI-palvelu tunnistaa oppijan. Yleensä sivusto antaa sen lti-launch-request-tapahtuman kautta sen sijaan, että se tallennettaisiin tänne. Ei koskaan salasana tai avain."
+      },
+      {
+        "title": "LTI-viestivihje",
+        "description": "Läpinäkymätön arvo, jolla tämän sivuston LTI-palvelu tunnistaa tämän käynnistyksen. Yleensä sivusto antaa sen sen sijaan, että se tallennettaisiin tänne."
+      }
+    ]
+  }
+}

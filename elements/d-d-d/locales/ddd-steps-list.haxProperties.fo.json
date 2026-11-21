@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Stigalisti",
     "description": "Talmerkt stig til at gera eina uppgávu lidna."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stigvísir",
+        "description": "Vís stigini sum eina tætta røð av heitum, sum merkir framgongd. Innihaldið í stigunum verður ikki víst í hesi uppsetingini."
+      },
+      {
+        "title": "Núverandi stig",
+        "description": "Stigið, sum lesarin er á, talt frá 1. Fyrri stig verða víst sum liðug. Brúkt av stigvísinum."
+      }
+    ]
   }
 }

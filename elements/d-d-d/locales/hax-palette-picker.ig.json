@@ -5,5 +5,6 @@
   "selected": "Ahọrọ",
   "currentlyActiveAndSelectedPalette": "Paleti na-arụ ọrụ ugbu a ma ahọrọ",
   "currentlyActivePalette": "Paleti na-arụ ọrụ ugbu a",
-  "selectedPaletteToApply": "Paleti ahọrọ a ga-etinye"
+  "selectedPaletteToApply": "Paleti ahọrọ a ga-etinye",
+  "paletteNumber": "Paleti {number}"
 }

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentatsioonipleier",
+    "description": "Veebikomponendi juhend, demo ja viide koos kopeerimisnuppudega HTML-i, impordi, npm-i ja CDN-i jaoks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentatsiooni andmefail",
+        "description": "Elemendiga kaasas olevad dokumentatsiooniandmed (lib/tag.docs.json)."
+      },
+      {
+        "title": "Juhendi süžeeskeem",
+        "description": "Elemendiga kaasas olev liikumise süžeeskeem (tag.motion.json). Valikuline."
+      },
+      {
+        "title": "Videoõpetus",
+        "description": "Lühike video elemendi kohta (YouTube, Vimeo või videofail). Asendab dokumentatsiooniandmetes oleva video."
+      },
+      {
+        "title": "Ava vahekaardil",
+        "description": "Milline vahekaart kuvatakse esimesena.",
+        "options": {
+          "motion": "Juhend",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentatsioon",
+          "schema": "Skeem"
+        }
+      },
+      {
+        "title": "Esita juhend automaatselt",
+        "description": "Alusta juhendit kohe, kui pleier kuvatakse. Eiratakse, kui lugeja eelistab vähendatud liikumist."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Juhendi teema",
+        "description": "Mitme juhendiga elementide puhul, milline teema esimesena avada (näiteks add-blocks). Põhijuhendi jaoks jäta tühjaks."
+      },
+      {
+        "title": "Reaalajas demo link",
+        "description": "Kuhu viib nupp Ava demo lähtekood. Vaikimisi hoidla demo kausta."
+      },
+      {
+        "title": "Dokumentatsiooni link",
+        "description": "Kuhu viib täieliku dokumentatsiooni nupp, näiteks vastavale Learn HAX-i lehele."
+      }
+    ]
+  }
+}

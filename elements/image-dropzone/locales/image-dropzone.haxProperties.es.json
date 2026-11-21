@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Zona de colocación sobre imagen",
+    "description": "Los estudiantes colocan etiquetas en zonas superpuestas a una imagen y luego comprueban su respuesta."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagen",
+        "description": "La imagen sobre la que los estudiantes colocan etiquetas."
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Describe la imagen para las personas que no pueden verla. No reveles dónde van las etiquetas."
+      },
+      {
+        "title": "Título de la imagen",
+        "description": "Un título corto visible para la imagen, que se muestra encima."
+      },
+      {
+        "title": "Pregunta",
+        "description": "Lo que se pide a los estudiantes que hagan con las etiquetas."
+      },
+      {
+        "title": "Etiquetas y zonas",
+        "description": "Cada elemento es una etiqueta que los estudiantes pueden colocar. Da a una etiqueta un nombre de zona para poner su zona en la imagen; una etiqueta sin nombre de zona es una sobrante que no va en ningún sitio. Los números de zona son porcentajes de la imagen."
+      },
+      {
+        "title": "Pie de foto",
+        "description": "Pie opcional que se muestra bajo la imagen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Intentos",
+        "description": "Cuántas veces puede comprobar un estudiante. 0 significa ilimitado."
+      },
+      {
+        "title": "Mezclar etiquetas",
+        "description": "Mostrar las etiquetas en un orden distinto en cada visita."
+      },
+      {
+        "title": "Plegable",
+        "description": "Muestra esta pregunta como una fila que se abre y se cierra. Abrir una cierra las demás preguntas plegables que tenga al lado."
+      },
+      {
+        "title": "Empezar plegado",
+        "description": "Si es plegable, empieza como una fila cerrada que solo muestra la pregunta y su estado."
+      },
+      {
+        "title": "Formato de calificación",
+        "description": "OER Schema: formato de calificación de esta evaluación (p. ej., puntos, letra, porcentaje, finalización)."
+      },
+      {
+        "title": "Objetivo de aprendizaje",
+        "description": "OER Schema: objetivo de aprendizaje asociado a esta evaluación."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nombre del cuestionario",
+        "description": "Nombre del cuestionario usado para la identificación xAPI en sistemas de analítica."
+      },
+      {
+        "title": "Curso",
+        "description": "OER Schema: curso al que va destinada esta evaluación."
+      }
+    ]
+  }
+}

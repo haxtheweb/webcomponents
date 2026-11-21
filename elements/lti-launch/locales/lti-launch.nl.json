@@ -1,0 +1,19 @@
+{
+  "label": "Externe tool",
+  "labelLti": "Externe tool · LTI 1.3",
+  "theTool": "de tool",
+  "directions": "Instructies",
+  "showDirections": "Instructies tonen",
+  "hideDirections": "Instructies verbergen",
+  "directionsWindow": "De knop opent een nieuw venster met de tool erin.",
+  "directionsEmbed": "De knop opent de tool op deze pagina. Als die niet laadt, open hem dan in een nieuw venster.",
+  "directionsLti": "Deze site logt je in bij de tool, dus je hebt geen apart account nodig.",
+  "openWindow": "{title} openen (nieuw venster)",
+  "openEmbed": "{title} openen",
+  "openInstead": "In plaats daarvan openen in een nieuw venster",
+  "frameTitle": "{title} (externe tool)",
+  "openedWindow": "Er is een nieuw venster met de tool geopend.",
+  "openedEmbed": "De tool is op deze pagina geopend.",
+  "needsUrl": "Dit blok heeft een startadres nodig dat begint met http:// of https://.",
+  "needsSignIn": "Deze tool heeft de inlogdienst van deze site nodig, maar die is hier niet beschikbaar. Er is niets geopend."
+}

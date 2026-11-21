@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Folaigh an deilbhín",
         "description": "Folaigh an deilbhín a úsáidtear chun téacs a aiceannú"
+      },
+      {
+        "title": "Cuma",
+        "description": "Cé mhéad béime atá ag an gcnaipe.",
+        "options": {
+          "": "Líonta",
+          "tonal": "Tonúil",
+          "outlined": "Imlínithe",
+          "plain": "Simplí"
+        }
+      },
+      {
+        "title": "Méid",
+        "description": "Méid an chnaipe.",
+        "options": {
+          "s": "Beag",
+          "": "Meánach",
+          "l": "Mór"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Colaboradores",
+    "description": "Las personas que construyeron el proyecto, a partir de un archivo de lista"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Archivo de lista (JSON)"
+      },
+      {
+        "title": "Vista: landed, lab o code"
+      },
+      {
+        "title": "Número máximo de personas que mostrar (0 es todas)"
+      }
+    ]
+  }
+}

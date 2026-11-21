@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tombol cerita",
+    "description": "Tombol yang membuka cerita di balik sebuah klaim di hax.cloud, atau tempat yang sesuai di situs jaringan HAX lainnya"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tujuannya",
+        "options": {
+          "cloud": "hax.cloud, ceritanya",
+          "learn": "learn.hax.cloud, tutorial",
+          "try": "browser.hax.cloud, coba",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Alamat di situs tersebut (cerita di hax.cloud terlihat seperti stories/ee450a19)"
+      },
+      {
+        "title": "Tentang apa"
+      },
+      {
+        "title": "Chip kecil"
+      },
+      {
+        "title": "Tampilkan topiknya di tombol"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ímóti",
+    "description": "Orð við síðuna av einum høvd-móti-høvdi-knøtti við tveimum persónum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Yvirskrift"
+      },
+      {
+        "title": "Hvar knøtturin fer"
+      },
+      {
+        "title": "Knøttatekstur"
+      },
+      {
+        "title": "Fræ til vinstra persón"
+      },
+      {
+        "title": "Fræ til høgra persón"
+      }
+    ]
+  }
+}

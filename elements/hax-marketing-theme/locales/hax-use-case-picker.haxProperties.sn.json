@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Musarudzi wezvinangwa",
+    "description": "Sarudza kuti saiti ndeyei uwane link inovhura HAX mubrowser ine saiti yekutanga iyoyo, pamwe nemurairo weCLI unoenderana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kero yeHAX mubrowser",
+        "description": "Panovhurika link; inowedzerwa ?skeleton= ne &name="
+      },
+      {
+        "title": "Masaiti ekutanga ekusiya",
+        "description": "Mazita emuchina, akaparadzaniswa nekoma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rondedzero yemasaiti ekutanga",
+        "description": "Kero yerondedzero yemaskeleton (fomati inoverengwa ne app-hax)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Khởi chạy công cụ bên ngoài",
+    "description": "Một khối mở công cụ học tập bên ngoài trong cửa sổ mới hoặc trên trang, dưới dạng liên kết thường hoặc với yêu cầu đăng nhập LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tên của công cụ. Hiển thị ở phần đầu và trên nút."
+      },
+      {
+        "title": "Mô tả",
+        "description": "Những gì người học làm trong công cụ, hiển thị phía trên nút."
+      },
+      {
+        "title": "URL khởi chạy",
+        "description": "Địa chỉ của công cụ. Phải là địa chỉ đầy đủ bắt đầu bằng https:// hoặc http://."
+      },
+      {
+        "title": "Mở trong",
+        "description": "Cửa sổ mới hoạt động với mọi công cụ. Trên trang này chỉ hoạt động với các công cụ cho phép hiển thị bên trong trang web khác.",
+        "options": {
+          "window": "Một cửa sổ mới",
+          "embed": "Trên trang này"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL đăng nhập LTI",
+        "description": "Chỉ dành cho LTI 1.3: địa chỉ khởi tạo đăng nhập của công cụ. Với địa chỉ này, một client ID và một deployment ID, nút sẽ gửi yêu cầu đăng nhập LTI thay vì mở liên kết thường. Để hoàn tất khởi chạy cần dịch vụ LTI của trang web này."
+      },
+      {
+        "title": "Client ID LTI",
+        "description": "Client ID mà công cụ cấp cho trang web này. Một định danh công khai, không phải bí mật: không bao giờ đặt khóa hay bí mật ở đây."
+      },
+      {
+        "title": "Deployment ID LTI",
+        "description": "Deployment ID mà công cụ cấp cho trang web này. Một định danh công khai, không phải bí mật."
+      },
+      {
+        "title": "Bên phát hành LTI",
+        "description": "Địa chỉ nhận dạng trang web này với công cụ. Để trống để dùng địa chỉ của trang web chứa trang này."
+      },
+      {
+        "title": "Chiều cao trên trang",
+        "description": "Chiều cao của công cụ khi mở trên trang này, tính bằng pixel (200 đến 2000)."
+      },
+      {
+        "title": "Màu nhấn",
+        "description": "Màu của nhãn đầu và nút. Để trống để theo giao diện."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Gợi ý đăng nhập LTI",
+        "description": "Một giá trị mờ mà dịch vụ LTI của trang web này dùng để nhận ra người học. Thường do trang web cung cấp qua sự kiện lti-launch-request thay vì lưu ở đây. Không bao giờ là mật khẩu hay khóa."
+      },
+      {
+        "title": "Gợi ý thông điệp LTI",
+        "description": "Một giá trị mờ mà dịch vụ LTI của trang web này dùng để nhận ra lần khởi chạy này. Thường do trang web cung cấp thay vì lưu ở đây."
+      }
+    ]
+  }
+}

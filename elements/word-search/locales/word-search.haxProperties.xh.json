@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Ukukhangela amagama",
+    "description": "Igridi yoonobumba enamagama afihliweyo. Abafundi bacofa unobumba wokuqala nowokugqibela wegama ngalinye. Iqhelisela ukubona indlela igama elipelwa ngayo, hayi oko lithetha kona."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isihloko",
+        "description": "Oko abafundi bacelwa ukuba bakufumane, kuboniswa kwisihloko."
+      },
+      {
+        "title": "Amagama",
+        "description": "Amagama aza kufihlwa. Izithuba neziphumlisi zishiywa ngaphandle kwegridi. Amagama angangeniyo adweliswa ngelixa uhlela kwaye ashiywe ngaphandle kubafundi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ubungakanani begridi",
+        "description": "Oonobumba kwicala ngalinye, 4 ukuya ku-16. Shiya kungenanto ukulinganisa elona gama lide (ukuya ku-12). Ngaphezulu kwe-12 iskrolela ecaleni kwifowuni."
+      },
+      {
+        "title": "Amagama athambekileyo",
+        "description": "Kwakhona fihla amagama ngokuthambekileyo. Kunzima ngakumbi."
+      },
+      {
+        "title": "Amagama abhalwe ngasemva",
+        "description": "Kwakhona fihla amagama abhalwe ngasemva. Kunzima ngakumbi."
+      },
+      {
+        "title": "Umbala wogxininiso",
+        "description": "Umbala ongakhethwa wetshiphu yesihloko, unobumba wokuqala okhethiweyo neqhosha."
+      }
+    ]
+  }
+}

@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Detagli di i punti interattivi",
         "description": "I punti interattivi di a carta d'imagine."
+      },
+      {
+        "title": "Ditagli di i punti attivi",
+        "description": "I punti attivi interattivi nant'à a carta di maghjina."
       }
     ]
   }

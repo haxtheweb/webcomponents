@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Piednoto",
+    "description": "Noto skribita tie, kie ĝi apartenas en la teksto. Ĝi montriĝas kiel nombro, kaj la numerita listo de notoj konstruiĝas mem ĉe la fino de la paĝo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Noto",
+        "description": "La teksto de la piednoto."
+      },
+      {
+        "title": "Sen antaŭvido",
+        "description": "Ne montri la noton, kiam leganto ŝvebas super aŭ fokusas la nombron."
+      }
+    ]
+  }
+}

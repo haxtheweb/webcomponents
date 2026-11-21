@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Odgovori",
+        "description": "Vrstni red odgovorov določa pravilno zaporedje.",
+        "options": {
+          "": "Seznam",
+          "cards": "Slikovne kartice"
+        }
+      },
+      {
+        "title": "Odgovori",
         "description": "Vrstni red odgovorov določa pravilno zaporedje."
       }
     ],

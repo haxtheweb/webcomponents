@@ -1,0 +1,16 @@
+{
+  "theme": "Thema",
+  "designSystem": "Ontwerpsysteem",
+  "dddDefault": "DDD (standaard)",
+  "designSystemHelp": "Kleur, typografie, hoeken en focus. Het thema behoudt de lay-out.",
+  "designSystemFixed": "Dit thema houdt zijn eigen ontwerpsysteem.",
+  "palette": "Palet",
+  "themeDefault": "Standaard van het thema",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (thema van deze site)",
+  "restyle": "Deze site een nieuwe stijl geven",
+  "close": "Sluiten",
+  "reset": "Terug naar het eigen uiterlijk van deze site",
+  "random": "Verras me",
+  "about": "Dit toont een paar van de stijlen die in HAX zijn ingebouwd. De pagina's veranderen nooit: de structuur staat in JSON Outline Schema en elk blok is een standaard webcomponent, dus het ontwerp is vrij te wisselen."
+}

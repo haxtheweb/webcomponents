@@ -8,5 +8,9 @@
   "theme": "Тақырып",
   "palette": "Палитра",
   "cancel": "Бас тарту",
-  "openAppearanceSettings": "Сыртқы түр параметрлерін ашу"
+  "openAppearanceSettings": "Сыртқы түр параметрлерін ашу",
+  "designSystem": "Дизайн жүйесі",
+  "designSystemDefault": "DDD (әдепкі)",
+  "designSystemThemeDefault": "{name} (тақырыптың әдепкісі)",
+  "designSystemHelp": "Түс, қаріп, бұрыштар және тығыздық. Макетті бәрібір тақырып анықтайды."
 }

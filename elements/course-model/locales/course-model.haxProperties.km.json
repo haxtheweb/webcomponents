@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "ចំណងជើង"
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងបង្ហាញពីលើគំរូវគ្គសិក្សា។"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "អាសយដ្ឋានឯកសារគំរូ 3D (.glb ឬ .gltf) ដែលត្រូវបង្ហាញ។"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ពិពណ៌នាគំរូ 3D សម្រាប់អ្នកដែលមើលមិនឃើញ។"
       },
       {
         "title": "តំបន់ព័ត៌មាន"

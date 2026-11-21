@@ -52,6 +52,20 @@
           "_top": "最上位ウィンドウ - _top",
           "_parent": "親ウィンドウ - _parent"
         }
+      },
+      {
+        "title": "矢印なし",
+        "description": "ボタンの矢印を隠します。"
+      },
+      {
+        "title": "リンク: ターゲット",
+        "description": "リンクを開く場所。",
+        "options": {
+          "": "同じウィンドウ",
+          "_blank": "新しいウィンドウ - _blank",
+          "_top": "最上位ウィンドウ - _top",
+          "_parent": "親ウィンドウ - _parent"
+        }
       }
     ],
     "developer": [

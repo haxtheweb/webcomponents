@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Oyuncu",
+    "description": "Bir karakterin canlandırdığı, sözleri ve düğmesi olan bir hedef kitle"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bu kim"
+      },
+      {
+        "title": "Karakter türü"
+      },
+      {
+        "title": "Karakter tohumu"
+      },
+      {
+        "title": "Sahne rengi (DDD adı)"
+      },
+      {
+        "title": "Düğmenin gittiği yer"
+      },
+      {
+        "title": "Düğme metni"
+      }
+    ]
+  }
+}

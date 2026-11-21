@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Yanar tsarin",
+    "description": "Yanar mai mu'amala ta yadda ɓangarorin aiki ke haɗuwa, tare da ƙananan yanar gizo da rangadi mataki-mataki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bayanan yanar",
+        "description": "URL na tarin JSON na yanar gizo (an gina a PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Yanar",
+        "description": "Id na yanar da za a nuna da farko; main ita ce yanar tsarin."
+      },
+      {
+        "title": "Tayil da aka zaɓa",
+        "description": "Id na tayil da za a zaɓa idan yanar ta buɗe."
+      },
+      {
+        "title": "Rangadi",
+        "description": "Id na rangadin da za a fara da shi."
+      },
+      {
+        "title": "Fara a duban jeri",
+        "description": "Nuna yanar a matsayin jeri a cikin jeri maimakon zane."
+      },
+      {
+        "title": "Zane kawai",
+        "description": "Nuna zane kawai, a matsayin hoto: babu kai, rangadi, bayanai ko sandar matakai."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Karanta bisa",
+        "description": "Fara da kowane tayil an karanta shi bisa ma'auni ɗaya.",
+        "options": {
+          "": "Haɗi kawai",
+          "fresh": "Sabunta",
+          "bus": "Bus factor",
+          "impact": "Tasiri",
+          "evidence": "Shaida",
+          "parity": "Daidaito"
+        }
+      }
+    ]
+  }
+}

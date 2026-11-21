@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Stappenlijst",
     "description": "Genummerde stappen om een taak te voltooien."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stappenindicator",
+        "description": "Toon de stappen als een compacte rij titels die de voortgang markeert. De inhoud van de stappen wordt in deze lay-out niet getoond."
+      },
+      {
+        "title": "Huidige stap",
+        "description": "De stap waar de lezer is, geteld vanaf 1. Eerdere stappen worden als voltooid getoond. Gebruikt door de stappenindicator."
+      }
+    ]
   }
 }

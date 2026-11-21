@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Anggota pemeran",
+    "description": "Satu audiens, diperankan oleh karakter, dengan kata-kata dan tombol"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Siapa ini"
+      },
+      {
+        "title": "Jenis karakter"
+      },
+      {
+        "title": "Seed karakter"
+      },
+      {
+        "title": "Warna panggung (nama DDD)"
+      },
+      {
+        "title": "Tujuan tombol"
+      },
+      {
+        "title": "Teks tombol"
+      }
+    ]
+  }
+}

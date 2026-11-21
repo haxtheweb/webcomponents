@@ -8,5 +8,9 @@
   "theme": "تھیم",
   "palette": "پیلیٹ",
   "cancel": "منسوخ کریں",
-  "openAppearanceSettings": "ظاہری ترتیبات کھولیں"
+  "openAppearanceSettings": "ظاہری ترتیبات کھولیں",
+  "designSystem": "ڈیزائن سسٹم",
+  "designSystemDefault": "DDD (طے شدہ)",
+  "designSystemThemeDefault": "{name} (تھیم کا طے شدہ)",
+  "designSystemHelp": "رنگ، ٹائپ، کونے اور کثافت۔ لے آؤٹ اب بھی تھیم طے کرتا ہے۔"
 }

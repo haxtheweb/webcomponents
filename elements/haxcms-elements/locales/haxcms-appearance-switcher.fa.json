@@ -1,0 +1,8 @@
+{
+  "theme": "پوسته",
+  "palette": "پالت",
+  "themeDefault": "پیش‌فرض پوسته",
+  "designSystem": "سیستم طراحی",
+  "designSystemDefault": "DDD (پیش‌فرض)",
+  "designSystemUnavailable": "این پوسته سیستم طراحی خودش را حفظ می‌کند"
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Escribe usando a notación matemática LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fondo das imaxes",
+        "description": "Fondo detrás dos debuxos. Automático só engade un cando o debuxo sería difícil de ver na páxina, como liñas escuras no modo escuro.",
+        "options": {
+          "auto": "Automático",
+          "light": "Claro",
+          "dark": "Escuro",
+          "none": "Ningunha"
+        }
+      }
+    ]
   }
 }

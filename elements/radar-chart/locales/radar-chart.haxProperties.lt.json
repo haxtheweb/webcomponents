@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radaro diagrama",
+    "description": "Radaro (voratinklio) diagrama brandos modeliams ir aspektų vertinimui, pavyzdžiui, HEOSAT. Apima tekstinę alternatyvą ir duomenų lentelę."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Diagramos antraštė; taip pat naudojama kaip jos prieinamas pavadinimas."
+      },
+      {
+        "title": "Didžiausias rezultatas",
+        "description": "Didžiausia skalės reikšmė."
+      },
+      {
+        "title": "Kategorijos",
+        "description": "Po vieną kategoriją eilutėje. Reikia bent 3."
+      },
+      {
+        "title": "Rezultatai",
+        "description": "Kableliais atskirti skaičiai, po vieną kiekvienai kategorijai ta pačia tvarka."
+      },
+      {
+        "title": "Tiksliniai rezultatai",
+        "description": "Kableliais atskirti skaičiai, po vieną kiekvienai kategorijai ta pačia tvarka."
+      },
+      {
+        "title": "Rodyti legendą",
+        "description": "Rodyti legendą su rezultatų ir tikslų pavadinimais."
+      },
+      {
+        "title": "Kompaktiška",
+        "description": "Mažesnė diagrama be etikečių, legendos ar duomenų lentelės. Užveskite pelę ant taško, kad pamatytumėte jo reikšmes."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rezultatų etiketė",
+        "description": "Rezultatų etiketė legendoje ir lentelėje."
+      },
+      {
+        "title": "Tikslų etiketė",
+        "description": "Tikslų etiketė legendoje ir lentelėje."
+      }
+    ]
+  }
+}

@@ -5,5 +5,7 @@
   "editModeLabel": "മീഡിയ പ്ലേലിസ്റ്റ് എഡിറ്റ് മോഡ്",
   "position": "{current} / {total}",
   "previousItem": "മുമ്പത്തെ ഇനം",
-  "nextItem": "അടുത്ത ഇനം"
+  "nextItem": "അടുത്ത ഇനം",
+  "fullScreen": "പൂർണ്ണ സ്ക്രീൻ",
+  "exitFullScreen": "പൂർണ്ണ സ്ക്രീനിൽ നിന്ന് പുറത്തുകടക്കുക"
 }

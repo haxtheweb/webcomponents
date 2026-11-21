@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "Termino"
+        "title": "Termino",
+        "description": "La vorto aŭ frazo, kiun legantoj alklakas por vidi ĝian difinon."
       },
       {
         "property": "information",

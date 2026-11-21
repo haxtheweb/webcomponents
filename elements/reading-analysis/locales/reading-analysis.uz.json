@@ -60,6 +60,8 @@
   "flagsFound": "{total} tadan {correct} tasi topildi",
   "toRethink": "{count} ta qayta o‘ylash kerak",
   "notEvidence": "bu bayroqcha uchun dalil emas",
+  "isEvidence": "bu belgi uchun dalil",
+  "readingKeys": "Bir {unit} dan keyingisiga o‘tish uchun strelka tugmalaridan foydalaning.",
   "markAnswers": "Javoblarni belgilash",
   "doneMarking": "Javoblarni belgilashni tugatish",
   "editHint": "Quyidagi matnni tahrirlang. Har bir bayroqchaning joyini tanlash uchun blok menyusidagi Javoblarni belgilash bandidan foydalaning.",

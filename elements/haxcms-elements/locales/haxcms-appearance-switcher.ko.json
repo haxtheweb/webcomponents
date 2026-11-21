@@ -1,0 +1,8 @@
+{
+  "theme": "테마",
+  "palette": "팔레트",
+  "themeDefault": "테마 기본값",
+  "designSystem": "디자인 시스템",
+  "designSystemDefault": "DDD(기본값)",
+  "designSystemUnavailable": "이 테마는 자체 디자인 시스템을 유지합니다"
+}

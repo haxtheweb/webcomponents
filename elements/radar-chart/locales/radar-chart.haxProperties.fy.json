@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radardiagram",
+    "description": "Radardiagram (spinnewebdiagram) foar folwoeksenheidsmodellen en faset-skoares, lykas HEOSAT. Befettet in tekstalternatyf en gegevenstabel."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Koptekst foar it diagram; ek brûkt as syn tagonklike namme."
+      },
+      {
+        "title": "Maksimale skoare",
+        "description": "Heechste wearde op de skaal."
+      },
+      {
+        "title": "Kategoryen",
+        "description": "Ien kategory per rigel. Op syn minst 3 nedich."
+      },
+      {
+        "title": "Skoares",
+        "description": "Getallen skieden troch komma's, ien per kategory yn deselde folchoarder."
+      },
+      {
+        "title": "Doelskoares",
+        "description": "Getallen skieden troch komma's, ien per kategory yn deselde folchoarder."
+      },
+      {
+        "title": "Leginde sjen litte",
+        "description": "In leginde sjen litte dy't de skoares en de doelen neamt."
+      },
+      {
+        "title": "Kompakt",
+        "description": "Lytser diagram sûnder labels, leginde of gegevenstabel. Gean mei de mûs oer in punt om de wearden te sjen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Skoarelabel",
+        "description": "Leginde- en tabellabel foar de skoares."
+      },
+      {
+        "title": "Doellabel",
+        "description": "Leginde- en tabellabel foar de doelen."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Lomu tēlotājs",
+    "description": "Viena auditorija, ko tēlo personāžs, ar vārdiem un pogu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kas tas ir"
+      },
+      {
+        "title": "Personāža veids"
+      },
+      {
+        "title": "Personāža sēkla"
+      },
+      {
+        "title": "Skatuves krāsa (DDD nosaukums)"
+      },
+      {
+        "title": "Kur ved poga"
+      },
+      {
+        "title": "Pogas teksts"
+      }
+    ]
+  }
+}

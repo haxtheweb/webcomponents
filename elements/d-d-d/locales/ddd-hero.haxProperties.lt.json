@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Antraštinė sritis",
+    "description": "Didelis paveikslėlis, GIF ar vaizdo įrašas su antrašte ir tekstu virš jo, dedamas bet kurioje puslapio vietoje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Paveikslėlis arba vaizdo įrašas",
+        "description": "JPG, PNG, WebP, GIF, MP4 arba WebM failas."
+      },
+      {
+        "title": "Alternatyvusis tekstas",
+        "description": "Aprašykite paveikslėlį. Palikite tuščią, jei jis tik dekoratyvinis."
+      },
+      {
+        "title": "Antraštė",
+        "description": "Antraštė, rodoma virš medijos. Palikite tuščią, jei nereikia."
+      },
+      {
+        "title": "Tekstas",
+        "description": "Tekstas, rodomas po antrašte, virš medijos."
+      },
+      {
+        "title": "Visas plotis",
+        "description": "Išsitempti nuo krašto iki krašto, o ne būti turinio stulpelyje."
+      },
+      {
+        "title": "Aukštis",
+        "options": {
+          "tall": "Aukšta",
+          "medium": "Vidutinė",
+          "short": "Žema"
+        }
+      },
+      {
+        "title": "Kadravimas",
+        "description": "Kaip nuotrauka atrodo kiekviename ekrano dydyje"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Užtamsinimas",
+        "description": "Spalva, uždedama ant medijos. Kai yra antraštė ar tekstas, ji yra visada, kad tekstas liktų įskaitomas.",
+        "options": {
+          "blue": "Mėlyna",
+          "bottom": "Tamsu apačioje",
+          "none": "Nėra"
+        }
+      },
+      {
+        "title": "Teksto padėtis",
+        "options": {
+          "bottom": "Apačioje",
+          "middle": "Viduryje"
+        }
+      },
+      {
+        "title": "Židinio taškas horizontaliai",
+        "description": "Paveikslėlio dalis, kuri lieka matoma jį apkirpus, nuo 0 (kairė) iki 100 (dešinė)."
+      },
+      {
+        "title": "Židinio taškas vertikaliai",
+        "description": "Paveikslėlio dalis, kuri lieka matoma jį apkirpus, nuo 0 (viršus) iki 100 (apačia)."
+      }
+    ]
+  }
+}

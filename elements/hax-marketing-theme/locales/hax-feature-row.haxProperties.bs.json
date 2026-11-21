@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Red funkcije",
+    "description": "Ekran proizvoda pored onoga što on znači za vas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mala oznaka"
+      },
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Slika"
+      },
+      {
+        "title": "Šta slika prikazuje"
+      },
+      {
+        "title": "Slika na desnoj strani"
+      },
+      {
+        "title": "Boja sjene (DDD naziv; prazno prati paletu)"
+      }
+    ]
+  }
+}

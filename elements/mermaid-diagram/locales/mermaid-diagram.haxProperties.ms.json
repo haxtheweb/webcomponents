@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Rajah daripada teks",
+    "description": "Tulis rajah sebagai teks (Mermaid): carta alir, jujukan, garis masa dan banyak lagi. Ia dilukis dalam halaman dengan alternatif teks."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tajuk",
+        "description": "Dipaparkan di atas rajah dan digunakan sebagai namanya."
+      },
+      {
+        "title": "Sumber rajah",
+        "description": "Teks Mermaid, contohnya: flowchart TD, kemudian satu baris setiap pautan seperti A[Draft] --> B{Ready?}. Tambah |label| selepas anak panah untuk melabelkannya. Lukisan dikemas kini semasa anda menaip."
+      },
+      {
+        "title": "Alternatif teks",
+        "description": "Huraikan apa yang ditunjukkan oleh rajah untuk orang yang tidak dapat melihatnya. Biarkan kosong pada carta alir supaya langkahnya disenaraikan untuk anda."
+      },
+      {
+        "title": "Kapsyen",
+        "description": "Kapsyen pilihan yang dipaparkan di bawah rajah."
+      },
+      {
+        "title": "Tunjukkan sumber",
+        "description": "Tunjukkan teks rajah di sebelah lukisan."
+      },
+      {
+        "title": "Tunjukkan alternatif teks",
+        "description": "Tunjukkan alternatif teks di bawah lukisan. Ia sentiasa tersedia untuk pembaca skrin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fail sumber",
+        "description": "Alamat fail .mmd untuk dilukis dan bukannya teks di atas (https atau laluan pada laman ini)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna cip ikon dalam pengepala."
+      }
+    ]
+  }
+}

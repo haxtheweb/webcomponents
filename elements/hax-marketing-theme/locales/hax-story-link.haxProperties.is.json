@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Söguhnappur",
+    "description": "Hnappurinn sem opnar söguna á bak við fullyrðingu á hax.cloud, eða samsvarandi stað á öðrum vef HAX-netsins"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hvert hann vísar",
+        "options": {
+          "cloud": "hax.cloud, sagan",
+          "learn": "learn.hax.cloud, kennsluefni",
+          "try": "browser.hax.cloud, prófaðu það",
+          "elements": "webcomponents.hax.cloud, kubbur",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Slóð á þeim vef (saga á hax.cloud lítur út eins og stories/ee450a19)"
+      },
+      {
+        "title": "Um hvað þetta er"
+      },
+      {
+        "title": "Lítil flaga"
+      },
+      {
+        "title": "Sýna um hvað þetta er í hnappnum"
+      }
+    ]
+  }
+}

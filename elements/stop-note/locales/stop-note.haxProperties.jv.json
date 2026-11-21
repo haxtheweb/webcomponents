@@ -23,7 +23,9 @@
           "stop": "Mandheg",
           "warning": "Pènget",
           "success": "Konfirmasi",
-          "info": "Pengumuman"
+          "info": "Pengumuman",
+          "tip": "Tip",
+          "new": "Apa sing anyar"
         }
       },
       {

@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "उत्तर सही क्रम में है",
   "answerInIncorrectOrder": "उत्तर गलत क्रम में है",
   "moveOptionUp": "विकल्प को क्रम में ऊपर ले जाने के लिए चुनें",
-  "moveOptionDown": "विकल्प को क्रम में नीचे ले जाने के लिए चुनें"
+  "moveOptionDown": "विकल्प को क्रम में नीचे ले जाने के लिए चुनें",
+  "moveEarlier": "पहले ले जाएँ",
+  "moveLater": "बाद में ले जाएँ",
+  "correct": "सही",
+  "incorrect": "गलत"
 }

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bidragydere",
+    "description": "Personerne, der byggede projektet, fra en deltagerfil"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deltagerfil (JSON)"
+      },
+      {
+        "title": "Visning: landed, lab eller code"
+      },
+      {
+        "title": "Højst antal personer at vise (0 er alle)"
+      }
+    ]
+  }
+}

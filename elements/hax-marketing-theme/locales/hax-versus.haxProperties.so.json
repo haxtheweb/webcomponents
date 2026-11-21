@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Erayo ku ag yaal badhan madax ilaa madax ah oo leh labo shakhsi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan"
+      },
+      {
+        "title": "Meesha badhanku u socdo"
+      },
+      {
+        "title": "Qoraalka badhanka"
+      },
+      {
+        "title": "Abuurka shakhsiga bidix"
+      },
+      {
+        "title": "Abuurka shakhsiga midig"
+      }
+    ]
+  }
+}

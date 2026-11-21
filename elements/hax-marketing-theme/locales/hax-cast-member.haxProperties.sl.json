@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Član zasedbe",
+    "description": "Eno občinstvo, ki ga igra lik, z besedami in gumbom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kdo je to"
+      },
+      {
+        "title": "Vrsta lika"
+      },
+      {
+        "title": "Seme lika"
+      },
+      {
+        "title": "Barva odra (ime DDD)"
+      },
+      {
+        "title": "Kam vodi gumb"
+      },
+      {
+        "title": "Besedilo gumba"
+      }
+    ]
+  }
+}

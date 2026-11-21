@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Peluncuran alat eksternal",
+    "description": "Blok yang membuka alat pembelajaran eksternal di jendela baru atau di halaman, sebagai tautan biasa atau dengan permintaan login LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judul",
+        "description": "Nama alat. Ditampilkan di judul dan pada tombol."
+      },
+      {
+        "title": "Deskripsi",
+        "description": "Apa yang dilakukan pelajar di alat tersebut, ditampilkan di atas tombol."
+      },
+      {
+        "title": "URL peluncuran",
+        "description": "Alamat alat. Harus berupa alamat lengkap yang diawali https:// atau http://."
+      },
+      {
+        "title": "Buka di",
+        "description": "Jendela baru berfungsi dengan semua alat. Di halaman ini hanya berfungsi dengan alat yang mengizinkan ditampilkan di dalam situs lain.",
+        "options": {
+          "window": "Jendela baru",
+          "embed": "Di halaman ini"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL login LTI",
+        "description": "Hanya LTI 1.3: alamat inisiasi login alat. Dengan ini, ID klien, dan ID deployment, tombol mengirim permintaan login LTI alih-alih membuka tautan biasa. Menyelesaikan peluncuran memerlukan layanan LTI situs ini."
+      },
+      {
+        "title": "ID klien LTI",
+        "description": "ID klien yang diberikan alat kepada situs ini. Pengenal publik, bukan rahasia: jangan pernah menaruh kunci atau rahasia di sini."
+      },
+      {
+        "title": "ID deployment LTI",
+        "description": "ID deployment yang diberikan alat kepada situs ini. Pengenal publik, bukan rahasia."
+      },
+      {
+        "title": "Penerbit LTI",
+        "description": "Alamat yang mengidentifikasi situs ini bagi alat. Biarkan kosong untuk menggunakan alamat situs tempat halaman berada."
+      },
+      {
+        "title": "Tinggi di halaman",
+        "description": "Tinggi alat saat dibuka di halaman ini, dalam piksel (200 sampai 2000)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna label judul dan tombol. Biarkan kosong untuk mengikuti tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Petunjuk login LTI",
+        "description": "Nilai buram yang digunakan layanan LTI situs ini untuk mengenali pelajar. Biasanya diberikan oleh situs melalui event lti-launch-request alih-alih disimpan di sini. Bukan kata sandi atau kunci."
+      },
+      {
+        "title": "Petunjuk pesan LTI",
+        "description": "Nilai buram yang digunakan layanan LTI situs ini untuk mengenali peluncuran ini. Biasanya diberikan oleh situs alih-alih disimpan di sini."
+      }
+    ]
+  }
+}

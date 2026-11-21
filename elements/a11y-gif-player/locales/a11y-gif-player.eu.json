@@ -2,5 +2,9 @@
   "toggleAnimation": "Aktibatu/desaktibatu animazioa",
   "info": "informazioa",
   "image": "Irudia",
-  "animatedGif": "GIF animatua"
+  "animatedGif": "GIF animatua",
+  "playAnimation": "Erreproduzitu animazioa",
+  "pauseAnimation": "Pausatu animazioa",
+  "showDescription": "Erakutsi deskribapena",
+  "hideDescription": "Ezkutatu deskribapena"
 }

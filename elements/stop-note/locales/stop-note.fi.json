@@ -3,5 +3,7 @@
   "status_stop": "Pysähdy",
   "status_warning": "Varoitus",
   "status_success": "Onnistui",
-  "status_info": "Huomautus"
+  "status_info": "Huomautus",
+  "status_tip": "Tiesitkö?",
+  "status_new": "Uutta"
 }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Nota lateral",
+    "description": "Una nota separada del contingut del voltant, amb una icona i una etiqueta opcionals."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "L'etiqueta de la nota lateral."
+      },
+      {
+        "title": "Icona",
+        "description": "La icona de la nota lateral."
+      },
+      {
+        "title": "Contingut",
+        "description": "Contingut de la nota lateral."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color",
+        "description": "El color amb què es tenyeix la nota lateral."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Danh sách kiểm tra",
+    "description": "Một danh sách ô đánh dấu. Người đọc đánh dấu các mục và tiến độ được ghi nhớ trên thiết bị của họ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tên của danh sách. Được đọc to làm nhãn cho nhóm ô đánh dấu."
+      },
+      {
+        "title": "Các mục",
+        "description": "Mỗi mục là một ô đánh dấu. Người đọc không thể thay đổi các mục đã đánh dấu hoặc bị vô hiệu hóa."
+      },
+      {
+        "title": "Đánh số",
+        "description": "Hiển thị danh sách đánh số thay vì dấu đầu dòng."
+      },
+      {
+        "title": "Trạng thái",
+        "description": "Đổi màu cho khớp với stop-note.",
+        "options": {
+          "info": "Thông báo",
+          "success": "Xác nhận",
+          "warning": "Cảnh báo",
+          "stop": "Dừng"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID lưu trữ",
+        "description": "ID duy nhất dùng để ghi nhớ tiến độ của người đọc trên thiết bị của họ. Được tạo tự động; chỉ thay đổi để chia sẻ tiến độ giữa các danh sách hoặc để bắt đầu lại."
+      }
+    ]
+  }
+}

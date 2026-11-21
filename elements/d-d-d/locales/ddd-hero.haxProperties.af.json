@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "'n Groot beeld, GIF of video met 'n opskrif en teks daaroor, enige plek op 'n bladsy geplaas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Beeld of video",
+        "description": "'n JPG-, PNG-, WebP-, GIF-, MP4- of WebM-lêer."
+      },
+      {
+        "title": "Alternatiewe teks",
+        "description": "Beskryf die beeld. Laat leeg as dit net versiering is."
+      },
+      {
+        "title": "Opskrif",
+        "description": "Opskrif wat oor die media gewys word. Laat leeg vir geen."
+      },
+      {
+        "title": "Teks",
+        "description": "Teks wat onder die opskrif, oor die media, gewys word."
+      },
+      {
+        "title": "Volle breedte",
+        "description": "Strek van rand tot rand in plaas daarvan om in die inhoudkolom te sit."
+      },
+      {
+        "title": "Hoogte",
+        "options": {
+          "tall": "Hoog",
+          "medium": "Medium",
+          "short": "Kort"
+        }
+      },
+      {
+        "title": "Raming",
+        "description": "Hoe die foto by elke skermgrootte sit"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vervaag",
+        "description": "Kleur wat oor die media gelê word. Met 'n opskrif of teks is daar altyd een, sodat die teks leesbaar bly.",
+        "options": {
+          "blue": "Blou",
+          "bottom": "Donker onderaan",
+          "none": "Geen"
+        }
+      },
+      {
+        "title": "Teksposisie",
+        "options": {
+          "bottom": "Onder",
+          "middle": "Middel"
+        }
+      },
+      {
+        "title": "Fokuspunt dwars",
+        "description": "Deel van die beeld wat sigbaar bly wanneer dit gesny word, van 0 (links) tot 100 (regs)."
+      },
+      {
+        "title": "Fokuspunt af",
+        "description": "Deel van die beeld wat sigbaar bly wanneer dit gesny word, van 0 (bo) tot 100 (onder)."
+      }
+    ]
+  }
+}

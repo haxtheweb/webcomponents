@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagrama a partir de text",
+    "description": "Escriu un diagrama com a text (Mermaid): un diagrama de flux, de seqüència, una cronologia i més. Es dibuixa a la pàgina amb una alternativa textual."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Es mostra a sobre del diagrama i s'utilitza com a nom."
+      },
+      {
+        "title": "Codi font del diagrama",
+        "description": "Text Mermaid, per exemple: flowchart TD, i després una línia per enllaç com A[Draft] --> B{Ready?}. Afegeix |label| després d'una fletxa per etiquetar-la. El dibuix s'actualitza mentre escrius."
+      },
+      {
+        "title": "Alternativa textual",
+        "description": "Descriu què mostra el diagrama per a les persones que no el poden veure. Deixa-ho buit en un diagrama de flux perquè se'n llistin els passos automàticament."
+      },
+      {
+        "title": "Peu",
+        "description": "Peu opcional que es mostra sota el diagrama."
+      },
+      {
+        "title": "Mostra el codi font",
+        "description": "Mostra el text del diagrama al costat del dibuix."
+      },
+      {
+        "title": "Mostra l'alternativa textual",
+        "description": "Mostra l'alternativa textual sota el dibuix. Sempre està disponible per als lectors de pantalla."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fitxer font",
+        "description": "Adreça d'un fitxer .mmd per dibuixar en lloc del text de dalt (https o un camí en aquest lloc)."
+      },
+      {
+        "title": "Color d'èmfasi",
+        "description": "Color de l'etiqueta de la icona a la capçalera."
+      }
+    ]
+  }
+}

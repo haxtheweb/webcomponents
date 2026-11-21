@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Cwestiwn rhifol",
+    "description": "Cwestiwn a atebir gyda rhif. Mae'r ateb yn rhif sefydlog neu'n fformiwla a gyfrifir o newidynnau, ac mae'n cyfrif pan fydd o fewn goddefiant."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cwestiwn",
+        "description": "Yr hyn a ofynnir i ddysgwyr. Ysgrifennwch enw newidyn mewn cromfachau cyrliog, fel {d}, i ddangos ei werth."
+      },
+      {
+        "title": "Uned",
+        "description": "Wedi'i ddangos fel testun wrth ymyl maes yr ateb, er enghraifft km/h."
+      },
+      {
+        "title": "Ateb",
+        "description": "Y rhif cywir. Gadewch yn wag pan fydd fformiwla'n cyfrifo'r ateb."
+      },
+      {
+        "title": "Fformiwla",
+        "description": "Yn cyfrifo'r ateb o'r newidynnau, er enghraifft d / (t / 60). Gall ddefnyddio + - * / ^, cromfachau, sqrt() ac abs(). Fe'i defnyddir yn lle'r ateb pan gaiff ei osod."
+      },
+      {
+        "title": "Newidynnau",
+        "description": "Rhifau y mae'r fformiwla a'r cwestiwn yn eu defnyddio. Mae pob un yn cymryd gwerth rhwng ei isaf a'i uchaf, fesul cam."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Goddefiant",
+        "description": "Pa mor bell o'r union ateb sy'n dal i gyfrif. Mae 0 yn golygu union, neu wedi'i dalgrynnu i'r lleoedd degol isod."
+      },
+      {
+        "title": "Math o oddefiant",
+        "description": "Absoliwt: plws neu finws y goddefiant. Canran: plws neu finws y ganran honno o'r union ateb.",
+        "options": {
+          "absolute": "Absoliwt",
+          "percent": "Canran"
+        }
+      },
+      {
+        "title": "Lleoedd degol",
+        "description": "Gofynnir i ddysgwyr dalgrynnu i'r nifer hwn o leoedd, a dangosir yr ateb wedi'i dalgrynnu iddo. Gadewch yn wag am ddim talgrynnu."
+      },
+      {
+        "title": "Ymgeisiau",
+        "description": "Sawl gwaith y gall dysgwr wirio. Mae 0 yn golygu diderfyn."
+      },
+      {
+        "title": "Rhifau newydd bob tro",
+        "description": "Tynnu gwerthoedd newidyn newydd bob tro y bydd dysgwr yn rhoi cynnig arall. Ni ddangosir eu hateb cynharach pan fyddant yn dod yn ôl, dim ond a gawsant ef yn gywir."
+      },
+      {
+        "title": "Plygadwy",
+        "description": "Dangos y cwestiwn hwn fel rhes sy'n agor ac yn cau. Mae agor un yn cau'r cwestiynau plygadwy eraill wrth ei ymyl."
+      },
+      {
+        "title": "Dechrau wedi'i blygu",
+        "description": "Pan fydd yn blygadwy, dechrau fel rhes gaeedig sy'n dangos y cwestiwn a'i statws yn unig."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Enw'r cwis",
+        "description": "Enw'r cwis a ddefnyddir ar gyfer adnabod xAPI mewn systemau dadansoddeg."
+      }
+    ]
+  }
+}

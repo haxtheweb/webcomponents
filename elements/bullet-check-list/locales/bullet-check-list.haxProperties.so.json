@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Liis hubin dhibcood",
+    "description": "Liis sanduuqyo calaamadeed. Akhristayaashu waxay calaamadeeyaan shayada horumarkoodana waxaa lagu xasuustaa qalabkooda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Magaca liiska. Waxaa kor loogu akhriyaa sida calaamadda kooxda sanduuqyada."
+      },
+      {
+        "title": "Shayada",
+        "description": "Shay kastaa waa sanduuq calaamadeed. Shayada la calaamadeeyay ama la xannibay akhristayaashu ma beddeli karaan."
+      },
+      {
+        "title": "Tirsan",
+        "description": "Muuji liis tirsan halkii liis dhibcood."
+      },
+      {
+        "title": "Xaalad",
+        "description": "Wuxuu beddelaa midabada si ay ula jaan qaadaan stop-note.",
+        "options": {
+          "info": "Ogeysiis",
+          "success": "Xaqiijin",
+          "warning": "Digniin",
+          "stop": "Jooji"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID-ga kaydinta",
+        "description": "ID gaar ah oo loo isticmaalo xusuusta horumarka akhristaha ee qalabkiisa. Si otomaatig ah ayaa loo sameeyaa; beddel oo keliya si aad horumarka ugu wadaagto liisaska ama aad u bilowdo cusub."
+      }
+    ]
+  }
+}

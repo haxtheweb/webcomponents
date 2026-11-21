@@ -3,5 +3,7 @@
   "status_stop": "بيھو",
   "status_warning": "خبرداري",
   "status_success": "ڪاميابي",
-  "status_info": "نوٽ"
+  "status_info": "نوٽ",
+  "status_tip": "ڇا توهان کي خبر آهي؟",
+  "status_new": "نئون ڇا آهي"
 }

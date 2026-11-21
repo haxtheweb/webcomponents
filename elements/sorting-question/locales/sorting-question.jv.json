@@ -40,5 +40,7 @@
   "hideDirections": "Singidake pituduh",
   "showRelatedContent": "Tampilake isi sing gegandhengan",
   "hideRelatedContent": "Singidake isi sing gegandhengan",
-  "notAttempted": "Durung dicoba"
+  "notAttempted": "Durung dicoba",
+  "cardsDirections": "Tata kertu ing urutan sing bener nganggo tombol pindhah luwih awal lan pindhah luwih mburi ing saben kertu, utawa seret nganggo mouse. Yen panjenengan yakin urutane wis bener, uji wangsulan kanthi milih {checkAnswer}.",
+  "movedToPosition": "{item} dipindhah menyang posisi {position} saka {total}"
 }

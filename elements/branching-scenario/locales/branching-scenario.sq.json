@@ -1,0 +1,22 @@
+{
+  "scenario": "Skenar",
+  "directions": "Udhëzime",
+  "showDirections": "Shfaq udhëzimet",
+  "hideDirections": "Fshih udhëzimet",
+  "directionsRead": "Lexo çdo skenë dhe zgjidh çfarë do të bëje.",
+  "directionsEndings": "Ka disa përfundime. Provo një rrugë tjetër pasi të mbarosh.",
+  "startOver": "Fillo nga e para",
+  "back": "Një hap pas",
+  "tryAnother": "Provo një rrugë tjetër",
+  "path": "Rruga",
+  "scene": "Skena",
+  "ending": "Përfundimi",
+  "end": "fund",
+  "scenesSeen": "{seen} nga {total} skena të para",
+  "endingReached": "U arrit përfundimi",
+  "addScene": "Shto skenë",
+  "newScene": "Skenë e re",
+  "newSceneText": "Përshkruaj çfarë ndodh, pastaj lidh çdo zgjedhje me një skenë.",
+  "editingNote": "Redaktim: shfaqet çdo skenë. Një zgjedhje është lidhje te # e ndjekur nga id-ja e skenës.",
+  "noScenes": "Shto një skenë për të nisur skenarin."
+}

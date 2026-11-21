@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Label ng figure",
     "description": "Element na label ng figure para markahan ang mga media asset sa loob ng nilalaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numero ng figure",
+        "description": "Numero o maikling label para sa figure, hal. 1.3"
+      },
+      {
+        "title": "Paglalarawan",
+        "description": "Maikling paglalarawan ng figure"
+      }
+    ]
   }
 }

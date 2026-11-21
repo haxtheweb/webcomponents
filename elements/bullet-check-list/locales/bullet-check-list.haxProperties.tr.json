@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Madde işaretli kontrol listesi",
+    "description": "Onay kutularından oluşan bir liste. Okuyucular öğeleri işaretler ve ilerlemeleri kendi cihazlarında hatırlanır."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Listenin adı. Onay kutusu grubunun etiketi olarak sesli okunur."
+      },
+      {
+        "title": "Öğeler",
+        "description": "Her öğe bir onay kutusudur. İşaretli veya devre dışı öğeler okuyucular tarafından değiştirilemez."
+      },
+      {
+        "title": "Numaralı",
+        "description": "Madde işaretli yerine numaralı bir liste göster."
+      },
+      {
+        "title": "Durum",
+        "description": "Renkleri stop-note ile eşleşecek şekilde değiştirir.",
+        "options": {
+          "info": "Bildirim",
+          "success": "Onay",
+          "warning": "Uyarı",
+          "stop": "Dur"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Depolama kimliği",
+        "description": "Okuyucu ilerlemesini cihazlarında hatırlamak için kullanılan benzersiz kimlik. Otomatik oluşturulur; yalnızca listeler arasında ilerlemeyi paylaşmak veya sıfırdan başlamak için değiştirin."
+      }
+    ]
+  }
+}

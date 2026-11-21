@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Kọ̀wé pẹ̀lú àkọsílẹ̀ ìṣirò LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ẹ̀yìn àwòrán",
+        "description": "Ẹ̀yìn lẹ́yìn àwọn àwòrán tí a yà. Aládàáṣe ń ṣàfikún ọ̀kan nìkan nígbà tí àwòrán náà yóò ṣòro láti rí lórí ojú-ìwé, bí àwọn ìlà dúdú nínú ipò òkùnkùn.",
+        "options": {
+          "auto": "Aládàáṣe",
+          "light": "Ìmọ́lẹ̀",
+          "dark": "Òkùnkùn",
+          "none": "Kò sí"
+        }
+      }
+    ]
   }
 }

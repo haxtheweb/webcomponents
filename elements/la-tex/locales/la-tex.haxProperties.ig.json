@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Dee site na iji ihe nrịbama mgbakọ na mwepụ LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ndabere foto",
+        "description": "Ndabere n'azụ foto e sere. Akpaaka na-agbakwunye otu naanị mgbe ọ ga-esi ike ịhụ eserese ahụ na peeji, dịka ahịrị ọchịchịrị n'ọnọdụ ọchịchịrị.",
+        "options": {
+          "auto": "Akpaaka",
+          "light": "Ìhè",
+          "dark": "Ọchịchịrị",
+          "none": "Ọ dịghị"
+        }
+      }
+    ]
   }
 }

@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV катары көчүрүү.",
   "printTable": "Таблицаны басып чыгаруу",
   "selectColumn": "Мамычаны тандоо",
-  "dataTable": "Маалымат · Таблица"
+  "dataTable": "Маалымат · Таблица",
+  "filterStatus": "{total} саптын {shown} көрсөтүлүүдө, {column} боюнча чыпкаланган: {text}",
+  "columnNumber": "{column}-мамыча",
+  "clearFilter": "Чыпканы тазалоо"
 }

@@ -9,5 +9,7 @@
   "slidePages": "Páginas de slides",
   "goToSlide": "Ir para o slide {number}",
   "slides": "Diapositivos",
-  "position": "{number} de {total}"
+  "position": "{number} de {total}",
+  "fullScreen": "Tela cheia",
+  "exitFullScreen": "Sair da tela cheia"
 }

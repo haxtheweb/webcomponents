@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Skrivemaskin",
     "description": "Tekst som skriver seg selv, ett tegn om gangen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Teksten som skal skrives ut når elementet rulles inn i visning."
+      },
+      {
+        "title": "Skriver",
+        "description": "Vis den blinkende markøren; elementet setter dette mens det skriver."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsinkelse",
+        "description": "Millisekunder å vente før skrivingen starter."
+      },
+      {
+        "title": "Markørvarighet",
+        "description": "Millisekunder markøren fortsetter å blinke etter at teksten er skrevet."
+      },
+      {
+        "title": "Hastighet",
+        "description": "Millisekunder per tegn; lavere tall skriver raskere."
+      }
+    ]
   }
 }

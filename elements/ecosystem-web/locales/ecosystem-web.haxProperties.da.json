@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Økosystemnetværk",
+    "description": "Et interaktivt netværk over, hvordan et projekts dele hænger sammen, med undernetværk og trin-for-trin-ture."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Netværksdata",
+        "description": "URL til JSON-pakken med netværk (bygget i PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Netværk",
+        "description": "Id for det netværk, der vises først; main er økosystemnetværket."
+      },
+      {
+        "title": "Valgt felt",
+        "description": "Id for et felt, der skal vælges, når netværket åbnes."
+      },
+      {
+        "title": "Rundtur",
+        "description": "Id for en rundtur at starte på."
+      },
+      {
+        "title": "Start i listevisning",
+        "description": "Vis netværket som indlejrede lister i stedet for tegningen."
+      },
+      {
+        "title": "Kun tegning",
+        "description": "Vis kun tegningen som en figur: ingen overskrift, rundture, detaljer eller trinbjælke."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aflæs efter",
+        "description": "Start med alle felter aflæst efter ét mål.",
+        "options": {
+          "": "Kun forbindelser",
+          "fresh": "Friskhed",
+          "bus": "Busfaktor",
+          "impact": "Effekt",
+          "evidence": "Begrundelse",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

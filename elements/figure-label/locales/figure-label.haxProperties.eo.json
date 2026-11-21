@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Figura etikedo",
     "description": "Figura etikeda elemento por marki aŭdvidaĵojn ene de enhavo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Numero de figuro",
+        "description": "Numero aŭ mallonga etikedo por la figuro, ekz. 1.3"
+      },
+      {
+        "title": "Priskribo",
+        "description": "Mallonga priskribo de la figuro"
+      }
+    ]
   }
 }

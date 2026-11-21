@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Àwọn olùkópa",
+    "description": "Àwọn ènìyàn tó kọ́ iṣẹ́ àkànṣe náà, láti fáìlì àkójọ orúkọ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fáìlì àkójọ orúkọ (JSON)"
+      },
+      {
+        "title": "Ìwò: landed, lab tàbí code"
+      },
+      {
+        "title": "Iye ènìyàn tó pọ̀ jù láti fihàn (0 ni gbogbo wọn)"
+      }
+    ]
+  }
+}

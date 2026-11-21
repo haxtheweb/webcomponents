@@ -1,0 +1,19 @@
+{
+  "label": "Eina externa",
+  "labelLti": "Eina externa · LTI 1.3",
+  "theTool": "l'eina",
+  "directions": "Instruccions",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "directionsWindow": "El botó obre una finestra nova amb l'eina.",
+  "directionsEmbed": "El botó obre l'eina en aquesta pàgina. Si no es carrega, obre-la en una finestra nova.",
+  "directionsLti": "Aquest lloc t'inicia la sessió a l'eina, així que no necessites un compte a part.",
+  "openWindow": "Obre {title} (finestra nova)",
+  "openEmbed": "Obre {title}",
+  "openInstead": "Obre-ho en una finestra nova",
+  "frameTitle": "{title} (eina externa)",
+  "openedWindow": "S'ha obert una finestra nova amb l'eina.",
+  "openedEmbed": "L'eina s'ha obert en aquesta pàgina.",
+  "needsUrl": "Aquest bloc necessita una adreça d'inici que comenci per http:// o https://.",
+  "needsSignIn": "Aquesta eina necessita el servei d'inici de sessió d'aquest lloc, que aquí no està disponible. No s'ha obert res."
+}

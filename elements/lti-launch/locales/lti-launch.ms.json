@@ -1,0 +1,19 @@
+{
+  "label": "Alat luaran",
+  "labelLti": "Alat luaran · LTI 1.3",
+  "theTool": "alat itu",
+  "directions": "Arahan",
+  "showDirections": "Tunjukkan arahan",
+  "hideDirections": "Sembunyikan arahan",
+  "directionsWindow": "Butang membuka tetingkap baharu dengan alat di dalamnya.",
+  "directionsEmbed": "Butang membuka alat pada halaman ini. Jika ia tidak dimuatkan, bukanya dalam tetingkap baharu sebaliknya.",
+  "directionsLti": "Laman ini melog masuk anda ke alat, jadi anda tidak memerlukan akaun berasingan.",
+  "openWindow": "Buka {title} (tetingkap baharu)",
+  "openEmbed": "Buka {title}",
+  "openInstead": "Buka dalam tetingkap baharu sebaliknya",
+  "frameTitle": "{title} (alat luaran)",
+  "openedWindow": "Tetingkap baharu dibuka dengan alat itu.",
+  "openedEmbed": "Alat dibuka pada halaman ini.",
+  "needsUrl": "Blok ini memerlukan alamat pelancaran yang bermula dengan http:// atau https://.",
+  "needsSignIn": "Alat ini memerlukan perkhidmatan log masuk laman ini, yang tidak tersedia di sini. Tiada apa yang dibuka."
+}

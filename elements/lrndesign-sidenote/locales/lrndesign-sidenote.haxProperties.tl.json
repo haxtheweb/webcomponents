@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Side note",
+    "description": "Isang talang nakahiwalay sa nakapaligid na nilalaman, na may opsyonal na icon at label."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Label",
+        "description": "Ang label ng side note."
+      },
+      {
+        "title": "Icon",
+        "description": "Ang icon ng side note."
+      },
+      {
+        "title": "Nilalaman",
+        "description": "Nilalaman ng side note."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kulay",
+        "description": "Ang kulay na ipinangkukulay sa side note."
+      }
+    ]
+  }
+}

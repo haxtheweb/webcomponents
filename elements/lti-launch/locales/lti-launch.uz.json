@@ -1,0 +1,19 @@
+{
+  "label": "Tashqi vosita",
+  "labelLti": "Tashqi vosita · LTI 1.3",
+  "theTool": "vosita",
+  "directions": "Ko‘rsatmalar",
+  "showDirections": "Ko‘rsatmalarni ko‘rsatish",
+  "hideDirections": "Ko‘rsatmalarni yashirish",
+  "directionsWindow": "Tugma vosita joylashgan yangi oynani ochadi.",
+  "directionsEmbed": "Tugma vositani shu sahifada ochadi. Agar yuklanmasa, uni yangi oynada oching.",
+  "directionsLti": "Bu sayt sizni vositaga avtomatik kiritadi, shuning uchun alohida hisob kerak emas.",
+  "openWindow": "{title} ni ochish (yangi oyna)",
+  "openEmbed": "{title} ni ochish",
+  "openInstead": "Buning o‘rniga yangi oynada ochish",
+  "frameTitle": "{title} (tashqi vosita)",
+  "openedWindow": "Vosita bilan yangi oyna ochildi.",
+  "openedEmbed": "Vosita shu sahifada ochildi.",
+  "needsUrl": "Bu blokka http:// yoki https:// bilan boshlanadigan ishga tushirish manzili kerak.",
+  "needsSignIn": "Bu vositaga saytning kirish xizmati kerak, lekin u bu yerda mavjud emas. Hech narsa ochilmadi."
+}

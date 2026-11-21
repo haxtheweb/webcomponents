@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Isithombe esikhulu, i-GIF noma ividiyo enesihloko nombhalo phezu kwayo, ebekwe noma kuphi ekhasini."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isithombe noma ividiyo",
+        "description": "Ifayela le-JPG, PNG, WebP, GIF, MP4 noma WebM."
+      },
+      {
+        "title": "Umbhalo ongenye indlela",
+        "description": "Chaza isithombe. Shiya kungenalutho uma singumhlobiso nje."
+      },
+      {
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa phezu kwemidiya. Shiya kungenalutho uma ungasifuni."
+      },
+      {
+        "title": "Umbhalo",
+        "description": "Umbhalo oboniswa ngaphansi kwesihloko, phezu kwemidiya."
+      },
+      {
+        "title": "Ububanzi obugcwele",
+        "description": "Yelula kusuka emaphethelweni kuya emaphethelweni esikhundleni sokuhlala kukholomu yokuqukethwe."
+      },
+      {
+        "title": "Ukuphakama",
+        "options": {
+          "tall": "Kude",
+          "medium": "Maphakathi",
+          "short": "Kufushane"
+        }
+      },
+      {
+        "title": "Ukufaka ohlakeni",
+        "description": "Ukuthi isithombe sihlala kanjani kusayizi ngamunye wesikrini"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukufiphala",
+        "description": "Umbala obekwe phezu kwemidiya. Uma kunesihloko noma umbhalo uhlala ukhona njalo, ukuze umbhalo uhlale ufundeka.",
+        "options": {
+          "blue": "Luhlaza okwesibhakabhaka",
+          "bottom": "Kumnyama phansi",
+          "none": "Lutho"
+        }
+      },
+      {
+        "title": "Indawo yombhalo",
+        "options": {
+          "bottom": "Phansi",
+          "middle": "Maphakathi"
+        }
+      },
+      {
+        "title": "Iphuzu lokugxila ngokunqamula",
+        "description": "Ingxenye yesithombe ehlala ibonakala uma sinqunywa, kusuka ku-0 (kwesokunxele) kuya ku-100 (kwesokudla)."
+      },
+      {
+        "title": "Iphuzu lokugxila ngokwehla",
+        "description": "Ingxenye yesithombe ehlala ibonakala uma sinqunywa, kusuka ku-0 (phezulu) kuya ku-100 (phansi)."
+      }
+    ]
+  }
+}

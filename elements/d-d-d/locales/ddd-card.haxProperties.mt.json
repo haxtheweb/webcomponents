@@ -52,6 +52,20 @@
           "_top": "Tieqa ta' fuq nett - _top",
           "_parent": "Tieqa ġenitur - _parent"
         }
+      },
+      {
+        "title": "L-ebda Vleġġa",
+        "description": "Aħbi l-vleġġa tal-buttuna."
+      },
+      {
+        "title": "Link: destinazzjoni",
+        "description": "Fejn tinfetaħ il-link.",
+        "options": {
+          "": "L-istess tieqa",
+          "_blank": "Tieqa ġdida - _blank",
+          "_top": "Tieqa ta' fuq - _top",
+          "_parent": "Tieqa ġenitur - _parent"
+        }
       }
     ],
     "developer": [

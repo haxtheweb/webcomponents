@@ -20,6 +20,12 @@
         "title": "Rasm",
         "description": "Iqtibos bilan koʻrsatiladigan rasm."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Ramkali",
+        "description": "Iqtibosni umumiy blok ramkasida, ustida belgi va yorliq bilan chizish, shunda u eslatmalar va ko‘rsatma kartalariga mos keladi."
+      }
     ]
   }
 }

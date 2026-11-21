@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Garee Stop Note",
+    "description": "Stop note hedduu kutaa tokko yeroo tokkotti yaadannoo tokko agarsiisu keessatti walitti tuuli, kan akka Gorsa ykn Maaltu haaraa. Kaardiiwwan qajeelfamaa, yaadannoowwan cinaa fi wabiiwwan gaaddisa qaban isaan waliin tuulamuu danda'u."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maqaa",
+        "description": "Maqaa garee dubbistoonni iskiriinii beeksisan, kan akka Gorsa ykn Maaltu haaraa."
+      },
+      {
+        "title": "Yaadannoowwan",
+        "description": "Stop note garee keessa jiran. Kaardiiwwan qajeelfamaa, yaadannoowwan cinaa fi wabiiwwan gaaddisa qabanis dabalamuu danda'u."
+      }
+    ]
+  }
+}

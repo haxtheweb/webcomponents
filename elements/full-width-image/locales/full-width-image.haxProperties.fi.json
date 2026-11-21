@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Taustakuva."
+        "description": "Taustakuva.",
+        "title": "Kuva"
       },
       {
         "property": "caption",
-        "description": "Tekstiotsikko."
+        "description": "Tekstiotsikko.",
+        "title": "Kuvateksti"
       }
     ]
   }

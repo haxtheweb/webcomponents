@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Foarbyldstartelemint om HAX-konfiguraasje en bewurkbere eigenskippen te demonstrearjen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel"
+      }
+    ]
+  }
+}

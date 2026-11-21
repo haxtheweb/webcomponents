@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Yupay yachay wakichiy",
+    "description": "Usqhay kutichiy willaywan paqarichisqa yupay sasachakuykunap huch'uy puriynin. Ruraykunata yupaykunap saywantawan akllay; sapa puriy musuqmi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suti",
+        "description": "Kay wakichiyp sutin, uma siq'inpi rikuchisqa."
+      },
+      {
+        "title": "Ruraykuna",
+        "description": "Ima laya sasachakuykunam tapukun. Yachaqaqkunaqa qallarinankupaq ñawpaqta mayqintapas wañuchiyta atinku.",
+        "options": {
+          "add": "Yapay",
+          "subtract": "Qichuy",
+          "multiply": "Mirachiy",
+          "divide": "Rakiy",
+          "add subtract": "Yapay qichuy ima",
+          "multiply divide": "Mirachiy rakiy ima",
+          "add multiply": "Yapay mirachiy ima",
+          "add divide": "Yapay rakiy ima",
+          "subtract multiply": "Qichuy mirachiy ima",
+          "subtract divide": "Qichuy rakiy ima",
+          "add subtract multiply": "Yapay, qichuy, mirachiy ima",
+          "add subtract divide": "Yapay, qichuy, rakiy ima",
+          "add multiply divide": "Yapay, mirachiy, rakiy ima",
+          "subtract multiply divide": "Qichuy, mirachiy, rakiy ima",
+          "add subtract multiply divide": "Llapan tawantin"
+        }
+      },
+      {
+        "title": "Aswan huch'uy yupay",
+        "description": "Sasachakuypi llamk'achisqa aswan huch'uy yupay. Hunt'asqa yupaykuna, 0 utaq aswan."
+      },
+      {
+        "title": "Aswan hatun yupay",
+        "description": "Sasachakuypi llamk'achisqa aswan hatun yupay. Rakiy kutichiykuna rakiqkunapas kay saywapim qhipakunku."
+      },
+      {
+        "title": "Sasachakuykunap yupaynin",
+        "description": "Huk puriypi hayk'a sasachakuykunam kan (1 manta 100 kama)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pacha saywa",
+        "description": "Llapan puriypaq saqisqa segundokuna. 0 niyta munan mana pacha tupuq, ñawpaqmanta kaqmi: pachawan wakichiykunaqa aswan pachata munaq yachaqaqkunata urmachin. Churasqa kaptinqa, yachaqaqkunaqa pacha tupuqta paykunapaq wañuchiyta atillankutaqmi."
+      },
+      {
+        "title": "Sapaqchay llimp'i",
+        "description": "Uma siq'i chip, ñit'inakunap llimp'in. Ch'usaqta saqiy rikchayta qatinanpaq."
+      }
+    ]
+  }
+}

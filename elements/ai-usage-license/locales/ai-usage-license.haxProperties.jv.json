@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modifikator media",
-        "description": "Modifikator domain media opsional. Nemtokaké jinis media sing kena lisènsi iki."
+        "description": "Modifikator domain media opsional. Nemtokaké jinis media sing kena lisènsi iki.",
+        "options": {
+          "": "Tanpa modifikasi"
+        }
       },
       {
         "property": "uri",

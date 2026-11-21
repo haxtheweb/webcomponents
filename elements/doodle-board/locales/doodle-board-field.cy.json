@@ -1,0 +1,16 @@
+{
+  "drawing": "Llun",
+  "edit": "Golygu'r llun",
+  "start": "Dechrau lluniadu",
+  "remove": "Tynnu'r llun",
+  "empty": "Dim wedi'i luniadu eto",
+  "save": "Cadw",
+  "cancel": "Canslo",
+  "close": "Cau",
+  "discard": "Taflu newidiadau",
+  "discardConfirm": "Taflu eich newidiadau heb eu cadw?",
+  "keepEditing": "Dal ati i olygu",
+  "draw": "Llun",
+  "feedback": "Adborth",
+  "signature": "Llofnod"
+}

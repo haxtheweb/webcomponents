@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Pemilih kasus penggunaan",
+    "description": "Pilih tujuan situs dan dapatkan tautan yang membuka HAX di browser dengan situs awal tersebut, beserta perintah CLI yang sesuai."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Alamat HAX di browser",
+        "description": "Tempat tautan dibuka; ?skeleton= dan &name= ditambahkan"
+      },
+      {
+        "title": "Situs awal yang dikecualikan",
+        "description": "Nama mesin, dipisahkan koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Daftar situs awal",
+        "description": "Alamat daftar kerangka (format yang dibaca app-hax)"
+      }
+    ]
+  }
+}

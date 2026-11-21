@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Seletor de caso de uso",
+    "description": "Escolha para que serve um site e receba um link que abre o HAX no navegador com aquele site inicial, mais o comando de CLI correspondente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Endereço do HAX no navegador",
+        "description": "Onde o link abre; ele recebe ?skeleton= e &name="
+      },
+      {
+        "title": "Sites iniciais a deixar de fora",
+        "description": "Nomes de máquina, separados por vírgula"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista de sites iniciais",
+        "description": "Endereço da lista de skeletons (o formato que o app-hax lê)"
+      }
+    ]
+  }
+}

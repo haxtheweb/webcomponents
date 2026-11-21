@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Anvendelsesvælger",
+    "description": "Vælg, hvad et websted er til, og få et link, der åbner HAX i browseren med det startwebsted, plus den tilsvarende CLI-kommando."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresse til HAX i browseren",
+        "description": "Hvor linket åbner; der tilføjes ?skeleton= og &name="
+      },
+      {
+        "title": "Startwebsteder, der skal udelades",
+        "description": "Maskinnavne, kommasepareret"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liste over startwebsteder",
+        "description": "Adresse på skeletlisten (det format, app-hax læser)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Troednodyn",
+    "description": "Nodyn wedi'i ysgrifennu lle mae'n perthyn yn y testun. Mae'n ymddangos fel rhif, ac mae'r rhestr wedi'i rhifo o nodiadau'n ei hadeiladu ei hun ar waelod y dudalen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nodyn",
+        "description": "Testun y troednodyn."
+      },
+      {
+        "title": "Dim rhagolwg",
+        "description": "Peidio â dangos y nodyn pan fydd darllenydd yn hofran dros y rhif neu'n rhoi ffocws arno."
+      }
+    ]
+  }
+}

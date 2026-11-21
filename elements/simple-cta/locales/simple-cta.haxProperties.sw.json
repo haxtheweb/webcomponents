@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ficha aikoni",
         "description": "Ficha aikoni inayotumika kusisitiza maandishi"
+      },
+      {
+        "title": "Mwonekano",
+        "description": "Kitufe kina msisitizo kiasi gani.",
+        "options": {
+          "": "Kilichojazwa",
+          "tonal": "Cha toni",
+          "outlined": "Chenye mstari wa nje",
+          "plain": "Cha kawaida"
+        }
+      },
+      {
+        "title": "Ukubwa",
+        "description": "Ukubwa wa kitufe.",
+        "options": {
+          "s": "Kidogo",
+          "": "Wastani",
+          "l": "Kikubwa"
+        }
       }
     ],
     "advanced": [

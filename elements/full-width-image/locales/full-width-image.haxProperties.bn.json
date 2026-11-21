@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "পটভূমির ছবি।"
+        "description": "পটভূমির ছবি।",
+        "title": "ছবি"
       },
       {
         "property": "caption",
-        "description": "টেক্সট শিরোনাম।"
+        "description": "টেক্সট শিরোনাম।",
+        "title": "ক্যাপশন"
       }
     ]
   }

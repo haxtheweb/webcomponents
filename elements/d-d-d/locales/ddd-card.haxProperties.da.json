@@ -52,6 +52,20 @@
           "_top": "Øverste vindue - _top",
           "_parent": "Overordnet vindue - _parent"
         }
+      },
+      {
+        "title": "Ingen pil",
+        "description": "Skjul knappens pil."
+      },
+      {
+        "title": "Link: mål",
+        "description": "Hvor linket skal åbnes.",
+        "options": {
+          "": "Samme vindue",
+          "_blank": "Nyt vindue - _blank",
+          "_top": "Øverste vindue - _top",
+          "_parent": "Overordnet vindue - _parent"
+        }
       }
     ],
     "developer": [

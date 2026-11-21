@@ -8,5 +8,9 @@
   "theme": "థీమ్",
   "palette": "పాలెట్",
   "cancel": "రద్దు చేయి",
-  "openAppearanceSettings": "రూపురేఖల సెట్టింగ్‌లను తెరవండి"
+  "openAppearanceSettings": "రూపురేఖల సెట్టింగ్‌లను తెరవండి",
+  "designSystem": "డిజైన్ సిస్టమ్",
+  "designSystemDefault": "DDD (డిఫాల్ట్)",
+  "designSystemThemeDefault": "{name} (థీమ్ డిఫాల్ట్)",
+  "designSystemHelp": "రంగు, టైప్, మూలలు మరియు సాంద్రత. లేఅవుట్‌ను ఇప్పటికీ థీమ్ నిర్ణయిస్తుంది."
 }

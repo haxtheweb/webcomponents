@@ -1,4 +1,6 @@
 {
   "saveAll": "Зберегти все",
-  "saveTheFollowing": "Зберегти таке: {list}?"
+  "saveTheFollowing": "Зберегти таке: {list}?",
+  "save": "Зберегти",
+  "cancel": "Скасувати"
 }

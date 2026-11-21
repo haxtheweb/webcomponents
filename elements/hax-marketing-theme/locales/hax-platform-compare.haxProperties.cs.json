@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Srovnání platforem",
+    "description": "Tváří v tvář: vyberte libovolné dvě platformy z datového souboru"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data srovnání (JSON)"
+      },
+      {
+        "title": "ID levé platformy"
+      },
+      {
+        "title": "ID pravé platformy"
+      }
+    ]
+  }
+}

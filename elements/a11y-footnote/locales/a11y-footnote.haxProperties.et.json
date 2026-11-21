@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Joonealune märkus",
+    "description": "Märkus, mis kirjutatakse teksti sinna, kuhu see kuulub. See kuvatakse numbrina ja märkuste nummerdatud loend tekib lehe allossa iseenesest."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Märkus",
+        "description": "Joonealuse märkuse tekst."
+      },
+      {
+        "title": "Eelvaade puudub",
+        "description": "Ära näita märkust, kui lugeja viib kursori numbrile või fokusseerib selle."
+      }
+    ]
+  }
+}

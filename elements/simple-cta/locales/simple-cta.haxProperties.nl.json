@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Pictogram verbergen",
         "description": "Het pictogram verbergen dat de tekst accentueert"
+      },
+      {
+        "title": "Uiterlijk",
+        "description": "Hoeveel nadruk de knop heeft.",
+        "options": {
+          "": "Gevuld",
+          "tonal": "Getint",
+          "outlined": "Omlijnd",
+          "plain": "Eenvoudig"
+        }
+      },
+      {
+        "title": "Grootte",
+        "description": "Knopgrootte.",
+        "options": {
+          "s": "Klein",
+          "": "Middel",
+          "l": "Groot"
+        }
       }
     ],
     "advanced": [

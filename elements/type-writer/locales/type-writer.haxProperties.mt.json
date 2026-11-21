@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Tajprajter",
     "description": "Test li jittajpja lilu nnifsu karattru wieħed kull darba."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Test",
+        "description": "It-test li jinkiteb ladarba l-element jiskrollja fil-veduta."
+      },
+      {
+        "title": "Tittajpja",
+        "description": "Uri l-kursur li jteptep; l-element jissettja dan waqt li jittajpja."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dewmien",
+        "description": "Millisekondi biex tistenna qabel ma jibda t-tajpjar."
+      },
+      {
+        "title": "Tul tal-kursur",
+        "description": "Millisekondi li l-kursur jibqa' jteptep wara li t-test jinkiteb."
+      },
+      {
+        "title": "Veloċità",
+        "description": "Millisekondi għal kull karattru; numri aktar baxxi jittajpjaw aktar malajr."
+      }
+    ]
   }
 }

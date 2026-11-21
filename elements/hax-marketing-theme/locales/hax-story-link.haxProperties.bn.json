@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "গল্পের বোতাম",
+    "description": "যে বোতাম hax.cloud-এ একটি দাবির পেছনের গল্প খোলে, অথবা অন্য HAX নেটওয়ার্ক সাইটের মানানসই জায়গা"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "এটি কোথায় যায়",
+        "options": {
+          "cloud": "hax.cloud, গল্প",
+          "learn": "learn.hax.cloud, একটি টিউটোরিয়াল",
+          "try": "browser.hax.cloud, চেষ্টা করুন",
+          "elements": "webcomponents.hax.cloud, একটি ব্লক",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "সেই সাইটে ঠিকানা (hax.cloud-এ একটি গল্প দেখতে stories/ee450a19-এর মতো)"
+      },
+      {
+        "title": "এটি কী নিয়ে"
+      },
+      {
+        "title": "ছোট চিপ"
+      },
+      {
+        "title": "বোতামে দেখান এটি কী নিয়ে"
+      }
+    ]
+  }
+}

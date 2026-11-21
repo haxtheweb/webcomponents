@@ -20,6 +20,12 @@
         "title": "Immaġni",
         "description": "Immaġni murija mal-kwotazzjoni."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Bil-qafas",
+        "description": "Pinġi l-kwotazzjoni fuq il-qafas tal-blokk komuni, b'ikona u tikketta fuqha, biex taqbel man-noti u l-karti tal-istruzzjonijiet."
+      }
     ]
   }
 }

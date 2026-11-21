@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ýat oýny",
+    "description": "Jübütleri tapmak üçin kartalary öwüriň. Gabat gelmegi düşünjäni görkezer ýaly adalgany onuň manysy bilen jübütläň ýa-da iki gabat gelýän tekst ýa-da surat ulanyň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sözbaşy",
+        "description": "Sözbaşyda görkezilýän ýumuş, meselem: Adalgany onuň wezipesi bilen gabat getiriň."
+      },
+      {
+        "title": "Jübütler",
+        "description": "Her jübüt biri-birine degişli iki karta, adatça adalga we onuň manysy. Her tarapda tekst, surat ýa-da ikisi hem bolmaly."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksent reňki",
+        "description": "Sözbaşy nyşany, kartalaryň arkasy we düwme üçin goşmaça reňk."
+      }
+    ]
+  }
+}

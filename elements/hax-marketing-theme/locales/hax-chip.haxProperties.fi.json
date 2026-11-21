@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Merkki",
+    "description": "Pieni nimetty kuvake"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuvake"
+      },
+      {
+        "title": "Nimiö"
+      }
+    ]
+  }
+}

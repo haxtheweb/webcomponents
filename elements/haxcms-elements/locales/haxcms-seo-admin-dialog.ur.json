@@ -6,6 +6,8 @@
   "faviconDescription": "براؤزر ٹیب کی تصویر / فونز پر سائٹ کے چھوٹے لوگو کے طور پر استعمال",
   "domain": "ڈومین",
   "domainDescription": "اس ویب سائٹ کا ڈومین",
+  "sameAs": "اس سائٹ کے دیگر پروفائلز",
+  "sameAsDescription": "ہر سطر میں ایک لنک، اس سائٹ یا تنظیم کے دیگر جگہوں پر پروفائلز کا (GitHub، LinkedIn، YouTube، Mastodon)۔ سرچ انجن انہیں ان پروفائلز کو اس سائٹ سے جوڑنے کے لیے استعمال کرتے ہیں۔",
   "language": "زبان",
   "languageDescription": "اس سائٹ کی زبان۔ نام یا کوڈ سے تلاش کریں، یا fr-CA جیسا کوئی اور کوڈ درج کریں۔",
   "googleAnalyticsId": "Google Analytics ID",

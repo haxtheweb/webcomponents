@@ -6,6 +6,8 @@
   "faviconDescription": "Gambar tab browser / dienggo ing HP minangka logo situs cilik",
   "domain": "Domain",
   "domainDescription": "Domain situs web iki",
+  "sameAs": "Profil liyane saka situs iki",
+  "sameAsDescription": "Siji pranala saben baris menyang profil situs utawa organisasi iki ing panggonan liya (GitHub, LinkedIn, YouTube, Mastodon). Mesin telusur nggunakake iki kanggo nyambungake profil kasebut karo situs iki.",
   "language": "Basa",
   "languageDescription": "Basane situs iki. Golek miturut jeneng utawa kode, utawa lebokna kode liyane kayata fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

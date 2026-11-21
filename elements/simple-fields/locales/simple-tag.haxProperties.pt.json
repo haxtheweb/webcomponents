@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Cor de destaque automática",
         "description": "Derivar a cor de destaque automaticamente do texto do rótulo."
+      },
+      {
+        "title": "Significado",
+        "description": "Dê à tag uma cor de significado. Deixe vazio para uma tag neutra.",
+        "options": {
+          "": "Neutro",
+          "brand": "Marca",
+          "success": "Sucesso",
+          "warning": "Alerta",
+          "danger": "Perigo"
+        }
       }
     ],
     "advanced": [

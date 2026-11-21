@@ -1,0 +1,16 @@
+{
+  "theme": "Téma",
+  "designSystem": "Dizájnrendszer",
+  "dddDefault": "DDD (alapértelmezett)",
+  "designSystemHelp": "Szín, betűtípus, sarkok és fókusz. A téma megtartja az elrendezést.",
+  "designSystemFixed": "Ez a téma megtartja a saját dizájnrendszerét.",
+  "palette": "Paletta",
+  "themeDefault": "Téma alapértelmezése",
+  "paletteNumber": "{n}. paletta",
+  "siteTheme": "{name} (a webhely témája)",
+  "restyle": "A webhely újrastílusozása",
+  "close": "Bezárás",
+  "reset": "Vissza a webhely saját megjelenéséhez",
+  "random": "Lepjen meg",
+  "about": "Ez a HAX-be épített megjelenések közül mutat néhányat. Az oldalak soha nem változnak: a szerkezet a JSON Outline Schemában él, és minden blokk szabványos webkomponens, így a dizájn szabadon cserélhető."
+}

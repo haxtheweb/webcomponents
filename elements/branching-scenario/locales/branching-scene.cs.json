@@ -1,0 +1,14 @@
+{
+  "scene": "Scéna",
+  "ending": "Konec",
+  "goodEnding": "Dobrý konec",
+  "mixedEnding": "Smíšený konec",
+  "poorEnding": "Špatný konec",
+  "scoreOf": "Skóre {score} z {max}",
+  "scoreOnly": "Skóre {score}",
+  "startScene": "Začátek",
+  "sceneIdLabel": "ID scény",
+  "needsId": "Přidejte ID scény, aby na ni mohly volby odkazovat.",
+  "orphan": "Na tuto scénu neodkazuje žádná volba.",
+  "deadLinks": "Tyto odkazy vedou na scénu, která neexistuje:"
+}

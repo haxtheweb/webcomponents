@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram z textu",
+    "description": "Napište diagram jako text (Mermaid): vývojový diagram, sekvenci, časovou osu a další. Vykreslí se na stránce s textovou alternativou."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Název",
+        "description": "Zobrazeno nad diagramem a použito jako jeho název."
+      },
+      {
+        "title": "Zdroj diagramu",
+        "description": "Text Mermaid, například: flowchart TD, pak jeden řádek na každé propojení, jako A[Draft] --> B{Ready?}. Přidáním |label| za šipku ji popíšete. Kresba se aktualizuje při psaní."
+      },
+      {
+        "title": "Textová alternativa",
+        "description": "Popište, co diagram ukazuje, pro lidi, kteří ho nevidí. U vývojového diagramu ponechte prázdné a kroky se vypíšou za vás."
+      },
+      {
+        "title": "Popisek",
+        "description": "Volitelný popisek zobrazený pod diagramem."
+      },
+      {
+        "title": "Zobrazit zdroj",
+        "description": "Zobrazit text diagramu vedle kresby."
+      },
+      {
+        "title": "Zobrazit textovou alternativu",
+        "description": "Zobrazit textovou alternativu pod kresbou. Pro čtečky obrazovky je dostupná vždy."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Zdrojový soubor",
+        "description": "Adresa souboru .mmd, který se vykreslí místo textu výše (https nebo cesta na tomto webu)."
+      },
+      {
+        "title": "Zvýrazňující barva",
+        "description": "Barva štítku ikony v záhlaví."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Whakatairite pūhara",
+    "description": "Kanohi ki te kanohi: kōwhiria ētahi pūhara e rua mai i tētahi kōnae raraunga"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Raraunga whakatairite (JSON)"
+      },
+      {
+        "title": "ID pūhara mauī"
+      },
+      {
+        "title": "ID pūhara matau"
+      }
+    ]
+  }
+}

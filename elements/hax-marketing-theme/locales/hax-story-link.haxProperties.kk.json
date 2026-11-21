@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Оқиға батырмасы",
+    "description": "hax.cloud сайтындағы тұжырымның артындағы оқиғаны немесе басқа HAX желі сайтындағы сәйкес орынды ашатын батырма"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Қайда апарады",
+        "options": {
+          "cloud": "hax.cloud, оқиға",
+          "learn": "learn.hax.cloud, оқулық",
+          "try": "browser.hax.cloud, байқап көру",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Сол сайттағы мекенжай (hax.cloud сайтындағы оқиға stories/ee450a19 сияқты болады)"
+      },
+      {
+        "title": "Ол не туралы"
+      },
+      {
+        "title": "Шағын чип"
+      },
+      {
+        "title": "Оның не туралы екенін батырмада көрсету"
+      }
+    ]
+  }
+}

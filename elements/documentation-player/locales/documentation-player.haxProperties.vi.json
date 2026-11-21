@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Trình phát tài liệu",
+    "description": "Hướng dẫn từng bước, demo và tài liệu tham khảo cho một web component, kèm nút sao chép cho HTML, import, npm và CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tệp dữ liệu tài liệu",
+        "description": "Dữ liệu tài liệu đi kèm phần tử (lib/tag.docs.json)."
+      },
+      {
+        "title": "Kịch bản hướng dẫn",
+        "description": "Kịch bản chuyển động đi kèm phần tử (tag.motion.json). Không bắt buộc."
+      },
+      {
+        "title": "Video hướng dẫn",
+        "description": "Một video ngắn về phần tử (YouTube, Vimeo hoặc tệp video). Ghi đè video trong dữ liệu tài liệu."
+      },
+      {
+        "title": "Mở ở tab",
+        "description": "Tab nào hiển thị đầu tiên.",
+        "options": {
+          "motion": "Hướng dẫn từng bước",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Tài liệu",
+          "schema": "Lược đồ"
+        }
+      },
+      {
+        "title": "Tự động phát hướng dẫn",
+        "description": "Bắt đầu hướng dẫn ngay khi trình phát hiển thị. Bỏ qua khi người đọc muốn giảm chuyển động."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Chủ đề hướng dẫn",
+        "description": "Với các phần tử có nhiều hướng dẫn, chủ đề nào mở trước (ví dụ add-blocks). Để trống cho hướng dẫn chính."
+      },
+      {
+        "title": "Liên kết demo trực tiếp",
+        "description": "Nơi nút Mở mã nguồn demo dẫn tới. Mặc định là thư mục demo trong kho mã."
+      },
+      {
+        "title": "Liên kết tài liệu",
+        "description": "Nơi nút tài liệu đầy đủ dẫn tới, ví dụ trang Learn HAX tương ứng."
+      }
+    ]
+  }
+}

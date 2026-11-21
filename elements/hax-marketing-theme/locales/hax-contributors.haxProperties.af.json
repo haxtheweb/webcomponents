@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Bydraers",
+    "description": "Die mense wat die projek gebou het, uit 'n roosterlêer"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Roosterlêer (JSON)"
+      },
+      {
+        "title": "Aansig: landed, lab of code"
+      },
+      {
+        "title": "Meeste mense om te wys (0 is almal)"
+      }
+    ]
+  }
+}

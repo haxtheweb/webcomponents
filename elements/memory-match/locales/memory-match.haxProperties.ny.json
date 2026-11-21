@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Masewera okumbukira",
+    "description": "Tembenuzani makadi kuti mupeze awiriawiri. Phatikizani liwu ndi tanthauzo lake kuti kufanana kusonyeze kumvetsa, kapena gwiritsani ntchito zolemba kapena zithunzi ziwiri zofanana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Funso lowonetsedwa pamutu, mwachitsanzo: Fananitsani liwu ndi ntchito yake."
+      },
+      {
+        "title": "Awiriawiri",
+        "description": "Awiriawiri aliwonse ndi makadi awiri ogwirizana, nthawi zambiri liwu ndi tanthauzo lake. Mbali iliyonse ikufunika zolemba, chithunzi, kapena zonse ziwiri."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wosankha wa chizindikiro cha pamutu, kumbuyo kwa makadi ndi batani."
+      }
+    ]
+  }
+}

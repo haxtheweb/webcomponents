@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "İstatistik",
+    "description": "Etiketi ve hikâyesine bağlantısıyla birlikte yukarı sayan bir sayı"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sayılacak sayı"
+      },
+      {
+        "title": "Sayıdan önce"
+      },
+      {
+        "title": "Sayıdan sonra"
+      },
+      {
+        "title": "Sayı yerine kelimeler"
+      },
+      {
+        "title": "Neyi saydığı"
+      },
+      {
+        "title": "hax.cloud'daki hikâye adresi (stories/ee450a19)"
+      }
+    ]
+  }
+}

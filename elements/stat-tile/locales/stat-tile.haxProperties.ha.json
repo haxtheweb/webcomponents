@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tayil na ƙididdiga",
+    "description": "Lamba ɗaya mai muhimmanci, tare da lakabinta da yadda ta canza. Sanya da yawa a cikin grid don layin dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lakabi",
+        "description": "Abin da lambar ke aunawa."
+      },
+      {
+        "title": "Ƙima",
+        "description": "Lambar. Ana tara lamba mai sauƙi bisa harshen shafin; duk wani abu kuma ana nuna shi kamar yadda aka rubuta."
+      },
+      {
+        "title": "Canji",
+        "description": "Yadda ya canza, a kalmomi, kamar 6% a wannan zangon karatu."
+      },
+      {
+        "title": "Alƙibla",
+        "description": "Ko canjin sama ne ko ƙasa.",
+        "options": {
+          "": "Babu",
+          "up": "Sama",
+          "down": "Ƙasa"
+        }
+      }
+    ]
+  }
+}

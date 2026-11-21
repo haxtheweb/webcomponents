@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Diagram från text",
+    "description": "Skriv ett diagram som text (Mermaid): ett flödesschema, en sekvens, en tidslinje med mera. Det ritas på sidan med ett textalternativ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Visas ovanför diagrammet och används som dess namn."
+      },
+      {
+        "title": "Diagramkälla",
+        "description": "Mermaid-text, till exempel: flowchart TD, sedan en rad per länk som A[Draft] --> B{Ready?}. Lägg till |label| efter en pil för att ge den en etikett. Ritningen uppdateras medan du skriver."
+      },
+      {
+        "title": "Textalternativ",
+        "description": "Beskriv vad diagrammet visar för personer som inte kan se det. Lämna tomt på ett flödesschema så listas dess steg åt dig."
+      },
+      {
+        "title": "Bildtext",
+        "description": "Valfri bildtext som visas under diagrammet."
+      },
+      {
+        "title": "Visa källan",
+        "description": "Visa diagramtexten bredvid ritningen."
+      },
+      {
+        "title": "Visa textalternativet",
+        "description": "Visa textalternativet under ritningen. Det är alltid tillgängligt för skärmläsare."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Källfil",
+        "description": "Adress till en .mmd-fil som ritas i stället för texten ovan (https eller en sökväg på den här webbplatsen)."
+      },
+      {
+        "title": "Accentfärg",
+        "description": "Färg på ikonetiketten i sidhuvudet."
+      }
+    ]
+  }
+}

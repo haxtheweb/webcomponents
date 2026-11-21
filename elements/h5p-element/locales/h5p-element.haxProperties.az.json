@@ -4,7 +4,12 @@
     "description": "Yüklənmiş .h5p faylından interaktiv H5P məzmununu oxudur, H5P serverinə ehtiyac yoxdur"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P faylı",
+        "description": ".h5p faylını yükləyin və ya keçid verin. O, brauzerdə açılır; H5P serveri tələb olunmur."
+      }
+    ],
     "advanced": [
       {
         "title": "Köhnə iframe yerləşdirmə kodu",

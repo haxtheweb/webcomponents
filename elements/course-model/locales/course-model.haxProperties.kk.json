@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "атауы"
+        "title": "атауы",
+        "description": "Курс моделінің үстінде көрсетілетін тақырып."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Көрсетілетін 3D модель файлының (.glb немесе .gltf) мекенжайы."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D модельді оны көре алмайтын адамдар үшін сипаттаңыз."
       },
       {
         "title": "Ақпарат аймағы"

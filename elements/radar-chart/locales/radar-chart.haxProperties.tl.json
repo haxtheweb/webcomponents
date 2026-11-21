@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radar na chart",
+    "description": "Radar (spider) chart para sa mga maturity model at facet scoring, tulad ng HEOSAT. May kasamang alternatibong teksto at data table."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Heading para sa chart; ginagamit din bilang accessible na pangalan nito."
+      },
+      {
+        "title": "Pinakamataas na iskor",
+        "description": "Pinakamataas na halaga sa scale."
+      },
+      {
+        "title": "Mga kategorya",
+        "description": "Isang kategorya bawat linya. Kailangan ng hindi bababa sa 3."
+      },
+      {
+        "title": "Mga iskor",
+        "description": "Mga numerong pinaghihiwalay ng kuwit, isa bawat kategorya sa parehong pagkakasunod-sunod."
+      },
+      {
+        "title": "Mga target na iskor",
+        "description": "Mga numerong pinaghihiwalay ng kuwit, isa bawat kategorya sa parehong pagkakasunod-sunod."
+      },
+      {
+        "title": "Ipakita ang alamat",
+        "description": "Ipakita ang alamat na nagpapangalan sa mga iskor at target."
+      },
+      {
+        "title": "Siksik",
+        "description": "Mas maliit na chart na walang label, alamat o data table. I-hover ang isang punto para makita ang mga halaga nito."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Label ng iskor",
+        "description": "Label ng alamat at table para sa mga iskor."
+      },
+      {
+        "title": "Label ng target",
+        "description": "Label ng alamat at table para sa mga target."
+      }
+    ]
+  }
+}

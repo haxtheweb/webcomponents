@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Shënim në fund",
+    "description": "Një shënim i shkruar aty ku i përket në tekst. Shfaqet si numër, dhe lista e numëruar e shënimeve ndërtohet vetë në fund të faqes."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Shënim",
+        "description": "Teksti i shënimit në fund."
+      },
+      {
+        "title": "Pa parapamje",
+        "description": "Mos e shfaq shënimin kur lexuesi kalon me miun ose fokuson numrin."
+      }
+    ]
+  }
+}

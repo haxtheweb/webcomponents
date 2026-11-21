@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "streamdiagram",
+  "sequence": "folchoarder",
+  "source": "Boarne",
+  "textAlternative": "Tekstalternatyf",
+  "present": "Presintearje",
+  "exitPresent": "Presintaasje ferlitte",
+  "loading": "It diagram wurdt laden",
+  "empty": "Noch neat te tekenjen. Foegje de boarne fan it diagram ta.",
+  "error": "Flater",
+  "parseError": "Dit diagram koe net tekene wurde. Kontrolearje de boarne.",
+  "loadError": "De diagrambibleteek koe net laden wurde.",
+  "srcError": "It diagrambestân koe net laden wurde.",
+  "decision": "beslissing",
+  "end": "ein",
+  "goTo": "gean nei {target}",
+  "ifGoTo": "as {label}, gean nei {target}",
+  "describedBySource": "Diagram beskreaun troch syn boarne.",
+  "scrollable": "Diagram, skowber"
+}

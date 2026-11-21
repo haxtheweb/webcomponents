@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Agba mkpụrụ akpaaka",
         "description": "Wepụta agba mkpụrụ site n'ederede akara aha na-akpaghị aka."
+      },
+      {
+        "title": "Ihe ọ pụtara",
+        "description": "Nye mkpado ahụ agba nwere ihe ọ pụtara. Hapụ ya efu maka mkpado na-anọpụ iche.",
+        "options": {
+          "": "Na-anọpụ iche",
+          "brand": "Akara ụlọ ọrụ",
+          "success": "Ihe ịga nke ọma",
+          "warning": "Ịdọ aka na ntị",
+          "danger": "Ihe ize ndụ"
+        }
       }
     ],
     "advanced": [

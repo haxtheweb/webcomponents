@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Isigcawu sesimo",
+    "description": "Isigcawu esisodwa sesimo esinamagatsha. Xhuma ukukhetha ngakunye nesinye isigcawu nge-# elandelwa i-ID yaso yesigcawu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "I-ID yesigcawu",
+        "description": "Lokho ukukhetha okuxhuma kukho: isixhumanisi ku-# esilandelwa yile id siholela kulesi sigcawu. Izinhlamvu, izinombolo namahayifeni."
+      },
+      {
+        "title": "Isihloko",
+        "description": "Isihloko sesigcawu."
+      },
+      {
+        "title": "Isiphetho",
+        "description": "Ukuthi lesi sigcawu siqeda indlela yini, nokuthi kuphume kanjani.",
+        "options": {
+          "": "Akusona isiphetho",
+          "good": "Isiphetho esihle",
+          "mixed": "Isiphetho esixubile",
+          "poor": "Isiphetho esibi"
+        }
+      },
+      {
+        "title": "Amaphuzu",
+        "description": "Amaphuzu okufinyelela kulesi siphetho. Amaphuzu aphezulu kakhulu esiphetho esimweni ayisamba esiphezulu."
+      }
+    ]
+  }
+}

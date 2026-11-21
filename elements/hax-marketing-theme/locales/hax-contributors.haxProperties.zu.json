@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Abanikeli",
+    "description": "Abantu abakhe iphrojekthi, kusuka efayeleni lohlu lwamagama"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ifayela lohlu lwamagama (JSON)"
+      },
+      {
+        "title": "Ukubuka: landed, lab noma code"
+      },
+      {
+        "title": "Inani eliphezulu labantu okufanele baboniswe (0 kusho bonke)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Dokezo la pembeni",
+    "description": "Dokezo lililotengwa na maudhui yanayolizunguka, lenye ikoni na lebo ya hiari."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lebo",
+        "description": "Lebo ya dokezo la pembeni."
+      },
+      {
+        "title": "Ikoni",
+        "description": "Ikoni ya dokezo la pembeni."
+      },
+      {
+        "title": "Maudhui",
+        "description": "Maudhui ya dokezo la pembeni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rangi",
+        "description": "Rangi ambayo dokezo la pembeni limetiwa."
+      }
+    ]
+  }
+}

@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV-ად კოპირება.",
   "printTable": "ცხრილის დაბეჭდვა",
   "selectColumn": "სვეტის არჩევა",
-  "dataTable": "მონაცემები · ცხრილი"
+  "dataTable": "მონაცემები · ცხრილი",
+  "filterStatus": "ნაჩვენებია {shown} სტრიქონი {total}-დან, გაფილტრულია {column}-ით: {text}",
+  "columnNumber": "სვეტი {column}",
+  "clearFilter": "ფილტრის მოხსნა"
 }

@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "Jawaabtu waxay ku jirtaa kala horraynta saxda ah",
   "answerInIncorrectOrder": "Jawaabtu waxay ku jirtaa kala horrayn khaldan",
   "moveOptionUp": "Dooro si aad ikhtiyaarka kor ugu dhaqaajiso kala horraynta",
-  "moveOptionDown": "Dooro si aad ikhtiyaarka hoos ugu dhaqaajiso kala horraynta"
+  "moveOptionDown": "Dooro si aad ikhtiyaarka hoos ugu dhaqaajiso kala horraynta",
+  "moveEarlier": "Hore u dhaqaaji",
+  "moveLater": "Gadaal u dhaqaaji",
+  "correct": "Sax",
+  "incorrect": "Khalad"
 }

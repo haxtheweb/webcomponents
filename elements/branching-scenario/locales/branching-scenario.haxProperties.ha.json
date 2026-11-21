@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Yanayi mai rassa",
+    "description": "Labari inda kowane zaɓi ke kai wa fage da ƙarshe daban. Masu koyo za su iya komawa baya su gwada wasu hanyoyi; ƙarshen da aka kai shi ne ke saita maki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Take",
+        "description": "Sunan yanayin, ana nuna shi a kansa."
+      },
+      {
+        "title": "Fagen farawa",
+        "description": "Id na fagen da masu koyo ke farawa da shi. Bar shi babu komai don farawa da fage na farko."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Launin ƙawa",
+        "description": "Launi na zaɓi don guntun kai, maɓallai da gefen zaɓi."
+      }
+    ]
+  }
+}

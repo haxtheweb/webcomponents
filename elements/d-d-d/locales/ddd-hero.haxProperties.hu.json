@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Nagy kép, GIF vagy videó címsorral és szöveggel rajta, az oldal bármely pontján elhelyezhető."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kép vagy videó",
+        "description": "JPG, PNG, WebP, GIF, MP4 vagy WebM fájl."
+      },
+      {
+        "title": "Helyettesítő szöveg",
+        "description": "Írja le a képet. Hagyja üresen, ha csak díszítés."
+      },
+      {
+        "title": "Címsor",
+        "description": "A média fölött megjelenő címsor. Hagyja üresen, ha nem kell."
+      },
+      {
+        "title": "Szöveg",
+        "description": "A címsor alatt, a média fölött megjelenő szöveg."
+      },
+      {
+        "title": "Teljes szélesség",
+        "description": "Széltől szélig ér a tartalomoszlop helyett."
+      },
+      {
+        "title": "Magasság",
+        "options": {
+          "tall": "Magas",
+          "medium": "Közepes",
+          "short": "Alacsony"
+        }
+      },
+      {
+        "title": "Képkivágás",
+        "description": "Hogyan helyezkedik el a fotó az egyes képernyőméreteken"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Elhalványítás",
+        "description": "A médiára fektetett szín. Címsor vagy szöveg esetén mindig van, hogy a szöveg olvasható maradjon.",
+        "options": {
+          "blue": "Kék",
+          "bottom": "Alul sötét",
+          "none": "Nincs"
+        }
+      },
+      {
+        "title": "Szöveg helyzete",
+        "options": {
+          "bottom": "Alul",
+          "middle": "Középen"
+        }
+      },
+      {
+        "title": "Fókuszpont vízszintesen",
+        "description": "A kép azon része, amely körülvágáskor látható marad, 0-tól (bal) 100-ig (jobb)."
+      },
+      {
+        "title": "Fókuszpont függőlegesen",
+        "description": "A kép azon része, amely körülvágáskor látható marad, 0-tól (fent) 100-ig (lent)."
+      }
+    ]
+  }
+}

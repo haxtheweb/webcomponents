@@ -9,5 +9,7 @@
   "slidePages": "Foliesäiten",
   "goToSlide": "Op Folie {number} goen",
   "slides": "Folien",
-  "position": "{number} vun {total}"
+  "position": "{number} vun {total}",
+  "fullScreen": "Vollbild",
+  "exitFullScreen": "Vollbild verloossen"
 }

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Şekil etiketi",
     "description": "İçerikteki medya varlıklarını işaretlemek için şekil etiketi öğesi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şekil numarası",
+        "description": "Şekil için numara veya kısa etiket, ör. 1.3"
+      },
+      {
+        "title": "Açıklama",
+        "description": "Şeklin kısa açıklaması"
+      }
+    ]
   }
 }

@@ -1,3 +1,4 @@
 {
-  "viewOnLinkedin": "Vaata kasutajat {name} LinkedInis"
+  "viewOnLinkedin": "Vaata kasutajat {name} LinkedInis",
+  "badgeTitle": "LinkedIni profiilimärk: {name}"
 }

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Bakkeewwan adda baasi",
+    "description": "Barattoonni cuqaasuun, tuquun ykn mallattoo qaxxaamuraa kiiboordii socho'suun bakkeewwan sirrii suuraa irratti argatu. Kaartaa suuraa kan qabxiin kennamuuf."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suuraa",
+        "description": "Suuraa barattoonni keessatti barbaadan."
+      },
+      {
+        "title": "Barreeffama bakka bu'aa",
+        "description": "Namoota arguu hin dandeenyeef suuraa ibsa. Gonkumaa akka mata-dureetti hin mul'atu."
+      },
+      {
+        "title": "Mata-duree",
+        "description": "Mata-duree gabaabaa mul'atu suuraa ol jiru."
+      },
+      {
+        "title": "Gaaffii",
+        "description": "Waan barattoonni suuraa keessatti akka argatan gaafataman."
+      },
+      {
+        "title": "Deebiiwwan",
+        "description": "Deebiin tokkoon tokkoon suuraa irratti geengoo dheeraa maqaa qabu dha. Bakki fi hammi dhibbeentaa suuraa ti, golee bitaa gubbaa irraa safaramu. Yeroo gulaaltu, deebiin hundi suuraa irratti sararaan marfama."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yaaliiwwan",
+        "description": "Barataan si'a meeqa yaaluu danda'a. 0 jechuun daangaa malee."
+      },
+      {
+        "title": "Dogoggora hayyamame",
+        "description": "Dogoggorri meeqa yaalii xumura. 0 jechuun daangaa malee, barattoonnis qabduu Xumuri argatu."
+      },
+      {
+        "title": "Kan cufamu",
+        "description": "Gaaffii kana akka tarree banamuu fi cufamuutti agarsiisi. Tokko banuun gaaffiiwwan cufaman biroo cinaa isaa jiran cufa."
+      },
+      {
+        "title": "Cufamee jalqabi",
+        "description": "Yeroo cufamu ta'u, akka tarree cufamaa gaaffii fi haala isaa qofa agarsiisuutti jalqabi."
+      },
+      {
+        "title": "Bifa kennaa qabxii",
+        "description": "OER Schema: bifa kennaa qabxii madaallii kanaaf (fkn. qabxii, qubee, dhibbeentaa, xumuruu)."
+      },
+      {
+        "title": "Kaayyoo barnootaa",
+        "description": "OER Schema: kaayyoo barnootaa madaallii kana waliin walqabatu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Maqaa qormaata gabaabaa",
+        "description": "Maqaa qormaata gabaabaa naannoo xAPI'n hojjetu keessatti wanta kana adda baasuuf ergamu"
+      },
+      {
+        "title": "Koorsii",
+        "description": "OER Schema: koorsii madaalliin kun itti yaadame."
+      }
+    ]
+  }
+}

@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Alternatiivtekst"
+        "title": "Alternatiivtekst",
+        "description": "Kirjelda pilti inimestele, kes seda näha ei saa."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on avatud"
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on avatud",
+        "description": "Nupu tekst, kui kirjeldus on peidetud, näiteks Näita kirjeldust."
       },
       {
         "property": "closeText",
-        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on suletud"
+        "title": "Valikuline kokkuvõtte tekst, kui üksikasjad on suletud",
+        "description": "Nupu tekst, kui kirjeldus on nähtav, näiteks Peida kirjeldus."
       }
     ]
   }

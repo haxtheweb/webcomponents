@@ -1,4 +1,6 @@
 {
   "saveAll": "Барлығын сақтау",
-  "saveTheFollowing": "Мыналарды сақтау керек пе: {list}?"
+  "saveTheFollowing": "Мыналарды сақтау керек пе: {list}?",
+  "save": "Сақтау",
+  "cancel": "Бас тарту"
 }

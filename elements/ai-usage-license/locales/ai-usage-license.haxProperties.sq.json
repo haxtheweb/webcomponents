@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Modifikuesi i medias",
-        "description": "Modifikues opsional i fushës së medias. Përcakton llojin e medias për të cilën vlen kjo licencë."
+        "description": "Modifikues opsional i fushës së medias. Përcakton llojin e medias për të cilën vlen kjo licencë.",
+        "options": {
+          "": "Pa modifikues"
+        }
       },
       {
         "property": "uri",

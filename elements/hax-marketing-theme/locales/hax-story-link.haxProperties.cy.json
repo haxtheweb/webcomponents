@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Botwm stori",
+    "description": "Y botwm sy'n agor y stori y tu ôl i honiad ar hax.cloud, neu'r man cyfatebol ar wefan arall yn rhwydwaith HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ble mae'n mynd",
+        "options": {
+          "cloud": "hax.cloud, y stori",
+          "learn": "learn.hax.cloud, tiwtorial",
+          "try": "browser.hax.cloud, rhowch gynnig arni",
+          "elements": "webcomponents.hax.cloud, bloc",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Cyfeiriad ar y wefan honno (mae stori ar hax.cloud yn edrych fel stories/ee450a19)"
+      },
+      {
+        "title": "Am beth mae"
+      },
+      {
+        "title": "Sglodyn bach"
+      },
+      {
+        "title": "Dangos am beth mae yn y botwm"
+      }
+    ]
+  }
+}

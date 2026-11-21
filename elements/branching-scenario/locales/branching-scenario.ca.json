@@ -1,0 +1,22 @@
+{
+  "scenario": "Escenari",
+  "directions": "Instruccions",
+  "showDirections": "Mostra les instruccions",
+  "hideDirections": "Amaga les instruccions",
+  "directionsRead": "Llegeix cada escena i tria què faries.",
+  "directionsEndings": "Hi ha diversos finals. Prova un altre camí quan acabis.",
+  "startOver": "Torna a començar",
+  "back": "Un pas enrere",
+  "tryAnother": "Prova un altre camí",
+  "path": "Camí",
+  "scene": "Escena",
+  "ending": "Final",
+  "end": "fi",
+  "scenesSeen": "{seen} de {total} escenes vistes",
+  "endingReached": "Final assolit",
+  "addScene": "Afegeix una escena",
+  "newScene": "Escena nova",
+  "newSceneText": "Descriu què passa i després enllaça cada opció a una escena.",
+  "editingNote": "Edició: es mostren totes les escenes. Una opció és un enllaç a # seguit d'un id d'escena.",
+  "noScenes": "Afegeix una escena per començar l'escenari."
+}

@@ -1,4 +1,6 @@
 {
   "saveAll": "Issejvja Kollox",
-  "saveTheFollowing": "Tissejvja dawn li ġejjin: {list}?"
+  "saveTheFollowing": "Tissejvja dawn li ġejjin: {list}?",
+  "save": "Issejvja",
+  "cancel": "Ikkanċella"
 }

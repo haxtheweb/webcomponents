@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Miseensa taatotaa",
+    "description": "Dhaggeeffattoota tokko, taatoodhaan kan taphatame, jechootaa fi qabduu waliin"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kun eenyu"
+      },
+      {
+        "title": "Gosa taatoo"
+      },
+      {
+        "title": "Sanyii taatoo"
+      },
+      {
+        "title": "Halluu waltajjii (maqaa DDD)"
+      },
+      {
+        "title": "Qabduun eessa deema"
+      },
+      {
+        "title": "Barreeffama qabduu"
+      }
+    ]
+  }
+}

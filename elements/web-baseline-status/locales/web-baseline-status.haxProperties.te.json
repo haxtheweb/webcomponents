@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline స్థితి",
+    "description": "వెబ్ ప్లాట్‌ఫారమ్ ఫీచర్ యొక్క Baseline బ్రౌజర్ మద్దతు స్థితిని చూపు."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ఫీచర్ ID",
+        "description": "వెబ్ ఫీచర్ ID, ఉదాహరణకు anchor-positioning. webstatus.devలో IDలను కనుగొనండి; ID అనేది ఫీచర్ పేజీ URL చివరి భాగం."
+      }
+    ]
+  }
+}

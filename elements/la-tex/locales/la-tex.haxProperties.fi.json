@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Kirjoita LaTeX-matematiikkamerkinnöillä"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuvan tausta",
+        "description": "Tausta piirrettyjen kuvien takana. Automaattinen lisää taustan vain, kun piirrosta olisi vaikea nähdä sivulla, kuten tummat viivat tummassa tilassa.",
+        "options": {
+          "auto": "Automaattinen",
+          "light": "Vaalea",
+          "dark": "Tumma",
+          "none": "Ei mitään"
+        }
+      }
+    ]
   }
 }

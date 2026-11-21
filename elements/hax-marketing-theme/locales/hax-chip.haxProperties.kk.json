@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Чип",
+    "description": "Белгісі бар шағын белгіше"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Белгіше"
+      },
+      {
+        "title": "Белгі"
+      }
+    ]
+  }
+}

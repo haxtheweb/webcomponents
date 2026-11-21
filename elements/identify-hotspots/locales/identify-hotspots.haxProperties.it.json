@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Individua i punti",
+    "description": "Gli studenti trovano i punti giusti su un'immagine facendo clic, toccando o spostando un mirino con la tastiera. La controparte valutata di una mappa immagine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Immagine",
+        "description": "L'immagine in cui cercano gli studenti."
+      },
+      {
+        "title": "Testo alternativo",
+        "description": "Descrive l'immagine per chi non può vederla. Non viene mai mostrata come titolo."
+      },
+      {
+        "title": "Titolo",
+        "description": "Un breve titolo visibile mostrato sopra l'immagine."
+      },
+      {
+        "title": "Domanda",
+        "description": "Cosa viene chiesto agli studenti di trovare nell'immagine."
+      },
+      {
+        "title": "Risposte",
+        "description": "Ogni risposta è un ovale con nome sull'immagine. Posizione e dimensione sono percentuali dell'immagine, misurate dal suo angolo in alto a sinistra. Durante la modifica, ogni risposta è evidenziata sull'immagine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentativi",
+        "description": "Quante volte uno studente può provare. 0 significa illimitato."
+      },
+      {
+        "title": "Errori consentiti",
+        "description": "Quanti errori terminano un tentativo. 0 significa illimitato, e gli studenti ottengono un pulsante Termina."
+      },
+      {
+        "title": "Comprimibile",
+        "description": "Mostra questa domanda come una riga che si apre e si chiude. Aprirne una chiude le altre domande comprimibili accanto."
+      },
+      {
+        "title": "Inizia compresso",
+        "description": "Se comprimibile, inizia come riga chiusa che mostra solo la domanda e il suo stato."
+      },
+      {
+        "title": "Formato di valutazione",
+        "description": "OER Schema: formato di valutazione per questa verifica (ad es. punti, lettera, percentuale, completamento)."
+      },
+      {
+        "title": "Obiettivo di apprendimento",
+        "description": "OER Schema: obiettivo di apprendimento associato a questa verifica."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nome del quiz",
+        "description": "Nome del quiz passato per l'uso in ambienti basati su xAPI per identificare questo elemento"
+      },
+      {
+        "title": "Corso",
+        "description": "OER Schema: corso a cui è destinata questa verifica."
+      }
+    ]
+  }
+}

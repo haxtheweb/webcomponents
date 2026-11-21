@@ -5,5 +5,7 @@
   "editModeLabel": "ਮੀਡੀਆ ਪਲੇਲਿਸਟ ਸੰਪਾਦਨ ਮੋਡ",
   "position": "{current} / {total}",
   "previousItem": "ਪਿਛਲੀ ਆਈਟਮ",
-  "nextItem": "ਅਗਲੀ ਆਈਟਮ"
+  "nextItem": "ਅਗਲੀ ਆਈਟਮ",
+  "fullScreen": "ਪੂਰੀ ਸਕਰੀਨ",
+  "exitFullScreen": "ਪੂਰੀ ਸਕਰੀਨ ਤੋਂ ਬਾਹਰ ਜਾਓ"
 }

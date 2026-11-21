@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Jehasa escena",
+    "description": "Peteĩ escena jehasa hakãvagui. Embojoaju peteĩteĩ jeporavo ambue escena rehe # ha upéi escena id reheve."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Escena id",
+        "description": "Mba'épe ojoaju jeporavokuéra: peteĩ juajuha # gotyo ha upéi ko id ogueraha ko escena-pe. Tai, papapy ha guión."
+      },
+      {
+        "title": "Omoakãva",
+        "description": "Escena omoakãva."
+      },
+      {
+        "title": "Paha",
+        "description": "Ko escena omohu'ãpa peteĩ tape, ha mba'éichapa osẽ.",
+        "options": {
+          "": "Ndaha'éi paha",
+          "good": "Paha porã",
+          "mixed": "Paha ijehe'áva",
+          "poor": "Paha vai"
+        }
+      },
+      {
+        "title": "Kytã",
+        "description": "Kytã reg̃uahẽ haguére ko pahápe. Jehasa paha kytã yvatevéva ha'e tuichavéva."
+      }
+    ]
+  }
+}

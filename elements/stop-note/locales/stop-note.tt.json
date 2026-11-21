@@ -3,5 +3,7 @@
   "status_stop": "Туктагыз",
   "status_warning": "Кисәтү",
   "status_success": "Уңыш",
-  "status_info": "Искәрмә"
+  "status_info": "Искәрмә",
+  "status_tip": "Беләсезме?",
+  "status_new": "Нәрсә яңа"
 }

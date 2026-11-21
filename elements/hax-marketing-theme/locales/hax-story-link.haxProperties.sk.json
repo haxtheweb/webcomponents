@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Tlačidlo príbehu",
+    "description": "Tlačidlo, ktoré otvorí príbeh za tvrdením na hax.cloud alebo zodpovedajúce miesto na inej stránke siete HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kam vedie",
+        "options": {
+          "cloud": "hax.cloud, príbeh",
+          "learn": "learn.hax.cloud, návod",
+          "try": "browser.hax.cloud, vyskúšajte",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Adresa na danej stránke (príbeh na hax.cloud vyzerá ako stories/ee450a19)"
+      },
+      {
+        "title": "O čom to je"
+      },
+      {
+        "title": "Malý štítok"
+      },
+      {
+        "title": "Zobraziť v tlačidle, o čom to je"
+      }
+    ]
+  }
+}

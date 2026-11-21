@@ -52,6 +52,20 @@
           "_top": "Gornji prozor - _top",
           "_parent": "Nadređeni prozor - _parent"
         }
+      },
+      {
+        "title": "Bez strelice",
+        "description": "Sakrij strelicu gumba."
+      },
+      {
+        "title": "Poveznica: cilj",
+        "description": "Gdje otvoriti poveznicu.",
+        "options": {
+          "": "Isti prozor",
+          "_blank": "Novi prozor - _blank",
+          "_top": "Gornji prozor - _top",
+          "_parent": "Roditeljski prozor - _parent"
+        }
       }
     ],
     "developer": [

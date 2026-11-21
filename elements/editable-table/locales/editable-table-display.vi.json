@@ -3,5 +3,8 @@
   "copyAsCsv": "Sao chép dạng CSV.",
   "printTable": "In bảng",
   "selectColumn": "Chọn cột",
-  "dataTable": "Dữ liệu · Bảng"
+  "dataTable": "Dữ liệu · Bảng",
+  "filterStatus": "Đang hiển thị {shown} / {total} hàng, lọc theo {column}: {text}",
+  "columnNumber": "Cột {column}",
+  "clearFilter": "Xóa bộ lọc"
 }

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numeriese vraag",
+    "description": "'n Vraag wat met 'n getal beantwoord word. Die antwoord is 'n vaste getal of 'n formule wat uit veranderlikes uitgewerk word, en tel wanneer dit binne 'n toleransie is."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vraag",
+        "description": "Wat leerders gevra word. Skryf 'n veranderlike se naam tussen krulhakies, soos {d}, om sy waarde te wys."
+      },
+      {
+        "title": "Eenheid",
+        "description": "As teks langs die antwoordveld gewys, byvoorbeeld km/h."
+      },
+      {
+        "title": "Antwoord",
+        "description": "Die korrekte getal. Laat leeg wanneer 'n formule die antwoord uitwerk."
+      },
+      {
+        "title": "Formule",
+        "description": "Werk die antwoord uit die veranderlikes uit, byvoorbeeld d / (t / 60). Kan + - * / ^, hakies, sqrt() en abs() gebruik. Word in plaas van die antwoord gebruik wanneer dit gestel is."
+      },
+      {
+        "title": "Veranderlikes",
+        "description": "Getalle wat die formule en die vraag gebruik. Elkeen kry 'n waarde tussen sy laagste en hoogste, in stappe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleransie",
+        "description": "Hoe ver van die presiese antwoord nog tel. 0 beteken presies, of afgerond tot die desimale plekke hieronder."
+      },
+      {
+        "title": "Toleransietipe",
+        "description": "Absoluut: plus of minus die toleransie. Persent: plus of minus daardie persentasie van die presiese antwoord.",
+        "options": {
+          "absolute": "Absoluut",
+          "percent": "Persent"
+        }
+      },
+      {
+        "title": "Desimale plekke",
+        "description": "Leerders word gevra om tot soveel plekke af te rond, en die antwoord word so afgerond gewys. Laat leeg vir geen afronding."
+      },
+      {
+        "title": "Pogings",
+        "description": "Hoeveel keer 'n leerder kan kontroleer. 0 beteken onbeperk."
+      },
+      {
+        "title": "Nuwe getalle by elke poging",
+        "description": "Trek nuwe veranderlike waardes elke keer as 'n leerder weer probeer. Hul vorige antwoord word dan nie gewys wanneer hulle terugkom nie, net of hulle dit reg gehad het."
+      },
+      {
+        "title": "Invoubaar",
+        "description": "Wys hierdie vraag as 'n ry wat oop- en toemaak. Om een oop te maak, maak die ander invoubare vrae langsaan toe."
+      },
+      {
+        "title": "Begin ingevou",
+        "description": "Wanneer invoubaar, begin as 'n toe ry wat net die vraag en sy status wys."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naam van die vasvra",
+        "description": "Vasvranaam wat vir xAPI-identifikasie in analitiese stelsels gebruik word."
+      }
+    ]
+  }
+}

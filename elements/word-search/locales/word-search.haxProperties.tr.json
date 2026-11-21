@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Kelime avı",
+    "description": "Gizli kelimeler içeren bir harf ızgarası. Öğrenenler her kelimenin ilk ve son harfine dokunur. Bir terimin ne anlama geldiğini değil, nasıl yazıldığını fark etmeyi çalıştırır."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık",
+        "description": "Öğrenenlerden ne bulmalarının istendiği, başlıkta gösterilir."
+      },
+      {
+        "title": "Kelimeler",
+        "description": "Gizlenecek kelimeler. Boşluklar ve noktalama ızgaraya alınmaz. Sığmayan kelimeler düzenleme sırasında listelenir ve öğrenenler için dışarıda bırakılır."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Izgara boyutu",
+        "description": "Kenar başına harf, 4 ile 16 arası. En uzun kelimeye sığacak şekilde (12'ye kadar) boş bırakın. 12'den fazlası telefonda yana kayar."
+      },
+      {
+        "title": "Çapraz kelimeler",
+        "description": "Kelimeleri çapraz olarak da gizle. Daha zor."
+      },
+      {
+        "title": "Ters kelimeler",
+        "description": "Tersten yazılmış kelimeleri de gizle. Daha zor."
+      },
+      {
+        "title": "Vurgu rengi",
+        "description": "Başlık etiketi, seçilen ilk harf ve düğme için isteğe bağlı renk."
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Hàng tính năng",
+    "description": "Một màn hình sản phẩm bên cạnh ý nghĩa của nó với bạn"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nhãn nhỏ"
+      },
+      {
+        "title": "Tiêu đề"
+      },
+      {
+        "title": "Hình ảnh"
+      },
+      {
+        "title": "Hình ảnh thể hiện gì"
+      },
+      {
+        "title": "Hình ảnh ở bên phải"
+      },
+      {
+        "title": "Màu bóng (tên DDD, để trống theo bảng màu)"
+      }
+    ]
+  }
+}

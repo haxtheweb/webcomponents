@@ -1,0 +1,16 @@
+{
+  "theme": "Téma",
+  "designSystem": "Ñembosako'i sistema",
+  "dddDefault": "DDD (ojeiporavóva ypy)",
+  "designSystemHelp": "Sa'y, tai reko, jyke ha jesareko. Téma oñongatu ñemohenda.",
+  "designSystemFixed": "Ko téma oñongatu iñembosako'i sistema tee.",
+  "palette": "Paleta",
+  "themeDefault": "Téma ypy",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (ko tenda téma)",
+  "restyle": "Emoambue ko tenda reko",
+  "close": "Emboty",
+  "reset": "Ejevy ko tenda jehecha teépe",
+  "random": "Chemondýi",
+  "about": "Kóva ohechauka mbovymi jehecha oĩva HAX-pe. Kuatiarogue ndoñemoambuéi araka'eve: ñemohenda oĩ JSON Outline Schema-pe ha peteĩteĩ bloque ha'e peteĩ ñanduti pehẽ rekorãicha, upévare ñembosako'i ikatu oñemoambue sãsópe."
+}

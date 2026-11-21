@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "kichwa"
+        "title": "kichwa",
+        "description": "Kichwa kinachoonyeshwa juu ya modeli ya kozi."
       },
       {
         "property": "src",
-        "title": "chanzo"
+        "title": "chanzo",
+        "description": "Anwani ya faili ya modeli ya 3D (.glb au .gltf) ya kuonyesha."
       },
       {
         "property": "alt",
-        "title": "maandishi mbadala"
+        "title": "maandishi mbadala",
+        "description": "Eleza modeli ya 3D kwa watu wasioweza kuiona."
       },
       {
         "title": "Eneo la maelezo"

@@ -20,6 +20,12 @@
         "title": "Irudia",
         "description": "Aipuarekin erakusten den irudia."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Markoduna",
+        "description": "Marraztu aipua bloke-marko partekatuan, gainean ikono eta etiketa batekin, oharrekin eta jarraibide-txartelekin bat etor dadin."
+      }
     ]
   }
 }

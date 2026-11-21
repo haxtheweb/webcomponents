@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Nyşan",
+    "description": "Kiçi bellikli ikonka"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikonka"
+      },
+      {
+        "title": "Bellik"
+      }
+    ]
+  }
+}

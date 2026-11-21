@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Riga di funzionalità",
+    "description": "Una schermata del prodotto accanto a cosa significa per te"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta piccola"
+      },
+      {
+        "title": "Titolo"
+      },
+      {
+        "title": "Immagine"
+      },
+      {
+        "title": "Cosa mostra l'immagine"
+      },
+      {
+        "title": "Immagine a destra"
+      },
+      {
+        "title": "Colore dell'ombra (nome DDD, vuoto segue la tavolozza)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Plattformvergleich",
+    "description": "Direktvergleich: Wähle zwei beliebige Plattformen aus einer Datendatei"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vergleichsdaten (JSON)"
+      },
+      {
+        "title": "ID der linken Plattform"
+      },
+      {
+        "title": "ID der rechten Plattform"
+      }
+    ]
+  }
+}

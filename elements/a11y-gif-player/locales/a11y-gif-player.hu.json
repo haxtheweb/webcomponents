@@ -2,5 +2,9 @@
   "toggleAnimation": "Animáció be/ki",
   "info": "info",
   "image": "Kép",
-  "animatedGif": "Animált GIF"
+  "animatedGif": "Animált GIF",
+  "playAnimation": "Animáció lejátszása",
+  "pauseAnimation": "Animáció szüneteltetése",
+  "showDescription": "Leírás megjelenítése",
+  "hideDescription": "Leírás elrejtése"
 }

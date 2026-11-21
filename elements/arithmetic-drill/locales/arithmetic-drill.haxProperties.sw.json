@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Zoezi la hesabu",
+    "description": "Mfululizo mfupi wa maswali ya hesabu yaliyozalishwa yenye maoni ya papo hapo. Chagua operesheni na kiwango cha namba; kila mzunguko ni mpya."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kichwa",
+        "description": "Jina la zoezi hili, linaloonyeshwa kwenye kichwa chake."
+      },
+      {
+        "title": "Operesheni",
+        "description": "Aina za maswali zinazoulizwa. Wanafunzi wanaweza kuzima yoyote kati ya hizi kabla ya kuanza.",
+        "options": {
+          "add": "Kujumlisha",
+          "subtract": "Kutoa",
+          "multiply": "Kuzidisha",
+          "divide": "Kugawanya",
+          "add subtract": "Kujumlisha na kutoa",
+          "multiply divide": "Kuzidisha na kugawanya",
+          "add multiply": "Kujumlisha na kuzidisha",
+          "add divide": "Kujumlisha na kugawanya",
+          "subtract multiply": "Kutoa na kuzidisha",
+          "subtract divide": "Kutoa na kugawanya",
+          "add subtract multiply": "Kujumlisha, kutoa na kuzidisha",
+          "add subtract divide": "Kujumlisha, kutoa na kugawanya",
+          "add multiply divide": "Kujumlisha, kuzidisha na kugawanya",
+          "subtract multiply divide": "Kutoa, kuzidisha na kugawanya",
+          "add subtract multiply divide": "Zote nne"
+        }
+      },
+      {
+        "title": "Namba ndogo zaidi",
+        "description": "Namba ndogo zaidi inayotumika katika swali. Namba kamili, 0 au zaidi."
+      },
+      {
+        "title": "Namba kubwa zaidi",
+        "description": "Namba kubwa zaidi inayotumika katika swali. Majibu ya kugawanya na vigawanyo pia hubaki ndani ya kiwango hiki."
+      },
+      {
+        "title": "Idadi ya maswali",
+        "description": "Ni maswali mangapi yaliyo katika mzunguko mmoja (1 hadi 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kikomo cha muda",
+        "description": "Sekunde zinazoruhusiwa kwa mzunguko mzima. 0 inamaanisha hakuna kipima muda, ambayo ni chaguo-msingi: mazoezi yenye muda huwaangusha wanafunzi wanaohitaji muda zaidi. Kikiwekwa, wanafunzi bado wanaweza kuzima kipima muda wenyewe."
+      },
+      {
+        "title": "Rangi ya msisitizo",
+        "description": "Rangi ya kibandiko cha kichwa na vitufe. Acha tupu ili kufuata mandhari."
+      }
+    ]
+  }
+}

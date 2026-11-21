@@ -8,5 +8,9 @@
   "theme": "Temă",
   "palette": "Paletă",
   "cancel": "Anulează",
-  "openAppearanceSettings": "Deschide setările de aspect"
+  "openAppearanceSettings": "Deschide setările de aspect",
+  "designSystem": "Sistem de design",
+  "designSystemDefault": "DDD (implicit)",
+  "designSystemThemeDefault": "{name} (implicit temă)",
+  "designSystemHelp": "Culoare, tipografie, colțuri și densitate. Tema decide în continuare aspectul."
 }

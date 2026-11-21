@@ -1,0 +1,22 @@
+{
+  "scenario": "Ssenari",
+  "directions": "Təlimatlar",
+  "showDirections": "Təlimatları göstər",
+  "hideDirections": "Təlimatları gizlət",
+  "directionsRead": "Hər səhnəni oxuyun və nə edəcəyinizi seçin.",
+  "directionsEndings": "Bir neçə sonluq var. Bitirdikdən sonra başqa yol sınayın.",
+  "startOver": "Yenidən başla",
+  "back": "Bir addım geri",
+  "tryAnother": "Başqa yol sına",
+  "path": "Yol",
+  "scene": "Səhnə",
+  "ending": "Sonluq",
+  "end": "son",
+  "scenesSeen": "{total} səhnədən {seen} baxılıb",
+  "endingReached": "Sonluğa çatıldı",
+  "addScene": "Səhnə əlavə et",
+  "newScene": "Yeni səhnə",
+  "newSceneText": "Nə baş verdiyini təsvir edin, sonra hər seçimi bir səhnəyə bağlayın.",
+  "editingNote": "Redaktə: bütün səhnələr göstərilir. Seçim # və ardınca səhnə id-sindən ibarət keçiddir.",
+  "noScenes": "Ssenariyə başlamaq üçün səhnə əlavə edin."
+}

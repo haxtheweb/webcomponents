@@ -3,5 +3,7 @@
   "status_stop": "रोक्नुहोस्",
   "status_warning": "चेतावनी",
   "status_success": "सफलता",
-  "status_info": "टिपोट"
+  "status_info": "टिपोट",
+  "status_tip": "के तपाईंलाई थाहा छ?",
+  "status_new": "नयाँ के छ"
 }

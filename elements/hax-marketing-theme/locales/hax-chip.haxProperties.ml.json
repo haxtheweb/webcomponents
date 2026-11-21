@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "ചിപ്പ്",
+    "description": "ലേബലുള്ള ഒരു ചെറിയ ഐക്കൺ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ഐക്കൺ"
+      },
+      {
+        "title": "ലേബൽ"
+      }
+    ]
+  }
+}

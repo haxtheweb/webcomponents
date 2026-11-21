@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Umshini wokuthayipha",
     "description": "Umbhalo ozithayipha wona uhlamvu olulodwa ngesikhathi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Umbhalo",
+        "description": "Umbhalo okufanele uthayiphwe uma isakhi siskrolela ekubukeni."
+      },
+      {
+        "title": "Kuyathayiphwa",
+        "description": "Bonisa ikhesa ecwayizayo; isakhi sisetha lokhu ngenkathi sithayipha."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ukubambezeleka",
+        "description": "Ama-millisecond okulinda ngaphambi kokuthi ukuthayipha kuqale."
+      },
+      {
+        "title": "Isikhathi sekhesa",
+        "description": "Ama-millisecond ikhesa eqhubeka icwayiza ngawo ngemva kokuthi umbhalo uthayiphiwe."
+      },
+      {
+        "title": "Isivinini",
+        "description": "Ama-millisecond ohlamvu ngalunye; izinombolo eziphansi zithayipha ngokushesha."
+      }
+    ]
   }
 }

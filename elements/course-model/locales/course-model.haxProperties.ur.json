@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "title"
+        "title": "title",
+        "description": "کورس ماڈل کے اوپر دکھائی جانے والی سرخی۔"
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "دکھائی جانے والی 3D ماڈل فائل (.glb یا .gltf) کا پتہ۔"
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "ان لوگوں کے لیے 3D ماڈل بیان کریں جو اسے نہیں دیکھ سکتے۔"
       },
       {
         "title": "معلومات کا حصہ"

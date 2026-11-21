@@ -1,0 +1,14 @@
+{
+  "scene": "Babak",
+  "ending": "Pengakhiran",
+  "goodEnding": "Pengakhiran baik",
+  "mixedEnding": "Pengakhiran bercampur",
+  "poorEnding": "Pengakhiran lemah",
+  "scoreOf": "Skor {score} daripada {max}",
+  "scoreOnly": "Skor {score}",
+  "startScene": "Mula",
+  "sceneIdLabel": "ID babak",
+  "needsId": "Tambah ID babak supaya pilihan boleh dipautkan ke babak ini.",
+  "orphan": "Tiada pilihan yang dipautkan ke babak ini.",
+  "deadLinks": "Pautan ini menghala ke babak yang tidak wujud:"
+}

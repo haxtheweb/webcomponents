@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Ikoan ferbergje",
         "description": "It ikoan ferbergje dat brûkt wurdt om tekst te aksintuearjen"
+      },
+      {
+        "title": "Uterlik",
+        "description": "Hoefolle klam de knop hat.",
+        "options": {
+          "": "Folle",
+          "tonal": "Tonaal",
+          "outlined": "Omlijne",
+          "plain": "Ienfâldich"
+        }
+      },
+      {
+        "title": "Grutte",
+        "description": "Knopgrutte.",
+        "options": {
+          "s": "Lyts",
+          "": "Middel",
+          "l": "Grut"
+        }
       }
     ],
     "advanced": [

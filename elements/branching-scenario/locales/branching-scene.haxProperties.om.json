@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Taatee haala fakkeessaa",
+    "description": "Taatee tokko haala fakkeessaa damee qabuu. Filannoo tokkoon tokkoon # fi ID taatee hordofuun taatee biraatti hidhi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID taatee",
+        "description": "Waan filannoowwan itti hidhaman: liinkiin gara # kan ID kana hordofu gara taatee kanaatti geessa. Qubeewwan, lakkoofsota fi sarara xiqqaa."
+      },
+      {
+        "title": "Mata-duree",
+        "description": "Mata-duree taatee."
+      },
+      {
+        "title": "Xumura",
+        "description": "Taateen kun karaa xumuruu fi akkamitti akka xumurame.",
+        "options": {
+          "": "Xumura miti",
+          "good": "Xumura gaarii",
+          "mixed": "Xumura makaa",
+          "poor": "Xumura gadhee"
+        }
+      },
+      {
+        "title": "Qabxii",
+        "description": "Qabxii xumura kana irra gahuuf. Qabxiin xumuraa olaanaan haala fakkeessaa keessaa isa guddaa dha."
+      }
+    ]
+  }
+}

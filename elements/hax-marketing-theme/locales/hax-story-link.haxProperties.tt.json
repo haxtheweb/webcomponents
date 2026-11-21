@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Тарих төймәсе",
+    "description": "hax.cloud сайтында раслау артындагы тарихны яки башка HAX челтәре сайтындагы туры килгән урынны ача торган төймә"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Кая алып бара",
+        "options": {
+          "cloud": "hax.cloud, тарих",
+          "learn": "learn.hax.cloud, дәрес",
+          "try": "browser.hax.cloud, сынап карау",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Шул сайттагы адрес (hax.cloud сайтындагы тарих stories/ee450a19 кебек күренә)"
+      },
+      {
+        "title": "Ул нәрсә турында"
+      },
+      {
+        "title": "Кечкенә чип"
+      },
+      {
+        "title": "Нәрсә турында икәнен төймәдә күрсәтү"
+      }
+    ]
+  }
+}

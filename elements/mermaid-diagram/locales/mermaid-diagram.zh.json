@@ -1,0 +1,21 @@
+{
+  "diagram": "图表",
+  "flowchart": "流程图",
+  "sequence": "时序图",
+  "source": "来源",
+  "textAlternative": "文本替代",
+  "present": "演示",
+  "exitPresent": "退出演示",
+  "loading": "正在加载图表",
+  "empty": "还没有可绘制的内容。请添加图表源代码。",
+  "error": "错误",
+  "parseError": "无法绘制此图表。请检查源代码。",
+  "loadError": "无法加载图表库。",
+  "srcError": "无法加载图表文件。",
+  "decision": "判断",
+  "end": "结束",
+  "goTo": "前往 {target}",
+  "ifGoTo": "如果 {label}，前往 {target}",
+  "describedBySource": "由源代码描述的图表。",
+  "scrollable": "图表，可滚动"
+}

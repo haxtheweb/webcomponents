@@ -11,7 +11,8 @@
       },
       {
         "property": "imgAlt",
-        "title": "Nivîsa Alternatîf"
+        "title": "Nivîsa Alternatîf",
+        "description": "Wêneyê ji bo kesên ku nikarin wê bibînin rave bike."
       },
       {
         "slot": "figcaption",
@@ -32,11 +33,13 @@
     "advanced": [
       {
         "property": "openText",
-        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî vekirî ne"
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî vekirî ne",
+        "description": "Nivîsa bişkokê dema rave veşartî ye, wekî Raveyê nîşan bide."
       },
       {
         "property": "closeText",
-        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî girtî ne"
+        "title": "Nivîsa kurteyê ya vebijarkî dema hûrgilî girtî ne",
+        "description": "Nivîsa bişkokê dema rave tê nîşandan, wekî Raveyê veşêre."
       }
     ]
   }

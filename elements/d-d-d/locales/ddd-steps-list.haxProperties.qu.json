@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ruray lista",
     "description": "Yupasqa thatkiykuna huk ruwanata tukunapaq."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Thatki rikuchiq",
+        "description": "Thatkikunata puriyta señalaq sutikunap huch'uy siq'in hina rikuchiy. Kay churakuypiqa thatkikunap ukhunqa manam rikuchikunchu."
+      },
+      {
+        "title": "Kunan thatki",
+        "description": "Ñawinchaq kachkan thatki, 1 manta yupasqa. Ñawpaq thatkikunaqa tukusqa hina rikhurin. Thatki rikuchiqmi llamk'achin."
+      }
+    ]
   }
 }

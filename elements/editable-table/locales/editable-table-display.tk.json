@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV hökmünde göçür.",
   "printTable": "Tablisany çap et",
   "selectColumn": "Sütün saýla",
-  "dataTable": "Maglumat · Tablisa"
+  "dataTable": "Maglumat · Tablisa",
+  "filterStatus": "{total} setirden {shown}-si görkezilýär, {column} boýunça süzülen: {text}",
+  "columnNumber": "{column} sütün",
+  "clearFilter": "Süzgüji arassala"
 }

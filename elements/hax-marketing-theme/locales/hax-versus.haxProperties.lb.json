@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Versus",
+    "description": "Wierder nieft engem Kapp-un-Kapp-Knäppchen mat zwee Personnagen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Iwwerschrëft"
+      },
+      {
+        "title": "Wouhi de Knäppchen féiert"
+      },
+      {
+        "title": "Knäppchentext"
+      },
+      {
+        "title": "Seed vum lénke Personnage"
+      },
+      {
+        "title": "Seed vum rietse Personnage"
+      }
+    ]
+  }
+}

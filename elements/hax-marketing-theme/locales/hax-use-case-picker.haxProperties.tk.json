@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Ulanyş ýagdaýy saýlaýjy",
+    "description": "Saýtyň näme üçindigini saýlaň we şol başlangyç saýt bilen brauzerde HAX-y açýan baglanyşygy hem-de gabat gelýän CLI buýrugyny alyň."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Brauzerdäki HAX salgysy",
+        "description": "Baglanyşygyň açylýan ýeri; oňa ?skeleton= we &name= goşulýar"
+      },
+      {
+        "title": "Aýrylmaly başlangyç saýtlar",
+        "description": "Maşyn atlary, otur bilen bölünen"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Başlangyç saýtlaryň sanawy",
+        "description": "Skelet sanawynyň salgysy (app-hax okaýan format)"
+      }
+    ]
+  }
+}

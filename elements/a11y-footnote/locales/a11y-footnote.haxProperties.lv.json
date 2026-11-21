@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Zemsvītras piezīme",
+    "description": "Piezīme, kas uzrakstīta tekstā tur, kur tā pieder. Tā tiek rādīta kā skaitlis, un numurēts piezīmju saraksts automātiski veidojas lapas apakšā."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Piezīme",
+        "description": "Zemsvītras piezīmes teksts."
+      },
+      {
+        "title": "Bez priekšskatījuma",
+        "description": "Nerādīt piezīmi, kad lasītājs uzbrauc ar peli vai fokusē skaitli."
+      }
+    ]
+  }
+}

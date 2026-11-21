@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Multimedia-aldatzailea",
-        "description": "Multimedia-domeinuaren aukerako aldatzailea. Lizentzia zein multimedia motari aplikatzen zaion zehazten du."
+        "description": "Multimedia-domeinuaren aukerako aldatzailea. Lizentzia zein multimedia motari aplikatzen zaion zehazten du.",
+        "options": {
+          "": "Aldatzailerik ez"
+        }
       },
       {
         "property": "uri",

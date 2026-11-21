@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Estatistika-lauza",
+    "description": "Garrantzizko zenbaki bat, bere etiketarekin eta nola aldatu den. Jarri hainbat sareta batean arbel-errenkada baterako."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketa",
+        "description": "Zenbakiak zer neurtzen duen."
+      },
+      {
+        "title": "Balioa",
+        "description": "Zenbakia. Zenbaki arrunt bat orriaren hizkuntzaren arabera taldekatzen da; beste edozer idatzi bezala erakusten da."
+      },
+      {
+        "title": "Aldaketa",
+        "description": "Nola aldatu den, hitzetan, adibidez %6 aldi honetan."
+      },
+      {
+        "title": "Norabidea",
+        "description": "Aldaketa gorantz ala beherantz den.",
+        "options": {
+          "": "Bat ere ez",
+          "up": "Gora",
+          "down": "Behera"
+        }
+      }
+    ]
+  }
+}

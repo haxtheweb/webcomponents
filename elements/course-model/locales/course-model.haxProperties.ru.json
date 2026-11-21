@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "название"
+        "title": "название",
+        "description": "Заголовок над моделью курса."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Адрес файла 3D-модели (.glb или .gltf) для показа."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Опишите 3D-модель для людей, которые не могут её видеть."
       },
       {
         "title": "Область сведений"

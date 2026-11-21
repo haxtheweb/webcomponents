@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Aagga dhigista sawirka",
+    "description": "Ardaydu waxay calaamado dul dhigaan aagag ku dul yaal sawir, kadibna waxay hubiyaan jawaabtooda."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sawir",
+        "description": "Sawirka ardaydu calaamadaha dul dhigaan."
+      },
+      {
+        "title": "Qoraal beddel ah",
+        "description": "Wuxuu u sharxaa sawirka dadka aan arki karin. Ha muujin meesha calaamaduhu galayaan."
+      },
+      {
+        "title": "Cinwaanka sawirka",
+        "description": "Cinwaan gaaban oo muuqda oo sawirka ah, oo ka muuqda korkiisa."
+      },
+      {
+        "title": "Su'aal",
+        "description": "Waxa ardayda laga codsanayo inay ku sameeyaan calaamadaha."
+      },
+      {
+        "title": "Calaamadaha iyo aagagga",
+        "description": "Shay kastaa waa calaamad ay ardaydu dhigi karaan. Calaamad sii magac aag si aad aaggeeda u dhigto sawirka; calaamad aan magac aag lahayn waa dheeraad aan meelna ka tirsanayn. Tirooyinka aagga waa boqolleyda sawirka."
+      },
+      {
+        "title": "Qoraal sharraxaad",
+        "description": "Qoraal sharraxaad ikhtiyaari ah oo ka muuqda sawirka hoostiisa."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Isku dayada",
+        "description": "Immisa jeer ayuu ardaygu hubin karaa. 0 macnaheedu waa xad la'aan."
+      },
+      {
+        "title": "Isku qas calaamadaha",
+        "description": "Muuji calaamadaha habab kala duwan booqasho kasta."
+      },
+      {
+        "title": "La isku duubi karo",
+        "description": "U muuji su'aashan sida saf la furo oo la xiro. Furitaanka mid wuxuu xiraa su'aalaha kale ee la isku duubi karo ee agtiisa ah."
+      },
+      {
+        "title": "Ku bilow isagoo duuban",
+        "description": "Marka la isku duubi karo, ku bilow saf xiran oo muujiya su'aasha iyo xaaladdeeda oo keliya."
+      },
+      {
+        "title": "Qaabka qiimaynta",
+        "description": "OER Schema: qaabka qiimaynta ee qiimayntan (tusaale dhibco, xaraf, boqolley, dhammaystir)."
+      },
+      {
+        "title": "Ujeeddada waxbarasho",
+        "description": "OER Schema: ujeeddada waxbarasho ee la xiriirta qiimayntan."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Magaca kedisada",
+        "description": "Magaca kedisada loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      },
+      {
+        "title": "Koorso",
+        "description": "OER Schema: koorsada qiimayntan loogu talagalay."
+      }
+    ]
+  }
+}

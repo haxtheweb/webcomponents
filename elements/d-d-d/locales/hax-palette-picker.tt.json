@@ -5,5 +5,6 @@
   "selected": "Сайланган",
   "currentlyActiveAndSelectedPalette": "Хәзерге вакытта актив һәм сайланган палитра",
   "currentlyActivePalette": "Хәзерге вакытта актив палитра",
-  "selectedPaletteToApply": "Куллану өчен сайланган палитра"
+  "selectedPaletteToApply": "Куллану өчен сайланган палитра",
+  "paletteNumber": "Палитра {number}"
 }

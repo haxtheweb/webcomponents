@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Slika ozadja."
+        "description": "Slika ozadja.",
+        "title": "Slika"
       },
       {
         "property": "caption",
-        "description": "Besedilni naslov."
+        "description": "Besedilni naslov.",
+        "title": "Napis"
       }
     ]
   }

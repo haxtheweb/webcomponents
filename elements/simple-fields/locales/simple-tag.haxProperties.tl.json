@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Awtomatikong accent na kulay",
         "description": "Awtomatikong kunin ang accent na kulay mula sa teksto ng label."
+      },
+      {
+        "title": "Kahulugan",
+        "description": "Bigyan ang tag ng kulay ng kahulugan. Iwanang blangko para sa neutral na tag.",
+        "options": {
+          "": "Neutral",
+          "brand": "Brand",
+          "success": "Tagumpay",
+          "warning": "Babala",
+          "danger": "Panganib"
+        }
       }
     ],
     "advanced": [

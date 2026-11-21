@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Funso la manambala",
+    "description": "Funso loyankhidwa ndi nambala. Yankho ndi nambala yokhazikika kapena fomula yowerengedwa kuchokera ku zosintha, ndipo limavomerezedwa likakhala mkati mwa malire."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Funso",
+        "description": "Zomwe ophunzira afunsidwa. Lembani dzina la chosintha m'mabulaketi opindika, monga {d}, kuti muwonetse mtengo wake."
+      },
+      {
+        "title": "Muyeso",
+        "description": "Imawonetsedwa ngati zolemba pambali pa malo a yankho, mwachitsanzo km/h."
+      },
+      {
+        "title": "Yankho",
+        "description": "Nambala yolondola. Siyani chopanda kanthu ngati fomula ikuwerengera yankho."
+      },
+      {
+        "title": "Fomula",
+        "description": "Imawerengera yankho kuchokera ku zosintha, mwachitsanzo d / (t / 60). Ingagwiritse ntchito + - * / ^, mabulaketi, sqrt() ndi abs(). Imagwiritsidwa ntchito m'malo mwa yankho ikakhazikitsidwa."
+      },
+      {
+        "title": "Zosintha",
+        "description": "Manambala omwe fomula ndi funso amagwiritsa ntchito. Iliyonse imatenga mtengo pakati pa wotsika ndi wokwera kwambiri, m'masitepe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Malire olekerera",
+        "description": "Kutalika kotani kuchokera ku yankho lenileni komwe kumavomerezedwabe. 0 imatanthauza lenileni, kapena lozunguliridwa ku malo a desimali ali m'munsimu."
+      },
+      {
+        "title": "Mtundu wa malire olekerera",
+        "description": "Weniweni: kuphatikiza kapena kuchotsa malire olekerera. Peresenti: kuphatikiza kapena kuchotsa peresenti imeneyo ya yankho lenileni.",
+        "options": {
+          "absolute": "Weniweni",
+          "percent": "Peresenti"
+        }
+      },
+      {
+        "title": "Malo a desimali",
+        "description": "Ophunzira afunsidwa kuzungulira ku malo ochuluka awa, ndipo yankho limawonetsedwa lozunguliridwa kotero. Siyani chopanda kanthu kuti pasakhale kuzungulira."
+      },
+      {
+        "title": "Kuyesa",
+        "description": "Kangati wophunzira angayang'ane. 0 imatanthauza mopanda malire."
+      },
+      {
+        "title": "Manambala atsopano poyesa kulikonse",
+        "description": "Bweretsani mitengo yatsopano ya zosintha nthawi iliyonse wophunzira akayesanso. Yankho lawo lam'mbuyo silidzawonetsedwa akabwerera, kokha ngati analondola."
+      },
+      {
+        "title": "Yopindika",
+        "description": "Onetsani funsoli ngati mzere womwe umatseguka ndi kutseka. Kutsegula limodzi kumatseka mafunso ena opindika omwe ali pafupi nalo."
+      },
+      {
+        "title": "Yambani mopindidwa",
+        "description": "Ikakhala yopindika, yambani ngati mzere wotsekedwa womwe umawonetsa funso ndi momwe lilili kokha."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Dzina la mayeso",
+        "description": "Dzina la mayeso logwiritsidwa ntchito pozindikiritsa xAPI m'machitidwe owunika."
+      }
+    ]
+  }
+}

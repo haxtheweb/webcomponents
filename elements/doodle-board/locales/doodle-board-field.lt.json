@@ -1,0 +1,16 @@
+{
+  "drawing": "Piešinys",
+  "edit": "Redaguoti piešinį",
+  "start": "Pradėti piešti",
+  "remove": "Pašalinti piešinį",
+  "empty": "Dar nieko nenupiešta",
+  "save": "Išsaugoti",
+  "cancel": "Atšaukti",
+  "close": "Uždaryti",
+  "discard": "Atmesti pakeitimus",
+  "discardConfirm": "Atmesti neišsaugotus pakeitimus?",
+  "keepEditing": "Tęsti redagavimą",
+  "draw": "Piešinys",
+  "feedback": "Grįžtamasis ryšys",
+  "signature": "Parašas"
+}

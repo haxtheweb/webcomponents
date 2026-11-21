@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Scenario a bivi",
+    "description": "Una storia in cui ogni scelta porta a una scena e a un finale diversi. Gli studenti possono tornare indietro e provare altri percorsi; il finale raggiunto determina il punteggio."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nome dello scenario, mostrato nell'intestazione."
+      },
+      {
+        "title": "Scena iniziale",
+        "description": "Id della scena da cui partono gli studenti. Lascia vuoto per iniziare dalla prima scena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Colore di accento",
+        "description": "Colore facoltativo per l'etichetta dell'intestazione, i pulsanti e il bordo di una scelta."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Mai zaɓar amfani",
+    "description": "Zaɓi abin da shafi yake domin shi ka sami mahaɗin da ke buɗe HAX a burauza tare da wannan shafin farawa, da umarnin CLI da ya dace."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adireshin HAX a burauza",
+        "description": "Inda mahaɗin ke buɗewa; ana ƙara masa ?skeleton= da &name="
+      },
+      {
+        "title": "Shafukan farawa da za a bari",
+        "description": "Sunayen na'ura, an raba da waƙafi"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Jerin shafukan farawa",
+        "description": "Adireshin jerin skeleton (tsarin da app-hax ke karantawa)"
+      }
+    ]
+  }
+}

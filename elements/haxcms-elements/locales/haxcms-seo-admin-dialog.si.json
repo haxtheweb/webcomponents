@@ -6,6 +6,8 @@
   "faviconDescription": "බ්‍රවුසර ටැබ රූපය / දුරකථනවල කුඩා අඩවි ලාංඡනය ලෙස භාවිත වේ",
   "domain": "වසම",
   "domainDescription": "මෙම වෙබ් අඩවියේ වසම",
+  "sameAs": "මෙම අඩවියේ වෙනත් පැතිකඩ",
+  "sameAsDescription": "වෙනත් තැන්වල ඇති මෙම අඩවියේ හෝ සංවිධානයේ පැතිකඩ වෙත පේළියකට එක් සබැඳියක් (GitHub, LinkedIn, YouTube, Mastodon). සෙවුම් යන්ත්‍ර එම පැතිකඩ මෙම අඩවියට සම්බන්ධ කිරීමට ඒවා භාවිත කරයි.",
   "language": "භාෂාව",
   "languageDescription": "මෙම අඩවියේ භාෂාව. නමෙන් හෝ කේතයෙන් සොයන්න, නැතහොත් fr-CA වැනි වෙනත් කේතයක් ඇතුළත් කරන්න.",
   "googleAnalyticsId": "Google Analytics ID",

@@ -9,5 +9,7 @@
   "slidePages": "Slaidide lehed",
   "goToSlide": "Mine slaidile {number}",
   "slides": "Slaidid",
-  "position": "{number} / {total}"
+  "position": "{number} / {total}",
+  "fullScreen": "Täisekraan",
+  "exitFullScreen": "Välju täisekraanist"
 }

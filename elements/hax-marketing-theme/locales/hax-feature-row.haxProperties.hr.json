@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Redak značajke",
+    "description": "Zaslon proizvoda uz ono što znači za vas"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mala oznaka"
+      },
+      {
+        "title": "Naslov"
+      },
+      {
+        "title": "Slika"
+      },
+      {
+        "title": "Što slika prikazuje"
+      },
+      {
+        "title": "Slika s desne strane"
+      },
+      {
+        "title": "Boja sjene (DDD naziv, prazno prati paletu)"
+      }
+    ]
+  }
+}

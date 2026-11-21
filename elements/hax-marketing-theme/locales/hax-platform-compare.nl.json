@@ -1,0 +1,15 @@
+{
+  "loading": "De vergelijking wordt geladen.",
+  "yes": "Ja",
+  "partly": "Gedeeltelijk",
+  "no": "Nee",
+  "compare": "Vergelijken",
+  "with": "Met",
+  "vs": "vs",
+  "caption": "{a} en {b}, functie voor functie",
+  "feature": "Functie",
+  "clearYes": "{count} van {total} een duidelijk ja",
+  "seeForYourself": "Zie het zelf:",
+  "and": "en",
+  "why": "Waarom"
+}

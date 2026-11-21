@@ -2,5 +2,9 @@
   "toggleAnimation": "เปิด/ปิดภาพเคลื่อนไหว",
   "info": "ข้อมูล",
   "image": "รูปภาพ",
-  "animatedGif": "GIF เคลื่อนไหว"
+  "animatedGif": "GIF เคลื่อนไหว",
+  "playAnimation": "เล่นแอนิเมชัน",
+  "pauseAnimation": "หยุดแอนิเมชันชั่วคราว",
+  "showDescription": "แสดงคำอธิบาย",
+  "hideDescription": "ซ่อนคำอธิบาย"
 }

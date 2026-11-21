@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Makinë shkrimi",
     "description": "Tekst që shkruhet vetë një shkronjë në një kohë."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tekst",
+        "description": "Teksti për t'u shtypur sapo elementi të dalë në pamje."
+      },
+      {
+        "title": "Shtypja",
+        "description": "Shfaq kursorin që pulson; elementi e cakton këtë ndërsa shtyp."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Vonesa",
+        "description": "Milisekonda për të pritur para se të fillojë shtypja."
+      },
+      {
+        "title": "Kohëzgjatja e kursorit",
+        "description": "Milisekondat që kursori vazhdon të pulsojë pasi teksti është shtypur."
+      },
+      {
+        "title": "Shpejtësia",
+        "description": "Milisekonda për karakter; numrat më të ulët shtypin më shpejt."
+      }
+    ]
   }
 }

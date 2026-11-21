@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Memoryspel",
+    "description": "Draai kaarten om om paren te vinden. Koppel een begrip aan de betekenis zodat een paar begrip toont, of gebruik twee bij elkaar passende teksten of afbeeldingen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "De opdracht die in de kop wordt getoond, bijvoorbeeld: Koppel het begrip aan de functie."
+      },
+      {
+        "title": "Paren",
+        "description": "Elk paar bestaat uit twee kaarten die bij elkaar horen, meestal een begrip en de betekenis. Een kant heeft tekst, een afbeelding of beide nodig."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Accentkleur",
+        "description": "Optionele kleur voor het kopetiket, de achterkanten van de kaarten en de knop."
+      }
+    ]
+  }
+}

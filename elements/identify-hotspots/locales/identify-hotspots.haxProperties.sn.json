@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Tsvaga nzvimbo",
+    "description": "Vadzidzi vanowana nzvimbo dzakarurama pamufananidzo nekudzvanya, kubaya kana kufambisa crosshair yekeyboard. Chinoenderana chine mamakisi chemepu yemufananidzo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mufananidzo",
+        "description": "Mufananidzo unotsvagwa nevadzidzi."
+      },
+      {
+        "title": "Mamwe mavara",
+        "description": "Inotsanangura mufananidzo kuvanhu vasingagoni kuuona. Haimboratidzwi semusoro."
+      },
+      {
+        "title": "Musoro",
+        "description": "Musoro mupfupi unooneka pamusoro pemufananidzo."
+      },
+      {
+        "title": "Mubvunzo",
+        "description": "Zvinokumbirwa vadzidzi kuti vawane mumufananidzo."
+      },
+      {
+        "title": "Mhinduro",
+        "description": "Mhinduro imwe neimwe ioval ine zita pamufananidzo. Nzvimbo nesaizi zvikamu muzana zvemufananidzo, zvichiyerwa kubva pakona yawo yepamusoro kuruboshwe. Paunogadzirisa, mhinduro yese inotenderedzwa pamufananidzo."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kuedza",
+        "description": "Kangani mudzidzi anogona kuedza. 0 zvinoreva kusingaperi."
+      },
+      {
+        "title": "Kukanganisa kunobvumirwa",
+        "description": "Kukanganisa kungani kunopedza kuedza. 0 zvinoreva kusingaperi, uye vadzidzi vanowana bhatani rePedza."
+      },
+      {
+        "title": "Inopetwa",
+        "description": "Ratidza mubvunzo uyu semutsara unovhurika nekuvhara. Kuvhura imwe kunovhara mimwe mibvunzo inopetwa iri padhuze nayo."
+      },
+      {
+        "title": "Tanga yakapetwa",
+        "description": "Kana ichipetwa, tanga semutsara wakavharwa unoratidza mubvunzo nemamiriro awo chete."
+      },
+      {
+        "title": "Fomati yemamakisi",
+        "description": "OER Schema: fomati yemamakisi eongororo iyi (semuenzaniso mapoinzi, tsamba, muzana, kupedza)."
+      },
+      {
+        "title": "Chinangwa chekudzidza",
+        "description": "OER Schema: chinangwa chekudzidza chakabatanidzwa neongororo iyi."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Zita rekuyedzwa",
+        "description": "Zita rekuyedzwa rinopihwa kuti rishandiswe munzvimbo dzinotungamirwa nexAPI pakuziva chinhu ichi"
+      },
+      {
+        "title": "Kosi",
+        "description": "OER Schema: kosi iyo ongororo iyi yakagadzirirwa."
+      }
+    ]
+  }
+}

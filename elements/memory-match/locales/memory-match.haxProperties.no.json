@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Huskespill",
+    "description": "Snu kort for å finne par. Par et begrep med betydningen slik at et treff viser forståelse, eller bruk to like tekster eller bilder."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tittel",
+        "description": "Ledeteksten som vises i overskriften, for eksempel: Koble begrepet til oppgaven det har."
+      },
+      {
+        "title": "Par",
+        "description": "Hvert par er to kort som hører sammen, vanligvis et begrep og betydningen. En side trenger tekst, et bilde eller begge."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aksentfarge",
+        "description": "Valgfri farge for overskriftsbrikken, kortbaksidene og knappen."
+      }
+    ]
+  }
+}

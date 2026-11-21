@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Su'aal tiro",
+    "description": "Su'aal lagaga jawaabo tiro. Jawaabtu waa tiro go'an ama qaacido laga xisaabiyo doorsoomayaal, waxaana la tiriyaa marka ay ku jirto xad dulqaad."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Su'aal",
+        "description": "Waxa ardayda la weydiinayo. Ku qor magaca doorsoome qaansooyin qalloocan, sida {d}, si aad u muujiso qiimihiisa."
+      },
+      {
+        "title": "Cabbir",
+        "description": "Wuxuu u muuqdaa qoraal ku ag yaal goobta jawaabta, tusaale km/h."
+      },
+      {
+        "title": "Jawaab",
+        "description": "Tirada saxda ah. Ka tag madhan marka qaacido xisaabiso jawaabta."
+      },
+      {
+        "title": "Qaacido",
+        "description": "Wuxuu jawaabta ka xisaabiyaa doorsoomayaasha, tusaale d / (t / 60). Wuxuu isticmaali karaa + - * / ^, qaansooyin, sqrt() iyo abs(). Waxaa loo isticmaalaa halkii jawaabta marka la dejiyo."
+      },
+      {
+        "title": "Doorsoomayaasha",
+        "description": "Tirooyinka qaacidada iyo su'aashu isticmaalaan. Mid kastaa wuxuu qaataa qiime u dhexeeya kan ugu hooseeya iyo kan ugu sarreeya, tallaabooyin ahaan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dulqaad",
+        "description": "Inta ay jawaabta saxda ah ka fogaan karto oo weli la tiriyo. 0 macnaheedu waa sax, ama loo soo koobay meelaha jajab tobanlaha hoose."
+      },
+      {
+        "title": "Nooca dulqaadka",
+        "description": "Go'an: plus ama minus dulqaadka. Boqolley: plus ama minus boqolleydaas jawaabta saxda ah.",
+        "options": {
+          "absolute": "Go'an",
+          "percent": "Boqolley"
+        }
+      },
+      {
+        "title": "Meelaha jajab tobanlaha",
+        "description": "Ardayda waxaa laga codsadaa inay u soo koobaan inta meelood, jawaabtana waa la muujiyaa iyadoo loo soo koobay. Ka tag madhan si aan loo soo koobin."
+      },
+      {
+        "title": "Isku dayada",
+        "description": "Immisa jeer ayuu ardaygu hubin karaa. 0 macnaheedu waa xad la'aan."
+      },
+      {
+        "title": "Tirooyin cusub isku day kasta",
+        "description": "Keen qiimayaal doorsoome oo cusub mar kasta oo ardaygu isku dayo mar kale. Jawaabtoodii hore markaas lama muujiyo markay soo noqdaan, kaliya inay saxeen iyo in kale."
+      },
+      {
+        "title": "La isku duubi karo",
+        "description": "U muuji su'aashan sida saf la furo oo la xiro. Furitaanka mid wuxuu xiraa su'aalaha kale ee la isku duubi karo ee agtiisa ah."
+      },
+      {
+        "title": "Ku bilow isagoo duuban",
+        "description": "Marka la isku duubi karo, ku bilow saf xiran oo muujiya su'aasha iyo xaaladdeeda oo keliya."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Magaca kedisada",
+        "description": "Magaca kedisada loo isticmaalo aqoonsiga xAPI ee nidaamyada falanqaynta."
+      }
+    ]
+  }
+}

@@ -4,7 +4,12 @@
     "description": "ከተሰቀለ .h5p ፋይል በይነተገናኝ የH5P ይዘትን ያጫውታል፣ የH5P አገልጋይ አያስፈልግም"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "H5P ፋይል",
+        "description": ".h5p ፋይል ይስቀሉ ወይም ያገናኙ። በአሳሹ ውስጥ ይፈታል፤ H5P አገልጋይ አያስፈልግም።"
+      }
+    ],
     "advanced": [
       {
         "title": "የቆየ iframe ማካተቻ ኮድ",

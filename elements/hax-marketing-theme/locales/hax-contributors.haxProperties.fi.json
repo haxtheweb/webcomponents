@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Tekijät",
+    "description": "Projektin rakentaneet ihmiset nimilistatiedostosta"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nimilistatiedosto (JSON)"
+      },
+      {
+        "title": "Näkymä: landed, lab tai code"
+      },
+      {
+        "title": "Näytettävien ihmisten enimmäismäärä (0 = kaikki)"
+      }
+    ]
+  }
+}

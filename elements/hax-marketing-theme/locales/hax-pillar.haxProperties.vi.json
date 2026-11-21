@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Trụ cột",
+    "description": "Một trụ cột: tên, cụm từ, biểu tượng, màu và lý do nó quan trọng"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tên"
+      },
+      {
+        "title": "Cụm từ"
+      },
+      {
+        "title": "Biểu tượng"
+      },
+      {
+        "title": "Màu (tên DDD)"
+      },
+      {
+        "title": "Trụ cột nào, 1 đến 7"
+      },
+      {
+        "title": "Thẻ nhỏ"
+      },
+      {
+        "title": "Tên đặt ở đâu"
+      }
+    ]
+  }
+}

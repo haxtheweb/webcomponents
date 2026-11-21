@@ -1,0 +1,16 @@
+{
+  "theme": "Etoso",
+  "designSystem": "Dezajnsistemo",
+  "dddDefault": "DDD (defaŭlta)",
+  "designSystemHelp": "Koloro, tiparo, anguloj kaj fokuso. La etoso konservas la aranĝon.",
+  "designSystemFixed": "Ĉi tiu etoso konservas sian propran dezajnsistemon.",
+  "palette": "Paletro",
+  "themeDefault": "Defaŭlto de la etoso",
+  "paletteNumber": "Paletro {n}",
+  "siteTheme": "{name} (la etoso de ĉi tiu retejo)",
+  "restyle": "Restiligi ĉi tiun retejon",
+  "close": "Fermi",
+  "reset": "Reen al la propra aspekto de ĉi tiu retejo",
+  "random": "Surprizu min",
+  "about": "Ĉi tio montras kelkajn aspektojn enkonstruitajn en HAX. La paĝoj neniam ŝanĝiĝas: la strukturo loĝas en JSON Outline Schema kaj ĉiu bloko estas norma retkomponanto, do la dezajno estas libere interŝanĝebla."
+}

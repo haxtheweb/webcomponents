@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "vývojový diagram",
+  "sequence": "sekvenční",
+  "source": "Zdroj",
+  "textAlternative": "Textová alternativa",
+  "present": "Prezentovat",
+  "exitPresent": "Ukončit prezentaci",
+  "loading": "Načítání diagramu",
+  "empty": "Zatím není co kreslit. Přidejte zdroj diagramu.",
+  "error": "Chyba",
+  "parseError": "Tento diagram nelze vykreslit. Zkontrolujte zdroj.",
+  "loadError": "Knihovnu diagramů nelze načíst.",
+  "srcError": "Soubor diagramu nelze načíst.",
+  "decision": "rozhodnutí",
+  "end": "konec",
+  "goTo": "přejít na {target}",
+  "ifGoTo": "pokud {label}, přejít na {target}",
+  "describedBySource": "Diagram popsaný svým zdrojem.",
+  "scrollable": "Diagram, posouvatelný"
+}

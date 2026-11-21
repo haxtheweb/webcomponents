@@ -6,6 +6,8 @@
   "faviconDescription": "Slika na zavihku brskalnika / na telefonih se uporablja kot majhen logotip spletnega mesta",
   "domain": "Domena",
   "domainDescription": "Domena tega spletnega mesta",
+  "sameAs": "Drugi profili tega spletišča",
+  "sameAsDescription": "Ena povezava na vrstico do profilov tega spletišča ali organizacije drugje (GitHub, LinkedIn, YouTube, Mastodon). Iskalniki jih uporabijo za povezavo teh profilov s tem spletiščem.",
   "language": "Jezik",
   "languageDescription": "Jezik tega spletnega mesta. Iščite po imenu ali kodi ali vnesite drugo kodo, na primer fr-CA.",
   "googleAnalyticsId": "ID za Google Analytics",

@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Rondedzero yenhanho",
     "description": "Matanho ane nhamba ekupedzisa basa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chiratidzo chenhanho",
+        "description": "Ratidza matanho semutsara mupfupi wemisoro unoratidza fambiro. Zviri mukati menhanho hazviratidzwe mumarongerwo aya."
+      },
+      {
+        "title": "Nhanho iripo",
+        "description": "Nhanho iyo muverengi aripo, kuverenga kubva pa1. Matanho ekare anoratidzwa seapedzwa. Inoshandiswa nechiratidzo chenhanho."
+      }
+    ]
   }
 }

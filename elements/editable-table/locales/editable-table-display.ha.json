@@ -3,5 +3,8 @@
   "copyAsCsv": "Kwafi a matsayin CSV.",
   "printTable": "Buga Tebur",
   "selectColumn": "Zaɓi Ginshiƙi",
-  "dataTable": "Bayanai · Tebur"
+  "dataTable": "Bayanai · Tebur",
+  "filterStatus": "Ana nuna layuka {shown} cikin {total}, an tace ta {column}: {text}",
+  "columnNumber": "Ginshiƙi {column}",
+  "clearFilter": "Share tacewa"
 }

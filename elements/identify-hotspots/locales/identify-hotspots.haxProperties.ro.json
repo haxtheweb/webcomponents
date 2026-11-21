@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Identificați zonele active",
+    "description": "Cursanții găsesc locurile corecte pe o imagine făcând clic, atingând sau mutând o țintă cu tastatura. Varianta notată a unei hărți de imagine."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imagine",
+        "description": "Imaginea în care caută cursanții."
+      },
+      {
+        "title": "Text alternativ",
+        "description": "Descrie imaginea pentru persoanele care nu o pot vedea. Nu este afișată niciodată ca titlu."
+      },
+      {
+        "title": "Titlu",
+        "description": "Un titlu scurt vizibil afișat deasupra imaginii."
+      },
+      {
+        "title": "Întrebare",
+        "description": "Ce li se cere cursanților să găsească în imagine."
+      },
+      {
+        "title": "Răspunsuri",
+        "description": "Fiecare răspuns este un oval cu nume pe imagine. Poziția și dimensiunea sunt procente din imagine, măsurate din colțul ei din stânga sus. În timpul editării, fiecare răspuns este conturat pe imagine."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Încercări",
+        "description": "De câte ori poate încerca un cursant. 0 înseamnă nelimitat."
+      },
+      {
+        "title": "Ratări permise",
+        "description": "Câte ratări încheie o încercare. 0 înseamnă nelimitat, iar cursanții primesc un buton Terminați."
+      },
+      {
+        "title": "Pliabil",
+        "description": "Afișați această întrebare ca un rând care se deschide și se închide. Deschiderea uneia le închide pe celelalte întrebări pliabile de lângă ea."
+      },
+      {
+        "title": "Începeți restrâns",
+        "description": "Când este pliabilă, începe ca un rând închis care arată doar întrebarea și starea."
+      },
+      {
+        "title": "Format de notare",
+        "description": "OER Schema: formatul de notare pentru această evaluare (de ex. puncte, literă, procent, finalizare)."
+      },
+      {
+        "title": "Obiectiv de învățare",
+        "description": "OER Schema: obiectivul de învățare asociat acestei evaluări."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numele testului",
+        "description": "Numele testului transmis pentru identificarea acestui element în mediile bazate pe xAPI"
+      },
+      {
+        "title": "Curs",
+        "description": "OER Schema: cursul căruia îi este destinată această evaluare."
+      }
+    ]
+  }
+}

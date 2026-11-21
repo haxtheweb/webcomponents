@@ -5,5 +5,7 @@
   "editModeLabel": "Mediasoittolistan muokkaustila",
   "position": "{current}/{total}",
   "previousItem": "Edellinen kohde",
-  "nextItem": "Seuraava kohde"
+  "nextItem": "Seuraava kohde",
+  "fullScreen": "Koko näyttö",
+  "exitFullScreen": "Poistu koko näytöstä"
 }

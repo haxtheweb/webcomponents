@@ -8,5 +8,9 @@
   "theme": "រចនាប័ទ្ម",
   "palette": "ក្ដារពណ៌",
   "cancel": "បោះបង់",
-  "openAppearanceSettings": "បើកការកំណត់រូបរាង"
+  "openAppearanceSettings": "បើកការកំណត់រូបរាង",
+  "designSystem": "ប្រព័ន្ធរចនា",
+  "designSystemDefault": "DDD (លំនាំដើម)",
+  "designSystemThemeDefault": "{name} (លំនាំដើមរចនាប័ទ្ម)",
+  "designSystemHelp": "ពណ៌ ពុម្ពអក្សរ ជ្រុង និងដង់ស៊ីតេ។ រចនាប័ទ្មនៅតែសម្រេចប្លង់។"
 }

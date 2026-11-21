@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Kutichiykuna",
-        "description": "Kutichiykunapa siqinmi allin qatiyta riqsichin."
+        "description": "Kutichiykunapa siqinmi allin qatiyta riqsichin.",
+        "options": {
+          "": "Lista",
+          "cards": "Rikch'a tarjetakuna"
+        }
+      },
+      {
+        "title": "Kutichiykuna",
+        "description": "Kutichiykunap siq'inmi allin qatinakuyta churan."
       }
     ],
     "advanced": [

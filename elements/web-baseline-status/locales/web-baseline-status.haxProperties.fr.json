@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Statut Baseline",
+    "description": "Afficher le statut de prise en charge Baseline par les navigateurs d'une fonctionnalité de la plateforme web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID de la fonctionnalité",
+        "description": "ID de la fonctionnalité web, par exemple anchor-positioning. Trouvez les ID sur webstatus.dev ; l'ID est la dernière partie de l'URL d'une page de fonctionnalité."
+      }
+    ]
+  }
+}

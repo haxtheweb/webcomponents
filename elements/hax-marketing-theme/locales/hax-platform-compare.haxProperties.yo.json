@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Àfiwé pẹpẹ",
+    "description": "Ojú-kojú: yan pẹpẹ méjì èyíkéyìí láti inú fáìlì dátà"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dátà àfiwé (JSON)"
+      },
+      {
+        "title": "ID pẹpẹ òsì"
+      },
+      {
+        "title": "ID pẹpẹ ọ̀tún"
+      }
+    ]
+  }
+}

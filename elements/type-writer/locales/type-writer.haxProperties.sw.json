@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Taipureta",
     "description": "Maandishi yanayojiandika yenyewe, herufi moja kwa wakati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Maandishi",
+        "description": "Maandishi ya kuandikwa mara kipengele kinaposogezwa kuonekana."
+      },
+      {
+        "title": "Kuandika",
+        "description": "Onyesha kishale kinachopepesa; kipengele huweka hiki kinapoandika."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ucheleweshaji",
+        "description": "Milisekunde za kusubiri kabla kuandika hakujaanza."
+      },
+      {
+        "title": "Muda wa kishale",
+        "description": "Milisekunde ambazo kishale huendelea kupepesa baada ya maandishi kuandikwa."
+      },
+      {
+        "title": "Kasi",
+        "description": "Milisekunde kwa kila herufi; namba ndogo huandika haraka zaidi."
+      }
+    ]
   }
 }

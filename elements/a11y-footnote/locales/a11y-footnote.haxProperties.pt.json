@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Nota de rodapé",
+    "description": "Uma nota escrita no lugar do texto a que pertence. Ela aparece como um número, e a lista numerada de notas se monta sozinha no fim da página."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nota",
+        "description": "O texto da nota de rodapé."
+      },
+      {
+        "title": "Sem pré-visualização",
+        "description": "Não mostrar a nota quando o leitor passar o mouse ou colocar o foco no número."
+      }
+    ]
+  }
+}

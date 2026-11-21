@@ -3,5 +3,7 @@
   "status_stop": "Dur",
   "status_warning": "Uyarı",
   "status_success": "Başarılı",
-  "status_info": "Not"
+  "status_info": "Not",
+  "status_tip": "Biliyor muydunuz?",
+  "status_new": "Yenilikler"
 }

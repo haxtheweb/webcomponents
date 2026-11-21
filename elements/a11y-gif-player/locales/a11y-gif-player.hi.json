@@ -2,5 +2,9 @@
   "toggleAnimation": "एनिमेशन चालू/बंद करें",
   "info": "जानकारी",
   "image": "छवि",
-  "animatedGif": "एनिमेटेड GIF"
+  "animatedGif": "एनिमेटेड GIF",
+  "playAnimation": "एनिमेशन चलाएँ",
+  "pauseAnimation": "एनिमेशन रोकें",
+  "showDescription": "विवरण दिखाएँ",
+  "hideDescription": "विवरण छिपाएँ"
 }

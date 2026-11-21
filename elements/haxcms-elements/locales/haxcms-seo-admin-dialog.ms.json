@@ -6,6 +6,8 @@
   "faviconDescription": "Imej tab pelayar / digunakan pada telefon sebagai logo laman kecil",
   "domain": "Domain",
   "domainDescription": "Domain laman web ini",
+  "sameAs": "Profil lain laman ini",
+  "sameAsDescription": "Satu pautan setiap baris ke profil laman atau organisasi ini di tempat lain (GitHub, LinkedIn, YouTube, Mastodon). Enjin carian menggunakannya untuk menghubungkan profil tersebut dengan laman ini.",
   "language": "Bahasa",
   "languageDescription": "Bahasa tapak ini. Cari mengikut nama atau kod, atau masukkan kod lain seperti fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

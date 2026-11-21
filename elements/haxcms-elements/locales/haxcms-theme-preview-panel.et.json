@@ -8,5 +8,9 @@
   "theme": "Teema",
   "palette": "Palett",
   "cancel": "Tühista",
-  "openAppearanceSettings": "Ava välimuse seaded"
+  "openAppearanceSettings": "Ava välimuse seaded",
+  "designSystem": "Disainisüsteem",
+  "designSystemDefault": "DDD (vaikimisi)",
+  "designSystemThemeDefault": "{name} (kujunduse vaikeväärtus)",
+  "designSystemHelp": "Värv, kiri, nurgad ja tihedus. Paigutuse määrab endiselt kujundus."
 }

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "ปุ่มเรื่องราว",
+    "description": "ปุ่มที่เปิดเรื่องราวเบื้องหลังข้อกล่าวอ้างบน hax.cloud หรือตำแหน่งที่ตรงกันบนเว็บไซต์อื่นในเครือข่าย HAX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ปลายทาง",
+        "options": {
+          "cloud": "hax.cloud เรื่องราว",
+          "learn": "learn.hax.cloud บทเรียน",
+          "try": "browser.hax.cloud ลองใช้",
+          "elements": "webcomponents.hax.cloud บล็อก",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "ที่อยู่บนเว็บไซต์นั้น (เรื่องราวบน hax.cloud มีรูปแบบเช่น stories/ee450a19)"
+      },
+      {
+        "title": "เกี่ยวกับอะไร"
+      },
+      {
+        "title": "ชิปเล็ก"
+      },
+      {
+        "title": "แสดงว่าเกี่ยวกับอะไรในปุ่ม"
+      }
+    ]
+  }
+}

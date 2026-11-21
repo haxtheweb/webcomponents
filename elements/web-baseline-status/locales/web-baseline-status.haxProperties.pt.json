@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Status Baseline",
+    "description": "Mostrar o status de suporte Baseline nos navegadores de um recurso da plataforma web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID do recurso",
+        "description": "ID do recurso web, por exemplo anchor-positioning. Encontre IDs em webstatus.dev; o ID é a última parte da URL da página de um recurso."
+      }
+    ]
+  }
+}

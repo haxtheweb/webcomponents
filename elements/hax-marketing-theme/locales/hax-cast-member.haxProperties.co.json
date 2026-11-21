@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Membru di a distribuzione",
+    "description": "Un publicu, ghjucatu da un persunaghju, cù parolle è un buttone"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Quale hè"
+      },
+      {
+        "title": "Tipu di persunaghju"
+      },
+      {
+        "title": "Sumente di u persunaghju"
+      },
+      {
+        "title": "Culore di a scena (nome DDD)"
+      },
+      {
+        "title": "Induve và u buttone"
+      },
+      {
+        "title": "Testu di u buttone"
+      }
+    ]
+  }
+}

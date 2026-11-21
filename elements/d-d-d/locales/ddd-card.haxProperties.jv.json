@@ -52,6 +52,20 @@
           "_top": "Jendhela paling ndhuwur - _top",
           "_parent": "Jendhela induk - _parent"
         }
+      },
+      {
+        "title": "Tanpa Panah",
+        "description": "Dhelikake panah tombol."
+      },
+      {
+        "title": "Pranala: target",
+        "description": "Ing ngendi pranala dibukak.",
+        "options": {
+          "": "Jendhela sing padha",
+          "_blank": "Jendhela anyar - _blank",
+          "_top": "Jendhela paling ndhuwur - _top",
+          "_parent": "Jendhela induk - _parent"
+        }
       }
     ],
     "developer": [

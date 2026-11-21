@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Współtwórcy",
+    "description": "Osoby, które zbudowały projekt, z pliku listy"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Plik listy (JSON)"
+      },
+      {
+        "title": "Widok: landed, lab lub code"
+      },
+      {
+        "title": "Maksymalna liczba osób do pokazania (0 to wszystkie)"
+      }
+    ]
+  }
+}

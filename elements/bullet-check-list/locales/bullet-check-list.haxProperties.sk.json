@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kontrolný zoznam s odrážkami",
+    "description": "Zoznam zaškrtávacích políčok. Čitatelia si odškrtávajú položky a ich postup sa pamätá na ich vlastnom zariadení."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Názov zoznamu. Číta sa nahlas ako označenie skupiny zaškrtávacích políčok."
+      },
+      {
+        "title": "Položky",
+        "description": "Každá položka je zaškrtávacie políčko. Zaškrtnuté alebo zakázané položky čitatelia nemôžu meniť."
+      },
+      {
+        "title": "Číslovaný",
+        "description": "Zobraziť číslovaný zoznam namiesto odrážkového."
+      },
+      {
+        "title": "Stav",
+        "description": "Zmení farby tak, aby zodpovedali stop-note.",
+        "options": {
+          "info": "Oznámenie",
+          "success": "Potvrdenie",
+          "warning": "Upozornenie",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID úložiska",
+        "description": "Jedinečné ID na zapamätanie postupu čitateľa na jeho zariadení. Generuje sa automaticky; meňte ho iba na zdieľanie postupu medzi zoznamami alebo na začatie odznova."
+      }
+    ]
+  }
+}

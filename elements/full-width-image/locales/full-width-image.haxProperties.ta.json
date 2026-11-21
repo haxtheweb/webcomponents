@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "பின்னணிப் படம்."
+        "description": "பின்னணிப் படம்.",
+        "title": "படம்"
       },
       {
         "property": "caption",
-        "description": "உரைத் தலைப்பு."
+        "description": "உரைத் தலைப்பு.",
+        "title": "தலைப்புக் குறிப்பு"
       }
     ]
   }

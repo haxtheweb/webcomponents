@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Түүхийн товч",
+    "description": "hax.cloud дээрх мэдэгдлийн цаадах түүх, эсвэл өөр HAX сүлжээний сайтын тохирох газрыг нээх товч"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Хаашаа очих",
+        "options": {
+          "cloud": "hax.cloud, түүх",
+          "learn": "learn.hax.cloud, хичээл",
+          "try": "browser.hax.cloud, туршиж үзэх",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Тэр сайт дээрх хаяг (hax.cloud дээрх түүх stories/ee450a19 шиг харагдана)"
+      },
+      {
+        "title": "Юуны тухай"
+      },
+      {
+        "title": "Жижиг шошго"
+      },
+      {
+        "title": "Юуны тухай болохыг товчинд харуулах"
+      }
+    ]
+  }
+}

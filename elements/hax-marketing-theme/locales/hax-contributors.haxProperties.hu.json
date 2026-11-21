@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Közreműködők",
+    "description": "A projektet építő emberek, egy névsorfájlból"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Névsorfájl (JSON)"
+      },
+      {
+        "title": "Nézet: landed, lab vagy code"
+      },
+      {
+        "title": "Megjelenítendő emberek legnagyobb száma (0 = mind)"
+      }
+    ]
+  }
+}

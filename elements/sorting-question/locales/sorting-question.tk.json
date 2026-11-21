@@ -40,5 +40,7 @@
   "hideDirections": "Görkezmeleri gizle",
   "showRelatedContent": "Baglanyşykly mazmuny görkez",
   "hideRelatedContent": "Baglanyşykly mazmuny gizle",
-  "notAttempted": "Synanyşylmady"
+  "notAttempted": "Synanyşylmady",
+  "cardsDirections": "Her kartadaky öňe süýşür we yza süýşür düwmeleri bilen ýa-da syçan bilen süýräp, kartalary dogry tertipde ýerleşdiriň. Dogry tertipde ýerleşdirendigiňize ynanýan bolsaňyz, {checkAnswer} saýlap, jogabyňyzy barlaň.",
+  "movedToPosition": "{item} {total} ýerden {position}-nji ýere süýşürildi"
 }

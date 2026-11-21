@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Bisani chizindikiro",
         "description": "Bisani chizindikiro chogwiritsidwa ntchito kukongoletsa mawu"
+      },
+      {
+        "title": "Mawonekedwe",
+        "description": "Kutsindika kwa batani.",
+        "options": {
+          "": "Lodzazidwa",
+          "tonal": "La mthunzi",
+          "outlined": "La mzere",
+          "plain": "Wamba"
+        }
+      },
+      {
+        "title": "Kukula",
+        "description": "Kukula kwa batani.",
+        "options": {
+          "s": "Kakang'ono",
+          "": "Chapakati",
+          "l": "Kakakulu"
+        }
       }
     ],
     "advanced": [

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Popis za označavanje",
+    "description": "Popis potvrdnih okvira. Čitatelji označavaju stavke, a njihov napredak pamti se na njihovu uređaju."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Naslov",
+        "description": "Naziv popisa. Čita se naglas kao oznaka skupine potvrdnih okvira."
+      },
+      {
+        "title": "Stavke",
+        "description": "Svaka stavka je potvrdni okvir. Čitatelji ne mogu mijenjati označene ili onemogućene stavke."
+      },
+      {
+        "title": "Numerirano",
+        "description": "Prikaži numerirani popis umjesto popisa s grafičkim oznakama."
+      },
+      {
+        "title": "Status",
+        "description": "Mijenja boje kako bi odgovarale stop-note.",
+        "options": {
+          "info": "Obavijest",
+          "success": "Potvrda",
+          "warning": "Upozorenje",
+          "stop": "Stop"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID pohrane",
+        "description": "Jedinstveni ID za pamćenje napretka čitatelja na njegovu uređaju. Generira se automatski; mijenjajte ga samo za dijeljenje napretka među popisima ili za početak ispočetka."
+      }
+    ]
+  }
+}

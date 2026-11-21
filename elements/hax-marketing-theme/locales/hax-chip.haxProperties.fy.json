@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Tsjip",
+    "description": "In lyts ikoan mei label"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ikoan"
+      },
+      {
+        "title": "Label"
+      }
+    ]
+  }
+}

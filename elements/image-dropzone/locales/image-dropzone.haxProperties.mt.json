@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Dropzone tal-immaġni",
+    "description": "L-istudenti jpoġġu tikketti fuq żoni mqiegħda fuq immaġni, imbagħad jiċċekkjaw it-tweġiba tagħhom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Immaġni",
+        "description": "L-immaġni li fuqha l-istudenti jpoġġu t-tikketti."
+      },
+      {
+        "title": "Test alternattiv",
+        "description": "Tiddeskrivi l-immaġni għal nies li ma jistgħux jarawha. Tiżvelax fejn imorru t-tikketti."
+      },
+      {
+        "title": "Titlu tal-immaġni",
+        "description": "Titlu qasir viżibbli għall-immaġni, muri fuqha."
+      },
+      {
+        "title": "Mistoqsija",
+        "description": "X'jintalbu jagħmlu l-istudenti bit-tikketti."
+      },
+      {
+        "title": "Tikketti u żoni",
+        "description": "Kull element huwa tikketta li l-istudenti jistgħu jpoġġu. Agħti lil tikketta isem ta' żona biex tpoġġi ż-żona tagħha fuq l-immaġni; tikketta mingħajr isem ta' żona hija żejda li ma tappartjeni mkien. In-numri taż-żoni huma perċentwali tal-immaġni."
+      },
+      {
+        "title": "Didaskalija",
+        "description": "Didaskalija fakultattiva murija taħt l-immaġni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tentattivi",
+        "description": "Kemm-il darba student jista' jiċċekkja. 0 tfisser bla limitu."
+      },
+      {
+        "title": "Ħawwad it-tikketti",
+        "description": "Uri t-tikketti f'ordni differenti f'kull żjara."
+      },
+      {
+        "title": "Tintewa",
+        "description": "Uri din il-mistoqsija bħala ringiela li tiftaħ u tagħlaq. Meta tiftaħ waħda jagħlqu l-mistoqsijiet l-oħra li jintwew ħdejha."
+      },
+      {
+        "title": "Ibda magħluq",
+        "description": "Meta tintewa, ibda bħala ringiela magħluqa li turi biss il-mistoqsija u l-istatus tagħha."
+      },
+      {
+        "title": "Format tal-gradazzjoni",
+        "description": "OER Schema: format tal-gradazzjoni għal din il-valutazzjoni (eż. punti, ittra, perċentwal, tlestija)."
+      },
+      {
+        "title": "Għan tat-tagħlim",
+        "description": "OER Schema: għan tat-tagħlim assoċjat ma' din il-valutazzjoni."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Isem il-kwiż",
+        "description": "Isem il-kwiż użat għall-identifikazzjoni xAPI f'sistemi tal-analitika."
+      },
+      {
+        "title": "Kors",
+        "description": "OER Schema: il-kors li għalih hija maħsuba din il-valutazzjoni."
+      }
+    ]
+  }
+}

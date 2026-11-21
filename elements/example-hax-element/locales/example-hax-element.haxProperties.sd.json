@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "HAX ترتيب ۽ ايڊٽ لائق خاصيتون ڏيکارڻ لاءِ استعمال ٿيندڙ مثالي شروعاتي عنصر."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "عنوان"
+      }
+    ]
+  }
+}

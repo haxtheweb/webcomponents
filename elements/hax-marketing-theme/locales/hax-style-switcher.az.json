@@ -1,0 +1,16 @@
+{
+  "theme": "Mövzu",
+  "designSystem": "Dizayn sistemi",
+  "dddDefault": "DDD (standart)",
+  "designSystemHelp": "Rəng, şrift, künclər və fokus. Mövzu tərtibatı saxlayır.",
+  "designSystemFixed": "Bu mövzu öz dizayn sistemini saxlayır.",
+  "palette": "Palitra",
+  "themeDefault": "Mövzunun standartı",
+  "paletteNumber": "Palitra {n}",
+  "siteTheme": "{name} (bu saytın mövzusu)",
+  "restyle": "Bu saytın üslubunu dəyiş",
+  "close": "Bağla",
+  "reset": "Bu saytın öz görünüşünə qayıt",
+  "random": "Məni təəccübləndir",
+  "about": "Bu, HAX-a daxil olan görünüşlərdən bir neçəsini göstərir. Səhifələr heç vaxt dəyişmir: struktur JSON Outline Schema-da saxlanılır və hər blok standart veb komponentdir, ona görə dizaynı sərbəst dəyişmək olar."
+}

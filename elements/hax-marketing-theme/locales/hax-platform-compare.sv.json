@@ -1,0 +1,15 @@
+{
+  "loading": "Läser in jämförelsen.",
+  "yes": "Ja",
+  "partly": "Delvis",
+  "no": "Nej",
+  "compare": "Jämför",
+  "with": "Med",
+  "vs": "mot",
+  "caption": "{a} och {b}, funktion för funktion",
+  "feature": "Funktion",
+  "clearYes": "{count} av {total} ett tydligt ja",
+  "seeForYourself": "Se själv:",
+  "and": "och",
+  "why": "Varför"
+}

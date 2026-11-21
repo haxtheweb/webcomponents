@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Selettore d'usu",
+    "description": "Sceglite à chì serve un situ è ottenite un liame chì apre HAX in u navigatore cù quellu situ di partenza, è dinò u cumandu CLI currispundente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indirizzu di HAX in u navigatore",
+        "description": "Induve s'apre u liame; ci s'aghjunghjenu ?skeleton= è &name="
+      },
+      {
+        "title": "Siti di partenza à lascià fora",
+        "description": "Nomi macchina, siparati da virgule"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lista di siti di partenza",
+        "description": "Indirizzu di a lista di scheletri (u furmatu chì leghje app-hax)"
+      }
+    ]
+  }
+}

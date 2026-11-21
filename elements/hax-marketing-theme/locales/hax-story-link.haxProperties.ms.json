@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Butang kisah",
+    "description": "Butang yang membuka kisah di sebalik sesuatu dakwaan di hax.cloud, atau tempat yang sepadan di laman rangkaian HAX yang lain"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Destinasinya",
+        "options": {
+          "cloud": "hax.cloud, kisahnya",
+          "learn": "learn.hax.cloud, tutorial",
+          "try": "browser.hax.cloud, cubalah",
+          "elements": "webcomponents.hax.cloud, blok",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Alamat di laman itu (kisah di hax.cloud kelihatan seperti stories/ee450a19)"
+      },
+      {
+        "title": "Tentang apa"
+      },
+      {
+        "title": "Cip kecil"
+      },
+      {
+        "title": "Tunjukkan topiknya dalam butang"
+      }
+    ]
+  }
+}

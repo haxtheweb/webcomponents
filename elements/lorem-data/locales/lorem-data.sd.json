@@ -1,4 +1,6 @@
 {
   "saveAll": "سڀ محفوظ ڪريو",
-  "saveTheFollowing": "هيٺيون محفوظ ڪريو: {list}؟"
+  "saveTheFollowing": "هيٺيون محفوظ ڪريو: {list}؟",
+  "save": "محفوظ ڪريو",
+  "cancel": "منسوخ ڪريو"
 }

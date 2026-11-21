@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ukonde wa chilengedwe",
+    "description": "Ukonde wochitirana wa momwe magawo a pulojekiti amalumikizirana, ndi maukonde ang'onoang'ono ndi maulendo a sitepe ndi sitepe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deta ya ukonde",
+        "description": "URL ya mtolo wa JSON wa maukonde (womangidwa mu PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Ukonde",
+        "description": "ID ya ukonde woti uwonetsedwe koyamba; main ndi ukonde wa chilengedwe."
+      },
+      {
+        "title": "Tayilo yosankhidwa",
+        "description": "ID ya tayilo yoti isankhidwe ukonde ukatseguka."
+      },
+      {
+        "title": "Ulendo",
+        "description": "ID ya ulendo woti muyambire."
+      },
+      {
+        "title": "Yambani mu mawonekedwe a mndandanda",
+        "description": "Onetsani ukonde ngati mindandanda yokhala mkati mwa ina m'malo mwa chojambula."
+      },
+      {
+        "title": "Chojambula chokha",
+        "description": "Onetsani chojambula chokha, ngati chithunzi: palibe mutu, maulendo, zambiri kapena bala ya masitepe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Werengani motsatira",
+        "description": "Yambani ndi tayilo iliyonse yowerengedwa ndi muyeso umodzi.",
+        "options": {
+          "": "Kulumikizana kokha",
+          "fresh": "Kutsitsimuka",
+          "bus": "Bus factor",
+          "impact": "Zotsatira",
+          "evidence": "Umboni",
+          "parity": "Kufanana"
+        }
+      }
+    ]
+  }
+}

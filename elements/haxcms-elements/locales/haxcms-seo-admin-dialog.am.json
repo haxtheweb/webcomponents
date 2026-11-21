@@ -6,6 +6,8 @@
   "faviconDescription": "የአሳሽ ትር ምስል / በስልኮች ላይ እንደ ትንሽ የድረ-ገጽ አርማ ጥቅም ላይ ይውላል",
   "domain": "ጎራ",
   "domainDescription": "የዚህ ድረ-ገጽ ጎራ",
+  "sameAs": "የዚህ ድረ-ገጽ ሌሎች መገለጫዎች",
+  "sameAsDescription": "በሌላ ቦታ ወዳሉ የዚህ ድረ-ገጽ ወይም ድርጅት መገለጫዎች በአንድ መስመር አንድ አገናኝ (GitHub፣ LinkedIn፣ YouTube፣ Mastodon)። የፍለጋ ፕሮግራሞች እነዚያን መገለጫዎች ከዚህ ድረ-ገጽ ጋር ለማገናኘት ይጠቀሙባቸዋል።",
   "language": "ቋንቋ",
   "languageDescription": "የዚህ ጣቢያ ቋንቋ። በስም ወይም በኮድ ይፈልጉ፣ ወይም እንደ fr-CA ያለ ሌላ ኮድ ያስገቡ።",
   "googleAnalyticsId": "የGoogle Analytics ID",

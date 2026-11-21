@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Mema kaiwhakaari",
+    "description": "Kotahi te hunga whakarongo, e whakaarihia ana e tētahi kiripuaki, me ngā kupu me tētahi pātene"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ko wai tēnei"
+      },
+      {
+        "title": "Momo kiripuaki"
+      },
+      {
+        "title": "Kākano kiripuaki"
+      },
+      {
+        "title": "Tae atamira (ingoa DDD)"
+      },
+      {
+        "title": "Te wāhi e haere ai te pātene"
+      },
+      {
+        "title": "Kuputuhi pātene"
+      }
+    ]
+  }
+}

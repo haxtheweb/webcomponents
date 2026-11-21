@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosistem şəbəkəsi",
+    "description": "Layihənin hissələrinin necə əlaqələndiyini göstərən interaktiv şəbəkə, alt şəbəkələr və addım-addım turlarla."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Şəbəkə məlumatları",
+        "description": "Şəbəkələrin JSON paketinin URL-i (PRAW-da qurulub, ecosystem-webs.json)."
+      },
+      {
+        "title": "Şəbəkə",
+        "description": "İlk göstəriləcək şəbəkənin id-si; main ekosistem şəbəkəsidir."
+      },
+      {
+        "title": "Seçilmiş kafel",
+        "description": "Şəbəkə açıldıqda seçiləcək kafelin id-si."
+      },
+      {
+        "title": "Tur",
+        "description": "Başlanacaq turun id-si."
+      },
+      {
+        "title": "Siyahı görünüşündə başla",
+        "description": "Şəbəkəni rəsm əvəzinə iç-içə siyahılar kimi göstər."
+      },
+      {
+        "title": "Yalnız rəsm",
+        "description": "Yalnız rəsmi şəkil kimi göstər: başlıq, turlar, təfərrüatlar və addım zolağı olmadan."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ölçü",
+        "description": "Hər kafeli bir ölçü ilə oxuyaraq başla.",
+        "options": {
+          "": "Yalnız əlaqələr",
+          "fresh": "Təravət",
+          "bus": "Avtobus faktoru",
+          "impact": "Təsir",
+          "evidence": "Sübut",
+          "parity": "Paritet"
+        }
+      }
+    ]
+  }
+}

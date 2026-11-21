@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Lábjegyzet",
+    "description": "Egy megjegyzés oda írva, ahová a szövegben tartozik. Számként jelenik meg, és a megjegyzések számozott listája magától összeáll az oldal alján."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Megjegyzés",
+        "description": "A lábjegyzet szövege."
+      },
+      {
+        "title": "Nincs előnézet",
+        "description": "Ne jelenjen meg a megjegyzés, amikor az olvasó a szám fölé viszi az egeret vagy fókuszba helyezi."
+      }
+    ]
+  }
+}

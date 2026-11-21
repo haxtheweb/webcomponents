@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenario-toneel",
+    "description": "Een toneel van 'n vertakkende scenario. Koppel elke keuse aan 'n ander toneel met # gevolg deur sy toneel-ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Toneel-ID",
+        "description": "Waarna keuses skakel: 'n skakel na # gevolg deur hierdie ID lei na hierdie toneel. Letters, syfers en koppeltekens."
+      },
+      {
+        "title": "Opskrif",
+        "description": "Opskrif van die toneel."
+      },
+      {
+        "title": "Einde",
+        "description": "Of hierdie toneel 'n pad beëindig, en hoe dit uitgedraai het.",
+        "options": {
+          "": "Nie 'n einde nie",
+          "good": "Goeie einde",
+          "mixed": "Gemengde einde",
+          "poor": "Swak einde"
+        }
+      },
+      {
+        "title": "Telling",
+        "description": "Telling vir die bereiking van hierdie einde. Die hoogste eindtelling in die scenario is die maksimum."
+      }
+    ]
+  }
+}

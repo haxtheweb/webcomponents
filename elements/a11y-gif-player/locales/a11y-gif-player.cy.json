@@ -2,5 +2,9 @@
   "toggleAnimation": "Toglo'r animeiddiad",
   "info": "gwybodaeth",
   "image": "Delwedd",
-  "animatedGif": "GIF animeiddiedig"
+  "animatedGif": "GIF animeiddiedig",
+  "playAnimation": "Chwarae'r animeiddiad",
+  "pauseAnimation": "Oedi'r animeiddiad",
+  "showDescription": "Dangos y disgrifiad",
+  "hideDescription": "Cuddio'r disgrifiad"
 }

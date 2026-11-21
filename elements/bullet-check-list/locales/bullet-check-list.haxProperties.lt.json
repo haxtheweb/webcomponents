@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Kontrolinis sąrašas",
+    "description": "Žymimųjų langelių sąrašas. Skaitytojai pažymi punktus, o jų pažanga įsimenama jų pačių įrenginyje."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas",
+        "description": "Sąrašo pavadinimas. Garsiai perskaitomas kaip žymimųjų langelių grupės etiketė."
+      },
+      {
+        "title": "Punktai",
+        "description": "Kiekvienas punktas yra žymimasis langelis. Pažymėtų ar išjungtų punktų skaitytojai pakeisti negali."
+      },
+      {
+        "title": "Numeruotas",
+        "description": "Rodyti numeruotą sąrašą vietoj sąrašo su ženkleliais."
+      },
+      {
+        "title": "Būsena",
+        "description": "Pakeičia spalvas, kad atitiktų stop-note.",
+        "options": {
+          "info": "Pranešimas",
+          "success": "Patvirtinimas",
+          "warning": "Įspėjimas",
+          "stop": "Sustoti"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Saugojimo ID",
+        "description": "Unikalus ID, naudojamas skaitytojo pažangai jo įrenginyje įsiminti. Sugeneruojamas automatiškai; keiskite tik norėdami bendrinti pažangą tarp sąrašų arba pradėti iš naujo."
+      }
+    ]
+  }
+}

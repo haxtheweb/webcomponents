@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Rangi ya msisitizo ya kiotomatiki",
         "description": "Pata rangi ya msisitizo kutoka kwa maandishi ya lebo kiotomatiki."
+      },
+      {
+        "title": "Maana",
+        "description": "Ipe lebo rangi ya maana. Acha tupu kwa lebo isiyoegemea upande wowote.",
+        "options": {
+          "": "Isiyoegemea",
+          "brand": "Chapa",
+          "success": "Mafanikio",
+          "warning": "Onyo",
+          "danger": "Hatari"
+        }
       }
     ],
     "advanced": [

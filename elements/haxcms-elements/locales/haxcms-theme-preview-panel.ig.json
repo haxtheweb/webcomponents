@@ -8,5 +8,9 @@
   "theme": "Isiokwu",
   "palette": "Paleti",
   "cancel": "Kagbuo",
-  "openAppearanceSettings": "Mepee ntọala ọdịdị"
+  "openAppearanceSettings": "Mepee ntọala ọdịdị",
+  "designSystem": "Sistemụ imewe",
+  "designSystemDefault": "DDD (ndabara)",
+  "designSystemThemeDefault": "{name} (ndabara isiokwu)",
+  "designSystemHelp": "Agba, mkpụrụedemede, nkuku na njupụta. Isiokwu ahụ ka na-ekpebi nhazi."
 }

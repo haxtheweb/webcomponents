@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Àtòjọ ìgbésẹ̀",
     "description": "Àwọn ìgbésẹ̀ onínọ́mbà láti parí iṣẹ́ kan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Atọ́ka ìgbésẹ̀",
+        "description": "Fi àwọn ìgbésẹ̀ hàn gẹ́gẹ́ bí ìlà àkọlé kékeré tó ń sàmì sí ìlọsíwájú. A kò fi àkóónú ìgbésẹ̀ hàn nínú ìtò yìí."
+      },
+      {
+        "title": "Ìgbésẹ̀ lọ́wọ́lọ́wọ́",
+        "description": "Ìgbésẹ̀ tí òǹkàwé wà, ní kíkà láti 1. Àwọn ìgbésẹ̀ ìṣáájú ń hàn bí èyí tí ó ti parí. Atọ́ka ìgbésẹ̀ ló ń lò ó."
+      }
+    ]
   }
 }

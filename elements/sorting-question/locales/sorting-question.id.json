@@ -40,5 +40,7 @@
   "hideDirections": "Sembunyikan petunjuk",
   "showRelatedContent": "Tampilkan konten terkait",
   "hideRelatedContent": "Sembunyikan konten terkait",
-  "notAttempted": "Belum dicoba"
+  "notAttempted": "Belum dicoba",
+  "cardsDirections": "Susun kartu dalam urutan yang benar dengan tombol pindah lebih awal dan pindah lebih akhir di setiap kartu, atau seret dengan mouse. Jika Anda yakin urutannya sudah benar, uji jawaban Anda dengan memilih {checkAnswer}.",
+  "movedToPosition": "{item} dipindahkan ke posisi {position} dari {total}"
 }

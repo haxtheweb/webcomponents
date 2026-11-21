@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Laskuharjoitus",
+    "description": "Lyhyt sarja luotuja laskutehtäviä välittömällä palautteella. Valitse laskutoimitukset ja lukualue; jokainen kierros on uusi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko",
+        "description": "Tämän harjoituksen nimi, näytetään sen otsakkeessa."
+      },
+      {
+        "title": "Laskutoimitukset",
+        "description": "Millaisia tehtäviä kysytään. Oppijat voivat poistaa minkä tahansa näistä käytöstä ennen aloittamista.",
+        "options": {
+          "add": "Yhteenlasku",
+          "subtract": "Vähennyslasku",
+          "multiply": "Kertolasku",
+          "divide": "Jakolasku",
+          "add subtract": "Yhteen- ja vähennyslasku",
+          "multiply divide": "Kerto- ja jakolasku",
+          "add multiply": "Yhteen- ja kertolasku",
+          "add divide": "Yhteen- ja jakolasku",
+          "subtract multiply": "Vähennys- ja kertolasku",
+          "subtract divide": "Vähennys- ja jakolasku",
+          "add subtract multiply": "Yhteen-, vähennys- ja kertolasku",
+          "add subtract divide": "Yhteen-, vähennys- ja jakolasku",
+          "add multiply divide": "Yhteen-, kerto- ja jakolasku",
+          "subtract multiply divide": "Vähennys-, kerto- ja jakolasku",
+          "add subtract multiply divide": "Kaikki neljä"
+        }
+      },
+      {
+        "title": "Pienin luku",
+        "description": "Pienin tehtävässä käytetty luku. Kokonaisluvut, 0 tai suurempi."
+      },
+      {
+        "title": "Suurin luku",
+        "description": "Suurin tehtävässä käytetty luku. Myös jakolaskujen vastaukset ja jakajat pysyvät tällä välillä."
+      },
+      {
+        "title": "Tehtävien määrä",
+        "description": "Montako tehtävää yhdellä kierroksella on (1–100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Aikaraja",
+        "description": "Koko kierrokselle sallitut sekunnit. 0 tarkoittaa, ettei ajastinta ole, mikä on oletus: ajastetut harjoitukset pettävät oppijat, jotka tarvitsevat enemmän aikaa. Kun aikaraja on asetettu, oppijat voivat silti poistaa ajastimen käytöstä itseltään."
+      },
+      {
+        "title": "Korostusväri",
+        "description": "Otsakemerkin ja painikkeiden väri. Jätä tyhjäksi noudattaaksesi teemaa."
+      }
+    ]
+  }
+}

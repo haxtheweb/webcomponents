@@ -3,5 +3,6 @@
   "zoomOut": "Loitonna",
   "rotateRight": "Kierrä oikealle",
   "mirrorImage": "Peilaa kuva",
-  "openInNewWindow": "Avaa uudessa ikkunassa"
+  "openInNewWindow": "Avaa uudessa ikkunassa",
+  "imageTools": "Kuvatyökalut"
 }

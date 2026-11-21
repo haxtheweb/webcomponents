@@ -1,4 +1,6 @@
 {
   "saveAll": "ټول خوندي کړئ",
-  "saveTheFollowing": "لاندې شیان خوندي کړئ: {list}؟"
+  "saveTheFollowing": "لاندې شیان خوندي کړئ: {list}؟",
+  "save": "خوندي کول",
+  "cancel": "لغوه"
 }

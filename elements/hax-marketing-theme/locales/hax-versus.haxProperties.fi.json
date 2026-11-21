@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Vastakkain",
+    "description": "Tekstiä kahden hahmon vastakkainasettelupainikkeen vieressä"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko"
+      },
+      {
+        "title": "Mihin painike vie"
+      },
+      {
+        "title": "Painikkeen teksti"
+      },
+      {
+        "title": "Vasemman hahmon siemen"
+      },
+      {
+        "title": "Oikean hahmon siemen"
+      }
+    ]
+  }
+}

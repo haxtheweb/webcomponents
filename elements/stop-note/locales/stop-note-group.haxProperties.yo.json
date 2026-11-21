@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Ẹgbẹ́ Àkọsílẹ̀ Ìdúró",
+    "description": "Kó àwọn àkọsílẹ̀ ìdúró púpọ̀ jọ sínú búlọ́ọ̀kù kan tó ń fi àkọsílẹ̀ kan hàn lẹ́ẹ̀kan, bí Àwọn ìmọ̀ràn tàbí Ohun tuntun. A lè kó àwọn káàdì ìtọ́ni, àkọsílẹ̀ ẹ̀gbẹ́ àti àyọlò ní férémù jọ pẹ̀lú wọn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àmì",
+        "description": "Orúkọ fún ẹgbẹ́ náà tí àwọn olùka ojú-ìbòjú ń kéde, bí Àwọn ìmọ̀ràn tàbí Ohun tuntun."
+      },
+      {
+        "title": "Àwọn àkọsílẹ̀",
+        "description": "Àwọn àkọsílẹ̀ ìdúró inú ẹgbẹ́ náà. A tún lè ṣàfikún àwọn káàdì ìtọ́ni, àkọsílẹ̀ ẹ̀gbẹ́ àti àyọlò ní férémù."
+      }
+    ]
+  }
+}

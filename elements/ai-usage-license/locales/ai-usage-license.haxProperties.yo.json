@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Àtúnṣe mídíà",
-        "description": "Àtúnṣe agbègbè mídíà (àṣàyàn). Ó sọ irú mídíà tí ìwé-àṣẹ yìí kan."
+        "description": "Àtúnṣe agbègbè mídíà (àṣàyàn). Ó sọ irú mídíà tí ìwé-àṣẹ yìí kan.",
+        "options": {
+          "": "Kò sí àtúnṣe"
+        }
       },
       {
         "property": "uri",

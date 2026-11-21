@@ -6,6 +6,8 @@
   "faviconDescription": "Image de l'onglet du navigateur / utilisée sur les téléphones comme petit logo du site",
   "domain": "Domaine",
   "domainDescription": "Domaine de ce site web",
+  "sameAs": "Autres profils de ce site",
+  "sameAsDescription": "Un lien par ligne vers les profils de ce site ou de cette organisation ailleurs (GitHub, LinkedIn, YouTube, Mastodon). Les moteurs de recherche s'en servent pour relier ces profils à ce site.",
   "language": "Langue",
   "languageDescription": "Langue de ce site. Recherchez par nom ou par code, ou saisissez un autre code comme fr-CA.",
   "googleAnalyticsId": "ID Google Analytics",

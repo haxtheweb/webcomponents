@@ -40,5 +40,7 @@
   "hideDirections": "Ko‘rsatmalarni yashirish",
   "showRelatedContent": "Aloqador kontentni ko‘rsatish",
   "hideRelatedContent": "Aloqador kontentni yashirish",
-  "notAttempted": "Urinilmagan"
+  "notAttempted": "Urinilmagan",
+  "cardsDirections": "Har bir kartadagi oldinroqqa va keyinroqqa surish tugmalari yordamida yoki sichqoncha bilan sudrab, kartalarni to‘g‘ri tartibga qo‘ying. To‘g‘ri tartibga qo‘yganingizga ishonsangiz, {checkAnswer} ni tanlab javobingizni tekshiring.",
+  "movedToPosition": "{item} {total} tadan {position}-o‘ringa surildi"
 }

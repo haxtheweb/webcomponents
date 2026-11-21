@@ -5,5 +5,7 @@
   "editModeLabel": "Multivides atskaņošanas saraksta rediģēšanas režīms",
   "position": "{current} no {total}",
   "previousItem": "Iepriekšējais vienums",
-  "nextItem": "Nākamais vienums"
+  "nextItem": "Nākamais vienums",
+  "fullScreen": "Pilnekrāna režīms",
+  "exitFullScreen": "Iziet no pilnekrāna režīma"
 }

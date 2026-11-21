@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rārangi āhuatanga",
+    "description": "He mata o te hua i te taha o te tikanga mōu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tapanga iti"
+      },
+      {
+        "title": "Upoko"
+      },
+      {
+        "title": "Pikitia"
+      },
+      {
+        "title": "Te mea e whakaaturia ana e te pikitia"
+      },
+      {
+        "title": "Pikitia ki te matau"
+      },
+      {
+        "title": "Tae ātārangi (ingoa DDD, ka whai te wātea i te papatae)"
+      }
+    ]
+  }
+}

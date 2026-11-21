@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline төлөв",
+    "description": "Вэб платформын боломжийн Baseline хөтчийн дэмжлэгийн төлөвийг харуулна."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Боломжийн ID",
+        "description": "Вэб боломжийн ID, жишээ нь anchor-positioning. ID-г webstatus.dev-ээс олоорой; ID нь боломжийн хуудасны URL-ын сүүлийн хэсэг."
+      }
+    ]
+  }
+}

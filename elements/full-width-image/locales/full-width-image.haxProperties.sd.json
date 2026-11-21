@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "پس منظر جي تصوير."
+        "description": "پس منظر جي تصوير.",
+        "title": "تصوير"
       },
       {
         "property": "caption",
-        "description": "متن جي سرخي."
+        "description": "متن جي سرخي.",
+        "title": "ڪيپشن"
       }
     ]
   }

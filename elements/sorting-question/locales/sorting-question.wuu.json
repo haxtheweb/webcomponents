@@ -40,5 +40,7 @@
   "hideDirections": "隐藏说明",
   "showRelatedContent": "显示相关内容",
   "hideRelatedContent": "隐藏相关内容",
-  "notAttempted": "还没尝试"
+  "notAttempted": "还没尝试",
+  "cardsDirections": "用每张卡片上个往前移、往后移按钮，或者用鼠标拖，拿卡片排成正确个顺序。侬觉着顺序对了，就拣 {checkAnswer} 检查答案。",
+  "movedToPosition": "{item} 移到第 {position} 位，共 {total} 位"
 }

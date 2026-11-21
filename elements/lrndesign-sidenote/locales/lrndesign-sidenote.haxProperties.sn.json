@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Chinyorwa chepadivi",
+    "description": "Chinyorwa chakaparadzaniswa nezviri pedyo nacho, chine icon nezita zvisingamanikidzwe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zita",
+        "description": "Zita rechinyorwa chepadivi."
+      },
+      {
+        "title": "Icon",
+        "description": "Icon yechinyorwa chepadivi."
+      },
+      {
+        "title": "Zviri mukati",
+        "description": "Zviri mukati mechinyorwa chepadivi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Ruvara",
+        "description": "Ruvara runoshandiswa kupenda chinyorwa chepadivi."
+      }
+    ]
+  }
+}

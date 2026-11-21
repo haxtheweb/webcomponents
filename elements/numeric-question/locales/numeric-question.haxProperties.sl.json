@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Številsko vprašanje",
+    "description": "Vprašanje, na katero se odgovori s številom. Odgovor je fiksno število ali formula, izračunana iz spremenljivk, in šteje, če je v okviru tolerance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vprašanje",
+        "description": "Kaj sprašujete učence. Ime spremenljivke zapišite v zavitih oklepajih, kot {d}, da se prikaže njena vrednost."
+      },
+      {
+        "title": "Enota",
+        "description": "Prikazana kot besedilo ob polju za odgovor, na primer km/h."
+      },
+      {
+        "title": "Odgovor",
+        "description": "Pravilno število. Pustite prazno, ko odgovor izračuna formula."
+      },
+      {
+        "title": "Formula",
+        "description": "Izračuna odgovor iz spremenljivk, na primer d / (t / 60). Lahko uporablja + - * / ^, oklepaje, sqrt() in abs(). Če je nastavljena, se uporabi namesto odgovora."
+      },
+      {
+        "title": "Spremenljivke",
+        "description": "Števila, ki jih uporabljata formula in vprašanje. Vsako zavzame vrednost med svojo najnižjo in najvišjo, po korakih."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranca",
+        "description": "Kako daleč od točnega odgovora še šteje. 0 pomeni točno ali zaokroženo na spodnja decimalna mesta."
+      },
+      {
+        "title": "Vrsta tolerance",
+        "description": "Absolutna: plus ali minus toleranca. Odstotna: plus ali minus ta odstotek točnega odgovora.",
+        "options": {
+          "absolute": "Absolutna",
+          "percent": "Odstotna"
+        }
+      },
+      {
+        "title": "Decimalna mesta",
+        "description": "Učenci morajo zaokrožiti na toliko mest, odgovor pa je prikazan zaokrožen nanje. Pustite prazno za brez zaokroževanja."
+      },
+      {
+        "title": "Poskusi",
+        "description": "Kolikokrat lahko učenec preveri. 0 pomeni neomejeno."
+      },
+      {
+        "title": "Nova števila ob vsakem poskusu",
+        "description": "Ob vsakem novem poskusu učenca izžrebaj nove vrednosti spremenljivk. Njegov prejšnji odgovor se ob vrnitvi ne prikaže, le ali je bil pravilen."
+      },
+      {
+        "title": "Zložljivo",
+        "description": "Prikaži to vprašanje kot vrstico, ki se odpira in zapira. Odpiranje enega zapre druga zložljiva vprašanja ob njem."
+      },
+      {
+        "title": "Začni zloženo",
+        "description": "Ko je zložljivo, začni kot zaprta vrstica, ki prikazuje le vprašanje in njegovo stanje."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ime kviza",
+        "description": "Ime kviza za identifikacijo xAPI v analitičnih sistemih."
+      }
+    ]
+  }
+}

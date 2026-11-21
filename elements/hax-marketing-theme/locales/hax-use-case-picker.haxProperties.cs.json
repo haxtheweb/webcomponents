@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Výběr účelu",
+    "description": "Vyberte, k čemu web slouží, a získejte odkaz, který otevře HAX v prohlížeči s tímto startovním webem, plus odpovídající příkaz CLI."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Adresa HAX v prohlížeči",
+        "description": "Kam se odkaz otevře; přidá se k němu ?skeleton= a &name="
+      },
+      {
+        "title": "Startovní weby k vynechání",
+        "description": "Strojové názvy oddělené čárkou"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Seznam startovních webů",
+        "description": "Adresa seznamu kostr (ve formátu, který čte app-hax)"
+      }
+    ]
+  }
+}

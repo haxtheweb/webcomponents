@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "答え",
-        "description": "答えの順序が正しい並びを定義します。"
+        "description": "答えの順序が正しい並びを定義します。",
+        "options": {
+          "": "リスト",
+          "cards": "画像カード"
+        }
+      },
+      {
+        "title": "答え",
+        "description": "答えの順番が正しい並び順になります。"
       }
     ],
     "advanced": [

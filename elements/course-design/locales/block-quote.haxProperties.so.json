@@ -20,6 +20,12 @@
         "title": "Sawir",
         "description": "Sawirka la socda xigashada."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Jir leh",
+        "description": "Ku sawir xigashada jirka block-ga ee la wadaago, oo leh astaan iyo calaamad korkeeda, si ay ula jaan qaaddo qoraallada iyo kaarardka tilmaamaha."
+      }
     ]
   }
 }

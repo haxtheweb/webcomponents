@@ -5,5 +5,7 @@
   "editModeLabel": "Mod suntingan senarai main media",
   "position": "{current} daripada {total}",
   "previousItem": "Item sebelumnya",
-  "nextItem": "Item seterusnya"
+  "nextItem": "Item seterusnya",
+  "fullScreen": "Skrin penuh",
+  "exitFullScreen": "Keluar skrin penuh"
 }

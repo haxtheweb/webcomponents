@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Kūlana Baseline",
+    "description": "Hōʻike i ke kūlana kākoʻo polokalamu kele Baseline o kekahi hiʻohiʻona kahua pūnaewele."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID hiʻohiʻona",
+        "description": "ID o ka hiʻohiʻona pūnaewele, no ka laʻana anchor-positioning. E ʻimi i nā ID ma webstatus.dev; ʻo ka ID ka ʻāpana hope o ka URL o ka ʻaoʻao hiʻohiʻona."
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Ekosysteemiverkko",
+    "description": "Interaktiivinen verkko siitä, miten projektin osat liittyvät toisiinsa, aliverkkoineen ja vaiheittaisine kierroksineen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Verkon data",
+        "description": "Verkkojen JSON-paketin URL (rakennettu PRAW:ssa, ecosystem-webs.json)."
+      },
+      {
+        "title": "Verkko",
+        "description": "Ensin näytettävän verkon tunnus; main on ekosysteemiverkko."
+      },
+      {
+        "title": "Valittu ruutu",
+        "description": "Ruudun tunnus, joka valitaan verkon avautuessa."
+      },
+      {
+        "title": "Kierros",
+        "description": "Kierroksen tunnus, josta aloitetaan."
+      },
+      {
+        "title": "Aloita luettelonäkymässä",
+        "description": "Näytä verkko sisäkkäisinä luetteloina piirroksen sijaan."
+      },
+      {
+        "title": "Vain piirros",
+        "description": "Näytä vain piirros kuviona: ei otsaketta, kierroksia, tietoja eikä vaihepalkkia."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tarkastelu mittarilla",
+        "description": "Aloita niin, että kaikki ruudut luetaan yhdellä mittarilla.",
+        "options": {
+          "": "Vain yhteydet",
+          "fresh": "Tuoreus",
+          "bus": "Bussikerroin",
+          "impact": "Vaikutus",
+          "evidence": "Perustelu",
+          "parity": "Pariteetti"
+        }
+      }
+    ]
+  }
+}

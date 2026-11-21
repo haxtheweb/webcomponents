@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Cairt radair",
+    "description": "Cairt radair (damhán alla) do mhúnlaí aibíochta agus scóráil gnéithe, mar HEOSAT. Cuimsíonn sí malairt téacs agus tábla sonraí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Ceannteideal na cairte; úsáidtear freisin mar a hainm inrochtana é."
+      },
+      {
+        "title": "Uasscór",
+        "description": "An luach is airde ar an scála."
+      },
+      {
+        "title": "Catagóirí",
+        "description": "Catagóir amháin in aghaidh na líne. Teastaíonn 3 ar a laghad."
+      },
+      {
+        "title": "Scóir",
+        "description": "Uimhreacha scartha le camóga, ceann in aghaidh na catagóire san ord céanna."
+      },
+      {
+        "title": "Spriocscóir",
+        "description": "Uimhreacha scartha le camóga, ceann in aghaidh na catagóire san ord céanna."
+      },
+      {
+        "title": "Taispeáin an eochair",
+        "description": "Taispeáin eochair a ainmníonn na scóir agus na spriocanna."
+      },
+      {
+        "title": "Dlúth",
+        "description": "Cairt níos lú gan lipéid, eochair ná tábla sonraí. Ainligh thar phointe chun a luachanna a fheiceáil."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lipéad scóir",
+        "description": "Lipéad eochrach agus tábla do na scóir."
+      },
+      {
+        "title": "Lipéad sprice",
+        "description": "Lipéad eochrach agus tábla do na spriocanna."
+      }
+    ]
+  }
+}

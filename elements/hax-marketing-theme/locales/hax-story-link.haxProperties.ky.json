@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Окуя баскычы",
+    "description": "hax.cloud'до ырастоонун артындагы окуяны же башка HAX тармак сайтындагы тиешелүү жерди ачкан баскыч"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Кайда алып барат",
+        "options": {
+          "cloud": "hax.cloud, окуя",
+          "learn": "learn.hax.cloud, сабак",
+          "try": "browser.hax.cloud, сынап көрүү",
+          "elements": "webcomponents.hax.cloud, блок",
+          "web": "haxtheweb.org"
+        }
+      },
+      {
+        "title": "Ошол сайттагы дарек (hax.cloud'догу окуя stories/ee450a19 сыяктуу көрүнөт)"
+      },
+      {
+        "title": "Эмне жөнүндө"
+      },
+      {
+        "title": "Кичине чип"
+      },
+      {
+        "title": "Баскычта эмне жөнүндө экенин көрсөтүү"
+      }
+    ]
+  }
+}

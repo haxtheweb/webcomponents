@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Sa'y ojehechaukavéva ijeheguíva",
         "description": "Eguenohẽ sa'y ojehechaukavéva teramoĩ moñe'ẽrãgui ijeheguiete."
+      },
+      {
+        "title": "He'iséva",
+        "description": "Eme'ẽ etiqueta-pe peteĩ sa'y he'iséva. Eheja nandi peteĩ etiqueta neutral-pe g̃uarã.",
+        "options": {
+          "": "Neutral",
+          "brand": "Marca",
+          "success": "Jehupyty",
+          "warning": "Ñemomarandu",
+          "danger": "Peligro"
+        }
       }
     ],
     "advanced": [

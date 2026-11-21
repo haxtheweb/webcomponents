@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Súla",
+    "description": "Ein súla: navn, orðingur, ímynd, litur og hví hon hevur týdning"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Navn"
+      },
+      {
+        "title": "Orðingur"
+      },
+      {
+        "title": "Ímynd"
+      },
+      {
+        "title": "Litur (DDD-navn)"
+      },
+      {
+        "title": "Hvør súla, 1 til 7"
+      },
+      {
+        "title": "Lítið kort"
+      },
+      {
+        "title": "Hvar navnið skal standa"
+      }
+    ]
+  }
+}

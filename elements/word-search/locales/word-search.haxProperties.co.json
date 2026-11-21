@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Parolle piattate",
+    "description": "Una griglia di lettere cù parolle piattate. I studienti toccanu a prima è l'ultima lettera di ogni parolla. Pratica à ricunnosce cumu si scrive un termine, micca ciò ch'ellu significa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Ciò chì si dumanda à i studienti di truvà, mustratu in u capu."
+      },
+      {
+        "title": "Parolle",
+        "description": "E parolle à piattà. Spazii è punteghjatura sò lasciati fora di a griglia. E parolle chì ùn entrenu sò elencate mentre chì mudificate è lasciate fora per i studienti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dimensione di a griglia",
+        "description": "Lettere per latu, da 4 à 16. Lasciate biotu per adattà à a parolla a più longa (finu à 12). Più di 12 scorre di latu nant'à un telefuninu."
+      },
+      {
+        "title": "Parolle in diagunale",
+        "description": "Piattà dinò parolle in diagunale. Più difficiule."
+      },
+      {
+        "title": "Parolle à l'arritrosa",
+        "description": "Piattà dinò parolle scritte à l'arritrosa. Più difficiule."
+      },
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore facultativu per l'etichetta di u capu, a prima lettera scelta è u buttone."
+      }
+    ]
+  }
+}

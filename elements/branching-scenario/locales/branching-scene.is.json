@@ -1,0 +1,14 @@
+{
+  "scene": "Atriði",
+  "ending": "Endir",
+  "goodEnding": "Góður endir",
+  "mixedEnding": "Blandaður endir",
+  "poorEnding": "Slæmur endir",
+  "scoreOf": "Stig {score} af {max}",
+  "scoreOnly": "Stig {score}",
+  "startScene": "Byrjun",
+  "sceneIdLabel": "Auðkenni atriðis",
+  "needsId": "Bættu við auðkenni atriðis svo val geti tengst þessu atriði.",
+  "orphan": "Ekkert val tengist þessu atriði.",
+  "deadLinks": "Þessir tenglar vísa á atriði sem er ekki til:"
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Orðaleit",
+    "description": "Stafanet með földum orðum. Nemendur ýta á fyrsta og síðasta staf hvers orðs. Þjálfar að koma auga á hvernig hugtak er stafsett, ekki hvað það merkir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titill",
+        "description": "Hvað nemendur eru beðnir um að finna, sýnt í hausnum."
+      },
+      {
+        "title": "Orð",
+        "description": "Orðin sem á að fela. Bil og greinarmerki eru skilin eftir úr netinu. Orð sem passa ekki eru talin upp meðan þú breytir og skilin eftir fyrir nemendur."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Stærð nets",
+        "description": "Stafir á hverja hlið, 4 til 16. Skildu eftir autt til að passa lengsta orðið (allt að 12). Meira en 12 skrunast til hliðar í síma."
+      },
+      {
+        "title": "Orð á ská",
+        "description": "Fela líka orð á ská. Erfiðara."
+      },
+      {
+        "title": "Orð afturábak",
+        "description": "Fela líka orð skrifuð afturábak. Erfiðara."
+      },
+      {
+        "title": "Áherslulitur",
+        "description": "Valfrjáls litur fyrir haus-merkið, valinn fyrsta staf og hnappinn."
+      }
+    ]
+  }
+}

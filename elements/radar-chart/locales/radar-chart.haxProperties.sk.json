@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radarový graf",
+    "description": "Radarový (pavučinový) graf pre modely zrelosti a hodnotenie aspektov, napríklad HEOSAT. Obsahuje textovú alternatívu a tabuľku údajov."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Nadpis grafu; používa sa aj ako jeho prístupný názov."
+      },
+      {
+        "title": "Maximálne skóre",
+        "description": "Najvyššia hodnota na stupnici."
+      },
+      {
+        "title": "Kategórie",
+        "description": "Jedna kategória na riadok. Potrebné aspoň 3."
+      },
+      {
+        "title": "Skóre",
+        "description": "Čísla oddelené čiarkou, jedno pre každú kategóriu v rovnakom poradí."
+      },
+      {
+        "title": "Cieľové skóre",
+        "description": "Čísla oddelené čiarkou, jedno pre každú kategóriu v rovnakom poradí."
+      },
+      {
+        "title": "Zobraziť legendu",
+        "description": "Zobraziť legendu s názvami skóre a cieľov."
+      },
+      {
+        "title": "Kompaktný",
+        "description": "Menší graf bez označení, legendy a tabuľky údajov. Hodnoty uvidíte po prejdení myšou na bod."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Označenie skóre",
+        "description": "Označenie skóre v legende a tabuľke."
+      },
+      {
+        "title": "Označenie cieľa",
+        "description": "Označenie cieľov v legende a tabuľke."
+      }
+    ]
+  }
+}

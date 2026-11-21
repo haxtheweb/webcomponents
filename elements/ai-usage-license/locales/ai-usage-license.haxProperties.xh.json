@@ -13,7 +13,10 @@
       {
         "property": "modifier",
         "title": "Isiguquli semidiya",
-        "description": "Isiguquli sommandla wemidiya esingenyanzelekanga. Sichaza uhlobo lwemidiya esebenza kulo le layisensi."
+        "description": "Isiguquli sommandla wemidiya esingenyanzelekanga. Sichaza uhlobo lwemidiya esebenza kulo le layisensi.",
+        "options": {
+          "": "Akukho siguquli"
+        }
       },
       {
         "property": "uri",

@@ -6,6 +6,8 @@
   "faviconDescription": "Chithunzi cha tabu ya msakatuli / chimagwiritsidwa ntchito pa mafoni ngati chizindikiro chaching'ono cha webusayiti",
   "domain": "Domeni",
   "domainDescription": "Domeni ya webusayiti iyi",
+  "sameAs": "Mbiri zina za tsamba ili",
+  "sameAsDescription": "Ulalo umodzi pa mzere uliwonse wopita ku mbiri za tsamba ili kapena za bungwe kwina (GitHub, LinkedIn, YouTube, Mastodon). Makina osakira amazigwiritsa ntchito kulumikiza mbirizo ndi tsamba ili.",
   "language": "Chilankhulo",
   "languageDescription": "Chilankhulo cha tsamba lino. Sakani ndi dzina kapena code, kapena lowetsani code ina monga fr-CA.",
   "googleAnalyticsId": "ID ya Google Analytics",

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Tanbihi",
+    "description": "Dokezo lililoandikwa mahali linapostahili katika maandishi. Linaonyeshwa kama namba, na orodha ya madokezo yenye namba hujijenga yenyewe chini ya ukurasa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokezo",
+        "description": "Maandishi ya tanbihi."
+      },
+      {
+        "title": "Hakuna hakiki",
+        "description": "Usionyeshe dokezo msomaji anapoelea juu ya namba au kuilenga."
+      }
+    ]
+  }
+}

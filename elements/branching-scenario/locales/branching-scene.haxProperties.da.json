@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Scenarie-scene",
+    "description": "Én scene i et forgrenet scenarie. Link hvert valg til en anden scene med # efterfulgt af dens scene-id."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Scene-id",
+        "description": "Det, som valg linker til: et link til # efterfulgt af dette id fører til denne scene. Bogstaver, tal og bindestreger."
+      },
+      {
+        "title": "Overskrift",
+        "description": "Scenens overskrift."
+      },
+      {
+        "title": "Slutning",
+        "description": "Om denne scene afslutter en vej, og hvordan det gik.",
+        "options": {
+          "": "Ikke en slutning",
+          "good": "God slutning",
+          "mixed": "Blandet slutning",
+          "poor": "Dårlig slutning"
+        }
+      },
+      {
+        "title": "Score",
+        "description": "Score for at nå denne slutning. Den højeste slutningsscore i scenariet er maksimum."
+      }
+    ]
+  }
+}

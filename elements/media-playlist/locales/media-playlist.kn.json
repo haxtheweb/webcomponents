@@ -5,5 +5,7 @@
   "editModeLabel": "ಮೀಡಿಯಾ ಪ್ಲೇಪಟ್ಟಿ ಸಂಪಾದನೆ ಮೋಡ್",
   "position": "{total} ರಲ್ಲಿ {current}",
   "previousItem": "ಹಿಂದಿನ ಐಟಂ",
-  "nextItem": "ಮುಂದಿನ ಐಟಂ"
+  "nextItem": "ಮುಂದಿನ ಐಟಂ",
+  "fullScreen": "ಪೂರ್ಣ ಪರದೆ",
+  "exitFullScreen": "ಪೂರ್ಣ ಪರದೆಯಿಂದ ನಿರ್ಗಮಿಸಿ"
 }

@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Preglednik dokumentacije",
+    "description": "Vodič, demonstracija i referenca za web-komponentu, s gumbima za kopiranje HTML-a, uvoza, npm-a i CDN-a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datoteka podataka dokumentacije",
+        "description": "Podaci dokumentacije koji dolaze s elementom (lib/tag.docs.json)."
+      },
+      {
+        "title": "Scenarij vodiča",
+        "description": "Scenarij animacije koji dolazi s elementom (tag.motion.json). Neobavezno."
+      },
+      {
+        "title": "Video vodič",
+        "description": "Kratak videozapis o elementu (YouTube, Vimeo ili video datoteka). Zamjenjuje videozapis iz podataka dokumentacije."
+      },
+      {
+        "title": "Otvori na kartici",
+        "description": "Koja se kartica prikazuje prva.",
+        "options": {
+          "motion": "Vodič",
+          "video": "Videozapis",
+          "demo": "Demo",
+          "docs": "Dokumentacija",
+          "schema": "Shema"
+        }
+      },
+      {
+        "title": "Automatski pokreni vodič",
+        "description": "Pokreni vodič čim se preglednik prikaže. Zanemaruje se kad čitatelj preferira smanjeno kretanje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema vodiča",
+        "description": "Za elemente s više vodiča, koju temu otvoriti prvu (npr. add-blocks). Ostavite prazno za glavnu."
+      },
+      {
+        "title": "Poveznica na demonstraciju uživo",
+        "description": "Kamo vodi gumb Otvori izvor demonstracije. Zadano je mapa demo u repozitoriju."
+      },
+      {
+        "title": "Poveznica na dokumentaciju",
+        "description": "Kamo vodi gumb za punu dokumentaciju, npr. odgovarajuća stranica Learn HAX."
+      }
+    ]
+  }
+}

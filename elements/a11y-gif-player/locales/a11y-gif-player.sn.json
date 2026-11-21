@@ -2,5 +2,9 @@
   "toggleAnimation": "Batidza/dzima mufananidzo unofamba",
   "info": "ruzivo",
   "image": "Mufananidzo",
-  "animatedGif": "GIF inofamba"
+  "animatedGif": "GIF inofamba",
+  "playAnimation": "Tamba animation",
+  "pauseAnimation": "Mbomira animation",
+  "showDescription": "Ratidza tsananguro",
+  "hideDescription": "Viga tsananguro"
 }

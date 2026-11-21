@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Ramstis",
+    "description": "Ramstis: pavadinimas, frazė, piktograma, spalva ir kodėl jis svarbus"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pavadinimas"
+      },
+      {
+        "title": "Frazė"
+      },
+      {
+        "title": "Piktograma"
+      },
+      {
+        "title": "Spalva (DDD pavadinimas)"
+      },
+      {
+        "title": "Kuris ramstis, nuo 1 iki 7"
+      },
+      {
+        "title": "Maža kortelė"
+      },
+      {
+        "title": "Kur rodomas pavadinimas"
+      }
+    ]
+  }
+}

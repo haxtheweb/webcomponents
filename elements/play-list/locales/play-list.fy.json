@@ -9,5 +9,7 @@
   "slidePages": "Diasiden",
   "goToSlide": "Gean nei dia {number}",
   "slides": "Dia's",
-  "position": "{number} fan {total}"
+  "position": "{number} fan {total}",
+  "fullScreen": "Folslein skerm",
+  "exitFullScreen": "Folslein skerm ferlitte"
 }

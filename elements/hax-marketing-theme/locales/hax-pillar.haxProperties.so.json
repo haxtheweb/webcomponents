@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Tiir",
+    "description": "Tiir: magac, weedh, astaan, midab iyo sababta uu muhiim u yahay"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Magac"
+      },
+      {
+        "title": "Weedh"
+      },
+      {
+        "title": "Astaan"
+      },
+      {
+        "title": "Midab (magaca DDD)"
+      },
+      {
+        "title": "Tiirkee, 1 ilaa 7"
+      },
+      {
+        "title": "Kaar yar"
+      },
+      {
+        "title": "Meesha magacu galayo"
+      }
+    ]
+  }
+}

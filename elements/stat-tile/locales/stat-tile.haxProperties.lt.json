@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Statistikos plytelė",
+    "description": "Vienas svarbus skaičius su etikete ir tuo, kaip jis pasikeitė. Kelias sudėkite į tinklelį, kad gautumėte valdymo skydelio eilutę."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketė",
+        "description": "Ką matuoja skaičius."
+      },
+      {
+        "title": "Reikšmė",
+        "description": "Skaičius. Paprastas skaičius suskirstomas pagal puslapio kalbą; visa kita rodoma taip, kaip parašyta."
+      },
+      {
+        "title": "Pokytis",
+        "description": "Kaip jis pasikeitė, žodžiais, pvz., 6% šį semestrą."
+      },
+      {
+        "title": "Kryptis",
+        "description": "Ar pokytis didėjantis, ar mažėjantis.",
+        "options": {
+          "": "Nėra",
+          "up": "Aukštyn",
+          "down": "Žemyn"
+        }
+      }
+    ]
+  }
+}

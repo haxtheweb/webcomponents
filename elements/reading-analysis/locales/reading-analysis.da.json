@@ -60,6 +60,8 @@
   "flagsFound": "{correct} af {total} fundet",
   "toRethink": "{count} at genoverveje",
   "notEvidence": "ikke belæg for dette flag",
+  "isEvidence": "belæg for dette flag",
+  "readingKeys": "Brug piletasterne til at flytte fra én {unit} til den næste.",
   "markAnswers": "Markér svar",
   "doneMarking": "Færdig med at markere svar",
   "editHint": "Redigér teksten nedenfor. Brug Markér svar i blokmenuen til at vælge, hvor hvert flag hører hjemme.",

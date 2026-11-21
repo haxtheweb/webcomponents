@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Osemsmerovka",
+    "description": "Mriežka písmen so skrytými slovami. Študenti ťuknú na prvé a posledné písmeno každého slova. Precvičuje rozpoznávanie, ako sa pojem píše, nie čo znamená."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Čo majú študenti nájsť, zobrazené v záhlaví."
+      },
+      {
+        "title": "Slová",
+        "description": "Slová na skrytie. Medzery a interpunkcia sa z mriežky vynechajú. Slová, ktoré sa nezmestia, sa počas úprav vypíšu a pre študentov vynechajú."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Veľkosť mriežky",
+        "description": "Písmen na stranu, 4 až 16. Ak chcete prispôsobiť najdlhšiemu slovu (do 12), nechajte prázdne. Viac ako 12 sa na telefóne posúva do strany."
+      },
+      {
+        "title": "Uhlopriečne slová",
+        "description": "Skrývať slová aj uhlopriečne. Ťažšie."
+      },
+      {
+        "title": "Slová odzadu",
+        "description": "Skrývať aj slová napísané odzadu. Ťažšie."
+      },
+      {
+        "title": "Farba zvýraznenia",
+        "description": "Voliteľná farba štítka v záhlaví, zvoleného prvého písmena a tlačidla."
+      }
+    ]
+  }
+}

@@ -5,5 +5,7 @@
   "editModeLabel": "Mod de editare a listei de redare media",
   "position": "{current} din {total}",
   "previousItem": "Elementul anterior",
-  "nextItem": "Elementul următor"
+  "nextItem": "Elementul următor",
+  "fullScreen": "Ecran complet",
+  "exitFullScreen": "Ieșiți din ecranul complet"
 }

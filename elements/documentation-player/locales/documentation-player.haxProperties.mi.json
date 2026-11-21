@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Kaipūrei tuhinga",
+    "description": "He aratohu, he whakaaturanga me te tohutoro mō tētahi wāhanga tukutuku, me ngā pātene tārua mō te HTML, te kawemai, npm me CDN."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kōnae raraunga tuhinga",
+        "description": "Ngā raraunga tuhinga ka tukuna me te huānga (lib/tag.docs.json)."
+      },
+      {
+        "title": "Papa kōrero aratohu",
+        "description": "Te papa kōrero nekehanga ka tukuna me te huānga (tag.motion.json). Kōwhiringa."
+      },
+      {
+        "title": "Akoranga ataata",
+        "description": "He ataata poto mō te huānga (YouTube, Vimeo, he kōnae ataata rānei). Ka whakakapi i te ataata i ngā raraunga tuhinga."
+      },
+      {
+        "title": "Whakatuwhera ki te ripa",
+        "description": "Ko tēhea ripa ka whakaaturia tuatahi.",
+        "options": {
+          "motion": "Aratohu",
+          "video": "Ataata",
+          "demo": "Whakaaturanga",
+          "docs": "Tuhinga",
+          "schema": "Aronuinga"
+        }
+      },
+      {
+        "title": "Pūrei aunoa i te aratohu",
+        "description": "Tīmatahia te aratohu ina puta te kaipūrei. Ka wareware mēnā he pai ake ki te kaipānui te nekehanga iti."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Kaupapa aratohu",
+        "description": "Mō ngā huānga he maha ō rātou aratohu, ko tēhea kaupapa hei whakatuwhera tuatahi (hei tauira add-blocks). Waiho kia wātea mō te mea matua."
+      },
+      {
+        "title": "Hono whakaaturanga ora",
+        "description": "Te wāhi e haere ai te pātene “Whakatuwhera pūtake whakaaturanga”. Ko te taunoa ko te kōpaki whakaaturanga i te pūtahi."
+      },
+      {
+        "title": "Hono tuhinga",
+        "description": "Te wāhi e haere ai te pātene tuhinga katoa, hei tauira te whārangi Learn HAX e hāngai ana."
+      }
+    ]
+  }
+}

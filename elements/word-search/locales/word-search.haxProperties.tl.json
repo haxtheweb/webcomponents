@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Word search",
+    "description": "Isang grid ng mga titik na may nakatagong salita. Tina-tap ng mga mag-aaral ang una at huling titik ng bawat salita. Nagsasanay sa pagpansin kung paano binabaybay ang isang termino, hindi kung ano ang kahulugan nito."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pamagat",
+        "description": "Kung ano ang ipinapahanap sa mga mag-aaral, ipinapakita sa header."
+      },
+      {
+        "title": "Mga salita",
+        "description": "Ang mga salitang itatago. Hindi isinasama sa grid ang mga espasyo at bantas. Inililista habang nag-e-edit ka ang mga salitang hindi kasya at hindi isinasama para sa mga mag-aaral."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Laki ng grid",
+        "description": "Mga titik bawat gilid, 4 hanggang 16. Iwanang blangko para magkasya sa pinakamahabang salita (hanggang 12). Kapag higit sa 12, nag-i-scroll patagilid sa telepono."
+      },
+      {
+        "title": "Mga pahilis na salita",
+        "description": "Magtago rin ng mga salitang pahilis. Mas mahirap."
+      },
+      {
+        "title": "Mga pabaligtad na salita",
+        "description": "Magtago rin ng mga salitang nakasulat nang pabaligtad. Mas mahirap."
+      },
+      {
+        "title": "Kulay ng accent",
+        "description": "Opsyonal na kulay para sa header chip, napiling unang titik at button."
+      }
+    ]
+  }
+}

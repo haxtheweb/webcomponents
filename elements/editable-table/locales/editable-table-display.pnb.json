@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV وجوں کاپی کرو۔",
   "printTable": "ٹیبل پرنٹ کرو",
   "selectColumn": "کالم چݨو",
-  "dataTable": "ڈیٹا · ٹیبل"
+  "dataTable": "ڈیٹا · ٹیبل",
+  "filterStatus": "{total} وچوں {shown} قطاراں وکھائیاں، {column} مطابق فلٹر: {text}",
+  "columnNumber": "کالم {column}",
+  "clearFilter": "فلٹر ہٹاؤ"
 }

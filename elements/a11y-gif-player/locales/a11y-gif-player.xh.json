@@ -2,5 +2,9 @@
   "toggleAnimation": "Tshintsha upopayi",
   "info": "ulwazi",
   "image": "Umfanekiso",
-  "animatedGif": "I-GIF eshukumayo"
+  "animatedGif": "I-GIF eshukumayo",
+  "playAnimation": "Dlala oopopayi",
+  "pauseAnimation": "Misa okwethutyana oopopayi",
+  "showDescription": "Bonisa inkcazelo",
+  "hideDescription": "Fihla inkcazelo"
 }

@@ -60,6 +60,8 @@
   "flagsFound": "Nalezeno {correct} z {total}",
   "toRethink": "K přehodnocení: {count}",
   "notEvidence": "není důkazem pro tuto vlaječku",
+  "isEvidence": "doklad pro toto označení",
+  "readingKeys": "Šipkami přecházíte z jedné {unit} na další.",
   "markAnswers": "Označit odpovědi",
   "doneMarking": "Označování odpovědí dokončeno",
   "editHint": "Upravte text níže. Pomocí Označit odpovědi v nabídce bloku zvolte, kam patří každá vlaječka.",

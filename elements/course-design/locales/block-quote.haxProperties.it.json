@@ -20,6 +20,12 @@
         "title": "Immagine",
         "description": "Immagine mostrata con la citazione."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Con cornice",
+        "description": "Mostra la citazione nella cornice condivisa dei blocchi, con un'icona e un'etichetta sopra, così da abbinarsi a note e schede di istruzioni."
+      }
     ]
   }
 }

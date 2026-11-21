@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Whakaaturanga tauwhāiti",
+    "description": "Kotahi te whakaaturanga o tētahi tauwhāiti peka. Honoa ia kōwhiringa ki tētahi atu whakaaturanga mā te # me tōna ID whakaaturanga i muri."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID whakaaturanga",
+        "description": "Te mea e hono ai ngā kōwhiringa: ko tētahi hono ki te # me tēnei ID i muri ka arahi ki tēnei whakaaturanga. Ngā pū, ngā tau me ngā tohuhono."
+      },
+      {
+        "title": "Upoko",
+        "description": "Te upoko o te whakaaturanga."
+      },
+      {
+        "title": "Mutunga",
+        "description": "Mēnā ka whakamutu tēnei whakaaturanga i tētahi ara, me te āhua o tōna mutunga.",
+        "options": {
+          "": "Ehara i te mutunga",
+          "good": "Mutunga pai",
+          "mixed": "Mutunga kōnatunatu",
+          "poor": "Mutunga kino"
+        }
+      },
+      {
+        "title": "Kaute",
+        "description": "Te kaute mō te tae ki tēnei mutunga. Ko te kaute mutunga teitei rawa i te tauwhāiti te mōrahi."
+      }
+    ]
+  }
+}

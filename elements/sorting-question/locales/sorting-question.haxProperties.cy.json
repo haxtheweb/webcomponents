@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Atebion",
+        "description": "Mae trefn yr atebion yn diffinio'r dilyniant cywir.",
+        "options": {
+          "": "Rhestr",
+          "cards": "Cardiau delwedd"
+        }
+      },
+      {
+        "title": "Atebion",
         "description": "Mae trefn yr atebion yn diffinio'r dilyniant cywir."
       }
     ],

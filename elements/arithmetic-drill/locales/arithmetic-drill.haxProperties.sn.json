@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Kudzidzira masvomhu",
+    "description": "Mibvunzo mipfupi yemasvomhu inogadzirwa ine mhinduro ipapo ipapo. Sarudza maitirwo nehuwandu hwenhamba; kuita kwese kutsva."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Musoro",
+        "description": "Zita rekudzidzira uku, rinoratidzwa pamusoro pako."
+      },
+      {
+        "title": "Maitirwo",
+        "description": "Mhando dzemibvunzo dzinobvunzwa. Vadzidzi vanogona kudzima chero chimwe chazvo vasati vatanga.",
+        "options": {
+          "add": "Kuwedzera",
+          "subtract": "Kubvisa",
+          "multiply": "Kuwanza",
+          "divide": "Kugovanisa",
+          "add subtract": "Kuwedzera nekubvisa",
+          "multiply divide": "Kuwanza nekugovanisa",
+          "add multiply": "Kuwedzera nekuwanza",
+          "add divide": "Kuwedzera nekugovanisa",
+          "subtract multiply": "Kubvisa nekuwanza",
+          "subtract divide": "Kubvisa nekugovanisa",
+          "add subtract multiply": "Kuwedzera, kubvisa nekuwanza",
+          "add subtract divide": "Kuwedzera, kubvisa nekugovanisa",
+          "add multiply divide": "Kuwedzera, kuwanza nekugovanisa",
+          "subtract multiply divide": "Kubvisa, kuwanza nekugovanisa",
+          "add subtract multiply divide": "Zvese zvina"
+        }
+      },
+      {
+        "title": "Nhamba diki",
+        "description": "Nhamba diki inoshandiswa mumubvunzo. Nhamba dzakazara, 0 kana kupfuura."
+      },
+      {
+        "title": "Nhamba huru",
+        "description": "Nhamba huru inoshandiswa mumubvunzo. Mhinduro dzekugovanisa nevagovanisi zvinoramba zviri muhuwandu uhu."
+      },
+      {
+        "title": "Huwandu hwemibvunzo",
+        "description": "Mibvunzo mingani iri mukuita kumwe (1 kusvika 100)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Muganhu wenguva",
+        "description": "Masekondi anobvumidzwa pakuita kwese. 0 zvinoreva kuti hapana nguva, ndizvo zvakajairwa: kudzidzira kune nguva kunokundisa vadzidzi vanoda nguva yakawanda. Kana yaiswa, vadzidzi vanogona kuzvidzimira nguva."
+      },
+      {
+        "title": "Ruvara rwekusimbisa",
+        "description": "Ruvara rwechip yemusoro nemabhatani. Siya pasina chinhu kuti utevere theme."
+      }
+    ]
+  }
+}

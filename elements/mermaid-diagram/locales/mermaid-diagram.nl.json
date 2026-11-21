@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "stroomdiagram",
+  "sequence": "sequentie",
+  "source": "Bron",
+  "textAlternative": "Tekstalternatief",
+  "present": "Presenteren",
+  "exitPresent": "Presentatie afsluiten",
+  "loading": "Het diagram wordt geladen",
+  "empty": "Nog niets om te tekenen. Voeg de diagrambron toe.",
+  "error": "Fout",
+  "parseError": "Dit diagram kon niet worden getekend. Controleer de bron.",
+  "loadError": "De diagrambibliotheek kon niet worden geladen.",
+  "srcError": "Het diagrambestand kon niet worden geladen.",
+  "decision": "beslissing",
+  "end": "einde",
+  "goTo": "ga naar {target}",
+  "ifGoTo": "als {label}, ga naar {target}",
+  "describedBySource": "Diagram beschreven door de bron.",
+  "scrollable": "Diagram, scrollbaar"
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Cás craobhach",
+    "description": "Scéal ina dtreoraíonn gach rogha go radharc agus deireadh difriúil. Is féidir le foghlaimeoirí dul céim siar agus cosáin eile a thriail; socraíonn an deireadh a shroichtear an scór."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teideal",
+        "description": "Ainm an cháis, taispeánta ina cheanntásc."
+      },
+      {
+        "title": "Radharc tosaigh",
+        "description": "Aitheantas an radhairc ina dtosaíonn foghlaimeoirí. Fág folamh chun tosú ag an gcéad radharc."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Dath aibhsithe",
+        "description": "Dath roghnach do shlis an cheanntáisc, na cnaipí agus imeall rogha."
+      }
+    ]
+  }
+}

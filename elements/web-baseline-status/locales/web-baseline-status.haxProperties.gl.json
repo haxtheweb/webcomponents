@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Estado de Baseline",
+    "description": "Mostrar o estado de compatibilidade Baseline cos navegadores dunha función da plataforma web."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID da función",
+        "description": "ID da función web, por exemplo anchor-positioning. Atopa os ID en webstatus.dev; o ID é a última parte do URL da páxina dunha función."
+      }
+    ]
+  }
+}

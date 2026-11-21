@@ -2,5 +2,9 @@
   "toggleAnimation": "Anaashamaa jijjiiri",
   "info": "odeeffannoo",
   "image": "Suuraa",
-  "animatedGif": "GIF sochooftu"
+  "animatedGif": "GIF sochooftu",
+  "playAnimation": "Anaanimeeshinii taphachiisi",
+  "pauseAnimation": "Anaanimeeshinii dhaabi",
+  "showDescription": "Ibsa agarsiisi",
+  "hideDescription": "Ibsa dhoksi"
 }

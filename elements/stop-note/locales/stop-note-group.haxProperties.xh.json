@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Iqela lamanqaku okuyeka",
+    "description": "Pakisha amanqaku okuyeka amaninzi kwibhloko enye ebonisa inqaku elinye ngexesha, njenge-Iingcebiso okanye Yintoni entsha. Amakhadi emiyalelo, amanqaku asecaleni nezicatshulwa ezinesakhelo zingapakishwa nazo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ilebhile",
+        "description": "Igama leqela elibhengezwa ngabafundi besikrini, njenge-Iingcebiso okanye Yintoni entsha."
+      },
+      {
+        "title": "Amanqaku",
+        "description": "Amanqaku okuyeka"
+      }
+    ]
+  }
+}

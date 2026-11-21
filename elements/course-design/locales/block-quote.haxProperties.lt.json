@@ -20,6 +20,12 @@
         "title": "Vaizdas",
         "description": "Vaizdas, rodomas su citata."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Įrėmintas",
+        "description": "Rodyti citatą bendrame blokų rėmelyje su piktograma ir etikete virš jos, kad ji derėtų su pastabomis ir instrukcijų kortelėmis."
+      }
     ]
   }
 }

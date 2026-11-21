@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Lepili kiʻi",
     "description": "Mea lepili kiʻi e kaha ai i nā waiwai media i loko o ka ʻike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Helu kiʻi",
+        "description": "Helu a i ʻole lepili pōkole no ke kiʻi, e laʻa 1.3"
+      },
+      {
+        "title": "Wehewehe",
+        "description": "Wehewehe pōkole o ke kiʻi"
+      }
+    ]
   }
 }

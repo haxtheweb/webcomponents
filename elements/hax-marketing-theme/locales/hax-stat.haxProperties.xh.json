@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Inani",
+    "description": "Inani elibala liye phezulu, nelebhile nekhonkco eliya kwibali lalo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inani ekufuneka kubalwe kulo"
+      },
+      {
+        "title": "Ngaphambi kwenani"
+      },
+      {
+        "title": "Emva kwenani"
+      },
+      {
+        "title": "Amagama endaweni yenani"
+      },
+      {
+        "title": "Oko likubalayo"
+      },
+      {
+        "title": "Idilesi yebali kwi-hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

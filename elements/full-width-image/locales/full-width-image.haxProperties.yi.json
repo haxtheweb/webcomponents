@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "הינטערגרונט־בילד."
+        "description": "הינטערגרונט־בילד.",
+        "title": "בילד"
       },
       {
         "property": "caption",
-        "description": "טעקסט־קעפּל."
+        "description": "טעקסט־קעפּל.",
+        "title": "אונטערשריפֿט"
       }
     ]
   }

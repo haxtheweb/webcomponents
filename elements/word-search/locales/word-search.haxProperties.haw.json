@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Huli hua ʻōlelo",
+    "description": "He mānoanoa hua palapala me nā hua ʻōlelo hūnā. Paʻi nā haumāna i ka hua palapala mua a me ka hope o kēlā me kēia hua ʻōlelo. Hoʻomaʻamaʻa i ka ʻike ʻana i ka pela ʻana o kekahi huaʻōlelo, ʻaʻole kona manaʻo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Poʻo inoa",
+        "description": "Ka mea i noi ʻia i nā haumāna e loaʻa, hōʻike ʻia ma ke poʻo."
+      },
+      {
+        "title": "Nā hua ʻōlelo",
+        "description": "Nā hua ʻōlelo e hūnā ai. Waiho ʻia nā kikowā a me nā kaha kiko ma waho o ka mānoanoa. Papa inoa ʻia nā hua ʻōlelo komo ʻole ʻoiai ʻoe e hoʻoponopono ana a waiho ʻia no nā haumāna."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Nui mānoanoa",
+        "description": "Nā hua palapala ma kēlā me kēia ʻaoʻao, 4 a i 16. E waiho hakahaka e kūpono i ka hua ʻōlelo lōʻihi loa (a hiki i 12). ʻOi aku ma mua o 12, kaʻa ʻaoʻao ma ke kelepona."
+      },
+      {
+        "title": "Nā hua ʻōlelo hiō",
+        "description": "Hūnā pū i nā hua ʻōlelo hiō. ʻOi aku ka paʻakikī."
+      },
+      {
+        "title": "Nā hua ʻōlelo i hope",
+        "description": "Hūnā pū i nā hua ʻōlelo i kākau ʻia i hope. ʻOi aku ka paʻakikī."
+      },
+      {
+        "title": "Waihoʻoluʻu koʻikoʻi",
+        "description": "Waihoʻoluʻu koho no ka ʻāpana poʻo, ka hua palapala mua i koho ʻia a me ke pihi."
+      }
+    ]
+  }
+}

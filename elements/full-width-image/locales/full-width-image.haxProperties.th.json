@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "รูปภาพพื้นหลัง"
+        "description": "รูปภาพพื้นหลัง",
+        "title": "รูปภาพ"
       },
       {
         "property": "caption",
-        "description": "หัวข้อข้อความ"
+        "description": "หัวข้อข้อความ",
+        "title": "คำบรรยายภาพ"
       }
     ]
   }

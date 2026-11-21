@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "He kiʻi nui, GIF a i ʻole wikiō me ke poʻo a me ke kikokikona ma luna ona, kau ʻia ma nā wahi a pau o ka ʻaoʻao."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kiʻi a i ʻole wikiō",
+        "description": "He waihona JPG, PNG, WebP, GIF, MP4 a i ʻole WebM."
+      },
+      {
+        "title": "Kikokikona pani",
+        "description": "E wehewehe i ke kiʻi. E waiho hakahaka inā he hoʻonani wale nō."
+      },
+      {
+        "title": "Poʻo",
+        "description": "Poʻo i hōʻike ʻia ma luna o ka media. E waiho hakahaka no ka ʻole."
+      },
+      {
+        "title": "Kikokikona",
+        "description": "Kikokikona i hōʻike ʻia ma lalo o ke poʻo, ma luna o ka media."
+      },
+      {
+        "title": "Laulā piha",
+        "description": "E holo mai kekahi lihi a i kekahi lihi ma kahi o ka noho ʻana ma ke kolamu ʻike."
+      },
+      {
+        "title": "Kiʻekiʻe",
+        "options": {
+          "tall": "Kiʻekiʻe",
+          "medium": "Waena",
+          "short": "Pōkole"
+        }
+      },
+      {
+        "title": "Hoʻopahu kiʻi",
+        "description": "Pehea e noho ai ke kiʻi ma kēlā me kēia nui pakuhi"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Mae",
+        "description": "Waihoʻoluʻu i uhi ʻia ma luna o ka media. Me ke poʻo a i ʻole kikokikona aia mau ia, i hiki ke heluhelu ʻia ke kikokikona.",
+        "options": {
+          "blue": "Uliuli",
+          "bottom": "Pōʻeleʻele ma lalo",
+          "none": "ʻAʻohe"
+        }
+      },
+      {
+        "title": "Kūlana kikokikona",
+        "options": {
+          "bottom": "Lalo",
+          "middle": "Waena"
+        }
+      },
+      {
+        "title": "Kiko kikowaena ākeʻa",
+        "description": "Ka ʻāpana o ke kiʻi e noho ʻike ʻia ke ʻoki ʻia, mai 0 (hema) a i 100 (ʻākau)."
+      },
+      {
+        "title": "Kiko kikowaena i lalo",
+        "description": "Ka ʻāpana o ke kiʻi e noho ʻike ʻia ke ʻoki ʻia, mai 0 (luna) a i 100 (lalo)."
+      }
+    ]
+  }
+}

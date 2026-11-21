@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Barbaacha jechaa",
+    "description": "Kaartaa qubeewwanii jechoota dhokataa qabu. Barattoonni qubee jalqabaa fi dhumaa jecha tokkoon tokkoon tuqu. Jechi akkamitti akka barreeffamu adda baasuu shaakala, hiika isaa miti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mata-duree",
+        "description": "Waan barattoonni akka argatan gaafataman, mata-duree keessatti kan mul'atu."
+      },
+      {
+        "title": "Jechoota",
+        "description": "Jechoota dhokfaman. Iddoowwan duwwaa fi mallattooleen sirna barreeffamaa kaartaa keessaa hafu. Jechoonni hin galle yeroo gulaaltu tarreeffamu, barattootaaf immoo hafu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hamma kaartaa",
+        "description": "Qubeewwan gama tokkoon, 4 hanga 16. Jecha dheeraa (hanga 12) waliin walsimsiisuuf duwwaa dhiisi. 12 ol bilbila irratti gara cinaatti socho'a."
+      },
+      {
+        "title": "Jechoota jallaa",
+        "description": "Jechoota jallaanis dhoksi. Caalaa ulfaataa."
+      },
+      {
+        "title": "Jechoota duubaan",
+        "description": "Jechoota duubaan barreeffamanis dhoksi. Caalaa ulfaataa."
+      },
+      {
+        "title": "Halluu calaqqee",
+        "description": "Halluu filannoo mallattoo mata-duree, qubee jalqabaa filatamee fi qabduutiif."
+      }
+    ]
+  }
+}

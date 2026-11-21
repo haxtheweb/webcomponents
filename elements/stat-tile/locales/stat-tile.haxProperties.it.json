@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Riquadro statistico",
+    "description": "Un numero che conta, con la sua etichetta e come è cambiato. Mettine diversi in una griglia per una riga di dashboard."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etichetta",
+        "description": "Cosa misura il numero."
+      },
+      {
+        "title": "Valore",
+        "description": "Il numero. Un numero semplice viene formattato secondo la lingua della pagina; qualsiasi altra cosa appare così come scritta."
+      },
+      {
+        "title": "Variazione",
+        "description": "Come è cambiato, a parole, ad esempio 6% questo semestre."
+      },
+      {
+        "title": "Direzione",
+        "description": "Se la variazione è in aumento o in diminuzione.",
+        "options": {
+          "": "Nessuno",
+          "up": "Su",
+          "down": "Giù"
+        }
+      }
+    ]
+  }
+}

@@ -8,5 +8,9 @@
   "theme": "Загвар",
   "palette": "Палитр",
   "cancel": "Цуцлах",
-  "openAppearanceSettings": "Гадаад төрхийн тохиргоог нээх"
+  "openAppearanceSettings": "Гадаад төрхийн тохиргоог нээх",
+  "designSystem": "Дизайн систем",
+  "designSystemDefault": "DDD (үндсэн)",
+  "designSystemThemeDefault": "{name} (загварын үндсэн)",
+  "designSystemHelp": "Өнгө, үсгийн хэв, булан, нягтрал. Байршлыг загвар шийдсээр байна."
 }

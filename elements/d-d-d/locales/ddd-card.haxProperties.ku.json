@@ -52,6 +52,20 @@
           "_top": "Pencereya jorîn - _top",
           "_parent": "Pencereya dêûbav - _parent"
         }
+      },
+      {
+        "title": "Bê tîr",
+        "description": "Tîra bişkokê veşêre."
+      },
+      {
+        "title": "Girêdan: armanc",
+        "description": "Girêdan li ku vebe.",
+        "options": {
+          "": "Heman pencere",
+          "_blank": "Pencereya nû - _blank",
+          "_top": "Pencereya jorîn - _top",
+          "_parent": "Pencereya dêûbav - _parent"
+        }
       }
     ],
     "developer": [

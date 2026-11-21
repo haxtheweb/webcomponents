@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Igwe ndeda",
     "description": "Ederede na-ede onwe ya otu mkpụrụedemede n'otu oge."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ederede",
+        "description": "Ederede a ga-apị mgbe ihe ahụ kpụgharịrị bata n'anya."
+      },
+      {
+        "title": "Na-apị",
+        "description": "Gosi cursor na-amụ amụ; ihe ahụ na-etọ nke a ka ọ na-apị."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Igbu oge",
+        "description": "Millisekọnd a ga-echere tupu ịpị amalite."
+      },
+      {
+        "title": "Ogologo oge cursor",
+        "description": "Millisekọnd cursor ahụ na-aga n'ihu na-amụ amụ mgbe a pịchara ederede ahụ."
+      },
+      {
+        "title": "Ọsọ",
+        "description": "Millisekọnd kwa mkpụrụedemede; ọnụọgụ dị ala na-apị ngwa ngwa."
+      }
+    ]
   }
 }

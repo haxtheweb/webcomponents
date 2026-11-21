@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note grupė",
+    "description": "Sudėkite kelias stop note pastabas į vieną bloką, kuris rodo po vieną pastabą, pvz., Patarimai ar Kas naujo. Kartu galima sudėti instrukcijų korteles, šonines pastabas ir įrėmintas citatas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiketė",
+        "description": "Grupės pavadinimas, kurį skelbia ekrano skaitytuvai, pvz., Patarimai ar Kas naujo."
+      },
+      {
+        "title": "Pastabos",
+        "description": "Grupės stop note pastabos. Taip pat galima pridėti instrukcijų korteles, šonines pastabas ir įrėmintas citatas."
+      }
+    ]
+  }
+}

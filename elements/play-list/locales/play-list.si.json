@@ -9,5 +9,7 @@
   "slidePages": "ස්ලයිඩ පිටු",
   "goToSlide": "ස්ලයිඩය {number} වෙත යන්න",
   "slides": "ස්ලයිඩ",
-  "position": "{total} න් {number}"
+  "position": "{total} න් {number}",
+  "fullScreen": "පූර්ණ තිරය",
+  "exitFullScreen": "පූර්ණ තිරයෙන් ඉවත් වන්න"
 }

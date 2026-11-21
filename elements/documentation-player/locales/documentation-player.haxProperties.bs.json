@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Plejer dokumentacije",
+    "description": "Vodič, demonstracija i referenca za web komponentu, s dugmadima za kopiranje HTML-a, importa, npm-a i CDN-a."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datoteka s podacima dokumentacije",
+        "description": "Podaci dokumentacije koji dolaze s elementom (lib/tag.docs.json)."
+      },
+      {
+        "title": "Scenarij vodiča",
+        "description": "Scenarij animacije koji dolazi s elementom (tag.motion.json). Opcionalno."
+      },
+      {
+        "title": "Video tutorijal",
+        "description": "Kratak video o elementu (YouTube, Vimeo ili video datoteka). Zamjenjuje video iz podataka dokumentacije."
+      },
+      {
+        "title": "Otvori na kartici",
+        "description": "Koja se kartica prva prikazuje.",
+        "options": {
+          "motion": "Vodič",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentacija",
+          "schema": "Shema"
+        }
+      },
+      {
+        "title": "Automatski pokreni vodič",
+        "description": "Pokreni vodič čim se plejer prikaže. Zanemaruje se kad čitalac preferira smanjeno kretanje."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tema vodiča",
+        "description": "Za elemente s više vodiča, koja se tema prva otvara (na primjer add-blocks). Ostavite prazno za glavni."
+      },
+      {
+        "title": "Link na demonstraciju uživo",
+        "description": "Kuda vodi dugme Otvori izvor demonstracije. Zadano je demo folder u repozitoriju."
+      },
+      {
+        "title": "Link na dokumentaciju",
+        "description": "Kuda vodi dugme pune dokumentacije, na primjer odgovarajuća Learn HAX stranica."
+      }
+    ]
+  }
+}

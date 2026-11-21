@@ -1,0 +1,14 @@
+{
+  "scene": "Eszena",
+  "ending": "Amaiera",
+  "goodEnding": "Amaiera ona",
+  "mixedEnding": "Amaiera mistoa",
+  "poorEnding": "Amaiera txarra",
+  "scoreOf": "Puntuazioa: {score} / {max}",
+  "scoreOnly": "Puntuazioa: {score}",
+  "startScene": "Hasiera",
+  "sceneIdLabel": "Eszenaren IDa",
+  "needsId": "Gehitu eszena-ID bat aukerek eszena honetara lotu ahal izateko.",
+  "orphan": "Ez dago eszena honetara lotzen den aukerarik.",
+  "deadLinks": "Esteka hauek existitzen ez den eszena batera daramate:"
+}

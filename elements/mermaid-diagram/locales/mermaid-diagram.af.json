@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagram",
+  "flowchart": "vloeidiagram",
+  "sequence": "volgorde",
+  "source": "Bron",
+  "textAlternative": "Teksalternatief",
+  "present": "Bied aan",
+  "exitPresent": "Verlaat aanbieding",
+  "loading": "Laai tans die diagram",
+  "empty": "Nog niks om te teken nie. Voeg die diagrambron by.",
+  "error": "Fout",
+  "parseError": "Hierdie diagram kon nie geteken word nie. Kontroleer die bron.",
+  "loadError": "Die diagrambiblioteek kon nie gelaai word nie.",
+  "srcError": "Die diagramlêer kon nie gelaai word nie.",
+  "decision": "besluit",
+  "end": "einde",
+  "goTo": "gaan na {target}",
+  "ifGoTo": "as {label}, gaan na {target}",
+  "describedBySource": "Diagram beskryf deur sy bron.",
+  "scrollable": "Diagram, rolbaar"
+}

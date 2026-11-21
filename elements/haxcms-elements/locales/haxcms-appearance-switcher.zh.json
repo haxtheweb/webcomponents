@@ -1,0 +1,8 @@
+{
+  "theme": "主题",
+  "palette": "调色板",
+  "themeDefault": "主题默认",
+  "designSystem": "设计系统",
+  "designSystemDefault": "DDD（默认）",
+  "designSystemUnavailable": "此主题保留其自身的设计系统"
+}

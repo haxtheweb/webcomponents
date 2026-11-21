@@ -13,6 +13,14 @@
       {
         "property": "answers",
         "title": "Svör",
+        "description": "Röð svaranna skilgreinir réttu röðina.",
+        "options": {
+          "": "Listi",
+          "cards": "Myndaspjöld"
+        }
+      },
+      {
+        "title": "Svör",
         "description": "Röð svaranna skilgreinir réttu röðina."
       }
     ],

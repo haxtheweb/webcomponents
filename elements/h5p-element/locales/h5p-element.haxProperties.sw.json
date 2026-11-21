@@ -4,7 +4,12 @@
     "description": "Huchezesha maudhui shirikishi ya H5P kutoka faili ya .h5p iliyopakiwa, bila kuhitaji seva ya H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Faili ya H5P",
+        "description": "Pakia au unganisha faili ya .h5p. Inafunguliwa kwenye kivinjari; hakuna seva ya H5P inayohitajika."
+      }
+    ],
     "advanced": [
       {
         "title": "Msimbo wa zamani wa kupachika iframe",

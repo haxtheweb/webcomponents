@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Jeku'e rysýi",
     "description": "Pyrũ papapýva ojejapopa hag̃ua peteĩ tembiapo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jehasa hechaukaha",
+        "description": "Ehechauka jehasakuéra téra tysýi michĩ ramo omarkáva iñakãrapu'ã. Jehasa tekoha ndojehechaukái ko ñemohendápe."
+      },
+      {
+        "title": "Jehasa ko'ág̃agua",
+        "description": "Jehasa moñe'ẽhára oĩháme, 1 guive oñembopapávo. Jehasa mboyveguáva ojehechauka opámaháicha. Jehasa hechaukaha oipuru."
+      }
+    ]
   }
 }

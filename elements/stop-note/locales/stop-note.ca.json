@@ -3,5 +3,7 @@
   "status_stop": "Atura",
   "status_warning": "Advertència",
   "status_success": "Èxit",
-  "status_info": "Nota"
+  "status_info": "Nota",
+  "status_tip": "Sabies que…?",
+  "status_new": "Novetats"
 }

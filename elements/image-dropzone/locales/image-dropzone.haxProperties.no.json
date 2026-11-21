@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Bildeslippsone",
+    "description": "Elever plasserer etiketter på soner lagt over et bilde, og sjekker deretter svaret."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bilde",
+        "description": "Bildet elevene plasserer etiketter på."
+      },
+      {
+        "title": "Alternativ tekst",
+        "description": "Beskriver bildet for personer som ikke kan se det. Ikke røp hvor etikettene skal."
+      },
+      {
+        "title": "Bildetittel",
+        "description": "En kort synlig tittel for bildet, vist over det."
+      },
+      {
+        "title": "Spørsmål",
+        "description": "Hva elevene blir bedt om å gjøre med etikettene."
+      },
+      {
+        "title": "Etiketter og soner",
+        "description": "Hvert element er en etikett elevene kan plassere. Gi en etikett et sonenavn for å legge sonen på bildet; en etikett uten sonenavn er ekstra og hører ikke til noe sted. Sonetall er prosenter av bildet."
+      },
+      {
+        "title": "Bildetekst",
+        "description": "Valgfri bildetekst som vises under bildet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Forsøk",
+        "description": "Hvor mange ganger en elev kan sjekke. 0 betyr ubegrenset."
+      },
+      {
+        "title": "Stokk etikettene",
+        "description": "Vis etikettene i en annen rekkefølge hvert besøk."
+      },
+      {
+        "title": "Sammenleggbar",
+        "description": "Vis dette spørsmålet som en rad som åpnes og lukkes. Når én åpnes, lukkes de andre sammenleggbare spørsmålene ved siden av."
+      },
+      {
+        "title": "Start sammenlagt",
+        "description": "Når den er sammenleggbar, start som en lukket rad som bare viser spørsmålet og statusen."
+      },
+      {
+        "title": "Vurderingsformat",
+        "description": "OER Schema: vurderingsformat for denne vurderingen (f.eks. poeng, bokstav, prosent, fullføring)."
+      },
+      {
+        "title": "Læringsmål",
+        "description": "OER Schema: læringsmål knyttet til denne vurderingen."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Navn på quizen",
+        "description": "Quiznavn brukt til xAPI-identifikasjon i analysesystemer."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurset denne vurderingen er ment for."
+      }
+    ]
+  }
+}

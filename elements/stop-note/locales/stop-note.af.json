@@ -3,5 +3,7 @@
   "status_stop": "Stop",
   "status_warning": "Waarskuwing",
   "status_success": "Sukses",
-  "status_info": "Nota"
+  "status_info": "Nota",
+  "status_tip": "Het jy geweet?",
+  "status_new": "Wat is nuut"
 }

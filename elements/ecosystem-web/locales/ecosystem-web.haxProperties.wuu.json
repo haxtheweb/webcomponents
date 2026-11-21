@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "生态网",
+    "description": "一张互动网，显示项目各部分哪能连起来，带子网搭一步一步个导览。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "网数据",
+        "description": "网个 JSON 包个 URL（辣 PRAW 里构建，ecosystem-webs.json）。"
+      },
+      {
+        "title": "网",
+        "description": "先显示个网个 id；main 就是生态网。"
+      },
+      {
+        "title": "选中个方块",
+        "description": "网打开个辰光要选中个方块个 id。"
+      },
+      {
+        "title": "导览",
+        "description": "开始个导览个 id。"
+      },
+      {
+        "title": "用列表视图开始",
+        "description": "拿网显示成嵌套列表，勿用图画。"
+      },
+      {
+        "title": "只要图画",
+        "description": "只显示图画，当插图：呒没标题、导览、详情或者步骤栏。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "按……看",
+        "description": "开始辰光每个方块侪按一种度量看。",
+        "options": {
+          "": "只看连接",
+          "fresh": "新鲜度",
+          "bus": "巴士系数",
+          "impact": "影响",
+          "evidence": "依据",
+          "parity": "一致性"
+        }
+      }
+    ]
+  }
+}

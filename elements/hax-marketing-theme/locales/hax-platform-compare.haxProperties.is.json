@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Samanburður kerfa",
+    "description": "Einvígi: veldu hvaða tvö kerfi sem er úr gagnaskrá"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Samanburðargögn (JSON)"
+      },
+      {
+        "title": "Auðkenni vinstra kerfis"
+      },
+      {
+        "title": "Auðkenni hægra kerfis"
+      }
+    ]
+  }
+}

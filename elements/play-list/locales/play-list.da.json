@@ -9,5 +9,7 @@
   "slidePages": "Diassider",
   "goToSlide": "Gå til dias {number}",
   "slides": "Slides",
-  "position": "{number} af {total}"
+  "position": "{number} af {total}",
+  "fullScreen": "Fuld skærm",
+  "exitFullScreen": "Afslut fuld skærm"
 }

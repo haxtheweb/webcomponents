@@ -20,6 +20,12 @@
         "title": "Bilde",
         "description": "Bilde som vises med sitatet."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Innrammet",
+        "description": "Tegn sitatet på den felles blokkrammen, med et ikon og en etikett over, slik at det samsvarer med notater og instruksjonskort."
+      }
     ]
   }
 }

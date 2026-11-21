@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "take"
+        "title": "take",
+        "description": "Kanun labari da ake nunawa a saman samfurin kwas."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Adireshin fayil ɗin samfurin 3D (.glb ko .gltf) da za a nuna."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Bayyana samfurin 3D don mutanen da ba sa iya ganinsa."
       },
       {
         "title": "Wurin bayani"

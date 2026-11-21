@@ -4,7 +4,12 @@
     "description": "Reprodueix contingut interactiu H5P d'un fitxer .h5p pujat, sense necessitat d'un servidor H5P"
   },
   "settings": {
-    "configure": [],
+    "configure": [
+      {
+        "title": "Fitxer H5P",
+        "description": "Puja o enllaça un fitxer .h5p. Es desempaqueta al navegador; no cal cap servidor H5P."
+      }
+    ],
     "advanced": [
       {
         "title": "Codi d'incrustació iframe antic",

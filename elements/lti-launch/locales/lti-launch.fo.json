@@ -1,0 +1,19 @@
+{
+  "label": "Uttanhýsis amboð",
+  "labelLti": "Uttanhýsis amboð · LTI 1.3",
+  "theTool": "amboðið",
+  "directions": "Vegleiðing",
+  "showDirections": "Vís vegleiðing",
+  "hideDirections": "Fjal vegleiðing",
+  "directionsWindow": "Knøtturin letur eitt nýtt vindeyga upp við amboðnum í.",
+  "directionsEmbed": "Knøtturin letur amboðið upp á hesi síðuni. Um tað ikki verður innlisið, lat tað heldur upp í nýggjum vindeyga.",
+  "directionsLti": "Henda síðan ritar teg inn í amboðið, so tú hevur ikki brúk fyri eini serstakari kontu.",
+  "openWindow": "Lat {title} upp (nýtt vindeyga)",
+  "openEmbed": "Lat {title} upp",
+  "openInstead": "Lat heldur upp í nýggjum vindeyga",
+  "frameTitle": "{title} (uttanhýsis amboð)",
+  "openedWindow": "Eitt nýtt vindeyga varð latið upp við amboðnum.",
+  "openedEmbed": "Amboðið varð latið upp á hesi síðuni.",
+  "needsUrl": "Hesin blokkurin hevur brúk fyri eini byrjanaradressu, sum byrjar við http:// ella https://.",
+  "needsSignIn": "Hetta amboðið hevur brúk fyri innritingartænastuni hjá hesi síðuni, sum ikki er tøk her. Einki varð latið upp."
+}

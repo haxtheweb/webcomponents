@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "سرلیک"
+        "title": "سرلیک",
+        "description": "د کورس د ماډل پورته ښودل شوی سرلیک."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "د ښودلو لپاره د 3D ماډل دوتنې (.glb یا .gltf) پته."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "3D ماډل د هغو خلکو لپاره بیان کړئ چې نشي لیدلی."
       },
       {
         "title": "د معلوماتو سیمه"

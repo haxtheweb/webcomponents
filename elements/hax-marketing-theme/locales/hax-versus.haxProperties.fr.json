@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Face-à-face",
+    "description": "Du texte à côté d'un bouton de face-à-face avec deux personnages"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titre"
+      },
+      {
+        "title": "Destination du bouton"
+      },
+      {
+        "title": "Texte du bouton"
+      },
+      {
+        "title": "Graine du personnage de gauche"
+      },
+      {
+        "title": "Graine du personnage de droite"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "scene": "Skena",
+  "ending": "Përfundimi",
+  "goodEnding": "Përfundim i mirë",
+  "mixedEnding": "Përfundim i përzier",
+  "poorEnding": "Përfundim i dobët",
+  "scoreOf": "Pikët {score} nga {max}",
+  "scoreOnly": "Pikët {score}",
+  "startScene": "Fillimi",
+  "sceneIdLabel": "ID-ja e skenës",
+  "needsId": "Shto një ID skene që zgjedhjet të lidhen me këtë skenë.",
+  "orphan": "Asnjë zgjedhje nuk lidhet me këtë skenë.",
+  "deadLinks": "Këto lidhje çojnë te një skenë që nuk ekziston:"
+}

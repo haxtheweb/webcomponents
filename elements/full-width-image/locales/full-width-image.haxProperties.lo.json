@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "ຮູບພາບພື້ນຫຼັງ."
+        "description": "ຮູບພາບພື້ນຫຼັງ.",
+        "title": "ຮູບພາບ"
       },
       {
         "property": "caption",
-        "description": "ຫົວຂໍ້ຂໍ້ຄວາມ."
+        "description": "ຫົວຂໍ້ຂໍ້ຄວາມ.",
+        "title": "ຄຳບັນຍາຍ"
       }
     ]
   }

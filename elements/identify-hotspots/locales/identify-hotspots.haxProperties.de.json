@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hotspots finden",
+    "description": "Lernende finden die richtigen Stellen auf einem Bild durch Klicken, Tippen oder ein per Tastatur bewegtes Fadenkreuz. Das bewertete Gegenstück zu einer Imagemap."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild",
+        "description": "Das Bild, das Lernende durchsuchen."
+      },
+      {
+        "title": "Alternativtext",
+        "description": "Beschreibt das Bild für Menschen, die es nicht sehen können. Wird nie als Titel angezeigt."
+      },
+      {
+        "title": "Titel",
+        "description": "Ein kurzer sichtbarer Titel über dem Bild."
+      },
+      {
+        "title": "Frage",
+        "description": "Was Lernende im Bild finden sollen."
+      },
+      {
+        "title": "Antworten",
+        "description": "Jede Antwort ist ein benanntes Oval auf dem Bild. Position und Größe sind Prozentwerte des Bildes, gemessen von der oberen linken Ecke. Beim Bearbeiten ist jede Antwort auf dem Bild umrandet."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Versuche",
+        "description": "Wie oft Lernende es versuchen dürfen. 0 bedeutet unbegrenzt."
+      },
+      {
+        "title": "Erlaubte Fehlversuche",
+        "description": "Wie viele Fehlversuche einen Versuch beenden. 0 bedeutet unbegrenzt, und Lernende erhalten eine Beenden-Schaltfläche."
+      },
+      {
+        "title": "Einklappbar",
+        "description": "Diese Frage als auf- und zuklappbare Zeile anzeigen. Das Öffnen einer Zeile schließt die anderen einklappbaren Fragen daneben."
+      },
+      {
+        "title": "Eingeklappt starten",
+        "description": "Wenn einklappbar, als geschlossene Zeile starten, die nur die Frage und ihren Status zeigt."
+      },
+      {
+        "title": "Bewertungsformat",
+        "description": "OER Schema: Bewertungsformat dieser Prüfung (z. B. Punkte, Note, Prozent, Abschluss)."
+      },
+      {
+        "title": "Lernziel",
+        "description": "OER Schema: Lernziel, das mit dieser Prüfung verknüpft ist."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Name des Quiz",
+        "description": "Quizname, der in xAPI-gesteuerten Umgebungen zur Identifikation dieses Elements übergeben wird"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: Kurs, für den diese Prüfung gedacht ist."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Forgatókönyv-jelenet",
+    "description": "Egy elágazó forgatókönyv egyik jelenete. Kapcsoljon minden választást egy másik jelenethez # jellel és a jelenet azonosítójával."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Jelenetazonosító",
+        "description": "Amire a választások hivatkoznak: a # jelből és ebből az azonosítóból álló hivatkozás erre a jelenetre vezet. Betűk, számok és kötőjelek."
+      },
+      {
+        "title": "Címsor",
+        "description": "A jelenet címsora."
+      },
+      {
+        "title": "Befejezés",
+        "description": "Lezár-e ez a jelenet egy utat, és hogyan végződött.",
+        "options": {
+          "": "Nem befejezés",
+          "good": "Jó befejezés",
+          "mixed": "Vegyes befejezés",
+          "poor": "Gyenge befejezés"
+        }
+      },
+      {
+        "title": "Pontszám",
+        "description": "Pontszám ennek a befejezésnek az eléréséért. A forgatókönyv legmagasabb befejezési pontszáma a maximum."
+      }
+    ]
+  }
+}

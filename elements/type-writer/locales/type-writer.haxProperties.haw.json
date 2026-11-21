@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Mīkini kikokiko",
     "description": "Kikokikona e kikokiko ana iā ia iho hoʻokahi hua i ka manawa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kikokikona",
+        "description": "Ke kikokikona e kikokiko ai ke kaʻa ka mea i ka ʻike ʻia."
+      },
+      {
+        "title": "Ke kikokiko nei",
+        "description": "Hōʻike i ke kaha kuhi ʻimoʻimo; hoʻonohonoho ka mea i kēia ʻoiai e kikokiko ana."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Hoʻolohi",
+        "description": "Nā milikekona e kali ai ma mua o ka hoʻomaka ʻana o ke kikokiko."
+      },
+      {
+        "title": "Lōʻihi kaha kuhi",
+        "description": "Nā milikekona e ʻimoʻimo mau ai ke kaha kuhi ma hope o ke kikokiko ʻia ʻana o ke kikokikona."
+      },
+      {
+        "title": "Māmā",
+        "description": "Nā milikekona no kēlā me kēia hua; ʻoi aku ka wikiwiki o nā helu haʻahaʻa."
+      }
+    ]
   }
 }

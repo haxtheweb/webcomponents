@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Mndandanda wa zochonga",
+    "description": "Mndandanda wa mabokosi ochonga. Owerenga amachonga zinthu ndipo kupita patsogolo kwawo kumakumbukiridwa pa chipangizo chawo."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Dzina la mndandanda. Limawerengedwa mokweza ngati chilembo cha gulu la mabokosi ochonga."
+      },
+      {
+        "title": "Zinthu",
+        "description": "Chinthu chilichonse ndi bokosi lochonga. Zinthu zochongedwa kapena zoletsedwa sizingasinthidwe ndi owerenga."
+      },
+      {
+        "title": "Za manambala",
+        "description": "Onetsani mndandanda wa manambala m'malo mwa wa madontho."
+      },
+      {
+        "title": "Momwe zilili",
+        "description": "Imasintha mitundu kuti ifanane ndi stop-note.",
+        "options": {
+          "info": "Chidziwitso",
+          "success": "Chitsimikizo",
+          "warning": "Chenjezo",
+          "stop": "Imani"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "ID yosungira",
+        "description": "ID yapadera yogwiritsidwa ntchito kukumbukira kupita patsogolo kwa owerenga pa chipangizo chawo. Imapangidwa yokha; isintheni kokha kuti mugawane kupita patsogolo pakati pa mindandanda kapena kuyambanso."
+      }
+    ]
+  }
+}

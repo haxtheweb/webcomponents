@@ -5,5 +5,7 @@
   "editModeLabel": "Aratau whakatika o te rārangi pāho pāpāho",
   "position": "{current} o {total}",
   "previousItem": "Tūemi o mua",
-  "nextItem": "Tūemi e whai ake nei"
+  "nextItem": "Tūemi e whai ake nei",
+  "fullScreen": "Mata katoa",
+  "exitFullScreen": "Puta i te mata katoa"
 }

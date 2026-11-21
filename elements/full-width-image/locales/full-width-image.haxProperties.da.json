@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Baggrundsbillede."
+        "description": "Baggrundsbillede.",
+        "title": "Billede"
       },
       {
         "property": "caption",
-        "description": "Overskriftstekst."
+        "description": "Overskriftstekst.",
+        "title": "Billedtekst"
       }
     ]
   }

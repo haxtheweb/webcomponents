@@ -3,5 +3,7 @@
   "status_stop": "ನಿಲ್ಲಿಸಿ",
   "status_warning": "ಎಚ್ಚರಿಕೆ",
   "status_success": "ಯಶಸ್ಸು",
-  "status_info": "ಟಿಪ್ಪಣಿ"
+  "status_info": "ಟಿಪ್ಪಣಿ",
+  "status_tip": "ನಿಮಗೆ ಗೊತ್ತೇ?",
+  "status_new": "ಹೊಸದೇನು"
 }

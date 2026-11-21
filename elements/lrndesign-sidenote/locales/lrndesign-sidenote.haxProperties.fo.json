@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Síðunota",
+    "description": "Ein nota sett til viks frá innihaldinum um hana, við valfríum ímynd og heiti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Heiti",
+        "description": "Heitið á síðunotuni."
+      },
+      {
+        "title": "Ímynd",
+        "description": "Ímyndin á síðunotuni."
+      },
+      {
+        "title": "Innihald",
+        "description": "Innihald í síðunotuni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Litur",
+        "description": "Liturin, sum síðunotan verður litað við."
+      }
+    ]
+  }
+}

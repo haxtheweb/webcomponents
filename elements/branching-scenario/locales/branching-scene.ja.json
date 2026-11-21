@@ -1,0 +1,14 @@
+{
+  "scene": "場面",
+  "ending": "結末",
+  "goodEnding": "良い結末",
+  "mixedEnding": "どちらとも言えない結末",
+  "poorEnding": "悪い結末",
+  "scoreOf": "スコア {score} / {max}",
+  "scoreOnly": "スコア {score}",
+  "startScene": "開始",
+  "sceneIdLabel": "場面 ID",
+  "needsId": "選択肢からこの場面にリンクできるよう、場面 ID を追加してください。",
+  "orphan": "この場面にリンクしている選択肢はありません。",
+  "deadLinks": "これらのリンクは存在しない場面を指しています:"
+}

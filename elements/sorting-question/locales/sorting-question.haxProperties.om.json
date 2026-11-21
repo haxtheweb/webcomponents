@@ -13,7 +13,15 @@
       {
         "property": "answers",
         "title": "Deebiiwwan",
-        "description": "Tartiibni deebiiwwanii walduraa duuba sirrii murteessa."
+        "description": "Tartiibni deebiiwwanii walduraa duuba sirrii murteessa.",
+        "options": {
+          "": "Tarree",
+          "cards": "Kaardiiwwan suuraa"
+        }
+      },
+      {
+        "title": "Deebiiwwan",
+        "description": "Tartiibni deebii tartiiba sirrii murteessa."
       }
     ],
     "advanced": [

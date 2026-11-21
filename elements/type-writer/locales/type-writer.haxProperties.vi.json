@@ -2,5 +2,31 @@
   "gizmo": {
     "title": "Máy đánh chữ",
     "description": "Văn bản tự gõ ra từng ký tự một."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Văn bản",
+        "description": "Văn bản sẽ được gõ ra khi phần tử cuộn vào khung nhìn."
+      },
+      {
+        "title": "Đang gõ",
+        "description": "Hiển thị con trỏ nhấp nháy; phần tử đặt giá trị này khi đang gõ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Độ trễ",
+        "description": "Số mili giây chờ trước khi bắt đầu gõ."
+      },
+      {
+        "title": "Thời gian con trỏ",
+        "description": "Số mili giây con trỏ tiếp tục nhấp nháy sau khi gõ xong."
+      },
+      {
+        "title": "Tốc độ",
+        "description": "Số mili giây cho mỗi ký tự; số càng nhỏ gõ càng nhanh."
+      }
+    ]
   }
 }

@@ -23,7 +23,9 @@
           "stop": "Halto",
           "warning": "Averto",
           "success": "Konfirmo",
-          "info": "Avizo"
+          "info": "Avizo",
+          "tip": "Konsilo",
+          "new": "Kio novas"
         }
       },
       {

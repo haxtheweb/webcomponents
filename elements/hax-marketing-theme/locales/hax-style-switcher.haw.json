@@ -1,0 +1,16 @@
+{
+  "theme": "Kumuhana",
+  "designSystem": "ʻŌnaehana hoʻolālā",
+  "dddDefault": "DDD (paʻamau)",
+  "designSystemHelp": "Waihoʻoluʻu, ʻano hua, nā kihi a me ka nānā. Mālama ke kumuhana i ka hoʻonohonoho.",
+  "designSystemFixed": "Mālama kēia kumuhana i kona ʻōnaehana hoʻolālā ponoʻī.",
+  "palette": "Papa waihoʻoluʻu",
+  "themeDefault": "Paʻamau o ke kumuhana",
+  "paletteNumber": "Papa waihoʻoluʻu {n}",
+  "siteTheme": "{name} (ke kumuhana o kēia kahua)",
+  "restyle": "Hoʻololi i ke ʻano o kēia kahua",
+  "close": "Pani",
+  "reset": "Hoʻi i ke ʻano ponoʻī o kēia kahua",
+  "random": "Hoʻohauʻoli iaʻu",
+  "about": "Hōʻike kēia i kekahi mau ʻano i kūkulu ʻia i loko o HAX. ʻAʻole loli loa nā ʻaoʻao: noho ke kūkulu ʻana ma JSON Outline Schema a he web component kūlana kēlā me kēia poloka, no laila kūʻokoʻa ka hoʻolālā e hoʻololi."
+}

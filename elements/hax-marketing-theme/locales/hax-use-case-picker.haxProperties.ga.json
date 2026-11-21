@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Roghnóir cás úsáide",
+    "description": "Roghnaigh cén aidhm atá le suíomh agus faigh nasc a osclaíonn HAX sa bhrabhsálaí leis an suíomh tosaigh sin, chomh maith leis an ordú CLI cuí."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Seoladh HAX sa bhrabhsálaí",
+        "description": "Cá n-osclaíonn an nasc; cuirtear ?skeleton= agus &name= leis"
+      },
+      {
+        "title": "Suímh tosaigh le fágáil amach",
+        "description": "Ainmneacha meaisín, scartha le camóga"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Liosta suíomh tosaigh",
+        "description": "Seoladh liosta na gcreatlach (an fhormáid a léann app-hax)"
+      }
+    ]
+  }
+}

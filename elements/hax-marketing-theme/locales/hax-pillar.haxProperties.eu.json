@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Zutabea",
+    "description": "Zutabe bat: izena, esaldia, ikonoa, kolorea eta zergatik den garrantzitsua"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izena"
+      },
+      {
+        "title": "Esaldia"
+      },
+      {
+        "title": "Ikonoa"
+      },
+      {
+        "title": "Kolorea (DDD izena)"
+      },
+      {
+        "title": "Zein zutabe, 1etik 7ra"
+      },
+      {
+        "title": "Txartel txikia"
+      },
+      {
+        "title": "Non doan izena"
+      }
+    ]
+  }
+}

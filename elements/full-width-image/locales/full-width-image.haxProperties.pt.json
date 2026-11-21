@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Imagem de fundo."
+        "description": "Imagem de fundo.",
+        "title": "Imagem"
       },
       {
         "property": "caption",
-        "description": "Título do texto."
+        "description": "Título do texto.",
+        "title": "Legenda"
       }
     ]
   }

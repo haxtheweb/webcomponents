@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Fon suraty."
+        "description": "Fon suraty.",
+        "title": "Surat"
       },
       {
         "property": "caption",
-        "description": "Tekst sözbaşysy."
+        "description": "Tekst sözbaşysy.",
+        "title": "Ýazgy"
       }
     ]
   }

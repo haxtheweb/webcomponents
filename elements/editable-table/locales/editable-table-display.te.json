@@ -3,5 +3,8 @@
   "copyAsCsv": "CSVగా కాపీ చేయండి.",
   "printTable": "టేబుల్‌ను ముద్రించండి",
   "selectColumn": "నిలువు వరుసను ఎంచుకోండి",
-  "dataTable": "డేటా · పట్టిక"
+  "dataTable": "డేటా · పట్టిక",
+  "filterStatus": "{total} వరుసలలో {shown} చూపిస్తోంది, {column} ద్వారా ఫిల్టర్ చేయబడింది: {text}",
+  "columnNumber": "నిలువు వరుస {column}",
+  "clearFilter": "ఫిల్టర్‌ను క్లియర్ చేయి"
 }

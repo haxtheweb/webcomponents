@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Pontok azonosítása",
+    "description": "A tanulók kattintással, koppintással vagy billentyűzetes célkereszttel keresik meg a megfelelő pontokat egy képen. A képtérkép értékelt megfelelője."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kép",
+        "description": "A kép, amelyet a tanulók átkutatnak."
+      },
+      {
+        "title": "Helyettesítő szöveg",
+        "description": "Leírja a képet azok számára, akik nem látják. Soha nem jelenik meg címként."
+      },
+      {
+        "title": "Cím",
+        "description": "Rövid, látható cím a kép fölött."
+      },
+      {
+        "title": "Kérdés",
+        "description": "Mit kell a tanulóknak megtalálniuk a képen."
+      },
+      {
+        "title": "Válaszok",
+        "description": "Minden válasz egy elnevezett ovális a képen. A pozíció és a méret a kép százalékában értendő, a bal felső sarkától mérve. Szerkesztés közben minden válasz körvonalazva látszik a képen."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Próbálkozások",
+        "description": "Hányszor próbálkozhat a tanuló. A 0 korlátlant jelent."
+      },
+      {
+        "title": "Megengedett hibák",
+        "description": "Hány hiba után ér véget egy próbálkozás. A 0 korlátlant jelent, és a tanulók Befejezés gombot kapnak."
+      },
+      {
+        "title": "Összecsukható",
+        "description": "A kérdés nyitható-csukható sorként jelenik meg. Az egyik megnyitása bezárja a mellette lévő többi összecsukható kérdést."
+      },
+      {
+        "title": "Összecsukva induljon",
+        "description": "Összecsukható módban zárt sorként indul, amely csak a kérdést és az állapotát mutatja."
+      },
+      {
+        "title": "Értékelési forma",
+        "description": "OER Schema: az értékelés formája (pl. pontok, osztályzat, százalék, teljesítés)."
+      },
+      {
+        "title": "Tanulási cél",
+        "description": "OER Schema: az értékeléshez tartozó tanulási cél."
+      }
+    ],
+    "developer": [
+      {
+        "title": "A kvíz neve",
+        "description": "Az xAPI-alapú környezetekben az elem azonosítására átadott kvíznév"
+      },
+      {
+        "title": "Kurzus",
+        "description": "OER Schema: a kurzus, amelyhez ez az értékelés készült."
+      }
+    ]
+  }
+}

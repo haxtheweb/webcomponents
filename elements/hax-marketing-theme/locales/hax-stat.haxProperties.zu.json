@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Isibalo",
+    "description": "Inombolo ebala iya phezulu, enelebula nesixhumanisi sendaba yayo"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Inombolo okufanele kubalwe kuze kufike kuyo"
+      },
+      {
+        "title": "Ngaphambi kwenombolo"
+      },
+      {
+        "title": "Ngemva kwenombolo"
+      },
+      {
+        "title": "Amagama esikhundleni senombolo"
+      },
+      {
+        "title": "Lokho ekubalayo"
+      },
+      {
+        "title": "Ikheli lendaba ku-hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

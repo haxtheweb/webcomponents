@@ -52,6 +52,20 @@
           "_top": "Legfelső ablak - _top",
           "_parent": "Szülőablak - _parent"
         }
+      },
+      {
+        "title": "Nincs nyíl",
+        "description": "A gomb nyilának elrejtése."
+      },
+      {
+        "title": "Hivatkozás: cél",
+        "description": "Hol nyíljon meg a hivatkozás.",
+        "options": {
+          "": "Ugyanabban az ablakban",
+          "_blank": "Új ablak - _blank",
+          "_top": "Legfelső ablak - _top",
+          "_parent": "Szülőablak - _parent"
+        }
       }
     ],
     "developer": [

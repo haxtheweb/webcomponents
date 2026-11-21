@@ -23,7 +23,9 @@
           "stop": "Stop",
           "warning": "Waarschuwing",
           "success": "Bevestiging",
-          "info": "Mededeling"
+          "info": "Mededeling",
+          "tip": "Tip",
+          "new": "Wat is er nieuw"
         }
       },
       {

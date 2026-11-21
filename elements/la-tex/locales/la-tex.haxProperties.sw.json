@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Andika kwa kutumia nukuu ya hisabati LaTeX"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mandharinyuma ya picha",
+        "description": "Mandharinyuma nyuma ya picha zilizochorwa. Otomatiki huongeza moja tu wakati mchoro ungekuwa mgumu kuonekana kwenye ukurasa, kama mistari ya giza katika hali ya giza.",
+        "options": {
+          "auto": "Otomatiki",
+          "light": "Mwanga",
+          "dark": "Giza",
+          "none": "Hakuna"
+        }
+      }
+    ]
   }
 }

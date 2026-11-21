@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Stappelys",
     "description": "Genommerde stappe om 'n taak te voltooi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Stapaanwyser",
+        "description": "Wys die stappe as 'n kompakte ry titels wat vordering aandui. Stapinhoud word nie in hierdie uitleg gewys nie."
+      },
+      {
+        "title": "Huidige stap",
+        "description": "Die stap waarop die leser is, getel van 1. Vroeëre stappe wys as voltooi. Gebruik deur die stapaanwyser."
+      }
+    ]
   }
 }

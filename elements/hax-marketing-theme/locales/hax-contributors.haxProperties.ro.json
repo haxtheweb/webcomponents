@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Contribuitori",
+    "description": "Oamenii care au construit proiectul, dintr-un fișier de listă"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fișier de listă (JSON)"
+      },
+      {
+        "title": "Vizualizare: landed, lab sau code"
+      },
+      {
+        "title": "Numărul maxim de persoane afișate (0 înseamnă toate)"
+      }
+    ]
+  }
+}

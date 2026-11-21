@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Karşı karşıya",
+    "description": "İki karakterli karşılaştırma düğmesinin yanındaki sözler"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlık"
+      },
+      {
+        "title": "Düğmenin gittiği yer"
+      },
+      {
+        "title": "Düğme metni"
+      },
+      {
+        "title": "Sol karakter tohumu"
+      },
+      {
+        "title": "Sağ karakter tohumu"
+      }
+    ]
+  }
+}

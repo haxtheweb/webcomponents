@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Escenario ramificado",
+    "description": "Una historia en la que cada decisión lleva a una escena y un final distintos. Los estudiantes pueden retroceder y probar otros caminos; el final alcanzado determina la puntuación."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nombre del escenario, que se muestra en su cabecera."
+      },
+      {
+        "title": "Escena inicial",
+        "description": "Id de la escena en la que empiezan los estudiantes. Déjalo vacío para empezar en la primera escena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Color de acento",
+        "description": "Color opcional para la etiqueta de la cabecera, los botones y el borde de una opción."
+      }
+    ]
+  }
+}

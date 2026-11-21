@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Web tal-ekosistema",
+    "description": "Web interattiva ta' kif il-partijiet ta' proġett huma konnessi, b'sub-webs u tours pass pass."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data tal-web",
+        "description": "URL tal-pakkett JSON tal-webs (mibni f'PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Web",
+        "description": "ID tal-web li tidher l-ewwel; main hija l-web tal-ekosistema."
+      },
+      {
+        "title": "Madum magħżul",
+        "description": "ID ta' madum li jintgħażel meta tinfetaħ il-web."
+      },
+      {
+        "title": "Tour",
+        "description": "ID ta' tour biex tibda fih."
+      },
+      {
+        "title": "Ibda fil-veduta tal-lista",
+        "description": "Uri l-web bħala listi mdaħħla ġo xulxin minflok it-tpinġija."
+      },
+      {
+        "title": "It-tpinġija biss",
+        "description": "Uri biss it-tpinġija, bħala figura: l-ebda intestatura, tours, dettalji jew bar tal-passi."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Moqri skont",
+        "description": "Ibda b'kull madum moqri skont kejl wieħed.",
+        "options": {
+          "": "Konnessjonijiet biss",
+          "fresh": "Freskezza",
+          "bus": "Bus factor",
+          "impact": "Impatt",
+          "evidence": "Evidenza",
+          "parity": "Parità"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numerikal na tanong",
+    "description": "Isang tanong na sinasagot ng numero. Ang sagot ay nakapirming numero o formula na kinakalkula mula sa mga variable, at binibilang kapag nasa loob ng tolerance."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tanong",
+        "description": "Kung ano ang itinatanong sa mga mag-aaral. Isulat ang pangalan ng variable sa braces, tulad ng {d}, para ipakita ang halaga nito."
+      },
+      {
+        "title": "Unit",
+        "description": "Ipinapakita bilang teksto sa tabi ng answer field, halimbawa km/h."
+      },
+      {
+        "title": "Sagot",
+        "description": "Ang tamang numero. Iwanang blangko kapag formula ang kumakalkula ng sagot."
+      },
+      {
+        "title": "Formula",
+        "description": "Kinakalkula ang sagot mula sa mga variable, halimbawa d / (t / 60). Maaaring gumamit ng + - * / ^, panaklong, sqrt() at abs(). Ginagamit sa halip ng sagot kapag nakatakda."
+      },
+      {
+        "title": "Mga variable",
+        "description": "Mga numerong ginagamit ng formula at ng tanong. Bawat isa ay kumukuha ng halaga sa pagitan ng pinakamababa at pinakamataas nito, ayon sa hakbang."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Tolerance",
+        "description": "Gaano kalayo mula sa eksaktong sagot ang binibilang pa rin. Ang 0 ay eksakto, o naka-round sa mga decimal place sa ibaba."
+      },
+      {
+        "title": "Uri ng tolerance",
+        "description": "Absolute: dagdag o bawas ang tolerance. Porsyento: dagdag o bawas ang porsyentong iyon ng eksaktong sagot.",
+        "options": {
+          "absolute": "Absolute",
+          "percent": "Porsyento"
+        }
+      },
+      {
+        "title": "Mga decimal place",
+        "description": "Ipinapa-round sa mga mag-aaral sa ganitong dami ng place, at ipinapakita ang sagot na naka-round dito. Iwanang blangko kung walang rounding."
+      },
+      {
+        "title": "Mga pagsubok",
+        "description": "Ilang beses makakapag-check ang isang mag-aaral. Ang 0 ay walang limitasyon."
+      },
+      {
+        "title": "Bagong mga numero sa bawat pagsubok",
+        "description": "Gumawa ng bagong halaga ng variable sa bawat pagsubok muli ng mag-aaral. Hindi na ipinapakita ang naunang sagot nila pagbalik nila, kung tama lang ito."
+      },
+      {
+        "title": "Nako-collapse",
+        "description": "Ipakita ang tanong na ito bilang hanay na bumubukas at sumasara. Ang pagbukas ng isa ay nagsasara sa ibang nako-collapse na tanong sa tabi nito."
+      },
+      {
+        "title": "Magsimulang naka-collapse",
+        "description": "Kapag nako-collapse, magsimula bilang saradong hanay na nagpapakita lang ng tanong at status nito."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pangalan ng pagsusulit",
+        "description": "Pangalan ng pagsusulit na ginagamit para sa xAPI identification sa mga analytics system."
+      }
+    ]
+  }
+}

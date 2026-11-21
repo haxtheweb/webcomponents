@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "算术练习",
+    "description": "一小组自动生成的算术题，即时反馈。选择运算和数字范围；每轮都是新题。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "标题",
+        "description": "此练习的名称，显示在标题中。"
+      },
+      {
+        "title": "运算",
+        "description": "要出哪些类型的题。学习者可以在开始前关闭其中任何一种。",
+        "options": {
+          "add": "加法",
+          "subtract": "减法",
+          "multiply": "乘法",
+          "divide": "除法",
+          "add subtract": "加法和减法",
+          "multiply divide": "乘法和除法",
+          "add multiply": "加法和乘法",
+          "add divide": "加法和除法",
+          "subtract multiply": "减法和乘法",
+          "subtract divide": "减法和除法",
+          "add subtract multiply": "加法、减法和乘法",
+          "add subtract divide": "加法、减法和除法",
+          "add multiply divide": "加法、乘法和除法",
+          "subtract multiply divide": "减法、乘法和除法",
+          "add subtract multiply divide": "全部四种"
+        }
+      },
+      {
+        "title": "最小数",
+        "description": "题目中使用的最小数字。整数，0 或以上。"
+      },
+      {
+        "title": "最大数",
+        "description": "题目中使用的最大数字。除法的商和除数也保持在此范围内。"
+      },
+      {
+        "title": "题目数量",
+        "description": "一轮中的题目数量（1 到 100）。"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "时间限制",
+        "description": "整轮允许的秒数。0 表示不计时，这是默认值：计时练习会让需要更多时间的学习者失败。设置后，学习者仍可自行关闭计时器。"
+      },
+      {
+        "title": "强调色",
+        "description": "标题标签和按钮的颜色。留空则跟随主题。"
+      }
+    ]
+  }
+}

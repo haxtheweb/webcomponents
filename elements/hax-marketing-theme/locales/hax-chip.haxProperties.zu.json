@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Chip",
+    "description": "Isithonjana esincane esinelebula"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isithonjana"
+      },
+      {
+        "title": "Ilebula"
+      }
+    ]
+  }
+}

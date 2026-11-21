@@ -19,6 +19,25 @@
         "property": "hideIcon",
         "title": "Cuddio'r eicon",
         "description": "Cuddio'r eicon a ddefnyddir i acennu testun"
+      },
+      {
+        "title": "Golwg",
+        "description": "Faint o bwyslais sydd gan y botwm.",
+        "options": {
+          "": "Wedi'i lenwi",
+          "tonal": "Tonaidd",
+          "outlined": "Amlinellol",
+          "plain": "Plaen"
+        }
+      },
+      {
+        "title": "Maint",
+        "description": "Maint y botwm.",
+        "options": {
+          "s": "Bach",
+          "": "Canolig",
+          "l": "Mawr"
+        }
       }
     ],
     "advanced": [

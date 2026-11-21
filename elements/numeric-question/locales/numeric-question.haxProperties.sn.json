@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Mubvunzo wenhamba",
+    "description": "Mubvunzo unopindurwa nenhamba. Mhinduro inhamba yakatarwa kana fomura inoverengwa kubva pazvinoshanduka, uye inoverengwa kana iri mukati memuganhu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mubvunzo",
+        "description": "Zvinobvunzwa vadzidzi. Nyora zita rechinoshanduka mumabhuraketi akakombama, se{d}, kuti uratidze kukosha kwacho."
+      },
+      {
+        "title": "Chiyero",
+        "description": "Chinoratidzwa semavara padivi penzvimbo yemhinduro, semuenzaniso km/h."
+      },
+      {
+        "title": "Mhinduro",
+        "description": "Nhamba yakarurama. Siya pasina chinhu kana fomura ichiverenga mhinduro."
+      },
+      {
+        "title": "Fomura",
+        "description": "Inoverenga mhinduro kubva pazvinoshanduka, semuenzaniso d / (t / 60). Inogona kushandisa + - * / ^, mabhuraketi, sqrt() ne abs(). Inoshandiswa panzvimbo pemhinduro kana yaiswa."
+      },
+      {
+        "title": "Zvinoshanduka",
+        "description": "Nhamba dzinoshandiswa nefomura nemubvunzo. Imwe neimwe inotora kukosha pakati pechidiki nechikuru, nematanho."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Muganhu wekukanganisa",
+        "description": "Kuti kure zvakadii nemhinduro chaiyo kuchiri kuverengwa. 0 zvinoreva chaizvo, kana kutenderedzwa kunzvimbo dzedesimari dziri pazasi."
+      },
+      {
+        "title": "Rudzi rwemuganhu",
+        "description": "Chaiyo: plus kana minus muganhu. Muzana: plus kana minus muzana iwoyo wemhinduro chaiyo.",
+        "options": {
+          "absolute": "Chaiyo",
+          "percent": "Muzana"
+        }
+      },
+      {
+        "title": "Nzvimbo dzedesimari",
+        "description": "Vadzidzi vanokumbirwa kutenderedza kunzvimbo dzakadai, uye mhinduro inoratidzwa yakatenderedzwa kwadziri. Siya pasina chinhu kuti pasave nekutenderedza."
+      },
+      {
+        "title": "Kuedza",
+        "description": "Kangani mudzidzi anogona kutarisa. 0 zvinoreva kusingaperi."
+      },
+      {
+        "title": "Nhamba itsva pakuedza kwese",
+        "description": "Unza kukosha kutsva kwezvinoshanduka pese panoedza mudzidzi zvakare. Mhinduro yavo yekare haizoratidzwi kana vadzoka, chete kana vakarurama."
+      },
+      {
+        "title": "Inopetwa",
+        "description": "Ratidza mubvunzo uyu semutsara unovhurika nekuvhara. Kuvhura imwe kunovhara mimwe mibvunzo inopetwa iri padhuze nayo."
+      },
+      {
+        "title": "Tanga yakapetwa",
+        "description": "Kana ichipetwa, tanga semutsara wakavharwa unoratidza mubvunzo nemamiriro awo chete."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Zita rekuyedzwa",
+        "description": "Zita rekuyedzwa rinoshandiswa pakuzivisa xAPI muhurongwa hwekuongorora."
+      }
+    ]
+  }
+}

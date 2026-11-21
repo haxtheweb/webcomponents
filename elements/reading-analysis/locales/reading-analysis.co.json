@@ -60,6 +60,8 @@
   "flagsFound": "{correct} nant'à {total} trovate",
   "toRethink": "{count} da ripensà",
   "notEvidence": "ùn hè micca una prova per sta bandiera",
+  "isEvidence": "prova per sta segnalazione",
+  "readingKeys": "Aduprate i tasti freccia per passà da un {unit} à u seguente.",
   "markAnswers": "Marcà e risposte",
   "doneMarking": "Marcatura di e risposte compia",
   "editHint": "Mudificate a lettura quì sottu. Aduprate Marcà e risposte in u menu di u bloccu per sceglie induve và ogni bandiera.",

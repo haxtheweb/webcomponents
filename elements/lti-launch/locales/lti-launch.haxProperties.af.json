@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Eksterne hulpmiddel-lansering",
+    "description": "'n Blok wat 'n eksterne leerhulpmiddel in 'n nuwe venster of op die bladsy oopmaak, as 'n gewone skakel of met 'n LTI 1.3-aanmeldversoek."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titel",
+        "description": "Naam van die hulpmiddel. Dit word in die opskrif en op die knoppie gewys."
+      },
+      {
+        "title": "Beskrywing",
+        "description": "Wat leerders in die hulpmiddel doen, bo die knoppie gewys."
+      },
+      {
+        "title": "Lanseer-URL",
+        "description": "Adres van die hulpmiddel. Dit moet 'n volle adres wees wat met https:// of http:// begin."
+      },
+      {
+        "title": "Maak oop in",
+        "description": "'n Nuwe venster werk met elke hulpmiddel. Op hierdie bladsy werk slegs met hulpmiddels wat toelaat dat hulle binne 'n ander webwerf gewys word.",
+        "options": {
+          "window": "'n Nuwe venster",
+          "embed": "Op hierdie bladsy"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-aanmeld-URL",
+        "description": "Slegs LTI 1.3: die hulpmiddel se aanmeld-inisiëringsadres. Hiermee, 'n kliënt-ID en 'n ontplooiings-ID stuur die knoppie 'n LTI-aanmeldversoek in plaas daarvan om 'n gewone skakel oop te maak. Om die lansering te voltooi, benodig hierdie webwerf se LTI-diens."
+      },
+      {
+        "title": "LTI-kliënt-ID",
+        "description": "Die kliënt-ID wat die hulpmiddel aan hierdie webwerf gegee het. 'n Publieke identifiseerder, nie 'n geheim nie: sit nooit sleutels of geheime hier nie."
+      },
+      {
+        "title": "LTI-ontplooiings-ID",
+        "description": "Die ontplooiings-ID wat die hulpmiddel aan hierdie webwerf gegee het. 'n Publieke identifiseerder, nie 'n geheim nie."
+      },
+      {
+        "title": "LTI-uitreiker",
+        "description": "Die adres wat hierdie webwerf aan die hulpmiddel identifiseer. Laat leeg om die adres van die webwerf waarop die bladsy is, te gebruik."
+      },
+      {
+        "title": "Hoogte op die bladsy",
+        "description": "Hoogte van die hulpmiddel wanneer dit op hierdie bladsy oopmaak, in pixels (200 tot 2000)."
+      },
+      {
+        "title": "Aksentkleur",
+        "description": "Kleur van die opskrifskyfie en die knoppie. Laat leeg om die tema te volg."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-aanmeldwenk",
+        "description": "'n Ondeursigtige waarde wat hierdie webwerf se LTI-diens gebruik om die leerder te herken. Gewoonlik deur die webwerf verskaf via die lti-launch-request-gebeurtenis eerder as hier gestoor. Nooit 'n wagwoord of sleutel nie."
+      },
+      {
+        "title": "LTI-boodskapwenk",
+        "description": "'n Ondeursigtige waarde wat hierdie webwerf se LTI-diens gebruik om hierdie lansering te herken. Gewoonlik deur die webwerf verskaf eerder as hier gestoor."
+      }
+    ]
+  }
+}

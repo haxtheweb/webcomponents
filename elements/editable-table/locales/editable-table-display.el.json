@@ -3,5 +3,8 @@
   "copyAsCsv": "Αντιγραφή ως CSV.",
   "printTable": "Εκτύπωση πίνακα",
   "selectColumn": "Επιλογή στήλης",
-  "dataTable": "Δεδομένα · Πίνακας"
+  "dataTable": "Δεδομένα · Πίνακας",
+  "filterStatus": "Εμφανίζονται {shown} από {total} γραμμές, φιλτραρισμένες κατά {column}: {text}",
+  "columnNumber": "Στήλη {column}",
+  "clearFilter": "Εκκαθάριση φίλτρου"
 }

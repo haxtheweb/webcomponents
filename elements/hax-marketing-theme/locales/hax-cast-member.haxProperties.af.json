@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Rolspeler",
+    "description": "Een gehoor, gespeel deur 'n karakter, met woorde en 'n knoppie"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wie dit is"
+      },
+      {
+        "title": "Karaktertipe"
+      },
+      {
+        "title": "Karaktersaad"
+      },
+      {
+        "title": "Verhoogkleur (DDD-naam)"
+      },
+      {
+        "title": "Waarheen die knoppie gaan"
+      },
+      {
+        "title": "Knoppieteks"
+      }
+    ]
+  }
+}

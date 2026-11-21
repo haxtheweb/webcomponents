@@ -8,5 +8,9 @@
   "theme": "Evni",
   "palette": "Litaspjald",
   "cancel": "Angra",
-  "openAppearanceSettings": "Opna útsjóndarstillingar"
+  "openAppearanceSettings": "Opna útsjóndarstillingar",
+  "designSystem": "Sniðgevingarkervi",
+  "designSystemDefault": "DDD (vanligt)",
+  "designSystemThemeDefault": "{name} (vanligt fyri temað)",
+  "designSystemHelp": "Litur, stavsnið, horn og tættleiki. Temað avger enn uppsetingina."
 }

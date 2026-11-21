@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Diagramă radar",
+    "description": "Diagramă radar (păianjen) pentru modele de maturitate și punctarea pe fațete, cum ar fi HEOSAT. Include o alternativă text și un tabel de date."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Titlul diagramei; folosit și ca nume accesibil."
+      },
+      {
+        "title": "Scor maxim",
+        "description": "Cea mai mare valoare de pe scală."
+      },
+      {
+        "title": "Categorii",
+        "description": "O categorie pe rând. Necesită cel puțin 3."
+      },
+      {
+        "title": "Scoruri",
+        "description": "Numere separate prin virgulă, câte unul pentru fiecare categorie, în aceeași ordine."
+      },
+      {
+        "title": "Scoruri țintă",
+        "description": "Numere separate prin virgulă, câte unul pentru fiecare categorie, în aceeași ordine."
+      },
+      {
+        "title": "Afișați legenda",
+        "description": "Afișați o legendă care numește scorurile și țintele."
+      },
+      {
+        "title": "Compact",
+        "description": "Diagramă mai mică, fără etichete, legendă sau tabel de date. Treceți cu mouse-ul peste un punct pentru a-i vedea valorile."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Eticheta scorului",
+        "description": "Eticheta din legendă și tabel pentru scoruri."
+      },
+      {
+        "title": "Eticheta țintei",
+        "description": "Eticheta din legendă și tabel pentru ținte."
+      }
+    ]
+  }
+}

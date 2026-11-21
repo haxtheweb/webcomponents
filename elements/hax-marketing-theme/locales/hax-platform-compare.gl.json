@@ -1,0 +1,15 @@
+{
+  "loading": "Cargando a comparación.",
+  "yes": "Si",
+  "partly": "En parte",
+  "no": "Non",
+  "compare": "Comparar",
+  "with": "Con",
+  "vs": "vs",
+  "caption": "{a} e {b}, función por función",
+  "feature": "Función",
+  "clearYes": "{count} de {total} cun si claro",
+  "seeForYourself": "Compróbao ti:",
+  "and": "e",
+  "why": "Por que"
+}

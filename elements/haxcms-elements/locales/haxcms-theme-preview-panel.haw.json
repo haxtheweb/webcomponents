@@ -8,5 +8,9 @@
   "theme": "Kumuhana",
   "palette": "Papa waihoʻoluʻu",
   "cancel": "Hoʻopau",
-  "openAppearanceSettings": "Wehe i nā hoʻonohonoho helehelena"
+  "openAppearanceSettings": "Wehe i nā hoʻonohonoho helehelena",
+  "designSystem": "ʻŌnaehana hoʻolālā",
+  "designSystemDefault": "DDD (paʻamau)",
+  "designSystemThemeDefault": "{name} (paʻamau o ke kumuhana)",
+  "designSystemHelp": "Waihoʻoluʻu, ʻano hua, nā kihi a me ka paʻapū. Na ke kumuhana nō e hoʻoholo i ka hoʻonohonoho."
 }

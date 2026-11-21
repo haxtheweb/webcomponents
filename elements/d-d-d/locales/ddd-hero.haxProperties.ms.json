@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Imej, GIF atau video besar dengan tajuk dan teks di atasnya, diletakkan di mana-mana dalam halaman."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Imej atau video",
+        "description": "Fail JPG, PNG, WebP, GIF, MP4 atau WebM."
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Huraikan imej. Biarkan kosong jika ia hanya hiasan."
+      },
+      {
+        "title": "Tajuk",
+        "description": "Tajuk yang dipaparkan di atas media. Biarkan kosong jika tiada."
+      },
+      {
+        "title": "Teks",
+        "description": "Teks yang dipaparkan di bawah tajuk, di atas media."
+      },
+      {
+        "title": "Lebar penuh",
+        "description": "Merentang dari tepi ke tepi dan bukannya berada dalam lajur kandungan."
+      },
+      {
+        "title": "Tinggi",
+        "options": {
+          "tall": "Tinggi",
+          "medium": "Sederhana",
+          "short": "Rendah"
+        }
+      },
+      {
+        "title": "Pembingkaian",
+        "description": "Kedudukan foto pada setiap saiz skrin"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pudar",
+        "description": "Warna yang dilapis di atas media. Dengan tajuk atau teks sentiasa ada satu, supaya teks kekal mudah dibaca.",
+        "options": {
+          "blue": "Biru",
+          "bottom": "Gelap di bahagian bawah",
+          "none": "Tiada"
+        }
+      },
+      {
+        "title": "Kedudukan teks",
+        "options": {
+          "bottom": "Bawah",
+          "middle": "Tengah"
+        }
+      },
+      {
+        "title": "Titik fokus melintang",
+        "description": "Bahagian imej yang kekal kelihatan apabila dipangkas, dari 0 (kiri) hingga 100 (kanan)."
+      },
+      {
+        "title": "Titik fokus menegak",
+        "description": "Bahagian imej yang kekal kelihatan apabila dipangkas, dari 0 (atas) hingga 100 (bawah)."
+      }
+    ]
+  }
+}

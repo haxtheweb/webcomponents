@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Á móti",
+    "description": "Texti við hlið einvígishnapps með tveimur persónum"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fyrirsögn"
+      },
+      {
+        "title": "Hvert hnappurinn vísar"
+      },
+      {
+        "title": "Texti hnapps"
+      },
+      {
+        "title": "Fræ vinstri persónu"
+      },
+      {
+        "title": "Fræ hægri persónu"
+      }
+    ]
+  }
+}

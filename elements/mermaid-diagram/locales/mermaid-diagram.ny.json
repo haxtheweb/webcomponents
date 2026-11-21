@@ -1,0 +1,21 @@
+{
+  "diagram": "Chithunzi chojambula",
+  "flowchart": "chithunzi cha kayendedwe",
+  "sequence": "motsatizana",
+  "source": "Gwero",
+  "textAlternative": "Zolemba zina m'malo mwake",
+  "present": "Onetsani",
+  "exitPresent": "Tulukani mu chiwonetsero",
+  "loading": "Tikutsegula chithunzi",
+  "empty": "Palibe choti tijambule pakadali pano. Onjezani gwero la chithunzi.",
+  "error": "Cholakwika",
+  "parseError": "Chithunzichi sichinathe kujambulidwa. Yang'anani gwero.",
+  "loadError": "Laibulale ya zithunzi sinathe kutsegulidwa.",
+  "srcError": "Fayilo ya chithunzi sinathe kutsegulidwa.",
+  "decision": "chisankho",
+  "end": "mapeto",
+  "goTo": "pitani ku {target}",
+  "ifGoTo": "ngati {label}, pitani ku {target}",
+  "describedBySource": "Chithunzi chofotokozedwa ndi gwero lake.",
+  "scrollable": "Chithunzi, chopukusika"
+}

@@ -1,0 +1,32 @@
+{
+  "gizmo": {
+    "title": "Szenario-Zeen",
+    "description": "Eng Zeen vun engem verzweigte Szenario. Verlinkt all Wiel mat enger anerer Zeen mat #, gefollegt vun hirer Zeen-ID."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Zeen-ID",
+        "description": "Wouhi Wiele verlinken: e Link op #, gefollegt vun dëser ID, féiert op dës Zeen. Buschtawen, Zuelen a Bindestrécher."
+      },
+      {
+        "title": "Iwwerschrëft",
+        "description": "Iwwerschrëft vun der Zeen."
+      },
+      {
+        "title": "Enn",
+        "description": "Ob dës Zeen e Wee ofschléisst, a wéi en ausgaangen ass.",
+        "options": {
+          "": "Keen Enn",
+          "good": "Gutt Enn",
+          "mixed": "Gemëscht Enn",
+          "poor": "Schlecht Enn"
+        }
+      },
+      {
+        "title": "Score",
+        "description": "Score fir dëst Enn z'erreechen. De gréissten Enn-Score am Szenario ass de Maximum."
+      }
+    ]
+  }
+}

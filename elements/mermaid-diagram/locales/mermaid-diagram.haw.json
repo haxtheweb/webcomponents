@@ -1,0 +1,21 @@
+{
+  "diagram": "Kiʻikuhi",
+  "flowchart": "kiʻikuhi kahe",
+  "sequence": "kaʻina",
+  "source": "Kumu",
+  "textAlternative": "Kikokikona pani",
+  "present": "Hōʻike",
+  "exitPresent": "Haʻalele i ka hōʻike",
+  "loading": "Ke hoʻouka ʻia nei ke kiʻikuhi",
+  "empty": "ʻAʻohe mea e kaha ai. Hoʻohui i ke kumu o ke kiʻikuhi.",
+  "error": "Hewa",
+  "parseError": "ʻAʻole hiki ke kaha ʻia kēia kiʻikuhi. E nānā i ke kumu.",
+  "loadError": "ʻAʻole hiki ke hoʻouka ʻia ka waihona kiʻikuhi.",
+  "srcError": "ʻAʻole hiki ke hoʻouka ʻia ka waihona kiʻikuhi.",
+  "decision": "hoʻoholo",
+  "end": "hope",
+  "goTo": "hele i {target}",
+  "ifGoTo": "inā {label}, hele i {target}",
+  "describedBySource": "Kiʻikuhi i wehewehe ʻia e kona kumu.",
+  "scrollable": "Kiʻikuhi, hiki ke kaʻa"
+}

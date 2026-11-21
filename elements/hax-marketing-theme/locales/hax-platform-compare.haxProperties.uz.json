@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Platformalarni taqqoslash",
+    "description": "Yuzma-yuz: ma’lumot faylidan istalgan ikki platformani tanlang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Taqqoslash ma’lumotlari (JSON)"
+      },
+      {
+        "title": "Chap platforma ID si"
+      },
+      {
+        "title": "O‘ng platforma ID si"
+      }
+    ]
+  }
+}

@@ -52,6 +52,20 @@
           "_top": "Efsti gluggi - _top",
           "_parent": "Yfirgluggi - _parent"
         }
+      },
+      {
+        "title": "Engin ör",
+        "description": "Fela ör hnappsins."
+      },
+      {
+        "title": "Tengill: mark",
+        "description": "Hvar á að opna tengilinn.",
+        "options": {
+          "": "Sami gluggi",
+          "_blank": "Nýr gluggi - _blank",
+          "_top": "Efsti gluggi - _top",
+          "_parent": "Yfirgluggi - _parent"
+        }
       }
     ],
     "developer": [

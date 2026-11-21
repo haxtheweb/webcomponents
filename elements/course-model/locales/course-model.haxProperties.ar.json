@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "العنوان"
+        "title": "العنوان",
+        "description": "عنوان يظهر فوق نموذج المقرر."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "عنوان ملف النموذج ثلاثي الأبعاد (.glb أو .gltf) المراد عرضه."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "صف النموذج ثلاثي الأبعاد لمن لا يستطيعون رؤيته."
       },
       {
         "title": "منطقة المعلومات"

@@ -1,0 +1,8 @@
+{
+  "theme": "Թեմա",
+  "palette": "Գունապնակ",
+  "themeDefault": "Թեմայի լռելյայնը",
+  "designSystem": "Դիզայն համակարգ",
+  "designSystemDefault": "DDD (լռելյայն)",
+  "designSystemUnavailable": "Այս թեման պահպանում է իր սեփական դիզայն համակարգը"
+}

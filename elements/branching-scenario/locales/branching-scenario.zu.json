@@ -1,0 +1,22 @@
+{
+  "scenario": "Isimo",
+  "directions": "Iziqondiso",
+  "showDirections": "Bonisa iziqondiso",
+  "hideDirections": "Fihla iziqondiso",
+  "directionsRead": "Funda isigcawu ngasinye bese ukhetha ongakwenza.",
+  "directionsEndings": "Kuneziphetho eziningana. Zama enye indlela ngemva kokuqeda.",
+  "startOver": "Qala phansi",
+  "back": "Buyela emuva isinyathelo esisodwa",
+  "tryAnother": "Zama enye indlela",
+  "path": "Indlela",
+  "scene": "Isigcawu",
+  "ending": "Isiphetho",
+  "end": "ukuphela",
+  "scenesSeen": "Kubonwe izigcawu ezingu-{seen} kwezingu-{total}",
+  "endingReached": "Ufinyelele esiphethweni",
+  "addScene": "Engeza isigcawu",
+  "newScene": "Isigcawu esisha",
+  "newSceneText": "Chaza okwenzekayo, bese uxhuma ukukhetha ngakunye nesigcawu.",
+  "editingNote": "Ukuhlela: zonke izigcawu ziyaboniswa. Ukukhetha kuyisixhumanisi ku-# esilandelwa i-id yesigcawu.",
+  "noScenes": "Engeza isigcawu ukuze uqale isimo."
+}

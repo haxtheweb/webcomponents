@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Sistem oblikovanja",
+  "dddDefault": "DDD (privzeto)",
+  "designSystemHelp": "Barva, pisava, vogali in fokus. Tema ohrani postavitev.",
+  "designSystemFixed": "Ta tema ohranja svoj sistem oblikovanja.",
+  "palette": "Paleta",
+  "themeDefault": "Privzeto teme",
+  "paletteNumber": "Paleta {n}",
+  "siteTheme": "{name} (tema tega spletišča)",
+  "restyle": "Preoblikuj to spletišče",
+  "close": "Zapri",
+  "reset": "Nazaj na lasten videz spletišča",
+  "random": "Presenetite me",
+  "about": "To prikazuje nekaj videzov, vgrajenih v HAX. Strani se nikoli ne spremenijo: struktura živi v JSON Outline Schema in vsak blok je standardna spletna komponenta, zato je oblikovanje mogoče prosto zamenjati."
+}

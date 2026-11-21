@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Chithunzi kuchokera ku zolemba",
+    "description": "Lembani chithunzi ngati zolemba (Mermaid): chithunzi cha kayendedwe, motsatizana, mndandanda wa nthawi ndi zina. Chimajambulidwa patsamba ndi zolemba zina m'malo mwake."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Mutu",
+        "description": "Chimawonetsedwa pamwamba pa chithunzi ndipo chimagwiritsidwa ntchito ngati dzina lake."
+      },
+      {
+        "title": "Gwero la chithunzi",
+        "description": "Zolemba za Mermaid, mwachitsanzo: flowchart TD, kenako mzere umodzi pa ulalo uliwonse monga A[Draft] --> B{Ready?}. Onjezani |label| pambuyo pa muvi kuti muupatse chilembo. Chojambula chimasinthidwa pamene mukulemba."
+      },
+      {
+        "title": "Zolemba zina m'malo mwake",
+        "description": "Fotokozani zomwe chithunzi chikuwonetsa kwa anthu omwe sangathe kuchiwona. Siyani chopanda kanthu pa chithunzi cha kayendedwe kuti masitepe ake alembedwe m'malo mwanu."
+      },
+      {
+        "title": "Mawu ofotokozera",
+        "description": "Mawu ofotokozera osankha owonetsedwa pansi pa chithunzi."
+      },
+      {
+        "title": "Onetsani gwero",
+        "description": "Onetsani zolemba za chithunzi pambali pa chojambula."
+      },
+      {
+        "title": "Onetsani zolemba zina",
+        "description": "Onetsani zolemba zina pansi pa chojambula. Zimapezeka nthawi zonse kwa owerenga sikirini."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fayilo ya gwero",
+        "description": "Adiresi ya fayilo ya .mmd yoti ijambulidwe m'malo mwa zolemba zili pamwambapa (https kapena njira pa tsamba ili)."
+      },
+      {
+        "title": "Mtundu wowonetsa",
+        "description": "Mtundu wa chip cha chizindikiro pamutu."
+      }
+    ]
+  }
+}

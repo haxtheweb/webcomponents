@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Egwuregwu ncheta",
+    "description": "Tụgharịa kaadị iji chọta ụzọ. Jikọọ okwu na ihe ọ pụtara ka idaba gosi nghọta, ma ọ bụ jiri ederede ma ọ bụ onyonyo abụọ dabara ọnụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Ntụziaka e gosiri n'isi, dịka: Jikọọ okwu ahụ na ọrụ ya."
+      },
+      {
+        "title": "Ụzọ",
+        "description": "Ụzọ ọ bụla bụ kaadị abụọ dabara ọnụ, ọ na-abụkarị okwu na ihe ọ pụtara. Akụkụ chọrọ ederede, onyonyo, ma ọ bụ ha abụọ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba nhọrọ maka akara isi, azụ kaadị na bọtịnụ."
+      }
+    ]
+  }
+}

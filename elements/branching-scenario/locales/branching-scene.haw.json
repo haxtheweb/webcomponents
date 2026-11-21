@@ -1,0 +1,14 @@
+{
+  "scene": "Kiʻina",
+  "ending": "Hopena",
+  "goodEnding": "Hopena maikaʻi",
+  "mixedEnding": "Hopena hui",
+  "poorEnding": "Hopena ʻino",
+  "scoreOf": "Helu {score} o {max}",
+  "scoreOnly": "Helu {score}",
+  "startScene": "Hoʻomaka",
+  "sceneIdLabel": "Id kiʻina",
+  "needsId": "Hoʻohui i id kiʻina i hiki i nā koho ke loulou i kēia kiʻina.",
+  "orphan": "ʻAʻohe koho e loulou ana i kēia kiʻina.",
+  "deadLinks": "Kuhikuhi kēia mau loulou i kekahi kiʻina ʻaʻole i loaʻa:"
+}

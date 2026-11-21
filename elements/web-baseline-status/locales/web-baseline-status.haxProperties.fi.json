@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Baseline-tila",
+    "description": "Näytä verkkoalustan ominaisuuden Baseline-selaintuen tila."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ominaisuuden tunnus",
+        "description": "Verkko-ominaisuuden tunnus, esimerkiksi anchor-positioning. Löydät tunnukset osoitteesta webstatus.dev; tunnus on ominaisuussivun URL-osoitteen viimeinen osa."
+      }
+    ]
+  }
+}

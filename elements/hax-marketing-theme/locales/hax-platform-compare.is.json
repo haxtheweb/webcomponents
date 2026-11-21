@@ -1,0 +1,15 @@
+{
+  "loading": "Hleð inn samanburðinum.",
+  "yes": "Já",
+  "partly": "Að hluta",
+  "no": "Nei",
+  "compare": "Bera saman",
+  "with": "Við",
+  "vs": "á móti",
+  "caption": "{a} og {b}, eiginleiki fyrir eiginleika",
+  "feature": "Eiginleiki",
+  "clearYes": "{count} af {total} skýrt já",
+  "seeForYourself": "Sjáðu sjálf(ur):",
+  "and": "og",
+  "why": "Af hverju"
+}

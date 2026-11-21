@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lansio offeryn allanol",
+    "description": "Bloc sy'n agor offeryn dysgu allanol mewn ffenestr newydd neu ar y dudalen, fel dolen blaen neu gyda chais mewngofnodi LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Teitl",
+        "description": "Enw'r offeryn. Fe'i dangosir yn y pennawd ac ar y botwm."
+      },
+      {
+        "title": "Disgrifiad",
+        "description": "Yr hyn y mae dysgwyr yn ei wneud yn yr offeryn, wedi'i ddangos uwchben y botwm."
+      },
+      {
+        "title": "URL lansio",
+        "description": "Cyfeiriad yr offeryn. Rhaid iddo fod yn gyfeiriad llawn sy'n dechrau gyda https:// neu http://."
+      },
+      {
+        "title": "Agor yn",
+        "description": "Mae ffenestr newydd yn gweithio gyda phob offeryn. Mae Ar y dudalen hon yn gweithio dim ond gydag offer sy'n caniatáu cael eu dangos y tu mewn i wefan arall.",
+        "options": {
+          "window": "Ffenestr newydd",
+          "embed": "Ar y dudalen hon"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL mewngofnodi LTI",
+        "description": "LTI 1.3 yn unig: cyfeiriad cychwyn mewngofnodi'r offeryn. Gyda hwn, ID cleient ac ID defnyddio mae'r botwm yn anfon cais mewngofnodi LTI yn lle agor dolen blaen. Mae angen gwasanaeth LTI y wefan hon i orffen y lansiad."
+      },
+      {
+        "title": "ID cleient LTI",
+        "description": "Yr ID cleient a roddodd yr offeryn i'r wefan hon. Dynodydd cyhoeddus, nid cyfrinach: peidiwch byth â rhoi allweddi na chyfrinachau yma."
+      },
+      {
+        "title": "ID defnyddio LTI",
+        "description": "Yr ID defnyddio a roddodd yr offeryn i'r wefan hon. Dynodydd cyhoeddus, nid cyfrinach."
+      },
+      {
+        "title": "Cyhoeddwr LTI",
+        "description": "Y cyfeiriad sy'n adnabod y wefan hon i'r offeryn. Gadewch yn wag i ddefnyddio cyfeiriad y wefan y mae'r dudalen arni."
+      },
+      {
+        "title": "Uchder ar y dudalen",
+        "description": "Uchder yr offeryn pan fydd yn agor ar y dudalen hon, mewn picseli (200 i 2000)."
+      },
+      {
+        "title": "Lliw acen",
+        "description": "Lliw sglodyn y pennawd a'r botwm. Gadewch yn wag i ddilyn y thema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Awgrym mewngofnodi LTI",
+        "description": "Gwerth anhryloyw y mae gwasanaeth LTI y wefan hon yn ei ddefnyddio i adnabod y dysgwr. Fel arfer caiff ei ddarparu gan y wefan drwy'r digwyddiad lti-launch-request yn hytrach na'i gadw yma. Byth yn gyfrinair nac yn allwedd."
+      },
+      {
+        "title": "Awgrym neges LTI",
+        "description": "Gwerth anhryloyw y mae gwasanaeth LTI y wefan hon yn ei ddefnyddio i adnabod y lansiad hwn. Fel arfer caiff ei ddarparu gan y wefan yn hytrach na'i gadw yma."
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Furitaanka qalab dibadeed",
+    "description": "Block fura qalab waxbarasho dibadeed daaqad cusub ama bogga, sida link caadi ah ama codsi galitaan LTI 1.3 ah."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Cinwaan",
+        "description": "Magaca qalabka. Wuxuu ka muuqdaa madaxa iyo badhanka."
+      },
+      {
+        "title": "Sharraxaad",
+        "description": "Waxa ardaydu ku sameeyaan qalabka, oo ka muuqda badhanka korkiisa."
+      },
+      {
+        "title": "URL-ka furitaanka",
+        "description": "Cinwaanka qalabka. Waa inuu noqdaa cinwaan buuxa oo ku bilaabma https:// ama http://."
+      },
+      {
+        "title": "Ku fur",
+        "description": "Daaqad cusub waxay la shaqaysaa qalab kasta. Boggan wuxuu la shaqeeyaa oo keliya qalabka oggol in lagu muujiyo goob kale gudaheeda.",
+        "options": {
+          "window": "Daaqad cusub",
+          "embed": "Boggan"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL-ka galitaanka LTI",
+        "description": "LTI 1.3 oo keliya: cinwaanka bilowga galitaanka qalabka. Isaga, client ID iyo deployment ID, badhanku wuxuu diraa codsi galitaan LTI halkii uu furi lahaa link caadi ah. Dhammaystirka furitaanku wuxuu u baahan yahay adeegga LTI ee goobtan."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID-ga qalabku siiyay goobtan. Aqoonsi guud, ma aha sir: weligaa halkan ha gelin furayaal ama siro."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID-ga qalabku siiyay goobtan. Aqoonsi guud, ma aha sir."
+      },
+      {
+        "title": "LTI issuer",
+        "description": "Cinwaanka goobtan ku aqoonsiiya qalabka. Ka tag madhan si aad u isticmaasho cinwaanka goobta boggu ku yaal."
+      },
+      {
+        "title": "Dhererka bogga",
+        "description": "Dhererka qalabka marka uu ku furmo boggan, pixel ahaan (200 ilaa 2000)."
+      },
+      {
+        "title": "Midabka xoojinta",
+        "description": "Midabka chip-ka madaxa iyo badhanka. Ka tag madhan si aad u raacdo theme-ka."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tilmaanta galitaanka LTI",
+        "description": "Qiime qarsoon oo adeegga LTI ee goobtan u isticmaalo aqoonsiga ardayga. Badanaa goobta ayaa ku bixisa dhacdada lti-launch-request halkii halkan lagu kaydin lahaa. Weligiis ma aha furaha sirta ama fure."
+      },
+      {
+        "title": "Tilmaanta fariinta LTI",
+        "description": "Qiime qarsoon oo adeegga LTI ee goobtan u isticmaalo aqoonsiga furitaankan. Badanaa goobta ayaa bixisa halkii halkan lagu kaydin lahaa."
+      }
+    ]
+  }
+}

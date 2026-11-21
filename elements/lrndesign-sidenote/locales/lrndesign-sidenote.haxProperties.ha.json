@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Bayanin gefe",
+    "description": "Bayanin da aka ware daga abun cikin da ke kewaye, tare da gunki da lakabi na zaɓi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Lakabi",
+        "description": "Lakabin bayanin gefe."
+      },
+      {
+        "title": "Gunki",
+        "description": "Gunkin bayanin gefe."
+      },
+      {
+        "title": "Abun ciki",
+        "description": "Abun cikin bayanin gefe."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Launi",
+        "description": "Launin da aka ɗan shafa wa bayanin gefe."
+      }
+    ]
+  }
+}

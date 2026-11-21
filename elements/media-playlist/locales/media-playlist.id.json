@@ -5,5 +5,7 @@
   "editModeLabel": "Mode edit daftar putar media",
   "position": "{current} dari {total}",
   "previousItem": "Item sebelumnya",
-  "nextItem": "Item berikutnya"
+  "nextItem": "Item berikutnya",
+  "fullScreen": "Layar penuh",
+  "exitFullScreen": "Keluar dari layar penuh"
 }

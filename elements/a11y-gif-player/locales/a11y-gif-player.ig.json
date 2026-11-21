@@ -2,5 +2,9 @@
   "toggleAnimation": "Gbanwee ihe nkiri na-emegharị",
   "info": "ozi",
   "image": "Foto",
-  "animatedGif": "GIF na-agagharị"
+  "animatedGif": "GIF na-agagharị",
+  "playAnimation": "Kpọọ ihe nkiri",
+  "pauseAnimation": "Kwụsịtụ ihe nkiri",
+  "showDescription": "Gosi nkọwa",
+  "hideDescription": "Zoo nkọwa"
 }

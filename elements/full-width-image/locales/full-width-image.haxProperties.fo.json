@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Bakgrundsmynd."
+        "description": "Bakgrundsmynd.",
+        "title": "Mynd"
       },
       {
         "property": "caption",
-        "description": "Tekstyvirskrift."
+        "description": "Tekstyvirskrift.",
+        "title": "Myndatekstur"
       }
     ]
   }

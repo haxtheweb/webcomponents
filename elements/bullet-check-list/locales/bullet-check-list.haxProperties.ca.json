@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Llista de verificació amb pics",
+    "description": "Una llista de caselles. Els lectors marquen els elements i el seu progrés es recorda al seu propi dispositiu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Títol",
+        "description": "Nom de la llista. Es llegeix en veu alta com l'etiqueta del grup de caselles."
+      },
+      {
+        "title": "Elements",
+        "description": "Cada element és una casella. Els lectors no poden canviar els elements marcats o desactivats."
+      },
+      {
+        "title": "Numerada",
+        "description": "Mostra una llista numerada en lloc d'una llista amb pics."
+      },
+      {
+        "title": "Estat",
+        "description": "Canvia els colors perquè coincideixin amb stop-note.",
+        "options": {
+          "info": "Avís",
+          "success": "Confirmació",
+          "warning": "Advertència",
+          "stop": "Atura"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Id d'emmagatzematge",
+        "description": "Id únic que s'utilitza per recordar el progrés del lector al seu dispositiu. Es genera automàticament; canvia'l només per compartir el progrés entre llistes o per començar de zero."
+      }
+    ]
+  }
+}

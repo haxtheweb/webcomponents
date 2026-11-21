@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "So sánh nền tảng",
+    "description": "Đối đầu: chọn hai nền tảng bất kỳ từ một tệp dữ liệu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dữ liệu so sánh (JSON)"
+      },
+      {
+        "title": "ID nền tảng bên trái"
+      },
+      {
+        "title": "ID nền tảng bên phải"
+      }
+    ]
+  }
+}

@@ -5,5 +5,7 @@
   "editModeLabel": "Mamiriro ekugadzirisa rondedzero yemidhiya",
   "position": "{current} pa{total}",
   "previousItem": "Chakapfuura",
-  "nextItem": "Chinotevera"
+  "nextItem": "Chinotevera",
+  "fullScreen": "Skrini yakazara",
+  "exitFullScreen": "Buda muskrini yakazara"
 }

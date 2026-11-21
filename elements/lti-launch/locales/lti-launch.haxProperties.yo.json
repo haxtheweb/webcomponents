@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Ìfilọ́lẹ̀ irinṣẹ́ òde",
+    "description": "Búlọ́ọ̀kù tó ń ṣí irinṣẹ́ ẹ̀kọ́ òde nínú fèrèsé tuntun tàbí lórí ojú-ìwé, gẹ́gẹ́ bí ìjápọ̀ lásán tàbí pẹ̀lú ìbéèrè ìwọlé LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé",
+        "description": "Orúkọ irinṣẹ́ náà. A fihàn nínú àkọlé àti lórí bọ́tìnnì."
+      },
+      {
+        "title": "Àpèjúwe",
+        "description": "Ohun tí àwọn akẹ́kọ̀ọ́ ń ṣe nínú irinṣẹ́ náà, tí a fihàn lókè bọ́tìnnì."
+      },
+      {
+        "title": "URL ìfilọ́lẹ̀",
+        "description": "Àdírẹ́sì irinṣẹ́ náà. Ó gbọ́dọ̀ jẹ́ àdírẹ́sì kíkún tó bẹ̀rẹ̀ pẹ̀lú https:// tàbí http://."
+      },
+      {
+        "title": "Ṣí nínú",
+        "description": "Fèrèsé tuntun ń ṣiṣẹ́ pẹ̀lú gbogbo irinṣẹ́. Lórí ojú-ìwé yìí ń ṣiṣẹ́ pẹ̀lú àwọn irinṣẹ́ tó gbà kí a fi wọ́n hàn nínú ojú-òpó mìíràn nìkan.",
+        "options": {
+          "window": "Fèrèsé tuntun",
+          "embed": "Lórí ojú-ìwé yìí"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL ìwọlé LTI",
+        "description": "LTI 1.3 nìkan: àdírẹ́sì ìbẹ̀rẹ̀ ìwọlé irinṣẹ́ náà. Pẹ̀lú èyí, ID oníbàárà àti ID ìfiránṣẹ́, bọ́tìnnì náà ń fi ìbéèrè ìwọlé LTI ránṣẹ́ dípò ṣíṣí ìjápọ̀ lásán. Píparí ìfilọ́lẹ̀ nílò iṣẹ́ LTI ojú-òpó yìí."
+      },
+      {
+        "title": "ID oníbàárà LTI",
+        "description": "ID oníbàárà tí irinṣẹ́ náà fún ojú-òpó yìí. Ìdánimọ̀ gbangba ni, kì í ṣe àṣírí: má ṣe fi kọ́kọ́rọ́ tàbí àṣírí síbí láé."
+      },
+      {
+        "title": "ID ìfiránṣẹ́ LTI",
+        "description": "ID ìfiránṣẹ́ tí irinṣẹ́ náà fún ojú-òpó yìí. Ìdánimọ̀ gbangba ni, kì í ṣe àṣírí."
+      },
+      {
+        "title": "Olùfúnni LTI",
+        "description": "Àdírẹ́sì tó ń dá ojú-òpó yìí mọ̀ fún irinṣẹ́ náà. Fi sílẹ̀ ní òfo láti lo àdírẹ́sì ojú-òpó tí ojú-ìwé náà wà lórí rẹ̀."
+      },
+      {
+        "title": "Gíga lórí ojú-ìwé",
+        "description": "Gíga irinṣẹ́ náà nígbà tí ó bá ṣí lórí ojú-ìwé yìí, ní píkísẹ́lì (200 sí 2000)."
+      },
+      {
+        "title": "Àwọ̀ ìtẹnumọ́",
+        "description": "Àwọ̀ chip àkọlé àti bọ́tìnnì. Fi sílẹ̀ ní òfo láti tẹ̀lé àkòrí."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Àmọ̀ràn ìwọlé LTI",
+        "description": "Iye àìṣe-kedere tí iṣẹ́ LTI ojú-òpó yìí ń lò láti dá akẹ́kọ̀ọ́ mọ̀. Ojú-òpó ló máa ń pèsè rẹ̀ nípasẹ̀ ìṣẹ̀lẹ̀ lti-launch-request dípò kí a fi pamọ́ síbí. Kì í ṣe ọ̀rọ̀ aṣínà tàbí kọ́kọ́rọ́ láé."
+      },
+      {
+        "title": "Àmọ̀ràn ìfiránṣẹ́ LTI",
+        "description": "Iye àìṣe-kedere tí iṣẹ́ LTI ojú-òpó yìí ń lò láti dá ìfilọ́lẹ̀ yìí mọ̀. Ojú-òpó ló máa ń pèsè rẹ̀ dípò kí a fi pamọ́ síbí."
+      }
+    ]
+  }
+}

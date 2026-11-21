@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Фон сүрөтү."
+        "description": "Фон сүрөтү.",
+        "title": "Сүрөт"
       },
       {
         "property": "caption",
-        "description": "Тексттин аталышы."
+        "description": "Тексттин аталышы.",
+        "title": "Жазуу"
       }
     ]
   }

@@ -6,6 +6,8 @@
   "faviconDescription": "Picha ya kichupo cha kivinjari / hutumika kwenye simu kama nembo ndogo ya tovuti",
   "domain": "Kikoa",
   "domainDescription": "Kikoa cha tovuti hii",
+  "sameAs": "Wasifu mwingine wa tovuti hii",
+  "sameAsDescription": "Kiungo kimoja kwa kila mstari kwenda kwenye wasifu wa tovuti hii au shirika mahali pengine (GitHub, LinkedIn, YouTube, Mastodon). Injini za utafutaji huvitumia kuunganisha wasifu huo na tovuti hii.",
   "language": "Lugha",
   "languageDescription": "Lugha ya tovuti hii. Tafuta kwa jina au msimbo, au weka msimbo mwingine kama fr-CA.",
   "googleAnalyticsId": "Kitambulisho cha Google Analytics",

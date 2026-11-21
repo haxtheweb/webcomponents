@@ -3,5 +3,8 @@
   "copyAsCsv": "CSV হিসেবে কপি করুন।",
   "printTable": "টেবিল প্রিন্ট করুন",
   "selectColumn": "কলাম নির্বাচন করুন",
-  "dataTable": "ডেটা · টেবিল"
+  "dataTable": "ডেটা · টেবিল",
+  "filterStatus": "{total}টির মধ্যে {shown}টি সারি দেখানো হচ্ছে, {column} অনুযায়ী ফিল্টার করা: {text}",
+  "columnNumber": "কলাম {column}",
+  "clearFilter": "ফিল্টার মুছুন"
 }

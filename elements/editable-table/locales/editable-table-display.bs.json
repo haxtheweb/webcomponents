@@ -3,5 +3,8 @@
   "copyAsCsv": "Kopiraj kao CSV.",
   "printTable": "Štampaj tabelu",
   "selectColumn": "Odaberi kolonu",
-  "dataTable": "Podaci · Tabela"
+  "dataTable": "Podaci · Tabela",
+  "filterStatus": "Prikazano {shown} od {total} redova, filtrirano po {column}: {text}",
+  "columnNumber": "Kolona {column}",
+  "clearFilter": "Očisti filter"
 }

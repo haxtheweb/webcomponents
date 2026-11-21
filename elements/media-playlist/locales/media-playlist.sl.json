@@ -5,5 +5,7 @@
   "editModeLabel": "Način urejanja seznama predvajanja medijev",
   "position": "{current} od {total}",
   "previousItem": "Prejšnji element",
-  "nextItem": "Naslednji element"
+  "nextItem": "Naslednji element",
+  "fullScreen": "Celozaslonski način",
+  "exitFullScreen": "Zapri celozaslonski način"
 }

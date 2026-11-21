@@ -1,0 +1,21 @@
+{
+  "diagram": "图表",
+  "flowchart": "流程图",
+  "sequence": "时序图",
+  "source": "来源",
+  "textAlternative": "文字替代",
+  "present": "演示",
+  "exitPresent": "退出演示",
+  "loading": "正辣载入图表",
+  "empty": "还呒没物事好画。加上图表源码。",
+  "error": "错误",
+  "parseError": "迭张图表画勿出来。检查一下源码。",
+  "loadError": "图表库载入勿进来。",
+  "srcError": "图表文件载入勿进来。",
+  "decision": "判断",
+  "end": "结束",
+  "goTo": "去 {target}",
+  "ifGoTo": "如果 {label}，去 {target}",
+  "describedBySource": "由源码描述个图表。",
+  "scrollable": "图表，好滚动"
+}

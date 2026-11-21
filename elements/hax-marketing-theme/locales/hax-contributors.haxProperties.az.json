@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Töhfəçilər",
+    "description": "Layihəni quran insanlar, siyahı faylından"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Siyahı faylı (JSON)"
+      },
+      {
+        "title": "Görünüş: landed, lab və ya code"
+      },
+      {
+        "title": "Göstəriləcək maksimum insan sayı (0 hamısıdır)"
+      }
+    ]
+  }
+}

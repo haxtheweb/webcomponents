@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Rannpháirtithe",
+    "description": "Na daoine a thóg an tionscadal, ó chomhad rolla"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Comhad rolla (JSON)"
+      },
+      {
+        "title": "Amharc: landed, lab nó code"
+      },
+      {
+        "title": "An líon is mó daoine le taispeáint (ciallaíonn 0 iad go léir)"
+      }
+    ]
+  }
+}

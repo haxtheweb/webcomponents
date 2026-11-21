@@ -1,4 +1,6 @@
 {
   "saveAll": "Sungani Zonse",
-  "saveTheFollowing": "Sungani izi: {list}?"
+  "saveTheFollowing": "Sungani izi: {list}?",
+  "save": "Sungani",
+  "cancel": "Letsani"
 }

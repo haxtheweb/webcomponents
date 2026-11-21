@@ -1,0 +1,19 @@
+{
+  "label": "Ulkoinen työkalu",
+  "labelLti": "Ulkoinen työkalu · LTI 1.3",
+  "theTool": "työkalu",
+  "directions": "Ohjeet",
+  "showDirections": "Näytä ohjeet",
+  "hideDirections": "Piilota ohjeet",
+  "directionsWindow": "Painike avaa uuden ikkunan, jossa työkalu on.",
+  "directionsEmbed": "Painike avaa työkalun tälle sivulle. Jos se ei lataudu, avaa se sen sijaan uuteen ikkunaan.",
+  "directionsLti": "Tämä sivusto kirjaa sinut työkaluun, joten et tarvitse erillistä tiliä.",
+  "openWindow": "Avaa {title} (uusi ikkuna)",
+  "openEmbed": "Avaa {title}",
+  "openInstead": "Avaa sen sijaan uuteen ikkunaan",
+  "frameTitle": "{title} (ulkoinen työkalu)",
+  "openedWindow": "Uusi ikkuna avautui työkalun kanssa.",
+  "openedEmbed": "Työkalu avautui tälle sivulle.",
+  "needsUrl": "Tämä lohko tarvitsee käynnistysosoitteen, joka alkaa http:// tai https://.",
+  "needsSignIn": "Tämä työkalu tarvitsee sivuston kirjautumispalvelun, joka ei ole käytettävissä täällä. Mitään ei avattu."
+}

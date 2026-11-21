@@ -5,5 +5,7 @@
   "editModeLabel": "Moda sererastkirina lîsteya medyayê",
   "position": "{current} ji {total}",
   "previousItem": "Hêmana berê",
-  "nextItem": "Hêmana din"
+  "nextItem": "Hêmana din",
+  "fullScreen": "Ekrana tevahî",
+  "exitFullScreen": "Ji ekrana tevahî derkeve"
 }

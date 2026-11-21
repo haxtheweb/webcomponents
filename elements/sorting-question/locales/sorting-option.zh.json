@@ -2,5 +2,9 @@
   "answerInCorrectOrder": "答案顺序正确",
   "answerInIncorrectOrder": "答案顺序错误",
   "moveOptionUp": "选择以将选项上移",
-  "moveOptionDown": "选择以将选项下移"
+  "moveOptionDown": "选择以将选项下移",
+  "moveEarlier": "上移",
+  "moveLater": "下移",
+  "correct": "正确",
+  "incorrect": "错误"
 }

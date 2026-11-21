@@ -9,5 +9,7 @@
   "slidePages": "ஸ்லைடு பக்கங்கள்",
   "goToSlide": "ஸ்லைடு {number} க்குச் செல்",
   "slides": "ஸ்லைடுகள்",
-  "position": "{total} இல் {number}"
+  "position": "{total} இல் {number}",
+  "fullScreen": "முழுத் திரை",
+  "exitFullScreen": "முழுத் திரையிலிருந்து வெளியேறு"
 }

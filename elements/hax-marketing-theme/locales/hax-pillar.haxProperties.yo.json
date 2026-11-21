@@ -1,0 +1,31 @@
+{
+  "gizmo": {
+    "title": "Òpó",
+    "description": "Òpó kan: orúkọ, gbólóhùn, àmì-àwòrán, àwọ̀ àti ìdí tí ó fi ṣe pàtàkì"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Orúkọ"
+      },
+      {
+        "title": "Gbólóhùn"
+      },
+      {
+        "title": "Àmì-àwòrán"
+      },
+      {
+        "title": "Àwọ̀ (orúkọ DDD)"
+      },
+      {
+        "title": "Òpó wo, 1 sí 7"
+      },
+      {
+        "title": "Káàdì kékeré"
+      },
+      {
+        "title": "Ibi tí orúkọ ń lọ"
+      }
+    ]
+  }
+}

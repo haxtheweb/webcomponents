@@ -40,5 +40,7 @@
   "hideDirections": "Dölj anvisningar",
   "showRelatedContent": "Visa relaterat innehåll",
   "hideRelatedContent": "Dölj relaterat innehåll",
-  "notAttempted": "Inte försökt"
+  "notAttempted": "Inte försökt",
+  "cardsDirections": "Lägg korten i rätt ordning med knapparna flytta tidigare och flytta senare på varje kort, eller dra dem med musen. När du tror att de ligger i rätt ordning testar du ditt svar genom att välja {checkAnswer}.",
+  "movedToPosition": "{item} flyttad till position {position} av {total}"
 }

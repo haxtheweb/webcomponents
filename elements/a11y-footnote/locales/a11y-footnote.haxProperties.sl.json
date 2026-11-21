@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Opomba",
+    "description": "Opomba, zapisana tam, kamor v besedilu spada. Prikaže se kot številka, oštevilčen seznam opomb pa se sam sestavi na dnu strani."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Opomba",
+        "description": "Besedilo opombe."
+      },
+      {
+        "title": "Brez predogleda",
+        "description": "Ne prikaži opombe, ko bralec z miško preide čez številko ali jo izbere."
+      }
+    ]
+  }
+}

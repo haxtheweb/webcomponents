@@ -9,5 +9,7 @@
   "slidePages": "Bogagga bandhigga",
   "goToSlide": "U gudub bandhigga {number}",
   "slides": "Sleydhyo",
-  "position": "{number} ka {total}"
+  "position": "{number} ka {total}",
+  "fullScreen": "Shaashad buuxda",
+  "exitFullScreen": "Ka bax shaashadda buuxda"
 }

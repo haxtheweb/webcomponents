@@ -5,5 +5,7 @@
   "editModeLabel": "Wysigmodus vir mediaspeellys",
   "position": "{current} van {total}",
   "previousItem": "Vorige item",
-  "nextItem": "Volgende item"
+  "nextItem": "Volgende item",
+  "fullScreen": "Volskerm",
+  "exitFullScreen": "Verlaat volskerm"
 }

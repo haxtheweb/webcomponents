@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Selettore di casi d'uso",
+    "description": "Scegli a cosa serve un sito e ottieni un link che apre HAX nel browser con quel sito iniziale, più il comando CLI corrispondente."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Indirizzo di HAX nel browser",
+        "description": "Dove si apre il link; gli vengono aggiunti ?skeleton= e &name="
+      },
+      {
+        "title": "Siti iniziali da escludere",
+        "description": "Nomi macchina, separati da virgole"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Elenco dei siti iniziali",
+        "description": "Indirizzo dell'elenco degli skeleton (il formato letto da app-hax)"
+      }
+    ]
+  }
+}

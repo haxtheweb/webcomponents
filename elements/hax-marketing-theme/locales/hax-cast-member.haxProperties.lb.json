@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Besetzungsmember",
+    "description": "Ee Publikum, vun engem Personnage gespillt, mat Wierder an engem Knäppchen"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wien dat ass"
+      },
+      {
+        "title": "Typ vum Personnage"
+      },
+      {
+        "title": "Seed vum Personnage"
+      },
+      {
+        "title": "Bühnefaarf (DDD-Numm)"
+      },
+      {
+        "title": "Wouhi de Knäppchen féiert"
+      },
+      {
+        "title": "Knäppchentext"
+      }
+    ]
+  }
+}

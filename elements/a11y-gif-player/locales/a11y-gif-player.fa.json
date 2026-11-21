@@ -2,5 +2,9 @@
   "toggleAnimation": "روشن/خاموش کردن پویانمایی",
   "info": "اطلاعات",
   "image": "تصویر",
-  "animatedGif": "گیف متحرک"
+  "animatedGif": "گیف متحرک",
+  "playAnimation": "پخش پویانمایی",
+  "pauseAnimation": "توقف موقت پویانمایی",
+  "showDescription": "نمایش توضیحات",
+  "hideDescription": "پنهان کردن توضیحات"
 }

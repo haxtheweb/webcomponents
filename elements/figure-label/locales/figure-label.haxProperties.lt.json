@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Iliustracijos žyma",
     "description": "Iliustracijos žymos elementas medijos ištekliams turinyje pažymėti."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Iliustracijos numeris",
+        "description": "Iliustracijos numeris arba trumpa etiketė, pvz., 1.3"
+      },
+      {
+        "title": "Aprašymas",
+        "description": "Trumpas iliustracijos aprašymas"
+      }
+    ]
   }
 }

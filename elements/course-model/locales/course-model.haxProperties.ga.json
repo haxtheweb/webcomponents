@@ -7,15 +7,18 @@
     "configure": [
       {
         "property": "poster",
-        "title": "teideal"
+        "title": "teideal",
+        "description": "Ceannteideal a thaispeántar os cionn mhúnla an chúrsa."
       },
       {
         "property": "src",
-        "title": "src"
+        "title": "src",
+        "description": "Seoladh an chomhaid mhúnla 3D (.glb nó .gltf) le taispeáint."
       },
       {
         "property": "alt",
-        "title": "alt"
+        "title": "alt",
+        "description": "Déan cur síos ar an múnla 3D do dhaoine nach féidir leo é a fheiceáil."
       },
       {
         "title": "Limistéar faisnéise"

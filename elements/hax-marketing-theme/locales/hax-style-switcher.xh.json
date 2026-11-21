@@ -1,0 +1,16 @@
+{
+  "theme": "Umxholo",
+  "designSystem": "Inkqubo yoyilo",
+  "dddDefault": "DDD (okumiselweyo)",
+  "designSystemHelp": "Umbala, uhlobo lwamagama, iikona nogxininiso. Umxholo ugcina uyilo.",
+  "designSystemFixed": "Lo mxholo ugcina inkqubo yawo yoyilo.",
+  "palette": "Ipaleti",
+  "themeDefault": "Okumiselweyo komxholo",
+  "paletteNumber": "Ipaleti {n}",
+  "siteTheme": "{name} (umxholo wale sayithi)",
+  "restyle": "Yila kwakhona inkangeleko yale sayithi",
+  "close": "Vala",
+  "reset": "Buyela kwinkangeleko yale sayithi",
+  "random": "Ndimangalise",
+  "about": "Oku kubonisa ezimbalwa zeenkangeleko ezakhelwe ku-HAX. Amaphepha akaze atshintshe: ulwakhiwo luhlala kwi-JSON Outline Schema kwaye ibhloko nganye licandelo lewebhu elisemgangathweni, ngoko uyilo lukhululekile ukutshintshwa."
+}

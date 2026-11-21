@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Joonise silt",
     "description": "Joonise sildi element meediavarade märgistamiseks sisus."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Joonise number",
+        "description": "Joonise number või lühike silt, nt 1.3"
+      },
+      {
+        "title": "Kirjeldus",
+        "description": "Joonise lühikirjeldus"
+      }
+    ]
   }
 }

@@ -9,5 +9,7 @@
   "slidePages": "Glærusíður",
   "goToSlide": "Fara á glæru {number}",
   "slides": "Glærur",
-  "position": "{number} af {total}"
+  "position": "{number} af {total}",
+  "fullScreen": "Allur skjárinn",
+  "exitFullScreen": "Hætta í öllum skjánum"
 }

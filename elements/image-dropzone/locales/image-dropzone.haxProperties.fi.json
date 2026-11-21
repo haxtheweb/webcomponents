@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Kuvan pudotusalue",
+    "description": "Oppijat sijoittavat tunnisteita kuvan päälle asetetuille alueille ja tarkistavat sitten vastauksensa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kuva",
+        "description": "Kuva, jolle oppijat sijoittavat tunnisteet."
+      },
+      {
+        "title": "Vaihtoehtoinen teksti",
+        "description": "Kuvailee kuvan niille, jotka eivät näe sitä. Älä paljasta, mihin tunnisteet kuuluvat."
+      },
+      {
+        "title": "Kuvan otsikko",
+        "description": "Lyhyt näkyvä otsikko kuvalle, näytetään sen yläpuolella."
+      },
+      {
+        "title": "Kysymys",
+        "description": "Mitä oppijoita pyydetään tekemään tunnisteilla."
+      },
+      {
+        "title": "Tunnisteet ja alueet",
+        "description": "Jokainen kohde on tunniste, jonka oppijat voivat sijoittaa. Anna tunnisteelle alueen nimi, niin sen alue tulee kuvaan; tunniste ilman alueen nimeä on ylimääräinen, joka ei kuulu mihinkään. Alueiden luvut ovat prosentteja kuvasta."
+      },
+      {
+        "title": "Kuvateksti",
+        "description": "Valinnainen kuvateksti kuvan alla."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Yritykset",
+        "description": "Montako kertaa oppija voi tarkistaa. 0 tarkoittaa rajoittamatonta."
+      },
+      {
+        "title": "Sekoita tunnisteet",
+        "description": "Näytä tunnisteet eri järjestyksessä joka käynnillä."
+      },
+      {
+        "title": "Kutistettava",
+        "description": "Näytä tämä kysymys avautuvana ja sulkeutuvana rivinä. Yhden avaaminen sulkee viereiset kutistettavat kysymykset."
+      },
+      {
+        "title": "Aloita kutistettuna",
+        "description": "Kun kutistettava, aloita suljettuna rivinä, joka näyttää vain kysymyksen ja tilan."
+      },
+      {
+        "title": "Arviointimuoto",
+        "description": "OER Schema: tämän arvioinnin arviointimuoto (esim. pisteet, kirjain, prosentti, suoritus)."
+      },
+      {
+        "title": "Oppimistavoite",
+        "description": "OER Schema: tähän arviointiin liittyvä oppimistavoite."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tietovisan nimi",
+        "description": "Tietovisan nimi, jota käytetään xAPI-tunnistukseen analytiikkajärjestelmissä."
+      },
+      {
+        "title": "Kurssi",
+        "description": "OER Schema: kurssi, jolle tämä arviointi on tarkoitettu."
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Kichagua matumizi",
+    "description": "Chagua tovuti ni ya nini na upate kiungo kinachofungua HAX kwenye kivinjari na tovuti hiyo ya kuanzia, pamoja na amri ya CLI inayolingana."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Anwani ya HAX kwenye kivinjari",
+        "description": "Mahali kiungo kinapofunguka; kinaongezewa ?skeleton= na &name="
+      },
+      {
+        "title": "Tovuti za kuanzia za kuacha nje",
+        "description": "Majina ya mashine, yaliyotenganishwa kwa koma"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Orodha ya tovuti za kuanzia",
+        "description": "Anwani ya orodha ya mifupa (muundo ambao app-hax husoma)"
+      }
+    ]
+  }
+}

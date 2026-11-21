@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Senarai langkah",
     "description": "Langkah bernombor untuk menyiapkan tugasan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Penunjuk langkah",
+        "description": "Tunjukkan langkah sebagai baris tajuk yang padat yang menandakan kemajuan. Kandungan langkah tidak dipaparkan dalam susun atur ini."
+      },
+      {
+        "title": "Langkah semasa",
+        "description": "Langkah yang sedang dibaca oleh pembaca, dikira dari 1. Langkah sebelumnya dipaparkan sebagai selesai. Digunakan oleh penunjuk langkah."
+      }
+    ]
   }
 }

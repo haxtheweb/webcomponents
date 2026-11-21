@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Cenário ramificado",
+    "description": "Uma história em que cada escolha leva a uma cena e um final diferentes. Os alunos podem voltar e tentar outros caminhos; o final alcançado define a pontuação."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Título",
+        "description": "Nome do cenário, mostrado no cabeçalho."
+      },
+      {
+        "title": "Cena inicial",
+        "description": "Id da cena em que os alunos começam. Deixe vazio para começar na primeira cena."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Cor de destaque",
+        "description": "Cor opcional para o chip do cabeçalho, os botões e a borda de uma escolha."
+      }
+    ]
+  }
+}

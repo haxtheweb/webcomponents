@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Hópur stöðvunarathugasemda",
+    "description": "Staflaðu nokkrum stöðvunarathugasemdum í einn kubb sem sýnir eina athugasemd í einu, svo sem Ábendingar eða Nýjungar. Leiðbeiningaspjöldum, hliðarathugasemdum og innrömmuðum tilvitnunum má stafla með þeim."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Merki",
+        "description": "Heiti hópsins sem skjálesarar tilkynna, svo sem Ábendingar eða Nýjungar."
+      },
+      {
+        "title": "Athugasemdir",
+        "description": "Stöðvunarathugasemdirnar í hópnum. Einnig má bæta við leiðbeiningaspjöldum, hliðarathugasemdum og innrömmuðum tilvitnunum."
+      }
+    ]
+  }
+}

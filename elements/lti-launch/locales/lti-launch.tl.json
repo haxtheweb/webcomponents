@@ -1,0 +1,19 @@
+{
+  "label": "Panlabas na tool",
+  "labelLti": "Panlabas na tool · LTI 1.3",
+  "theTool": "ang tool",
+  "directions": "Mga direksyon",
+  "showDirections": "Ipakita ang mga direksyon",
+  "hideDirections": "Itago ang mga direksyon",
+  "directionsWindow": "Nagbubukas ang button ng bagong window na may tool.",
+  "directionsEmbed": "Binubuksan ng button ang tool sa pahinang ito. Kung hindi ito mag-load, buksan ito sa bagong window sa halip.",
+  "directionsLti": "Sina-sign in ka ng site na ito sa tool, kaya hindi mo kailangan ng hiwalay na account.",
+  "openWindow": "Buksan ang {title} (bagong window)",
+  "openEmbed": "Buksan ang {title}",
+  "openInstead": "Buksan sa bagong window sa halip",
+  "frameTitle": "{title} (panlabas na tool)",
+  "openedWindow": "Nagbukas ang bagong window na may tool.",
+  "openedEmbed": "Nagbukas ang tool sa pahinang ito.",
+  "needsUrl": "Kailangan ng block na ito ng launch address na nagsisimula sa http:// o https://.",
+  "needsSignIn": "Kailangan ng tool na ito ang sign-in service ng site na ito, na hindi available dito. Walang binuksan."
+}

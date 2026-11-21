@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Ẹ̀yà ìbẹ̀rẹ̀ àpẹẹrẹ tí a ń lò láti ṣàfihàn ìṣètò HAX àti àwọn ohun-ìní tó ṣeé ṣàtúnṣe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Àkọlé"
+      }
+    ]
+  }
+}

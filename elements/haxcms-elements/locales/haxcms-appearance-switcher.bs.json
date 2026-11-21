@@ -1,0 +1,8 @@
+{
+  "theme": "Tema",
+  "palette": "Paleta",
+  "themeDefault": "Zadano za temu",
+  "designSystem": "Sistem dizajna",
+  "designSystemDefault": "DDD (zadano)",
+  "designSystemUnavailable": "Ova tema zadržava vlastiti sistem dizajna"
+}

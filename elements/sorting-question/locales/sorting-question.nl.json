@@ -40,5 +40,7 @@
   "hideDirections": "Aanwijzingen verbergen",
   "showRelatedContent": "Gerelateerde inhoud tonen",
   "hideRelatedContent": "Gerelateerde inhoud verbergen",
-  "notAttempted": "Niet geprobeerd"
+  "notAttempted": "Niet geprobeerd",
+  "cardsDirections": "Zet de kaarten in de juiste volgorde met de knoppen eerder zetten en later zetten op elke kaart, of sleep ze met een muis. Als je denkt dat ze in de juiste volgorde staan, test je je antwoord door {checkAnswer} te selecteren.",
+  "movedToPosition": "{item} verplaatst naar positie {position} van {total}"
 }

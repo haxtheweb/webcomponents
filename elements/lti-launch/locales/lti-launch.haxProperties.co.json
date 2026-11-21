@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lanciu d'un attrezzu esternu",
+    "description": "Un bloccu chì apre un attrezzu d'amparera esternu in una nova finestra o nant'à a pagina, cum'è liame simplice o cù una richiesta di cunnessione LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titulu",
+        "description": "Nome di l'attrezzu. Hè mustratu in u capu è nant'à u buttone."
+      },
+      {
+        "title": "Discrizzione",
+        "description": "Ciò chì i studienti facenu in l'attrezzu, mustratu sopra u buttone."
+      },
+      {
+        "title": "URL di lanciu",
+        "description": "Indirizzu di l'attrezzu. Deve esse un indirizzu cumpletu chì principia cù https:// o http://."
+      },
+      {
+        "title": "Apre in",
+        "description": "Una nova finestra funziona cù ogni attrezzu. Nant'à sta pagina funziona solu cù l'attrezzi chì permettenu d'esse mustrati in un altru situ.",
+        "options": {
+          "window": "Una nova finestra",
+          "embed": "In sta pagina"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL di cunnessione LTI",
+        "description": "Solu LTI 1.3: l'indirizzu d'iniziu di cunnessione di l'attrezzu. Cù questu, un ID di cliente è un ID di dispiegamentu, u buttone manda una richiesta di cunnessione LTI invece d'apre un liame simplice. Per finisce u lanciu ci vole u serviziu LTI di stu situ."
+      },
+      {
+        "title": "ID di cliente LTI",
+        "description": "L'ID di cliente chì l'attrezzu hà datu à stu situ. Un identificativu publicu, micca un secretu: ùn mettite mai chjave o secreti quì."
+      },
+      {
+        "title": "ID di dispiegamentu LTI",
+        "description": "L'ID di dispiegamentu chì l'attrezzu hà datu à stu situ. Un identificativu publicu, micca un secretu."
+      },
+      {
+        "title": "Emittore LTI",
+        "description": "L'indirizzu chì identifica stu situ per l'attrezzu. Lasciate biotu per aduprà l'indirizzu di u situ induve hè a pagina."
+      },
+      {
+        "title": "Altezza nant'à a pagina",
+        "description": "Altezza di l'attrezzu quand'ellu s'apre nant'à sta pagina, in pixel (da 200 à 2000)."
+      },
+      {
+        "title": "Culore d'accentu",
+        "description": "Culore di l'etichetta di u capu è di u buttone. Lasciate biotu per seguità u tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Indiziu di cunnessione LTI",
+        "description": "Un valore opacu chì u serviziu LTI di stu situ adopra per ricunnosce u studiente. Di solitu furnitu da u situ per mezu di l'eventu lti-launch-request invece d'esse salvatu quì. Mai una parolla d'intesa nè una chjave."
+      },
+      {
+        "title": "Indiziu di messaghju LTI",
+        "description": "Un valore opacu chì u serviziu LTI di stu situ adopra per ricunnosce stu lanciu. Di solitu furnitu da u situ invece d'esse salvatu quì."
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "diagram": "Diagramo",
+  "flowchart": "fluskemo",
+  "sequence": "sekvenco",
+  "source": "Fonto",
+  "textAlternative": "Teksta alternativo",
+  "present": "Prezenti",
+  "exitPresent": "Eliri el prezentado",
+  "loading": "Ŝargante la diagramon",
+  "empty": "Ankoraŭ nenio por desegni. Aldonu la fonton de la diagramo.",
+  "error": "Eraro",
+  "parseError": "Ĉi tiu diagramo ne povis esti desegnita. Kontrolu la fonton.",
+  "loadError": "La diagrama biblioteko ne povis esti ŝargita.",
+  "srcError": "La diagrama dosiero ne povis esti ŝargita.",
+  "decision": "decido",
+  "end": "fino",
+  "goTo": "iri al {target}",
+  "ifGoTo": "se {label}, iri al {target}",
+  "describedBySource": "Diagramo priskribita per sia fonto.",
+  "scrollable": "Diagramo, rulumebla"
+}

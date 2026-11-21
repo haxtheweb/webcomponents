@@ -1,0 +1,8 @@
+{
+  "theme": "テーマ",
+  "palette": "パレット",
+  "themeDefault": "テーマのデフォルト",
+  "designSystem": "デザインシステム",
+  "designSystemDefault": "DDD（デフォルト）",
+  "designSystemUnavailable": "このテーマは独自のデザインシステムを使います"
+}

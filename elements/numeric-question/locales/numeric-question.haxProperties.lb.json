@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Numeresch Fro",
+    "description": "Eng Fro, déi mat enger Zuel beäntwert gëtt. D'Äntwert ass eng fix Zuel oder eng Formel, déi aus Variabelen ausgerechent gëtt, a gëllt, wann se bannent enger Toleranz läit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fro",
+        "description": "Wat d'Léierender gefrot ginn. Schreift en Numm vun enger Variabel a geschweifte Klameren, wéi {d}, fir hire Wäert ze weisen."
+      },
+      {
+        "title": "Eenheet",
+        "description": "Als Text nieft dem Äntwertfeld gewisen, zum Beispill km/h."
+      },
+      {
+        "title": "Äntwert",
+        "description": "Déi richteg Zuel. Eidel loossen, wann eng Formel d'Äntwert ausrechent."
+      },
+      {
+        "title": "Formel",
+        "description": "Rechent d'Äntwert aus de Variabelen aus, zum Beispill d / (t / 60). Kann + - * / ^, Klameren, sqrt() an abs() benotzen. Gëtt amplaz vun der Äntwert benotzt, wann se gesat ass."
+      },
+      {
+        "title": "Variabelen",
+        "description": "Zuelen, déi d'Formel an d'Fro benotzen. Jidderee kritt e Wäert tëscht sengem klengsten a gréissten, a Schrëtt."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Toleranz",
+        "description": "Wéi wäit vun der exakter Äntwert et nach gëllt. 0 heescht exakt, oder op d'Kommastellen hei ënnendrënner geronnt."
+      },
+      {
+        "title": "Toleranztyp",
+        "description": "Absolut: plus oder minus d'Toleranz. Prozent: plus oder minus dee Prozentsaz vun der exakter Äntwert.",
+        "options": {
+          "absolute": "Absolut",
+          "percent": "Prozent"
+        }
+      },
+      {
+        "title": "Kommastellen",
+        "description": "D'Léierender ginn opgefuerdert, op sou vill Stellen ze ronnen, an d'Äntwert gëtt doropper geronnt gewisen. Eidel loossen fir keng Ronnung."
+      },
+      {
+        "title": "Versich",
+        "description": "Wéi oft e Léierende kontrolléiere kann. 0 heescht onbegrenzt."
+      },
+      {
+        "title": "Nei Zuelen bei all Versuch",
+        "description": "Nei Variabelewäerter zéien, all Kéier wann e Léierende nach eng Kéier probéiert. Seng fréier Äntwert gëtt dann net gewisen, wann en zréckkënnt, just ob se richteg war."
+      },
+      {
+        "title": "Zouklappbar",
+        "description": "Dës Fro als Zeil weisen, déi op- an zougeet. Wann eng opgeet, ginn déi aner zouklappbar Froen dernieft zou."
+      },
+      {
+        "title": "Zougeklappt ufänken",
+        "description": "Wann zouklappbar, als zou Zeil ufänken, déi just d'Fro an hire Status weist."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Numm vum Quiz",
+        "description": "Quiznumm fir d'xAPI-Identifikatioun an Analysesystemer."
+      }
+    ]
+  }
+}

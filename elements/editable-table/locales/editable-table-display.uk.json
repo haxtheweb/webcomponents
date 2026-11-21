@@ -3,5 +3,8 @@
   "copyAsCsv": "Копіювати як CSV.",
   "printTable": "Надрукувати таблицю",
   "selectColumn": "Вибрати стовпець",
-  "dataTable": "Дані · Таблиця"
+  "dataTable": "Дані · Таблиця",
+  "filterStatus": "Показано {shown} з {total} рядків, відфільтровано за {column}: {text}",
+  "columnNumber": "Стовпець {column}",
+  "clearFilter": "Очистити фільтр"
 }

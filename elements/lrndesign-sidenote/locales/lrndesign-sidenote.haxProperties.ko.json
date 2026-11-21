@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "곁주",
+    "description": "주변 내용과 구분된 메모. 아이콘과 레이블은 선택 사항입니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "레이블",
+        "description": "곁주의 레이블."
+      },
+      {
+        "title": "아이콘",
+        "description": "곁주의 아이콘."
+      },
+      {
+        "title": "내용",
+        "description": "곁주의 내용."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "색상",
+        "description": "곁주에 입힐 색조."
+      }
+    ]
+  }
+}

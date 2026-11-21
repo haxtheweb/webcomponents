@@ -52,6 +52,20 @@
           "_top": "Finestra superiore - _top",
           "_parent": "Finestra parente - _parent"
         }
+      },
+      {
+        "title": "Senza freccia",
+        "description": "Piattà a freccia di u buttone."
+      },
+      {
+        "title": "Liame: destinazione",
+        "description": "Induve apre u liame.",
+        "options": {
+          "": "Listessa finestra",
+          "_blank": "Nova finestra - _blank",
+          "_top": "Finestra d'insù - _top",
+          "_parent": "Finestra parente - _parent"
+        }
       }
     ],
     "developer": [

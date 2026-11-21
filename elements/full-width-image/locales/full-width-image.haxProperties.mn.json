@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Арын зураг."
+        "description": "Арын зураг.",
+        "title": "Зураг"
       },
       {
         "property": "caption",
-        "description": "Текстийн гарчиг."
+        "description": "Текстийн гарчиг.",
+        "title": "Тайлбар"
       }
     ]
   }

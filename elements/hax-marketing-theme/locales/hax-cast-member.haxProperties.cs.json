@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Člen obsazení",
+    "description": "Jedno publikum, hrané postavou, se slovy a tlačítkem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kdo to je"
+      },
+      {
+        "title": "Typ postavy"
+      },
+      {
+        "title": "Seed postavy"
+      },
+      {
+        "title": "Barva scény (název DDD)"
+      },
+      {
+        "title": "Kam vede tlačítko"
+      },
+      {
+        "title": "Text tlačítka"
+      }
+    ]
+  }
+}

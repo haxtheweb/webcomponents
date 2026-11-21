@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupp ta' Stop Notes",
+    "description": "Ġabra ta' diversi stop notes fi blokk wieħed li juri nota waħda kull darba, bħal Pariri jew X'hemm ġdid. Karti tal-istruzzjonijiet, noti tal-ġenb u kwotazzjonijiet bil-qafas jistgħu jinġabru magħhom."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tikketta",
+        "description": "Isem għall-grupp li jħabbru l-qarrejja tal-iskrin, bħal Pariri jew X'hemm ġdid."
+      },
+      {
+        "title": "Noti",
+        "description": "L-istop notes fil-grupp. Jistgħu jiżdiedu wkoll karti tal-istruzzjonijiet, noti tal-ġenb u kwotazzjonijiet bil-qafas."
+      }
+    ]
+  }
+}

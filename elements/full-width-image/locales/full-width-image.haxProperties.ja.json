@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "背景画像。"
+        "description": "背景画像。",
+        "title": "画像"
       },
       {
         "property": "caption",
-        "description": "テキストの見出し。"
+        "description": "テキストの見出し。",
+        "title": "キャプション"
       }
     ]
   }

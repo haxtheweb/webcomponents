@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ahli pelakon",
+    "description": "Satu khalayak, dilakonkan oleh watak, dengan kata-kata dan butang"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Siapa ini"
+      },
+      {
+        "title": "Jenis watak"
+      },
+      {
+        "title": "Benih watak"
+      },
+      {
+        "title": "Warna pentas (nama DDD)"
+      },
+      {
+        "title": "Destinasi butang"
+      },
+      {
+        "title": "Teks butang"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "scenario": "Scenario",
+  "directions": "Instructies",
+  "showDirections": "Instructies tonen",
+  "hideDirections": "Instructies verbergen",
+  "directionsRead": "Lees elke scène en kies wat jij zou doen.",
+  "directionsEndings": "Er zijn meerdere eindes. Probeer een ander pad als je klaar bent.",
+  "startOver": "Opnieuw beginnen",
+  "back": "Eén stap terug",
+  "tryAnother": "Probeer een ander pad",
+  "path": "Pad",
+  "scene": "Scène",
+  "ending": "Einde",
+  "end": "einde",
+  "scenesSeen": "{seen} van {total} scènes gezien",
+  "endingReached": "Einde bereikt",
+  "addScene": "Scène toevoegen",
+  "newScene": "Nieuwe scène",
+  "newSceneText": "Beschrijf wat er gebeurt en koppel elke keuze aan een scène.",
+  "editingNote": "Bewerken: elke scène wordt getoond. Een keuze is een link naar # gevolgd door een scène-ID.",
+  "noScenes": "Voeg een scène toe om het scenario te starten."
+}

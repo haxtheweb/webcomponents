@@ -7,7 +7,8 @@
     "configure": [
       {
         "property": "term",
-        "title": "පදය"
+        "title": "පදය",
+        "description": "පාඨකයින් එහි අර්ථ දැක්වීම බැලීමට ක්ලික් කරන වචනය හෝ වාක්‍ය ඛණ්ඩය."
       },
       {
         "property": "information",

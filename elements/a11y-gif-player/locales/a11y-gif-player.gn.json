@@ -2,5 +2,9 @@
   "toggleAnimation": "Mbojoasa ñemyatyrõ",
   "info": "marandu",
   "image": "Ta'ãnga",
-  "animatedGif": "GIF ojepysóva"
+  "animatedGif": "GIF ojepysóva",
+  "playAnimation": "Embosarái ta'ãnga oñemomýiva",
+  "pauseAnimation": "Embopyta ta'ãnga oñemomýiva",
+  "showDescription": "Ehechauka ñemombe'u",
+  "hideDescription": "Emokañy ñemombe'u"
 }

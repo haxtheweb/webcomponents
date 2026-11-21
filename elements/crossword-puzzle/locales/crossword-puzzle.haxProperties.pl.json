@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Krzyżówka",
+    "description": "Krzyżówka utworzona z listy słów i haseł. Siatka generuje się sama; uczący się wpisują słowa i je sprawdzają."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tytuł",
+        "description": "Tytuł lub pytanie wyświetlane nad krzyżówką."
+      },
+      {
+        "title": "Słowa",
+        "description": "Każde słowo i jego hasło. Siatka jest generowana z tej listy: najdłuższe słowo umieszczane jest jako pierwsze, a pozostałe krzyżują je na wspólnych literach."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Próby",
+        "description": "Ile razy uczący się może sprawdzić. 0 oznacza bez limitu."
+      },
+      {
+        "title": "Kolor akcentu",
+        "description": "Opcjonalny kolor etykiety nagłówka, aktywnego słowa i przycisków akcji."
+      },
+      {
+        "title": "Zwijana",
+        "description": "Pokaż tę krzyżówkę jako wiersz, który się otwiera i zamyka. Otwarcie jednego zamyka inne zwijane pytania obok."
+      },
+      {
+        "title": "Zacznij zwinięte",
+        "description": "Gdy jest zwijana, zacznij od zamkniętego wiersza pokazującego tylko tytuł i stan."
+      },
+      {
+        "title": "Format oceniania",
+        "description": "OER Schema: format oceniania tej oceny (np. punkty, litera, procent, ukończenie)."
+      },
+      {
+        "title": "Cel kształcenia",
+        "description": "OER Schema: cel kształcenia powiązany z tą oceną."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Nazwa quizu",
+        "description": "Nazwa quizu używana do identyfikacji xAPI w systemach analitycznych."
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs, dla którego przeznaczona jest ta ocena."
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "gizmo": {
+    "title": "Ukuqhathanisa amapulatifomu",
+    "description": "Ubuso nobuso: khetha noma yimaphi amapulatifomu amabili efayeleni ledatha"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yokuqhathanisa (JSON)"
+      },
+      {
+        "title": "I-ID yepulatifomu yesokunxele"
+      },
+      {
+        "title": "I-ID yepulatifomu yesokudla"
+      }
+    ]
+  }
+}

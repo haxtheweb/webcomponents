@@ -20,6 +20,12 @@
         "title": "Bild",
         "description": "Bild som visas med citatet."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Inramad",
+        "description": "Rita citatet på den gemensamma blockramen, med en ikon och etikett ovanför, så att det matchar anteckningar och instruktionskort."
+      }
     ]
   }
 }

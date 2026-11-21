@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "تصویر پس‌زمینه."
+        "description": "تصویر پس‌زمینه.",
+        "title": "تصویر"
       },
       {
         "property": "caption",
-        "description": "متن سرعنوان."
+        "description": "متن سرعنوان.",
+        "title": "زیرنویس"
       }
     ]
   }

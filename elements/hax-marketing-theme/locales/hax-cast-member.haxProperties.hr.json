@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Član glumačke postave",
+    "description": "Jedna publika koju utjelovljuje lik, s riječima i gumbom"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tko je to"
+      },
+      {
+        "title": "Vrsta lika"
+      },
+      {
+        "title": "Sjeme lika"
+      },
+      {
+        "title": "Boja pozornice (DDD naziv)"
+      },
+      {
+        "title": "Kamo vodi gumb"
+      },
+      {
+        "title": "Tekst gumba"
+      }
+    ]
+  }
+}

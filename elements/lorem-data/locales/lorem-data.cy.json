@@ -1,4 +1,6 @@
 {
   "saveAll": "Cadw'r Cyfan",
-  "saveTheFollowing": "Cadw'r canlynol: {list}?"
+  "saveTheFollowing": "Cadw'r canlynol: {list}?",
+  "save": "Cadw",
+  "cancel": "Canslo"
 }

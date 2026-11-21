@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Netwọk usoro",
+    "description": "Netwọk mmekọrịta nke otu akụkụ ọrụ si jikọta, nwere obere netwọk na njem nzọụkwụ n'otu n'otu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data netwọk",
+        "description": "URL nke ngwugwu JSON nke netwọk (ewuru na PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Netwọk",
+        "description": "Id netwọk a ga-ebu ụzọ gosi; main bụ netwọk usoro ahụ."
+      },
+      {
+        "title": "Taịlụ ahọpụtara",
+        "description": "Id taịlụ a ga-ahọpụta mgbe netwọk ahụ meghere."
+      },
+      {
+        "title": "Njem",
+        "description": "Id njem a ga-amalite na ya."
+      },
+      {
+        "title": "Malite na nlele ndepụta",
+        "description": "Gosi netwọk ahụ dịka ndepụta ndị dị n'ime ibe ha kama eserese."
+      },
+      {
+        "title": "Naanị eserese",
+        "description": "Gosi naanị eserese ahụ, dịka ihe osise: enweghị isi, njem, nkọwa ma ọ bụ ogwe nzọụkwụ."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Gụọ site na",
+        "description": "Malite na taịlụ ọ bụla a gụrụ site n'otu ihe nleba.",
+        "options": {
+          "": "Naanị njikọ",
+          "fresh": "Ọhụrụ",
+          "bus": "Bus factor",
+          "impact": "Mmetụta",
+          "evidence": "Ihe akaebe",
+          "parity": "Nha nhata"
+        }
+      }
+    ]
+  }
+}

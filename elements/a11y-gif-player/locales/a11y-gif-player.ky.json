@@ -2,5 +2,9 @@
   "toggleAnimation": "Анимацияны которуу",
   "info": "маалымат",
   "image": "Сүрөт",
-  "animatedGif": "Анимацияланган GIF"
+  "animatedGif": "Анимацияланган GIF",
+  "playAnimation": "Анимацияны ойнотуу",
+  "pauseAnimation": "Анимацияны тындыруу",
+  "showDescription": "Сүрөттөмөнү көрсөтүү",
+  "hideDescription": "Сүрөттөмөнү жашыруу"
 }

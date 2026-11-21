@@ -20,6 +20,12 @@
         "title": "Kép",
         "description": "Az idézettel együtt megjelenő kép."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Keretezett",
+        "description": "Az idézet a közös blokk-kereten jelenik meg, fölötte ikonnal és címkével, így illeszkedik a megjegyzésekhez és az utasításkártyákhoz."
+      }
     ]
   }
 }

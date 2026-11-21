@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Miembro del reparto",
+    "description": "Un público, interpretado por un personaje, con texto y un botón"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Quién es"
+      },
+      {
+        "title": "Tipo de personaje"
+      },
+      {
+        "title": "Semilla del personaje"
+      },
+      {
+        "title": "Color del escenario (nombre DDD)"
+      },
+      {
+        "title": "Adónde lleva el botón"
+      },
+      {
+        "title": "Texto del botón"
+      }
+    ]
+  }
+}

@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Mallattoo herregaa LaTeX fayyadamuun barreessi"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Duuba fakkii",
+        "description": "Duuba fakkiiwwan kaafamanii. Ofumaan kan jedhu yoo fakkiin fuula irratti arguuf rakkisaa ta'e qofa tokko dabala, fakkeenyaaf sararoota dukkanaa haala dukkanaa keessatti.",
+        "options": {
+          "auto": "Ofumaan",
+          "light": "Ifaa",
+          "dark": "Dukkana",
+          "none": "Homaa"
+        }
+      }
+    ]
   }
 }

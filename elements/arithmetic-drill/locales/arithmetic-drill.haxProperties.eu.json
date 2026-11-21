@@ -1,0 +1,57 @@
+{
+  "gizmo": {
+    "title": "Aritmetika-ariketa",
+    "description": "Sortutako aritmetika-ariketa sorta labur bat berehalako iritziarekin. Aukeratu eragiketak eta zenbaki-tartea; saio bakoitza berria da."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izenburua",
+        "description": "Ariketa honen izena, goiburuan erakutsia."
+      },
+      {
+        "title": "Eragiketak",
+        "description": "Zer ariketa mota egiten diren. Ikasleek hauetako edozein desaktiba dezakete hasi aurretik.",
+        "options": {
+          "add": "Batuketa",
+          "subtract": "Kenketa",
+          "multiply": "Biderketa",
+          "divide": "Zatiketa",
+          "add subtract": "Batuketa eta kenketa",
+          "multiply divide": "Biderketa eta zatiketa",
+          "add multiply": "Batuketa eta biderketa",
+          "add divide": "Batuketa eta zatiketa",
+          "subtract multiply": "Kenketa eta biderketa",
+          "subtract divide": "Kenketa eta zatiketa",
+          "add subtract multiply": "Batuketa, kenketa eta biderketa",
+          "add subtract divide": "Batuketa, kenketa eta zatiketa",
+          "add multiply divide": "Batuketa, biderketa eta zatiketa",
+          "subtract multiply divide": "Kenketa, biderketa eta zatiketa",
+          "add subtract multiply divide": "Laurak"
+        }
+      },
+      {
+        "title": "Zenbaki txikiena",
+        "description": "Ariketa batean erabilitako zenbaki txikiena. Zenbaki osoak, 0 edo handiagoak."
+      },
+      {
+        "title": "Zenbaki handiena",
+        "description": "Ariketa batean erabilitako zenbaki handiena. Zatiketen emaitzak eta zatitzaileak ere tarte honetan geratzen dira."
+      },
+      {
+        "title": "Ariketa kopurua",
+        "description": "Zenbat ariketa dauden saio batean (1etik 100era)."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Denbora-muga",
+        "description": "Saio oso baterako baimendutako segundoak. 0k tenporizadorerik ez esan nahi du, eta hori da lehenetsia: denbora mugatuko ariketek denbora gehiago behar duten ikasleak kaltetzen dituzte. Ezartzen denean, ikasleek beraiek desaktiba dezakete tenporizadorea."
+      },
+      {
+        "title": "Azentu-kolorea",
+        "description": "Goiburuko txartelaren eta botoien kolorea. Utzi hutsik gaiari jarraitzeko."
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Hlonza izindawo ezibalulekile",
+    "description": "Abafundi bathola izindawo ezifanele esithombeni ngokuchofoza, ukuthepha noma ukuhambisa isiphambano sekhibhodi. Okuhambisana nemephu yesithombe okunamamaki."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Isithombe",
+        "description": "Isithombe abafundi abasesha kuso."
+      },
+      {
+        "title": "Umbhalo ongenye indlela",
+        "description": "Ichaza isithombe kubantu abangakwazi ukusibona. Ayilokothi iboniswe njengesihloko."
+      },
+      {
+        "title": "Isihloko",
+        "description": "Isihloko esifushane esibonakalayo esiboniswa ngaphezu kwesithombe."
+      },
+      {
+        "title": "Umbuzo",
+        "description": "Lokho abafundi abacelwa ukuthi bakuthole esithombeni."
+      },
+      {
+        "title": "Izimpendulo",
+        "description": "Impendulo ngayinye iyi-oval eqanjwe igama esithombeni. Indawo nosayizi kungamaphesenti esithombe, kulinganiswa kusuka ekhoneni laso eliphezulu kwesokunxele. Ngesikhathi sokuhlela, yonke impendulo idwetshelwa umugqa esithombeni."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Imizamo",
+        "description": "Izikhathi umfundi angazama ngazo. U-0 usho ukuthi akunamkhawulo."
+      },
+      {
+        "title": "Amaphutha avunyelwe",
+        "description": "Mangaki amaphutha aqeda umzamo. U-0 usho ukuthi akunamkhawulo, futhi abafundi bathola inkinobho ethi Qeda."
+      },
+      {
+        "title": "Iyagoqeka",
+        "description": "Bonisa lo mbuzo njengomugqa ovuleka futhi uvaleke. Ukuvula owodwa kuvala eminye imibuzo egoqekayo eseduze nawo."
+      },
+      {
+        "title": "Qala kugoqiwe",
+        "description": "Uma igoqeka, qala njengomugqa ovaliwe obonisa umbuzo nesimo sawo kuphela."
+      },
+      {
+        "title": "Ifomethi yokumaka",
+        "description": "OER Schema: ifomethi yokumaka yalokhu kuhlola (isb. amaphuzu, uhlamvu, amaphesenti, ukuqedwa)."
+      },
+      {
+        "title": "Inhloso yokufunda",
+        "description": "OER Schema: inhloso yokufunda ehlobene nalokhu kuhlola."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Igama lequizi",
+        "description": "Igama lequizi elidluliselwe ukuze lisetshenziswe ezindaweni eziqhutshwa yi-xAPI ukuze kuhlonzwe le nto"
+      },
+      {
+        "title": "Isifundo",
+        "description": "OER Schema: isifundo lokhu kuhlola okuhloselwe sona."
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupa istaknutih bilješki",
+    "description": "Složite nekoliko istaknutih bilješki u jedan blok koji prikazuje po jednu bilješku, kao Savjeti ili Šta je novo. S njima se mogu složiti i kartice s uputstvima, bočne bilješke i uokvireni citati."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Oznaka",
+        "description": "Naziv grupe koji čitači ekrana najavljuju, npr. Savjeti ili Šta je novo."
+      },
+      {
+        "title": "Bilješke",
+        "description": "Istaknute bilješke u grupi. Mogu se dodati i kartice s uputstvima, bočne bilješke i uokvireni citati."
+      }
+    ]
+  }
+}

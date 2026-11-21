@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Ábracímke",
     "description": "Ábracímke elem a tartalomban lévő médiaelemek megjelöléséhez."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ábra száma",
+        "description": "Az ábra száma vagy rövid címkéje, pl. 1.3"
+      },
+      {
+        "title": "Leírás",
+        "description": "Az ábra rövid leírása"
+      }
+    ]
   }
 }

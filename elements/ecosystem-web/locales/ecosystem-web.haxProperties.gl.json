@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Rede do ecosistema",
+    "description": "Unha rede interactiva de como se conectan as partes dun proxecto, con subredes e percorridos paso a paso."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datos da rede",
+        "description": "URL do paquete JSON de redes (construído en PRAW, ecosystem-webs.json)."
+      },
+      {
+        "title": "Rede",
+        "description": "Id da rede que mostrar primeiro; main é a rede do ecosistema."
+      },
+      {
+        "title": "Mosaico seleccionado",
+        "description": "Id dun mosaico que seleccionar cando se abre a rede."
+      },
+      {
+        "title": "Percorrido",
+        "description": "Id dun percorrido polo que comezar."
+      },
+      {
+        "title": "Comezar na vista de lista",
+        "description": "Mostrar a rede como listas aniñadas en vez do debuxo."
+      },
+      {
+        "title": "Só o debuxo",
+        "description": "Mostrar só o debuxo, como figura: sen cabeceira, percorridos, detalles nin barra de pasos."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Lido por",
+        "description": "Comezar con todos os mosaicos lidos segundo unha medida.",
+        "options": {
+          "": "Só conexións",
+          "fresh": "Actualidade",
+          "bus": "Factor autobús",
+          "impact": "Impacto",
+          "evidence": "Evidencia",
+          "parity": "Paridade"
+        }
+      }
+    ]
+  }
+}

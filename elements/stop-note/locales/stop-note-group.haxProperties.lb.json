@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Stop Note-Grupp",
+    "description": "Stapelt e puer Stop Notes an ee Block, deen eng Notiz gläichzäiteg weist, wéi Tipps oder Wat ass nei. Uweisungskaarten, Randnotizen an agerummt Zitater kënne mat hinne gestapelt ginn."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bezeechnung",
+        "description": "Numm fir d'Grupp, deen d'Schiermlieser ukënnegen, wéi Tipps oder Wat ass nei."
+      },
+      {
+        "title": "Notizen",
+        "description": "D'Stop Notes an der Grupp. Uweisungskaarten, Randnotizen an agerummt Zitater kënnen och derbäigesat ginn."
+      }
+    ]
+  }
+}

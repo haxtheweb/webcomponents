@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Prepoznaj tačke",
+    "description": "Učenici pronalaze prava mjesta na slici klikom, dodirom ili pomjeranjem nišana tastaturom. Ocjenjiva verzija mape slike."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Slika",
+        "description": "Slika koju učenici pretražuju."
+      },
+      {
+        "title": "Alternativni tekst",
+        "description": "Opisuje sliku za ljude koji je ne mogu vidjeti. Nikad se ne prikazuje kao naslov."
+      },
+      {
+        "title": "Naslov",
+        "description": "Kratak vidljiv naslov prikazan iznad slike."
+      },
+      {
+        "title": "Pitanje",
+        "description": "Šta se od učenika traži da pronađu na slici."
+      },
+      {
+        "title": "Odgovori",
+        "description": "Svaki odgovor je imenovani oval na slici. Položaj i veličina su postoci slike, mjereni od njenog gornjeg lijevog ugla. Tokom uređivanja svaki odgovor je obilježen na slici."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Pokušaji",
+        "description": "Koliko puta učenik može pokušati. 0 znači neograničeno."
+      },
+      {
+        "title": "Dozvoljeni promašaji",
+        "description": "Koliko promašaja završava pokušaj. 0 znači neograničeno, a učenici dobijaju dugme Završi."
+      },
+      {
+        "title": "Sklopivo",
+        "description": "Prikaži ovo pitanje kao red koji se otvara i zatvara. Otvaranje jednog zatvara druga sklopiva pitanja pored njega."
+      },
+      {
+        "title": "Počni sklopljeno",
+        "description": "Kad je sklopivo, počni kao zatvoreni red koji prikazuje samo pitanje i status."
+      },
+      {
+        "title": "Format ocjenjivanja",
+        "description": "OER Schema: format ocjenjivanja za ovu procjenu (npr. bodovi, slovo, postotak, završenost)."
+      },
+      {
+        "title": "Cilj učenja",
+        "description": "OER Schema: cilj učenja povezan s ovom procjenom."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Naziv kviza",
+        "description": "Naziv kviza koji se prosljeđuje za upotrebu u okruženjima zasnovanim na xAPI radi identifikacije ove stavke"
+      },
+      {
+        "title": "Kurs",
+        "description": "OER Schema: kurs kojem je ova procjena namijenjena."
+      }
+    ]
+  }
+}

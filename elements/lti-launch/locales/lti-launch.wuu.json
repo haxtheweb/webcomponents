@@ -1,0 +1,19 @@
+{
+  "label": "外部工具",
+  "labelLti": "外部工具 · LTI 1.3",
+  "theTool": "迭个工具",
+  "directions": "说明",
+  "showDirections": "显示说明",
+  "hideDirections": "隐藏说明",
+  "directionsWindow": "迭只按钮会开一个新窗口，工具辣里向。",
+  "directionsEmbed": "迭只按钮会辣迭页打开工具。如果载入勿进来，就辣新窗口里打开。",
+  "directionsLti": "迭个网站会帮侬登录工具，所以勿要另外个账号。",
+  "openWindow": "打开 {title}（新窗口）",
+  "openEmbed": "打开 {title}",
+  "openInstead": "改辣新窗口里打开",
+  "frameTitle": "{title}（外部工具）",
+  "openedWindow": "新窗口打开了，工具辣里向。",
+  "openedEmbed": "工具辣迭页打开了。",
+  "needsUrl": "迭块要一个以 http:// 或者 https:// 开头个启动地址。",
+  "needsSignIn": "迭个工具要迭个网站个登录服务，但迭搭用勿了。啥也呒没打开。"
+}

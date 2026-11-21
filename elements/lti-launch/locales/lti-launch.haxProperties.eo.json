@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Lanĉo de ekstera ilo",
+    "description": "Bloko, kiu malfermas eksteran lernilon en nova fenestro aŭ sur la paĝo, kiel simpla ligilo aŭ kun LTI 1.3-ensaluta peto."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titolo",
+        "description": "Nomo de la ilo. Ĝi montriĝas en la kapo kaj sur la butono."
+      },
+      {
+        "title": "Priskribo",
+        "description": "Kion lernantoj faras en la ilo, montrata super la butono."
+      },
+      {
+        "title": "Lanĉa URL",
+        "description": "Adreso de la ilo. Ĝi devas esti plena adreso, kiu komenciĝas per https:// aŭ http://."
+      },
+      {
+        "title": "Malfermi en",
+        "description": "Nova fenestro funkcias kun ĉiu ilo. Sur ĉi tiu paĝo funkcias nur kun iloj, kiuj permesas esti montrataj ene de alia retejo.",
+        "options": {
+          "window": "Nova fenestro",
+          "embed": "En ĉi tiu paĝo"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI-ensaluta URL",
+        "description": "Nur LTI 1.3: la adreso de ensaluta iniciado de la ilo. Kun ĝi, klienta identigilo kaj deploja identigilo la butono sendas LTI-ensalutan peton anstataŭ malfermi simplan ligilon. Por fini la lanĉon necesas la LTI-servo de ĉi tiu retejo."
+      },
+      {
+        "title": "LTI-klienta ID",
+        "description": "La klienta ID, kiun la ilo donis al ĉi tiu retejo. Publika identigilo, ne sekreto: neniam metu ŝlosilojn aŭ sekretojn ĉi tien."
+      },
+      {
+        "title": "LTI-deploja ID",
+        "description": "La deploja ID, kiun la ilo donis al ĉi tiu retejo. Publika identigilo, ne sekreto."
+      },
+      {
+        "title": "LTI-eldoninto",
+        "description": "La adreso, kiu identigas ĉi tiun retejon al la ilo. Lasu malplena por uzi la adreson de la retejo, en kiu la paĝo estas."
+      },
+      {
+        "title": "Alto sur la paĝo",
+        "description": "Alto de la ilo kiam ĝi malfermiĝas sur ĉi tiu paĝo, en rastrumeroj (200 ĝis 2000)."
+      },
+      {
+        "title": "Akcenta koloro",
+        "description": "Koloro de la kapa ĉipo kaj de la butono. Lasu malplena por sekvi la etoson."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI-ensaluta sugesto",
+        "description": "Opaka valoro, kiun la LTI-servo de ĉi tiu retejo uzas por rekoni la lernanton. Kutime provizita de la retejo per la evento lti-launch-request anstataŭ konservita ĉi tie. Neniam pasvorto aŭ ŝlosilo."
+      },
+      {
+        "title": "LTI-mesaĝa sugesto",
+        "description": "Opaka valoro, kiun la LTI-servo de ĉi tiu retejo uzas por rekoni ĉi tiun lanĉon. Kutime provizita de la retejo anstataŭ konservita ĉi tie."
+      }
+    ]
+  }
+}

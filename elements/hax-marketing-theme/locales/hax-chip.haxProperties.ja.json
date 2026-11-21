@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "チップ",
+    "description": "ラベル付きの小さなアイコン"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "アイコン"
+      },
+      {
+        "title": "ラベル"
+      }
+    ]
+  }
+}

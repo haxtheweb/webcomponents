@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Statusi Baseline",
+    "description": "Shfaq statusin e mbështetjes Baseline në shfletues të një veçorie të platformës së uebit."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID-ja e veçorisë",
+        "description": "ID-ja e veçorisë së uebit, për shembull anchor-positioning. Gjej ID-të në webstatus.dev; ID-ja është pjesa e fundit e URL-së së faqes së veçorisë."
+      }
+    ]
+  }
+}

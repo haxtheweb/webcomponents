@@ -20,6 +20,12 @@
         "title": "Imagem",
         "description": "Imagem mostrada com a citação."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Emoldurada",
+        "description": "Desenhar a citação na moldura de bloco compartilhada, com um ícone e um rótulo acima, para combinar com notas e cartões de instrução."
+      }
     ]
   }
 }

@@ -8,5 +8,9 @@
   "theme": "Tema",
   "palette": "Paleta",
   "cancel": "Anulo",
-  "openAppearanceSettings": "Hap cilësimet e pamjes"
+  "openAppearanceSettings": "Hap cilësimet e pamjes",
+  "designSystem": "Sistemi i dizajnit",
+  "designSystemDefault": "DDD (parazgjedhje)",
+  "designSystemThemeDefault": "{name} (parazgjedhja e temës)",
+  "designSystemHelp": "Ngjyra, shkronjat, qoshet dhe dendësia. Tema ende vendos paraqitjen."
 }

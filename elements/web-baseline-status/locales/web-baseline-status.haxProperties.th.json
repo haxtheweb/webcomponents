@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "สถานะ Baseline",
+    "description": "แสดงสถานะการรองรับเบราว์เซอร์ Baseline ของฟีเจอร์แพลตฟอร์มเว็บ"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID ฟีเจอร์",
+        "description": "ID ของฟีเจอร์เว็บ เช่น anchor-positioning ค้นหา ID ได้ที่ webstatus.dev โดย ID คือส่วนสุดท้ายของ URL หน้าฟีเจอร์"
+      }
+    ]
+  }
+}

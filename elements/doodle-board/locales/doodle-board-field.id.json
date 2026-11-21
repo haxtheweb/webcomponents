@@ -1,0 +1,16 @@
+{
+  "drawing": "Gambar",
+  "edit": "Sunting gambar",
+  "start": "Mulai menggambar",
+  "remove": "Hapus gambar",
+  "empty": "Belum ada gambar",
+  "save": "Simpan",
+  "cancel": "Batal",
+  "close": "Tutup",
+  "discard": "Buang perubahan",
+  "discardConfirm": "Buang perubahan yang belum disimpan?",
+  "keepEditing": "Lanjutkan menyunting",
+  "draw": "Gambar",
+  "feedback": "Umpan balik",
+  "signature": "Tanda tangan"
+}

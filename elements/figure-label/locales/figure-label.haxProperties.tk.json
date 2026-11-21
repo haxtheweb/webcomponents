@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Şekil belligi",
     "description": "Mazmundaky media serişdelerini bellemek üçin şekil belligi elementi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Suratyň belgisi",
+        "description": "Surat üçin belgi ýa-da gysga bellik, meselem 1.3"
+      },
+      {
+        "title": "Düşündiriş",
+        "description": "Suratyň gysga düşündirişi"
+      }
+    ]
   }
 }

@@ -1,0 +1,16 @@
+{
+  "theme": "Tema",
+  "designSystem": "Ontwerpstelsel",
+  "dddDefault": "DDD (verstek)",
+  "designSystemHelp": "Kleur, lettertipe, hoeke en fokus. Die tema behou die uitleg.",
+  "designSystemFixed": "Hierdie tema behou sy eie ontwerpstelsel.",
+  "palette": "Palet",
+  "themeDefault": "Tema-verstek",
+  "paletteNumber": "Palet {n}",
+  "siteTheme": "{name} (hierdie webwerf se tema)",
+  "restyle": "Herstileer hierdie webwerf",
+  "close": "Maak toe",
+  "reset": "Terug na hierdie webwerf se eie voorkoms",
+  "random": "Verras my",
+  "about": "Dit wys 'n paar van die voorkomste wat in HAX ingebou is. Die bladsye verander nooit nie: struktuur leef in JSON Outline Schema en elke blok is 'n standaard-webkomponent, so die ontwerp kan vrylik geruil word."
+}

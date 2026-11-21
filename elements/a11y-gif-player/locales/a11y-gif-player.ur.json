@@ -2,5 +2,9 @@
   "toggleAnimation": "اینیمیشن آن/آف کریں",
   "info": "معلومات",
   "image": "تصویر",
-  "animatedGif": "متحرک GIF"
+  "animatedGif": "متحرک GIF",
+  "playAnimation": "اینیمیشن چلائیں",
+  "pauseAnimation": "اینیمیشن روکیں",
+  "showDescription": "تفصیل دکھائیں",
+  "hideDescription": "تفصیل چھپائیں"
 }

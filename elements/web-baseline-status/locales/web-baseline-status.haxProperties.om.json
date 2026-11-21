@@ -1,0 +1,14 @@
+{
+  "gizmo": {
+    "title": "Haala Baseline",
+    "description": "Haala deeggarsa barbaadduu Baseline amala waltajjii weebii tokkoo agarsiisi."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ID amalaa",
+        "description": "ID amala weebii, fakkeenyaaf anchor-positioning. ID webstatus.dev irratti argadhu; ID'n kutaa dhumaa URL fuula amalichaa ti."
+      }
+    ]
+  }
+}

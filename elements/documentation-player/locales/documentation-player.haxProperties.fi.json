@@ -1,0 +1,51 @@
+{
+  "gizmo": {
+    "title": "Dokumentaatiosoitin",
+    "description": "Web-komponentin läpikäynti, demo ja viite, kopiointipainikkeineen HTML:lle, importille, npm:lle ja CDN:lle."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dokumentaation datatiedosto",
+        "description": "Elementin mukana tuleva dokumentaatiodata (lib/tag.docs.json)."
+      },
+      {
+        "title": "Läpikäynnin kuvakäsikirjoitus",
+        "description": "Elementin mukana tuleva liikekuvakäsikirjoitus (tag.motion.json). Valinnainen."
+      },
+      {
+        "title": "Video-opetusohjelma",
+        "description": "Lyhyt video elementistä (YouTube, Vimeo tai videotiedosto). Korvaa dokumentaatiodatan videon."
+      },
+      {
+        "title": "Avaa välilehdelle",
+        "description": "Mikä välilehti näytetään ensin.",
+        "options": {
+          "motion": "Läpikäynti",
+          "video": "Video",
+          "demo": "Demo",
+          "docs": "Dokumentaatio",
+          "schema": "Skeema"
+        }
+      },
+      {
+        "title": "Läpikäynnin automaattinen toisto",
+        "description": "Aloita läpikäynti heti, kun soitin näkyy. Ohitetaan, jos lukija suosii vähennettyä liikettä."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Läpikäynnin aihe",
+        "description": "Elementeille, joilla on useita läpikäyntejä: mikä aihe avataan ensin (esimerkiksi add-blocks). Jätä tyhjäksi pääaihetta varten."
+      },
+      {
+        "title": "Live-demon linkki",
+        "description": "Mihin Avaa demon lähde -painike vie. Oletuksena repositorion demo-kansio."
+      },
+      {
+        "title": "Dokumentaation linkki",
+        "description": "Mihin koko dokumentaation painike vie, esimerkiksi vastaavalle Learn HAX -sivulle."
+      }
+    ]
+  }
+}

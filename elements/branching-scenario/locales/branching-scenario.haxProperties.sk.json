@@ -1,0 +1,24 @@
+{
+  "gizmo": {
+    "title": "Vetviaci sa scenár",
+    "description": "Príbeh, v ktorom každá voľba vedie k inej scéne a koncu. Študenti sa môžu vrátiť a skúsiť iné cesty; dosiahnutý koniec určí skóre."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Názov",
+        "description": "Názov scenára, zobrazený v jeho záhlaví."
+      },
+      {
+        "title": "Úvodná scéna",
+        "description": "ID scény, na ktorej študenti začínajú. Ak chcete začať prvou scénou, nechajte prázdne."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Farba zvýraznenia",
+        "description": "Voliteľná farba štítka v záhlaví, tlačidiel a okraja voľby."
+      }
+    ]
+  }
+}

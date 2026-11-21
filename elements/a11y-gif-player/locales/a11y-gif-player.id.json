@@ -2,5 +2,9 @@
   "toggleAnimation": "Alihkan animasi",
   "info": "info",
   "image": "Gambar",
-  "animatedGif": "GIF animasi"
+  "animatedGif": "GIF animasi",
+  "playAnimation": "Putar animasi",
+  "pauseAnimation": "Jeda animasi",
+  "showDescription": "Tampilkan deskripsi",
+  "hideDescription": "Sembunyikan deskripsi"
 }

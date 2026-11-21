@@ -3,5 +3,7 @@
   "status_stop": "Parar",
   "status_warning": "Advertencia",
   "status_success": "Éxito",
-  "status_info": "Nota"
+  "status_info": "Nota",
+  "status_tip": "Sabías que?",
+  "status_new": "Novidades"
 }

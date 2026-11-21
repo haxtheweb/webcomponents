@@ -1,0 +1,48 @@
+{
+  "gizmo": {
+    "title": "Radara diagramma",
+    "description": "Radara (zirnekļa) diagramma brieduma modeļiem un aspektu vērtēšanai, piemēram, HEOSAT. Ietver teksta alternatīvu un datu tabulu."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Virsraksts",
+        "description": "Diagrammas virsraksts; tiek izmantots arī kā tās pieejamais nosaukums."
+      },
+      {
+        "title": "Maksimālais rezultāts",
+        "description": "Augstākā vērtība skalā."
+      },
+      {
+        "title": "Kategorijas",
+        "description": "Pa vienai kategorijai rindā. Nepieciešamas vismaz 3."
+      },
+      {
+        "title": "Rezultāti",
+        "description": "Ar komatiem atdalīti skaitļi, pa vienam katrai kategorijai tādā pašā secībā."
+      },
+      {
+        "title": "Mērķa rezultāti",
+        "description": "Ar komatiem atdalīti skaitļi, pa vienam katrai kategorijai tādā pašā secībā."
+      },
+      {
+        "title": "Rādīt leģendu",
+        "description": "Rādīt leģendu, kas nosauc rezultātus un mērķus."
+      },
+      {
+        "title": "Kompakts",
+        "description": "Mazāka diagramma bez etiķetēm, leģendas vai datu tabulas. Novietojiet kursoru uz punkta, lai redzētu tā vērtības."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Rezultātu etiķete",
+        "description": "Rezultātu etiķete leģendā un tabulā."
+      },
+      {
+        "title": "Mērķu etiķete",
+        "description": "Mērķu etiķete leģendā un tabulā."
+      }
+    ]
+  }
+}

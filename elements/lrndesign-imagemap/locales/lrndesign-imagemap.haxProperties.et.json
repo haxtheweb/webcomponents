@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Aktiivalade üksikasjad",
         "description": "Pildikaardi interaktiivsed aktiivalad."
+      },
+      {
+        "title": "Aktiivsete kohtade üksikasjad",
+        "description": "Pildikaardi interaktiivsed aktiivsed kohad."
       }
     ]
   }

@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Tölfræði",
+    "description": "Tala sem telur upp, með merki og tengli á sögu sína"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tala til að telja upp að"
+      },
+      {
+        "title": "Á undan tölunni"
+      },
+      {
+        "title": "Á eftir tölunni"
+      },
+      {
+        "title": "Orð í stað tölu"
+      },
+      {
+        "title": "Hvað hún telur"
+      },
+      {
+        "title": "Slóð sögu á hax.cloud (stories/ee450a19)"
+      }
+    ]
+  }
+}

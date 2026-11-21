@@ -1,0 +1,16 @@
+{
+  "gizmo": {
+    "title": "Merki",
+    "description": "Eitt lítið ímynd við heiti"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ímynd"
+      },
+      {
+        "title": "Heiti"
+      }
+    ]
+  }
+}

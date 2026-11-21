@@ -3,5 +3,8 @@
   "copyAsCsv": "Копиране като CSV.",
   "printTable": "Отпечатване на таблицата",
   "selectColumn": "Избор на колона",
-  "dataTable": "Данни · Таблица"
+  "dataTable": "Данни · Таблица",
+  "filterStatus": "Показани редове: {shown} от {total}, филтрирани по {column}: {text}",
+  "columnNumber": "Колона {column}",
+  "clearFilter": "Изчисти филтъра"
 }

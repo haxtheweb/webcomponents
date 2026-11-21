@@ -1,0 +1,16 @@
+{
+  "theme": "テーマ",
+  "designSystem": "デザインシステム",
+  "dddDefault": "DDD（デフォルト）",
+  "designSystemHelp": "色、書体、角、フォーカス。レイアウトはテーマが保ちます。",
+  "designSystemFixed": "このテーマは独自のデザインシステムを使います。",
+  "palette": "パレット",
+  "themeDefault": "テーマのデフォルト",
+  "paletteNumber": "パレット {n}",
+  "siteTheme": "{name}（このサイトのテーマ）",
+  "restyle": "このサイトのスタイルを変更",
+  "close": "閉じる",
+  "reset": "このサイト本来の見た目に戻す",
+  "random": "おまかせ",
+  "about": "HAX に組み込まれた見た目のいくつかを表示しています。ページは変わりません。構造は JSON Outline Schema にあり、すべてのブロックが標準の Web コンポーネントなので、デザインは自由に切り替えられます。"
+}

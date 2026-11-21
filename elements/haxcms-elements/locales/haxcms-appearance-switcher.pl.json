@@ -1,0 +1,8 @@
+{
+  "theme": "Motyw",
+  "palette": "Paleta",
+  "themeDefault": "Domyślne motywu",
+  "designSystem": "System projektowy",
+  "designSystemDefault": "DDD (domyślny)",
+  "designSystemUnavailable": "Ten motyw zachowuje własny system projektowy"
+}

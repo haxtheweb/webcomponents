@@ -2,5 +2,9 @@
   "toggleAnimation": "انیمیشن بدل کړئ",
   "info": "معلومات",
   "image": "انځور",
-  "animatedGif": "متحرک GIF"
+  "animatedGif": "متحرک GIF",
+  "playAnimation": "انیمیشن پلی کړئ",
+  "pauseAnimation": "انیمیشن ودروئ",
+  "showDescription": "تشریح وښایاست",
+  "hideDescription": "تشریح پټه کړئ"
 }

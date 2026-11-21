@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Peluncuran piranti eksternal",
+    "description": "Blok sing mbukak piranti sinau eksternal ing jendhela anyar utawa ing kaca, minangka pranala biasa utawa karo panjaluk login LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Judhul",
+        "description": "Jeneng piranti. Ditampilake ing judhul lan ing tombol."
+      },
+      {
+        "title": "Katrangan",
+        "description": "Apa sing ditindakake siswa ing piranti, ditampilake ing ndhuwur tombol."
+      },
+      {
+        "title": "URL peluncuran",
+        "description": "Alamat piranti. Kudu alamat lengkap sing diwiwiti https:// utawa http://."
+      },
+      {
+        "title": "Bukak ing",
+        "description": "Jendhela anyar bisa kanggo kabeh piranti. Ing kaca iki mung bisa kanggo piranti sing ngidini ditampilake ing njero situs liya.",
+        "options": {
+          "window": "Jendhela anyar",
+          "embed": "Ing kaca iki"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL login LTI",
+        "description": "Mung LTI 1.3: alamat wiwitan login piranti. Karo iki, ID klien lan ID deployment, tombol ngirim panjaluk login LTI tinimbang mbukak pranala biasa. Ngrampungake peluncuran butuh layanan LTI situs iki."
+      },
+      {
+        "title": "ID klien LTI",
+        "description": "ID klien sing diwenehake piranti marang situs iki. Pengenal umum, dudu rahasia: aja nate nglebokake kunci utawa rahasia ing kene."
+      },
+      {
+        "title": "ID deployment LTI",
+        "description": "ID deployment sing diwenehake piranti marang situs iki. Pengenal umum, dudu rahasia."
+      },
+      {
+        "title": "Penerbit LTI",
+        "description": "Alamat sing ngenali situs iki marang piranti. Kosongake kanggo nggunakake alamat situs papan kaca iki."
+      },
+      {
+        "title": "Dhuwur ing kaca",
+        "description": "Dhuwure piranti nalika dibukak ing kaca iki, ing piksel (200 nganti 2000)."
+      },
+      {
+        "title": "Warna aksen",
+        "description": "Warna chip judhul lan tombol. Kosongake kanggo ngetutake tema."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Pitunjuk login LTI",
+        "description": "Nilai buram sing dienggo layanan LTI situs iki kanggo ngenali siswa. Biasane diwenehake situs liwat acara lti-launch-request tinimbang disimpen ing kene. Dudu sandhi utawa kunci."
+      },
+      {
+        "title": "Pitunjuk pesen LTI",
+        "description": "Nilai buram sing dienggo layanan LTI situs iki kanggo ngenali peluncuran iki. Biasane diwenehake situs tinimbang disimpen ing kene."
+      }
+    ]
+  }
+}

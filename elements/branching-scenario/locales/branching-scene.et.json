@@ -1,0 +1,14 @@
+{
+  "scene": "Stseen",
+  "ending": "Lõpp",
+  "goodEnding": "Hea lõpp",
+  "mixedEnding": "Segane lõpp",
+  "poorEnding": "Halb lõpp",
+  "scoreOf": "Punkte {score}/{max}",
+  "scoreOnly": "Punkte {score}",
+  "startScene": "Alusta",
+  "sceneIdLabel": "Stseeni ID",
+  "needsId": "Lisa stseeni ID, et valikud saaksid sellele stseenile viidata.",
+  "orphan": "Ükski valik ei viita sellele stseenile.",
+  "deadLinks": "Need lingid viitavad stseenile, mida pole olemas:"
+}

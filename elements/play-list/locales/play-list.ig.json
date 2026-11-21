@@ -9,5 +9,7 @@
   "slidePages": "Ibe slide",
   "goToSlide": "Gaa na slide {number}",
   "slides": "Slaịdụ",
-  "position": "{number} n'ime {total}"
+  "position": "{number} n'ime {total}",
+  "fullScreen": "Ihuenyo zuru ezu",
+  "exitFullScreen": "Pụọ n'ihuenyo zuru ezu"
 }

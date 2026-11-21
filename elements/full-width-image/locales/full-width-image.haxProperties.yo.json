@@ -7,11 +7,13 @@
     "configure": [
       {
         "property": "source",
-        "description": "Àwòrán ẹ̀yìn."
+        "description": "Àwòrán ẹ̀yìn.",
+        "title": "Àwòrán"
       },
       {
         "property": "caption",
-        "description": "Àkọlé ọ̀rọ̀."
+        "description": "Àkọlé ọ̀rọ̀.",
+        "title": "Àkọlé àwòrán"
       }
     ]
   }

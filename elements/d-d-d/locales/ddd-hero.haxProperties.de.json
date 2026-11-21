@@ -1,0 +1,68 @@
+{
+  "gizmo": {
+    "title": "Hero",
+    "description": "Ein großes Bild, GIF oder Video mit Überschrift und Text darüber, überall auf einer Seite platzierbar."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bild oder Video",
+        "description": "Eine JPG-, PNG-, WebP-, GIF-, MP4- oder WebM-Datei."
+      },
+      {
+        "title": "Alternativtext",
+        "description": "Beschreibe das Bild. Leer lassen, wenn es nur Dekoration ist."
+      },
+      {
+        "title": "Überschrift",
+        "description": "Überschrift über dem Medium. Leer lassen für keine."
+      },
+      {
+        "title": "Text",
+        "description": "Text unter der Überschrift, über dem Medium."
+      },
+      {
+        "title": "Volle Breite",
+        "description": "Von Rand zu Rand statt in der Inhaltsspalte."
+      },
+      {
+        "title": "Höhe",
+        "options": {
+          "tall": "Hoch",
+          "medium": "Mittel",
+          "short": "Niedrig"
+        }
+      },
+      {
+        "title": "Bildausschnitt",
+        "description": "Wie das Foto bei jeder Bildschirmgröße sitzt"
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Verlauf",
+        "description": "Farbe über dem Medium. Mit Überschrift oder Text gibt es immer eine, damit der Text lesbar bleibt.",
+        "options": {
+          "blue": "Blau",
+          "bottom": "Unten dunkel",
+          "none": "Keine"
+        }
+      },
+      {
+        "title": "Textposition",
+        "options": {
+          "bottom": "Unten",
+          "middle": "Mitte"
+        }
+      },
+      {
+        "title": "Fokuspunkt horizontal",
+        "description": "Teil des Bildes, der beim Zuschneiden sichtbar bleibt, von 0 (links) bis 100 (rechts)."
+      },
+      {
+        "title": "Fokuspunkt vertikal",
+        "description": "Teil des Bildes, der beim Zuschneiden sichtbar bleibt, von 0 (oben) bis 100 (unten)."
+      }
+    ]
+  }
+}

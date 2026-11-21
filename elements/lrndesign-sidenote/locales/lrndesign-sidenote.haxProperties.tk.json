@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Gapdal bellik",
+    "description": "Töweregindäki mazmundan aýrylan bellik, goşmaça ikonka we bellik bilen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bellik",
+        "description": "Gapdal belligiň belligi."
+      },
+      {
+        "title": "Ikonka",
+        "description": "Gapdal belligiň ikonkasy."
+      },
+      {
+        "title": "Mazmun",
+        "description": "Gapdal belligiň mazmuny."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Reňk",
+        "description": "Gapdal belligiň öwüşgin reňki."
+      }
+    ]
+  }
+}

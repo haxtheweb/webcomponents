@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Statistika",
+    "description": "Bellikli we hekaýasyna baglanyşykly ýokary sanalýan san"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sanalmaly san"
+      },
+      {
+        "title": "Sandan öň"
+      },
+      {
+        "title": "Sandan soň"
+      },
+      {
+        "title": "Sanyň ýerine sözler"
+      },
+      {
+        "title": "Näme sanaýar"
+      },
+      {
+        "title": "hax.cloud-daky hekaýa salgysy (stories/ee450a19)"
+      }
+    ]
+  }
+}

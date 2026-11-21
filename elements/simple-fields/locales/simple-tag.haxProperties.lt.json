@@ -14,6 +14,17 @@
         "property": "autoAccentColor",
         "title": "Automatinė akcento spalva",
         "description": "Automatiškai nustatyti akcento spalvą pagal etiketės tekstą."
+      },
+      {
+        "title": "Reikšmė",
+        "description": "Suteikite žymai reikšmės spalvą. Palikite tuščią neutraliai žymai.",
+        "options": {
+          "": "Neutrali",
+          "brand": "Prekės ženklo",
+          "success": "Sėkmė",
+          "warning": "Įspėjimas",
+          "danger": "Pavojus"
+        }
       }
     ],
     "advanced": [

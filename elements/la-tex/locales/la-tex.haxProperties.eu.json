@@ -2,5 +2,19 @@
   "gizmo": {
     "title": "LaTeX",
     "description": "Idatzi LaTeX notazio matematikoa erabiliz"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Irudiaren atzealdea",
+        "description": "Marraztutako irudien atzeko planoa. Automatikoak orrian marrazkia ikusten zaila litzatekeenean bakarrik gehitzen du, adibidez lerro ilunak modu ilunean.",
+        "options": {
+          "auto": "Automatikoa",
+          "light": "Argia",
+          "dark": "Iluna",
+          "none": "Bat ere ez"
+        }
+      }
+    ]
   }
 }

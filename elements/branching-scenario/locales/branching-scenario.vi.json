@@ -1,0 +1,22 @@
+{
+  "scenario": "Tình huống",
+  "directions": "Hướng dẫn",
+  "showDirections": "Hiện hướng dẫn",
+  "hideDirections": "Ẩn hướng dẫn",
+  "directionsRead": "Đọc từng cảnh và chọn điều bạn sẽ làm.",
+  "directionsEndings": "Có nhiều kết thúc. Hãy thử một hướng khác sau khi hoàn thành.",
+  "startOver": "Bắt đầu lại",
+  "back": "Lùi một bước",
+  "tryAnother": "Thử hướng khác",
+  "path": "Hướng đi",
+  "scene": "Cảnh",
+  "ending": "Kết thúc",
+  "end": "hết",
+  "scenesSeen": "Đã xem {seen} / {total} cảnh",
+  "endingReached": "Đã đến kết thúc",
+  "addScene": "Thêm cảnh",
+  "newScene": "Cảnh mới",
+  "newSceneText": "Mô tả điều xảy ra, rồi liên kết từng lựa chọn với một cảnh.",
+  "editingNote": "Đang chỉnh sửa: mọi cảnh đều được hiển thị. Một lựa chọn là liên kết tới # theo sau là ID cảnh.",
+  "noScenes": "Thêm một cảnh để bắt đầu tình huống."
+}

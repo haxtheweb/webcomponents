@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Xarici aləti işə sal",
+    "description": "Xarici təlim alətini yeni pəncərədə və ya səhifədə, adi keçid kimi və ya LTI 1.3 giriş sorğusu ilə açan blok."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Başlıq",
+        "description": "Alətin adı. Başlıqda və düymədə göstərilir."
+      },
+      {
+        "title": "Təsvir",
+        "description": "Öyrənənlərin alətdə nə etdiyi, düymənin üstündə göstərilir."
+      },
+      {
+        "title": "İşə salma URL-i",
+        "description": "Alətin ünvanı. https:// və ya http:// ilə başlayan tam ünvan olmalıdır."
+      },
+      {
+        "title": "Harada açılsın",
+        "description": "Yeni pəncərə hər alətlə işləyir. Bu səhifədə yalnız başqa saytın daxilində göstərilməyə icazə verən alətlərlə işləyir.",
+        "options": {
+          "window": "Yeni pəncərə",
+          "embed": "Bu səhifədə"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "LTI giriş URL-i",
+        "description": "Yalnız LTI 1.3: alətin giriş başlatma ünvanı. Bununla, client ID və deployment ID ilə düymə adi keçid açmaq əvəzinə LTI giriş sorğusu göndərir. İşə salmanı tamamlamaq üçün bu saytın LTI xidməti lazımdır."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Alətin bu sayta verdiyi client ID. Gizli məlumat deyil, açıq identifikatordur: buraya heç vaxt açar və ya sirr qoymayın."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Alətin bu sayta verdiyi deployment ID. Gizli məlumat deyil, açıq identifikatordur."
+      },
+      {
+        "title": "LTI emitenti",
+        "description": "Bu saytı alətə tanıdan ünvan. Səhifənin olduğu saytın ünvanından istifadə etmək üçün boş saxlayın."
+      },
+      {
+        "title": "Səhifədəki hündürlük",
+        "description": "Alət bu səhifədə açıldıqda onun hündürlüyü, pikseldə (200-dən 2000-ə)."
+      },
+      {
+        "title": "Vurğu rəngi",
+        "description": "Başlıq nişanının və düymənin rəngi. Mövzuya uyğun olması üçün boş saxlayın."
+      }
+    ],
+    "developer": [
+      {
+        "title": "LTI giriş ipucu",
+        "description": "Bu saytın LTI xidmətinin öyrənəni tanımaq üçün istifadə etdiyi qeyri-şəffaf dəyər. Adətən burada saxlanmaq əvəzinə sayt tərəfindən lti-launch-request hadisəsi vasitəsilə təmin edilir. Heç vaxt parol və ya açar deyil."
+      },
+      {
+        "title": "LTI mesaj ipucu",
+        "description": "Bu saytın LTI xidmətinin bu işə salmanı tanımaq üçün istifadə etdiyi qeyri-şəffaf dəyər. Adətən burada saxlanmaq əvəzinə sayt tərəfindən təmin edilir."
+      }
+    ]
+  }
+}

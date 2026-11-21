@@ -20,6 +20,12 @@
         "title": "Bild",
         "description": "Bild, das mit dem Zitat angezeigt wird."
       }
+    ],
+    "advanced": [
+      {
+        "title": "Gerahmt",
+        "description": "Das Zitat im gemeinsamen Blockrahmen mit Symbol und Beschriftung darüber darstellen, passend zu Notizen und Anleitungskarten."
+      }
     ]
   }
 }

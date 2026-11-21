@@ -2,5 +2,17 @@
   "gizmo": {
     "title": "Danh sách các bước",
     "description": "Các bước được đánh số để hoàn thành một nhiệm vụ."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Chỉ báo bước",
+        "description": "Hiển thị các bước dưới dạng một hàng tiêu đề gọn đánh dấu tiến độ. Nội dung bước không hiển thị trong bố cục này."
+      },
+      {
+        "title": "Bước hiện tại",
+        "description": "Bước mà người đọc đang ở, đếm từ 1. Các bước trước hiển thị là đã hoàn thành. Được dùng bởi chỉ báo bước."
+      }
+    ]
   }
 }

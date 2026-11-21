@@ -1,0 +1,70 @@
+{
+  "gizmo": {
+    "title": "Paveikslėlio numetimo zona",
+    "description": "Besimokantieji deda etiketes ant zonų, uždėtų ant paveikslėlio, tada patikrina atsakymą."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Paveikslėlis",
+        "description": "Paveikslėlis, ant kurio besimokantieji deda etiketes."
+      },
+      {
+        "title": "Alternatyvusis tekstas",
+        "description": "Aprašo paveikslėlį tiems, kurie jo nemato. Neišduokite, kur turi būti etiketės."
+      },
+      {
+        "title": "Paveikslėlio pavadinimas",
+        "description": "Trumpas matomas paveikslėlio pavadinimas, rodomas virš jo."
+      },
+      {
+        "title": "Klausimas",
+        "description": "Ką besimokantieji turi padaryti su etiketėmis."
+      },
+      {
+        "title": "Etiketės ir zonos",
+        "description": "Kiekvienas punktas yra etiketė, kurią besimokantieji gali padėti. Suteikite etiketei zonos pavadinimą, kad jos zona atsirastų paveikslėlyje; etiketė be zonos pavadinimo yra papildoma ir niekur nepriklauso. Zonų skaičiai yra paveikslėlio procentai."
+      },
+      {
+        "title": "Paaiškinimas",
+        "description": "Pasirinktinis paaiškinimas, rodomas po paveikslėliu."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Bandymai",
+        "description": "Kiek kartų besimokantysis gali tikrinti. 0 reiškia neribotai."
+      },
+      {
+        "title": "Maišyti etiketes",
+        "description": "Rodyti etiketes kita tvarka kiekvieno apsilankymo metu."
+      },
+      {
+        "title": "Suskleidžiamas",
+        "description": "Rodyti šį klausimą kaip eilutę, kuri atsidaro ir užsidaro. Atidarius vieną, užsidaro kiti šalia esantys suskleidžiami klausimai."
+      },
+      {
+        "title": "Pradėti suskleistą",
+        "description": "Jei suskleidžiamas, pradėti kaip uždarą eilutę, rodančią tik klausimą ir jo būseną."
+      },
+      {
+        "title": "Vertinimo formatas",
+        "description": "OER Schema: šio vertinimo formatas (pvz., taškai, raidė, procentai, užbaigimas)."
+      },
+      {
+        "title": "Mokymosi tikslas",
+        "description": "OER Schema: su šiuo vertinimu susijęs mokymosi tikslas."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Testo pavadinimas",
+        "description": "Testo pavadinimas, naudojamas xAPI identifikavimui analitikos sistemose."
+      },
+      {
+        "title": "Kursas",
+        "description": "OER Schema: kursas, kuriam skirtas šis vertinimas."
+      }
+    ]
+  }
+}

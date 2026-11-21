@@ -5,5 +5,7 @@
   "editModeLabel": "Multimedia-zerrendaren edizio modua",
   "position": "{current}/{total}",
   "previousItem": "Aurreko elementua",
-  "nextItem": "Hurrengo elementua"
+  "nextItem": "Hurrengo elementua",
+  "fullScreen": "Pantaila osoa",
+  "exitFullScreen": "Irten pantaila osotik"
 }

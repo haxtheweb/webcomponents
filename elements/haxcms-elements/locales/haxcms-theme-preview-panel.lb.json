@@ -8,5 +8,9 @@
   "theme": "Thema",
   "palette": "Palett",
   "cancel": "Ofbriechen",
-  "openAppearanceSettings": "Astellunge fir d'Ausgesinn opmaachen"
+  "openAppearanceSettings": "Astellunge fir d'Ausgesinn opmaachen",
+  "designSystem": "Designsystem",
+  "designSystemDefault": "DDD (Standard)",
+  "designSystemThemeDefault": "{name} (Standard vum Thema)",
+  "designSystemHelp": "Faarf, Schrëft, Ecken an Dicht. D'Thema decidéiert ëmmer nach iwwer de Layout."
 }

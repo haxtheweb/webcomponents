@@ -40,5 +40,7 @@
   "hideDirections": "Təlimatları gizlət",
   "showRelatedContent": "Əlaqəli məzmunu göstər",
   "hideRelatedContent": "Əlaqəli məzmunu gizlət",
-  "notAttempted": "Cəhd edilməyib"
+  "notAttempted": "Cəhd edilməyib",
+  "cardsDirections": "Hər kartdakı əvvələ köçür və sonraya köçür düymələri ilə kartları düzgün ardıcıllığa qoyun və ya onları siçanla sürüşdürün. Düzgün ardıcıllıqda olduğuna inandığınız zaman {checkAnswer} seçərək cavabınızı yoxlayın.",
+  "movedToPosition": "{item} {total} mövqedən {position}-ə köçürüldü"
 }

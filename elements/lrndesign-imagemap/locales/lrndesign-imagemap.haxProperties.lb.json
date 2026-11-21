@@ -14,6 +14,10 @@
         "property": "hotspotDetails",
         "title": "Hotspot-Detailer",
         "description": "Déi interaktiv Hotspots op der Bildkaart."
+      },
+      {
+        "title": "Detailer vun den Hotspots",
+        "description": "Déi interaktiv Hotspots op der Image-Map."
       }
     ]
   }

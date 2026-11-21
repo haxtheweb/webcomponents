@@ -1,0 +1,13 @@
+{
+  "gizmo": {
+    "title": "example-hax-element",
+    "description": "Esimerkkielementti, jolla havainnollistetaan HAX-määrityksiä ja muokattavia ominaisuuksia."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Otsikko"
+      }
+    ]
+  }
+}

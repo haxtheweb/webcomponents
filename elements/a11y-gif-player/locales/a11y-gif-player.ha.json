@@ -2,5 +2,9 @@
   "toggleAnimation": "Kunna/kashe motsi",
   "info": "bayani",
   "image": "Hoto",
-  "animatedGif": "GIF mai motsi"
+  "animatedGif": "GIF mai motsi",
+  "playAnimation": "Kunna motsi",
+  "pauseAnimation": "Dakatar da motsi",
+  "showDescription": "Nuna bayani",
+  "hideDescription": "Ɓoye bayani"
 }

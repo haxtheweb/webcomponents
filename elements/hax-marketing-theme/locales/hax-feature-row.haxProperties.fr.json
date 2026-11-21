@@ -1,0 +1,28 @@
+{
+  "gizmo": {
+    "title": "Ligne de fonctionnalité",
+    "description": "Un écran du produit à côté de ce que cela signifie pour vous"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Petit libellé"
+      },
+      {
+        "title": "Titre"
+      },
+      {
+        "title": "Image"
+      },
+      {
+        "title": "Ce que montre l'image"
+      },
+      {
+        "title": "Image à droite"
+      },
+      {
+        "title": "Couleur de l'ombre (nom DDD, vide pour suivre la palette)"
+      }
+    ]
+  }
+}

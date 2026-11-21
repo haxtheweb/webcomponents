@@ -1,0 +1,21 @@
+{
+  "diagram": "Skýringarmynd",
+  "flowchart": "flæðirit",
+  "sequence": "runa",
+  "source": "Uppruni",
+  "textAlternative": "Textavalkostur",
+  "present": "Kynna",
+  "exitPresent": "Hætta kynningu",
+  "loading": "Hleð inn skýringarmyndinni",
+  "empty": "Ekkert að teikna enn. Bættu við frumtexta skýringarmyndarinnar.",
+  "error": "Villa",
+  "parseError": "Ekki tókst að teikna þessa skýringarmynd. Athugaðu frumtextann.",
+  "loadError": "Ekki tókst að hlaða skýringarmyndasafninu.",
+  "srcError": "Ekki tókst að hlaða skrá skýringarmyndarinnar.",
+  "decision": "ákvörðun",
+  "end": "endir",
+  "goTo": "fara í {target}",
+  "ifGoTo": "ef {label}, fara í {target}",
+  "describedBySource": "Skýringarmynd lýst með frumtexta sínum.",
+  "scrollable": "Skýringarmynd, skrunanleg"
+}

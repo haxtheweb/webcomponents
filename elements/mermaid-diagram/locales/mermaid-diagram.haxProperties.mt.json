@@ -1,0 +1,44 @@
+{
+  "gizmo": {
+    "title": "Dijagramma minn test",
+    "description": "Ikteb dijagramma bħala test (Mermaid): flowchart, sekwenza, kronoloġija u aktar. Titpinġa fil-paġna b'alternattiva testwali."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Titlu",
+        "description": "Murija fuq id-dijagramma u użata bħala isimha."
+      },
+      {
+        "title": "Sors tad-dijagramma",
+        "description": "Test Mermaid, pereżempju: flowchart TD, imbagħad linja waħda għal kull link bħal A[Draft] --> B{Ready?}. Żid |label| wara vleġġa biex tittikkettjaha. It-tpinġija tiġi aġġornata hekk kif tikteb."
+      },
+      {
+        "title": "Alternattiva testwali",
+        "description": "Iddeskrivi x'turi d-dijagramma għal nies li ma jistgħux jarawha. Ħallih vojt fuq flowchart biex il-passi tiegħu jiġu elenkati għalik."
+      },
+      {
+        "title": "Didaskalija",
+        "description": "Didaskalija fakultattiva murija taħt id-dijagramma."
+      },
+      {
+        "title": "Uri s-sors",
+        "description": "Uri t-test tad-dijagramma ħdejn it-tpinġija."
+      },
+      {
+        "title": "Uri l-alternattiva testwali",
+        "description": "Uri l-alternattiva testwali taħt it-tpinġija. Hija dejjem disponibbli għall-qarrejja tal-iskrin."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Fajl tas-sors",
+        "description": "Indirizz ta' fajl .mmd li jitpinġa minflok it-test ta' hawn fuq (https jew mogħdija fuq dan is-sit)."
+      },
+      {
+        "title": "Kulur tal-aċċent",
+        "description": "Kulur taċ-ċippa tal-ikona fl-intestatura."
+      }
+    ]
+  }
+}

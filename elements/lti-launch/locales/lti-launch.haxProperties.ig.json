@@ -1,0 +1,66 @@
+{
+  "gizmo": {
+    "title": "Mmalite ngwaọrụ mpụga",
+    "description": "Ngọngọ na-emepe ngwaọrụ mmụta mpụga na windo ọhụrụ ma ọ bụ na peeji, dịka njikọ nkịtị ma ọ bụ site na arịrịọ nbanye LTI 1.3."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Aha",
+        "description": "Aha ngwaọrụ ahụ. E gosiri ya n'isi na na bọtịnụ."
+      },
+      {
+        "title": "Nkọwa",
+        "description": "Ihe ndị mmụta na-eme na ngwaọrụ ahụ, e gosiri n'elu bọtịnụ."
+      },
+      {
+        "title": "URL mmalite",
+        "description": "Adreesị ngwaọrụ ahụ. Ọ ga-abụrịrị adreesị zuru ezu na-amalite na https:// ma ọ bụ http://."
+      },
+      {
+        "title": "Mepee na",
+        "description": "Windo ọhụrụ na-arụ ọrụ na ngwaọrụ ọ bụla. Na peeji a na-arụ ọrụ naanị na ngwaọrụ na-ekwe ka e gosi ha n'ime saịtị ọzọ.",
+        "options": {
+          "window": "Windo ọhụrụ",
+          "embed": "Na peeji a"
+        }
+      }
+    ],
+    "advanced": [
+      {
+        "title": "URL nbanye LTI",
+        "description": "Naanị LTI 1.3: adreesị mmalite nbanye nke ngwaọrụ ahụ. Site na nke a, client ID na deployment ID, bọtịnụ ahụ na-eziga arịrịọ nbanye LTI kama imeghe njikọ nkịtị. Imecha mmalite ahụ chọrọ ọrụ LTI nke saịtị a."
+      },
+      {
+        "title": "LTI client ID",
+        "description": "Client ID ngwaọrụ ahụ nyere saịtị a. Njirimara ọha, ọ bụghị ihe nzuzo: etinyela igodo ma ọ bụ ihe nzuzo ebe a ma ọlị."
+      },
+      {
+        "title": "LTI deployment ID",
+        "description": "Deployment ID ngwaọrụ ahụ nyere saịtị a. Njirimara ọha, ọ bụghị ihe nzuzo."
+      },
+      {
+        "title": "Onye nnyefe LTI",
+        "description": "Adreesị na-egosi ngwaọrụ ahụ saịtị a. Hapụ ya efu iji jiri adreesị saịtị peeji ahụ dị na ya."
+      },
+      {
+        "title": "Ogo na peeji",
+        "description": "Ogo ngwaọrụ ahụ mgbe ọ meghere na peeji a, na pikselụ (200 ruo 2000)."
+      },
+      {
+        "title": "Agba ntụpọ",
+        "description": "Agba akara isi na bọtịnụ. Hapụ ya efu ka o soro isiokwu."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ntụaka nbanye LTI",
+        "description": "Uru na-adịghị ahụ anya ọrụ LTI nke saịtị a na-eji amata onye mmụta. Saịtị na-enyekarị ya site na ihe omume lti-launch-request kama ichekwa ya ebe a. Ọ dịghị mgbe ọ bụ okwuntughe ma ọ bụ igodo."
+      },
+      {
+        "title": "Ntụaka ozi LTI",
+        "description": "Uru na-adịghị ahụ anya ọrụ LTI nke saịtị a na-eji amata mmalite a. Saịtị na-enyekarị ya kama ichekwa ya ebe a."
+      }
+    ]
+  }
+}

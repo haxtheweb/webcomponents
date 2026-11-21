@@ -1,0 +1,18 @@
+{
+  "gizmo": {
+    "title": "Grupo de Stop Note",
+    "description": "Agrupa varias notas de alto nun bloque que mostra unha nota de cada vez, como Consellos ou Novidades. Tamén se poden agrupar con elas fichas de instrucións, notas laterais e citas enmarcadas."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Etiqueta",
+        "description": "Nome do grupo que anuncian os lectores de pantalla, como Consellos ou Novidades."
+      },
+      {
+        "title": "Notas",
+        "description": "As notas de alto do grupo. Tamén se poden engadir fichas de instrucións, notas laterais e citas enmarcadas."
+      }
+    ]
+  }
+}

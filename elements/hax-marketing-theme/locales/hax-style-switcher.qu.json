@@ -1,0 +1,16 @@
+{
+  "theme": "Rikchay",
+  "designSystem": "Diseño sistema",
+  "dddDefault": "DDD (ñawpaqmanta kaq)",
+  "designSystemHelp": "Llimp'i, qillqa laya, k'uchukuna, yuyaychakuy. Rikchayqa churakuyninta waqaychan.",
+  "designSystemFixed": "Kay rikchayqa kikin diseño sistemanta waqaychan.",
+  "palette": "Llimp'ikuna",
+  "themeDefault": "Rikchaypa ñawpaqmanta kaqnin",
+  "paletteNumber": "Llimp'ikuna {n}",
+  "siteTheme": "{name} (kay kitip rikchaynin)",
+  "restyle": "Kay kitip rikchayninta tikray",
+  "close": "Wichq'ay",
+  "reset": "Kay kitip kikin rikchayninman kutiy",
+  "random": "Musphachiway",
+  "about": "Kayqa HAX ukhupi kaq wakin rikchaykunata rikuchin. P'anqakunaqa manam hayk'appas tikrakunkuchu: wakichiyninqa JSON Outline Schema nisqapim tiyan, sapa bloquetaq kamachisqa web component, chaymi diseñoqa qasilla tikrakunman."
+}

@@ -1,0 +1,38 @@
+{
+  "gizmo": {
+    "title": "Jehechajey lista kyta reheve",
+    "description": "Peteĩ lista ka'irũ jehechajeyrã. Moñe'ẽhára omarka mba'ekuéra ha iñakãrapu'ã oñembomandu'a imba'e teépe."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Téra",
+        "description": "Lista réra. Oñemoñe'ẽ hatãme ka'irũ jehechajeyrã aty teraguã ramo."
+      },
+      {
+        "title": "Mba'ekuéra",
+        "description": "Peteĩteĩ mba'e ha'e ka'irũ jehechajeyrã. Moñe'ẽhára ndaikatúi omoambue mba'e oñemarkáva térã ojeiko'ỹva."
+      },
+      {
+        "title": "Papapy reheve",
+        "description": "Ehechauka lista papapy reheve kyta rendaguépe."
+      },
+      {
+        "title": "Tekotee",
+        "description": "Omoambue sa'ykuéra ojogua hag̃ua stop-note ndive.",
+        "options": {
+          "info": "Momarandu",
+          "success": "Moneĩ",
+          "warning": "Ñemomarandu",
+          "stop": "Pyta"
+        }
+      }
+    ],
+    "developer": [
+      {
+        "title": "Ñongatu id",
+        "description": "Id peteĩñoha ojeipurúva oñembomandu'a hag̃ua moñe'ẽhára iñakãrapu'ã imba'épe. Ojejapo ijeheguínte; emoambue añoite remoambue hag̃ua iñakãrapu'ã lista pa'ũme térã reñepyrũjey hag̃ua."
+      }
+    ]
+  }
+}

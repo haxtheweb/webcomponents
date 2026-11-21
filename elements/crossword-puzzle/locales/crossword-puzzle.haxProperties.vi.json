@@ -1,0 +1,54 @@
+{
+  "gizmo": {
+    "title": "Ô chữ",
+    "description": "Một ô chữ được tạo từ danh sách từ và gợi ý. Lưới được tạo tự động; người học nhập các từ và kiểm tra."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hoặc câu hỏi hiển thị phía trên ô chữ."
+      },
+      {
+        "title": "Từ",
+        "description": "Mỗi từ và gợi ý của nó. Lưới được tạo từ danh sách này: từ dài nhất được đặt trước và các từ khác cắt qua nó tại các chữ cái chung."
+      }
+    ],
+    "advanced": [
+      {
+        "title": "Số lần thử",
+        "description": "Số lần người học có thể kiểm tra. 0 nghĩa là không giới hạn."
+      },
+      {
+        "title": "Màu nhấn",
+        "description": "Màu tùy chọn cho nhãn đầu, từ đang chọn và các nút hành động."
+      },
+      {
+        "title": "Thu gọn được",
+        "description": "Hiển thị ô chữ này dưới dạng một hàng có thể mở và đóng. Mở một hàng sẽ đóng các câu hỏi thu gọn khác bên cạnh."
+      },
+      {
+        "title": "Bắt đầu ở dạng thu gọn",
+        "description": "Khi thu gọn được, bắt đầu dưới dạng hàng đóng chỉ hiển thị tiêu đề và trạng thái."
+      },
+      {
+        "title": "Hình thức chấm điểm",
+        "description": "OER Schema: hình thức chấm điểm cho bài đánh giá này (ví dụ: điểm số, điểm chữ, phần trăm, hoàn thành)."
+      },
+      {
+        "title": "Mục tiêu học tập",
+        "description": "OER Schema: mục tiêu học tập gắn với bài đánh giá này."
+      }
+    ],
+    "developer": [
+      {
+        "title": "Tên bài kiểm tra",
+        "description": "Tên bài kiểm tra dùng để nhận dạng xAPI trong các hệ thống phân tích."
+      },
+      {
+        "title": "Khóa học",
+        "description": "OER Schema: khóa học mà bài đánh giá này hướng tới."
+      }
+    ]
+  }
+}
