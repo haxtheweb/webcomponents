@@ -13,6 +13,27 @@ const RATING = {
 };
 
 /**
+ * A platform's web address from the JSON, or "" when it isn't http(s).
+ * Security: the JSON comes from an author-set source; only http(s) addresses
+ * become links, so javascript: and data: never reach an href.
+ * @param {String} value
+ * @returns {String}
+ */
+export const platformLink = (value) => {
+  if (!value) {
+    return "";
+  }
+  try {
+    const url = new URL(String(value), globalThis.document.baseURI);
+    return url.protocol === "http:" || url.protocol === "https:"
+      ? url.href
+      : "";
+  } catch {
+    return "";
+  }
+};
+
+/**
  * `hax-platform-compare`
  * `Head to head: pick any two platforms and see how they stack up`
  *
@@ -463,6 +484,12 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
       </td>
     `;
   }
+  // a platform's name, linked when its address is a web address
+  _platformName(platform) {
+    const href = platformLink(platform.url);
+    return href ? html`<a href="${href}">${platform.name}</a>` : platform.name;
+  }
+
   render() {
     if (!this._data) {
       return html`<p>${this.t.loading}</p>`;
@@ -513,9 +540,8 @@ class HaxPlatformCompare extends I18NMixin(DDD) {
           </tbody>
         </table>
         <p class="foot">
-          ${this.t.seeForYourself}
-          <a href="${a.url}">${a.name}</a> ${this.t.and}
-          <a href="${b.url}">${b.name}</a>.
+          ${this.t.seeForYourself} ${this._platformName(a)} ${this.t.and}
+          ${this._platformName(b)}.
         </p>
       </div>
     `;

@@ -1,0 +1,34 @@
+{
+  "tag": "hax-use-case-picker",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "source": "elements/hax-marketing-theme/lib/hax-use-case-picker.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "browser-url": "browserUrl",
+    "dark": "dark",
+    "exclude": "exclude",
+    "is-safari": "isSafari",
+    "selected": "selected",
+    "site-name": "siteName",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hax-marketing-theme/lib/hax-use-case-picker.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "browserUrl",
+      "exclude",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hax-use-case-picker"
+    ]
+  }
+}

@@ -11,7 +11,13 @@
       import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../simple-range-input.js';
     </script>
-    
+    <style>
+      /* room between stacked sliders, so each keeps its 24px pointer
+         target clear of the next one (WCAG 2.5.8) */
+      simple-range-input {
+        margin-block: var(--ddd-spacing-3);
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">

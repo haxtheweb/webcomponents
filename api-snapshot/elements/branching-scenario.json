@@ -1,0 +1,34 @@
+{
+  "tag": "branching-scenario",
+  "package": "@haxtheweb/branching-scenario",
+  "source": "elements/branching-scenario/branching-scenario.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "is-safari": "isSafari",
+    "start": "start",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/branching-scenario/lib/branching-scenario.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "start",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "branching-scenario"
+    ]
+  }
+}

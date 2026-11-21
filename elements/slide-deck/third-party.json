@@ -1,0 +1,34 @@
+{
+  "$comment": "Third-party code vendored into this package, each under its own license (not this package's Apache-2.0). scripts/copy-dep-licenses.js lists them in THIRD_PARTY_LICENSES.md. lib/pptx-rendered.js is the browser build of @aiden0z/pptx-renderer, which bundles JSZip (dual MIT or GPL-3.0; used under MIT) and pako.",
+  "assets": [
+    {
+      "name": "@aiden0z/pptx-renderer",
+      "kind": "script",
+      "license": "Apache-2.0",
+      "copyright": "Copyright aiden0z",
+      "source": "https://www.npmjs.com/package/@aiden0z/pptx-renderer",
+      "path": "lib/pptx-rendered.js",
+      "licenseFiles": ["lib/licenses/pptx-renderer-LICENSE"]
+    },
+    {
+      "name": "JSZip",
+      "kind": "script",
+      "version": "3.10.1",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2009-2016 Stuart Knightley, David Duponchel, Franz Buchinger, António Afonso",
+      "source": "https://github.com/Stuk/jszip",
+      "path": "lib/pptx-rendered.js",
+      "licenseFiles": ["lib/licenses/jszip-LICENSE.md"]
+    },
+    {
+      "name": "pako",
+      "kind": "script",
+      "version": "1.0.x (as bundled by JSZip 3.10.1)",
+      "license": "MIT",
+      "copyright": "Copyright (C) 2014-2017 by Vitaly Puzrin and Andrei Tuputcyn",
+      "source": "https://github.com/nodeca/pako",
+      "path": "lib/pptx-rendered.js",
+      "licenseFiles": ["lib/licenses/pako-LICENSE"]
+    }
+  ]
+}

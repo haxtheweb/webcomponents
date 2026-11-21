@@ -223,7 +223,7 @@ describe("AiUsageLicense license resolution", () => {
     expect(
       el.shadowRoot.querySelector(".license-badge").getAttribute("aria-label"),
     ).to.equal(
-      "AIUL-CD-IM Conceptual Development / Immersive - AI Usage License",
+      "AIUL-CD IM Conceptual Development / Immersive - AI Usage License",
     );
   });
 

@@ -19,7 +19,6 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { PAGE_EXPORT_FORMATS } from "./import-export-options.js";
 import { siteApiFetch } from "./site-api-auth-fetch.js";
-import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 
 // English defaults for messages these helpers show. They run with `this`
 // bound to haxcms-site-editor-ui, so translations come from its (haxcms
@@ -277,6 +276,8 @@ export async function _exportPageAsPDF(title) {
       throw new Error("Current page URL unavailable for PDF export");
     }
     // the server's PDF, or the browser's print dialog where it can't make one
+    // loaded only when someone exports, not with every theme
+    const { fetchPdfOrPrint } = await import("./pdf-print-fallback.js");
     const result = await fetchPdfOrPrint(url, title);
     this.clearProcessingVisual();
     if (result.blob) {

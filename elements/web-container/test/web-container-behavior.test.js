@@ -700,6 +700,19 @@ describe("web-container-wc-registry-docs", () => {
       originalRequestAvailability;
   });
 
+  it("labels its project select with the instruction under it", async () => {
+    const el = globalThis.document.createElement(
+      "web-container-wc-registry-docs",
+    );
+    el.file = "";
+    globalThis.document.body.appendChild(el);
+    await el.updateComplete;
+    const select = el.shadowRoot.querySelector("select");
+    const label = el.shadowRoot.querySelector("label");
+    expect(label.getAttribute("for")).to.equal(select.id);
+    expect(select.labels[0]).to.equal(label);
+    el.remove();
+  });
   it("defaults its text, registry file and empty options", () => {
     const el = globalThis.document.createElement(
       "web-container-wc-registry-docs",
@@ -720,7 +733,7 @@ describe("web-container-wc-registry-docs", () => {
     await el.updateComplete;
     expect(el.shadowRoot.querySelector("select")).to.exist;
     expect(el.shadowRoot.querySelector("option")).to.exist;
-    expect(el.shadowRoot.querySelector("p").textContent).to.equal(
+    expect(el.shadowRoot.querySelector("label#text").textContent).to.equal(
       "Select the project to produce a demo for. This will make a best attempt",
     );
     expect(el.shadowRoot.querySelector("#container")).to.exist;
@@ -805,7 +818,7 @@ describe("web-container-wc-registry-docs", () => {
     await el.updateComplete;
     expect(el.text).to.equal("Unable to load the registry file.");
     expect(el.options[""]).to.equal("");
-    expect(el.shadowRoot.querySelector("p").textContent).to.equal(
+    expect(el.shadowRoot.querySelector("label#text").textContent).to.equal(
       "Unable to load the registry file.",
     );
   });

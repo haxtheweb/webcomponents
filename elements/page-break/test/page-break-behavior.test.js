@@ -624,7 +624,7 @@ describe("page-break editing band", () => {
     await editing(el);
     const band = el.shadowRoot.querySelector("button.pb");
     expect(band.getAttribute("aria-label")).to.equal(
-      "Waves 101, Page settings. Published, Unlocked, 3 tags, /waves-101",
+      "Waves 101, Published, Unlocked, 3 tags, /waves-101, Page settings",
     );
     expect(band.getAttribute("aria-pressed")).to.equal("false");
     const chips = Array.from(el.shadowRoot.querySelectorAll(".pb-chip")).map(
@@ -642,7 +642,7 @@ describe("page-break editing band", () => {
     el.slug = "";
     await el.updateComplete;
     expect(band.getAttribute("aria-label")).to.equal(
-      "Waves 101, Page settings. Draft, Locked, No tags",
+      "Waves 101, Draft, Locked, No tags, Page settings",
     );
     expect(el.shadowRoot.querySelector(".pb-chip.draft") === null).to.equal(
       false,
@@ -709,7 +709,7 @@ describe("page-break editing band", () => {
     const band = el.shadowRoot.querySelector("button.pb");
     expect(band.getAttribute("aria-pressed")).to.equal("true");
     expect(band.getAttribute("aria-label")).to.equal(
-      "Selected, Editing page settings. Draft, Unlocked, No tags",
+      "Selected, Draft, Unlocked, No tags, Editing page settings",
     );
     el.haxactiveElementChanged(el, false);
     await el.updateComplete;

@@ -20,7 +20,6 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import { waitForAppHAXSystemApiRegistryReady } from "@haxtheweb/app-hax/lib/v2/app-hax-system-api-registry.js";
 import { haxcmsApiMessage } from "./HAXCMSApiMessages.js";
 import { siteApiFetch } from "./site-api-auth-fetch.js";
-import { fetchPdfOrPrint } from "./pdf-print-fallback.js";
 import { HaxUiDialogFrame } from "@haxtheweb/d-d-d/lib/HaxUiDialogFrame.js";
 
 // English defaults for messages these helpers show. They run with `this`
@@ -289,6 +288,8 @@ export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   try {
     // the server's PDF, or the browser's print dialog where it can't make one
     const url = _buildV1ExportUrl(baseUrl, "pdf");
+    // loaded only when someone exports, not with every theme
+    const { fetchPdfOrPrint } = await import("./pdf-print-fallback.js");
     const result = await fetchPdfOrPrint(url, title);
     this.clearProcessingVisual();
     if (result.blob) {

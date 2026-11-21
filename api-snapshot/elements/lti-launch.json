@@ -1,0 +1,51 @@
+{
+  "tag": "lti-launch",
+  "package": "@haxtheweb/lti-launch",
+  "source": "elements/lti-launch/lti-launch.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "client-id": "clientId",
+    "deployment-id": "deploymentId",
+    "description": "description",
+    "display": "display",
+    "embed-height": "embedHeight",
+    "is-safari": "isSafari",
+    "issuer": "issuer",
+    "launch-url": "launchUrl",
+    "login-hint": "loginHint",
+    "login-url": "loginUrl",
+    "lti-message-hint": "ltiMessageHint",
+    "t": "t",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [
+    "lti-launch-request",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/lti-launch/lib/lti-launch.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "clientId",
+      "deploymentId",
+      "description",
+      "display",
+      "embedHeight",
+      "issuer",
+      "launchUrl",
+      "loginHint",
+      "loginUrl",
+      "ltiMessageHint",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "lti-launch"
+    ]
+  }
+}

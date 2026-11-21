@@ -4,6 +4,8 @@
   "source": "elements/d-d-d/lib/ddd-card.js",
   "attributes": {
     "alt": "alt",
+    "clickable": "clickable",
+    "horizontal": "horizontal",
     "href": "href",
     "is-safari": "isSafari",
     "label": "label",
@@ -33,6 +35,8 @@
     "gizmo": true,
     "properties": [
       "alt",
+      "clickable",
+      "horizontal",
       "href",
       "label",
       "noArrow",

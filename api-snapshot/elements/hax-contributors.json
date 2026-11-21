@@ -1,0 +1,32 @@
+{
+  "tag": "hax-contributors",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "source": "elements/hax-marketing-theme/lib/hax-contributors.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari",
+    "limit": "limit",
+    "show": "show",
+    "source": "source",
+    "t": "t"
+  },
+  "slots": [],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hax-marketing-theme/lib/hax-contributors.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "limit",
+      "show",
+      "source"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hax-contributors"
+    ]
+  }
+}

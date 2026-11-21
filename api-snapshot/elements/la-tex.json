@@ -3,6 +3,7 @@
   "package": "@haxtheweb/la-tex",
   "source": "elements/la-tex/la-tex.js",
   "attributes": {
+    "backdrop": "backdrop",
     "hydrated": "hydrated",
     "initialtext": "initialText",
     "t": "t"
@@ -14,7 +15,9 @@
   "hax": {
     "schema": "elements/la-tex/lib/la-tex.haxProperties.json",
     "gizmo": true,
-    "properties": [],
+    "properties": [
+      "backdrop"
+    ],
     "attributes": [],
     "slots": [],
     "demoTags": [
