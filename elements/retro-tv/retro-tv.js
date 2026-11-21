@@ -124,7 +124,8 @@ export class RetroTv extends LitElement {
    * @returns {Array<HTMLElement>}
    */
   get programs() {
-    return Array.from(this.children)
+    // no children collection when rendered on a server
+    return Array.from(this.children || [])
       .filter((el) => el.hasAttribute("channel"))
       .sort(
         (a, b) =>

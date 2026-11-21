@@ -210,9 +210,12 @@ export class AppHaxBackendAPI extends LitElement {
     this.__maxRefreshRetries = 2;
     this.__validatedJwt = "";
     this.__loginPending = false;
-    globalThis.addEventListener("jwt-login-login", () => {
-      this.__loginPending = true;
-    });
+    // no global event target when rendered on a server
+    if (globalThis.addEventListener) {
+      globalThis.addEventListener("jwt-login-login", () => {
+        this.__loginPending = true;
+      });
+    }
     this.__systemApiRegistryReady = Promise.resolve(false);
     this.__authFailureCount = 0;
     this.__lastAuthFailureTime = 0;

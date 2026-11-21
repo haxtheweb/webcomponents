@@ -1,0 +1,2821 @@
+{
+  "about": "Byte budgets for each element entry's own size: the entry file plus the files of its own element folder it statically imports. Shared packages are not counted. Raise one on purpose with: node scripts/size-report.mjs --update-budgets elements/<name>",
+  "budgets": {
+    "elements/a11y-carousel/a11y-carousel.js": {
+      "raw": 17400,
+      "gzip": 5500
+    },
+    "elements/a11y-carousel/lib/a11y-carousel-button.js": {
+      "raw": 5800,
+      "gzip": 2300
+    },
+    "elements/a11y-collapse/a11y-collapse.js": {
+      "raw": 34200,
+      "gzip": 7800
+    },
+    "elements/a11y-collapse/lib/a11y-collapse-group.js": {
+      "raw": 41200,
+      "gzip": 10000
+    },
+    "elements/a11y-compare-image/a11y-compare-image.js": {
+      "raw": 29200,
+      "gzip": 7100
+    },
+    "elements/a11y-details/a11y-details.js": {
+      "raw": 17700,
+      "gzip": 5000
+    },
+    "elements/a11y-figure/a11y-figure.js": {
+      "raw": 14000,
+      "gzip": 4300
+    },
+    "elements/a11y-footnote/a11y-footnote.js": {
+      "raw": 17800,
+      "gzip": 6500
+    },
+    "elements/a11y-footnote/lib/a11y-footnotes.js": {
+      "raw": 10300,
+      "gzip": 4000
+    },
+    "elements/a11y-gif-player/a11y-gif-player.js": {
+      "raw": 23600,
+      "gzip": 7000
+    },
+    "elements/a11y-media-player/a11y-media-player.js": {
+      "raw": 233800,
+      "gzip": 56100
+    },
+    "elements/a11y-media-player/lib/a11y-media-button.js": {
+      "raw": 7800,
+      "gzip": 2700
+    },
+    "elements/a11y-media-player/lib/a11y-media-play-button.js": {
+      "raw": 13300,
+      "gzip": 4500
+    },
+    "elements/a11y-media-player/lib/a11y-media-state-manager.js": {
+      "raw": 8100,
+      "gzip": 3000
+    },
+    "elements/a11y-media-player/lib/a11y-media-transcript-cue.js": {
+      "raw": 10200,
+      "gzip": 3400
+    },
+    "elements/a11y-media-player/lib/a11y-media-youtube.js": {
+      "raw": 21500,
+      "gzip": 6900
+    },
+    "elements/a11y-menu-button/a11y-menu-button.js": {
+      "raw": 45800,
+      "gzip": 10300
+    },
+    "elements/a11y-menu-button/lib/a11y-menu-button-item.js": {
+      "raw": 12600,
+      "gzip": 3600
+    },
+    "elements/a11y-tabs/a11y-tabs.js": {
+      "raw": 49000,
+      "gzip": 11800
+    },
+    "elements/a11y-tabs/lib/a11y-tab.js": {
+      "raw": 14000,
+      "gzip": 4800
+    },
+    "elements/absolute-position-behavior/absolute-position-behavior.js": {
+      "raw": 25900,
+      "gzip": 7900
+    },
+    "elements/absolute-position-behavior/lib/absolute-position-state-manager.js": {
+      "raw": 18200,
+      "gzip": 5900
+    },
+    "elements/accent-card/accent-card.js": {
+      "raw": 20200,
+      "gzip": 5400
+    },
+    "elements/aframe-player/aframe-player.js": {
+      "raw": 7200,
+      "gzip": 3000
+    },
+    "elements/ai-usage-license/ai-usage-license.js": {
+      "raw": 15700,
+      "gzip": 5000
+    },
+    "elements/air-horn/air-horn.js": {
+      "raw": 5600,
+      "gzip": 2500
+    },
+    "elements/anchor-behaviors/anchor-behaviors.js": {
+      "raw": 5800,
+      "gzip": 2400
+    },
+    "elements/app-hax/app-hax.js": {
+      "raw": 574300,
+      "gzip": 136300
+    },
+    "elements/app-hax/lib/app-hax-theme.js": {
+      "raw": 25600,
+      "gzip": 6100
+    },
+    "elements/app-hax/lib/v2/AppHaxBackendAPI.js": {
+      "raw": 76700,
+      "gzip": 19800
+    },
+    "elements/app-hax/lib/v2/AppHaxRouter.js": {
+      "raw": 20400,
+      "gzip": 6700
+    },
+    "elements/app-hax/lib/v2/admin/haxcms-system-allowed-blocks.js": {
+      "raw": 6400,
+      "gzip": 2400
+    },
+    "elements/app-hax/lib/v2/admin/haxcms-system-settings.js": {
+      "raw": 219000,
+      "gzip": 45700
+    },
+    "elements/app-hax/lib/v2/app-hax-confirmation-modal.js": {
+      "raw": 26600,
+      "gzip": 8200
+    },
+    "elements/app-hax/lib/v2/app-hax-darkmode-toggle.js": {
+      "raw": 20000,
+      "gzip": 6500
+    },
+    "elements/app-hax/lib/v2/app-hax-design-browser.js": {
+      "raw": 59600,
+      "gzip": 16000
+    },
+    "elements/app-hax/lib/v2/app-hax-filter-tag.js": {
+      "raw": 3900,
+      "gzip": 1900
+    },
+    "elements/app-hax/lib/v2/app-hax-import-url-dialog.js": {
+      "raw": 12900,
+      "gzip": 4200
+    },
+    "elements/app-hax/lib/v2/app-hax-scroll-button.js": {
+      "raw": 7700,
+      "gzip": 3000
+    },
+    "elements/app-hax/lib/v2/app-hax-search-results.js": {
+      "raw": 112500,
+      "gzip": 30200
+    },
+    "elements/app-hax/lib/v2/app-hax-simple-hat-progress.js": {
+      "raw": 7300,
+      "gzip": 3000
+    },
+    "elements/app-hax/lib/v2/app-hax-site-bar.js": {
+      "raw": 73400,
+      "gzip": 20000
+    },
+    "elements/app-hax/lib/v2/app-hax-site-creation-modal.js": {
+      "raw": 90800,
+      "gzip": 22600
+    },
+    "elements/app-hax/lib/v2/app-hax-site-details.js": {
+      "raw": 43900,
+      "gzip": 12600
+    },
+    "elements/app-hax/lib/v2/app-hax-site-login.js": {
+      "raw": 32800,
+      "gzip": 9700
+    },
+    "elements/app-hax/lib/v2/app-hax-toast.js": {
+      "raw": 19900,
+      "gzip": 6500
+    },
+    "elements/app-hax/lib/v2/app-hax-use-case-filter.js": {
+      "raw": 379500,
+      "gzip": 90000
+    },
+    "elements/app-hax/lib/v2/app-hax-use-case.js": {
+      "raw": 29500,
+      "gzip": 8800
+    },
+    "elements/app-hax/lib/v2/app-hax-user-access-modal.js": {
+      "raw": 32100,
+      "gzip": 9500
+    },
+    "elements/arithmetic-drill/arithmetic-drill.js": {
+      "raw": 43200,
+      "gzip": 11700
+    },
+    "elements/audio-player/audio-player.js": {
+      "raw": 3600,
+      "gzip": 1800
+    },
+    "elements/author-card/author-card.js": {
+      "raw": 11900,
+      "gzip": 3800
+    },
+    "elements/awesome-explosion/awesome-explosion.js": {
+      "raw": 15400,
+      "gzip": 4700
+    },
+    "elements/b-r/b-r.js": {
+      "raw": 3600,
+      "gzip": 1800
+    },
+    "elements/baseline-build-hax/baseline-build-hax.js": {
+      "raw": 3600,
+      "gzip": 1500
+    },
+    "elements/beaker-broker/beaker-broker.js": {
+      "raw": 7000,
+      "gzip": 2900
+    },
+    "elements/bibliography-builder/bibliography-builder.js": {
+      "raw": 39600,
+      "gzip": 10800
+    },
+    "elements/bibliography-builder/lib/bibliography-item.js": {
+      "raw": 23600,
+      "gzip": 6800
+    },
+    "elements/book-theme/book-theme.js": {
+      "raw": 30200,
+      "gzip": 7000
+    },
+    "elements/book-theme/lib/guidebook-theme.js": {
+      "raw": 32400,
+      "gzip": 7900
+    },
+    "elements/book-theme/lib/handbook-theme.js": {
+      "raw": 32200,
+      "gzip": 7800
+    },
+    "elements/book-theme/lib/just-the-docs-theme.js": {
+      "raw": 32300,
+      "gzip": 7900
+    },
+    "elements/book-theme/lib/manual-theme.js": {
+      "raw": 32700,
+      "gzip": 8000
+    },
+    "elements/bootstrap-theme/bootstrap-theme.js": {
+      "raw": 112500,
+      "gzip": 27000
+    },
+    "elements/bootstrap-theme/lib/BootstrapBreadcrumb.js": {
+      "raw": 16400,
+      "gzip": 5100
+    },
+    "elements/bootstrap-theme/lib/BootstrapFooter.js": {
+      "raw": 15300,
+      "gzip": 4500
+    },
+    "elements/bootstrap-theme/lib/BootstrapSearch.js": {
+      "raw": 9900,
+      "gzip": 3900
+    },
+    "elements/branching-scenario/branching-scenario.js": {
+      "raw": 53700,
+      "gzip": 14300
+    },
+    "elements/branching-scenario/lib/branching-scene.js": {
+      "raw": 15600,
+      "gzip": 4800
+    },
+    "elements/bullet-check-list/bullet-check-list.js": {
+      "raw": 34900,
+      "gzip": 9300
+    },
+    "elements/carbon-theme/carbon-theme.js": {
+      "raw": 43400,
+      "gzip": 11100
+    },
+    "elements/career-timeline/career-timeline.js": {
+      "raw": 23200,
+      "gzip": 8500
+    },
+    "elements/career-timeline/lib/career-org-item.js": {
+      "raw": 18900,
+      "gzip": 6800
+    },
+    "elements/career-timeline/lib/career-role-item.js": {
+      "raw": 12000,
+      "gzip": 4300
+    },
+    "elements/chamfer-theme/chamfer-theme.js": {
+      "raw": 15300,
+      "gzip": 4800
+    },
+    "elements/chartist-render/chartist-render.js": {
+      "raw": 55300,
+      "gzip": 9800
+    },
+    "elements/citation-element/citation-element.js": {
+      "raw": 20500,
+      "gzip": 6000
+    },
+    "elements/clean-one/clean-one.js": {
+      "raw": 47000,
+      "gzip": 11000
+    },
+    "elements/clean-one/lib/clean-one-search-box.js": {
+      "raw": 4900,
+      "gzip": 2200
+    },
+    "elements/clean-portfolio-theme/clean-portfolio-theme.js": {
+      "raw": 67300,
+      "gzip": 12500
+    },
+    "elements/clean-two/clean-two.js": {
+      "raw": 38100,
+      "gzip": 8000
+    },
+    "elements/cms-hax/cms-hax.js": {
+      "raw": 13700,
+      "gzip": 4500
+    },
+    "elements/code-editor/code-editor.js": {
+      "raw": 33700,
+      "gzip": 10100
+    },
+    "elements/code-editor/lib/code-pen-button.js": {
+      "raw": 5200,
+      "gzip": 2400
+    },
+    "elements/code-editor/lib/monaco-element/monaco-element.js": {
+      "raw": 15400,
+      "gzip": 5000
+    },
+    "elements/code-sample/code-sample.js": {
+      "raw": 87400,
+      "gzip": 27300
+    },
+    "elements/collection-list/collection-list.js": {
+      "raw": 4700,
+      "gzip": 2100
+    },
+    "elements/collection-list/lib/collection-item.js": {
+      "raw": 13300,
+      "gzip": 3700
+    },
+    "elements/collection-list/lib/collection-row.js": {
+      "raw": 11000,
+      "gzip": 3400
+    },
+    "elements/collection-list/lib/collections-theme-banner.js": {
+      "raw": 6900,
+      "gzip": 2500
+    },
+    "elements/collection-list/lib/collections-theme.js": {
+      "raw": 21900,
+      "gzip": 6000
+    },
+    "elements/count-up/count-up.js": {
+      "raw": 17500,
+      "gzip": 5600
+    },
+    "elements/course-design/course-design.js": {
+      "raw": 4800,
+      "gzip": 2000
+    },
+    "elements/course-design/lib/activity-box.js": {
+      "raw": 9000,
+      "gzip": 3300
+    },
+    "elements/course-design/lib/block-quote.js": {
+      "raw": 12500,
+      "gzip": 3400
+    },
+    "elements/course-design/lib/course-intro-header.js": {
+      "raw": 7400,
+      "gzip": 2500
+    },
+    "elements/course-design/lib/course-intro-lesson-plan.js": {
+      "raw": 4400,
+      "gzip": 1800
+    },
+    "elements/course-design/lib/course-intro-lesson-plans.js": {
+      "raw": 7100,
+      "gzip": 2800
+    },
+    "elements/course-design/lib/course-intro.js": {
+      "raw": 14600,
+      "gzip": 5100
+    },
+    "elements/course-design/lib/ebook-button.js": {
+      "raw": 12000,
+      "gzip": 4300
+    },
+    "elements/course-design/lib/learning-component.js": {
+      "raw": 11900,
+      "gzip": 3900
+    },
+    "elements/course-design/lib/lrn-h5p.js": {
+      "raw": 9900,
+      "gzip": 3700
+    },
+    "elements/course-design/lib/responsive-iframe.js": {
+      "raw": 2900,
+      "gzip": 1500
+    },
+    "elements/course-design/lib/worksheet-download.js": {
+      "raw": 11800,
+      "gzip": 4200
+    },
+    "elements/course-model/course-model.js": {
+      "raw": 23000,
+      "gzip": 7000
+    },
+    "elements/course-model/lib/model-info.js": {
+      "raw": 4900,
+      "gzip": 1900
+    },
+    "elements/course-model/lib/model-option.js": {
+      "raw": 4600,
+      "gzip": 2100
+    },
+    "elements/crossword-puzzle/crossword-puzzle.js": {
+      "raw": 52800,
+      "gzip": 14700
+    },
+    "elements/csv-render/csv-render.js": {
+      "raw": 13100,
+      "gzip": 4400
+    },
+    "elements/d-d-d/d-d-d.js": {
+      "raw": 209000,
+      "gzip": 41200
+    },
+    "elements/d-d-d/lib/DesignSystemManager.js": {
+      "raw": 27900,
+      "gzip": 9000
+    },
+    "elements/d-d-d/lib/d-d-d-sample.js": {
+      "raw": 235300,
+      "gzip": 47900
+    },
+    "elements/d-d-d/lib/ddd-brochure-theme.js": {
+      "raw": 218700,
+      "gzip": 44100
+    },
+    "elements/d-d-d/lib/ddd-card.js": {
+      "raw": 222000,
+      "gzip": 44600
+    },
+    "elements/d-d-d/lib/ddd-hero.js": {
+      "raw": 236400,
+      "gzip": 50400
+    },
+    "elements/d-d-d/lib/ddd-steps-list-item.js": {
+      "raw": 218800,
+      "gzip": 43800
+    },
+    "elements/d-d-d/lib/ddd-steps-list.js": {
+      "raw": 223400,
+      "gzip": 45600
+    },
+    "elements/d-d-d/lib/hax-confirm-dialog.js": {
+      "raw": 302000,
+      "gzip": 60700
+    },
+    "elements/d-d-d/lib/hax-palette-picker.js": {
+      "raw": 250100,
+      "gzip": 51600
+    },
+    "elements/d-d-d/lib/mini-map.js": {
+      "raw": 220400,
+      "gzip": 44500
+    },
+    "elements/d-d-docs/d-d-docs.js": {
+      "raw": 133300,
+      "gzip": 25000
+    },
+    "elements/date-card/date-card.js": {
+      "raw": 12000,
+      "gzip": 3800
+    },
+    "elements/date-card/lib/date-chip.js": {
+      "raw": 5800,
+      "gzip": 2300
+    },
+    "elements/deduping-fix/deduping-fix.js": {
+      "raw": 2800,
+      "gzip": 1500
+    },
+    "elements/demo-snippet/demo-snippet.js": {
+      "raw": 12400,
+      "gzip": 4600
+    },
+    "elements/discord-embed/discord-embed.js": {
+      "raw": 9600,
+      "gzip": 3600
+    },
+    "elements/disqus-embed/disqus-embed.js": {
+      "raw": 11200,
+      "gzip": 3800
+    },
+    "elements/disqus-embed/lib/haxcms-site-disqus.js": {
+      "raw": 12800,
+      "gzip": 4400
+    },
+    "elements/documentation-player/documentation-player.js": {
+      "raw": 87500,
+      "gzip": 23200
+    },
+    "elements/doodle-board/doodle-board.js": {
+      "raw": 7300,
+      "gzip": 2900
+    },
+    "elements/doodle-board/lib/doodle-board-canvas.js": {
+      "raw": 44000,
+      "gzip": 12000
+    },
+    "elements/doodle-board/lib/doodle-board-field.js": {
+      "raw": 16800,
+      "gzip": 4900
+    },
+    "elements/dynamic-import-registry/dynamic-import-registry.js": {
+      "raw": 7400,
+      "gzip": 2900
+    },
+    "elements/ecosystem-theme/ecosystem-theme.js": {
+      "raw": 54800,
+      "gzip": 11900
+    },
+    "elements/ecosystem-web/ecosystem-web.js": {
+      "raw": 136200,
+      "gzip": 37600
+    },
+    "elements/editable-table/editable-table.js": {
+      "raw": 150000,
+      "gzip": 35600
+    },
+    "elements/editable-table/lib/editable-table-display.js": {
+      "raw": 86000,
+      "gzip": 21300
+    },
+    "elements/editable-table/lib/editable-table-edit.js": {
+      "raw": 94000,
+      "gzip": 21100
+    },
+    "elements/editable-table/lib/editable-table-editor-rowcol.js": {
+      "raw": 54500,
+      "gzip": 13600
+    },
+    "elements/editable-table/lib/editable-table-filter.js": {
+      "raw": 53700,
+      "gzip": 13400
+    },
+    "elements/editable-table/lib/editable-table-sort.js": {
+      "raw": 55000,
+      "gzip": 13800
+    },
+    "elements/elmsln-loading/elmsln-loading.js": {
+      "raw": 7600,
+      "gzip": 2700
+    },
+    "elements/enhanced-text/enhanced-text.js": {
+      "raw": 20900,
+      "gzip": 4400
+    },
+    "elements/es-global-bridge/es-global-bridge.js": {
+      "raw": 5900,
+      "gzip": 2400
+    },
+    "elements/event-badge/event-badge.js": {
+      "raw": 155300,
+      "gzip": 98000
+    },
+    "elements/example-hax-element/example-hax-element.js": {
+      "raw": 4100,
+      "gzip": 1900
+    },
+    "elements/example-haxcms-theme/example-haxcms-theme.js": {
+      "raw": 8700,
+      "gzip": 3100
+    },
+    "elements/figure-label/figure-label.js": {
+      "raw": 5700,
+      "gzip": 2300
+    },
+    "elements/file-system-broker/file-system-broker.js": {
+      "raw": 15700,
+      "gzip": 4700
+    },
+    "elements/file-system-broker/lib/docx-file-system-broker.js": {
+      "raw": 20500,
+      "gzip": 6500
+    },
+    "elements/file-system-broker/lib/xlsx-file-system-broker.js": {
+      "raw": 22300,
+      "gzip": 6800
+    },
+    "elements/fill-in-the-blanks/fill-in-the-blanks.js": {
+      "raw": 17800,
+      "gzip": 6300
+    },
+    "elements/flash-card/flash-card.js": {
+      "raw": 34200,
+      "gzip": 10200
+    },
+    "elements/flash-card/lib/flash-card-answer-box.js": {
+      "raw": 15800,
+      "gzip": 4500
+    },
+    "elements/flash-card/lib/flash-card-prompt-img.js": {
+      "raw": 8000,
+      "gzip": 3000
+    },
+    "elements/flash-card/lib/flash-card-set.js": {
+      "raw": 44400,
+      "gzip": 13200
+    },
+    "elements/fluent-theme/fluent-theme.js": {
+      "raw": 44300,
+      "gzip": 11500
+    },
+    "elements/full-width-image/full-width-image.js": {
+      "raw": 10700,
+      "gzip": 3800
+    },
+    "elements/fullscreen-behaviors/fullscreen-behaviors.js": {
+      "raw": 5900,
+      "gzip": 2400
+    },
+    "elements/future-terminal-text/future-terminal-text.js": {
+      "raw": 9400,
+      "gzip": 3900
+    },
+    "elements/future-terminal-text/lib/future-terminal-text-lite.js": {
+      "raw": 7800,
+      "gzip": 3200
+    },
+    "elements/git-corner/git-corner.js": {
+      "raw": 7500,
+      "gzip": 3200
+    },
+    "elements/github-preview/github-preview.js": {
+      "raw": 24600,
+      "gzip": 6900
+    },
+    "elements/github-preview/lib/github-rpg-contributors.js": {
+      "raw": 6900,
+      "gzip": 2800
+    },
+    "elements/github-preview/lib/wc-markdown.js": {
+      "raw": 5500,
+      "gzip": 2400
+    },
+    "elements/glossy-portfolio-theme/glossy-portfolio-theme.js": {
+      "raw": 82800,
+      "gzip": 30300
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-about.js": {
+      "raw": 8200,
+      "gzip": 3000
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-breadcrumb.js": {
+      "raw": 8400,
+      "gzip": 3100
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-card.js": {
+      "raw": 18000,
+      "gzip": 11200
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-footer.js": {
+      "raw": 7900,
+      "gzip": 3000
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-grid.js": {
+      "raw": 14000,
+      "gzip": 4600
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-header.js": {
+      "raw": 21400,
+      "gzip": 5800
+    },
+    "elements/glossy-portfolio-theme/lib/glossy-portfolio-home.js": {
+      "raw": 7000,
+      "gzip": 2800
+    },
+    "elements/grade-book/grade-book.js": {
+      "raw": 159400,
+      "gzip": 39400
+    },
+    "elements/grade-book/lib/grade-book-lite.js": {
+      "raw": 156200,
+      "gzip": 38600
+    },
+    "elements/grade-book/lib/grade-book-pop-up.js": {
+      "raw": 13300,
+      "gzip": 4900
+    },
+    "elements/grade-book/lib/grade-book-store.js": {
+      "raw": 4800,
+      "gzip": 2000
+    },
+    "elements/grade-book/lib/grade-book-student-block.js": {
+      "raw": 8600,
+      "gzip": 3500
+    },
+    "elements/grade-book/lib/grade-book-table.js": {
+      "raw": 4100,
+      "gzip": 1900
+    },
+    "elements/grade-book/lib/letter-grade-picker.js": {
+      "raw": 25000,
+      "gzip": 7800
+    },
+    "elements/grade-book/lib/letter-grade.js": {
+      "raw": 18000,
+      "gzip": 5600
+    },
+    "elements/grid-plate/grid-plate.js": {
+      "raw": 27200,
+      "gzip": 7100
+    },
+    "elements/h-a-x/h-a-x.js": {
+      "raw": 15400,
+      "gzip": 4700
+    },
+    "elements/h5p-element/h5p-element.js": {
+      "raw": 39700,
+      "gzip": 12500
+    },
+    "elements/h5p-element/lib/h5p-wrapped-element.js": {
+      "raw": 5600,
+      "gzip": 2500
+    },
+    "elements/hal-9000/hal-9000.js": {
+      "raw": 27900,
+      "gzip": 9100
+    },
+    "elements/hal-9000/lib/hal-9000-ui/hal-9000-ui.js": {
+      "raw": 4400,
+      "gzip": 1900
+    },
+    "elements/hax-app-installer/hax-app-installer.js": {
+      "raw": 125300,
+      "gzip": 26900
+    },
+    "elements/hax-body-behaviors/hax-body-behaviors.js": {
+      "raw": 69800,
+      "gzip": 15300
+    },
+    "elements/hax-body/hax-body.js": {
+      "raw": 800100,
+      "gzip": 187400
+    },
+    "elements/hax-body/lib/buttons/hax-text-editor-alignment-picker.js": {
+      "raw": 9500,
+      "gzip": 3400
+    },
+    "elements/hax-body/lib/buttons/hax-text-editor-heading-picker.js": {
+      "raw": 264100,
+      "gzip": 66000
+    },
+    "elements/hax-body/lib/buttons/hax-text-editor-tag-toggle.js": {
+      "raw": 264200,
+      "gzip": 65900
+    },
+    "elements/hax-body/lib/hax-app-picker.js": {
+      "raw": 310800,
+      "gzip": 76500
+    },
+    "elements/hax-body/lib/hax-app-search.js": {
+      "raw": 281000,
+      "gzip": 70400
+    },
+    "elements/hax-body/lib/hax-app.js": {
+      "raw": 7500,
+      "gzip": 3100
+    },
+    "elements/hax-body/lib/hax-autoloader.js": {
+      "raw": 273300,
+      "gzip": 67700
+    },
+    "elements/hax-body/lib/hax-cancel-dialog.js": {
+      "raw": 31300,
+      "gzip": 7000
+    },
+    "elements/hax-body/lib/hax-context-item-textop.js": {
+      "raw": 35800,
+      "gzip": 8000
+    },
+    "elements/hax-body/lib/hax-context-item.js": {
+      "raw": 296900,
+      "gzip": 72300
+    },
+    "elements/hax-body/lib/hax-element-demo.js": {
+      "raw": 268800,
+      "gzip": 66800
+    },
+    "elements/hax-body/lib/hax-export-dialog.js": {
+      "raw": 348600,
+      "gzip": 86900
+    },
+    "elements/hax-body/lib/hax-file-actions.js": {
+      "raw": 12000,
+      "gzip": 4300
+    },
+    "elements/hax-body/lib/hax-gizmo-browser.js": {
+      "raw": 336900,
+      "gzip": 82200
+    },
+    "elements/hax-body/lib/hax-image-crop.js": {
+      "raw": 29600,
+      "gzip": 8700
+    },
+    "elements/hax-body/lib/hax-map.js": {
+      "raw": 378300,
+      "gzip": 91600
+    },
+    "elements/hax-body/lib/hax-picker.js": {
+      "raw": 307400,
+      "gzip": 75200
+    },
+    "elements/hax-body/lib/hax-plate-context.js": {
+      "raw": 327000,
+      "gzip": 80000
+    },
+    "elements/hax-body/lib/hax-stax-browser.js": {
+      "raw": 10000,
+      "gzip": 3700
+    },
+    "elements/hax-body/lib/hax-store.js": {
+      "raw": 261000,
+      "gzip": 64600
+    },
+    "elements/hax-body/lib/hax-text-editor-button.js": {
+      "raw": 269800,
+      "gzip": 67800
+    },
+    "elements/hax-body/lib/hax-text-editor-paste-button.js": {
+      "raw": 264000,
+      "gzip": 65800
+    },
+    "elements/hax-body/lib/hax-text-editor-toolbar.js": {
+      "raw": 349800,
+      "gzip": 89200
+    },
+    "elements/hax-body/lib/hax-text-editor.js": {
+      "raw": 351700,
+      "gzip": 90100
+    },
+    "elements/hax-body/lib/hax-toolbar-item.js": {
+      "raw": 32100,
+      "gzip": 6700
+    },
+    "elements/hax-body/lib/hax-toolbar-menu.js": {
+      "raw": 29200,
+      "gzip": 6400
+    },
+    "elements/hax-body/lib/hax-toolbar.js": {
+      "raw": 301800,
+      "gzip": 74300
+    },
+    "elements/hax-body/lib/hax-tray-button.js": {
+      "raw": 34500,
+      "gzip": 7600
+    },
+    "elements/hax-body/lib/hax-tray-upload.js": {
+      "raw": 402700,
+      "gzip": 103100
+    },
+    "elements/hax-body/lib/hax-tray.js": {
+      "raw": 745800,
+      "gzip": 186000
+    },
+    "elements/hax-body/lib/hax-ui-styles.js": {
+      "raw": 26500,
+      "gzip": 5400
+    },
+    "elements/hax-body/lib/hax-upload-field.js": {
+      "raw": 384300,
+      "gzip": 98500
+    },
+    "elements/hax-body/lib/hax-view-source.js": {
+      "raw": 346200,
+      "gzip": 85900
+    },
+    "elements/hax-body/lib/image-framing-dialog.js": {
+      "raw": 27600,
+      "gzip": 8000
+    },
+    "elements/hax-body/lib/simple-fields-image-framing.js": {
+      "raw": 13800,
+      "gzip": 4800
+    },
+    "elements/hax-body/lib/simple-fields-srcset.js": {
+      "raw": 402400,
+      "gzip": 103300
+    },
+    "elements/hax-iconset/hax-iconset.js": {
+      "raw": 2500,
+      "gzip": 1300
+    },
+    "elements/hax-logo/hax-logo.js": {
+      "raw": 6600,
+      "gzip": 2600
+    },
+    "elements/hax-marketing-theme/hax-marketing-theme.js": {
+      "raw": 110300,
+      "gzip": 27000
+    },
+    "elements/hax-marketing-theme/lib/hax-contributors.js": {
+      "raw": 56300,
+      "gzip": 13000
+    },
+    "elements/hax-marketing-theme/lib/hax-marketing-blocks.js": {
+      "raw": 42700,
+      "gzip": 9300
+    },
+    "elements/hax-marketing-theme/lib/hax-platform-compare.js": {
+      "raw": 18300,
+      "gzip": 5100
+    },
+    "elements/hax-marketing-theme/lib/hax-reel.js": {
+      "raw": 23000,
+      "gzip": 6100
+    },
+    "elements/hax-marketing-theme/lib/hax-story-link.js": {
+      "raw": 8900,
+      "gzip": 3500
+    },
+    "elements/hax-marketing-theme/lib/hax-style-switcher.js": {
+      "raw": 27100,
+      "gzip": 7300
+    },
+    "elements/hax-marketing-theme/lib/hax-use-case-picker.js": {
+      "raw": 21100,
+      "gzip": 5800
+    },
+    "elements/hax-network-bar/hax-network-bar.js": {
+      "raw": 104100,
+      "gzip": 25000
+    },
+    "elements/haxcms-elements/haxcms-elements.js": {
+      "raw": 1050100,
+      "gzip": 255900
+    },
+    "elements/haxcms-elements/lib/core/admin/haxcms-admin-add-area.js": {
+      "raw": 13000,
+      "gzip": 4500
+    },
+    "elements/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js": {
+      "raw": 12200,
+      "gzip": 4200
+    },
+    "elements/haxcms-elements/lib/core/admin/haxcms-site-admin.js": {
+      "raw": 102700,
+      "gzip": 25900
+    },
+    "elements/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js": {
+      "raw": 119500,
+      "gzip": 28800
+    },
+    "elements/haxcms-elements/lib/core/backends/haxcms-backend-demo.js": {
+      "raw": 115900,
+      "gzip": 32800
+    },
+    "elements/haxcms-elements/lib/core/backends/haxcms-backend-nodejs.js": {
+      "raw": 123400,
+      "gzip": 34700
+    },
+    "elements/haxcms-elements/lib/core/backends/haxcms-backend-php.js": {
+      "raw": 123000,
+      "gzip": 34500
+    },
+    "elements/haxcms-elements/lib/core/backends/haxcms-backend-userfs.js": {
+      "raw": 118900,
+      "gzip": 28900
+    },
+    "elements/haxcms-elements/lib/core/haxcms-appearance-admin-dialog.js": {
+      "raw": 181900,
+      "gzip": 47300
+    },
+    "elements/haxcms-elements/lib/core/haxcms-content-admin-dialog.js": {
+      "raw": 256000,
+      "gzip": 66700
+    },
+    "elements/haxcms-elements/lib/core/haxcms-darkmode-toggle.js": {
+      "raw": 89300,
+      "gzip": 25100
+    },
+    "elements/haxcms-elements/lib/core/haxcms-editor-builder.js": {
+      "raw": 116400,
+      "gzip": 31800
+    },
+    "elements/haxcms-elements/lib/core/haxcms-files-admin-dialog.js": {
+      "raw": 293200,
+      "gzip": 79000
+    },
+    "elements/haxcms-elements/lib/core/haxcms-language-picker.js": {
+      "raw": 27200,
+      "gzip": 7400
+    },
+    "elements/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js": {
+      "raw": 128400,
+      "gzip": 35700
+    },
+    "elements/haxcms-elements/lib/core/haxcms-outline-import-dialog.js": {
+      "raw": 93600,
+      "gzip": 26800
+    },
+    "elements/haxcms-elements/lib/core/haxcms-page-revisions-dialog.js": {
+      "raw": 99100,
+      "gzip": 23700
+    },
+    "elements/haxcms-elements/lib/core/haxcms-seo-admin-dialog.js": {
+      "raw": 152200,
+      "gzip": 39900
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-builder.js": {
+      "raw": 185400,
+      "gzip": 53300
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-dashboard.js": {
+      "raw": 94400,
+      "gzip": 26200
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-details-dialog.js": {
+      "raw": 107100,
+      "gzip": 30000
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-editor-ui.js": {
+      "raw": 684300,
+      "gzip": 164400
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-editor.js": {
+      "raw": 268500,
+      "gzip": 66200
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-import-export-dashboard.js": {
+      "raw": 18900,
+      "gzip": 5400
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-router.js": {
+      "raw": 99700,
+      "gzip": 28400
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-settings-dashboard.js": {
+      "raw": 13900,
+      "gzip": 3800
+    },
+    "elements/haxcms-elements/lib/core/haxcms-site-store.js": {
+      "raw": 82300,
+      "gzip": 22600
+    },
+    "elements/haxcms-elements/lib/core/haxcms-theme-picker.js": {
+      "raw": 25500,
+      "gzip": 6600
+    },
+    "elements/haxcms-elements/lib/core/haxcms-toast.js": {
+      "raw": 128900,
+      "gzip": 34700
+    },
+    "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": {
+      "raw": 260300,
+      "gzip": 63000
+    },
+    "elements/haxcms-elements/lib/core/insights/haxcms-site-reports.js": {
+      "raw": 292500,
+      "gzip": 83000
+    },
+    "elements/haxcms-elements/lib/core/insights/insights-block-editor.js": {
+      "raw": 103000,
+      "gzip": 29400
+    },
+    "elements/haxcms-elements/lib/core/insights/insights-url-replace.js": {
+      "raw": 111600,
+      "gzip": 32400
+    },
+    "elements/haxcms-elements/lib/core/insights/learning-activity-report.js": {
+      "raw": 303400,
+      "gzip": 86100
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-accessibility.js": {
+      "raw": 307400,
+      "gzip": 85900
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-cadence.js": {
+      "raw": 101000,
+      "gzip": 27900
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-components.js": {
+      "raw": 27000,
+      "gzip": 7400
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-content.js": {
+      "raw": 36000,
+      "gzip": 8600
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-freshness.js": {
+      "raw": 72500,
+      "gzip": 18900
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-instructional.js": {
+      "raw": 35600,
+      "gzip": 8800
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-links.js": {
+      "raw": 153200,
+      "gzip": 43200
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-media.js": {
+      "raw": 255100,
+      "gzip": 71400
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-metadata.js": {
+      "raw": 28200,
+      "gzip": 7500
+    },
+    "elements/haxcms-elements/lib/core/insights/sections/insights-overview.js": {
+      "raw": 82800,
+      "gzip": 24300
+    },
+    "elements/haxcms-elements/lib/core/micros/haxcms-button-add.js": {
+      "raw": 97500,
+      "gzip": 28000
+    },
+    "elements/haxcms-elements/lib/core/micros/haxcms-page-operations.js": {
+      "raw": 95800,
+      "gzip": 26100
+    },
+    "elements/haxcms-elements/lib/core/themes/haxcms-basic-theme.js": {
+      "raw": 197700,
+      "gzip": 56000
+    },
+    "elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js": {
+      "raw": 4200,
+      "gzip": 2000
+    },
+    "elements/haxcms-elements/lib/core/themes/haxcms-json-theme.js": {
+      "raw": 120700,
+      "gzip": 32500
+    },
+    "elements/haxcms-elements/lib/core/themes/haxcms-print-theme.js": {
+      "raw": 91700,
+      "gzip": 25800
+    },
+    "elements/haxcms-elements/lib/core/themes/haxcms-slide-theme.js": {
+      "raw": 194600,
+      "gzip": 55300
+    },
+    "elements/haxcms-elements/lib/core/ui/app-hax-top-bar.js": {
+      "raw": 5500,
+      "gzip": 2300
+    },
+    "elements/haxcms-elements/lib/core/ui/app-hax-user-menu-button.js": {
+      "raw": 8100,
+      "gzip": 3000
+    },
+    "elements/haxcms-elements/lib/core/ui/app-hax-user-menu-toggle.js": {
+      "raw": 33000,
+      "gzip": 9200
+    },
+    "elements/haxcms-elements/lib/core/ui/app-hax-user-menu.js": {
+      "raw": 16800,
+      "gzip": 5300
+    },
+    "elements/haxcms-elements/lib/core/ui/darkmode-toggle/darkmode-toggle.js": {
+      "raw": 6600,
+      "gzip": 2500
+    },
+    "elements/haxcms-elements/lib/core/ui/hax-future-traveler-mark.js": {
+      "raw": 7700,
+      "gzip": 3100
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-about-dialog-ui.js": {
+      "raw": 137500,
+      "gzip": 38300
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js": {
+      "raw": 138100,
+      "gzip": 36300
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-appearance-switcher.js": {
+      "raw": 106700,
+      "gzip": 30000
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-editor-settings-dialog-ui.js": {
+      "raw": 20800,
+      "gzip": 7300
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-goggles.js": {
+      "raw": 208200,
+      "gzip": 51300
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-site-platform-ui.js": {
+      "raw": 144400,
+      "gzip": 37000
+    },
+    "elements/haxcms-elements/lib/core/ui/haxcms-theme-preview-panel.js": {
+      "raw": 169300,
+      "gzip": 45300
+    },
+    "elements/haxcms-elements/lib/core/ui/rpg-character-toast/rpg-character-toast.js": {
+      "raw": 16600,
+      "gzip": 4800
+    },
+    "elements/haxcms-elements/lib/development/haxcms-dev-theme.js": {
+      "raw": 195000,
+      "gzip": 55700
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-active-fields.js": {
+      "raw": 84000,
+      "gzip": 23300
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js": {
+      "raw": 105600,
+      "gzip": 28400
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-active-tags.js": {
+      "raw": 89500,
+      "gzip": 24900
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-active-title.js": {
+      "raw": 94800,
+      "gzip": 25500
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-git-corner.js": {
+      "raw": 92300,
+      "gzip": 26200
+    },
+    "elements/haxcms-elements/lib/ui-components/active-item/site-share-widget.js": {
+      "raw": 87500,
+      "gzip": 24200
+    },
+    "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js": {
+      "raw": 96800,
+      "gzip": 26800
+    },
+    "elements/haxcms-elements/lib/ui-components/blocks/site-outline-block.js": {
+      "raw": 108100,
+      "gzip": 29600
+    },
+    "elements/haxcms-elements/lib/ui-components/blocks/site-recent-content-block.js": {
+      "raw": 105100,
+      "gzip": 28800
+    },
+    "elements/haxcms-elements/lib/ui-components/layout/site-drawer.js": {
+      "raw": 5200,
+      "gzip": 2100
+    },
+    "elements/haxcms-elements/lib/ui-components/layout/site-footer.js": {
+      "raw": 85400,
+      "gzip": 23700
+    },
+    "elements/haxcms-elements/lib/ui-components/layout/site-modal.js": {
+      "raw": 91200,
+      "gzip": 25600
+    },
+    "elements/haxcms-elements/lib/ui-components/layout/site-region.js": {
+      "raw": 87900,
+      "gzip": 24500
+    },
+    "elements/haxcms-elements/lib/ui-components/lesson-overview/lesson-overview.js": {
+      "raw": 93300,
+      "gzip": 25600
+    },
+    "elements/haxcms-elements/lib/ui-components/lesson-overview/lib/lesson-highlight.js": {
+      "raw": 8900,
+      "gzip": 3000
+    },
+    "elements/haxcms-elements/lib/ui-components/magic/active-when-visible.js": {
+      "raw": 86000,
+      "gzip": 24000
+    },
+    "elements/haxcms-elements/lib/ui-components/magic/site-collection-list.js": {
+      "raw": 108700,
+      "gzip": 29900
+    },
+    "elements/haxcms-elements/lib/ui-components/magic/site-view.js": {
+      "raw": 99300,
+      "gzip": 24700
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js": {
+      "raw": 93200,
+      "gzip": 25900
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-dot-indicator.js": {
+      "raw": 89000,
+      "gzip": 24600
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-menu-button.js": {
+      "raw": 105400,
+      "gzip": 29400
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-menu-content.js": {
+      "raw": 92600,
+      "gzip": 25900
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-menu.js": {
+      "raw": 149300,
+      "gzip": 42900
+    },
+    "elements/haxcms-elements/lib/ui-components/navigation/site-top-menu.js": {
+      "raw": 113900,
+      "gzip": 30800
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/haxcms-tracking-lens.js": {
+      "raw": 252700,
+      "gzip": 68700
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/my-learning-button.js": {
+      "raw": 150100,
+      "gzip": 43000
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/my-learning-panel.js": {
+      "raw": 188400,
+      "gzip": 53700
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/my-learning.js": {
+      "raw": 347700,
+      "gzip": 94000
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/site-page-progress.js": {
+      "raw": 138200,
+      "gzip": 39600
+    },
+    "elements/haxcms-elements/lib/ui-components/progress/site-progress-clear.js": {
+      "raw": 137700,
+      "gzip": 39500
+    },
+    "elements/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js": {
+      "raw": 87000,
+      "gzip": 24100
+    },
+    "elements/haxcms-elements/lib/ui-components/query/site-query.js": {
+      "raw": 98100,
+      "gzip": 26500
+    },
+    "elements/haxcms-elements/lib/ui-components/query/site-render-query.js": {
+      "raw": 101400,
+      "gzip": 27900
+    },
+    "elements/haxcms-elements/lib/ui-components/routes/site-home-route.js": {
+      "raw": 88200,
+      "gzip": 24800
+    },
+    "elements/haxcms-elements/lib/ui-components/routes/site-print-route.js": {
+      "raw": 89100,
+      "gzip": 25100
+    },
+    "elements/haxcms-elements/lib/ui-components/routes/site-random-route.js": {
+      "raw": 87100,
+      "gzip": 24600
+    },
+    "elements/haxcms-elements/lib/ui-components/routes/site-search-route.js": {
+      "raw": 109700,
+      "gzip": 29700
+    },
+    "elements/haxcms-elements/lib/ui-components/routes/site-tags-route.js": {
+      "raw": 93300,
+      "gzip": 26000
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-citation.js": {
+      "raw": 110600,
+      "gzip": 32400
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-print-button.js": {
+      "raw": 92900,
+      "gzip": 26400
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-random-content.js": {
+      "raw": 98900,
+      "gzip": 27400
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js": {
+      "raw": 99300,
+      "gzip": 27600
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-rss-button.js": {
+      "raw": 93800,
+      "gzip": 26700
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-search.js": {
+      "raw": 107200,
+      "gzip": 28700
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-title.js": {
+      "raw": 93400,
+      "gzip": 26300
+    },
+    "elements/haxcms-elements/lib/ui-components/site/site-uuid-link.js": {
+      "raw": 86800,
+      "gzip": 24300
+    },
+    "elements/haxcms-elements/lib/ui-components/templates/basic-template.js": {
+      "raw": 7700,
+      "gzip": 2300
+    },
+    "elements/haxcms-elements/lib/ui-components/utilities/site-available-themes.js": {
+      "raw": 31100,
+      "gzip": 7500
+    },
+    "elements/haxma-theme/haxma-theme.js": {
+      "raw": 33000,
+      "gzip": 7000
+    },
+    "elements/haxor-slevin/haxor-slevin.js": {
+      "raw": 29800,
+      "gzip": 7200
+    },
+    "elements/hex-picker/hex-picker.js": {
+      "raw": 11100,
+      "gzip": 3600
+    },
+    "elements/hexagon-loader/hexagon-loader.js": {
+      "raw": 27300,
+      "gzip": 5000
+    },
+    "elements/hexagon-loader/lib/hex-a-gon.js": {
+      "raw": 5200,
+      "gzip": 2300
+    },
+    "elements/html-block/html-block.js": {
+      "raw": 8500,
+      "gzip": 3500
+    },
+    "elements/i18n-manager/i18n-manager.js": {
+      "raw": 26900,
+      "gzip": 7300
+    },
+    "elements/ics-render/ics-render.js": {
+      "raw": 38300,
+      "gzip": 11800
+    },
+    "elements/identify-hotspots/identify-hotspots.js": {
+      "raw": 40300,
+      "gzip": 11000
+    },
+    "elements/iframe-loader/iframe-loader.js": {
+      "raw": 17800,
+      "gzip": 5500
+    },
+    "elements/iframe-loader/lib/loading-indicator.js": {
+      "raw": 4100,
+      "gzip": 1800
+    },
+    "elements/image-compare-slider/image-compare-slider.js": {
+      "raw": 19700,
+      "gzip": 6100
+    },
+    "elements/image-dropzone/image-dropzone.js": {
+      "raw": 42800,
+      "gzip": 10700
+    },
+    "elements/image-gallery/image-gallery.js": {
+      "raw": 34000,
+      "gzip": 8400
+    },
+    "elements/image-inspector/image-inspector.js": {
+      "raw": 10800,
+      "gzip": 3600
+    },
+    "elements/img-pan-zoom/img-pan-zoom.js": {
+      "raw": 24400,
+      "gzip": 6500
+    },
+    "elements/img-pan-zoom/lib/img-loader.js": {
+      "raw": 4600,
+      "gzip": 1900
+    },
+    "elements/img-view-modal/img-view-modal.js": {
+      "raw": 45700,
+      "gzip": 10100
+    },
+    "elements/img-view-modal/lib/img-view-viewer.js": {
+      "raw": 35900,
+      "gzip": 8000
+    },
+    "elements/inline-audio/inline-audio.js": {
+      "raw": 12600,
+      "gzip": 4200
+    },
+    "elements/instructional-cadence/instructional-cadence.js": {
+      "raw": 41200,
+      "gzip": 12700
+    },
+    "elements/intersection-element/lib/IntersectionObserverMixin.js": {
+      "raw": 6000,
+      "gzip": 2500
+    },
+    "elements/journey-theme/journey-theme.js": {
+      "raw": 44700,
+      "gzip": 8700
+    },
+    "elements/journey-theme/lib/journey-menu.js": {
+      "raw": 10900,
+      "gzip": 3600
+    },
+    "elements/journey-theme/lib/journey-sidebar-theme.js": {
+      "raw": 20900,
+      "gzip": 7000
+    },
+    "elements/journey-theme/lib/journey-topbar-theme.js": {
+      "raw": 12700,
+      "gzip": 4500
+    },
+    "elements/json-outline-schema/json-outline-schema.js": {
+      "raw": 25800,
+      "gzip": 7700
+    },
+    "elements/json-outline-schema/lib/jos-render.js": {
+      "raw": 28900,
+      "gzip": 8800
+    },
+    "elements/jwt-login/jwt-login.js": {
+      "raw": 25100,
+      "gzip": 7400
+    },
+    "elements/la-tex/la-tex.js": {
+      "raw": 13900,
+      "gzip": 5000
+    },
+    "elements/lazy-image-helpers/lazy-image-helpers.js": {
+      "raw": 7800,
+      "gzip": 3100
+    },
+    "elements/lazy-import-discover/lazy-import-discover.js": {
+      "raw": 4400,
+      "gzip": 2100
+    },
+    "elements/learn-two-theme/learn-two-theme.js": {
+      "raw": 23100,
+      "gzip": 5500
+    },
+    "elements/license-element/license-element.js": {
+      "raw": 24800,
+      "gzip": 7300
+    },
+    "elements/link-card-theme/link-card-theme.js": {
+      "raw": 24400,
+      "gzip": 6100
+    },
+    "elements/linkedin-embed/lib/linkedin-embed.js": {
+      "raw": 19200,
+      "gzip": 6300
+    },
+    "elements/linkedin-embed/linkedin-embed.js": {
+      "raw": 19400,
+      "gzip": 6500
+    },
+    "elements/lorem-data/lorem-data.js": {
+      "raw": 40800,
+      "gzip": 12000
+    },
+    "elements/lrn-math/lrn-math.js": {
+      "raw": 17500,
+      "gzip": 6900
+    },
+    "elements/lrn-table/lrn-table.js": {
+      "raw": 5600,
+      "gzip": 2500
+    },
+    "elements/lrn-vocab/lrn-vocab.js": {
+      "raw": 9200,
+      "gzip": 3800
+    },
+    "elements/lrndesign-chart/lib/lrndesign-bar.js": {
+      "raw": 35400,
+      "gzip": 9100
+    },
+    "elements/lrndesign-chart/lib/lrndesign-line.js": {
+      "raw": 36200,
+      "gzip": 9200
+    },
+    "elements/lrndesign-chart/lib/lrndesign-pie.js": {
+      "raw": 35700,
+      "gzip": 9200
+    },
+    "elements/lrndesign-chart/lrndesign-chart.js": {
+      "raw": 30400,
+      "gzip": 7600
+    },
+    "elements/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js": {
+      "raw": 8700,
+      "gzip": 3900
+    },
+    "elements/lrndesign-imagemap/lrndesign-imagemap.js": {
+      "raw": 33500,
+      "gzip": 10200
+    },
+    "elements/lrndesign-sidenote/lrndesign-sidenote.js": {
+      "raw": 10000,
+      "gzip": 3500
+    },
+    "elements/lrndesign-timeline/lrndesign-timeline.js": {
+      "raw": 25700,
+      "gzip": 6900
+    },
+    "elements/lrs-elements/lib/lrs-bridge-haxcms.js": {
+      "raw": 7500,
+      "gzip": 3300
+    },
+    "elements/lrs-elements/lib/lrs-bridge.js": {
+      "raw": 6400,
+      "gzip": 2700
+    },
+    "elements/lrs-elements/lib/lrs-emitter.js": {
+      "raw": 7700,
+      "gzip": 3100
+    },
+    "elements/lrs-elements/lrs-elements.js": {
+      "raw": 13200,
+      "gzip": 5500
+    },
+    "elements/lti-launch/lti-launch.js": {
+      "raw": 32200,
+      "gzip": 9800
+    },
+    "elements/lunr-search/lunr-search.js": {
+      "raw": 15200,
+      "gzip": 4700
+    },
+    "elements/map-menu/lib/map-menu-builder.js": {
+      "raw": 67600,
+      "gzip": 17700
+    },
+    "elements/map-menu/lib/map-menu-container.js": {
+      "raw": 58400,
+      "gzip": 15800
+    },
+    "elements/map-menu/lib/map-menu-header.js": {
+      "raw": 28400,
+      "gzip": 8300
+    },
+    "elements/map-menu/lib/map-menu-item.js": {
+      "raw": 25800,
+      "gzip": 7800
+    },
+    "elements/map-menu/lib/map-menu-submenu.js": {
+      "raw": 42900,
+      "gzip": 11500
+    },
+    "elements/map-menu/map-menu.js": {
+      "raw": 102700,
+      "gzip": 26000
+    },
+    "elements/mark-the-words/mark-the-words.js": {
+      "raw": 19300,
+      "gzip": 5700
+    },
+    "elements/matching-question/matching-question.js": {
+      "raw": 23100,
+      "gzip": 6500
+    },
+    "elements/material-theme/material-theme.js": {
+      "raw": 54600,
+      "gzip": 12800
+    },
+    "elements/md-block/md-block.js": {
+      "raw": 6400,
+      "gzip": 2600
+    },
+    "elements/media-behaviors/media-behaviors.js": {
+      "raw": 10300,
+      "gzip": 3600
+    },
+    "elements/media-image/media-image.js": {
+      "raw": 22800,
+      "gzip": 6300
+    },
+    "elements/media-playlist/media-playlist.js": {
+      "raw": 36300,
+      "gzip": 8600
+    },
+    "elements/media-quote/media-quote.js": {
+      "raw": 11800,
+      "gzip": 3600
+    },
+    "elements/meme-maker/meme-maker.js": {
+      "raw": 8300,
+      "gzip": 3300
+    },
+    "elements/memory-match/memory-match.js": {
+      "raw": 38300,
+      "gzip": 10300
+    },
+    "elements/merit-badge/lib/badge-sticker.js": {
+      "raw": 15500,
+      "gzip": 5600
+    },
+    "elements/merit-badge/lib/date-title.js": {
+      "raw": 5500,
+      "gzip": 2300
+    },
+    "elements/merit-badge/lib/locked-badge.js": {
+      "raw": 4500,
+      "gzip": 2100
+    },
+    "elements/merit-badge/merit-badge.js": {
+      "raw": 22000,
+      "gzip": 7600
+    },
+    "elements/mermaid-diagram/mermaid-diagram.js": {
+      "raw": 56200,
+      "gzip": 16000
+    },
+    "elements/micro-frontend-registry/micro-frontend-registry.js": {
+      "raw": 19700,
+      "gzip": 5600
+    },
+    "elements/micro-game-base/lib/concept-map-game.js": {
+      "raw": 71400,
+      "gzip": 20200
+    },
+    "elements/micro-game-base/lib/concept-quest-game.js": {
+      "raw": 98500,
+      "gzip": 28000
+    },
+    "elements/micro-game-base/lib/concept-runner-game.js": {
+      "raw": 73600,
+      "gzip": 21000
+    },
+    "elements/micro-game-base/micro-game-base.js": {
+      "raw": 44600,
+      "gzip": 12400
+    },
+    "elements/moar-sarcasm/moar-sarcasm.js": {
+      "raw": 9000,
+      "gzip": 3500
+    },
+    "elements/moment-element/moment-element.js": {
+      "raw": 6200,
+      "gzip": 2600
+    },
+    "elements/multiple-choice/lib/confetti-container.js": {
+      "raw": 9300,
+      "gzip": 3200
+    },
+    "elements/multiple-choice/lib/short-answer-question.js": {
+      "raw": 119100,
+      "gzip": 29300
+    },
+    "elements/multiple-choice/lib/true-false-question.js": {
+      "raw": 118000,
+      "gzip": 28900
+    },
+    "elements/multiple-choice/multiple-choice.js": {
+      "raw": 116600,
+      "gzip": 28400
+    },
+    "elements/music-player/lib/html-midi-player.js": {
+      "raw": 1114500,
+      "gzip": 159400
+    },
+    "elements/music-player/music-player.js": {
+      "raw": 10500,
+      "gzip": 3800
+    },
+    "elements/mutation-observer-import-mixin/mutation-observer-import-mixin.js": {
+      "raw": 4500,
+      "gzip": 2100
+    },
+    "elements/numeric-question/numeric-question.js": {
+      "raw": 47300,
+      "gzip": 13600
+    },
+    "elements/oer-schema/oer-schema.js": {
+      "raw": 40500,
+      "gzip": 8500
+    },
+    "elements/outline-designer/outline-designer.js": {
+      "raw": 231900,
+      "gzip": 55100
+    },
+    "elements/outline-player/outline-player.js": {
+      "raw": 21100,
+      "gzip": 5800
+    },
+    "elements/page-break/lib/page-anchor.js": {
+      "raw": 10500,
+      "gzip": 4000
+    },
+    "elements/page-break/lib/page-break-manager.js": {
+      "raw": 10600,
+      "gzip": 3600
+    },
+    "elements/page-break/lib/page-break-outline.js": {
+      "raw": 16300,
+      "gzip": 5700
+    },
+    "elements/page-break/lib/page-template.js": {
+      "raw": 6700,
+      "gzip": 2700
+    },
+    "elements/page-break/page-break.js": {
+      "raw": 69400,
+      "gzip": 16900
+    },
+    "elements/page-contents-menu/page-contents-menu.js": {
+      "raw": 23200,
+      "gzip": 6900
+    },
+    "elements/page-flag/lib/page-flag-comment.js": {
+      "raw": 11100,
+      "gzip": 3300
+    },
+    "elements/page-flag/page-flag.js": {
+      "raw": 20500,
+      "gzip": 6200
+    },
+    "elements/page-section/page-section.js": {
+      "raw": 26000,
+      "gzip": 6700
+    },
+    "elements/paper-input-flagged/paper-input-flagged.js": {
+      "raw": 10400,
+      "gzip": 3700
+    },
+    "elements/papermod-theme/lib/al-folio-theme.js": {
+      "raw": 33300,
+      "gzip": 9900
+    },
+    "elements/papermod-theme/lib/astro-cactus-theme.js": {
+      "raw": 33200,
+      "gzip": 9900
+    },
+    "elements/papermod-theme/lib/astrofy-theme.js": {
+      "raw": 40900,
+      "gzip": 11000
+    },
+    "elements/papermod-theme/lib/astropaper-theme.js": {
+      "raw": 33400,
+      "gzip": 9900
+    },
+    "elements/papermod-theme/lib/astrowind-theme.js": {
+      "raw": 33600,
+      "gzip": 9900
+    },
+    "elements/papermod-theme/lib/chirpy-theme.js": {
+      "raw": 40600,
+      "gzip": 11000
+    },
+    "elements/papermod-theme/lib/coder-theme.js": {
+      "raw": 32900,
+      "gzip": 9800
+    },
+    "elements/papermod-theme/lib/homage-page-list.js": {
+      "raw": 8900,
+      "gzip": 3300
+    },
+    "elements/papermod-theme/lib/hyde-theme.js": {
+      "raw": 40900,
+      "gzip": 11100
+    },
+    "elements/papermod-theme/lib/minima-theme.js": {
+      "raw": 33100,
+      "gzip": 9800
+    },
+    "elements/papermod-theme/lib/minimal-mistakes-theme.js": {
+      "raw": 40800,
+      "gzip": 11000
+    },
+    "elements/papermod-theme/lib/terminal-theme.js": {
+      "raw": 34200,
+      "gzip": 10100
+    },
+    "elements/papermod-theme/papermod-theme.js": {
+      "raw": 33200,
+      "gzip": 9800
+    },
+    "elements/parallax-image/parallax-image.js": {
+      "raw": 6900,
+      "gzip": 2800
+    },
+    "elements/patternfly-theme/patternfly-theme.js": {
+      "raw": 37300,
+      "gzip": 9000
+    },
+    "elements/pdf-browser-viewer/pdf-browser-viewer.js": {
+      "raw": 15200,
+      "gzip": 4800
+    },
+    "elements/person-testimonial/person-testimonial.js": {
+      "raw": 9800,
+      "gzip": 3300
+    },
+    "elements/place-holder/place-holder.js": {
+      "raw": 12400,
+      "gzip": 4100
+    },
+    "elements/play-list/lib/play-list-slide.js": {
+      "raw": 3400,
+      "gzip": 1600
+    },
+    "elements/play-list/play-list.js": {
+      "raw": 29300,
+      "gzip": 7400
+    },
+    "elements/polaris-theme/lib/polaris-cta.js": {
+      "raw": 8600,
+      "gzip": 2600
+    },
+    "elements/polaris-theme/lib/polaris-flex-sidebar.js": {
+      "raw": 53000,
+      "gzip": 12300
+    },
+    "elements/polaris-theme/lib/polaris-flex-theme.js": {
+      "raw": 46200,
+      "gzip": 10400
+    },
+    "elements/polaris-theme/lib/polaris-invent-theme.js": {
+      "raw": 33000,
+      "gzip": 8000
+    },
+    "elements/polaris-theme/lib/polaris-mark.js": {
+      "raw": 25800,
+      "gzip": 6700
+    },
+    "elements/polaris-theme/lib/polaris-story-card.js": {
+      "raw": 9100,
+      "gzip": 3500
+    },
+    "elements/polaris-theme/lib/polaris-tile.js": {
+      "raw": 9800,
+      "gzip": 3400
+    },
+    "elements/polaris-theme/polaris-theme.js": {
+      "raw": 24900,
+      "gzip": 6400
+    },
+    "elements/portal-launcher/portal-launcher.js": {
+      "raw": 6600,
+      "gzip": 2800
+    },
+    "elements/post-card/lib/PostCardPhoto.js": {
+      "raw": 4400,
+      "gzip": 1900
+    },
+    "elements/post-card/lib/PostCardPostmark.js": {
+      "raw": 4100,
+      "gzip": 2000
+    },
+    "elements/post-card/lib/PostCardStamp.js": {
+      "raw": 3800,
+      "gzip": 1800
+    },
+    "elements/post-card/post-card.js": {
+      "raw": 13100,
+      "gzip": 4400
+    },
+    "elements/pouch-db/pouch-db.js": {
+      "raw": 10400,
+      "gzip": 3700
+    },
+    "elements/primer-theme/primer-theme.js": {
+      "raw": 41800,
+      "gzip": 11200
+    },
+    "elements/product-glance/product-glance.js": {
+      "raw": 8500,
+      "gzip": 2800
+    },
+    "elements/product-offering/product-offering.js": {
+      "raw": 10000,
+      "gzip": 3300
+    },
+    "elements/progress-donut/progress-donut.js": {
+      "raw": 8600,
+      "gzip": 3300
+    },
+    "elements/promise-progress/lib/promise-progress-lite.js": {
+      "raw": 6200,
+      "gzip": 2600
+    },
+    "elements/promise-progress/lib/wc-preload-progress.js": {
+      "raw": 9000,
+      "gzip": 4000
+    },
+    "elements/promise-progress/promise-progress.js": {
+      "raw": 7800,
+      "gzip": 3400
+    },
+    "elements/q-r/lib/qr-code.js": {
+      "raw": 6600,
+      "gzip": 2600
+    },
+    "elements/q-r/q-r.js": {
+      "raw": 10500,
+      "gzip": 3800
+    },
+    "elements/radar-chart/radar-chart.js": {
+      "raw": 30400,
+      "gzip": 8100
+    },
+    "elements/radio-behaviors/radio-behaviors.js": {
+      "raw": 11300,
+      "gzip": 3700
+    },
+    "elements/reading-analysis/reading-analysis.js": {
+      "raw": 78000,
+      "gzip": 20200
+    },
+    "elements/relative-heading/lib/relative-heading-lite.js": {
+      "raw": 17100,
+      "gzip": 5600
+    },
+    "elements/relative-heading/lib/relative-heading-state-manager.js": {
+      "raw": 11100,
+      "gzip": 3500
+    },
+    "elements/relative-heading/relative-heading.js": {
+      "raw": 24200,
+      "gzip": 7500
+    },
+    "elements/replace-tag/lib/PerformanceDetect.js": {
+      "raw": 7400,
+      "gzip": 2700
+    },
+    "elements/replace-tag/replace-tag.js": {
+      "raw": 22300,
+      "gzip": 7500
+    },
+    "elements/responsive-grid/lib/responsive-grid-clear.js": {
+      "raw": 4000,
+      "gzip": 1700
+    },
+    "elements/responsive-grid/lib/responsive-grid-col.js": {
+      "raw": 4500,
+      "gzip": 1900
+    },
+    "elements/responsive-grid/lib/responsive-grid-row.js": {
+      "raw": 18000,
+      "gzip": 4600
+    },
+    "elements/responsive-grid/responsive-grid.js": {
+      "raw": 18100,
+      "gzip": 4700
+    },
+    "elements/responsive-utility/lib/responsive-utility-element.js": {
+      "raw": 17800,
+      "gzip": 5800
+    },
+    "elements/responsive-utility/responsive-utility.js": {
+      "raw": 12500,
+      "gzip": 4000
+    },
+    "elements/resume-theme/resume-theme.js": {
+      "raw": 23500,
+      "gzip": 5100
+    },
+    "elements/retro-card/retro-card.js": {
+      "raw": 14500,
+      "gzip": 4400
+    },
+    "elements/retro-tv/lib/programs/retro-tv-blocks.js": {
+      "raw": 19500,
+      "gzip": 7500
+    },
+    "elements/retro-tv/lib/programs/retro-tv-credits.js": {
+      "raw": 13700,
+      "gzip": 5500
+    },
+    "elements/retro-tv/lib/programs/retro-tv-disc.js": {
+      "raw": 16000,
+      "gzip": 6100
+    },
+    "elements/retro-tv/lib/programs/retro-tv-handheld.js": {
+      "raw": 12000,
+      "gzip": 4900
+    },
+    "elements/retro-tv/lib/programs/retro-tv-hax-tv.js": {
+      "raw": 14200,
+      "gzip": 5800
+    },
+    "elements/retro-tv/lib/programs/retro-tv-home-computer.js": {
+      "raw": 12900,
+      "gzip": 5400
+    },
+    "elements/retro-tv/lib/programs/retro-tv-pc.js": {
+      "raw": 11800,
+      "gzip": 5100
+    },
+    "elements/retro-tv/lib/programs/retro-tv-sign-on.js": {
+      "raw": 14100,
+      "gzip": 5500
+    },
+    "elements/retro-tv/lib/programs/retro-tv-static.js": {
+      "raw": 17200,
+      "gzip": 6300
+    },
+    "elements/retro-tv/lib/programs/retro-tv-title-sequence.js": {
+      "raw": 17400,
+      "gzip": 6200
+    },
+    "elements/retro-tv/lib/retro-console.js": {
+      "raw": 21700,
+      "gzip": 7900
+    },
+    "elements/retro-tv/lib/retro-controller.js": {
+      "raw": 21400,
+      "gzip": 7900
+    },
+    "elements/retro-tv/lib/retro-vcr.js": {
+      "raw": 24700,
+      "gzip": 8900
+    },
+    "elements/retro-tv/retro-tv.js": {
+      "raw": 34800,
+      "gzip": 11000
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-button.js": {
+      "raw": 59800,
+      "gzip": 16500
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js": {
+      "raw": 63000,
+      "gzip": 17800
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js": {
+      "raw": 75200,
+      "gzip": 21500
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-icon-picker.js": {
+      "raw": 74900,
+      "gzip": 21400
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-image.js": {
+      "raw": 91200,
+      "gzip": 25400
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-link.js": {
+      "raw": 93500,
+      "gzip": 26200
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-picker.js": {
+      "raw": 71400,
+      "gzip": 20100
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js": {
+      "raw": 87300,
+      "gzip": 24200
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-source-code.js": {
+      "raw": 62200,
+      "gzip": 17500
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js": {
+      "raw": 62900,
+      "gzip": 17800
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-underline.js": {
+      "raw": 89900,
+      "gzip": 25200
+    },
+    "elements/rich-text-editor/lib/buttons/rich-text-editor-unlink.js": {
+      "raw": 61700,
+      "gzip": 17400
+    },
+    "elements/rich-text-editor/lib/open-apis/link-preview-card.js": {
+      "raw": 9100,
+      "gzip": 3300
+    },
+    "elements/rich-text-editor/lib/singletons/rich-text-editor-clipboard.js": {
+      "raw": 5200,
+      "gzip": 2300
+    },
+    "elements/rich-text-editor/lib/singletons/rich-text-editor-highlight.js": {
+      "raw": 6300,
+      "gzip": 2700
+    },
+    "elements/rich-text-editor/lib/singletons/rich-text-editor-prompt.js": {
+      "raw": 75700,
+      "gzip": 20800
+    },
+    "elements/rich-text-editor/lib/singletons/rich-text-editor-source.js": {
+      "raw": 10600,
+      "gzip": 3700
+    },
+    "elements/rich-text-editor/lib/toolbars/rich-text-editor-breadcrumbs.js": {
+      "raw": 65100,
+      "gzip": 18300
+    },
+    "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js": {
+      "raw": 199300,
+      "gzip": 53800
+    },
+    "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js": {
+      "raw": 194200,
+      "gzip": 52200
+    },
+    "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js": {
+      "raw": 192400,
+      "gzip": 51400
+    },
+    "elements/rich-text-editor/rich-text-editor.js": {
+      "raw": 214100,
+      "gzip": 58100
+    },
+    "elements/rpg-character/lib/rpg-character-builder.js": {
+      "raw": 80700,
+      "gzip": 23900
+    },
+    "elements/rpg-character/rpg-character.js": {
+      "raw": 53300,
+      "gzip": 17000
+    },
+    "elements/schema-behaviors/schema-behaviors.js": {
+      "raw": 5900,
+      "gzip": 2500
+    },
+    "elements/screen-recorder/screen-recorder.js": {
+      "raw": 15600,
+      "gzip": 4800
+    },
+    "elements/scroll-button/scroll-button.js": {
+      "raw": 6800,
+      "gzip": 2800
+    },
+    "elements/self-check/self-check.js": {
+      "raw": 23900,
+      "gzip": 6500
+    },
+    "elements/self-reflective-nudge/self-reflective-nudge.js": {
+      "raw": 23900,
+      "gzip": 7500
+    },
+    "elements/shadcn-theme/shadcn-theme.js": {
+      "raw": 42300,
+      "gzip": 10900
+    },
+    "elements/shadow-style/shadow-style.js": {
+      "raw": 8200,
+      "gzip": 3500
+    },
+    "elements/sheet-music/sheet-music.js": {
+      "raw": 38000,
+      "gzip": 10200
+    },
+    "elements/simple-autocomplete/lib/simple-autocomplete-text-trigger.js": {
+      "raw": 31900,
+      "gzip": 9300
+    },
+    "elements/simple-autocomplete/simple-autocomplete.js": {
+      "raw": 22500,
+      "gzip": 6700
+    },
+    "elements/simple-blog/lib/simple-blog-footer.js": {
+      "raw": 13000,
+      "gzip": 4000
+    },
+    "elements/simple-blog/lib/simple-blog-header.js": {
+      "raw": 9000,
+      "gzip": 3200
+    },
+    "elements/simple-blog/lib/simple-blog-listing.js": {
+      "raw": 10900,
+      "gzip": 4100
+    },
+    "elements/simple-blog/lib/simple-blog-overview.js": {
+      "raw": 8300,
+      "gzip": 3100
+    },
+    "elements/simple-blog/lib/simple-blog-post.js": {
+      "raw": 11000,
+      "gzip": 3800
+    },
+    "elements/simple-blog/simple-blog.js": {
+      "raw": 21800,
+      "gzip": 7300
+    },
+    "elements/simple-colors-shared-styles/simple-colors-shared-styles.js": {
+      "raw": 47200,
+      "gzip": 7800
+    },
+    "elements/simple-colors/lib/demo/simple-colors-swatch-info.js": {
+      "raw": 79500,
+      "gzip": 10200
+    },
+    "elements/simple-colors/lib/demo/simple-colors-swatches.js": {
+      "raw": 76800,
+      "gzip": 9800
+    },
+    "elements/simple-colors/lib/simple-colors-picker.js": {
+      "raw": 83200,
+      "gzip": 11200
+    },
+    "elements/simple-colors/simple-colors.js": {
+      "raw": 70400,
+      "gzip": 7900
+    },
+    "elements/simple-cta/lib/lrnsys-button.js": {
+      "raw": 19600,
+      "gzip": 5700
+    },
+    "elements/simple-cta/simple-cta.js": {
+      "raw": 18500,
+      "gzip": 5100
+    },
+    "elements/simple-datetime/simple-datetime.js": {
+      "raw": 10800,
+      "gzip": 3900
+    },
+    "elements/simple-emoji/simple-emoji.js": {
+      "raw": 4000,
+      "gzip": 1900
+    },
+    "elements/simple-fields/lib/simple-camera-snap.js": {
+      "raw": 21500,
+      "gzip": 7400
+    },
+    "elements/simple-fields/lib/simple-context-menu.js": {
+      "raw": 24500,
+      "gzip": 7000
+    },
+    "elements/simple-fields/lib/simple-fields-array-item.js": {
+      "raw": 43300,
+      "gzip": 10400
+    },
+    "elements/simple-fields/lib/simple-fields-array.js": {
+      "raw": 52900,
+      "gzip": 13100
+    },
+    "elements/simple-fields/lib/simple-fields-code.js": {
+      "raw": 73000,
+      "gzip": 17100
+    },
+    "elements/simple-fields/lib/simple-fields-combo.js": {
+      "raw": 154900,
+      "gzip": 32700
+    },
+    "elements/simple-fields/lib/simple-fields-container.js": {
+      "raw": 65300,
+      "gzip": 14500
+    },
+    "elements/simple-fields/lib/simple-fields-field.js": {
+      "raw": 127100,
+      "gzip": 26300
+    },
+    "elements/simple-fields/lib/simple-fields-fieldset.js": {
+      "raw": 21900,
+      "gzip": 5600
+    },
+    "elements/simple-fields/lib/simple-fields-form-lite.js": {
+      "raw": 249600,
+      "gzip": 54600
+    },
+    "elements/simple-fields/lib/simple-fields-form.js": {
+      "raw": 252800,
+      "gzip": 55800
+    },
+    "elements/simple-fields/lib/simple-fields-html-block.js": {
+      "raw": 19800,
+      "gzip": 5400
+    },
+    "elements/simple-fields/lib/simple-fields-lite.js": {
+      "raw": 141700,
+      "gzip": 33000
+    },
+    "elements/simple-fields/lib/simple-fields-tab.js": {
+      "raw": 22900,
+      "gzip": 6100
+    },
+    "elements/simple-fields/lib/simple-fields-tabs.js": {
+      "raw": 25900,
+      "gzip": 7200
+    },
+    "elements/simple-fields/lib/simple-fields-tag-list.js": {
+      "raw": 154300,
+      "gzip": 33900
+    },
+    "elements/simple-fields/lib/simple-fields-upload.js": {
+      "raw": 238800,
+      "gzip": 54100
+    },
+    "elements/simple-fields/lib/simple-fields-url-combo-item.js": {
+      "raw": 13100,
+      "gzip": 3700
+    },
+    "elements/simple-fields/lib/simple-fields-url-combo.js": {
+      "raw": 175300,
+      "gzip": 38000
+    },
+    "elements/simple-fields/lib/simple-file-upload.js": {
+      "raw": 27700,
+      "gzip": 7500
+    },
+    "elements/simple-fields/lib/simple-login-avatar.js": {
+      "raw": 4600,
+      "gzip": 2200
+    },
+    "elements/simple-fields/lib/simple-login-camera.js": {
+      "raw": 12500,
+      "gzip": 4200
+    },
+    "elements/simple-fields/lib/simple-tag-lite.js": {
+      "raw": 7100,
+      "gzip": 2500
+    },
+    "elements/simple-fields/lib/simple-tag.js": {
+      "raw": 33600,
+      "gzip": 8600
+    },
+    "elements/simple-fields/lib/simple-tags.js": {
+      "raw": 35500,
+      "gzip": 9300
+    },
+    "elements/simple-fields/simple-fields.js": {
+      "raw": 240000,
+      "gzip": 51900
+    },
+    "elements/simple-filter/simple-filter.js": {
+      "raw": 9700,
+      "gzip": 3700
+    },
+    "elements/simple-icon-picker/lib/simple-icon-select.js": {
+      "raw": 30800,
+      "gzip": 8500
+    },
+    "elements/simple-icon-picker/simple-icon-picker.js": {
+      "raw": 38100,
+      "gzip": 10700
+    },
+    "elements/simple-icon/lib/simple-clipboard-copy-button.js": {
+      "raw": 34600,
+      "gzip": 11200
+    },
+    "elements/simple-icon/lib/simple-icon-button-lite.js": {
+      "raw": 30100,
+      "gzip": 10000
+    },
+    "elements/simple-icon/lib/simple-icon-button.js": {
+      "raw": 35400,
+      "gzip": 11700
+    },
+    "elements/simple-icon/lib/simple-icon-lite.js": {
+      "raw": 17100,
+      "gzip": 6300
+    },
+    "elements/simple-icon/lib/simple-iconset-demo.js": {
+      "raw": 46600,
+      "gzip": 14000
+    },
+    "elements/simple-icon/lib/simple-iconset.js": {
+      "raw": 8600,
+      "gzip": 3500
+    },
+    "elements/simple-icon/simple-icon.js": {
+      "raw": 19700,
+      "gzip": 7100
+    },
+    "elements/simple-img/simple-img.js": {
+      "raw": 10600,
+      "gzip": 3800
+    },
+    "elements/simple-login/simple-login.js": {
+      "raw": 9700,
+      "gzip": 3300
+    },
+    "elements/simple-modal/lib/simple-modal-template.js": {
+      "raw": 52500,
+      "gzip": 12000
+    },
+    "elements/simple-modal/simple-modal.js": {
+      "raw": 47800,
+      "gzip": 10400
+    },
+    "elements/simple-pager/simple-pager.js": {
+      "raw": 14500,
+      "gzip": 4000
+    },
+    "elements/simple-picker/lib/simple-emoji-picker.js": {
+      "raw": 60000,
+      "gzip": 14000
+    },
+    "elements/simple-picker/lib/simple-picker-option.js": {
+      "raw": 8000,
+      "gzip": 2900
+    },
+    "elements/simple-picker/lib/simple-symbol-picker.js": {
+      "raw": 71100,
+      "gzip": 15700
+    },
+    "elements/simple-picker/simple-picker.js": {
+      "raw": 55800,
+      "gzip": 12400
+    },
+    "elements/simple-popover/lib/simple-popover-manager.js": {
+      "raw": 19100,
+      "gzip": 6400
+    },
+    "elements/simple-popover/lib/simple-popover-selection.js": {
+      "raw": 28300,
+      "gzip": 8900
+    },
+    "elements/simple-popover/lib/simple-tour.js": {
+      "raw": 30100,
+      "gzip": 9500
+    },
+    "elements/simple-popover/simple-popover.js": {
+      "raw": 9800,
+      "gzip": 3600
+    },
+    "elements/simple-progress/simple-progress.js": {
+      "raw": 6500,
+      "gzip": 2600
+    },
+    "elements/simple-range-input/simple-range-input.js": {
+      "raw": 32400,
+      "gzip": 6600
+    },
+    "elements/simple-search/lib/simple-search-content.js": {
+      "raw": 3800,
+      "gzip": 1800
+    },
+    "elements/simple-search/lib/simple-search-match.js": {
+      "raw": 5500,
+      "gzip": 2100
+    },
+    "elements/simple-search/simple-search.js": {
+      "raw": 27500,
+      "gzip": 7800
+    },
+    "elements/simple-toast/lib/simple-toast-el.js": {
+      "raw": 8100,
+      "gzip": 2600
+    },
+    "elements/simple-toast/simple-toast.js": {
+      "raw": 15600,
+      "gzip": 5000
+    },
+    "elements/simple-toolbar/lib/simple-button-grid.js": {
+      "raw": 85800,
+      "gzip": 21600
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-button-group.js": {
+      "raw": 4900,
+      "gzip": 2200
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-button.js": {
+      "raw": 34900,
+      "gzip": 7600
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-field.js": {
+      "raw": 41700,
+      "gzip": 9500
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-menu-item.js": {
+      "raw": 3800,
+      "gzip": 1800
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-menu.js": {
+      "raw": 46600,
+      "gzip": 10800
+    },
+    "elements/simple-toolbar/lib/simple-toolbar-more-button.js": {
+      "raw": 37200,
+      "gzip": 8400
+    },
+    "elements/simple-toolbar/simple-toolbar.js": {
+      "raw": 79100,
+      "gzip": 19400
+    },
+    "elements/simple-tooltip/simple-tooltip.js": {
+      "raw": 24300,
+      "gzip": 6300
+    },
+    "elements/slide-deck/slide-deck.js": {
+      "raw": 37700,
+      "gzip": 10800
+    },
+    "elements/social-share-link/social-share-link.js": {
+      "raw": 15200,
+      "gzip": 4900
+    },
+    "elements/sorting-question/lib/sorting-option.js": {
+      "raw": 22300,
+      "gzip": 6100
+    },
+    "elements/sorting-question/sorting-question.js": {
+      "raw": 44300,
+      "gzip": 12000
+    },
+    "elements/spacebook-theme/spacebook-theme.js": {
+      "raw": 43100,
+      "gzip": 8500
+    },
+    "elements/spectrum-theme/spectrum-theme.js": {
+      "raw": 46300,
+      "gzip": 11500
+    },
+    "elements/spotify-embed/spotify-embed.js": {
+      "raw": 8100,
+      "gzip": 3200
+    },
+    "elements/star-rating/star-rating.js": {
+      "raw": 16500,
+      "gzip": 5400
+    },
+    "elements/stat-tile/stat-tile.js": {
+      "raw": 8200,
+      "gzip": 3100
+    },
+    "elements/stop-note/lib/stop-note-group.js": {
+      "raw": 33200,
+      "gzip": 9700
+    },
+    "elements/stop-note/stop-note.js": {
+      "raw": 20500,
+      "gzip": 5900
+    },
+    "elements/super-daemon/lib/super-daemon-row.js": {
+      "raw": 33000,
+      "gzip": 9500
+    },
+    "elements/super-daemon/lib/super-daemon-search.js": {
+      "raw": 41000,
+      "gzip": 10700
+    },
+    "elements/super-daemon/lib/super-daemon-toast.js": {
+      "raw": 42000,
+      "gzip": 11200
+    },
+    "elements/super-daemon/lib/super-daemon-ui.js": {
+      "raw": 126500,
+      "gzip": 32600
+    },
+    "elements/super-daemon/super-daemon.js": {
+      "raw": 264900,
+      "gzip": 70400
+    },
+    "elements/tableau-embed/tableau-embed.js": {
+      "raw": 7900,
+      "gzip": 3100
+    },
+    "elements/tagging-question/tagging-question.js": {
+      "raw": 25300,
+      "gzip": 6200
+    },
+    "elements/tailwind-theme/tailwind-theme.js": {
+      "raw": 43500,
+      "gzip": 11300
+    },
+    "elements/terrible-themes/lib/terrible-best-themes.js": {
+      "raw": 10500,
+      "gzip": 3600
+    },
+    "elements/terrible-themes/lib/terrible-outlet-themes.js": {
+      "raw": 9500,
+      "gzip": 3400
+    },
+    "elements/terrible-themes/lib/terrible-productionz-themes.js": {
+      "raw": 15600,
+      "gzip": 4400
+    },
+    "elements/terrible-themes/lib/terrible-resume-themes.js": {
+      "raw": 10900,
+      "gzip": 3400
+    },
+    "elements/terrible-themes/terrible-themes.js": {
+      "raw": 19400,
+      "gzip": 4900
+    },
+    "elements/training-theme/lib/training-button.js": {
+      "raw": 8100,
+      "gzip": 3100
+    },
+    "elements/training-theme/training-theme.js": {
+      "raw": 37000,
+      "gzip": 8800
+    },
+    "elements/twenty-six-theme/twenty-six-theme.js": {
+      "raw": 37400,
+      "gzip": 8100
+    },
+    "elements/twitter-embed/lib/twitter-embed-vanilla.js": {
+      "raw": 9400,
+      "gzip": 3600
+    },
+    "elements/twitter-embed/twitter-embed.js": {
+      "raw": 8500,
+      "gzip": 3500
+    },
+    "elements/type-writer/type-writer.js": {
+      "raw": 8500,
+      "gzip": 2900
+    },
+    "elements/un-sdg/un-sdg.js": {
+      "raw": 9400,
+      "gzip": 3500
+    },
+    "elements/undo-manager/undo-manager.js": {
+      "raw": 13500,
+      "gzip": 4400
+    },
+    "elements/unity-webgl/unity-webgl.js": {
+      "raw": 12300,
+      "gzip": 4100
+    },
+    "elements/user-action/user-action.js": {
+      "raw": 45800,
+      "gzip": 15400
+    },
+    "elements/user-scaffold/user-scaffold.js": {
+      "raw": 67400,
+      "gzip": 19800
+    },
+    "elements/uswds-theme/uswds-theme.js": {
+      "raw": 38900,
+      "gzip": 10100
+    },
+    "elements/utils/utils.js": {
+      "raw": 165500,
+      "gzip": 52200
+    },
+    "elements/vcf-render/vcf-render.js": {
+      "raw": 37100,
+      "gzip": 10800
+    },
+    "elements/vhs-blog-theme/lib/vhs-blog-back.js": {
+      "raw": 17300,
+      "gzip": 6700
+    },
+    "elements/vhs-blog-theme/lib/vhs-blog-console.js": {
+      "raw": 10000,
+      "gzip": 3300
+    },
+    "elements/vhs-blog-theme/lib/vhs-blog-cover.js": {
+      "raw": 21500,
+      "gzip": 7500
+    },
+    "elements/vhs-blog-theme/lib/vhs-blog-spine.js": {
+      "raw": 25100,
+      "gzip": 8700
+    },
+    "elements/vhs-blog-theme/lib/vhs-blog-tv.js": {
+      "raw": 15700,
+      "gzip": 5300
+    },
+    "elements/vhs-blog-theme/vhs-blog-theme.js": {
+      "raw": 158300,
+      "gzip": 44200
+    },
+    "elements/video-player/lib/lecture-anchor.js": {
+      "raw": 6200,
+      "gzip": 2600
+    },
+    "elements/video-player/lib/lecture-player.js": {
+      "raw": 86300,
+      "gzip": 21200
+    },
+    "elements/video-player/video-player.js": {
+      "raw": 62900,
+      "gzip": 15600
+    },
+    "elements/vocab-term/vocab-term.js": {
+      "raw": 20100,
+      "gzip": 6100
+    },
+    "elements/voice-recorder/voice-recorder.js": {
+      "raw": 35200,
+      "gzip": 10000
+    },
+    "elements/wc-autoload/wc-autoload.js": {
+      "raw": 12100,
+      "gzip": 4100
+    },
+    "elements/web-baseline-status/web-baseline-status.js": {
+      "raw": 5400,
+      "gzip": 2400
+    },
+    "elements/web-container/lib/web-container-doc-player.js": {
+      "raw": 39900,
+      "gzip": 11400
+    },
+    "elements/web-container/lib/web-container-wc-registry-docs.js": {
+      "raw": 43000,
+      "gzip": 12700
+    },
+    "elements/web-container/web-container.js": {
+      "raw": 28000,
+      "gzip": 7900
+    },
+    "elements/webawesome-theme/webawesome-theme.js": {
+      "raw": 40300,
+      "gzip": 10000
+    },
+    "elements/wikipedia-query/wikipedia-query.js": {
+      "raw": 15800,
+      "gzip": 5400
+    },
+    "elements/word-count/word-count.js": {
+      "raw": 6900,
+      "gzip": 2800
+    },
+    "elements/word-search/word-search.js": {
+      "raw": 51000,
+      "gzip": 13700
+    },
+    "elements/writing-theme/writing-theme.js": {
+      "raw": 18900,
+      "gzip": 5600
+    },
+    "elements/wysiwyg-hax/wysiwyg-hax.js": {
+      "raw": 8600,
+      "gzip": 3200
+    },
+    "elements/wysiwyg96-theme/wysiwyg96-theme.js": {
+      "raw": 64300,
+      "gzip": 14000
+    }
+  }
+}

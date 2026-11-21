@@ -8,9 +8,18 @@ name: size-report
 # shake. The PR head and its base are measured and only the entries that
 # changed go to the job summary.
 #
-# REPORT ONLY: never fails the job and posts no PR comments. Budgets are
-# deferred until the platform is stable (haxtheweb/issues#3283); this is
-# the measurement they will build on.
+# Budgets (haxtheweb/issues#3283): scripts/size-budgets.json holds a byte
+# budget for each entry's own size (its file plus what it imports from its
+# own element folder; lit, d-d-d and other shared packages are not counted).
+# The entries a pull request changed are checked against it and the result
+# goes to the job summary. To allow growth on purpose, raise the budget in
+# the same pull request:
+#   node scripts/size-report.mjs --update-budgets elements/<name>
+#
+# REPORT ONLY for now: never fails the job and posts no PR comments (job
+# summary only, so it is the same for pull requests from forks). To make a
+# budget breach fail the job, delete the `continue-on-error: true` line of
+# the "Check budgets" step.
 on:
   # No branch filter: stacked PRs (base is another feature branch) must run too.
   pull_request:
@@ -19,6 +28,7 @@ on:
       - "elements/*/package.json"
       - wc-registry.json
       - scripts/size-report.mjs
+      - scripts/size-budgets.json
       - .github/workflows/size-report.yml
 permissions:
   contents: read
@@ -44,6 +54,7 @@ jobs:
             /elements/*/package.json
             /wc-registry.json
             /scripts/size-report.mjs
+            /scripts/size-budgets.json
 
       - name: Checkout base
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -73,6 +84,16 @@ jobs:
           node head/scripts/size-report.mjs --compare size-base.json size-head.json --summary-file size-summary.md
           cat size-summary.md >> "$GITHUB_STEP_SUMMARY"
 
+      # the budgets are read from the PR, so a raised budget counts at once
+      - name: Check budgets
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          status=0
+          node head/scripts/size-report.mjs --root head --check-budgets --changed-from size-base.json --summary-file budget-summary.md > /dev/null || status=$?
+          if [ -f budget-summary.md ]; then cat budget-summary.md >> "$GITHUB_STEP_SUMMARY"; fi
+          exit "$status"
+
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -82,5 +103,6 @@ jobs:
             size-head.json
             size-base.json
             size-summary.md
+            budget-summary.md
           if-no-files-found: ignore
           retention-days: 30

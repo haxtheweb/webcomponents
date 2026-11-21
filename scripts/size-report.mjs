@@ -3,8 +3,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE.md for full text.
  *
- * Report-only size delta for elements (haxtheweb/issues#3283 defers budgets
- * until the platform is stable; this is the measurement they will use).
+ * Size report and per-element size budgets (haxtheweb/issues#3283).
  *
  * HAX serves elements as unbundled ES modules and we don't tree shake, so
  * what a page downloads for a tag is every file in that tag's eager import
@@ -17,12 +16,32 @@
  * Entries measured: every element package's main file and every file
  * wc-registry.json maps a tag to.
  *
+ * Each entry also gets an "own" size: the entry file plus the files of its
+ * own element folder it statically imports (its lib/ files), raw and gzip.
+ * Anything shared (lit, d-d-d, every other HAX package) is left out
+ * of it, so a change to a shared file moves one number, not hundreds. The
+ * budgets in scripts/size-budgets.json are on that own size.
+ *
  *   node scripts/size-report.mjs --json sizes.json            measure this checkout
  *   node scripts/size-report.mjs --root ../base --json base.json   measure another checkout
  *   node scripts/size-report.mjs --compare base.json sizes.json [--summary-file out.md]
  *                                                             markdown delta of what changed
+ *   node scripts/size-report.mjs --check-budgets [--changed-from base.json] [--summary-file out.md]
+ *                                                             own size against the budgets
+ *   node scripts/size-report.mjs --update-budgets elements/video-player
+ *                                                             raise (or set) budgets on purpose
  *
- * Always exits 0 unless it cannot run: it reports, it never gates.
+ * --check-budgets exits 1 when an entry is over its budget, and only then.
+ * With --changed-from it only looks at entries whose own size differs from
+ * that measurement (what a pull request touched). An entry with no budget
+ * yet is listed, never failed.
+ *
+ * --update-budgets sets the budget of every entry under the paths given
+ * (an element folder or one entry file) to its current own size plus
+ * headroom; with no path it regenerates the whole file. Commit the result
+ * in the same pull request as the growth it allows.
+ *
+ * The other modes exit 0 unless they cannot run: they report, never gate.
  */
 import console from "node:console";
 import fs from "node:fs";
@@ -36,10 +55,16 @@ const scriptRoot = path.resolve(
   "..",
 );
 
+const BUDGETS_FILE = "scripts/size-budgets.json";
+// headroom over the measured size when a budget is written: 10%, and at
+// least 2 KB raw / 1 KB gzip so a small element can take a real change
+const HEADROOM = { pct: 0.1, raw: 2048, gzip: 1024 };
+
 const argv = process.argv.slice(2);
 const opt = (name) => {
   const i = argv.indexOf(name);
-  return i === -1 ? null : argv[i + 1];
+  const v = i === -1 ? null : argv[i + 1];
+  return v && !v.startsWith("--") ? v : null;
 };
 
 // ---------------------------------------------------------------------------
@@ -118,7 +143,25 @@ function measure(root) {
       raw += info(f).raw;
       gzip += info(f).gzip;
     }
-    return { files: seen.size, raw, gzip };
+    // own: the entry and what it imports from its own element folder,
+    // followed only through that folder
+    const dir = entry.split("/").slice(0, 2).join("/") + "/";
+    const own = new Set();
+    const ownStack = [entry];
+    while (ownStack.length) {
+      const f = ownStack.pop();
+      if (own.has(f)) continue;
+      own.add(f);
+      for (const d of info(f).deps) {
+        if (d.startsWith(dir)) ownStack.push(d);
+      }
+    }
+    const ownSize = { files: own.size, raw: 0, gzip: 0 };
+    for (const f of own) {
+      ownSize.raw += info(f).raw;
+      ownSize.gzip += info(f).gzip;
+    }
+    return { files: seen.size, raw, gzip, own: ownSize };
   }
 
   const entries = new Map();
@@ -172,7 +215,7 @@ function compare(base, head, limit = 40) {
   const lines = [
     "## Element size (report only)",
     "",
-    "What a page downloads for each element: the gzip size of every file in its eager import closure (HAX serves unbundled modules; third-party packages like lit are not counted). Budgets are deferred (haxtheweb/issues#3283); this never fails the build.",
+    "What a page downloads for each element: the gzip size of every file in its eager import closure (HAX serves unbundled modules; third-party packages like lit are not counted). This part never fails the build; the budgets below are on each entry's own size.",
     "",
   ];
   if (!rows.length) {
@@ -207,6 +250,122 @@ function compare(base, head, limit = 40) {
 }
 
 // ---------------------------------------------------------------------------
+// budgets
+// ---------------------------------------------------------------------------
+const withHeadroom = (n, floor) =>
+  Math.ceil((n + Math.max(n * HEADROOM.pct, floor)) / 100) * 100;
+
+function readBudgets(file) {
+  if (!fs.existsSync(file)) return {};
+  return JSON.parse(fs.readFileSync(file, "utf8")).budgets || {};
+}
+
+/** set budgets from the measured sizes; `only` limits it to some paths */
+function updateBudgets(file, sizes, only) {
+  const wanted = only.map((p) =>
+    p.split(path.sep).join("/").replace(/\/+$/, ""),
+  );
+  const match = (entry) =>
+    !wanted.length ||
+    wanted.some((w) => entry === w || entry.startsWith(w + "/"));
+  // a full regeneration also drops entries that no longer exist
+  const budgets = wanted.length ? readBudgets(file) : {};
+  let changed = 0;
+  for (const [entry, s] of Object.entries(sizes)) {
+    if (!match(entry)) continue;
+    budgets[entry] = {
+      raw: withHeadroom(s.own.raw, HEADROOM.raw),
+      gzip: withHeadroom(s.own.gzip, HEADROOM.gzip),
+    };
+    changed += 1;
+  }
+  const sorted = {};
+  for (const key of Object.keys(budgets).sort()) sorted[key] = budgets[key];
+  const about =
+    "Byte budgets for each element entry's own size: the entry file plus the files of its own element folder it statically imports. Shared packages are not counted. Raise one on purpose with: node scripts/size-report.mjs --update-budgets elements/<name>";
+  fs.writeFileSync(
+    file,
+    JSON.stringify({ about, budgets: sorted }, null, 2) + "\n",
+  );
+  return changed;
+}
+
+/** @returns {{md: string, over: number}} */
+function checkBudgets(sizes, budgets, base) {
+  const rows = [];
+  const missing = [];
+  let checked = 0;
+  for (const [entry, s] of Object.entries(sizes)) {
+    if (base) {
+      const b = base[entry] && base[entry].own;
+      if (b && b.raw === s.own.raw && b.gzip === s.own.gzip) continue;
+    }
+    const budget = budgets[entry];
+    if (!budget) {
+      missing.push(entry);
+      continue;
+    }
+    checked += 1;
+    const over = s.own.raw > budget.raw || s.own.gzip > budget.gzip;
+    if (over || base) rows.push({ entry, s: s.own, budget, over });
+  }
+  rows.sort(
+    (x, y) => Number(y.over) - Number(x.over) || x.entry.localeCompare(y.entry),
+  );
+  const over = rows.filter((r) => r.over);
+  const lines = [
+    "## Element size budgets",
+    "",
+    `Each entry's own size (its file plus what it imports from its own element folder; shared packages are not counted) against \`${BUDGETS_FILE}\`.`,
+    "",
+  ];
+  if (!rows.length) {
+    lines.push(
+      base
+        ? "No budgeted entry changed its own size."
+        : `All ${checked} budgeted entries are within budget.`,
+    );
+  } else {
+    lines.push(
+      `${checked} entr${checked === 1 ? "y" : "ies"} checked, ${over.length} over budget.`,
+      "",
+      "| Entry | raw (size / budget) | gzip (size / budget) | Status |",
+      "| --- | --- | --- | --- |",
+    );
+    for (const r of rows.slice(0, 60)) {
+      lines.push(
+        `| \`${r.entry.replace(/^elements\//, "")}\` | ${kb(r.s.raw)} / ${kb(r.budget.raw)} | ${kb(r.s.gzip)} / ${kb(r.budget.gzip)} | ${r.over ? "**over budget**" : "within budget"} |`,
+      );
+    }
+    if (rows.length > 60) lines.push("", `…and ${rows.length - 60} more.`);
+  }
+  if (over.length) {
+    lines.push(
+      "",
+      "If the growth is intended, raise the budget in this pull request and commit the file:",
+      "",
+      "```",
+      `node scripts/size-report.mjs --update-budgets ${[
+        ...new Set(over.map((r) => r.entry.split("/").slice(0, 2).join("/"))),
+      ].join(" ")}`,
+      "```",
+    );
+  }
+  if (missing.length) {
+    lines.push(
+      "",
+      `No budget yet for ${missing.length} entr${missing.length === 1 ? "y" : "ies"} (not a failure): ${missing
+        .slice(0, 10)
+        .map((m) => `\`${m.replace(/^elements\//, "")}\``)
+        .join(
+          ", ",
+        )}${missing.length > 10 ? "…" : ""}. Add with \`node scripts/size-report.mjs --update-budgets <path>\`.`,
+    );
+  }
+  return { md: lines.join("\n") + "\n", over: over.length };
+}
+
+// ---------------------------------------------------------------------------
 // cli
 // ---------------------------------------------------------------------------
 const compareIdx = argv.indexOf("--compare");
@@ -224,6 +383,30 @@ if (compareIdx !== -1) {
   const summary = opt("--summary-file");
   if (summary) fs.writeFileSync(summary, md);
   console.log(md);
+} else if (argv.includes("--update-budgets")) {
+  const root = path.resolve(opt("--root") || scriptRoot);
+  const only = argv
+    .slice(argv.indexOf("--update-budgets") + 1)
+    .filter((a, i, rest) => !a.startsWith("--") && rest[i - 1] !== "--root");
+  const file = path.join(root, BUDGETS_FILE);
+  const count = updateBudgets(file, measure(root), only);
+  if (!count) {
+    console.error(`size-report: no entry under ${only.join(", ")}`);
+    process.exit(2);
+  }
+  console.log(`size-report: ${count} budget(s) written to ${BUDGETS_FILE}`);
+} else if (argv.includes("--check-budgets")) {
+  const root = path.resolve(opt("--root") || scriptRoot);
+  const basePath = opt("--changed-from");
+  const { md, over } = checkBudgets(
+    measure(root),
+    readBudgets(path.join(root, BUDGETS_FILE)),
+    basePath ? JSON.parse(fs.readFileSync(basePath, "utf8")) : null,
+  );
+  const summary = opt("--summary-file");
+  if (summary) fs.writeFileSync(summary, md);
+  console.log(md);
+  process.exit(over ? 1 : 0);
 } else {
   const root = path.resolve(opt("--root") || scriptRoot);
   const sizes = measure(root);
@@ -232,9 +415,18 @@ if (compareIdx !== -1) {
   const list = Object.entries(sizes);
   const top = list.sort((a, b) => b[1].gzip - a[1].gzip).slice(0, 10);
   console.log(`size-report: ${list.length} entries measured in ${root}`);
+  console.log("largest download (eager import closure):");
   for (const [file, s] of top) {
     console.log(
       `  ${kb(s.gzip).padStart(10)} gzip  ${kb(s.raw).padStart(10)} raw  ${String(s.files).padStart(4)} files  ${file}`,
+    );
+  }
+  console.log("largest own size (what the budgets are on):");
+  for (const [file, s] of list
+    .sort((a, b) => b[1].own.raw - a[1].own.raw)
+    .slice(0, 10)) {
+    console.log(
+      `  ${kb(s.own.gzip).padStart(10)} gzip  ${kb(s.own.raw).padStart(10)} raw  ${String(s.own.files).padStart(4)} files  ${file}`,
     );
   }
 }
