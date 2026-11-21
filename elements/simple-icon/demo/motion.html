@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleIcon: motion Demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+      // the motions come from the DDD design system; without this import
+      // (or any DDD element on the page) the motion attribute does nothing
+      import "@haxtheweb/d-d-d/d-d-d.js";
+      import "../simple-icon.js";
+      import "../lib/simple-icon-lite.js";
+      import "../lib/simple-icons.js";
+    </script>
+    <style>
+      body {
+        font-family: var(--ddd-font-primary, sans-serif);
+      }
+      simple-icon,
+      simple-icon-lite {
+        --simple-icon-width: var(--ddd-icon-sm, 40px);
+        --simple-icon-height: var(--ddd-icon-sm, 40px);
+      }
+      .tile {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--ddd-spacing-2, 8px);
+        padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-4, 16px);
+        font: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Motion on the icon's own hover or keyboard focus</h3>
+      <p>
+        Decorative only: plays once, and not at all when reduced motion is
+        turned on. The last icon has no <code>motion</code> and never moves.
+      </p>
+      <demo-snippet>
+        <template>
+          <simple-icon icon="hax:site-map" motion="pop"></simple-icon>
+          <simple-icon icon="hax:page-edit" motion="wiggle"></simple-icon>
+          <simple-icon icon="hax:wand" motion="tilt"></simple-icon>
+          <simple-icon icon="icons:dashboard" motion="beat"></simple-icon>
+          <simple-icon icon="icons:folder-open" motion="lift"></simple-icon>
+          <simple-icon icon="mdextra:hexagon-outline" motion="spin"></simple-icon>
+          <simple-icon icon="hax:code-json" motion="nudge"></simple-icon>
+          <simple-icon icon="icons:gavel" motion="strike"></simple-icon>
+          <simple-icon-lite icon="icons:lightbulb-outline" motion="glow"></simple-icon-lite>
+          <simple-icon id="still" icon="icons:lock"></simple-icon>
+        </template>
+      </demo-snippet>
+      <h3>Played by a parent: ddd-motion-trigger</h3>
+      <p>
+        Hovering the button, or moving keyboard focus to it, plays the motion
+        of the icon inside.
+      </p>
+      <demo-snippet>
+        <template>
+          <button class="tile ddd-motion-trigger">
+            <simple-icon icon="icons:build" motion="wiggle" aria-hidden="true"></simple-icon>
+            Build
+          </button>
+          <button class="tile ddd-motion-trigger">
+            <simple-icon-lite icon="icons:cloud-upload" motion="lift" aria-hidden="true"></simple-icon-lite>
+            Publish
+          </button>
+        </template>
+      </demo-snippet>
+      <h3>Played by a parent: motion-active</h3>
+      <p>
+        A parent that tracks its own state sets <code>motion-active</code> on
+        the icon while it should play.
+      </p>
+      <demo-snippet>
+        <template>
+          <simple-icon icon="hax:wand" motion="glow" motion-active></simple-icon>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

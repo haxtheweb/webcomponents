@@ -109,6 +109,27 @@ export const SimpleIconBehaviors = function (SuperClass) {
           attribute: "icon",
           reflect: true,
         },
+        /**
+         * Optional decorative motion, played once when the icon is hovered
+         * or takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,
+         * nudge, strike or glow. The motions come from the DDD motion
+         * library (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not
+         * loaded, or with reduced motion on, the icon does not move.
+         */
+        motion: {
+          type: String,
+          reflect: true,
+        },
+        /**
+         * Plays the motion now, as if the icon were hovered. For a parent
+         * (button, card, tile) that wants its own hover or focus to move
+         * the icon.
+         */
+        motionActive: {
+          type: Boolean,
+          attribute: "motion-active",
+          reflect: true,
+        },
       };
     }
     constructor() {
@@ -171,6 +192,34 @@ export const SimpleIconBehaviors = function (SuperClass) {
       this.shadowRoot.querySelector("filter").setAttribute("id", randomId);
     }
     /**
+     * Take the motion styles from the DDD motion library when it is on the
+     * page, or when it arrives later. This element does not import DDD:
+     * without it the motion attribute changes nothing.
+     */
+    __adoptMotion() {
+      const library = globalThis.DDDMotion;
+      if (library && typeof library.adoptHost === "function") {
+        this.__stopWaitingForMotion();
+        return library.adoptHost(this.shadowRoot);
+      }
+      if (!this.__onMotionReady) {
+        this.__onMotionReady = () => {
+          this.__adoptMotion();
+        };
+        globalThis.addEventListener("ddd-motion-ready", this.__onMotionReady);
+      }
+      return false;
+    }
+    __stopWaitingForMotion() {
+      if (this.__onMotionReady) {
+        globalThis.removeEventListener(
+          "ddd-motion-ready",
+          this.__onMotionReady,
+        );
+        this.__onMotionReady = null;
+      }
+    }
+    /**
      * An icon whose iconset has not registered yet waits in the iconset's
      * hydration list; leave it when removed and ask again when re-added
      * (the HAX editor moves elements by removing and re-adding them).
@@ -191,8 +240,12 @@ export const SimpleIconBehaviors = function (SuperClass) {
       if (this.hasUpdated && this.icon && !this.src) {
         this.setSrcByIcon(this);
       }
+      if (this.hasUpdated && this.motion) {
+        this.__adoptMotion();
+      }
     }
     disconnectedCallback() {
+      this.__stopWaitingForMotion();
       if (this.__onAliases) {
         globalThis.removeEventListener(
           "simple-iconset-aliases",
@@ -216,6 +269,9 @@ export const SimpleIconBehaviors = function (SuperClass) {
     updated(changedProperties) {
       if (super.updated) {
         super.updated(changedProperties);
+      }
+      if (changedProperties.has("motion") && this.motion) {
+        this.__adoptMotion();
       }
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "icon") {
@@ -254,6 +310,7 @@ export const SimpleIconBehaviors = function (SuperClass) {
  * @extends SimpleIconBehaviors
  * @demo demo/lite.html
  * @demo demo/button-lite.html Button (Lite)
+ * @demo demo/motion.html Motion
  * @element simple-icon-lite
  */
 class SimpleIconLite extends SimpleIconBehaviors(LitElement) {
