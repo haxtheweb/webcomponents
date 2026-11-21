@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DDD icon motion library</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import { LitElement, html, css } from "lit";
+      import "@haxtheweb/simple-icon/lib/simple-icons.js";
+      import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+      import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+      import { DDDSuper } from "../d-d-d.js";
+      import { DDDMotionIconStyles } from "../lib/DDDMotion.js";
+
+      const motions = [
+        {
+          name: "pop",
+          icon: "hax:site-map",
+          motion: "Scales up and settles",
+          use: "Hubs: the thing the page or card is about",
+        },
+        {
+          name: "wiggle",
+          icon: "hax:page-edit",
+          motion: "Quick side to side rotation",
+          use: "Things you edit or report",
+        },
+        {
+          name: "tilt",
+          icon: "hax:wand",
+          motion: "Tips back and returns",
+          use: "Tools in hand",
+        },
+        {
+          name: "beat",
+          icon: "icons:dashboard",
+          motion: "Two soft scale beats",
+          use: "Living things and status",
+        },
+        {
+          name: "lift",
+          icon: "icons:folder-open",
+          motion: "Rises a little and comes back",
+          use: "Layers, storage and files",
+        },
+        {
+          name: "spin",
+          icon: "mdextra:hexagon-outline",
+          motion: "One full turn",
+          use: "Reserved: at most one per view",
+        },
+        {
+          name: "nudge",
+          icon: "hax:code-json",
+          motion: "Slides forward and back",
+          use: "Flows, pipes and next steps",
+        },
+        {
+          name: "strike",
+          icon: "icons:gavel",
+          motion: "Swings down and back",
+          use: "Gavel-like actions and rules",
+        },
+        {
+          name: "glow",
+          icon: "icons:lightbulb-outline",
+          motion: "Brightens with a soft halo",
+          use: "Ideas and magic",
+        },
+      ];
+
+      class DDDMotionDemo extends DDDSuper(LitElement) {
+        static get styles() {
+          return [
+            super.styles,
+            DDDMotionIconStyles,
+            css`
+              :host {
+                display: block;
+                padding: var(--ddd-spacing-4);
+                color-scheme: light dark;
+                font-family: var(--ddd-font-primary);
+                color: light-dark(
+                  var(--ddd-theme-default-coalyGray),
+                  var(--ddd-theme-default-white)
+                );
+                background-color: light-dark(
+                  var(--ddd-theme-default-white),
+                  var(--ddd-theme-default-coalyGray)
+                );
+              }
+              section {
+                margin-block-end: var(--ddd-spacing-8);
+              }
+              h1,
+              h2 {
+                font-family: var(--ddd-font-navigation);
+                margin: 0 0 var(--ddd-spacing-2);
+              }
+              p {
+                margin: 0 0 var(--ddd-spacing-4);
+                max-width: 70ch;
+              }
+              ul.tiles {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: var(--ddd-spacing-3);
+              }
+              .tile {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: center;
+                column-gap: var(--ddd-spacing-3);
+                row-gap: var(--ddd-spacing-1);
+                box-sizing: border-box;
+                width: 100%;
+                min-height: var(--ddd-spacing-16);
+                padding: var(--ddd-spacing-3);
+                border: var(--ddd-border-sm);
+                border-color: light-dark(
+                  var(--ddd-theme-default-slateGray),
+                  var(--ddd-theme-default-limestoneGray)
+                );
+                border-radius: var(--ddd-radius-md);
+                background: transparent;
+                color: inherit;
+                font: inherit;
+                text-align: start;
+                cursor: pointer;
+              }
+              .tile:focus-visible {
+                outline: var(--ddd-focus-ring);
+                outline-offset: var(--ddd-focus-offset);
+              }
+              .tile simple-icon-lite {
+                --simple-icon-width: var(--ddd-icon-sm);
+                --simple-icon-height: var(--ddd-icon-sm);
+                grid-row: span 2;
+              }
+              .tile b {
+                font-family: var(--ddd-font-navigation);
+              }
+              .tile span {
+                font-size: var(--ddd-font-size-4xs);
+              }
+              .row {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: var(--ddd-spacing-4);
+              }
+              .row simple-icon-lite {
+                --simple-icon-width: var(--ddd-icon-sm);
+                --simple-icon-height: var(--ddd-icon-sm);
+              }
+              code {
+                font-family: var(--ddd-font-secondary);
+              }
+            `,
+          ];
+        }
+        render() {
+          return html`
+            <section>
+              <h1>Icon motion library</h1>
+              <p>
+                Nine named motions an icon can play once when it is hovered or
+                takes keyboard focus. They are decoration: each tile below
+                says the same thing with the motion off, and with reduced
+                motion turned on in the operating system nothing moves.
+              </p>
+            </section>
+            <section>
+              <h2>The nine motions, played by the tile</h2>
+              <p>
+                Each tile is a button with <code>class="ddd-motion-trigger"</code>
+                and holds an icon with a <code>motion</code> attribute. Hover a
+                tile or tab to it.
+              </p>
+              <ul class="tiles">
+                ${motions.map(
+                  (m) =>
+                    html`<li>
+                      <button class="tile ddd-motion-trigger" data-motion="${m.name}">
+                        <simple-icon-lite
+                          icon="${m.icon}"
+                          motion="${m.name}"
+                          aria-hidden="true"
+                        ></simple-icon-lite>
+                        <b>${m.name}</b>
+                        <span>${m.motion}. ${m.use}.</span>
+                      </button>
+                    </li>`,
+                )}
+              </ul>
+            </section>
+            <section>
+              <h2>Played by the icon itself</h2>
+              <p>
+                With only the <code>motion</code> attribute the icon plays on
+                its own hover. The last icon has no motion and stays still.
+              </p>
+              <div class="row" id="self">
+                ${motions.map(
+                  (m) =>
+                    html`<simple-icon-lite
+                      icon="${m.icon}"
+                      motion="${m.name}"
+                      title="${m.name}"
+                    ></simple-icon-lite>`,
+                )}
+                <simple-icon-lite
+                  id="still"
+                  icon="icons:lock"
+                  title="No motion"
+                ></simple-icon-lite>
+              </div>
+            </section>
+            <section>
+              <h2>On any element, by class</h2>
+              <p>
+                <code>class="ddd-motion-lift"</code> and the other eight work
+                on any element that can transform.
+              </p>
+              <div class="row" id="classes">
+                ${motions.map(
+                  (m) =>
+                    html`<simple-icon-lite
+                      class="ddd-motion-${m.name}"
+                      icon="${m.icon}"
+                      title="${m.name}"
+                    ></simple-icon-lite>`,
+                )}
+              </div>
+            </section>
+          `;
+        }
+      }
+      globalThis.customElements.define("ddd-motion-demo", DDDMotionDemo);
+    </script>
+  </head>
+  <body>
+    <ddd-motion-demo></ddd-motion-demo>
+  </body>
+</html>

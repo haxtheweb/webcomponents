@@ -61,6 +61,22 @@
         "input": "iconpicker",
         "options": null
       }
+    },
+    {
+      "name": "motion",
+      "property": "motion",
+      "type": "string",
+      "default": "",
+      "description": "Optional decorative motion, played once when the icon is hovered or takes keyboard focus: pop, wiggle, tilt, beat, lift, spin, nudge, strike or glow. The motions come from the DDD motion library (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not loaded, or with reduced motion on, the icon does not move.",
+      "hax": null
+    },
+    {
+      "name": "motion-active",
+      "property": "motionActive",
+      "type": "boolean",
+      "default": "",
+      "description": "Plays the motion now, as if the icon were hovered. For a parent (button, card, tile) that wants its own hover or focus to move the icon.",
+      "hax": null
     }
   ],
   "slots": [],
@@ -118,7 +134,7 @@
       }
     ]
   },
-  "surfaceHash": "90f49809e41f",
+  "surfaceHash": "022be5e93852",
   "walkthroughs": [
     {
       "id": "",

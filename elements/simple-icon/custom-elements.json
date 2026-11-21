@@ -94,6 +94,23 @@
             },
             {
               "kind": "method",
+              "name": "__adoptMotion",
+              "description": "Take the motion styles from the DDD motion library when it is on the\npage, or when it arrives later. This element does not import DDD:\nwithout it the motion attribute changes nothing.",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__stopWaitingForMotion",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setSrcByIcon",
               "parameters": [
                 {
@@ -160,6 +177,36 @@
                 "name": "SimpleIconBehaviors",
                 "module": "lib/simple-icon-lite.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "motion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "attribute": "motion",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "motionActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "attribute": "motion-active",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
             }
           ],
           "attributes": [
@@ -211,6 +258,30 @@
                 "text": "string"
               },
               "fieldName": "icon",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "name": "motion",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "fieldName": "motion",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "name": "motion-active",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "fieldName": "motionActive",
               "inheritedFrom": {
                 "name": "SimpleIconBehaviors",
                 "module": "lib/simple-icon-lite.js"
@@ -2331,6 +2402,15 @@
             },
             {
               "kind": "method",
+              "name": "__adoptMotion",
+              "description": "Take the motion styles from the DDD motion library when it is on the\npage, or when it arrives later. This element does not import DDD:\nwithout it the motion attribute changes nothing."
+            },
+            {
+              "kind": "method",
+              "name": "__stopWaitingForMotion"
+            },
+            {
+              "kind": "method",
               "name": "setSrcByIcon",
               "parameters": [
                 {
@@ -2377,6 +2457,28 @@
               },
               "attribute": "icon",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "motion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "attribute": "motion",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "motionActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "attribute": "motion-active",
+              "reflects": true
             }
           ],
           "attributes": [
@@ -2408,6 +2510,22 @@
                 "text": "string"
               },
               "fieldName": "icon"
+            },
+            {
+              "name": "motion",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "fieldName": "motion"
+            },
+            {
+              "name": "motion-active",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "fieldName": "motionActive"
             }
           ],
           "parameters": [
@@ -2486,6 +2604,23 @@
             },
             {
               "kind": "method",
+              "name": "__adoptMotion",
+              "description": "Take the motion styles from the DDD motion library when it is on the\npage, or when it arrives later. This element does not import DDD:\nwithout it the motion attribute changes nothing.",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__stopWaitingForMotion",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "setSrcByIcon",
               "parameters": [
                 {
@@ -2552,6 +2687,36 @@
                 "name": "SimpleIconBehaviors",
                 "module": "lib/simple-icon-lite.js"
               }
+            },
+            {
+              "kind": "field",
+              "name": "motion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "attribute": "motion",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "motionActive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "attribute": "motion-active",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
             }
           ],
           "mixins": [
@@ -2607,6 +2772,30 @@
                 "text": "string"
               },
               "fieldName": "icon",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "name": "motion",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional decorative motion, played once when the icon is hovered\nor takes keyboard focus: pop, wiggle, tilt, beat, lift, spin,\nnudge, strike or glow. The motions come from the DDD motion\nlibrary (@haxtheweb/d-d-d/lib/DDDMotion.js); where that is not\nloaded, or with reduced motion on, the icon does not move.",
+              "fieldName": "motion",
+              "inheritedFrom": {
+                "name": "SimpleIconBehaviors",
+                "module": "lib/simple-icon-lite.js"
+              }
+            },
+            {
+              "name": "motion-active",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Plays the motion now, as if the icon were hovered. For a parent\n(button, card, tile) that wants its own hover or focus to move\nthe icon.",
+              "fieldName": "motionActive",
               "inheritedFrom": {
                 "name": "SimpleIconBehaviors",
                 "module": "lib/simple-icon-lite.js"

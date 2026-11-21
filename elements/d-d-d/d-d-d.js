@@ -13,12 +13,14 @@ import {
   HAXOptionSampleFactory,
 } from "./lib/DDDStyles.js";
 import { DesignSystemManager } from "./lib/DesignSystemManager.js";
+import { DDDMotionIconStyles } from "./lib/DDDMotion.js";
 
 /**
  * `d-d-d`
  * `design, develop, deliver`
  * @demo demo/index.html
  * @demo demo/ddd-next.html Blocks under each design system
+ * @demo demo/motion.html Icon motion library
  */
 
 // will have just pulse effect
@@ -92,7 +94,9 @@ export const DDDSuper = function (SuperClass) {
       if (DesignSystemManager && !DesignSystemManager.systems.ddd) {
         DesignSystemManager.addDesignSystem({
           name: "ddd",
-          styles: DDDAllStyles,
+          // the icon motion library rides along so .ddd-motion-* classes and
+          // a ddd-motion-trigger around icons work in the page itself
+          styles: [...DDDAllStyles, DDDMotionIconStyles],
           fonts: DDDFonts,
           integrations: {
             hax: {
