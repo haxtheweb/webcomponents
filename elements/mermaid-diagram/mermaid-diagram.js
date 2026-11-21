@@ -475,7 +475,7 @@ export class MermaidDiagram extends DDDSuper(I18NMixin(LitElement)) {
         .ddd-block.presenting {
           position: fixed;
           inset: var(--ddd-spacing-0);
-          z-index: 10000;
+          z-index: var(--ddd-z-modal, 10000);
         }
         .ddd-block:fullscreen .ddd-block-body,
         .ddd-block.presenting .ddd-block-body {

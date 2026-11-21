@@ -879,7 +879,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.8);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1145,7 +1145,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.9);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1291,7 +1291,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.95);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1768,7 +1768,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background-size: 4px 4px;
       background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
       background-color: #c0c0c0;
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       font-family: 'MS Sans Serif', sans-serif;
       cursor: default;
     `;
@@ -1923,7 +1923,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         height: ${height}px;
         background: #c0c0c0;
         border: 2px outset #c0c0c0;
-        z-index: 10001;
+        z-index: calc(var(--ddd-z-modal, 10000) + 1);
       `;
 
       const titleBar = globalThis.document.createElement("div");
@@ -2007,7 +2007,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background: #c0c0c0;
       border: 2px outset #c0c0c0;
       display: none;
-      z-index: 10003;
+      z-index: calc(var(--ddd-z-modal, 10000) + 3);
     `;
 
     const startMenuItems = [
@@ -2165,7 +2165,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: radial-gradient(circle, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -2317,7 +2317,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background: linear-gradient(45deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
       background-size: 400% 400%;
       animation: geocities-rainbow 3s ease infinite;
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow-y: auto;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       padding: 20px;
@@ -2479,7 +2479,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       right: 50px;
       width: 80px;
       height: 100px;
-      z-index: 10001;
+      z-index: calc(var(--ddd-z-modal, 10000) + 1);
       cursor: pointer;
       animation: clippy-bounce 2s ease-in-out infinite;
     `;
@@ -2557,7 +2557,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         font-family: 'MS Sans Serif', sans-serif;
         font-size: 12px;
         color: #000;
-        z-index: 10002;
+        z-index: calc(var(--ddd-z-modal, 10000) + 2);
         box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
         animation: clippy-bubble-appear 0.3s ease-out;
       `;
@@ -2741,7 +2741,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #F0E68C 100%);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow: hidden;
       cursor: crosshair;
     `;
@@ -2767,7 +2767,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       font-size: 18px;
       font-weight: bold;
       color: #333;
-      z-index: 10003;
+      z-index: calc(var(--ddd-z-modal, 10000) + 3);
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       border: 3px solid #FF69B4;
     `;
@@ -2939,7 +2939,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         background: linear-gradient(45deg, #FFD700, #FFA500, #FF69B4, #00CED1);
         background-size: 400% 400%;
         animation: chickenbutt-victory-bg 2s ease infinite;
-        z-index: 10004;
+        z-index: calc(var(--ddd-z-modal, 10000) + 4);
         display: flex;
         align-items: center;
         justify-content: center;
