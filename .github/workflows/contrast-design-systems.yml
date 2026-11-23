@@ -72,6 +72,7 @@ jobs:
           - classic-desktop
           - fluent
           - future-traveler
+          - glossy
           - keepcase
           - material
           - patternfly

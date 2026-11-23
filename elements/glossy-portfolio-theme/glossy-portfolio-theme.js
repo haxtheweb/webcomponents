@@ -9,7 +9,8 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { GlossyPageStyles } from "./lib/GlossyPageStyles.js";
+import { activateGlossyDesignSystem } from "./lib/GlossyDesignSystem.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 
 import "./lib/glossy-portfolio-card.js";
@@ -77,27 +78,17 @@ export class GlossyPortfolioTheme extends DDDSuper(
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
-    // Reduced to the two families actually used: Manrope (main font) + Inter (titles/filters/footer).
-    // Playfair Display, Source Code Pro, and Work Sans were loaded but never referenced.
-    // Note: 'DM Serif Display' is referenced in glossy-portfolio-home .title em but was never
-    // loaded; left as-is (falls back to serif) to avoid changing the rendered appearance.
-    // font families, by name: HAX serves each one (d-d-d/lib/fonts)
-    const PortfolioFonts = ["Manrope", "Inter"];
-    let DesignSystemManager =
-      globalThis.DesignSystemManager.requestAvailability();
-    DesignSystemManager.addDesignSystem({
-      name: "glossy-portfolio-theme",
-      styles: [...GlossyPortfolioTheme.styles, DDDVariables],
-      fonts: PortfolioFonts,
-      hax: true,
-    });
-    DesignSystemManager.active = "glossy-portfolio-theme";
+    // blocks authored in the portfolio take on Glossy through the DDD bridge
+    // (lib/GlossyDesignSystem.js): its tokens, the page typography and the
+    // underlined content links, plus the Manrope and Inter faces HAX serves
+    activateGlossyDesignSystem();
   }
 
   // Lit scoped styles
   static get styles() {
     return [
       super.styles,
+      GlossyPageStyles,
       css`
         :host {
           box-sizing: border-box;
@@ -117,15 +108,6 @@ export class GlossyPortfolioTheme extends DDDSuper(
 
         * {
           box-sizing: border-box;
-        }
-        :root,
-        html,
-        body {
-          /* font-size: 124px; */
-          font-family: var(--main-font);
-          color: white;
-          background-color: var(--bg-color);
-          font-size: var(--main-font-size);
         }
 
         :host {
@@ -174,87 +156,6 @@ export class GlossyPortfolioTheme extends DDDSuper(
           position: fixed;
           top: 0;
           z-index: 1000; /* Ensure header is above other content */
-        }
-
-        /* text style */
-        p,
-        a,
-        blockquote,
-        pre,
-        code,
-        span,
-        strong,
-        em {
-          margin: 1em 0; /* Top and bottom margins equal to the font size, no left/right margin */
-          font-size: 1rem;
-          font-weight: 400;
-          line-height: 1.8;
-          font-family: inherit;
-        }
-
-        li {
-          font-size: 1rem;
-          font-weight: 400;
-          line-height: 1.8;
-          font-family: inherit;
-        }
-
-        ol,
-        ul {
-          margin-bottom: 1em;
-          display: block;
-          list-style-type: disc;
-          margin-block-start: 1em;
-          margin-block-end: 1em;
-          padding-inline-start: 40px;
-          unicode-bidi: isolate;
-        }
-        img {
-          margin: 1em 0;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          margin: 0.5em 0; /* Slightly smaller margins for headings */
-        }
-        h1 {
-          font-size: 3rem;
-          font-weight: 700;
-          line-height: 1.2;
-          font-family: inherit;
-        }
-
-        h2 {
-          font-size: 2rem;
-          font-weight: 700;
-          line-height: 1.3;
-          font-family: inherit;
-        }
-        h3 {
-          font-size: 1.75rem; /* 28px if root font size is 16px */
-          font-weight: 700;
-          line-height: 1.4;
-          font-family: inherit;
-        }
-
-        a {
-          text-decoration: none;
-          color: var(--link-color); /* Sky Blue */
-          font-family: inherit;
-        }
-
-        a:hover {
-          color: var(--link-color-hover); /* Bright Cyan for hover effect */
-          text-decoration: underline;
-        }
-        /* Keyboard focus indicators (WCAG 2.4.7) — currentColor adapts to the dark palette */
-        a:focus-visible,
-        button:focus-visible {
-          outline: 2px solid currentColor;
-          outline-offset: 2px;
         }
 
         site-active-title h1 {
@@ -347,7 +248,7 @@ export class GlossyPortfolioTheme extends DDDSuper(
     return html`
       <!-- temporary margin-top  -->
       <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
-      <glossy-portfolio-header></glossy-portfolio-header>
+      <glossy-portfolio-header role="banner"></glossy-portfolio-header>
 
       <div class="body-wrapper">
         ${

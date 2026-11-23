@@ -1,0 +1,53 @@
+{
+  "$description": "Glossy, the design system of glossy-portfolio-theme: a dark gallery for portfolio work, with glass cyan links, soft rounded cards and Manrope and Inter faces. Dark by design, so every value is fixed (no light/dark pairs).",
+  "studio": {
+    "$type": "color",
+    "floor": { "$value": "#111111", "$description": "page background" },
+    "panel": { "$value": "#1f1f1f", "$description": "card and panel surface" },
+    "raised": { "$value": "#161616", "$description": "header and footer" },
+    "ink": { "$value": "#ffffff", "$description": "text" },
+    "muted": { "$value": "#b3b3b3", "$description": "secondary text" },
+    "dust": { "$value": "#e6e6e6" },
+    "paper": {
+      "$value": "#f5f7f8",
+      "$description": "light surfaces in content"
+    },
+    "black": { "$value": "#000000" },
+    "link": { "$value": "#6cddff", "$description": "links on the dark floor" },
+    "link-hover": { "$value": "#9ae7ff", "$description": "links on hover" },
+    "focus": { "$value": "#6cddff", "$description": "focus ring" }
+  },
+  "glass": {
+    "$type": "color",
+    "navy": { "$value": "#0b2545" },
+    "royal": { "$value": "#13315c" },
+    "blue": { "$value": "#165e93" },
+    "sky": { "$value": "#6cddff" },
+    "ice": { "$value": "#9ae7ff" },
+    "frost": { "$value": "#e6f9ff" },
+    "violet": { "$value": "#4c2a85" },
+    "plum": { "$value": "#5e4390" },
+    "mauve": { "$value": "#d7b8f3" },
+    "magenta": { "$value": "#a3125f" },
+    "red": { "$value": "#c62828" },
+    "crimson": { "$value": "#ff5c7a" },
+    "blush": { "$value": "#ffe3e8" },
+    "gold": { "$value": "#f2b705" },
+    "yellow": { "$value": "#ffd23f" },
+    "butter": { "$value": "#ffe7a8" },
+    "cream": { "$value": "#fff6dc" },
+    "orange": { "$value": "#e8590c" },
+    "brown": { "$value": "#6d3b1a" },
+    "green": { "$value": "#1a6b35" },
+    "olive": { "$value": "#2f4a1d" },
+    "lime": { "$value": "#a3e635" },
+    "mint": { "$value": "#dcf7e6" },
+    "teal": { "$value": "#14b8c4" }
+  },
+  "duration": {
+    "$type": "duration",
+    "quick": { "$value": "150ms" },
+    "glide": { "$value": "300ms" },
+    "reveal": { "$value": "600ms" }
+  }
+}
