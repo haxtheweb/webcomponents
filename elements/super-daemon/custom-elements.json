@@ -225,6 +225,21 @@
             },
             {
               "kind": "method",
+              "name": "_deepActiveElement",
+              "description": "the focused element, looking through open shadow roots",
+              "return": {
+                "type": {
+                  "text": "Element|null"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_restoreFocus",
+              "description": "Accessibility (WCAG 2.4.3): closing Merlin returns focus to what had it\nbefore Merlin opened, unless what was chosen moved focus somewhere else"
+            },
+            {
+              "kind": "method",
               "name": "filterItems",
               "parameters": [
                 {

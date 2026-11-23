@@ -96,7 +96,7 @@
           "type": {
             "text": "object"
           },
-          "default": "{ hockey: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\" }, football: { hat: \"football\", item: \"football\" }, firefighter: { hat: \"firefighter\" }, police: { hat: \"police\" }, veteran: { hat: \"military\" }, nurse: { hat: \"nurse\" }, it: { item: \"phone\" }, doctor: { hat: \"doctor\" }, soda: { hat: \"soda\", item: \"milkshake\" }, knight: { hat: \"knight\", item: \"sword\", offhand: \"shield\" }, pirate: { hat: \"pirate\", item: \"sword\" }, graduate: { hat: \"education\" }, basketball: { hat: \"headband\", item: \"basketball\" }, baseball: { hat: \"baseball\", item: \"baseball-bat\" }, soccer: { item: \"soccer-ball\" }, tennis: { hat: \"visor\", item: \"tennis-racket\" }, golf: { hat: \"visor\", item: \"golf-club\" }, cycling: { hat: \"bike-helmet\" }, teacher: { item: \"book\" }, scientist: { hat: \"goggles\", item: \"flask\" }, chef: { hat: \"chef\", item: \"spatula\" }, farmer: { hat: \"straw\", item: \"pitchfork\" }, artist: { hat: \"beret\", item: \"paintbrush\", offhand: \"palette\" }, musician: { item: \"guitar\" }, mail: { hat: \"mail\", item: \"envelope\" }, pilot: { hat: \"pilot\" }, astronaut: { hat: \"astronaut\" }, construction: { hat: \"construction\", item: \"hammer\" }, wizard: { hat: \"wizard\", item: \"wand\", makeup: \"white-beard\" }, superhero: { makeup: \"domino\" }, robot: { hat: \"robot\" }, dinosaur: { hat: \"dino\" }, ninja: { hat: \"ninja\", item: \"sword\" }, witch: { hat: \"witch\", item: \"broom\" }, vampire: { makeup: \"fangs\" }, mummy: { mask: \"mummy\" }, skeleton: { makeup: \"skull\" }, ghost: { mask: \"ghost\" }, pumpkin: { mask: \"pumpkin\", item: \"candy-bucket\" }, zombie: { makeup: \"zombie\" }, santa: { hat: \"santa\", item: \"sack\", makeup: \"white-beard\" }, elf: { hat: \"elf\", item: \"candy-cane\" }, reindeer: { hat: \"antlers\", makeup: \"red-nose\" }, snowman: { hat: \"top-hat\", makeup: \"carrot\" }, \"easter-bunny\": { hat: \"bunny\", item: \"basket\", makeup: \"bunny\" }, colonial: { hat: \"tricorn\", item: \"sword\" }, reaper: { hat: \"hood\", item: \"scythe\", makeup: \"skull\" }, \"space-knight\": { item: \"laser-sword-blue\" }, \"boy-wizard\": { hat: \"messy-hair\", makeup: \"round-glasses\", item: \"wand\" }, \"ghost-hunter\": { item: \"beam-wand\", offhand: \"proton-pack\" }, \"time-scientist\": { hat: \"wild-hair\", feet: \"hoverboard\", shaved: true }, adventurer: { hat: \"fedora\", item: \"whip\" }, wrestler: { mask: \"wrestler\", item: \"champ-belt\" }, plumber: { hat: \"plumber-cap\", makeup: \"mustache\", item: \"wrench\" }, miner: { mask: \"block-head\", item: \"pickaxe\" }, \"elf-hero\": { hat: \"long-cap\", item: \"sword\", offhand: \"shield\" }, trainer: { hat: \"trainer-cap\", item: \"capture-ball\" }, vigilante: { hat: \"cowl\" }, \"web-hero\": { mask: \"web\" }, \"hammer-god\": { hat: \"winged-helmet\", item: \"war-hammer\" }, monster: { hat: \"flat-top\", makeup: \"monster\" }, werewolf: { mask: \"werewolf\" }, horseman: { mask: \"shadow\", item: \"jack-o-lantern\" }, mascot: { mask: \"lion\" }, band: { hat: \"shako\", item: \"trumpet\" }, // hockey team kits, home and away. The helmet names the team in both // kits; the sweater tells home from away. crest is drawn from // lib/crest/<name>.svg above accessories, so a seed's tie never covers it. \"sparkle-selects\": { hat: \"sparkle-selects\", item: \"hockey-stick-pink\", feet: \"skates\", crest: \"sparkle-selects\", }, \"b-squad\": { hat: \"sparkle-selects\", item: \"hockey-stick-pink\", feet: \"skates\", crest: \"b-squad\", }, \"saber-cats\": { hat: \"saber-cats\", item: \"hockey-stick-green\", feet: \"skates\", crest: \"saber-cats\", }, \"saber-cats-away\": { hat: \"saber-cats\", item: \"hockey-stick-green\", feet: \"skates\", crest: \"saber-cats-away\", }, icers: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\", crest: \"icers\", }, \"icers-away\": { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\", crest: \"icers-away\", }, // the HAX Future Traveler as a character: red HAX helmet with an idea bulb // and big goggles, Beaver blue coat over a cyan shirt \"future-traveler\": { hat: \"future-traveler\" }, // Thanksgiving: two pilgrim outfits and a turkey costume \"pilgrim-boy\": { hat: \"pilgrim\", item: \"drumstick\" }, \"pilgrim-girl\": { hat: \"bonnet\", item: \"corn\" }, turkey: { hat: \"turkey\", item: \"corn\" }, }"
+          "default": "{ hockey: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\" }, football: { hat: \"football\", item: \"football\" }, firefighter: { hat: \"firefighter\" }, police: { hat: \"police\" }, veteran: { hat: \"military\" }, nurse: { hat: \"nurse\" }, it: { item: \"phone\" }, doctor: { hat: \"doctor\" }, soda: { hat: \"soda\", item: \"milkshake\" }, knight: { hat: \"knight\", item: \"sword\", offhand: \"shield\" }, pirate: { hat: \"pirate\", item: \"sword\" }, graduate: { hat: \"education\" }, basketball: { hat: \"headband\", item: \"basketball\" }, baseball: { hat: \"baseball\", item: \"baseball-bat\" }, soccer: { item: \"soccer-ball\" }, tennis: { hat: \"visor\", item: \"tennis-racket\" }, golf: { hat: \"visor\", item: \"golf-club\" }, cycling: { hat: \"bike-helmet\" }, teacher: { item: \"book\" }, scientist: { hat: \"goggles\", item: \"flask\" }, chef: { hat: \"chef\", item: \"spatula\" }, farmer: { hat: \"straw\", item: \"pitchfork\" }, artist: { hat: \"beret\", item: \"paintbrush\", offhand: \"palette\" }, musician: { item: \"guitar\" }, mail: { hat: \"mail\", item: \"envelope\" }, pilot: { hat: \"pilot\" }, astronaut: { hat: \"astronaut\" }, construction: { hat: \"construction\", item: \"hammer\" }, wizard: { hat: \"wizard\", item: \"wand\", makeup: \"white-beard\" }, superhero: { makeup: \"domino\" }, robot: { hat: \"robot\" }, dinosaur: { hat: \"dino\" }, ninja: { hat: \"ninja\", item: \"sword\" }, witch: { hat: \"witch\", item: \"broom\" }, vampire: { makeup: \"fangs\" }, mummy: { mask: \"mummy\" }, skeleton: { makeup: \"skull\" }, ghost: { mask: \"ghost\" }, pumpkin: { mask: \"pumpkin\", item: \"candy-bucket\" }, zombie: { makeup: \"zombie\" }, santa: { hat: \"santa\", item: \"sack\", makeup: \"white-beard\" }, elf: { hat: \"elf\", item: \"candy-cane\" }, reindeer: { hat: \"antlers\", makeup: \"red-nose\" }, snowman: { hat: \"top-hat\", makeup: \"carrot\" }, \"easter-bunny\": { hat: \"bunny\", item: \"basket\", makeup: \"bunny\" }, colonial: { hat: \"tricorn\", item: \"sword\" }, reaper: { hat: \"hood\", item: \"scythe\", makeup: \"skull\" }, \"space-knight\": { item: \"laser-sword-blue\" }, \"boy-wizard\": { hat: \"messy-hair\", makeup: \"round-glasses\", item: \"wand\" }, \"ghost-hunter\": { item: \"beam-wand\", offhand: \"proton-pack\" }, \"time-scientist\": { hat: \"wild-hair\", feet: \"hoverboard\", shaved: true }, adventurer: { hat: \"fedora\", item: \"whip\" }, wrestler: { mask: \"wrestler\", item: \"champ-belt\" }, plumber: { hat: \"plumber-cap\", makeup: \"mustache\", item: \"wrench\" }, miner: { mask: \"block-head\", item: \"pickaxe\" }, \"elf-hero\": { hat: \"long-cap\", item: \"sword\", offhand: \"shield\" }, trainer: { hat: \"trainer-cap\", item: \"capture-ball\" }, vigilante: { hat: \"cowl\" }, \"web-hero\": { mask: \"web\" }, \"hammer-god\": { hat: \"winged-helmet\", item: \"war-hammer\" }, monster: { hat: \"flat-top\", makeup: \"monster\" }, werewolf: { mask: \"werewolf\" }, horseman: { mask: \"shadow\", item: \"jack-o-lantern\" }, // a full costume: fur replaces the seed's skin on the arms and hands mascot: { mask: \"lion\", fur: \"fur-gold\" }, band: { hat: \"shako\", item: \"trumpet\" }, // hockey team kits, home and away. The helmet names the team in both // kits; the sweater tells home from away. crest is drawn from // lib/crest/<name>.svg above accessories, so a seed's tie never covers it. \"sparkle-selects\": { hat: \"sparkle-selects\", item: \"hockey-stick-pink\", feet: \"skates\", crest: \"sparkle-selects\", }, \"b-squad\": { hat: \"sparkle-selects\", item: \"hockey-stick-pink\", feet: \"skates\", crest: \"b-squad\", }, \"saber-cats\": { hat: \"saber-cats\", item: \"hockey-stick-green\", feet: \"skates\", crest: \"saber-cats\", }, \"saber-cats-away\": { hat: \"saber-cats\", item: \"hockey-stick-green\", feet: \"skates\", crest: \"saber-cats-away\", }, icers: { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\", crest: \"icers\", }, \"icers-away\": { hat: \"hockey\", item: \"hockey-stick\", feet: \"skates\", crest: \"icers-away\", }, // the HAX Future Traveler as a character: red HAX helmet with an idea bulb // and big goggles, Beaver blue coat over a cyan shirt \"future-traveler\": { hat: \"future-traveler\" }, // Thanksgiving: two pilgrim outfits and a turkey costume \"pilgrim-boy\": { hat: \"pilgrim\", item: \"drumstick\" }, \"pilgrim-girl\": { hat: \"bonnet\", item: \"corn\" }, turkey: { hat: \"turkey\", item: \"corn\" }, }"
         },
         {
           "kind": "variable",
@@ -207,6 +207,11 @@
               "kind": "method",
               "name": "_chosenPreset",
               "description": "The preset this character keeps: an explicit or coded preset, otherwise\na team kit for one of the special team seeds. A character code is a full\ndescription, so a team seed never adds a kit to one."
+            },
+            {
+              "kind": "method",
+              "name": "_fur",
+              "description": "The fur a full-costume preset draws in place of the seed's skin, or \"\".\nEvery other preset keeps the skin the seed made."
             },
             {
               "kind": "method",
@@ -1212,15 +1217,6 @@
       "path": "lib/rpg-character-builder.js",
       "declarations": [
         {
-          "kind": "variable",
-          "name": "PAGE_SIZE",
-          "type": {
-            "text": "number"
-          },
-          "default": "12",
-          "description": "tiles per page of the option grid"
-        },
-        {
           "kind": "function",
           "name": "characterFromParams",
           "parameters": [
@@ -1240,6 +1236,11 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_measure",
+              "description": "Tile size from the builder's width; columns from the grid's width; rows\nfrom the board's height when it is bounded (in a dialog), else 3. The\npage keeps its first tile in view when the page size changes."
             },
             {
               "kind": "method",
@@ -1445,10 +1446,10 @@
             },
             {
               "kind": "method",
-              "name": "_goPage",
+              "name": "_pageChanged",
               "parameters": [
                 {
-                  "name": "page"
+                  "name": "e"
                 }
               ]
             },
@@ -1552,27 +1553,6 @@
                 },
                 {
                   "name": "section"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "renderPager",
-              "parameters": [
-                {
-                  "name": "page"
-                },
-                {
-                  "name": "pages"
-                },
-                {
-                  "name": "first"
-                },
-                {
-                  "name": "shown"
-                },
-                {
-                  "name": "total"
                 }
               ]
             },
@@ -1723,13 +1703,32 @@
             },
             {
               "kind": "field",
-              "name": "_page",
+              "name": "_offset",
               "privacy": "public",
               "type": {
                 "text": "number"
               },
               "default": "0",
-              "attribute": "_page"
+              "attribute": "_offset"
+            },
+            {
+              "kind": "field",
+              "name": "_columns",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "attribute": "_columns"
+            },
+            {
+              "kind": "field",
+              "name": "_pageSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "_pageSize"
             },
             {
               "kind": "field",
@@ -1818,7 +1817,7 @@
             {
               "kind": "field",
               "name": "_resizer",
-              "default": "new ResizeObserver((entries) => { const width = entries[0].contentRect.width; const size = width < 420 ? 58 : width < 720 ? 68 : 84; if (size !== this._tileSize) { this._tileSize = size; } })"
+              "default": "new ResizeObserver(() => { globalThis.requestAnimationFrame(() => this._measure()); })"
             }
           ],
           "events": [
@@ -1934,12 +1933,27 @@
               "fieldName": "_section"
             },
             {
-              "name": "_page",
+              "name": "_offset",
               "type": {
                 "text": "number"
               },
               "default": "0",
-              "fieldName": "_page"
+              "fieldName": "_offset"
+            },
+            {
+              "name": "_columns",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "fieldName": "_columns"
+            },
+            {
+              "name": "_pageSize",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "_pageSize"
             },
             {
               "name": "_preview",
@@ -2005,14 +2019,6 @@
         }
       ],
       "exports": [
-        {
-          "kind": "js",
-          "name": "PAGE_SIZE",
-          "declaration": {
-            "name": "PAGE_SIZE",
-            "module": "lib/rpg-character-builder.js"
-          }
-        },
         {
           "kind": "js",
           "name": "characterFromParams",
@@ -2131,6 +2137,14 @@
         },
         {
           "kind": "variable",
+          "name": "furColors",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ \"fur-gold\": \"#c9963e\", }"
+        },
+        {
+          "kind": "variable",
           "name": "overlayColors",
           "type": {
             "text": "object"
@@ -2177,6 +2191,14 @@
           "name": "skinColors",
           "declaration": {
             "name": "skinColors",
+            "module": "lib/rpg-character-overlays.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "furColors",
+          "declaration": {
+            "name": "furColors",
             "module": "lib/rpg-character-overlays.js"
           }
         },

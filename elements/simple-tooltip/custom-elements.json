@@ -98,6 +98,36 @@
             },
             {
               "kind": "method",
+              "name": "_hideSoon",
+              "description": "hide after a short grace period, so the pointer can reach the tooltip"
+            },
+            {
+              "kind": "method",
+              "name": "_tooltipText",
+              "description": "the text this tooltip announces",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncRole",
+              "description": "role=tooltip only while there is something to say"
+            },
+            {
+              "kind": "method",
+              "name": "_linkTarget",
+              "description": "Make the tooltip the target's description, so screen reader users hear\nit. Skipped when it only repeats the target's name, and when the target\nsits outside this tooltip's tree in a way ARIA references can't reach."
+            },
+            {
+              "kind": "method",
+              "name": "_unlinkTarget",
+              "description": "remove the description link made by _linkTarget"
+            },
+            {
+              "kind": "method",
               "name": "_manualModeChanged"
             },
             {
@@ -230,11 +260,23 @@
             },
             {
               "kind": "field",
+              "name": "__boundHostMouseLeave"
+            },
+            {
+              "kind": "field",
               "name": "__boundShow"
             },
             {
               "kind": "field",
               "name": "__boundHide"
+            },
+            {
+              "kind": "field",
+              "name": "__boundHideSoon"
+            },
+            {
+              "kind": "field",
+              "name": "__boundEscape"
             },
             {
               "kind": "field",

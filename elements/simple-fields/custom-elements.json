@@ -3809,6 +3809,15 @@
             },
             {
               "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_updateCount",
               "description": "updates counter and sets maximum word count",
               "inheritedFrom": {
@@ -6493,6 +6502,15 @@
             },
             {
               "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_updateCount",
               "description": "updates counter and sets maximum word count",
               "inheritedFrom": {
@@ -8155,6 +8173,11 @@
             },
             {
               "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it."
+            },
+            {
+              "kind": "method",
               "name": "_updateField",
               "description": "updates field an type"
             },
@@ -9772,6 +9795,15 @@
               "kind": "method",
               "name": "_onFocusout",
               "description": "handles focusout validation",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -11412,6 +11444,15 @@
               "kind": "method",
               "name": "_onFocusout",
               "description": "handles focusout validation",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -14319,6 +14360,15 @@
               "kind": "method",
               "name": "_onFocusout",
               "description": "handles focusout validation",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -18136,6 +18186,15 @@
               "kind": "method",
               "name": "_onFocusin",
               "description": "handles focusout validation",
+              "inheritedFrom": {
+                "name": "SimpleFieldsContainerBehaviors",
+                "module": "lib/simple-fields-container.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
               "inheritedFrom": {
                 "name": "SimpleFieldsContainerBehaviors",
                 "module": "lib/simple-fields-container.js"
@@ -21977,6 +22036,15 @@
               "kind": "method",
               "name": "_onFocusout",
               "description": "handles focusout validation",
+              "inheritedFrom": {
+                "name": "SimpleFieldsCombo",
+                "module": "lib/simple-fields-combo.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_syncFieldA11y",
+              "description": "Give the slotted field the accessible name and description this\nelement shows visually. Only names this element set before are\nreplaced: a field that arrives with its own aria-label or\naria-labelledby keeps it.",
               "inheritedFrom": {
                 "name": "SimpleFieldsCombo",
                 "module": "lib/simple-fields-combo.js"

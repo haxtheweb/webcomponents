@@ -8,9 +8,43 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`simple-popover`\na popover alertdialog that is positioned next to a target element\n\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
+          "description": "`simple-popover`\na popover that is positioned next to a target element\n\n### Accessibility\n\nThe popover's content is a non-modal `role=\"dialog\"` named by, in order:\nthe host's `aria-label`, its `title`, or the first heading slotted into it.\nWhen none of those exist it falls back to `role=\"group\"`, so an unnamed\ndialog is never exposed. Set `content-role` when the popover only wraps\nanother widget (`none` for a listbox) or needs a specific role.\n\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
           "name": "SimplePopover",
           "members": [
+            {
+              "kind": "method",
+              "name": "_contentName",
+              "description": "name for the content wrapper: author label, title, then slotted heading",
+              "return": {
+                "type": {
+                  "text": "string|undefined"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_contentRole",
+              "description": "role for the content wrapper; an unnamed dialog is never exposed",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_findSlottedName",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "slotchange event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "use the first slotted heading as a fallback name"
+            },
             {
               "kind": "field",
               "name": "tag",
@@ -64,7 +98,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Accessible name for the popover's role=alertdialog content div.\nConsumers wire this by setting aria-label on the simple-popover\nhost (the host title attribute is used as a fallback). A name set\nonly on the host never reaches shadow DOM nodes, so the value is\nforwarded to the inner #content div to satisfy the axe\naria-dialog-name rule for every popover consumer.",
+              "description": "Accessible name for the popover's content. Consumers wire this by\nsetting aria-label on the simple-popover host (the host title\nattribute, then the first slotted heading, are fallbacks). A name\nset only on the host never reaches shadow DOM nodes, so the value\nis forwarded to the inner #content div.",
               "attribute": "title",
               "reflects": true
             },
@@ -77,6 +111,25 @@
               },
               "attribute": "aria-label",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "contentRole",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Role of the content wrapper. Defaults to a non-modal \"dialog\"\nwhen a name is available, \"group\" otherwise. Use \"none\" when the\npopover only wraps another named widget, such as a listbox.",
+              "attribute": "content-role"
+            },
+            {
+              "kind": "field",
+              "name": "__slottedName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__slottedName"
             }
           ],
           "attributes": [
@@ -85,7 +138,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Accessible name for the popover's role=alertdialog content div.\nConsumers wire this by setting aria-label on the simple-popover\nhost (the host title attribute is used as a fallback). A name set\nonly on the host never reaches shadow DOM nodes, so the value is\nforwarded to the inner #content div to satisfy the axe\naria-dialog-name rule for every popover consumer.",
+              "description": "Accessible name for the popover's content. Consumers wire this by\nsetting aria-label on the simple-popover host (the host title\nattribute, then the first slotted heading, are fallbacks). A name\nset only on the host never reaches shadow DOM nodes, so the value\nis forwarded to the inner #content div.",
               "fieldName": "title"
             },
             {
@@ -94,6 +147,21 @@
                 "text": "string"
               },
               "fieldName": "ariaLabel"
+            },
+            {
+              "name": "content-role",
+              "type": {
+                "text": "string"
+              },
+              "description": "Role of the content wrapper. Defaults to a non-modal \"dialog\"\nwhen a name is available, \"group\" otherwise. Use \"none\" when the\npopover only wraps another named widget, such as a listbox.",
+              "fieldName": "contentRole"
+            },
+            {
+              "name": "__slottedName",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__slottedName"
             }
           ],
           "superclass": {
@@ -218,6 +286,24 @@
                 "text": "boolean"
               },
               "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "__heading",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__heading"
+            },
+            {
+              "kind": "field",
+              "name": "__targetLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__targetLabel"
             }
           ],
           "attributes": [
@@ -244,6 +330,20 @@
               },
               "default": "\"tb\"",
               "fieldName": "orientation"
+            },
+            {
+              "name": "__heading",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__heading"
+            },
+            {
+              "name": "__targetLabel",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__targetLabel"
             }
           ],
           "superclass": {

@@ -110,6 +110,11 @@
             },
             {
               "kind": "method",
+              "name": "_syncScrollFocus",
+              "description": "The code area is in the tab order exactly while it scrolls sideways."
+            },
+            {
+              "kind": "method",
               "name": "highlightLines",
               "parameters": [
                 {

@@ -19,7 +19,7 @@
       "property": "title",
       "type": "string",
       "default": "",
-      "description": "Accessible name for the popover's role=alertdialog content div. Consumers wire this by setting aria-label on the simple-popover host (the host title attribute is used as a fallback). A name set only on the host never reaches shadow DOM nodes, so the value is forwarded to the inner #content div to satisfy the axe aria-dialog-name rule for every popover consumer.",
+      "description": "Accessible name for the popover's content. Consumers wire this by setting aria-label on the simple-popover host (the host title attribute, then the first slotted heading, are fallbacks). A name set only on the host never reaches shadow DOM nodes, so the value is forwarded to the inner #content div.",
       "hax": null
     },
     {
@@ -29,14 +29,20 @@
       "default": "",
       "description": "",
       "hax": null
+    },
+    {
+      "name": "content-role",
+      "property": "contentRole",
+      "type": "string",
+      "default": "",
+      "description": "Role of the content wrapper. Defaults to a non-modal \"dialog\" when a name is available, \"group\" otherwise. Use \"none\" when the popover only wraps another named widget, such as a listbox.",
+      "hax": null
     }
   ],
-  "slots": [
-    "(default)"
-  ],
+  "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "23abc1f149d4",
+  "surfaceHash": "154bb486e1e6",
   "walkthroughs": [
     {
       "id": "",
@@ -44,13 +50,13 @@
       "order": 0,
       "src": "simple-popover.motion.json",
       "file": "lib/simple-popover.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-popover.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

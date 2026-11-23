@@ -154,6 +154,20 @@
               "description": "Settings tray: (small widths: captions, transcript, download, print),\nlayout, transcript track, captions track, speed, scroll and loop"
             },
             {
+              "kind": "method",
+              "name": "_skipTranscript",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "click on the skip link",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ],
+              "description": "Accessibility (WCAG 2.4.1): a fragment link cannot reach an id inside a\nshadow root, so the transcript skip link moves focus itself."
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -411,14 +425,42 @@
             },
             {
               "kind": "field",
-              "name": "isYoutube",
-              "description": "whether media is YouTube",
+              "name": "_youtubeGated",
+              "description": "a YouTube video the visitor has not allowed yet",
               "readonly": true,
               "return": {
                 "type": {
                   "text": "boolean"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "_isYoutubeSrc",
+              "parameters": [
+                {
+                  "name": "src",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Privacy: a YouTube URL is never handed to the HTML5 <video>, which\ncannot play it and would request it from YouTube on page load",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_allowYoutube",
+              "description": "remembers the visitor allows YouTube and starts this video"
+            },
+            {
+              "kind": "field",
+              "name": "isYoutube",
+              "readonly": true
             },
             {
               "kind": "field",
@@ -1527,16 +1569,6 @@
             },
             {
               "kind": "method",
-              "name": "_onSettingsDocumentClick",
-              "parameters": [
-                {
-                  "name": "event"
-                }
-              ],
-              "description": "Handle click-away to close settings when user clicks outside"
-            },
-            {
-              "kind": "method",
               "name": "_getSeconds",
               "parameters": [
                 {
@@ -1664,6 +1696,19 @@
               },
               "default": "false",
               "attribute": "__youtubePlayOnLoad"
+            },
+            {
+              "kind": "field",
+              "name": "__youtubeConsent",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "__youtubeConsent"
+            },
+            {
+              "kind": "field",
+              "name": "_consentHandler"
             },
             {
               "kind": "field",
@@ -1872,7 +1917,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", openOnYouTube: \"Open on YouTube\", audioDescriptionLabel: \"Audio Description\", interactiveLabel: \"interactive\", layoutLabel: \"Layout\", sideLabel: \"Side\", belowLabel: \"Below\", leftLabel: \"Left\", rightLabel: \"Right\", hideTranscriptLabel: \"Hide transcript\", }"
+              "default": "{ ...this.t, youtubeConsentNotice: \"This video plays from YouTube. Google will receive your IP address and may set cookies.\", youtubeConsentAllow: \"Always allow YouTube\", consentChoicesLabel: \"Privacy choices\", audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", openOnYouTube: \"Open on YouTube\", audioDescriptionLabel: \"Audio Description\", interactiveLabel: \"interactive\", layoutLabel: \"Layout\", sideLabel: \"Side\", belowLabel: \"Below\", leftLabel: \"Left\", rightLabel: \"Right\", hideTranscriptLabel: \"Hide transcript\", }"
             },
             {
               "kind": "field",
@@ -2243,14 +2288,6 @@
             },
             {
               "kind": "field",
-              "name": "_settingsClickHandler"
-            },
-            {
-              "kind": "field",
-              "name": "addEventListener"
-            },
-            {
-              "kind": "field",
               "name": "crossorigin",
               "privacy": "public",
               "type": {
@@ -2464,6 +2501,13 @@
               },
               "default": "false",
               "fieldName": "__youtubeWanted"
+            },
+            {
+              "name": "__youtubeConsent",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "__youtubeConsent"
             },
             {
               "name": "__youtubePlayOnLoad",

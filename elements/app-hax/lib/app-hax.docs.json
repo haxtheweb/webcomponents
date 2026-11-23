@@ -55,6 +55,14 @@
       "hax": null
     },
     {
+      "name": "userAvatarCode",
+      "property": "userAvatarCode",
+      "type": "string",
+      "default": "",
+      "description": "",
+      "hax": null
+    },
+    {
       "name": "activeItem",
       "property": "activeItem",
       "type": "object",
@@ -183,7 +191,7 @@
     "simple-modal-show"
   ],
   "hax": {},
-  "surfaceHash": "1f78c43b2b3f",
+  "surfaceHash": "14b21c7eb283",
   "walkthroughs": [
     {
       "id": "",

@@ -38,6 +38,11 @@
             },
             {
               "kind": "method",
+              "name": "_neutralizeInnerDialogRole",
+              "description": "Accessibility (WCAG 4.1.2): web-dialog marks its inner surface\nrole=\"alertdialog\" with no name, inside the role=\"dialog\" this element\nnames (title / aria-label). Screen readers then announce an unnamed,\nurgent dialog nested in a named one. The named outer dialog is the only\ndialog, so the inner surface is presentational. Guarded like the backdrop:\nweb-dialog may not have built its shadow root yet."
+            },
+            {
+              "kind": "method",
               "name": "_styleBackdrop",
               "description": "Applies the backdrop background color. web-dialog may not have upgraded\n(and built its shadow root) when the dynamic import resolves, so every\nstep of the chain is guarded before it is dereferenced."
             },

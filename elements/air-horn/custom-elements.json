@@ -30,6 +30,16 @@
             },
             {
               "kind": "method",
+              "name": "_recheckWhenDefined",
+              "description": "Slotted custom elements draw their controls once they upgrade and\nrender; look again then."
+            },
+            {
+              "kind": "method",
+              "name": "_hasControl",
+              "description": "Whether the slotted content holds something focusable of its own."
+            },
+            {
+              "kind": "method",
               "name": "_keyDown",
               "parameters": [
                 {

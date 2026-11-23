@@ -185,6 +185,16 @@
             },
             {
               "kind": "method",
+              "name": "_activePreviewLabel",
+              "parameters": [
+                {
+                  "name": "activeItemContentNode"
+                }
+              ],
+              "description": "names the content preview popover after the page it belongs to\n(UI only, reads items without changing them)"
+            },
+            {
+              "kind": "method",
               "name": "setActiveItemForActions",
               "parameters": [
                 {
@@ -561,6 +571,20 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_refocusRowAfterEdit",
+              "parameters": [
+                {
+                  "name": "editHost",
+                  "description": "the contenteditable that was being edited",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                }
+              ],
+              "description": "Accessibility (WCAG 2.4.3): committing or cancelling an inline edit\nhides the focused edit host, which drops focus to <body>. Return focus\nto the page row it belongs to once the outline has re-rendered. Focus\nonly: the items and their save path are not touched here."
             },
             {
               "kind": "method",

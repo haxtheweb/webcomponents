@@ -66,6 +66,30 @@
             },
             {
               "kind": "method",
+              "name": "_renderHeaderAction",
+              "parameters": [
+                {
+                  "name": "o"
+                }
+              ],
+              "description": "One round header action (DDD block action pattern), with the same\ntooltip the media players use"
+            },
+            {
+              "kind": "field",
+              "name": "_stillSrc",
+              "description": "the still shown before play: the authored one, or when there is none\n(or it does not load) the gif's first frame drawn here",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_stillError"
+            },
+            {
+              "kind": "method",
+              "name": "_makeLocalStill"
+            },
+            {
+              "kind": "method",
               "name": "play",
               "description": "plays the animation regarless of previous state"
             },
@@ -167,11 +191,43 @@
             },
             {
               "kind": "field",
+              "name": "__infoOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "the long description is open below the image",
+              "default": "false",
+              "attribute": "__infoOpen"
+            },
+            {
+              "kind": "field",
+              "name": "__localStill",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "first frame drawn in the browser, when no still loads",
+              "default": "\"\"",
+              "attribute": "__localStill"
+            },
+            {
+              "kind": "field",
+              "name": "__stillFailed",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__stillFailed"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ toggleAnimation: \"Toggle animation\", info: \"info\", image: \"Image\", animatedGif: \"Animated GIF\", }"
+              "default": "{ toggleAnimation: \"Toggle animation\", info: \"info\", image: \"Image\", animatedGif: \"Animated GIF\", playAnimation: \"Play animation\", pauseAnimation: \"Pause animation\", showDescription: \"Show description\", hideDescription: \"Hide description\", }"
             },
             {
               "kind": "field",
@@ -306,6 +362,32 @@
               "description": "if the gif source is loaded to avoid jarring on load",
               "default": "false",
               "fieldName": "__gifLoaded"
+            },
+            {
+              "name": "__infoOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "the long description is open below the image",
+              "default": "false",
+              "fieldName": "__infoOpen"
+            },
+            {
+              "name": "__localStill",
+              "type": {
+                "text": "string"
+              },
+              "description": "first frame drawn in the browser, when no still loads",
+              "default": "\"\"",
+              "fieldName": "__localStill"
+            },
+            {
+              "name": "__stillFailed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__stillFailed"
             }
           ],
           "mixins": [
