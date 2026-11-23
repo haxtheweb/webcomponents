@@ -304,12 +304,6 @@ function cmdPreflight() {
       warnings.push("npm whoami failed: npm publish will need a login");
     }
   }
-  ["elmsln"].forEach((d) => {
-    const home = process.env.HOME || "";
-    if (!fs.existsSync(path.join(home, d))) {
-      warnings.push(`~/${d} not found: ubiquity skips copying into it`);
-    }
-  });
   warnings.forEach((w) => console.log(`WARNING: ${w}`));
   if (errors.length) {
     console.log(

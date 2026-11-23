@@ -176,10 +176,19 @@
       "tag": "direct",
       "refresh": "haxsite",
       "deploy": "GitHub Pages: haxtheweb.org (loads HAX from cdn.hax.cloud)"
+    },
+    {
+      "repo": "hax-psu",
+      "branch": "master",
+      "phase": "satellite",
+      "versionFile": "package.json",
+      "tag": "direct",
+      "dependencies": "@haxtheweb/",
+      "deploy": "manual: hax.psu (pushed out by hand; kept on the release version and @haxtheweb/ ranges because it points to the rest of the network)"
     }
   ],
   "local": [
-    "elmsln and the waxam mirror are maintainer-machine targets outside $HAXTHEWEB_ROOT; ubiquity-push.sh copies into them when they exist and preflight only warns when they don't."
+    "The waxam mirror (~/Documents/git/waxam/cdn) is a maintainer-machine target outside $HAXTHEWEB_ROOT: the non-PSU CDN fallback. ubiquity-push.sh copies the build into it when it exists and skips it when it does not."
   ],
   "excluded": [
     {

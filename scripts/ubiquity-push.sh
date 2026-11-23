@@ -158,28 +158,6 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/Documents/git/waxam/cdn/wc-regis
 cp ~/haxtheweb/webcomponents/wc-registry-graph.json ~/Documents/git/waxam/cdn/wc-registry-graph.json
 fi
 
-# elmsln (a maintainer-machine target; skipped where it is not checked out)
-# normalize build but need to copy in the legacy assets that we stopped supporting in core
-if [ -d ~/elmsln ]; then
-rm -rf ~/elmsln/core/dslmcode/cores/haxcms-1/build
-rm ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
-rm ~/elmsln/core/webcomponents/wc-registry.json
-cp -r ~/haxtheweb/webcomponents/build/ ~/elmsln/core/dslmcode/cores/haxcms-1/build
-# we have a special registry which should be close enough to reality of known paths at the point of 9.x.x
-cp ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/dslmcode/cores/haxcms-1/wc-registry.json
-cp ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/wc-registry.json ~/elmsln/core/webcomponents/wc-registry.json
-
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/materializecss-styles ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/materializecss-styles
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/dropdown-select ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/dropdown-select
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/threaded-discussion ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/threaded-discussion
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/nav-card ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/nav-card
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/simple-drawer ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/simple-drawer
-
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polymer/* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@polymer/
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
-cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
-fi
-
 ## STEP 3 SYNC THEMES.JSON FROM WEBCOMPONENTS TO BOTH PLATFORMS
 # Copy themes.json from webcomponents monorepo to both HAXcms platforms
 cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxtheweb/haxcms-nodejs/src/coreConfig/themes.json
@@ -267,14 +245,6 @@ version=$(cat ~/haxtheweb/webcomponents/.version 2>/dev/null || cat ~/haxtheweb/
 # only a dry run can preview a version .version does not hold yet
 if [ "$UBIQUITY_DRY_RUN" = "1" ] && [ -n "$UBIQUITY_DRY_RUN_VERSION" ]; then
   version=$UBIQUITY_DRY_RUN_VERSION
-fi
-
-if [ -d ~/elmsln ]; then
-enter ~/elmsln/
-git pull origin master
-git add -A
-git commit -m "ubiquity publish" --no-verify
-git push --follow-tags origin master
 fi
 
 enter ~/haxtheweb/webcomponents
