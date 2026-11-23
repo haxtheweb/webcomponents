@@ -66,6 +66,16 @@
           "_top": "Zgornje okno - _top",
           "_parent": "Nadrejeno okno - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodoravno",
+        "description": "Postavi sliko ob besedilo namesto nad njega."
+      },
+      {
+        "property": "clickable",
+        "title": "Cela kartica je povezava",
+        "description": "Celotno kartico naredi za povezavo in skrije gumb. Potrebuje povezavo."
       }
     ],
     "developer": [

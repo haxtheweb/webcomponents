@@ -22,6 +22,15 @@
       {
         "title": "Mhinduro",
         "description": "Hurongwa hwemhinduro hunotsanangura kutevedzana kwakarurama."
+      },
+      {
+        "property": "layout",
+        "title": "Marongerwo",
+        "description": "Rondedzero: mhinduro dzakarongwa mumitsara. Makadhi emifananidzo: mutsara wemakadhi unoenderera, rimwe nerimwe rine mufananidzo waro nemabhatani ekufambisa kumberi / kumashure.",
+        "options": {
+          "": "Rondedzero",
+          "cards": "Makadhi emifananidzo"
+        }
       }
     ],
     "advanced": [

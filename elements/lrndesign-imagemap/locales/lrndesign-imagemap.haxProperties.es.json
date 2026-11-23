@@ -18,6 +18,11 @@
       {
         "title": "Detalles de las zonas activas",
         "description": "Las zonas activas interactivas del mapa de imagen."
+      },
+      {
+        "property": "src",
+        "title": "Imagen",
+        "description": "Imagen SVG a la que apuntan los puntos activos."
       }
     ]
   }

@@ -22,6 +22,15 @@
       {
         "title": "Odpowiedzi",
         "description": "Kolejność odpowiedzi określa poprawną sekwencję."
+      },
+      {
+        "property": "layout",
+        "title": "Układ",
+        "description": "Lista: odpowiedzi ułożone w wierszach. Karty z obrazem: rząd kart, który się zawija, każda z obrazem i przyciskami przesuwania wcześniej / później.",
+        "options": {
+          "": "Lista",
+          "cards": "Karty z obrazem"
+        }
       }
     ],
     "advanced": [

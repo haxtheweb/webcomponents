@@ -22,6 +22,15 @@
       {
         "title": "Javoblar",
         "description": "Javoblar tartibi to‘g‘ri ketma-ketlikni belgilaydi."
+      },
+      {
+        "property": "layout",
+        "title": "Joylashuv",
+        "description": "Ro‘yxat: javoblar qatorlarda ketma-ket joylashgan. Rasmli kartalar: keyingi qatorga o‘tadigan kartalar qatori, har birida o‘z rasmi va oldinroq / keyinroq surish tugmalari.",
+        "options": {
+          "": "Ro‘yxat",
+          "cards": "Rasmli kartalar"
+        }
       }
     ],
     "advanced": [

@@ -31,11 +31,20 @@
       },
       {
         "title": "Zona e kontrollit të njohurive"
+      },
+      {
+        "property": "title",
+        "title": "Titulli",
+        "description": "Titulli që shfaqet mbi modelin e kursit."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Zona e logos"
+      },
+      {
+        "slot": "logo",
         "title": "Zona e logos"
       }
     ]

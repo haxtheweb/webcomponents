@@ -42,5 +42,8 @@
   "belowLabel": "ດ້ານລຸ່ມ",
   "leftLabel": "ຊ້າຍ",
   "rightLabel": "ຂວາ",
-  "hideTranscriptLabel": "ເຊື່ອງຖອດຄວາມ"
+  "hideTranscriptLabel": "ເຊື່ອງຖອດຄວາມ",
+  "youtubeConsentNotice": "ວິດີໂອນີ້ຫຼິ້ນຈາກ YouTube. Google ຈະໄດ້ຮັບທີ່ຢູ່ IP ຂອງທ່ານ ແລະ ອາດຈະຕັ້ງຄຸກກີ້.",
+  "youtubeConsentAllow": "ອະນຸຍາດ YouTube ສະເໝີ",
+  "consentChoicesLabel": "ຕົວເລືອກຄວາມເປັນສ່ວນຕົວ"
 }

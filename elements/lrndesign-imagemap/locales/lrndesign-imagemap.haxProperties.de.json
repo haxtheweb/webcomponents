@@ -18,6 +18,11 @@
       {
         "title": "Hotspot-Details",
         "description": "Die interaktiven Hotspots der Imagemap."
+      },
+      {
+        "property": "src",
+        "title": "Bild",
+        "description": "SVG-Bild, auf das die Hotspots zeigen."
       }
     ]
   }

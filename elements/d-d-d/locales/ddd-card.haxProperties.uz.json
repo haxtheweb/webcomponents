@@ -66,6 +66,16 @@
           "_top": "Yuqori oyna - _top",
           "_parent": "Ota oyna - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Gorizontal",
+        "description": "Rasmni matn ustiga emas, uning yoniga joylashtirish."
+      },
+      {
+        "property": "clickable",
+        "title": "Butun karta havola",
+        "description": "Butun kartani havolaga aylantirish va tugmani yashirish. Havola kerak."
       }
     ],
     "developer": [

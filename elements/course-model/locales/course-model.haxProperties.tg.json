@@ -31,12 +31,21 @@
       },
       {
         "title": "Минтақаи санҷиши дониш"
+      },
+      {
+        "property": "title",
+        "title": "Сарлавҳа",
+        "description": "Сарлавҳае, ки болои модели курс нишон дода мешавад."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Минтақаи логотип"
+      },
+      {
+        "slot": "logo",
+        "title": "Майдони логотип"
       }
     ]
   }

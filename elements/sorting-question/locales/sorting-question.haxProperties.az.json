@@ -22,6 +22,15 @@
       {
         "title": "Cavablar",
         "description": "Cavabların ardıcıllığı düzgün sıranı müəyyən edir."
+      },
+      {
+        "property": "layout",
+        "title": "Düzülüş",
+        "description": "Siyahı: cavablar sətirlərdə üst-üstə düzülür. Şəkil kartları: hər birində öz şəkli və əvvələ / sonraya köçürmə düymələri olan, sətirdən sətrə keçən kartlar cərgəsi.",
+        "options": {
+          "": "Siyahı",
+          "cards": "Şəkil kartları"
+        }
       }
     ],
     "advanced": [

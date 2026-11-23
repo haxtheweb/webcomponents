@@ -66,6 +66,16 @@
           "_top": "Foddaa olii - _top",
           "_parent": "Foddaa maatii - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ciisaa",
+        "description": "Suuraa barreeffama gubbaa irra osoo hin taane cinatti kaa'i."
+      },
+      {
+        "property": "clickable",
+        "title": "Kaardiin guutuun liinkii dha",
+        "description": "Kaardii guutuu liinkii godhiitii qabduu dhoksi. Liinkii barbaachisa."
       }
     ],
     "developer": [

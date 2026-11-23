@@ -42,5 +42,8 @@
   "belowLabel": "Ngezantsi",
   "leftLabel": "Ekhohlo",
   "rightLabel": "Ekunene",
-  "hideTranscriptLabel": "Fihla umbhalo ovela kwindlebe"
+  "hideTranscriptLabel": "Fihla umbhalo ovela kwindlebe",
+  "youtubeConsentNotice": "Le vidiyo idlala isuka ku-YouTube. I-Google iza kufumana idilesi yakho ye-IP kwaye inokubeka ii-cookie.",
+  "youtubeConsentAllow": "Soloko uvumela i-YouTube",
+  "consentChoicesLabel": "Ukhetho lwabucala"
 }

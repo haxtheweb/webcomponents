@@ -78,7 +78,10 @@
           "messy-hair": "Pelo revolto con cicatriz",
           "sparkle-selects": "Sparkle Selects (casco)",
           "saber-cats": "Saber Cats (casco)",
-          "future-traveler": "Future Traveler (casco)"
+          "future-traveler": "Future Traveler (casco)",
+          "pilgrim": "Chapeu de peregrino",
+          "bonnet": "Touca de peregrina",
+          "turkey": "Capucha de pavo"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (visitante)",
           "icers": "Icers (local)",
           "icers-away": "Icers (visitante)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Peregrino (neno)",
+          "pilgrim-girl": "Peregrina (nena)",
+          "turkey": "Pavo"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Chave inglesa",
           "hockey-stick-pink": "Pau de hóquei (rosa)",
           "hockey-stick-green": "Pau de hóquei (verde)",
-          "sparkle-flag": "Sparkle Selects (bandeira)"
+          "sparkle-flag": "Sparkle Selects (bandeira)",
+          "corn": "Mazaroca de millo",
+          "drumstick": "Coxa de pavo"
         }
       },
       {

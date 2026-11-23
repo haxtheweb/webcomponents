@@ -42,5 +42,8 @@
   "belowLabel": "Аста",
   "leftLabel": "Сул",
   "rightLabel": "Уң",
-  "hideTranscriptLabel": "Транскрипцияне яшерү"
+  "hideTranscriptLabel": "Транскрипцияне яшерү",
+  "youtubeConsentNotice": "Бу видео YouTube'тан уйнатыла. Google сезнең IP адресыгызны алачак һәм cookie файллары куярга мөмкин.",
+  "youtubeConsentAllow": "YouTube'ка һәрвакыт рөхсәт итү",
+  "consentChoicesLabel": "Хосусыйлык сайлаулары"
 }

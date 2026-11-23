@@ -31,11 +31,20 @@
       },
       {
         "title": "Oblasť kontroly vedomostí"
+      },
+      {
+        "property": "title",
+        "title": "Názov",
+        "description": "Nadpis zobrazený nad modelom kurzu."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Oblasť loga"
+      },
+      {
+        "slot": "logo",
         "title": "Oblasť loga"
       }
     ]

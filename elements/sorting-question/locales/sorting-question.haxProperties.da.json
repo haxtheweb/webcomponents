@@ -22,6 +22,15 @@
       {
         "title": "Svar",
         "description": "Svarenes rækkefølge definerer den rigtige sekvens."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Liste: svar stablet i rækker. Billedkort: en række kort, der ombrydes, hver med sit billede og knapper til at flytte tidligere / senere.",
+        "options": {
+          "": "Liste",
+          "cards": "Billedkort"
+        }
       }
     ],
     "advanced": [

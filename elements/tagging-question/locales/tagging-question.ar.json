@@ -45,8 +45,12 @@
   "hideDirections": "إخفاء التعليمات",
   "showRelatedContent": "عرض المحتوى ذي الصلة",
   "hideRelatedContent": "إخفاء المحتوى ذي الصلة",
+  "notAttempted": "لم تتم المحاولة",
   "yourTags": "إجابتك",
   "availableTags": "الوسوم المتاحة للاختيار",
   "dropTagsHere": "اختر الوسوم أدناه أو اسحبها إلى هنا",
-  "notAttempted": "لم تتم المحاولة"
+  "addTag": "إضافة {tag}",
+  "removeTag": "إزالة {tag}",
+  "tagAdded": "تمت إضافة {tag} إلى إجابتك",
+  "tagRemoved": "تمت إزالة {tag} من إجابتك"
 }

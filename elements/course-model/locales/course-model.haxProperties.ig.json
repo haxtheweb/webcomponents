@@ -31,12 +31,21 @@
       },
       {
         "title": "Mpaghara nyocha ihe ọmụma"
+      },
+      {
+        "property": "title",
+        "title": "Aha",
+        "description": "Isiokwu egosiri n'elu ụdị nkuzi."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Mpaghara logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Ebe akara ngosi"
       }
     ]
   }

@@ -73,5 +73,6 @@
   "padStart": "Start: פרסום הדף שלכם",
   "padB": "B: החזרת הבלוק האחרון",
   "padA": "A: תפיסת בלוק",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "הרימו את בקר המשחק"
 }

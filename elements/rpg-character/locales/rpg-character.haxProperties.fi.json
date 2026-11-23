@@ -78,7 +78,10 @@
           "messy-hair": "Sotkuinen tukka ja arpi",
           "sparkle-selects": "Sparkle Selects (kypärä)",
           "saber-cats": "Saber Cats (kypärä)",
-          "future-traveler": "Future Traveler (kypärä)"
+          "future-traveler": "Future Traveler (kypärä)",
+          "pilgrim": "Pyhiinvaeltajan hattu",
+          "bonnet": "Pyhiinvaeltajan myssy",
+          "turkey": "Kalkkunahuppu"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (vieras)",
           "icers": "Icers (koti)",
           "icers-away": "Icers (vieras)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pyhiinvaeltaja (poika)",
+          "pilgrim-girl": "Pyhiinvaeltaja (tyttö)",
+          "turkey": "Kalkkuna"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Jakoavain",
           "hockey-stick-pink": "Jääkiekkomaila (pinkki)",
           "hockey-stick-green": "Jääkiekkomaila (vihreä)",
-          "sparkle-flag": "Sparkle Selects (lippu)"
+          "sparkle-flag": "Sparkle Selects (lippu)",
+          "corn": "Maissintähkä",
+          "drumstick": "Kalkkunankoipi"
         }
       },
       {

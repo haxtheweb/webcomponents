@@ -31,11 +31,20 @@
       },
       {
         "title": "Gebied voor kennischeck"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kop die boven het cursusmodel wordt getoond."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logogebied"
+      },
+      {
+        "slot": "logo",
         "title": "Logogebied"
       }
     ]

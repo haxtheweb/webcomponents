@@ -42,5 +42,8 @@
   "belowLabel": "Poshtë",
   "leftLabel": "Majtas",
   "rightLabel": "Djathtas",
-  "hideTranscriptLabel": "Fshih transkriptin"
+  "hideTranscriptLabel": "Fshih transkriptin",
+  "youtubeConsentNotice": "Kjo video luhet nga YouTube. Google do të marrë adresën tuaj IP dhe mund të vendosë cookies.",
+  "youtubeConsentAllow": "Lejo gjithmonë YouTube",
+  "consentChoicesLabel": "Zgjedhjet e privatësisë"
 }

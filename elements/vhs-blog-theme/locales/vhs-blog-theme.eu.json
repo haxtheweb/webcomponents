@@ -73,5 +73,6 @@
   "padStart": "Start: argitaratu zure orria",
   "padB": "B: itzuli azken blokea",
   "padA": "A: hartu bloke bat",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Hartu jokoaren kontrolagailua"
 }

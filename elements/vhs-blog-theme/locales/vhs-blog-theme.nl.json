@@ -73,5 +73,6 @@
   "padStart": "Start: publiceer je pagina",
   "padB": "B: neem het laatste blok terug",
   "padA": "A: pak een blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Pak de gamecontroller op"
 }

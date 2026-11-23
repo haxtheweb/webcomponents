@@ -66,6 +66,16 @@
           "_top": "Hwindo repamusoro - _top",
           "_parent": "Hwindo remubereki - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Yakatambarara",
+        "description": "Isa mufananidzo padivi pemavara panzvimbo pekuuisa pamusoro."
+      },
+      {
+        "property": "clickable",
+        "title": "Kadhi rese ndiyo link",
+        "description": "Ita kuti kadhi rese rive link uye uvanze bhatani. Rinoda link."
       }
     ],
     "developer": [

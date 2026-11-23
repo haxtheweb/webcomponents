@@ -78,7 +78,10 @@
           "messy-hair": "K'irisapa ch'arpu chukcha",
           "sparkle-selects": "Sparkle Selects (uma pakana)",
           "saber-cats": "Saber Cats (uma pakana)",
-          "future-traveler": "Future Traveler (uma pakana)"
+          "future-traveler": "Future Traveler (uma pakana)",
+          "pilgrim": "Peregrinop ch'ukun",
+          "bonnet": "Peregrina warmip ch'ukun",
+          "turkey": "Pavo capucha"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (hawa)",
           "icers": "Icers (wasi)",
           "icers-away": "Icers (hawa)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Peregrino (wayna)",
+          "pilgrim-girl": "Peregrina (sipas)",
+          "turkey": "Pavo"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Llave",
           "hockey-stick-pink": "Hockey k'aspi (puka q'illu)",
           "hockey-stick-green": "Hockey k'aspi (q'umir)",
-          "sparkle-flag": "Sparkle Selects (bandera)"
+          "sparkle-flag": "Sparkle Selects (bandera)",
+          "corn": "Chuqllu",
+          "drumstick": "Pavop chakin"
         }
       },
       {

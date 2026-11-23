@@ -6,6 +6,8 @@
   "tryAbout": "Përdor HAX tani në këtë skedë të shfletuesit. Asgjë për të instaluar.",
   "learn": "Mëso",
   "learnAbout": "Udhëzues që mësojnë HAX një rrjedhë në një kohë.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: ku studentët dhe zhvilluesit fillestarë mësojnë duke publikuar punë të vërtetë HAX.",
   "elements": "Web components",
   "elementsAbout": "Çdo element HAX, me demonstrime të drejtpërdrejta dhe udhëzime.",
   "cloud": "PRAW",

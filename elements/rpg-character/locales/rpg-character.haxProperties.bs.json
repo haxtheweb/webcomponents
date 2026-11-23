@@ -78,7 +78,10 @@
           "messy-hair": "Raščupana kosa s ožiljkom",
           "sparkle-selects": "Sparkle Selects (kaciga)",
           "saber-cats": "Saber Cats (kaciga)",
-          "future-traveler": "Future Traveler (kaciga)"
+          "future-traveler": "Future Traveler (kaciga)",
+          "pilgrim": "Hodočasnički šešir",
+          "bonnet": "Hodočasnička kapica",
+          "turkey": "Kapuljača ćurke"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (gostujući)",
           "icers": "Icers (domaći)",
           "icers-away": "Icers (gostujući)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Hodočasnik (dječak)",
+          "pilgrim-girl": "Hodočasnica (djevojčica)",
+          "turkey": "Ćurka"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Francuski ključ",
           "hockey-stick-pink": "Hokejaška palica (roza)",
           "hockey-stick-green": "Hokejaška palica (zeleni)",
-          "sparkle-flag": "Sparkle Selects (zastava)"
+          "sparkle-flag": "Sparkle Selects (zastava)",
+          "corn": "Klip kukuruza",
+          "drumstick": "Ćureći batak"
         }
       },
       {

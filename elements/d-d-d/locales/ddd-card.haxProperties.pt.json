@@ -66,6 +66,16 @@
           "_top": "Janela superior - _top",
           "_parent": "Janela pai - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Coloca a imagem ao lado do texto em vez de acima dele."
+      },
+      {
+        "property": "clickable",
+        "title": "O cartão inteiro é o link",
+        "description": "Torna o cartão inteiro o link e oculta o botão. Requer um link."
       }
     ],
     "developer": [

@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Frá Wikipedia",
   "readFullArticle": "Lestu alla greinina á Wikipedia",
-  "reading": "Lestur"
+  "reading": "Lestur",
+  "couldNotLoad": "Ekki tókst að hlaða greininni. Notaðu tengilinn hér fyrir ofan til að lesa hana á Wikipedia."
 }

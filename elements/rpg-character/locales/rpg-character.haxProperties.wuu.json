@@ -78,7 +78,10 @@
           "messy-hair": "带疤乱头发",
           "sparkle-selects": "Sparkle Selects（头盔）",
           "saber-cats": "Saber Cats（头盔）",
-          "future-traveler": "Future Traveler（头盔）"
+          "future-traveler": "Future Traveler（头盔）",
+          "pilgrim": "清教徒帽子",
+          "bonnet": "清教徒软帽",
+          "turkey": "火鸡头套"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats（客场）",
           "icers": "Icers（主场）",
           "icers-away": "Icers（客场）",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "清教徒（男小囡）",
+          "pilgrim-girl": "清教徒（女小囡）",
+          "turkey": "火鸡"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "扳手",
           "hockey-stick-pink": "冰球杆（粉红）",
           "hockey-stick-green": "冰球杆（绿）",
-          "sparkle-flag": "Sparkle Selects（旗子）"
+          "sparkle-flag": "Sparkle Selects（旗子）",
+          "corn": "玉米棒头",
+          "drumstick": "火鸡腿"
         }
       },
       {

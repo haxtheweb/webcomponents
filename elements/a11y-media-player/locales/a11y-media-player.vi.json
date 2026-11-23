@@ -42,5 +42,8 @@
   "belowLabel": "Bên dưới",
   "leftLabel": "Trái",
   "rightLabel": "Phải",
-  "hideTranscriptLabel": "Ẩn bản ghi"
+  "hideTranscriptLabel": "Ẩn bản ghi",
+  "youtubeConsentNotice": "Video này phát từ YouTube. Google sẽ nhận địa chỉ IP của bạn và có thể đặt cookie.",
+  "youtubeConsentAllow": "Luôn cho phép YouTube",
+  "consentChoicesLabel": "Lựa chọn quyền riêng tư"
 }

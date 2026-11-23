@@ -45,8 +45,12 @@
   "hideDirections": "Oanwizings ferbergje",
   "showRelatedContent": "Besibbe ynhâld toane",
   "hideRelatedContent": "Besibbe ynhâld ferbergje",
+  "notAttempted": "Net besocht",
   "yourTags": "Jo antwurd",
   "availableTags": "Tags om út te kiezen",
   "dropTagsHere": "Kies hjirûnder tags of sleep se hjirhinne",
-  "notAttempted": "Net besocht"
+  "addTag": "{tag} tafoegje",
+  "removeTag": "{tag} fuortsmite",
+  "tagAdded": "{tag} oan jo antwurd tafoege",
+  "tagRemoved": "{tag} út jo antwurd fuorthelle"
 }

@@ -73,5 +73,6 @@
   "padStart": "Start: paskelbti puslapį",
   "padB": "B: grąžinti paskutinį bloką",
   "padA": "A: griebti bloką",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Paimti žaidimų pultelį"
 }

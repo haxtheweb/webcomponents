@@ -78,7 +78,10 @@
           "messy-hair": "ಗಾಯದ ಗುರುತಿನ ಕೆದರಿದ ಕೂದಲು",
           "sparkle-selects": "Sparkle Selects (ಹೆಲ್ಮೆಟ್)",
           "saber-cats": "Saber Cats (ಹೆಲ್ಮೆಟ್)",
-          "future-traveler": "Future Traveler (ಹೆಲ್ಮೆಟ್)"
+          "future-traveler": "Future Traveler (ಹೆಲ್ಮೆಟ್)",
+          "pilgrim": "ಯಾತ್ರಿಕರ ಟೋಪಿ",
+          "bonnet": "ಯಾತ್ರಿಕರ ಬಾನೆಟ್",
+          "turkey": "ಟರ್ಕಿ ಹುಡ್"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ಅವೇ)",
           "icers": "Icers (ಹೋಮ್)",
           "icers-away": "Icers (ಅವೇ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "ಯಾತ್ರಿಕ (ಹುಡುಗ)",
+          "pilgrim-girl": "ಯಾತ್ರಿಕ (ಹುಡುಗಿ)",
+          "turkey": "ಟರ್ಕಿ ಕೋಳಿ"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ಸ್ಪ್ಯಾನರ್",
           "hockey-stick-pink": "ಹಾಕಿ ಸ್ಟಿಕ್ (ಗುಲಾಬಿ)",
           "hockey-stick-green": "ಹಾಕಿ ಸ್ಟಿಕ್ (ಹಸಿರು)",
-          "sparkle-flag": "Sparkle Selects (ಧ್ವಜ)"
+          "sparkle-flag": "Sparkle Selects (ಧ್ವಜ)",
+          "corn": "ಜೋಳದ ತೆನೆ",
+          "drumstick": "ಟರ್ಕಿ ಕಾಲು"
         }
       },
       {

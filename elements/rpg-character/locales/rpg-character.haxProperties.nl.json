@@ -78,7 +78,10 @@
           "messy-hair": "Warrig haar met litteken",
           "sparkle-selects": "Sparkle Selects (helm)",
           "saber-cats": "Saber Cats (helm)",
-          "future-traveler": "Future Traveler (helm)"
+          "future-traveler": "Future Traveler (helm)",
+          "pilgrim": "Pelgrimshoed",
+          "bonnet": "Pelgrimsmuts",
+          "turkey": "Kalkoenkap"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (uit)",
           "icers": "Icers (thuis)",
           "icers-away": "Icers (uit)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pelgrim (jongen)",
+          "pilgrim-girl": "Pelgrim (meisje)",
+          "turkey": "Kalkoen"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Moersleutel",
           "hockey-stick-pink": "Hockeystick (roze)",
           "hockey-stick-green": "Hockeystick (groen)",
-          "sparkle-flag": "Sparkle Selects (vlag)"
+          "sparkle-flag": "Sparkle Selects (vlag)",
+          "corn": "Maïskolf",
+          "drumstick": "Kalkoenpoot"
         }
       },
       {

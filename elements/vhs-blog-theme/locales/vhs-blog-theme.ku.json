@@ -73,5 +73,6 @@
   "padStart": "Start: rûpela xwe biweşîne",
   "padB": "B: bloka dawî paşve bibe",
   "padA": "A: blokekê bigire",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Kontrolera lîstikê hilde"
 }

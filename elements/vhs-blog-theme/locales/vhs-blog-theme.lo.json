@@ -73,5 +73,6 @@
   "padStart": "Start: ເຜີຍແຜ່ໜ້າຂອງທ່ານ",
   "padB": "B: ເອົາບລັອກສຸດທ້າຍຄືນ",
   "padA": "A: ຈັບບລັອກ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "ຈັບເອົາຈອຍເກມ"
 }

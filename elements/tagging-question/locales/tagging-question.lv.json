@@ -45,8 +45,12 @@
   "hideDirections": "Paslēpt norādījumus",
   "showRelatedContent": "Rādīt saistīto saturu",
   "hideRelatedContent": "Paslēpt saistīto saturu",
+  "notAttempted": "Nav mēģināts",
   "yourTags": "Jūsu atbilde",
   "availableTags": "Izvēlei pieejamie tagi",
   "dropTagsHere": "Izvēlieties tagus zemāk vai velciet tos šeit",
-  "notAttempted": "Nav mēģināts"
+  "addTag": "Pievienot {tag}",
+  "removeTag": "Noņemt {tag}",
+  "tagAdded": "{tag} pievienots jūsu atbildei",
+  "tagRemoved": "{tag} noņemts no jūsu atbildes"
 }

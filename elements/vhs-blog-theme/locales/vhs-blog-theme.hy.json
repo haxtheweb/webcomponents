@@ -73,5 +73,6 @@
   "padStart": "Start՝ հրապարակել ձեր էջը",
   "padB": "B՝ հետ վերցնել վերջին բլոկը",
   "padA": "A՝ վերցնել բլոկ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Վերցնել խաղային կառավարիչը"
 }

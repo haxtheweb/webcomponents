@@ -78,7 +78,10 @@
           "messy-hair": "Bvudzi rakakorobhodzwa rine vanga",
           "sparkle-selects": "Sparkle Selects (ngowani)",
           "saber-cats": "Saber Cats (ngowani)",
-          "future-traveler": "Future Traveler (ngowani)"
+          "future-traveler": "Future Traveler (ngowani)",
+          "pilgrim": "Ngowani yemufambi",
+          "bonnet": "Bhoneti yemufambi",
+          "turkey": "Hudhi yegarukuku"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (kunze)",
           "icers": "Icers (kumba)",
           "icers-away": "Icers (kunze)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Mufambi (mukomana)",
+          "pilgrim-girl": "Mufambi (musikana)",
+          "turkey": "Garukuku"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Sipana",
           "hockey-stick-pink": "Tsvimbo yehokey (pinki)",
           "hockey-stick-green": "Tsvimbo yehokey (girinhi)",
-          "sparkle-flag": "Sparkle Selects (mureza)"
+          "sparkle-flag": "Sparkle Selects (mureza)",
+          "corn": "Guri rechibage",
+          "drumstick": "Gumbo regarukuku"
         }
       },
       {

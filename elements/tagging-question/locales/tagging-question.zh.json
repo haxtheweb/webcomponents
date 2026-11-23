@@ -45,8 +45,12 @@
   "hideDirections": "隐藏说明",
   "showRelatedContent": "显示相关内容",
   "hideRelatedContent": "隐藏相关内容",
+  "notAttempted": "未尝试",
   "yourTags": "你的答案",
   "availableTags": "可选标签",
   "dropTagsHere": "在下方选择标签或将其拖到此处",
-  "notAttempted": "未尝试"
+  "addTag": "添加 {tag}",
+  "removeTag": "移除 {tag}",
+  "tagAdded": "已将 {tag} 添加到你的答案",
+  "tagRemoved": "已从你的答案中移除 {tag}"
 }

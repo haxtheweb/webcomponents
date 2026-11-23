@@ -66,6 +66,16 @@
           "_top": "Gornji prozor - _top",
           "_parent": "Roditeljski prozor - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodoravno",
+        "description": "Postavite sliku pokraj teksta umjesto iznad njega."
+      },
+      {
+        "property": "clickable",
+        "title": "Cijela kartica je poveznica",
+        "description": "Cijela kartica postaje poveznica, a gumb se skriva. Potrebna je poveznica."
       }
     ],
     "developer": [

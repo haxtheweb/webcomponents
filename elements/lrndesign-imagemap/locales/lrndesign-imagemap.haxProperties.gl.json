@@ -18,6 +18,11 @@
       {
         "title": "Detalles dos puntos clave",
         "description": "Os puntos clave interactivos do mapa de imaxe."
+      },
+      {
+        "property": "src",
+        "title": "Imaxe",
+        "description": "Imaxe SVG á que apuntan os puntos activos."
       }
     ]
   }

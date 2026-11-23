@@ -42,5 +42,8 @@
   "belowLabel": "Debajo",
   "leftLabel": "Izquierda",
   "rightLabel": "Derecha",
-  "hideTranscriptLabel": "Ocultar transcripción"
+  "hideTranscriptLabel": "Ocultar transcripción",
+  "youtubeConsentNotice": "Este video se reproduce desde YouTube. Google recibirá tu dirección IP y puede guardar cookies.",
+  "youtubeConsentAllow": "Permitir siempre YouTube",
+  "consentChoicesLabel": "Opciones de privacidad"
 }

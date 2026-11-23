@@ -45,8 +45,12 @@
   "hideDirections": "Ukryj instrukcję",
   "showRelatedContent": "Pokaż powiązane treści",
   "hideRelatedContent": "Ukryj powiązane treści",
+  "notAttempted": "Nie podjęto próby",
   "yourTags": "Twoja odpowiedź",
   "availableTags": "Dostępne tagi",
   "dropTagsHere": "Wybierz poniższe tagi lub przeciągnij je tutaj",
-  "notAttempted": "Nie podjęto próby"
+  "addTag": "Dodaj {tag}",
+  "removeTag": "Usuń {tag}",
+  "tagAdded": "Dodano {tag} do Twojej odpowiedzi",
+  "tagRemoved": "Usunięto {tag} z Twojej odpowiedzi"
 }

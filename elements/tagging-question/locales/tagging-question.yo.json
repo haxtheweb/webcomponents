@@ -45,8 +45,12 @@
   "hideDirections": "Fi ìtọ́sọ́nà pamọ́",
   "showRelatedContent": "Fi àkóónú tó jọmọ́ hàn",
   "hideRelatedContent": "Fi àkóónú tó jọmọ́ pamọ́",
+  "notAttempted": "A kò tíì gbìyànjú",
   "yourTags": "Ìdáhùn rẹ",
   "availableTags": "Àwọn àmì láti yàn",
   "dropTagsHere": "Yan àwọn àmì ní ìsàlẹ̀ tàbí fà wọ́n síbí",
-  "notAttempted": "A kò tíì gbìyànjú"
+  "addTag": "Ṣàfikún {tag}",
+  "removeTag": "Yọ {tag} kúrò",
+  "tagAdded": "A ti ṣàfikún {tag} sí ìdáhùn rẹ",
+  "tagRemoved": "A ti yọ {tag} kúrò nínú ìdáhùn rẹ"
 }

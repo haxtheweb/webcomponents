@@ -1,0 +1,6 @@
+{
+  "grades": "Atzīmes",
+  "gradeLetter": "Atzīme {letter}",
+  "score": "Punkti",
+  "scoreFor": "Punkti par {label}"
+}

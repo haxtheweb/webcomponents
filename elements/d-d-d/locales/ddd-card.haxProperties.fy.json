@@ -66,6 +66,16 @@
           "_top": "Boppeste finster - _top",
           "_parent": "Alderfinster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontaal",
+        "description": "Set de ôfbylding neist de tekst yn stee fan derboppe."
+      },
+      {
+        "property": "clickable",
+        "title": "De hiele kaart is de keppeling",
+        "description": "Meitsje de hiele kaart de keppeling en ferstopje de knop. Hat in keppeling nedich."
       }
     ],
     "developer": [

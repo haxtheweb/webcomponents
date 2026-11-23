@@ -66,6 +66,16 @@
           "_top": "Fuinneog bharr - _top",
           "_parent": "Fuinneog thuismitheora - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Cothrománach",
+        "description": "Cuir an íomhá in aice leis an téacs in ionad os a chionn."
+      },
+      {
+        "property": "clickable",
+        "title": "Is é an cárta iomlán an nasc",
+        "description": "Déan nasc den chárta iomlán agus folaigh an cnaipe. Teastaíonn nasc."
       }
     ],
     "developer": [

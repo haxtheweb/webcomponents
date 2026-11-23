@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, egy oktatóanyag",
           "try": "browser.hax.cloud, próbálja ki",
           "elements": "webcomponents.hax.cloud, egy blokk",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

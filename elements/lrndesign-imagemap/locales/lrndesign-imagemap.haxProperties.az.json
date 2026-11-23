@@ -18,6 +18,11 @@
       {
         "title": "Aktiv nöqtə təfərrüatları",
         "description": "Şəkil xəritəsindəki interaktiv aktiv nöqtələr."
+      },
+      {
+        "property": "src",
+        "title": "Şəkil",
+        "description": "Aktiv nöqtələrin göstərdiyi SVG şəkli."
       }
     ]
   }

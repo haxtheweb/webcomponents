@@ -42,5 +42,8 @@
   "belowLabel": "താഴെ",
   "leftLabel": "ഇടത്",
   "rightLabel": "വലത്",
-  "hideTranscriptLabel": "ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക"
+  "hideTranscriptLabel": "ട്രാൻസ്ക്രിപ്റ്റ് മറയ്ക്കുക",
+  "youtubeConsentNotice": "ഈ വീഡിയോ YouTube-ൽ നിന്നാണ് പ്ലേ ചെയ്യുന്നത്. Google നിങ്ങളുടെ IP വിലാസം സ്വീകരിക്കുകയും കുക്കികൾ സജ്ജമാക്കുകയും ചെയ്തേക്കാം.",
+  "youtubeConsentAllow": "YouTube എപ്പോഴും അനുവദിക്കുക",
+  "consentChoicesLabel": "സ്വകാര്യതാ തിരഞ്ഞെടുപ്പുകൾ"
 }

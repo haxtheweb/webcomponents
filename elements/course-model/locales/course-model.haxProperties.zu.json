@@ -31,11 +31,20 @@
       },
       {
         "title": "Indawo Yokuhlolwa Kolwazi"
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa ngenhla kwemodeli yesifundo."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Indawo yelogo"
+      },
+      {
+        "slot": "logo",
         "title": "Indawo yelogo"
       }
     ]

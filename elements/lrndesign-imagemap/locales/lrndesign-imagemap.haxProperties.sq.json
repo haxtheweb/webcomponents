@@ -18,6 +18,11 @@
       {
         "title": "Detajet e pikave",
         "description": "Pikat interaktive në hartën e imazhit."
+      },
+      {
+        "property": "src",
+        "title": "Imazhi",
+        "description": "Imazhi SVG ku tregojnë pikat aktive."
       }
     ]
   }

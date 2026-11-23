@@ -18,6 +18,11 @@
       {
         "title": "Aktiivsete kohtade üksikasjad",
         "description": "Pildikaardi interaktiivsed aktiivsed kohad."
+      },
+      {
+        "property": "src",
+        "title": "Pilt",
+        "description": "SVG-pilt, millele kuumkohad osutavad."
       }
     ]
   }

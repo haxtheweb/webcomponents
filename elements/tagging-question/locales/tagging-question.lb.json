@@ -45,8 +45,12 @@
   "hideDirections": "Instruktiounen verstoppen",
   "showRelatedContent": "Verbonnen Inhalter weisen",
   "hideRelatedContent": "Verbonnen Inhalter verstoppen",
+  "notAttempted": "Net probéiert",
   "yourTags": "Är Äntwert",
   "availableTags": "Tags zur Auswiel",
   "dropTagsHere": "Wielt hei ënnen Tags aus oder zitt se heihin",
-  "notAttempted": "Net probéiert"
+  "addTag": "{tag} derbäisetzen",
+  "removeTag": "{tag} ewechhuelen",
+  "tagAdded": "{tag} bei Är Äntwert derbäigesat",
+  "tagRemoved": "{tag} aus Ärer Äntwert ewechgeholl"
 }

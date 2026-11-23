@@ -42,5 +42,8 @@
   "belowLabel": "Darunter",
   "leftLabel": "Links",
   "rightLabel": "Rechts",
-  "hideTranscriptLabel": "Transkript ausblenden"
+  "hideTranscriptLabel": "Transkript ausblenden",
+  "youtubeConsentNotice": "Dieses Video wird von YouTube abgespielt. Google erhält deine IP-Adresse und kann Cookies setzen.",
+  "youtubeConsentAllow": "YouTube immer erlauben",
+  "consentChoicesLabel": "Datenschutzoptionen"
 }

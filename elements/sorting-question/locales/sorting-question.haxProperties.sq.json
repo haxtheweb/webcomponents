@@ -22,6 +22,15 @@
       {
         "title": "Përgjigjet",
         "description": "Rendi i përgjigjeve përcakton sekuencën e saktë."
+      },
+      {
+        "property": "layout",
+        "title": "Paraqitja",
+        "description": "Listë: përgjigjet radhiten në rreshta. Karta me imazhe: një rresht kartash që kalon në rresht të ri, secila me imazhin e saj dhe butonat për ta lëvizur më përpara / më pas.",
+        "options": {
+          "": "Listë",
+          "cards": "Karta me imazhe"
+        }
       }
     ],
     "advanced": [

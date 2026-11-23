@@ -18,6 +18,11 @@
       {
         "title": "Podrobnosti aktivních bodů",
         "description": "Interaktivní aktivní body na obrázkové mapě."
+      },
+      {
+        "property": "src",
+        "title": "Obrázek",
+        "description": "Obrázek SVG, na který odkazují aktivní body."
       }
     ]
   }

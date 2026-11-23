@@ -22,6 +22,15 @@
       {
         "title": "Jawapan",
         "description": "Susunan jawapan menentukan urutan yang betul."
+      },
+      {
+        "property": "layout",
+        "title": "Susun atur",
+        "description": "Senarai: jawapan disusun dalam baris. Kad imej: sebaris kad yang berbalut, setiap satu dengan imejnya dan butang alih lebih awal / kemudian.",
+        "options": {
+          "": "Senarai",
+          "cards": "Kad imej"
+        }
       }
     ],
     "advanced": [

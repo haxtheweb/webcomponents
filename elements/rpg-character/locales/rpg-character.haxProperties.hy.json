@@ -78,7 +78,10 @@
           "messy-hair": "Խառնված մազեր սպիով",
           "sparkle-selects": "Sparkle Selects (սաղավարտ)",
           "saber-cats": "Saber Cats (սաղավարտ)",
-          "future-traveler": "Future Traveler (սաղավարտ)"
+          "future-traveler": "Future Traveler (սաղավարտ)",
+          "pilgrim": "Ուխտավորի գլխարկ",
+          "bonnet": "Ուխտավորի գլխանոց",
+          "turkey": "Հնդկահավի գլխանոց"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (արտագնա)",
           "icers": "Icers (տնային)",
           "icers-away": "Icers (արտագնա)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Ուխտավոր (տղա)",
+          "pilgrim-girl": "Ուխտավոր (աղջիկ)",
+          "turkey": "Հնդկահավ"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Պտուտակաբանալի",
           "hockey-stick-pink": "Հոկեյի մահակ (վարդագույն)",
           "hockey-stick-green": "Հոկեյի մահակ (կանաչ)",
-          "sparkle-flag": "Sparkle Selects (դրոշ)"
+          "sparkle-flag": "Sparkle Selects (դրոշ)",
+          "corn": "Եգիպտացորենի կողր",
+          "drumstick": "Հնդկահավի բուդ"
         }
       },
       {

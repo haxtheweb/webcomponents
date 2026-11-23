@@ -18,6 +18,11 @@
       {
         "title": "Podrobnosti vročih točk",
         "description": "Interaktivne vroče točke na slikovnem zemljevidu."
+      },
+      {
+        "property": "src",
+        "title": "Slika",
+        "description": "Slika SVG, na katero kažejo aktivne točke."
       }
     ]
   }

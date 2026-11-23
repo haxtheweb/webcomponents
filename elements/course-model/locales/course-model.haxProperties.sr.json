@@ -31,12 +31,21 @@
       },
       {
         "title": "Област провере знања"
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов приказан изнад модела курса."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Област логотипа"
+      },
+      {
+        "slot": "logo",
+        "title": "Простор за лого"
       }
     ]
   }

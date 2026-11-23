@@ -45,8 +45,12 @@
   "hideDirections": "Zoo ntụziaka",
   "showRelatedContent": "Gosi ọdịnaya dị ya nso",
   "hideRelatedContent": "Zoo ọdịnaya dị ya nso",
+  "notAttempted": "Anwalebeghị",
   "yourTags": "Azịza gị",
   "availableTags": "Akara ị ga-ahọrọ",
   "dropTagsHere": "Họrọ akara dị n'okpuru ma ọ bụ dọkpụrụ ha ebe a",
-  "notAttempted": "Anwalebeghị"
+  "addTag": "Tinye {tag}",
+  "removeTag": "Wepụ {tag}",
+  "tagAdded": "Agbakwunyere {tag} na azịza gị",
+  "tagRemoved": "Ewepụrụ {tag} na azịza gị"
 }

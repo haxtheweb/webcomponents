@@ -22,6 +22,15 @@
       {
         "title": "Odgovori",
         "description": "Redoslijed odgovora određuje točan slijed."
+      },
+      {
+        "property": "layout",
+        "title": "Raspored",
+        "description": "Popis: odgovori složeni u retke. Kartice sa slikama: niz kartica koji se prelama, svaka sa svojom slikom i gumbima za pomicanje ranije / kasnije.",
+        "options": {
+          "": "Popis",
+          "cards": "Kartice sa slikama"
+        }
       }
     ],
     "advanced": [

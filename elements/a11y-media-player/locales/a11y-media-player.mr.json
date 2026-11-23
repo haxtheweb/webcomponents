@@ -42,5 +42,8 @@
   "belowLabel": "खाली",
   "leftLabel": "डावीकडे",
   "rightLabel": "उजवीकडे",
-  "hideTranscriptLabel": "प्रतिलेख लपवा"
+  "hideTranscriptLabel": "प्रतिलेख लपवा",
+  "youtubeConsentNotice": "हा व्हिडिओ YouTube वरून चालतो. Google ला तुमचा IP पत्ता मिळेल आणि ते कुकीज सेट करू शकते.",
+  "youtubeConsentAllow": "YouTube ला नेहमी परवानगी द्या",
+  "consentChoicesLabel": "गोपनीयता पर्याय"
 }

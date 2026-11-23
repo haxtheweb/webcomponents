@@ -18,6 +18,11 @@
       {
         "title": "Etkin nokta ayrıntıları",
         "description": "Görsel haritadaki etkileşimli etkin noktalar."
+      },
+      {
+        "property": "src",
+        "title": "Görsel",
+        "description": "Etkin noktaların işaret ettiği SVG görseli."
       }
     ]
   }

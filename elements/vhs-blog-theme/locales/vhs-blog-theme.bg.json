@@ -73,5 +73,6 @@
   "padStart": "Start: публикувай страницата си",
   "padB": "B: върни последния блок",
   "padA": "A: грабни блок",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Вземи контролера за игри"
 }

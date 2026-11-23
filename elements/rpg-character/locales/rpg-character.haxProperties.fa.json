@@ -78,7 +78,10 @@
           "messy-hair": "موی آشفته با جای زخم",
           "sparkle-selects": "Sparkle Selects (کلاه ایمنی)",
           "saber-cats": "Saber Cats (کلاه ایمنی)",
-          "future-traveler": "Future Traveler (کلاه ایمنی)"
+          "future-traveler": "Future Traveler (کلاه ایمنی)",
+          "pilgrim": "کلاه زائر",
+          "bonnet": "کلاه‌بند زائر",
+          "turkey": "کلاه بوقلمونی"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (مهمان)",
           "icers": "Icers (خانگی)",
           "icers-away": "Icers (مهمان)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "زائر (پسر)",
+          "pilgrim-girl": "زائر (دختر)",
+          "turkey": "بوقلمون"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "آچار",
           "hockey-stick-pink": "چوب هاکی (صورتی)",
           "hockey-stick-green": "چوب هاکی (سبز)",
-          "sparkle-flag": "Sparkle Selects (پرچم)"
+          "sparkle-flag": "Sparkle Selects (پرچم)",
+          "corn": "بلال",
+          "drumstick": "ران بوقلمون"
         }
       },
       {

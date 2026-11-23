@@ -78,7 +78,10 @@
           "messy-hair": "Rozcuchané vlasy s jizvou",
           "sparkle-selects": "Sparkle Selects (helma)",
           "saber-cats": "Saber Cats (helma)",
-          "future-traveler": "Future Traveler (helma)"
+          "future-traveler": "Future Traveler (helma)",
+          "pilgrim": "Poutnický klobouk",
+          "bonnet": "Poutnický čepec",
+          "turkey": "Krůtí kapuce"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (venkovní)",
           "icers": "Icers (domácí)",
           "icers-away": "Icers (venkovní)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Poutník (chlapec)",
+          "pilgrim-girl": "Poutnice (dívka)",
+          "turkey": "Krocan"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Francouzský klíč",
           "hockey-stick-pink": "Hokejka (růžová)",
           "hockey-stick-green": "Hokejka (zelený)",
-          "sparkle-flag": "Sparkle Selects (vlajka)"
+          "sparkle-flag": "Sparkle Selects (vlajka)",
+          "corn": "Kukuřičný klas",
+          "drumstick": "Krůtí stehno"
         }
       },
       {

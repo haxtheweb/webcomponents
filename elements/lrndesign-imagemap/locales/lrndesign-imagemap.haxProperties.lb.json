@@ -18,6 +18,11 @@
       {
         "title": "Detailer vun den Hotspots",
         "description": "Déi interaktiv Hotspots op der Image-Map."
+      },
+      {
+        "property": "src",
+        "title": "Bild",
+        "description": "SVG-Bild, op dat d'Hotspots weisen."
       }
     ]
   }

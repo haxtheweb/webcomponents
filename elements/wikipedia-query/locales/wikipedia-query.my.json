@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia မှ",
   "readFullArticle": "Wikipedia တွင် ဆောင်းပါးအပြည့်အစုံ ဖတ်ပါ",
-  "reading": "ဖတ်ရှုခြင်း"
+  "reading": "ဖတ်ရှုခြင်း",
+  "couldNotLoad": "ဆောင်းပါးကို ဖွင့်၍ မရပါ။ Wikipedia တွင် ဖတ်ရန် အပေါ်ရှိ လင့်ခ်ကို သုံးပါ။"
 }

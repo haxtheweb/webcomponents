@@ -45,8 +45,12 @@
   "hideDirections": "ہدایتاں لکاؤ",
   "showRelatedContent": "متعلقہ مواد ویکھو",
   "hideRelatedContent": "متعلقہ مواد لکاؤ",
+  "notAttempted": "کوشش نئیں کیتی گئی",
   "yourTags": "تہاڈا جواب",
   "availableTags": "چنن لئی ٹیگ",
   "dropTagsHere": "تھلے ٹیگ چنو یا ایتھے گھسیٹو",
-  "notAttempted": "کوشش نئیں کیتی گئی"
+  "addTag": "{tag} جوڑو",
+  "removeTag": "{tag} ہٹاؤ",
+  "tagAdded": "{tag} تہاڈے جواب وچ جوڑیا گیا",
+  "tagRemoved": "{tag} تہاڈے جواب وچوں ہٹایا گیا"
 }

@@ -66,6 +66,16 @@
           "_top": "Dritarja e sipërme - _top",
           "_parent": "Dritarja prind - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontale",
+        "description": "Vendos imazhin pranë tekstit në vend që sipër tij."
+      },
+      {
+        "property": "clickable",
+        "title": "E gjithë karta është lidhja",
+        "description": "Bëje të gjithë kartën lidhje dhe fshih butonin. Kërkon një lidhje."
       }
     ],
     "developer": [

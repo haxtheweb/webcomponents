@@ -78,7 +78,10 @@
           "messy-hair": "Rambut kusut berparut",
           "sparkle-selects": "Sparkle Selects (topi keledar)",
           "saber-cats": "Saber Cats (topi keledar)",
-          "future-traveler": "Future Traveler (topi keledar)"
+          "future-traveler": "Future Traveler (topi keledar)",
+          "pilgrim": "Topi pilgrim",
+          "bonnet": "Bonet pilgrim",
+          "turkey": "Tudung ayam belanda"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (pelawat)",
           "icers": "Icers (tempatan)",
           "icers-away": "Icers (pelawat)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilgrim (lelaki)",
+          "pilgrim-girl": "Pilgrim (perempuan)",
+          "turkey": "Ayam belanda"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Sepana",
           "hockey-stick-pink": "Kayu hoki (merah jambu)",
           "hockey-stick-green": "Kayu hoki (hijau)",
-          "sparkle-flag": "Sparkle Selects (bendera)"
+          "sparkle-flag": "Sparkle Selects (bendera)",
+          "corn": "Tongkol jagung",
+          "drumstick": "Paha ayam belanda"
         }
       },
       {

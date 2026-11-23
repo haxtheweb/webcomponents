@@ -18,6 +18,11 @@
       {
         "title": "Detalhes dos pontos",
         "description": "Os pontos interativos do mapa de imagem."
+      },
+      {
+        "property": "src",
+        "title": "Imagem",
+        "description": "Imagem SVG para a qual os pontos de interesse apontam."
       }
     ]
   }

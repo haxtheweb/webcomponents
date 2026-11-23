@@ -78,7 +78,10 @@
           "messy-hair": "Lauoho ʻāpiʻipiʻi me ka ʻālina",
           "sparkle-selects": "Sparkle Selects (pāpale kila)",
           "saber-cats": "Saber Cats (pāpale kila)",
-          "future-traveler": "Future Traveler (pāpale kila)"
+          "future-traveler": "Future Traveler (pāpale kila)",
+          "pilgrim": "Pāpale malihini haipule",
+          "bonnet": "Pāpale wahine malihini haipule",
+          "turkey": "Pāpale pelehū"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (kipa)",
           "icers": "Icers (home)",
           "icers-away": "Icers (kipa)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Malihini haipule (keikikāne)",
+          "pilgrim-girl": "Malihini haipule (kaikamahine)",
+          "turkey": "Pelehū"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Kī wili",
           "hockey-stick-pink": "Lāʻau hockey (ʻākala)",
           "hockey-stick-green": "Lāʻau hockey (ʻōmaʻomaʻo)",
-          "sparkle-flag": "Sparkle Selects (hae)"
+          "sparkle-flag": "Sparkle Selects (hae)",
+          "corn": "Pōpō kulina",
+          "drumstick": "Wāwae pelehū"
         }
       },
       {

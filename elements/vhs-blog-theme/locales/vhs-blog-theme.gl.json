@@ -73,5 +73,6 @@
   "padStart": "Start: publica a túa páxina",
   "padB": "B: devolve o último bloque",
   "padA": "A: colle un bloque",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Colle o mando de xogo"
 }

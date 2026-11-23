@@ -31,11 +31,20 @@
       },
       {
         "title": "Вобласць праверкі ведаў"
+      },
+      {
+        "property": "title",
+        "title": "Загаловак",
+        "description": "Загаловак, які паказваецца над мадэллю курса."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Вобласць лагатыпа"
+      },
+      {
+        "slot": "logo",
         "title": "Вобласць лагатыпа"
       }
     ]

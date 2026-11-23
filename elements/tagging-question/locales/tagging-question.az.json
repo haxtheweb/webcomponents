@@ -45,8 +45,12 @@
   "hideDirections": "Təlimatları gizlət",
   "showRelatedContent": "Əlaqəli məzmunu göstər",
   "hideRelatedContent": "Əlaqəli məzmunu gizlət",
+  "notAttempted": "Cəhd edilməyib",
   "yourTags": "Cavabınız",
   "availableTags": "Seçiləcək teqlər",
   "dropTagsHere": "Aşağıdan teqləri seçin və ya bura sürükləyin",
-  "notAttempted": "Cəhd edilməyib"
+  "addTag": "{tag} əlavə et",
+  "removeTag": "{tag} sil",
+  "tagAdded": "{tag} cavabınıza əlavə edildi",
+  "tagRemoved": "{tag} cavabınızdan silindi"
 }

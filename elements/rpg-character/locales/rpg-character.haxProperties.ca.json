@@ -78,7 +78,10 @@
           "messy-hair": "Cabell despentinat amb cicatriu",
           "sparkle-selects": "Sparkle Selects (casc)",
           "saber-cats": "Saber Cats (casc)",
-          "future-traveler": "Future Traveler (casc)"
+          "future-traveler": "Future Traveler (casc)",
+          "pilgrim": "Barret de pelegrí",
+          "bonnet": "Còfia de pelegrina",
+          "turkey": "Caputxa de gall dindi"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (visitant)",
           "icers": "Icers (local)",
           "icers-away": "Icers (visitant)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pelegrí (noi)",
+          "pilgrim-girl": "Pelegrina (noia)",
+          "turkey": "Gall dindi"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Clau anglesa",
           "hockey-stick-pink": "Estic d'hoquei (rosa)",
           "hockey-stick-green": "Estic d'hoquei (verda)",
-          "sparkle-flag": "Sparkle Selects (bandera)"
+          "sparkle-flag": "Sparkle Selects (bandera)",
+          "corn": "Panotxa de blat de moro",
+          "drumstick": "Cuixa de gall dindi"
         }
       },
       {

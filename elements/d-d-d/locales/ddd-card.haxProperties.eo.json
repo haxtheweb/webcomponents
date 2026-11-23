@@ -66,6 +66,16 @@
           "_top": "Supra fenestro - _top",
           "_parent": "Gepatra fenestro - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontala",
+        "description": "Meti la bildon apud la teksto anstataŭ super ĝi."
+      },
+      {
+        "property": "clickable",
+        "title": "La tuta karto estas la ligilo",
+        "description": "Igi la tutan karton la ligilo kaj kaŝi la butonon. Bezonas ligilon."
       }
     ],
     "developer": [

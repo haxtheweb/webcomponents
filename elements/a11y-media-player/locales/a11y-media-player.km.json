@@ -42,5 +42,8 @@
   "belowLabel": "ខាងក្រោម",
   "leftLabel": "ឆ្វេង",
   "rightLabel": "ស្តាំ",
-  "hideTranscriptLabel": "លាក់ប្រតិចារិក"
+  "hideTranscriptLabel": "លាក់ប្រតិចារិក",
+  "youtubeConsentNotice": "វីដេអូនេះចាក់ពី YouTube។ Google នឹងទទួលអាសយដ្ឋាន IP របស់អ្នក ហើយអាចដាក់ខូគី។",
+  "youtubeConsentAllow": "អនុញ្ញាត YouTube ជានិច្ច",
+  "consentChoicesLabel": "ជម្រើសឯកជនភាព"
 }

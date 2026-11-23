@@ -66,6 +66,16 @@
           "_top": "Jendela teratas - _top",
           "_parent": "Jendela induk - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Letakkan gambar di samping teks, bukan di atasnya."
+      },
+      {
+        "property": "clickable",
+        "title": "Seluruh kartu menjadi tautan",
+        "description": "Jadikan seluruh kartu sebagai tautan dan sembunyikan tombol. Memerlukan tautan."
       }
     ],
     "developer": [

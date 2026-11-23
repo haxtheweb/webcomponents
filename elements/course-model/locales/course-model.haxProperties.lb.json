@@ -31,12 +31,21 @@
       },
       {
         "title": "Beräich fir Wëssenskontroll"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Iwwerschrëft iwwer dem Coursmodell."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Logoberäich"
+      },
+      {
+        "slot": "logo",
+        "title": "Logo-Beräich"
       }
     ]
   }

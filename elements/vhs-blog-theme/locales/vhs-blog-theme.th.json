@@ -73,5 +73,6 @@
   "padStart": "Start: เผยแพร่หน้าของคุณ",
   "padB": "B: เอาบล็อกล่าสุดคืน",
   "padA": "A: คว้าบล็อก",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "หยิบจอยเกม"
 }

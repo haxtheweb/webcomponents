@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Forrás: Wikipedia",
   "readFullArticle": "Olvassa el a teljes cikket a Wikipédián",
-  "reading": "Olvasás"
+  "reading": "Olvasás",
+  "couldNotLoad": "A cikket nem sikerült betölteni. A fenti hivatkozással elolvashatod a Wikipédián."
 }

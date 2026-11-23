@@ -78,7 +78,10 @@
           "messy-hair": "Мӯи парешон бо доғи захм",
           "sparkle-selects": "Sparkle Selects (хӯд)",
           "saber-cats": "Saber Cats (хӯд)",
-          "future-traveler": "Future Traveler (хӯд)"
+          "future-traveler": "Future Traveler (хӯд)",
+          "pilgrim": "Кулоҳи зиёратгар",
+          "bonnet": "Рӯймоли зани зиёратгар",
+          "turkey": "Кулоҳи мурғи марҷон"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (меҳмонӣ)",
           "icers": "Icers (хонагӣ)",
           "icers-away": "Icers (меҳмонӣ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Зиёратгар (писар)",
+          "pilgrim-girl": "Зиёратгар (духтар)",
+          "turkey": "Мурғи марҷон"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Калиди гайка",
           "hockey-stick-pink": "Чӯбдасти хоккей (гулобӣ)",
           "hockey-stick-green": "Чӯбдасти хоккей (сабз)",
-          "sparkle-flag": "Sparkle Selects (парчам)"
+          "sparkle-flag": "Sparkle Selects (парчам)",
+          "corn": "Хӯшаи ҷуворимакка",
+          "drumstick": "Пойи мурғи марҷон"
         }
       },
       {

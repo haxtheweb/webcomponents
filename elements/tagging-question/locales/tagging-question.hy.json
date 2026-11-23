@@ -45,8 +45,12 @@
   "hideDirections": "Թաքցնել հրահանգները",
   "showRelatedContent": "Ցուցադրել առնչվող բովանդակությունը",
   "hideRelatedContent": "Թաքցնել առնչվող բովանդակությունը",
+  "notAttempted": "Չի փորձվել",
   "yourTags": "Ձեր պատասխանը",
   "availableTags": "Ընտրելու պիտակներ",
   "dropTagsHere": "Ընտրեք պիտակներ ներքևից կամ քաշեք այստեղ",
-  "notAttempted": "Չի փորձվել"
+  "addTag": "Ավելացնել {tag}",
+  "removeTag": "Հեռացնել {tag}",
+  "tagAdded": "{tag}-ն ավելացվեց ձեր պատասխանին",
+  "tagRemoved": "{tag}-ն հեռացվեց ձեր պատասխանից"
 }

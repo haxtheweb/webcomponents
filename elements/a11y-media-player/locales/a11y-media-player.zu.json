@@ -42,5 +42,8 @@
   "belowLabel": "Ngezansi",
   "leftLabel": "Kwesokunxele",
   "rightLabel": "Kwesokudla",
-  "hideTranscriptLabel": "Fihla umbhalo oloyiwe"
+  "hideTranscriptLabel": "Fihla umbhalo oloyiwe",
+  "youtubeConsentNotice": "Le vidiyo idlala ivela ku-YouTube. I-Google izothola ikheli lakho le-IP futhi ingase isethe ama-cookie.",
+  "youtubeConsentAllow": "Vumela i-YouTube njalo",
+  "consentChoicesLabel": "Izinketho zobumfihlo"
 }

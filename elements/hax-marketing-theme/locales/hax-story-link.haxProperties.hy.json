@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, ուսուցողական նյութ",
           "try": "browser.hax.cloud, փորձեք",
           "elements": "webcomponents.hax.cloud, բլոկ",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

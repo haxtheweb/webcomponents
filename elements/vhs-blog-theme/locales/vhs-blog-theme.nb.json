@@ -73,5 +73,6 @@
   "padStart": "Start: publiser siden din",
   "padB": "B: ta tilbake den siste blokken",
   "padA": "A: grip en blokk",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Ta opp spillkontrolleren"
 }

@@ -45,8 +45,12 @@
   "hideDirections": "መመሪያዎችን ደብቅ",
   "showRelatedContent": "ተዛማጅ ይዘትን አሳይ",
   "hideRelatedContent": "ተዛማጅ ይዘትን ደብቅ",
+  "notAttempted": "አልተሞከረም",
   "yourTags": "መልስዎ",
   "availableTags": "የሚመረጡ መለያዎች",
   "dropTagsHere": "ከታች መለያዎችን ይምረጡ ወይም እዚህ ይጎትቷቸው",
-  "notAttempted": "አልተሞከረም"
+  "addTag": "{tag}ን አክል",
+  "removeTag": "{tag}ን አስወግድ",
+  "tagAdded": "{tag} ወደ መልስዎ ታክሏል",
+  "tagRemoved": "{tag} ከመልስዎ ተወግዷል"
 }

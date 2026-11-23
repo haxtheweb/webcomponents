@@ -31,11 +31,20 @@
       },
       {
         "title": "Lugar ng Knowledge Check"
+      },
+      {
+        "property": "title",
+        "title": "Pamagat",
+        "description": "Heading na ipinapakita sa itaas ng course model."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Lugar ng logo"
+      },
+      {
+        "slot": "logo",
         "title": "Lugar ng logo"
       }
     ]

@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia कडून",
   "readFullArticle": "Wikipedia वर संपूर्ण लेख वाचा",
-  "reading": "वाचन"
+  "reading": "वाचन",
+  "couldNotLoad": "लेख लोड होऊ शकला नाही. तो Wikipedia वर वाचण्यासाठी वरील लिंक वापरा."
 }

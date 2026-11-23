@@ -6,6 +6,8 @@
   "tryAbout": "Kasuta HAX-i kohe selles brauseri vahekaardis. Midagi pole vaja paigaldada.",
   "learn": "Õpi",
   "learnAbout": "Õpetused, mis õpetavad HAX-i üks töövoog korraga.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: koht, kus üliõpilased ja nooremarendajad õpivad päris HAX-i tööd valmis tehes.",
   "elements": "Veebikomponendid",
   "elementsAbout": "Iga HAX-i element koos reaalajas demode ja juhenditega.",
   "cloud": "PRAW",

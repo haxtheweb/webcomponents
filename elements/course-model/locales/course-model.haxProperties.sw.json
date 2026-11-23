@@ -31,11 +31,20 @@
       },
       {
         "title": "Eneo la Jaribio la Maarifa"
+      },
+      {
+        "property": "title",
+        "title": "Kichwa",
+        "description": "Kichwa kinachoonyeshwa juu ya modeli ya kozi."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Eneo la nembo"
+      },
+      {
+        "slot": "logo",
         "title": "Eneo la nembo"
       }
     ]

@@ -42,5 +42,8 @@
   "belowLabel": "Apačioje",
   "leftLabel": "Kairėje",
   "rightLabel": "Dešinėje",
-  "hideTranscriptLabel": "Slėpti transkripciją"
+  "hideTranscriptLabel": "Slėpti transkripciją",
+  "youtubeConsentNotice": "Šis vaizdo įrašas paleidžiamas iš YouTube. Google gaus jūsų IP adresą ir gali įrašyti slapukus.",
+  "youtubeConsentAllow": "Visada leisti YouTube",
+  "consentChoicesLabel": "Privatumo pasirinkimai"
 }

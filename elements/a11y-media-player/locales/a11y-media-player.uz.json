@@ -42,5 +42,8 @@
   "belowLabel": "Pastda",
   "leftLabel": "Chapda",
   "rightLabel": "O'ngda",
-  "hideTranscriptLabel": "Transkriptni yashirish"
+  "hideTranscriptLabel": "Transkriptni yashirish",
+  "youtubeConsentNotice": "Bu video YouTube’dan ijro etiladi. Google IP manzilingizni oladi va cookie fayllarini o‘rnatishi mumkin.",
+  "youtubeConsentAllow": "YouTube’ga doim ruxsat berish",
+  "consentChoicesLabel": "Maxfiylik tanlovlari"
 }

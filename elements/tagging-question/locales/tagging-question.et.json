@@ -45,8 +45,12 @@
   "hideDirections": "Peida juhised",
   "showRelatedContent": "Näita seotud sisu",
   "hideRelatedContent": "Peida seotud sisu",
+  "notAttempted": "Pole proovitud",
   "yourTags": "Sinu vastus",
   "availableTags": "Valitavad sildid",
   "dropTagsHere": "Vali allpool sildid või lohista need siia",
-  "notAttempted": "Pole proovitud"
+  "addTag": "Lisa {tag}",
+  "removeTag": "Eemalda {tag}",
+  "tagAdded": "{tag} lisati sinu vastusesse",
+  "tagRemoved": "{tag} eemaldati sinu vastusest"
 }

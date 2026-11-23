@@ -78,7 +78,10 @@
           "messy-hair": "ડાઘવાળા વિખરાયેલા વાળ",
           "sparkle-selects": "Sparkle Selects (હેલ્મેટ)",
           "saber-cats": "Saber Cats (હેલ્મેટ)",
-          "future-traveler": "Future Traveler (હેલ્મેટ)"
+          "future-traveler": "Future Traveler (હેલ્મેટ)",
+          "pilgrim": "પિલગ્રિમ ટોપી",
+          "bonnet": "પિલગ્રિમ બોનેટ",
+          "turkey": "ટર્કી હૂડ"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (બહાર)",
           "icers": "Icers (ઘર)",
           "icers-away": "Icers (બહાર)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "પિલગ્રિમ (છોકરો)",
+          "pilgrim-girl": "પિલગ્રિમ (છોકરી)",
+          "turkey": "ટર્કી"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "પાનું",
           "hockey-stick-pink": "હૉકી સ્ટિક (ગુલાબી)",
           "hockey-stick-green": "હૉકી સ્ટિક (લીલી)",
-          "sparkle-flag": "Sparkle Selects (ધ્વજ)"
+          "sparkle-flag": "Sparkle Selects (ધ્વજ)",
+          "corn": "મકાઈનો ડોડો",
+          "drumstick": "ટર્કીનો પગ"
         }
       },
       {

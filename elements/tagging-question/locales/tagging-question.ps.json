@@ -45,8 +45,12 @@
   "hideDirections": "لارښوونې پټې کړئ",
   "showRelatedContent": "اړوند منځپانګه وښایاست",
   "hideRelatedContent": "اړوند منځپانګه پټه کړئ",
+  "notAttempted": "هڅه نه ده شوې",
   "yourTags": "ستاسو ځواب",
   "availableTags": "د غوره کولو ټګونه",
   "dropTagsHere": "لاندې ټګونه وټاکئ یا دلته یې راکش کړئ",
-  "notAttempted": "هڅه نه ده شوې"
+  "addTag": "{tag} زیات کړئ",
+  "removeTag": "{tag} لرې کړئ",
+  "tagAdded": "{tag} ستاسو ځواب ته زیات شو",
+  "tagRemoved": "{tag} له ستاسو ځواب څخه لرې شو"
 }

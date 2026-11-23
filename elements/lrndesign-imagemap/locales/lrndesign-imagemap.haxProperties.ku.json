@@ -18,6 +18,11 @@
       {
         "title": "Hûrguliyên xala germ",
         "description": "Xalên germ ên înteraktîf li ser nexşeya wêneyê."
+      },
+      {
+        "property": "src",
+        "title": "Wêne",
+        "description": "Wêneyê SVG yê ku xalên çalak nîşanî wî didin."
       }
     ]
   }

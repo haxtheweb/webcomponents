@@ -42,5 +42,8 @@
   "belowLabel": "Sottu",
   "leftLabel": "Sinistra",
   "rightLabel": "Diritta",
-  "hideTranscriptLabel": "Piattà a trascrizzione"
+  "hideTranscriptLabel": "Piattà a trascrizzione",
+  "youtubeConsentNotice": "Stu video si leghje da YouTube. Google riceverà u vostru indirizzu IP è pò piazzà cookies.",
+  "youtubeConsentAllow": "Permette sempre YouTube",
+  "consentChoicesLabel": "Scelte di vita privata"
 }

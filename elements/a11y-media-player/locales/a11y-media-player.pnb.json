@@ -42,5 +42,8 @@
   "belowLabel": "ہیٹھاں",
   "leftLabel": "کھبے",
   "rightLabel": "سجے",
-  "hideTranscriptLabel": "ٹرانسکرپٹ لکاؤ"
+  "hideTranscriptLabel": "ٹرانسکرپٹ لکاؤ",
+  "youtubeConsentNotice": "ایہہ ویڈیو YouTube توں چلدی اے۔ Google نوں تہاڈا IP پتہ ملے گا تے اوہ کوکیز لا سکدا اے۔",
+  "youtubeConsentAllow": "YouTube نوں ہمیشہ اجازت دیو",
+  "consentChoicesLabel": "پرائیویسی چوݨاں"
 }

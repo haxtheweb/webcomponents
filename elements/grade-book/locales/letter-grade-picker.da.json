@@ -1,0 +1,6 @@
+{
+  "grades": "Karakterer",
+  "gradeLetter": "Karakter {letter}",
+  "score": "Point",
+  "scoreFor": "Point for {label}"
+}

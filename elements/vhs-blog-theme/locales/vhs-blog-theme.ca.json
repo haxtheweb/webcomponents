@@ -73,5 +73,6 @@
   "padStart": "Start: publica la teva pàgina",
   "padB": "B: retira l'últim bloc",
   "padA": "A: agafa un bloc",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Agafa el comandament"
 }

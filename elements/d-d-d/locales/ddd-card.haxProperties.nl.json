@@ -66,6 +66,16 @@
           "_top": "Bovenste venster - _top",
           "_parent": "Bovenliggend venster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontaal",
+        "description": "Plaats de afbeelding naast de tekst in plaats van erboven."
+      },
+      {
+        "property": "clickable",
+        "title": "Hele kaart is de link",
+        "description": "Maak de hele kaart de link en verberg de knop. Vereist een link."
       }
     ],
     "developer": [

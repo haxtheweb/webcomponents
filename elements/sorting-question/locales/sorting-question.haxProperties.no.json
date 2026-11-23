@@ -22,6 +22,15 @@
       {
         "title": "Svar",
         "description": "Svarrekkefølgen bestemmer riktig sekvens."
+      },
+      {
+        "property": "layout",
+        "title": "Oppsett",
+        "description": "Liste: svar stablet i rader. Bildekort: en rad med kort som brytes, hvert med bildet sitt og knapper for å flytte tidligere / senere.",
+        "options": {
+          "": "Liste",
+          "cards": "Bildekort"
+        }
       }
     ],
     "advanced": [

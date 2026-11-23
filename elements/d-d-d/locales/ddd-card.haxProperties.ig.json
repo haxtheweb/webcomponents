@@ -66,6 +66,16 @@
           "_top": "Windo elu - _top",
           "_parent": "Windo nne na nna - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Kwụ n'ahịrị",
+        "description": "Tinye onyonyo n'akụkụ ederede kama n'elu ya."
+      },
+      {
+        "property": "clickable",
+        "title": "Kaadị niile bụ njikọ",
+        "description": "Mee kaadị niile ka ọ bụrụ njikọ ma zoo bọtịnụ. Ọ chọrọ njikọ."
       }
     ],
     "developer": [

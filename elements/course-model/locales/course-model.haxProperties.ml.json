@@ -31,12 +31,21 @@
       },
       {
         "title": "അറിവ് പരിശോധന ഭാഗം"
+      },
+      {
+        "property": "title",
+        "title": "ശീർഷകം",
+        "description": "കോഴ്സ് മോഡലിന് മുകളിൽ കാണിക്കുന്ന തലക്കെട്ട്."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "ലോഗോ ഭാഗം"
+      },
+      {
+        "slot": "logo",
+        "title": "ലോഗോ ഏരിയ"
       }
     ]
   }

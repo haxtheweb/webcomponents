@@ -1,0 +1,6 @@
+{
+  "grades": "Βαθμοί",
+  "gradeLetter": "Βαθμός {letter}",
+  "score": "Βαθμολογία",
+  "scoreFor": "Βαθμολογία για {label}"
+}

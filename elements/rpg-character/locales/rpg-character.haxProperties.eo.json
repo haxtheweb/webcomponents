@@ -78,7 +78,10 @@
           "messy-hair": "Malorda hararo kun cikatro",
           "sparkle-selects": "Sparkle Selects (kasko)",
           "saber-cats": "Saber Cats (kasko)",
-          "future-traveler": "Future Traveler (kasko)"
+          "future-traveler": "Future Traveler (kasko)",
+          "pilgrim": "Pilgrima ĉapelo",
+          "bonnet": "Pilgrima kufo",
+          "turkey": "Meleagra kapuĉo"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (fremde)",
           "icers": "Icers (hejme)",
           "icers-away": "Icers (fremde)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilgrimo (knabo)",
+          "pilgrim-girl": "Pilgrimino (knabino)",
+          "turkey": "Meleagro"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Ŝraŭbŝlosilo",
           "hockey-stick-pink": "Hokeobatilo (rozkolora)",
           "hockey-stick-green": "Hokeobatilo (verda)",
-          "sparkle-flag": "Sparkle Selects (flago)"
+          "sparkle-flag": "Sparkle Selects (flago)",
+          "corn": "Maizspiko",
+          "drumstick": "Meleagra femuro"
         }
       },
       {

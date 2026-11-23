@@ -45,8 +45,12 @@
   "hideDirections": "ਨਿਰਦੇਸ਼ ਲੁਕਾਓ",
   "showRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਦਿਖਾਓ",
   "hideRelatedContent": "ਸੰਬੰਧਿਤ ਸਮੱਗਰੀ ਲੁਕਾਓ",
+  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ",
   "yourTags": "ਤੁਹਾਡਾ ਜਵਾਬ",
   "availableTags": "ਚੁਣਨ ਲਈ ਟੈਗ",
   "dropTagsHere": "ਹੇਠਾਂ ਟੈਗ ਚੁਣੋ ਜਾਂ ਉਹਨਾਂ ਨੂੰ ਇੱਥੇ ਖਿੱਚੋ",
-  "notAttempted": "ਕੋਸ਼ਿਸ਼ ਨਹੀਂ ਕੀਤੀ"
+  "addTag": "{tag} ਜੋੜੋ",
+  "removeTag": "{tag} ਹਟਾਓ",
+  "tagAdded": "{tag} ਤੁਹਾਡੇ ਜਵਾਬ ਵਿੱਚ ਜੋੜਿਆ ਗਿਆ",
+  "tagRemoved": "{tag} ਤੁਹਾਡੇ ਜਵਾਬ ਵਿੱਚੋਂ ਹਟਾਇਆ ਗਿਆ"
 }

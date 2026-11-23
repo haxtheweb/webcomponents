@@ -78,7 +78,10 @@
           "messy-hair": "మచ్చతో చెదిరిన జుట్టు",
           "sparkle-selects": "Sparkle Selects (హెల్మెట్)",
           "saber-cats": "Saber Cats (హెల్మెట్)",
-          "future-traveler": "Future Traveler (హెల్మెట్)"
+          "future-traveler": "Future Traveler (హెల్మెట్)",
+          "pilgrim": "యాత్రికుల టోపీ",
+          "bonnet": "యాత్రికురాలి బానెట్",
+          "turkey": "టర్కీ కోడి తలకప్పు"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (అవే)",
           "icers": "Icers (హోమ్)",
           "icers-away": "Icers (అవే)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "యాత్రికుడు (అబ్బాయి)",
+          "pilgrim-girl": "యాత్రికురాలు (అమ్మాయి)",
+          "turkey": "టర్కీ కోడి"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "స్పానర్",
           "hockey-stick-pink": "హాకీ స్టిక్ (గులాబీ)",
           "hockey-stick-green": "హాకీ స్టిక్ (ఆకుపచ్చ)",
-          "sparkle-flag": "Sparkle Selects (జెండా)"
+          "sparkle-flag": "Sparkle Selects (జెండా)",
+          "corn": "మొక్కజొన్న కంకి",
+          "drumstick": "టర్కీ కోడి కాలు"
         }
       },
       {

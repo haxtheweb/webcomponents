@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, посібник",
           "try": "browser.hax.cloud, спробувати",
           "elements": "webcomponents.hax.cloud, блок",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

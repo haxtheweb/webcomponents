@@ -66,6 +66,16 @@
           "_top": "Üst pəncərə - _top",
           "_parent": "Valideyn pəncərə - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Üfüqi",
+        "description": "Şəkli mətnin üstündə deyil, yanında yerləşdirin."
+      },
+      {
+        "property": "clickable",
+        "title": "Bütün kart linkdir",
+        "description": "Bütün kartı link edin və düyməni gizlədin. Link tələb olunur."
       }
     ],
     "developer": [

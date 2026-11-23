@@ -42,5 +42,8 @@
   "belowLabel": "Знізу",
   "leftLabel": "Злева",
   "rightLabel": "Справа",
-  "hideTranscriptLabel": "Схаваць транскрыпцыю"
+  "hideTranscriptLabel": "Схаваць транскрыпцыю",
+  "youtubeConsentNotice": "Гэта відэа прайграецца з YouTube. Google атрымае ваш IP-адрас і можа ўсталяваць файлы cookie.",
+  "youtubeConsentAllow": "Заўсёды дазваляць YouTube",
+  "consentChoicesLabel": "Налады прыватнасці"
 }

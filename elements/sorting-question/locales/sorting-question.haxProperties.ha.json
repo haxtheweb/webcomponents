@@ -22,6 +22,15 @@
       {
         "title": "Amsoshi",
         "description": "Tsarin amsoshi yana ƙayyade jerin daidai."
+      },
+      {
+        "property": "layout",
+        "title": "Tsari",
+        "description": "Jeri: amsoshi a jere ɗaya bisa ɗaya. Katunan hoto: jerin katuna da ke naɗewa, kowanne da hotonsa da maɓallan matsawa gaba / baya.",
+        "options": {
+          "": "Jeri",
+          "cards": "Katunan hoto"
+        }
       }
     ],
     "advanced": [

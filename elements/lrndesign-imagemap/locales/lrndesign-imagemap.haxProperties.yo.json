@@ -18,6 +18,11 @@
       {
         "title": "Àlàyé ibi pàtàkì",
         "description": "Àwọn ibi pàtàkì ìbánisọ̀rọ̀ lórí àwòrán-máàpù náà."
+      },
+      {
+        "property": "src",
+        "title": "Àwòrán",
+        "description": "Àwòrán SVG tí àwọn ibi pàtàkì ń tọ́ka sí."
       }
     ]
   }

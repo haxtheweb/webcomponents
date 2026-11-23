@@ -66,6 +66,16 @@
           "_top": "Viršutinis langas - _top",
           "_parent": "Tėvinis langas - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontali",
+        "description": "Dėti paveikslėlį šalia teksto, o ne virš jo."
+      },
+      {
+        "property": "clickable",
+        "title": "Visa kortelė yra nuoroda",
+        "description": "Paversti visą kortelę nuoroda ir paslėpti mygtuką. Reikia nuorodos."
       }
     ],
     "developer": [

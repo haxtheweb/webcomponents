@@ -42,5 +42,8 @@
   "belowLabel": "तल",
   "leftLabel": "बायाँ",
   "rightLabel": "दायाँ",
-  "hideTranscriptLabel": "ट्रान्सक्रिप्ट लुकाउनुहोस्"
+  "hideTranscriptLabel": "ट्रान्सक्रिप्ट लुकाउनुहोस्",
+  "youtubeConsentNotice": "यो भिडियो YouTube बाट चल्छ। Google ले तपाईंको IP ठेगाना पाउनेछ र कुकीहरू राख्न सक्छ।",
+  "youtubeConsentAllow": "YouTube लाई सधैं अनुमति दिनुहोस्",
+  "consentChoicesLabel": "गोपनीयता विकल्पहरू"
 }

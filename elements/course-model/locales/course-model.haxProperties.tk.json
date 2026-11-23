@@ -31,12 +31,21 @@
       },
       {
         "title": "Bilim barlagy meýdany"
+      },
+      {
+        "property": "title",
+        "title": "Ady",
+        "description": "Kurs modeliniň üstünde görkezilýän sözbaşy."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Logotip meýdany"
+      },
+      {
+        "slot": "logo",
+        "title": "Logo meýdany"
       }
     ]
   }

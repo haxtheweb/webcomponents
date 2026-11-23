@@ -42,5 +42,8 @@
   "belowLabel": "Isod",
   "leftLabel": "Chwith",
   "rightLabel": "De",
-  "hideTranscriptLabel": "Cuddio'r trawsgrifiad"
+  "hideTranscriptLabel": "Cuddio'r trawsgrifiad",
+  "youtubeConsentNotice": "Mae'r fideo hwn yn chwarae o YouTube. Bydd Google yn derbyn eich cyfeiriad IP a gall osod cwcis.",
+  "youtubeConsentAllow": "Caniatáu YouTube bob amser",
+  "consentChoicesLabel": "Dewisiadau preifatrwydd"
 }

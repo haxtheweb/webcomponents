@@ -1,0 +1,6 @@
+{
+  "grades": "Note",
+  "gradeLetter": "Nota {letter}",
+  "score": "Punctaj",
+  "scoreFor": "Punctaj pentru {label}"
+}

@@ -31,11 +31,20 @@
       },
       {
         "title": "Nzvimbo yeKuongorora Ruzivo"
+      },
+      {
+        "property": "title",
+        "title": "Musoro",
+        "description": "Musoro unoratidzwa pamusoro pemuenzaniso wekosi."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Nzvimbo yelogo"
+      },
+      {
+        "slot": "logo",
         "title": "Nzvimbo yelogo"
       }
     ]

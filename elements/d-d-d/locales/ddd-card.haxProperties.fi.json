@@ -66,6 +66,16 @@
           "_top": "Ylin ikkuna - _top",
           "_parent": "Yläikkuna - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vaakasuora",
+        "description": "Sijoita kuva tekstin viereen sen yläpuolen sijaan."
+      },
+      {
+        "property": "clickable",
+        "title": "Koko kortti on linkki",
+        "description": "Tee koko kortista linkki ja piilota painike. Vaatii linkin."
       }
     ],
     "developer": [

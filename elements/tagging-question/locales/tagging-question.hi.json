@@ -45,8 +45,12 @@
   "hideDirections": "निर्देश छिपाएँ",
   "showRelatedContent": "संबंधित सामग्री दिखाएँ",
   "hideRelatedContent": "संबंधित सामग्री छिपाएँ",
+  "notAttempted": "प्रयास नहीं किया गया",
   "yourTags": "आपका उत्तर",
   "availableTags": "चुनने के लिए टैग",
   "dropTagsHere": "नीचे से टैग चुनें या उन्हें यहाँ खींचें",
-  "notAttempted": "प्रयास नहीं किया गया"
+  "addTag": "{tag} जोड़ें",
+  "removeTag": "{tag} हटाएँ",
+  "tagAdded": "{tag} आपके उत्तर में जोड़ा गया",
+  "tagRemoved": "{tag} आपके उत्तर से हटाया गया"
 }

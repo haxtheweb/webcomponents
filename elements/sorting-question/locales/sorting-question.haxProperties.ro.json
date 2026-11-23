@@ -22,6 +22,15 @@
       {
         "title": "Răspunsuri",
         "description": "Ordinea răspunsurilor definește secvența corectă."
+      },
+      {
+        "property": "layout",
+        "title": "Aspect",
+        "description": "Listă: răspunsuri așezate pe rânduri. Carduri cu imagini: un rând de carduri care se continuă pe rândul următor, fiecare cu imaginea sa și butoane de mutare mai devreme / mai târziu.",
+        "options": {
+          "": "Listă",
+          "cards": "Carduri cu imagini"
+        }
       }
     ],
     "advanced": [

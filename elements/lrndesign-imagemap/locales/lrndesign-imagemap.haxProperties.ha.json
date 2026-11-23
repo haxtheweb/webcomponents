@@ -18,6 +18,11 @@
       {
         "title": "Bayanan wurare masu muhimmanci",
         "description": "Wurare masu muhimmanci masu mu'amala a kan taswirar hoto."
+      },
+      {
+        "property": "src",
+        "title": "Hoto",
+        "description": "Hoton SVG da wuraren dannawa ke nunawa."
       }
     ]
   }

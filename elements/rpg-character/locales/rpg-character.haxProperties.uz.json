@@ -78,7 +78,10 @@
           "messy-hair": "Chandiqli to'zg'in soch",
           "sparkle-selects": "Sparkle Selects (dubulg'a)",
           "saber-cats": "Saber Cats (dubulg'a)",
-          "future-traveler": "Future Traveler (dubulg'a)"
+          "future-traveler": "Future Traveler (dubulg'a)",
+          "pilgrim": "Pilgrim shlyapasi",
+          "bonnet": "Pilgrim kapori",
+          "turkey": "Kurka qalpog‘i"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (mehmon)",
           "icers": "Icers (uy)",
           "icers-away": "Icers (mehmon)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilgrim (o‘g‘il bola)",
+          "pilgrim-girl": "Pilgrim (qiz bola)",
+          "turkey": "Kurka"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Gayka kaliti",
           "hockey-stick-pink": "Xokkey tayogʻi (pushti)",
           "hockey-stick-green": "Xokkey tayogʻi (yashil)",
-          "sparkle-flag": "Sparkle Selects (bayroq)"
+          "sparkle-flag": "Sparkle Selects (bayroq)",
+          "corn": "Makkajo‘xori so‘tasi",
+          "drumstick": "Kurka oyog‘i"
         }
       },
       {

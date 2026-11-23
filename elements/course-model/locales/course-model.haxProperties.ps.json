@@ -31,12 +31,21 @@
       },
       {
         "title": "د پوهې ازموینې سیمه"
+      },
+      {
+        "property": "title",
+        "title": "سرلیک",
+        "description": "هغه سرلیک چې د کورس ماډل پورته ښودل کېږي."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "د لوګو سیمه"
+      },
+      {
+        "slot": "logo",
+        "title": "د لوګو ساحه"
       }
     ]
   }

@@ -45,8 +45,12 @@
   "hideDirections": "ເຊື່ອງຄຳແນະນຳ",
   "showRelatedContent": "ສະແດງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
   "hideRelatedContent": "ເຊື່ອງເນື້ອຫາທີ່ກ່ຽວຂ້ອງ",
+  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ",
   "yourTags": "ຄຳຕອບຂອງທ່ານ",
   "availableTags": "ແທັກໃຫ້ເລືອກ",
   "dropTagsHere": "ເລືອກແທັກຂ້າງລຸ່ມ ຫຼື ລາກມາບ່ອນນີ້",
-  "notAttempted": "ບໍ່ໄດ້ພະຍາຍາມ"
+  "addTag": "ເພີ່ມ {tag}",
+  "removeTag": "ລຶບ {tag}",
+  "tagAdded": "ເພີ່ມ {tag} ໃສ່ຄຳຕອບຂອງທ່ານແລ້ວ",
+  "tagRemoved": "ລຶບ {tag} ອອກຈາກຄຳຕອບຂອງທ່ານແລ້ວ"
 }

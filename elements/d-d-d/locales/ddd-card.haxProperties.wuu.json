@@ -66,6 +66,16 @@
           "_top": "顶层窗口 - _top",
           "_parent": "父窗口 - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "横向",
+        "description": "图片摆辣文字旁边，勿摆辣上头。"
+      },
+      {
+        "property": "clickable",
+        "title": "整张卡片就是链接",
+        "description": "让整张卡片变成链接，按钮藏脱。要有链接。"
       }
     ],
     "developer": [

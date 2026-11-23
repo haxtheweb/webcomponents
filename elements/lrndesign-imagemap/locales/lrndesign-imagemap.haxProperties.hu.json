@@ -18,6 +18,11 @@
       {
         "title": "Pontok részletei",
         "description": "A képtérkép interaktív pontjai."
+      },
+      {
+        "property": "src",
+        "title": "Kép",
+        "description": "SVG-kép, amelyre a kattintható pontok mutatnak."
       }
     ]
   }

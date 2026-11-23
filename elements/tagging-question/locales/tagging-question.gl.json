@@ -45,8 +45,12 @@
   "hideDirections": "Ocultar as instrucións",
   "showRelatedContent": "Mostrar o contido relacionado",
   "hideRelatedContent": "Ocultar o contido relacionado",
+  "notAttempted": "Sen tentar",
   "yourTags": "A túa resposta",
   "availableTags": "Etiquetas para escoller",
   "dropTagsHere": "Escolle etiquetas abaixo ou arrástraas aquí",
-  "notAttempted": "Sen tentar"
+  "addTag": "Engadir {tag}",
+  "removeTag": "Quitar {tag}",
+  "tagAdded": "{tag} engadido á túa resposta",
+  "tagRemoved": "{tag} quitado da túa resposta"
 }

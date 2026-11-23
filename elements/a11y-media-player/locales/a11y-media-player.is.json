@@ -42,5 +42,8 @@
   "belowLabel": "Fyrir neðan",
   "leftLabel": "Vinstri",
   "rightLabel": "Hægri",
-  "hideTranscriptLabel": "Fela umritun"
+  "hideTranscriptLabel": "Fela umritun",
+  "youtubeConsentNotice": "Þetta myndband spilast frá YouTube. Google fær IP-tölu þína og gæti vistað vafrakökur.",
+  "youtubeConsentAllow": "Leyfa YouTube alltaf",
+  "consentChoicesLabel": "Persónuverndarval"
 }

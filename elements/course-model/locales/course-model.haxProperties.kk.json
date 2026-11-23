@@ -31,11 +31,20 @@
       },
       {
         "title": "Білімді тексеру аймағы"
+      },
+      {
+        "property": "title",
+        "title": "Тақырып",
+        "description": "Курс моделінің үстінде көрсетілетін тақырып."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Логотип аймағы"
+      },
+      {
+        "slot": "logo",
         "title": "Логотип аймағы"
       }
     ]

@@ -18,6 +18,11 @@
       {
         "title": "Punto willaykuna",
         "description": "Rikch'a mapapi kuyuq puntokuna."
+      },
+      {
+        "property": "src",
+        "title": "Rikch'ay",
+        "description": "Hotspotkuna rikuchisqan SVG rikch'ay."
       }
     ]
   }

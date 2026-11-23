@@ -31,11 +31,20 @@
       },
       {
         "title": "ცოდნის შემოწმების არე"
+      },
+      {
+        "property": "title",
+        "title": "სათაური",
+        "description": "კურსის მოდელის ზემოთ ნაჩვენები სათაური."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ლოგოს არე"
+      },
+      {
+        "slot": "logo",
         "title": "ლოგოს არე"
       }
     ]

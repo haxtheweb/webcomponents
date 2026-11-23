@@ -42,5 +42,8 @@
   "belowLabel": "Onder",
   "leftLabel": "Links",
   "rightLabel": "Rechts",
-  "hideTranscriptLabel": "Transcript verbergen"
+  "hideTranscriptLabel": "Transcript verbergen",
+  "youtubeConsentNotice": "Deze video wordt afgespeeld via YouTube. Google ontvangt je IP-adres en kan cookies plaatsen.",
+  "youtubeConsentAllow": "YouTube altijd toestaan",
+  "consentChoicesLabel": "Privacykeuzes"
 }

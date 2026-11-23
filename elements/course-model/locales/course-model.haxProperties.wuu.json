@@ -31,11 +31,20 @@
       },
       {
         "title": "知识检查区域"
+      },
+      {
+        "property": "title",
+        "title": "标题",
+        "description": "显示辣课程模型上头个标题。"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "标志区域"
+      },
+      {
+        "slot": "logo",
         "title": "标志区域"
       }
     ]

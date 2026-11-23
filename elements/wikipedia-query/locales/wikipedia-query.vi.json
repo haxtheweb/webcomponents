@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Từ Wikipedia",
   "readFullArticle": "Đọc toàn bộ bài viết trên Wikipedia",
-  "reading": "Đọc"
+  "reading": "Đọc",
+  "couldNotLoad": "Không thể tải bài viết. Hãy dùng liên kết ở trên để đọc trên Wikipedia."
 }

@@ -42,5 +42,8 @@
   "belowLabel": "Ƙasa",
   "leftLabel": "Hagu",
   "rightLabel": "Dama",
-  "hideTranscriptLabel": "Ɓoye rubutun jawabi"
+  "hideTranscriptLabel": "Ɓoye rubutun jawabi",
+  "youtubeConsentNotice": "Wannan bidiyon yana kunna daga YouTube. Google zai karɓi adireshin IP ɗinka kuma yana iya saita kukis.",
+  "youtubeConsentAllow": "Koyaushe ka bar YouTube",
+  "consentChoicesLabel": "Zaɓuɓɓukan sirri"
 }

@@ -6,6 +6,8 @@
   "tryAbout": "このブラウザータブで今すぐ HAX を使えます。インストール不要。",
   "learn": "学ぶ",
   "learnAbout": "HAX を 1 つの流れずつ教えるチュートリアル。",
+  "lab": "Lab",
+  "labAbout": "HAX Lab：学生や若手開発者が本物の HAX の成果を公開しながら学ぶ場所。",
   "elements": "Web コンポーネント",
   "elementsAbout": "すべての HAX 要素を、ライブデモと解説付きで。",
   "cloud": "PRAW",

@@ -1,0 +1,6 @@
+{
+  "grades": "Noten",
+  "gradeLetter": "Not {letter}",
+  "score": "Punkten",
+  "scoreFor": "Punkte fir {label}"
+}

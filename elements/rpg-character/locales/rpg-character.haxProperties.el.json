@@ -78,7 +78,10 @@
           "messy-hair": "Ανακατεμένα μαλλιά με ουλή",
           "sparkle-selects": "Sparkle Selects (κράνος)",
           "saber-cats": "Saber Cats (κράνος)",
-          "future-traveler": "Future Traveler (κράνος)"
+          "future-traveler": "Future Traveler (κράνος)",
+          "pilgrim": "Καπέλο προσκυνητή",
+          "bonnet": "Σκουφί προσκυνήτριας",
+          "turkey": "Κουκούλα γαλοπούλας"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (εκτός)",
           "icers": "Icers (εντός)",
           "icers-away": "Icers (εκτός)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Προσκυνητής (αγόρι)",
+          "pilgrim-girl": "Προσκυνήτρια (κορίτσι)",
+          "turkey": "Γαλοπούλα"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Γαλλικό κλειδί",
           "hockey-stick-pink": "Μπαστούνι χόκεϊ (ροζ)",
           "hockey-stick-green": "Μπαστούνι χόκεϊ (πράσινο)",
-          "sparkle-flag": "Sparkle Selects (σημαία)"
+          "sparkle-flag": "Sparkle Selects (σημαία)",
+          "corn": "Καλαμπόκι",
+          "drumstick": "Μπούτι γαλοπούλας"
         }
       },
       {

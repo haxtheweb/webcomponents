@@ -66,6 +66,16 @@
           "_top": "Pinakamataas na window - _top",
           "_parent": "Magulang na window - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Pahalang",
+        "description": "Ilagay ang larawan sa tabi ng teksto sa halip na sa itaas nito."
+      },
+      {
+        "property": "clickable",
+        "title": "Link ang buong card",
+        "description": "Gawing link ang buong card at itago ang button. Kailangan ng link."
       }
     ],
     "developer": [

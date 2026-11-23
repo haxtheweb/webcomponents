@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "code pen တွင် ကြည့်ပါ:"
+  "checkItOutOnCodePen": "code pen တွင် ကြည့်ပါ:",
+  "tabHint": "Tab သည် ဤနေရာတွင် tab တစ်ခု ရိုက်ထည့်ပါသည်။ Tab ဖြင့် editor မှ ထွက်လိုပါက Ctrl+M ကို ဦးစွာနှိပ်ပါ (Mac တွင် Ctrl+Shift+M)။"
 }

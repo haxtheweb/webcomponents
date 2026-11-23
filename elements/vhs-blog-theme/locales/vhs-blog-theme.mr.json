@@ -73,5 +73,6 @@
   "padStart": "Start: तुमचे पान प्रकाशित करा",
   "padB": "B: शेवटचा ब्लॉक परत घ्या",
   "padA": "A: ब्लॉक पकडा",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "गेम कंट्रोलर उचला"
 }

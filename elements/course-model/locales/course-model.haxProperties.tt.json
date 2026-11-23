@@ -31,11 +31,20 @@
       },
       {
         "title": "Белем тикшерү өлкәсе"
+      },
+      {
+        "property": "title",
+        "title": "Исем",
+        "description": "Курс моделе өстендә күрсәтелә торган башисем."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Логотип өлкәсе"
+      },
+      {
+        "slot": "logo",
         "title": "Логотип өлкәсе"
       }
     ]

@@ -45,8 +45,12 @@
   "hideDirections": "Singidake pituduh",
   "showRelatedContent": "Tampilake isi sing gegandhengan",
   "hideRelatedContent": "Singidake isi sing gegandhengan",
+  "notAttempted": "Durung dicoba",
   "yourTags": "Wangsulan sampeyan",
   "availableTags": "Tag sing bisa dipilih",
   "dropTagsHere": "Pilih tag ing ngisor utawa seret rene",
-  "notAttempted": "Durung dicoba"
+  "addTag": "Tambah {tag}",
+  "removeTag": "Busak {tag}",
+  "tagAdded": "{tag} ditambahake menyang wangsulan panjenengan",
+  "tagRemoved": "{tag} dibusak saka wangsulan panjenengan"
 }

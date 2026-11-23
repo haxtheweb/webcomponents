@@ -42,5 +42,8 @@
   "belowLabel": "Pansi",
   "leftLabel": "Kumanzere",
   "rightLabel": "Kumanja",
-  "hideTranscriptLabel": "Bisani zolembedwa za mawu"
+  "hideTranscriptLabel": "Bisani zolembedwa za mawu",
+  "youtubeConsentNotice": "Vidiyo iyi imaseweredwa kuchokera ku YouTube. Google ilandira adilesi yanu ya IP ndipo ikhoza kuyika ma cookie.",
+  "youtubeConsentAllow": "Lolezani YouTube nthawi zonse",
+  "consentChoicesLabel": "Zosankha zachinsinsi"
 }

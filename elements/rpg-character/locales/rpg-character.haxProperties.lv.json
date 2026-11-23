@@ -78,7 +78,10 @@
           "messy-hair": "Izspūruši mati ar rētu",
           "sparkle-selects": "Sparkle Selects (ķivere)",
           "saber-cats": "Saber Cats (ķivere)",
-          "future-traveler": "Future Traveler (ķivere)"
+          "future-traveler": "Future Traveler (ķivere)",
+          "pilgrim": "Svētceļnieka cepure",
+          "bonnet": "Svētceļnieces aube",
+          "turkey": "Tītara kapuce"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (izbraukuma)",
           "icers": "Icers (mājas)",
           "icers-away": "Icers (izbraukuma)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Svētceļnieks (zēns)",
+          "pilgrim-girl": "Svētceļniece (meitene)",
+          "turkey": "Tītars"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Uzgriežņu atslēga",
           "hockey-stick-pink": "Hokeja nūja (rozā)",
           "hockey-stick-green": "Hokeja nūja (zaļš)",
-          "sparkle-flag": "Sparkle Selects (karogs)"
+          "sparkle-flag": "Sparkle Selects (karogs)",
+          "corn": "Kukurūzas vālīte",
+          "drumstick": "Tītara stilbiņš"
         }
       },
       {

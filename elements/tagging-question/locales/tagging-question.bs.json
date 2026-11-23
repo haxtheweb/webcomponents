@@ -45,8 +45,12 @@
   "hideDirections": "Sakrij upute",
   "showRelatedContent": "Prikaži povezani sadržaj",
   "hideRelatedContent": "Sakrij povezani sadržaj",
+  "notAttempted": "Nije pokušano",
   "yourTags": "Vaš odgovor",
   "availableTags": "Oznake za odabir",
   "dropTagsHere": "Odaberite oznake ispod ili ih povucite ovdje",
-  "notAttempted": "Nije pokušano"
+  "addTag": "Dodaj {tag}",
+  "removeTag": "Ukloni {tag}",
+  "tagAdded": "{tag} dodano u vaš odgovor",
+  "tagRemoved": "{tag} uklonjeno iz vašeg odgovora"
 }

@@ -73,5 +73,6 @@
   "padStart": "Start: бетіңізді жариялау",
   "padB": "B: соңғы блокты қайтару",
   "padA": "A: блок алу",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Ойын контроллерін алу"
 }

@@ -22,6 +22,15 @@
       {
         "title": "Jawaabaha",
         "description": "Habka jawaabaha ayaa qeexa taxanaha saxda ah."
+      },
+      {
+        "property": "layout",
+        "title": "Qaab-dhismeed",
+        "description": "Liis: jawaabaha oo saf-saf isugu dul yaal. Kaararka sawirka: saf kaarar ah oo hoos u gudba, mid kastaa leh sawirkiisa iyo badhamada hore / dambe loogu dhaqaajiyo.",
+        "options": {
+          "": "Liis",
+          "cards": "Kaararka sawirka"
+        }
       }
     ],
     "advanced": [

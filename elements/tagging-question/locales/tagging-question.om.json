@@ -45,8 +45,12 @@
   "hideDirections": "Qajeelfama dhoksi",
   "showRelatedContent": "Qabiyyee wal qabatu agarsiisi",
   "hideRelatedContent": "Qabiyyee wal qabatu dhoksi",
+  "notAttempted": "Hin yaalamne",
   "yourTags": "Deebii kee",
   "availableTags": "Mallattoowwan filachuuf",
   "dropTagsHere": "Mallattoo armaan gadii filadhaa yookaan as harkisaa",
-  "notAttempted": "Hin yaalamne"
+  "addTag": "{tag} dabali",
+  "removeTag": "{tag} haqi",
+  "tagAdded": "{tag} deebii keetti dabalameera",
+  "tagRemoved": "{tag} deebii kee irraa haqameera"
 }

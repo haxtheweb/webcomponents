@@ -18,6 +18,11 @@
       {
         "title": "Chi tiết điểm nóng",
         "description": "Các điểm nóng tương tác trên bản đồ hình ảnh."
+      },
+      {
+        "property": "src",
+        "title": "Hình ảnh",
+        "description": "Hình SVG mà các điểm nóng trỏ tới."
       }
     ]
   }

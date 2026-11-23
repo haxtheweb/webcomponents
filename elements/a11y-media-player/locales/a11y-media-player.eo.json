@@ -42,5 +42,8 @@
   "belowLabel": "Malsupre",
   "leftLabel": "Maldekstre",
   "rightLabel": "Dekstre",
-  "hideTranscriptLabel": "Kaŝi transskribaĵon"
+  "hideTranscriptLabel": "Kaŝi transskribaĵon",
+  "youtubeConsentNotice": "Ĉi tiu video ludiĝas de YouTube. Google ricevos vian IP-adreson kaj eble konservos kuketojn.",
+  "youtubeConsentAllow": "Ĉiam permesi YouTube",
+  "consentChoicesLabel": "Privatecaj elektoj"
 }

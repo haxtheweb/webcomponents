@@ -18,6 +18,11 @@
       {
         "title": "Nkọwa ebe ọkụ",
         "description": "Ebe ọkụ mmekọrịta dị na maapụ onyonyo."
+      },
+      {
+        "property": "src",
+        "title": "Onyonyo",
+        "description": "Onyonyo SVG nke ebe ntụaka na-atụ aka na ya."
       }
     ]
   }

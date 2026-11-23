@@ -18,6 +18,11 @@
       {
         "title": "Zambiri za malo ofunikira",
         "description": "Malo ofunikira ochitirana pa mapu a chithunzi."
+      },
+      {
+        "property": "src",
+        "title": "Chithunzi",
+        "description": "Chithunzi cha SVG chomwe malo odinika amaloza."
       }
     ]
   }

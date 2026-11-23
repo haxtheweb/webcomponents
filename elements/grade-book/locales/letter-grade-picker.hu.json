@@ -1,0 +1,6 @@
+{
+  "grades": "Jegyek",
+  "gradeLetter": "{letter} jegy",
+  "score": "Pontszám",
+  "scoreFor": "Pontszám: {label}"
+}

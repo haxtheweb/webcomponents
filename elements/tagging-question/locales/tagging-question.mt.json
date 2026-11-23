@@ -45,8 +45,12 @@
   "hideDirections": "Aħbi d-direzzjonijiet",
   "showRelatedContent": "Uri l-kontenut relatat",
   "hideRelatedContent": "Aħbi l-kontenut relatat",
+  "notAttempted": "Ma ppruvax",
   "yourTags": "It-tweġiba tiegħek",
   "availableTags": "Tags li minnhom tagħżel",
   "dropTagsHere": "Agħżel tags hawn taħt jew ġibdhom hawn",
-  "notAttempted": "Ma ppruvax"
+  "addTag": "Żid {tag}",
+  "removeTag": "Neħħi {tag}",
+  "tagAdded": "{tag} miżjud mat-tweġiba tiegħek",
+  "tagRemoved": "{tag} imneħħi mit-tweġiba tiegħek"
 }

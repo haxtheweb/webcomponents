@@ -78,7 +78,10 @@
           "messy-hair": "Сорвитой замбараагүй үс",
           "sparkle-selects": "Sparkle Selects (дуулга)",
           "saber-cats": "Saber Cats (дуулга)",
-          "future-traveler": "Future Traveler (дуулга)"
+          "future-traveler": "Future Traveler (дуулга)",
+          "pilgrim": "Мөргөлчийн малгай",
+          "bonnet": "Мөргөлчийн боолт малгай",
+          "turkey": "Цацагт хяруулын юүдэн"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (зочин)",
           "icers": "Icers (гэрийн)",
           "icers-away": "Icers (зочин)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Мөргөлчин (хүү)",
+          "pilgrim-girl": "Мөргөлчин (охин)",
+          "turkey": "Цацагт хяруул"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Гаечны түлхүүр",
           "hockey-stick-pink": "Хоккейн цохиур (ягаан)",
           "hockey-stick-green": "Хоккейн цохиур (ногоон)",
-          "sparkle-flag": "Sparkle Selects (туг)"
+          "sparkle-flag": "Sparkle Selects (туг)",
+          "corn": "Эрдэнэ шишийн түрүү",
+          "drumstick": "Цацагт хяруулын гуя"
         }
       },
       {

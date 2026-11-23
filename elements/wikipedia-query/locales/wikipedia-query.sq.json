@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Nga Wikipedia",
   "readFullArticle": "Lexo artikullin e plotë në Wikipedia",
-  "reading": "Lexim"
+  "reading": "Lexim",
+  "couldNotLoad": "Artikulli nuk mund të ngarkohej. Përdor lidhjen më sipër për ta lexuar në Wikipedia."
 }

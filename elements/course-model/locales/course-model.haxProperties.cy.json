@@ -31,12 +31,21 @@
       },
       {
         "title": "Ardal Gwirio Gwybodaeth"
+      },
+      {
+        "property": "title",
+        "title": "Teitl",
+        "description": "Pennawd a ddangosir uwchben model y cwrs."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Ardal logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Ardal y logo"
       }
     ]
   }

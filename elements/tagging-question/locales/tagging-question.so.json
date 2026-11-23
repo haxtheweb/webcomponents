@@ -45,8 +45,12 @@
   "hideDirections": "Qari tilmaamaha",
   "showRelatedContent": "Muuji nuxurka la xiriira",
   "hideRelatedContent": "Qari nuxurka la xiriira",
+  "notAttempted": "Lama isku dayin",
   "yourTags": "Jawaabtaada",
   "availableTags": "Summado la dooran karo",
   "dropTagsHere": "Hoos ka dooro summadaha ama halkan u jiid",
-  "notAttempted": "Lama isku dayin"
+  "addTag": "Ku dar {tag}",
+  "removeTag": "Ka saar {tag}",
+  "tagAdded": "{tag} waa lagu daray jawaabtaada",
+  "tagRemoved": "{tag} waa laga saaray jawaabtaada"
 }

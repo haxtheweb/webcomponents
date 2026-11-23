@@ -22,6 +22,15 @@
       {
         "title": "Đáp án",
         "description": "Thứ tự đáp án xác định trình tự đúng."
+      },
+      {
+        "property": "layout",
+        "title": "Bố cục",
+        "description": "Danh sách: các câu trả lời xếp chồng theo hàng. Thẻ hình ảnh: một hàng thẻ tự xuống dòng, mỗi thẻ có hình ảnh và nút di chuyển lên trước / ra sau.",
+        "options": {
+          "": "Danh sách",
+          "cards": "Thẻ hình ảnh"
+        }
       }
     ],
     "advanced": [

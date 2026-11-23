@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia இலிருந்து",
   "readFullArticle": "Wikipedia இல் முழுக் கட்டுரையையும் படிக்கவும்",
-  "reading": "வாசிப்பு"
+  "reading": "வாசிப்பு",
+  "couldNotLoad": "கட்டுரையை ஏற்ற முடியவில்லை. Wikipedia-வில் படிக்க மேலே உள்ள இணைப்பைப் பயன்படுத்துங்கள்."
 }

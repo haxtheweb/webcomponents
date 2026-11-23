@@ -22,6 +22,15 @@
       {
         "title": "Izimpendulo",
         "description": "Ukulandelana kwezimpendulo kuchaza ukulandelana okulungile."
+      },
+      {
+        "property": "layout",
+        "title": "Isakhiwo",
+        "description": "Uhlu: izimpendulo zipakishwe emigqeni. Amakhadi ezithombe: umugqa wamakhadi ogoqekayo, ngalinye linesithombe salo nezinkinobho zokuhambisa ngaphambili / ngemuva.",
+        "options": {
+          "": "Uhlu",
+          "cards": "Amakhadi ezithombe"
+        }
       }
     ],
     "advanced": [

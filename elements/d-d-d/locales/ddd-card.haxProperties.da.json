@@ -66,6 +66,16 @@
           "_top": "Øverste vindue - _top",
           "_parent": "Overordnet vindue - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vandret",
+        "description": "Placer billedet ved siden af teksten i stedet for over den."
+      },
+      {
+        "property": "clickable",
+        "title": "Hele kortet er linket",
+        "description": "Gør hele kortet til linket, og skjul knappen. Kræver et link."
       }
     ],
     "developer": [

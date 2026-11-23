@@ -31,11 +31,20 @@
       },
       {
         "title": "የዕውቀት ፈተና ቦታ"
+      },
+      {
+        "property": "title",
+        "title": "ርዕስ",
+        "description": "ከኮርስ ሞዴሉ በላይ የሚታይ ርዕስ።"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "የአርማ ቦታ"
+      },
+      {
+        "slot": "logo",
         "title": "የአርማ ቦታ"
       }
     ]

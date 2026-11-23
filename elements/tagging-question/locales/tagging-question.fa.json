@@ -45,8 +45,12 @@
   "hideDirections": "پنهان کردن راهنما",
   "showRelatedContent": "نمایش محتوای مرتبط",
   "hideRelatedContent": "پنهان کردن محتوای مرتبط",
+  "notAttempted": "تلاش نشده",
   "yourTags": "پاسخ شما",
   "availableTags": "برچسب‌های قابل انتخاب",
   "dropTagsHere": "برچسب‌ها را از پایین انتخاب کنید یا اینجا بکشید",
-  "notAttempted": "تلاش نشده"
+  "addTag": "افزودن {tag}",
+  "removeTag": "حذف {tag}",
+  "tagAdded": "{tag} به پاسخ شما افزوده شد",
+  "tagRemoved": "{tag} از پاسخ شما حذف شد"
 }

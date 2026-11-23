@@ -42,5 +42,8 @@
   "belowLabel": "Ներքևում",
   "leftLabel": "Ձախ",
   "rightLabel": "Աջ",
-  "hideTranscriptLabel": "Թաքցնել սղագրությունը"
+  "hideTranscriptLabel": "Թաքցնել սղագրությունը",
+  "youtubeConsentNotice": "Այս տեսանյութը նվագարկվում է YouTube-ից։ Google-ը կստանա ձեր IP հասցեն և կարող է cookie-ներ պահել։",
+  "youtubeConsentAllow": "Միշտ թույլատրել YouTube-ը",
+  "consentChoicesLabel": "Գաղտնիության ընտրանքներ"
 }

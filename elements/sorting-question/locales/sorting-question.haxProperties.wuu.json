@@ -22,6 +22,15 @@
       {
         "title": "答案",
         "description": "答案顺序决定正确个次序。"
+      },
+      {
+        "property": "layout",
+        "title": "布局",
+        "description": "列表：答案一行一行叠起来。图片卡片：一排会换行个卡片，每张有图片搭“朝前/朝后”按钮。",
+        "options": {
+          "": "列表",
+          "cards": "图片卡片"
+        }
       }
     ],
     "advanced": [

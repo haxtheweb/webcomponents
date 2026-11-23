@@ -42,5 +42,8 @@
   "belowLabel": "Apakšā",
   "leftLabel": "Pa kreisi",
   "rightLabel": "Pa labi",
-  "hideTranscriptLabel": "Slēpt transkripciju"
+  "hideTranscriptLabel": "Slēpt transkripciju",
+  "youtubeConsentNotice": "Šis video tiek atskaņots no YouTube. Google saņems jūsu IP adresi un var iestatīt sīkdatnes.",
+  "youtubeConsentAllow": "Vienmēr atļaut YouTube",
+  "consentChoicesLabel": "Privātuma izvēles"
 }

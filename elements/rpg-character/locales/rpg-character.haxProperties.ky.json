@@ -78,7 +78,10 @@
           "messy-hair": "Тырыктуу чачыранды чач",
           "sparkle-selects": "Sparkle Selects (туулга)",
           "saber-cats": "Saber Cats (туулга)",
-          "future-traveler": "Future Traveler (туулга)"
+          "future-traveler": "Future Traveler (туулга)",
+          "pilgrim": "Пилигрим калпагы",
+          "bonnet": "Пилигрим капору",
+          "turkey": "Индюк капюшону"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (конок)",
           "icers": "Icers (үй)",
           "icers-away": "Icers (конок)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Пилигрим (бала)",
+          "pilgrim-girl": "Пилигрим (кыз)",
+          "turkey": "Индюк"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Бурама ачкыч",
           "hockey-stick-pink": "Хоккей таягы (кызгылт)",
           "hockey-stick-green": "Хоккей таягы (жашыл)",
-          "sparkle-flag": "Sparkle Selects (желек)"
+          "sparkle-flag": "Sparkle Selects (желек)",
+          "corn": "Жүгөрү собогу",
+          "drumstick": "Индюктун саны"
         }
       },
       {

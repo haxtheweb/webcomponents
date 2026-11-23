@@ -1,0 +1,6 @@
+{
+  "grades": "Notat",
+  "gradeLetter": "Nota {letter}",
+  "score": "Pikët",
+  "scoreFor": "Pikët për {label}"
+}

@@ -31,12 +31,21 @@
       },
       {
         "title": "Naannoo Madaallii Beekumsaa"
+      },
+      {
+        "property": "title",
+        "title": "Mata duree",
+        "description": "Mata duree moodeela koorsii irratti mul'atu."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Naannoo loogoo"
+      },
+      {
+        "slot": "logo",
+        "title": "Bakka loogoo"
       }
     ]
   }

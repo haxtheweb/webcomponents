@@ -22,6 +22,15 @@
       {
         "title": "Odgovori",
         "description": "Vrstni red odgovorov določa pravilno zaporedje."
+      },
+      {
+        "property": "layout",
+        "title": "Postavitev",
+        "description": "Seznam: odgovori zloženi v vrsticah. Slikovne kartice: vrsta kartic, ki se prelomi, vsaka s svojo sliko in gumboma za premik prej / pozneje.",
+        "options": {
+          "": "Seznam",
+          "cards": "Slikovne kartice"
+        }
       }
     ],
     "advanced": [

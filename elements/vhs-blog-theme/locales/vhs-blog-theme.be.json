@@ -73,5 +73,6 @@
   "padStart": "Start: апублікаваць старонку",
   "padB": "B: вярнуць апошні блок",
   "padA": "A: схапіць блок",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Узяць гульнявы кантролер"
 }

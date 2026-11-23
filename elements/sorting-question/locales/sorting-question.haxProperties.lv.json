@@ -22,6 +22,15 @@
       {
         "title": "Atbildes",
         "description": "Atbilžu secība nosaka pareizo secību."
+      },
+      {
+        "property": "layout",
+        "title": "Izkārtojums",
+        "description": "Saraksts: atbildes sakārtotas rindās viena zem otras. Attēlu kartītes: kartīšu rinda, kas pārnesas jaunā rindā, katrai ar savu attēlu un pogām pārvietot agrāk / vēlāk.",
+        "options": {
+          "": "Saraksts",
+          "cards": "Attēlu kartītes"
+        }
       }
     ],
     "advanced": [

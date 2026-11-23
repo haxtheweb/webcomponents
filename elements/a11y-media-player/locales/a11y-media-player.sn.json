@@ -42,5 +42,8 @@
   "belowLabel": "Pazasi",
   "leftLabel": "Kuruboshwe",
   "rightLabel": "Kurudyi",
-  "hideTranscriptLabel": "Viga zvakanyorwa"
+  "hideTranscriptLabel": "Viga zvakanyorwa",
+  "youtubeConsentNotice": "Vhidhiyo iyi inotamba kubva kuYouTube. Google ichawana kero yako yeIP uye inogona kuisa makuki.",
+  "youtubeConsentAllow": "Gara uchibvumira YouTube",
+  "consentChoicesLabel": "Sarudzo dzekuvanzika"
 }

@@ -45,8 +45,12 @@
   "hideDirections": "Ẩn hướng dẫn",
   "showRelatedContent": "Hiện nội dung liên quan",
   "hideRelatedContent": "Ẩn nội dung liên quan",
+  "notAttempted": "Chưa thử",
   "yourTags": "Câu trả lời của bạn",
   "availableTags": "Các thẻ để chọn",
   "dropTagsHere": "Chọn thẻ bên dưới hoặc kéo chúng vào đây",
-  "notAttempted": "Chưa thử"
+  "addTag": "Thêm {tag}",
+  "removeTag": "Xóa {tag}",
+  "tagAdded": "Đã thêm {tag} vào câu trả lời của bạn",
+  "tagRemoved": "Đã xóa {tag} khỏi câu trả lời của bạn"
 }

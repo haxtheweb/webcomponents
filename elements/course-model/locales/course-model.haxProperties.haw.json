@@ -31,11 +31,20 @@
       },
       {
         "title": "Wahi loiloi ʻike"
+      },
+      {
+        "property": "title",
+        "title": "Poʻo inoa",
+        "description": "Poʻo inoa i hōʻike ʻia ma luna o ke kumu hoʻohālike papa."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Wahi lōkō"
+      },
+      {
+        "slot": "logo",
         "title": "Wahi lōkō"
       }
     ]

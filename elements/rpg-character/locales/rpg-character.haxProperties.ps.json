@@ -78,7 +78,10 @@
           "messy-hair": "د زخم نښې سره ګډوډ ویښتان",
           "sparkle-selects": "Sparkle Selects (خولۍ)",
           "saber-cats": "Saber Cats (خولۍ)",
-          "future-traveler": "Future Traveler (خولۍ)"
+          "future-traveler": "Future Traveler (خولۍ)",
+          "pilgrim": "د زایر خولۍ",
+          "bonnet": "د زایرې ټوپۍ",
+          "turkey": "د فیل مرغ خولۍ"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (بهر)",
           "icers": "Icers (کور)",
           "icers-away": "Icers (بهر)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "زایر (هلک)",
+          "pilgrim-girl": "زایره (نجلۍ)",
+          "turkey": "فیل مرغ"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "پېچ تاو",
           "hockey-stick-pink": "د هاکۍ ډنډه (ګلابي)",
           "hockey-stick-green": "د هاکۍ ډنډه (شنه)",
-          "sparkle-flag": "Sparkle Selects (بیرغ)"
+          "sparkle-flag": "Sparkle Selects (بیرغ)",
+          "corn": "د جوارو وږی",
+          "drumstick": "د فیل مرغ پښه"
         }
       },
       {

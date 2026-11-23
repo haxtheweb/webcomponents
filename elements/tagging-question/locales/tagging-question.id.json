@@ -45,8 +45,12 @@
   "hideDirections": "Sembunyikan petunjuk",
   "showRelatedContent": "Tampilkan konten terkait",
   "hideRelatedContent": "Sembunyikan konten terkait",
+  "notAttempted": "Belum dicoba",
   "yourTags": "Jawaban Anda",
   "availableTags": "Tag yang dapat dipilih",
   "dropTagsHere": "Pilih tag di bawah atau seret ke sini",
-  "notAttempted": "Belum dicoba"
+  "addTag": "Tambah {tag}",
+  "removeTag": "Hapus {tag}",
+  "tagAdded": "{tag} ditambahkan ke jawabanmu",
+  "tagRemoved": "{tag} dihapus dari jawabanmu"
 }

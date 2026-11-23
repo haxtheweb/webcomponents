@@ -73,5 +73,6 @@
   "padStart": "Start: hoʻopuka i kou ʻaoʻao",
   "padB": "B: hoʻihoʻi i ka poloka hope",
   "padA": "A: lālau i poloka",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "E lālau i ka mea hoʻokele pāʻani"
 }

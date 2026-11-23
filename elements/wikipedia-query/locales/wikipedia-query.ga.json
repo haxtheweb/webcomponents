@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Ó Wikipedia",
   "readFullArticle": "Léigh an t-alt iomlán ar Wikipedia",
-  "reading": "Léitheoireacht"
+  "reading": "Léitheoireacht",
+  "couldNotLoad": "Níorbh fhéidir an t-alt a luchtú. Úsáid an nasc thuas chun é a léamh ar Wikipedia."
 }

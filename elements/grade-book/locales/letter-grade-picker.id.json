@@ -1,0 +1,6 @@
+{
+  "grades": "Nilai",
+  "gradeLetter": "Nilai {letter}",
+  "score": "Skor",
+  "scoreFor": "Skor untuk {label}"
+}

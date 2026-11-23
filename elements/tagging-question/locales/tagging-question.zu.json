@@ -45,8 +45,12 @@
   "hideDirections": "Fihla iziqondiso",
   "showRelatedContent": "Bonisa okuhlobene",
   "hideRelatedContent": "Fihla okuhlobene",
+  "notAttempted": "Akwenziwanga",
   "yourTags": "Impendulo yakho",
   "availableTags": "Omaka okufanele ukhethe kubo",
   "dropTagsHere": "Khetha omaka ngezansi noma uwadonse lapha",
-  "notAttempted": "Akwenziwanga"
+  "addTag": "Engeza {tag}",
+  "removeTag": "Susa {tag}",
+  "tagAdded": "{tag} yengezwe empendulweni yakho",
+  "tagRemoved": "{tag} isusiwe empendulweni yakho"
 }

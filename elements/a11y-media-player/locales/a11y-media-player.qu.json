@@ -42,5 +42,8 @@
   "belowLabel": "Uraypi",
   "leftLabel": "Lluq'i",
   "rightLabel": "Paña",
-  "hideTranscriptLabel": "Qillqasqa rimayta pakay"
+  "hideTranscriptLabel": "Qillqasqa rimayta pakay",
+  "youtubeConsentNotice": "Kay vidiyoqa YouTube-manta purichikun. Google-mi IP direccionniykita chaskinqa, cookiekunatapas churanmanmi.",
+  "youtubeConsentAllow": "YouTube-ta sapa kuti saqiy",
+  "consentChoicesLabel": "Pakasqa akllanakuna"
 }

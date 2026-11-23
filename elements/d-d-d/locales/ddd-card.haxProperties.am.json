@@ -66,6 +66,16 @@
           "_top": "የላይኛው መስኮት - _top",
           "_parent": "ወላጅ መስኮት - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "አግድም",
+        "description": "ምስሉን ከጽሑፉ በላይ ሳይሆን ከጎኑ ያድርጉት።"
+      },
+      {
+        "property": "clickable",
+        "title": "ሙሉ ካርዱ አገናኙ ነው",
+        "description": "ሙሉውን ካርድ አገናኝ ያድርጉት እና አዝራሩን ይደብቁ። አገናኝ ያስፈልገዋል።"
       }
     ],
     "developer": [

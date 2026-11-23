@@ -31,11 +31,20 @@
       },
       {
         "title": "Мэдлэг шалгах хэсэг"
+      },
+      {
+        "property": "title",
+        "title": "Гарчиг",
+        "description": "Хичээлийн загварын дээр харагдах гарчиг."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Логоны хэсэг"
+      },
+      {
+        "slot": "logo",
         "title": "Логоны хэсэг"
       }
     ]

@@ -6,6 +6,8 @@
   "tryAbout": "现在就在此浏览器标签页中使用 HAX。无需安装。",
   "learn": "学习",
   "learnAbout": "一次讲解一个流程的 HAX 教程。",
+  "lab": "实验室",
+  "labAbout": "HAX Lab：学生和初级开发者通过交付真实 HAX 项目来学习的地方。",
   "elements": "Web 组件",
   "elementsAbout": "所有 HAX 元素，附实时演示和讲解。",
   "cloud": "PRAW",

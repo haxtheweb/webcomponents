@@ -42,5 +42,8 @@
   "belowLabel": "Alla",
   "leftLabel": "Vasemmalla",
   "rightLabel": "Oikealla",
-  "hideTranscriptLabel": "Piilota litterointi"
+  "hideTranscriptLabel": "Piilota litterointi",
+  "youtubeConsentNotice": "Tämä video toistetaan YouTubesta. Google saa IP-osoitteesi ja voi asettaa evästeitä.",
+  "youtubeConsentAllow": "Salli YouTube aina",
+  "consentChoicesLabel": "Tietosuojavalinnat"
 }

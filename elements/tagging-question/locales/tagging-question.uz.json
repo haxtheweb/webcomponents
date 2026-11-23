@@ -45,8 +45,12 @@
   "hideDirections": "Ko‘rsatmalarni yashirish",
   "showRelatedContent": "Aloqador kontentni ko‘rsatish",
   "hideRelatedContent": "Aloqador kontentni yashirish",
+  "notAttempted": "Urinilmagan",
   "yourTags": "Javobingiz",
   "availableTags": "Tanlash uchun teglar",
   "dropTagsHere": "Quyidagi teglarni tanlang yoki bu yerga sudrab keling",
-  "notAttempted": "Urinilmagan"
+  "addTag": "{tag} qo‘shish",
+  "removeTag": "{tag} ni olib tashlash",
+  "tagAdded": "{tag} javobingizga qo‘shildi",
+  "tagRemoved": "{tag} javobingizdan olib tashlandi"
 }

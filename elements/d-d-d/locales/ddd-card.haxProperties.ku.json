@@ -66,6 +66,16 @@
           "_top": "Pencereya jorîn - _top",
           "_parent": "Pencereya dêûbav - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Asoyî",
+        "description": "Wêneyê li kêleka nivîsê deyne, ne li ser wê."
+      },
+      {
+        "property": "clickable",
+        "title": "Hemû kart girêdan e",
+        "description": "Hemû kartê bike girêdan û bişkokê veşêre. Girêdanek pêwîst e."
       }
     ],
     "developer": [

@@ -45,8 +45,12 @@
   "hideDirections": "Slėpti nurodymus",
   "showRelatedContent": "Rodyti susijusį turinį",
   "hideRelatedContent": "Slėpti susijusį turinį",
+  "notAttempted": "Nebandyta",
   "yourTags": "Jūsų atsakymas",
   "availableTags": "Žymos, iš kurių galima rinktis",
   "dropTagsHere": "Pasirinkite žymas žemiau arba nutempkite jas čia",
-  "notAttempted": "Nebandyta"
+  "addTag": "Pridėti {tag}",
+  "removeTag": "Pašalinti {tag}",
+  "tagAdded": "{tag} pridėta prie jūsų atsakymo",
+  "tagRemoved": "{tag} pašalinta iš jūsų atsakymo"
 }

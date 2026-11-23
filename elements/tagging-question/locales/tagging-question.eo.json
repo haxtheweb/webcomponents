@@ -45,8 +45,12 @@
   "hideDirections": "Kaŝi la instrukciojn",
   "showRelatedContent": "Montri rilatan enhavon",
   "hideRelatedContent": "Kaŝi rilatan enhavon",
+  "notAttempted": "Ne provita",
   "yourTags": "Via respondo",
   "availableTags": "Elekteblaj etikedoj",
   "dropTagsHere": "Elektu etikedojn sube aŭ tiru ilin ĉi tien",
-  "notAttempted": "Ne provita"
+  "addTag": "Aldoni {tag}",
+  "removeTag": "Forigi {tag}",
+  "tagAdded": "{tag} aldonita al via respondo",
+  "tagRemoved": "{tag} forigita el via respondo"
 }

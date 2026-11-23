@@ -1,0 +1,6 @@
+{
+  "grades": "成绩",
+  "gradeLetter": "等级 {letter}",
+  "score": "分数",
+  "scoreFor": "{label} 个分数"
+}

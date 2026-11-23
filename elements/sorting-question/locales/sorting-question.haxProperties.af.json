@@ -22,6 +22,15 @@
       {
         "title": "Antwoorde",
         "description": "Antwoordvolgorde bepaal die korrekte volgorde."
+      },
+      {
+        "property": "layout",
+        "title": "Uitleg",
+        "description": "Lys: antwoorde in rye gestapel. Prentkaarte: 'n ry kaarte wat omvou, elk met sy prent en knoppies om vroeër / later te skuif.",
+        "options": {
+          "": "Lys",
+          "cards": "Prentkaarte"
+        }
       }
     ],
     "advanced": [

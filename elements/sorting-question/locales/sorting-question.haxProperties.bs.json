@@ -22,6 +22,15 @@
       {
         "title": "Odgovori",
         "description": "Redoslijed odgovora određuje tačan slijed."
+      },
+      {
+        "property": "layout",
+        "title": "Raspored",
+        "description": "Lista: odgovori složeni u redove. Kartice sa slikama: red kartica koji se prelama, svaka sa svojom slikom i dugmadima za pomjeranje ranije / kasnije.",
+        "options": {
+          "": "Lista",
+          "cards": "Kartice sa slikama"
+        }
       }
     ],
     "advanced": [

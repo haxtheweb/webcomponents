@@ -31,11 +31,20 @@
       },
       {
         "title": "జ్ఞాన తనిఖీ ప్రాంతం"
+      },
+      {
+        "property": "title",
+        "title": "శీర్షిక",
+        "description": "కోర్సు నమూనా పైన చూపే శీర్షిక."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "లోగో ప్రాంతం"
+      },
+      {
+        "slot": "logo",
         "title": "లోగో ప్రాంతం"
       }
     ]

@@ -18,6 +18,11 @@
       {
         "title": "Iinkcukacha zendawo ebalulekileyo",
         "description": "Iindawo ezibalulekileyo ezisebenzisanayo kwimephu yomfanekiso."
+      },
+      {
+        "property": "src",
+        "title": "Umfanekiso",
+        "description": "Umfanekiso we-SVG ekukhomba kuwo iindawo ezibalulekileyo."
       }
     ]
   }

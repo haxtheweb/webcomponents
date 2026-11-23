@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia నుండి",
   "readFullArticle": "Wikipediaలో పూర్తి వ్యాసాన్ని చదవండి",
-  "reading": "పఠనం"
+  "reading": "పఠనం",
+  "couldNotLoad": "వ్యాసాన్ని లోడ్ చేయలేకపోయాము. Wikipediaలో చదవడానికి పై లింక్‌ను ఉపయోగించండి."
 }

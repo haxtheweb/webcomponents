@@ -18,6 +18,11 @@
       {
         "title": "ホットスポットの詳細",
         "description": "イメージマップ上のインタラクティブなホットスポット。"
+      },
+      {
+        "property": "src",
+        "title": "画像",
+        "description": "ホットスポットが指す SVG 画像。"
       }
     ]
   }

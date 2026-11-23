@@ -18,6 +18,11 @@
       {
         "title": "Detaliile zonelor active",
         "description": "Zonele active interactive de pe harta imaginii."
+      },
+      {
+        "property": "src",
+        "title": "Imagine",
+        "description": "Imaginea SVG spre care indică punctele active."
       }
     ]
   }

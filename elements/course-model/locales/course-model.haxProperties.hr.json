@@ -31,11 +31,20 @@
       },
       {
         "title": "Područje provjere znanja"
+      },
+      {
+        "property": "title",
+        "title": "Naslov",
+        "description": "Naslov prikazan iznad modela tečaja."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Područje logotipa"
+      },
+      {
+        "slot": "logo",
         "title": "Područje logotipa"
       }
     ]

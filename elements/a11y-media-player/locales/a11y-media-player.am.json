@@ -42,5 +42,8 @@
   "belowLabel": "ታች",
   "leftLabel": "ግራ",
   "rightLabel": "ቀኝ",
-  "hideTranscriptLabel": "ጽሑፍ ቅጂ ደብቅ"
+  "hideTranscriptLabel": "ጽሑፍ ቅጂ ደብቅ",
+  "youtubeConsentNotice": "ይህ ቪዲዮ ከYouTube ይጫወታል። Google የእርስዎን IP አድራሻ ይቀበላል እና ኩኪዎችን ሊያስቀምጥ ይችላል።",
+  "youtubeConsentAllow": "YouTubeን ሁልጊዜ ፍቀድ",
+  "consentChoicesLabel": "የግላዊነት ምርጫዎች"
 }

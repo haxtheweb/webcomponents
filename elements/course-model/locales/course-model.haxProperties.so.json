@@ -31,12 +31,21 @@
       },
       {
         "title": "Meesha Hubinta Aqoonta"
+      },
+      {
+        "property": "title",
+        "title": "Cinwaan",
+        "description": "Cinwaanka ka muuqda dusha moodalka koorsada."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Meesha astaanta"
+      },
+      {
+        "slot": "logo",
+        "title": "Goobta astaanta"
       }
     ]
   }

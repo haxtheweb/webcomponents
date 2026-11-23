@@ -1,0 +1,6 @@
+{
+  "grades": "Оценки",
+  "gradeLetter": "Оценка {letter}",
+  "score": "Балл",
+  "scoreFor": "Балл за {label}"
+}

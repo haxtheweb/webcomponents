@@ -78,7 +78,10 @@
           "messy-hair": "Çapıqlı dağınıq saç",
           "sparkle-selects": "Sparkle Selects (dəbilqə)",
           "saber-cats": "Saber Cats (dəbilqə)",
-          "future-traveler": "Future Traveler (dəbilqə)"
+          "future-traveler": "Future Traveler (dəbilqə)",
+          "pilgrim": "Zəvvar papağı",
+          "bonnet": "Zəvvar başlığı",
+          "turkey": "Hinduşka başlığı"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (səfər)",
           "icers": "Icers (ev)",
           "icers-away": "Icers (səfər)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Zəvvar (oğlan)",
+          "pilgrim-girl": "Zəvvar (qız)",
+          "turkey": "Hinduşka"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Qayka açarı",
           "hockey-stick-pink": "Xokkey çubuğu (çəhrayı)",
           "hockey-stick-green": "Xokkey çubuğu (yaşıl)",
-          "sparkle-flag": "Sparkle Selects (bayraq)"
+          "sparkle-flag": "Sparkle Selects (bayraq)",
+          "corn": "Qarğıdalı sütası",
+          "drumstick": "Hinduşka budu"
         }
       },
       {

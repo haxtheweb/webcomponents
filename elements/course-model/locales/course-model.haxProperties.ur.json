@@ -31,12 +31,21 @@
       },
       {
         "title": "علم کی جانچ کا حصہ"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "کورس ماڈل کے اوپر دکھائی جانے والی سرخی۔"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "لوگو کا حصہ"
+      },
+      {
+        "slot": "logo",
+        "title": "لوگو کی جگہ"
       }
     ]
   }

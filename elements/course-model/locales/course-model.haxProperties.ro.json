@@ -31,12 +31,21 @@
       },
       {
         "title": "Zona de verificare a cunoștințelor"
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Titlul afișat deasupra modelului de curs."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Zona siglei"
+      },
+      {
+        "slot": "logo",
+        "title": "Zona logoului"
       }
     ]
   }

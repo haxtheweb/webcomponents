@@ -42,5 +42,8 @@
   "belowLabel": "Yvýpe",
   "leftLabel": "Akatúa",
   "rightLabel": "Paha",
-  "hideTranscriptLabel": "Mbotapykue transcripción"
+  "hideTranscriptLabel": "Mbotapykue transcripción",
+  "youtubeConsentNotice": "Ko video oñemboguata YouTube guive. Google ohupytýta nde IP kundaharape ha ikatu omoĩ cookie.",
+  "youtubeConsentAllow": "Emoneĩ YouTube tapiaite",
+  "consentChoicesLabel": "Ñemigua jeporavo"
 }

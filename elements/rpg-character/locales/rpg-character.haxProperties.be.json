@@ -78,7 +78,10 @@
           "messy-hair": "Растрапаныя валасы са шнарам",
           "sparkle-selects": "Sparkle Selects (шлем)",
           "saber-cats": "Saber Cats (шлем)",
-          "future-traveler": "Future Traveler (шлем)"
+          "future-traveler": "Future Traveler (шлем)",
+          "pilgrim": "Капялюш пілігрыма",
+          "bonnet": "Чапец пілігрымкі",
+          "turkey": "Капюшон індыка"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (у гасцях)",
           "icers": "Icers (дома)",
           "icers-away": "Icers (у гасцях)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Пілігрым (хлопчык)",
+          "pilgrim-girl": "Пілігрым (дзяўчынка)",
+          "turkey": "Індык"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Гаечны ключ",
           "hockey-stick-pink": "Хакейная клюшка (ружовы)",
           "hockey-stick-green": "Хакейная клюшка (зялёны)",
-          "sparkle-flag": "Sparkle Selects (сцяг)"
+          "sparkle-flag": "Sparkle Selects (сцяг)",
+          "corn": "Катах кукурузы",
+          "drumstick": "Ножка індыка"
         }
       },
       {

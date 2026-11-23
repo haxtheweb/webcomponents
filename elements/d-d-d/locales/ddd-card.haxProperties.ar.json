@@ -66,6 +66,16 @@
           "_top": "النافذة العليا - _top",
           "_parent": "النافذة الأم - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "أفقي",
+        "description": "ضع الصورة بجانب النص بدلًا من فوقه."
+      },
+      {
+        "property": "clickable",
+        "title": "البطاقة كلها هي الرابط",
+        "description": "اجعل البطاقة بأكملها هي الرابط وأخفِ الزر. يتطلب رابطًا."
       }
     ],
     "developer": [

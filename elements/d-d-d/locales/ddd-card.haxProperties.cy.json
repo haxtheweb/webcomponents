@@ -66,6 +66,16 @@
           "_top": "Ffenestr uchaf - _top",
           "_parent": "Ffenestr riant - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Llorweddol",
+        "description": "Rhoi'r ddelwedd wrth ochr y testun yn lle uwch ei ben."
+      },
+      {
+        "property": "clickable",
+        "title": "Y cerdyn cyfan yw'r ddolen",
+        "description": "Gwneud y cerdyn cyfan yn ddolen a chuddio'r botwm. Mae angen dolen."
       }
     ],
     "developer": [

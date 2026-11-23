@@ -66,6 +66,16 @@
           "_top": "Finestra principale - _top",
           "_parent": "Finestra padre - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizzontale",
+        "description": "Posiziona l'immagine accanto al testo invece che sopra."
+      },
+      {
+        "property": "clickable",
+        "title": "L'intera scheda è il link",
+        "description": "Rende l'intera scheda un link e nasconde il pulsante. Richiede un link."
       }
     ],
     "developer": [

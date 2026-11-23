@@ -22,6 +22,15 @@
       {
         "title": "Mga sagot",
         "description": "Ang pagkakasunod-sunod ng sagot ang nagtatakda ng tamang pagkakasunod-sunod."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Listahan: mga sagot na nakasalansan sa mga hanay. Mga image card: isang hanay ng mga card na bumababa sa susunod na linya, bawat isa may sariling larawan at mga button na ilipat pauna / pahuli.",
+        "options": {
+          "": "Listahan",
+          "cards": "Mga image card"
+        }
       }
     ],
     "advanced": [

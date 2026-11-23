@@ -6,6 +6,8 @@
   "tryAbout": "Usa HAX subito in questa scheda del browser. Niente da installare.",
   "learn": "Impara",
   "learnAbout": "Tutorial che insegnano HAX un flusso alla volta.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: dove studenti e sviluppatori junior imparano pubblicando vero lavoro su HAX.",
   "elements": "Web component",
   "elementsAbout": "Ogni elemento HAX, con demo dal vivo e guide.",
   "cloud": "PRAW",

@@ -31,11 +31,20 @@
       },
       {
         "title": "ज्ञान तपासणी क्षेत्र"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "अभ्यासक्रम मॉडेलच्या वर दाखवले जाणारे शीर्षक."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "लोगो क्षेत्र"
+      },
+      {
+        "slot": "logo",
         "title": "लोगो क्षेत्र"
       }
     ]

@@ -31,12 +31,21 @@
       },
       {
         "title": "Kawasan Semakan Pengetahuan"
+      },
+      {
+        "property": "title",
+        "title": "Tajuk",
+        "description": "Tajuk yang dipaparkan di atas model kursus."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Kawasan logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Ruang logo"
       }
     ]
   }

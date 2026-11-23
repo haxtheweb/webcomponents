@@ -66,6 +66,16 @@
           "_top": "Tieqa ta' fuq - _top",
           "_parent": "Tieqa ġenitur - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizzontali",
+        "description": "Poġġi l-immaġni ħdejn it-test minflok fuqu."
+      },
+      {
+        "property": "clickable",
+        "title": "Il-karta kollha hija l-link",
+        "description": "Agħmel il-karta kollha l-link u aħbi l-buttuna. Teħtieġ link."
       }
     ],
     "developer": [

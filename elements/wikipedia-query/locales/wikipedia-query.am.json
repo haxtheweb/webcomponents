@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "ከWikipedia",
   "readFullArticle": "ሙሉውን ጽሑፍ በWikipedia ላይ አንብብ",
-  "reading": "ንባብ"
+  "reading": "ንባብ",
+  "couldNotLoad": "ጽሑፉ ሊጫን አልቻለም። በWikipedia ላይ ለማንበብ ከላይ ያለውን አገናኝ ይጠቀሙ።"
 }

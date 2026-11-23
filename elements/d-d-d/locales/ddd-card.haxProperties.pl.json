@@ -66,6 +66,16 @@
           "_top": "Okno nadrzędne najwyższe - _top",
           "_parent": "Okno nadrzędne - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Poziomo",
+        "description": "Umieść obraz obok tekstu zamiast nad nim."
+      },
+      {
+        "property": "clickable",
+        "title": "Cała karta jest linkiem",
+        "description": "Ustaw całą kartę jako link i ukryj przycisk. Wymaga linku."
       }
     ],
     "developer": [

@@ -31,11 +31,20 @@
       },
       {
         "title": "Bilik yoxlaması sahəsi"
+      },
+      {
+        "property": "title",
+        "title": "Başlıq",
+        "description": "Kurs modelinin üstündə göstərilən başlıq."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Loqo sahəsi"
+      },
+      {
+        "slot": "logo",
         "title": "Loqo sahəsi"
       }
     ]

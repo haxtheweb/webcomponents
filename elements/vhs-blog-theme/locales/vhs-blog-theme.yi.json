@@ -73,5 +73,6 @@
   "padStart": "Start: פֿאַרעפֿנטלעך דײַן בלאַט",
   "padB": "B: נעם צוריק דעם לעצטן בלאָק",
   "padA": "A: כאַפּ אַ בלאָק",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "הייב אויף דעם שפּיל־קאָנטראָלער"
 }

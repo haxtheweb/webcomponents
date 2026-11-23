@@ -31,12 +31,21 @@
       },
       {
         "title": "Ezagutza-egiaztapenaren eremua"
+      },
+      {
+        "property": "title",
+        "title": "Izenburua",
+        "description": "Ikastaro-ereduaren gainean erakusten den goiburua."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Logotipo-eremua"
+      },
+      {
+        "slot": "logo",
+        "title": "Logoaren eremua"
       }
     ]
   }

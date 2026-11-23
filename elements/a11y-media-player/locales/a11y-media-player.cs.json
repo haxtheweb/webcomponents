@@ -42,5 +42,8 @@
   "belowLabel": "Pod",
   "leftLabel": "Vlevo",
   "rightLabel": "Vpravo",
-  "hideTranscriptLabel": "Skrýt přepis"
+  "hideTranscriptLabel": "Skrýt přepis",
+  "youtubeConsentNotice": "Toto video se přehrává z YouTube. Google obdrží vaši IP adresu a může ukládat soubory cookie.",
+  "youtubeConsentAllow": "Vždy povolit YouTube",
+  "consentChoicesLabel": "Volby soukromí"
 }

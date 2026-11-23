@@ -42,5 +42,8 @@
   "belowLabel": "Nedanför",
   "leftLabel": "Vänster",
   "rightLabel": "Höger",
-  "hideTranscriptLabel": "Dölj transkription"
+  "hideTranscriptLabel": "Dölj transkription",
+  "youtubeConsentNotice": "Den här videon spelas upp från YouTube. Google får din IP-adress och kan sätta cookies.",
+  "youtubeConsentAllow": "Tillåt alltid YouTube",
+  "consentChoicesLabel": "Integritetsval"
 }

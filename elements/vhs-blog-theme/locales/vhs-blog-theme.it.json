@@ -73,5 +73,6 @@
   "padStart": "Start: pubblica la tua pagina",
   "padB": "B: restituisci l'ultimo blocco",
   "padA": "A: prendi un blocco",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Prendi il controller"
 }

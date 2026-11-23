@@ -22,6 +22,15 @@
       {
         "title": "Nā pane",
         "description": "Na ke kaʻina pane e wehewehe i ke kaʻina pololei."
+      },
+      {
+        "property": "layout",
+        "title": "Hoʻonohonoho",
+        "description": "Papa inoa: nā pane i hoʻopaʻa ʻia ma nā lālani. Nā kāleka kiʻi: he lālani kāleka e ʻōwili ana, me kona kiʻi a me nā pihi neʻe ma mua / ma hope ma kēlā me kēia.",
+        "options": {
+          "": "Papa inoa",
+          "cards": "Nā kāleka kiʻi"
+        }
       }
     ],
     "advanced": [

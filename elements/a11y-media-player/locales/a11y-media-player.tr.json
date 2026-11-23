@@ -42,5 +42,8 @@
   "belowLabel": "Alt",
   "leftLabel": "Sol",
   "rightLabel": "Sağ",
-  "hideTranscriptLabel": "Transkripti gizle"
+  "hideTranscriptLabel": "Transkripti gizle",
+  "youtubeConsentNotice": "Bu video YouTube'dan oynatılır. Google IP adresinizi alır ve çerez yerleştirebilir.",
+  "youtubeConsentAllow": "YouTube'a her zaman izin ver",
+  "consentChoicesLabel": "Gizlilik seçenekleri"
 }

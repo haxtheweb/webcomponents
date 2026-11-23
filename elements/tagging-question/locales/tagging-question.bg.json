@@ -45,8 +45,12 @@
   "hideDirections": "Скриване на указанията",
   "showRelatedContent": "Показване на свързаното съдържание",
   "hideRelatedContent": "Скриване на свързаното съдържание",
+  "notAttempted": "Без опит",
   "yourTags": "Вашият отговор",
   "availableTags": "Етикети за избор",
   "dropTagsHere": "Изберете етикети по-долу или ги плъзнете тук",
-  "notAttempted": "Без опит"
+  "addTag": "Добавяне на {tag}",
+  "removeTag": "Премахване на {tag}",
+  "tagAdded": "{tag} е добавено към отговора ви",
+  "tagRemoved": "{tag} е премахнато от отговора ви"
 }

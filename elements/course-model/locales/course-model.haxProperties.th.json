@@ -31,11 +31,20 @@
       },
       {
         "title": "พื้นที่ตรวจสอบความรู้"
+      },
+      {
+        "property": "title",
+        "title": "ชื่อเรื่อง",
+        "description": "หัวข้อที่แสดงเหนือโมเดลรายวิชา"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "พื้นที่โลโก้"
+      },
+      {
+        "slot": "logo",
         "title": "พื้นที่โลโก้"
       }
     ]

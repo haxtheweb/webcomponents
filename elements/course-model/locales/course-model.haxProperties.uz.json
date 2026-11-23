@@ -31,11 +31,20 @@
       },
       {
         "title": "Bilimni tekshirish maydoni"
+      },
+      {
+        "property": "title",
+        "title": "Sarlavha",
+        "description": "Kurs modeli ustida ko‘rsatiladigan sarlavha."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logotip maydoni"
+      },
+      {
+        "slot": "logo",
         "title": "Logotip maydoni"
       }
     ]

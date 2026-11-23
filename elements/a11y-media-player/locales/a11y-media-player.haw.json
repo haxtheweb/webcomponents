@@ -42,5 +42,8 @@
   "belowLabel": "Ma lalo",
   "leftLabel": "Hema",
   "rightLabel": "ʻAkau",
-  "hideTranscriptLabel": "Hūnā i ka kope ʻōlelo"
+  "hideTranscriptLabel": "Hūnā i ka kope ʻōlelo",
+  "youtubeConsentNotice": "Pāʻani ʻia kēia wikiō mai YouTube mai. E loaʻa ana iā Google kou helu wahi IP a hiki iā ia ke hoʻonoho i nā kuki.",
+  "youtubeConsentAllow": "E ʻae mau iā YouTube",
+  "consentChoicesLabel": "Nā koho pilikino"
 }

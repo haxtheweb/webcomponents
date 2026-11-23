@@ -45,8 +45,12 @@
   "hideDirections": "Rêwerzan veşêre",
   "showRelatedContent": "Naveroka têkildar nîşan bide",
   "hideRelatedContent": "Naveroka têkildar veşêre",
+  "notAttempted": "Nehatiye ceribandin",
   "yourTags": "Bersiva te",
   "availableTags": "Nîşanên ji bo hilbijartinê",
   "dropTagsHere": "Li jêr nîşanan hilbijêrin an jî bikişînin vir",
-  "notAttempted": "Nehatiye ceribandin"
+  "addTag": "{tag} zêde bike",
+  "removeTag": "{tag} rake",
+  "tagAdded": "{tag} li bersiva te hat zêdekirin",
+  "tagRemoved": "{tag} ji bersiva te hat rakirin"
 }

@@ -18,6 +18,11 @@
       {
         "title": "Ruzivo rwenzvimbo",
         "description": "Nzvimbo dzinoshanda pamepu yemufananidzo."
+      },
+      {
+        "property": "src",
+        "title": "Mufananidzo",
+        "description": "Mufananidzo weSVG unonongedzwa nenzvimbo dzinopisa."
       }
     ]
   }

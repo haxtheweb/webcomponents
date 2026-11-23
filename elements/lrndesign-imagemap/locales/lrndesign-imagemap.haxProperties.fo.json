@@ -18,6 +18,11 @@
       {
         "title": "Smálutir um heitar blettir",
         "description": "Samvirknu heitu blettirnir á myndakortinum."
+      },
+      {
+        "property": "src",
+        "title": "Mynd",
+        "description": "SVG-mynd, sum heitu deplarnir vísa á."
       }
     ]
   }

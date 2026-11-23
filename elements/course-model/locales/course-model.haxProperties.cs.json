@@ -31,11 +31,20 @@
       },
       {
         "title": "Oblast ověření znalostí"
+      },
+      {
+        "property": "title",
+        "title": "Název",
+        "description": "Nadpis zobrazený nad modelem kurzu."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Oblast loga"
+      },
+      {
+        "slot": "logo",
         "title": "Oblast loga"
       }
     ]

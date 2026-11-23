@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "来自 Wikipedia",
   "readFullArticle": "在 Wikipedia 上阅读全文",
-  "reading": "阅读"
+  "reading": "阅读",
+  "couldNotLoad": "迭篇文章加载勿出来。用上头个链接到 Wikipedia 上去读。"
 }

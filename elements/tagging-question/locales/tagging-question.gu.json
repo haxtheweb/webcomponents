@@ -45,8 +45,12 @@
   "hideDirections": "સૂચનાઓ છુપાવો",
   "showRelatedContent": "સંબંધિત સામગ્રી બતાવો",
   "hideRelatedContent": "સંબંધિત સામગ્રી છુપાવો",
+  "notAttempted": "પ્રયાસ કર્યો નથી",
   "yourTags": "તમારો જવાબ",
   "availableTags": "પસંદ કરવા માટેના ટૅગ",
   "dropTagsHere": "નીચે ટૅગ પસંદ કરો અથવા તેમને અહીં ખેંચો",
-  "notAttempted": "પ્રયાસ કર્યો નથી"
+  "addTag": "{tag} ઉમેરો",
+  "removeTag": "{tag} દૂર કરો",
+  "tagAdded": "{tag} તમારા જવાબમાં ઉમેર્યું",
+  "tagRemoved": "{tag} તમારા જવાબમાંથી દૂર કર્યું"
 }

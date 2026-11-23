@@ -31,12 +31,21 @@
       },
       {
         "title": "Svæði þekkingarprófs"
+      },
+      {
+        "property": "title",
+        "title": "Titill",
+        "description": "Fyrirsögn sem birtist fyrir ofan námskeiðslíkanið."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Svæði merkis"
+      },
+      {
+        "slot": "logo",
+        "title": "Svæði fyrir merki"
       }
     ]
   }

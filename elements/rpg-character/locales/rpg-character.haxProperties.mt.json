@@ -78,7 +78,10 @@
           "messy-hair": "Xagħar imħawwad b'ċikatriċi",
           "sparkle-selects": "Sparkle Selects (elmu)",
           "saber-cats": "Saber Cats (elmu)",
-          "future-traveler": "Future Traveler (elmu)"
+          "future-traveler": "Future Traveler (elmu)",
+          "pilgrim": "Kappell tal-pellegrin",
+          "bonnet": "Bonnet tal-pellegrina",
+          "turkey": "Barnuża tad-dundjan"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (barra)",
           "icers": "Icers (dar)",
           "icers-away": "Icers (barra)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pellegrin (tifel)",
+          "pilgrim-girl": "Pellegrina (tifla)",
+          "turkey": "Dundjan"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Spanner",
           "hockey-stick-pink": "Ħatba tal-hockey (roża)",
           "hockey-stick-green": "Ħatba tal-hockey (ħadra)",
-          "sparkle-flag": "Sparkle Selects (bandiera)"
+          "sparkle-flag": "Sparkle Selects (bandiera)",
+          "corn": "Zokk tal-qamħirrum",
+          "drumstick": "Koxxa tad-dundjan"
         }
       },
       {

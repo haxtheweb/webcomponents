@@ -66,6 +66,16 @@
           "_top": "اوپری ونڈو - _top",
           "_parent": "والد ونڈو - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "افقی",
+        "description": "تصویر کو متن کے اوپر کے بجائے اس کے ساتھ رکھیں۔"
+      },
+      {
+        "property": "clickable",
+        "title": "پورا کارڈ لنک ہے",
+        "description": "پورے کارڈ کو لنک بنائیں اور بٹن چھپائیں۔ لنک درکار ہے۔"
       }
     ],
     "developer": [

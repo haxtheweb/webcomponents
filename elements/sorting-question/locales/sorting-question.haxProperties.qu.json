@@ -22,6 +22,15 @@
       {
         "title": "Kutichiykuna",
         "description": "Kutichiykunap siq'inmi allin qatinakuyta churan."
+      },
+      {
+        "property": "layout",
+        "title": "Churay",
+        "description": "Lista: kutichiykuna sinrikunapi pataqchasqa. Rikch'ayniyuq tarjetakuna: huk sinri tarjetakuna, qatiq sinriman pasaq, sapankanpi rikch'ayninwan, ñawpaqman / qhipaman kuyuchina botónkunawanpas.",
+        "options": {
+          "": "Lista",
+          "cards": "Rikch'ayniyuq tarjetakuna"
+        }
       }
     ],
     "advanced": [

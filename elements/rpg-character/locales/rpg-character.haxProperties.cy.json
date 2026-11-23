@@ -78,7 +78,10 @@
           "messy-hair": "Gwallt blêr gyda chraith",
           "sparkle-selects": "Sparkle Selects (helmed)",
           "saber-cats": "Saber Cats (helmed)",
-          "future-traveler": "Future Traveler (helmed)"
+          "future-traveler": "Future Traveler (helmed)",
+          "pilgrim": "Het pererin",
+          "bonnet": "Boned pererin",
+          "turkey": "Cwfl twrci"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (oddi cartref)",
           "icers": "Icers (cartref)",
           "icers-away": "Icers (oddi cartref)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pererin (bachgen)",
+          "pilgrim-girl": "Pererin (merch)",
+          "turkey": "Twrci"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Sbaner",
           "hockey-stick-pink": "Ffon hoci (pinc)",
           "hockey-stick-green": "Ffon hoci (gwyrdd)",
-          "sparkle-flag": "Sparkle Selects (baner)"
+          "sparkle-flag": "Sparkle Selects (baner)",
+          "corn": "Tywysen india-corn",
+          "drumstick": "Coes twrci"
         }
       },
       {

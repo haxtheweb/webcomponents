@@ -66,6 +66,16 @@
           "_top": "پنجرهٔ بالایی - _top",
           "_parent": "پنجرهٔ والد - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "افقی",
+        "description": "تصویر را به‌جای بالای متن، کنار آن قرار بده."
+      },
+      {
+        "property": "clickable",
+        "title": "کل کارت پیوند است",
+        "description": "کل کارت را پیوند کن و دکمه را پنهان کن. به یک پیوند نیاز دارد."
       }
     ],
     "developer": [

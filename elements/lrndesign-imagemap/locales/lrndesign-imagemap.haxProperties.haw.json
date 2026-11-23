@@ -18,6 +18,11 @@
       {
         "title": "Nā kikoʻī kiko wela",
         "description": "Nā kiko wela launa ma ka palapala ʻāina kiʻi."
+      },
+      {
+        "property": "src",
+        "title": "Kiʻi",
+        "description": "Kiʻi SVG e kuhikuhi ai nā kiko wela."
       }
     ]
   }

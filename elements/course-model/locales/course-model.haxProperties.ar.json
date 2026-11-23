@@ -31,11 +31,20 @@
       },
       {
         "title": "منطقة اختبار المعرفة"
+      },
+      {
+        "property": "title",
+        "title": "العنوان",
+        "description": "عنوان يظهر أعلى نموذج المقرر."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "منطقة الشعار"
+      },
+      {
+        "slot": "logo",
         "title": "منطقة الشعار"
       }
     ]

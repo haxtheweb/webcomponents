@@ -22,6 +22,15 @@
       {
         "title": "Respostes",
         "description": "L'ordre de les respostes defineix la seqüència correcta."
+      },
+      {
+        "property": "layout",
+        "title": "Disposició",
+        "description": "Llista: respostes apilades en files. Targetes amb imatge: una fila de targetes que salta de línia, cadascuna amb la seva imatge i botons per moure-la abans / després.",
+        "options": {
+          "": "Llista",
+          "cards": "Targetes amb imatge"
+        }
       }
     ],
     "advanced": [

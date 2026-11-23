@@ -66,6 +66,16 @@
           "_top": "سب توں اتلی ونڈو - _top",
           "_parent": "ماپا ونڈو - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "لیٹواں",
+        "description": "تصویر نوں لکھت دے اُتے دی بجائے اوہدے نال رکھو۔"
+      },
+      {
+        "property": "clickable",
+        "title": "پورا کارڈ لنک اے",
+        "description": "پورے کارڈ نوں لنک بݨاؤ تے بٹن لکاؤ۔ لنک دی لوڑ اے۔"
       }
     ],
     "developer": [

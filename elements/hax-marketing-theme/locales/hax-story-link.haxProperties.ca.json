@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, un tutorial",
           "try": "browser.hax.cloud, prova-ho",
           "elements": "webcomponents.hax.cloud, un bloc",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

@@ -45,8 +45,12 @@
   "hideDirections": "Cuddio'r cyfarwyddiadau",
   "showRelatedContent": "Dangos y cynnwys cysylltiedig",
   "hideRelatedContent": "Cuddio'r cynnwys cysylltiedig",
+  "notAttempted": "Heb roi cynnig",
   "yourTags": "Eich ateb",
   "availableTags": "Tagiau i ddewis ohonynt",
   "dropTagsHere": "Dewiswch dagiau isod neu llusgwch nhw yma",
-  "notAttempted": "Heb roi cynnig"
+  "addTag": "Ychwanegu {tag}",
+  "removeTag": "Tynnu {tag}",
+  "tagAdded": "{tag} wedi'i ychwanegu at eich ateb",
+  "tagRemoved": "{tag} wedi'i dynnu o'ch ateb"
 }

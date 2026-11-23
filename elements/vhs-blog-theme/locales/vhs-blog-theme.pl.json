@@ -73,5 +73,6 @@
   "padStart": "Start: opublikuj stronę",
   "padB": "B: oddaj ostatni blok",
   "padA": "A: chwyć blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Weź do ręki kontroler do gier"
 }

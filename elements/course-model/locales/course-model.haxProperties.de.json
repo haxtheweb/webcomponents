@@ -31,11 +31,20 @@
       },
       {
         "title": "Wissenscheck-Bereich"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Überschrift über dem Kursmodell."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logobereich"
+      },
+      {
+        "slot": "logo",
         "title": "Logobereich"
       }
     ]

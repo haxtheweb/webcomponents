@@ -22,6 +22,15 @@
       {
         "title": "Yanıtlar",
         "description": "Yanıt sırası doğru diziyi belirler."
+      },
+      {
+        "property": "layout",
+        "title": "Düzen",
+        "description": "Liste: cevaplar satırlar halinde alt alta. Görsel kartlar: alt satıra geçen bir kart dizisi; her kartta görseli ve önce / sonra taşı düğmeleri var.",
+        "options": {
+          "": "Liste",
+          "cards": "Görsel kartlar"
+        }
       }
     ],
     "advanced": [

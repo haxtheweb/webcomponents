@@ -66,6 +66,16 @@
           "_top": "Fereastra de sus - _top",
           "_parent": "Fereastra părinte - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizontal",
+        "description": "Plasează imaginea lângă text în loc de deasupra lui."
+      },
+      {
+        "property": "clickable",
+        "title": "Întregul card este linkul",
+        "description": "Face din întregul card linkul și ascunde butonul. Necesită un link."
       }
     ],
     "developer": [

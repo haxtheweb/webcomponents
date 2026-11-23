@@ -22,6 +22,15 @@
       {
         "title": "Azịza",
         "description": "Usoro azịza na-akọwa usoro ziri ezi."
+      },
+      {
+        "property": "layout",
+        "title": "Nhazi",
+        "description": "Ndepụta: azịza ndị a tụkọbara n'ahịrị. Kaadị onyonyo: ahịrị kaadị na-agbadata, nke ọ bụla nwere onyonyo ya na bọtịnụ ibugharị n'ihu / n'azụ.",
+        "options": {
+          "": "Ndepụta",
+          "cards": "Kaadị onyonyo"
+        }
       }
     ],
     "advanced": [

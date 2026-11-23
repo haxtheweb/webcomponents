@@ -45,8 +45,12 @@
   "hideDirections": "Piilota ohjeet",
   "showRelatedContent": "Näytä liittyvä sisältö",
   "hideRelatedContent": "Piilota liittyvä sisältö",
+  "notAttempted": "Ei yritetty",
   "yourTags": "Vastauksesi",
   "availableTags": "Valittavat tunnisteet",
   "dropTagsHere": "Valitse tunnisteet alta tai vedä ne tähän",
-  "notAttempted": "Ei yritetty"
+  "addTag": "Lisää {tag}",
+  "removeTag": "Poista {tag}",
+  "tagAdded": "{tag} lisätty vastaukseesi",
+  "tagRemoved": "{tag} poistettu vastauksestasi"
 }

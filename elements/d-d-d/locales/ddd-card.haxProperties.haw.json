@@ -66,6 +66,16 @@
           "_top": "Pukaaniani luna - _top",
           "_parent": "Pukaaniani makua - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ākea",
+        "description": "E kau i ke kiʻi ma ka ʻaoʻao o ka kikokikona ma kahi o ma luna."
+      },
+      {
+        "property": "clickable",
+        "title": "ʻO ke kāleka holoʻokoʻa ka loulou",
+        "description": "E hoʻolilo i ke kāleka holoʻokoʻa i loulou a hūnā i ke pihi. Pono he loulou."
       }
     ],
     "developer": [

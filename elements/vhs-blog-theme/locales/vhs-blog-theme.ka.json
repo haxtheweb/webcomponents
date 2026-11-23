@@ -73,5 +73,6 @@
   "padStart": "Start: გვერდის გამოქვეყნება",
   "padB": "B: ბოლო ბლოკის უკან დაბრუნება",
   "padA": "A: ბლოკის აღება",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "სათამაშო კონტროლერის აღება"
 }

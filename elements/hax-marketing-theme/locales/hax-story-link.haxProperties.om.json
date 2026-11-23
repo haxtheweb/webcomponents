@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, barnoota",
           "try": "browser.hax.cloud, yaali",
           "elements": "webcomponents.hax.cloud, kutaa",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

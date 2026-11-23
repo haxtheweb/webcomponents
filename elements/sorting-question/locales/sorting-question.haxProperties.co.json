@@ -22,6 +22,15 @@
       {
         "title": "Risposte",
         "description": "L'ordine di e risposte definisce a sequenza ghjusta."
+      },
+      {
+        "property": "layout",
+        "title": "Dispusizione",
+        "description": "Lista: risposte impilate in fila. Carte cù imagine: una fila di carte chì và à a linea, ognuna cù a so imagine è buttoni per spustà prima / dopu.",
+        "options": {
+          "": "Lista",
+          "cards": "Carte cù imagine"
+        }
       }
     ],
     "advanced": [

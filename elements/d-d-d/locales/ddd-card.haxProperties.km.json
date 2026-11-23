@@ -66,6 +66,16 @@
           "_top": "ផ្ទាំងខាងលើ - _top",
           "_parent": "ផ្ទាំងមេ - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "ផ្ដេក",
+        "description": "ដាក់រូបភាពនៅក្បែរអត្ថបទ ជំនួសឱ្យនៅខាងលើវា។"
+      },
+      {
+        "property": "clickable",
+        "title": "កាតទាំងមូលជាតំណ",
+        "description": "ធ្វើឱ្យកាតទាំងមូលជាតំណ ហើយលាក់ប៊ូតុង។ ត្រូវការតំណ។"
       }
     ],
     "developer": [

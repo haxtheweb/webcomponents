@@ -66,6 +66,16 @@
           "_top": "Ovasta vindeyga - _top",
           "_parent": "Foreldravindeyga - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vatnrætt",
+        "description": "Set myndina við síðuna av tekstinum heldur enn omanfyri."
+      },
+      {
+        "property": "clickable",
+        "title": "Alt kortið er leinkið",
+        "description": "Ger alt kortið til leinkið og fjal knøttin. Krevur eitt leinki."
       }
     ],
     "developer": [

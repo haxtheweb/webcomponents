@@ -42,5 +42,8 @@
   "belowLabel": "Thíos",
   "leftLabel": "Ar chlé",
   "rightLabel": "Ar dheis",
-  "hideTranscriptLabel": "Folaigh an scríbhinn"
+  "hideTranscriptLabel": "Folaigh an scríbhinn",
+  "youtubeConsentNotice": "Seinntear an físeán seo ó YouTube. Gheobhaidh Google do sheoladh IP agus d'fhéadfadh sé fianáin a shocrú.",
+  "youtubeConsentAllow": "Ceadaigh YouTube i gcónaí",
+  "consentChoicesLabel": "Roghanna príobháideachais"
 }

@@ -18,6 +18,11 @@
       {
         "title": "Détails des zones cliquables",
         "description": "Les zones interactives de l'image cliquable."
+      },
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "Image SVG vers laquelle pointent les zones actives."
       }
     ]
   }

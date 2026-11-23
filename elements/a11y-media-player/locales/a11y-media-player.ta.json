@@ -42,5 +42,8 @@
   "belowLabel": "கீழே",
   "leftLabel": "இடது",
   "rightLabel": "வலது",
-  "hideTranscriptLabel": "எழுத்துப்படியை மறை"
+  "hideTranscriptLabel": "எழுத்துப்படியை மறை",
+  "youtubeConsentNotice": "இந்த வீடியோ YouTube-இலிருந்து இயங்குகிறது. Google உங்கள் IP முகவரியைப் பெறும், மேலும் குக்கீகளை அமைக்கக்கூடும்.",
+  "youtubeConsentAllow": "YouTube-ஐ எப்போதும் அனுமதி",
+  "consentChoicesLabel": "தனியுரிமைத் தேர்வுகள்"
 }

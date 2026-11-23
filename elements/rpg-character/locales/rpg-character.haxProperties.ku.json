@@ -78,7 +78,10 @@
           "messy-hair": "Porê tevlihev bi şopa birînê",
           "sparkle-selects": "Sparkle Selects (kum)",
           "saber-cats": "Saber Cats (kum)",
-          "future-traveler": "Future Traveler (kum)"
+          "future-traveler": "Future Traveler (kum)",
+          "pilgrim": "Kumê heciyan",
+          "bonnet": "Kulava heciyan",
+          "turkey": "Kumê elok"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (derve)",
           "icers": "Icers (mal)",
           "icers-away": "Icers (derve)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Hecî (kur)",
+          "pilgrim-girl": "Hecî (keç)",
+          "turkey": "Elok"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Mifteya somûnê",
           "hockey-stick-pink": "Darê hokeyê (pembe)",
           "hockey-stick-green": "Darê hokeyê (kesk)",
-          "sparkle-flag": "Sparkle Selects (al)"
+          "sparkle-flag": "Sparkle Selects (al)",
+          "corn": "Simbilê garis",
+          "drumstick": "Ranê elokê"
         }
       },
       {

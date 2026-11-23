@@ -78,7 +78,10 @@
           "messy-hair": "Rommelich hier mei litteken",
           "sparkle-selects": "Sparkle Selects (helm)",
           "saber-cats": "Saber Cats (helm)",
-          "future-traveler": "Future Traveler (helm)"
+          "future-traveler": "Future Traveler (helm)",
+          "pilgrim": "Pylgerhoed",
+          "bonnet": "Pylgerkapke",
+          "turkey": "Kalkoenkap"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (út)",
           "icers": "Icers (thús)",
           "icers-away": "Icers (út)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pylger (jonge)",
+          "pilgrim-girl": "Pylger (famke)",
+          "turkey": "Kalkoen"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Moersleutel",
           "hockey-stick-pink": "Hockeystok (roze)",
           "hockey-stick-green": "Hockeystok (grien)",
-          "sparkle-flag": "Sparkle Selects (flagge)"
+          "sparkle-flag": "Sparkle Selects (flagge)",
+          "corn": "Maiskolf",
+          "drumstick": "Kalkoenbout"
         }
       },
       {

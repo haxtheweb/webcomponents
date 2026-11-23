@@ -22,6 +22,15 @@
       {
         "title": "Risposte",
         "description": "L'ordine delle risposte definisce la sequenza corretta."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Elenco: risposte impilate in righe. Schede con immagine: una fila di schede che va a capo, ognuna con la sua immagine e i pulsanti per spostarla prima / dopo.",
+        "options": {
+          "": "Elenco",
+          "cards": "Schede con immagine"
+        }
       }
     ],
     "advanced": [

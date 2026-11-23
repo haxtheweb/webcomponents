@@ -78,7 +78,10 @@
           "messy-hair": "Ógreitt hár við ørri",
           "sparkle-selects": "Sparkle Selects (hjálmur)",
           "saber-cats": "Saber Cats (hjálmur)",
-          "future-traveler": "Future Traveler (hjálmur)"
+          "future-traveler": "Future Traveler (hjálmur)",
+          "pilgrim": "Pílagrímshattur",
+          "bonnet": "Pílagrímskappa",
+          "turkey": "Kalkunhetta"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (úti)",
           "icers": "Icers (heima)",
           "icers-away": "Icers (úti)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pílagrímur (drongur)",
+          "pilgrim-girl": "Pílagrímur (genta)",
+          "turkey": "Kalkun"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Skrúvulykil",
           "hockey-stick-pink": "Hokkýkølva (ljósareyð)",
           "hockey-stick-green": "Hokkýkølva (grønt)",
-          "sparkle-flag": "Sparkle Selects (fløgg)"
+          "sparkle-flag": "Sparkle Selects (fløgg)",
+          "corn": "Maisax",
+          "drumstick": "Kalkunlær"
         }
       },
       {

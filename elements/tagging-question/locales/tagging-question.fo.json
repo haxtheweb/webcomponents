@@ -45,8 +45,12 @@
   "hideDirections": "Fjal vegleiðing",
   "showRelatedContent": "Vís tilknýtt innihald",
   "hideRelatedContent": "Fjal tilknýtt innihald",
+  "notAttempted": "Ikki roynt",
   "yourTags": "Títt svar",
   "availableTags": "Merki at velja millum",
   "dropTagsHere": "Vel merki niðanfyri ella drag tey higar",
-  "notAttempted": "Ikki roynt"
+  "addTag": "Legg {tag} afturat",
+  "removeTag": "Tak burtur {tag}",
+  "tagAdded": "{tag} lagt afturat svarinum hjá tær",
+  "tagRemoved": "{tag} tikið burtur úr svarinum hjá tær"
 }

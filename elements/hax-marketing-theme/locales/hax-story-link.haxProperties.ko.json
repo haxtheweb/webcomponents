@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, 튜토리얼",
           "try": "browser.hax.cloud, 사용해 보기",
           "elements": "webcomponents.hax.cloud, 블록",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

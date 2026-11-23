@@ -66,6 +66,16 @@
           "_top": "Üst pencere - _top",
           "_parent": "Üst öğe penceresi - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Yatay",
+        "description": "Görseli metnin üstüne değil yanına yerleştir."
+      },
+      {
+        "property": "clickable",
+        "title": "Kartın tamamı bağlantı",
+        "description": "Kartın tamamını bağlantı yap ve düğmeyi gizle. Bir bağlantı gerekir."
       }
     ],
     "developer": [

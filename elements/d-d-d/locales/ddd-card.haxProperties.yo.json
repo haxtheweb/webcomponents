@@ -66,6 +66,16 @@
           "_top": "Fèrèsé òkè - _top",
           "_parent": "Fèrèsé òbí - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ní ìbú",
+        "description": "Gbé àwòrán sí ẹ̀gbẹ́ ọ̀rọ̀ dípò lókè rẹ̀."
+      },
+      {
+        "property": "clickable",
+        "title": "Gbogbo káàdì ni ìjápọ̀",
+        "description": "Sọ gbogbo káàdì di ìjápọ̀ kí o sì fi bọ́tìnnì pamọ́. Ó nílò ìjápọ̀."
       }
     ],
     "developer": [

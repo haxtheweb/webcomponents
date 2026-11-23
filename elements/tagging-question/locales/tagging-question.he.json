@@ -45,8 +45,12 @@
   "hideDirections": "הסתרת ההנחיות",
   "showRelatedContent": "הצגת תוכן קשור",
   "hideRelatedContent": "הסתרת תוכן קשור",
+  "notAttempted": "לא נוסה",
   "yourTags": "התשובה שלכם",
   "availableTags": "תגיות לבחירה",
   "dropTagsHere": "בחרו תגיות למטה או גררו אותן לכאן",
-  "notAttempted": "לא נוסה"
+  "addTag": "הוספת {tag}",
+  "removeTag": "הסרת {tag}",
+  "tagAdded": "{tag} נוסף לתשובה שלכם",
+  "tagRemoved": "{tag} הוסר מהתשובה שלכם"
 }

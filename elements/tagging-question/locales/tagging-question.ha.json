@@ -45,8 +45,12 @@
   "hideDirections": "Ɓoye umarni",
   "showRelatedContent": "Nuna abubuwan da suka shafi wannan",
   "hideRelatedContent": "Ɓoye abubuwan da suka shafi wannan",
+  "notAttempted": "Ba a gwada ba",
   "yourTags": "Amsarka",
   "availableTags": "Alamomin da za a zaɓa",
   "dropTagsHere": "Zaɓi alamomi a ƙasa ko ja su nan",
-  "notAttempted": "Ba a gwada ba"
+  "addTag": "Ƙara {tag}",
+  "removeTag": "Cire {tag}",
+  "tagAdded": "An ƙara {tag} cikin amsarka",
+  "tagRemoved": "An cire {tag} daga amsarka"
 }

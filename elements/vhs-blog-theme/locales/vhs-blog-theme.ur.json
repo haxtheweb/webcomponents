@@ -73,5 +73,6 @@
   "padStart": "Start: اپنا صفحہ شائع کریں",
   "padB": "B: آخری بلاک واپس لیں",
   "padA": "A: بلاک پکڑیں",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "گیم کنٹرولر اٹھائیں"
 }

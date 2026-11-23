@@ -22,6 +22,15 @@
       {
         "title": "Mayankho",
         "description": "Motsatira mayankho kumatanthauza dongosolo lolondola."
+      },
+      {
+        "property": "layout",
+        "title": "Kakonzedwe",
+        "description": "Mndandanda: mayankho osanjidwa m'mizere. Makhadi a zithunzi: mzere wa makhadi umene umapitirira pansi, iliyonse ili ndi chithunzi chake ndi mabatani osunthira kale / pambuyo.",
+        "options": {
+          "": "Mndandanda",
+          "cards": "Makhadi a zithunzi"
+        }
       }
     ],
     "advanced": [

@@ -22,6 +22,15 @@
       {
         "title": "Svar",
         "description": "Svarens ordning anger den rätta följden."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Lista: svaren staplade i rader. Bildkort: en rad kort som radbryts, vart och ett med sin bild och knappar för att flytta tidigare / senare.",
+        "options": {
+          "": "Lista",
+          "cards": "Bildkort"
+        }
       }
     ],
     "advanced": [

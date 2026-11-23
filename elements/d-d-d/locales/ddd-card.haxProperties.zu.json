@@ -66,6 +66,16 @@
           "_top": "Iwindi eliphezulu - _top",
           "_parent": "Iwindi lomzali - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ngokuvundlile",
+        "description": "Beka isithombe eceleni kombhalo esikhundleni sokuba ngaphezulu kwawo."
+      },
+      {
+        "property": "clickable",
+        "title": "Ikhadi lonke liyisixhumanisi",
+        "description": "Yenza ikhadi lonke libe yisixhumanisi bese ufihla inkinobho. Kudinga isixhumanisi."
       }
     ],
     "developer": [

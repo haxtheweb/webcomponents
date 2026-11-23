@@ -42,5 +42,8 @@
   "belowLabel": "Drënner",
   "leftLabel": "Lénks",
   "rightLabel": "Riets",
-  "hideTranscriptLabel": "Transkriptioun verstoppen"
+  "hideTranscriptLabel": "Transkriptioun verstoppen",
+  "youtubeConsentNotice": "Dëse Video gëtt vu YouTube ofgespillt. Google kritt Är IP-Adress a ka Cookien setzen.",
+  "youtubeConsentAllow": "YouTube ëmmer erlaben",
+  "consentChoicesLabel": "Dateschutz-Optiounen"
 }

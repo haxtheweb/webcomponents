@@ -42,5 +42,8 @@
   "belowLabel": "ქვემოთ",
   "leftLabel": "მარცხნივ",
   "rightLabel": "მარჯვნივ",
-  "hideTranscriptLabel": "ტრანსკრიპტის დამალვა"
+  "hideTranscriptLabel": "ტრანსკრიპტის დამალვა",
+  "youtubeConsentNotice": "ეს ვიდეო YouTube-დან ითამაშებს. Google მიიღებს თქვენს IP მისამართს და შეიძლება დააყენოს ქუქი-ფაილები.",
+  "youtubeConsentAllow": "YouTube-ის ყოველთვის დაშვება",
+  "consentChoicesLabel": "კონფიდენციალურობის არჩევანი"
 }

@@ -31,12 +31,21 @@
       },
       {
         "title": "জ্ঞান যাচাই এলাকা"
+      },
+      {
+        "property": "title",
+        "title": "শিরোনাম",
+        "description": "কোর্স মডেলের উপরে দেখানো শিরোনাম।"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "লোগো এলাকা"
+      },
+      {
+        "slot": "logo",
+        "title": "লোগোর জায়গা"
       }
     ]
   }

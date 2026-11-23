@@ -45,8 +45,12 @@
   "hideDirections": "Versteek instruksies",
   "showRelatedContent": "Wys verwante inhoud",
   "hideRelatedContent": "Versteek verwante inhoud",
+  "notAttempted": "Nie probeer nie",
   "yourTags": "Jou antwoord",
   "availableTags": "Merkers om uit te kies",
   "dropTagsHere": "Kies merkers hieronder of sleep hulle hierheen",
-  "notAttempted": "Nie probeer nie"
+  "addTag": "Voeg {tag} by",
+  "removeTag": "Verwyder {tag}",
+  "tagAdded": "{tag} by jou antwoord gevoeg",
+  "tagRemoved": "{tag} uit jou antwoord verwyder"
 }

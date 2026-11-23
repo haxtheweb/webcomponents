@@ -22,6 +22,15 @@
       {
         "title": "Erantzunak",
         "description": "Erantzunen ordenak sekuentzia zuzena zehazten du."
+      },
+      {
+        "property": "layout",
+        "title": "Diseinua",
+        "description": "Zerrenda: erantzunak errenkadatan pilatuta. Irudi-txartelak: lerroz aldatzen den txartel-errenkada bat, bakoitza bere irudiarekin eta lehenago / geroago mugitzeko botoiekin.",
+        "options": {
+          "": "Zerrenda",
+          "cards": "Irudi-txartelak"
+        }
       }
     ],
     "advanced": [

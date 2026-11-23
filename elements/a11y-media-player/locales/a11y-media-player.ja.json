@@ -42,5 +42,8 @@
   "belowLabel": "下",
   "leftLabel": "左",
   "rightLabel": "右",
-  "hideTranscriptLabel": "文字起こしを非表示"
+  "hideTranscriptLabel": "文字起こしを非表示",
+  "youtubeConsentNotice": "この動画は YouTube から再生されます。Google はあなたの IP アドレスを受け取り、Cookie を設定することがあります。",
+  "youtubeConsentAllow": "YouTube を常に許可",
+  "consentChoicesLabel": "プライバシーの選択"
 }

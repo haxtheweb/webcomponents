@@ -18,6 +18,11 @@
       {
         "title": "Kolbesonderhede",
         "description": "Die interaktiewe kolle op die beeldkaart."
+      },
+      {
+        "property": "src",
+        "title": "Prent",
+        "description": "SVG-prent waarna die aktiewe punte wys."
       }
     ]
   }

@@ -78,7 +78,10 @@
           "messy-hair": "Rambut berantakan dengan bekas luka",
           "sparkle-selects": "Sparkle Selects (helm)",
           "saber-cats": "Saber Cats (helm)",
-          "future-traveler": "Future Traveler (helm)"
+          "future-traveler": "Future Traveler (helm)",
+          "pilgrim": "Topi peziarah",
+          "bonnet": "Topi bonnet peziarah",
+          "turkey": "Tudung kalkun"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (tandang)",
           "icers": "Icers (kandang)",
           "icers-away": "Icers (tandang)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Peziarah (laki-laki)",
+          "pilgrim-girl": "Peziarah (perempuan)",
+          "turkey": "Kalkun"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Kunci pas",
           "hockey-stick-pink": "Tongkat hoki (merah muda)",
           "hockey-stick-green": "Tongkat hoki (hijau)",
-          "sparkle-flag": "Sparkle Selects (bendera)"
+          "sparkle-flag": "Sparkle Selects (bendera)",
+          "corn": "Tongkol jagung",
+          "drumstick": "Paha kalkun"
         }
       },
       {

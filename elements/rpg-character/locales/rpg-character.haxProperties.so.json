@@ -78,7 +78,10 @@
           "messy-hair": "Timo qasan oo nabar leh",
           "sparkle-selects": "Sparkle Selects (koofiyad)",
           "saber-cats": "Saber Cats (koofiyad)",
-          "future-traveler": "Future Traveler (koofiyad)"
+          "future-traveler": "Future Traveler (koofiyad)",
+          "pilgrim": "Koofiyadda xujaajka",
+          "bonnet": "Koofiyadda gabadha xujaajka",
+          "turkey": "Koofiyad turkey"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (dibadda)",
           "icers": "Icers (guri)",
           "icers-away": "Icers (dibadda)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Xujaaj (wiil)",
+          "pilgrim-girl": "Xujaaj (gabadh)",
+          "turkey": "Turkey"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Kiyaawe",
           "hockey-stick-pink": "Ul hockey (casaan khafiif)",
           "hockey-stick-green": "Ul hockey (cagaar)",
-          "sparkle-flag": "Sparkle Selects (calan)"
+          "sparkle-flag": "Sparkle Selects (calan)",
+          "corn": "Sabuul galley",
+          "drumstick": "Lugta turkey"
         }
       },
       {

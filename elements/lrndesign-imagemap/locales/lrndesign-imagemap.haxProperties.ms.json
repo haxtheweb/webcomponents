@@ -18,6 +18,11 @@
       {
         "title": "Butiran titik panas",
         "description": "Titik panas interaktif pada peta imej."
+      },
+      {
+        "property": "src",
+        "title": "Imej",
+        "description": "Imej SVG yang ditunjuk oleh titik panas."
       }
     ]
   }

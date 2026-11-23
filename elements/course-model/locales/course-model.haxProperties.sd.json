@@ -31,12 +31,21 @@
       },
       {
         "title": "علم جي جانچ جو حصو"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "ڪورس ماڊل جي مٿان ڏيکاريل سرخي."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "لوگو جو حصو"
+      },
+      {
+        "slot": "logo",
+        "title": "لوگو جي جاءِ"
       }
     ]
   }

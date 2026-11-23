@@ -18,6 +18,11 @@
       {
         "title": "Detail titik",
         "description": "Titik interaktif pada peta gambar."
+      },
+      {
+        "property": "src",
+        "title": "Gambar",
+        "description": "Gambar SVG yang dituju oleh titik interaktif."
       }
     ]
   }
