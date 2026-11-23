@@ -407,6 +407,8 @@ describe("page-break rendering", () => {
     expect(anchor.getAttribute("name")).to.equal("item-7");
     expect(anchor.getAttribute("href")).to.equal("#item-7");
     expect(anchor.textContent.trim()).to.equal("Anchor page");
+    // off-screen anchor is a link target, never an invisible tab stop (WCAG 2.4.7)
+    expect(anchor.getAttribute("tabindex")).to.equal("-1");
     const el2 = await fixture(
       html`<page-break slug="page-slug" title="Slug page"></page-break>`,
     );
