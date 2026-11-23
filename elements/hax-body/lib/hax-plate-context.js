@@ -412,7 +412,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           padding: 2px 4px 4px;
         }
         .lgrid button {
-          height: 36px;
+          height: var(--ddd-control-height-sm, 40px);
           border: 1px solid var(--hax-ui-line);
         }
         .lgrid button[aria-checked="true"] {

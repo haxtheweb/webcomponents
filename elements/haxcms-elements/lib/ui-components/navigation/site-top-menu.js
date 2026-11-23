@@ -75,7 +75,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
         }
         .wrapper {
           display: flex;

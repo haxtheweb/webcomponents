@@ -173,7 +173,8 @@ export class GlossyPortfolioTheme extends DDDSuper(
         glossy-portfolio-header {
           position: fixed;
           top: 0;
-          z-index: 1000; /* Ensure header is above other content */
+          /* Ensure header is above other content */
+          z-index: var(--ddd-z-sticky, 200);
         }
 
         /* text style */

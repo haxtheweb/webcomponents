@@ -1109,7 +1109,8 @@ class A11yMediaPlayer extends SchemaBehaviors(
             right: 5px;
             width: 200px;
             max-width: 200px;
-            z-index: 999999;
+            /* above the editor bar and network bar, under a drawer's scrim */
+            z-index: calc(var(--ddd-z-modal, 10000) + 4);
             border: 1px solid var(--a11y-media-bg-color);
             box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
             border-radius: 3.2px;
@@ -1177,7 +1178,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             top: 0;
             left: 0;
             width: 200px !important;
-            z-index: 9999;
+            z-index: calc(var(--ddd-z-modal, 10000) - 1);
           }
 
           :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {

@@ -111,7 +111,7 @@ export const JourneySidebarThemeStyles = css`
     position: fixed;
     bottom: var(--ddd-spacing-4);
     right: var(--ddd-spacing-4);
-    z-index: 1000;
+    z-index: var(--ddd-z-sticky, 200);
   }
 
   /* Responsive design for smaller screens */

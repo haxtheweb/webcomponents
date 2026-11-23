@@ -84,7 +84,7 @@ class SimpleBlog extends I18NMixin(
           width: var(--ddd-control-height-sm, 40px);
           height: var(--ddd-control-height-sm, 40px);
           margin: 8px;
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
           color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
           background-color: light-dark(
             rgba(250, 250, 250, 0.7),

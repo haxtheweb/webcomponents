@@ -777,7 +777,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           position: fixed;
           right: 0px;
           bottom: 125px;
-          z-index: 10000;
+          z-index: var(--ddd-z-sticky, 200);
           --simple-icon-width: 48px;
           --simple-icon-height: 48px;
           --simple-icon-button-border-radius: none;

@@ -541,3 +541,20 @@ describe("simple-tooltip hidden box", () => {
     expect(style.paddingTop).to.equal("8px");
   });
 });
+
+describe("simple-tooltip stacking", () => {
+  it("sits on the tooltip layer, above the modal layer, without DDD", async () => {
+    const el = await fixture(html`<simple-tooltip>tip</simple-tooltip>`);
+    expect(globalThis.getComputedStyle(el).zIndex).to.equal("10100");
+  });
+
+  it("follows --ddd-z-tooltip when the design system sets it", async () => {
+    const container = await fixture(html`
+      <div style="--ddd-z-tooltip: 20200">
+        <simple-tooltip>tip</simple-tooltip>
+      </div>
+    `);
+    const tip = container.querySelector("simple-tooltip");
+    expect(globalThis.getComputedStyle(tip).zIndex).to.equal("20200");
+  });
+});

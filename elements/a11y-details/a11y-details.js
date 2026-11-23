@@ -177,7 +177,7 @@ class A11yDetails extends I18NMixin(LitElement) {
         }
 
         details[open] #details-inner {
-          z-index: 9999999999;
+          z-index: var(--ddd-z-dropdown, 100);
           display: block;
           inset-inline-start: var(--a11y-details-left, unset);
           inset-inline-end: var(--a11y-details-right, unset);

@@ -994,7 +994,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           left: -100px;
           top: ${Math.random() * (globalThis.innerHeight - 50)}px;
           font-size: 30px;
-          z-index: 9999;
+          z-index: calc(var(--ddd-z-modal, 10000) - 1);
           animation: nyan-fly 2s var(--ddd-timing-linear, linear);
           pointer-events: none;
         `;
@@ -1068,7 +1068,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 9999;
+      z-index: calc(var(--ddd-z-modal, 10000) - 1);
       overflow: hidden;
     `;
 
@@ -1396,7 +1396,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 9999;
+      z-index: calc(var(--ddd-z-modal, 10000) - 1);
       overflow: hidden;
     `;
 

@@ -253,7 +253,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         .button-wrapper {
           padding: var(--ddd-card-pad);
           text-align: center;
-          height: 44px;
+          height: var(--ddd-target-comfortable, 44px);
         }
 
         .button-wrapper:hover .button,

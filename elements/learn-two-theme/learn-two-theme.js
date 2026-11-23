@@ -236,7 +236,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
               var(--ddd-theme-default-potentialMidnight)
             )
           );
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
         }
 
         #menubutton,
@@ -429,7 +429,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           }
           .drawer {
             transform: translateX(-100%);
-            z-index: 1000000;
+            z-index: calc(var(--ddd-z-modal, 10000) + 6);
           }
           .drawer.opened {
             transform: translateX(0);
@@ -439,7 +439,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             position: fixed;
             inset: 0;
             background: rgba(80, 80, 80, 0.8);
-            z-index: 999999;
+            z-index: calc(var(--ddd-z-modal, 10000) + 5);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.2s var(--ddd-timing-linear, linear);

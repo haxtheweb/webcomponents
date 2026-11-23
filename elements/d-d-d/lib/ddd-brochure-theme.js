@@ -240,7 +240,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
           position: fixed;
           right: 0;
           bottom: var(--ddd-spacing-30);
-          z-index: 10000;
+          z-index: var(--ddd-z-sticky, 200);
           --simple-icon-width: var(--ddd-icon-md);
           --simple-icon-height: var(--ddd-icon-md);
           --simple-icon-button-border-radius: none;

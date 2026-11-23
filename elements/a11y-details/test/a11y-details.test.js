@@ -682,3 +682,18 @@ describe("a11y-details test", () => {
     });
   });
 });
+
+describe("a11y-details stacking", () => {
+  it("opens its panel on the dropdown layer, not above dialogs and toasts", async () => {
+    const el = await fixture(html`
+      <a11y-details>
+        <span slot="summary">More</span>
+        <div slot="details"><p>Details</p></div>
+      </a11y-details>
+    `);
+    await el.updateComplete;
+    el.shadowRoot.querySelector("details").open = true;
+    const inner = el.shadowRoot.querySelector("#details-inner");
+    expect(globalThis.getComputedStyle(inner).zIndex).to.equal("100");
+  });
+});

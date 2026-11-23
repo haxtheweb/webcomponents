@@ -36,7 +36,7 @@ const MARKED_OPTIONS = { headerIds: false, mangle: false };
 const PREVIEW_STYLES = `
 .hax-md-preview {
   position: fixed;
-  z-index: 1000;
+  z-index: var(--ddd-z-modal, 10000);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;

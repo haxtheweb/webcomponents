@@ -177,7 +177,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         :host([edit-mode]) {
-          z-index: 9999;
+          z-index: calc(var(--ddd-z-modal, 10000) - 1);
         }
         /* the admin dialog is docked below the bar: the bar (and its user
            and site menus) stays above the dialog, which hax-ui-styles pins

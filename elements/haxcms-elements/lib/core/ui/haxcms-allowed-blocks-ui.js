@@ -245,7 +245,7 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           align-items: center;
           gap: var(--hax-ui-gap-md);
           list-style: none;
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           margin: 0;
           padding: 0 var(--hax-ui-gap-md);
           border-radius: var(--hax-ui-radius);
@@ -398,8 +398,8 @@ class HAXCMSAllowedBlocksUI extends HaxcmsAdminSectionMixin(
           cursor: pointer;
           display: grid;
           place-items: center;
-          width: 36px;
-          height: 36px;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
           border: 1px solid var(--hax-ui-line);
           border-radius: var(--hax-ui-radius);
           color: var(--hax-ui-text);

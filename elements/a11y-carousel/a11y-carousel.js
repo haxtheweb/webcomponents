@@ -49,7 +49,9 @@ class a11yCarousel extends RadioBehaviors(LitElement) {
             display: flex;
             align-items: stretch;
             justify-content: center;
-            z-index: 200;
+            /* above the slide (#inner, 2); a plain local number so it never
+               ties with a sticky header on the page's sticky layer */
+            z-index: 3;
           }
           a11y-carousel-button.prevnext {
             position: absolute;

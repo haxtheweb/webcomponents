@@ -828,7 +828,7 @@ export class ConceptQuestGame extends ConceptMapGame {
           display: flex;
           gap: var(--ddd-spacing-2);
           align-items: baseline;
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           border: var(--ddd-border-sm);
           border-color: var(--micro-game-ink);

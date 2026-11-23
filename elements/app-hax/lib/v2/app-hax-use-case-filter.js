@@ -715,7 +715,7 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
           border-radius: var(--hax-ui-radius-lg);
           box-shadow: var(--hax-ui-shadow-popover);
           min-width: 200px;
-          z-index: 1000;
+          z-index: var(--ddd-z-dropdown, 100);
         }
         .sort-menu-item {
           display: flex;

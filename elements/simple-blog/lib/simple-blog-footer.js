@@ -115,7 +115,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           text-align: center;
           text-decoration: none;
           cursor: pointer;
-          height: 44px;
+          height: var(--ddd-target-comfortable, 44px);
           background-color: light-dark(
             var(--haxcms-color, red),
             var(--ddd-primary-4, #222)
@@ -123,7 +123,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
           box-sizing: border-box;
           border-radius: var(--ddd-radius-md);
-          line-height: 44px;
+          line-height: var(--ddd-target-comfortable, 44px);
           margin: var(--ddd-spacing-4) 0;
           padding: 0;
         }
@@ -147,7 +147,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
         }
         button,
         site-menu-button:not([disabled]) {
-          --site-menu-button-button-height: 44px;
+          --site-menu-button-button-height: var(--ddd-target-comfortable, 44px);
           --site-menu-button-button-width: 100%;
         }
       `,

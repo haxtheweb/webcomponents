@@ -148,7 +148,7 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
           position: fixed;
           left: 0;
           bottom: 0;
-          z-index: 10000000;
+          z-index: var(--ddd-z-sticky, 200);
         }
         site-print-button {
           color: white;

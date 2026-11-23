@@ -161,7 +161,7 @@ class A11yMediaButton extends LitElement {
           overflow: hidden;
         }
         simple-tooltip {
-          z-index: 100;
+          z-index: var(--ddd-z-tooltip, 10100);
         }
         simple-tooltip:not(:defined) {
           display: none;
@@ -188,7 +188,7 @@ class A11yMediaButton extends LitElement {
           overflow: hidden;
         }
         simple-tooltip {
-          z-index: 100;
+          z-index: var(--ddd-z-tooltip, 10100);
         }
         simple-tooltip:not(:defined) {
           display: none;

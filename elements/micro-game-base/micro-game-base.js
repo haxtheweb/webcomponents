@@ -979,7 +979,7 @@ export class MicroGameBase extends I18NMixin(
           color: var(--micro-game-soft);
         }
         .btn {
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
           border: var(--ddd-border-md);
           border-color: var(--micro-game-ink);
@@ -1028,8 +1028,8 @@ export class MicroGameBase extends I18NMixin(
           }
         }
         .dpad button {
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           padding: 0;
           border: var(--ddd-border-md);
           border-color: var(--micro-game-ink);

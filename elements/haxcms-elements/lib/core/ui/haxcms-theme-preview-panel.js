@@ -158,7 +158,7 @@ class HAXCMSThemePreviewPanel extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
-          z-index: 9998;
+          z-index: calc(var(--ddd-z-modal, 10000) - 2);
           color-scheme: var(--hax-ui-color-scheme, inherit);
           border-left: 1px solid var(--hax-ui-line-strong);
           background-color: var(--hax-ui-surface);

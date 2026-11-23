@@ -177,8 +177,8 @@ export class JourneyMenu extends I18NMixin(LitElement) {
           top: var(--ddd-spacing-2);
           left: var(--ddd-spacing-2);
           z-index: 3;
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           padding: 0;
           cursor: pointer;
           color: var(--ddd-theme-default-coalyGray);
@@ -194,8 +194,8 @@ export class JourneyMenu extends I18NMixin(LitElement) {
           position: absolute;
           top: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           padding: 0;
           cursor: pointer;
           color: var(--text-primary);
