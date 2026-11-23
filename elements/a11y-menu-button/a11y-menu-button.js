@@ -475,7 +475,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         this.open();
         this.focused = true;
         this.currentItem = item;
+        // Accessibility (WCAG 2.1.1): when the menu was closed, its list is
+        // hidden until this render lands and focus() on an item inside a
+        // hidden list does nothing, so focus again once it has rendered.
         item.focus();
+        this.updateComplete.then(() => {
+          if (this.expanded && this.currentItem === item) item.focus();
+        });
       }
     }
     /**
