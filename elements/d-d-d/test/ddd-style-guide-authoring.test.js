@@ -245,6 +245,49 @@ describe("DDD text alignment setting opt-out", () => {
       ).settings.configure,
     );
 
+  const formFor = (tag) =>
+    attributes(
+      store.designSystemHAXProperties(
+        {
+          gizmo: {},
+          designSystem: { text: true },
+          settings: { configure: [] },
+        },
+        tag,
+      ).settings.configure,
+    );
+
+  it("offers a line length on running text, with the three measures", () => {
+    for (const tag of ["p", "ul", "ol", "blockquote", "h2"]) {
+      expect(formFor(tag), tag).to.include("data-measure");
+    }
+    const find = (items) =>
+      (items || []).reduce(
+        (hit, item) =>
+          hit ||
+          (item && item.attribute === "data-measure"
+            ? item
+            : find(item && item.properties)),
+        null,
+      );
+    const field = find(
+      store.designSystemHAXProperties(
+        {
+          gizmo: {},
+          designSystem: { text: true },
+          settings: { configure: [] },
+        },
+        "p",
+      ).settings.configure,
+    );
+    expect(Object.keys(field.options)).to.deep.equal(["", "sm", "md", "lg"]);
+  });
+
+  it("does not offer a line length on blocks that are not running text", () => {
+    expect(form({ card: true })).to.not.include("data-measure");
+    expect(formFor("grid-plate")).to.not.include("data-measure");
+  });
+
   it("offers text alignment by default", () => {
     expect(form({ card: true })).to.include("data-text-align");
   });
