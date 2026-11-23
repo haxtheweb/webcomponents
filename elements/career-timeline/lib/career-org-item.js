@@ -5,6 +5,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { applyContextHeadingLevel } from "@haxtheweb/d-d-d/lib/headingLevel.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./career-role-item.js";
 
@@ -111,6 +112,18 @@ export class CareerOrgItem extends I18NMixin(DDDSuper(LitElement)) {
         }
       `,
     ];
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // the organization is drawn as an h3; give it the level the timeline
+    // sits at on the page
+    applyContextHeadingLevel(
+      this.closest("career-timeline") || this,
+      this.shadowRoot.querySelector(".org h3"),
+    );
   }
 
   // Lit render the HTML

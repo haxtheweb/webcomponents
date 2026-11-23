@@ -36,7 +36,7 @@
             const example = document.querySelector('#example');
             const dataPrimaryValue = document.querySelector('#data-primary-value');
           </script>
-          <input type="range" min="0" max="20" step="1" value="8" oninput="example.setAttribute('data-primary', this.value); dataPrimaryValue.textContent = this.value">
+          <input type="range" min="0" max="20" step="1" value="8" aria-label="data-primary" oninput="example.setAttribute('data-primary', this.value); dataPrimaryValue.textContent = this.value">
           <p id="data-primary-value" style="color: black">8</p>
           <media-quote 
             src="https://sc-api.psu.edu/s3/files/styles/4_3_1500w/public/2023/04/old-main-blue-sky.jpg?h=08b866d1&itok=ICYTxRXL"

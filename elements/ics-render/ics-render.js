@@ -519,6 +519,7 @@ export class IcsRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
 
   renderCards() {
     return html`
+      <!-- role="list" is kept on purpose: Safari drops list semantics from a list with list-style: none -->
       <ul class="rows" role="list">
         ${this.events.map((event) => {
           const tile = this.tileParts(event);

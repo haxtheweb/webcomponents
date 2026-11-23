@@ -340,6 +340,7 @@ class GradeBook extends UIRenderPieces(
           <div class="active-submission">
             <iframe
               src="${data}"
+              title="${this.t.studentSubmission}"
               loading="lazy"
               width="100%"
               height="100%"

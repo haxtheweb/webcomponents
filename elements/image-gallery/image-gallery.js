@@ -532,7 +532,12 @@ export class ImageGallery extends I18NMixin(DDD) {
     const activeImage = this.images[this.activeIndex];
     return html`
       <div class="gallery-layout">
-        <div class="gallery-main ${this._frameClass(activeImage)}">
+        <div
+          class="gallery-main ${this._frameClass(activeImage)}"
+          id="gallery-panel"
+          role="tabpanel"
+          aria-label="${(activeImage && activeImage.alt) || this.t.gallery}"
+        >
           ${
             activeImage
               ? html`
@@ -583,6 +588,8 @@ export class ImageGallery extends I18NMixin(DDD) {
                 } ${image.uploading ? "uploading" : ""}"
                 role="tab"
                 aria-selected="${index === this.activeIndex ? "true" : "false"}"
+                aria-controls="gallery-panel"
+                tabindex="${index === this.activeIndex ? "0" : "-1"}"
                 aria-label="${image.alt || ""}"
                 title="${image.alt || ""}"
                 @click="${(e) => this._handleThumbnailClick(e, index)}"
@@ -705,12 +712,38 @@ export class ImageGallery extends I18NMixin(DDD) {
     if (this.mode !== "gallery" || this.edit) {
       return;
     }
+    let next = null;
     if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      this._setActiveIndex(this.activeIndex - 1);
+      next = this.activeIndex - 1;
     } else if (e.key === "ArrowRight") {
-      e.preventDefault();
-      this._setActiveIndex(this.activeIndex + 1);
+      next = this.activeIndex + 1;
+    } else if (e.key === "Home") {
+      next = 0;
+    } else if (e.key === "End") {
+      next = this.images.length - 1;
+    }
+    if (next === null) {
+      return;
+    }
+    // Home and End only belong to the thumbnail tabs
+    const onTab = e
+      .composedPath()
+      .some((el) => el && el.getAttribute && el.getAttribute("role") === "tab");
+    if (!onTab && (e.key === "Home" || e.key === "End")) {
+      return;
+    }
+    e.preventDefault();
+    this._setActiveIndex(next);
+    // focus follows the selected tab (roving tabindex)
+    if (onTab) {
+      this.updateComplete.then(() => {
+        const tab = this.shadowRoot.querySelector(
+          '.gallery-thumbnails [role="tab"][aria-selected="true"]',
+        );
+        if (tab) {
+          tab.focus();
+        }
+      });
     }
   }
 

@@ -109,10 +109,26 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
   }
 
   /* physical on purpose: placed on the badge art, which does not mirror */
-  .linkicon {
+  /* the link itself sits on the art as a 24px target, so its focus ring
+     has a box to draw around; the icon is white like the details icon so
+     it holds 3:1 on the badge color (1.4.11) */
+  .verificationlink a {
     position: absolute;
-    top: 32%;
-    left: 12%;
+    top: calc(32% - 2px);
+    left: calc(12% - 2px);
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    border-radius: 50%;
+  }
+  .verificationlink a:focus-visible {
+    outline: var(--ddd-border-size-md, 2px) solid currentColor;
+    outline-offset: 2px;
+  }
+  .linkicon {
     height: var(--ddd-icon-3xs, 20px);
     width: var(--ddd-icon-3xs, 20px);
   }
@@ -138,6 +154,16 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
   }
   .button i {
     margin-inline-end: 8px;
+  }
+  /* a 24px hit area over the details icon, which is positioned by the
+     same percentages inside the button (2.5.8) */
+  .button::after {
+    content: "";
+    position: absolute;
+    top: calc(32% - 2px);
+    left: calc(82% - 2px);
+    width: 24px;
+    height: 24px;
   }
   /* popover colors migrate to scheme-safe DDD pairs; duplicated
      box-shadow and border-radius declarations collapse onto tokens */

@@ -696,6 +696,18 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         .even .article-wrap p {
           margin-left: var(--ddd-spacing-4);
         }
+        /* each "Read more" says which article it opens (WCAG 2.4.4) */
+        .visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
         .article-wrap simple-cta {
           margin-top: var(--ddd-spacing-4);
           --component-background-color: var(--ddd-palette-2);
@@ -1087,7 +1099,10 @@ class JourneyTheme extends HAXCMSLitElementTheme {
                         <simple-cta
                           link="${item.slug}"
                           label="${this.t.readMore}"
-                        ></simple-cta>
+                          ><span class="visually-hidden"
+                            >: ${item.title}</span
+                          ></simple-cta
+                        >
                       </div>
                     </article>
                   `;

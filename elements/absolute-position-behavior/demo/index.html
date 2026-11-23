@@ -73,6 +73,11 @@
             document.getElementById('button').onclick = () => {
               document.getElementById('abs').updatePosition();
             }
+            // the manually positioned box measures once; measure again
+            // when the window changes size so it stays on screen
+            globalThis.addEventListener('resize', () => {
+              document.getElementById('abs').updatePosition();
+            });
           </script>
         </template>
       </demo-snippet>

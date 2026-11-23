@@ -156,7 +156,14 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-header-title-margin: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
         }
-        main {
+        /* the footer sits beside main, not inside it, so it is the page's
+           contentinfo landmark; .main-col keeps the layout main had */
+        .main-col > main {
+          display: block;
+          flex: 1 0 auto;
+          min-width: 0;
+        }
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
         }
@@ -262,10 +269,10 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
           --map-menu-font-weight: var(--ddd-font-weight-regular);
         }
-        main {
+        .main-col {
           padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4) 0;
         }
-        :host(:not([sidebar-open])) main {
+        :host(:not([sidebar-open])) .main-col {
           padding-left: var(--ddd-spacing-4);
         }
         .panel {
@@ -358,14 +365,14 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             z-index: 2;
             box-shadow: var(--ddd-boxShadow-md);
           }
-          main,
-          :host(:not([sidebar-open])) main {
+          .main-col,
+          :host(:not([sidebar-open])) .main-col {
             padding-left: var(--ddd-spacing-4);
           }
         }
         @media (max-width: 640px) {
-          main,
-          :host(:not([sidebar-open])) main {
+          .main-col,
+          :host(:not([sidebar-open])) .main-col {
             padding: 0;
           }
           .panel {
@@ -400,28 +407,30 @@ class SpectrumTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       </header>
       <div class="layout">
         ${this.renderNav()}
-        <main>
-          <div class="panel">
-            <div class="page">
-              <div class="content">
-                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-                <site-active-title part="page-title"></site-active-title>
-                <article id="contentcontainer">
-                  <section id="slot"><slot></slot></section>
-                </article>
+        <div class="main-col">
+          <main>
+            <div class="panel">
+              <div class="page">
+                <div class="content">
+                  <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                  <site-active-title part="page-title"></site-active-title>
+                  <article id="contentcontainer">
+                    <section id="slot"><slot></slot></section>
+                  </article>
+                </div>
+                <aside class="toc" part="toc">
+                  <site-menu-content
+                    label="${this.t.onThisPage}"
+                  ></site-menu-content>
+                </aside>
               </div>
-              <aside class="toc" part="toc">
-                <site-menu-content
-                  label="${this.t.onThisPage}"
-                ></site-menu-content>
-              </aside>
+              ${this.renderPager()}
             </div>
-            ${this.renderPager()}
-            <footer part="footer">
-              <site-region name="footerPrimary"></site-region>
-            </footer>
-          </div>
-        </main>
+          </main>
+          <footer part="footer">
+            <site-region name="footerPrimary"></site-region>
+          </footer>
+        </div>
       </div>
     `;
   }

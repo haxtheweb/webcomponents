@@ -163,14 +163,13 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
   renderSideBar() {
     return html`
       <aside
-        role="complementary"
         aria-label="${this.t.primarySidebar}"
         itemscope
         itemtype="http://schema.org/WPSideBar"
         part="page-primary-sidebar"
       >
         <section>
-          <h4 class="sr-only">${this.t.contents}</h4>
+          <h2 class="sr-only">${this.t.contents}</h2>
           <site-children-block
             part="page-children-block"
             dynamic-methodology="ancestor"

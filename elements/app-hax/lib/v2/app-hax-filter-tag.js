@@ -3,9 +3,10 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
-export class AppHaxFilterTag extends LitElement {
+export class AppHaxFilterTag extends I18NMixin(LitElement) {
   static get tag() {
     return "app-hax-filter-tag";
   }
@@ -13,6 +14,13 @@ export class AppHaxFilterTag extends LitElement {
   constructor() {
     super();
     this.label = "";
+    this.t = {
+      removeTag: "Remove {label}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../../locales/", import.meta.url).href,
+    });
   }
 
   static get properties() {
@@ -52,8 +60,15 @@ export class AppHaxFilterTag extends LitElement {
         .remove {
           cursor: pointer;
           margin-left: 6px;
-          font-weight: bold;
           display: inline-block;
+          font: inherit;
+          font-weight: bold;
+          color: inherit;
+          background: transparent;
+          border: none;
+          padding: 0;
+          min-width: 24px;
+          min-height: 24px;
         }
       `,
     ];
@@ -73,7 +88,14 @@ export class AppHaxFilterTag extends LitElement {
     return html`
       <div>
         <span class="tag-label">${this.label}</span>
-        <span class="remove" @click="${this.removeTag}">✖</span>
+        <button
+          type="button"
+          class="remove"
+          aria-label="${this.t.removeTag.replace("{label}", () => this.label)}"
+          @click="${this.removeTag}"
+        >
+          <span aria-hidden="true">✖</span>
+        </button>
       </div>
     `;
   }

@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>UserScaffold: user-scaffold Demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
     <script type="module">
       import '@haxtheweb/demo-snippet/demo-snippet.js'
       import '../user-scaffold.js'

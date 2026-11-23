@@ -150,6 +150,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       padStart: "Start: publish your page",
       padB: "B: take back the last block",
       padA: "A: grab a block",
+      pickUpController: "Pick up the game controller",
       skipAnimation: "Skip animation",
       pauseStatic: "Pause static",
       vcr: "VCR",
@@ -1132,9 +1133,9 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         vhs-blog-console retro-controller {
           zoom: 0.8;
         }
-        /* the controller is an easter egg drawn at miniature size; on a
-           touch screen its buttons would be too small to tap (WCAG 2.5.8),
-           so it is not offered there */
+        /* the controller is an easter egg drawn at miniature size; it is
+           picked up (shown at a pressable size) before its buttons work,
+           and on a touch screen it is not offered (WCAG 2.5.8) */
         @media (pointer: coarse), (max-width: 700px) {
           vhs-blog-console retro-controller {
             display: none;
@@ -1915,6 +1916,8 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               start-label="${this.t.padStart}"
               b-label="${this.t.padB}"
               a-label="${this.t.padA}"
+              pickup-label="${this.t.pickUpController}"
+              miniature
               @retro-controller-press="${this._onPad}"
             ></retro-controller>
             <vhs-blog-tv

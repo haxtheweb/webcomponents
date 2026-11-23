@@ -534,9 +534,16 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
                           label="${this.t.build}"
                         ></simple-cta>
                         <div>
-                          <span class="rowlabel">${this.t.agentLink}</span>
+                          <span class="rowlabel" id="agentlinklabel"
+                            >${this.t.agentLink}</span
+                          >
                           <div class="row">
-                            <code tabindex="0">${link}</code>
+                            <code
+                              tabindex="0"
+                              role="region"
+                              aria-labelledby="agentlinklabel"
+                              >${link}</code
+                            >
                             <button
                               class="copy"
                               @click="${() => this._copy("link", link)}"
@@ -552,9 +559,16 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
                     : ``
                 }
                 <div>
-                  <span class="rowlabel">${this.t.terminal}</span>
+                  <span class="rowlabel" id="terminallabel"
+                    >${this.t.terminal}</span
+                  >
                   <div class="row">
-                    <code tabindex="0">${this._command()}</code>
+                    <code
+                      tabindex="0"
+                      role="region"
+                      aria-labelledby="terminallabel"
+                      >${this._command()}</code
+                    >
                     <button
                       class="copy"
                       @click="${() => this._copy("cli", this._command())}"

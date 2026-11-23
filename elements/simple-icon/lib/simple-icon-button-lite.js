@@ -145,6 +145,20 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
     updated(changedProperties) {
       if (super.updated) super.updated(changedProperties);
       this._syncAriaReferences();
+      // nothing to name it by: say so once, for the author
+      if (
+        !this.__warnedUnnamed &&
+        !this.label &&
+        !this.iconLabel &&
+        !this.ariaLabelledby &&
+        !this.hasAttribute("aria-label")
+      ) {
+        this.__warnedUnnamed = true;
+        console.warn(
+          `${this.localName} has no label, icon or text, so its button has no accessible name; set label`,
+          this,
+        );
+      }
     }
 
     /**

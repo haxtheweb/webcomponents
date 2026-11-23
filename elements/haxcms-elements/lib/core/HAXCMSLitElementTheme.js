@@ -144,6 +144,42 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
     return root;
   }
+  /**
+   * WCAG 2.4.1: when nothing has focus yet (a page just loaded or changed),
+   * the first Tab goes to the theme's skip link. Browsers start sequential
+   * navigation from wherever the page last scrolled an element into view
+   * (the theme's scroll-to-top target, the active menu item), which is after
+   * the skip link, so without this the first Tab passed it by.
+   * @param {KeyboardEvent} e
+   */
+  __firstTabToSkipLink(e) {
+    if (
+      e.key !== "Tab" ||
+      e.shiftKey ||
+      e.altKey ||
+      e.ctrlKey ||
+      e.metaKey ||
+      e.defaultPrevented ||
+      this.editMode ||
+      !this.shadowRoot
+    ) {
+      return;
+    }
+    const active = globalThis.document.activeElement;
+    if (
+      active &&
+      active !== globalThis.document.body &&
+      active !== globalThis.document.documentElement
+    ) {
+      return;
+    }
+    const link = this.shadowRoot.querySelector(".skip-link");
+    if (!link || link.getClientRects().length === 0) {
+      return;
+    }
+    e.preventDefault();
+    link.focus();
+  }
   __skipLinkClick(e) {
     if (e.defaultPrevented || !this.shadowRoot) {
       return;
@@ -607,6 +643,10 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
   connectedCallback() {
     super.connectedCallback();
+    if (!this.__firstTabHandler) {
+      this.__firstTabHandler = this.__firstTabToSkipLink.bind(this);
+    }
+    globalThis.addEventListener("keydown", this.__firstTabHandler, true);
     // --haxcms-theme-offset-top: how far down the page the theme starts
     // (the editor's top bar keeps 64px for itself when someone is logged
     // in). A theme that fills the screen sizes itself with
@@ -637,6 +677,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
   }
   disconnectedCallback() {
+    if (this.__firstTabHandler) {
+      globalThis.removeEventListener("keydown", this.__firstTabHandler, true);
+    }
     if (this.__offsetObserver) {
       this.__offsetObserver.disconnect();
       this.__offsetObserver = null;

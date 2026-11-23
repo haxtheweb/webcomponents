@@ -5,6 +5,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { applyContextHeadingLevel } from "@haxtheweb/d-d-d/lib/headingLevel.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
@@ -150,6 +151,12 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // the role is drawn as an h4, one level under its organization
+    applyContextHeadingLevel(
+      this.closest("career-timeline") || this,
+      this.shadowRoot.querySelector("h4"),
+      1,
+    );
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "startDate" && oldValue !== undefined) {
         const normalizedStartDate = this._normalizeDate(this.startDate);

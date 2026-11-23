@@ -100,6 +100,18 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
           );
         }
 
+        /* how to leave the editor, shown while it has focus (2.1.2): Tab
+           types a tab inside Monaco until tab focus mode is on */
+        .tab-hint {
+          margin: var(--ddd-spacing-1, 4px) var(--code-editor-margin, 12px) 0;
+          font-size: var(--ddd-font-size-4xs, 14px);
+          line-height: var(--ddd-lh-140, 1.4);
+          color: var(--code-editor-label-color, inherit);
+        }
+        .tab-hint[hidden] {
+          display: none;
+        }
+
         #loading {
           padding: 0 74px;
           flex: 1 1 auto;
@@ -131,6 +143,8 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
     this.t = {
       ...this.t,
       checkItOutOnCodePen: "Check it out on code pen:",
+      tabHint:
+        "Tab types a tab here. To leave the editor with Tab, press Ctrl+M first (Ctrl+Shift+M on Mac).",
     };
     this.registerLocalization({
       context: this,
@@ -198,6 +212,15 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         part="preview"
       ><code>
   ${this.placeholder}</code></pre>
+      <p
+        class="tab-hint"
+        part="tab-hint"
+        id="tabhint"
+        aria-live="polite"
+        ?hidden="${!this.focused || this.readOnly}"
+      >
+        ${this.focused && !this.readOnly ? this.t.tabHint : ""}
+      </p>
       <slot hidden></slot>
       ${
         this.showCodePen

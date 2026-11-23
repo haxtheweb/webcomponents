@@ -370,7 +370,6 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
           ? html`
               <section
                 id="search-results"
-                role="region"
                 aria-label="${this.t.searchResults}"
                 class="search-results"
               >
@@ -380,10 +379,6 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
                       class="result"
                       .href="${item.slug ? item.slug : item.location}"
                       @click="${this.selectionMade}"
-                      tabindex="0"
-                      role="option"
-                      aria-posinset="${index + 1}"
-                      aria-setsize="${this.__results.length}"
                       aria-describedby="result-${index}-desc"
                     >
                       <div class="title">

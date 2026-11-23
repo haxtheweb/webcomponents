@@ -142,7 +142,8 @@ describe("page-contents-menu rendering", () => {
     await el.updateComplete;
     const link = el.shadowRoot.querySelector("a.link");
     expect(link.getAttribute("href")).to.equal("#section-one");
-    expect(link.getAttribute("role")).to.equal("link");
+    // a native link needs no role
+    expect(link.getAttribute("role")).to.equal(null);
     expect(link.getAttribute("data-index")).to.equal("0");
     expect(link.textContent).to.equal("Section one");
     expect(
@@ -470,16 +471,13 @@ describe("page-contents-menu keyboard and mobile menu", () => {
     expect(el.hideSettings).to.equal(false);
     el.toggleSettings({});
     expect(el.hideSettings).to.equal(true);
-    // enter and space also toggle
-    el.keyToggle({ key: "Enter" });
+    // the toggle is a native button: Enter and Space fire its click
+    const toggle = el.shadowRoot.querySelector("button#popovertarget");
+    expect(toggle.getAttribute("aria-expanded")).to.equal("false");
+    toggle.click();
+    await el.updateComplete;
     expect(el.hideSettings).to.equal(false);
-    el.keyToggle({ key: " " });
-    expect(el.hideSettings).to.equal(true);
-    el.keyToggle({ key: "Spacebar" });
-    expect(el.hideSettings).to.equal(false);
-    // other keys do nothing
-    el.keyToggle({ key: "Escape" });
-    expect(el.hideSettings).to.equal(false);
+    expect(toggle.getAttribute("aria-expanded")).to.equal("true");
     // key scroll only responds to Enter, dispatched on the rendered link
     const calls = [];
     el.items[0].item.scrollIntoView = (...args) => {
@@ -514,17 +512,14 @@ describe("page-contents-menu keyboard and mobile menu", () => {
     await el.updateComplete;
     await wait(150);
     const target = el.shadowRoot.querySelector("#popovertarget");
-    expect(target.hasAttribute("tabindex")).to.equal(true);
-    expect(target.getAttribute("tabindex")).to.equal("0");
+    expect(target.localName).to.equal("button");
     const popover = el.shadowRoot.querySelector("simple-popover");
     expect(popover === null).to.equal(false);
     expect(popover.target === target).to.equal(true);
-    // leaving mobile clears the tabindex hook
+    // leaving mobile drops the toggle; the icon is decoration there
     el.mobile = false;
     await el.updateComplete;
-    expect(
-      el.shadowRoot.querySelector("#popovertarget").hasAttribute("tabindex"),
-    ).to.equal(false);
+    expect(el.shadowRoot.querySelector("#popovertarget")).to.equal(null);
   });
 
   it("runs the delayed menu refresh from firstUpdated", async () => {

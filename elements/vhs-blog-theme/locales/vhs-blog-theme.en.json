@@ -73,5 +73,6 @@
   "padStart": "Start: publish your page",
   "padB": "B: take back the last block",
   "padA": "A: grab a block",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Pick up the game controller"
 }

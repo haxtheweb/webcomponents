@@ -645,7 +645,7 @@ export class ConceptRunnerGame extends MicroGameBase {
           label: this.t.blockLabel,
           title: this.gameTitle || this.questTitle,
         })}
-        <header class="bar">
+        <div class="bar">
           <div class="count">
             ${this.t.caught} ${caught} ${this.t.of} ${goods.length}
           </div>
@@ -662,7 +662,7 @@ export class ConceptRunnerGame extends MicroGameBase {
           <div class="hint" aria-hidden="true">
             ${this.coarse ? this.t.hintTouch : this.t.hintKeys}
           </div>
-        </header>
+        </div>
         <confetti-container id="confetti">
           <div
             class="stage"

@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "Check it out on code pen:"
+  "checkItOutOnCodePen": "Check it out on code pen:",
+  "tabHint": "Tab types a tab here. To leave the editor with Tab, press Ctrl+M first (Ctrl+Shift+M on Mac)."
 }

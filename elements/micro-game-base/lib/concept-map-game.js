@@ -508,7 +508,7 @@ export class ConceptMapGame extends MicroGameBase {
           label: this.t.blockLabel,
           title: this.gameTitle || this.questTitle || this.hubLabel,
         })}
-        <header class="bar">
+        <div class="bar">
           <div class="pips" aria-hidden="true">
             ${list.map(
               (n, i) =>
@@ -535,7 +535,7 @@ export class ConceptMapGame extends MicroGameBase {
           <div class="hint" aria-hidden="true">
             ${this.coarse ? this.t.hintTouch : this.t.hintKeys}
           </div>
-        </header>
+        </div>
         <confetti-container id="confetti">
           <div
             class="stage"

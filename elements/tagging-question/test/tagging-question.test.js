@@ -64,8 +64,8 @@ describe("TaggingQuestion test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 
-  it("exposes tag selection state via aria-pressed", async () => {
-    // selection state must reach screen readers, not just CSS classes
+  it("names each tag by what pressing it does", async () => {
+    // pressing a tag moves it between lists, so the name says which way
     element.displayedAnswers = [{ label: "Available Tag", correct: true }];
     element.selectedAnswers = [{ label: "Selected Tag", correct: true }];
     await element.updateComplete;
@@ -76,8 +76,20 @@ describe("TaggingQuestion test", () => {
     const availableTag = element.shadowRoot.querySelector(
       "#possible-container .tag-option",
     );
-    expect(selectedTag.getAttribute("aria-pressed")).to.equal("true");
-    expect(availableTag.getAttribute("aria-pressed")).to.equal("false");
+    expect(selectedTag.hasAttribute("aria-pressed")).to.equal(false);
+    expect(selectedTag.getAttribute("aria-label")).to.equal(
+      "Remove Selected Tag",
+    );
+    expect(availableTag.getAttribute("aria-label")).to.equal(
+      "Add Available Tag",
+    );
+    // the move is spoken
+    availableTag.click();
+    await element.updateComplete;
+    expect(
+      element.shadowRoot.querySelector('.tag-option-container [role="status"]')
+        .textContent,
+    ).to.equal("Available Tag added to your answer");
   });
 
   // Property validation and reflection tests

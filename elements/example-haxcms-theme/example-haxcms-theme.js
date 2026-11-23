@@ -39,6 +39,12 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
   // set defaults or tie into the store
   constructor() {
     super();
+    this.t = {
+      ...(this.t || {}),
+      skipToContent: "Skip to content",
+      pages: "Pages",
+      pageNumber: "Page {number}: {title}",
+    };
     this._items = [];
     this.activeId = null;
     autorun(() => {
@@ -135,10 +141,19 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
           list-style-type: none;
           vertical-align: top;
         }
-        ul li a {
-          display: block;
+        /* page numbers are links (they go to a page), drawn as the
+           buttons they used to be */
+        ul li a.page-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
+          border: 2px outset ButtonBorder;
+          background-color: ButtonFace;
+          color: ButtonText;
+          text-decoration: none;
         }
-
+        a.page-link,
         button {
           height: var(--ddd-spacing-8);
           width: var(--ddd-spacing-8);
@@ -148,6 +163,7 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
           cursor: pointer;
         }
 
+        .active a.page-link,
         .active button {
           background-color: light-dark(
             var(--my-theme-low-tone),
@@ -170,25 +186,35 @@ class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
+      <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div class="wrapper">
         <header>
-          <ul>
-            <li>
-              <site-menu-button type="prev" position="top"></site-menu-button>
-            </li>
-            ${this._items.map((item, index) => {
-              return html`
-                <li class="${item.id === this.activeId ? "active" : ""}">
-                  <a href="${item.slug}"
-                    ><button title="${item.title}">${index + 1}</button></a
-                  >
-                </li>
-              `;
-            })}
-            <li>
-              <site-menu-button type="next" position="top"></site-menu-button>
-            </li>
-          </ul>
+          <nav aria-label="${this.t.pages}">
+            <ul>
+              <li>
+                <site-menu-button type="prev" position="top"></site-menu-button>
+              </li>
+              ${this._items.map((item, index) => {
+                return html`
+                  <li class="${item.id === this.activeId ? "active" : ""}">
+                    <a
+                      class="page-link"
+                      href="${item.slug}"
+                      title="${item.title}"
+                      aria-label="${this.t.pageNumber
+                        .replace("{number}", () => index + 1)
+                        .replace("{title}", () => item.title)}"
+                      aria-current="${item.id === this.activeId ? "page" : "false"}"
+                      >${index + 1}</a
+                    >
+                  </li>
+                `;
+              })}
+              <li>
+                <site-menu-button type="next" position="top"></site-menu-button>
+              </li>
+            </ul>
+          </nav>
         </header>
         <main>
           <site-active-title></site-active-title>

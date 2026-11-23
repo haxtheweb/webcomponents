@@ -761,7 +761,12 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             ${this._ic("icons:more-horiz")}
           </button>
         </div>
-        <div class="extra" id="extra" ?hidden="${!this.moreOpen}">
+        <div
+          class="extra"
+          id="extra"
+          ?hidden="${!this.moreOpen}"
+          @keydown="${this._extraKeydown}"
+        >
           <div class="grp" role="group" aria-label="${this.t.moreTools}">
             <button
               id="duplicate"
@@ -1289,6 +1294,19 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           .catch(() => {});
       }
     });
+  }
+
+  /**
+   * Escape inside the extra tools folds them away and puts focus back on
+   * the More tools button, the way the menus return focus to theirs
+   */
+  _extraKeydown(e) {
+    if (e.key !== "Escape" || !this.moreOpen || e.defaultPrevented) return;
+    e.preventDefault();
+    e.stopPropagation();
+    this._toggleMore();
+    const more = this.shadowRoot.querySelector("#more");
+    if (more) more.focus({ preventScroll: true });
   }
 
   // ---------- Remove: arm, then confirm ----------

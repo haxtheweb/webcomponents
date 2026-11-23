@@ -57,9 +57,10 @@ describe("disqus-embed", () => {
     const slot = el.shadowRoot.querySelector("slot");
     expect(slot).to.exist;
     expect(el.shadowRoot.innerHTML).to.include("Hold on...");
-    // the loading fallback announces itself as a live region
-    expect(slot.getAttribute("role")).to.equal("status");
-    expect(slot.getAttribute("aria-live")).to.equal("polite");
+    // the loading fallback sits in a live region (a slot takes no ARIA)
+    const live = slot.parentElement;
+    expect(live.getAttribute("role")).to.equal("status");
+    expect(live.getAttribute("aria-live")).to.equal("polite");
     if (el._timeout) clearTimeout(el._timeout);
   });
 

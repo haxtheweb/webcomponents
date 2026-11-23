@@ -220,6 +220,7 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
             height="315"
             loading="lazy"
             src="${cleanVideoSource(data)}"
+            title="${this.t.studentSubmission}"
             frameborder="0"
             allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
           ></iframe>

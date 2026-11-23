@@ -257,14 +257,22 @@ class PatternflyTheme extends HAXCMSThemeParts(
           font-family: var(--pf-t--global--font--family--body);
         }
 
-        main {
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
           padding: 0 var(--patternfly-theme-gutter)
             var(--patternfly-theme-gutter) 0;
         }
-        :host(:not([sidebar-open])) main {
+        :host(:not([sidebar-open])) .main-col {
           padding-left: var(--patternfly-theme-gutter);
+        }
+        /* the footer sits beside main inside the inset container, so it is
+           the page's contentinfo landmark */
+        .main-container > main {
+          display: flex;
+          flex-direction: column;
+          flex: 1 0 auto;
+          min-width: 0;
         }
         .main-container {
           min-height: calc(
@@ -375,8 +383,8 @@ class PatternflyTheme extends HAXCMSThemeParts(
             z-index: 2;
             box-shadow: var(--pf-t--global--box-shadow--md);
           }
-          main,
-          :host(:not([sidebar-open])) main {
+          .main-col,
+          :host(:not([sidebar-open])) .main-col {
             padding-left: var(--patternfly-theme-gutter);
           }
         }
@@ -456,27 +464,35 @@ class PatternflyTheme extends HAXCMSThemeParts(
             <site-menu part="site-menu"></site-menu>
           </nav>
         </div>
-        <main>
+        <div class="main-col">
           <div class="main-container">
-            <div class="page-section page-header">
-              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-              <site-active-title part="page-title"></site-active-title>
-            </div>
-            <article id="contentcontainer" class="page-section">
-              <section id="slot"><slot></slot></section>
-            </article>
-            <nav
-              class="page-section pager"
-              aria-label="${this.t.pageNavigation}"
-            >
-              <site-menu-button type="prev" position="right"></site-menu-button>
-              <site-menu-button type="next" position="left"></site-menu-button>
-            </nav>
+            <main>
+              <div class="page-section page-header">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
+              </div>
+              <article id="contentcontainer" class="page-section">
+                <section id="slot"><slot></slot></section>
+              </article>
+              <nav
+                class="page-section pager"
+                aria-label="${this.t.pageNavigation}"
+              >
+                <site-menu-button
+                  type="prev"
+                  position="right"
+                ></site-menu-button>
+                <site-menu-button
+                  type="next"
+                  position="left"
+                ></site-menu-button>
+              </nav>
+            </main>
             <footer part="footer">
               <site-region name="footerPrimary"></site-region>
             </footer>
           </div>
-        </main>
+        </div>
       </div>
     `;
   }

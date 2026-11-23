@@ -6,6 +6,7 @@
 import { LitElement, html, css, render } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { applyContextHeadingLevel } from "@haxtheweb/d-d-d/lib/headingLevel.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -150,6 +151,11 @@ export class BibliographyBuilder extends SchemaBehaviors(
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // the title is drawn as an h3; give it the level where it sits
+    applyContextHeadingLevel(
+      this,
+      this.shadowRoot.querySelector(".ddd-block-title"),
+    );
 
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "citationArr" && oldValue !== undefined) {

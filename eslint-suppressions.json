@@ -408,11 +408,6 @@
       "count": 1
     }
   },
-  "elements/grade-book/lib/letter-grade-picker.js": {
-    "eqeqeq": {
-      "count": 1
-    }
-  },
   "elements/grade-book/lib/letter-grade.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1

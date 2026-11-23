@@ -27,15 +27,15 @@ describe("model-option", () => {
       </model-option>
     `);
     await el.updateComplete;
-    const a = el.shadowRoot.querySelector("a");
-    expect(a).to.exist;
-    // the card is a keyboard-focusable, button-operable selection control
-    expect(a.getAttribute("role")).to.equal("button");
-    expect(a.getAttribute("tabindex")).to.equal("0");
+    const button = el.shadowRoot.querySelector("button.option");
+    expect(button).to.exist;
+    // the card is a native button, so no heading sits inside it
+    expect(button.getAttribute("type")).to.equal("button");
+    expect(el.shadowRoot.querySelector("#title h2")).to.not.exist;
     expect(el.shadowRoot.querySelector("#accent-color")).to.exist;
-    expect(el.shadowRoot.querySelector("#title h2").textContent).to.equal(
-      "Astronaut Suit",
-    );
+    expect(
+      el.shadowRoot.querySelector("#title .title-text").textContent,
+    ).to.equal("Astronaut Suit");
     expect(el.textContent).to.include("Explore the suit.");
     await expect(el).shadowDom.to.be.accessible();
   });
@@ -49,7 +49,7 @@ describe("model-option", () => {
     el.addEventListener("model-select", (e) => {
       caught = e;
     });
-    el.shadowRoot.querySelector("a").click();
+    el.shadowRoot.querySelector("button.option").click();
     expect(caught).to.exist;
     // the detail is the element itself so course-model can read src/title
     expect(caught.detail).to.exist;
@@ -67,48 +67,27 @@ describe("model-option", () => {
     `);
     await parent.updateComplete;
     const option = parent.querySelector("model-option");
-    option.shadowRoot.querySelector("a").click();
+    option.shadowRoot.querySelector("button.option").click();
     await parent.updateComplete;
     expect(parent.src).to.equal("rocket.gltf");
     expect(parent.title).to.equal("Rocket Model");
     expect(parent.visible).to.equal("model");
   });
 
-  it("activates the selection card from the keyboard", async () => {
+  it("is a native button the keyboard reaches", async () => {
     const el = await fixture(
       html`<model-option title="Moon Model" src="moon.gltf"></model-option>`,
     );
     await el.updateComplete;
-    const a = el.shadowRoot.querySelector("a");
-    // the card itself is keyboard-focusable
-    a.focus();
-    expect(el.shadowRoot.activeElement === a).to.be.true;
+    const button = el.shadowRoot.querySelector("button.option");
+    button.focus();
+    expect(el.shadowRoot.activeElement === button).to.be.true;
     let count = 0;
     el.addEventListener("model-select", () => {
       count += 1;
     });
-    // Enter and Space activate the card like a button; other keys do not
-    a.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "Enter",
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
-    a.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: " ",
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
-    a.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: "Tab",
-        bubbles: true,
-        cancelable: true,
-      }),
-    );
-    expect(count).to.equal(2);
+    // Enter and Space on a native button fire click
+    button.click();
+    expect(count).to.equal(1);
   });
 });

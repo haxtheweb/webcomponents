@@ -159,7 +159,14 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-header-title-margin: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
         }
-        main {
+        /* the footer sits beside main, not inside it, so it is the page's
+           contentinfo landmark; .main-col keeps the layout main had */
+        .main-col > main {
+          display: block;
+          flex: 1 0 auto;
+          min-width: 0;
+        }
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
         }
@@ -403,7 +410,7 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         }
         /* the landing column is centered; page sections break out of it to
            run edge to edge */
-        :host([landing]) main {
+        :host([landing]) .main-col {
           overflow-x: clip;
         }
         :host([landing]) .content {
@@ -542,15 +549,17 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       </header>
       <div class="layout">
         ${this.renderNav()}
-        <main>
-          <div class="content">
-            <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-            <site-active-title part="page-title"></site-active-title>
-            <article id="contentcontainer">
-              <section id="slot"><slot></slot></section>
-            </article>
-          </div>
-          ${this.renderPager()}
+        <div class="main-col">
+          <main>
+            <div class="content">
+              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+              <site-active-title part="page-title"></site-active-title>
+              <article id="contentcontainer">
+                <section id="slot"><slot></slot></section>
+              </article>
+            </div>
+            ${this.renderPager()}
+          </main>
           <footer part="footer">
             <div class="return-to-top">
               <a href="#top" @click="${this._returnToTop}"
@@ -568,7 +577,7 @@ class UswdsTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               <site-region name="footerPrimary"></site-region>
             </div>
           </footer>
-        </main>
+        </div>
       </div>
     `;
   }

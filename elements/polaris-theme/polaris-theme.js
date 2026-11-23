@@ -211,7 +211,7 @@ class PolarisTheme extends HAXCMSOperationButtons(
           float: right;
           width: 360px;
         }
-        aside section h4 {
+        aside section h2 {
           font-size: 16px;
           margin: 0 0 24px 0;
           text-transform: uppercase;
@@ -527,14 +527,13 @@ class PolarisTheme extends HAXCMSOperationButtons(
           </article>
         </main>
         <aside
-          role="complementary"
           aria-label="${this.t.primarySidebar}"
           itemscope
           itemtype="http://schema.org/WPSideBar"
           part="page-primary-sidebar"
         >
           <section>
-            <h4>${this.t.contents}</h4>
+            <h2>${this.t.contents}</h2>
             <site-children-block
               part="page-children-block"
               dynamic-methodology="ancestor"

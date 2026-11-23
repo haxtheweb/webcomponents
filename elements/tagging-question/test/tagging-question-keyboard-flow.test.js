@@ -17,7 +17,7 @@ describeQuestionKeyboardFlow(
       <input value="Pluto" />
     </tagging-question>`,
   async (fx) => {
-    await fx.tabTo(/^donald$/i);
+    await fx.tabTo(/^add donald$/i);
     await press("Enter", 150);
   },
 );

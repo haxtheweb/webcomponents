@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { CSVtoArray } from "@haxtheweb/utils/utils.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
@@ -648,6 +648,11 @@ const ChartistRenderSuper = function (SuperClass) {
             border-collapse: collapse;
             width: 100%;
             max-width: 100%;
+          }
+          /* a wide data table scrolls in its own box, which keyboard users
+             can focus and scroll (WCAG 2.1.1) */
+          .table:not(.sr-only) {
+            max-width: 100%;
             overflow: auto;
           }
 
@@ -934,6 +939,9 @@ const ChartistRenderSuper = function (SuperClass) {
         <div
           id="${this.__chartId}-table"
           class="${this.showTable ? "table" : "table sr-only"}"
+          role="${this.showTable ? "region" : nothing}"
+          aria-label="${this.showTable && this.__chartLabel ? this.__chartLabel : nothing}"
+          tabindex="${this.showTable ? "0" : nothing}"
         >
           <slot></slot>
         </div>`;
