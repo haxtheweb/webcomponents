@@ -217,7 +217,7 @@ class SimpleFieldsArrayItem extends I18NMixin(
         :host(:hover),
         :host(:focus),
         :host(:focus-within) {
-          z-index: 100000;
+          z-index: 2;
         }
         :host([dropzone]) {
           z-index: 1;

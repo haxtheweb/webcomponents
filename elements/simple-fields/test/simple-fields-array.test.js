@@ -309,3 +309,23 @@ describe("simple-fields-array-item", () => {
     expect(el.getAttribute("aria-expanded")).to.exist;
   });
 });
+
+describe("simple-fields-array-item stacking", () => {
+  it("raises the focused row one step above its siblings, not above the page", async () => {
+    const list = await fixture(html`
+      <div>
+        <simple-fields-array-item id="a"></simple-fields-array-item>
+        <simple-fields-array-item id="b"></simple-fields-array-item>
+      </div>
+    `);
+    const a = list.querySelector("#a");
+    const b = list.querySelector("#b");
+    await a.updateComplete;
+    a.setAttribute("tabindex", "0");
+    a.focus();
+    const za = Number(globalThis.getComputedStyle(a).zIndex);
+    const zb = Number(globalThis.getComputedStyle(b).zIndex);
+    expect(za).to.be.above(zb);
+    expect(za).to.be.below(100);
+  });
+});

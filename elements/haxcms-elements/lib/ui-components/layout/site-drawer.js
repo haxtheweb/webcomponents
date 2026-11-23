@@ -43,7 +43,7 @@ class SiteDrawer extends LitElement {
             --site-drawer-background-color,
             var(--ddd-theme-default-limestoneLight)
           );
-          z-index: 1000000;
+          z-index: calc(var(--ddd-z-modal, 10000) + 6);
           transition: transform var(--ddd-duration-normal, 0.3s) ease;
           box-shadow: var(--ddd-boxShadow-sm);
         }
@@ -63,7 +63,7 @@ class SiteDrawer extends LitElement {
           position: fixed;
           inset: 0;
           background: rgba(0, 0, 0, 0.5);
-          z-index: 999999;
+          z-index: calc(var(--ddd-z-modal, 10000) + 5);
           opacity: 0;
           pointer-events: none;
           transition: opacity var(--ddd-duration-normal, 0.3s) ease;

@@ -340,7 +340,7 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
         }
         editable-table-editor-rowcol:hover,
         editable-table-editor-rowcol:focus-within {
-          z-index: 10000000;
+          z-index: 5;
         }
       `,
     ];

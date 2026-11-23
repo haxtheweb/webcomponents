@@ -169,7 +169,7 @@ class OutlinePlayer extends I18NMixin(
           flex-shrink: 0;
           overflow-y: auto;
           box-shadow: 0 0 6px -3px var(--outline-player-dark);
-          z-index: 1000000;
+          z-index: calc(var(--ddd-z-modal, 10000) + 6);
           transition: width var(--ddd-duration-normal, 0.3s) ease;
           background-color: light-dark(
             var(--ddd-accent-6),
@@ -197,7 +197,7 @@ class OutlinePlayer extends I18NMixin(
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 999999;
+            z-index: calc(var(--ddd-z-modal, 10000) + 5);
             opacity: 0;
             pointer-events: none;
             transition: opacity var(--ddd-duration-normal, 0.3s) ease;
