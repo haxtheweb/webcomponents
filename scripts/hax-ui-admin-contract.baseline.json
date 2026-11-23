@@ -308,18 +308,5 @@
     "raw-field": {
       "input": 2
     }
-  },
-  "elements/rpg-character/lib/rpg-character-builder.js": {
-    "px-type": {
-      "11px": 1,
-      "12px": 4,
-      "13px": 1,
-      "14px": 1,
-      "16px": 1
-    },
-    "raw-field": {
-      "input": 4,
-      "select": 2
-    }
   }
 }
