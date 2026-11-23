@@ -181,13 +181,13 @@
       "order": 0,
       "src": "iframe-loader.motion.json",
       "file": "lib/iframe-loader.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/iframe-loader.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

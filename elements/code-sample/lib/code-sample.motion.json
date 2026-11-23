@@ -103,7 +103,7 @@
     },
     {
       "type": "text",
-      "s": "const great = \"example\";",
+      "s": "const b = 3;",
       "x": 540,
       "y": 298,
       "c": "cd",
@@ -111,7 +111,7 @@
     },
     {
       "type": "text",
-      "s": "const great = \"example\";</template>",
+      "s": "const sum = a + b;</template>",
       "x": 540,
       "y": 328,
       "c": "cd",
@@ -140,16 +140,16 @@
           "desc": "Code highlighting"
         },
         {
+          "name": "copy-clipboard-button",
+          "desc": "Copy to clipboard button"
+        },
+        {
           "name": "highlight-start",
           "desc": "Line number to start highlighti…"
         },
         {
           "name": "highlight-end",
           "desc": "Line to finish highlighting on"
-        },
-        {
-          "name": "copy-clipboard-button",
-          "desc": "Copy to clipboard button"
         }
       ],
       "active": [
@@ -182,7 +182,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "highlight-start=\"null\""
+      "s": "copy-clipboard-button"
     },
     {
       "type": "text",
@@ -190,7 +190,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "highlight-end=\"null\""
+      "s": "highlight-start=\"null\""
     },
     {
       "type": "text",
@@ -198,7 +198,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "copy-clipboard-button=\"false\""
+      "s": "highlight-end=\"null\""
     },
     {
       "type": "text",
@@ -294,8 +294,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "highlight-start",
-      "sub": "a number",
+      "label": "copy-clipboard-butt…",
+      "sub": "on or off",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -306,7 +306,7 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "highlight-end",
+      "label": "highlight-start",
       "sub": "a number",
       "dir": 1,
       "in": 10.2,
@@ -318,8 +318,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "copy-clipboard-butt…",
-      "sub": "on or off",
+      "label": "highlight-end",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -341,8 +341,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set highlight end",
-      "text": "Line to finish highlighting on. Button in top right that says copy to clipboard."
+      "title": "Set highlight start",
+      "text": "Line number to start highlighting. Line to finish highlighting on."
     },
     {
       "t": 14.8,
@@ -356,7 +356,7 @@
     "line": "A sample of code highlighted in the page",
     "code": "<code-sample type=\"javascript\" copy-clipboard-button>"
   },
-  "surfaceHash": "9042cb3426fd",
+  "surfaceHash": "cf99f160343f",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

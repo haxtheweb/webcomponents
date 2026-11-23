@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Progress Donut",
+      "s": "Progress donut",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -212,12 +212,12 @@
           "desc": "Description"
         },
         {
-          "name": "image-src",
-          "desc": "Image Source"
+          "name": "complete",
+          "desc": "An array of completed values."
         },
         {
-          "name": "image-alt",
-          "desc": "Image Alt Text"
+          "name": "total",
+          "desc": "Total when all items are comple…"
         }
       ],
       "active": [
@@ -242,7 +242,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "title=\"Title\""
+      "s": "title=\"Your progress\""
     },
     {
       "type": "text",
@@ -250,7 +250,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "desc=\"Description\""
+      "s": "desc=\"You have completed 30 o…\""
     },
     {
       "type": "text",
@@ -258,7 +258,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "image-src=\"photo.jpg\""
+      "s": "complete=\"Complete\""
     },
     {
       "type": "text",
@@ -266,7 +266,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "image-alt=\"Image Alt Text\""
+      "s": "total=\"50\""
     },
     {
       "type": "text",
@@ -351,7 +351,7 @@
       "ex": 616,
       "ey": 540,
       "label": "title",
-      "sub": "\"Title\"",
+      "sub": "\"Your progress\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -363,7 +363,7 @@
       "ex": 796,
       "ey": 540,
       "label": "desc",
-      "sub": "\"Description\"",
+      "sub": "\"You have completed 30 of 50…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -374,8 +374,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "image-src",
-      "sub": "upload or link",
+      "label": "complete",
+      "sub": "\"Complete\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -386,8 +386,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "image-alt",
-      "sub": "\"Image Alt Text\"",
+      "label": "total",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -397,8 +397,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Progress Donut",
-      "text": "Find Progress Donut in the HAX blocks menu and drop it on the page."
+      "title": "Add Progress donut",
+      "text": "Find Progress donut in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -409,8 +409,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set image source",
-      "text": "Source of image inside donut. Alt text for image."
+      "title": "Set complete and total",
+      "text": "An array of completed values. Total when all items are complete."
     },
     {
       "t": 14.8,
@@ -421,10 +421,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "Progression donut",
+    "line": "A donut chart showing progress toward a total.",
     "code": "<progress-donut></progress-donut>"
   },
-  "surfaceHash": "6ab97c2168b3",
+  "surfaceHash": "5e0ba42c8bf8",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

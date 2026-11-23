@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Merit Badge",
+      "s": "Merit badge",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -98,15 +98,12 @@
     },
     {
       "type": "text",
-      "s": "Merit Badge",
+      "s": "Web components",
       "x": 544,
       "y": 376,
       "c": "vt",
       "in": 3,
-      "states": [
-        [2.6, "Merit Badge"],
-        [5, "Badge Title"]
-      ],
+      "states": [[2.6, "Web components"]],
       "typed": true
     },
     {
@@ -154,16 +151,16 @@
           "desc": "Title displayed on the badge."
         },
         {
-          "name": "badge-image",
-          "desc": "Image URL for the badge."
-        },
-        {
           "name": "badge-details",
           "desc": "Details about the badge."
         },
         {
           "name": "hyper-link",
           "desc": "Hyperlink"
+        },
+        {
+          "name": "badge-skills",
+          "desc": "Skills displayed on the badge."
         }
       ],
       "active": [
@@ -188,7 +185,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "badge-title=\"Badge Title\""
+      "s": "badge-title=\"Web components\""
     },
     {
       "type": "text",
@@ -196,7 +193,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "badge-image=\"photo.jpg\""
+      "s": "badge-details=\"Built and published a c…\""
     },
     {
       "type": "text",
@@ -204,7 +201,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "badge-details=\"Badge Details\""
+      "s": "hyper-link=\"https://haxtheweb.org/\""
     },
     {
       "type": "text",
@@ -212,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "hyper-link=\"Hyperlink\""
+      "s": "badge-skills=\"HTML, CSS, JavaScript\""
     },
     {
       "type": "text",
@@ -297,7 +294,7 @@
       "ex": 616,
       "ey": 570,
       "label": "badge-title",
-      "sub": "\"Badge Title\"",
+      "sub": "\"Web components\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -308,8 +305,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "badge-image",
-      "sub": "upload or link",
+      "label": "badge-details",
+      "sub": "\"Built and published a custom…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -320,8 +317,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "badge-details",
-      "sub": "\"Badge Details\"",
+      "label": "hyper-link",
+      "sub": "upload or link",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -332,8 +329,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "hyper-link",
-      "sub": "\"Hyperlink\"",
+      "label": "badge-skills",
+      "sub": "\"HTML, CSS, JavaScript\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -343,20 +340,20 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Merit Badge",
-      "text": "Find Merit Badge in the HAX blocks menu and drop it on the page."
+      "title": "Add Merit badge",
+      "text": "Find Merit badge in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
       "out": 9.8,
       "title": "Set badge title",
-      "text": "Title displayed on the badge. Image URL for the badge."
+      "text": "Title displayed on the badge. Details about the badge."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set badge details",
-      "text": "Details about the badge. Link associated with the badge."
+      "title": "Set hyperlink and badge skills",
+      "text": "Link associated with the badge. Skills displayed on the badge."
     },
     {
       "t": 14.8,
@@ -370,7 +367,7 @@
     "line": "Visual badge to communicate obtaining a skill.",
     "code": "<merit-badge></merit-badge>"
   },
-  "surfaceHash": "11081bb9e557",
+  "surfaceHash": "dbb7af61d75d",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

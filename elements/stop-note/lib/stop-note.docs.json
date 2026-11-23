@@ -198,13 +198,13 @@
       "order": 0,
       "src": "stop-note.motion.json",
       "file": "lib/stop-note.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/stop-note.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

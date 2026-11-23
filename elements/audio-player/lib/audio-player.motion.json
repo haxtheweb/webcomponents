@@ -95,7 +95,7 @@
     },
     {
       "type": "text",
-      "s": "Jonny Quest Theme",
+      "s": "Humans plus Agents",
       "x": 620,
       "y": 332,
       "c": "vt",
@@ -177,7 +177,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "source=\"https://archive.org/dow…\""
+      "s": "source=\"https://cdn.hax.cloud/c…\""
     },
     {
       "type": "text",
@@ -185,7 +185,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "media-title=\"Jonny Quest Theme\""
+      "s": "media-title=\"Humans plus Agents\""
     },
     {
       "type": "text",
@@ -298,7 +298,7 @@
       "ex": 796,
       "ey": 460,
       "label": "media-title",
-      "sub": "\"Jonny Quest Theme\"",
+      "sub": "\"Humans plus Agents\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -356,10 +356,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "This can present video in a highly accessible manner regard…",
+    "line": "Accessible audio player with transcript support.",
     "code": "<audio-player></audio-player>"
   },
-  "surfaceHash": "cada5d4c9b4c",
+  "surfaceHash": "138a37ef0929",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

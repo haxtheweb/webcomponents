@@ -96,7 +96,7 @@
     },
     {
       "type": "text",
-      "s": "QR Code",
+      "s": "QR code linking to haxtheweb.…",
       "x": 720,
       "y": 460,
       "c": "cdd",
@@ -114,10 +114,6 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "format",
-          "desc": "Output format"
-        },
-        {
           "name": "data",
           "desc": "QR data"
         },
@@ -128,6 +124,10 @@
         {
           "name": "modulesize",
           "desc": "Size"
+        },
+        {
+          "name": "margin",
+          "desc": "Wrapper to the code."
         }
       ],
       "active": [
@@ -152,7 +152,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "format=\"png\""
+      "s": "data=\"https://haxtheweb.org/\""
     },
     {
       "type": "text",
@@ -160,7 +160,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "data=\"QR data\""
+      "s": "title=\"QR code linking to haxt…\""
     },
     {
       "type": "text",
@@ -168,7 +168,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "title=\"Alternate title\""
+      "s": "modulesize=\"4\""
     },
     {
       "type": "text",
@@ -176,7 +176,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "modulesize=\"4\""
+      "s": "margin=\"2\""
     },
     {
       "type": "text",
@@ -260,8 +260,8 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "format",
-      "sub": "PNG · HTML · SVG",
+      "label": "data",
+      "sub": "text",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -272,8 +272,8 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "data",
-      "sub": "\"QR data\"",
+      "label": "title",
+      "sub": "\"QR code linking to haxtheweb…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -284,8 +284,8 @@
       "py": 468,
       "ex": 616,
       "ey": 520,
-      "label": "title",
-      "sub": "\"Alternate title\"",
+      "label": "modulesize",
+      "sub": "a number",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -296,7 +296,7 @@
       "py": 468,
       "ex": 796,
       "ey": 520,
-      "label": "modulesize",
+      "label": "margin",
       "sub": "a number",
       "dir": 1,
       "in": 12.6,
@@ -313,14 +313,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set output format and qr data",
-      "text": "Format to put it out. Source of the data for the QR code."
+      "title": "Set qr data",
+      "text": "Source of the data for the QR code."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set alternate title and size",
-      "text": "Alternate title linked to the QR code source. Size of the QR code."
+      "title": "Set size and margin",
+      "text": "Size of the QR code. Wrapper to the code."
     },
     {
       "t": 14.8,
@@ -334,7 +334,7 @@
     "line": "Code to scan from a smartphone.",
     "code": "<q-r></q-r>"
   },
-  "surfaceHash": "5fb2eef78d14",
+  "surfaceHash": "6d390b5c98fa",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

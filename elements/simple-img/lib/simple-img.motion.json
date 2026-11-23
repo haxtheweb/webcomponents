@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Simple Image",
+      "s": "Simple image",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -88,7 +88,7 @@
     },
     {
       "type": "text",
-      "s": "async",
+      "s": "Placeholder image",
       "x": 524,
       "y": 480,
       "c": "cdd",
@@ -105,20 +105,20 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "fetchpriority",
-          "desc": "Fetch Priority"
-        },
-        {
-          "name": "decoding",
-          "desc": "Decoding method"
-        },
-        {
           "name": "src",
           "desc": "Source"
         },
         {
           "name": "alt",
           "desc": "Alt text"
+        },
+        {
+          "name": "height",
+          "desc": "Optional image height."
+        },
+        {
+          "name": "width",
+          "desc": "Optional image width."
         }
       ],
       "active": [
@@ -143,7 +143,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "fetchpriority=\"low\""
+      "s": "src=\"https://placehold.co/60…\""
     },
     {
       "type": "text",
@@ -151,7 +151,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "decoding=\"async\""
+      "s": "alt=\"Placeholder image\""
     },
     {
       "type": "text",
@@ -159,7 +159,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "src=\"photo.jpg\""
+      "s": "height=\"400\""
     },
     {
       "type": "text",
@@ -167,7 +167,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "alt=\"Alt text\""
+      "s": "width=\"600\""
     },
     {
       "type": "text",
@@ -251,8 +251,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "fetchpriority",
-      "sub": "Automatic · High · Low",
+      "label": "src",
+      "sub": "upload or link",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -263,8 +263,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "decoding",
-      "sub": "Automatic · Async",
+      "label": "alt",
+      "sub": "\"Placeholder image\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -275,8 +275,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "src",
-      "sub": "upload or link",
+      "label": "height",
+      "sub": "a number",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -287,8 +287,8 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "alt",
-      "sub": "\"Alt text\"",
+      "label": "width",
+      "sub": "a number",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -298,20 +298,20 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Simple Image",
-      "text": "Find Simple Image in the HAX blocks menu and drop it on the page."
+      "title": "Add Simple image",
+      "text": "Find Simple image in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set fetch priority",
-      "text": "Performance hint for modern browsers."
+      "title": "Set source and alt text",
+      "text": "Image source URL. Useful for screen readers and improved SEO."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set source and alt text",
-      "text": "Image source URL. Useful for screen readers and improved SEO."
+      "title": "Set height and width",
+      "text": "Set Height and Width in the HAX sidebar."
     },
     {
       "t": 14.8,
@@ -322,10 +322,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "Manipulate images with simple parameters.",
-    "code": "<simple-img decoding=\"async\" fetchpriority=\"low\">"
+    "line": "An image resized, cropped or rotated by simple settings.",
+    "code": "<simple-img></simple-img>"
   },
-  "surfaceHash": "32768e7e0745",
+  "surfaceHash": "50891c090cc8",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

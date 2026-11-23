@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Tagging Question",
+      "s": "Tagging question",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -386,8 +386,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Tagging Question",
-      "text": "Find Tagging Question in the HAX blocks menu and drop it on the page."
+      "title": "Add Tagging question",
+      "text": "Find Tagging question in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -413,7 +413,7 @@
     "line": "Select tags to answer the question.",
     "code": "<tagging-question></tagging-question>"
   },
-  "surfaceHash": "fe405548bb6e",
+  "surfaceHash": "eda3f2be4848",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

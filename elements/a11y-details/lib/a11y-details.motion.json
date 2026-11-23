@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Accessible Details Butt…",
+      "s": "Details",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -177,7 +177,7 @@
     },
     {
       "type": "text",
-      "s": "Show Aenean",
+      "s": "Show details",
       "x": 540,
       "y": 232,
       "c": "vt",
@@ -185,7 +185,7 @@
     },
     {
       "type": "text",
-      "s": "Aenean eget nisl volutpat, molestie pur…",
+      "s": "More about this topic",
       "x": 540,
       "y": 280,
       "c": "cdd",
@@ -193,7 +193,7 @@
     },
     {
       "type": "text",
-      "s": "",
+      "s": "Add the extra explanation here. Readers…",
       "x": 540,
       "y": 306,
       "c": "cdd",
@@ -238,7 +238,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "open-text=\"Show Aenean\""
+      "s": "open-text=\"Show details\""
     },
     {
       "type": "text",
@@ -246,7 +246,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "close-text=\"Hide Aenean\""
+      "s": "close-text=\"Hide details\""
     },
     {
       "type": "text",
@@ -303,7 +303,7 @@
       "ex": 616,
       "ey": 560,
       "label": "open-text",
-      "sub": "\"Show Aenean\"",
+      "sub": "\"Show details\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -315,7 +315,7 @@
       "ex": 796,
       "ey": 560,
       "label": "close-text",
-      "sub": "\"Hide Aenean\"",
+      "sub": "\"Hide details\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -325,8 +325,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Accessible Details Button",
-      "text": "Find Accessible Details Button in the HAX blocks menu and drop it on the page."
+      "title": "Add Details",
+      "text": "Find Details in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -344,9 +344,9 @@
   "end": {
     "in": 17.8,
     "line": "Accessible progressive disclosure with detail and summary",
-    "code": "<a11y-details open-text=\"Show Aenean\" close-text=\"Hide Aenean\">"
+    "code": "<a11y-details open-text=\"Show details\" close-text=\"Hide details\">"
   },
-  "surfaceHash": "fdf94da4271f",
+  "surfaceHash": "058f1d1e4f52",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

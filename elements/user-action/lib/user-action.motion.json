@@ -6,79 +6,23 @@
   "objects": [
     {
       "type": "text",
-      "s": "HAX blocks",
-      "x": 80,
-      "y": 200,
-      "c": "vt",
-      "in": 0.4,
-      "out": 4.4
-    },
-    {
-      "type": "box",
-      "x": 80,
-      "y": 214,
-      "w": 330,
-      "h": 62,
-      "v": "obj",
-      "r": 10,
+      "x": 520,
+      "y": 170,
+      "c": "code",
       "in": 0.5,
-      "out": 4.4
-    },
-    {
-      "type": "text",
-      "s": "User action",
-      "x": 104,
-      "y": 251,
-      "c": "rn",
-      "in": 0.7,
-      "out": 4.4
-    },
-    {
-      "type": "glyph",
-      "name": "plus",
-      "x": 380,
-      "y": 245,
-      "s": 10,
-      "in": 0.8,
-      "out": 4.4
-    },
-    {
-      "type": "box",
-      "x": 196,
-      "y": 232,
-      "w": 150,
-      "h": 36,
-      "v": "slot",
-      "r": 8,
-      "in": 1.5,
-      "d": 0.2,
-      "out": 2.6,
-      "od": 0.2,
-      "keys": [
-        [
-          2.5,
-          {
-            "x": 650,
-            "y": 322
-          },
-          0.9
-        ]
+      "states": [
+        [0.5, "<user-action track=\"visibility\">"],
+        [15.6, "<user-action track=\"click\" every>"]
       ]
     },
     {
       "type": "cursor",
       "keys": [
-        [0.8, 300, 360],
-        [1.4, 240, 248],
-        [2.5, 720, 340],
-        [16.2, 720, 340],
+        [16.0, 720, 340],
         [16.6, 720, 345]
       ],
-      "show": [
-        [0.8, 3.2],
-        [16, 19]
-      ],
-      "clicks": [1.5, 2.6, 16.6, 17.6]
+      "show": [[16, 19]],
+      "clicks": [16.6, 17.6]
     },
     {
       "type": "box",
@@ -88,7 +32,7 @@
       "h": 230,
       "v": "obj",
       "r": 6,
-      "in": 2.6,
+      "in": 1.0,
       "d": 0.5,
       "label": "user-action",
       "labelMin": 90
@@ -101,14 +45,14 @@
       "h": 110,
       "v": "hug",
       "r": 6,
-      "in": 3,
+      "in": 1.4,
       "d": 0.4,
       "label": "Your content",
       "labelMin": 60
     },
     {
       "type": "panel",
-      "title": "HAX settings",
+      "title": "attributes",
       "x": 80,
       "y": 214,
       "w": 360,
@@ -117,17 +61,17 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "Event to track",
+          "name": "track",
           "value": [
-            [4.8, "Can see this"],
-            [15.6, "Click this"]
+            [4.8, "visibility"],
+            [15.6, "click"]
           ]
         },
         {
-          "name": "Track every time",
+          "name": "every",
           "value": [
-            [4.8, "off"],
-            [16, "on"]
+            [4.8, "not set"],
+            [16, "set"]
           ]
         }
       ],
@@ -150,23 +94,22 @@
       "od": 0.3,
       "rows": [
         {
-          "name": "Can see this"
+          "name": "visibility",
+          "desc": "Seen on the page"
         },
         {
-          "name": "Click this"
+          "name": "click",
+          "desc": "Clicked"
         },
         {
-          "name": "Press a key here"
-        },
-        {
-          "name": "Hover over this"
+          "name": "keydown",
+          "desc": "A key pressed in it"
         }
       ],
       "active": [
         [6.4, 0],
-        [7, 1],
-        [7.6, 2],
-        [8.2, 3]
+        [7.1, 1],
+        [7.8, 2]
       ]
     },
     {
@@ -255,14 +198,14 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add User action",
-      "text": "Find User action in the HAX blocks menu and drop it around your content."
+      "title": "Wrap your content",
+      "text": "Put user-action around what you want to track. It is markup only, not a HAX block."
     },
     {
       "t": 4.8,
       "out": 9.6,
       "title": "Choose what to track",
-      "text": "Event to track: when it is seen, clicked, typed in or hovered over."
+      "text": "track sets the event: visibility when it is seen, click, or keydown."
     },
     {
       "t": 9.8,
@@ -274,15 +217,15 @@
       "t": 15.2,
       "out": 21,
       "title": "Once or every time",
-      "text": "With Track every time on, each click reports; off, only the first does."
+      "text": "Add every and each click reports; without it, only the first one does."
     }
   ],
   "end": {
     "in": 21.2,
-    "line": "Learner data from any block, without code.",
+    "line": "Learner data from any content, with one wrapper.",
     "code": "<user-action track=\"click\"></user-action>"
   },
-  "surfaceHash": "6ade127d3c55",
+  "surfaceHash": "a923d60742a4",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

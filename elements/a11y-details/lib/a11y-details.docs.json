@@ -132,13 +132,13 @@
       "order": 0,
       "src": "a11y-details.motion.json",
       "file": "lib/a11y-details.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-details.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

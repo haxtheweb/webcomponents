@@ -88,7 +88,7 @@
     },
     {
       "type": "text",
-      "s": "Parallax image",
+      "s": "Section heading",
       "x": 524,
       "y": 480,
       "c": "cdd",
@@ -133,7 +133,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "image-bg=\"photo.jpg\""
+      "s": "image-bg=\"https://placehold.co/16…\""
     },
     {
       "type": "text",
@@ -224,10 +224,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "Image scroll by",
-    "code": "<parallax-image></parallax-image>"
+    "line": "A full-width image that scrolls slower than the page, with…",
+    "code": "<parallax-image image-bg=\"https://placehold.co/1600x900\">"
   },
-  "surfaceHash": "4f7bd7934ad6",
+  "surfaceHash": "16d2f5e56ae2",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

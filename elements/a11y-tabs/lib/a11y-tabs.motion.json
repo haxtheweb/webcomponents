@@ -177,7 +177,7 @@
     },
     {
       "type": "text",
-      "s": "Tabs",
+      "s": "Unit overview",
       "x": 540,
       "y": 232,
       "c": "vt",
@@ -185,7 +185,7 @@
     },
     {
       "type": "text",
-      "s": "Hidden until opened",
+      "s": "What this unit covers and why it matter…",
       "x": 540,
       "y": 280,
       "c": "cdd",
@@ -193,7 +193,7 @@
     },
     {
       "type": "text",
-      "s": "",
+      "s": "Read chapter 2 before the next class.",
       "x": 540,
       "y": 306,
       "c": "cdd",
@@ -222,8 +222,8 @@
           "desc": "Breakpoint for showing text wit…"
         },
         {
-          "name": "id",
-          "desc": "Unique ID"
+          "name": "sticky",
+          "desc": "Keep horizontal tabs at the top…"
         }
       ],
       "active": [
@@ -248,7 +248,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "aria-label=\"Label (for access…\""
+      "s": "aria-label=\"Unit overview\""
     },
     {
       "type": "text",
@@ -272,7 +272,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "id=\"Unique ID\""
+      "s": "sticky"
     },
     {
       "type": "text",
@@ -357,7 +357,7 @@
       "ex": 616,
       "ey": 560,
       "label": "aria-label",
-      "sub": "\"Label (for access…\"",
+      "sub": "\"Unit overview\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -392,8 +392,8 @@
       "py": 508,
       "ex": 796,
       "ey": 560,
-      "label": "id",
-      "sub": "\"Unique ID\"",
+      "label": "sticky",
+      "sub": "on or off",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -416,7 +416,7 @@
       "t": 10,
       "out": 14.6,
       "title": "Set icon breakpoint",
-      "text": "Breakpoint for showing text with icons. Unique ID for this tab set."
+      "text": "Breakpoint for showing text with icons."
     },
     {
       "t": 14.8,
@@ -428,9 +428,9 @@
   "end": {
     "in": 17.8,
     "line": "Set of tabs.",
-    "code": "<a11y-tabs></a11y-tabs>"
+    "code": "<a11y-tabs aria-label=\"Unit overview\">"
   },
-  "surfaceHash": "b3bd76e5b7ac",
+  "surfaceHash": "43821e0d892c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

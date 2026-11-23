@@ -265,13 +265,13 @@
       "order": 0,
       "src": "event-badge.motion.json",
       "file": "lib/event-badge.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/event-badge.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

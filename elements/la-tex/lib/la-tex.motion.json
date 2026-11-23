@@ -142,12 +142,40 @@
       "in": 3.8200000000000003
     },
     {
+      "type": "panel",
+      "title": "HAX settings",
+      "x": 80,
+      "y": 214,
+      "w": 330,
+      "rowH": 62,
+      "gap": 12,
+      "in": 4.6,
+      "rows": [
+        {
+          "name": "backdrop",
+          "desc": "Picture backdrop"
+        }
+      ],
+      "active": [
+        [5, 0],
+        [14.8, 0]
+      ]
+    },
+    {
       "type": "text",
       "x": 1000,
       "y": 240,
       "c": "code",
       "in": 2.8000000000000003,
-      "s": "<la-tex>"
+      "s": "<la-tex"
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 272,
+      "c": "code",
+      "in": 5,
+      "s": "backdrop=\"auto\""
     },
     {
       "type": "text",
@@ -155,7 +183,45 @@
       "y": 272,
       "c": "code",
       "in": 2.9,
-      "s": "</la-tex>"
+      "s": ">",
+      "keys": [
+        [
+          5,
+          {
+            "y": 304
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "text",
+      "x": 1000,
+      "y": 304,
+      "c": "code",
+      "in": 2.9,
+      "s": "</la-tex>",
+      "keys": [
+        [
+          5,
+          {
+            "y": 336
+          },
+          0.4
+        ]
+      ]
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 468,
+      "ex": 616,
+      "ey": 520,
+      "label": "backdrop",
+      "sub": "Automatic · Light · Dark …",
+      "dir": 1,
+      "in": 5.2,
+      "out": 7.2
     }
   ],
   "beats": [
@@ -166,7 +232,13 @@
       "text": "Find LaTeX in the HAX blocks menu and drop it on the page."
     },
     {
-      "t": 5,
+      "t": 4.8,
+      "out": 9.8,
+      "title": "Set picture backdrop",
+      "text": "Background behind drawn pictures."
+    },
+    {
+      "t": 14.8,
       "out": 17.4,
       "title": "Edit in HAX",
       "text": "Each setting is in the HAX sidebar and the page updates as you change it."
@@ -177,7 +249,7 @@
     "line": "Write using the math notation LaTeX",
     "code": "<la-tex>"
   },
-  "surfaceHash": "e26b0c996eb5",
+  "surfaceHash": "2ca0177413b6",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

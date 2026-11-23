@@ -159,8 +159,8 @@
           "desc": "Character type"
         },
         {
-          "name": "mask",
-          "desc": "Mask worn over the face or head."
+          "name": "expression",
+          "desc": "Face expression."
         }
       ],
       "active": [
@@ -209,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "mask=\"none\""
+      "s": "expression=\"none\""
     },
     {
       "type": "text",
@@ -329,8 +329,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "mask",
-      "sub": "None · Lion · Plague doctor …",
+      "label": "expression",
+      "sub": "None · Happy · Sad …",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -367,7 +367,7 @@
     "line": "Fun character from HAX.",
     "code": "<rpg-character seed=\"haxtheweb\" hat=\"random\"></rpg-character>"
   },
-  "surfaceHash": "df7bb53a5a07",
+  "surfaceHash": "6cacf6eebb15",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

@@ -198,13 +198,13 @@
       "order": 0,
       "src": "q-r.motion.json",
       "file": "lib/q-r.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/q-r.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

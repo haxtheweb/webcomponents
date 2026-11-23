@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Matching Question",
+      "s": "Matching question",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -386,8 +386,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Matching Question",
-      "text": "Find Matching Question in the HAX blocks menu and drop it on the page."
+      "title": "Add Matching question",
+      "text": "Find Matching question in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -413,7 +413,7 @@
     "line": "Drag-and-drop matching activity that pairs prompts with the…",
     "code": "<matching-question></matching-question>"
   },
-  "surfaceHash": "fd9c15ff1521",
+  "surfaceHash": "d475c1daa42f",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

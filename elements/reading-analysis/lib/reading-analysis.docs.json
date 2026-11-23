@@ -229,13 +229,13 @@
       "order": 0,
       "src": "reading-analysis.motion.json",
       "file": "lib/reading-analysis.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/reading-analysis.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

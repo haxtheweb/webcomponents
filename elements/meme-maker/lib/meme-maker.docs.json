@@ -172,13 +172,13 @@
       "order": 0,
       "src": "meme-maker.motion.json",
       "file": "lib/meme-maker.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/meme-maker.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Post Card",
+      "s": "Post card",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -98,7 +98,7 @@
     },
     {
       "type": "text",
-      "s": "btopro",
+      "s": "A friend",
       "x": 544,
       "y": 376,
       "c": "vt",
@@ -183,7 +183,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "to=\"btopro\""
+      "s": "to=\"A friend\""
     },
     {
       "type": "text",
@@ -191,7 +191,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "from=\"everyone\""
+      "s": "from=\"State College\""
     },
     {
       "type": "text",
@@ -199,7 +199,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "message=\"Look more enthused at w…\""
+      "s": "message=\"Wish you were here!\""
     },
     {
       "type": "text",
@@ -207,7 +207,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "post-mark-locations=\"state college\""
+      "s": "post-mark-locations=\"State College\""
     },
     {
       "type": "text",
@@ -292,7 +292,7 @@
       "ex": 616,
       "ey": 570,
       "label": "to",
-      "sub": "\"btopro\"",
+      "sub": "\"A friend\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -304,7 +304,7 @@
       "ex": 796,
       "ey": 570,
       "label": "from",
-      "sub": "\"everyone\"",
+      "sub": "\"State College\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -316,7 +316,7 @@
       "ex": 616,
       "ey": 570,
       "label": "message",
-      "sub": "\"Look more enthused at work\"",
+      "sub": "\"Wish you were here!\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -328,7 +328,7 @@
       "ex": 796,
       "ey": 570,
       "label": "post-mark-locations",
-      "sub": "\"state college\"",
+      "sub": "\"State College\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -338,8 +338,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Post Card",
-      "text": "Find Post Card in the HAX blocks menu and drop it on the page."
+      "title": "Add Post card",
+      "text": "Find Post card in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -365,7 +365,7 @@
     "line": "A playful media piece meant to look like a physical post ca…",
     "code": "<post-card></post-card>"
   },
-  "surfaceHash": "820ebcbfddae",
+  "surfaceHash": "d67e3cae0aab",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

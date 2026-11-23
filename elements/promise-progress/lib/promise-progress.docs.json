@@ -70,13 +70,13 @@
       "order": 0,
       "src": "promise-progress.motion.json",
       "file": "lib/promise-progress.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/promise-progress.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

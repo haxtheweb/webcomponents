@@ -88,7 +88,7 @@
     },
     {
       "type": "text",
-      "s": "Image map",
+      "s": "Course design process",
       "x": 524,
       "y": 480,
       "c": "cdd",
@@ -105,6 +105,10 @@
       "in": 4.6,
       "rows": [
         {
+          "name": "src",
+          "desc": "Image"
+        },
+        {
           "name": "label",
           "desc": "Label for the image map."
         },
@@ -116,6 +120,7 @@
       "active": [
         [5, 0],
         [7.4, 1],
+        [10, 2],
         [14.8, 0]
       ]
     },
@@ -133,7 +138,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "label=\"Label\""
+      "s": "src=\"https://cdn.hax.cloud/c…\""
     },
     {
       "type": "text",
@@ -141,6 +146,14 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
+      "s": "label=\"Course design process\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 336,
+      "c": "code",
+      "in": 10,
       "s": "hotspot-details=\"Hotspot details\""
     },
     {
@@ -162,6 +175,13 @@
           7.4,
           {
             "y": 336
+          },
+          0.4
+        ],
+        [
+          10,
+          {
+            "y": 368
           },
           0.4
         ]
@@ -188,6 +208,13 @@
             "y": 368
           },
           0.4
+        ],
+        [
+          10,
+          {
+            "y": 400
+          },
+          0.4
         ]
       ]
     },
@@ -197,8 +224,8 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "label",
-      "sub": "\"Label\"",
+      "label": "src",
+      "sub": "upload or link",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -209,11 +236,23 @@
       "py": 488,
       "ex": 796,
       "ey": 540,
-      "label": "hotspot-details",
-      "sub": "\"Hotspot details\"",
+      "label": "label",
+      "sub": "\"Course design process\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
+    },
+    {
+      "type": "callout",
+      "px": 590,
+      "py": 488,
+      "ex": 616,
+      "ey": 540,
+      "label": "hotspot-details",
+      "sub": "\"Hotspot details\"",
+      "dir": 1,
+      "in": 10.2,
+      "out": 12.2
     }
   ],
   "beats": [
@@ -226,8 +265,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set label and hotspot details",
-      "text": "Label for the image map. The interactive hotspots on the image map."
+      "title": "Set image and label",
+      "text": "SVG image the hotspots point to. Label for the image map."
+    },
+    {
+      "t": 10,
+      "out": 14.6,
+      "title": "Set hotspot details",
+      "text": "The interactive hotspots on the image map."
     },
     {
       "t": 14.8,
@@ -241,7 +286,7 @@
     "line": "An accessible image map with interactive hotspots.",
     "code": "<lrndesign-imagemap></lrndesign-imagemap>"
   },
-  "surfaceHash": "9768729ddada",
+  "surfaceHash": "0edb95a5d44a",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",
