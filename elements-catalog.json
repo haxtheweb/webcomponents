@@ -2073,7 +2073,7 @@
     {
       "tag": "hax-body",
       "title": "",
-      "description": "Manager of the body area that can be modified",
+      "description": "A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future.",
       "package": "@haxtheweb/hax-body",
       "import": "@haxtheweb/hax-body/hax-body.js",
       "type": "element",
@@ -6106,7 +6106,7 @@
     {
       "tag": "simple-popover",
       "title": "",
-      "description": "a popover alertdialog that is positioned next to a target element",
+      "description": "a popover that is positioned next to a target element",
       "package": "@haxtheweb/simple-popover",
       "import": "@haxtheweb/simple-popover/simple-popover.js",
       "type": "element",
