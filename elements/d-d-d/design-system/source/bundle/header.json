@@ -88,7 +88,6 @@
     { "name": "HaxAppInstaller" },
     { "name": "HaxBody" },
     { "name": "SimpleFields" },
-    { "name": "WebContainer" },
     { "name": "AppHax" },
     { "name": "HaxTheme_Chamfer" },
     { "name": "HaxTheme_CleanOne" },

@@ -26,7 +26,7 @@
  * Tags that only exist as internal parts of other elements, admin-only UI,
  * or non-visual wrappers are intentionally excluded from the gallery.
  * Non-authorable elements (editor internals, the lrndesign chart family,
- * web-container tooling, branding) never reach this script because they are
+ * developer tooling, branding) never reach this script because they are
  * excluded from hax-elements-registry.json by scripts/hax-elements-discovery.mjs.
  *
  * This runs as part of yarn run ubiquity right after hax-elements-discovery
