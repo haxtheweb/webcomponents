@@ -1665,6 +1665,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
     </div>`;
   }
 
+  /**
+   * Accessibility (WCAG 2.4.1): a fragment link cannot reach an id inside a
+   * shadow root, so the transcript skip link moves focus itself.
+   * @param {Event} e click on the skip link
+   */
+  _skipTranscript(e) {
+    const target = this.shadowRoot && this.shadowRoot.querySelector("#bottom");
+    if (target) {
+      e.preventDefault();
+      target.focus();
+    }
+  }
+
   // render function
   render() {
     const seekPct =
@@ -1976,7 +1989,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
               </button>
             </div>
             <div id="transcript" aria-live="polite">
-              <a id="transcript-desc" class="sr-only" href="#bottom">
+              <a
+                id="transcript-desc"
+                class="sr-only"
+                href="#bottom"
+                @click="${this._skipTranscript}"
+              >
                 ${this.t.transcriptSkip}
               </a>
               ${
@@ -2026,7 +2044,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           </div>
         </div>
       </div>
-      <div id="bottom" class="sr-only"></div>`;
+      <div id="bottom" class="sr-only" tabindex="-1"></div>`;
   }
 
   // properties available to the custom element for data binding

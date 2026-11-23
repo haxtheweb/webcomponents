@@ -149,10 +149,31 @@ class HexPicker extends I18NMixin(LitElement) {
   }
 
   _validateInput(event) {
-    // which is 0 on synthetic events in some engines; keyCode carries the same value
+    // Accessibility (WCAG 2.1.2): only printable characters are filtered.
+    // Tab, Shift+Tab, Enter, Escape, arrows, Home/End, Delete and any
+    // shortcut with a modifier (copy, paste, select all) always pass through
+    // so keyboard users can move in and out of the field.
+    if (event.ctrlKey || event.metaKey || event.altKey) {
+      return;
+    }
+    if (typeof event.key === "string" && event.key !== "") {
+      // named keys (Tab, Enter, ArrowLeft, Backspace...) are longer than one character
+      if (event.key.length !== 1) {
+        return;
+      }
+      if (!/^[0-9A-Fa-f]$/.test(event.key)) {
+        event.preventDefault();
+      }
+      return;
+    }
+    // no key: fall back to the code (which is 0 on synthetic events in some engines)
     const code = event.which || event.keyCode;
-    let char = String.fromCharCode(code);
-    if (!char.match(/[0-9A-Fa-f\b]/g) && code !== 39 && code !== 37) {
+    // backspace, tab, enter, escape, end, home, arrows, delete
+    const navigation = [8, 9, 13, 27, 35, 36, 37, 38, 39, 40, 46];
+    if (
+      navigation.indexOf(code) === -1 &&
+      !/^[0-9A-Fa-f]$/.test(String.fromCharCode(code))
+    ) {
       event.preventDefault();
     }
   }

@@ -896,6 +896,7 @@ export class PageBreak extends IntersectionObserverMixin(
         href="${pagePath}"
         name="${ifDefined(pageAnchorId || undefined)}"
         class="sr-only"
+        tabindex="-1"
         >${this.title}</a
       >
       ${this._bandLoaded ? pageBreakBand.renderPageBreakBand(this) : ``}

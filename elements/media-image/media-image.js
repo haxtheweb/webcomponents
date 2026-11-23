@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { SimpleModalHandler } from "@haxtheweb/simple-modal/lib/simple-modal-handler.js";
 import "@haxtheweb/figure-label/figure-label.js";
@@ -214,7 +214,13 @@ class MediaImage extends SchemaBehaviors(DDD) {
       }
       ${
         this.link
-          ? html`<a href="${this.link}"
+          ? html`<a
+              href="${this.link}"
+              aria-label="${
+                this.alt
+                  ? nothing
+                  : this.modalTitle || this.figureLabelTitle || this.link
+              }"
               ><media-image-image
                 ?round="${this.round}"
                 resource="${this.schemaResourceID}-image"
