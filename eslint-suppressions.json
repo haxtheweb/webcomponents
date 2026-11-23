@@ -1664,11 +1664,6 @@
       "count": 6
     }
   },
-  "elements/web-container/web-container.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
-    }
-  },
   "elements/wikipedia-query/wikipedia-query.js": {
     "eqeqeq": {
       "count": 1

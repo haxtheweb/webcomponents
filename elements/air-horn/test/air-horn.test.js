@@ -100,7 +100,7 @@ describe("air-horn", () => {
       expect(el.getAttribute("tabindex")).to.equal("0");
       // the accessible name must include the visible slotted text
       // (label-content-name-mismatch)
-      expect(el.getAttribute("aria-label")).to.equal("Play air horn: honk");
+      expect(el.getAttribute("aria-label")).to.equal("honk, air horn");
       el.dispatchEvent(
         new KeyboardEvent("keydown", {
           key: "Enter",
@@ -165,6 +165,74 @@ describe("air-horn", () => {
     } finally {
       globalThis.Audio = origAudio;
     }
+  });
+  it("names an empty horn", async () => {
+    const el = await fixture(html`<air-horn></air-horn>`);
+    expect(el.getAttribute("aria-label")).to.equal("Air horn");
+  });
+  it("keeps an author's role, tabindex and label", async () => {
+    const el = await fixture(
+      html`<air-horn role="link" tabindex="2" aria-label="Celebrate"
+        >honk</air-horn
+      >`,
+    );
+    expect(el.getAttribute("role")).to.equal("link");
+    expect(el.getAttribute("tabindex")).to.equal("2");
+    expect(el.getAttribute("aria-label")).to.equal("Celebrate");
+  });
+  it("wraps a control without becoming a button around it", async () => {
+    const played = [];
+    const origAudio = globalThis.Audio;
+    globalThis.Audio = class {
+      constructor(url) {
+        played.push(url);
+      }
+      play() {
+        return Promise.resolve();
+      }
+    };
+    try {
+      const el = await fixture(
+        html`<air-horn><button type="button">Honk</button></air-horn>`,
+      );
+      expect(el.hasAttribute("role")).to.be.false;
+      expect(el.hasAttribute("tabindex")).to.be.false;
+      expect(el.hasAttribute("aria-label")).to.be.false;
+      const button = el.querySelector("button");
+      // Enter on the inner button: the browser clicks it once, the host
+      // does not add a second play
+      button.dispatchEvent(
+        new KeyboardEvent("keydown", { key: "Enter", bubbles: true }),
+      );
+      expect(played.length).to.equal(0);
+      button.click();
+      expect(played.length).to.equal(1);
+      await expect(el).to.be.accessible();
+    } finally {
+      globalThis.Audio = origAudio;
+    }
+  });
+  it("notices a control a custom element draws after it upgrades", async () => {
+    const tag = "air-horn-test-player";
+    if (!globalThis.customElements.get(tag)) {
+      globalThis.customElements.define(
+        tag,
+        class extends HTMLElement {
+          constructor() {
+            super();
+            this.attachShadow({ mode: "open" });
+            this.updateComplete = Promise.resolve().then(() => {
+              this.shadowRoot.innerHTML = "<button>Play</button>";
+            });
+          }
+        },
+      );
+    }
+    const el = await fixture(
+      html`<air-horn><air-horn-test-player></air-horn-test-player></air-horn>`,
+    );
+    await new Promise((r) => setTimeout(r, 0));
+    expect(el.hasAttribute("role")).to.be.false;
   });
   it("meets a11y standards", async () => {
     const el = await fixture(html`<air-horn>toot</air-horn>`);

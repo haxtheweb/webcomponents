@@ -161,7 +161,7 @@ Every element in the webcomponents monorepo that extends DDD has a card here, re
 
 - `components/bundle.js` (namespace `DDD`) holds the real elements, bundled from the published build. Two very large elements, `sheet-music` and `slide-deck`, load from `components/lib/` instead.
 - Assets the elements fetch at runtime ship under `runtime/`: `icons/` holds every iconset as data URIs, `nm/` the helper scripts (Chartist, QR, Lunr), `sites/` the theme demo sites, and `data/` and `media/` the demo files.
-- Elements that call outside services can't reach them in a preview. These are github-preview, linkedin-embed, wikipedia-query, web-container, the installer, YouTube media and the chat agent's AI. Each README says what you'll see.
+- Elements that call outside services can't reach them in a preview. These are github-preview, linkedin-embed, wikipedia-query, the installer, YouTube media and the chat agent's AI. Each README says what you'll see.
 
 ## Intentional additions
 

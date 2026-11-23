@@ -47,7 +47,6 @@
     "@haxtheweb/simple-icon/lib/svgs/icons/view-module.svg",
     "@haxtheweb/simple-icon/lib/svgs/icons/zoom-in.svg",
     "@haxtheweb/simple-icon/lib/svgs/icons/zoom-out.svg",
-    "@haxtheweb/web-container/lib/loading.html",
     "lunr/lunr.js"
   ]
 }

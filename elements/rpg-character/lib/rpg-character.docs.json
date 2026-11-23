@@ -196,7 +196,10 @@
           "messy-hair": "Messy hair with scar",
           "sparkle-selects": "Sparkle Selects (helmet)",
           "saber-cats": "Saber Cats (helmet)",
-          "future-traveler": "Future Traveler (helmet)"
+          "future-traveler": "Future Traveler (helmet)",
+          "pilgrim": "Pilgrim hat",
+          "bonnet": "Pilgrim bonnet",
+          "turkey": "Turkey hood"
         }
       }
     },
@@ -358,7 +361,10 @@
           "saber-cats-away": "Saber Cats (away)",
           "icers": "Icers (home)",
           "icers-away": "Icers (away)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilgrim (boy)",
+          "pilgrim-girl": "Pilgrim (girl)",
+          "turkey": "Turkey"
         }
       }
     },
@@ -471,7 +477,9 @@
           "wrench": "Wrench",
           "hockey-stick-pink": "Hockey stick (pink)",
           "hockey-stick-green": "Hockey stick (green)",
-          "sparkle-flag": "Sparkle Selects (flag)"
+          "sparkle-flag": "Sparkle Selects (flag)",
+          "corn": "Ear of corn",
+          "drumstick": "Turkey drumstick"
         }
       }
     },
@@ -725,7 +733,10 @@
             "messy-hair": "Messy hair with scar",
             "sparkle-selects": "Sparkle Selects (helmet)",
             "saber-cats": "Saber Cats (helmet)",
-            "future-traveler": "Future Traveler (helmet)"
+            "future-traveler": "Future Traveler (helmet)",
+            "pilgrim": "Pilgrim hat",
+            "bonnet": "Pilgrim bonnet",
+            "turkey": "Turkey hood"
           }
         },
         {
@@ -806,7 +817,10 @@
             "saber-cats-away": "Saber Cats (away)",
             "icers": "Icers (home)",
             "icers-away": "Icers (away)",
-            "future-traveler": "Future Traveler"
+            "future-traveler": "Future Traveler",
+            "pilgrim-boy": "Pilgrim (boy)",
+            "pilgrim-girl": "Pilgrim (girl)",
+            "turkey": "Turkey"
           }
         },
         {
@@ -886,7 +900,9 @@
             "wrench": "Wrench",
             "hockey-stick-pink": "Hockey stick (pink)",
             "hockey-stick-green": "Hockey stick (green)",
-            "sparkle-flag": "Sparkle Selects (flag)"
+            "sparkle-flag": "Sparkle Selects (flag)",
+            "corn": "Ear of corn",
+            "drumstick": "Turkey drumstick"
           }
         },
         {
@@ -1044,7 +1060,7 @@
       }
     ]
   },
-  "surfaceHash": "0e8606b9e21f",
+  "surfaceHash": "6cacf6eebb15",
   "walkthroughs": [
     {
       "id": "",

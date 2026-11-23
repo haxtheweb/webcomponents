@@ -35,6 +35,7 @@ import {
   poseList,
   seasonFor,
   easterSunday,
+  thanksgivingDay,
 } from "../rpg-character.js";
 
 /**
@@ -87,9 +88,9 @@ describe("rpg-character", () => {
       );
     });
 
-    it("exports hatList with the 59 non-status hats", () => {
+    it("exports hatList with the 62 non-status hats", () => {
       expect(hatList).to.be.an("array");
-      expect(hatList.length).to.equal(59);
+      expect(hatList.length).to.equal(62);
       expect(hatList).to.include("bunny");
       expect(hatList).to.include("cowboy");
       expect(hatList).to.include("party");
@@ -1376,6 +1377,54 @@ describe("rpg-character", () => {
       expect(seasonFor(new Date("2027-01-01T12:00:00")).hat).to.deep.equal([
         "party",
       ]);
+    });
+
+    it("dresses for Thanksgiving through the Sunday after it", () => {
+      expect(thanksgivingDay(2026)).to.deep.equal([11, 26]);
+      expect(thanksgivingDay(2030)).to.deep.equal([11, 28]);
+      expect(seasonFor(new Date("2026-11-14T12:00:00"))).to.be.null;
+      const fall = seasonFor(new Date("2026-11-20T12:00:00"));
+      expect(fall.name).to.equal("thanksgiving");
+      expect(fall.preset).to.deep.equal([
+        "pilgrim-boy",
+        "pilgrim-girl",
+        "turkey",
+      ]);
+      expect(seasonFor(new Date("2026-11-29T23:00:00")).name).to.equal(
+        "thanksgiving",
+      );
+      // 2026's Sunday is Nov 29, so Dec 1 is Christmas again
+      expect(seasonFor(new Date("2026-12-01T12:00:00")).name).to.equal(
+        "christmas",
+      );
+      // 2030's Thanksgiving is Nov 28, so its weekend runs into December
+      expect(seasonFor(new Date("2030-12-01T12:00:00")).name).to.equal(
+        "thanksgiving",
+      );
+      expect(seasonFor(new Date("2030-12-02T12:00:00")).name).to.equal(
+        "christmas",
+      );
+    });
+
+    it("has the Thanksgiving pieces, recallable by code", () => {
+      ["pilgrim", "bonnet", "turkey"].forEach((hat) =>
+        expect(hatList).to.include(hat),
+      );
+      ["corn", "drumstick"].forEach((item) =>
+        expect(itemList).to.include(item),
+      );
+      expect(presets["pilgrim-boy"].hat).to.equal("pilgrim");
+      expect(presets["pilgrim-girl"].hat).to.equal("bonnet");
+      expect(presets.turkey.hat).to.equal("turkey");
+      const code = encodeCharacter({
+        preset: "pilgrim-girl",
+        hat: "turkey",
+        item: "drumstick",
+      });
+      const back = decodeCharacter(code);
+      expect(back.preset).to.equal("pilgrim-girl");
+      expect(back.hat).to.equal("turkey");
+      expect(back.item).to.equal("drumstick");
     });
 
     it("does nothing unless seasonal is on", async () => {

@@ -1,0 +1,41 @@
+{
+  "tag": "arithmetic-drill",
+  "package": "@haxtheweb/arithmetic-drill",
+  "source": "elements/arithmetic-drill/arithmetic-drill.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "count": "count",
+    "is-safari": "isSafari",
+    "max": "max",
+    "min": "min",
+    "operations": "operations",
+    "t": "t",
+    "time-limit": "timeLimit",
+    "title": "title"
+  },
+  "slots": [],
+  "events": [
+    "learner-progress-request",
+    "user-engagement"
+  ],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/arithmetic-drill/lib/arithmetic-drill.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "count",
+      "max",
+      "min",
+      "operations",
+      "timeLimit",
+      "title"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "arithmetic-drill"
+    ]
+  }
+}

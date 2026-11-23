@@ -1,0 +1,33 @@
+{
+  "tag": "a11y-footnote",
+  "package": "@haxtheweb/a11y-footnote",
+  "source": "elements/a11y-footnote/a11y-footnote.js",
+  "attributes": {
+    "is-safari": "isSafari",
+    "no-preview": "noPreview",
+    "number": "number",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [
+    "inline-note",
+    "preview",
+    "reference"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/a11y-footnote/lib/a11y-footnote.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "noPreview"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "a11y-footnote"
+    ]
+  }
+}

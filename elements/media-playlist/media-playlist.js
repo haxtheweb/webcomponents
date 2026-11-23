@@ -475,6 +475,17 @@ export class MediaPlaylist extends SchemaBehaviors(
     ];
   }
 
+  // an item button's name starts with the text it shows (WCAG 2.5.3, so
+  // voice control can say what it sees): number, title, duration, then Play
+  _itemLabel(item, index) {
+    const parts = [`${index + 1} ${item.title || ""}`.trim()];
+    if (item.duration) {
+      parts.push(item.duration);
+    }
+    parts.push(this.t.play);
+    return parts.join(", ");
+  }
+
   render() {
     if (this.edit) {
       return html`
@@ -600,9 +611,7 @@ export class MediaPlaylist extends SchemaBehaviors(
                       aria-current="${
                         index === this.activeIndex ? "true" : "false"
                       }"
-                      aria-label="${
-                        this.t.play
-                      } ${item.title}, ${item.duration}"
+                      aria-label="${this._itemLabel(item, index)}"
                       data-index="${index}"
                     >
                       <span class="playlist-number">${index + 1}</span>

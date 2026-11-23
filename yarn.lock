@@ -6158,11 +6158,6 @@
   resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.8.0.tgz#ab21f027594fa827c1889e8b646da7be27c7908a"
   integrity sha512-loGD63sacRzOzSJgQnB9ZAhaQGkN7wl2Zuw7tsphI5Isa0irijrRo6EnJii/GgjGefIFO8AIO7UivzRhFaEk9w==
 
-"@webcontainer/api@1.6.4":
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/@webcontainer/api/-/api-1.6.4.tgz#d3f104a53767e55d692a96940fa9958fcde7a95a"
-  integrity sha512-r9sHCXg1FcC1AMgppGwAc0vYWaQhqvg282cnsuPbJEzYnWifAdCVvg+8ngJUEHyHcomhJJp+/zuytite4ITHLw==
-
 "@xmldom/xmldom@^0.8.10", "@xmldom/xmldom@^0.8.6":
   version "0.8.15"
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.15.tgz#71ebf80729e4e95221d519ac9b1e1eaea7784907"
@@ -6217,16 +6212,6 @@
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/@xn-sakina/rml-win32-x64-msvc/-/rml-win32-x64-msvc-2.9.0.tgz#d774f5d0fef4480e8160dfc0f3bb4e77038f77e6"
   integrity sha512-FkbgYRj3+5l8D4ufTDAQ1eP8cCZjmt0XK41eNJvGguvokFCpH0y0HscVhDPjrH4EuLP9/8pZ4bEFFcSEZeFoZQ==
-
-"@xterm/addon-fit@0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@xterm/addon-fit/-/addon-fit-0.11.0.tgz#ba4778b69fcc9044a060c2176bbe077657d7b37e"
-  integrity sha512-jYcgT6xtVYhnhgxh3QgYDnnNMYTcf8ElbxxFzX0IZo+vabQqSPAjC3c1wJrKB5E19VwQei89QCiZZP86DCPF7g==
-
-"@xterm/xterm@5.6.0-beta.143":
-  version "5.6.0-beta.143"
-  resolved "https://registry.yarnpkg.com/@xterm/xterm/-/xterm-5.6.0-beta.143.tgz#ce455d86ddb14b8cc995bb945c65b27774d71783"
-  integrity sha512-zOxRKnxlwTAAlprUv9j8MVly4UyKJYQm2QzkRvZGJd9hMnjS3bQS9mRLmt91jwLleSzHdtUMe2jKjtQnFmho3Q==
 
 "@yarnpkg/lockfile@1.1.0", "@yarnpkg/lockfile@^1.1.0":
   version "1.1.0"

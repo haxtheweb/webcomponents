@@ -3,8 +3,11 @@
   "package": "@haxtheweb/d-d-d",
   "source": "elements/d-d-d/lib/ddd-steps-list.js",
   "attributes": {
+    "current": "current",
     "ddd-primary": "dddPrimary",
-    "is-safari": "isSafari"
+    "horizontal": "horizontal",
+    "is-safari": "isSafari",
+    "t": "t"
   },
   "slots": [
     "(default)"
@@ -15,7 +18,10 @@
   "hax": {
     "schema": "elements/d-d-d/lib/ddd-steps-list.haxProperties.json",
     "gizmo": true,
-    "properties": [],
+    "properties": [
+      "current",
+      "horizontal"
+    ],
     "attributes": [],
     "slots": [],
     "demoTags": [

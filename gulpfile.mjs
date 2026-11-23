@@ -301,27 +301,9 @@ gulp.task(
 );
 // JS minification of the build is scripts/terser-build.mjs (`yarn run terser`):
 // the same terser options the gulp task here used, on every core, with results
-// remembered between builds. It skips @xterm, monaco-editor, h5p-standalone
+// remembered between builds. It skips monaco-editor, h5p-standalone
 // and the vendored mermaid bundle, which the vendor-copy tasks below copy in
 // as they are.
-// @xterm/xterm and @xterm/addon-fit ship as pre-built, pre-minified vendor
-// bundles. Modern esbuild output (e.g. class static initialization blocks)
-// isn't understood by polymer-build's bundled babylon parser, which caused
-// "js-transform: Unable to optimize" warnings on every ubiquity build. Since
-// there's nothing useful for Babel/terser to do to these files anyway, copy
-// them straight from node_modules instead of routing them through the
-// polymer build/optimize pipeline.
-// Only the ES module builds: web-container imports "@xterm/xterm" and
-// "@xterm/addon-fit", which the build resolves to lib/*.mjs ("module" field).
-// The UMD lib/*.js copies and the source maps (3.6MB, never requested by a
-// browser outside devtools) are left out.
-gulp.task("vendor-copy-xterm", () => {
-  return gulp.src([
-    './node_modules/@xterm/xterm/lib/*.mjs',
-    './node_modules/@xterm/xterm/css/*',
-    './node_modules/@xterm/addon-fit/lib/*.mjs'
-  ], { base: '.' }).pipe(gulp.dest('./build/es6/'));
-});
 // monaco-editor/min is Monaco's own minified build: workers and editor chunks
 // that code-editor loads by path at runtime. Parsing and re-minifying 18MB of
 // already minified code was the slowest part of a build and made the largest

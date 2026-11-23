@@ -1,0 +1,82 @@
+{
+  "tag": "identify-hotspots",
+  "package": "@haxtheweb/identify-hotspots",
+  "source": "elements/identify-hotspots/identify-hotspots.js",
+  "attributes": {
+    "alt": "alt",
+    "answers": "answers",
+    "attempts": "attempts",
+    "collapsed": "collapsed",
+    "collapsible": "collapsible",
+    "disabled": "disabled",
+    "displayedanswers": "displayedAnswers",
+    "edit": "edit",
+    "for-course": "forCourse",
+    "grading-format": "gradingFormat",
+    "has-learning-objective": "hasLearningObjective",
+    "hide-buttons": "hideButtons",
+    "is-safari": "isSafari",
+    "max-attempts": "maxAttempts",
+    "max-misses": "maxMisses",
+    "media": "media",
+    "media-title": "mediaTitle",
+    "question": "question",
+    "quiz-name": "quizName",
+    "randomize": "randomize",
+    "related-resource": "relatedResource",
+    "schemamap": "schemaMap",
+    "show-answer": "showAnswer",
+    "single-option": "singleOption",
+    "src": "src",
+    "t": "t",
+    "typeof": "typeof"
+  },
+  "slots": [
+    "content",
+    "evidence",
+    "feedbackCorrect",
+    "feedbackIncorrect",
+    "hint"
+  ],
+  "events": [
+    "eventName",
+    "learner-progress-request",
+    "question-element-state",
+    "user-engagement"
+  ],
+  "cssParts": [
+    "block-header",
+    "image"
+  ],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/identify-hotspots/lib/identify-hotspots.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "alt",
+      "answers",
+      "answers[].correct",
+      "answers[].height",
+      "answers[].label",
+      "answers[].width",
+      "answers[].x",
+      "answers[].y",
+      "collapsed",
+      "collapsible",
+      "forCourse",
+      "gradingFormat",
+      "hasLearningObjective",
+      "maxAttempts",
+      "maxMisses",
+      "mediaTitle",
+      "question",
+      "quizName",
+      "src"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "identify-hotspots"
+    ]
+  }
+}

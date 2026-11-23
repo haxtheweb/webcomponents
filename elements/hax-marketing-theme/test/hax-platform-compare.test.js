@@ -1,5 +1,5 @@
 import { html, fixture, expect, waitUntil } from "@open-wc/testing";
-import "../lib/hax-platform-compare.js";
+import { platformLink } from "../lib/hax-platform-compare.js";
 
 const source = new URL("./platforms.fixture.json", import.meta.url).href;
 
@@ -77,6 +77,34 @@ describe("hax-platform-compare", function () {
     expect(element.b).to.equal("third");
     element._set("b", { target: { value: "nope" } });
     expect(element.b).to.equal("third");
+  });
+
+  it("links a platform only to an http(s) address", async () => {
+    const root = await show();
+    const links = [...root.querySelectorAll(".foot a")];
+    expect(links.length).to.equal(2);
+    expect(links[0].getAttribute("href")).to.equal("https://haxtheweb.org/");
+    element._data = {
+      ...element._data,
+      platforms: element._data.platforms.map((p, i) =>
+        i === 0 ? { ...p, url: "javascript:alert(1)" } : p,
+      ),
+    };
+    await element.updateComplete;
+    const foot = root.querySelector(".foot");
+    expect(foot.querySelectorAll("a").length).to.equal(1);
+    expect(foot.innerHTML).to.not.contain("javascript:");
+    expect(foot.textContent).to.contain("HAX");
+  });
+
+  it("platformLink keeps web addresses and drops script ones", () => {
+    expect(platformLink("https://example.com")).to.equal(
+      "https://example.com/",
+    );
+    expect(platformLink("javascript:alert(1)")).to.equal("");
+    expect(platformLink(" JavaScript:alert(1)")).to.equal("");
+    expect(platformLink("data:text/html,x")).to.equal("");
+    expect(platformLink("")).to.equal("");
   });
 
   it("passes the a11y audit", async () => {

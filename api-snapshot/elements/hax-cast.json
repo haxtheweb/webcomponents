@@ -1,0 +1,26 @@
+{
+  "tag": "hax-cast",
+  "package": "@haxtheweb/hax-marketing-theme",
+  "source": "elements/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "dark": "dark",
+    "is-safari": "isSafari"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/hax-marketing-theme/lib/hax-cast.haxProperties.json",
+    "gizmo": true,
+    "properties": [],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "hax-cast"
+    ]
+  }
+}

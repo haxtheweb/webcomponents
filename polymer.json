@@ -1,10 +1,6 @@
 {
   "entrypoint": "dist/build.html",
   "extraDependencies": [
-    "node_modules/@webcontainer/api/dist/*.js",
-    "node_modules/@webcontainer/api/dist/vendor/*.js",
-    "node_modules/@webcontainer/api/dist/utils/*.js",
-    "node_modules/@webcontainer/api/dist/internal/*.js",
     "node_modules/marked/lib/marked.esm.js",
     "node_modules/modern-screenshot/dist/index.mjs",
     "node_modules/@google/model-viewer/dist/model-viewer.js",

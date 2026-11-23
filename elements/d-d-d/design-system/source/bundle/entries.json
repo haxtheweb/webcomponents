@@ -9,7 +9,6 @@
       "@haxtheweb/editable-table/editable-table.js",
       "@haxtheweb/flash-card/flash-card.js",
       "@haxtheweb/collection-list/collection-list.js",
-      "@haxtheweb/web-container/web-container.js",
       "@haxtheweb/video-player/video-player.js",
       "@haxtheweb/simple-fields/simple-fields.js",
       "@haxtheweb/polaris-theme/polaris-theme.js",

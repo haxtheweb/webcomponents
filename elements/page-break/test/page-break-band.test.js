@@ -163,7 +163,7 @@ describe("page-break band: editing paths", () => {
     expect(band.getAttribute("type")).to.equal("button");
     expect(band.getAttribute("title")).to.equal("Select to edit Page details");
     expect(band.getAttribute("aria-label")).to.equal(
-      "Edit me, Page settings. Draft, Locked, 1 tag, /edit-me",
+      "Edit me, Draft, Locked, 1 tag, /edit-me, Page settings",
     );
     expect(
       Array.from(band.children).map((child) => child.className),
@@ -188,7 +188,7 @@ describe("page-break band: editing paths", () => {
     el.published = true;
     await el.updateComplete;
     expect(band.getAttribute("aria-label")).to.equal(
-      "Edit me, Page settings. Published, Unlocked, 1 tag, /edit-me",
+      "Edit me, Published, Unlocked, 1 tag, /edit-me, Page settings",
     );
   });
 

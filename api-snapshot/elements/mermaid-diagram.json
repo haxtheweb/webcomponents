@@ -1,0 +1,54 @@
+{
+  "tag": "mermaid-diagram",
+  "package": "@haxtheweb/mermaid-diagram",
+  "source": "elements/mermaid-diagram/mermaid-diagram.js",
+  "attributes": {
+    "accent-color": "accentColor",
+    "code": "code",
+    "description": "description",
+    "diagram-title": "diagramTitle",
+    "is-safari": "isSafari",
+    "show-description": "showDescription",
+    "show-source": "showSource",
+    "src": "src",
+    "t": "t"
+  },
+  "slots": [
+    "(default)",
+    "caption",
+    "description"
+  ],
+  "events": [
+    "mermaid-diagram-error",
+    "mermaid-diagram-rendered"
+  ],
+  "cssParts": [
+    "caption",
+    "diagram",
+    "frame"
+  ],
+  "cssProperties": [
+    "--mermaid-diagram-max-height",
+    "--mermaid-diagram-surface"
+  ],
+  "hax": {
+    "schema": "elements/mermaid-diagram/lib/mermaid-diagram.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "accentColor",
+      "code",
+      "description",
+      "diagramTitle",
+      "showDescription",
+      "showSource",
+      "src"
+    ],
+    "attributes": [],
+    "slots": [
+      "caption"
+    ],
+    "demoTags": [
+      "mermaid-diagram"
+    ]
+  }
+}

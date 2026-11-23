@@ -1,0 +1,34 @@
+{
+  "tag": "branching-scene",
+  "package": "@haxtheweb/branching-scenario",
+  "source": "elements/branching-scenario/lib/branching-scene.js",
+  "attributes": {
+    "ending": "ending",
+    "heading": "heading",
+    "is-safari": "isSafari",
+    "scene-id": "sceneId",
+    "score": "score",
+    "t": "t"
+  },
+  "slots": [
+    "(default)"
+  ],
+  "events": [],
+  "cssParts": [],
+  "cssProperties": [],
+  "hax": {
+    "schema": "elements/branching-scenario/lib/branching-scene.haxProperties.json",
+    "gizmo": true,
+    "properties": [
+      "ending",
+      "heading",
+      "sceneId",
+      "score"
+    ],
+    "attributes": [],
+    "slots": [],
+    "demoTags": [
+      "branching-scene"
+    ]
+  }
+}

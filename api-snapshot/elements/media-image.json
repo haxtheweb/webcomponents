@@ -30,7 +30,9 @@
     "caption",
     "citation"
   ],
-  "events": [],
+  "events": [
+    "user-engagement"
+  ],
   "cssParts": [],
   "cssProperties": [],
   "hax": {
