@@ -231,6 +231,7 @@ export const UIRenderPieces = function (SuperClass) {
         <simple-popover
           ?hidden="${this.hideActiveStudentOverview}"
           for="activestudentbtn"
+          aria-label="${this.t.activeStudent}"
           auto
         >
           <div>
@@ -305,6 +306,7 @@ export const UIRenderPieces = function (SuperClass) {
         <simple-popover
           ?hidden="${this.hideGradeScale}"
           for="gradescalebtn"
+          aria-label="${this.t.gradingScale}"
           auto
         >
           <editable-table-display
@@ -365,6 +367,7 @@ export const UIRenderPieces = function (SuperClass) {
         <simple-popover
           ?hidden="${this.hideSettings}"
           for="settings"
+          aria-label="${this.t.settings}"
           auto
           @value-changed="${this.settingChanged}"
         >
@@ -421,6 +424,7 @@ export const UIRenderPieces = function (SuperClass) {
         <simple-popover
           ?hidden="${this.hideActiveAssignment}"
           for="activeassignmentbtn"
+          aria-label="${this.t.activeAssignment}"
           auto
         >
           ${
@@ -800,6 +804,7 @@ export const UIRenderPieces = function (SuperClass) {
         <simple-popover
           ?hidden="${!this.hideRubricInfo[index]}"
           for="rubricinfo${index}"
+          aria-label="${criteria}"
           auto
         >
           <p style="max-width:20vw;">${details}</p>

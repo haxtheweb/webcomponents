@@ -218,6 +218,7 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           this.mobile
             ? html`
                 <simple-popover
+                  aria-label="${this.label}"
                   class="dropdown pull-left font-settings js-toolbar-action settings-container"
                   ?hidden="${this.hideSettings}"
                   position="${this.position}"

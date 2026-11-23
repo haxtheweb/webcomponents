@@ -1,0 +1,263 @@
+{
+  "$comment": "DDD bridge for Glossy, the design system glossy-portfolio-theme defines for itself (design-system/glossy.tokens.json, a local source). Tiers follow elements/d-d-d/design-system/bridge/contract.json. Glossy is dark by design, so every named DDD color points at one fixed studio or glass color: white is the ink and coalyGray is the card panel, the pair DDD blocks use on a dark page. Links in content are told apart from the text around them by an underline, not by color alone (lib/GlossyContentStyles.js), since glass cyan on white text cannot reach 3:1. Kept as DDD on purpose: font weights, state opacities, control heights and border widths, and heading sizes. Body text is 16px, the size the theme's rem-based chrome and pages were drawn at.",
+  "system": "glossy",
+  "title": "Glossy",
+  "prefix": "Glossy",
+  "colorNames": {
+    "strip": ["--glossy-studio-", "--glossy-glass-", "--glossy-"]
+  },
+  "homepage": "https://github.com/haxtheweb/webcomponents/tree/master/elements/glossy-portfolio-theme",
+  "sources": [
+    {
+      "local": true,
+      "file": "design-system/glossy.tokens.json",
+      "format": "dtcg",
+      "prefix": "--glossy-",
+      "license": "Apache-2.0",
+      "copyright": "Copyright 2026 The Pennsylvania State University"
+    }
+  ],
+  "fonts": [
+    {
+      "family": "Manrope",
+      "license": "OFL-1.1"
+    },
+    {
+      "family": "Inter",
+      "license": "OFL-1.1"
+    }
+  ],
+  "extraTokens": [
+    "--glossy-studio-floor",
+    "--glossy-studio-raised",
+    "--glossy-studio-ink",
+    "--glossy-studio-link",
+    "--glossy-studio-link-hover",
+    "--glossy-studio-focus"
+  ],
+  "ddd": {
+    "--ddd-theme-default-beaverBlue": {
+      "token": "--glossy-glass-blue",
+      "note": "primary: glass blue; white text on it"
+    },
+    "--ddd-theme-default-nittanyNavy": {
+      "token": "--glossy-glass-navy"
+    },
+    "--ddd-theme-default-potentialMidnight": {
+      "token": "--glossy-studio-floor",
+      "note": "the gallery floor"
+    },
+    "--ddd-theme-default-pughBlue": {
+      "token": "--glossy-glass-ice"
+    },
+    "--ddd-theme-default-accent": {
+      "token": "--glossy-glass-sky",
+      "note": "glass cyan, the theme's link and highlight color"
+    },
+    "--ddd-theme-default-skyBlue": {
+      "token": "--glossy-glass-sky"
+    },
+    "--ddd-theme-default-skyLight": {
+      "token": "--glossy-glass-ice"
+    },
+    "--ddd-theme-default-skyMaxLight": {
+      "token": "--glossy-glass-frost"
+    },
+    "--ddd-theme-default-slateGray": {
+      "token": "--glossy-glass-plum"
+    },
+    "--ddd-theme-default-slateLight": {
+      "token": "--glossy-studio-muted"
+    },
+    "--ddd-theme-default-slateMaxLight": {
+      "token": "--glossy-studio-dust"
+    },
+    "--ddd-theme-default-coalyGray": {
+      "token": "--glossy-studio-panel",
+      "note": "card surface; dark side of every DDD pair"
+    },
+    "--ddd-theme-default-black": {
+      "token": "--glossy-studio-black"
+    },
+    "--ddd-theme-default-white": {
+      "token": "--glossy-studio-ink"
+    },
+    "--ddd-theme-default-limestoneGray": {
+      "token": "--glossy-studio-muted"
+    },
+    "--ddd-theme-default-limestoneLight": {
+      "token": "--glossy-studio-dust"
+    },
+    "--ddd-theme-default-limestoneMaxLight": {
+      "token": "--glossy-studio-paper"
+    },
+    "--ddd-theme-default-background": {
+      "token": "--glossy-studio-paper"
+    },
+    "--ddd-theme-default-disabled": {
+      "token": "--glossy-studio-dust"
+    },
+    "--ddd-theme-default-keystoneYellow": {
+      "token": "--glossy-glass-yellow"
+    },
+    "--ddd-theme-default-globalNeon": {
+      "token": "--glossy-glass-lime"
+    },
+    "--ddd-theme-default-roarGolden": {
+      "token": "--glossy-glass-gold"
+    },
+    "--ddd-theme-default-roarLight": {
+      "token": "--glossy-glass-butter"
+    },
+    "--ddd-theme-default-roarMaxlight": {
+      "token": "--glossy-glass-cream"
+    },
+    "--ddd-theme-default-shrineTan": {
+      "token": "--glossy-glass-butter"
+    },
+    "--ddd-theme-default-shrineLight": {
+      "token": "--glossy-glass-butter"
+    },
+    "--ddd-theme-default-shrineMaxLight": {
+      "token": "--glossy-studio-paper"
+    },
+    "--ddd-theme-default-inventOrange": {
+      "token": "--glossy-glass-orange"
+    },
+    "--ddd-theme-default-landgrantBrown": {
+      "token": "--glossy-glass-brown"
+    },
+    "--ddd-theme-default-creekTeal": {
+      "token": "--glossy-glass-teal"
+    },
+    "--ddd-theme-default-creekLight": {
+      "token": "--glossy-glass-ice"
+    },
+    "--ddd-theme-default-creekMaxLight": {
+      "token": "--glossy-glass-frost"
+    },
+    "--ddd-theme-default-opportunityGreen": {
+      "token": "--glossy-glass-green"
+    },
+    "--ddd-theme-default-forestGreen": {
+      "token": "--glossy-glass-olive"
+    },
+    "--ddd-theme-default-futureLime": {
+      "token": "--glossy-glass-lime"
+    },
+    "--ddd-theme-default-athertonViolet": {
+      "token": "--glossy-glass-mauve"
+    },
+    "--ddd-theme-default-wonderPurple": {
+      "token": "--glossy-glass-violet"
+    },
+    "--ddd-theme-default-original87Pink": {
+      "token": "--glossy-glass-magenta"
+    },
+    "--ddd-theme-default-discoveryCoral": {
+      "token": "--glossy-glass-crimson"
+    },
+    "--ddd-theme-default-link": {
+      "token": "--glossy-glass-blue",
+      "note": "links on light surfaces in content"
+    },
+    "--ddd-theme-default-linkLight": {
+      "token": "--glossy-studio-link",
+      "note": "links on the dark floor"
+    },
+    "--ddd-theme-default-error": {
+      "token": "--glossy-glass-red"
+    },
+    "--ddd-theme-default-errorLight": {
+      "token": "--glossy-glass-blush"
+    },
+    "--ddd-theme-default-warning": {
+      "token": "--glossy-glass-brown"
+    },
+    "--ddd-theme-default-warningLight": {
+      "token": "--glossy-glass-butter"
+    },
+    "--ddd-theme-default-info": {
+      "token": "--glossy-glass-navy"
+    },
+    "--ddd-theme-default-infoLight": {
+      "token": "--glossy-glass-frost"
+    },
+    "--ddd-theme-default-success": {
+      "token": "--glossy-glass-green"
+    },
+    "--ddd-theme-default-successLight": {
+      "token": "--glossy-glass-mint"
+    },
+    "--ddd-theme-default-alertImmediate": {
+      "token": "--glossy-glass-blush"
+    },
+    "--ddd-theme-default-alertUrgent": {
+      "token": "--glossy-glass-butter"
+    },
+    "--ddd-theme-default-alertAllClear": {
+      "token": "--glossy-glass-mint"
+    },
+    "--ddd-theme-default-alertNonEmergency": {
+      "token": "--glossy-glass-frost"
+    },
+    "--ddd-font-primary": {
+      "value": "'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "body and headings"
+    },
+    "--ddd-font-secondary": {
+      "value": "'Manrope', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    },
+    "--ddd-font-navigation": {
+      "value": "'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "note": "titles, filters and the footer"
+    },
+    "--ddd-radius-xs": {
+      "value": "4px"
+    },
+    "--ddd-radius-sm": {
+      "value": "8px"
+    },
+    "--ddd-radius-md": {
+      "value": "12px"
+    },
+    "--ddd-radius-lg": {
+      "value": "16px"
+    },
+    "--ddd-radius-xl": {
+      "value": "24px"
+    },
+    "--ddd-boxShadow-sm": {
+      "value": "0 2px 6px rgba(0, 0, 0, 0.5)"
+    },
+    "--ddd-boxShadow-md": {
+      "value": "0 6px 16px rgba(0, 0, 0, 0.55)"
+    },
+    "--ddd-boxShadow-lg": {
+      "value": "0 12px 32px rgba(0, 0, 0, 0.6)"
+    },
+    "--ddd-boxShadow-xl": {
+      "value": "0 24px 48px rgba(0, 0, 0, 0.7)"
+    },
+    "--ddd-focus-ring": {
+      "value": "2px solid var(--glossy-studio-focus)",
+      "note": "the theme's cyan focus ring"
+    },
+    "--ddd-focus-offset": {
+      "value": "2px"
+    },
+    "--ddd-duration-fast": {
+      "token": "--glossy-duration-quick"
+    },
+    "--ddd-duration-normal": {
+      "token": "--glossy-duration-glide"
+    },
+    "--ddd-duration-slow": {
+      "token": "--glossy-duration-reveal"
+    },
+    "--ddd-theme-body-font-size": {
+      "value": "16px",
+      "note": "the portfolio's 16px reading size, which the theme's rem-based chrome is drawn to"
+    }
+  }
+}

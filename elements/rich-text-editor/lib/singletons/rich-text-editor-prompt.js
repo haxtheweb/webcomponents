@@ -169,8 +169,8 @@ class RichTextEditorPrompt extends I18NMixin(
     return html`
       <simple-popover
         id="prompt"
-        role="dialog"
-        aria-modal="false"
+        content-role="dialog"
+        aria-label="${this._promptLabel()}"
         ?auto="${!this.hidden || !this.__highlight.hidden}"
         for="${this.__highlight ? this.__highlight.id : ""}"
         ?hidden="${this.hidden || this.__highlight.hidden}"
@@ -274,6 +274,7 @@ class RichTextEditorPrompt extends I18NMixin(
       ...this.t,
       cancel: "Cancel",
       ok: "OK",
+      edit: "Edit",
     };
     this.registerLocalization({
       context: this,
@@ -321,6 +322,14 @@ class RichTextEditorPrompt extends I18NMixin(
       if (["__focused", "__hovered", "__opened"].includes(propName))
         setTimeout(this._handleChange.bind(this), 300);
     });
+  }
+  /**
+   * names the prompt dialog after the button that opened it (e.g. "Link")
+   * @returns {string}
+   */
+  _promptLabel() {
+    const b = this.button;
+    return (b && (b.currentLabel || b.label)) || this.t.edit;
   }
   /**
    * sets focus when prompt is ready

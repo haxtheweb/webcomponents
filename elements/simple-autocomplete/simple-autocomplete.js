@@ -198,10 +198,8 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
       <simple-popover
         part="popover simple-popover"
         auto
-        aria-label="${this.t.labelSuggestions.replace(
-          "{label}",
-          () => this.inputLabel,
-        )}"
+        content-role="none"
+        aria-label="${this._suggestionsLabel()}"
         ?hidden="${!this.opened || this.filtered.length === 0}"
         position="bottom"
         for="input"
@@ -212,6 +210,7 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 part="list"
                 id="list"
                 role="listbox"
+                aria-label="${this._suggestionsLabel()}"
                 @keydown="${this.a11yListKeys}"
               >
                 ${this.filtered.map(
@@ -232,6 +231,9 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               <button
                                 part="button"
                                 role="option"
+                                aria-selected="false"
+                                @focus="${this._optionSelectedState}"
+                                @blur="${this._optionSelectedState}"
                                 tabindex="-1"
                                 value="${item.value}"
                                 data-index="${i}"
@@ -256,6 +258,26 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
       </simple-popover>
     `;
+  }
+  /**
+   * name shared by the popover and the listbox it wraps
+   * @returns {string}
+   */
+  _suggestionsLabel() {
+    return this.t.labelSuggestions.replace(
+      "{label}",
+      () => this.inputLabel || this.t.search,
+    );
+  }
+  /**
+   * the focused option is the selected one (combobox pattern)
+   * @param {FocusEvent} e
+   */
+  _optionSelectedState(e) {
+    e.target.setAttribute(
+      "aria-selected",
+      e.type === "focus" ? "true" : "false",
+    );
   }
   /**
    * Accessibility enhancements for key presses while in the list of items

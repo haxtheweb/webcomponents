@@ -764,6 +764,19 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     if (this._leave) {
       return;
     }
+    // Escape closes Site Settings, through the same unsaved-changes check
+    // as the Close button, unless something inside used it first
+    if (e.key === "Escape" && this._escapeClosesShell(e)) {
+      e.stopPropagation();
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+      return;
+    }
     // Ctrl+Shift+S saves, matching the editor's save shortcut
     if (
       (e.ctrlKey || e.metaKey) &&
@@ -789,6 +802,41 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     }
   }
 
+  /**
+   * Escape belongs to the innermost thing that uses it: a handled key, a
+   * search field, an editable region or an open menu, list or popup keep it.
+   * @param {KeyboardEvent} e
+   * @returns {boolean}
+   */
+  _escapeClosesShell(e) {
+    if (e.defaultPrevented || this._moreOpen) {
+      return false;
+    }
+    const path = e.composedPath ? e.composedPath() : [];
+    for (const el of path) {
+      if (el === this) {
+        break;
+      }
+      if (!el || el.nodeType !== 1) {
+        continue;
+      }
+      const type = (el.getAttribute("type") || "").toLowerCase();
+      // search fields clear on Escape; plain fields close like a native dialog
+      if (
+        (el.tagName === "INPUT" && type === "search") ||
+        el.tagName === "SELECT" ||
+        el.isContentEditable ||
+        el.getAttribute("aria-expanded") === "true" ||
+        ["combobox", "menu", "listbox", "dialog", "alertdialog"].includes(
+          el.getAttribute("role"),
+        )
+      ) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   get _canDiscard() {
     return (
       (this._status === "dirty" || this._status === "error") &&
@@ -805,6 +853,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
       return;
     }
     this.requestLeave(() => {
+      // keyboard and screen reader users land on the new section's heading
+      // instead of staying in the rail
+      this.__focusSectionAfterNav = true;
       this.dispatchEvent(
         new CustomEvent("haxcms-site-admin-navigate", {
           bubbles: true,
@@ -1529,7 +1580,7 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     return html`
       <div class="ph">
         <div class="ph-text">
-          <h2>
+          <h2 tabindex="-1">
             ${
               this._headerText && this._headerText.title
                 ? this._headerText.title
@@ -1909,6 +1960,18 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
   }
 
   updated(changedProperties) {
+    if (changedProperties.has("route") && this.__focusSectionAfterNav) {
+      this.__focusSectionAfterNav = false;
+      // a rail part with an anchor focuses its own heading in _reveal
+      if (!this.__pendingAnchor) {
+        requestAnimationFrame(() => {
+          const h = this.shadowRoot.querySelector(".ph h2");
+          if (h) {
+            h.focus({ preventScroll: true });
+          }
+        });
+      }
+    }
     if (changedProperties.has("_leave") && this._leave) {
       requestAnimationFrame(() => {
         const stay = this.shadowRoot.querySelector(".leave .stay");

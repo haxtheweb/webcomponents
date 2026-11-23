@@ -887,6 +887,13 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
   }
 
   openModal() {
+    // remember what opened the dialog so closing can put focus back there
+    let active = globalThis.document.activeElement;
+    while (active && active.shadowRoot && active.shadowRoot.activeElement) {
+      active = active.shadowRoot.activeElement;
+    }
+    this.__returnFocus =
+      active && active !== globalThis.document.body ? active : null;
     this.open = true;
     this.currentStep = 1;
 
@@ -996,11 +1003,12 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.skeletonMachineName = null;
     this._clearUseCaseUrlParams();
 
+    const returnFocus = this._takeReturnFocus();
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
         bubbles: true,
         composed: true,
-        detail: { cancelled: wasCancelled },
+        detail: { cancelled: wasCancelled, returnFocus: returnFocus },
       }),
     );
   }
@@ -1034,13 +1042,36 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
     this.skeletonData = null;
     this._clearUseCaseUrlParams();
 
+    const returnFocus = this._takeReturnFocus();
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
         bubbles: true,
         composed: true,
-        detail: { cancelled: wasCancelled },
+        detail: { cancelled: wasCancelled, returnFocus: returnFocus },
       }),
     );
+  }
+
+  /**
+   * Accessibility (WCAG 2.4.3): after the dialog closes, focus goes back to
+   * the control that opened it. Runs once per close; returns that control
+   * (or null) so the listener can pick another target if it is gone.
+   * @returns {HTMLElement|null}
+   */
+  _takeReturnFocus() {
+    const back = this.__returnFocus;
+    this.__returnFocus = null;
+    if (back && back.isConnected) {
+      // after web-dialog has put back what it saved on open
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          if (back.isConnected) {
+            back.focus({ preventScroll: true });
+          }
+        }),
+      );
+    }
+    return back;
   }
 
   handleKeyDown(e) {

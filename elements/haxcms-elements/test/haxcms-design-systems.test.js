@@ -70,6 +70,7 @@ describe("site design systems", () => {
     expect(registry.carbon.activate).to.equal("activateCarbonDesignSystem");
     // a theme's private system is not offered
     expect(registry.keepcase).to.equal(undefined);
+    expect(registry.glossy).to.equal(undefined);
   });
 
   it("knows which themes take a design system", () => {

@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, css, LitElement } from "lit";
+import { ifDefined } from "lit/directives/if-defined.js";
 import "../simple-popover.js";
 
 class SimplePopoverManager extends LitElement {
@@ -129,12 +130,23 @@ class SimplePopoverManager extends LitElement {
           (n.nodeType === Node.TEXT_NODE && n.textContent.trim() !== ""),
       );
     slot.parentNode.classList.toggle("empty", !filled);
+    // the heading slot names the popover dialog for screen readers
+    if (slot.name === "heading") {
+      const text = slot
+        .assignedNodes({ flatten: true })
+        .map((n) => n.textContent)
+        .join(" ")
+        .trim()
+        .replace(/\s+/g, " ");
+      this.__heading = text || undefined;
+    }
   }
   render() {
     return html`
       <simple-popover
         auto
         part="simple-popover"
+        aria-label="${ifDefined(this.__heading || this.__targetLabel)}"
         ?hidden="${!this.opened}"
         position="${this.position}"
         fit-to-visible-bounds
@@ -162,6 +174,12 @@ class SimplePopoverManager extends LitElement {
       orientation: {
         type: String,
       },
+      __heading: {
+        type: String,
+      },
+      __targetLabel: {
+        type: String,
+      },
     };
   }
   updated(changedProperties) {
@@ -187,6 +205,16 @@ class SimplePopoverManager extends LitElement {
    * set target and optionally change content and open state
    */
   setPopover(context, el, opened = null, orientation = "tb", mode) {
+    // name the popover after the control that opened it, unless a slotted
+    // heading names it (see _slotEmptyCheck)
+    if (el && el.getAttribute) {
+      const label =
+        el.getAttribute("aria-label") ||
+        el.getAttribute("label") ||
+        el.getAttribute("title") ||
+        (el.textContent || "").trim().replace(/\s+/g, " ");
+      this.__targetLabel = label || undefined;
+    }
     // this has the potential to cause 1 popover to change content and parent
     // in the same action. This would cause a open state change in 1 element
     // which would trigger a global state change to match.

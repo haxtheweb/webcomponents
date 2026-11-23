@@ -7,7 +7,15 @@ import { ifDefined } from "lit/directives/if-defined.js";
 import { AbsolutePositionBehavior } from "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 /**
   * `simple-popover`
-  * a popover alertdialog that is positioned next to a target element
+  * a popover that is positioned next to a target element
+  *
+ ### Accessibility
+
+ The popover's content is a non-modal `role="dialog"` named by, in order:
+ the host's `aria-label`, its `title`, or the first heading slotted into it.
+ When none of those exist it falls back to `role="group"`, so an unnamed
+ dialog is never exposed. Set `content-role` when the popover only wraps
+ another widget (`none` for a listbox) or needs a specific role.
   *
  ### Styling
  
@@ -32,12 +40,11 @@ class SimplePopover extends AbsolutePositionBehavior {
     return {
       ...super.properties,
       /**
-       * Accessible name for the popover's role=alertdialog content div.
-       * Consumers wire this by setting aria-label on the simple-popover
-       * host (the host title attribute is used as a fallback). A name set
-       * only on the host never reaches shadow DOM nodes, so the value is
-       * forwarded to the inner #content div to satisfy the axe
-       * aria-dialog-name rule for every popover consumer.
+       * Accessible name for the popover's content. Consumers wire this by
+       * setting aria-label on the simple-popover host (the host title
+       * attribute, then the first slotted heading, are fallbacks). A name
+       * set only on the host never reaches shadow DOM nodes, so the value
+       * is forwarded to the inner #content div.
        */
       title: {
         type: String,
@@ -47,6 +54,18 @@ class SimplePopover extends AbsolutePositionBehavior {
         type: String,
         reflect: true,
         attribute: "aria-label",
+      },
+      /**
+       * Role of the content wrapper. Defaults to a non-modal "dialog"
+       * when a name is available, "group" otherwise. Use "none" when the
+       * popover only wraps another named widget, such as a listbox.
+       */
+      contentRole: {
+        type: String,
+        attribute: "content-role",
+      },
+      __slottedName: {
+        type: String,
       },
     };
   }
@@ -175,11 +194,13 @@ class SimplePopover extends AbsolutePositionBehavior {
     return html` <div>
       <div
         id="content"
-        role="alertdialog"
-        aria-label=${ifDefined(this.ariaLabel || this.title || undefined)}
+        role="${this._contentRole()}"
+        aria-label=${ifDefined(
+          this._contentRole() === "none" ? undefined : this._contentName(),
+        )}
         part="simple-popover-content"
       >
-        <slot></slot>
+        <slot @slotchange="${this._findSlottedName}"></slot>
       </div>
       <div id="pointer-outer">
         <div id="pointer" .style=${this._getMargins(this.__positions)}></div>
@@ -224,6 +245,48 @@ class SimplePopover extends AbsolutePositionBehavior {
     super.disconnectedCallback();
   }
 
+  /**
+   * name for the content wrapper: author label, title, then slotted heading
+   * @returns {string|undefined}
+   */
+  _contentName() {
+    return this.ariaLabel || this.title || this.__slottedName || undefined;
+  }
+  /**
+   * role for the content wrapper; an unnamed dialog is never exposed
+   * @returns {string}
+   */
+  _contentRole() {
+    if (this.contentRole) {
+      if (
+        (this.contentRole === "dialog" || this.contentRole === "alertdialog") &&
+        !this._contentName()
+      ) {
+        return "group";
+      }
+      return this.contentRole;
+    }
+    return this._contentName() ? "dialog" : "group";
+  }
+  /**
+   * use the first slotted heading as a fallback name
+   * @param {Event} e slotchange event
+   */
+  _findSlottedName(e) {
+    const slot = e && e.target ? e.target : null;
+    let name;
+    if (slot && slot.assignedElements) {
+      const sel = "h1,h2,h3,h4,h5,h6,[role='heading']";
+      slot.assignedElements({ flatten: true }).forEach((el) => {
+        if (name) return;
+        const h = el.matches(sel) ? el : el.querySelector(sel);
+        if (h && h.textContent.trim() !== "") {
+          name = h.textContent.trim().replace(/\s+/g, " ");
+        }
+      });
+    }
+    this.__slottedName = name;
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

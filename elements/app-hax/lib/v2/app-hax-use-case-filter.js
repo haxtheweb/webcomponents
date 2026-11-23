@@ -3691,7 +3691,31 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     }
   }
 
-  handleModalClosed(_event) {
+  handleModalClosed(event) {
+    // the opener was re-rendered while the dialog was open: focus the card
+    // the dialog was for instead (WCAG 2.4.3)
+    const back = event && event.detail ? event.detail.returnFocus : null;
+    const cardIndex = this.selectedCardIndex;
+    if ((!back || !back.isConnected) && cardIndex !== null) {
+      this.updateComplete.then(() =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            const card =
+              this.shadowRoot &&
+              this.shadowRoot.querySelector(
+                `app-hax-use-case[data-item-index="${cardIndex}"]`,
+              );
+            const target =
+              card && card.shadowRoot
+                ? card.shadowRoot.querySelector("button")
+                : null;
+            if (target) {
+              target.focus({ preventScroll: true });
+            }
+          }),
+        ),
+      );
+    }
     // the card stays marked only while its dialog is open, whether the
     // dialog was cancelled or the site was created and the person stayed
     if (
