@@ -755,6 +755,11 @@ class HaxStat extends DDD {
       label: { type: String },
       /** address of the story on hax.cloud */
       story: { type: String },
+      /**
+       * groups thousands with this mark (for example ","); none by default,
+       * so a year such as 2016 never reads as 2,016
+       */
+      separator: { type: String },
     };
   }
   constructor() {
@@ -766,6 +771,7 @@ class HaxStat extends DDD {
     this.value = "";
     this.label = "";
     this.story = "";
+    this.separator = "";
   }
   static get haxProperties() {
     return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
@@ -814,7 +820,7 @@ class HaxStat extends DDD {
                   start="${this.start}"
                   end="${this.end}"
                   duration="2"
-                  separator=""
+                  separator="${this.separator || ""}"
                 ></count-up
                 >${this.suffix}`
             : this.value
