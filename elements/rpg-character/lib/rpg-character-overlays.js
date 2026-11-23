@@ -20,6 +20,12 @@ export const skinColors = [
   "#d772c7",
 ];
 
+// fur for costume presets that cover the whole body (the lion), so the arms,
+// hands and raised-arm poses match the costume instead of the seed's skin
+export const furColors = {
+  "fur-gold": "#c9963e",
+};
+
 export const overlayColors = {
   K: "#000000",
   X: "#000000",

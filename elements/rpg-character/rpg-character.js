@@ -15,6 +15,7 @@ import {
 export { encodeCharacter, decodeCharacter, codeSlots };
 import {
   skinColors,
+  furColors,
   overlayColors,
   expressionArt,
   poseArt,
@@ -304,7 +305,8 @@ export const presets = {
   monster: { hat: "flat-top", makeup: "monster" },
   werewolf: { mask: "werewolf" },
   horseman: { mask: "shadow", item: "jack-o-lantern" },
-  mascot: { mask: "lion" },
+  // a full costume: fur replaces the seed's skin on the arms and hands
+  mascot: { mask: "lion", fur: "fur-gold" },
   band: { hat: "shako", item: "trumpet" },
   // hockey team kits, home and away. The helmet names the team in both
   // kits; the sweater tells home from away. crest is drawn from
@@ -837,6 +839,15 @@ class RpgCharacter extends SimpleColors {
   }
 
   /**
+   * The fur a full-costume preset draws in place of the seed's skin, or "".
+   * Every other preset keeps the skin the seed made.
+   */
+  _fur() {
+    const preset = presets[this._preset()];
+    return preset && furColors[preset.fur] ? preset.fur : "";
+  }
+
+  /**
    * Effective preset: an explicit or coded preset wins; otherwise the
    * seasonal costume, if any. Seasonal costumes are never written into the
    * code, so a saved character is not stuck in October.
@@ -901,7 +912,9 @@ class RpgCharacter extends SimpleColors {
       `./lib/shirt/${hasPreset ? preset : this.shirt}.svg`,
       import.meta.url,
     ).href;
-    const skin = new URL(`./lib/skin/${this.skin}.svg`, import.meta.url).href;
+    const fur = this._fur();
+    const skin = new URL(`./lib/skin/${fur || this.skin}.svg`, import.meta.url)
+      .href;
     // a team kit's chest crest, drawn above accessories
     const crest =
       hasPreset && presets[preset].crest
@@ -1048,7 +1061,10 @@ class RpgCharacter extends SimpleColors {
    * Expression / pose cells, colored to match the character's skin.
    */
   renderCells(cells) {
-    const skin = skinColors[Number(this.skin)] || skinColors[0];
+    const fur = this._fur();
+    const skin = fur
+      ? furColors[fur]
+      : skinColors[Number(this.skin)] || skinColors[0];
     return svg`
     <svg xmlns="http://www.w3.org/2000/svg" part="rpg-character-item" viewBox="0 0 ${this.width} ${this.height}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
       <svg viewBox="0 0 113 142" width="${this.width}" height="${this.height}" preserveAspectRatio="xMidYMid meet">
