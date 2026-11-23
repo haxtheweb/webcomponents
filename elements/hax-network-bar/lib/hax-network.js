@@ -21,7 +21,7 @@ import { html, svg, css } from "lit";
  * start from; the bar translates them through its `t`.
  */
 export const HAX_NETWORK = {
-  order: ["web", "cloud", "try", "learn", "elements", "art"],
+  order: ["web", "cloud", "try", "learn", "lab", "elements", "art"],
   properties: {
     web: {
       url: "https://haxtheweb.org",
@@ -51,6 +51,17 @@ export const HAX_NETWORK = {
       purpose: "Tutorials that teach HAX one flow at a time.",
       relation:
         "Where people go after trying it, as users and as contributors.",
+    },
+    lab: {
+      url: "https://lab.hax.cloud",
+      color: "creekTeal",
+      on: "coalyGray",
+      icon: "hax:hax2022",
+      label: "Lab",
+      purpose:
+        "HAX Lab: where students and junior developers learn by shipping real HAX work.",
+      relation:
+        "Learn teaches HAX. Lab is where people go to build it with us: onboarding, the lab itself, and the people it launched.",
     },
     elements: {
       url: "https://webcomponents.hax.cloud",
@@ -114,6 +125,8 @@ export const HAX_NETWORK_GLYPHS = {
   try: svg`<rect class="m" x="3" y="4" width="18" height="16" rx="2"/><path class="m" d="M3 8.6h18"/><circle class="a f g-dot" cx="6" cy="6.3" r="1"/><path class="a f g-play" d="M10.2 11.2v6l5.2-3z"/>`,
   // Learn: the TV tutorials play on
   learn: svg`<path class="m g-ant" d="m8.5 3 3.5 5 3.5-5"/><rect class="m" x="3" y="8" width="18" height="12" rx="2"/><path class="a g-scan" d="M6.5 12h8"/><path class="a g-scan g-scan2" d="M6.5 16h5"/><circle class="a f" cx="17.7" cy="12" r="1"/><circle class="a f" cx="17.7" cy="16" r="1"/>`,
+  // Lab: a flask, its bubbles rising one after another
+  lab: svg`<path class="m" d="M9.3 3h5.4M10.4 3v5.4L5.1 17.5a2 2 0 0 0 1.8 3h10.2a2 2 0 0 0 1.8-3L13.6 8.4V3"/><path class="a g-scan" d="M7.4 14.6h9.2"/><circle class="a f g-n1" cx="10.2" cy="17.6" r="1"/><circle class="a f g-n2" cx="13.9" cy="16.9" r=".9"/><circle class="a f g-n3" cx="12" cy="11.6" r=".8"/>`,
   // Web components: parts, and the one that snaps in
   elements: svg`<rect class="m" x="3.5" y="3.5" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="3.5" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="m" x="13" y="13" width="7.5" height="7.5" rx="1.2"/><rect class="a g-piece" x="13" y="3.5" width="7.5" height="7.5" rx="1.2"/>`,
   // Art: a palette, its paints lighting up one after another, and the brush
@@ -125,7 +138,7 @@ export const HAX_NETWORK_GLYPHS = {
 
 /**
  * A property's glyph as an svg element; nothing for a property without one.
- * @param {string} id web, cloud, try, learn, elements, art or rpg
+ * @param {string} id web, cloud, try, learn, lab, elements, art or rpg
  */
 export function haxNetworkGlyph(id) {
   return HAX_NETWORK_GLYPHS[id]

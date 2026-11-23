@@ -27,6 +27,7 @@ describe("hax-network-bar", () => {
       "cloud",
       "try",
       "learn",
+      "lab",
       "elements",
       "art",
     ]);
@@ -296,6 +297,20 @@ describe("hax-network-bar", () => {
     box.remove();
   });
 
+  it("lists Lab after Learn, with its own address, name and purpose", async () => {
+    const link = element.shadowRoot.querySelector(
+      'nav.props a[href="https://lab.hax.cloud"]',
+    );
+    expect(link).to.exist;
+    expect(link.querySelector(".name").textContent).to.equal("Lab");
+    const card = element.shadowRoot.querySelector("#card-lab");
+    expect(card.textContent).to.contain(
+      "where students and junior developers learn by shipping real HAX work",
+    );
+    const ids = HAX_NETWORK_SITES.map((s) => s.id);
+    expect(ids.indexOf("lab")).to.equal(ids.indexOf("learn") + 1);
+  });
+
   it("is shorter over a full platform: no Merlin or Future Traveler, the page's functions in the middle", async () => {
     const bar = await fixture(
       html`<hax-network-bar compact current="try"
@@ -305,7 +320,9 @@ describe("hax-network-bar", () => {
     const r = bar.shadowRoot;
     expect(r.querySelector("button.merlin")).to.not.exist;
     expect(r.querySelector(".traveler")).to.not.exist;
-    expect(r.querySelectorAll("nav.props a").length).to.equal(6);
+    expect(r.querySelectorAll("nav.props a").length).to.equal(
+      HAX_NETWORK_SITES.length,
+    );
     expect(
       r.querySelector('.app slot[name="pre"]').assignedElements().length,
     ).to.equal(1);

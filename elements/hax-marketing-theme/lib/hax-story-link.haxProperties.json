@@ -21,6 +21,7 @@
         "options": {
           "cloud": "hax.cloud, the story",
           "learn": "learn.hax.cloud, a tutorial",
+          "lab": "lab.hax.cloud, HAX Lab",
           "try": "browser.hax.cloud, try it",
           "elements": "webcomponents.hax.cloud, a block",
           "web": "haxtheweb.org"

@@ -168,6 +168,15 @@
       "deploy": "GitHub Pages: learn.hax.cloud (loads HAX from cdn.hax.cloud)"
     },
     {
+      "repo": "hax-lab",
+      "branch": "master",
+      "phase": "satellite",
+      "versionFile": "package.json",
+      "tag": "direct",
+      "refresh": "haxsite",
+      "deploy": "Vercel: lab.hax.cloud (loads HAX from cdn.hax.cloud)"
+    },
+    {
       "repo": "haxtheweb.org",
       "branch": "master",
       "phase": "satellite",
@@ -184,10 +193,6 @@
     {
       "repo": "issues",
       "reason": "the unified issue queue, not a release target"
-    },
-    {
-      "repo": "hax-lab",
-      "reason": "being folded into PRAW, which ubiquity versions and tags"
     },
     {
       "repo": "wcfactory",
