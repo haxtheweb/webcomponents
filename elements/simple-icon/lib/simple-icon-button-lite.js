@@ -149,6 +149,7 @@ export const SimpleIconButtonBehaviors = function (SuperClass) {
       if (
         !this.__warnedUnnamed &&
         !this.label &&
+        !(this.textContent && this.textContent.trim() !== "") &&
         !this.iconLabel &&
         !this.ariaLabelledby &&
         !this.hasAttribute("aria-label")
