@@ -274,6 +274,15 @@ export class IframeLoader extends LitElement {
       // overwrite the caller's real values in updated() below.
       this.height = this.__iframe.getAttribute("height") || this.height;
       this.width = this.__iframe.getAttribute("width") || this.width;
+      // frames must have a title for WCAG 4.1.2 (axe frame-title); keep the
+      // author's own title or aria-label when the supplied frame has one
+      if (
+        this.__iframe &&
+        !this.__iframe.getAttribute("title") &&
+        !this.__iframe.getAttribute("aria-label")
+      ) {
+        this.__iframe.setAttribute("title", this.title || "Embedded content");
+      }
     }
     if (
       globalThis.HaxStore &&

@@ -88,6 +88,17 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
           animation: flickerAnimation 1s infinite;
         }
 
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
         /* nothing moves with prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
           :host,
@@ -106,7 +117,11 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
 
   // render function
   render() {
-    return html` <span id="text"></span><span id="cursor">|</span>`;
+    // Accessibility (WCAG 1.3.1, 4.1.2): assistive tech gets the whole text
+    // at once; the letter-by-letter animation and the cursor are visual only
+    return html`<span class="sr-only">${this.text}</span
+      ><span id="text" aria-hidden="true"></span
+      ><span id="cursor" aria-hidden="true">|</span>`;
   }
 
   // haxProperty definition
@@ -216,6 +231,14 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
 
   type() {
     this.typing = true;
+    // Accessibility (WCAG 2.3.3, 2.2.2): with reduced motion the text appears
+    // whole instead of being typed out
+    if (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      this._length = this.text.length + 1;
+    }
     this.shadowRoot.querySelector("#text").textContent = this.text.substr(
       0,
       this._length++,

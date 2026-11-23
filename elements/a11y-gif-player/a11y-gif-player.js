@@ -248,7 +248,8 @@ class A11yGifPlayer extends I18NMixin(
               ? this.t.pauseAnimation
               : this.t.playAnimation,
             pressed: this.__playing,
-            controls: "gif",
+            // #gif only renders once the element is visible (WCAG 4.1.2)
+            controls: this.elementVisible ? "gif" : undefined,
             disabled: this.disabled || !this.src,
             onClick: () => this.toggle(),
           })}

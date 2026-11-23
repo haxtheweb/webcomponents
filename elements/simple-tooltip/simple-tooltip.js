@@ -311,6 +311,11 @@ class SimpleTooltip extends LitElement {
     this.__boundHostMouseEnter = this.hide.bind(this);
     this.__boundShow = this.show.bind(this);
     this.__boundHide = this.hide.bind(this);
+    // Accessibility (WCAG 1.4.13): Escape dismisses a shown tooltip without
+    // moving the pointer or focus
+    this.__boundEscape = (e) => {
+      if (e.key === "Escape" && this._showing) this.hide();
+    };
   }
   /**
    * Returns the target element that this tooltip is anchored to. It is
@@ -347,6 +352,7 @@ class SimpleTooltip extends LitElement {
    * @override
    */
   disconnectedCallback() {
+    globalThis.removeEventListener("keydown", this.__boundEscape, true);
     this._removeListeners();
     this.removeEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
     this.removeEventListener("mouseenter", this.__boundHostMouseEnter);
@@ -397,6 +403,7 @@ class SimpleTooltip extends LitElement {
     }
 
     this._showing = true;
+    globalThis.addEventListener("keydown", this.__boundEscape, true);
     this.shadowRoot.querySelector("#tooltip").classList.remove("hidden");
     this.shadowRoot
       .querySelector("#tooltip")
@@ -457,6 +464,7 @@ class SimpleTooltip extends LitElement {
     if (!this._showing) {
       return;
     }
+    globalThis.removeEventListener("keydown", this.__boundEscape, true);
 
     // If the entry animation is still playing, don't try to play the exit
     // animation since this will reset the opacity to 1. Just end the animation.
