@@ -109,9 +109,10 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
   }
 
   /* physical on purpose: placed on the badge art, which does not mirror */
-  /* the link itself sits on the art as a 24px target, so its focus ring
-     has a box to draw around; the icon is white like the details icon so
-     it holds 3:1 on the badge color (1.4.11) */
+  /* physical on purpose: the link sits on the badge art, which does not
+     mirror, as a 24px target so its focus ring has a box to draw around;
+     the icon is white like the details icon so it holds 3:1 on the badge
+     color (1.4.11) */
   .verificationlink a {
     position: absolute;
     top: calc(32% - 2px);
@@ -155,8 +156,9 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
   .button i {
     margin-inline-end: 8px;
   }
-  /* a 24px hit area over the details icon, which is positioned by the
-     same percentages inside the button (2.5.8) */
+  /* physical on purpose: a 24px hit area over the details icon, placed by
+     the same percentages inside the button on art that does not mirror
+     (2.5.8) */
   .button::after {
     content: "";
     position: absolute;

@@ -7,6 +7,12 @@
     "d-d-docs": {
       "retained": 1
     },
+    "matching-question": {
+      "retained": 1
+    },
+    "site-random-content": {
+      "retained": 1
+    },
     "unity-webgl": {
       "listeners": 4,
       "raf-loops": 1,
