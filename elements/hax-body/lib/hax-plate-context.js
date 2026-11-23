@@ -154,6 +154,14 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           align-items: center;
           flex-wrap: nowrap;
         }
+        /* on a phone the groups wrap onto a second row rather than run off
+           the screen (1.4.10 reflow) */
+        @media (max-width: 480px) {
+          .bar {
+            flex-wrap: wrap;
+            row-gap: 2px;
+          }
+        }
         .grp,
         .extra {
           display: flex;

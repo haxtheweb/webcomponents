@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "From Wikipedia",
   "readFullArticle": "Read the full article on Wikipedia",
-  "reading": "Reading"
+  "reading": "Reading",
+  "couldNotLoad": "The article could not be loaded. Use the link above to read it on Wikipedia."
 }

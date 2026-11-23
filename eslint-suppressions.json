@@ -913,9 +913,6 @@
     "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     },
-    "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 2
-    },
     "haxtheweb-leaks/live-document-parse": {
       "count": 1
     }

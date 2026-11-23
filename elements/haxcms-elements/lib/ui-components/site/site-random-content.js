@@ -47,8 +47,17 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       localesPath: new URL("../../../locales/", import.meta.url).href,
     });
 
-    this.__disposer = this.__disposer ? this.__disposer : [];
+    this.__disposer = [];
+  }
 
+  /**
+   * Store reactions start when the element joins the page and stop when it
+   * leaves, so a moved element keeps reacting and a removed one is not held
+   * by the store.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.windowControllers = new AbortController();
     // React to manifest changes
     this.__disposer.push(
       autorun((_reaction) => {
@@ -419,6 +428,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     this.__disposer.forEach((reaction) => {
       reaction();
     });
+    this.__disposer = [];
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
