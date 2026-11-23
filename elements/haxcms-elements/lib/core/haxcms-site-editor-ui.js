@@ -7592,6 +7592,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               HAXStore.haxTray.trayDetail = "content-add";
               HAXStore.haxTray.collapsed = false;
             }
+            HAXStore.haxTray.focusTrayDetail();
           }
         } else if (this.pageAllowed) {
           // Non-edit mode: Edit page
@@ -7616,6 +7617,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           if (HAXStore.haxTray) {
             HAXStore.haxTray.trayDetail = "content-edit";
             HAXStore.haxTray.collapsed = false;
+            HAXStore.haxTray.focusTrayDetail();
           }
         } else {
           // Non-edit mode: Page actions
@@ -10107,6 +10109,40 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         HAXStore.haxTray.collapsed = !autoOpenTray;
       }
+      // Accessibility (WCAG 2.4.3): the control that switched modes may be
+      // gone now, which drops focus to <body>; put it somewhere useful
+      setTimeout(() => this._focusAfterEditModeChange(newValue), 300);
+    }
+  }
+  /**
+   * After entering edit mode focus the active block (or the first one);
+   * after leaving it, the Edit button. Only when focus has been lost.
+   * @param {Boolean} editing
+   */
+  _focusAfterEditModeChange(editing) {
+    let now = globalThis.document.activeElement;
+    while (now && now.shadowRoot && now.shadowRoot.activeElement) {
+      now = now.shadowRoot.activeElement;
+    }
+    if (
+      now &&
+      now !== globalThis.document.body &&
+      now.isConnected &&
+      now.getClientRects().length > 0
+    ) {
+      return;
+    }
+    let target = null;
+    if (editing && HAXStore.activeHaxBody) {
+      target =
+        HAXStore.activeNode && HAXStore.activeNode.isConnected
+          ? HAXStore.activeNode
+          : HAXStore.activeHaxBody.firstElementChild;
+    } else if (!editing && this.shadowRoot) {
+      target = this.shadowRoot.querySelector("#editbutton");
+    }
+    if (target && typeof target.focus === "function") {
+      target.focus({ preventScroll: true });
     }
   }
   /**

@@ -1068,6 +1068,45 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         .querySelector("web-dialog")
         .shadowRoot.querySelector("#backdrop").style.position = "relative";
     }
+    this._restoreFocus();
+  }
+  /**
+   * the focused element, looking through open shadow roots
+   * @returns {Element|null}
+   */
+  _deepActiveElement() {
+    let a = globalThis.document ? globalThis.document.activeElement : null;
+    while (a && a.shadowRoot && a.shadowRoot.activeElement) {
+      a = a.shadowRoot.activeElement;
+    }
+    return a;
+  }
+  /**
+   * Accessibility (WCAG 2.4.3): closing Merlin returns focus to what had it
+   * before Merlin opened, unless what was chosen moved focus somewhere else
+   */
+  _restoreFocus() {
+    const back = this.__returnFocus;
+    this.__returnFocus = null;
+    if (!back) return;
+    requestAnimationFrame(() => {
+      const now = this._deepActiveElement();
+      let inside = false;
+      for (let n = now; n; n = n.parentNode || n.host) {
+        if (n === this) {
+          inside = true;
+          break;
+        }
+      }
+      const lost =
+        !now ||
+        inside ||
+        now === globalThis.document.body ||
+        now === globalThis.document.documentElement;
+      if (lost && back.isConnected && typeof back.focus === "function") {
+        back.focus({ preventScroll: true });
+      }
+    });
   }
   filterItems(items, context) {
     let tmpItems = items.filter((item) => {
@@ -1820,6 +1859,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     };
     // anything else is spoken search: hal-9000 reports it as a no-match
     // and _voiceHeard() scores it against the commands
+  }
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // remember where focus was so closing can put it back
+    if (
+      changedProperties.has("opened") &&
+      this.opened &&
+      !changedProperties.get("opened")
+    ) {
+      const current = this._deepActiveElement();
+      this.__returnFocus =
+        current && current !== globalThis.document.body ? current : null;
+    }
   }
   updated(changedProperties) {
     if (super.updated) {
