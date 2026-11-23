@@ -315,7 +315,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
 
         @media screen and (min-width: 320px) {
           #toolbar-wrap {
-            height: 40px;
+            height: var(--ddd-control-height-sm, 40px);
           }
         }
 
@@ -332,8 +332,8 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
 
         @media screen and (min-width: 320px) {
           .tool-button {
-            height: 40px;
-            width: 40px;
+            height: var(--ddd-control-height-sm, 40px);
+            width: var(--ddd-control-height-sm, 40px);
           }
         }
 

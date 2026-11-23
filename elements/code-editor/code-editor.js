@@ -58,7 +58,7 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         .code-pen-container:not([hidden]) {
           width: calc(100% - 2 * var(--code-editor-margin, 12px));
           display: flex;
-          height: 40px;
+          height: var(--ddd-control-height-sm, 40px);
           justify-content: flex-end;
           align-items: center;
           margin: var(--code-editor-margin, 12px);
@@ -71,8 +71,8 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         }
         code-pen-button {
           float: right;
-          height: 40px;
-          flex: 0 0 40px;
+          height: var(--ddd-control-height-sm, 40px);
+          flex: 0 0 var(--ddd-control-height-sm, 40px);
         }
         :host([theme-colors="vs"]) code-pen-button::part(button) {
           filter: invert(1);

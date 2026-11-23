@@ -182,7 +182,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
           position: absolute;
           display: block;
           right: 0px;
-          height: 40px;
+          height: var(--ddd-control-height-sm, 40px);
           top: 0px;
           z-index: 2;
           margin: 0 4px 0 0;
