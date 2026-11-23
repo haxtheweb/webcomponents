@@ -31,11 +31,20 @@
       },
       {
         "title": "Area Pemeriksaan Pengetahuan"
+      },
+      {
+        "property": "title",
+        "title": "Judul",
+        "description": "Judul yang ditampilkan di atas model kursus."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Area logo"
+      },
+      {
+        "slot": "logo",
         "title": "Area logo"
       }
     ]

@@ -45,8 +45,12 @@
   "hideDirections": "Fela leiðbeiningar",
   "showRelatedContent": "Sýna tengt efni",
   "hideRelatedContent": "Fela tengt efni",
+  "notAttempted": "Ekki reynt",
   "yourTags": "Svarið þitt",
   "availableTags": "Merki til að velja úr",
   "dropTagsHere": "Veldu merki hér að neðan eða dragðu þau hingað",
-  "notAttempted": "Ekki reynt"
+  "addTag": "Bæta við {tag}",
+  "removeTag": "Fjarlægja {tag}",
+  "tagAdded": "{tag} bætt við svarið þitt",
+  "tagRemoved": "{tag} fjarlægt úr svarinu þínu"
 }

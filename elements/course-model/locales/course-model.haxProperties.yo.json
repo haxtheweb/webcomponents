@@ -31,12 +31,21 @@
       },
       {
         "title": "Agbègbè Àyẹ̀wò Ìmọ̀"
+      },
+      {
+        "property": "title",
+        "title": "Àkọlé",
+        "description": "Àkọlé tí a fi hàn lókè àwòṣe ẹ̀kọ́."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Agbègbè àmì"
+      },
+      {
+        "slot": "logo",
+        "title": "Agbègbè àmì-ìdámọ̀"
       }
     ]
   }

@@ -31,12 +31,21 @@
       },
       {
         "title": "Malo a Kuyesa Chidziwitso"
+      },
+      {
+        "property": "title",
+        "title": "Mutu",
+        "description": "Mutu wowonetsedwa pamwamba pa chitsanzo cha maphunziro."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Malo a chizindikiro"
+      },
+      {
+        "slot": "logo",
+        "title": "Malo a logo"
       }
     ]
   }

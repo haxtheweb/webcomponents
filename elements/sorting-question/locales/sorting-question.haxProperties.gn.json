@@ -22,6 +22,15 @@
       {
         "title": "Mbohováikuéra",
         "description": "Mbohovái ñemohenda omoĩ jehasa hekopetéva."
+      },
+      {
+        "property": "layout",
+        "title": "Ñemohenda",
+        "description": "Lista: mbohovái oñemboja'ohápe hysýipe. Ta'anga tarjeta: tarjeta hysýi ojeréva, peteĩteĩ ita'anga ha votõ omongu'e hag̃ua mboyve / upe rire.",
+        "options": {
+          "": "Lista",
+          "cards": "Ta'anga tarjeta"
+        }
       }
     ],
     "advanced": [

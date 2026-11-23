@@ -66,6 +66,16 @@
           "_top": "پورتنۍ کړکۍ - _top",
           "_parent": "مور کړکۍ - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "افقي",
+        "description": "انځور د متن پورته پر ځای د هغه څنګ ته کېږدئ."
+      },
+      {
+        "property": "clickable",
+        "title": "ټول کارت لینک دی",
+        "description": "ټول کارت لینک کړئ او تڼۍ پټه کړئ. لینک ته اړتیا لري."
       }
     ],
     "developer": [

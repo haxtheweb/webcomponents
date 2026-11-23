@@ -73,5 +73,6 @@
   "padStart": "Start: fuula kee maxxansi",
   "padB": "B: kutaa dhumaa deebisi",
   "padA": "A: kutaa qabi",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "To'ataa taphaa kaasi"
 }

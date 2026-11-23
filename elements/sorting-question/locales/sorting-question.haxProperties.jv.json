@@ -22,6 +22,15 @@
       {
         "title": "Wangsulan",
         "description": "Urutan wangsulan nemtokake urutan sing bener."
+      },
+      {
+        "property": "layout",
+        "title": "Tata letak",
+        "description": "Dhaptar: wangsulan ditumpuk dadi larik. Kertu gambar: larik kertu sing mlumpat menyang baris anyar, saben kertu nduweni gambar lan tombol pindhah luwih dhisik / luwih mburi.",
+        "options": {
+          "": "Dhaptar",
+          "cards": "Kertu gambar"
+        }
       }
     ],
     "advanced": [

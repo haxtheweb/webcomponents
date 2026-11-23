@@ -78,7 +78,10 @@
           "messy-hair": "ผมยุ่งกับรอยแผลเป็น",
           "sparkle-selects": "Sparkle Selects (หมวกกันน็อก)",
           "saber-cats": "Saber Cats (หมวกกันน็อก)",
-          "future-traveler": "Future Traveler (หมวกกันน็อก)"
+          "future-traveler": "Future Traveler (หมวกกันน็อก)",
+          "pilgrim": "หมวกผู้แสวงบุญ",
+          "bonnet": "หมวกบอนเน็ตผู้แสวงบุญ",
+          "turkey": "หมวกคลุมไก่งวง"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (เยือน)",
           "icers": "Icers (เหย้า)",
           "icers-away": "Icers (เยือน)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "ผู้แสวงบุญ (เด็กชาย)",
+          "pilgrim-girl": "ผู้แสวงบุญ (เด็กหญิง)",
+          "turkey": "ไก่งวง"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ประแจ",
           "hockey-stick-pink": "ไม้ฮอกกี้ (ชมพู)",
           "hockey-stick-green": "ไม้ฮอกกี้ (สีเขียว)",
-          "sparkle-flag": "Sparkle Selects (ธง)"
+          "sparkle-flag": "Sparkle Selects (ธง)",
+          "corn": "ฝักข้าวโพด",
+          "drumstick": "น่องไก่งวง"
         }
       },
       {

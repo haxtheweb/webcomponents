@@ -73,5 +73,6 @@
   "padStart": "Start: avalda oma leht",
   "padB": "B: võta viimane plokk tagasi",
   "padA": "A: haara plokk",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Võta mängupult kätte"
 }

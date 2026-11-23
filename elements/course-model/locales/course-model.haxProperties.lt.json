@@ -31,11 +31,20 @@
       },
       {
         "title": "Žinių patikrinimo sritis"
+      },
+      {
+        "property": "title",
+        "title": "Pavadinimas",
+        "description": "Antraštė, rodoma virš kurso modelio."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logotipo sritis"
+      },
+      {
+        "slot": "logo",
         "title": "Logotipo sritis"
       }
     ]

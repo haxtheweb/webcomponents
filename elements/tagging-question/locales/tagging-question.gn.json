@@ -45,8 +45,12 @@
   "hideDirections": "Emokañy tapykuéra",
   "showRelatedContent": "Ehechauka mba'e ojoajúva",
   "hideRelatedContent": "Emokañy mba'e ojoajúva",
+  "notAttempted": "Ndojeprobái",
   "yourTags": "Nde mbohovái",
   "availableTags": "Etiketa poravo hag̃ua",
   "dropTagsHere": "Eiporavo etiketa yvýpe térã eguenohẽ ko'ápe",
-  "notAttempted": "Ndojeprobái"
+  "addTag": "Embojoapy {tag}",
+  "removeTag": "Embogue {tag}",
+  "tagAdded": "{tag} oñembojoapy nde mbohovápe",
+  "tagRemoved": "{tag} oñembogue nde mbohovágui"
 }

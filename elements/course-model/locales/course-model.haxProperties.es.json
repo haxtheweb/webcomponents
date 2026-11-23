@@ -31,12 +31,21 @@
       },
       {
         "title": "Área de comprobación de conocimientos"
+      },
+      {
+        "property": "title",
+        "title": "Título",
+        "description": "Encabezado que se muestra sobre el modelo del curso."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Área del logotipo"
+      },
+      {
+        "slot": "logo",
+        "title": "Zona del logotipo"
       }
     ]
   }

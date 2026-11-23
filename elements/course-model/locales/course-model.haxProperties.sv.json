@@ -31,11 +31,20 @@
       },
       {
         "title": "Område för kunskapskontroll"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Rubrik som visas ovanför kursmodellen."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logotypområde"
+      },
+      {
+        "slot": "logo",
         "title": "Logotypområde"
       }
     ]

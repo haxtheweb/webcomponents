@@ -18,6 +18,11 @@
       {
         "title": "Faahfaahinta meelaha",
         "description": "Meelaha is-dhexgalka ah ee khariidadda sawirka."
+      },
+      {
+        "property": "src",
+        "title": "Sawir",
+        "description": "Sawirka SVG ee meelaha kulul tilmaamaan."
       }
     ]
   }

@@ -66,6 +66,16 @@
           "_top": "Matapihi runga - _top",
           "_parent": "Matapihi matua - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Whakapae",
+        "description": "Whakanohoia te whakaahua ki te taha o te kuputuhi, kaua ki runga ake."
+      },
+      {
+        "property": "clickable",
+        "title": "Ko te kāri katoa te hono",
+        "description": "Meinga te kāri katoa hei hono, ā, hunaia te pātene. Me whai hono."
       }
     ],
     "developer": [

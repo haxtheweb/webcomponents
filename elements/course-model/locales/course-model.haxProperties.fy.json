@@ -31,11 +31,20 @@
       },
       {
         "title": "Kennistestgebiet"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Kopteksje dy't boppe it kursusmodel werjûn wurdt."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logogebiet"
+      },
+      {
+        "slot": "logo",
         "title": "Logogebiet"
       }
     ]

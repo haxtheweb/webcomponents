@@ -22,6 +22,15 @@
       {
         "title": "Respostas",
         "description": "A ordem das respostas define a sequência correta."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Lista: respostas empilhadas em linhas. Cartões com imagem: uma fileira de cartões que quebra a linha, cada um com sua imagem e botões para mover antes / depois.",
+        "options": {
+          "": "Lista",
+          "cards": "Cartões com imagem"
+        }
       }
     ],
     "advanced": [

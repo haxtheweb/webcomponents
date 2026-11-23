@@ -42,5 +42,8 @@
   "belowLabel": "Dessous",
   "leftLabel": "Gauche",
   "rightLabel": "Droite",
-  "hideTranscriptLabel": "Masquer la transcription"
+  "hideTranscriptLabel": "Masquer la transcription",
+  "youtubeConsentNotice": "Cette vidéo est lue depuis YouTube. Google recevra votre adresse IP et pourra déposer des cookies.",
+  "youtubeConsentAllow": "Toujours autoriser YouTube",
+  "consentChoicesLabel": "Choix de confidentialité"
 }

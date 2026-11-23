@@ -66,6 +66,16 @@
           "_top": "ટોચની વિન્ડો - _top",
           "_parent": "પેરેન્ટ વિન્ડો - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "આડું",
+        "description": "છબીને લખાણની ઉપરને બદલે બાજુમાં મૂકો."
+      },
+      {
+        "property": "clickable",
+        "title": "આખું કાર્ડ જ લિંક છે",
+        "description": "આખા કાર્ડને લિંક બનાવો અને બટન છુપાવો. લિંક જરૂરી છે."
       }
     ],
     "developer": [

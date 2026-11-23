@@ -45,8 +45,12 @@
   "hideDirections": "Ascunde instrucțiunile",
   "showRelatedContent": "Afișează conținutul asociat",
   "hideRelatedContent": "Ascunde conținutul asociat",
+  "notAttempted": "Neîncercată",
   "yourTags": "Răspunsul tău",
   "availableTags": "Etichete de ales",
   "dropTagsHere": "Alege etichetele de mai jos sau trage-le aici",
-  "notAttempted": "Neîncercată"
+  "addTag": "Adaugă {tag}",
+  "removeTag": "Elimină {tag}",
+  "tagAdded": "{tag} a fost adăugat la răspunsul tău",
+  "tagRemoved": "{tag} a fost eliminat din răspunsul tău"
 }

@@ -45,8 +45,12 @@
   "hideDirections": "Көрсөтмөлөрдү жашыруу",
   "showRelatedContent": "Тиешелүү мазмунду көрсөтүү",
   "hideRelatedContent": "Тиешелүү мазмунду жашыруу",
+  "notAttempted": "Аракет кылына элек",
   "yourTags": "Сиздин жообуңуз",
   "availableTags": "Тандоо үчүн тегдер",
   "dropTagsHere": "Төмөндөгү тегдерди тандаңыз же бул жерге сүйрөңүз",
-  "notAttempted": "Аракет кылына элек"
+  "addTag": "{tag} кошуу",
+  "removeTag": "{tag} өчүрүү",
+  "tagAdded": "{tag} жообуңузга кошулду",
+  "tagRemoved": "{tag} жообуңуздан өчүрүлдү"
 }

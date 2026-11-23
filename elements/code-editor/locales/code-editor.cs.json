@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "Podívejte se na CodePen:"
+  "checkItOutOnCodePen": "Podívejte se na CodePen:",
+  "tabHint": "Klávesa Tab sem vloží tabulátor. Chcete-li editor opustit klávesou Tab, stiskněte nejprve Ctrl+M (na Macu Ctrl+Shift+M)."
 }

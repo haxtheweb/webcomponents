@@ -42,5 +42,8 @@
   "belowLabel": "Raro",
   "leftLabel": "Mauī",
   "rightLabel": "Matau",
-  "hideTranscriptLabel": "Huna tuhinga tauira"
+  "hideTranscriptLabel": "Huna tuhinga tauira",
+  "youtubeConsentNotice": "Ka pūrei tēnei ataata mai i YouTube. Ka whiwhi a Google i tō wāhitau IP, ā, tērā pea ka tautuhi i ngā pihikete.",
+  "youtubeConsentAllow": "Tukua tonutia a YouTube",
+  "consentChoicesLabel": "Ngā kōwhiringa tūmataiti"
 }

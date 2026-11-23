@@ -22,6 +22,15 @@
       {
         "title": "Atsakymai",
         "description": "Atsakymų tvarka nustato teisingą seką."
+      },
+      {
+        "property": "layout",
+        "title": "Išdėstymas",
+        "description": "Sąrašas: atsakymai sudėti eilutėmis vienas po kito. Paveikslėlių kortelės: kortelių eilė, kuri persikelia į naują eilutę, kiekviena su savo paveikslėliu ir mygtukais perkelti anksčiau / vėliau.",
+        "options": {
+          "": "Sąrašas",
+          "cards": "Paveikslėlių kortelės"
+        }
       }
     ],
     "advanced": [

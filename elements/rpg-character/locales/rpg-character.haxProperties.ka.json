@@ -78,7 +78,10 @@
           "messy-hair": "აწეწილი თმა ნაიარევით",
           "sparkle-selects": "Sparkle Selects (ჩაფხუტი)",
           "saber-cats": "Saber Cats (ჩაფხუტი)",
-          "future-traveler": "Future Traveler (ჩაფხუტი)"
+          "future-traveler": "Future Traveler (ჩაფხუტი)",
+          "pilgrim": "პილიგრიმის ქუდი",
+          "bonnet": "პილიგრიმის ჩეჩი",
+          "turkey": "ინდაურის კაპიუშონი"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (გასვლითი)",
           "icers": "Icers (საშინაო)",
           "icers-away": "Icers (გასვლითი)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "პილიგრიმი (ბიჭი)",
+          "pilgrim-girl": "პილიგრიმი (გოგო)",
+          "turkey": "ინდაური"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ქანჩის გასაღები",
           "hockey-stick-pink": "ჰოკეის ჯოხი (ვარდისფერი)",
           "hockey-stick-green": "ჰოკეის ჯოხი (მწვანე)",
-          "sparkle-flag": "Sparkle Selects (დროშა)"
+          "sparkle-flag": "Sparkle Selects (დროშა)",
+          "corn": "სიმინდის ტარო",
+          "drumstick": "ინდაურის ბარკალი"
         }
       },
       {

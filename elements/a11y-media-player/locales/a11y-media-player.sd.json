@@ -42,5 +42,8 @@
   "belowLabel": "هيٺان",
   "leftLabel": "کاٻي",
   "rightLabel": "ساڄي",
-  "hideTranscriptLabel": "ٽرانسڪرپٽ لڪايو"
+  "hideTranscriptLabel": "ٽرانسڪرپٽ لڪايو",
+  "youtubeConsentNotice": "هي وڊيو YouTube تان هلي ٿي. Google کي توهان جو IP پتو ملندو ۽ اهو ڪوڪيز رکي سگهي ٿو.",
+  "youtubeConsentAllow": "YouTube کي هميشه اجازت ڏيو",
+  "consentChoicesLabel": "رازداري جون چونڊون"
 }

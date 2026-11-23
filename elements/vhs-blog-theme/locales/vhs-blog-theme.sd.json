@@ -73,5 +73,6 @@
   "padStart": "Start: پنهنجو صفحو شايع ڪريو",
   "padB": "B: آخري بلاڪ واپس وٺو",
   "padA": "A: بلاڪ پڪڙيو",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "گيم ڪنٽرولر کڻو"
 }

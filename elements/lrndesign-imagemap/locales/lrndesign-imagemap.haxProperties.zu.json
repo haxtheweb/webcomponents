@@ -18,6 +18,11 @@
       {
         "title": "Imininingwane yezindawo ezibalulekile",
         "description": "Izindawo ezibalulekile ezisebenzisanayo kumephu yesithombe."
+      },
+      {
+        "property": "src",
+        "title": "Isithombe",
+        "description": "Isithombe se-SVG lapho izindawo ezishisayo zikhomba khona."
       }
     ]
   }

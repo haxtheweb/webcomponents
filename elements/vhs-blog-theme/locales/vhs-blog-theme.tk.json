@@ -73,5 +73,6 @@
   "padStart": "Start: sahypaňyzy çap ediň",
   "padB": "B: soňky bloky yzyna al",
   "padA": "A: blok tut",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Oýun pultuny al"
 }

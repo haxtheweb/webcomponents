@@ -22,6 +22,15 @@
       {
         "title": "Deebiiwwan",
         "description": "Tartiibni deebii tartiiba sirrii murteessa."
+      },
+      {
+        "property": "layout",
+        "title": "Qindaa'ina",
+        "description": "Tarree: deebiiwwan sararootaan walirra tuulaman. Kaardii suuraa: tarree kaardii kan sarara itti aanutti darbu, tokkoon tokkoon isaa suuraa isaa fi qabduuwwan dura / booda socho'suu qaba.",
+        "options": {
+          "": "Tarree",
+          "cards": "Kaardii suuraa"
+        }
       }
     ],
     "advanced": [

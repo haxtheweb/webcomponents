@@ -18,6 +18,11 @@
       {
         "title": "Karsto punktu detaļas",
         "description": "Interaktīvie karstie punkti attēlu kartē."
+      },
+      {
+        "property": "src",
+        "title": "Attēls",
+        "description": "SVG attēls, uz kuru norāda aktīvie punkti."
       }
     ]
   }

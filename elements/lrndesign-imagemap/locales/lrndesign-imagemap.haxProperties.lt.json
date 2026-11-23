@@ -18,6 +18,11 @@
       {
         "title": "Taškų informacija",
         "description": "Interaktyvūs vaizdo žemėlapio taškai."
+      },
+      {
+        "property": "src",
+        "title": "Paveikslėlis",
+        "description": "SVG paveikslėlis, į kurį rodo aktyviosios vietos."
       }
     ]
   }

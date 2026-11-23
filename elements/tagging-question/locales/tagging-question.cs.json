@@ -45,8 +45,12 @@
   "hideDirections": "Skrýt pokyny",
   "showRelatedContent": "Zobrazit související obsah",
   "hideRelatedContent": "Skrýt související obsah",
+  "notAttempted": "Nepokoušeno",
   "yourTags": "Vaše odpověď",
   "availableTags": "Štítky k výběru",
   "dropTagsHere": "Vyberte štítky níže nebo je sem přetáhněte",
-  "notAttempted": "Nepokoušeno"
+  "addTag": "Přidat {tag}",
+  "removeTag": "Odebrat {tag}",
+  "tagAdded": "{tag} přidáno do vaší odpovědi",
+  "tagRemoved": "{tag} odebráno z vaší odpovědi"
 }

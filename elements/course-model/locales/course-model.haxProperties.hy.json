@@ -31,12 +31,21 @@
       },
       {
         "title": "Գիտելիքների ստուգման հատված"
+      },
+      {
+        "property": "title",
+        "title": "Վերնագիր",
+        "description": "Դասընթացի մոդելի վերևում ցուցադրվող վերնագիր։"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Լոգոյի հատված"
+      },
+      {
+        "slot": "logo",
+        "title": "Լոգոյի տարածք"
       }
     ]
   }

@@ -78,7 +78,10 @@
           "messy-hair": "အမာရွတ်ပါ ဆံပင်ရှုပ်",
           "sparkle-selects": "Sparkle Selects (ဦးထုပ်)",
           "saber-cats": "Saber Cats (ဦးထုပ်)",
-          "future-traveler": "Future Traveler (ဦးထုပ်)"
+          "future-traveler": "Future Traveler (ဦးထုပ်)",
+          "pilgrim": "ဘုရားဖူးသူ ဦးထုပ်",
+          "bonnet": "ဘုရားဖူးသူ ခေါင်းစွပ်",
+          "turkey": "ကြက်ဆင် ခေါင်းစွပ်"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (အဝေးကွင်း)",
           "icers": "Icers (အိမ်ကွင်း)",
           "icers-away": "Icers (အဝေးကွင်း)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "ဘုရားဖူးသူ (ယောက်ျားလေး)",
+          "pilgrim-girl": "ဘုရားဖူးသူ (မိန်းကလေး)",
+          "turkey": "ကြက်ဆင်"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ဂွ",
           "hockey-stick-pink": "ဟော်ကီတုတ် (ပန်းရောင်)",
           "hockey-stick-green": "ဟော်ကီတုတ် (အစိမ်း)",
-          "sparkle-flag": "Sparkle Selects (အလံ)"
+          "sparkle-flag": "Sparkle Selects (အလံ)",
+          "corn": "ပြောင်းဖူး",
+          "drumstick": "ကြက်ဆင်ပေါင်"
         }
       },
       {

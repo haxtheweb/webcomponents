@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Iš Wikipedia",
   "readFullArticle": "Skaityti visą straipsnį Wikipedia",
-  "reading": "Skaitymas"
+  "reading": "Skaitymas",
+  "couldNotLoad": "Nepavyko įkelti straipsnio. Naudokite aukščiau esančią nuorodą, kad perskaitytumėte jį Wikipedia."
 }

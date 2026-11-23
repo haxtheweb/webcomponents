@@ -31,11 +31,20 @@
       },
       {
         "title": "Tietovisa-alue"
+      },
+      {
+        "property": "title",
+        "title": "Otsikko",
+        "description": "Kurssimallin yläpuolella näytettävä otsikko."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logoalue"
+      },
+      {
+        "slot": "logo",
         "title": "Logoalue"
       }
     ]

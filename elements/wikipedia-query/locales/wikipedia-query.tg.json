@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Аз Wikipedia",
   "readFullArticle": "Мақолаи пурраро дар Wikipedia хонед",
-  "reading": "Хониш"
+  "reading": "Хониш",
+  "couldNotLoad": "Мақоларо бор кардан нашуд. Барои хондани он дар Wikipedia пайванди болоро истифода баред."
 }

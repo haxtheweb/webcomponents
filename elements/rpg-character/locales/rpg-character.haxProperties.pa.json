@@ -78,7 +78,10 @@
           "messy-hair": "ਨਿਸ਼ਾਨ ਵਾਲੇ ਖਿੱਲਰੇ ਵਾਲ",
           "sparkle-selects": "Sparkle Selects (ਹੈਲਮੇਟ)",
           "saber-cats": "Saber Cats (ਹੈਲਮੇਟ)",
-          "future-traveler": "Future Traveler (ਹੈਲਮੇਟ)"
+          "future-traveler": "Future Traveler (ਹੈਲਮੇਟ)",
+          "pilgrim": "ਪਿਲਗ੍ਰਿਮ ਟੋਪੀ",
+          "bonnet": "ਪਿਲਗ੍ਰਿਮ ਬੋਨਟ",
+          "turkey": "ਟਰਕੀ ਟੋਪ"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ਬਾਹਰੀ)",
           "icers": "Icers (ਘਰੇਲੂ)",
           "icers-away": "Icers (ਬਾਹਰੀ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "ਪਿਲਗ੍ਰਿਮ (ਮੁੰਡਾ)",
+          "pilgrim-girl": "ਪਿਲਗ੍ਰਿਮ (ਕੁੜੀ)",
+          "turkey": "ਟਰਕੀ"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ਪਾਨਾ",
           "hockey-stick-pink": "ਹਾਕੀ ਸਟਿੱਕ (ਗੁਲਾਬੀ)",
           "hockey-stick-green": "ਹਾਕੀ ਸਟਿੱਕ (ਹਰੀ)",
-          "sparkle-flag": "Sparkle Selects (ਝੰਡਾ)"
+          "sparkle-flag": "Sparkle Selects (ਝੰਡਾ)",
+          "corn": "ਮੱਕੀ ਦੀ ਛੱਲੀ",
+          "drumstick": "ਟਰਕੀ ਦੀ ਲੱਤ"
         }
       },
       {

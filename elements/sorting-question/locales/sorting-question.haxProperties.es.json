@@ -22,6 +22,15 @@
       {
         "title": "Respuestas",
         "description": "El orden de las respuestas define la secuencia correcta."
+      },
+      {
+        "property": "layout",
+        "title": "Diseño",
+        "description": "Lista: respuestas apiladas en filas. Tarjetas con imagen: una fila de tarjetas que se ajusta, cada una con su imagen y botones para mover antes / después.",
+        "options": {
+          "": "Lista",
+          "cards": "Tarjetas con imagen"
+        }
       }
     ],
     "advanced": [

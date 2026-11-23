@@ -45,8 +45,12 @@
   "hideDirections": "Aanwijzingen verbergen",
   "showRelatedContent": "Gerelateerde inhoud tonen",
   "hideRelatedContent": "Gerelateerde inhoud verbergen",
+  "notAttempted": "Niet geprobeerd",
   "yourTags": "Jouw antwoord",
   "availableTags": "Beschikbare tags",
   "dropTagsHere": "Kies hieronder tags of sleep ze hierheen",
-  "notAttempted": "Niet geprobeerd"
+  "addTag": "{tag} toevoegen",
+  "removeTag": "{tag} verwijderen",
+  "tagAdded": "{tag} toegevoegd aan je antwoord",
+  "tagRemoved": "{tag} verwijderd uit je antwoord"
 }

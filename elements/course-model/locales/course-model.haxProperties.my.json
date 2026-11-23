@@ -31,11 +31,20 @@
       },
       {
         "title": "အသိပညာ စစ်ဆေးမှု နေရာ"
+      },
+      {
+        "property": "title",
+        "title": "ခေါင်းစဉ်",
+        "description": "သင်တန်းပုံစံ၏ အပေါ်တွင် ပြသသော ခေါင်းစဉ်။"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "လိုဂို နေရာ"
+      },
+      {
+        "slot": "logo",
         "title": "လိုဂို နေရာ"
       }
     ]

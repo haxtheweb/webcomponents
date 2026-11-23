@@ -78,7 +78,10 @@
           "messy-hair": "Magulong buhok na may peklat",
           "sparkle-selects": "Sparkle Selects (helmet)",
           "saber-cats": "Saber Cats (helmet)",
-          "future-traveler": "Future Traveler (helmet)"
+          "future-traveler": "Future Traveler (helmet)",
+          "pilgrim": "Sumbrero ng Pilgrim",
+          "bonnet": "Bonnet ng Pilgrim",
+          "turkey": "Hood na pabo"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (away)",
           "icers": "Icers (home)",
           "icers-away": "Icers (away)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilgrim (lalaki)",
+          "pilgrim-girl": "Pilgrim (babae)",
+          "turkey": "Pabo"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Liyabe",
           "hockey-stick-pink": "Hockey stick (rosas)",
           "hockey-stick-green": "Hockey stick (berde)",
-          "sparkle-flag": "Sparkle Selects (bandila)"
+          "sparkle-flag": "Sparkle Selects (bandila)",
+          "corn": "Busal ng mais",
+          "drumstick": "Hita ng pabo"
         }
       },
       {

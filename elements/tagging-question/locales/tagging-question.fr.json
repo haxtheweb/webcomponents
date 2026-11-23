@@ -45,8 +45,12 @@
   "hideDirections": "Masquer les consignes",
   "showRelatedContent": "Afficher le contenu associé",
   "hideRelatedContent": "Masquer le contenu associé",
+  "notAttempted": "Non tenté",
   "yourTags": "Votre réponse",
   "availableTags": "Étiquettes au choix",
   "dropTagsHere": "Choisissez des étiquettes ci-dessous ou faites-les glisser ici",
-  "notAttempted": "Non tenté"
+  "addTag": "Ajouter {tag}",
+  "removeTag": "Retirer {tag}",
+  "tagAdded": "{tag} ajouté à votre réponse",
+  "tagRemoved": "{tag} retiré de votre réponse"
 }

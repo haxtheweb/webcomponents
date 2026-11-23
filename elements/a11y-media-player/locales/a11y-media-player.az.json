@@ -42,5 +42,8 @@
   "belowLabel": "Aşağı",
   "leftLabel": "Sol",
   "rightLabel": "Sağ",
-  "hideTranscriptLabel": "Transkripti gizlət"
+  "hideTranscriptLabel": "Transkripti gizlət",
+  "youtubeConsentNotice": "Bu video YouTube-dan oynadılır. Google sizin IP ünvanınızı alacaq və kukilər yerləşdirə bilər.",
+  "youtubeConsentAllow": "YouTube-a həmişə icazə ver",
+  "consentChoicesLabel": "Məxfilik seçimləri"
 }

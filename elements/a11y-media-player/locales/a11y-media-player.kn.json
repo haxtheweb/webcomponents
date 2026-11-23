@@ -42,5 +42,8 @@
   "belowLabel": "ಕೆಳಗೆ",
   "leftLabel": "ಎಡ",
   "rightLabel": "ಬಲ",
-  "hideTranscriptLabel": "ಪ್ರತಿಲೇಖನ ಮರೆಮಾಡಿ"
+  "hideTranscriptLabel": "ಪ್ರತಿಲೇಖನ ಮರೆಮಾಡಿ",
+  "youtubeConsentNotice": "ಈ ವೀಡಿಯೊ YouTube ನಿಂದ ಪ್ಲೇ ಆಗುತ್ತದೆ. Google ನಿಮ್ಮ IP ವಿಳಾಸವನ್ನು ಪಡೆಯುತ್ತದೆ ಮತ್ತು ಕುಕೀಗಳನ್ನು ಹೊಂದಿಸಬಹುದು.",
+  "youtubeConsentAllow": "YouTube ಅನ್ನು ಯಾವಾಗಲೂ ಅನುಮತಿಸಿ",
+  "consentChoicesLabel": "ಗೌಪ್ಯತೆ ಆಯ್ಕೆಗಳು"
 }

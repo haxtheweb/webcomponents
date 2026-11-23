@@ -78,7 +78,10 @@
           "messy-hair": "Yzly bulaşyk saç",
           "sparkle-selects": "Sparkle Selects (kaska)",
           "saber-cats": "Saber Cats (kaska)",
-          "future-traveler": "Future Traveler (kaska)"
+          "future-traveler": "Future Traveler (kaska)",
+          "pilgrim": "Zyýaratçy başgaby",
+          "bonnet": "Zyýaratçy kapory",
+          "turkey": "Hindi towugy kapýuşony"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (myhman)",
           "icers": "Icers (öý)",
           "icers-away": "Icers (myhman)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Zyýaratçy (oglan)",
+          "pilgrim-girl": "Zyýaratçy (gyz)",
+          "turkey": "Hindi towugy"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Gaýka açary",
           "hockey-stick-pink": "Hokkeý taýagy (gülgüne)",
           "hockey-stick-green": "Hokkeý taýagy (ýaşyl)",
-          "sparkle-flag": "Sparkle Selects (baýdak)"
+          "sparkle-flag": "Sparkle Selects (baýdak)",
+          "corn": "Mekgejöwen gülpüsi",
+          "drumstick": "Hindi towugynyň budy"
         }
       },
       {

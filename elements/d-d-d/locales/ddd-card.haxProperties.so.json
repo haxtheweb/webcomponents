@@ -66,6 +66,16 @@
           "_top": "Daaqadda sare - _top",
           "_parent": "Daaqadda waalidka - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Jiif",
+        "description": "Sawirka dhig qoraalka dhinaciisa halkii aad dushiisa dhigi lahayd."
+      },
+      {
+        "property": "clickable",
+        "title": "Kaarka oo dhan waa xiriirka",
+        "description": "Kaarka oo dhan ka dhig xiriirka oo qari badhanka. Wuxuu u baahan yahay xiriir."
       }
     ],
     "developer": [

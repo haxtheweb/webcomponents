@@ -42,5 +42,8 @@
   "belowLabel": "Niðanfyri",
   "leftLabel": "Vinstra",
   "rightLabel": "Høgra",
-  "hideTranscriptLabel": "Fjal uppskrift"
+  "hideTranscriptLabel": "Fjal uppskrift",
+  "youtubeConsentNotice": "Hetta sjónbandið verður spælt frá YouTube. Google fær IP-adressuna hjá tær og kann seta cookies.",
+  "youtubeConsentAllow": "Loyv altíð YouTube",
+  "consentChoicesLabel": "Privatlívsval"
 }

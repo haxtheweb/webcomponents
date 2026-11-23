@@ -22,6 +22,15 @@
       {
         "title": "Vastaukset",
         "description": "Vastausten järjestys määrittää oikean järjestyksen."
+      },
+      {
+        "property": "layout",
+        "title": "Asettelu",
+        "description": "Luettelo: vastaukset pinottuina riveihin. Kuvakortit: rivittyvä korttirivi, jokaisessa oma kuva sekä painikkeet aiemmaksi / myöhemmäksi siirtämiseen.",
+        "options": {
+          "": "Luettelo",
+          "cards": "Kuvakortit"
+        }
       }
     ],
     "advanced": [

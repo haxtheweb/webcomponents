@@ -78,7 +78,10 @@
           "messy-hair": "Capelli spettinati con cicatrice",
           "sparkle-selects": "Sparkle Selects (casco)",
           "saber-cats": "Saber Cats (casco)",
-          "future-traveler": "Future Traveler (casco)"
+          "future-traveler": "Future Traveler (casco)",
+          "pilgrim": "Cappello da pellegrino",
+          "bonnet": "Cuffia da pellegrina",
+          "turkey": "Cappuccio da tacchino"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (trasferta)",
           "icers": "Icers (casa)",
           "icers-away": "Icers (trasferta)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pellegrino (bambino)",
+          "pilgrim-girl": "Pellegrina (bambina)",
+          "turkey": "Tacchino"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Chiave inglese",
           "hockey-stick-pink": "Mazza da hockey (rosa)",
           "hockey-stick-green": "Mazza da hockey (verde)",
-          "sparkle-flag": "Sparkle Selects (bandiera)"
+          "sparkle-flag": "Sparkle Selects (bandiera)",
+          "corn": "Pannocchia",
+          "drumstick": "Coscia di tacchino"
         }
       },
       {

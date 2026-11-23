@@ -45,8 +45,12 @@
   "hideDirections": "Itago ang mga direksyon",
   "showRelatedContent": "Ipakita ang kaugnay na nilalaman",
   "hideRelatedContent": "Itago ang kaugnay na nilalaman",
+  "notAttempted": "Hindi pa nasubukan",
   "yourTags": "Ang sagot mo",
   "availableTags": "Mga tag na mapagpipilian",
   "dropTagsHere": "Pumili ng mga tag sa ibaba o i-drag dito",
-  "notAttempted": "Hindi pa nasubukan"
+  "addTag": "Idagdag ang {tag}",
+  "removeTag": "Alisin ang {tag}",
+  "tagAdded": "Naidagdag ang {tag} sa iyong sagot",
+  "tagRemoved": "Inalis ang {tag} sa iyong sagot"
 }

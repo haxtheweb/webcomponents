@@ -18,6 +18,11 @@
       {
         "title": "Bal'ina bakkeewwan ijoo",
         "description": "Bakkeewwan ijoo walqunnamtii kaartaa suuraa irratti."
+      },
+      {
+        "property": "src",
+        "title": "Suuraa",
+        "description": "Suuraa SVG kan bakkeewwan cuqaasamuu danda'an itti agarsiisan."
       }
     ]
   }

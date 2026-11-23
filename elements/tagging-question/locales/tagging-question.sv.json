@@ -45,8 +45,12 @@
   "hideDirections": "Dölj anvisningar",
   "showRelatedContent": "Visa relaterat innehåll",
   "hideRelatedContent": "Dölj relaterat innehåll",
+  "notAttempted": "Inte försökt",
   "yourTags": "Ditt svar",
   "availableTags": "Taggar att välja bland",
   "dropTagsHere": "Välj taggar nedan eller dra dem hit",
-  "notAttempted": "Inte försökt"
+  "addTag": "Lägg till {tag}",
+  "removeTag": "Ta bort {tag}",
+  "tagAdded": "{tag} har lagts till i ditt svar",
+  "tagRemoved": "{tag} har tagits bort från ditt svar"
 }

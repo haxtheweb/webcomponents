@@ -42,5 +42,8 @@
   "belowLabel": "Chini",
   "leftLabel": "Kushoto",
   "rightLabel": "Kulia",
-  "hideTranscriptLabel": "Ficha nakala ya maandishi"
+  "hideTranscriptLabel": "Ficha nakala ya maandishi",
+  "youtubeConsentNotice": "Video hii inachezwa kutoka YouTube. Google itapokea anwani yako ya IP na huenda ikaweka vidakuzi.",
+  "youtubeConsentAllow": "Ruhusu YouTube kila wakati",
+  "consentChoicesLabel": "Chaguo za faragha"
 }

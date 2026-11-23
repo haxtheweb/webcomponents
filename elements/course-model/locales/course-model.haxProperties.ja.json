@@ -31,11 +31,20 @@
       },
       {
         "title": "理解度チェックエリア"
+      },
+      {
+        "property": "title",
+        "title": "タイトル",
+        "description": "コースモデルの上に表示される見出し。"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ロゴエリア"
+      },
+      {
+        "slot": "logo",
         "title": "ロゴエリア"
       }
     ]

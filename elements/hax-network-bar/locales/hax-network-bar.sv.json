@@ -6,6 +6,8 @@
   "tryAbout": "Använd HAX direkt i den här webbläsarfliken. Inget att installera.",
   "learn": "Lär",
   "learnAbout": "Handledningar som lär ut HAX ett flöde i taget.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: där studenter och juniora utvecklare lär sig genom att leverera riktigt HAX-arbete.",
   "elements": "Webbkomponenter",
   "elementsAbout": "Varje HAX-element, med livedemor och genomgångar.",
   "cloud": "PRAW",

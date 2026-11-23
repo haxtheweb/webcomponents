@@ -31,11 +31,20 @@
       },
       {
         "title": "ພື້ນທີ່ກວດສອບຄວາມຮູ້"
+      },
+      {
+        "property": "title",
+        "title": "ຫົວຂໍ້",
+        "description": "ຫົວຂໍ້ທີ່ສະແດງຢູ່ເທິງແບບຈຳລອງຫຼັກສູດ."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ພື້ນທີ່ໂລໂກ້"
+      },
+      {
+        "slot": "logo",
         "title": "ພື້ນທີ່ໂລໂກ້"
       }
     ]

@@ -42,5 +42,8 @@
   "belowLabel": "පහළින්",
   "leftLabel": "වම",
   "rightLabel": "දකුණ",
-  "hideTranscriptLabel": "පිටපත සඟවන්න"
+  "hideTranscriptLabel": "පිටපත සඟවන්න",
+  "youtubeConsentNotice": "මෙම වීඩියෝව YouTube වෙතින් ධාවනය වේ. Google ඔබේ IP ලිපිනය ලබා ගන්නා අතර කුකීස් සැකසිය හැක.",
+  "youtubeConsentAllow": "සැමවිටම YouTube වලට ඉඩ දෙන්න",
+  "consentChoicesLabel": "පෞද්ගලිකත්ව තේරීම්"
 }

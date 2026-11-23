@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia에서",
   "readFullArticle": "Wikipedia에서 전체 글 읽기",
-  "reading": "읽기"
+  "reading": "읽기",
+  "couldNotLoad": "글을 불러오지 못했습니다. 위의 링크를 사용해 Wikipedia에서 읽으세요."
 }

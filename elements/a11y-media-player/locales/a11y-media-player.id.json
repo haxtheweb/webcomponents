@@ -42,5 +42,8 @@
   "belowLabel": "Bawah",
   "leftLabel": "Kiri",
   "rightLabel": "Kanan",
-  "hideTranscriptLabel": "Sembunyikan transkrip"
+  "hideTranscriptLabel": "Sembunyikan transkrip",
+  "youtubeConsentNotice": "Video ini diputar dari YouTube. Google akan menerima alamat IP Anda dan mungkin menyimpan cookie.",
+  "youtubeConsentAllow": "Selalu izinkan YouTube",
+  "consentChoicesLabel": "Pilihan privasi"
 }

@@ -31,11 +31,20 @@
       },
       {
         "title": "ਗਿਆਨ ਜਾਂਚ ਖੇਤਰ"
+      },
+      {
+        "property": "title",
+        "title": "ਸਿਰਲੇਖ",
+        "description": "ਕੋਰਸ ਮਾਡਲ ਦੇ ਉੱਪਰ ਦਿਖਾਇਆ ਜਾਣ ਵਾਲਾ ਸਿਰਲੇਖ।"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ਲੋਗੋ ਖੇਤਰ"
+      },
+      {
+        "slot": "logo",
         "title": "ਲੋਗੋ ਖੇਤਰ"
       }
     ]

@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia-гаас",
   "readFullArticle": "Wikipedia дээрх нийтлэлийг бүтнээр нь унших",
-  "reading": "Унших"
+  "reading": "Унших",
+  "couldNotLoad": "Нийтлэлийг ачаалж чадсангүй. Wikipedia дээр уншихын тулд дээрх холбоосыг ашиглана уу."
 }

@@ -31,11 +31,20 @@
       },
       {
         "title": "Żona tal-Verifika tal-Għarfien"
+      },
+      {
+        "property": "title",
+        "title": "Titlu",
+        "description": "Intestatura murija fuq il-mudell tal-kors."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Żona tal-logo"
+      },
+      {
+        "slot": "logo",
         "title": "Żona tal-logo"
       }
     ]

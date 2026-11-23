@@ -1,0 +1,6 @@
+{
+  "grades": "Cijfers",
+  "gradeLetter": "Cijfer {letter}",
+  "score": "Score",
+  "scoreFor": "Score voor {label}"
+}

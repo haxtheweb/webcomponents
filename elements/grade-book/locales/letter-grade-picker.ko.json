@@ -1,0 +1,6 @@
+{
+  "grades": "성적",
+  "gradeLetter": "{letter} 등급",
+  "score": "점수",
+  "scoreFor": "{label} 점수"
+}

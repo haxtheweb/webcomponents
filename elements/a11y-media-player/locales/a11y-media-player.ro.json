@@ -42,5 +42,8 @@
   "belowLabel": "Dedesubt",
   "leftLabel": "Stânga",
   "rightLabel": "Dreapta",
-  "hideTranscriptLabel": "Ascunde transcrierea"
+  "hideTranscriptLabel": "Ascunde transcrierea",
+  "youtubeConsentNotice": "Acest videoclip este redat de pe YouTube. Google va primi adresa dvs. IP și poate seta cookie-uri.",
+  "youtubeConsentAllow": "Permite întotdeauna YouTube",
+  "consentChoicesLabel": "Opțiuni de confidențialitate"
 }

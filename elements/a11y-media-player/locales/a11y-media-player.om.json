@@ -42,5 +42,8 @@
   "belowLabel": "Gadi",
   "leftLabel": "Bitaa",
   "rightLabel": "Mirga",
-  "hideTranscriptLabel": "Barreeffama sagalee dhoksi"
+  "hideTranscriptLabel": "Barreeffama sagalee dhoksi",
+  "youtubeConsentNotice": "Viidiyoon kun YouTube irraa taphata. Google teessoo IP kee ni argata, kuukiiwwanis kaa'uu danda'a.",
+  "youtubeConsentAllow": "YouTube yeroo hunda hayyami",
+  "consentChoicesLabel": "Filannoowwan dhuunfaa"
 }

@@ -18,6 +18,11 @@
       {
         "title": "Detalji aktivnih tačaka",
         "description": "Interaktivne aktivne tačke na mapi slike."
+      },
+      {
+        "property": "src",
+        "title": "Slika",
+        "description": "SVG slika na koju pokazuju aktivne tačke."
       }
     ]
   }

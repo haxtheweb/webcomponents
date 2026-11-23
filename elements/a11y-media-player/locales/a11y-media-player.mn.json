@@ -42,5 +42,8 @@
   "belowLabel": "Доор",
   "leftLabel": "Зүүн",
   "rightLabel": "Баруун",
-  "hideTranscriptLabel": "Бичвэрийг нуух"
+  "hideTranscriptLabel": "Бичвэрийг нуух",
+  "youtubeConsentNotice": "Энэ видео YouTube-ээс тоглогдоно. Google таны IP хаягийг авч, күүки тавьж болзошгүй.",
+  "youtubeConsentAllow": "YouTube-г үргэлж зөвшөөрөх",
+  "consentChoicesLabel": "Нууцлалын сонголтууд"
 }

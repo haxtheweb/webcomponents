@@ -78,7 +78,10 @@
           "messy-hair": "Cabelo bagunçado com cicatriz",
           "sparkle-selects": "Sparkle Selects (capacete)",
           "saber-cats": "Saber Cats (capacete)",
-          "future-traveler": "Future Traveler (capacete)"
+          "future-traveler": "Future Traveler (capacete)",
+          "pilgrim": "Chapéu de peregrino",
+          "bonnet": "Touca de peregrina",
+          "turkey": "Capuz de peru"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (fora)",
           "icers": "Icers (casa)",
           "icers-away": "Icers (fora)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Peregrino (menino)",
+          "pilgrim-girl": "Peregrina (menina)",
+          "turkey": "Peru"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Chave inglesa",
           "hockey-stick-pink": "Taco de hóquei (rosa)",
           "hockey-stick-green": "Taco de hóquei (verde)",
-          "sparkle-flag": "Sparkle Selects (bandeira)"
+          "sparkle-flag": "Sparkle Selects (bandeira)",
+          "corn": "Espiga de milho",
+          "drumstick": "Coxa de peru"
         }
       },
       {

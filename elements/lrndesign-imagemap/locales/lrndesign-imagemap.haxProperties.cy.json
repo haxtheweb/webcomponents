@@ -18,6 +18,11 @@
       {
         "title": "Manylion mannau poeth",
         "description": "Y mannau poeth rhyngweithiol ar y map delwedd."
+      },
+      {
+        "property": "src",
+        "title": "Delwedd",
+        "description": "Delwedd SVG y mae'r mannau poeth yn pwyntio ati."
       }
     ]
   }

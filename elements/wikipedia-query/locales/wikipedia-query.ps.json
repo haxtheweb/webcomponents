@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "له Wikipedia څخه",
   "readFullArticle": "په Wikipedia کې بشپړه مقاله ولولئ",
-  "reading": "لوستل"
+  "reading": "لوستل",
+  "couldNotLoad": "مقاله نه شوه راوړل کېدای. په Wikipedia کې د لوستلو لپاره پورته لینک وکاروئ."
 }

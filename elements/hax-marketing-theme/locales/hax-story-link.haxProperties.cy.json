@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, tiwtorial",
           "try": "browser.hax.cloud, rhowch gynnig arni",
           "elements": "webcomponents.hax.cloud, bloc",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

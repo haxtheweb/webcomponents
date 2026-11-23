@@ -6,6 +6,8 @@
   "tryAbout": "Utilisez HAX tout de suite dans cet onglet. Rien à installer.",
   "learn": "Apprendre",
   "learnAbout": "Des tutoriels qui enseignent HAX un parcours à la fois.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab : là où étudiants et développeurs débutants apprennent en livrant du vrai travail HAX.",
   "elements": "Composants web",
   "elementsAbout": "Chaque élément HAX, avec démos en direct et guides pas à pas.",
   "cloud": "PRAW",

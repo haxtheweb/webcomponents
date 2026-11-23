@@ -78,7 +78,10 @@
           "messy-hair": "Rifeensa faca'aa mallattoo madaa qabu",
           "sparkle-selects": "Sparkle Selects (gonfoo)",
           "saber-cats": "Saber Cats (gonfoo)",
-          "future-traveler": "Future Traveler (gonfoo)"
+          "future-traveler": "Future Traveler (gonfoo)",
+          "pilgrim": "Qoobii imalaa amantii",
+          "bonnet": "Qoobii dubartii imalaa amantii",
+          "turkey": "Qoobii kolonii tarkii"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (alaa)",
           "icers": "Icers (mana)",
           "icers-away": "Icers (alaa)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Imalaa amantii (dhiira)",
+          "pilgrim-girl": "Imaltuu amantii (shamarree)",
+          "turkey": "Kolonii tarkii"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Ispaanara",
           "hockey-stick-pink": "Ulee hoogii (diimaa ifaa)",
           "hockey-stick-green": "Ulee hoogii (magariisa)",
-          "sparkle-flag": "Sparkle Selects (alaabaa)"
+          "sparkle-flag": "Sparkle Selects (alaabaa)",
+          "corn": "Muuqa boqqolloo",
+          "drumstick": "Miila kolonii tarkii"
         }
       },
       {

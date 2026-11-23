@@ -42,5 +42,8 @@
   "belowLabel": "Aşak",
   "leftLabel": "Çep",
   "rightLabel": "Sag",
-  "hideTranscriptLabel": "Transkripti gizle"
+  "hideTranscriptLabel": "Transkripti gizle",
+  "youtubeConsentNotice": "Bu wideo YouTube-dan oýnaýar. Google siziň IP salgyňyzy alar we kukileri goýup biler.",
+  "youtubeConsentAllow": "YouTube-a hemişe rugsat ber",
+  "consentChoicesLabel": "Gizlinlik saýlawlary"
 }

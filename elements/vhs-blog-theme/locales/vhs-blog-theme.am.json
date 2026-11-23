@@ -73,5 +73,6 @@
   "padStart": "Start፦ ገጽዎን ያትሙ",
   "padB": "B፦ የመጨረሻውን ብሎክ መልስ",
   "padA": "A፦ ብሎክ ያዝ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "የጨዋታ መቆጣጠሪያውን አንሳ"
 }

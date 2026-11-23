@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "O Wikipedia",
   "readFullArticle": "Darllenwch yr erthygl lawn ar Wikipedia",
-  "reading": "Darllen"
+  "reading": "Darllen",
+  "couldNotLoad": "Nid oedd modd llwytho'r erthygl. Defnyddiwch y ddolen uchod i'w darllen ar Wikipedia."
 }

@@ -78,7 +78,10 @@
           "messy-hair": "نشان والے کھلرے وال",
           "sparkle-selects": "Sparkle Selects (ہیلمٹ)",
           "saber-cats": "Saber Cats (ہیلمٹ)",
-          "future-traveler": "Future Traveler (ہیلمٹ)"
+          "future-traveler": "Future Traveler (ہیلمٹ)",
+          "pilgrim": "پلگرم ٹوپی",
+          "bonnet": "پلگرم بونٹ",
+          "turkey": "ٹرکی ٹوپ"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (باہر)",
           "icers": "Icers (گھر)",
           "icers-away": "Icers (باہر)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "پلگرم (منڈا)",
+          "pilgrim-girl": "پلگرم (کڑی)",
+          "turkey": "ٹرکی"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "پانا",
           "hockey-stick-pink": "ہاکی سٹک (گلابی)",
           "hockey-stick-green": "ہاکی سٹک (ہری)",
-          "sparkle-flag": "Sparkle Selects (جھنڈا)"
+          "sparkle-flag": "Sparkle Selects (جھنڈا)",
+          "corn": "مکئی دی چھلی",
+          "drumstick": "ٹرکی دی لت"
         }
       },
       {

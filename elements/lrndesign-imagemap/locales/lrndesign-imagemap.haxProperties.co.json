@@ -18,6 +18,11 @@
       {
         "title": "Ditagli di i punti attivi",
         "description": "I punti attivi interattivi nant'à a carta di maghjina."
+      },
+      {
+        "property": "src",
+        "title": "Imagine",
+        "description": "Imagine SVG à a quale puntanu e zone attive."
       }
     ]
   }

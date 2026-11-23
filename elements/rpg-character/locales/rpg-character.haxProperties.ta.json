@@ -78,7 +78,10 @@
           "messy-hair": "தழும்புடன் கலைந்த முடி",
           "sparkle-selects": "Sparkle Selects (தலைக்கவசம்)",
           "saber-cats": "Saber Cats (தலைக்கவசம்)",
-          "future-traveler": "Future Traveler (தலைக்கவசம்)"
+          "future-traveler": "Future Traveler (தலைக்கவசம்)",
+          "pilgrim": "யாத்ரீகர் தொப்பி",
+          "bonnet": "யாத்ரீகப் பெண் தலைக்கவசம்",
+          "turkey": "வான்கோழி முக்காடு"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (வெளியூர்)",
           "icers": "Icers (உள்ளூர்)",
           "icers-away": "Icers (வெளியூர்)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "யாத்ரீகர் (சிறுவன்)",
+          "pilgrim-girl": "யாத்ரீகர் (சிறுமி)",
+          "turkey": "வான்கோழி"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "திருகுக் குறடு",
           "hockey-stick-pink": "ஹாக்கி மட்டை (இளஞ்சிவப்பு)",
           "hockey-stick-green": "ஹாக்கி மட்டை (பச்சை)",
-          "sparkle-flag": "Sparkle Selects (கொடி)"
+          "sparkle-flag": "Sparkle Selects (கொடி)",
+          "corn": "சோளக்கதிர்",
+          "drumstick": "வான்கோழிக் கால்"
         }
       },
       {

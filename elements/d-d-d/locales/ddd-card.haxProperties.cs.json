@@ -66,6 +66,16 @@
           "_top": "Horní okno - _top",
           "_parent": "Nadřazené okno - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vodorovně",
+        "description": "Umístit obrázek vedle textu místo nad něj."
+      },
+      {
+        "property": "clickable",
+        "title": "Celá karta je odkaz",
+        "description": "Udělá z celé karty odkaz a skryje tlačítko. Vyžaduje odkaz."
       }
     ],
     "developer": [

@@ -42,5 +42,8 @@
   "belowLabel": "नीचे",
   "leftLabel": "बाएँ",
   "rightLabel": "दाएँ",
-  "hideTranscriptLabel": "ट्रांसक्रिप्ट छिपाएँ"
+  "hideTranscriptLabel": "ट्रांसक्रिप्ट छिपाएँ",
+  "youtubeConsentNotice": "यह वीडियो YouTube से चलता है। Google को आपका IP पता मिलेगा और वह कुकीज़ सेट कर सकता है।",
+  "youtubeConsentAllow": "YouTube को हमेशा अनुमति दें",
+  "consentChoicesLabel": "गोपनीयता विकल्प"
 }

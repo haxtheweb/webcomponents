@@ -45,8 +45,12 @@
   "hideDirections": "លាក់សេចក្ដីណែនាំ",
   "showRelatedContent": "បង្ហាញខ្លឹមសារពាក់ព័ន្ធ",
   "hideRelatedContent": "លាក់ខ្លឹមសារពាក់ព័ន្ធ",
+  "notAttempted": "មិនបានព្យាយាម",
   "yourTags": "ចម្លើយរបស់អ្នក",
   "availableTags": "ស្លាកសម្រាប់ជ្រើសរើស",
   "dropTagsHere": "ជ្រើសរើសស្លាកខាងក្រោម ឬអូសមកទីនេះ",
-  "notAttempted": "មិនបានព្យាយាម"
+  "addTag": "បន្ថែម {tag}",
+  "removeTag": "ដក {tag} ចេញ",
+  "tagAdded": "បានបន្ថែម {tag} ទៅចម្លើយរបស់អ្នក",
+  "tagRemoved": "បានដក {tag} ចេញពីចម្លើយរបស់អ្នក"
 }

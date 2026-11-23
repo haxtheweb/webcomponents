@@ -78,7 +78,10 @@
           "messy-hair": "മുറിപ്പാടുള്ള അലങ്കോലമുടി",
           "sparkle-selects": "Sparkle Selects (ഹെൽമെറ്റ്)",
           "saber-cats": "Saber Cats (ഹെൽമെറ്റ്)",
-          "future-traveler": "Future Traveler (ഹെൽമെറ്റ്)"
+          "future-traveler": "Future Traveler (ഹെൽമെറ്റ്)",
+          "pilgrim": "തീർത്ഥാടകന്റെ തൊപ്പി",
+          "bonnet": "തീർത്ഥാടകയുടെ ബോണറ്റ്",
+          "turkey": "ടർക്കി ഹുഡ്"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (എവേ)",
           "icers": "Icers (ഹോം)",
           "icers-away": "Icers (എവേ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "തീർത്ഥാടകൻ (ആൺകുട്ടി)",
+          "pilgrim-girl": "തീർത്ഥാടക (പെൺകുട്ടി)",
+          "turkey": "ടർക്കി"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "സ്പാനർ",
           "hockey-stick-pink": "ഹോക്കി സ്റ്റിക്ക് (പിങ്ക്)",
           "hockey-stick-green": "ഹോക്കി സ്റ്റിക്ക് (പച്ച)",
-          "sparkle-flag": "Sparkle Selects (പതാക)"
+          "sparkle-flag": "Sparkle Selects (പതാക)",
+          "corn": "ചോളക്കതിർ",
+          "drumstick": "ടർക്കി കാൽ"
         }
       },
       {

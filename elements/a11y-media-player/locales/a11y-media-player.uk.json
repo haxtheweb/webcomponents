@@ -42,5 +42,8 @@
   "belowLabel": "Знизу",
   "leftLabel": "Ліворуч",
   "rightLabel": "Праворуч",
-  "hideTranscriptLabel": "Приховати транскрипцію"
+  "hideTranscriptLabel": "Приховати транскрипцію",
+  "youtubeConsentNotice": "Це відео відтворюється з YouTube. Google отримає вашу IP-адресу і може встановлювати файли cookie.",
+  "youtubeConsentAllow": "Завжди дозволяти YouTube",
+  "consentChoicesLabel": "Налаштування приватності"
 }

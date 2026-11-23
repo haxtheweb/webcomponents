@@ -22,6 +22,15 @@
       {
         "title": "Vastused",
         "description": "Vastuste järjekord määrab õige jada."
+      },
+      {
+        "property": "layout",
+        "title": "Paigutus",
+        "description": "Loend: vastused ridadena üksteise all. Pildikaardid: kaartide rida, mis murdub uuele reale, igaühel oma pilt ning nupud varasemaks / hilisemaks liigutamiseks.",
+        "options": {
+          "": "Loend",
+          "cards": "Pildikaardid"
+        }
       }
     ],
     "advanced": [

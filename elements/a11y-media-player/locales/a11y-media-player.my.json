@@ -42,5 +42,8 @@
   "belowLabel": "အောက်တွင်",
   "leftLabel": "ဘယ်",
   "rightLabel": "ညာ",
-  "hideTranscriptLabel": "စာသားမှတ်တမ်းကို ဝှက်ရန်"
+  "hideTranscriptLabel": "စာသားမှတ်တမ်းကို ဝှက်ရန်",
+  "youtubeConsentNotice": "ဤဗီဒီယိုကို YouTube မှ ဖွင့်ပါသည်။ Google သည် သင့် IP လိပ်စာကို ရရှိမည်ဖြစ်ပြီး cookies များ သတ်မှတ်နိုင်ပါသည်။",
+  "youtubeConsentAllow": "YouTube ကို အမြဲခွင့်ပြုရန်",
+  "consentChoicesLabel": "ကိုယ်ရေးလုံခြုံမှု ရွေးချယ်စရာများ"
 }

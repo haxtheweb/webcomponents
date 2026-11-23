@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipediasta",
   "readFullArticle": "Lue koko artikkeli Wikipediassa",
-  "reading": "Lukeminen"
+  "reading": "Lukeminen",
+  "couldNotLoad": "Artikkelia ei voitu ladata. Lue se Wikipediasta yllä olevan linkin kautta."
 }

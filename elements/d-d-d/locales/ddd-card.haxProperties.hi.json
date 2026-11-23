@@ -66,6 +66,16 @@
           "_top": "शीर्ष विंडो - _top",
           "_parent": "पैरेंट विंडो - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "क्षैतिज",
+        "description": "छवि को टेक्स्ट के ऊपर के बजाय उसके बगल में रखें।"
+      },
+      {
+        "property": "clickable",
+        "title": "पूरा कार्ड ही लिंक है",
+        "description": "पूरे कार्ड को लिंक बनाएँ और बटन छिपाएँ। लिंक ज़रूरी है।"
       }
     ],
     "developer": [

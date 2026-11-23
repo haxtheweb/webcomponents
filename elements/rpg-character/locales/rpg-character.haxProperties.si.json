@@ -78,7 +78,10 @@
           "messy-hair": "කැළැල සහිත අවුල් කොණ්ඩය",
           "sparkle-selects": "Sparkle Selects (හිස්වැස්ම)",
           "saber-cats": "Saber Cats (හිස්වැස්ම)",
-          "future-traveler": "Future Traveler (හිස්වැස්ම)"
+          "future-traveler": "Future Traveler (හිස්වැස්ම)",
+          "pilgrim": "වන්දනාකරු තොප්පිය",
+          "bonnet": "වන්දනාකාරිය බොනට්",
+          "turkey": "ටර්කි හුඩය"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (පිටත)",
           "icers": "Icers (නිවාස)",
           "icers-away": "Icers (පිටත)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "වන්දනාකරු (පිරිමි ළමයා)",
+          "pilgrim-girl": "වන්දනාකාරිය (ගැහැනු ළමයා)",
+          "turkey": "ටර්කි කුකුළා"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ස්පැනරය",
           "hockey-stick-pink": "හොකී කූරු (රෝස)",
           "hockey-stick-green": "හොකී කූරු (කොළ)",
-          "sparkle-flag": "Sparkle Selects (කොඩිය)"
+          "sparkle-flag": "Sparkle Selects (කොඩිය)",
+          "corn": "බඩ ඉරිඟු කරල",
+          "drumstick": "ටර්කි කකුල"
         }
       },
       {

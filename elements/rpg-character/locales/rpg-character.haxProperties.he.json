@@ -78,7 +78,10 @@
           "messy-hair": "שיער פרוע עם צלקת",
           "sparkle-selects": "Sparkle Selects (קסדה)",
           "saber-cats": "Saber Cats (קסדה)",
-          "future-traveler": "Future Traveler (קסדה)"
+          "future-traveler": "Future Traveler (קסדה)",
+          "pilgrim": "כובע צליין",
+          "bonnet": "מצנפת צליינית",
+          "turkey": "ברדס תרנגול הודו"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (חוץ)",
           "icers": "Icers (בית)",
           "icers-away": "Icers (חוץ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "צליין (בן)",
+          "pilgrim-girl": "צליינית (בת)",
+          "turkey": "תרנגול הודו"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "מפתח ברגים",
           "hockey-stick-pink": "מקל הוקי (ורוד)",
           "hockey-stick-green": "מקל הוקי (ירוקה)",
-          "sparkle-flag": "Sparkle Selects (דגל)"
+          "sparkle-flag": "Sparkle Selects (דגל)",
+          "corn": "קלח תירס",
+          "drumstick": "שוק תרנגול הודו"
         }
       },
       {

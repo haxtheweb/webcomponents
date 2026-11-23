@@ -78,7 +78,10 @@
           "messy-hair": "សក់រញ៉េរញ៉ៃមានស្លាកស្នាម",
           "sparkle-selects": "Sparkle Selects (មួកសុវត្ថិភាព)",
           "saber-cats": "Saber Cats (មួកសុវត្ថិភាព)",
-          "future-traveler": "Future Traveler (មួកសុវត្ថិភាព)"
+          "future-traveler": "Future Traveler (មួកសុវត្ថិភាព)",
+          "pilgrim": "មួកអ្នកធម្មយាត្រា",
+          "bonnet": "មួកស្ត្រីអ្នកធម្មយាត្រា",
+          "turkey": "មួកគ្របក្បាលមាន់ទួរគី"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ក្រៅ)",
           "icers": "Icers (ផ្ទះ)",
           "icers-away": "Icers (ក្រៅ)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "អ្នកធម្មយាត្រា (ក្មេងប្រុស)",
+          "pilgrim-girl": "អ្នកធម្មយាត្រា (ក្មេងស្រី)",
+          "turkey": "មាន់ទួរគី"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "ឃ្លេមួលខ្ចៅ",
           "hockey-stick-pink": "ដំបងហុកគី (ពណ៌ផ្កាឈូក)",
           "hockey-stick-green": "ដំបងហុកគី (បៃតង)",
-          "sparkle-flag": "Sparkle Selects (ទង់)"
+          "sparkle-flag": "Sparkle Selects (ទង់)",
+          "corn": "ពោតមួយផ្លែ",
+          "drumstick": "ភ្លៅមាន់ទួរគី"
         }
       },
       {

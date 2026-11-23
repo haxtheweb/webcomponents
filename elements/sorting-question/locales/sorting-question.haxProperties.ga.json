@@ -22,6 +22,15 @@
       {
         "title": "Freagraí",
         "description": "Sainmhíníonn ord na bhfreagraí an seicheamh ceart."
+      },
+      {
+        "property": "layout",
+        "title": "Leagan amach",
+        "description": "Liosta: freagraí carntha i sraitheanna. Cártaí íomhá: sraith cártaí a fhillteann, gach ceann lena íomhá agus cnaipí bog níos luaithe / níos déanaí.",
+        "options": {
+          "": "Liosta",
+          "cards": "Cártaí íomhá"
+        }
       }
     ],
     "advanced": [

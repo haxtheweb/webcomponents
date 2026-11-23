@@ -42,5 +42,8 @@
   "belowLabel": "Ibaba",
   "leftLabel": "Kaliwa",
   "rightLabel": "Kanan",
-  "hideTranscriptLabel": "Itago ang transcript"
+  "hideTranscriptLabel": "Itago ang transcript",
+  "youtubeConsentNotice": "Ang video na ito ay pinapatugtog mula sa YouTube. Matatanggap ng Google ang iyong IP address at maaari itong maglagay ng cookies.",
+  "youtubeConsentAllow": "Palaging payagan ang YouTube",
+  "consentChoicesLabel": "Mga pagpipilian sa privacy"
 }

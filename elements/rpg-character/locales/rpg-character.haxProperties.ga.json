@@ -78,7 +78,10 @@
           "messy-hair": "Gruaig aimhréidh le colm",
           "sparkle-selects": "Sparkle Selects (clogad)",
           "saber-cats": "Saber Cats (clogad)",
-          "future-traveler": "Future Traveler (clogad)"
+          "future-traveler": "Future Traveler (clogad)",
+          "pilgrim": "Hata oilithrigh",
+          "bonnet": "Bonéad oilithrigh",
+          "turkey": "Cochall turcaí"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (as baile)",
           "icers": "Icers (baile)",
           "icers-away": "Icers (as baile)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Oilithreach (buachaill)",
+          "pilgrim-girl": "Oilithreach (cailín)",
+          "turkey": "Turcaí"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Castaire",
           "hockey-stick-pink": "Maide haca (bándearg)",
           "hockey-stick-green": "Maide haca (glas)",
-          "sparkle-flag": "Sparkle Selects (bratach)"
+          "sparkle-flag": "Sparkle Selects (bratach)",
+          "corn": "Dias arbhair",
+          "drumstick": "Cos turcaí"
         }
       },
       {

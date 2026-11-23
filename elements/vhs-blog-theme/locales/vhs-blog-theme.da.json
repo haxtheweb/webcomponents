@@ -73,5 +73,6 @@
   "padStart": "Start: udgiv din side",
   "padB": "B: tag den sidste blok tilbage",
   "padA": "A: grib en blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Tag spillecontrolleren"
 }

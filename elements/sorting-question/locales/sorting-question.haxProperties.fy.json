@@ -22,6 +22,15 @@
       {
         "title": "Antwurden",
         "description": "De folchoarder fan de antwurden bepaalt de goede folchoarder."
+      },
+      {
+        "property": "layout",
+        "title": "Yndieling",
+        "description": "List: antwurden yn rigen ûnderinoar. Ôfbyldingskaarten: in rige kaarten dy't ôfbrekt, elk mei syn ôfbylding en knoppen om earder / letter te ferpleatsen.",
+        "options": {
+          "": "List",
+          "cards": "Ôfbyldingskaarten"
+        }
       }
     ],
     "advanced": [

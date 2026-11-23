@@ -42,5 +42,8 @@
   "belowLabel": "아래",
   "leftLabel": "왼쪽",
   "rightLabel": "오른쪽",
-  "hideTranscriptLabel": "스크립트 숨기기"
+  "hideTranscriptLabel": "스크립트 숨기기",
+  "youtubeConsentNotice": "이 동영상은 YouTube에서 재생됩니다. Google이 IP 주소를 받고 쿠키를 설정할 수 있습니다.",
+  "youtubeConsentAllow": "YouTube 항상 허용",
+  "consentChoicesLabel": "개인정보 선택"
 }

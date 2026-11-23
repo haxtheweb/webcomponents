@@ -31,11 +31,20 @@
       },
       {
         "title": "Vùng kiểm tra kiến thức"
+      },
+      {
+        "property": "title",
+        "title": "Tiêu đề",
+        "description": "Tiêu đề hiển thị phía trên mô hình khóa học."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Vùng logo"
+      },
+      {
+        "slot": "logo",
         "title": "Vùng logo"
       }
     ]

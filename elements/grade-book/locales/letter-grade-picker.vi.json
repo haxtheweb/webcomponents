@@ -1,0 +1,6 @@
+{
+  "grades": "Điểm",
+  "gradeLetter": "Điểm {letter}",
+  "score": "Điểm số",
+  "scoreFor": "Điểm cho {label}"
+}

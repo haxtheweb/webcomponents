@@ -31,11 +31,20 @@
       },
       {
         "title": "Билимди текшерүү аймагы"
+      },
+      {
+        "property": "title",
+        "title": "Аталыш",
+        "description": "Курс моделинин үстүндө көрсөтүлүүчү аталыш."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Логотип аймагы"
+      },
+      {
+        "slot": "logo",
         "title": "Логотип аймагы"
       }
     ]

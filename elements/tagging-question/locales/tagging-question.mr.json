@@ -45,8 +45,12 @@
   "hideDirections": "सूचना लपवा",
   "showRelatedContent": "संबंधित मजकूर दाखवा",
   "hideRelatedContent": "संबंधित मजकूर लपवा",
+  "notAttempted": "प्रयत्न केलेला नाही",
   "yourTags": "तुमचे उत्तर",
   "availableTags": "निवडण्यासाठी टॅग",
   "dropTagsHere": "खाली टॅग निवडा किंवा येथे ड्रॅग करा",
-  "notAttempted": "प्रयत्न केलेला नाही"
+  "addTag": "{tag} जोडा",
+  "removeTag": "{tag} काढा",
+  "tagAdded": "{tag} तुमच्या उत्तरात जोडले",
+  "tagRemoved": "{tag} तुमच्या उत्तरातून काढले"
 }

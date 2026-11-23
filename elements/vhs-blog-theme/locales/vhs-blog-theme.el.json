@@ -73,5 +73,6 @@
   "padStart": "Start: δημοσίευση της σελίδας σας",
   "padB": "B: πάρε πίσω το τελευταίο μπλοκ",
   "padA": "A: άρπαξε ένα μπλοκ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Πιάστε το χειριστήριο"
 }

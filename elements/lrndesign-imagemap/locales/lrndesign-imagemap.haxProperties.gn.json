@@ -18,6 +18,11 @@
       {
         "title": "Tenda tee mba'ekuaa",
         "description": "Tenda tee oñomongetáva ta'ãnga mapa-pe."
+      },
+      {
+        "property": "src",
+        "title": "Ta'anga",
+        "description": "Ta'anga SVG ohechaukahápe tenda hendýva."
       }
     ]
   }

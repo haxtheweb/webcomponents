@@ -45,8 +45,12 @@
   "hideDirections": "Skjul veiledning",
   "showRelatedContent": "Vis relatert innhold",
   "hideRelatedContent": "Skjul relatert innhold",
+  "notAttempted": "Ikke forsøkt",
   "yourTags": "Svaret ditt",
   "availableTags": "Tagger å velge mellom",
   "dropTagsHere": "Velg tagger nedenfor eller dra dem hit",
-  "notAttempted": "Ikke forsøkt"
+  "addTag": "Legg til {tag}",
+  "removeTag": "Fjern {tag}",
+  "tagAdded": "{tag} lagt til i svaret ditt",
+  "tagRemoved": "{tag} fjernet fra svaret ditt"
 }

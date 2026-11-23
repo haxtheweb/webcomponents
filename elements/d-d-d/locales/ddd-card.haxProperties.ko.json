@@ -66,6 +66,16 @@
           "_top": "최상위 창 - _top",
           "_parent": "상위 창 - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "가로",
+        "description": "이미지를 텍스트 위가 아닌 옆에 배치합니다."
+      },
+      {
+        "property": "clickable",
+        "title": "카드 전체가 링크",
+        "description": "카드 전체를 링크로 만들고 버튼을 숨깁니다. 링크가 필요합니다."
       }
     ],
     "developer": [

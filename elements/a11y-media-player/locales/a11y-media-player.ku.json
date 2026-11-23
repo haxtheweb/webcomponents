@@ -42,5 +42,8 @@
   "belowLabel": "Jêr",
   "leftLabel": "Çep",
   "rightLabel": "Rast",
-  "hideTranscriptLabel": "Transkrîpsiyonê veşêre"
+  "hideTranscriptLabel": "Transkrîpsiyonê veşêre",
+  "youtubeConsentNotice": "Ev vîdeo ji YouTube tê lêdan. Google dê navnîşana te ya IP bistîne û dibe ku cookie danîne.",
+  "youtubeConsentAllow": "Her tim destûrê bide YouTube",
+  "consentChoicesLabel": "Hilbijartinên nepeniyê"
 }

@@ -78,7 +78,10 @@
           "messy-hair": "Tóc rối có vết sẹo",
           "sparkle-selects": "Sparkle Selects (mũ bảo hiểm)",
           "saber-cats": "Saber Cats (mũ bảo hiểm)",
-          "future-traveler": "Future Traveler (mũ bảo hiểm)"
+          "future-traveler": "Future Traveler (mũ bảo hiểm)",
+          "pilgrim": "Mũ người hành hương",
+          "bonnet": "Mũ bonnet người hành hương",
+          "turkey": "Mũ trùm gà tây"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (sân khách)",
           "icers": "Icers (sân nhà)",
           "icers-away": "Icers (sân khách)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Người hành hương (nam)",
+          "pilgrim-girl": "Người hành hương (nữ)",
+          "turkey": "Gà tây"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Cờ lê",
           "hockey-stick-pink": "Gậy khúc côn cầu (hồng)",
           "hockey-stick-green": "Gậy khúc côn cầu (xanh lá)",
-          "sparkle-flag": "Sparkle Selects (cờ)"
+          "sparkle-flag": "Sparkle Selects (cờ)",
+          "corn": "Bắp ngô",
+          "drumstick": "Đùi gà tây"
         }
       },
       {

@@ -18,6 +18,11 @@
       {
         "title": "Detaloj de aktivaj punktoj",
         "description": "La interagaj aktivaj punktoj sur la bildmapo."
+      },
+      {
+        "property": "src",
+        "title": "Bildo",
+        "description": "SVG-bildo, al kiu montras la aktivaj punktoj."
       }
     ]
   }

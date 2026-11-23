@@ -31,11 +31,20 @@
       },
       {
         "title": "ज्ञान जाँच क्षेत्र"
+      },
+      {
+        "property": "title",
+        "title": "शीर्षक",
+        "description": "पाठ्यक्रम मोडेलमाथि देखाइने शीर्षक।"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "लोगो क्षेत्र"
+      },
+      {
+        "slot": "logo",
         "title": "लोगो क्षेत्र"
       }
     ]

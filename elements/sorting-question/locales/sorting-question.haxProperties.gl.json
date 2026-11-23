@@ -22,6 +22,15 @@
       {
         "title": "Respostas",
         "description": "A orde das respostas define a secuencia correcta."
+      },
+      {
+        "property": "layout",
+        "title": "Disposición",
+        "description": "Lista: respostas apiladas en filas. Tarxetas con imaxe: unha fila de tarxetas que se axusta, cada unha coa súa imaxe e botóns para mover antes / despois.",
+        "options": {
+          "": "Lista",
+          "cards": "Tarxetas con imaxe"
+        }
       }
     ],
     "advanced": [

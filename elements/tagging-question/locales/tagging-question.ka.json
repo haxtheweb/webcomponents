@@ -45,8 +45,12 @@
   "hideDirections": "ინსტრუქციის დამალვა",
   "showRelatedContent": "დაკავშირებული შინაარსის ჩვენება",
   "hideRelatedContent": "დაკავშირებული შინაარსის დამალვა",
+  "notAttempted": "არ არის ცდილი",
   "yourTags": "თქვენი პასუხი",
   "availableTags": "ტეგები არჩევისთვის",
   "dropTagsHere": "აირჩიეთ ტეგები ქვემოთ ან გადმოათრიეთ აქ",
-  "notAttempted": "არ არის ცდილი"
+  "addTag": "{tag}-ის დამატება",
+  "removeTag": "{tag}-ის წაშლა",
+  "tagAdded": "{tag} დაემატა თქვენს პასუხს",
+  "tagRemoved": "{tag} წაიშალა თქვენი პასუხიდან"
 }

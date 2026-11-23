@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "No Wikipedia",
   "readFullArticle": "Lasīt visu rakstu vietnē Wikipedia",
-  "reading": "Lasīšana"
+  "reading": "Lasīšana",
+  "couldNotLoad": "Rakstu neizdevās ielādēt. Izmantojiet saiti augstāk, lai to izlasītu Wikipedia."
 }

@@ -73,5 +73,6 @@
   "padStart": "Start: i-publish ang iyong pahina",
   "padB": "B: bawiin ang huling block",
   "padA": "A: dakmain ang isang block",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Damputin ang game controller"
 }

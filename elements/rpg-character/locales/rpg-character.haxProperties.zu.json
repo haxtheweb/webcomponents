@@ -78,7 +78,10 @@
           "messy-hair": "Izinwele ezixakile ezinesibazi",
           "sparkle-selects": "Sparkle Selects (isigqoko sokuvikela)",
           "saber-cats": "Saber Cats (isigqoko sokuvikela)",
-          "future-traveler": "Future Traveler (isigqoko sokuvikela)"
+          "future-traveler": "Future Traveler (isigqoko sokuvikela)",
+          "pilgrim": "Isigqoko se-Pilgrim",
+          "bonnet": "Ibhoneti ye-Pilgrim",
+          "turkey": "Isigqoko sekalikuni"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ngaphandle)",
           "icers": "Icers (ekhaya)",
           "icers-away": "Icers (ngaphandle)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "I-Pilgrim (umfana)",
+          "pilgrim-girl": "I-Pilgrim (intombazane)",
+          "turkey": "Ikalikuni"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Isipanela",
           "hockey-stick-pink": "Induku yehokhi (okubomvana)",
           "hockey-stick-green": "Induku yehokhi (eluhlaza)",
-          "sparkle-flag": "Sparkle Selects (ifulegi)"
+          "sparkle-flag": "Sparkle Selects (ifulegi)",
+          "corn": "Isikhwebu sombila",
+          "drumstick": "Umlenze wekalikuni"
         }
       },
       {

@@ -31,11 +31,20 @@
       },
       {
         "title": "அறிவுச் சோதனைப் பகுதி"
+      },
+      {
+        "property": "title",
+        "title": "தலைப்பு",
+        "description": "பாட மாதிரிக்கு மேலே காட்டப்படும் தலைப்பு."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "லோகோ பகுதி"
+      },
+      {
+        "slot": "logo",
         "title": "லோகோ பகுதி"
       }
     ]

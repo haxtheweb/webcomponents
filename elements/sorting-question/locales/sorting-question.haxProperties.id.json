@@ -22,6 +22,15 @@
       {
         "title": "Jawaban",
         "description": "Urutan jawaban menentukan urutan yang benar."
+      },
+      {
+        "property": "layout",
+        "title": "Tata letak",
+        "description": "Daftar: jawaban disusun dalam baris. Kartu gambar: deretan kartu yang membungkus, masing-masing dengan gambarnya dan tombol pindah lebih awal / lebih akhir.",
+        "options": {
+          "": "Daftar",
+          "cards": "Kartu gambar"
+        }
       }
     ],
     "advanced": [

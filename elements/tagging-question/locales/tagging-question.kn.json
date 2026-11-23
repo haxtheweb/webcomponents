@@ -45,8 +45,12 @@
   "hideDirections": "ಸೂಚನೆಗಳನ್ನು ಮರೆಮಾಡಿ",
   "showRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ತೋರಿಸಿ",
   "hideRelatedContent": "ಸಂಬಂಧಿತ ವಿಷಯವನ್ನು ಮರೆಮಾಡಿ",
+  "notAttempted": "ಪ್ರಯತ್ನಿಸಿಲ್ಲ",
   "yourTags": "ನಿಮ್ಮ ಉತ್ತರ",
   "availableTags": "ಆಯ್ಕೆ ಮಾಡಲು ಟ್ಯಾಗ್‌ಗಳು",
   "dropTagsHere": "ಕೆಳಗಿನ ಟ್ಯಾಗ್‌ಗಳನ್ನು ಆರಿಸಿ ಅಥವಾ ಇಲ್ಲಿಗೆ ಎಳೆಯಿರಿ",
-  "notAttempted": "ಪ್ರಯತ್ನಿಸಿಲ್ಲ"
+  "addTag": "{tag} ಸೇರಿಸಿ",
+  "removeTag": "{tag} ತೆಗೆದುಹಾಕಿ",
+  "tagAdded": "{tag} ನಿಮ್ಮ ಉತ್ತರಕ್ಕೆ ಸೇರಿಸಲಾಗಿದೆ",
+  "tagRemoved": "{tag} ನಿಮ್ಮ ಉತ್ತರದಿಂದ ತೆಗೆದುಹಾಕಲಾಗಿದೆ"
 }

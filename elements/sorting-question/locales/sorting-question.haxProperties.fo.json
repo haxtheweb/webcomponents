@@ -22,6 +22,15 @@
       {
         "title": "Svar",
         "description": "Røðin á svarunum ger røttu raðfylgjuna."
+      },
+      {
+        "property": "layout",
+        "title": "Uppseting",
+        "description": "Listi: svar stablað í røðum. Myndakort: ein røð av kortum, sum brýtur um, hvørt við síni mynd og knøttum til at flyta fyrr / seinni.",
+        "options": {
+          "": "Listi",
+          "cards": "Myndakort"
+        }
       }
     ],
     "advanced": [

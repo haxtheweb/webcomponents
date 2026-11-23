@@ -42,5 +42,8 @@
   "belowLabel": "નીચે",
   "leftLabel": "ડાબે",
   "rightLabel": "જમણે",
-  "hideTranscriptLabel": "ટ્રાન્સક્રિપ્ટ છુપાવો"
+  "hideTranscriptLabel": "ટ્રાન્સક્રિપ્ટ છુપાવો",
+  "youtubeConsentNotice": "આ વિડિયો YouTube પરથી ચાલે છે. Google ને તમારું IP સરનામું મળશે અને તે કૂકીઝ સેટ કરી શકે છે.",
+  "youtubeConsentAllow": "YouTube ને હંમેશા મંજૂરી આપો",
+  "consentChoicesLabel": "ગોપનીયતા પસંદગીઓ"
 }

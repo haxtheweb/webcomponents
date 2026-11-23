@@ -78,7 +78,10 @@
           "messy-hair": "Рошава коса с белег",
           "sparkle-selects": "Sparkle Selects (каска)",
           "saber-cats": "Saber Cats (каска)",
-          "future-traveler": "Future Traveler (каска)"
+          "future-traveler": "Future Traveler (каска)",
+          "pilgrim": "Шапка на пилигрим",
+          "bonnet": "Боне на пилигримка",
+          "turkey": "Качулка пуйка"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (гост)",
           "icers": "Icers (домакин)",
           "icers-away": "Icers (гост)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Пилигрим (момче)",
+          "pilgrim-girl": "Пилигрим (момиче)",
+          "turkey": "Пуйка"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Гаечен ключ",
           "hockey-stick-pink": "Хокейна стика (розов)",
           "hockey-stick-green": "Хокейна стика (зелен)",
-          "sparkle-flag": "Sparkle Selects (знаме)"
+          "sparkle-flag": "Sparkle Selects (знаме)",
+          "corn": "Царевичен кочан",
+          "drumstick": "Пуешко бутче"
         }
       },
       {

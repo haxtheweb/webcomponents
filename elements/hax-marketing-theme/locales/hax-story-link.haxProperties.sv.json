@@ -12,7 +12,8 @@
           "learn": "learn.hax.cloud, en handledning",
           "try": "browser.hax.cloud, prova det",
           "elements": "webcomponents.hax.cloud, ett block",
-          "web": "haxtheweb.org"
+          "web": "haxtheweb.org",
+          "lab": "lab.hax.cloud, HAX Lab"
         }
       },
       {

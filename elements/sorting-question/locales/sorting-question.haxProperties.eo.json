@@ -22,6 +22,15 @@
       {
         "title": "Respondoj",
         "description": "La ordo de la respondoj difinas la ĝustan sinsekvon."
+      },
+      {
+        "property": "layout",
+        "title": "Aranĝo",
+        "description": "Listo: respondoj stakigitaj en vicoj. Bildaj kartoj: vico de kartoj, kiu faldiĝas, ĉiu kun sia bildo kaj butonoj por movi pli frue / pli malfrue.",
+        "options": {
+          "": "Listo",
+          "cards": "Bildaj kartoj"
+        }
       }
     ],
     "advanced": [

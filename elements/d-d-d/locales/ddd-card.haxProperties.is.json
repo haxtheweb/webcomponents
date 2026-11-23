@@ -66,6 +66,16 @@
           "_top": "Efsti gluggi - _top",
           "_parent": "Yfirgluggi - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Lárétt",
+        "description": "Setja myndina við hlið textans í stað þess að vera fyrir ofan hann."
+      },
+      {
+        "property": "clickable",
+        "title": "Allt spjaldið er tengill",
+        "description": "Gera allt spjaldið að tengli og fela hnappinn. Krefst tengils."
       }
     ],
     "developer": [

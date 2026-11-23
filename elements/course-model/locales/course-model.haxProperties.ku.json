@@ -31,11 +31,20 @@
       },
       {
         "title": "Qada Kontrola Zanînê"
+      },
+      {
+        "property": "title",
+        "title": "Sernav",
+        "description": "Sernavê ku li ser modela kursê tê nîşandan."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Qada logoyê"
+      },
+      {
+        "slot": "logo",
         "title": "Qada logoyê"
       }
     ]

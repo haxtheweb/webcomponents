@@ -73,5 +73,6 @@
   "padStart": "Start: papasha iphepha lakho",
   "padB": "B: buyisa ibhloko yokugqibela",
   "padA": "A: bamba ibhloko",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Phakamisa isilawuli somdlalo"
 }

@@ -42,5 +42,8 @@
   "belowLabel": "Испод",
   "leftLabel": "Лево",
   "rightLabel": "Десно",
-  "hideTranscriptLabel": "Сакриј транскрипт"
+  "hideTranscriptLabel": "Сакриј транскрипт",
+  "youtubeConsentNotice": "Овај видео се пушта са YouTube-а. Google ће добити вашу IP адресу и може да постави колачиће.",
+  "youtubeConsentAllow": "Увек дозволи YouTube",
+  "consentChoicesLabel": "Избори приватности"
 }

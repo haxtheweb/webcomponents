@@ -73,5 +73,6 @@
   "padStart": "Start: objavi svojo stran",
   "padB": "B: vzemi nazaj zadnji blok",
   "padA": "A: zgrabi blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Primi igralni plošček"
 }

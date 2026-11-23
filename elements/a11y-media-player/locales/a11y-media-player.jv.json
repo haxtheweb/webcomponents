@@ -42,5 +42,8 @@
   "belowLabel": "Ngisor",
   "leftLabel": "Kiwa",
   "rightLabel": "Tengen",
-  "hideTranscriptLabel": "Singidake transkrip"
+  "hideTranscriptLabel": "Singidake transkrip",
+  "youtubeConsentNotice": "Video iki diputer saka YouTube. Google bakal nampa alamat IP panjenengan lan bisa masang cookie.",
+  "youtubeConsentAllow": "Tansah idini YouTube",
+  "consentChoicesLabel": "Pilihan privasi"
 }

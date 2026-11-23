@@ -66,6 +66,16 @@
           "_top": "Översta fönstret - _top",
           "_parent": "Överordnat fönster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontell",
+        "description": "Placera bilden bredvid texten i stället för ovanför."
+      },
+      {
+        "property": "clickable",
+        "title": "Hela kortet är länken",
+        "description": "Gör hela kortet till länken och dölj knappen. Kräver en länk."
       }
     ],
     "developer": [

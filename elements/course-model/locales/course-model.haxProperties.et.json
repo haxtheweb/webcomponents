@@ -31,11 +31,20 @@
       },
       {
         "title": "Teadmiste kontrolli ala"
+      },
+      {
+        "property": "title",
+        "title": "Pealkiri",
+        "description": "Kursuse mudeli kohal näidatav pealkiri."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logo ala"
+      },
+      {
+        "slot": "logo",
         "title": "Logo ala"
       }
     ]

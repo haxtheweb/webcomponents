@@ -18,6 +18,11 @@
       {
         "title": "Detalls de les zones actives",
         "description": "Les zones actives interactives del mapa d'imatge."
+      },
+      {
+        "property": "src",
+        "title": "Imatge",
+        "description": "Imatge SVG a la qual apunten els punts actius."
       }
     ]
   }

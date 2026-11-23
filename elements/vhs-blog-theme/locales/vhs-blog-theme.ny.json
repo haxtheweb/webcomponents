@@ -73,5 +73,6 @@
   "padStart": "Start: sindikizani tsamba lanu",
   "padB": "B: bwezerani gawo lomaliza",
   "padA": "A: gwirani gawo",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Tengani chowongolera masewera"
 }

@@ -73,5 +73,6 @@
   "padStart": "Start: ನಿಮ್ಮ ಪುಟ ಪ್ರಕಟಿಸಿ",
   "padB": "B: ಕೊನೆಯ ಬ್ಲಾಕ್ ಹಿಂಪಡೆ",
   "padA": "A: ಬ್ಲಾಕ್ ಹಿಡಿ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "ಗೇಮ್ ಕಂಟ್ರೋಲರ್ ಎತ್ತಿಕೊಳ್ಳಿ"
 }

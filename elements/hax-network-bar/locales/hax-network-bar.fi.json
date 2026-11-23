@@ -6,6 +6,8 @@
   "tryAbout": "Käytä HAXia heti tässä selainvälilehdessä. Mitään ei tarvitse asentaa.",
   "learn": "Opi",
   "learnAbout": "Opetusohjelmia, jotka opettavat HAXia työnkulku kerrallaan.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: paikka, jossa opiskelijat ja nuoremmat kehittäjät oppivat julkaisemalla oikeaa HAX-työtä.",
   "elements": "Web-komponentit",
   "elementsAbout": "Jokainen HAX-elementti, live-demoineen ja läpikäynteineen.",
   "cloud": "PRAW",

@@ -66,6 +66,16 @@
           "_top": "Zenera lapamwamba - _top",
           "_parent": "Zenera la kholo - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Mopingasa",
+        "description": "Ikani chithunzi pambali pa mawu m'malo mwa pamwamba pake."
+      },
+      {
+        "property": "clickable",
+        "title": "Khadi lonse ndi ulalo",
+        "description": "Pangani khadi lonse kukhala ulalo ndipo bisani batani. Pakufunika ulalo."
       }
     ],
     "developer": [

@@ -66,6 +66,16 @@
           "_top": "Goiko leihoa - _top",
           "_parent": "Leiho gurasoa - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontala",
+        "description": "Jarri irudia testuaren ondoan, gainean beharrean."
+      },
+      {
+        "property": "clickable",
+        "title": "Txartel osoa da esteka",
+        "description": "Bihurtu txartel osoa esteka eta ezkutatu botoia. Esteka bat behar du."
       }
     ],
     "developer": [

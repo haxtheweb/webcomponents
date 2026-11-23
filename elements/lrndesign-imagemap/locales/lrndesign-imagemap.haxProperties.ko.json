@@ -18,6 +18,11 @@
       {
         "title": "핫스팟 세부 정보",
         "description": "이미지 맵의 인터랙티브 핫스팟."
+      },
+      {
+        "property": "src",
+        "title": "이미지",
+        "description": "핫스팟이 가리키는 SVG 이미지."
       }
     ]
   }

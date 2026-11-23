@@ -42,5 +42,8 @@
   "belowLabel": "Under",
   "leftLabel": "Venstre",
   "rightLabel": "Høyre",
-  "hideTranscriptLabel": "Skjul transkripsjon"
+  "hideTranscriptLabel": "Skjul transkripsjon",
+  "youtubeConsentNotice": "Denne videoen spilles av fra YouTube. Google vil motta IP-adressen din og kan sette informasjonskapsler.",
+  "youtubeConsentAllow": "Tillat alltid YouTube",
+  "consentChoicesLabel": "Personvernvalg"
 }

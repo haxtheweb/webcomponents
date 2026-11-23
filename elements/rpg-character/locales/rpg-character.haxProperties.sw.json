@@ -78,7 +78,10 @@
           "messy-hair": "Nywele timtim zenye kovu",
           "sparkle-selects": "Sparkle Selects (kofia ngumu)",
           "saber-cats": "Saber Cats (kofia ngumu)",
-          "future-traveler": "Future Traveler (kofia ngumu)"
+          "future-traveler": "Future Traveler (kofia ngumu)",
+          "pilgrim": "Kofia ya msafiri Pilgrim",
+          "bonnet": "Boneti ya msafiri Pilgrim",
+          "turkey": "Kofia ya bata mzinga"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ugenini)",
           "icers": "Icers (nyumbani)",
           "icers-away": "Icers (ugenini)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Msafiri Pilgrim (mvulana)",
+          "pilgrim-girl": "Msafiri Pilgrim (msichana)",
+          "turkey": "Bata mzinga"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Spana",
           "hockey-stick-pink": "Kijiti cha hoki (waridi)",
           "hockey-stick-green": "Kijiti cha hoki (kijani)",
-          "sparkle-flag": "Sparkle Selects (bendera)"
+          "sparkle-flag": "Sparkle Selects (bendera)",
+          "corn": "Gunzi la mahindi",
+          "drumstick": "Paja la bata mzinga"
         }
       },
       {

@@ -42,5 +42,8 @@
   "belowLabel": "Alul",
   "leftLabel": "Balra",
   "rightLabel": "Jobbra",
-  "hideTranscriptLabel": "Átirat elrejtése"
+  "hideTranscriptLabel": "Átirat elrejtése",
+  "youtubeConsentNotice": "Ez a videó a YouTube-ról játszódik le. A Google megkapja az IP-címedet, és sütiket helyezhet el.",
+  "youtubeConsentAllow": "YouTube mindig engedélyezve",
+  "consentChoicesLabel": "Adatvédelmi beállítások"
 }

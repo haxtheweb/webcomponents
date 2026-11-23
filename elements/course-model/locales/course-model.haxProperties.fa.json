@@ -31,12 +31,21 @@
       },
       {
         "title": "ناحیه سنجش دانش"
+      },
+      {
+        "property": "title",
+        "title": "عنوان",
+        "description": "سرتیتری که بالای مدل درس نمایش داده می‌شود."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "ناحیه نشان"
+      },
+      {
+        "slot": "logo",
+        "title": "محل لوگو"
       }
     ]
   }

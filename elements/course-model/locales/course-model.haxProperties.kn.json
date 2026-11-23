@@ -31,11 +31,20 @@
       },
       {
         "title": "ಜ್ಞಾನ ಪರಿಶೀಲನೆ ಪ್ರದೇಶ"
+      },
+      {
+        "property": "title",
+        "title": "ಶೀರ್ಷಿಕೆ",
+        "description": "ಕೋರ್ಸ್ ಮಾದರಿಯ ಮೇಲೆ ತೋರಿಸುವ ಶೀರ್ಷಿಕೆ."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ಲೋಗೋ ಪ್ರದೇಶ"
+      },
+      {
+        "slot": "logo",
         "title": "ಲೋಗೋ ಪ್ರದೇಶ"
       }
     ]

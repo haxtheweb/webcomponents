@@ -42,5 +42,8 @@
   "belowLabel": "پایین",
   "leftLabel": "چپ",
   "rightLabel": "راست",
-  "hideTranscriptLabel": "پنهان کردن متن پیاده‌شده"
+  "hideTranscriptLabel": "پنهان کردن متن پیاده‌شده",
+  "youtubeConsentNotice": "این ویدیو از YouTube پخش می‌شود. Google نشانی IP شما را دریافت می‌کند و ممکن است کوکی ذخیره کند.",
+  "youtubeConsentAllow": "همیشه YouTube را مجاز کن",
+  "consentChoicesLabel": "گزینه‌های حریم خصوصی"
 }

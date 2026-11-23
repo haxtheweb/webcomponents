@@ -45,8 +45,12 @@
   "hideDirections": "Amaga les instruccions",
   "showRelatedContent": "Mostra el contingut relacionat",
   "hideRelatedContent": "Amaga el contingut relacionat",
+  "notAttempted": "No intentat",
   "yourTags": "La teva resposta",
   "availableTags": "Etiquetes per triar",
   "dropTagsHere": "Trieu etiquetes a continuació o arrossegueu-les aquí",
-  "notAttempted": "No intentat"
+  "addTag": "Afegeix {tag}",
+  "removeTag": "Elimina {tag}",
+  "tagAdded": "{tag} afegit a la teva resposta",
+  "tagRemoved": "{tag} eliminat de la teva resposta"
 }

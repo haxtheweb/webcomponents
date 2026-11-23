@@ -22,6 +22,15 @@
       {
         "title": "Jogaplar",
         "description": "Jogaplaryň tertibi dogry yzygiderligi kesgitleýär."
+      },
+      {
+        "property": "layout",
+        "title": "Ýerleşiş",
+        "description": "Sanaw: jogaplar setirlerde biri-biriniň aşagynda. Surat kartlary: aşaky setire geçýän kartlar hatary, her biriniň suraty we öňe / yza süýşürmek düwmeleri bar.",
+        "options": {
+          "": "Sanaw",
+          "cards": "Surat kartlary"
+        }
       }
     ],
     "advanced": [

@@ -78,7 +78,10 @@
           "messy-hair": "شعر فوضوي مع ندبة",
           "sparkle-selects": "Sparkle Selects (خوذة)",
           "saber-cats": "Saber Cats (خوذة)",
-          "future-traveler": "Future Traveler (خوذة)"
+          "future-traveler": "Future Traveler (خوذة)",
+          "pilgrim": "قبعة الحجّاج",
+          "bonnet": "غطاء رأس الحجّاج",
+          "turkey": "قلنسوة الديك الرومي"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (خارج الأرض)",
           "icers": "Icers (داخل الأرض)",
           "icers-away": "Icers (خارج الأرض)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "حاجّ (ولد)",
+          "pilgrim-girl": "حاجّة (بنت)",
+          "turkey": "ديك رومي"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "مفتاح ربط",
           "hockey-stick-pink": "عصا هوكي (وردي)",
           "hockey-stick-green": "عصا هوكي (أخضر)",
-          "sparkle-flag": "Sparkle Selects (علم)"
+          "sparkle-flag": "Sparkle Selects (علم)",
+          "corn": "كوز ذرة",
+          "drumstick": "فخذ ديك رومي"
         }
       },
       {

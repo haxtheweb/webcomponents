@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia-дан",
   "readFullArticle": "Wikipedia-дағы мақаланы толық оқу",
-  "reading": "Оқу"
+  "reading": "Оқу",
+  "couldNotLoad": "Мақаланы жүктеу мүмкін болмады. Оны Wikipedia-да оқу үшін жоғарыдағы сілтемені пайдаланыңыз."
 }

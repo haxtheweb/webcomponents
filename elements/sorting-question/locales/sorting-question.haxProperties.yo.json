@@ -22,6 +22,15 @@
       {
         "title": "Àwọn ìdáhùn",
         "description": "Ìtò ìdáhùn ló ń ṣàlàyé ìtẹ̀léra tó tọ̀nà."
+      },
+      {
+        "property": "layout",
+        "title": "Ìgbékalẹ̀",
+        "description": "Àtòjọ: àwọn ìdáhùn tò lé ara wọn ní ìlà. Káàdì àwòrán: ìlà káàdì tó ń bọ́ sí ìlà tuntun, ọ̀kọ̀ọ̀kan pẹ̀lú àwòrán rẹ̀ àti bọ́tìnnì ṣíwájú / sẹ́yìn.",
+        "options": {
+          "": "Àtòjọ",
+          "cards": "Káàdì àwòrán"
+        }
       }
     ],
     "advanced": [

@@ -78,7 +78,10 @@
           "messy-hair": "Gashi barkatai da tabo",
           "sparkle-selects": "Sparkle Selects (hular kariya)",
           "saber-cats": "Saber Cats (hular kariya)",
-          "future-traveler": "Future Traveler (hular kariya)"
+          "future-traveler": "Future Traveler (hular kariya)",
+          "pilgrim": "Hular mahajjaci",
+          "bonnet": "Hular mahajjaciya",
+          "turkey": "Hular talo-talo"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (waje)",
           "icers": "Icers (gida)",
           "icers-away": "Icers (waje)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Mahajjaci (yaro)",
+          "pilgrim-girl": "Mahajjaciya (yarinya)",
+          "turkey": "Talo-talo"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Sifana",
           "hockey-stick-pink": "Sandar hockey (ruwan hoda)",
           "hockey-stick-green": "Sandar hockey (kore)",
-          "sparkle-flag": "Sparkle Selects (tuta)"
+          "sparkle-flag": "Sparkle Selects (tuta)",
+          "corn": "Kwab ɗin masara",
+          "drumstick": "Cinyar talo-talo"
         }
       },
       {

@@ -45,8 +45,12 @@
   "hideDirections": "Piattà l'istruzzioni",
   "showRelatedContent": "Mustrà u cuntenutu currelatu",
   "hideRelatedContent": "Piattà u cuntenutu currelatu",
+  "notAttempted": "Micca pruvatu",
   "yourTags": "A vostra risposta",
   "availableTags": "Etichette da sceglie",
   "dropTagsHere": "Sceglie l'etichette quì sottu o tirele quì",
-  "notAttempted": "Micca pruvatu"
+  "addTag": "Aghjunghje {tag}",
+  "removeTag": "Caccià {tag}",
+  "tagAdded": "{tag} aghjuntu à a vostra risposta",
+  "tagRemoved": "{tag} cacciatu da a vostra risposta"
 }

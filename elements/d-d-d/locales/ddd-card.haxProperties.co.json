@@ -66,6 +66,16 @@
           "_top": "Finestra d'insù - _top",
           "_parent": "Finestra parente - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Orizuntale",
+        "description": "Mette l'imagine accantu à u testu invece di sopra."
+      },
+      {
+        "property": "clickable",
+        "title": "A carta sana hè u ligame",
+        "description": "Face di a carta sana u ligame è piatta u buttone. Ci vole un ligame."
       }
     ],
     "developer": [

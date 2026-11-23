@@ -31,12 +31,21 @@
       },
       {
         "title": "Limistéar Seiceála Eolais"
+      },
+      {
+        "property": "title",
+        "title": "Teideal",
+        "description": "Ceannteideal a thaispeántar os cionn mhúnla an chúrsa."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Limistéar lógó"
+      },
+      {
+        "slot": "logo",
+        "title": "Limistéar an lógó"
       }
     ]
   }

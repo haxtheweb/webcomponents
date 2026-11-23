@@ -18,6 +18,11 @@
       {
         "title": "Upplýsingar um heita reiti",
         "description": "Gagnvirku heitu reitirnir á myndakortinu."
+      },
+      {
+        "property": "src",
+        "title": "Mynd",
+        "description": "SVG-mynd sem virku svæðin vísa á."
       }
     ]
   }

@@ -78,7 +78,10 @@
           "messy-hair": "傷のあるぼさぼさ髪",
           "sparkle-selects": "Sparkle Selects（ヘルメット）",
           "saber-cats": "Saber Cats（ヘルメット）",
-          "future-traveler": "Future Traveler（ヘルメット）"
+          "future-traveler": "Future Traveler（ヘルメット）",
+          "pilgrim": "ピルグリムの帽子",
+          "bonnet": "ピルグリムのボンネット",
+          "turkey": "七面鳥のフード"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats（アウェイ）",
           "icers": "Icers（ホーム）",
           "icers-away": "Icers（アウェイ）",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "ピルグリム（男の子）",
+          "pilgrim-girl": "ピルグリム（女の子）",
+          "turkey": "七面鳥"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "レンチ",
           "hockey-stick-pink": "ホッケースティック（ピンク）",
           "hockey-stick-green": "ホッケースティック（緑）",
-          "sparkle-flag": "Sparkle Selects（旗）"
+          "sparkle-flag": "Sparkle Selects（旗）",
+          "corn": "トウモロコシ",
+          "drumstick": "七面鳥のドラムスティック"
         }
       },
       {

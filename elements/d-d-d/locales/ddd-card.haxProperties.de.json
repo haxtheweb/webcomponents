@@ -66,6 +66,16 @@
           "_top": "Oberstes Fenster - _top",
           "_parent": "Übergeordnetes Fenster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Bild neben dem Text statt darüber platzieren."
+      },
+      {
+        "property": "clickable",
+        "title": "Ganze Karte ist der Link",
+        "description": "Macht die ganze Karte zum Link und blendet die Schaltfläche aus. Benötigt einen Link."
       }
     ],
     "developer": [

@@ -31,12 +31,21 @@
       },
       {
         "title": "Област за проверка на знаењето"
+      },
+      {
+        "property": "title",
+        "title": "Наслов",
+        "description": "Наслов прикажан над моделот на курсот."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Област за лого"
+      },
+      {
+        "slot": "logo",
+        "title": "Простор за лого"
       }
     ]
   }

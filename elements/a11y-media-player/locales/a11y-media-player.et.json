@@ -42,5 +42,8 @@
   "belowLabel": "All",
   "leftLabel": "Vasakul",
   "rightLabel": "Paremal",
-  "hideTranscriptLabel": "Peida transkriptsioon"
+  "hideTranscriptLabel": "Peida transkriptsioon",
+  "youtubeConsentNotice": "See video esitatakse YouTube'ist. Google saab sinu IP-aadressi ja võib salvestada küpsiseid.",
+  "youtubeConsentAllow": "Luba YouTube alati",
+  "consentChoicesLabel": "Privaatsusvalikud"
 }

@@ -1,0 +1,6 @@
+{
+  "grades": "Arvosanat",
+  "gradeLetter": "Arvosana {letter}",
+  "score": "Pisteet",
+  "scoreFor": "Pisteet: {label}"
+}

@@ -45,8 +45,12 @@
   "hideDirections": "Vanza mirayiridzo",
   "showRelatedContent": "Ratidza zvinoenderana",
   "hideRelatedContent": "Vanza zvinoenderana",
+  "notAttempted": "Hazvina kuyedzwa",
   "yourTags": "Mhinduro yako",
   "availableTags": "Matagi ekusarudza",
   "dropTagsHere": "Sarudza matagi pazasi kana kuaakweva pano",
-  "notAttempted": "Hazvina kuyedzwa"
+  "addTag": "Wedzera {tag}",
+  "removeTag": "Bvisa {tag}",
+  "tagAdded": "{tag} yawedzerwa kumhinduro yako",
+  "tagRemoved": "{tag} yabviswa pamhinduro yako"
 }

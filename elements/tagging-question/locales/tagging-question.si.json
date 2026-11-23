@@ -45,8 +45,12 @@
   "hideDirections": "උපදෙස් සඟවන්න",
   "showRelatedContent": "අදාළ අන්තර්ගතය පෙන්වන්න",
   "hideRelatedContent": "අදාළ අන්තර්ගතය සඟවන්න",
+  "notAttempted": "උත්සාහ කර නැත",
   "yourTags": "ඔබේ පිළිතුර",
   "availableTags": "තෝරා ගැනීමට ටැග්",
   "dropTagsHere": "පහත ටැග් තෝරන්න හෝ ඒවා මෙතැනට ඇද දමන්න",
-  "notAttempted": "උත්සාහ කර නැත"
+  "addTag": "{tag} එක් කරන්න",
+  "removeTag": "{tag} ඉවත් කරන්න",
+  "tagAdded": "{tag} ඔබේ පිළිතුරට එක් කළා",
+  "tagRemoved": "{tag} ඔබේ පිළිතුරෙන් ඉවත් කළා"
 }

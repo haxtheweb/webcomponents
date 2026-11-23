@@ -45,8 +45,12 @@
   "hideDirections": "Skryť pokyny",
   "showRelatedContent": "Zobraziť súvisiaci obsah",
   "hideRelatedContent": "Skryť súvisiaci obsah",
+  "notAttempted": "Nepokúšané",
   "yourTags": "Vaša odpoveď",
   "availableTags": "Značky na výber",
   "dropTagsHere": "Vyberte značky nižšie alebo ich presuňte sem",
-  "notAttempted": "Nepokúšané"
+  "addTag": "Pridať {tag}",
+  "removeTag": "Odstrániť {tag}",
+  "tagAdded": "{tag} pridané do vašej odpovede",
+  "tagRemoved": "{tag} odstránené z vašej odpovede"
 }

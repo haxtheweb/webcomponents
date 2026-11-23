@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia'dan",
   "readFullArticle": "Makalenin tamamını Wikipedia'da okuyun",
-  "reading": "Okuma"
+  "reading": "Okuma",
+  "couldNotLoad": "Makale yüklenemedi. Wikipedia'da okumak için yukarıdaki bağlantıyı kullanın."
 }

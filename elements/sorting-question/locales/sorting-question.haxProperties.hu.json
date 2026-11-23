@@ -22,6 +22,15 @@
       {
         "title": "Válaszok",
         "description": "A válaszok sorrendje határozza meg a helyes sorrendet."
+      },
+      {
+        "property": "layout",
+        "title": "Elrendezés",
+        "description": "Lista: a válaszok sorokba rendezve. Képkártyák: tördelődő kártyasor, mindegyiken a saját képe és korábbra / későbbre mozgató gombok.",
+        "options": {
+          "": "Lista",
+          "cards": "Képkártyák"
+        }
       }
     ],
     "advanced": [

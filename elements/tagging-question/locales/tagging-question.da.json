@@ -45,8 +45,12 @@
   "hideDirections": "Skjul vejledning",
   "showRelatedContent": "Vis relateret indhold",
   "hideRelatedContent": "Skjul relateret indhold",
+  "notAttempted": "Ikke forsøgt",
   "yourTags": "Dit svar",
   "availableTags": "Tags at vælge imellem",
   "dropTagsHere": "Vælg tags nedenfor, eller træk dem hertil",
-  "notAttempted": "Ikke forsøgt"
+  "addTag": "Tilføj {tag}",
+  "removeTag": "Fjern {tag}",
+  "tagAdded": "{tag} tilføjet til dit svar",
+  "tagRemoved": "{tag} fjernet fra dit svar"
 }

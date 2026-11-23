@@ -22,6 +22,15 @@
       {
         "title": "Réponses",
         "description": "L'ordre des réponses définit la séquence correcte."
+      },
+      {
+        "property": "layout",
+        "title": "Disposition",
+        "description": "Liste : réponses empilées en lignes. Cartes illustrées : une rangée de cartes qui passe à la ligne, chacune avec son image et des boutons pour déplacer plus tôt / plus tard.",
+        "options": {
+          "": "Liste",
+          "cards": "Cartes illustrées"
+        }
       }
     ],
     "advanced": [

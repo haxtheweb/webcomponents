@@ -31,11 +31,20 @@
       },
       {
         "title": "Indawo yoVavanyo loLwazi"
+      },
+      {
+        "property": "title",
+        "title": "Isihloko",
+        "description": "Isihloko esiboniswa ngaphezu kwemodeli yekhosi."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Indawo yelogo"
+      },
+      {
+        "slot": "logo",
         "title": "Indawo yelogo"
       }
     ]

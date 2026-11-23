@@ -66,6 +66,16 @@
           "_top": "Fenêtre principale - _top",
           "_parent": "Fenêtre parente - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Placer l'image à côté du texte plutôt qu'au-dessus."
+      },
+      {
+        "property": "clickable",
+        "title": "Toute la carte est le lien",
+        "description": "Faire de toute la carte le lien et masquer le bouton. Nécessite un lien."
       }
     ],
     "developer": [

@@ -18,6 +18,11 @@
       {
         "title": "Nuqta tafsilotlari",
         "description": "Tasvir xaritasidagi interaktiv nuqtalar."
+      },
+      {
+        "property": "src",
+        "title": "Rasm",
+        "description": "Faol nuqtalar ko‘rsatadigan SVG rasm."
       }
     ]
   }

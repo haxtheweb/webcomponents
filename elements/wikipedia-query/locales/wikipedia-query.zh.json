@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "来自 Wikipedia",
   "readFullArticle": "在 Wikipedia 上阅读全文",
-  "reading": "阅读"
+  "reading": "阅读",
+  "couldNotLoad": "无法加载该文章。请使用上方的链接在 Wikipedia 上阅读。"
 }

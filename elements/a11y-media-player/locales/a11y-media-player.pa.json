@@ -42,5 +42,8 @@
   "belowLabel": "ਹੇਠਾਂ",
   "leftLabel": "ਖੱਬੇ",
   "rightLabel": "ਸੱਜੇ",
-  "hideTranscriptLabel": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ"
+  "hideTranscriptLabel": "ਟ੍ਰਾਂਸਕ੍ਰਿਪਟ ਲੁਕਾਓ",
+  "youtubeConsentNotice": "ਇਹ ਵੀਡੀਓ YouTube ਤੋਂ ਚੱਲਦਾ ਹੈ। Google ਨੂੰ ਤੁਹਾਡਾ IP ਪਤਾ ਮਿਲੇਗਾ ਅਤੇ ਉਹ ਕੂਕੀਜ਼ ਸੈੱਟ ਕਰ ਸਕਦਾ ਹੈ।",
+  "youtubeConsentAllow": "YouTube ਨੂੰ ਹਮੇਸ਼ਾ ਇਜਾਜ਼ਤ ਦਿਓ",
+  "consentChoicesLabel": "ਪਰਦੇਦਾਰੀ ਚੋਣਾਂ"
 }

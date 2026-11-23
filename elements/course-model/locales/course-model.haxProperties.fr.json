@@ -31,11 +31,20 @@
       },
       {
         "title": "Zone de vérification des connaissances"
+      },
+      {
+        "property": "title",
+        "title": "Titre",
+        "description": "Titre affiché au-dessus du modèle de cours."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Zone du logo"
+      },
+      {
+        "slot": "logo",
         "title": "Zone du logo"
       }
     ]

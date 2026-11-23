@@ -42,5 +42,8 @@
   "belowLabel": "Spodaj",
   "leftLabel": "Levo",
   "rightLabel": "Desno",
-  "hideTranscriptLabel": "Skrij prepis"
+  "hideTranscriptLabel": "Skrij prepis",
+  "youtubeConsentNotice": "Ta videoposnetek se predvaja z YouTube. Google bo prejel vaš IP naslov in lahko nastavi piškotke.",
+  "youtubeConsentAllow": "Vedno dovoli YouTube",
+  "consentChoicesLabel": "Izbire zasebnosti"
 }

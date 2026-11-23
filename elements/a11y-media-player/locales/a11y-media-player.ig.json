@@ -42,5 +42,8 @@
   "belowLabel": "N'okpuru",
   "leftLabel": "Aka ekpe",
   "rightLabel": "Aka nri",
-  "hideTranscriptLabel": "Zoo ederede olu"
+  "hideTranscriptLabel": "Zoo ederede olu",
+  "youtubeConsentNotice": "Vidiyo a na-akpọ site na YouTube. Google ga-enweta adreesị IP gị ma nwee ike idowe kuki.",
+  "youtubeConsentAllow": "Kwere YouTube mgbe niile",
+  "consentChoicesLabel": "Nhọrọ nzuzo"
 }

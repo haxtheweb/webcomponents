@@ -18,6 +18,11 @@
       {
         "title": "热点详情",
         "description": "图片热区上的交互式热点。"
+      },
+      {
+        "property": "src",
+        "title": "图片",
+        "description": "热点所指向的 SVG 图片。"
       }
     ]
   }

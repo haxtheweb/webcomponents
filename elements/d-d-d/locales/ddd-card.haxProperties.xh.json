@@ -66,6 +66,16 @@
           "_top": "Ifestile ephezulu - _top",
           "_parent": "Ifestile engumzali - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ngokuthe tyaba",
+        "description": "Beka umfanekiso ecaleni kombhalo endaweni yokuba ngaphezulu kwawo."
+      },
+      {
+        "property": "clickable",
+        "title": "Ikhadi lonke likhonkco",
+        "description": "Yenza ikhadi lonke libe likhonkco uze ufihle iqhosha. Lifuna ikhonkco."
       }
     ],
     "developer": [

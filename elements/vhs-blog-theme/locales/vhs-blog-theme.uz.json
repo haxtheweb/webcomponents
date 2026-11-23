@@ -73,5 +73,6 @@
   "padStart": "Start: sahifangizni nashr qiling",
   "padB": "B: oxirgi blokni qaytarib olish",
   "padA": "A: blok olish",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "O‘yin pultini olish"
 }

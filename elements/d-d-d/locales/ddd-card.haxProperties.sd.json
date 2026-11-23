@@ -66,6 +66,16 @@
           "_top": "مٿين ونڊو - _top",
           "_parent": "والدين ونڊو - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "افقي",
+        "description": "تصوير کي متن جي مٿان بدران ان جي ڀرسان رکو."
+      },
+      {
+        "property": "clickable",
+        "title": "سڄو ڪارڊ لنڪ آهي",
+        "description": "سڄي ڪارڊ کي لنڪ بڻايو ۽ بٽڻ لڪايو. لنڪ گهرجي."
       }
     ],
     "developer": [

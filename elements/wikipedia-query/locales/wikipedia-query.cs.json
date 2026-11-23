@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Z Wikipedia",
   "readFullArticle": "Přečtěte si celý článek na Wikipedia",
-  "reading": "Čtení"
+  "reading": "Čtení",
+  "couldNotLoad": "Článek se nepodařilo načíst. Přečtěte si ho na Wikipedia pomocí odkazu výše."
 }

@@ -42,5 +42,8 @@
   "belowLabel": "Από κάτω",
   "leftLabel": "Αριστερά",
   "rightLabel": "Δεξιά",
-  "hideTranscriptLabel": "Απόκρυψη απομαγνητοφώνησης"
+  "hideTranscriptLabel": "Απόκρυψη απομαγνητοφώνησης",
+  "youtubeConsentNotice": "Αυτό το βίντεο αναπαράγεται από το YouTube. Η Google θα λάβει τη διεύθυνση IP σας και μπορεί να ορίσει cookies.",
+  "youtubeConsentAllow": "Να επιτρέπεται πάντα το YouTube",
+  "consentChoicesLabel": "Επιλογές απορρήτου"
 }

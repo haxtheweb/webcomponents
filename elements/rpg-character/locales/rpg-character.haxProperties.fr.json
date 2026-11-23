@@ -78,7 +78,10 @@
           "messy-hair": "Cheveux en désordre avec cicatrice",
           "sparkle-selects": "Sparkle Selects (casque)",
           "saber-cats": "Saber Cats (casque)",
-          "future-traveler": "Future Traveler (casque)"
+          "future-traveler": "Future Traveler (casque)",
+          "pilgrim": "Chapeau de pèlerin",
+          "bonnet": "Coiffe de pèlerine",
+          "turkey": "Capuche de dinde"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (extérieur)",
           "icers": "Icers (domicile)",
           "icers-away": "Icers (extérieur)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pèlerin (garçon)",
+          "pilgrim-girl": "Pèlerine (fille)",
+          "turkey": "Dinde"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Clé à molette",
           "hockey-stick-pink": "Crosse de hockey (rose)",
           "hockey-stick-green": "Crosse de hockey (verte)",
-          "sparkle-flag": "Sparkle Selects (drapeau)"
+          "sparkle-flag": "Sparkle Selects (drapeau)",
+          "corn": "Épi de maïs",
+          "drumstick": "Cuisse de dinde"
         }
       },
       {

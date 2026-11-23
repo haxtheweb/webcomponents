@@ -31,11 +31,20 @@
       },
       {
         "title": "Область проверки знаний"
+      },
+      {
+        "property": "title",
+        "title": "Заголовок",
+        "description": "Заголовок над моделью курса."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Область логотипа"
+      },
+      {
+        "slot": "logo",
         "title": "Область логотипа"
       }
     ]

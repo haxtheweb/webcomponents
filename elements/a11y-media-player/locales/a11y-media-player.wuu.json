@@ -42,5 +42,8 @@
   "belowLabel": "下底",
   "leftLabel": "左边",
   "rightLabel": "右边",
-  "hideTranscriptLabel": "隐藏文字记录"
+  "hideTranscriptLabel": "隐藏文字记录",
+  "youtubeConsentNotice": "迭个视频是从 YouTube 放出来个。Google 会得到侬个 IP 地址，还可能设置 Cookie。",
+  "youtubeConsentAllow": "一直允许 YouTube",
+  "consentChoicesLabel": "隐私选项"
 }

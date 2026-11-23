@@ -73,5 +73,6 @@
   "padStart": "Start: আপনার পাতা প্রকাশ করুন",
   "padB": "B: শেষ ব্লকটি ফিরিয়ে নিন",
   "padA": "A: একটি ব্লক ধরুন",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "গেম কন্ট্রোলার তুলে নিন"
 }

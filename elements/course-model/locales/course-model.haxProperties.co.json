@@ -31,12 +31,21 @@
       },
       {
         "title": "Zona di verificazione di e cunniscenze"
+      },
+      {
+        "property": "title",
+        "title": "Titulu",
+        "description": "Titulu mustratu sopra à u mudellu di corsu."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Zona di logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Zona di u logò"
       }
     ]
   }

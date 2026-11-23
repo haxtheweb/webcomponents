@@ -31,12 +31,21 @@
       },
       {
         "title": "Area Pamriksa Kawruh"
+      },
+      {
+        "property": "title",
+        "title": "Irah-irahan",
+        "description": "Judhul sing ditampilake ing ndhuwur model kursus."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Area logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Wewengkon logo"
       }
     ]
   }

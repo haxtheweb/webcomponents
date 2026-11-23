@@ -73,5 +73,6 @@
   "padStart": "Start៖ ផ្សព្វផ្សាយទំព័ររបស់អ្នក",
   "padB": "B៖ យកប្លុកចុងក្រោយមកវិញ",
   "padA": "A៖ ចាប់យកប្លុក",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "លើកឧបករណ៍បញ្ជាហ្គេម"
 }

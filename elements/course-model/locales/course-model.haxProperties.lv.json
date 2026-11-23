@@ -31,11 +31,20 @@
       },
       {
         "title": "Zināšanu pārbaudes apgabals"
+      },
+      {
+        "property": "title",
+        "title": "Virsraksts",
+        "description": "Virsraksts, kas tiek rādīts virs kursa modeļa."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logotipa apgabals"
+      },
+      {
+        "slot": "logo",
         "title": "Logotipa apgabals"
       }
     ]

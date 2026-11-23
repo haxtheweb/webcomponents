@@ -45,8 +45,12 @@
   "hideDirections": "Huna i ngā tohutohu",
   "showRelatedContent": "Whakaatu ihirangi e hāngai ana",
   "hideRelatedContent": "Huna i ngā ihirangi e hāngai ana",
+  "notAttempted": "Kāore ano i whakamātauria",
   "yourTags": "Tō whakautu",
   "availableTags": "Ngā tūtohu hei kōwhiri",
   "dropTagsHere": "Kōwhiria ngā tūtohu i raro, tōia rānei ki konei",
-  "notAttempted": "Kāore ano i whakamātauria"
+  "addTag": "Tāpirihia {tag}",
+  "removeTag": "Tangohia {tag}",
+  "tagAdded": "Kua tāpirihia {tag} ki tō whakautu",
+  "tagRemoved": "Kua tangohia {tag} i tō whakautu"
 }

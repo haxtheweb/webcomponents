@@ -6,6 +6,8 @@
   "tryAbout": "Gamitin ang HAX ngayon din sa browser tab na ito. Walang kailangang i-install.",
   "learn": "Matuto",
   "learnAbout": "Mga tutorial na nagtuturo ng HAX isang daloy sa bawat pagkakataon.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: kung saan natututo ang mga estudyante at junior developer sa pamamagitan ng paglalabas ng totoong HAX na gawa.",
   "elements": "Mga web component",
   "elementsAbout": "Bawat HAX element, may live demo at walkthrough.",
   "cloud": "PRAW",

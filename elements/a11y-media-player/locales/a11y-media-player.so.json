@@ -42,5 +42,8 @@
   "belowLabel": "Hoostiisa",
   "leftLabel": "Bidix",
   "rightLabel": "Midig",
-  "hideTranscriptLabel": "Qari qoraalka"
+  "hideTranscriptLabel": "Qari qoraalka",
+  "youtubeConsentNotice": "Fiidiyowgan wuxuu ka ciyaarayaa YouTube. Google wuxuu heli doonaa cinwaankaaga IP wuxuuna dejin karaa cookies.",
+  "youtubeConsentAllow": "Had iyo jeer u oggolow YouTube",
+  "consentChoicesLabel": "Doorashooyinka asturnaanta"
 }

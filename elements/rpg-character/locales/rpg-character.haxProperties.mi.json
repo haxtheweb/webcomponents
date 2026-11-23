@@ -78,7 +78,10 @@
           "messy-hair": "Makawe tītengi me te nawe",
           "sparkle-selects": "Sparkle Selects (pōtae mārō)",
           "saber-cats": "Saber Cats (pōtae mārō)",
-          "future-traveler": "Future Traveler (pōtae mārō)"
+          "future-traveler": "Future Traveler (pōtae mārō)",
+          "pilgrim": "Pōtae manene",
+          "bonnet": "Pōtae wahine manene",
+          "turkey": "Pōtae taraki"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (manuhiri)",
           "icers": "Icers (kāinga)",
           "icers-away": "Icers (manuhiri)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Manene (tama)",
+          "pilgrim-girl": "Manene (kōtiro)",
+          "turkey": "Taraki"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Pāna",
           "hockey-stick-pink": "Rākau hukī (māwhero)",
           "hockey-stick-green": "Rākau hukī (kākāriki)",
-          "sparkle-flag": "Sparkle Selects (haki)"
+          "sparkle-flag": "Sparkle Selects (haki)",
+          "corn": "Kānga",
+          "drumstick": "Waewae taraki"
         }
       },
       {

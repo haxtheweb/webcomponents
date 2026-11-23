@@ -66,6 +66,16 @@
           "_top": "Iewescht Fënster - _top",
           "_parent": "Elterefënster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "D'Bild nieft den Text setzen amplaz driwwer."
+      },
+      {
+        "property": "clickable",
+        "title": "Ganz Kaart ass de Link",
+        "description": "Déi ganz Kaart zum Link maachen an de Knäppchen verstoppen. Brauch e Link."
       }
     ],
     "developer": [

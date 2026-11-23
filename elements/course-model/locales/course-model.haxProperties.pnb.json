@@ -31,12 +31,21 @@
       },
       {
         "title": "علم دی جانچ والا حصہ"
+      },
+      {
+        "property": "title",
+        "title": "سرخی",
+        "description": "کورس ماڈل دے اُتے وکھائی جاݨ والی سرخی۔"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "لوگو والا حصہ"
+      },
+      {
+        "slot": "logo",
+        "title": "لوگو دی تھاں"
       }
     ]
   }

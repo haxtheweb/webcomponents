@@ -18,6 +18,11 @@
       {
         "title": "Rincian hotspot",
         "description": "Hotspot interaktif ing peta gambar."
+      },
+      {
+        "property": "src",
+        "title": "Gambar",
+        "description": "Gambar SVG sing dituju titik-titik panas."
       }
     ]
   }

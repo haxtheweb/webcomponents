@@ -42,5 +42,8 @@
   "belowLabel": "أسفل",
   "leftLabel": "يسار",
   "rightLabel": "يمين",
-  "hideTranscriptLabel": "إخفاء النص المكتوب"
+  "hideTranscriptLabel": "إخفاء النص المكتوب",
+  "youtubeConsentNotice": "يُشغَّل هذا الفيديو من YouTube. ستتلقى Google عنوان IP الخاص بك وقد تضع ملفات تعريف الارتباط.",
+  "youtubeConsentAllow": "السماح دائمًا بـ YouTube",
+  "consentChoicesLabel": "خيارات الخصوصية"
 }

@@ -42,5 +42,8 @@
   "belowLabel": "Pod",
   "leftLabel": "Vľavo",
   "rightLabel": "Vpravo",
-  "hideTranscriptLabel": "Skryť prepis"
+  "hideTranscriptLabel": "Skryť prepis",
+  "youtubeConsentNotice": "Toto video sa prehráva z YouTube. Google dostane vašu IP adresu a môže nastaviť súbory cookie.",
+  "youtubeConsentAllow": "Vždy povoliť YouTube",
+  "consentChoicesLabel": "Možnosti ochrany súkromia"
 }

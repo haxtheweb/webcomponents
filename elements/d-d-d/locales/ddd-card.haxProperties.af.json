@@ -66,6 +66,16 @@
           "_top": "Boonste venster - _top",
           "_parent": "Ouervenster - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontaal",
+        "description": "Plaas die prent langs die teks in plaas van daarbo."
+      },
+      {
+        "property": "clickable",
+        "title": "Hele kaart is die skakel",
+        "description": "Maak die hele kaart die skakel en versteek die knoppie. Benodig 'n skakel."
       }
     ],
     "developer": [

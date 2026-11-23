@@ -78,7 +78,10 @@
           "messy-hair": "Strubbelhaar mit Narbe",
           "sparkle-selects": "Sparkle Selects (Helm)",
           "saber-cats": "Saber Cats (Helm)",
-          "future-traveler": "Future Traveler (Helm)"
+          "future-traveler": "Future Traveler (Helm)",
+          "pilgrim": "Pilgerhut",
+          "bonnet": "Pilgerhaube",
+          "turkey": "Truthahnkapuze"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (Auswärts)",
           "icers": "Icers (Heim)",
           "icers-away": "Icers (Auswärts)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilger (Junge)",
+          "pilgrim-girl": "Pilgerin (Mädchen)",
+          "turkey": "Truthahn"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Schraubenschlüssel",
           "hockey-stick-pink": "Hockeyschläger (pink)",
           "hockey-stick-green": "Hockeyschläger (grün)",
-          "sparkle-flag": "Sparkle Selects (Flagge)"
+          "sparkle-flag": "Sparkle Selects (Flagge)",
+          "corn": "Maiskolben",
+          "drumstick": "Truthahnkeule"
         }
       },
       {

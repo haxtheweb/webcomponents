@@ -78,7 +78,10 @@
           "messy-hair": "दाग भएको अस्तव्यस्त कपाल",
           "sparkle-selects": "Sparkle Selects (हेलमेट)",
           "saber-cats": "Saber Cats (हेलमेट)",
-          "future-traveler": "Future Traveler (हेलमेट)"
+          "future-traveler": "Future Traveler (हेलमेट)",
+          "pilgrim": "तीर्थयात्रीको टोपी",
+          "bonnet": "तीर्थयात्रीको बोनेट",
+          "turkey": "टर्कीको टोपी"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (बाहिरी)",
           "icers": "Icers (घरेलु)",
           "icers-away": "Icers (बाहिरी)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "तीर्थयात्री (केटा)",
+          "pilgrim-girl": "तीर्थयात्री (केटी)",
+          "turkey": "टर्की"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "रेन्च",
           "hockey-stick-pink": "हक्की स्टिक (गुलाबी)",
           "hockey-stick-green": "हक्की स्टिक (हरियो)",
-          "sparkle-flag": "Sparkle Selects (झन्डा)"
+          "sparkle-flag": "Sparkle Selects (झन्डा)",
+          "corn": "मकैको घोगा",
+          "drumstick": "टर्कीको खुट्टा"
         }
       },
       {

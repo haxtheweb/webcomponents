@@ -45,8 +45,12 @@
   "hideDirections": "Ocultar instrucciones",
   "showRelatedContent": "Mostrar contenido relacionado",
   "hideRelatedContent": "Ocultar contenido relacionado",
+  "notAttempted": "Sin intentar",
   "yourTags": "Tu respuesta",
   "availableTags": "Etiquetas para elegir",
   "dropTagsHere": "Elige etiquetas abajo o arrástralas aquí",
-  "notAttempted": "Sin intentar"
+  "addTag": "Añadir {tag}",
+  "removeTag": "Quitar {tag}",
+  "tagAdded": "{tag} añadido a tu respuesta",
+  "tagRemoved": "{tag} quitado de tu respuesta"
 }

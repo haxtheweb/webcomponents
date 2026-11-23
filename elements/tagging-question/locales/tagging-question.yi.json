@@ -45,8 +45,12 @@
   "hideDirections": "באַהאַלט אָנווײַזונגען",
   "showRelatedContent": "ווײַזט פֿאַרבונדענעם אינהאַלט",
   "hideRelatedContent": "באַהאַלט פֿאַרבונדענעם אינהאַלט",
+  "notAttempted": "נישט פרובירט",
   "yourTags": "אײַער ענטפֿער",
   "availableTags": "טאַגס צו קלײַבן",
   "dropTagsHere": "קלײַבט אויס טאַגס אונטן אָדער שלעפּט זיי אַהער",
-  "notAttempted": "נישט פרובירט"
+  "addTag": "צולייגן {tag}",
+  "removeTag": "אַראָפּנעמען {tag}",
+  "tagAdded": "{tag} צוגעלייגט צו דײַן ענטפֿער",
+  "tagRemoved": "{tag} אַראָפּגענומען פֿון דײַן ענטפֿער"
 }

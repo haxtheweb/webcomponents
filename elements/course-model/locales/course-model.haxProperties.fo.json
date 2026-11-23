@@ -31,12 +31,21 @@
       },
       {
         "title": "Øki til vitanarkanning"
+      },
+      {
+        "property": "title",
+        "title": "Heiti",
+        "description": "Yvirskrift, sum verður víst omanfyri skeiðsmyndlið."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Merkisøki"
+      },
+      {
+        "slot": "logo",
+        "title": "Logoøki"
       }
     ]
   }

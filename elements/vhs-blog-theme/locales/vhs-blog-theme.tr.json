@@ -73,5 +73,6 @@
   "padStart": "Start: sayfanı yayımla",
   "padB": "B: son bloğu geri al",
   "padA": "A: bir blok kap",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Oyun kumandasını al"
 }

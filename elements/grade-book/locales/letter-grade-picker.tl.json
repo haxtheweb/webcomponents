@@ -1,0 +1,6 @@
+{
+  "grades": "Mga grado",
+  "gradeLetter": "Gradong {letter}",
+  "score": "Iskor",
+  "scoreFor": "Iskor para sa {label}"
+}

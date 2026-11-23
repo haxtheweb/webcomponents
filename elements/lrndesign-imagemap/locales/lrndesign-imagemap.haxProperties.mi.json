@@ -18,6 +18,11 @@
       {
         "title": "Taipitopito wāhi wera",
         "description": "Ngā wāhi wera pāhekoheko i te mahere atahanga."
+      },
+      {
+        "property": "src",
+        "title": "Whakaahua",
+        "description": "Whakaahua SVG e tohu ai ngā wāhi pāwhiri."
       }
     ]
   }

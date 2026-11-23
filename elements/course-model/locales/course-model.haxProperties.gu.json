@@ -31,11 +31,20 @@
       },
       {
         "title": "જ્ઞાન ચકાસણી વિસ્તાર"
+      },
+      {
+        "property": "title",
+        "title": "શીર્ષક",
+        "description": "કોર્સ મોડેલની ઉપર દેખાતું મથાળું."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "લોગો વિસ્તાર"
+      },
+      {
+        "slot": "logo",
         "title": "લોગો વિસ્તાર"
       }
     ]

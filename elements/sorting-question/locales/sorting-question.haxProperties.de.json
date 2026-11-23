@@ -22,6 +22,15 @@
       {
         "title": "Antworten",
         "description": "Die Reihenfolge der Antworten legt die richtige Abfolge fest."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Liste: Antworten in Zeilen gestapelt. Bildkarten: eine Reihe von Karten, die umbricht, jede mit ihrem Bild und Schaltflächen zum Verschieben nach vorne / hinten.",
+        "options": {
+          "": "Liste",
+          "cards": "Bildkarten"
+        }
       }
     ],
     "advanced": [

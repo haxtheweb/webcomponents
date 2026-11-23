@@ -31,11 +31,20 @@
       },
       {
         "title": "Tudásellenőrzés területe"
+      },
+      {
+        "property": "title",
+        "title": "Cím",
+        "description": "A kurzusmodell felett megjelenő címsor."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logó területe"
+      },
+      {
+        "slot": "logo",
         "title": "Logó területe"
       }
     ]

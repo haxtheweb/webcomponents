@@ -45,8 +45,12 @@
   "hideDirections": "Fshih udhëzimet",
   "showRelatedContent": "Shfaq përmbajtjen e lidhur",
   "hideRelatedContent": "Fshih përmbajtjen e lidhur",
+  "notAttempted": "Nuk është provuar",
   "yourTags": "Përgjigjja jote",
   "availableTags": "Etiketat për të zgjedhur",
   "dropTagsHere": "Zgjidh etiketat më poshtë ose tërhiqi këtu",
-  "notAttempted": "Nuk është provuar"
+  "addTag": "Shto {tag}",
+  "removeTag": "Hiq {tag}",
+  "tagAdded": "{tag} u shtua te përgjigjja jote",
+  "tagRemoved": "{tag} u hoq nga përgjigjja jote"
 }

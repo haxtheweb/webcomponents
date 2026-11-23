@@ -22,6 +22,15 @@
       {
         "title": "Svör",
         "description": "Röð svaranna skilgreinir réttu röðina."
+      },
+      {
+        "property": "layout",
+        "title": "Uppsetning",
+        "description": "Listi: svör í röðum hvert undir öðru. Myndaspjöld: röð spjalda sem flæðir í línur, hvert með sína mynd og hnappa til að færa fyrr / síðar.",
+        "options": {
+          "": "Listi",
+          "cards": "Myndaspjöld"
+        }
       }
     ],
     "advanced": [

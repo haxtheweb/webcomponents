@@ -45,8 +45,12 @@
   "hideDirections": "Sembunyikan arahan",
   "showRelatedContent": "Tunjukkan kandungan berkaitan",
   "hideRelatedContent": "Sembunyikan kandungan berkaitan",
+  "notAttempted": "Belum dicuba",
   "yourTags": "Jawapan anda",
   "availableTags": "Teg untuk dipilih",
   "dropTagsHere": "Pilih teg di bawah atau seret ke sini",
-  "notAttempted": "Belum dicuba"
+  "addTag": "Tambah {tag}",
+  "removeTag": "Alih keluar {tag}",
+  "tagAdded": "{tag} ditambah pada jawapan anda",
+  "tagRemoved": "{tag} dialih keluar daripada jawapan anda"
 }

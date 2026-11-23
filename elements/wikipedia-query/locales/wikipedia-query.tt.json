@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia'дән",
   "readFullArticle": "Мәкаләнең тулы текстын Wikipedia'да укыгыз",
-  "reading": "Уку"
+  "reading": "Уку",
+  "couldNotLoad": "Мәкаләне йөкләп булмады. Аны Wikipedia'да уку өчен өстәге сылтаманы кулланыгыз."
 }

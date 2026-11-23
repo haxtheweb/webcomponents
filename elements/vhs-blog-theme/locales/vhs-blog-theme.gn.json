@@ -73,5 +73,6 @@
   "padStart": "Start: emoherakuã ne kuatiarogue",
   "padB": "B: egueraha jey bloque paha",
   "padA": "A: ejagarra peteĩ bloque",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Ejagarra ñembosarái control"
 }

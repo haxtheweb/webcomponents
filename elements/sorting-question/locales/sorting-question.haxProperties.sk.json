@@ -22,6 +22,15 @@
       {
         "title": "Odpovede",
         "description": "Poradie odpovedí určuje správnu postupnosť."
+      },
+      {
+        "property": "layout",
+        "title": "Rozloženie",
+        "description": "Zoznam: odpovede pod sebou v riadkoch. Karty s obrázkami: rad kariet, ktorý sa zalamuje, každá s vlastným obrázkom a tlačidlami presunúť skôr / neskôr.",
+        "options": {
+          "": "Zoznam",
+          "cards": "Karty s obrázkami"
+        }
       }
     ],
     "advanced": [

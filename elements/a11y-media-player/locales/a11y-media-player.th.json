@@ -42,5 +42,8 @@
   "belowLabel": "ด้านล่าง",
   "leftLabel": "ซ้าย",
   "rightLabel": "ขวา",
-  "hideTranscriptLabel": "ซ่อนถอดเสียง"
+  "hideTranscriptLabel": "ซ่อนถอดเสียง",
+  "youtubeConsentNotice": "วิดีโอนี้เล่นจาก YouTube โดย Google จะได้รับที่อยู่ IP ของคุณและอาจตั้งค่าคุกกี้",
+  "youtubeConsentAllow": "อนุญาต YouTube เสมอ",
+  "consentChoicesLabel": "ตัวเลือกความเป็นส่วนตัว"
 }

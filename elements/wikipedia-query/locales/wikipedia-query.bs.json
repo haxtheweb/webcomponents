@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Izvor: Wikipedia",
   "readFullArticle": "Pročitajte cijeli članak na Wikipedia",
-  "reading": "Čitanje"
+  "reading": "Čitanje",
+  "couldNotLoad": "Članak nije moguće učitati. Koristite link iznad da ga pročitate na Wikipediji."
 }

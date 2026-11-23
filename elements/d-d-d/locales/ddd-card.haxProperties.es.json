@@ -66,6 +66,16 @@
           "_top": "Ventana superior - _top",
           "_parent": "Ventana principal - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Coloca la imagen junto al texto en lugar de encima."
+      },
+      {
+        "property": "clickable",
+        "title": "Toda la tarjeta es el enlace",
+        "description": "Convierte toda la tarjeta en el enlace y oculta el botón. Necesita un enlace."
       }
     ],
     "developer": [

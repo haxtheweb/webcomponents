@@ -6,6 +6,8 @@
   "tryAbout": "Fes servir HAX ara mateix en aquesta pestanya del navegador. No cal instal·lar res.",
   "learn": "Aprèn",
   "learnAbout": "Tutorials que ensenyen HAX un flux cada vegada.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: on estudiants i desenvolupadors júnior aprenen publicant treball real d'HAX.",
   "elements": "Components web",
   "elementsAbout": "Tots els elements HAX, amb demostracions en directe i guies pas a pas.",
   "cloud": "PRAW",

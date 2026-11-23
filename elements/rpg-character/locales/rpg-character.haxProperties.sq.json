@@ -78,7 +78,10 @@
           "messy-hair": "Flokë të çrregullta me plagë",
           "sparkle-selects": "Sparkle Selects (helmetë)",
           "saber-cats": "Saber Cats (helmetë)",
-          "future-traveler": "Future Traveler (helmetë)"
+          "future-traveler": "Future Traveler (helmetë)",
+          "pilgrim": "Kapelë pelegrini",
+          "bonnet": "Kapuç pelegrineje",
+          "turkey": "Kapuç gjeli deti"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (mysafir)",
           "icers": "Icers (vendas)",
           "icers-away": "Icers (mysafir)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pelegrin (djalë)",
+          "pilgrim-girl": "Pelegrine (vajzë)",
+          "turkey": "Gjel deti"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Çelës anglez",
           "hockey-stick-pink": "Shkop hokeji (rozë)",
           "hockey-stick-green": "Shkop hokeji (jeshile)",
-          "sparkle-flag": "Sparkle Selects (flamur)"
+          "sparkle-flag": "Sparkle Selects (flamur)",
+          "corn": "Kalli misri",
+          "drumstick": "Kofshë gjeli deti"
         }
       },
       {

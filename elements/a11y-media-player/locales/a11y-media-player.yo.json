@@ -42,5 +42,8 @@
   "belowLabel": "Ìsàlẹ̀",
   "leftLabel": "Òsì",
   "rightLabel": "Ọ̀tún",
-  "hideTranscriptLabel": "Fi àkọsílẹ̀ ọ̀rọ̀ pamọ́"
+  "hideTranscriptLabel": "Fi àkọsílẹ̀ ọ̀rọ̀ pamọ́",
+  "youtubeConsentNotice": "Fídíò yìí ń ṣiṣẹ́ láti YouTube. Google yóò gba àdírẹ́sì IP rẹ, ó sì lè ṣètò àwọn cookie.",
+  "youtubeConsentAllow": "Máa gba YouTube láàyè nígbà gbogbo",
+  "consentChoicesLabel": "Àwọn àṣàyàn ìpamọ́"
 }

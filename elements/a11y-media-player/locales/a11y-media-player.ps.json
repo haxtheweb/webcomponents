@@ -42,5 +42,8 @@
   "belowLabel": "لاندې",
   "leftLabel": "کیڼ",
   "rightLabel": "ښي",
-  "hideTranscriptLabel": "ټرانسکرېپټ پټ کړئ"
+  "hideTranscriptLabel": "ټرانسکرېپټ پټ کړئ",
+  "youtubeConsentNotice": "دا ویډیو له YouTube څخه غږېږي. Google به ستاسو IP پته ترلاسه کړي او کېدای شي کوکیز ولګوي.",
+  "youtubeConsentAllow": "YouTube ته تل اجازه ورکړئ",
+  "consentChoicesLabel": "د محرمیت انتخابونه"
 }

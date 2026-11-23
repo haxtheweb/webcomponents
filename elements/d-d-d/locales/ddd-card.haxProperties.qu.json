@@ -66,6 +66,16 @@
           "_top": "Hanaq ventana - _top",
           "_parent": "Tayta ventana - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Siriq",
+        "description": "Rikch'ayta qillqap hawanpi kanan rantinpi waqtanpi churay."
+      },
+      {
+        "property": "clickable",
+        "title": "Lliw tarjetam enlace",
+        "description": "Lliw tarjetata enlace kananpaq ruway, botóntataq pakay. Enlacetam munan."
       }
     ],
     "developer": [

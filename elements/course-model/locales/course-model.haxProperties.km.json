@@ -31,11 +31,20 @@
       },
       {
         "title": "តំបន់ត្រួតពិនិត្យចំណេះដឹង"
+      },
+      {
+        "property": "title",
+        "title": "ចំណងជើង",
+        "description": "ចំណងជើងដែលបង្ហាញនៅខាងលើគំរូវគ្គសិក្សា។"
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "តំបន់ឡូហ្គោ"
+      },
+      {
+        "slot": "logo",
         "title": "តំបន់ឡូហ្គោ"
       }
     ]

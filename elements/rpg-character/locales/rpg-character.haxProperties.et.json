@@ -78,7 +78,10 @@
           "messy-hair": "Sassis juuksed armiga",
           "sparkle-selects": "Sparkle Selects (kiiver)",
           "saber-cats": "Saber Cats (kiiver)",
-          "future-traveler": "Future Traveler (kiiver)"
+          "future-traveler": "Future Traveler (kiiver)",
+          "pilgrim": "Palveränduri kübar",
+          "bonnet": "Palveränduri tanu",
+          "turkey": "Kalkunikapuuts"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (võõrsil)",
           "icers": "Icers (kodu)",
           "icers-away": "Icers (võõrsil)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Palverändur (poiss)",
+          "pilgrim-girl": "Palverändur (tüdruk)",
+          "turkey": "Kalkun"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Mutrivõti",
           "hockey-stick-pink": "Hokikepp (roosa)",
           "hockey-stick-green": "Hokikepp (roheline)",
-          "sparkle-flag": "Sparkle Selects (lipp)"
+          "sparkle-flag": "Sparkle Selects (lipp)",
+          "corn": "Maisitõlvik",
+          "drumstick": "Kalkunikoib"
         }
       },
       {

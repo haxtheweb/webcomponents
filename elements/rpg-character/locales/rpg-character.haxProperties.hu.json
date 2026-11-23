@@ -78,7 +78,10 @@
           "messy-hair": "Kócos haj sebhellyel",
           "sparkle-selects": "Sparkle Selects (sisak)",
           "saber-cats": "Saber Cats (sisak)",
-          "future-traveler": "Future Traveler (sisak)"
+          "future-traveler": "Future Traveler (sisak)",
+          "pilgrim": "Zarándokkalap",
+          "bonnet": "Zarándokfőkötő",
+          "turkey": "Pulykacsuklya"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (vendég)",
           "icers": "Icers (hazai)",
           "icers-away": "Icers (vendég)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Zarándok (fiú)",
+          "pilgrim-girl": "Zarándok (lány)",
+          "turkey": "Pulyka"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Csavarkulcs",
           "hockey-stick-pink": "Jégkorongütő (rózsaszín)",
           "hockey-stick-green": "Jégkorongütő (zöld)",
-          "sparkle-flag": "Sparkle Selects (zászló)"
+          "sparkle-flag": "Sparkle Selects (zászló)",
+          "corn": "Kukoricacső",
+          "drumstick": "Pulykacomb"
         }
       },
       {

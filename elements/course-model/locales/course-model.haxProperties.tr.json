@@ -31,11 +31,20 @@
       },
       {
         "title": "Bilgi Kontrolü alanı"
+      },
+      {
+        "property": "title",
+        "title": "Başlık",
+        "description": "Ders modelinin üstünde gösterilen başlık."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logo alanı"
+      },
+      {
+        "slot": "logo",
         "title": "Logo alanı"
       }
     ]

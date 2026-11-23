@@ -66,6 +66,16 @@
           "_top": "Øverste vindu - _top",
           "_parent": "Overordnet vindu - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vannrett",
+        "description": "Plasser bildet ved siden av teksten i stedet for over den."
+      },
+      {
+        "property": "clickable",
+        "title": "Hele kortet er lenken",
+        "description": "Gjør hele kortet til lenken og skjul knappen. Krever en lenke."
       }
     ],
     "developer": [

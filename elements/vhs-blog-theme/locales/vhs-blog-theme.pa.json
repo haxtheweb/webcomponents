@@ -73,5 +73,6 @@
   "padStart": "Start: ਆਪਣਾ ਪੰਨਾ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰੋ",
   "padB": "B: ਆਖਰੀ ਬਲਾਕ ਵਾਪਸ ਲਓ",
   "padA": "A: ਬਲਾਕ ਫੜੋ",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "ਗੇਮ ਕੰਟਰੋਲਰ ਚੁੱਕੋ"
 }

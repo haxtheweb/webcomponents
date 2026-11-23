@@ -73,5 +73,6 @@
   "padStart": "Start: jo side publisearje",
   "padB": "B: it lêste blok weromnimme",
   "padA": "A: in blok pakke",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Pak de spielkontroller op"
 }

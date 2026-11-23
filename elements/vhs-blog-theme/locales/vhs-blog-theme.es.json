@@ -73,5 +73,6 @@
   "padStart": "Start: publica tu página",
   "padB": "B: devuelve el último bloque",
   "padA": "A: agarra un bloque",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Coge el mando"
 }

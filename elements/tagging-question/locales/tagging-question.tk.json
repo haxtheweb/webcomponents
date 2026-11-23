@@ -45,8 +45,12 @@
   "hideDirections": "Görkezmeleri gizle",
   "showRelatedContent": "Baglanyşykly mazmuny görkez",
   "hideRelatedContent": "Baglanyşykly mazmuny gizle",
+  "notAttempted": "Synanyşylmady",
   "yourTags": "Siziň jogabyňyz",
   "availableTags": "Saýlamak üçin bellikler",
   "dropTagsHere": "Aşakdaky bellikleri saýlaň ýa-da bärik süýräň",
-  "notAttempted": "Synanyşylmady"
+  "addTag": "{tag} goş",
+  "removeTag": "{tag} aýyr",
+  "tagAdded": "{tag} jogabyňyza goşuldy",
+  "tagRemoved": "{tag} jogabyňyzdan aýryldy"
 }

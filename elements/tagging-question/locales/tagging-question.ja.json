@@ -45,8 +45,12 @@
   "hideDirections": "説明を隠す",
   "showRelatedContent": "関連コンテンツを表示",
   "hideRelatedContent": "関連コンテンツを隠す",
+  "notAttempted": "未挑戦",
   "yourTags": "あなたの回答",
   "availableTags": "選択できるタグ",
   "dropTagsHere": "下のタグを選択するか、ここにドラッグしてください",
-  "notAttempted": "未挑戦"
+  "addTag": "{tag} を追加",
+  "removeTag": "{tag} を削除",
+  "tagAdded": "{tag} を回答に追加しました",
+  "tagRemoved": "{tag} を回答から削除しました"
 }

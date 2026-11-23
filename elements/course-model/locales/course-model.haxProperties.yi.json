@@ -31,11 +31,20 @@
       },
       {
         "title": "וויסן־קאָנטראָל־שטח"
+      },
+      {
+        "property": "title",
+        "title": "טיטל",
+        "description": "קעפּל וואָס ווײַזט זיך אויבן דעם קורס־מאָדעל."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "לאָגאָ־שטח"
+      },
+      {
+        "slot": "logo",
         "title": "לאָגאָ־שטח"
       }
     ]

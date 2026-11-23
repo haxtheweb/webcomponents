@@ -31,11 +31,20 @@
       },
       {
         "title": "Obszar sprawdzenia wiedzy"
+      },
+      {
+        "property": "title",
+        "title": "Tytuł",
+        "description": "Nagłówek wyświetlany nad modelem kursu."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Obszar logo"
+      },
+      {
+        "slot": "logo",
         "title": "Obszar logo"
       }
     ]

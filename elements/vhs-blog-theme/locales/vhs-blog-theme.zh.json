@@ -73,5 +73,6 @@
   "padStart": "Start：发布您的页面",
   "padB": "B：收回最后一个块",
   "padA": "A：抓取一个块",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "拿起游戏手柄"
 }

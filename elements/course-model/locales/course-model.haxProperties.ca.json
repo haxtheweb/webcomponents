@@ -31,11 +31,20 @@
       },
       {
         "title": "Àrea de comprovació de coneixements"
+      },
+      {
+        "property": "title",
+        "title": "Títol",
+        "description": "Encapçalament que es mostra sobre el model del curs."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Àrea del logotip"
+      },
+      {
+        "slot": "logo",
         "title": "Àrea del logotip"
       }
     ]

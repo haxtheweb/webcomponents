@@ -42,5 +42,8 @@
   "belowLabel": "למטה",
   "leftLabel": "שמאל",
   "rightLabel": "ימין",
-  "hideTranscriptLabel": "הסתר תמלול"
+  "hideTranscriptLabel": "הסתר תמלול",
+  "youtubeConsentNotice": "הסרטון הזה מופעל מ־YouTube. Google תקבל את כתובת ה־IP שלכם ועשויה לשמור קובצי Cookie.",
+  "youtubeConsentAllow": "לאפשר תמיד את YouTube",
+  "consentChoicesLabel": "בחירות פרטיות"
 }

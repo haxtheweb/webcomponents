@@ -31,12 +31,21 @@
       },
       {
         "title": "Jeikuaa Ñeha'ã renda"
+      },
+      {
+        "property": "title",
+        "title": "Téra",
+        "description": "Moakãha ojehecháva mbo'esyry ta'anga ári."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Ta'ãngaete renda"
+      },
+      {
+        "slot": "logo",
+        "title": "Logotipo renda"
       }
     ]
   }

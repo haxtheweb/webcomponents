@@ -66,6 +66,16 @@
           "_top": "Legfelső ablak - _top",
           "_parent": "Szülőablak - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Vízszintes",
+        "description": "A kép a szöveg mellé kerül, nem fölé."
+      },
+      {
+        "property": "clickable",
+        "title": "Az egész kártya hivatkozás",
+        "description": "Az egész kártya hivatkozássá válik, a gomb elrejtődik. Hivatkozás szükséges hozzá."
       }
     ],
     "developer": [

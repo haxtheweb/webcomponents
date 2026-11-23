@@ -45,8 +45,12 @@
   "hideDirections": "Ezkutatu argibideak",
   "showRelatedContent": "Erakutsi lotutako edukia",
   "hideRelatedContent": "Ezkutatu lotutako edukia",
+  "notAttempted": "Saiatu gabe",
   "yourTags": "Zure erantzuna",
   "availableTags": "Aukeratzeko etiketak",
   "dropTagsHere": "Aukeratu etiketak behean edo arrastatu hona",
-  "notAttempted": "Saiatu gabe"
+  "addTag": "Gehitu {tag}",
+  "removeTag": "Kendu {tag}",
+  "tagAdded": "{tag} zure erantzunera gehitu da",
+  "tagRemoved": "{tag} zure erantzunetik kendu da"
 }

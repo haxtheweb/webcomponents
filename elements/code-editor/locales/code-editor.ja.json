@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "CodePenで確認する："
+  "checkItOutOnCodePen": "CodePenで確認する：",
+  "tabHint": "ここでは Tab キーでタブを入力します。Tab でエディターから移動するには、先に Ctrl+M を押してください（Mac では Ctrl+Shift+M）。"
 }

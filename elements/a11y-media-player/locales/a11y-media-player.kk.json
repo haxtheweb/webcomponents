@@ -42,5 +42,8 @@
   "belowLabel": "Төменде",
   "leftLabel": "Сол жақта",
   "rightLabel": "Оң жақта",
-  "hideTranscriptLabel": "Транскрипцияны жасыру"
+  "hideTranscriptLabel": "Транскрипцияны жасыру",
+  "youtubeConsentNotice": "Бұл бейне YouTube-тан ойнатылады. Google сіздің IP мекенжайыңызды алады және cookie файлдарын орнатуы мүмкін.",
+  "youtubeConsentAllow": "YouTube-қа әрқашан рұқсат беру",
+  "consentChoicesLabel": "Құпиялық таңдаулары"
 }

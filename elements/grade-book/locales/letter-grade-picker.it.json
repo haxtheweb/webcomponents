@@ -1,0 +1,6 @@
+{
+  "grades": "Voti",
+  "gradeLetter": "Voto {letter}",
+  "score": "Punteggio",
+  "scoreFor": "Punteggio per {label}"
+}

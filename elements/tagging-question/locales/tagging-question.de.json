@@ -45,8 +45,12 @@
   "hideDirections": "Anleitung ausblenden",
   "showRelatedContent": "Verwandte Inhalte anzeigen",
   "hideRelatedContent": "Verwandte Inhalte ausblenden",
+  "notAttempted": "Nicht versucht",
   "yourTags": "Deine Antwort",
   "availableTags": "Verfügbare Tags",
   "dropTagsHere": "Wähle unten Tags aus oder ziehe sie hierher",
-  "notAttempted": "Nicht versucht"
+  "addTag": "{tag} hinzufügen",
+  "removeTag": "{tag} entfernen",
+  "tagAdded": "{tag} zu deiner Antwort hinzugefügt",
+  "tagRemoved": "{tag} aus deiner Antwort entfernt"
 }

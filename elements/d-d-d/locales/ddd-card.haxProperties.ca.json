@@ -66,6 +66,16 @@
           "_top": "Finestra superior - _top",
           "_parent": "Finestra pare - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horitzontal",
+        "description": "Col·loca la imatge al costat del text en lloc de damunt."
+      },
+      {
+        "property": "clickable",
+        "title": "Tota la targeta és l'enllaç",
+        "description": "Fa que tota la targeta sigui l'enllaç i amaga el botó. Cal un enllaç."
       }
     ],
     "developer": [

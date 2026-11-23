@@ -42,5 +42,8 @@
   "belowLabel": "కింద",
   "leftLabel": "ఎడమ",
   "rightLabel": "కుడి",
-  "hideTranscriptLabel": "ట్రాన్స్క్రిప్ట్ దాచు"
+  "hideTranscriptLabel": "ట్రాన్స్క్రిప్ట్ దాచు",
+  "youtubeConsentNotice": "ఈ వీడియో YouTube నుండి ప్లే అవుతుంది. Google మీ IP చిరునామాను అందుకుంటుంది మరియు కుకీలను సెట్ చేయవచ్చు.",
+  "youtubeConsentAllow": "YouTubeను ఎల్లప్పుడూ అనుమతించు",
+  "consentChoicesLabel": "గోప్యత ఎంపికలు"
 }

@@ -66,6 +66,16 @@
           "_top": "Xanela superior - _top",
           "_parent": "Xanela pai - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Coloca a imaxe ao lado do texto en vez de enriba."
+      },
+      {
+        "property": "clickable",
+        "title": "Toda a tarxeta é a ligazón",
+        "description": "Fai que toda a tarxeta sexa a ligazón e oculta o botón. Precisa unha ligazón."
       }
     ],
     "developer": [

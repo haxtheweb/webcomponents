@@ -1,0 +1,6 @@
+{
+  "grades": "Pažymiai",
+  "gradeLetter": "Pažymys {letter}",
+  "score": "Balai",
+  "scoreFor": "Balai už {label}"
+}

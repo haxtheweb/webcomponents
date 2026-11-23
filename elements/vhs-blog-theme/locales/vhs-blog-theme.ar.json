@@ -73,5 +73,6 @@
   "padStart": "Start: انشر صفحتك",
   "padB": "B: استرجع آخر كتلة",
   "padA": "A: التقط كتلة",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "التقط وحدة التحكم بالألعاب"
 }

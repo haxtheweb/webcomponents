@@ -66,6 +66,16 @@
           "_top": "Augšējā logā - _top",
           "_parent": "Vecāklogā - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontāli",
+        "description": "Novietot attēlu blakus tekstam, nevis virs tā."
+      },
+      {
+        "property": "clickable",
+        "title": "Visa kartīte ir saite",
+        "description": "Padarīt visu kartīti par saiti un paslēpt pogu. Nepieciešama saite."
       }
     ],
     "developer": [

@@ -18,6 +18,11 @@
       {
         "title": "Pojedinosti točaka",
         "description": "Interaktivne točke na slikovnoj karti."
+      },
+      {
+        "property": "src",
+        "title": "Slika",
+        "description": "SVG slika na koju upućuju aktivna područja."
       }
     ]
   }

@@ -31,12 +31,21 @@
       },
       {
         "title": "Wāhi Arowhai Mōhiotanga"
+      },
+      {
+        "property": "title",
+        "title": "Taitara",
+        "description": "Upoko e whakaaturia ana i runga ake i te tauira akoranga."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Wāhi moko"
+      },
+      {
+        "slot": "logo",
+        "title": "Wāhi waitohu"
       }
     ]
   }

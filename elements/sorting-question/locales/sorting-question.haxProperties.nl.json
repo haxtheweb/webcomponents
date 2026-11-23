@@ -22,6 +22,15 @@
       {
         "title": "Antwoorden",
         "description": "De volgorde van de antwoorden bepaalt de juiste reeks."
+      },
+      {
+        "property": "layout",
+        "title": "Indeling",
+        "description": "Lijst: antwoorden onder elkaar in rijen. Afbeeldingskaarten: een rij kaarten die doorloopt, elk met een afbeelding en knoppen om eerder / later te zetten.",
+        "options": {
+          "": "Lijst",
+          "cards": "Afbeeldingskaarten"
+        }
       }
     ],
     "advanced": [

@@ -78,7 +78,10 @@
           "messy-hair": "Rufsete hår med arr",
           "sparkle-selects": "Sparkle Selects (hjelm)",
           "saber-cats": "Saber Cats (hjelm)",
-          "future-traveler": "Future Traveler (hjelm)"
+          "future-traveler": "Future Traveler (hjelm)",
+          "pilgrim": "Pilegrimshatt",
+          "bonnet": "Pilegrimslue",
+          "turkey": "Kalkunhette"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (borte)",
           "icers": "Icers (hjemme)",
           "icers-away": "Icers (borte)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilegrim (gutt)",
+          "pilgrim-girl": "Pilegrim (jente)",
+          "turkey": "Kalkun"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Skiftenøkkel",
           "hockey-stick-pink": "Hockeykølle (rosa)",
           "hockey-stick-green": "Hockeykølle (grønt)",
-          "sparkle-flag": "Sparkle Selects (flagg)"
+          "sparkle-flag": "Sparkle Selects (flagg)",
+          "corn": "Maiskolbe",
+          "drumstick": "Kalkunlår"
         }
       },
       {

@@ -66,6 +66,16 @@
           "_top": "Ýokarky penjire - _top",
           "_parent": "Ene penjire - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Keseligine",
+        "description": "Suraty tekstiň üstünde däl-de, gapdalynda ýerleşdir."
+      },
+      {
+        "property": "clickable",
+        "title": "Bütin kart salgy",
+        "description": "Bütin karty salga öwür we düwmäni gizle. Salgy gerek."
       }
     ],
     "developer": [

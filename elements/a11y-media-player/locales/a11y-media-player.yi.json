@@ -42,5 +42,8 @@
   "belowLabel": "אונטן",
   "leftLabel": "לינקס",
   "rightLabel": "רעכטס",
-  "hideTranscriptLabel": "באַהאַלט דעם טראַנסקריפּט"
+  "hideTranscriptLabel": "באַהאַלט דעם טראַנסקריפּט",
+  "youtubeConsentNotice": "דער דאָזיקער ווידעאָ שפּילט פֿון YouTube. Google וועט באַקומען דײַן IP־אַדרעס און קען שטעלן קוקיס.",
+  "youtubeConsentAllow": "שטענדיק דערלויבן YouTube",
+  "consentChoicesLabel": "פּריוואַטקייט־ברירות"
 }

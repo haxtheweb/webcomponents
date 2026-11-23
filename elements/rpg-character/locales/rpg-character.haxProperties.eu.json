@@ -78,7 +78,10 @@
           "messy-hair": "Ile nahasia orbainarekin",
           "sparkle-selects": "Sparkle Selects (kaskoa)",
           "saber-cats": "Saber Cats (kaskoa)",
-          "future-traveler": "Future Traveler (kaskoa)"
+          "future-traveler": "Future Traveler (kaskoa)",
+          "pilgrim": "Erromes-kapela",
+          "bonnet": "Erromes-kofia",
+          "turkey": "Indioilar-kapusaia"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (kanpoan)",
           "icers": "Icers (etxean)",
           "icers-away": "Icers (kanpoan)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Erromesa (mutila)",
+          "pilgrim-girl": "Erromesa (neska)",
+          "turkey": "Indioilarra"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Giltza ingelesa",
           "hockey-stick-pink": "Hockey makila (arrosa)",
           "hockey-stick-green": "Hockey makila (berdea)",
-          "sparkle-flag": "Sparkle Selects (bandera)"
+          "sparkle-flag": "Sparkle Selects (bandera)",
+          "corn": "Arto-buruxka",
+          "drumstick": "Indioilar-izterra"
         }
       },
       {

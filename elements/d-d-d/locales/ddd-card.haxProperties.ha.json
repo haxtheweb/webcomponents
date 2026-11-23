@@ -66,6 +66,16 @@
           "_top": "Taga ta sama - _top",
           "_parent": "Taga ta iyaye - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "A kwance",
+        "description": "Saka hoton kusa da rubutun maimakon a samansa."
+      },
+      {
+        "property": "clickable",
+        "title": "Dukan katin shi ne hanyar haɗi",
+        "description": "Mayar da dukan katin hanyar haɗi kuma ka ɓoye maɓallin. Yana buƙatar hanyar haɗi."
       }
     ],
     "developer": [

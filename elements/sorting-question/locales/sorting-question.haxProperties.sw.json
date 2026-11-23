@@ -22,6 +22,15 @@
       {
         "title": "Majibu",
         "description": "Mpangilio wa majibu unafafanua mfuatano sahihi."
+      },
+      {
+        "property": "layout",
+        "title": "Mpangilio",
+        "description": "Orodha: majibu yamepangwa katika safu. Kadi za picha: safu ya kadi inayoshuka mstari, kila moja na picha yake na vitufe vya kusogeza mapema / baadaye.",
+        "options": {
+          "": "Orodha",
+          "cards": "Kadi za picha"
+        }
       }
     ],
     "advanced": [

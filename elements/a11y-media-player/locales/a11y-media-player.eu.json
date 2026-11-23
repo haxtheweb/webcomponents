@@ -42,5 +42,8 @@
   "belowLabel": "Behean",
   "leftLabel": "Ezkerrean",
   "rightLabel": "Eskuinean",
-  "hideTranscriptLabel": "Ezkutatu transkripzioa"
+  "hideTranscriptLabel": "Ezkutatu transkripzioa",
+  "youtubeConsentNotice": "Bideo hau YouTubetik erreproduzitzen da. Google-k zure IP helbidea jasoko du eta cookieak ezar ditzake.",
+  "youtubeConsentAllow": "Baimendu YouTube beti",
+  "consentChoicesLabel": "Pribatutasun-aukerak"
 }

@@ -45,8 +45,12 @@
   "hideDirections": "Fihla imiyalelo",
   "showRelatedContent": "Bonisa umxholo ohambelanayo",
   "hideRelatedContent": "Fihla umxholo ohambelanayo",
+  "notAttempted": "Ayizanga zizanywa",
   "yourTags": "Impendulo yakho",
   "availableTags": "Iithegi onokukhetha kuzo",
   "dropTagsHere": "Khetha iithegi ngezantsi okanye uzirhuqele apha",
-  "notAttempted": "Ayizanga zizanywa"
+  "addTag": "Yongeza {tag}",
+  "removeTag": "Susa {tag}",
+  "tagAdded": "{tag} yongeziwe kwimpendulo yakho",
+  "tagRemoved": "{tag} isusiwe kwimpendulo yakho"
 }

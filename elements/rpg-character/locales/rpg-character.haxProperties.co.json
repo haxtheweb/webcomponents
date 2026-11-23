@@ -78,7 +78,10 @@
           "messy-hair": "Capelli in disordine cù cicatrice",
           "sparkle-selects": "Sparkle Selects (cascu)",
           "saber-cats": "Saber Cats (cascu)",
-          "future-traveler": "Future Traveler (cascu)"
+          "future-traveler": "Future Traveler (cascu)",
+          "pilgrim": "Cappellu di pellegrinu",
+          "bonnet": "Cuffia di pellegrina",
+          "turkey": "Cappucciu di dindu"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (fora)",
           "icers": "Icers (in casa)",
           "icers-away": "Icers (fora)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pellegrinu (zitellu)",
+          "pilgrim-girl": "Pellegrina (zitella)",
+          "turkey": "Dindu"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Chjave inglese",
           "hockey-stick-pink": "Mazza d'hockey (rosula)",
           "hockey-stick-green": "Mazza d'hockey (verde)",
-          "sparkle-flag": "Sparkle Selects (bandiera)"
+          "sparkle-flag": "Sparkle Selects (bandiera)",
+          "corn": "Spica di granone",
+          "drumstick": "Coscia di dindu"
         }
       },
       {

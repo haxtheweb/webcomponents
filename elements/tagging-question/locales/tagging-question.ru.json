@@ -45,8 +45,12 @@
   "hideDirections": "Скрыть инструкции",
   "showRelatedContent": "Показать связанные материалы",
   "hideRelatedContent": "Скрыть связанные материалы",
+  "notAttempted": "Не предпринималась",
   "yourTags": "Ваш ответ",
   "availableTags": "Доступные теги",
   "dropTagsHere": "Выберите теги ниже или перетащите их сюда",
-  "notAttempted": "Не предпринималась"
+  "addTag": "Добавить {tag}",
+  "removeTag": "Удалить {tag}",
+  "tagAdded": "{tag} добавлено в ваш ответ",
+  "tagRemoved": "{tag} удалено из вашего ответа"
 }

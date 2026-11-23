@@ -31,11 +31,20 @@
       },
       {
         "title": "지식 확인 영역"
+      },
+      {
+        "property": "title",
+        "title": "제목",
+        "description": "코스 모델 위에 표시되는 제목."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "로고 영역"
+      },
+      {
+        "slot": "logo",
         "title": "로고 영역"
       }
     ]

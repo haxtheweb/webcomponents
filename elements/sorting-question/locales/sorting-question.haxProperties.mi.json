@@ -22,6 +22,15 @@
       {
         "title": "Ngā whakautu",
         "description": "Mā te raupapa o ngā whakautu e tautuhi te raupapa tika."
+      },
+      {
+        "property": "layout",
+        "title": "Tahora",
+        "description": "Rārangi: ka tāpaetia ngā whakautu ki ngā rārangi. Kāri whakaahua: he rārangi kāri ka takai, kei ia kāri tōna whakaahua me ngā pātene nuku i mua / i muri.",
+        "options": {
+          "": "Rārangi",
+          "cards": "Kāri whakaahua"
+        }
       }
     ],
     "advanced": [

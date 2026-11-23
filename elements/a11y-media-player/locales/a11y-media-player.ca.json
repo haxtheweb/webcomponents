@@ -42,5 +42,8 @@
   "belowLabel": "A sota",
   "leftLabel": "Esquerra",
   "rightLabel": "Dreta",
-  "hideTranscriptLabel": "Amaga la transcripció"
+  "hideTranscriptLabel": "Amaga la transcripció",
+  "youtubeConsentNotice": "Aquest vídeo es reprodueix des de YouTube. Google rebrà la teva adreça IP i pot desar galetes.",
+  "youtubeConsentAllow": "Permet sempre YouTube",
+  "consentChoicesLabel": "Opcions de privadesa"
 }

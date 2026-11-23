@@ -73,5 +73,6 @@
   "padStart": "Start: zverejnite svoju stránku",
   "padB": "B: vziať späť posledný blok",
   "padA": "A: chytiť blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Zobrať herný ovládač"
 }

@@ -18,6 +18,11 @@
       {
         "title": "Szczegóły obszarów",
         "description": "Interaktywne obszary na mapie obrazu."
+      },
+      {
+        "property": "src",
+        "title": "Obraz",
+        "description": "Obraz SVG, na który wskazują punkty aktywne."
       }
     ]
   }

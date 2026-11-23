@@ -42,5 +42,8 @@
   "belowLabel": "Төмөндө",
   "leftLabel": "Сол жакта",
   "rightLabel": "Оң жакта",
-  "hideTranscriptLabel": "Транскрипцияны жашыруу"
+  "hideTranscriptLabel": "Транскрипцияны жашыруу",
+  "youtubeConsentNotice": "Бул видео YouTube'дан ойнотулат. Google сиздин IP дарегиңизди алат жана cookie файлдарын орнотушу мүмкүн.",
+  "youtubeConsentAllow": "YouTube'га ар дайым уруксат берүү",
+  "consentChoicesLabel": "Купуялык тандоолору"
 }

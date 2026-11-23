@@ -42,5 +42,8 @@
   "belowLabel": "Ispod",
   "leftLabel": "Lijevo",
   "rightLabel": "Desno",
-  "hideTranscriptLabel": "Sakrij transkript"
+  "hideTranscriptLabel": "Sakrij transkript",
+  "youtubeConsentNotice": "Ovaj video se reproducira sa YouTubea. Google će primiti vašu IP adresu i može postaviti kolačiće.",
+  "youtubeConsentAllow": "Uvijek dozvoli YouTube",
+  "consentChoicesLabel": "Izbori privatnosti"
 }

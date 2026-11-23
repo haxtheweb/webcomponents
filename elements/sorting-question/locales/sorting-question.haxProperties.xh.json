@@ -22,6 +22,15 @@
       {
         "title": "Iimpendulo",
         "description": "Ulandelelwano lweempendulo lumisela ulandelelwano oluchanekileyo."
+      },
+      {
+        "property": "layout",
+        "title": "Uyilo",
+        "description": "Uluhlu: iimpendulo zipakishwe ngemigca. Amakhadi emifanekiso: umgca wamakhadi osongelayo, ngalinye linomfanekiso walo namaqhosha okushukumisa ngaphambili / ngasemva.",
+        "options": {
+          "": "Uluhlu",
+          "cards": "Amakhadi emifanekiso"
+        }
       }
     ],
     "advanced": [

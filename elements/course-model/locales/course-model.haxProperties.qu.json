@@ -31,12 +31,21 @@
       },
       {
         "title": "Yachay Qhawarichiy sitio"
+      },
+      {
+        "property": "title",
+        "title": "Suti",
+        "description": "Curso modelopa hawanpi rikuchisqa uma suti."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Logo sitio"
+      },
+      {
+        "slot": "logo",
+        "title": "Logo kitipa"
       }
     ]
   }

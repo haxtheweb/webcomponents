@@ -66,6 +66,16 @@
           "_top": "Tetingkap atas - _top",
           "_parent": "Tetingkap induk - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Mendatar",
+        "description": "Letakkan imej di sebelah teks dan bukan di atasnya."
+      },
+      {
+        "property": "clickable",
+        "title": "Seluruh kad ialah pautan",
+        "description": "Jadikan seluruh kad sebagai pautan dan sembunyikan butang. Memerlukan pautan."
       }
     ],
     "developer": [

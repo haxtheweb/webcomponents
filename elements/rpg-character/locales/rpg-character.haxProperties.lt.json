@@ -78,7 +78,10 @@
           "messy-hair": "Susivėlę plaukai su randu",
           "sparkle-selects": "Sparkle Selects (šalmas)",
           "saber-cats": "Saber Cats (šalmas)",
-          "future-traveler": "Future Traveler (šalmas)"
+          "future-traveler": "Future Traveler (šalmas)",
+          "pilgrim": "Piligrimo skrybėlė",
+          "bonnet": "Piligrimės kepuraitė",
+          "turkey": "Kalakuto gobtuvas"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (išvykos)",
           "icers": "Icers (namų)",
           "icers-away": "Icers (išvykos)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Piligrimas (berniukas)",
+          "pilgrim-girl": "Piligrimė (mergaitė)",
+          "turkey": "Kalakutas"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Veržliaraktis",
           "hockey-stick-pink": "Ledo ritulio lazda (rožinė)",
           "hockey-stick-green": "Ledo ritulio lazda (žalias)",
-          "sparkle-flag": "Sparkle Selects (vėliava)"
+          "sparkle-flag": "Sparkle Selects (vėliava)",
+          "corn": "Kukurūzo burbuolė",
+          "drumstick": "Kalakuto šlaunelė"
         }
       },
       {

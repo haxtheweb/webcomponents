@@ -45,8 +45,12 @@
   "hideDirections": "సూచనలను దాచు",
   "showRelatedContent": "సంబంధిత కంటెంట్‌ను చూపించు",
   "hideRelatedContent": "సంబంధిత కంటెంట్‌ను దాచు",
+  "notAttempted": "ప్రయత్నించలేదు",
   "yourTags": "మీ సమాధానం",
   "availableTags": "ఎంచుకోవడానికి ట్యాగ్‌లు",
   "dropTagsHere": "కింద ట్యాగ్‌లను ఎంచుకోండి లేదా ఇక్కడికి లాగండి",
-  "notAttempted": "ప్రయత్నించలేదు"
+  "addTag": "{tag} జోడించు",
+  "removeTag": "{tag} తీసివేయి",
+  "tagAdded": "{tag} మీ సమాధానానికి జోడించబడింది",
+  "tagRemoved": "{tag} మీ సమాధానం నుండి తీసివేయబడింది"
 }

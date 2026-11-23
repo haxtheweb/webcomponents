@@ -18,6 +18,11 @@
       {
         "title": "Nokat jikme-jiklikleri",
         "description": "Surat kartasyndaky interaktiw nokatlar."
+      },
+      {
+        "property": "src",
+        "title": "Surat",
+        "description": "Işjeň nokatlaryň görkezýän SVG suraty."
       }
     ]
   }

@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "З Wikipedia",
   "readFullArticle": "Прочитати повну статтю на Wikipedia",
-  "reading": "Читання"
+  "reading": "Читання",
+  "couldNotLoad": "Не вдалося завантажити статтю. Скористайтеся посиланням вище, щоб прочитати її у Wikipedia."
 }

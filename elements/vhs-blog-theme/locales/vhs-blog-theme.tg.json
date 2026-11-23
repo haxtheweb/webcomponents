@@ -73,5 +73,6 @@
   "padStart": "Start: саҳифаи худро нашр кунед",
   "padB": "B: блоки охиринро баргардонед",
   "padA": "A: блокро гиред",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Пулти бозиро гиред"
 }

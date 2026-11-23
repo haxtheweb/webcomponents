@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Mula sa Wikipedia",
   "readFullArticle": "Basahin ang buong artikulo sa Wikipedia",
-  "reading": "Pagbabasa"
+  "reading": "Pagbabasa",
+  "couldNotLoad": "Hindi ma-load ang artikulo. Gamitin ang link sa itaas para basahin ito sa Wikipedia."
 }

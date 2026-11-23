@@ -73,5 +73,6 @@
   "padStart": "Start: publicēt savu lapu",
   "padB": "B: atdot atpakaļ pēdējo bloku",
   "padA": "A: paņemt bloku",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Paņemt spēļu pulti"
 }

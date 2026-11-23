@@ -18,6 +18,11 @@
       {
         "title": "Gune aktiboen xehetasunak",
         "description": "Irudi-mapako gune aktibo interaktiboak."
+      },
+      {
+        "property": "src",
+        "title": "Irudia",
+        "description": "Gune aktiboek seinalatzen duten SVG irudia."
       }
     ]
   }

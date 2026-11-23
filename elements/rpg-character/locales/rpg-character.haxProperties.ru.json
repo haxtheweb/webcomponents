@@ -78,7 +78,10 @@
           "messy-hair": "Взъерошенные волосы со шрамом",
           "sparkle-selects": "Sparkle Selects (шлем)",
           "saber-cats": "Saber Cats (шлем)",
-          "future-traveler": "Future Traveler (шлем)"
+          "future-traveler": "Future Traveler (шлем)",
+          "pilgrim": "Шляпа пилигрима",
+          "bonnet": "Чепец пилигрима",
+          "turkey": "Капюшон-индейка"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (гостевая)",
           "icers": "Icers (домашняя)",
           "icers-away": "Icers (гостевая)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Пилигрим (мальчик)",
+          "pilgrim-girl": "Пилигрим (девочка)",
+          "turkey": "Индейка"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Гаечный ключ",
           "hockey-stick-pink": "Хоккейная клюшка (розовый)",
           "hockey-stick-green": "Хоккейная клюшка (зелёный)",
-          "sparkle-flag": "Sparkle Selects (флаг)"
+          "sparkle-flag": "Sparkle Selects (флаг)",
+          "corn": "Початок кукурузы",
+          "drumstick": "Индюшачья ножка"
         }
       },
       {

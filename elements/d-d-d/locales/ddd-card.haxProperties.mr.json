@@ -66,6 +66,16 @@
           "_top": "सर्वोच्च विंडो - _top",
           "_parent": "मूळ विंडो - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "आडवे",
+        "description": "प्रतिमा मजकुराच्या वर न ठेवता बाजूला ठेवा."
+      },
+      {
+        "property": "clickable",
+        "title": "संपूर्ण कार्ड हीच लिंक",
+        "description": "संपूर्ण कार्ड लिंक बनवा आणि बटण लपवा. लिंक आवश्यक."
       }
     ],
     "developer": [

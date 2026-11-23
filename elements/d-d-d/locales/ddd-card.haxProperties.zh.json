@@ -66,6 +66,16 @@
           "_top": "顶层窗口 - _top",
           "_parent": "父窗口 - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "水平",
+        "description": "将图片放在文字旁边，而不是上方。"
+      },
+      {
+        "property": "clickable",
+        "title": "整张卡片都是链接",
+        "description": "让整张卡片成为链接并隐藏按钮。需要设置链接。"
       }
     ],
     "developer": [

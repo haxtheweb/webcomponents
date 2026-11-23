@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "De pe Wikipedia",
   "readFullArticle": "Citește articolul complet pe Wikipedia",
-  "reading": "Lectură"
+  "reading": "Lectură",
+  "couldNotLoad": "Articolul nu a putut fi încărcat. Folosiți linkul de mai sus pentru a-l citi pe Wikipedia."
 }

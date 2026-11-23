@@ -42,5 +42,8 @@
   "belowLabel": "Ûnder",
   "leftLabel": "Links",
   "rightLabel": "Rjochts",
-  "hideTranscriptLabel": "Transkripsje ferstopje"
+  "hideTranscriptLabel": "Transkripsje ferstopje",
+  "youtubeConsentNotice": "Dizze fideo wurdt fan YouTube ôfspile. Google krijt jo IP-adres en kin cookies pleatse.",
+  "youtubeConsentAllow": "YouTube altyd tastean",
+  "consentChoicesLabel": "Privacykarren"
 }

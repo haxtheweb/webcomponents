@@ -18,6 +18,11 @@
       {
         "title": "Dettalji tal-hotspots",
         "description": "Il-hotspots interattivi fuq il-mappa tal-immaġni."
+      },
+      {
+        "property": "src",
+        "title": "Immaġni",
+        "description": "Immaġni SVG li l-hotspots jipponjtaw lejha."
       }
     ]
   }

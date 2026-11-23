@@ -73,5 +73,6 @@
   "padStart": "Start: publicera din sida",
   "padB": "B: lägg tillbaka det senaste blocket",
   "padA": "A: ta ett block",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Ta upp spelkontrollen"
 }

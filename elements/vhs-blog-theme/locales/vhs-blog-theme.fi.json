@@ -73,5 +73,6 @@
   "padStart": "Start: julkaise sivusi",
   "padB": "B: ota viimeinen lohko takaisin",
   "padA": "A: tartu lohkoon",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Tartu peliohjaimeen"
 }

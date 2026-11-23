@@ -31,11 +31,20 @@
       },
       {
         "title": "Kennistoets-area"
+      },
+      {
+        "property": "title",
+        "title": "Titel",
+        "description": "Opskrif wat bo die kursusmodel gewys word."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Logo-area"
+      },
+      {
+        "slot": "logo",
         "title": "Logo-area"
       }
     ]

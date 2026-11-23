@@ -66,6 +66,16 @@
           "_top": "Ventana yvategua - _top",
           "_parent": "Ventana ru - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horizontal",
+        "description": "Emoĩ ta'anga moñe'ẽrã ykére hi'ári rangue."
+      },
+      {
+        "property": "clickable",
+        "title": "Tarjeta tuichakue ha'e joaju",
+        "description": "Ejapo tarjeta tuichakue joaju ha emokañy votõ. Oikotevẽ joaju."
       }
     ],
     "developer": [

@@ -66,6 +66,16 @@
           "_top": "ໜ້າຕ່າງເທິງສຸດ - _top",
           "_parent": "ໜ້າຕ່າງແມ່ - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "ແນວນອນ",
+        "description": "ວາງຮູບໄວ້ຂ້າງຂໍ້ຄວາມແທນທີ່ຈະຢູ່ເທິງ."
+      },
+      {
+        "property": "clickable",
+        "title": "ທັງບັດເປັນລິ້ງ",
+        "description": "ເຮັດໃຫ້ທັງບັດເປັນລິ້ງ ແລະ ເຊື່ອງປຸ່ມ. ຕ້ອງມີລິ້ງ."
       }
     ],
     "developer": [

@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Laga soo qaaday Wikipedia",
   "readFullArticle": "Ka akhri maqaalka oo dhan Wikipedia",
-  "reading": "Akhris"
+  "reading": "Akhris",
+  "couldNotLoad": "Maqaalka lama soo dejin karin. Isticmaal xiriirka kore si aad ugu akhrido Wikipedia."
 }

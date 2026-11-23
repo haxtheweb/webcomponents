@@ -1,0 +1,6 @@
+{
+  "grades": "Ocjene",
+  "gradeLetter": "Ocjena {letter}",
+  "score": "Rezultat",
+  "scoreFor": "Rezultat za {label}"
+}

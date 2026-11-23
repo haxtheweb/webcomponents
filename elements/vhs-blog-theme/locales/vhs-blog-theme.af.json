@@ -73,5 +73,6 @@
   "padStart": "Start: publiseer jou bladsy",
   "padB": "B: neem die laaste blok terug",
   "padA": "A: gryp 'n blok",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Tel die speletjiebeheerder op"
 }

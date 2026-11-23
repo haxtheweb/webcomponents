@@ -73,5 +73,6 @@
   "padStart": "Start: хуудсаа нийтлэх",
   "padB": "B: сүүлийн блокыг буцааж авах",
   "padA": "A: блок барих",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Тоглоомын удирдлагыг авах"
 }

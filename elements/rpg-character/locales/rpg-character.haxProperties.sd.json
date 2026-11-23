@@ -78,7 +78,10 @@
           "messy-hair": "زخم جي نشان سان وکريل وار",
           "sparkle-selects": "Sparkle Selects (هيلمٽ)",
           "saber-cats": "Saber Cats (هيلمٽ)",
-          "future-traveler": "Future Traveler (هيلمٽ)"
+          "future-traveler": "Future Traveler (هيلمٽ)",
+          "pilgrim": "زائر جي ٽوپي",
+          "bonnet": "زائر جي بونيٽ",
+          "turkey": "ترڪي ڪڪڙ جو ٽوپ"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (ٻاهريون)",
           "icers": "Icers (گهرو)",
           "icers-away": "Icers (ٻاهريون)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "زائر (ڇوڪرو)",
+          "pilgrim-girl": "زائر (ڇوڪري)",
+          "turkey": "ترڪي ڪڪڙ"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "پانو",
           "hockey-stick-pink": "هاڪي اسٽڪ (گلابي)",
           "hockey-stick-green": "هاڪي اسٽڪ (سائي)",
-          "sparkle-flag": "Sparkle Selects (جهنڊو)"
+          "sparkle-flag": "Sparkle Selects (جهنڊو)",
+          "corn": "مڪئي جو سنگ",
+          "drumstick": "ترڪي ڪڪڙ جي ٽنگ"
         }
       },
       {

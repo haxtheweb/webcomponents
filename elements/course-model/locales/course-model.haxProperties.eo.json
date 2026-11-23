@@ -31,11 +31,20 @@
       },
       {
         "title": "Areo de scia kontrolo"
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Titolo montrata super la kursa modelo."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Emblema areo"
+      },
+      {
+        "slot": "logo",
         "title": "Emblema areo"
       }
     ]

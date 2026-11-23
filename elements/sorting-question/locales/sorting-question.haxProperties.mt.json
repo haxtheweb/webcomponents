@@ -22,6 +22,15 @@
       {
         "title": "Tweġibiet",
         "description": "L-ordni tat-tweġibiet tiddefinixxi s-sekwenza korretta."
+      },
+      {
+        "property": "layout",
+        "title": "Tqassim",
+        "description": "Lista: tweġibiet f'ringieli waħda fuq l-oħra. Karti tal-immaġni: ringiela ta' karti li tkompli fuq linja ġdida, kull waħda bl-immaġni tagħha u buttuni biex tressaqha qabel / wara.",
+        "options": {
+          "": "Lista",
+          "cards": "Karti tal-immaġni"
+        }
       }
     ],
     "advanced": [

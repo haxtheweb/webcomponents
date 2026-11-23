@@ -66,6 +66,16 @@
           "_top": "Ülemine aken - _top",
           "_parent": "Ülemaken - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Horisontaalne",
+        "description": "Paiguta pilt teksti kõrvale, mitte selle kohale."
+      },
+      {
+        "property": "clickable",
+        "title": "Kogu kaart on link",
+        "description": "Tee kogu kaart lingiks ja peida nupp. Vajab linki."
       }
     ],
     "developer": [

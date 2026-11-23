@@ -45,8 +45,12 @@
   "hideDirections": "E peʻe i nā kuhikuhi",
   "showRelatedContent": "E hōʻike i ka maʻamau pili",
   "hideRelatedContent": "E peʻe i ka maʻamau pili",
+  "notAttempted": "ʻAʻole i hoʻāʻo ʻia",
   "yourTags": "Kāu pane",
   "availableTags": "Nā hōʻailona e koho ai",
   "dropTagsHere": "E koho i nā hōʻailona ma lalo a huki iā lākou i ʻaneʻi",
-  "notAttempted": "ʻAʻole i hoʻāʻo ʻia"
+  "addTag": "Hoʻohui iā {tag}",
+  "removeTag": "Wehe iā {tag}",
+  "tagAdded": "Ua hoʻohui ʻia ʻo {tag} i kāu pane",
+  "tagRemoved": "Ua wehe ʻia ʻo {tag} mai kāu pane"
 }

@@ -45,8 +45,12 @@
   "hideDirections": "Kamachiykunata pakay",
   "showRelatedContent": "Tupaq ukhunchayta rikuchiy",
   "hideRelatedContent": "Tupaq ukhunchayta pakay",
+  "notAttempted": "Mana pruebasqachu",
   "yourTags": "Kutichiyniyki",
   "availableTags": "Akllanapaq sananchakuna",
   "dropTagsHere": "Uraypi sananchakunata akllay icha kayman llujllay",
-  "notAttempted": "Mana pruebasqachu"
+  "addTag": "{tag} yapay",
+  "removeTag": "{tag} qichuy",
+  "tagAdded": "{tag} kutichiyniykiman yapasqa",
+  "tagRemoved": "{tag} kutichiyniykimanta qichusqa"
 }

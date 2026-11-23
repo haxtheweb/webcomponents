@@ -45,8 +45,12 @@
   "hideDirections": "Folaigh na treoracha",
   "showRelatedContent": "Taispeáin ábhar gaolmhar",
   "hideRelatedContent": "Folaigh ábhar gaolmhar",
+  "notAttempted": "Gan iarracht",
   "yourTags": "Do fhreagra",
   "availableTags": "Clibeanna le roghnú astu",
   "dropTagsHere": "Roghnaigh clibeanna thíos nó tarraing anseo iad",
-  "notAttempted": "Gan iarracht"
+  "addTag": "Cuir {tag} leis",
+  "removeTag": "Bain {tag}",
+  "tagAdded": "Cuireadh {tag} le do fhreagra",
+  "tagRemoved": "Baineadh {tag} as do fhreagra"
 }

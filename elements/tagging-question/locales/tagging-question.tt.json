@@ -45,8 +45,12 @@
   "hideDirections": "Күрсәтмәләрне яшерү",
   "showRelatedContent": "Бәйле эчтәлекне күрсәтү",
   "hideRelatedContent": "Бәйле эчтәлекне яшерү",
+  "notAttempted": "Сынап каралмаган",
   "yourTags": "Сезнең җавап",
   "availableTags": "Сайлау өчен теглар",
   "dropTagsHere": "Түбәндә тегларны сайлагыз яки монда күчереп китерегез",
-  "notAttempted": "Сынап каралмаган"
+  "addTag": "{tag} өстәү",
+  "removeTag": "{tag} бетерү",
+  "tagAdded": "{tag} җавабыгызга өстәлде",
+  "tagRemoved": "{tag} җавабыгыздан бетерелде"
 }

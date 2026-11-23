@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "Посмотрите на CodePen:"
+  "checkItOutOnCodePen": "Посмотрите на CodePen:",
+  "tabHint": "Клавиша Tab вставляет здесь табуляцию. Чтобы выйти из редактора с помощью Tab, сначала нажмите Ctrl+M (Ctrl+Shift+M на Mac)."
 }

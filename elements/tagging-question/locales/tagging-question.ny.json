@@ -45,8 +45,12 @@
   "hideDirections": "Bisani malangizo",
   "showRelatedContent": "Onetsani zokhudzana",
   "hideRelatedContent": "Bisani zokhudzana",
+  "notAttempted": "Sizinayesedwe",
   "yourTags": "Yankho lanu",
   "availableTags": "Ma tag oti musankhe",
   "dropTagsHere": "Sankhani ma tag pansipa kapena awakokereni apa",
-  "notAttempted": "Sizinayesedwe"
+  "addTag": "Onjezani {tag}",
+  "removeTag": "Chotsani {tag}",
+  "tagAdded": "{tag} yawonjezedwa ku yankho lanu",
+  "tagRemoved": "{tag} yachotsedwa ku yankho lanu"
 }

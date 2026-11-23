@@ -73,5 +73,6 @@
   "padStart": "Start: ඔබගේ පිටුව ප්‍රකාශ කරන්න",
   "padB": "B: අවසන් කොටස ආපසු ගන්න",
   "padA": "A: කොටසක් අල්ලන්න",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "ක්‍රීඩා පාලකය අතට ගන්න"
 }

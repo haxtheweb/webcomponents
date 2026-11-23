@@ -78,7 +78,10 @@
           "messy-hair": "Verstruwwelt Hoer mat Narb",
           "sparkle-selects": "Sparkle Selects (Helm)",
           "saber-cats": "Saber Cats (Helm)",
-          "future-traveler": "Future Traveler (Helm)"
+          "future-traveler": "Future Traveler (Helm)",
+          "pilgrim": "Pilgerhutt",
+          "bonnet": "Pilgerhaub",
+          "turkey": "Kalkounkap"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (Auswäerts)",
           "icers": "Icers (Heem)",
           "icers-away": "Icers (Auswäerts)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pilger (Jong)",
+          "pilgrim-girl": "Pilger (Meedchen)",
+          "turkey": "Kalkoun"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Schrauweschlëssel",
           "hockey-stick-pink": "Hockeyschläger (rosa)",
           "hockey-stick-green": "Hockeyschläger (gréng)",
-          "sparkle-flag": "Sparkle Selects (Fändel)"
+          "sparkle-flag": "Sparkle Selects (Fändel)",
+          "corn": "Maiskolben",
+          "drumstick": "Kalkounschenkel"
         }
       },
       {

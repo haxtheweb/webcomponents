@@ -31,12 +31,21 @@
       },
       {
         "title": "אזור בדיקת ידע"
+      },
+      {
+        "property": "title",
+        "title": "כותרת",
+        "description": "כותרת שמוצגת מעל מודל הקורס."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "אזור לוגו"
+      },
+      {
+        "slot": "logo",
+        "title": "אזור הלוגו"
       }
     ]
   }

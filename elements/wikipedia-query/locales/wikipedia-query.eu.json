@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipediatik",
   "readFullArticle": "Irakurri artikulu osoa Wikipedian",
-  "reading": "Irakurketa"
+  "reading": "Irakurketa",
+  "couldNotLoad": "Ezin izan da artikulua kargatu. Erabili goiko esteka Wikipedian irakurtzeko."
 }

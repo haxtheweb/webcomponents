@@ -42,5 +42,8 @@
   "belowLabel": "নিচে",
   "leftLabel": "বাম",
   "rightLabel": "ডান",
-  "hideTranscriptLabel": "ট্রান্সক্রিপ্ট লুকান"
+  "hideTranscriptLabel": "ট্রান্সক্রিপ্ট লুকান",
+  "youtubeConsentNotice": "এই ভিডিওটি YouTube থেকে চলে। Google আপনার IP ঠিকানা পাবে এবং কুকি সেট করতে পারে।",
+  "youtubeConsentAllow": "সবসময় YouTube অনুমতি দিন",
+  "consentChoicesLabel": "গোপনীয়তার পছন্দ"
 }

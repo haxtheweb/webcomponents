@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 268,
+    "elementsScanned": 261,
     "elementsWithTranslations": 180,
-    "translationFilesFound": 49134,
+    "translationFilesFound": 49440,
     "languagesSupported": [
       "af",
       "am",
@@ -426,7 +426,6 @@
       "zh_CN",
       "zu"
     ],
-    ["en"],
     ["ar", "es", "hi", "zh"]
   ],
   "manifest": {
@@ -456,7 +455,7 @@
     "ai-usage-license.haxProperties": 0,
     "app-hax": 2,
     "app-hax-confirmation-modal": 1,
-    "app-hax-filter-tag": 3,
+    "app-hax-filter-tag": 1,
     "app-hax-scroll-button": 1,
     "app-hax-search-results": 1,
     "app-hax-simple-hat-progress": 1,
@@ -564,7 +563,7 @@
     "em.haxProperties": 0,
     "embed.haxProperties": 0,
     "event-badge.haxProperties": 0,
-    "example-hax-element": 4,
+    "example-hax-element": 3,
     "example-hax-element.haxProperties": 0,
     "example-haxcms-theme.haxProperties": 0,
     "figcaption.haxProperties": 0,
@@ -694,7 +693,7 @@
     "learning-component.haxProperties": 0,
     "lecture-player": 1,
     "lesson-highlight": 1,
-    "letter-grade-picker": 3,
+    "letter-grade-picker": 1,
     "li.haxProperties": 0,
     "license-element": 1,
     "license-element.haxProperties": 0,
@@ -750,7 +749,7 @@
     "my-learning": 1,
     "my-learning-button": 1,
     "my-learning-panel": 1,
-    "night-draft-theme": 3,
+    "night-draft-theme": 1,
     "numeric-question": 1,
     "numeric-question.haxProperties": 0,
     "ol.haxProperties": 0,

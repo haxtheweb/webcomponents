@@ -1,3 +1,4 @@
 {
-  "checkItOutOnCodePen": "ดูได้ที่ CodePen:"
+  "checkItOutOnCodePen": "ดูได้ที่ CodePen:",
+  "tabHint": "ปุ่ม Tab จะพิมพ์แท็บที่นี่ หากต้องการออกจากตัวแก้ไขด้วย Tab ให้กด Ctrl+M ก่อน (Ctrl+Shift+M บน Mac)"
 }

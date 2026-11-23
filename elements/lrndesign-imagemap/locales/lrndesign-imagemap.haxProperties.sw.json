@@ -18,6 +18,11 @@
       {
         "title": "Maelezo ya maeneo",
         "description": "Maeneo shirikishi kwenye ramani ya picha."
+      },
+      {
+        "property": "src",
+        "title": "Picha",
+        "description": "Picha ya SVG ambayo maeneo maalum yanaelekeza."
       }
     ]
   }

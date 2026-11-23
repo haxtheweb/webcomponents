@@ -45,8 +45,12 @@
   "hideDirections": "Сховати інструкції",
   "showRelatedContent": "Показати пов’язаний вміст",
   "hideRelatedContent": "Сховати пов’язаний вміст",
+  "notAttempted": "Не було спроби",
   "yourTags": "Ваша відповідь",
   "availableTags": "Теги на вибір",
   "dropTagsHere": "Виберіть теги нижче або перетягніть їх сюди",
-  "notAttempted": "Не було спроби"
+  "addTag": "Додати {tag}",
+  "removeTag": "Вилучити {tag}",
+  "tagAdded": "{tag} додано до вашої відповіді",
+  "tagRemoved": "{tag} вилучено з вашої відповіді"
 }

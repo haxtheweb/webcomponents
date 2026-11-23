@@ -78,7 +78,10 @@
           "messy-hair": "Yara izli dağınık saç",
           "sparkle-selects": "Sparkle Selects (kask)",
           "saber-cats": "Saber Cats (kask)",
-          "future-traveler": "Future Traveler (kask)"
+          "future-traveler": "Future Traveler (kask)",
+          "pilgrim": "Püriten şapkası",
+          "bonnet": "Püriten bonesi",
+          "turkey": "Hindi başlığı"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (deplasman)",
           "icers": "Icers (iç saha)",
           "icers-away": "Icers (deplasman)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Püriten (erkek)",
+          "pilgrim-girl": "Püriten (kız)",
+          "turkey": "Hindi"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "İngiliz anahtarı",
           "hockey-stick-pink": "Hokey sopası (pembe)",
           "hockey-stick-green": "Hokey sopası (yeşil)",
-          "sparkle-flag": "Sparkle Selects (bayrak)"
+          "sparkle-flag": "Sparkle Selects (bayrak)",
+          "corn": "Mısır koçanı",
+          "drumstick": "Hindi budu"
         }
       },
       {

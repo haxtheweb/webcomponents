@@ -78,7 +78,10 @@
           "messy-hair": "흉터 있는 헝클어진 머리",
           "sparkle-selects": "Sparkle Selects (헬멧)",
           "saber-cats": "Saber Cats (헬멧)",
-          "future-traveler": "Future Traveler (헬멧)"
+          "future-traveler": "Future Traveler (헬멧)",
+          "pilgrim": "순례자 모자",
+          "bonnet": "순례자 보닛",
+          "turkey": "칠면조 후드"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (원정)",
           "icers": "Icers (홈)",
           "icers-away": "Icers (원정)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "순례자 (소년)",
+          "pilgrim-girl": "순례자 (소녀)",
+          "turkey": "칠면조"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "렌치",
           "hockey-stick-pink": "하키 스틱 (분홍)",
           "hockey-stick-green": "하키 스틱 (초록)",
-          "sparkle-flag": "Sparkle Selects (깃발)"
+          "sparkle-flag": "Sparkle Selects (깃발)",
+          "corn": "옥수수",
+          "drumstick": "칠면조 다리"
         }
       },
       {

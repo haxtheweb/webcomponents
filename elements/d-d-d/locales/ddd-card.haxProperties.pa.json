@@ -66,6 +66,16 @@
           "_top": "ਸਿਖਰਲੀ ਵਿੰਡੋ - _top",
           "_parent": "ਮਾਪਾ ਵਿੰਡੋ - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "ਖਿਤਿਜੀ",
+        "description": "ਤਸਵੀਰ ਨੂੰ ਲਿਖਤ ਦੇ ਉੱਪਰ ਦੀ ਬਜਾਏ ਉਸਦੇ ਨਾਲ ਰੱਖੋ।"
+      },
+      {
+        "property": "clickable",
+        "title": "ਪੂਰਾ ਕਾਰਡ ਲਿੰਕ ਹੈ",
+        "description": "ਪੂਰੇ ਕਾਰਡ ਨੂੰ ਲਿੰਕ ਬਣਾਓ ਅਤੇ ਬਟਨ ਲੁਕਾਓ। ਲਿੰਕ ਦੀ ਲੋੜ ਹੈ।"
       }
     ],
     "developer": [

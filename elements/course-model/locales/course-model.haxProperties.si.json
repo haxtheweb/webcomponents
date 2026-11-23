@@ -31,11 +31,20 @@
       },
       {
         "title": "දැනුම් පරීක්ෂණ ප්‍රදේශය"
+      },
+      {
+        "property": "title",
+        "title": "මාතෘකාව",
+        "description": "පාඨමාලා ආකෘතියට ඉහළින් පෙන්වන ශීර්ෂය."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "ලාංඡන ප්‍රදේශය"
+      },
+      {
+        "slot": "logo",
         "title": "ලාංඡන ප්‍රදේශය"
       }
     ]

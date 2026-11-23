@@ -31,11 +31,20 @@
       },
       {
         "title": "Wurin Gwajin Ilimi"
+      },
+      {
+        "property": "title",
+        "title": "Take",
+        "description": "Kanun da ake nunawa sama da tsarin kwas."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
+        "title": "Wurin tambari"
+      },
+      {
+        "slot": "logo",
         "title": "Wurin tambari"
       }
     ]

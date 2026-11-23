@@ -78,7 +78,10 @@
           "messy-hair": "ক্ষতচিহ্নসহ অগোছালো চুল",
           "sparkle-selects": "Sparkle Selects (হেলমেট)",
           "saber-cats": "Saber Cats (হেলমেট)",
-          "future-traveler": "Future Traveler (হেলমেট)"
+          "future-traveler": "Future Traveler (হেলমেট)",
+          "pilgrim": "পিলগ্রিম টুপি",
+          "bonnet": "পিলগ্রিম বনেট",
+          "turkey": "টার্কি হুড"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (অ্যাওয়ে)",
           "icers": "Icers (হোম)",
           "icers-away": "Icers (অ্যাওয়ে)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "পিলগ্রিম (ছেলে)",
+          "pilgrim-girl": "পিলগ্রিম (মেয়ে)",
+          "turkey": "টার্কি"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "রেঞ্চ",
           "hockey-stick-pink": "হকি স্টিক (গোলাপি)",
           "hockey-stick-green": "হকি স্টিক (সবুজ)",
-          "sparkle-flag": "Sparkle Selects (পতাকা)"
+          "sparkle-flag": "Sparkle Selects (পতাকা)",
+          "corn": "ভুট্টার মোচা",
+          "drumstick": "টার্কির রান"
         }
       },
       {

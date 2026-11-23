@@ -45,8 +45,12 @@
   "hideDirections": "Зааврыг нуух",
   "showRelatedContent": "Холбоотой агуулгыг харуулах",
   "hideRelatedContent": "Холбоотой агуулгыг нуух",
+  "notAttempted": "Оролдоогүй",
   "yourTags": "Таны хариулт",
   "availableTags": "Сонгох шошгууд",
   "dropTagsHere": "Доорх шошгуудыг сонгох эсвэл энд чирнэ үү",
-  "notAttempted": "Оролдоогүй"
+  "addTag": "{tag} нэмэх",
+  "removeTag": "{tag} хасах",
+  "tagAdded": "{tag} таны хариултад нэмэгдлээ",
+  "tagRemoved": "{tag} таны хариултаас хасагдлаа"
 }

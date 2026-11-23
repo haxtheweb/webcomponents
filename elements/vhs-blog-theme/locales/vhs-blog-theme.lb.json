@@ -73,5 +73,6 @@
   "padStart": "Start: Är Säit verëffentlechen",
   "padB": "B: de leschte Block zréckhuelen",
   "padA": "A: e Block gräifen",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "De Spillcontroller ophiewen"
 }

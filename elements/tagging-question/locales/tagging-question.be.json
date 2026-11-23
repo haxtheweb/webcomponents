@@ -45,8 +45,12 @@
   "hideDirections": "Схаваць інструкцыі",
   "showRelatedContent": "Паказаць звязанае змесціва",
   "hideRelatedContent": "Схаваць звязанае змесціва",
+  "notAttempted": "Не распачата",
   "yourTags": "Ваш адказ",
   "availableTags": "Даступныя тэгі",
   "dropTagsHere": "Выберыце тэгі ніжэй або перацягніце іх сюды",
-  "notAttempted": "Не распачата"
+  "addTag": "Дадаць {tag}",
+  "removeTag": "Выдаліць {tag}",
+  "tagAdded": "{tag} дададзена ў ваш адказ",
+  "tagRemoved": "{tag} выдалена з вашага адказу"
 }

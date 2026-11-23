@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "من Wikipedia",
   "readFullArticle": "اقرأ المقال كاملاً على Wikipedia",
-  "reading": "قراءة"
+  "reading": "قراءة",
+  "couldNotLoad": "تعذّر تحميل المقالة. استخدم الرابط أعلاه لقراءتها على Wikipedia."
 }

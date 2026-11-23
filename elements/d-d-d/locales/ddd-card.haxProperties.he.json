@@ -66,6 +66,16 @@
           "_top": "החלון העליון - _top",
           "_parent": "חלון האב - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "אופקי",
+        "description": "הצבת התמונה לצד הטקסט במקום מעליו."
+      },
+      {
+        "property": "clickable",
+        "title": "הכרטיס כולו הוא הקישור",
+        "description": "הפיכת הכרטיס כולו לקישור והסתרת הכפתור. נדרש קישור."
       }
     ],
     "developer": [

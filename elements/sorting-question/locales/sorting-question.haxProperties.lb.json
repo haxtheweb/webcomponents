@@ -22,6 +22,15 @@
       {
         "title": "Äntwerten",
         "description": "D'Reiefolleg vun den Äntwerte leet déi richteg Sequenz fest."
+      },
+      {
+        "property": "layout",
+        "title": "Layout",
+        "description": "Lëscht: Äntwerten an Reien openeen. Billerkaarten: eng Rei vu Kaarten, déi ëmbrécht, all mat hirem Bild a Knäppercher fir méi fréi / méi spéit ze réckelen.",
+        "options": {
+          "": "Lëscht",
+          "cards": "Billerkaarten"
+        }
       }
     ],
     "advanced": [

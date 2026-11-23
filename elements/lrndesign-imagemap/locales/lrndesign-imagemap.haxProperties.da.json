@@ -18,6 +18,11 @@
       {
         "title": "Hotspot-detaljer",
         "description": "De interaktive hotspots på billedkortet."
+      },
+      {
+        "property": "src",
+        "title": "Billede",
+        "description": "SVG-billede, som hotspots peger på."
       }
     ]
   }

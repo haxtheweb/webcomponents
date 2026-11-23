@@ -1,0 +1,6 @@
+{
+  "grades": "成績",
+  "gradeLetter": "成績 {letter}",
+  "score": "スコア",
+  "scoreFor": "{label} のスコア"
+}

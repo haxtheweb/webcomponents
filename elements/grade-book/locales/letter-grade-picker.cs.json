@@ -1,0 +1,6 @@
+{
+  "grades": "Známky",
+  "gradeLetter": "Známka {letter}",
+  "score": "Skóre",
+  "scoreFor": "Skóre pro {label}"
+}

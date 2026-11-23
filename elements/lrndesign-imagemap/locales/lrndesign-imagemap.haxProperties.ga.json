@@ -18,6 +18,11 @@
       {
         "title": "Sonraí na spotaí te",
         "description": "Na spotaí te idirghníomhacha ar an léarscáil íomhá."
+      },
+      {
+        "property": "src",
+        "title": "Íomhá",
+        "description": "Íomhá SVG a dtagraíonn na spotaí te di."
       }
     ]
   }

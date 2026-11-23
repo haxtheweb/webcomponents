@@ -66,6 +66,16 @@
           "_top": "Cửa sổ trên cùng - _top",
           "_parent": "Cửa sổ cha - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Ngang",
+        "description": "Đặt hình ảnh bên cạnh văn bản thay vì phía trên."
+      },
+      {
+        "property": "clickable",
+        "title": "Cả thẻ là liên kết",
+        "description": "Biến cả thẻ thành liên kết và ẩn nút. Cần có liên kết."
       }
     ],
     "developer": [

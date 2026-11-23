@@ -66,6 +66,16 @@
           "_top": "最上位ウィンドウ - _top",
           "_parent": "親ウィンドウ - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "横並び",
+        "description": "画像をテキストの上ではなく横に配置します。"
+      },
+      {
+        "property": "clickable",
+        "title": "カード全体をリンクにする",
+        "description": "カード全体をリンクにしてボタンを隠します。リンクが必要です。"
       }
     ],
     "developer": [

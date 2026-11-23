@@ -66,6 +66,16 @@
           "_top": "Dirisha la juu - _top",
           "_parent": "Dirisha mzazi - _parent"
         }
+      },
+      {
+        "property": "horizontal",
+        "title": "Mlalo",
+        "description": "Weka picha kando ya maandishi badala ya juu yake."
+      },
+      {
+        "property": "clickable",
+        "title": "Kadi nzima ni kiungo",
+        "description": "Fanya kadi nzima kuwa kiungo na ufiche kitufe. Inahitaji kiungo."
       }
     ],
     "developer": [

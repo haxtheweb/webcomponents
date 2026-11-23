@@ -22,6 +22,15 @@
       {
         "title": "Bersiv",
         "description": "Rêza bersivan rêza rast diyar dike."
+      },
+      {
+        "property": "layout",
+        "title": "Rêzkirin",
+        "description": "Lîste: bersiv di rêzan de li ser hev in. Kartên wêneyî: rêzek kartan ku derbasî rêza nû dibe, her yek bi wêneyê xwe û bişkokên bo pêştir / paştir birin.",
+        "options": {
+          "": "Lîste",
+          "cards": "Kartên wêneyî"
+        }
       }
     ],
     "advanced": [

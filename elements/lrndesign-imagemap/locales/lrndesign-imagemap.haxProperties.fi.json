@@ -18,6 +18,11 @@
       {
         "title": "Kohteiden tiedot",
         "description": "Kuvakartan interaktiiviset kohteet."
+      },
+      {
+        "property": "src",
+        "title": "Kuva",
+        "description": "SVG-kuva, johon kohdepisteet osoittavat."
       }
     ]
   }

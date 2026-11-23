@@ -42,5 +42,8 @@
   "belowLabel": "Поён",
   "leftLabel": "Чап",
   "rightLabel": "Рост",
-  "hideTranscriptLabel": "Пинҳон кардани матни транскрипт"
+  "hideTranscriptLabel": "Пинҳон кардани матни транскрипт",
+  "youtubeConsentNotice": "Ин видео аз YouTube пахш мешавад. Google суроғаи IP-и шуморо мегирад ва метавонад кукиҳо гузорад.",
+  "youtubeConsentAllow": "Ҳамеша ба YouTube иҷозат диҳед",
+  "consentChoicesLabel": "Интихоби махфият"
 }

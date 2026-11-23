@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Från Wikipedia",
   "readFullArticle": "Läs hela artikeln på Wikipedia",
-  "reading": "Läsning"
+  "reading": "Läsning",
+  "couldNotLoad": "Artikeln kunde inte laddas. Använd länken ovan för att läsa den på Wikipedia."
 }

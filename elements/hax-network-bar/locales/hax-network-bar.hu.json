@@ -6,6 +6,8 @@
   "tryAbout": "Használja a HAX-et most ebben a böngészőlapon. Nincs mit telepíteni.",
   "learn": "Tanulás",
   "learnAbout": "Oktatóanyagok, amelyek egyszerre egy folyamatot tanítanak meg a HAX-ből.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: ahol hallgatók és kezdő fejlesztők valódi HAX-munka kiadásával tanulnak.",
   "elements": "Webkomponensek",
   "elementsAbout": "Minden HAX elem élő bemutatókkal és útmutatókkal.",
   "cloud": "PRAW",

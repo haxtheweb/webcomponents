@@ -78,7 +78,10 @@
           "messy-hair": "Păr ciufulit cu cicatrice",
           "sparkle-selects": "Sparkle Selects (cască)",
           "saber-cats": "Saber Cats (cască)",
-          "future-traveler": "Future Traveler (cască)"
+          "future-traveler": "Future Traveler (cască)",
+          "pilgrim": "Pălărie de pelerin",
+          "bonnet": "Bonetă de pelerină",
+          "turkey": "Glugă de curcan"
         }
       },
       {
@@ -158,7 +161,10 @@
           "saber-cats-away": "Saber Cats (deplasare)",
           "icers": "Icers (acasă)",
           "icers-away": "Icers (deplasare)",
-          "future-traveler": "Future Traveler"
+          "future-traveler": "Future Traveler",
+          "pilgrim-boy": "Pelerin (băiat)",
+          "pilgrim-girl": "Pelerină (fată)",
+          "turkey": "Curcan"
         }
       },
       {
@@ -235,7 +241,9 @@
           "wrench": "Cheie franceză",
           "hockey-stick-pink": "Crosă de hochei (roz)",
           "hockey-stick-green": "Crosă de hochei (verde)",
-          "sparkle-flag": "Sparkle Selects (steag)"
+          "sparkle-flag": "Sparkle Selects (steag)",
+          "corn": "Știulete de porumb",
+          "drumstick": "Pulpă de curcan"
         }
       },
       {

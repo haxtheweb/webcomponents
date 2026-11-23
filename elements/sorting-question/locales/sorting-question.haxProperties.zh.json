@@ -22,6 +22,15 @@
       {
         "title": "答案",
         "description": "答案顺序即为正确顺序。"
+      },
+      {
+        "property": "layout",
+        "title": "布局",
+        "description": "列表：答案按行堆叠。图片卡片：一排可换行的卡片，每张都有图片以及“前移/后移”按钮。",
+        "options": {
+          "": "列表",
+          "cards": "图片卡片"
+        }
       }
     ],
     "advanced": [

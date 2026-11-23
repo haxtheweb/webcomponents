@@ -73,5 +73,6 @@
   "padStart": "Start: az oldal közzététele",
   "padB": "B: az utolsó blokk visszavétele",
   "padA": "A: blokk megragadása",
-  "easing": "ease-out"
+  "easing": "ease-out",
+  "pickUpController": "Vedd fel a játékvezérlőt"
 }

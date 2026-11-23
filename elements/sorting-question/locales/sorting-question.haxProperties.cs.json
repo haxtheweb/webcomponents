@@ -22,6 +22,15 @@
       {
         "title": "Odpovědi",
         "description": "Pořadí odpovědí určuje správnou posloupnost."
+      },
+      {
+        "property": "layout",
+        "title": "Rozvržení",
+        "description": "Seznam: odpovědi naskládané v řádcích. Karty s obrázky: řada karet, která se zalamuje, každá se svým obrázkem a tlačítky pro posun dříve / později.",
+        "options": {
+          "": "Seznam",
+          "cards": "Karty s obrázky"
+        }
       }
     ],
     "advanced": [

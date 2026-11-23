@@ -31,12 +31,21 @@
       },
       {
         "title": "Area verifica delle conoscenze"
+      },
+      {
+        "property": "title",
+        "title": "Titolo",
+        "description": "Intestazione mostrata sopra il modello del corso."
       }
     ],
     "advanced": [
       {
         "attribute": "environment-image",
         "title": "Area logo"
+      },
+      {
+        "slot": "logo",
+        "title": "Area del logo"
       }
     ]
   }

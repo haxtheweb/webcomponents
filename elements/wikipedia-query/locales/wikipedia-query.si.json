@@ -1,5 +1,6 @@
 {
   "fromWikipedia": "Wikipedia වෙතින්",
   "readFullArticle": "Wikipedia හි සම්පූර්ණ ලිපිය කියවන්න",
-  "reading": "කියවීම"
+  "reading": "කියවීම",
+  "couldNotLoad": "ලිපිය පූරණය කළ නොහැකි විය. එය Wikipedia හි කියවීමට ඉහත සබැඳිය භාවිත කරන්න."
 }

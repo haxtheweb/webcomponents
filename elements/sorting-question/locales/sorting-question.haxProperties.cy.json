@@ -22,6 +22,15 @@
       {
         "title": "Atebion",
         "description": "Mae trefn yr atebion yn diffinio'r dilyniant cywir."
+      },
+      {
+        "property": "layout",
+        "title": "Cynllun",
+        "description": "Rhestr: atebion wedi'u pentyrru mewn rhesi. Cardiau delwedd: rhes o gardiau sy'n lapio, pob un gyda'i ddelwedd a botymau symud yn gynt / yn hwyrach.",
+        "options": {
+          "": "Rhestr",
+          "cards": "Cardiau delwedd"
+        }
       }
     ],
     "advanced": [
