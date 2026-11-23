@@ -92,6 +92,7 @@
     "ubiquity-manifest": "node scripts/ubiquity-manifest.mjs write",
     "ubiquity-publish": "bash scripts/ubiquity-push.sh",
     "ubiquity-dry-run": "bash scripts/ubiquity-dry-run.sh",
+    "ubiquity-git-sync": "node scripts/ubiquity-network.mjs sync",
     "ubiquity-network": "node scripts/ubiquity-network.mjs",
     "terser": "node scripts/terser-build.mjs build/es6 --exclude build/es6/node_modules/monaco-editor --exclude build/es6/node_modules/h5p-standalone --exclude build/es6/node_modules/mathjax --exclude build/es6/node_modules/@mathjax --exclude build/es6/node_modules/@haxtheweb/mermaid-diagram/lib/mermaid/mermaid.min.js",
     "minify-css-templates": "node scripts/minify-css-templates.mjs build/es6/node_modules/@haxtheweb",

@@ -25,6 +25,13 @@
  *       Run it after `landed` passes; it is safe to run again on its own.
  *   node scripts/ubiquity-network.mjs plan
  *       print what a release does, repo by repo.
+ *   node scripts/ubiquity-network.mjs sync [--clone]
+ *       (yarn run ubiquity-git-sync) bring every checkout up to date before a
+ *       dry run or release: coverage, then a fast-forward-only `git pull` of
+ *       each repo's release branch, and of the waxam mirror. Missing
+ *       checkouts and checkouts on another branch are reported, not
+ *       changed; --clone clones the missing ones. Exits 1 unless every repo
+ *       is there, on its branch and current.
  *
  * Checkouts are found under $HAXTHEWEB_ROOT, which defaults to ~/haxtheweb
  * (where ubiquity-push.sh works) or, without one, the folder this
@@ -304,12 +311,6 @@ function cmdPreflight() {
       warnings.push("npm whoami failed: npm publish will need a login");
     }
   }
-  ["elmsln"].forEach((d) => {
-    const home = process.env.HOME || "";
-    if (!fs.existsSync(path.join(home, d))) {
-      warnings.push(`~/${d} not found: ubiquity skips copying into it`);
-    }
-  });
   warnings.forEach((w) => console.log(`WARNING: ${w}`));
   if (errors.length) {
     console.log(
@@ -548,6 +549,104 @@ function cmdPlan() {
   return 0;
 }
 
+// ---------------------------------------------------------------- sync
+
+const WAXAM = path.join(os.homedir(), "Documents", "git", "waxam", "cdn");
+
+/** fast-forward one checkout; never merges, rebases or touches local edits */
+function pullFastForward(dir, args) {
+  const before = git(dir, ["rev-parse", "HEAD"]);
+  try {
+    execFileSync("git", ["pull", "--ff-only", "--quiet", ...args], {
+      cwd: dir,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+  } catch (e) {
+    const why = String(e.stderr || e.message)
+      .split("\n")
+      .filter((l) => l.trim())
+      .slice(-1)[0];
+    return { ok: false, text: `pull failed: ${why}` };
+  }
+  const after = git(dir, ["rev-parse", "HEAD"]);
+  if (before === after) return { ok: true, text: "up to date" };
+  const n = git(dir, ["rev-list", "--count", `${before}..${after}`]);
+  return { ok: true, text: `updated, ${n} new commit${n === "1" ? "" : "s"}` };
+}
+
+function cmdSync() {
+  const clone = flag("--clone");
+  const problems = [];
+  if (cmdCoverage() !== 0) problems.push("coverage (above)");
+  console.log(`ubiquity-network: syncing checkouts under ${ROOT}`);
+  const width = Math.max(...NETWORK.repos.map((e) => e.repo.length));
+  const line = (name, text) => console.log(`  ${name.padEnd(width)}  ${text}`);
+  NETWORK.repos.forEach((entry) => {
+    const dir = repoDir(entry);
+    const name = entry.repo;
+    if (!fs.existsSync(path.join(dir, ".git"))) {
+      const url = `https://github.com/haxtheweb/${name}.git`;
+      if (!clone) {
+        line(name, `MISSING: git clone -b ${entry.branch} ${url} ${dir}`);
+        problems.push(`${name}: no checkout (rerun with --clone)`);
+        return;
+      }
+      try {
+        execFileSync("git", ["clone", "-q", "-b", entry.branch, url, dir], {
+          stdio: ["ignore", "ignore", "pipe"],
+        });
+        line(name, `cloned (${entry.branch})`);
+      } catch (e) {
+        line(name, `CLONE FAILED: ${String(e.stderr || e.message).trim()}`);
+        problems.push(`${name}: clone failed`);
+      }
+      return;
+    }
+    let branch = "";
+    try {
+      branch = git(dir, ["rev-parse", "--abbrev-ref", "HEAD"]);
+    } catch (e) {
+      line(name, "ERROR: git cannot read this checkout");
+      problems.push(`${name}: unreadable`);
+      return;
+    }
+    if (branch !== entry.branch) {
+      line(name, `SKIPPED: on ${branch}, the release uses ${entry.branch}`);
+      problems.push(`${name}: on ${branch}, not ${entry.branch}`);
+      return;
+    }
+    const result = pullFastForward(dir, ["origin", entry.branch]);
+    line(name, result.ok ? result.text : `FAILED: ${result.text}`);
+    if (!result.ok) problems.push(`${name}: ${result.text}`);
+  });
+  // the waxam mirror is outside $HAXTHEWEB_ROOT and optional; pull it on
+  // whatever branch it tracks when it is a git checkout
+  if (fs.existsSync(WAXAM)) {
+    try {
+      const top = git(WAXAM, ["rev-parse", "--show-toplevel"]);
+      const result = pullFastForward(top, []);
+      line("waxam", result.ok ? result.text : `FAILED: ${result.text}`);
+      if (!result.ok) problems.push(`waxam: ${result.text}`);
+    } catch (e) {
+      line("waxam", "not a git checkout; skipped");
+    }
+  } else {
+    line("waxam", `not found at ${WAXAM}; skipped`);
+  }
+  if (problems.length) {
+    console.log(
+      "ERROR: not every checkout is current:\n" +
+        problems.map((p) => `  ${p}`).join("\n"),
+    );
+    return 1;
+  }
+  console.log(
+    `ubiquity-network: all ${NETWORK.repos.length} repos are on their release branch and up to date`,
+  );
+  return 0;
+}
+
 const commands = {
   versions: cmdVersions,
   coverage: cmdCoverage,
@@ -555,6 +654,7 @@ const commands = {
   landed: cmdLanded,
   satellites: cmdSatellites,
   plan: cmdPlan,
+  sync: cmdSync,
 };
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
