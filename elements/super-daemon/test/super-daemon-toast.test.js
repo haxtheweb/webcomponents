@@ -116,7 +116,7 @@ describe("super-daemon-toast behavior", () => {
 
   it("sits top right with the other HAX toasts", async () => {
     element.opened = true;
-    element.style.animation = "none";
+    element._setAnimation("none");
     await element.updateComplete;
     const box = element.getBoundingClientRect();
     expect(box.top).to.be.below(globalThis.innerHeight / 2);
@@ -167,9 +167,15 @@ describe("super-daemon-toast behavior", () => {
     element.duration = 4000;
     element.show();
     expect(element.opened).to.equal(true);
-    expect(element.style.animation).to.contain("fadein");
-    expect(element.style.animation).to.contain("fadeout");
-    expect(element.style.animation).to.contain("4s");
+    expect(
+      element.style.getPropertyValue("--simple-toast-el-animation"),
+    ).to.contain("fadein");
+    expect(
+      element.style.getPropertyValue("--simple-toast-el-animation"),
+    ).to.contain("fadeout");
+    expect(
+      element.style.getPropertyValue("--simple-toast-el-animation"),
+    ).to.contain("4s");
   });
 
   it("show while already open does not re-open", async () => {
@@ -195,7 +201,9 @@ describe("super-daemon-toast behavior", () => {
     element.opened = true;
     element.hide();
     expect(element.opened).to.equal(true);
-    expect(element.style.animation).to.contain("fadein");
+    expect(
+      element.style.getPropertyValue("--simple-toast-el-animation"),
+    ).to.contain("fadein");
   });
 
   it("hide keeps an alwaysvisible toast open", () => {
@@ -203,7 +211,9 @@ describe("super-daemon-toast behavior", () => {
     element.opened = true;
     element.hide();
     expect(element.opened).to.equal(true);
-    expect(element.style.animation).to.contain("fadein");
+    expect(
+      element.style.getPropertyValue("--simple-toast-el-animation"),
+    ).to.contain("fadein");
   });
 
   it("hide without eventCallback dispatches nothing", () => {

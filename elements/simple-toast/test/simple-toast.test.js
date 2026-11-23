@@ -305,7 +305,7 @@ describe("simple-toast-el _getAnimation", () => {
     el.awaitingMerlinInput = false;
     // not none: animationend has to fire so the toast hides
     expect(el._getAnimation()).to.equal(
-      "fadein var(--ddd-duration-reduced, 0.01ms), fadeout var(--ddd-duration-reduced, 0.01ms) 3s",
+      "fadein var(--ddd-duration-reduced, 0.01ms), fadeout var(--ddd-duration-reduced, 0.01ms) 3s forwards",
     );
     el.alwaysvisible = true;
     expect(el._getAnimation()).to.equal(
@@ -421,7 +421,9 @@ describe("simple-toast-el updated lifecycle", () => {
   it("updates animation when duration changes", async () => {
     el.duration = 2000;
     await new Promise((r) => setTimeout(r, 10));
-    expect(el.style.animation).to.contain("fadein");
+    expect(el.style.getPropertyValue("--simple-toast-el-animation")).to.contain(
+      "fadein",
+    );
   });
 
   it("dismiss timer callback fires and hides toast", async () => {
@@ -430,8 +432,8 @@ describe("simple-toast-el updated lifecycle", () => {
     el.awaitingMerlinInput = false;
     el.opened = true;
     await new Promise((r) => setTimeout(r, 50));
-    // dismiss timer is duration + 600 = 601ms
-    await new Promise((r) => setTimeout(r, 700));
+    // the fade out ends at duration + 600ms; the backup timer is at + 900ms
+    await new Promise((r) => setTimeout(r, 1000));
     expect(el.classList.contains("show")).to.equal(false);
     expect(el.opened).to.equal(false);
   });

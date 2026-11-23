@@ -453,7 +453,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
   hideSimpleToast(_e) {
     if (!this.alwaysvisible) {
       // tricks into closing via event in a graceful way
-      this.style.animation = "forcedfadeout 0.6s .3s";
+      this._setAnimation("forcedfadeout 0.6s .3s");
       this.awaitingMerlinInput = false;
       setTimeout(() => {
         this.hide();
@@ -832,7 +832,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     if (e.detail.awaitingMerlinInput && this.duration) {
       // should appear to switch into waiting for input mode prior to closing state
       setTimeout(() => {
-        this.style.animation = "none";
+        this._setAnimation("none");
         this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
       }, this.duration / 2);
     } else {
@@ -843,8 +843,9 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
 
   show() {
     if (!this.opened) {
-      this.style.animation =
-        "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
+      this._setAnimation(
+        "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s",
+      );
       this.opened = true;
     }
   }
@@ -863,10 +864,10 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
       if (!this.alwaysvisible) {
         this.opened = false;
       } else {
-        this.style.animation = "fadein 0.3s";
+        this._setAnimation("fadein 0.3s");
       }
     } else {
-      this.style.animation = "fadein 0.3s";
+      this._setAnimation("fadein 0.3s");
     }
   }
 }

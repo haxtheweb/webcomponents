@@ -439,7 +439,7 @@ export class RPGCharacterToast extends SimpleToastEl {
     if (e.detail.awaitingMerlinInput && this.duration) {
       // should appear to switch into waiting for input mode prior to closing state
       setTimeout(() => {
-        this.style.animation = "none";
+        this._setAnimation("none");
         this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
       }, this.duration / 2);
     } else {
@@ -452,9 +452,9 @@ export class RPGCharacterToast extends SimpleToastEl {
     if (!this.opened) {
       this.opened = true;
     }
-    this.style.animation = "none";
+    this._setAnimation("none");
     setTimeout(() => {
-      this.style.animation = this._getAnimation();
+      this._setAnimation(this._getAnimation());
     }, 0);
   }
 
@@ -479,10 +479,10 @@ export class RPGCharacterToast extends SimpleToastEl {
       if (!this.alwaysvisible) {
         this.opened = false;
       } else {
-        this.style.animation = "fadein 0.3s";
+        this._setAnimation("fadein 0.3s");
       }
     } else {
-      this.style.animation = "fadein 0.3s";
+      this._setAnimation("fadein 0.3s");
     }
   }
 }
