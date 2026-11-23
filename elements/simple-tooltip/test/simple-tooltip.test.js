@@ -23,6 +23,32 @@ describe("simple-tooltip attribute reflection", () => {
   });
 });
 
+describe("simple-tooltip description link", () => {
+  it("describes its target unless it repeats the target's name", async () => {
+    const container = await fixture(html`
+      <div>
+        <button id="dl-a" aria-label="Save">S</button>
+        <simple-tooltip for="dl-a">Saves a draft</simple-tooltip>
+        <button id="dl-b" aria-label="Delete">D</button>
+        <simple-tooltip for="dl-b">Delete</simple-tooltip>
+      </div>
+    `);
+    const tips = container.querySelectorAll("simple-tooltip");
+    await tips[0].updateComplete;
+    await tips[1].updateComplete;
+    const a = container.querySelector("#dl-a");
+    const b = container.querySelector("#dl-b");
+    expect(a.getAttribute("aria-describedby")).to.equal(tips[0].id);
+    expect(b.hasAttribute("aria-describedby")).to.be.false;
+    tips[0].remove();
+    expect(a.hasAttribute("aria-describedby")).to.be.false;
+  });
+  it("has no tooltip role while empty", async () => {
+    const el = await fixture(html`<simple-tooltip></simple-tooltip>`);
+    expect(el.hasAttribute("role")).to.be.false;
+  });
+});
+
 describe("simple-tooltip target getter", () => {
   it("returns parentNode when for is not set", async () => {
     const container = await fixture(html`
@@ -435,6 +461,30 @@ describe("simple-tooltip event wiring", () => {
     btn.dispatchEvent(new Event("mouseenter"));
     expect(tip._showing).to.be.true;
     btn.dispatchEvent(new Event("mouseleave"));
+    // a short grace period lets the pointer reach the tooltip (1.4.13)
+    expect(tip._showing).to.be.true;
+    await new Promise((r) => setTimeout(r, 200));
+    expect(tip._showing).to.be.false;
+  });
+
+  it("stays open while the pointer is over the tooltip itself", async () => {
+    const container = await fixture(html`
+      <div>
+        <button id="ew-hover">B</button>
+        <simple-tooltip for="ew-hover">Opens the full report</simple-tooltip>
+      </div>
+    `);
+    const tip = container.querySelector("simple-tooltip");
+    const btn = container.querySelector("#ew-hover");
+    await tip.updateComplete;
+    btn.dispatchEvent(new Event("mouseenter"));
+    btn.dispatchEvent(new Event("mouseleave"));
+    tip.dispatchEvent(new Event("mouseenter"));
+    await new Promise((r) => setTimeout(r, 200));
+    expect(tip._showing).to.be.true;
+    expect(tip.hasAttribute("data-showing")).to.be.true;
+    tip.dispatchEvent(new Event("mouseleave"));
+    await new Promise((r) => setTimeout(r, 200));
     expect(tip._showing).to.be.false;
   });
 
