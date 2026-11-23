@@ -244,10 +244,13 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-regi
 # haxcms-nodejs for the run only. Every leg runs on its own state and port:
 # haxcms-php is a fresh copy of the checkout installed for the run, so your
 # local install's login, settings and sites are not used.
+# --old-sites adds the old-site compatibility check (haxtheweb/issues#3175):
+# sites made by earlier HAX releases must still load, save and reorder on the
+# CLI and both backends about to ship.
 # A failure is a parity break to fix, or an intended output change: refresh
 # the snapshots in create (--update-golden), review and commit them, rerun.
 enter ~/haxtheweb/create
-if ! npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --build --link-cli; then
+if ! npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --build --link-cli --old-sites; then
   echo "ERROR: release gate failed, nothing was committed or tagged. Report: ~/haxtheweb/create/parity-results/release-gate.md"
   exit 1
 fi
