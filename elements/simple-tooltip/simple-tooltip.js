@@ -195,6 +195,20 @@ class SimpleTooltip extends LitElement {
           animation-delay: -30s !important;
         }
 
+        /* reduced motion: near-zero duration, not none, because show and
+           hide finish on animationend. The delay before showing is timing,
+           not motion, and stays. */
+        @media (prefers-reduced-motion: reduce) {
+          .fade-in-animation,
+          .fade-out-animation,
+          .scale-up-animation,
+          .scale-down-animation,
+          .slide-down-animation,
+          .slide-down-animation-out {
+            animation-duration: var(--ddd-duration-reduced, 0.01ms);
+          }
+        }
+
         /* #tooltip.hidden (not .hidden) so the id-level width/padding/margin
            on #tooltip above cannot override the 1px visually-hidden box */
         #tooltip.hidden {

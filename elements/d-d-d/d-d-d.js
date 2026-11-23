@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, css } from "lit";
+import { LitElement } from "lit";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
 import {
   DDDReset,
@@ -14,6 +14,7 @@ import {
 } from "./lib/DDDStyles.js";
 import { DesignSystemManager } from "./lib/DesignSystemManager.js";
 import { DDDMotionIconStyles } from "./lib/DDDMotion.js";
+import { DDDReducedMotion } from "./lib/DDDReducedMotion.js";
 
 /**
  * `d-d-d`
@@ -140,26 +141,7 @@ export const DDDSuper = function (SuperClass) {
       if (super.styles) {
         styles = super.styles;
       }
-      return [
-        styles,
-        DDDReset,
-        css`
-          /* :host too: * only matches inside the shadow root, so a
-             transition on the element itself escaped the stop */
-          @media (prefers-reduced-motion: reduce) {
-            :host,
-            *,
-            *::before,
-            *::after {
-              animation-duration: 0.01ms !important;
-              animation-iteration-count: 1 !important;
-              transition-duration: 0.01ms !important;
-              transition-delay: 0ms !important;
-              scroll-behavior: auto !important;
-            }
-          }
-        `,
-      ];
+      return [styles, DDDReset, DDDReducedMotion];
     }
   };
 };

@@ -129,13 +129,23 @@ class SimpleToastEl extends DDD {
     );
   }
   _getAnimation(duration = this.duration) {
-    if (this._prefersReducedMotion()) {
-      return "none";
-    }
+    // reduced motion: the same animations at a near-zero duration instead
+    // of none, so animationend still fires and the toast still hides
+    const reduced = this._prefersReducedMotion()
+      ? "var(--ddd-duration-reduced, 0.01ms)"
+      : "";
     if (!this.alwaysvisible && !this.awaitingMerlinInput) {
-      return "fadein 0.3s, fadeout 0.6s " + duration / 1000 + "s";
+      return (
+        "fadein " +
+        (reduced || "0.3s") +
+        ", fadeout " +
+        (reduced || "0.6s") +
+        " " +
+        duration / 1000 +
+        "s"
+      );
     }
-    return "fadein 0.3s";
+    return "fadein " + (reduced || "0.3s");
   }
   constructor() {
     super();
