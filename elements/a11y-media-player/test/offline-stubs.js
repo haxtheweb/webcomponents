@@ -1,4 +1,5 @@
 import { A11yMediaYoutube } from "../lib/a11y-media-youtube.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 
 /**
  * Offline test double for the global YT.Player constructor.
@@ -94,7 +95,10 @@ export class FakeYTPlayer {
  *   placeholder so neither #print-thumbnail nor the #player background-image
  *   can fetch it
  */
-export function installOfflineYouTubeStubs() {
+export function installOfflineYouTubeStubs(options = {}) {
+  // these fixtures play YouTube, so the visitor has allowed it unless a
+  // test is about the consent gate itself ({ consent: false })
+  HaxConsent.set("youtube", options.consent === false ? null : "allow");
   A11yMediaYoutube.preconnected = true;
   globalThis.A11yMediaYoutubeManager.api = true;
   globalThis.YT = { Player: FakeYTPlayer };

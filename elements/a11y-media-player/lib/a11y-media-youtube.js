@@ -169,18 +169,8 @@ class A11yMediaYoutube extends LitElement {
       "preconnect",
       "https://www.youtube-nocookie.com",
     );
-    // The botguard script is fetched off from google.com
-    A11yMediaYoutube.addPrefetch("preconnect", "https://www.google.com");
-
-    // Not certain if these ad related domains are in the critical path. Could verify with domain-specific throttling.
-    A11yMediaYoutube.addPrefetch(
-      "preconnect",
-      "https://googleads.g.doubleclick.net",
-    );
-    A11yMediaYoutube.addPrefetch(
-      "preconnect",
-      "https://static.doubleclick.net",
-    );
+    // Privacy: no preconnects to ad or tracking hosts; a preconnect alone
+    // sends the visitor's IP address
 
     A11yMediaYoutube.preconnected = true;
   }
@@ -564,6 +554,8 @@ class A11yMediaYoutube extends LitElement {
         port = globalThis.location.port ? `:${globalThis.location.port}` : ``,
         origin = `${globalThis.location.protocol}//${globalThis.location.hostname}${port}`;
       youtube = new YT.Player(divid, {
+        // Privacy: the reduced-cookie host for the embed itself
+        host: "https://www.youtube-nocookie.com",
         width: root.width,
         height: root.height,
         events: { onReady: setYT },
