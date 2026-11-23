@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (256 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (257 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -155,6 +155,7 @@ Every element in this monorepo (256 packages). Browse them live with `yarn galle
 | [multiple-choice](./multiple-choice/) | Multiple choice question with feedback for correct and incorrect answers | `@haxtheweb/multiple-choice` | [demo](./multiple-choice/demo/) |
 | [music-player](./music-player/) | Visualize different types of music and simple format player | `@haxtheweb/music-player` | [demo](./music-player/demo/) |
 | [mutation-observer-import-mixin](./mutation-observer-import-mixin/) | a SuperClass mixin that dynamically imports undefined custom element definitions | `@haxtheweb/mutation-observer-import-mixin` |  |
+| [night-draft-theme](./night-draft-theme/) | Night Draft: a dark HAXcms blog theme where posts are typed onto paper under a desk lamp, with scratched-out words left in | `@haxtheweb/night-draft-theme` | [demo](./night-draft-theme/demo/) |
 | [numeric-question](./numeric-question/) | A question answered with a number, from a fixed answer or a formula with variables, correct within a tolerance | `@haxtheweb/numeric-question` | [demo](./numeric-question/demo/) |
 | [oer-schema](./oer-schema/) | Wraps content in schema.org / OER metadata markup | `@haxtheweb/oer-schema` | [demo](./oer-schema/demo/) |
 | [outline-designer](./outline-designer/) | tools to modify and visualize JSON Outline Schema for editing | `@haxtheweb/outline-designer` | [demo](./outline-designer/demo/) |

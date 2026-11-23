@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 267,
-    "elementsWithTranslations": 179,
-    "translationFilesFound": 49133,
+    "elementsScanned": 268,
+    "elementsWithTranslations": 180,
+    "translationFilesFound": 49134,
     "languagesSupported": [
       "af",
       "am",
@@ -750,6 +750,7 @@
     "my-learning": 1,
     "my-learning-button": 1,
     "my-learning-panel": 1,
+    "night-draft-theme": 3,
     "numeric-question": 1,
     "numeric-question.haxProperties": 0,
     "ol.haxProperties": 0,

@@ -4375,6 +4375,16 @@
       "tags": []
     },
     {
+      "tag": "night-draft-theme",
+      "title": "",
+      "description": "A dark blogging theme about a writer at a typewriter, at night. The home page is a lamp-lit desk with the posts' titles floating over it; choosing one flashes to that post's darkened banner, where an arrow nudges down to the letter typed onto paper, title and date at the foot of the page. A black...",
+      "package": "@haxtheweb/night-draft-theme",
+      "import": "@haxtheweb/night-draft-theme/night-draft-theme.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": []
+    },
+    {
       "tag": "numeric-question",
       "title": "Numeric Question",
       "description": "A question answered with a number, correct within a tolerance. The answer is a fixed number or a formula worked out from variables, so it covers the Numerical and Formula question types of an LMS. The question text can show the variable values with {name} tokens. The key (answer or formula, and t...",
