@@ -27,6 +27,12 @@ class SimpleToastEl extends DDD {
           font-family: var(--simple-toast-font-family, sans-serif);
           transform: translateY(0);
           will-change: transform, opacity;
+          /* The fade is declared here, in the stylesheet that holds its
+             keyframes, and fed through a custom property. Set as an inline
+             style on the host it would be looked up in the tree the host
+             sits in, where fadein and fadeout do not exist, and nothing
+             would play. */
+          animation: var(--simple-toast-el-animation, none);
         }
         :host(.show) {
           display: flex;
@@ -128,6 +134,13 @@ class SimpleToastEl extends DDD {
       globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
   }
+  /**
+   * Play (or stop, with "none") the toast's animations. Use this, not
+   * style.animation: see the note on :host.
+   */
+  _setAnimation(value) {
+    this.style.setProperty("--simple-toast-el-animation", value);
+  }
   _getAnimation(duration = this.duration) {
     // reduced motion: the same animations at a near-zero duration instead
     // of none, so animationend still fires and the toast still hides
@@ -142,7 +155,7 @@ class SimpleToastEl extends DDD {
         (reduced || "0.6s") +
         " " +
         duration / 1000 +
-        "s"
+        "s forwards"
       );
     }
     return "fadein " + (reduced || "0.3s");
@@ -174,27 +187,30 @@ class SimpleToastEl extends DDD {
           }),
         );
         if (this[propName]) {
-          this.style.animation = "none";
+          this._setAnimation("none");
           this.show(this.text);
           setTimeout(() => {
-            this.style.animation = this._getAnimation();
+            this._setAnimation(this._getAnimation());
           }, 0);
           if (
             !this.alwaysvisible &&
             !this.awaitingMerlinInput &&
             this.duration > 0
           ) {
+            // backup only: the end of the fade out hides the toast (it
+            // starts when the time is up and takes 600ms). This catches
+            // the cases where that event never arrives.
             this.__dismissTimer = setTimeout(() => {
               this.__dismissTimer = null;
               this.hide();
-            }, this.duration + 600);
+            }, this.duration + 900);
           }
         } else {
           this.hide();
         }
       }
       if (propName === "duration" && this[propName]) {
-        this.style.animation = this._getAnimation(this[propName]);
+        this._setAnimation(this._getAnimation(this[propName]));
       }
     });
   }

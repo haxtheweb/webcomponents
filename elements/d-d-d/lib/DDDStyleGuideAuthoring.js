@@ -36,6 +36,21 @@ function getStyleGuideDefaultDemoSchemaForTag(tag) {
 const originalDemoSchemas = new WeakMap();
 // marks styleGuideSchema entries this file wrote
 const DDD_STYLE_GUIDE_SOURCE = "ddd-style-guide";
+// blocks of running text that data-measure caps (the same list as the
+// data-measure rule in DDDStyles.js)
+const DDD_MEASURE_TAGS = [
+  "p",
+  "ul",
+  "ol",
+  "dl",
+  "blockquote",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+];
 
 function applyStyleGuideDefaultsToProperties(tag, properties) {
   if (!properties || !tag) {
@@ -433,6 +448,23 @@ export function registerDDDStyleGuideAuthoring(payload = {}) {
                 center: "Center",
                 right: "Right",
                 justify: "Justify",
+              },
+            });
+          }
+          // running text can take the reading measure (see data-measure in
+          // DDDStyles.js). Nothing is narrowed unless an author picks one.
+          if (DDD_MEASURE_TAGS.includes(tag)) {
+            spacingProps.push({
+              attribute: "data-measure",
+              title: "Line length",
+              description:
+                "Limit how far lines of text run, for easier reading",
+              inputMethod: "select",
+              options: {
+                "": "-- default --",
+                sm: "Narrow (45 characters)",
+                md: "Comfortable (65 characters)",
+                lg: "Wide (80 characters)",
               },
             });
           }
