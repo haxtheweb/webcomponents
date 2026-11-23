@@ -247,7 +247,7 @@ class ChamferTheme extends HAXCMSThemeParts(
           position: fixed;
           right: var(--ddd-spacing-0);
           bottom: var(--ddd-spacing-0);
-          z-index: 10000;
+          z-index: var(--ddd-z-sticky, 200);
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
           --simple-icon-button-border-radius: none;

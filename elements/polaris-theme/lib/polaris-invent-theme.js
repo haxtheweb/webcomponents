@@ -157,7 +157,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           position: fixed;
           right: 0px;
           bottom: 0px;
-          z-index: 10000;
+          z-index: var(--ddd-z-sticky, 200);
           --scroll-button-background-color: var(
             --ddd-palette-color-7,
             var(--ddd-theme-default-inventOrange)

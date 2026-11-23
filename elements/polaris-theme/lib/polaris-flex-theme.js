@@ -128,7 +128,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           position: fixed;
           right: 0px;
           bottom: 0px;
-          z-index: 10000;
+          z-index: var(--ddd-z-sticky, 200);
           --scroll-button-background-color: var(--polaris-nav-bg-color);
           --simple-icon-width: 32px;
           --simple-icon-height: 32px;
