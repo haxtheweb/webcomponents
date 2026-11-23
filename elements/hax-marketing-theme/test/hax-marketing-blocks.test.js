@@ -76,6 +76,12 @@ describe("hax-marketing-blocks", function () {
     expect(el.shadowRoot.querySelector("hax-story-link").story).to.equal(
       "stories/abc12345",
     );
+    // no thousands separator unless asked, so years stay years
+    expect(el.shadowRoot.querySelector("count-up").separator).to.equal("");
+    const big = await fixture(
+      html`<hax-stat end="17287" separator="," label="pages"></hax-stat>`,
+    );
+    expect(big.shadowRoot.querySelector("count-up").separator).to.equal(",");
     const words = await fixture(
       html`<hax-stat value="$0" label="Forever yours."></hax-stat>`,
     );
