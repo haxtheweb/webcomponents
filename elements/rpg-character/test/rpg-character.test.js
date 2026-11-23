@@ -781,6 +781,21 @@ describe("rpg-character", () => {
       }
     });
 
+    it("the mascot costume draws gold fur in place of the seed's skin", async () => {
+      const mascot = await fixture(
+        html`<rpg-character seed="btopro" preset="mascot"></rpg-character>`,
+      );
+      await settled(mascot);
+      expect(hrefs(mascot).some((h) => h.endsWith("/skin/fur-gold.svg"))).to.be
+        .true;
+      const plain = await fixture(
+        html`<rpg-character seed="btopro" preset="band"></rpg-character>`,
+      );
+      await settled(plain);
+      expect(hrefs(plain).some((h) => h.endsWith("/skin/fur-gold.svg"))).to.be
+        .false;
+    });
+
     it("a preset can ask for a shaved head, and the seed hat color is hidden", async () => {
       const el = await fixture(
         html`<rpg-character
@@ -1069,7 +1084,8 @@ describe("rpg-character", () => {
           Object.keys(p)
             // flags such as shaved are not files
             .filter((slot) => typeof p[slot] === "string")
-            .map((slot) => `${slot}/${p[slot]}`),
+            // a costume's fur is drawn from the skin folder
+            .map((slot) => `${slot === "fur" ? "skin" : slot}/${p[slot]}`),
         ),
         "base/shaved",
         "base/shavedL",
