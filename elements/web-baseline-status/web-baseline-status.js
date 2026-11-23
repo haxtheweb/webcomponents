@@ -3,7 +3,7 @@
  * Copyright 2026 haxtheweb
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 // upstream widget (web-platform-dx/baseline-status). It registers
 // <baseline-status>; this element wraps it so it can be placed and configured
@@ -36,6 +36,27 @@ export class WebBaselineStatus extends DDD {
     super();
     this.featureId = "";
     this._haxstate = false;
+    this._live = false;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._live = true;
+  }
+
+  /**
+   * Take <baseline-status> out of the shadow root when this element leaves
+   * the page. Its icons are SVG drawn with fill="url(#...)"; Chromium's
+   * matched-style cache keeps any style holding such a reference, and the
+   * shadow tree it points into, alive. Out of our shadow root, that tree no
+   * longer reaches this element, so a removed instance can be collected.
+   */
+  disconnectedCallback() {
+    this._live = false;
+    if (this.hasUpdated) {
+      this.performUpdate();
+    }
+    super.disconnectedCallback();
   }
 
   // Lit reactive properties
@@ -48,6 +69,7 @@ export class WebBaselineStatus extends DDD {
        */
       featureId: { type: String, reflect: true, attribute: "feature-id" },
       _haxstate: { type: Boolean, attribute: false },
+      _live: { type: Boolean, state: true },
     };
   }
 
@@ -76,6 +98,9 @@ export class WebBaselineStatus extends DDD {
 
   // Lit render the HTML
   render() {
+    if (!this._live) {
+      return nothing;
+    }
     return html`<baseline-status
       class="${this._haxstate ? "is-editing" : ""}"
       .featureId="${this.featureId}"

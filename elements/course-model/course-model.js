@@ -2,7 +2,7 @@
  * Copyright 2023 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./lib/model-option.js";
@@ -25,6 +25,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
        * also in server rendered HTML.
        */
       typeof: { type: String, reflect: true },
+      _live: { type: Boolean, state: true },
       visible: {
         type: String,
         reflect: true,
@@ -152,6 +153,7 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
     super();
     this.typeof = "oer:MediaObject";
     this.visible = "model";
+    this._live = false;
     this.title = "";
     this.src = "";
     this.poster = "";
@@ -396,6 +398,26 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
     ];
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    this._live = true;
+  }
+
+  /**
+   * Take <model-viewer> out of the shadow root when this element leaves the
+   * page. Its shadow tree holds SVG url(#...) references, and Chromium's
+   * matched-style cache keeps any style holding one, and the tree it points
+   * into, alive. Out of our shadow root, that tree no longer reaches this
+   * element, so a removed instance can be collected.
+   */
+  disconnectedCallback() {
+    this._live = false;
+    if (this.hasUpdated) {
+      this.performUpdate();
+    }
+    super.disconnectedCallback();
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -473,16 +495,20 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
           <div class="slotted-check"><slot name="check"></slot></div>
         </div>
         <div class="model-wrap model">
-          <model-viewer
-            title="${this.title}"
-            src="${this.src}"
-            alt="${this.alt}"
-            camera-controls
-            exposure="6"
-            camera-orbit="60deg"
-            shadow-intensity="0.5"
-            ar
-          ></model-viewer>
+          ${
+            this._live
+              ? html`<model-viewer
+                  title="${this.title}"
+                  src="${this.src}"
+                  alt="${this.alt}"
+                  camera-controls
+                  exposure="6"
+                  camera-orbit="60deg"
+                  shadow-intensity="0.5"
+                  ar
+                ></model-viewer>`
+              : nothing
+          }
         </div>
       </div>
     `;

@@ -274,13 +274,23 @@ describe("wikipedia-query test", () => {
       expect(result.textContent).to.include("Penn State is a university.");
     });
 
-    it("ignores a non-ok response", async () => {
+    it("says the article could not load on a non-ok response", async () => {
       await makeVisible();
       fetchStub.resolves({ ok: false, json: () => Promise.resolve({}) });
       element.updateArticle("Penn_State", element.headers, "en");
       await new Promise((resolve) => setTimeout(resolve, 50));
-      expect(element.shadowRoot.querySelector("#result").innerHTML).to.equal(
-        "",
+      expect(element.shadowRoot.querySelector("#result").textContent).to.equal(
+        element.t.couldNotLoad,
+      );
+    });
+
+    it("says the article could not load when the fetch fails", async () => {
+      await makeVisible();
+      fetchStub.rejects(new Error("offline"));
+      element.updateArticle("Penn_State", element.headers, "en");
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      expect(element.shadowRoot.querySelector("#result").textContent).to.equal(
+        element.t.couldNotLoad,
       );
     });
   });
@@ -328,16 +338,16 @@ describe("wikipedia-query test", () => {
       expect(result.innerHTML).to.not.include("alert(1)");
     });
 
-    it("ignores responses without a query object", async () => {
+    it("says the article could not load when there is no query object", async () => {
       await makeVisible();
       element.handleResponse({});
       element.handleResponse(undefined);
-      expect(element.shadowRoot.querySelector("#result").innerHTML).to.equal(
-        "",
-      );
+      const result = element.shadowRoot.querySelector("#result");
+      expect(result.getAttribute("role")).to.equal("status");
+      expect(result.textContent).to.equal(element.t.couldNotLoad);
     });
 
-    it("ignores pages without an extract", async () => {
+    it("says so for pages without an extract", async () => {
       await makeVisible();
       element.handleResponse({
         query: {
@@ -346,8 +356,9 @@ describe("wikipedia-query test", () => {
           },
         },
       });
-      expect(element.shadowRoot.querySelector("#result").innerHTML).to.equal(
-        "",
+      // no extract to show: the block says so rather than staying empty
+      expect(element.shadowRoot.querySelector("#result").textContent).to.equal(
+        element.t.couldNotLoad,
       );
     });
 

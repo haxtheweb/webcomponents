@@ -99,6 +99,8 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
       fromWikipedia: "From Wikipedia",
       reading: "Reading",
       readFullArticle: "Read the full article on Wikipedia",
+      couldNotLoad:
+        "The article could not be loaded. Use the link above to read it on Wikipedia.",
     };
     this.registerLocalization({
       context: this,
@@ -195,7 +197,21 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
       })
       .then((json) => {
         this.handleResponse(json);
+      })
+      .catch(() => {
+        this._showLoadError();
       });
+  }
+  /**
+   * Say so when the article cannot be fetched (offline, blocked, a bad
+   * search), instead of leaving an empty block
+   */
+  _showLoadError() {
+    const result = this.shadowRoot && this.shadowRoot.querySelector("#result");
+    if (result) {
+      result.setAttribute("role", "status");
+      result.textContent = this.t.couldNotLoad;
+    }
   }
   /**
    * LitElement properties updated
@@ -285,6 +301,7 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
    * Process response from wikipedia.
    */
   handleResponse(response) {
+    let shown = false;
     // the key of pages is a number so need to look for it
     if (typeof response !== typeof undefined && response.query) {
       for (let key in response.query.pages) {
@@ -302,9 +319,14 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
           // before assigning to innerHTML (neutralizes onerror/javascript:/iframe/svg)
           html = sanitizeHTMLString(html);
           // need to innerHTML this or it won't set
+          this.shadowRoot.querySelector("#result").removeAttribute("role");
           this.shadowRoot.querySelector("#result").innerHTML = html;
+          shown = true;
         }
       }
+    }
+    if (!shown) {
+      this._showLoadError();
     }
   }
   /**
