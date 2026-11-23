@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 
 export class PolarisCta extends LitElement {
   static get tag() {
@@ -144,6 +145,7 @@ export class PolarisCta extends LitElement {
           --polaris-cta-color: var(--polaris-cta-psu-lightblue);
         }
       `,
+      DDDReducedMotion,
     ];
   }
 

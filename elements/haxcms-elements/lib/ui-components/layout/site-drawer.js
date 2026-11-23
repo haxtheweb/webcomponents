@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `site-drawer`
  * `Basic off canvas drawer element`
@@ -73,6 +74,7 @@ class SiteDrawer extends LitElement {
           pointer-events: auto;
         }
       `,
+      DDDReducedMotion,
     ];
   }
   /**

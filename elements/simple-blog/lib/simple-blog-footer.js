@@ -8,6 +8,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { varExists } from "@haxtheweb/utils/lib/object-path.js";
 import { autorun, toJS } from "mobx";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `simple-blog-footer`
  * @element simple-blog-footer
@@ -151,6 +152,7 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
           --site-menu-button-button-width: 100%;
         }
       `,
+      DDDReducedMotion,
     ];
   }
   /**

@@ -7,6 +7,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 
 export class TrainingButton extends HAXCMSThemeParts(LitElement) {
   // defaults
@@ -150,6 +151,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           opacity: var(--ddd-state-disabled-opacity, 0.5);
         }
       `,
+      DDDReducedMotion,
     ];
   }
 

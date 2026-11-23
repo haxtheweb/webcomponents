@@ -14,6 +14,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { HaxUiAdminIcons } from "@haxtheweb/d-d-d/lib/HaxUiAdminIcons.js";
 import { adminConfirm } from "./admin/haxcms-admin-confirm.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -130,6 +131,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
           outline-offset: 2px;
         }
       `,
+      DDDReducedMotion,
     ];
   }
   /**
