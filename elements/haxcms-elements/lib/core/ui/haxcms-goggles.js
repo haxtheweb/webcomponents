@@ -2587,7 +2587,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           inset: 0;
           display: block;
           pointer-events: none;
-          z-index: 545454545454545454545454545454;
+          z-index: calc(var(--ddd-z-toast, 100000000) + 5);
           font-family: var(
             --hax-ui-admin-font-family,
             var(--ddd-font-navigation)

@@ -21,7 +21,7 @@ const AbsolutePositionBehaviorClass = function (SuperClass) {
         css`
           :host {
             display: inline-block;
-            z-index: 99999999999;
+            z-index: var(--ddd-z-tooltip, 10100);
             position: absolute;
           }
 

@@ -797,3 +797,30 @@ describe("absolute-position-behavior manager registration across moves", () => {
     expect(managed(el)).to.equal(0);
   });
 });
+
+describe("absolute-position-behavior stacking", () => {
+  it("sits on the tooltip layer by default, without DDD", async () => {
+    const el = await fixture(
+      html`<absolute-position-behavior></absolute-position-behavior>`,
+    );
+    expect(globalThis.getComputedStyle(el).zIndex).to.equal("10100");
+  });
+
+  it("follows --ddd-z-tooltip, and an element using it can still set its own", async () => {
+    const box = await fixture(html`
+      <div style="--ddd-z-tooltip: 20200">
+        <absolute-position-behavior id="a"></absolute-position-behavior>
+        <absolute-position-behavior
+          id="b"
+          style="z-index: 7"
+        ></absolute-position-behavior>
+      </div>
+    `);
+    expect(
+      globalThis.getComputedStyle(box.querySelector("#a")).zIndex,
+    ).to.equal("20200");
+    expect(
+      globalThis.getComputedStyle(box.querySelector("#b")).zIndex,
+    ).to.equal("7");
+  });
+});
