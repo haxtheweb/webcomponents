@@ -810,7 +810,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           .edge.enter {
             stroke-dasharray: 1 !important;
             stroke-dashoffset: 1;
-            animation: ew-draw 0.9s ease-out forwards;
+            animation: ew-draw 0.9s var(--ddd-timing-enter, ease-out) forwards;
           }
           .edge.enter.rev {
             stroke-dashoffset: -1;

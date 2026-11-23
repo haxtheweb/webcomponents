@@ -520,8 +520,8 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           overflow: visible;
         }
         .hat-avatar[data-suit="arriving"] app-hax-simple-hat-progress {
-          animation: hax-hat-away var(--ddd-duration-slow, 0.6s) ease-in
-            forwards;
+          animation: hax-hat-away var(--ddd-duration-slow, 0.6s)
+            var(--ddd-timing-exit, ease-in) forwards;
         }
         .hat-avatar[data-suit="arriving"] .traveler {
           animation: hax-traveler-lower 1.3s cubic-bezier(0.2, 0.8, 0.3, 1) 0.5s

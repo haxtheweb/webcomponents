@@ -208,8 +208,8 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
           );
         }
         :host([leaving]) {
-          animation: haxcms-toast-out var(--hax-ui-duration, 150ms) ease-in
-            forwards;
+          animation: haxcms-toast-out var(--hax-ui-duration, 150ms)
+            var(--ddd-timing-exit, ease-in) forwards;
         }
         @keyframes haxcms-toast-out {
           to {

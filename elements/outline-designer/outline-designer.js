@@ -3929,14 +3929,14 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     let wait = 0;
     left.forEach((id, i) => {
       rules.push(
-        `${both("old", id)}{animation:outline-designer-flip-out ${flipMs}ms ease-in ${beat(i)}ms both;transform-origin:top center}`,
+        `${both("old", id)}{animation:outline-designer-flip-out ${flipMs}ms var(--ddd-timing-exit, ease-in) ${beat(i)}ms both;transform-origin:top center}`,
       );
       wait = Math.max(wait, beat(i) + Math.round(flipMs * 0.7));
     });
     flipped.forEach((id, i) => {
       rules.push(
-        `${both("old", id)}{animation:outline-designer-flip-out ${half}ms ease-in ${beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
-        `${both("new", id)}{animation:outline-designer-flip-in ${half}ms ease-out ${half + beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+        `${both("old", id)}{animation:outline-designer-flip-out ${half}ms var(--ddd-timing-exit, ease-in) ${beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
+        `${both("new", id)}{animation:outline-designer-flip-in ${half}ms var(--ddd-timing-enter, ease-out) ${half + beat(i)}ms both;transform-origin:center;mix-blend-mode:normal}`,
       );
     });
     if (wait) {
