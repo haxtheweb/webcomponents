@@ -1,8 +1,5 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import {
-  PAGE_SIZE,
-  characterFromParams,
-} from "../lib/rpg-character-builder.js";
+import { characterFromParams } from "../lib/rpg-character-builder.js";
 import {
   decodeCharacter,
   encodeCharacter,
@@ -22,7 +19,7 @@ const showTile = async (el, tab, key) => {
   el.tab = tab;
   await settled(el);
   const index = el.tabDef.sections[0].options.findIndex((o) => o.key === key);
-  el._page = Math.floor(index / PAGE_SIZE);
+  el._offset = Math.floor(index / el._pageSize) * el._pageSize;
   await settled(el);
   return tile(el, key);
 };
@@ -99,26 +96,50 @@ describe("rpg-character-builder", () => {
     expect(decodeCharacter(el.code).pet).to.equal("none");
   });
 
-  it("shows how many options there are and pages through them", async () => {
+  it("pages with simple-pager and shows how many options there are", async () => {
     const el = await fixture(
       html`<rpg-character-builder seed="btopro"></rpg-character-builder>`,
     );
     el.tab = "hat";
     await settled(el);
     const total = el.tabDef.sections[0].options.length;
-    const count = () =>
-      el.shadowRoot.querySelector(".pager .count").textContent.trim();
-    expect(count()).to.equal(`1-${PAGE_SIZE} of ${total}`);
-    const dots = el.shadowRoot.querySelectorAll(".pager .dot");
-    expect(dots.length).to.equal(Math.ceil(total / PAGE_SIZE));
-    dots[1].click();
+    const size = el._pageSize;
+    const pager = el.shadowRoot.querySelector("simple-pager");
+    expect(pager.total).to.equal(total);
+    expect(pager.limit).to.equal(size);
+    expect(pager.offset).to.equal(0);
+    expect(el.shadowRoot.querySelectorAll(".tile").length).to.equal(size);
+    // the suite pager asks for the next page; the builder moves to it
+    pager.dispatchEvent(
+      new CustomEvent("page-changed", {
+        detail: { limit: size, offset: size },
+      }),
+    );
     await settled(el);
-    expect(count()).to.equal(`${PAGE_SIZE + 1}-${PAGE_SIZE * 2} of ${total}`);
-    expect(
-      el.shadowRoot
-        .querySelectorAll(".pager .dot")[1]
-        .getAttribute("aria-current"),
-    ).to.equal("true");
+    await pager.updateComplete;
+    expect(pager.offset).to.equal(size);
+    const status = pager.shadowRoot.querySelector(".status").textContent;
+    expect(status).to.contain(`${size + 1}`);
+    expect(status).to.contain(`${total}`);
+  });
+
+  it("fits more tiles on a page when there is room", async () => {
+    const el = await fixture(
+      html`<div style="width:1400px">
+        <rpg-character-builder seed="btopro"></rpg-character-builder>
+      </div>`,
+    );
+    const builder = el.querySelector("rpg-character-builder");
+    builder.tab = "hat";
+    await settled(builder);
+    builder._measure();
+    await settled(builder);
+    const wide = builder._pageSize;
+    el.style.width = "760px";
+    builder._measure();
+    await settled(builder);
+    expect(wide).to.be.greaterThan(builder._pageSize);
+    expect(builder._columns).to.be.at.least(3);
   });
 
   it("loading a code shows it chosen", async () => {

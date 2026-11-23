@@ -10,6 +10,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { I18NManagerStore } from "@haxtheweb/i18n-manager/i18n-manager.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-pager/simple-pager.js";
 import {
   RpgCharacter,
   traitsFromSeed,
@@ -47,8 +48,8 @@ const extraSlots = [
 const hairHats = ["messy-hair", "wild-hair", "flat-top", "wig"];
 // on / off effects, each one tile that flips when clicked
 const toggleSlots = ["fire", "circle", "seasonal"];
-/** tiles per page of the option grid */
-export const PAGE_SIZE = 12;
+// rows of tiles per page when the builder's height is not bounded (a page)
+const ROWS = 3;
 
 // regions of rpg-character's 113 x 142 art, [x, y, w, h], that a tile zooms to
 const R = {
@@ -282,7 +283,9 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     this.walking = false;
     this.tab = "hair";
     this._section = 0;
-    this._page = 0;
+    this._offset = 0;
+    this._columns = 4;
+    this._pageSize = 4 * ROWS;
     this._preview = "";
     this._trying = "";
     this._history = [];
@@ -383,16 +386,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       namespace: "rpg-character.haxProperties",
       localesPath: new URL("../locales", import.meta.url).href,
     });
-    // tile size follows the builder's own width (a dialog or a page)
-    this._resizer = new ResizeObserver((entries) => {
-      const width = entries[0].contentRect.width;
-      const size = width < 420 ? 58 : width < 720 ? 68 : 84;
-      if (size !== this._tileSize) {
-        // next frame: resizing tiles inside the observer would loop it
-        globalThis.requestAnimationFrame(() => {
-          this._tileSize = size;
-        });
-      }
+    // tile size follows the builder's own width (a dialog or a page), and
+    // a page holds as many tiles as fit; measured on the next frame, since
+    // resizing tiles inside the observer would loop it
+    this._resizer = new ResizeObserver(() => {
+      globalThis.requestAnimationFrame(() => this._measure());
     });
   }
 
@@ -424,7 +422,9 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       /** Builder tab on screen */
       tab: { type: String },
       _section: { type: Number, state: true },
-      _page: { type: Number, state: true },
+      _offset: { type: Number, state: true },
+      _columns: { type: Number, state: true },
+      _pageSize: { type: Number, state: true },
       _preview: { type: String, state: true },
       _trying: { type: String, state: true },
       _history: { type: Array, state: true },
@@ -487,13 +487,13 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
         /* picture tabs */
         .tabs {
           flex: none;
-          overflow-x: auto;
-          scrollbar-width: thin;
+          position: relative;
           border-bottom: 1px solid var(--hax-ui-line);
           background-color: var(--hax-ui-sunken);
         }
         [role="tablist"] {
           display: flex;
+          flex-wrap: wrap;
           gap: var(--ddd-spacing-2, 8px);
           padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-5, 20px);
         }
@@ -649,9 +649,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           border-color: var(--rpgb-on);
           font-weight: var(--ddd-font-weight-bold, 700);
         }
+        .options {
+          min-width: 0;
+        }
         .grid {
           display: grid;
-          grid-template-columns: repeat(4, max-content);
           gap: var(--ddd-spacing-3, 12px);
           padding-bottom: var(--ddd-spacing-6, 24px);
         }
@@ -745,69 +747,9 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           position: absolute;
           pointer-events: none;
         }
-        .pager {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          gap: var(--ddd-spacing-2, 8px);
-          margin-top: var(--ddd-spacing-2, 8px);
-        }
-        .count {
-          margin-right: var(--ddd-spacing-2, 8px);
-          font-size: var(--hax-ui-admin-font-size-xs);
-          color: var(--hax-ui-text-muted);
-          font-variant-numeric: tabular-nums;
-        }
-        .arrow {
-          width: var(--hax-ui-target, 44px);
-          height: var(--hax-ui-target, 44px);
-          display: grid;
-          place-items: center;
-          border-radius: 50%;
-          border: 2px solid var(--hax-ui-line);
-          background: linear-gradient(var(--rpgb-tile-a), var(--rpgb-tile-b));
-          color: var(--hax-ui-text);
-          cursor: pointer;
-        }
-        .arrow:hover {
-          border-color: var(--hax-ui-line-strong);
-        }
-        .arrow:active {
-          transform: translateY(1px);
-        }
-        .arrow:disabled {
-          opacity: 0.35;
-          cursor: not-allowed;
-          transform: none;
-        }
-        .dots {
-          display: flex;
-          gap: 2px;
-        }
-        .dot {
-          width: 28px;
-          height: 28px;
-          padding: 0;
-          display: grid;
-          place-items: center;
-          border: 0;
-          background: transparent;
-          cursor: pointer;
-        }
-        .dot span {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-          border: 2px solid var(--hax-ui-text-muted);
-        }
-        .dot:hover span {
-          border-color: var(--hax-ui-text);
-        }
-        .dot[aria-current="true"] span {
-          width: 22px;
-          border-radius: var(--hax-ui-radius-pill);
-          background-color: var(--rpgb-on);
-          border-color: var(--rpgb-on);
+        simple-pager {
+          --simple-pager-font-size: var(--hax-ui-admin-font-size-xs);
+          margin: 0 0 var(--ddd-spacing-2, 8px);
         }
         .hint {
           max-width: 60ch;
@@ -896,9 +838,15 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           background-color: var(--hax-ui-accent-strong);
         }
 
-        @container rpgb (min-width: 1100px) {
-          .board.noside .grid {
-            grid-template-columns: repeat(6, max-content);
+        /* mid widths (a dialog on a laptop): colors move under the tiles
+           so the two never overlap */
+        @container rpgb (max-width: 940px) {
+          .board {
+            grid-template-columns: minmax(0, 1fr);
+          }
+          .side {
+            flex-direction: row;
+            flex-wrap: wrap;
           }
         }
         /* narrow (a phone): the preview sits on top and everything scrolls
@@ -957,6 +905,54 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     }
     this._resizer.observe(this);
     this._loadLabels();
+  }
+
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    this._resizer.observe(this.shadowRoot.querySelector(".board"));
+    this._resizer.observe(this.shadowRoot.querySelector(".options"));
+  }
+
+  /**
+   * Tile size from the builder's width; columns from the grid's width; rows
+   * from the board's height when it is bounded (in a dialog), else 3. The
+   * page keeps its first tile in view when the page size changes.
+   */
+  _measure() {
+    const width = this.getBoundingClientRect().width;
+    if (!width) {
+      return;
+    }
+    const size = width < 420 ? 58 : width < 720 ? 68 : 84;
+    // a tile is the art plus 4px padding and a 2px border on each side
+    const tile = size + 12;
+    const gap = width < 720 ? 8 : 12;
+    const options = this.shadowRoot.querySelector(".options");
+    const board = this.shadowRoot.querySelector(".board");
+    const columns = Math.max(
+      3,
+      Math.floor(((options ? options.clientWidth : 0) + gap) / (tile + gap)),
+    );
+    let rows = ROWS;
+    if (this.actions && board && width >= 720) {
+      // room left for tiles once the heading, pager and hints are drawn
+      const head = this.shadowRoot.querySelector(".board-head");
+      const room = board.clientHeight - (head ? head.offsetHeight : 0) - 160;
+      rows = Math.min(5, Math.max(2, Math.floor((room + gap) / (tile + gap))));
+    }
+    const pageSize = columns * rows;
+    if (size !== this._tileSize) {
+      this._tileSize = size;
+    }
+    if (columns !== this._columns) {
+      this._columns = columns;
+    }
+    if (pageSize !== this._pageSize) {
+      this._offset = Math.floor(this._offset / pageSize) * pageSize;
+      this._pageSize = pageSize;
+    }
   }
 
   disconnectedCallback() {
@@ -1038,6 +1034,11 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       } catch {
         // some embedded contexts refuse history changes
       }
+    }
+    if (changedProperties.has("tab") || changedProperties.has("_section")) {
+      // the side column comes and goes with the tab, so the room for tiles
+      // can change without the builder changing size
+      globalThis.requestAnimationFrame(() => this._measure());
     }
     if (this._slide) {
       // slide a new page of tiles in from the side it came from, so it reads
@@ -1454,7 +1455,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
   _setTab(id) {
     this.tab = id;
     this._section = 0;
-    this._page = 0;
+    this._offset = 0;
     this._untry();
   }
 
@@ -1478,12 +1479,13 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     }
   }
 
-  _goPage(page) {
-    if (page === this._page) {
+  _pageChanged(e) {
+    const offset = e.detail.offset;
+    if (offset === this._offset) {
       return;
     }
-    this._slide = page > this._page ? 1 : -1;
-    this._page = page;
+    this._slide = offset > this._offset ? 1 : -1;
+    this._offset = offset;
     this._untry();
   }
 
@@ -1737,10 +1739,9 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     const tab = this.tabDef;
     const section = tab.sections[this._section] || tab.sections[0];
     const total = section.options.length;
-    const pages = Math.ceil(total / PAGE_SIZE);
-    const page = Math.min(this._page, pages - 1);
-    const first = page * PAGE_SIZE;
-    const options = section.options.slice(first, first + PAGE_SIZE);
+    const size = this._pageSize;
+    const first = Math.min(this._offset, Math.floor((total - 1) / size) * size);
+    const options = section.options.slice(first, first + size);
     const removable =
       !section.fixed &&
       !section.toggles &&
@@ -1765,7 +1766,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
                     aria-pressed="${i === this._section ? "true" : "false"}"
                     @click="${() => {
                       this._section = i;
-                      this._page = 0;
+                      this._offset = 0;
                       this._untry();
                     }}"
                   >
@@ -1775,15 +1776,25 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
             : ""
         }
       </div>
-      <div>
-        <div class="grid" role="group" aria-label="${section.name}">
+      <div class="options">
+        <div
+          class="grid"
+          role="group"
+          aria-label="${section.name}"
+          style="grid-template-columns:repeat(${this._columns},max-content)"
+        >
           ${options.map((option) => this.renderTile(option, section))}
         </div>
-        ${
-          pages > 1
-            ? this.renderPager(page, pages, first, options.length, total)
-            : ""
-        }
+        <simple-pager
+          mode="full"
+          limit="${size}"
+          offset="${first}"
+          total="${total}"
+          count="${options.length}"
+          max-page-buttons="7"
+          label="${section.name}"
+          @page-changed="${this._pageChanged}"
+        ></simple-pager>
         ${this.renderHints(tab, section, character, removable)}
       </div>
       ${
@@ -1857,63 +1868,6 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
       }
       <span class="lbl">${option.label}</span>
     </button>`;
-  }
-
-  renderPager(page, pages, first, shown, total) {
-    const showing = this._fill(this.t.showing, {
-      first: first + 1,
-      last: first + shown,
-      total,
-    });
-    return html`<div class="pager">
-      <span class="count" aria-live="polite">${showing}</span>
-      <button
-        type="button"
-        class="arrow"
-        aria-label="${this.t.previousPage}"
-        ?disabled="${page === 0}"
-        @click="${() => this._goPage(page - 1)}"
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-          <path
-            d="M10 2 4 8l6 6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          ></path>
-        </svg>
-      </button>
-      <span class="dots">
-        ${Array.from({ length: pages }, (_, i) => i).map(
-          (i) =>
-            html`<button
-              type="button"
-              class="dot"
-              aria-label="${this._fill(this.t.page, { page: i + 1, pages })}"
-              aria-current="${i === page ? "true" : "false"}"
-              @click="${() => this._goPage(i)}"
-            >
-              <span></span>
-            </button>`,
-        )}
-      </span>
-      <button
-        type="button"
-        class="arrow"
-        aria-label="${this.t.nextPage}"
-        ?disabled="${page >= pages - 1}"
-        @click="${() => this._goPage(page + 1)}"
-      >
-        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-          <path
-            d="m6 2 6 6-6 6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          ></path>
-        </svg>
-      </button>
-    </div>`;
   }
 
   renderHints(tab, section, character, removable) {
