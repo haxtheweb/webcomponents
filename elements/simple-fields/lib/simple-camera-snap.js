@@ -110,6 +110,11 @@ class SimpleCameraSnap extends HTMLElement {
         z-index: var(--simple-camera-snap-button-container-z-index, 5);
         margin-top: var(--ddd-spacing-1, 4px);
       }
+      @media (prefers-reduced-motion: reduce) {
+        #snap {
+          transition-duration: var(--ddd-duration-reduced, 0.01ms);
+        }
+      }
     </style>
     <simple-login-avatar part="avatar">
       <div id="selfie" part="selfie"></div>

@@ -298,9 +298,19 @@ describe("simple-toast-el _getAnimation", () => {
     globalThis.matchMedia = origMatchMedia;
   });
 
-  it("returns none when reduced motion preferred", () => {
+  it("keeps the animations at the reduced duration when reduced motion preferred", () => {
     globalThis.matchMedia = () => ({ matches: true });
-    expect(el._getAnimation()).to.equal("none");
+    el.duration = 3000;
+    el.alwaysvisible = false;
+    el.awaitingMerlinInput = false;
+    // not none: animationend has to fire so the toast hides
+    expect(el._getAnimation()).to.equal(
+      "fadein var(--ddd-duration-reduced, 0.01ms), fadeout var(--ddd-duration-reduced, 0.01ms) 3s",
+    );
+    el.alwaysvisible = true;
+    expect(el._getAnimation()).to.equal(
+      "fadein var(--ddd-duration-reduced, 0.01ms)",
+    );
   });
 
   it("returns fadein+fadeout for normal with duration", () => {

@@ -346,7 +346,7 @@ export class RetroVcr extends LitElement {
           }
           :host([phase="press"]) .cas {
             transition:
-              transform 0.25s ease-in,
+              transform 0.25s var(--ddd-timing-exit, ease-in),
               opacity 0.25s 0.1s;
           }
           .cap {

@@ -287,6 +287,11 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     :host([hidden]) {
       display: none;
     }
+    @media (prefers-reduced-motion: reduce) {
+      :host {
+        transition-duration: var(--ddd-duration-reduced, 0.01ms);
+      }
+    }
     </style>
 <div>${this.importingText}</div>`;
   }

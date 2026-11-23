@@ -98,7 +98,8 @@ export class FlashCardPromptImg extends DDD {
           --simple-icon-width: var(--ddd-icon-lg);
           color: var(--ddd-theme-default-white);
           filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
-          animation: iconPop var(--ddd-duration-normal) ease-out;
+          animation: iconPop var(--ddd-duration-normal)
+            var(--ddd-timing-enter, ease-out);
         }
         @keyframes iconPop {
           0% {

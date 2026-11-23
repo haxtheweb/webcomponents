@@ -96,7 +96,7 @@ class PortalLauncher extends HTMLElement {
           }
           @media (prefers-reduced-motion: reduce) {
             .portal-transition {
-              transition: all 0.001s;
+              transition: all var(--ddd-duration-reduced, 0.01ms);
             }
           }
           .portal-reveal {

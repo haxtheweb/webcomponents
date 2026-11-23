@@ -14,6 +14,21 @@ import '@haxtheweb/d-d-d/d-d-d.js';
 <script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/d-d-d/d-d-d.js"></script>
 ```
 
+## Reduced motion
+
+`lib/DDDReducedMotion.js` is the one rule that stops motion under `prefers-reduced-motion: reduce`. Durations drop to `--ddd-duration-reduced` (0.01ms) instead of the transition or animation being removed, so `transitionend` and `animationend` still fire and code that waits on them still finishes.
+
+- An element that extends `DDD` or `DDDSuper` already has it.
+- An element in a DDD context that does not extend DDD adds it to its styles:
+
+```js
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
+static get styles() { return [css`...`, DDDReducedMotion]; }
+```
+
+- An element that must work where DDD is not installed writes the same media query itself, with `var(--ddd-duration-reduced, 0.01ms)` as the duration.
+- `animation: none` is for a loop that has to stand still as a picture (a loading shape) when nothing waits on its end event.
+
 ## Icon motion library
 
 `lib/DDDMotion.js` holds the motions DDD shares, so elements do not write their own keyframes. The icon motions are nine short, decorative motions that play once when an icon is hovered or takes keyboard focus. See them in `demo/motion.html` and under **Motion** in the style guide (`d-d-docs`).

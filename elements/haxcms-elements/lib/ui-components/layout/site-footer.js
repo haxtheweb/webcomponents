@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/license-element/license-element.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `site-footer`
  * `A basic site footer`
@@ -27,6 +28,7 @@ class SiteFooter extends LitElement {
           pointer-events: none;
         }
       `,
+      DDDReducedMotion,
     ];
   }
   /**

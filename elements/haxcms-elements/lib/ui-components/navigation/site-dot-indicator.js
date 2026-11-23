@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `site-dot-indicator`
  * `list of items based on manifest`
@@ -65,6 +66,7 @@ class SiteDotIndicator extends LitElement {
           background-color: var(--site-dot-indicator-color);
         }
       `,
+      DDDReducedMotion,
     ];
   }
   constructor() {

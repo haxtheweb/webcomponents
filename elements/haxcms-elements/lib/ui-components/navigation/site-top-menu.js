@@ -10,6 +10,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`
@@ -202,6 +203,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
           }
         }
       `,
+      DDDReducedMotion,
     ];
   }
   __resultChanged(e) {

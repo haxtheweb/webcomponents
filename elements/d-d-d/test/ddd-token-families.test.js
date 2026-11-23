@@ -265,6 +265,58 @@ describe("DDD eyebrow", () => {
       host.remove();
     }
   });
+
+  it("caps line length only where data-measure opts in", async () => {
+    const host = globalThis.document.createElement("div");
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = [
+      text,
+      ...DDDDataAttributes.map((s) => s.cssText),
+    ].map((css) => {
+      const sheet = new CSSStyleSheet();
+      sheet.replaceSync(css);
+      return sheet;
+    });
+    root.innerHTML = `<p id="plain">Text</p>
+      <p id="own" data-measure>Text</p>
+      <p id="small" data-measure="sm">Text</p>
+      <div id="wrap" data-measure="lg"><p id="inside">Text</p><img id="media" alt="" /><div><p id="deep">Text</p></div></div>`;
+    globalThis.document.body.appendChild(host);
+    try {
+      const ch = (id, n) => {
+        const el = root.querySelector(id);
+        // 1ch in this element's own font, measured rather than assumed
+        const probe = globalThis.document.createElement("span");
+        probe.style.cssText = `display:block;width:${n}ch;height:0`;
+        el.appendChild(probe);
+        const px = probe.getBoundingClientRect().width;
+        probe.remove();
+        return Math.round(px);
+      };
+      const max = (id) =>
+        Math.round(
+          parseFloat(getComputedStyle(root.querySelector(id)).maxWidth),
+        );
+      expect(getComputedStyle(root.querySelector("#plain")).maxWidth).to.equal(
+        "none",
+      );
+      expect(max("#own")).to.equal(ch("#own", 65));
+      expect(max("#small")).to.equal(ch("#small", 45));
+      expect(max("#inside")).to.equal(ch("#inside", 80));
+      // the container, media and deeper blocks keep their full width
+      expect(getComputedStyle(root.querySelector("#wrap")).maxWidth).to.equal(
+        "none",
+      );
+      expect(getComputedStyle(root.querySelector("#media")).maxWidth).to.equal(
+        "none",
+      );
+      expect(getComputedStyle(root.querySelector("#deep")).maxWidth).to.equal(
+        "none",
+      );
+    } finally {
+      host.remove();
+    }
+  });
 });
 
 describe("DDD media control", () => {

@@ -80,3 +80,14 @@ replace-tag[popup-loader]:defined {
 
   100% { transform: scale(1); opacity: 1; }
 }
+
+/** reduced motion: the laser edge stands still and the pop up arrives at once **/
+@media (prefers-reduced-motion: reduce) {
+  *[laser-loader]:not([loaded])::before, *[laser-loader]:not([loaded])::after {
+    animation: none;
+  }
+
+  *[popup-loader][loaded]:defined {
+    animation-duration: var(--ddd-duration-reduced, 0.01ms);
+  }
+}

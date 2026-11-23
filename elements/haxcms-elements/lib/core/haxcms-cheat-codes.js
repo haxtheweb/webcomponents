@@ -1579,7 +1579,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         font-family: 'Comic Sans MS', cursive, sans-serif;
         color: #333;
         text-align: center;
-        animation: furby-bounce 0.6s ease-out;
+        animation: furby-bounce 0.6s var(--ddd-timing-enter, ease-out);
         cursor: move;
         user-select: none;
       `;
@@ -1693,7 +1693,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       // Close button functionality - spawn two more when closed!
       const closeBtn = popup.querySelector(`#close-furby-${popupCount}`);
       closeBtn.addEventListener("click", () => {
-        popup.style.animation = "furby-bounce 0.6s ease-in reverse";
+        popup.style.animation =
+          "furby-bounce 0.6s var(--ddd-timing-exit, ease-in) reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
@@ -1728,7 +1729,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       const allFurbyPopups =
         globalThis.document.querySelectorAll(".furby-popup");
       allFurbyPopups.forEach((popup) => {
-        popup.style.animation = "furby-bounce 0.6s ease-in reverse";
+        popup.style.animation =
+          "furby-bounce 0.6s var(--ddd-timing-exit, ease-in) reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
@@ -2559,7 +2561,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         color: #000;
         z-index: calc(var(--ddd-z-modal, 10000) + 2);
         box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
-        animation: clippy-bubble-appear 0.3s ease-out;
+        animation: clippy-bubble-appear 0.3s var(--ddd-timing-enter, ease-out);
       `;
 
       speechBubble.innerHTML = `
