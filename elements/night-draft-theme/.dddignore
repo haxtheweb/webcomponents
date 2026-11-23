@@ -1,0 +1,36 @@
+# Directories
+# (Must start with with / or \, as seen below)
+/.github # Inline comments are supported
+/.vscode
+/.idea
+/locales
+\test
+/dist
+/build
+/public # ignored by program regardless of presence in .dddignore
+/node_modules # ignored by program regardless of presence in .dddignore
+
+# Files 
+# (Must include filename and extension, as seen below)
+LICENSE
+.dddignore
+.editorconfig
+.gitignore
+.nojekyll
+.npmignore
+.surgeignore
+rollup.config.js
+
+# File extension
+# (Must start with *, as seen below)
+*.md
+*.yml
+*.json
+*.toml
+*.mjs
+*.cjs
+*.png
+*.ico
+*.svg
+*.jpg
+*.jpeg
