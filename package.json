@@ -128,7 +128,8 @@
     "depcheck": "depcheck",
     "knip": "knip --no-exit-code --no-config-hints",
     "knip:report": "node scripts/knip-report.mjs",
-    "size-report": "node scripts/size-report.mjs"
+    "size-report": "node scripts/size-report.mjs",
+    "legacy-scan": "node scripts/legacy-scan.mjs"
   },
   "dependencies": {
     "@babel/core": "^7.29.7",
