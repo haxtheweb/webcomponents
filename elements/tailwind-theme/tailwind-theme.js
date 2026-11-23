@@ -242,8 +242,8 @@ class TailwindTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           color: var(--tailwind-theme-muted);
         }
         simple-icon-button-lite.icon-button {
-          width: 36px;
-          height: 36px;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
           border-radius: var(--ddd-radius-sm);
         }
         simple-icon-button-lite.icon-button:hover {

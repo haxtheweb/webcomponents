@@ -630,7 +630,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
-          min-height: 36px;
+          min-height: var(--ddd-control-height-sm, 40px);
           padding: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           border: var(--ddd-border-size-sm) solid
             var(--ddd-theme-default-limestoneGray);

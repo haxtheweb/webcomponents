@@ -157,7 +157,7 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
           all: unset;
           box-sizing: border-box;
           cursor: pointer;
-          min-height: 36px;
+          min-height: var(--ddd-control-height-sm, 40px);
           padding: 0 var(--ddd-spacing-4, 16px);
           display: inline-flex;
           align-items: center;

@@ -992,8 +992,8 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           cursor: pointer;
           display: inline-grid;
           place-items: center;
-          width: 36px;
-          height: 36px;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
           border-radius: var(--hax-ui-radius);
           color: var(--hax-ui-text);
         }

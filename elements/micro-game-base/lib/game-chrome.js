@@ -125,7 +125,7 @@ export const gameChromeStyles = css`
   }
 
   .btn.small {
-    min-height: 36px;
+    min-height: var(--ddd-control-height-sm, 40px);
     padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
   }
 

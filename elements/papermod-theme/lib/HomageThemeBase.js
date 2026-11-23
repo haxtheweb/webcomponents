@@ -237,8 +237,8 @@ class HomageThemeBase extends HAXCMSOperationButtons(
           color: inherit;
         }
         .tool {
-          width: 36px;
-          height: 36px;
+          width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
           border-radius: var(--ddd-radius-xs);
         }
 

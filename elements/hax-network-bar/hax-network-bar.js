@@ -1391,13 +1391,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         }
         :host([compact]) .props a,
         :host([demo]) .props a {
-          min-width: 36px;
-          height: 36px;
+          min-width: var(--ddd-control-height-sm, 40px);
+          height: var(--ddd-control-height-sm, 40px);
           --glyph-size: 22px;
         }
         :host([compact]) .net-btn,
         :host([demo]) .net-btn {
-          height: 36px;
+          height: var(--ddd-control-height-sm, 40px);
         }
         :host([compact]) .install-btn,
         :host([demo]) .install-btn {

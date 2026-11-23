@@ -632,7 +632,7 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold, 700);
         }
         .seg {
-          min-height: 36px;
+          min-height: var(--ddd-control-height-sm, 40px);
           padding: 0 12px;
           border-radius: var(--hax-ui-radius-pill);
           border: 2px solid var(--hax-ui-line);
