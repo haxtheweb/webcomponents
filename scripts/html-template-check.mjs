@@ -13,6 +13,10 @@
  * duplicate attributes and bindings, <x/> on non-void elements, bad binding
  * positions. This adds the tree-level problems it cannot see.
  *
+ * It also reports a binding written inside the text of a <style> element:
+ * Lit SSR cannot render one, so the element throws when rendered on a server
+ * (haxtheweb/issues#3161).
+ *
  * Known, accepted cases live in scripts/html-template-check.baseline.json;
  * only problems missing from it are reported as new (exit 1).
  *

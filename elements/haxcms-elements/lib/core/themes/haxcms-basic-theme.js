@@ -99,7 +99,8 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
           );
           color: white;
           padding: 16px;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
           opacity: 1;
         }
         site-active-title {

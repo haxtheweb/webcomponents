@@ -59,11 +59,10 @@
     "(default)"
   ],
   "events": [
-    "promise-progress-finished",
-    null
+    "promise-progress-finished"
   ],
   "hax": {},
-  "surfaceHash": "f3a4061c0a78",
+  "surfaceHash": "d0c8dbd3f63e",
   "walkthroughs": [
     {
       "id": "",
@@ -71,13 +70,13 @@
       "order": 0,
       "src": "promise-progress.motion.json",
       "file": "lib/promise-progress.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/promise-progress.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

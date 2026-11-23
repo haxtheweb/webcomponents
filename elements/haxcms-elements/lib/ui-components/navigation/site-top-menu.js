@@ -62,7 +62,8 @@ class SiteTopMenu extends I18NMixin(LitElement) {
           display: block;
           --site-top-menu-bg: var(--haxcms-color, #ffffff);
           --site-top-menu-indicator-arrow: 6px;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
           opacity: 1;
         }
         :host([edit-mode]) {

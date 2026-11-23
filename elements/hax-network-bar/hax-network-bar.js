@@ -1606,7 +1606,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         :host([demo]) .frame {
           position: fixed;
           inset: 0 0 auto 0;
-          z-index: 10001;
+          z-index: calc(var(--ddd-z-modal, 10000) + 1);
           background-color: var(--ddd-theme-default-coalyGray);
           border-bottom: 1px solid var(--hax-ui-line);
         }

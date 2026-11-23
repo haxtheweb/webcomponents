@@ -19,6 +19,7 @@ import { SimpleIconBehaviors } from "./lib/simple-icon-lite.js";
  * @demo demo/lite.html Lite
  * @demo demo/button-lite.html Button (Lite)
  * @demo demo/iconset.html Iconset Demo
+ * @demo demo/motion.html Motion
  * @element simple-icon
  */
 class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {

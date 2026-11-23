@@ -917,6 +917,9 @@ export const DDDVariables = css`
        Layering system for proper element stacking, lowest to highest.
        Each layer must sit above the one before it: a tooltip or popover
        opened from inside a modal has to render on top of that modal.
+       Pick the token by what the element is, not by its number, and keep
+       a deliberate order inside a layer with calc(var(--ddd-z-toast) + n).
+       Role by role: docs/stacking-order.md
        Usage: z-index: var(--ddd-z-modal);
        =========================================== */
     --ddd-z-base: 0; /* Base layer */
@@ -925,6 +928,7 @@ export const DDDVariables = css`
     --ddd-z-overlay: 300; /* Background overlays */
     --ddd-z-modal: 10000; /* Modal dialogs and critical UI */
     --ddd-z-tooltip: 10100; /* Tooltips and popovers, above modals */
+    --ddd-z-toast: 100000000; /* Always on top: toasts and the system UI beside them */
 
     /* ===========================================
        OPACITY SCALE
@@ -3031,6 +3035,10 @@ export const DDDAnimations = css`
      3 theme palette     4 instructional significance / other indicator
      5 colour picked on the element itself (accent-color, data-primary)
    In var() fallbacks that reads 5, 4, 3, 2, 1.
+   An accent or chip fill is always one of the palette colors, and its ink
+   is the text color paired with that color (--ddd-palette-text-color-K on
+   --ddd-palette-color-K), never a fixed DDD color, so the ink keeps the
+   pair's 4.5:1 under every design system bridge.
    Each palette text color reads its hook first
    (--ddd-palette-N-text-color-K, unset in DDD): a design system bridge
    that remaps a palette color sets the hook where DDD's text color would
@@ -3105,7 +3113,7 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-4)
     );
     --ddd-palette-accent-ink: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-palette-text-color-3),
       var(--ddd-palette-text-color-4)
     );
     --ddd-palette-marker: light-dark(
@@ -3121,7 +3129,7 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-4)
     );
     --ddd-palette-chip-ink: light-dark(
-      var(--ddd-theme-default-nittanyNavy),
+      var(--ddd-palette-text-color-3),
       var(--ddd-palette-text-color-4)
     );
     --ddd-palette-tint: light-dark(
@@ -3643,11 +3651,11 @@ export const DDDPaletteStyles = css`
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-potentialMidnight);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
     --ddd-palette-marker: var(--ddd-palette-color-3);
     --ddd-palette-secondary: var(--ddd-palette-color-7);
     --ddd-palette-chip: var(--ddd-palette-color-3);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-potentialMidnight);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-3);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,
@@ -3707,14 +3715,14 @@ export const DDDPaletteStyles = css`
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-1);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-1);
     --ddd-palette-marker: var(--ddd-palette-color-1);
     --ddd-palette-secondary: light-dark(
       var(--ddd-palette-color-3),
       var(--ddd-palette-color-7)
     );
     --ddd-palette-chip: var(--ddd-palette-color-1);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-1);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,
@@ -3776,8 +3784,8 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-3)
     );
     --ddd-palette-accent-ink: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-nittanyNavy)
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-3)
     );
     --ddd-palette-marker: light-dark(
       var(--ddd-palette-color-2),
@@ -3789,8 +3797,8 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-3)
     );
     --ddd-palette-chip-ink: light-dark(
-      var(--ddd-theme-default-white),
-      var(--ddd-theme-default-nittanyNavy)
+      var(--ddd-palette-text-color-2),
+      var(--ddd-palette-text-color-3)
     );
     --ddd-palette-tint: light-dark(
       color-mix(
@@ -3853,7 +3861,7 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-2)
     );
     --ddd-palette-accent-ink: light-dark(
-      var(--ddd-theme-default-white),
+      var(--ddd-palette-text-color-3),
       var(--ddd-palette-text-color-2)
     );
     --ddd-palette-marker: light-dark(
@@ -3869,7 +3877,7 @@ export const DDDPaletteStyles = css`
       var(--ddd-palette-color-2)
     );
     --ddd-palette-chip-ink: light-dark(
-      var(--ddd-theme-default-white),
+      var(--ddd-palette-text-color-3),
       var(--ddd-palette-text-color-2)
     );
     --ddd-palette-tint: light-dark(
@@ -3935,7 +3943,7 @@ export const DDDPaletteStyles = css`
     );
     --ddd-palette-accent-ink: light-dark(
       var(--ddd-palette-text-color-2),
-      var(--ddd-theme-default-nittanyNavy)
+      var(--ddd-palette-text-color-3)
     );
     --ddd-palette-marker: light-dark(
       var(--ddd-palette-color-2),
@@ -3951,7 +3959,7 @@ export const DDDPaletteStyles = css`
     );
     --ddd-palette-chip-ink: light-dark(
       var(--ddd-palette-text-color-2),
-      var(--ddd-theme-default-nittanyNavy)
+      var(--ddd-palette-text-color-3)
     );
     --ddd-palette-tint: light-dark(
       color-mix(
@@ -4011,11 +4019,11 @@ export const DDDPaletteStyles = css`
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-4);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-4);
     --ddd-palette-marker: var(--ddd-palette-color-4);
     --ddd-palette-secondary: var(--ddd-palette-color-7);
     --ddd-palette-chip: var(--ddd-palette-color-4);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-4);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,
@@ -4155,11 +4163,11 @@ export const DDDPaletteStyles = css`
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-3);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-3);
     --ddd-palette-marker: var(--ddd-palette-color-3);
     --ddd-palette-secondary: var(--ddd-palette-color-6);
     --ddd-palette-chip: var(--ddd-palette-color-3);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-3);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,
@@ -4218,11 +4226,11 @@ export const DDDPaletteStyles = css`
     );
     /* accent roles: decorative accents only, never meaning (status) colours */
     --ddd-palette-accent: var(--ddd-palette-color-6);
-    --ddd-palette-accent-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-accent-ink: var(--ddd-palette-text-color-6);
     --ddd-palette-marker: var(--ddd-palette-color-6);
     --ddd-palette-secondary: var(--ddd-palette-color-7);
     --ddd-palette-chip: var(--ddd-palette-color-6);
-    --ddd-palette-chip-ink: var(--ddd-theme-default-nittanyNavy);
+    --ddd-palette-chip-ink: var(--ddd-palette-text-color-6);
     --ddd-palette-tint: light-dark(
       color-mix(
         in srgb,

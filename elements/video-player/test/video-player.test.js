@@ -829,6 +829,62 @@ describe("video-player DDD block header", () => {
     ).to.equal("Settings");
   });
 
+  it("draws the header and transcript search on the surface a theme gives the player", async () => {
+    // what a theme sets for a dark player on a light page
+    const wrap = await fixture(
+      html`<div
+        style="color-scheme: light; --video-player-color: rgb(255, 255, 255); --video-player-bg-color: rgb(0, 30, 68);"
+      >
+        <video-player
+          source="https://example.com/v.mp4"
+          media-title="Course Introduction"
+        ></video-player>
+      </div>`,
+    );
+    const el = wrap.querySelector("video-player");
+    el.elementVisible = true;
+    await el.updateComplete;
+    await sleep(50);
+    const player = el.shadowRoot.querySelector("a11y-media-player");
+    await player.updateComplete;
+    const style = (selector) =>
+      globalThis.getComputedStyle(player.shadowRoot.querySelector(selector));
+    const ink = "rgb(255, 255, 255)";
+    const surface = "rgb(0, 30, 68)";
+    expect(style(".ddd-block-header").backgroundColor).to.equal(surface);
+    expect(style(".ddd-block-title").color).to.equal(ink);
+    expect(style(".ddd-block-label").color).to.equal(ink);
+    expect(style("#simplesearch").backgroundColor).to.equal(surface);
+    expect(style("#simplesearch").color).to.equal(ink);
+    expect(style("#settings").backgroundColor).to.equal(surface);
+    expect(style("#settings").color).to.equal(ink);
+  });
+
+  it("keeps the header's own light and dark ink when no theme gives a surface", async () => {
+    const wrap = await fixture(
+      html`<div style="color-scheme: light;">
+        <video-player
+          source="https://example.com/v.mp4"
+          media-title="Course Introduction"
+        ></video-player>
+      </div>`,
+    );
+    const el = wrap.querySelector("video-player");
+    el.elementVisible = true;
+    await el.updateComplete;
+    await sleep(50);
+    const player = el.shadowRoot.querySelector("a11y-media-player");
+    await player.updateComplete;
+    const probe = globalThis.document.createElement("span");
+    probe.style.color = "var(--ddd-theme-default-nittanyNavy)";
+    wrap.appendChild(probe);
+    expect(
+      globalThis.getComputedStyle(
+        player.shadowRoot.querySelector(".ddd-block-title"),
+      ).color,
+    ).to.equal(globalThis.getComputedStyle(probe).color);
+  });
+
   it("keeps its own header for embeds that are not a11y-media-player", async () => {
     const el = await visiblePlayer(
       html`<video-player

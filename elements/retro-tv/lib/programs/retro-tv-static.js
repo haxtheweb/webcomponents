@@ -132,11 +132,11 @@ export class RetroTvStatic extends RetroTvLocalizedProgram {
             animation: snow 0.5s steps(5) infinite;
           }
           :host(:not([still])) .roll {
-            animation: roll 5s linear infinite;
+            animation: roll 5s var(--ddd-timing-linear, linear) infinite;
           }
           :host(:not([still])) .bot {
-            animation: var(--bot-path) var(--bot-dur) linear var(--bot-delay)
-              infinite;
+            animation: var(--bot-path) var(--bot-dur)
+              var(--ddd-timing-linear, linear) var(--bot-delay) infinite;
           }
           :host(:not([still])) .bot rpg-character {
             animation: rgb 2.6s step-end var(--bot-delay) infinite;

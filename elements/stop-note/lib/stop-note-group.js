@@ -194,14 +194,10 @@ class StopNoteGroup extends I18NMixin(DDD) {
   render() {
     const paged = this.paged;
     const i = this._index();
+    // the paging rules go in as a property of the style element: a binding
+    // inside the style text is not valid in Lit and cannot server render
     return html`
-      ${
-        paged
-          ? html`<style>
-              ${this._pagedCSS(i)}
-            </style>`
-          : nothing
-      }
+      <style .textContent="${paged ? this._pagedCSS(i) : ""}"></style>
       <div
         class="wrap"
         role="group"

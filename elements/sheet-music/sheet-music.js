@@ -263,7 +263,8 @@ class SheetMusic extends IntersectionObserverMixin(I18NMixin(DDD)) {
             var(--sheet-music-primary)
           );
           border-radius: var(--ddd-radius-rounded);
-          transition: width var(--ddd-duration-fast) linear;
+          transition: width var(--ddd-duration-fast)
+            var(--ddd-timing-linear, linear);
         }
         @media (prefers-reduced-motion: reduce) {
           .at-progress-fill {

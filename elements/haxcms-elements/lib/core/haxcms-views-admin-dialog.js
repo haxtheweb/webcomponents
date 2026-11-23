@@ -646,7 +646,7 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
           border: 2px solid var(--hax-ui-line);
           border-top-color: var(--hax-ui-accent-strong);
           border-radius: 50%;
-          animation: views-spin 800ms linear infinite;
+          animation: views-spin 800ms var(--ddd-timing-linear, linear) infinite;
         }
         @keyframes views-spin {
           to {

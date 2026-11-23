@@ -238,7 +238,8 @@ class HaxorSlevin extends I18NMixin(
           z-index: 99;
           margin-left: max(-10vw, -96px);
           opacity: 1;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
         }
         .social-float.disable-items {
           pointer-events: none;
@@ -300,7 +301,8 @@ class HaxorSlevin extends I18NMixin(
           height: 36px;
           z-index: 100;
           opacity: 1;
-          transition: var(--ddd-duration-normal, 0.3s) opacity linear;
+          transition: var(--ddd-duration-normal, 0.3s) opacity
+            var(--ddd-timing-linear, linear);
         }
         .annoy-user.disable-items {
           pointer-events: none;

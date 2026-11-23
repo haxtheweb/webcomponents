@@ -786,7 +786,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         pointer-events: none;
         /* over the page and the HAX UI, under Merlin's toast so what he
            says stays readable */
-        z-index: 100000000;
+        z-index: var(--ddd-z-toast, 100000000);
         overflow: hidden;
         background: rgba(0, 0, 0, 0.6);
       `;
@@ -879,7 +879,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.8);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -995,7 +995,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           top: ${Math.random() * (globalThis.innerHeight - 50)}px;
           font-size: 30px;
           z-index: 9999;
-          animation: nyan-fly 2s linear;
+          animation: nyan-fly 2s var(--ddd-timing-linear, linear);
           pointer-events: none;
         `;
 
@@ -1145,7 +1145,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.9);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1291,7 +1291,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: rgba(0,0,0,0.95);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -1768,7 +1768,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background-size: 4px 4px;
       background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
       background-color: #c0c0c0;
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       font-family: 'MS Sans Serif', sans-serif;
       cursor: default;
     `;
@@ -1923,7 +1923,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         height: ${height}px;
         background: #c0c0c0;
         border: 2px outset #c0c0c0;
-        z-index: 10001;
+        z-index: calc(var(--ddd-z-modal, 10000) + 1);
       `;
 
       const titleBar = globalThis.document.createElement("div");
@@ -2007,7 +2007,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background: #c0c0c0;
       border: 2px outset #c0c0c0;
       display: none;
-      z-index: 10003;
+      z-index: calc(var(--ddd-z-modal, 10000) + 3);
     `;
 
     const startMenuItems = [
@@ -2165,7 +2165,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: radial-gradient(circle, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -2177,7 +2177,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     imageContainer.style.cssText = `
       width: 300px;
       height: 300px;
-      animation: ytmnd-spin 2s linear infinite, ytmnd-zoom 3s ease-in-out infinite alternate;
+      animation: ytmnd-spin 2s var(--ddd-timing-linear, linear) infinite, ytmnd-zoom 3s ease-in-out infinite alternate;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2216,7 +2216,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       color: yellow;
       text-shadow: 2px 2px 0px red, -2px -2px 0px red, 2px -2px 0px red, -2px 2px 0px red;
       text-align: center;
-      animation: ytmnd-text-flash 0.6s linear infinite;
+      animation: ytmnd-text-flash 0.6s var(--ddd-timing-linear, linear) infinite;
     `;
 
     ytmndOverlay.appendChild(imageContainer);
@@ -2317,7 +2317,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background: linear-gradient(45deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
       background-size: 400% 400%;
       animation: geocities-rainbow 3s ease infinite;
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow-y: auto;
       font-family: 'Comic Sans MS', cursive, sans-serif;
       padding: 20px;
@@ -2327,7 +2327,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     // Create Geocities content
     geocitiesOverlay.innerHTML = `
       <div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-        <h1 style="font-size: 48px; animation: geocities-blink 1s linear infinite; margin: 20px 0;">🏗️ UNDER CONSTRUCTION 🏗️</h1>
+        <h1 style="font-size: 48px; animation: geocities-blink 1s var(--ddd-timing-linear, linear) infinite; margin: 20px 0;">🏗️ UNDER CONSTRUCTION 🏗️</h1>
         
         <div style="background: rgba(255,255,0,0.9); color: black; padding: 10px; margin: 20px auto; width: fit-content; border: 3px dashed red; animation: geocities-bounce 2s ease-in-out infinite;">
           <h2>Welcome to My HomePage!!!</h2>
@@ -2349,7 +2349,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
         <div style="background: rgba(255,0,255,0.7); padding: 20px; margin: 20px auto; width: 80%; max-width: 500px; border: 3px ridge gold;">
           <h3>🎵 NOW PLAYING 🎵</h3>
-          <p style="font-size: 14px; animation: geocities-scroll 10s linear infinite;">♪ Hamster Dance - The Ultimate Web Experience ♪ ~ Welcome to my site, please sign my guestbook! ~ ♪ MIDI music playing in background ♪</p>
+          <p style="font-size: 14px; animation: geocities-scroll 10s var(--ddd-timing-linear, linear) infinite;">♪ Hamster Dance - The Ultimate Web Experience ♪ ~ Welcome to my site, please sign my guestbook! ~ ♪ MIDI music playing in background ♪</p>
         </div>
 
         <div style="margin: 30px 0; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
@@ -2358,13 +2358,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           <div style="background: rgba(255,255,255,0.9); color: black; padding: 8px 15px; border: 2px outset gray; animation: geocities-bounce 2s ease-in-out infinite 1s;">🔗 Cool Links</div>
         </div>
 
-        <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,0,0.9); color: black; padding: 10px; border: 2px solid red; animation: geocities-blink 2s linear infinite;">
+        <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,0,0.9); color: black; padding: 10px; border: 2px solid red; animation: geocities-blink 2s var(--ddd-timing-linear, linear) infinite;">
           <div style="font-weight: bold;">Best viewed in:</div>
           <div>Netscape Navigator 4.0</div>
           <div>800x600 Resolution</div>
         </div>
 
-        <div style="margin-top: 40px; font-size: 12px; animation: geocities-blink 3s linear infinite;">
+        <div style="margin-top: 40px; font-size: 12px; animation: geocities-blink 3s var(--ddd-timing-linear, linear) infinite;">
           <p>This site is part of the WebRing!</p>
           <div style="display: flex; justify-content: center; gap: 10px; margin: 10px 0;">
             <button style="background: lime; border: 2px outset gray; padding: 5px;">⬅️ Prev</button>
@@ -2479,7 +2479,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       right: 50px;
       width: 80px;
       height: 100px;
-      z-index: 10001;
+      z-index: calc(var(--ddd-z-modal, 10000) + 1);
       cursor: pointer;
       animation: clippy-bounce 2s ease-in-out infinite;
     `;
@@ -2557,7 +2557,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         font-family: 'MS Sans Serif', sans-serif;
         font-size: 12px;
         color: #000;
-        z-index: 10002;
+        z-index: calc(var(--ddd-z-modal, 10000) + 2);
         box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
         animation: clippy-bubble-appear 0.3s ease-out;
       `;
@@ -2741,7 +2741,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       width: 100%;
       height: 100%;
       background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #F0E68C 100%);
-      z-index: 10000;
+      z-index: var(--ddd-z-modal, 10000);
       overflow: hidden;
       cursor: crosshair;
     `;
@@ -2767,7 +2767,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       font-size: 18px;
       font-weight: bold;
       color: #333;
-      z-index: 10003;
+      z-index: calc(var(--ddd-z-modal, 10000) + 3);
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       border: 3px solid #FF69B4;
     `;
@@ -2939,7 +2939,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         background: linear-gradient(45deg, #FFD700, #FFA500, #FF69B4, #00CED1);
         background-size: 400% 400%;
         animation: chickenbutt-victory-bg 2s ease infinite;
-        z-index: 10004;
+        z-index: calc(var(--ddd-z-modal, 10000) + 4);
         display: flex;
         align-items: center;
         justify-content: center;

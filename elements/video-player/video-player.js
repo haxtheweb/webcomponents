@@ -205,6 +205,47 @@ class VideoPlayer extends IntersectionObserverMixin(
               var(--ddd-theme-default-slateLight)
             )
           );
+          /* a theme that gives the player its own surface
+             (--video-player-color on --video-player-bg-color) gives it to
+             everything drawn on that surface: the header title and label,
+             cue times, the transcript search field, the settings tray, the
+             pressed buttons and the active cue. Without one, each keeps its
+             own light-dark default. */
+          --a11y-media-heading-color: var(--video-player-color);
+          --a11y-media-muted-color: var(
+            --video-player-color,
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            )
+          );
+          --a11y-media-control-bg-color: var(--video-player-bg-color);
+          --a11y-media-settings-menu-bg-color: var(
+            --video-player-bg-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneMaxLight),
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
+          --a11y-media-pressed-color: var(--video-player-color);
+          --a11y-media-pressed-bg-color: var(
+            --video-player-hover-bg-color,
+            light-dark(
+              var(--ddd-theme-default-slateMaxLight),
+              var(--ddd-theme-default-slateGray)
+            )
+          );
+          --a11y-media-transcript-active-cue-color: var(
+            --video-player-color,
+            var(--a11y-media-hover-color)
+          );
+          --a11y-media-transcript-active-cue-bg-color: var(
+            --video-player-bg-color,
+            light-dark(
+              var(--ddd-theme-default-slateMaxLight),
+              var(--ddd-theme-default-nittanyNavy)
+            )
+          );
         }
         /* block header shared with the other DDD learning blocks; it sits
            above the player and never changes anything inside it */

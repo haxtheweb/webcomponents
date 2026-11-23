@@ -318,7 +318,7 @@ export class VhsBlogTv extends LitElement {
         }
         @media (prefers-reduced-motion: no-preference) {
           .seek {
-            animation: vhs-track 0.4s linear infinite;
+            animation: vhs-track 0.4s var(--ddd-timing-linear, linear) infinite;
           }
         }
         @keyframes vhs-track {

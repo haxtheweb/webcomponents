@@ -266,8 +266,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
             flex-shrink: 0;
           }
           button {
-            height: 40px;
-            width: 40px;
+            height: var(--ddd-control-height-sm, 40px);
+            width: var(--ddd-control-height-sm, 40px);
           }
 
           .logo {

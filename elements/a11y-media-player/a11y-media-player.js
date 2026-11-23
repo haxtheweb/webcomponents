@@ -437,6 +437,21 @@ class A11yMediaPlayer extends SchemaBehaviors(
         .ddd-block-header {
           background-color: var(--a11y-media-bg-color);
         }
+        /* the header sits on the player surface, so its title and label
+           take their ink from the player (a container that gives the
+           player a surface gives these too), not from the page scheme */
+        .ddd-block-title {
+          color: var(
+            --a11y-media-heading-color,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-white)
+            )
+          );
+        }
+        .ddd-block-label {
+          color: var(--a11y-media-muted-color);
+        }
 
         /* header actions: neutral, round, DDD block action pattern */
         .ddd-block-action {
@@ -448,7 +463,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         .ddd-block-action[aria-expanded="true"] {
           border-color: var(--a11y-media-pressed-border-color);
           background-color: var(--a11y-media-pressed-bg-color);
-          color: var(--a11y-media-hover-color);
+          color: var(--a11y-media-pressed-color, var(--a11y-media-hover-color));
         }
 
         /* settings tray: a panel under the block header */
@@ -492,9 +507,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
           border: var(--ddd-border-xs);
           border-color: var(--a11y-media-border-color);
           border-radius: var(--ddd-radius-rounded);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+          background-color: var(
+            --a11y-media-control-bg-color,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
           color: var(--a11y-media-color);
           font-family: var(--a11y-media-controls-font-family);
@@ -940,9 +958,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
           border: var(--ddd-border-xs);
           border-color: var(--a11y-media-border-color);
           border-radius: var(--ddd-radius-rounded);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-potentialMidnight)
+          background-color: var(
+            --a11y-media-control-bg-color,
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
           color: var(--a11y-media-color);
           --simple-search-input-background-color: transparent;

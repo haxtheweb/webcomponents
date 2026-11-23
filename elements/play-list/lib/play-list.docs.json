@@ -122,9 +122,7 @@
   "slots": [
     "(default)"
   ],
-  "events": [
-    null
-  ],
+  "events": [],
   "hax": {
     "api": "1",
     "type": "grid",

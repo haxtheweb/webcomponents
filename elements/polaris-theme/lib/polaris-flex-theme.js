@@ -69,7 +69,7 @@ class PolarisFlexTheme extends HAXCMSOperationButtons(
           --polaris-sm-padding: 40px;
           --polaris-md-padding: 46px;
           --polaris-standard-padding: 62px;
-          --polaris-content-max-width: 80ch;
+          --polaris-content-max-width: var(--ddd-measure-lg, 80ch);
 
           background-color: light-dark(
             var(--ddd-accent-6),

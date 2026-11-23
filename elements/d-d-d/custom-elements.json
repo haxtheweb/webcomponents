@@ -938,6 +938,35 @@
             "text": "array"
           },
           "default": "[ DDDMotionTokens, css` @keyframes ddd-motion-draw-in { from { stroke-dasharray: var(--ddd-connector-length, 1); stroke-dashoffset: var(--ddd-connector-length, 1); } to { stroke-dasharray: var(--ddd-connector-length, 1); stroke-dashoffset: 0; } } @keyframes ddd-motion-flow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: calc(-1 * var(--ddd-connector-period, 10)); } } .ddd-motion-draw-in { animation-name: ddd-motion-draw-in; animation-duration: var(--ddd-motion-draw-in-duration); animation-timing-function: var(--ddd-motion-draw-in-timing); animation-delay: var(--ddd-motion-draw-in-delay); animation-iteration-count: 1; animation-fill-mode: backwards; } .ddd-motion-flow { animation-name: ddd-motion-flow; animation-duration: var(--ddd-motion-flow-duration); animation-timing-function: var(--ddd-motion-flow-timing); animation-iteration-count: var(--ddd-motion-flow-iterations); } .ddd-motion-paused, [data-motion-paused] .ddd-motion-flow, [data-motion-paused].ddd-motion-flow { animation-play-state: paused; } @media (prefers-reduced-motion: reduce) { .ddd-motion-draw-in, .ddd-motion-flow { animation: none; } } `, ]"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDMotionIconNames",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"pop\", \"wiggle\", \"tilt\", \"beat\", \"lift\", \"spin\", \"nudge\", \"strike\", \"glow\", ]",
+          "description": "Icon motions: short decorative motions for an icon (or any small glyph)\nthat play once when it is hovered or takes keyboard focus.\n\n  pop     scale up and settle           hubs, the thing a page is about\n  wiggle  quick side to side rotation   things you edit or report\n  tilt    tip back and return           tools in hand\n  beat    two soft scale beats          living things, status\n  lift    rise a little and come back   layers, storage, files\n  spin    one full turn                 reserved, use sparingly\n  nudge   slide forward and back        flows, pipes, next steps\n  strike  swing down and back           gavel-like actions, rules\n  glow    brighten with a soft halo     ideas, magic\n\nbeat is the scale motion; pulse (DDDAnimations in DDDStyles.js) is the\nbox-shadow ring that asks for attention and is a different thing.\n\nRules every icon motion keeps:\n- it plays once per hover or focus and then rests\n- it lasts under a second (600ms unless a token changes it)\n- it is decoration: nothing is said by the motion alone\n- under prefers-reduced-motion: reduce nothing moves. The keyframes and\n  every rule that plays them sit inside a no-preference media query, so\n  with reduced motion the keyframes do not exist and a rule a component\n  wrote itself has nothing to play either.\n\nThe keyframes animate the scale, rotate and translate properties (and\nfilter for glow), not transform, so a transform the element already has\n(a flipped arrow, for example) stays in place while it moves. They need\na box that can transform: inline-block, inline-flex, block. A plain\ninline span does not move.\n\nDDDMotionIconStyles: include in a component's shadow styles (the DDD\ndesign system also puts it in the document). Then, in that scope:\n\n  class=\"ddd-motion-wiggle\"     plays when the element itself is hovered\n                                or focused with the keyboard\n  class=\"ddd-motion-trigger\"    on a card, tile, button or link: hovering\n                                it, or focus anywhere inside it, plays the\n                                motion of each .ddd-motion-<name> or\n                                [motion=\"<name>\"] element inside. On the\n                                component itself (the host) it also plays\n                                slotted ones.\n  class=\"ddd-motion-play\"       beside ddd-motion-<name>: plays now, once\n                                (script adds and removes it)\n\nDDDMotionIconHostStyles: the same motions for an element that takes a\nmotion attribute on itself, as simple-icon and simple-icon-lite do:\n\n  <simple-icon icon=\"icons:build\" motion=\"wiggle\"></simple-icon>\n\nplays on its own hover or keyboard focus, and while it has the\nmotion-active attribute. simple-icon does not import DDD: this module\nhands the sheet to it through globalThis.DDDMotion.adoptHost(shadowRoot),\nso where DDD is not loaded the attribute does nothing.\n\nTokens (DDD sets the defaults on the page; override on the element or\nany ancestor):\n  --ddd-motion-icon-duration   600ms (--ddd-duration-slow)\n  --ddd-motion-icon-timing     --ddd-timing-ease\n  --ddd-motion-icon-distance   how far lift and nudge travel and how wide\n                               the glow halo is, 4px (--ddd-spacing-1)"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDMotionIconStyles",
+          "default": "css` /* the defaults, for the page; a shadow root reads them by inheritance and every use carries the same fallback for where DDD is not loaded */ html { --ddd-motion-icon-duration: var(--ddd-duration-slow, 600ms); --ddd-motion-icon-timing: var(--ddd-timing-ease, ease-in-out); --ddd-motion-icon-distance: var(--ddd-spacing-1, 4px); } @media (prefers-reduced-motion: no-preference) { ${DDDMotionIconKeyframes} ${unsafeCSS(iconMotionRules(iconMotionSelectors))} } `"
+        },
+        {
+          "kind": "variable",
+          "name": "DDDMotionIconHostStyles",
+          "default": "css` @media (prefers-reduced-motion: no-preference) { ${DDDMotionIconKeyframes} ${unsafeCSS(iconMotionRules(iconMotionHostSelectors))} } `"
+        },
+        {
+          "kind": "function",
+          "name": "adoptDDDMotionIconHost",
+          "parameters": [
+            {
+              "name": "root"
+            }
+          ],
+          "description": "Adds the host motions to a shadow root, once. Elements that take a motion\nattribute but do not depend on DDD (simple-icon) call this through\nglobalThis.DDDMotion.adoptHost; returns true when the sheet is in place."
         }
       ],
       "exports": [
@@ -954,6 +983,38 @@
           "name": "DDDMotionStyles",
           "declaration": {
             "name": "DDDMotionStyles",
+            "module": "lib/DDDMotion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDMotionIconNames",
+          "declaration": {
+            "name": "DDDMotionIconNames",
+            "module": "lib/DDDMotion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDMotionIconStyles",
+          "declaration": {
+            "name": "DDDMotionIconStyles",
+            "module": "lib/DDDMotion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DDDMotionIconHostStyles",
+          "declaration": {
+            "name": "DDDMotionIconHostStyles",
+            "module": "lib/DDDMotion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "adoptDDDMotionIconHost",
+          "declaration": {
+            "name": "adoptDDDMotionIconHost",
             "module": "lib/DDDMotion.js"
           }
         }
