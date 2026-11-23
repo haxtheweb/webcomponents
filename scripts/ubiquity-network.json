@@ -160,7 +160,7 @@
       "deploy": "GitHub Pages: learn.hax.cloud (loads HAX from cdn.hax.cloud)"
     },
     {
-      "repo": "hax-lab",
+      "repo": "lab",
       "branch": "master",
       "phase": "satellite",
       "versionFile": "package.json",
