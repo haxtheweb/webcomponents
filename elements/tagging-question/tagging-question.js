@@ -2,7 +2,7 @@
  * Copyright 2024 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import {
   QuestionElement,
   choiceResponse,
@@ -84,6 +84,10 @@ class TaggingQuestion extends QuestionElement {
       yourTags: "Your answer",
       availableTags: "Tags to choose from",
       dropTagsHere: "Choose tags below or drag them here",
+      addTag: "Add {tag}",
+      removeTag: "Remove {tag}",
+      tagAdded: "{tag} added to your answer",
+      tagRemoved: "{tag} removed from your answer",
     };
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
@@ -95,6 +99,8 @@ class TaggingQuestion extends QuestionElement {
     this.dragEnterAnswer = false;
     this.dragging = false;
     this.selectedAnswers = [];
+    // spoken after a tag moves between the two lists
+    this._moveMessage = "";
   }
 
   static get styles() {
@@ -378,7 +384,11 @@ class TaggingQuestion extends QuestionElement {
           (answer) => html`
             <button
               ?disabled="${this.disabled || this.showAnswer}"
-              aria-pressed="true"
+              aria-label="${
+                this.showAnswer
+                  ? nothing
+                  : this._tagText(this.t.removeTag, answer.label)
+              }"
               class="tag-option ${
                 this.showAnswer
                   ? answer.correct
@@ -420,7 +430,7 @@ class TaggingQuestion extends QuestionElement {
           (tagOption) => html`
             <button
               ?disabled="${this.disabled || this.showAnswer}"
-              aria-pressed="false"
+              aria-label="${this._tagText(this.t.addTag, tagOption.label)}"
               class="tag-option"
               draggable="${this.showAnswer ? "false" : "true"}"
               @dragstart="${this.handleDrag}"
@@ -432,7 +442,12 @@ class TaggingQuestion extends QuestionElement {
           `,
         )}
       </div>
+      <span class="sr-only" role="status">${this._moveMessage}</span>
     </div>`;
+  }
+
+  _tagText(str, tag) {
+    return String(str || "").replace("{tag}", () => tag);
   }
 
   isCorrect() {
@@ -643,6 +658,7 @@ class TaggingQuestion extends QuestionElement {
       this.displayedAnswers = this.displayedAnswers.filter(
         (answer) => answer.label !== targetTag.label,
       );
+      this._moveMessage = this._tagText(this.t.tagAdded, targetTag.label);
       this.requestUpdate();
     }
   }
@@ -653,6 +669,7 @@ class TaggingQuestion extends QuestionElement {
         (answer) => answer.label !== targetTag.label,
       );
       this.displayedAnswers.push(targetTag);
+      this._moveMessage = this._tagText(this.t.tagRemoved, targetTag.label);
       this.requestUpdate();
     }
   }

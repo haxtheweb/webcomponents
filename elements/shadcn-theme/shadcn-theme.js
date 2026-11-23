@@ -149,8 +149,17 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-header-title-margin: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
         }
-        main {
+        .main-col {
           flex: 1 1 auto;
+          min-width: 0;
+        }
+        /* the inset header and footer sit beside main, not inside it, so
+           they are the page's banner and contentinfo landmarks; .main-col
+           keeps the inset card main used to draw */
+        .main-col > main {
+          display: flex;
+          flex-direction: column;
+          flex: 1 0 auto;
           min-width: 0;
         }
         #slot {
@@ -223,7 +232,7 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
           --map-menu-font-weight: var(--ddd-font-weight-regular);
         }
-        main {
+        .main-col {
           margin: var(--shadcn-theme-inset) var(--shadcn-theme-inset)
             var(--shadcn-theme-inset) 0;
           min-height: calc(100vh - 2 * var(--shadcn-theme-inset));
@@ -234,7 +243,7 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           color: var(--foreground);
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        :host(:not([sidebar-open])) main {
+        :host(:not([sidebar-open])) .main-col {
           margin-left: var(--shadcn-theme-inset);
         }
         .inset-header {
@@ -332,8 +341,8 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             border-right: 1px solid var(--sidebar-border);
             box-shadow: var(--ddd-boxShadow-lg);
           }
-          main,
-          :host(:not([sidebar-open])) main {
+          .main-col,
+          :host(:not([sidebar-open])) .main-col {
             margin: 0;
             border-radius: 0;
             box-shadow: none;
@@ -368,7 +377,7 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             <site-menu part="site-menu"></site-menu>
           </nav>
         </div>
-        <main>
+        <div class="main-col">
           <header class="inset-header" part="header">
             ${this.renderNavToggle()}
             <div class="separator" aria-hidden="true"></div>
@@ -378,17 +387,19 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
             ${this.renderActions()}
           </header>
-          <div class="content">
-            <site-active-title part="page-title"></site-active-title>
-            <article id="contentcontainer">
-              <section id="slot"><slot></slot></section>
-            </article>
-          </div>
-          ${this.renderPager()}
+          <main>
+            <div class="content">
+              <site-active-title part="page-title"></site-active-title>
+              <article id="contentcontainer">
+                <section id="slot"><slot></slot></section>
+              </article>
+            </div>
+            ${this.renderPager()}
+          </main>
           <footer part="footer">
             <site-region name="footerPrimary"></site-region>
           </footer>
-        </main>
+        </div>
       </div>
     `;
   }

@@ -1,16 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
     <title>LrndesignChart: lrndesign-chart Demos</title>
-    
+
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../lib/lrndesign-bar.js';
-      import '../lib/lrndesign-line.js';
-      import '../lib/lrndesign-pie.js';
+      import "../lib/lrndesign-bar.js";
+      import "../lib/lrndesign-line.js";
+      import "../lib/lrndesign-pie.js";
     </script>
     <style>
       lrndesign-pie {
@@ -19,14 +22,34 @@
         display: inline-block;
       }
     </style>
+    <style>
+      /* demo index: links at least 24px tall (WCAG 2.5.8) */
+      .demo-links a {
+        display: inline-block;
+        min-height: 24px;
+        line-height: 24px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>lrndesign-chart demos</h1>
-      <ul>
-        <li><a href="./bar.html">Bar Charts with LrndesignBar &gt;lrndesign-bar/&lt</a></li>
-        <li><a href="./line.html">Line Charts with LrndesignLine &gt;lrndesign-line/&lt</a></li>
-        <li><a href="./pie.html">Pie Charts with LrndesignPie &gt;lrndesign-pie/&lt</a></li>
+      <ul class="demo-links">
+        <li>
+          <a href="./bar.html"
+            >Bar Charts with LrndesignBar &lt;lrndesign-bar&gt;</a
+          >
+        </li>
+        <li>
+          <a href="./line.html"
+            >Line Charts with LrndesignLine &lt;lrndesign-line&gt;</a
+          >
+        </li>
+        <li>
+          <a href="./pie.html"
+            >Pie Charts with LrndesignPie &lt;lrndesign-pie&gt;</a
+          >
+        </li>
       </ul>
     </div>
   </body>

@@ -163,7 +163,14 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --map-menu-header-title-margin: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
         }
-        main {
+        /* the footer sits beside main, not inside it, so it is the page's
+           contentinfo landmark; .main-col keeps the layout main had */
+        .main-col > main {
+          display: block;
+          flex: 1 0 auto;
+          min-width: 0;
+        }
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
         }
@@ -346,7 +353,7 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
           --map-menu-font-weight: var(--ddd-font-weight-medium);
         }
-        main {
+        .main-col {
           padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4) 0;
         }
         .panel {
@@ -424,7 +431,7 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           .rail {
             display: none;
           }
-          main {
+          .main-col {
             padding: 0;
           }
           .panel {
@@ -462,21 +469,23 @@ class MaterialTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       </header>
       <div class="layout">
         ${this.renderRail()} ${this.renderNav()}
-        <main>
-          <div class="panel">
-            <div class="content">
-              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-              <site-active-title part="page-title"></site-active-title>
-              <article id="contentcontainer">
-                <section id="slot"><slot></slot></section>
-              </article>
+        <div class="main-col">
+          <main>
+            <div class="panel">
+              <div class="content">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
+                <article id="contentcontainer">
+                  <section id="slot"><slot></slot></section>
+                </article>
+              </div>
+              ${this.renderPager()}
             </div>
-            ${this.renderPager()}
-            <footer part="footer">
-              <site-region name="footerPrimary"></site-region>
-            </footer>
-          </div>
-        </main>
+          </main>
+          <footer part="footer">
+            <site-region name="footerPrimary"></site-region>
+          </footer>
+        </div>
       </div>
     `;
   }

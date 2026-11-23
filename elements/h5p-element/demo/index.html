@@ -6,6 +6,13 @@
     <title>H5PElement: h5p-element Demo</title>
     
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
 
     <script type="module">
       
@@ -56,7 +63,7 @@
       <h2>Check your Understanding</h2>
       <demo-snippet>
         <template>
-          <h5p-element source="https://media.ed.science.psu.edu/entity_iframe/node/4272"><iframe
+          <h5p-element source="https://media.ed.science.psu.edu/entity_iframe/node/4272"><iframe title="H5P activity"
             width="100%"
             height="auto"
             src="https://media.ed.science.psu.edu/entity_iframe/node/4272"
@@ -73,7 +80,7 @@
         For the next question you need to use the definition of average acceleration
         <lrn-math inline> \vec{a}_{avg} = \frac{\Delta\vec{v}}{\Delta t} </lrn-math>
       </p>
-      <h5p-element><iframe
+      <h5p-element><iframe title="H5P activity"
         width="100%"
         height="auto"
         src="https://media.ed.science.psu.edu/entity_iframe/node/4273"

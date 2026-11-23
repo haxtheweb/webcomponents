@@ -139,11 +139,10 @@ class SimpleBlogOverview extends SimpleColors {
             class="post"
             itemscope
             itemtype="http://schema.org/BlogPosting"
-            role="article"
           >
             <div class="article-item">
               <header class="post-header">
-                <h3 class="post-title" itemprop="name">${this.title}</h3>
+                <h2 class="post-title" itemprop="name">${this.title}</h2>
               </header>
               <section class="post-excerpt" itemprop="description">
                 <p>${this.description}</p>

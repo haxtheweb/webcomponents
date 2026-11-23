@@ -385,6 +385,11 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
           font-size: 7px;
           line-height: 0.9;
         }
+        /* the menu bar, toolbar and address row are the window's banner;
+           the wrapper adds no box of its own */
+        .chrome {
+          display: contents;
+        }
         .menubar {
           display: flex;
           align-items: center;
@@ -835,69 +840,75 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
             ></button>
           </div>
           <div id="pagebody" ?hidden="${this.pageRolled}">
-            <nav class="menubar" aria-label="${this.t.siteNavigation}">
-              <site-top-menu noink indicator="none"></site-top-menu>
-            </nav>
-            <div
-              class="toolbar"
-              role="toolbar"
-              aria-label="${this.t.pageTools}"
-            >
-              <button
-                class="tool"
-                aria-pressed="${
-                  this.explorerOpen && !this.pageMaximized ? "true" : "false"
-                }"
-                aria-controls="explorer"
-                @click="${this.toggleExplorer}"
+            <header class="chrome">
+              <nav class="menubar" aria-label="${this.t.siteNavigation}">
+                <site-top-menu noink indicator="none"></site-top-menu>
+              </nav>
+              <div
+                class="toolbar"
+                role="toolbar"
+                aria-label="${this.t.pageTools}"
               >
-                <simple-icon-lite icon="icons:list"></simple-icon-lite
-                ><span class="label">${this.t.explorer}</span>
-              </button>
-              <span class="sep" aria-hidden="true"></span>
-              <site-menu-button
-                type="prev"
-                position="bottom"
-              ></site-menu-button>
-              <site-menu-button
-                type="next"
-                position="bottom"
-              ></site-menu-button>
-              <span class="sep" aria-hidden="true"></span>
-              <site-print-button position="bottom"></site-print-button>
-              <site-modal
-                ?disabled="${this.editMode}"
-                icon="icons:search"
-                title="${this.t.searchSite}"
-                button-label="${this.t.search}"
-                position="bottom"
-              >
-                <site-search></site-search>
-              </site-modal>
-              <span class="sep" aria-hidden="true"></span>
-              <button class="tool" @click="${this.openViewHtml}">
-                <simple-icon-lite icon="icons:code"></simple-icon-lite
-                ><span class="label">${this.t.viewHtml}</span>
-              </button>
-              <button
-                class="tool"
-                aria-pressed="${this._dark ? "true" : "false"}"
-                @click="${this.toggleDarkMode}"
-              >
-                <simple-icon-lite icon="image:brightness-6"></simple-icon-lite
-                ><span class="label">${this.t.highContrast}</span>
-              </button>
-            </div>
-            <div class="addressrow">
-              <span id="location-label">${this.t.location}:</span>
-              <div class="field" role="group" aria-labelledby="location-label">
-                ${
-                  this._depth > 0
-                    ? html`<site-breadcrumb></site-breadcrumb>`
-                    : html`<span>/${this._slug}</span>`
-                }
+                <button
+                  class="tool"
+                  aria-pressed="${
+                    this.explorerOpen && !this.pageMaximized ? "true" : "false"
+                  }"
+                  aria-controls="explorer"
+                  @click="${this.toggleExplorer}"
+                >
+                  <simple-icon-lite icon="icons:list"></simple-icon-lite
+                  ><span class="label">${this.t.explorer}</span>
+                </button>
+                <span class="sep" aria-hidden="true"></span>
+                <site-menu-button
+                  type="prev"
+                  position="bottom"
+                ></site-menu-button>
+                <site-menu-button
+                  type="next"
+                  position="bottom"
+                ></site-menu-button>
+                <span class="sep" aria-hidden="true"></span>
+                <site-print-button position="bottom"></site-print-button>
+                <site-modal
+                  ?disabled="${this.editMode}"
+                  icon="icons:search"
+                  title="${this.t.searchSite}"
+                  button-label="${this.t.search}"
+                  position="bottom"
+                >
+                  <site-search></site-search>
+                </site-modal>
+                <span class="sep" aria-hidden="true"></span>
+                <button class="tool" @click="${this.openViewHtml}">
+                  <simple-icon-lite icon="icons:code"></simple-icon-lite
+                  ><span class="label">${this.t.viewHtml}</span>
+                </button>
+                <button
+                  class="tool"
+                  aria-pressed="${this._dark ? "true" : "false"}"
+                  @click="${this.toggleDarkMode}"
+                >
+                  <simple-icon-lite icon="image:brightness-6"></simple-icon-lite
+                  ><span class="label">${this.t.highContrast}</span>
+                </button>
               </div>
-            </div>
+              <div class="addressrow">
+                <span id="location-label">${this.t.location}:</span>
+                <div
+                  class="field"
+                  role="group"
+                  aria-labelledby="location-label"
+                >
+                  ${
+                    this._depth > 0
+                      ? html`<site-breadcrumb></site-breadcrumb>`
+                      : html`<span>/${this._slug}</span>`
+                  }
+                </div>
+              </div>
+            </header>
             <main class="canvas">
               <div class="page">
                 <site-active-title></site-active-title>

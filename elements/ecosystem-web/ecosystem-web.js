@@ -628,6 +628,12 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .edge.off {
           opacity: 0 !important;
         }
+        /* a larger, invisible hit area around each tile; any tile can
+           also be reached through search (WCAG 2.5.8 equivalent) */
+        .node .hit {
+          fill: transparent;
+          stroke: none;
+        }
         .node {
           cursor: pointer;
         }
@@ -2379,11 +2385,14 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     // a lens rings the tile (solid, dashed or dotted by band, so the band
     // never rests on color alone) and may add dots or a count badge
     const lensMarks = reads
-      ? svg`<circle class="lring" r="${(h + 9).toFixed(1)}"></circle>
+      ? svg`<g aria-hidden="true"><circle class="lring" r="${(h + 9).toFixed(1)}"></circle>
         ${r && r.dots ? svg`<g class="ldots" transform="translate(0 ${(-h - 15).toFixed(1)})">${this._dots(r.dots)}</g>` : nothing}
-        ${r && (r.badge != null || r.due) ? svg`<g class="lbadge" transform="translate(${(-h + 2).toFixed(1)} ${(-h + 2).toFixed(1)})">${r.due ? svg`<circle class="due" r="7"></circle>` : svg`<circle r="10"></circle><text>${r.badge}</text>`}</g>` : nothing}`
+        ${r && (r.badge != null || r.due) ? svg`<g class="lbadge" transform="translate(${(-h + 2).toFixed(1)} ${(-h + 2).toFixed(1)})">${r.due ? svg`<circle class="due" r="7"></circle>` : svg`<circle r="10"></circle><text>${r.badge}</text>`}</g>` : nothing}</g>`
       : nothing;
-    const body = svg`<g class="body">${lensMarks}${this._halo(n, s)}${this._shape(n, s)}<g class="ic">${this._icon(n, s)}</g>
+    // the icon (initials for people), lens dots and badges are drawn, not
+    // read: the tile's name is its label, so its spoken name matches the
+    // words on screen (WCAG 2.5.3)
+    const body = svg`<g class="body">${lensMarks}${this._halo(n, s)}${this._shape(n, s)}<g class="ic" aria-hidden="true">${this._icon(n, s)}</g>
       ${st === "prerelease" ? svg`<circle class="badge pre" cx="${h - 1}" cy="${-h + 1}" r="7"></circle>` : nothing}
       ${open ? svg`<circle class="badge web" cx="${h - 1}" cy="${h - 1}" r="9"></circle><path class="badge-ic" d="M${h - 5} ${h - 1}h8M${h - 1} ${h - 5}v8"></path>` : nothing}</g>
       <text class="lb" y="${ly}">${lines.map((l, i) => svg`<tspan x="0" dy="${i ? 14 : 0}">${l}${i < lines.length - 1 ? " " : ""}</tspan>`)}</text>`;
@@ -2395,6 +2404,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
       aria-label="${n.label}${open ? `, ${this.t.open} ${this._webName(n.web)}` : ""}"
       @click="${() => this._tileClick(n.id)}" @dblclick="${() => this._tileOpen(n)}" @keydown="${(e) => this._tileKey(e, n.id)}">
+      <circle class="hit" r="${Math.max(h + 4, 14).toFixed(1)}"></circle>
       ${body}
     </g>`;
   }

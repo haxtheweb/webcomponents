@@ -15,6 +15,11 @@
     <style>
       textarea {
         display: block;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      button {
+        min-height: 24px;
       }
     </style>
 </head>
@@ -25,7 +30,7 @@
         <button id="save">Save file</button>
         <button id="download">Download file</button>
         <button id="loaddir">Load Directory</button>
-        <textarea id="textarea" rows="20" cols="40"></textarea>
+        <textarea id="textarea" rows="20" cols="40" aria-label="File contents"></textarea>
         <div id="demo"></div>
         <script async defer>
           document.getElementById('load').addEventListener('click', async (e) => {

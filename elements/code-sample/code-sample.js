@@ -254,11 +254,7 @@ class CodeSample extends I18NMixin(LitElement) {
           <div id="theme"></div>
           <div id="demo" class="demo"></div>
           <slot></slot>
-          <div
-            id="code-container"
-            role="region"
-            aria-label="${this._frameLabel}"
-          >
+          <div id="code-container">
             <pre id="code"></pre>
           </div>
         </div>
@@ -519,7 +515,9 @@ if ($MrTheCheat) {
     this._syncScrollFocus();
   }
   /**
-   * The code area is in the tab order exactly while it scrolls sideways.
+   * The code area is in the tab order exactly while it scrolls sideways,
+   * and is a named region only then; a page of short samples would
+   * otherwise list many regions with the same name.
    */
   _syncScrollFocus() {
     const container =
@@ -529,8 +527,12 @@ if ($MrTheCheat) {
     }
     if (container.scrollWidth > container.clientWidth) {
       container.setAttribute("tabindex", "0");
+      container.setAttribute("role", "region");
+      container.setAttribute("aria-label", this._frameLabel);
     } else {
       container.removeAttribute("tabindex");
+      container.removeAttribute("role");
+      container.removeAttribute("aria-label");
     }
   }
   /**

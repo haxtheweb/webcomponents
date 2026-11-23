@@ -2,7 +2,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { css, html } from "lit";
+import { css, html, nothing } from "lit";
 import { DDD } from "../d-d-d.js";
 import {
   DDDPaletteRegistry,
@@ -829,7 +829,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
     return html`<div
       class="peek"
       id="${this.__inputId}-peek"
-      role="tooltip"
+      role="${option ? "tooltip" : nothing}"
       ?hidden="${!option}"
     >
       ${

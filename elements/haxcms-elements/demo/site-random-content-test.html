@@ -116,7 +116,14 @@
     </ul>
   </div>
 
-  <script type="module">
+  <script>
+      globalThis.process = globalThis.process || {
+        env: {
+          NODE_ENV: "production"
+        }
+      };
+    </script>
+    <script type="module">
     // Import the element
     import '../lib/ui-components/site/site-random-content.js';
     

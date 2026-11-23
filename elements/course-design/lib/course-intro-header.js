@@ -2,7 +2,7 @@
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -16,6 +16,7 @@ class CourseIntroHeader extends DDD {
       icon: { type: String },
       backgroundImage: { type: String },
       color: { type: String },
+      _hasOutlineTitle: { type: Boolean, state: true },
     };
   }
   constructor() {
@@ -179,16 +180,31 @@ class CourseIntroHeader extends DDD {
           <simple-icon id="course-icon" icon="${this.icon}"></simple-icon>
         </div>
         <div id="info">
-          <h1 id="title">${this.title}</h1>
-          <h2 id="sub-heading" style="color:${this.color};">
-            ${this.description}
-          </h2>
-          <h3 id="outline-title">
-            <slot name="outline-title"></slot>
+          ${this.title ? html`<h1 id="title">${this.title}</h1>` : nothing}
+          ${
+            this.description
+              ? html`<h2 id="sub-heading" style="color:${this.color};">
+                  ${this.description}
+                </h2>`
+              : nothing
+          }
+          <h3 id="outline-title" ?hidden="${!this._hasOutlineTitle}">
+            <slot
+              name="outline-title"
+              @slotchange="${this._outlineTitleChanged}"
+            ></slot>
           </h3>
         </div>
       </div>
     `;
+  }
+
+  // the outline heading is only a heading when something fills it
+  _outlineTitleChanged(e) {
+    const nodes = e.target.assignedNodes({ flatten: true });
+    this._hasOutlineTitle = nodes.some(
+      (n) => n.nodeType === 1 || (n.textContent || "").trim() !== "",
+    );
   }
 
   static get tag() {

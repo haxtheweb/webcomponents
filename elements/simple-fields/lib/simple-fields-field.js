@@ -2,7 +2,7 @@
  * Copyright 2020 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { SimpleFieldsContainerBehaviors } from "./simple-fields-container.js";
 import { SimpleFieldsRowStyles } from "./simple-fields-ui.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -1247,7 +1247,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             ?readonly="${this.readonly}"
             ?required="${this.required}"
             tabindex="0"
-            aria-label="${this.label || ""}"
+            aria-label="${this._fieldAriaLabel()}"
             type="${this.type}"
             value="${!option ? this.value : (option || {}).value}"
             part="option-input"
@@ -1406,7 +1406,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           ?autofocus="${this.autofocus}"
           aria-describedby="${this.describedBy || "description error-message"}"
           aria-invalid="${this.error ? "true" : "false"}"
-          aria-label="${this.label || ""}"
+          aria-label="${this._fieldAriaLabel()}"
           @blur="${this._onFocusout}"
           @change="${this._handleFieldChange}"
           class="field"
@@ -1450,11 +1450,26 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
      * @returns {object}
      * @memberof SimpleFieldsField
      */
+    /**
+     * name for the control inside: the label, or the aria-label set on this
+     * element when there is no visible label (a field named only by its
+     * host would otherwise reach assistive tech with no name)
+     *
+     * @returns {string|object}
+     */
+    _fieldAriaLabel() {
+      const name =
+        this.label ||
+        (typeof this.getAttribute === "function"
+          ? this.getAttribute("aria-label")
+          : "");
+      return name ? name : nothing;
+    }
     get textareaTemplate() {
       return html`
         <textarea
           aria-invalid="${this.error ? "true" : "false"}"
-          aria-label="${this.label || ""}"
+          aria-label="${this._fieldAriaLabel()}"
           aria-describedby="${this.describedBy || "description error-message"}"
           ?autofocus="${this.autofocus}"
           @blur="${this._onFocusout}"

@@ -5,6 +5,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDStatusTokens } from "@haxtheweb/d-d-d/lib/DDDStatusTokens.js";
+import { applyContextHeadingLevel } from "@haxtheweb/d-d-d/lib/headingLevel.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -341,6 +342,22 @@ export class BranchingScene extends DDDSuper(I18NMixin(LitElement)) {
       ></simple-icon-lite
       ><span>${text}</span>
     </p>`;
+  }
+
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    // the scene heading is drawn as an h3; give it the level the scenario
+    // sits at on the page (scenes before it hold their own content)
+    const heading =
+      this.shadowRoot && this.shadowRoot.querySelector("#heading");
+    if (heading) {
+      applyContextHeadingLevel(
+        this.closest("branching-scenario") || this,
+        heading,
+      );
+    }
   }
 
   render() {

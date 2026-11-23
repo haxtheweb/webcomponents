@@ -580,8 +580,10 @@ class PlayList extends I18NMixin(DDD) {
                                   () => index + 1,
                                 )}"
                                 title="${this._getSlideTitle(item, index)}"
-                                aria-selected="${index === this.slide}"
-                                tabindex="0"
+                                aria-selected="${
+                                  index === this.slide ? "true" : "false"
+                                }"
+                                tabindex="${index === this.slide ? "0" : "-1"}"
                                 @click="${() => this._goToSlide(index)}"
                               ></button>
                             `,
@@ -624,6 +626,37 @@ class PlayList extends I18NMixin(DDD) {
   }
 
   _handleKeydown(e) {
+    // on a page dot, focus follows the selected dot (roving tabindex)
+    const onDot = e
+      .composedPath()
+      .some(
+        (el) => el && el.classList && el.classList.contains("pagination-dot"),
+      );
+    if (onDot) {
+      let next = null;
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        next = this.slide - 1;
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        next = this.slide + 1;
+      } else if (e.key === "Home") {
+        next = 0;
+      } else if (e.key === "End") {
+        next = this.items.length - 1;
+      }
+      if (next !== null) {
+        e.preventDefault();
+        this._goToSlide(next);
+        this.updateComplete.then(() => {
+          const dot = this.shadowRoot.querySelector(
+            '.pagination-dot[aria-selected="true"]',
+          );
+          if (dot) {
+            dot.focus();
+          }
+        });
+      }
+      return;
+    }
     if (this.orientation === "horizontal") {
       if (e.key === "ArrowLeft") {
         e.preventDefault();

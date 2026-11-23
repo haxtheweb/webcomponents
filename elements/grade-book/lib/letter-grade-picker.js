@@ -5,6 +5,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { GradeBookStore } from "./grade-book-store.js";
 import { autorun, toJS } from "mobx";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./letter-grade.js";
 /**
  * `letter-grade-picker`
@@ -12,9 +13,19 @@ import "./letter-grade.js";
  * @demo demo/letter-grade-picker.html Letter grade picker
  * @element letter-grade-picker
  */
-class LetterGradePicker extends LitElement {
+class LetterGradePicker extends I18NMixin(LitElement) {
   constructor() {
     super();
+    this.t = {
+      grades: "Grades",
+      gradeLetter: "Grade {letter}",
+      score: "Score",
+      scoreFor: "Score for {label}",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath: new URL("../locales/", import.meta.url).href,
+    });
     this.value = null;
     this.label = null;
     this.reveal = false;
@@ -67,6 +78,8 @@ class LetterGradePicker extends LitElement {
         }
         .wrapper {
           display: flex;
+          flex-wrap: wrap;
+          align-items: center;
         }
         span.prefix,
         .wrapper ::slotted(*) {
@@ -109,19 +122,35 @@ class LetterGradePicker extends LitElement {
           margin-inline: 16px -8px;
           --simple-fields-font-size: 28px;
         }
+        /* the field is named by the picker label; keep that name off screen */
+        simple-fields-field::part(label) {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          white-space: nowrap;
+        }
       `,
     ];
   }
   render() {
     return html`
-      <div class="wrapper">
+      <div
+        class="wrapper"
+        role="group"
+        aria-label="${this.label ? this.label : this.t.grades}"
+      >
         <slot name="prefix"><span class="prefix">${this.label}</span></slot>
         ${(this.gradeScale || []).map(
           (scale, index) => html`
             <button
-              ?data-selected-value="${scale.letter == this.value}"
+              ?data-selected-value="${scale.letter === this.value}"
               letter="${scale.letter}"
               id="btn${index}"
+              aria-label="${this._gradeLabel(scale.letter)}"
+              aria-pressed="${scale.letter === this.value ? "true" : "false"}"
               @click="${this.clickScore}"
               @mousedown="${this.activeEventOn}"
               @mouseover="${this.activeEventOn}"
@@ -145,6 +174,11 @@ class LetterGradePicker extends LitElement {
                   <simple-fields-field
                     type="number"
                     part="simple-fields-field"
+                    label="${
+                      this.label
+                        ? this._fill(this.t.scoreFor, { label: this.label })
+                        : this.t.score
+                    }"
                     min="0"
                     value="${this.score}"
                     max="${this.possible}"
@@ -160,6 +194,15 @@ class LetterGradePicker extends LitElement {
         ${this.input ? html`` : nothing}
       </div>
     `;
+  }
+  _fill(str, map) {
+    return Object.keys(map).reduce(
+      (out, key) => out.split("{" + key + "}").join(map[key]),
+      str || "",
+    );
+  }
+  _gradeLabel(letter) {
+    return this._fill(this.t.gradeLetter, { letter: letter });
   }
   activeEventOn(e) {
     e.target.setAttribute("active", "active");

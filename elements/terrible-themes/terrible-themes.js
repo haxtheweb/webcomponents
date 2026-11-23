@@ -352,19 +352,13 @@ class TerribleThemes extends HAXCMSRememberRoute(
                     <td align="left">${this.t.terribleQuote}</td>
                     <td align="right" width="100">
                       <p class="loginState">
-                        <a
-                          class="loginState"
-                          aria-disabled="true"
-                          role="link"
-                          tabindex="-1"
-                          >${this.t.logIn}</a
-                        >
+                        <a class="loginState">${this.t.logIn}</a>
                       </p>
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <a aria-disabled="true" role="link" tabindex="-1"
+              <a
                 ><img
                   src="${
                     new URL("lib/assets/header.jpg", import.meta.url).href

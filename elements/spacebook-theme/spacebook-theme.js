@@ -1031,7 +1031,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(
         ></button>
 
         <!-- Fixed Header -->
-        <div class="site-header">
+        <header class="site-header">
           <nav class="header-nav" aria-label="${this.t.main}">
             <!-- Mobile site info (hidden on desktop) -->
             <div class="header-content">
@@ -1122,7 +1122,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(
               </button>
             </div>
           </nav>
-        </div>
+        </header>
 
         <!-- Sidebar Navigation -->
         <nav

@@ -41,7 +41,9 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
         simple-icon-lite {
           margin-right: 8px;
         }
-        a h1 {
+        /* the site name is the home link's text, not a heading: the page
+           title is the page's h1 (one h1 per page) */
+        a .site-name {
           display: var(--site-title-link-h1-display, block);
           color: inherit;
           text-rendering: optimizelegibility;
@@ -121,7 +123,13 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
           ?hidden="${this.icon ? false : true}"
           icon="${this.icon}"
         ></simple-icon-lite>
-        ${this.notitle ? `` : html` <h1>${this.siteTitle}</h1> `}
+        ${
+          this.notitle
+            ? ``
+            : html` <span class="site-name" part="site-name"
+                >${this.siteTitle}</span
+              >`
+        }
       </a>
     `;
   }

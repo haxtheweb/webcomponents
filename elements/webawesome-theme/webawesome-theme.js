@@ -167,7 +167,14 @@ class WebawesomeTheme extends HAXCMSThemeParts(
           --map-menu-header-title-margin: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
         }
-        main {
+        /* the footer sits beside main, not inside it, so it is the page's
+           contentinfo landmark; .main-col keeps the layout main had */
+        .main-col > main {
+          display: block;
+          flex: 1 0 auto;
+          min-width: 0;
+        }
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
         }
@@ -464,41 +471,43 @@ class WebawesomeTheme extends HAXCMSThemeParts(
       </header>
       <div class="layout">
         ${this.renderNav()}
-        <main>
-          <div class="page">
-            <div class="content">
-              <site-active-title part="page-title"></site-active-title>
-              ${
-                this._tags.length
-                  ? html`<ul
-                      class="tags"
-                      part="tags"
-                      aria-label="${this.t.tags}"
-                    >
-                      ${this._tags.map((tag) => html`<li>${tag}</li>`)}
-                    </ul>`
-                  : ""
-              }
-              ${
-                this._lead
-                  ? html`<p class="lead" part="lead">${this._lead}</p>`
-                  : ""
-              }
-              <article id="contentcontainer">
-                <section id="slot"><slot></slot></section>
-              </article>
+        <div class="main-col">
+          <main>
+            <div class="page">
+              <div class="content">
+                <site-active-title part="page-title"></site-active-title>
+                ${
+                  this._tags.length
+                    ? html`<ul
+                        class="tags"
+                        part="tags"
+                        aria-label="${this.t.tags}"
+                      >
+                        ${this._tags.map((tag) => html`<li>${tag}</li>`)}
+                      </ul>`
+                    : ""
+                }
+                ${
+                  this._lead
+                    ? html`<p class="lead" part="lead">${this._lead}</p>`
+                    : ""
+                }
+                <article id="contentcontainer">
+                  <section id="slot"><slot></slot></section>
+                </article>
+              </div>
+              <aside class="toc" part="toc">
+                <site-menu-content
+                  label="${this.t.onThisPage}"
+                ></site-menu-content>
+              </aside>
             </div>
-            <aside class="toc" part="toc">
-              <site-menu-content
-                label="${this.t.onThisPage}"
-              ></site-menu-content>
-            </aside>
-          </div>
-          ${this.renderPager()}
+            ${this.renderPager()}
+          </main>
           <footer part="footer">
             <site-region name="footerPrimary"></site-region>
           </footer>
-        </main>
+        </div>
       </div>
     `;
   }

@@ -28,24 +28,38 @@ class ModelOption extends LitElement {
           display: block;
         }
 
-        a {
+        button.option {
           text-decoration: none;
           color: var(--ddd-theme-default-white, #fff);
           display: block;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          border: none;
+          border-radius: 0;
+          font: inherit;
+          text-align: start;
+          cursor: pointer;
           background: var(--ddd-theme-default-coalyGray, #262626);
         }
 
-        h2 {
-          margin-bottom: var(--ddd-spacing-2);
+        /* drawn like the h2 it was; a heading inside a button loses its
+           heading role, so this is plain text */
+        .title-text {
+          display: block;
+          font-size: 1.5em;
+          font-weight: bold;
+          margin-block: 0.83em var(--ddd-spacing-2);
         }
 
         @media screen and (min-width: 320px) {
-          h2 {
+          .title-text {
             font-size: var(--ddd-font-size-s);
+          }
         }
-  
+
         @media screen and (min-width: 920px) {
-          h2 {
+          .title-text {
             font-size: var(--ddd-font-size-ml);
           }
         }
@@ -70,22 +84,17 @@ class ModelOption extends LitElement {
 
   render() {
     return html`
-      <a
-        role="button"
-        tabindex="0"
-        @click="${this._handleClick}"
-        @keydown="${this._handleKeydown}"
-      >
+      <button type="button" class="option" @click="${this._handleClick}">
         <div class="button">
           <div id="option-wrap">
             <div id="accent-color"></div>
             <div id="title">
-              <h2>${this.title}</h2>
+              <span class="title-text">${this.title}</span>
             </div>
             <slot></slot>
           </div>
         </div>
-      </a>
+      </button>
     `;
   }
 
@@ -99,16 +108,6 @@ class ModelOption extends LitElement {
       composed: true,
     });
     this.dispatchEvent(modelSelect);
-  }
-
-  /**
-   * Activates the selection card from the keyboard like a button.
-   */
-  _handleKeydown(e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      this._handleClick(e);
-    }
   }
 
   static get tag() {

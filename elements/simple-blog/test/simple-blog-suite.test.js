@@ -188,7 +188,7 @@ describe("simple-blog listing route", () => {
     const anchor = overviews[1].shadowRoot.querySelector("a");
     expect(anchor.getAttribute("href")).to.equal("post-1");
     expect(
-      overviews[1].shadowRoot.querySelector("h3.post-title").textContent,
+      overviews[1].shadowRoot.querySelector("h2.post-title").textContent,
     ).to.equal("First Post");
     // description is a declared property now, so the listing's
     // description="..." attribute feeds the excerpt binding (was blank)

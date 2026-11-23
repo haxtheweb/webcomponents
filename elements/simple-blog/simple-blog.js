@@ -102,8 +102,8 @@ class SimpleBlog extends I18NMixin(
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
           background-color: var(--haxcms-color, black);
         }
-        main,
-        main section {
+        .page,
+        .page section {
           width: 99vw;
           min-height: 100vh;
         }
@@ -141,14 +141,18 @@ class SimpleBlog extends I18NMixin(
   // render function
   render() {
     return html`
-      <main id="main-content" tabindex="-1">
+      <div class="page">
         <a class="skip-link" href="#main-content">${this.t.skipToContent}</a>
         ${
           this.selectedPage === 0
             ? html`
                 <section>
-                  <simple-blog-header></simple-blog-header>
-                  <simple-blog-listing></simple-blog-listing>
+                  <header>
+                    <simple-blog-header></simple-blog-header>
+                  </header>
+                  <main id="main-content" tabindex="-1">
+                    <simple-blog-listing></simple-blog-listing>
+                  </main>
                 </section>
               `
             : html`<section>
@@ -165,17 +169,19 @@ class SimpleBlog extends I18NMixin(
                   animation-delay="0"
                   >${this.t.backToListing}
                 </simple-tooltip>
-                <article>
-                  <simple-blog-post ?edit-mode="${this.editMode}"
-                    ><slot></slot
-                  ></simple-blog-post>
-                </article>
-                <footer>
-                  <simple-blog-footer id="footer"></simple-blog-footer>
-                </footer>
+                <main id="main-content" tabindex="-1">
+                  <article>
+                    <simple-blog-post ?edit-mode="${this.editMode}"
+                      ><slot></slot
+                    ></simple-blog-post>
+                  </article>
+                  <footer>
+                    <simple-blog-footer id="footer"></simple-blog-footer>
+                  </footer>
+                </main>
               </section>`
         }
-      </main>
+      </div>
     `;
   }
   /**

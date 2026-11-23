@@ -239,7 +239,15 @@ class FluentTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           font-family: var(--ddd-font-primary);
         }
 
-        main {
+        /* the footer sits beside main, not inside it, so it is the page's
+           contentinfo landmark; .main-col keeps the layout main had */
+        .main-col > main {
+          display: flex;
+          flex-direction: column;
+          flex: 1 0 auto;
+          min-width: 0;
+        }
+        .main-col {
           flex: 1 1 auto;
           min-width: 0;
           min-height: calc(100vh - var(--fluent-theme-header-height));
@@ -350,7 +358,7 @@ class FluentTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
               0 0 8px var(--colorNeutralShadowAmbient),
               0 14px 28px var(--colorNeutralShadowKey);
           }
-          main {
+          .main-col {
             padding: 0;
           }
           .surface {
@@ -430,27 +438,35 @@ class FluentTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             <site-menu part="site-menu"></site-menu>
           </nav>
         </div>
-        <main>
-          <div class="surface">
-            <div class="page-header" part="page-header">
-              <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
-              <site-active-title part="page-title"></site-active-title>
-              ${this._lead ? html`<p class="lead">${this._lead}</p>` : ""}
+        <div class="main-col">
+          <main>
+            <div class="surface">
+              <div class="page-header" part="page-header">
+                <site-breadcrumb part="page-breadcrumb"></site-breadcrumb>
+                <site-active-title part="page-title"></site-active-title>
+                ${this._lead ? html`<p class="lead">${this._lead}</p>` : ""}
+              </div>
+              <div class="content">
+                <article id="contentcontainer">
+                  <section id="slot"><slot></slot></section>
+                </article>
+              </div>
+              <nav class="pager" aria-label="${this.t.pageNavigation}">
+                <site-menu-button
+                  type="prev"
+                  position="right"
+                ></site-menu-button>
+                <site-menu-button
+                  type="next"
+                  position="left"
+                ></site-menu-button>
+              </nav>
             </div>
-            <div class="content">
-              <article id="contentcontainer">
-                <section id="slot"><slot></slot></section>
-              </article>
-            </div>
-            <nav class="pager" aria-label="${this.t.pageNavigation}">
-              <site-menu-button type="prev" position="right"></site-menu-button>
-              <site-menu-button type="next" position="left"></site-menu-button>
-            </nav>
-            <footer part="footer">
-              <site-region name="footerPrimary"></site-region>
-            </footer>
-          </div>
-        </main>
+          </main>
+          <footer part="footer">
+            <site-region name="footerPrimary"></site-region>
+          </footer>
+        </div>
       </div>
     `;
   }

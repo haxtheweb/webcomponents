@@ -49,6 +49,16 @@ export class RetroController extends LitElement {
       startLabel: { type: String, attribute: "start-label" },
       bLabel: { type: String, attribute: "b-label" },
       aLabel: { type: String, attribute: "a-label" },
+      /**
+       * Drawn smaller than its buttons can be pressed (a toy in a scene):
+       * the whole pad is then one "pick up" button, and picking it up
+       * shows it large enough to press (WCAG 2.5.8 target size)
+       */
+      miniature: { type: Boolean, reflect: true },
+      /** accessible name of the pick up button */
+      pickupLabel: { type: String, attribute: "pickup-label" },
+      /** the pad is picked up (miniature only) */
+      held: { type: Boolean, reflect: true },
       _lit: { type: String, state: true },
     };
   }
@@ -66,9 +76,18 @@ export class RetroController extends LitElement {
     this.startLabel = "Start";
     this.bLabel = "B";
     this.aLabel = "A";
+    this.miniature = false;
+    this.held = false;
+    this.pickupLabel = "Pick up the controller";
     this._lit = "";
+    this.__boundPutDown = this.__putDownOutside.bind(this);
     this.__litTimer = null;
     this.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && this.held) {
+        e.preventDefault();
+        this.putDown(true);
+        return;
+      }
       const k = retroKitKey(e);
       if (k) {
         e.preventDefault();
@@ -84,6 +103,7 @@ export class RetroController extends LitElement {
 
   disconnectedCallback() {
     clearTimeout(this.__litTimer);
+    globalThis.removeEventListener("pointerdown", this.__boundPutDown, true);
     super.disconnectedCallback();
   }
 
@@ -100,6 +120,59 @@ export class RetroController extends LitElement {
         detail: { button },
       }),
     );
+  }
+
+  /**
+   * Pick a miniature pad up: it is shown large enough to press, and focus
+   * moves onto its first button.
+   */
+  pickUp() {
+    if (!this.miniature || this.held) {
+      return;
+    }
+    this.held = true;
+    globalThis.addEventListener("pointerdown", this.__boundPutDown, true);
+    this.updateComplete.then(() => {
+      const first = this.shadowRoot.querySelector(".dpad button");
+      if (first) {
+        first.focus();
+      }
+    });
+  }
+  /**
+   * Put a held pad back down.
+   * @param {Boolean} refocus return focus to the pick up button
+   */
+  putDown(refocus = false) {
+    if (!this.held) {
+      return;
+    }
+    this.held = false;
+    globalThis.removeEventListener("pointerdown", this.__boundPutDown, true);
+    if (refocus) {
+      this.updateComplete.then(() => {
+        const pickup = this.shadowRoot.querySelector(".pickup");
+        if (pickup) {
+          pickup.focus();
+        }
+      });
+    }
+  }
+  /** a press outside the held pad puts it down */
+  __putDownOutside(e) {
+    if (!e.composedPath().includes(this)) {
+      this.putDown(false);
+    }
+  }
+  /** focus leaving the held pad puts it down */
+  __focusOut(e) {
+    if (
+      this.held &&
+      !this.contains(e.relatedTarget) &&
+      !this.shadowRoot.contains(e.relatedTarget)
+    ) {
+      this.putDown(false);
+    }
   }
 
   /**
@@ -125,6 +198,33 @@ export class RetroController extends LitElement {
         }
         :host([hidden]) {
           display: none;
+        }
+        :host([miniature]) {
+          position: relative;
+        }
+        /* a miniature pad is one button until it is picked up */
+        .pickup {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          border-radius: 10px;
+        }
+        .pickup:focus-visible {
+          outline: 3px solid var(--retro-kit-focus, #ffd60a);
+          outline-offset: 2px;
+        }
+        /* picked up: drawn at a size its buttons can be pressed, over the
+           scene, without moving anything around it */
+        :host([held]) .ctl {
+          position: relative;
+          z-index: 2;
+          transform: scale(var(--retro-controller-held-scale, 2));
+          transform-origin: 50% 100%;
+        }
+        @media (prefers-reduced-motion: no-preference) {
+          .ctl {
+            transition: transform 0.15s ease-out;
+          }
         }
         .ctl {
           box-sizing: border-box;
@@ -324,7 +424,25 @@ export class RetroController extends LitElement {
         @click="${() => this.press(b)}"
       ></button>`;
     return html`
-      <div class="ctl" role="group" aria-label="${this.label}" part="body">
+      ${
+        this.miniature && !this.held
+          ? html`<button
+              type="button"
+              class="pickup"
+              aria-label="${this.pickupLabel}"
+              aria-expanded="false"
+              @click="${this.pickUp}"
+            ></button>`
+          : ``
+      }
+      <div
+        class="ctl"
+        role="group"
+        aria-label="${this.label}"
+        part="body"
+        ?inert="${this.miniature && !this.held}"
+        @focusout="${this.__focusOut}"
+      >
         <div class="plate">
           <span class="brand" aria-hidden="true">${this.brand}</span>
           <div class="dpad">

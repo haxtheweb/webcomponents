@@ -670,10 +670,17 @@ class LrndesignImagemap extends I18NMixin(DDD) {
         position: hotspot.position || "bottom",
         details: globalThis.document.createElement("div"),
       };
+      // a hotspot the svg does not draw has nothing to turn into a button
+      if (!obj.hotspot) {
+        console.warn(
+          `lrndesign-imagemap: no shape with id "${obj.id}" in the image`,
+        );
+        return;
+      }
       // Turning main svg interactive hotspots into buttons
       obj.hotspot.classList.add("hotspot");
       obj.hotspot.setAttribute("role", "button");
-      obj.hotspot.setAttribute("aria-label", obj.label);
+      obj.hotspot.setAttribute("aria-label", this._hotspotName(obj));
       // aria-controls cannot point into the shadow root from this light DOM
       // svg, so the button says whether its details are open instead
       obj.hotspot.removeAttribute("aria-controls");
@@ -838,6 +845,20 @@ class LrndesignImagemap extends I18NMixin(DDD) {
     // restore focus to the hotspot's svg shape, guarding against a missing
     // or plain-object active hotspot instead of calling focus on it
     if (hotspot && typeof hotspot.focus === "function") hotspot.focus();
+  }
+  /**
+   * The hotspot's spoken name starts with any words the image draws on it,
+   * so it matches what is on screen (WCAG 2.5.3), then the hotspot label.
+   * @param {object} obj hotspot record
+   * @returns {string}
+   */
+  _hotspotName(obj) {
+    const label = (obj.label || "").trim();
+    const drawn = (obj.hotspot.textContent || "").trim().replace(/\s+/g, " ");
+    if (!drawn || label.toLowerCase().includes(drawn.toLowerCase())) {
+      return label || drawn;
+    }
+    return label ? `${drawn}: ${label}` : drawn;
   }
   /**
    * Closes dialog and deselects all hotspots.

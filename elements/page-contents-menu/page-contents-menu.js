@@ -60,6 +60,14 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           display: inline-flex;
           color: var(--page-contents-menu-link, black);
         }
+        button.svg {
+          background: transparent;
+          border: none;
+          padding-block: 0;
+          padding-inline-start: 0;
+          font: inherit;
+          cursor: pointer;
+        }
         svg {
           width: 32px;
           height: 32px;
@@ -175,36 +183,62 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
         aria-label="${this.label}"
       >
         <div class="header">
-          <a
-            class="svg"
-            @click="${this.toggleSettings}"
-            @keydown="${this.keyToggle}"
-            id="popovertarget"
-            role="button"
-            aria-label="${this.label}"
-          >
-            <svg
-              preserveAspectRatio="xMidYMid meet"
-              height="1em"
-              width="1em"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke="currentColor"
-              class="icon-7f6730be--text-3f89f380"
-              aria-hidden="true"
-            >
-              <g>
-                <line x1="21" y1="10" x2="7" y2="10"></line>
-                <line x1="21" y1="6" x2="3" y2="6"></line>
-                <line x1="21" y1="14" x2="3" y2="14"></line>
-                <line x1="21" y1="18" x2="7" y2="18"></line>
-              </g>
-            </svg>
-          </a>
+          ${
+            this.mobile
+              ? html`<button
+                  type="button"
+                  class="svg"
+                  @click="${this.toggleSettings}"
+                  id="popovertarget"
+                  aria-label="${this.label}"
+                  aria-expanded="${this.hideSettings ? "false" : "true"}"
+                >
+                  <svg
+                    preserveAspectRatio="xMidYMid meet"
+                    height="1em"
+                    width="1em"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="currentColor"
+                    class="icon-7f6730be--text-3f89f380"
+                    aria-hidden="true"
+                  >
+                    <g>
+                      <line x1="21" y1="10" x2="7" y2="10"></line>
+                      <line x1="21" y1="6" x2="3" y2="6"></line>
+                      <line x1="21" y1="14" x2="3" y2="14"></line>
+                      <line x1="21" y1="18" x2="7" y2="18"></line>
+                    </g>
+                  </svg>
+                </button>`
+              : html`<span class="svg" aria-hidden="true">
+                  <svg
+                    preserveAspectRatio="xMidYMid meet"
+                    height="1em"
+                    width="1em"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke="currentColor"
+                    class="icon-7f6730be--text-3f89f380"
+                    aria-hidden="true"
+                  >
+                    <g>
+                      <line x1="21" y1="10" x2="7" y2="10"></line>
+                      <line x1="21" y1="6" x2="3" y2="6"></line>
+                      <line x1="21" y1="14" x2="3" y2="14"></line>
+                      <line x1="21" y1="18" x2="7" y2="18"></line>
+                    </g>
+                  </svg>
+                </span>`
+          }
           <simple-tooltip
             for="popovertarget"
             offset="32"
@@ -239,11 +273,6 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
         }
       </section>
     `;
-  }
-  keyToggle(e) {
-    if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
-      this.toggleSettings(e);
-    }
   }
   keyScroll(e) {
     if (e.key === "Enter") {
@@ -304,7 +333,6 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
           <a
             class="link indent-${item.indent} ${item.active}"
             href="#${item.id}"
-            role="link"
             title="${item.title}"
             property="oer:title"
             aria-current="${isActive ? "true" : nothing}"
@@ -462,17 +490,19 @@ class PageContentsMenu extends SchemaBehaviors(DDD) {
             (_module) => {
               setTimeout(() => {
                 // hook up the pop over menu
+                // the toggle is a native button, already in the tab order
                 this.__toggleTarget =
                   this.shadowRoot.querySelector("#popovertarget");
-                this.__toggleTarget.setAttribute("tabindex", "0");
-                this.shadowRoot.querySelector("simple-popover").target =
-                  this.__toggleTarget;
+                const popover = this.shadowRoot.querySelector("simple-popover");
+                if (popover && this.__toggleTarget) {
+                  popover.target = this.__toggleTarget;
+                }
               }, 0);
             },
           );
           import("@haxtheweb/simple-tooltip/simple-tooltip.js");
         } else if (oldValue && !this[propName]) {
-          this.__toggleTarget.removeAttribute("tabindex");
+          this.__toggleTarget = null;
         }
       }
     });

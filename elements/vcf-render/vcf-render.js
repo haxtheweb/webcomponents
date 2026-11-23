@@ -539,6 +539,7 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
 
   renderList() {
     return html`
+      <!-- role="list" is kept on purpose: Safari drops list semantics from a list with list-style: none -->
       <ul class="rows" role="list">
         ${this.contacts.map((contact) => {
           const name = contact.displayName;

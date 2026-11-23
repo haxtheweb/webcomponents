@@ -2,7 +2,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { A11yFootnotesManager } from "./lib/a11y-footnotes.js";
@@ -85,6 +85,18 @@ export class A11yFootnote extends DDDSuper(I18NMixin(LitElement)) {
           text-decoration: none;
           padding: 0 var(--ddd-spacing-1);
           border-radius: var(--ddd-radius-xs);
+          position: relative;
+        }
+        /* a 24px hit area around the small superscript number (2.5.8),
+           drawn as nothing so the text looks the same */
+        a::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 24px;
+          height: 24px;
+          transform: translate(-50%, -50%);
         }
         a:hover,
         a:focus-visible {
@@ -144,6 +156,7 @@ export class A11yFootnote extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   render() {
+    const note = this.noteText();
     // before the manager numbers it, the note shows where it was written
     if (!this.number) {
       return html`<span class="inline-note" part="inline-note"
@@ -155,7 +168,7 @@ export class A11yFootnote extends DDDSuper(I18NMixin(LitElement)) {
           part="reference"
           href="#a11y-footnote-${this.number}"
           aria-label="${this.t.footnote} ${this.number}"
-          aria-describedby="preview"
+          aria-describedby="${note ? "preview" : nothing}"
           @mouseenter="${this._showPreview}"
           @mouseleave="${this._hidePreview}"
           @focus="${this._showPreview}"
@@ -163,14 +176,18 @@ export class A11yFootnote extends DDDSuper(I18NMixin(LitElement)) {
           @keydown="${this._keydown}"
           >${this.number}</a
         ></sup
-      ><span
-        id="preview"
-        class="preview ${this._previewFlip ? "flip" : ""}"
-        part="preview"
-        role="tooltip"
-        ?hidden="${!this._previewOpen}"
-        >${this.noteText()}</span
-      >`;
+      >${
+        note
+          ? html`<span
+              id="preview"
+              class="preview ${this._previewFlip ? "flip" : ""}"
+              part="preview"
+              role="tooltip"
+              ?hidden="${!this._previewOpen}"
+              >${note}</span
+            >`
+          : nothing
+      }`;
   }
 
   /**

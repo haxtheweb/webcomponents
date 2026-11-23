@@ -48,5 +48,9 @@
   "notAttempted": "Not attempted",
   "yourTags": "Your answer",
   "availableTags": "Tags to choose from",
-  "dropTagsHere": "Choose tags below or drag them here"
+  "dropTagsHere": "Choose tags below or drag them here",
+  "addTag": "Add {tag}",
+  "removeTag": "Remove {tag}",
+  "tagAdded": "{tag} added to your answer",
+  "tagRemoved": "{tag} removed from your answer"
 }

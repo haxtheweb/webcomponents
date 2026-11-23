@@ -1078,6 +1078,8 @@ export class WordSearch extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   renderWords() {
+    // role="list" is kept on purpose: Safari drops list semantics from a
+    // list with list-style: none
     return html`<ol class="words" role="list" aria-label="${this.t.wordList}">
       ${this._puzzle.placed.map((entry, index) => {
         const found = Boolean(this._found[entry.id]);
