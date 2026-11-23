@@ -143,6 +143,25 @@ describe("hex-picker keyboard validation", () => {
     input.dispatchEvent(good);
     expect(good.defaultPrevented).to.be.false;
   });
+  it("never traps the keyboard: Tab, Shift+Tab, Escape and shortcuts pass through", () => {
+    const input = el.shadowRoot.querySelector("input.text-input");
+    const keys = [
+      { key: "Tab", keyCode: 9 },
+      { key: "Tab", keyCode: 9, shiftKey: true },
+      { key: "Escape", keyCode: 27 },
+      { key: "Home", keyCode: 36 },
+      { key: "Delete", keyCode: 46 },
+      { key: "v", keyCode: 86, ctrlKey: true },
+    ];
+    keys.forEach((init) => {
+      const ev = new KeyboardEvent("keydown", { ...init, cancelable: true });
+      input.dispatchEvent(ev);
+      expect(ev.defaultPrevented, init.key).to.be.false;
+    });
+    let prevented = false;
+    el._validateInput({ which: 9, preventDefault: () => (prevented = true) });
+    expect(prevented).to.be.false;
+  });
 });
 
 describe("hex-picker input behavior", () => {
