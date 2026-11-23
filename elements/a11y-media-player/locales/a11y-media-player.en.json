@@ -42,5 +42,8 @@
   "belowLabel": "Below",
   "leftLabel": "Left",
   "rightLabel": "Right",
-  "hideTranscriptLabel": "Hide transcript"
+  "hideTranscriptLabel": "Hide transcript",
+  "youtubeConsentNotice": "This video plays from YouTube. Google will receive your IP address and may set cookies.",
+  "youtubeConsentAllow": "Always allow YouTube",
+  "consentChoicesLabel": "Privacy choices"
 }

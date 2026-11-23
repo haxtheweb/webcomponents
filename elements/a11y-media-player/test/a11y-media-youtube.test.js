@@ -18,8 +18,10 @@ describe("a11y-media-youtube warm connections", () => {
     A11yMediaYoutube.warmConnections();
     globalThis.document.head.append = originalAppend;
     A11yMediaYoutube.preconnected = true;
-    expect(appended.length).to.equal(4);
+    // only the reduced-cookie embed host: no ad or tracking hosts
+    expect(appended.length).to.equal(1);
     expect(appended[0].rel).to.equal("preconnect");
+    expect(appended[0].href).to.contain("youtube-nocookie.com");
     // hints were captured by the stub so no real connection was ever opened
     expect(
       globalThis.document.querySelectorAll("link[rel=preconnect]").length,
