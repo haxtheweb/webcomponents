@@ -519,7 +519,7 @@ describe("outline-designer data integrity", () => {
     const li = (id) =>
       element.shadowRoot.querySelector(`li[data-item-id="${id}"]`);
     const at = (el, fy, dx = 0) => {
-      el.scrollIntoView({ block: "center" });
+      el.scrollIntoView({ block: "center", behavior: "instant" });
       const r = el.getBoundingClientRect();
       return { x: r.left + 60 + dx, y: r.top + r.height * fy };
     };
@@ -717,7 +717,7 @@ describe("outline-designer data integrity", () => {
             buttons: type === "pointerup" ? 0 : 1,
           }),
         );
-      label.scrollIntoView({ block: "center" });
+      label.scrollIntoView({ block: "center", behavior: "instant" });
       const from = label.getBoundingClientRect();
       const x = from.left + 20;
       send(label, "pointerdown", x, from.top + from.height / 2);
@@ -726,7 +726,7 @@ describe("outline-designer data integrity", () => {
         send(list, "pointerup", x, from.top);
         return;
       }
-      target.scrollIntoView({ block: "center" });
+      target.scrollIntoView({ block: "center", behavior: "instant" });
       const to = target.getBoundingClientRect();
       const y = to.top + to.height * (0.05 + random() * 0.9);
       const dx = Math.round((random() - 0.5) * 120);
@@ -1115,7 +1115,7 @@ describe("outline-designer save payload", () => {
         element.shadowRoot.querySelector(`li[data-item-id="${id}"]`);
       const list = element.shadowRoot.querySelector("#list");
       const at = (el, fy) => {
-        el.scrollIntoView({ block: "center" });
+        el.scrollIntoView({ block: "center", behavior: "instant" });
         const r = el.getBoundingClientRect();
         return { x: r.left + 60, y: r.top + r.height * fy };
       };
@@ -1185,7 +1185,7 @@ describe("outline-designer save payload", () => {
     const drop = async (id, targetId, fy, dx = 0) => {
       const list = element.shadowRoot.querySelector("#list");
       const at = (el, f) => {
-        el.scrollIntoView({ block: "center" });
+        el.scrollIntoView({ block: "center", behavior: "instant" });
         const r = el.getBoundingClientRect();
         return { x: r.left + 60, y: r.top + r.height * f };
       };
