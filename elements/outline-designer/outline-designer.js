@@ -3333,6 +3333,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     e.target.classList.remove("shown");
     let target = e.target.nextElementSibling;
     target.setAttribute("contenteditable", "true");
+    // Accessibility (WCAG 4.1.2): expose the inline editor as a named text box
+    target.setAttribute("role", "textbox");
+    target.setAttribute("aria-label", this.t.editTitle);
     target.classList.add("shown");
     target.innerText = e.target.innerText;
     target.focus();
@@ -3421,6 +3424,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       e.target.removeAttribute("contenteditable");
       e.target.previousElementSibling.classList.add("shown");
       e.target.innerText = e.target.previousElementSibling.innerText;
+      this._refocusRowAfterEdit(e.target);
     } else if (e.key === "Enter") {
       // Enter commits the edit through the row's own monitor, folded
       // in here since lit allows only one binding per event name
@@ -3431,7 +3435,27 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       } else if (e.target.closest("[data-content-parent-id]")) {
         this.monitorHeading(e);
       }
+      this._refocusRowAfterEdit(e.target);
     }
+  }
+  /**
+   * Accessibility (WCAG 2.4.3): committing or cancelling an inline edit
+   * hides the focused edit host, which drops focus to <body>. Return focus
+   * to the page row it belongs to once the outline has re-rendered. Focus
+   * only: the items and their save path are not touched here.
+   * @param {HTMLElement} editHost the contenteditable that was being edited
+   */
+  _refocusRowAfterEdit(editHost) {
+    const row =
+      editHost && editHost.closest
+        ? editHost.closest("[data-item-id]") ||
+          editHost.closest("[data-content-parent-id]")
+        : null;
+    if (!row) return;
+    const itemId =
+      row.getAttribute("data-item-id") ||
+      row.getAttribute("data-content-parent-id");
+    this.updateComplete.then(() => this.focusItem(itemId));
   }
   blurTitle(e) {
     if (!this._blurBlock) {

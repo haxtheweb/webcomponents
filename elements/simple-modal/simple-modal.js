@@ -698,8 +698,30 @@ class SimpleModal extends I18NMixin(LitElement) {
       setTimeout(() => {
         this._styleBackdrop();
         this._applyDocked();
+        this._neutralizeInnerDialogRole();
       }, 0);
     });
+  }
+  /**
+   * Accessibility (WCAG 4.1.2): web-dialog marks its inner surface
+   * role="alertdialog" with no name, inside the role="dialog" this element
+   * names (title / aria-label). Screen readers then announce an unnamed,
+   * urgent dialog nested in a named one. The named outer dialog is the only
+   * dialog, so the inner surface is presentational. Guarded like the backdrop:
+   * web-dialog may not have built its shadow root yet.
+   */
+  _neutralizeInnerDialogRole() {
+    const dialog =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("web-dialog")
+        : null;
+    const inner =
+      dialog && dialog.shadowRoot && dialog.shadowRoot.querySelector
+        ? dialog.shadowRoot.querySelector("#dialog")
+        : null;
+    if (inner) {
+      inner.setAttribute("role", "none");
+    }
   }
   /**
    * Applies the backdrop background color. web-dialog may not have upgraded

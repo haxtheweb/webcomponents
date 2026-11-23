@@ -30,6 +30,11 @@
         "inputMethod": "textfield"
       },
       {
+        "property": "separator",
+        "title": "Thousands separator (for example a comma)",
+        "inputMethod": "textfield"
+      },
+      {
         "property": "value",
         "title": "Words instead of a number",
         "inputMethod": "textfield"

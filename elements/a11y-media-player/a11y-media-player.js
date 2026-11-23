@@ -68,6 +68,7 @@ import "./lib/a11y-media-transcript-cue.js";
 import "./lib/a11y-media-youtube.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 
 /**
  * Plain readable text for a WebVTT cue. Cue text can carry markup such as
@@ -634,6 +635,96 @@ class A11yMediaPlayer extends SchemaBehaviors(
           background-color: var(--ddd-theme-default-potentialMidnight);
           background-size: cover;
           background-position: center;
+        }
+
+        /* consent before YouTube: the real header and poster, the choice
+           over the picture */
+        #player > #consent {
+          position: relative;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          padding: var(--ddd-spacing-4);
+          box-sizing: border-box;
+          background-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-coalyGray) 45%,
+            transparent
+          );
+          z-index: 2;
+        }
+        #consent-panel {
+          max-width: 28rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-5);
+          border-radius: var(--ddd-radius-sm);
+          text-align: center;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        #consent-notice {
+          margin: 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: var(--ddd-lh-150);
+        }
+        #consent-allow {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: var(--ddd-spacing-11);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-3xs);
+          font-weight: var(--ddd-font-weight-bold);
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-md);
+          cursor: pointer;
+          border-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        #consent-allow simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-3xs);
+          --simple-icon-height: var(--ddd-icon-3xs);
+        }
+        #consent-allow:focus-visible,
+        #consent-choices:focus-visible {
+          outline: var(--ddd-border-md);
+          outline-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          outline-offset: 2px;
+        }
+        #consent-choices {
+          color: inherit;
+          font-size: var(--ddd-font-size-3xs);
+          padding: var(--ddd-spacing-1) 0;
+        }
+        #slider[hidden],
+        #controls[hidden],
+        #playbutton[hidden] {
+          display: none;
         }
 
         #player-and-controls[audio-no-thumb] #player {
@@ -1596,6 +1687,19 @@ class A11yMediaPlayer extends SchemaBehaviors(
     </div>`;
   }
 
+  /**
+   * Accessibility (WCAG 2.4.1): a fragment link cannot reach an id inside a
+   * shadow root, so the transcript skip link moves focus itself.
+   * @param {Event} e click on the skip link
+   */
+  _skipTranscript(e) {
+    const target = this.shadowRoot && this.shadowRoot.querySelector("#bottom");
+    if (target) {
+      e.preventDefault();
+      target.focus();
+    }
+  }
+
   // render function
   render() {
     const seekPct =
@@ -1643,8 +1747,44 @@ class A11yMediaPlayer extends SchemaBehaviors(
                 ?audio-only="${this.audioOnly}"
                 ?disabled="${this.audioNoThumb}"
                 youtube-id="${this.youtubeId}"
+                ?hidden="${this._youtubeGated}"
               >
               </a11y-media-play-button>
+              ${
+                this._youtubeGated
+                  ? html`<div
+                      id="consent"
+                      role="group"
+                      aria-labelledby="consent-notice"
+                      style="aspect-ratio: ${this.aspect};"
+                    >
+                      <div id="consent-panel">
+                        <p id="consent-notice">
+                          ${this.t.youtubeConsentNotice}
+                        </p>
+                        <button
+                          id="consent-allow"
+                          @click="${this._allowYoutube}"
+                        >
+                          <simple-icon-lite
+                            icon="av:play-arrow"
+                            aria-hidden="true"
+                          ></simple-icon-lite>
+                          ${this.t.youtubeConsentAllow}
+                        </button>
+                        ${
+                          HaxConsent.choicesUrl
+                            ? html`<a
+                                id="consent-choices"
+                                href="${HaxConsent.choicesUrl}"
+                                >${this.t.consentChoicesLabel}</a
+                              >`
+                            : ``
+                        }
+                      </div>
+                    </div>`
+                  : ``
+              }
               <div id="html5">
                 <slot></slot>
               </div>
@@ -1716,9 +1856,15 @@ class A11yMediaPlayer extends SchemaBehaviors(
             @immediate-value-changed="${this._handleSliderDragging}"
             .value="${this.__currentTime}"
             ?disabled="${this._seekLocked}"
+            ?hidden="${this._youtubeGated}"
           >
           </simple-range-input>
-          <div id="controls" class="screen-only" controls="innerplayer">
+          <div
+            id="controls"
+            class="screen-only"
+            controls="innerplayer"
+            ?hidden="${this._youtubeGated}"
+          >
             <div id="controls-left">
               <a11y-media-button
                 accent-color="${this.accentColor}"
@@ -1865,7 +2011,12 @@ class A11yMediaPlayer extends SchemaBehaviors(
               </button>
             </div>
             <div id="transcript" aria-live="polite">
-              <a id="transcript-desc" class="sr-only" href="#bottom">
+              <a
+                id="transcript-desc"
+                class="sr-only"
+                href="#bottom"
+                @click="${this._skipTranscript}"
+              >
                 ${this.t.transcriptSkip}
               </a>
               ${
@@ -1915,7 +2066,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
           </div>
         </div>
       </div>
-      <div id="bottom" class="sr-only"></div>`;
+      <div id="bottom" class="sr-only" tabindex="-1"></div>`;
   }
 
   // properties available to the custom element for data binding
@@ -1929,6 +2080,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       typeof: { type: String, reflect: true },
       __playerReady: { type: Boolean },
       __youtubeWanted: { type: Boolean },
+      __youtubeConsent: { type: Boolean },
       __youtubePlayOnLoad: { type: Boolean },
       /**
        * Allow this media to play concurrently with other a11y-media-players?
@@ -2390,6 +2542,16 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // someone presses play; until then the thumbnail and play button show
     this.__youtubeWanted = false;
     this.__youtubePlayOnLoad = false;
+    // Privacy: nothing is requested from YouTube (API script, iframe,
+    // preconnects, thumbnail) until the visitor has allowed YouTube
+    this.__youtubeConsent = HaxConsent.allowed("youtube");
+    this._consentHandler = (e) => {
+      if (e.detail.service !== "youtube") return;
+      this.__youtubeConsent = HaxConsent.allowed("youtube");
+      if (this.__youtubeConsent && this.__playerReady) {
+        this.__youtubeWanted = true;
+      }
+    };
     this.audioOnly = false;
     this.autoplay = false;
     this.allowConcurrent = false;
@@ -2412,6 +2574,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
     this.t = this.t || {};
     this.t = {
       ...this.t,
+      youtubeConsentNotice:
+        "This video plays from YouTube. Google will receive your IP address and may set cookies.",
+      youtubeConsentAllow: "Always allow YouTube",
+      consentChoicesLabel: "Privacy choices",
       audioLabel: "Audio",
       audioNotSupported: "HTML5 video is not supported.",
       autoScrollLabel: "Scroll Transcript",
@@ -2793,6 +2959,38 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * @readonly
    * @returns {boolean}
    */
+  /**
+   * a YouTube video the visitor has not allowed yet
+   * @readonly
+   * @returns {boolean}
+   */
+  get _youtubeGated() {
+    return this.isYoutube && !this.__youtubeConsent;
+  }
+
+  /**
+   * Privacy: a YouTube URL is never handed to the HTML5 <video>, which
+   * cannot play it and would request it from YouTube on page load
+   * @param {string} src
+   * @returns {boolean}
+   */
+  _isYoutubeSrc(src) {
+    return (
+      typeof src === "string" &&
+      /^(https?:)?\/\/([a-z0-9-]+\.)?(youtube\.com|youtube-nocookie\.com|youtu\.be)\//i.test(
+        src,
+      )
+    );
+  }
+
+  /**
+   * remembers the visitor allows YouTube and starts this video
+   */
+  _allowYoutube() {
+    HaxConsent.set("youtube", "allow");
+    this.play();
+  }
+
   get isYoutube() {
     return this.youtubeId ? true : false;
   }
@@ -2907,6 +3105,11 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this.poster && (this.isYoutube || this.audioOnly)
           ? `background-image:url('${this.poster}');`
           : ``;
+    // waiting for consent: the choice sits in the flow and the frame grows
+    // to hold it on narrow players
+    if (this._youtubeGated) {
+      return `height:auto;padding-top:unset;${thumbnail}`;
+    }
     return `height:${height};padding-top:${paddingTop};${thumbnail}`;
   }
 
@@ -2921,7 +3124,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       : this.media && !this.media.poster
         ? this.media.poster
         : false;
-    return !this.thumbnailSrc && this.youtubeId
+    return !this.thumbnailSrc && this.youtubeId && this.__youtubeConsent
       ? `https://img.youtube.com/vi/${this.youtubeId.replace(
           /[?&].*/,
           "",
@@ -3447,6 +3650,14 @@ class A11yMediaPlayer extends SchemaBehaviors(
    * plays the media
    */
   play() {
+    if (this._youtubeGated) {
+      // nothing plays from YouTube before consent: send them to the choice
+      const allow = this.shadowRoot
+        ? this.shadowRoot.querySelector("#consent-allow")
+        : null;
+      if (allow) allow.focus();
+      return;
+    }
     this.__playing = true;
     if (this.isYoutube && !this.youtube) {
       // nothing to play yet: create the YouTube player and start it once
@@ -3736,6 +3947,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
 
     /* handle deprecated sources */
     (this.sources || []).forEach((source) => {
+      if (this._isYoutubeSrc(source.src)) return;
       let node = globalThis.document.createElement("source");
       Object.keys(source).forEach((key) => node.setAttribute(key, source[key]));
       primary.appendChild(node);
@@ -3810,7 +4022,9 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // media.load() on every render and constantly reset playback.
     const desiredSrcs =
       this.sources && Array.isArray(this.sources)
-        ? this.sources.map((s) => s.src || "")
+        ? this.sources
+            .filter((s) => !this._isYoutubeSrc(s.src))
+            .map((s) => s.src || "")
         : [];
     const currentSrcs = Array.from(media.querySelectorAll("source")).map(
       (s) => s.getAttribute("src") || "",
@@ -3828,6 +4042,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
     // Re-add sources from sources array
     if (this.sources && Array.isArray(this.sources)) {
       this.sources.forEach((source) => {
+        if (this._isYoutubeSrc(source.src)) return;
         let node = globalThis.document.createElement("source");
         Object.keys(source).forEach((key) =>
           node.setAttribute(key, source[key]),
@@ -4974,7 +5189,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
       }),
     );
     this.__playerReady = true;
-    if (!this.__youtubeWanted) {
+    if (!this.__youtubeWanted && this.__youtubeConsent) {
       whenIdle(
         () => {
           this.__youtubeWanted = true;
@@ -5255,6 +5470,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this._layoutPreferenceHandler,
       );
       globalThis.addEventListener("pagehide", this._learnerLeaveHandler);
+      globalThis.addEventListener("hax-consent-changed", this._consentHandler);
       globalThis.addEventListener(
         "learner-progress-ready",
         this._learnerReadyHandler,
@@ -5284,6 +5500,10 @@ class A11yMediaPlayer extends SchemaBehaviors(
         this._layoutPreferenceHandler,
       );
       globalThis.removeEventListener("pagehide", this._learnerLeaveHandler);
+      globalThis.removeEventListener(
+        "hax-consent-changed",
+        this._consentHandler,
+      );
       globalThis.removeEventListener(
         "learner-progress-ready",
         this._learnerReadyHandler,

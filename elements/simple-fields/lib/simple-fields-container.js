@@ -539,6 +539,17 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
             this.error ? "true" : "false",
           );
         }
+        if (
+          [
+            "label",
+            "description",
+            "errorMessage",
+            "error",
+            "required",
+          ].includes(propName)
+        ) {
+          this._syncFieldA11y();
+        }
       });
       if (errorChanged) this._fireErrorChanged();
     }
@@ -1224,6 +1235,47 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
     }
 
     /**
+     * Give the slotted field the accessible name and description this
+     * element shows visually. Only names this element set before are
+     * replaced: a field that arrives with its own aria-label or
+     * aria-labelledby keeps it.
+     */
+    _syncFieldA11y() {
+      const field = this.field;
+      if (
+        !field ||
+        typeof field.setAttribute !== "function" ||
+        typeof field.getAttribute !== "function" ||
+        typeof field.removeAttribute !== "function"
+      ) {
+        return;
+      }
+      const has = (name) => field.getAttribute(name) !== null;
+      const owned = has("data-simple-fields-named");
+      if (
+        this.label &&
+        (owned || (!has("aria-label") && !has("aria-labelledby")))
+      ) {
+        field.setAttribute("aria-label", this.label);
+        field.setAttribute("data-simple-fields-named", "");
+      }
+      // drop the old shadow-only reference, which pointed at nothing
+      if (field.getAttribute("aria-describedby") === "field-bottom") {
+        field.removeAttribute("aria-describedby");
+      }
+      const description = [
+        this.description,
+        this.error && this.errorMessage ? this.errorMessage : "",
+      ]
+        .filter((text) => typeof text === "string" && text.trim() !== "")
+        .join(". ");
+      if (description) {
+        field.setAttribute("aria-description", description);
+      } else {
+        field.removeAttribute("aria-description");
+      }
+    }
+    /**
      * updates field an type
      *
      * @memberof SimpleFieldsContainer
@@ -1242,7 +1294,11 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         this.required = this.field.required;
         this.disabled = this.field.disabled;
         this.readonly = this.field.readonly;
-        this.field.setAttribute("aria-describedby", "field-bottom");
+        // Accessibility (WCAG 1.3.1, 4.1.2): this element's <label for> and
+        // its field-bottom help text live in its shadow root, and an idref
+        // cannot cross from the slotted light-DOM field into it, so the
+        // field carries its name and description itself.
+        this._syncFieldA11y();
         /** add event listeners */
         this.addEventListener("change", this._handleFieldChange);
         this.addEventListener("input", this._handleFieldChange);

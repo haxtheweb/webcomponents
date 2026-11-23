@@ -5403,7 +5403,7 @@
     {
       "tag": "rpg-character-builder",
       "title": "",
-      "description": "Pick every part of an rpg-character with a live preview, and get back a character code that recreates it anywhere (<rpg-character code=\"...\">).",
+      "description": "Build an rpg-character by picture, the way the Wii's Mii editor worked: picture tabs (named on hover / focus), a paged grid of tiles that show each option on your own character, colors beside the shapes, and a big preview that tries an option on while you hover or focus it. Gives back a character...",
       "package": "@haxtheweb/rpg-character",
       "import": "@haxtheweb/rpg-character/lib/rpg-character-builder.js",
       "type": "element",

@@ -63,6 +63,42 @@ function darkToggle(e) {
   }
 }
 /**
+ * Security: one site builder runs a page. A second one found inside the first
+ * (a `<haxcms-site-builder file="...">` that reached page content from an
+ * import, the API or an older save) would load its own outline over the site
+ * being viewed and show that site's pages in its place. A nested builder
+ * loads nothing and hands the store nothing; what is inside it still renders.
+ * The backends drop the tag on save; this covers content already stored and
+ * statically published sites.
+ */
+const nestedSiteBuilders = new WeakMap();
+function isNestedSiteBuilder(element) {
+  // not an attached element (nothing to decide yet, nothing remembered)
+  if (!element || element.nodeType !== 1 || !element.isConnected) {
+    return false;
+  }
+  if (nestedSiteBuilders.has(element)) {
+    return nestedSiteBuilders.get(element);
+  }
+  let nested = false;
+  let node = element.parentNode;
+  while (node) {
+    if (node.localName === "haxcms-site-builder") {
+      nested = true;
+      break;
+    }
+    // walk out of a shadow root to the element that hosts it
+    node = node.parentNode || node.host || null;
+  }
+  nestedSiteBuilders.set(element, nested);
+  if (nested) {
+    console.warn(
+      "haxcms-site-builder: ignored a site builder inside page content; only the page's own builder loads a site",
+    );
+  }
+  return nested;
+}
+/**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
  * @microcopy - the mental model for this element
@@ -146,6 +182,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * Simple "two way" data binding from the element below via events
    */
   _updateManifest(data) {
+    if (isNestedSiteBuilder(this)) {
+      return;
+    }
     this.manifest = { ...data };
   }
   hashCode(s) {
@@ -371,6 +410,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * Load JSON Outline Schema / site.json format
    */
   async loadJOSData() {
+    // Security: a builder inside page content loads nothing
+    if (isNestedSiteBuilder(this)) {
+      return;
+    }
     // file required or we have nothing; other two mixed in for pathing
     if (this.file) {
       this.loading = true;
@@ -431,7 +474,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
   async _revalidateManifest() {
     // logged in: the login autorun already forced a fresh timestamped load
-    if (!this.file || this.isLoggedIn || this._timeStamp) {
+    if (
+      !this.file ||
+      this.isLoggedIn ||
+      this._timeStamp ||
+      isNestedSiteBuilder(this)
+    ) {
       return false;
     }
     // same URL as the first load, revalidated: the browser sends
@@ -1544,6 +1592,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * notice manifest changes and ensure slot is rebuilt.
    */
   _manifestChanged(newValue, _oldValue) {
+    // Security: only the page's own builder hands the store a site
+    if (isNestedSiteBuilder(this)) {
+      return;
+    }
     if (newValue && newValue.metadata && newValue.items) {
       store.loadManifest(newValue, this);
       HAXCMSSiteBuilder.prototype._applySiteLanguage.call(this, newValue);
@@ -1862,4 +1914,4 @@ globalThis.HAXme = function (context = null) {
 };
 
 globalThis.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
-export { HAXCMSSiteBuilder };
+export { HAXCMSSiteBuilder, isNestedSiteBuilder };

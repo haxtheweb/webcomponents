@@ -169,7 +169,7 @@ uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs --check || 
 # The golden parity suite, which boots both backends and takes minutes, runs
 # in ubiquity-push.sh before anything is committed; to run it here as well:
 #   cd ~/haxtheweb/create && npm run test:parity:release -- \
-#     --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --link-cli
+#     --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --link-cli --old-sites
 # Report only here.
 cd ~/haxtheweb/create
 npm run test:parity:release -- --nodejs ~/haxtheweb/haxcms-nodejs --php ~/haxtheweb/haxcms-php --specs-only || echo "WARNING: the backends' OpenAPI specs differ; ubiquity-push.sh will stop until they match (report: ~/haxtheweb/create/parity-results/release-gate.md)"

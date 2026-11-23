@@ -203,7 +203,7 @@ class A11yMediaButton extends LitElement {
         id="button"
         aria-label="${this.label}"
         aria-describedby="${ifDefined(this.description)}"
-        aria-pressed="${this.toggle ? "true" : undefined}"
+        aria-pressed="${ifDefined(this.toggle ? "true" : undefined)}"
         tabindex="0"
         @click="${this._buttonClick}"
         ?disabled="${this.disabled}"
