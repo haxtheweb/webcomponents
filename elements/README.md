@@ -256,7 +256,6 @@ Every element in this monorepo (257 packages). Browse them live with `yarn galle
 | [voice-recorder](./voice-recorder/) | Records audio from the microphone and exports it as an MP3 | `@haxtheweb/voice-recorder` | [demo](./voice-recorder/demo/) |
 | [wc-autoload](./wc-autoload/) | automatically load new tags in the dom | `@haxtheweb/wc-autoload` |  |
 | [web-baseline-status](./web-baseline-status/) | Wrapper that makes the web-platform-dx baseline-status widget usable in HAX | `@haxtheweb/web-baseline-status` | [demo](./web-baseline-status/demo/) |
-| [web-container](./web-container/) | Webcomponent web-container following hax / open-wc recommendations | `@haxtheweb/web-container` | [demo](./web-container/demo/) |
 | [webawesome-theme](./webawesome-theme/) | Web Awesome theme for HAXcms, built on the DDD-capable Web Awesome design system bridge | `@haxtheweb/webawesome-theme` | [demo](./webawesome-theme/demo/) |
 | [wikipedia-query](./wikipedia-query/) | Queries Wikipedia and presents the result with citation | `@haxtheweb/wikipedia-query` | [demo](./wikipedia-query/demo/) |
 | [word-count](./word-count/) | Counts the words in slotted text and shows a small badge | `@haxtheweb/word-count` | [demo](./word-count/demo/) |

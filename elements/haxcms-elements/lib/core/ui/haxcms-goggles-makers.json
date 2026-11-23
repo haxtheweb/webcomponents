@@ -5519,24 +5519,6 @@
       "n": 0,
       "g": 4
     },
-    "web-container": {
-      "f": "web-container/web-container.js",
-      "p": [["btopro", 21, 2024, 2026]],
-      "n": 21,
-      "g": 6
-    },
-    "web-container-doc-player": {
-      "f": "web-container/lib/web-container-doc-player.js",
-      "p": [["btopro", 11, 2024, 2026]],
-      "n": 11,
-      "g": 7
-    },
-    "web-container-wc-registry-docs": {
-      "f": "web-container/lib/web-container-wc-registry-docs.js",
-      "p": [["btopro", 4, 2024, 2026]],
-      "n": 4,
-      "g": 2
-    },
     "webawesome-theme": {
       "f": "webawesome-theme/webawesome-theme.js",
       "p": [],
@@ -7702,14 +7684,6 @@
       "n": 4,
       "g": 13
     },
-    "web-container": {
-      "p": [
-        ["btopro", 94, 2024, 2026],
-        ["zdodson21", 1, 2025, 2025]
-      ],
-      "n": 95,
-      "g": 27
-    },
     "webawesome-theme": { "p": [], "n": 0, "g": 11 },
     "wikipedia-query": {
       "p": [
@@ -8126,7 +8100,6 @@
     "vocab-term",
     "voice-recorder",
     "web-baseline-status",
-    "web-container",
     "webawesome-theme",
     "wikipedia-query",
     "word-count",

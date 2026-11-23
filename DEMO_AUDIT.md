@@ -253,7 +253,6 @@ No action needed.
 - `user-scaffold`
 - `video-player`
 - `vocab-term`
-- `web-container`
 - `wikipedia-query`
 - `word-count`
 

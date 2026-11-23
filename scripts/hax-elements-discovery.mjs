@@ -208,8 +208,6 @@ export const EXCLUDED_ELEMENT_TAGS = new Set([
   "haxcms-site-disqus",
   "haxcms-site-editor-ui",
   // developer tooling, not page content
-  "web-container",
-  "web-container-doc-player",
   "d-d-docs",
   "example-hax-element",
   // an application with its own interface, not a block placed in a page
