@@ -672,8 +672,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         #backbtn,
         #togglebtn {
           color: var(--text-color);
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);
@@ -746,8 +746,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
 
         #copyroutebtn {
           color: var(--text-color);
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           background: var(--bg-color);

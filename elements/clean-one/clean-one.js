@@ -574,8 +574,8 @@ class CleanOne extends LTIResizingMixin(
              * circular button instead of leaving large empty tap padding */
             min-width: unset;
             max-width: unset;
-            width: 44px;
-            height: 44px;
+            width: var(--ddd-target-comfortable, 44px);
+            height: var(--ddd-target-comfortable, 44px);
             /* the base .navigation rule also sets margin: 0 auto, which as
              * a flex-item auto margin would fight the tray's gap spacing */
             margin: 0;
@@ -583,8 +583,14 @@ class CleanOne extends LTIResizingMixin(
              * still meeting a reasonable minimum tap-target size */
             --site-menu-button-icon-width: var(--ddd-icon-xxs);
             --site-menu-button-icon-height: var(--ddd-icon-xxs);
-            --site-menu-button-button-width: 44px;
-            --site-menu-button-button-height: 44px;
+            --site-menu-button-button-width: var(
+              --ddd-target-comfortable,
+              44px
+            );
+            --site-menu-button-button-height: var(
+              --ddd-target-comfortable,
+              44px
+            );
             --site-menu-button-button-background-color: var(--ddd-lightDark-7);
             --site-menu-button-button-border-radius: var(--ddd-radius-circle);
           }
@@ -593,8 +599,8 @@ class CleanOne extends LTIResizingMixin(
           footer #haxcmsmobilemenubutton {
             pointer-events: auto;
             margin: 0;
-            width: 44px;
-            height: 44px;
+            width: var(--ddd-target-comfortable, 44px);
+            height: var(--ddd-target-comfortable, 44px);
             --simple-icon-height: var(--ddd-icon-xxs);
             --simple-icon-width: var(--ddd-icon-xxs);
             --simple-icon-button-background-color: var(--ddd-lightDark-7);

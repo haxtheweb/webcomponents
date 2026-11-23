@@ -1378,7 +1378,7 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
         }
         .chb {
           box-sizing: border-box;
-          height: 44px;
+          height: var(--ddd-target-comfortable, 44px);
           min-width: 56px;
           padding: 0 10px;
           display: inline-flex;

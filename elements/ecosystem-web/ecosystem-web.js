@@ -556,8 +556,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-1);
         }
         .mapctl button {
-          width: 44px;
-          height: 44px;
+          width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           border-radius: var(--ddd-radius-circle);
           border: var(--ddd-border-xs);
           border-color: var(--line);
@@ -1170,7 +1170,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .search input {
           box-sizing: border-box;
           width: 100%;
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           padding: 0 var(--ddd-spacing-3);
           font: inherit;
           font-size: var(--ddd-font-size-4xs);

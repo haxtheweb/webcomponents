@@ -798,7 +798,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           display: inline-flex;
           align-items: center;
           box-sizing: border-box;
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           line-height: 1.2;
         }
         .welcome a.btn:not(.ghost) {
@@ -831,7 +831,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             );
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           cursor: pointer;
         }
         a.btn:hover {
@@ -1036,7 +1036,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
             justify-content: space-between;
             gap: var(--ddd-spacing-2);
             width: 100%;
-            min-height: 44px;
+            min-height: var(--ddd-target-comfortable, 44px);
             box-sizing: border-box;
             margin: 0;
             padding: var(--ddd-spacing-2) var(--ddd-spacing-3);

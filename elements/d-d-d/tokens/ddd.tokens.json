@@ -3406,7 +3406,7 @@
       "comfortable": {
         "$type": "dimension",
         "$value": "44px",
-        "$description": "WCAG 2.5.5 AAA, preferred for touch",
+        "$description": "WCAG 2.5.5 AAA, preferred for touch; also the height of a control sized to the touch target",
         "$extensions": {
           "org.haxtheweb.ddd": {
             "cssVar": "--ddd-target-comfortable"

@@ -1010,15 +1010,20 @@ export const DDDVariables = css`
        Heights for buttons and other single-line controls. sm/md/lg match the
        text field heights so a button lines up with the field beside it.
        Interactive targets should never be smaller than --ddd-target-min.
+       A control built to the touch target (a mobile menu button, a round
+       footer button) takes --ddd-target-comfortable for its height, and for
+       its width too when it is a square or a circle: 44px sits between sm
+       and md, so it is named for what it is instead of a size letter.
        Usage: min-height: var(--ddd-control-height-md);
               min-width: var(--ddd-target-min);
+              height: var(--ddd-target-comfortable, 44px);
        =========================================== */
     --ddd-control-height-xs: 32px; /* dense toolbars only */
     --ddd-control-height-sm: 40px; /* matches --ddd-textfield-height-sm */
     --ddd-control-height-md: 48px; /* default, matches --ddd-textfield-height-md */
     --ddd-control-height-lg: 56px; /* matches --ddd-textfield-height-lg */
     --ddd-target-min: 24px; /* WCAG 2.5.8 AA minimum target size */
-    --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch */
+    --ddd-target-comfortable: 44px; /* WCAG 2.5.5 AAA, preferred for touch; also the height of a control sized to the touch target */
 
     /* component tokens: a design system can say cards are square while
        buttons are pills. Each defaults to what the element used before the

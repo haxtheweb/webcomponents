@@ -605,7 +605,7 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
         }
 
         .feature-card-details summary {
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           display: flex;
           align-items: center;
           cursor: pointer;

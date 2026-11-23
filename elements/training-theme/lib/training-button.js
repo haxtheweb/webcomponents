@@ -62,7 +62,7 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
           gap: var(--ddd-spacing-1, 4px);
           width: 100%;
           box-sizing: border-box;
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           margin: var(--ddd-spacing-0, 0px);
           padding: var(--ddd-spacing-3, 12px);
           background-color: var(--ddd-theme-default-potential0, transparent);

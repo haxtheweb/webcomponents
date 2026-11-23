@@ -1163,8 +1163,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           justify-content: center;
           gap: var(--ddd-spacing-2);
           box-sizing: border-box;
-          min-width: 44px;
-          height: 44px;
+          min-width: var(--ddd-target-comfortable, 44px);
+          height: var(--ddd-target-comfortable, 44px);
           padding: 0 var(--ddd-spacing-2);
           border-radius: var(--hax-ui-radius);
           border-bottom: 3px solid var(--prop);
@@ -1271,7 +1271,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           align-items: center;
           gap: var(--ddd-spacing-2);
           box-sizing: border-box;
-          height: 44px;
+          height: var(--ddd-target-comfortable, 44px);
           padding: 0 var(--ddd-spacing-2);
           border: 2px solid var(--ddd-theme-default-white);
           border-radius: var(--hax-ui-radius);
@@ -1333,7 +1333,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-3);
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           box-sizing: border-box;
           padding: var(--ddd-spacing-2);
           border: 2px solid transparent;

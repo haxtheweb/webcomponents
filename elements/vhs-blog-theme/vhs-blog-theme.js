@@ -1028,7 +1028,7 @@ class VhsBlogTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           background: transparent;
           border: 1.5px solid var(--vhs-line);
           border-radius: var(--ddd-radius-sm);
-          min-height: 44px;
+          min-height: var(--ddd-target-comfortable, 44px);
           padding: 0 var(--ddd-spacing-4);
           display: inline-flex;
           align-items: center;
