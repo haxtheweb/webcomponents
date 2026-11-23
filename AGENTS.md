@@ -108,6 +108,22 @@ Before starting any work, check the unified issue queue:
 - **No bindings inside `<style>`**: in an `html` template never write `${...}` inside the text of a `<style>` element. Lit SSR cannot render it and the element throws on a server. Set a CSS custom property (style attribute on a wrapper, or on the host) and keep the style text static. `yarn lint:html-templates` fails on new ones.
 - **CSS template literals**: Never write a backtick (`` ` ``) character inside a `css` comment block (or anywhere else in a LitElement `css\`...\`` tagged template), including in prose like "don't" or "it's". A stray backtick terminates the template literal early and breaks the build/parse.
 
+### Browser support and outside guidance
+- **Browser Support:** Current and previous evergreen browsers. Baseline Widely available features without fallbacks; Baseline Newly available features behind feature detection with a working plain path; no polyfills.
+  - Limited availability features need a reason in the PR plus the same feature detection (`'x' in obj`, `CSS.supports()`, `@supports`). Do not add a dependency only to fake a platform feature.
+  - `yarn lint` warns on JS built-ins and Web APIs that are not Widely available (`baseline-js/use-baseline` in `eslint.config.mjs`); [BROWSER-SUPPORT-MATRIX.md](BROWSER-SUPPORT-MATRIX.md) says how to mark a deliberate exception. Rule: `4e0800ef-32ff-42dc-83f0-bbb953d97554`.
+- **HAX rules win over outside guidance.** [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) (MWG) and similar agent guidance are advice. Where they conflict with a rule in this file or in PRAW, follow the HAX rule and say in the PR which advice you set aside. Known conflicts:
+  - no optional chaining (`?.`)
+  - `globalThis`, not `window`
+  - explicit `.js` paths for HAX's own imports (`@haxtheweb/*` and relative); third-party bare imports are fine
+  - no native `alert()` / `confirm()` / `prompt()`
+  - authored `http` links and resources keep working: no CSP or upgrade that breaks them
+  - site pages stay embeddable: no `frame-ancestors` / `X-Frame-Options`
+  - DDD tokens over raw values
+  - no front-end API change (attributes, usage, existing labels) on authorable elements in the name of modernizing
+  - Rule `f54de8cb-0b65-4f50-98e6-43e8c2ebc4c7`; triage table and how to run MWG at its pinned version: <https://github.com/haxtheweb/praw/blob/main/webcomponents/MODERN-WEB-GUIDANCE.md>
+- The weekly `legacy-scan` report ([`.github/workflows/legacy-scan.yml`](.github/workflows/legacy-scan.yml), `yarn legacy-scan`) lists older patterns MWG has a deterministic rule for. It is a hint list, not a to-do list; the two points above decide what is worth changing.
+
 ### Design System Integration
 - **DDD System**: All components MUST adhere to the DDD (Design, Develop, Deliver) design system
   - Location: `elements/d-d-d` in the webcomponents repository
