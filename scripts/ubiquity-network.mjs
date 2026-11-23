@@ -42,7 +42,7 @@ import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import console from "node:console";
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const WC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -553,21 +553,25 @@ function cmdPlan() {
 
 const WAXAM = path.join(os.homedir(), "Documents", "git", "waxam", "cdn");
 
+// git never waits on a prompt nobody can see: no credential prompt, and ssh
+// fails instead of asking for a passphrase (an ssh-agent still works)
+const SYNC_ENV = Object.assign({}, process.env, {
+  GIT_TERMINAL_PROMPT: "0",
+  GIT_SSH_COMMAND: process.env.GIT_SSH_COMMAND || "ssh -o BatchMode=yes",
+});
+
 /** fast-forward one checkout; never merges, rebases or touches local edits */
 function pullFastForward(dir, args) {
   const before = git(dir, ["rev-parse", "HEAD"]);
-  try {
-    execFileSync("git", ["pull", "--ff-only", "--quiet", ...args], {
-      cwd: dir,
-      encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"],
-    });
-  } catch (e) {
-    const why = String(e.stderr || e.message)
-      .split("\n")
-      .filter((l) => l.trim())
-      .slice(-1)[0];
-    return { ok: false, text: `pull failed: ${why}` };
+  // git's own progress and errors go straight to the terminal, so a large
+  // download (art) shows as progress rather than as a hang
+  const pulled = spawnSync("git", ["pull", "--ff-only", ...args], {
+    cwd: dir,
+    env: SYNC_ENV,
+    stdio: ["ignore", "ignore", "inherit"],
+  });
+  if (pulled.error || pulled.status !== 0) {
+    return { ok: false, text: "pull failed (git's message is above)" };
   }
   const after = git(dir, ["rev-parse", "HEAD"]);
   if (before === after) return { ok: true, text: "up to date" };
@@ -616,6 +620,7 @@ function cmdSync() {
       problems.push(`${name}: on ${branch}, not ${entry.branch}`);
       return;
     }
+    console.log(`  ${name.padEnd(width)}  pulling origin ${entry.branch}...`);
     const result = pullFastForward(dir, ["origin", entry.branch]);
     line(name, result.ok ? result.text : `FAILED: ${result.text}`);
     if (!result.ok) problems.push(`${name}: ${result.text}`);
@@ -625,6 +630,7 @@ function cmdSync() {
   if (fs.existsSync(WAXAM)) {
     try {
       const top = git(WAXAM, ["rev-parse", "--show-toplevel"]);
+      console.log(`  ${"waxam".padEnd(width)}  pulling...`);
       const result = pullFastForward(top, []);
       line("waxam", result.ok ? result.text : `FAILED: ${result.text}`);
       if (!result.ok) problems.push(`waxam: ${result.text}`);
