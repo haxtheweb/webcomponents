@@ -119,7 +119,7 @@ const QRCodeMixin = function (SuperClass) {
           }
           #qrcodepopover[data-open] {
             display: block;
-            z-index: var(--ddd-z-modal, 1000);
+            z-index: var(--ddd-z-modal, 10000);
           }
           .qr-panel-header {
             display: flex;

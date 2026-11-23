@@ -199,7 +199,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         }
         :host([floating]) {
           position: fixed;
-          z-index: var(--ddd-z-sticky, 100);
+          z-index: var(--ddd-z-sticky, 200);
           inset-inline-start: max(
             var(--ddd-spacing-3),
             env(safe-area-inset-left)
@@ -367,7 +367,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
       this._place();
       panel.style.display = "block";
       panel.style.position = "fixed";
-      panel.style.zIndex = "var(--ddd-z-modal, 1000)";
+      panel.style.zIndex = "var(--ddd-z-modal, 10000)";
       this._opened();
     }
   }
