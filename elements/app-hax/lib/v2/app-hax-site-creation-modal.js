@@ -167,7 +167,7 @@ export class AppHaxSiteCreationModal extends I18NMixin(DDDSuper(LitElement)) {
           --dialog-max-width: calc(100vw - var(--ddd-spacing-8, 32px));
           --dialog-max-height: calc(100dvh - var(--ddd-spacing-8, 32px));
           --dialog-border-radius: var(--hax-ui-radius-lg);
-          z-index: 1000;
+          z-index: var(--ddd-z-modal, 10000);
         }
 
         web-dialog::part(dialog) {

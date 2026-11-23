@@ -1794,7 +1794,7 @@ export class ReadingAnalysis extends QuestionElement {
         .shell .shell-action-bar.ra-pinned {
           position: fixed;
           bottom: env(safe-area-inset-bottom, 0px);
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
           box-sizing: border-box;
           border-radius: var(--ddd-radius-sm) var(--ddd-radius-sm) 0 0;
           box-shadow: var(--ddd-boxShadow-lg);

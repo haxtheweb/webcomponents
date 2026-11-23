@@ -255,7 +255,7 @@ class HaxPalettePicker extends I18NMixin(DDD) {
         /* narrow: a preview beside the picker, like the HAX blocks menu */
         .peek {
           position: fixed;
-          z-index: 1000;
+          z-index: var(--ddd-z-modal, 10000);
           inline-size: 240px;
           display: flex;
           flex-direction: column;

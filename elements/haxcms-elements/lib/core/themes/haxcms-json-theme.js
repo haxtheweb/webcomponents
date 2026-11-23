@@ -657,7 +657,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           position: fixed;
           top: 0;
           right: 0;
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
           background: var(--bg-color);
           -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);

@@ -236,7 +236,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
               var(--ddd-theme-default-potentialMidnight)
             )
           );
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
         }
 
         #menubutton,

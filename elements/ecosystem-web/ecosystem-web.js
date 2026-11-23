@@ -1242,7 +1242,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         :host([data-presenting]) {
           position: fixed;
           inset: 0;
-          z-index: 1000;
+          z-index: var(--ddd-z-modal, 10000);
           border-radius: 0;
           border: 0;
           display: flex;

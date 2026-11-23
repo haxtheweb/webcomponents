@@ -134,7 +134,7 @@ export class AppHaxUserMenu extends I18NMixin(DDDSuper(LitElement)) {
           position: absolute;
           top: calc(var(--ddd-spacing-16, 64px) - var(--hax-ui-gap, 4px));
           right: 0px;
-          z-index: 1000;
+          z-index: var(--ddd-z-dropdown, 100);
           box-sizing: border-box;
           min-width: var(--app-hax-user-menu-width, 280px);
           padding: var(--hax-ui-gap-md, 8px);

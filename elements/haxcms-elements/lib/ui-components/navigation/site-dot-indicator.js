@@ -22,13 +22,13 @@ class SiteDotIndicator extends LitElement {
         :host([sticky="left"]) {
           position: fixed;
           left: 8px;
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
           top: 25vh;
         }
         :host([sticky="right"]) {
           position: fixed;
           right: 8px;
-          z-index: 1000;
+          z-index: var(--ddd-z-sticky, 200);
           top: 25vh;
         }
         :host([sticky="left"]) ol,
