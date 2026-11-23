@@ -15,6 +15,7 @@ import {
 const WORDS = {
   cloud: ["seeTheStory", "story", "onHaxCloud"],
   learn: ["learnHow", "learn", "onLearn"],
+  lab: ["joinIn", "lab", "onLab"],
   try: ["tryIt", "try", "onTry"],
   elements: ["seeTheBlock", "block", "onElements"],
   web: ["readMore", "hax", "onWeb"],
@@ -31,7 +32,7 @@ const WORDS = {
  *
  * `site` points the same chip at another place in the HAX network, with that
  * place's own icon from the network bar: `learn` (a tutorial on
- * learn.hax.cloud), `try` (browser.hax.cloud), `elements` (the block gallery)
+ * learn.hax.cloud), `lab` (lab.hax.cloud), `try` (browser.hax.cloud), `elements` (the block gallery)
  * or `web` (haxtheweb.org). `story` is then the path on that site. `named`
  * shows what it is about in the chip itself, for chips that sit in a row.
  *
@@ -54,7 +55,7 @@ class HaxStoryLink extends I18NMixin(DDD) {
       about: { type: String },
       /** small chip that reads "Story" */
       compact: { type: Boolean, reflect: true },
-      /** which HAX network site it opens: cloud (stories), learn, try, elements or web */
+      /** which HAX network site it opens: cloud (stories), learn, lab, try, elements or web */
       site: { type: String, reflect: true },
       /** show what it is about in the chip, not only to screen readers */
       named: { type: Boolean, reflect: true },
@@ -77,6 +78,9 @@ class HaxStoryLink extends I18NMixin(DDD) {
       learnHow: "Learn how",
       learn: "Learn",
       onLearn: "on learn.hax.cloud",
+      joinIn: "Join in",
+      lab: "Lab",
+      onLab: "on lab.hax.cloud",
       tryIt: "Try it now",
       try: "Try",
       onTry: "on browser.hax.cloud",

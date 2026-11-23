@@ -371,6 +371,9 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       tryAbout: "Use HAX right now in this browser tab. Nothing to install.",
       learn: "Learn",
       learnAbout: "Tutorials that teach HAX one flow at a time.",
+      lab: "Lab",
+      labAbout:
+        "HAX Lab: where students and junior developers learn by shipping real HAX work.",
       elements: "Web components",
       elementsAbout: "Every HAX element, with live demos and walkthroughs.",
       cloud: "PRAW",
