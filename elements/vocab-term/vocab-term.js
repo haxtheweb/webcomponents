@@ -297,7 +297,12 @@ class VocabTerm extends SchemaBehaviors(I18NMixin(LitElement)) {
             <details class="vocab-term-trigger">
               <summary id="summary" property="oer:name">${this.term}</summary>
               <div part="information">
-                <simple-popover for="summary" position="top" auto>
+                <simple-popover
+                  for="summary"
+                  position="top"
+                  auto
+                  aria-label="${this.term}"
+                >
                   ${this.renderLabel()}
                   <p class="vocab-term-name">${this.term}</p>
                   <p property="oer:description">${this.information}</p>

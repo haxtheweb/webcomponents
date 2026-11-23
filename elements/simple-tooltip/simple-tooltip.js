@@ -41,6 +41,10 @@ class SimpleTooltip extends LitElement {
           cursor: default;
           pointer-events: none;
         }
+        /* a shown tooltip can be hovered without disappearing (WCAG 1.4.13) */
+        :host([data-showing]) {
+          pointer-events: auto;
+        }
 
         #tooltip {
           display: block;
@@ -308,9 +312,16 @@ class SimpleTooltip extends LitElement {
       exit: [{ name: "fade-out-animation", node: this }],
     };
     this.__boundAnimationEnd = this._onAnimationEnd.bind(this);
-    this.__boundHostMouseEnter = this.hide.bind(this);
-    this.__boundShow = this.show.bind(this);
+    // Accessibility (WCAG 1.4.13): the pointer can move from the target onto
+    // the tooltip without it closing, so leaving either waits a moment
+    this.__boundHostMouseEnter = () => clearTimeout(this.__hideTimer);
+    this.__boundHostMouseLeave = () => this._hideSoon();
+    this.__boundShow = () => {
+      clearTimeout(this.__hideTimer);
+      this.show();
+    };
     this.__boundHide = this.hide.bind(this);
+    this.__boundHideSoon = () => this._hideSoon();
     // Accessibility (WCAG 1.4.13): Escape dismisses a shown tooltip without
     // moving the pointer or focus
     this.__boundEscape = (e) => {
@@ -343,6 +354,7 @@ class SimpleTooltip extends LitElement {
     super.connectedCallback();
     this.addEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
     this.addEventListener("mouseenter", this.__boundHostMouseEnter);
+    this.addEventListener("mouseleave", this.__boundHostMouseLeave);
     if (!this.manualMode) {
       this._findTarget();
     }
@@ -353,9 +365,12 @@ class SimpleTooltip extends LitElement {
    */
   disconnectedCallback() {
     globalThis.removeEventListener("keydown", this.__boundEscape, true);
+    clearTimeout(this.__hideTimer);
     this._removeListeners();
+    this._unlinkTarget();
     this.removeEventListener("webkitAnimationEnd", this.__boundAnimationEnd);
     this.removeEventListener("mouseenter", this.__boundHostMouseEnter);
+    this.removeEventListener("mouseleave", this.__boundHostMouseLeave);
     super.disconnectedCallback();
   }
 
@@ -403,6 +418,8 @@ class SimpleTooltip extends LitElement {
     }
 
     this._showing = true;
+    this.setAttribute("data-showing", "");
+    this._linkTarget();
     globalThis.addEventListener("keydown", this.__boundEscape, true);
     this.shadowRoot.querySelector("#tooltip").classList.remove("hidden");
     this.shadowRoot
@@ -461,9 +478,11 @@ class SimpleTooltip extends LitElement {
 
   hide() {
     // If the tooltip is already hidden, there's nothing to do.
+    clearTimeout(this.__hideTimer);
     if (!this._showing) {
       return;
     }
+    this.removeAttribute("data-showing");
     globalThis.removeEventListener("keydown", this.__boundEscape, true);
 
     // If the entry animation is still playing, don't try to play the exit
@@ -568,7 +587,7 @@ class SimpleTooltip extends LitElement {
     if (this._target) {
       this._target.addEventListener("mouseenter", this.__boundShow);
       this._target.addEventListener("focus", this.__boundShow);
-      this._target.addEventListener("mouseleave", this.__boundHide);
+      this._target.addEventListener("mouseleave", this.__boundHideSoon);
       this._target.addEventListener("blur", this.__boundHide);
       this._target.addEventListener("tap", this.__boundHide);
     }
@@ -576,8 +595,102 @@ class SimpleTooltip extends LitElement {
 
   _findTarget() {
     if (!this.manualMode) this._removeListeners();
+    this._unlinkTarget();
     this._target = this.target;
     if (!this.manualMode) this._addListeners();
+    this._linkTarget();
+  }
+  /**
+   * hide after a short grace period, so the pointer can reach the tooltip
+   */
+  _hideSoon() {
+    clearTimeout(this.__hideTimer);
+    this.__hideTimer = setTimeout(() => this.hide(), 150);
+  }
+  /**
+   * the text this tooltip announces
+   * @returns {string}
+   */
+  _tooltipText() {
+    return (this.textContent || "").trim().replace(/\s+/g, " ");
+  }
+  /**
+   * role=tooltip only while there is something to say
+   */
+  _syncRole() {
+    if (this._tooltipText() !== "") {
+      this.setAttribute("role", "tooltip");
+    } else {
+      this.removeAttribute("role");
+    }
+  }
+  /**
+   * Make the tooltip the target's description, so screen reader users hear
+   * it. Skipped when it only repeats the target's name, and when the target
+   * sits outside this tooltip's tree in a way ARIA references can't reach.
+   */
+  _linkTarget() {
+    const target = this._target;
+    if (!target || !target.getAttribute || !this.isConnected) return;
+    const text = this._tooltipText();
+    const name = (
+      target.getAttribute("aria-label") ||
+      target.getAttribute("label") ||
+      target.getAttribute("title") ||
+      target.textContent ||
+      ""
+    )
+      .trim()
+      .replace(/\s+/g, " ");
+    if (!text || text.toLowerCase() === name.toLowerCase()) {
+      this._unlinkTarget();
+      return;
+    }
+    if (target.getRootNode() === this.getRootNode()) {
+      if (!this.id) {
+        SimpleTooltip.__count = (SimpleTooltip.__count || 0) + 1;
+        this.id = `simple-tooltip-${SimpleTooltip.__count}`;
+      }
+      const ids = (target.getAttribute("aria-describedby") || "")
+        .split(/\s+/)
+        .filter((i) => i !== "");
+      if (!ids.includes(this.id)) {
+        ids.push(this.id);
+        target.setAttribute("aria-describedby", ids.join(" "));
+      }
+      this.__linked = { target: target, id: this.id };
+    } else if (
+      "ariaDescribedByElements" in target &&
+      target.getRootNode().host !== this
+    ) {
+      const els = target.ariaDescribedByElements || [];
+      if (!els.includes(this)) {
+        target.ariaDescribedByElements = [...els, this];
+      }
+      this.__linked = { target: target };
+    }
+  }
+  /**
+   * remove the description link made by _linkTarget
+   */
+  _unlinkTarget() {
+    const linked = this.__linked;
+    if (!linked) return;
+    const target = linked.target;
+    if (linked.id) {
+      const ids = (target.getAttribute("aria-describedby") || "")
+        .split(/\s+/)
+        .filter((i) => i !== "" && i !== linked.id);
+      if (ids.length) {
+        target.setAttribute("aria-describedby", ids.join(" "));
+      } else {
+        target.removeAttribute("aria-describedby");
+      }
+    } else if (target.ariaDescribedByElements) {
+      const els = target.ariaDescribedByElements.filter((e) => e !== this);
+      target.ariaDescribedByElements = els.length ? els : null;
+    }
+    this.__linked = null;
   }
 
   _manualModeChanged() {
@@ -667,7 +780,7 @@ class SimpleTooltip extends LitElement {
     if (this._target) {
       this._target.removeEventListener("mouseenter", this.__boundShow);
       this._target.removeEventListener("focus", this.__boundShow);
-      this._target.removeEventListener("mouseleave", this.__boundHide);
+      this._target.removeEventListener("mouseleave", this.__boundHideSoon);
       this._target.removeEventListener("blur", this.__boundHide);
       this._target.removeEventListener("tap", this.__boundHide);
     }
@@ -676,9 +789,16 @@ class SimpleTooltip extends LitElement {
    * LitElement ready
    */
   firstUpdated(_changedProperties) {
-    this.setAttribute("role", "tooltip");
+    this._syncRole();
     this.setAttribute("tabindex", -1);
     this._findTarget();
+    const slot = this.shadowRoot.querySelector("slot");
+    if (slot) {
+      slot.addEventListener("slotchange", () => {
+        this._syncRole();
+        this._linkTarget();
+      });
+    }
   }
   /**
    * LitElement life cycle - property changed

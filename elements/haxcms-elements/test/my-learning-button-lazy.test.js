@@ -103,6 +103,10 @@ describe("My learning button loads its panel on first use", () => {
     await until(() => panel.matches(":popover-open"));
     expect(globalThis.customElements.get("my-learning-panel")).to.exist;
     expect(panel.matches(":defined")).to.equal(true);
+    // :popover-open matches as soon as showPopover() runs, but the toggle
+    // event (which sets _open) is a queued task and Lit renders after it,
+    // so aria-expanded lands a moment later: wait for it, don't race it
+    await until(() => b.getAttribute("aria-expanded") === "true");
     expect(b.getAttribute("aria-expanded")).to.equal("true");
     await until(
       () =>

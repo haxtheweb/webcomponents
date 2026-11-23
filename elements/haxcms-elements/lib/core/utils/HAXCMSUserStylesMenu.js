@@ -332,6 +332,7 @@ const HAXCMSUserStylesMenuMixin = function (SuperClass) {
           ${this.t.textSettings}
         </simple-tooltip>
         <simple-popover
+          aria-label="${this.t.textSettings}"
           class="hcusm pull-left font-settings js-toolbar-action hcusm-settings-container"
           ?hidden="${this.hideUserStylesMenu}"
           id="haxcmsuserstylesmenu"

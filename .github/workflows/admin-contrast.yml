@@ -55,6 +55,7 @@ jobs:
           - carbon
           - classic-desktop
           - future-traveler
+          - glossy
           - keepcase
           - material
           - patternfly

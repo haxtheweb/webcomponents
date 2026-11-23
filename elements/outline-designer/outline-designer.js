@@ -362,10 +362,15 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           cursor: pointer;
           accent-color: var(--hax-ui-accent-strong);
         }
+        /* the whole label is the pointer target, at least 24px square
+           (WCAG 2.5.8) while the box itself keeps its size */
         .select-all {
           display: inline-flex;
           align-items: center;
+          justify-content: center;
           gap: var(--hax-ui-gap);
+          min-height: 24px;
+          cursor: pointer;
           width: var(--outline-designer-select-width);
           margin-left: var(--hax-ui-gap-md);
           flex: none;
@@ -1904,7 +1909,12 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
       <div aria-live="polite" aria-atomic="true" class="sr-only">
         ${this.liveRegionText}
       </div>
-      <simple-popover auto for="list" hidden>
+      <simple-popover
+        auto
+        for="list"
+        hidden
+        aria-label="${this._activePreviewLabel(this.activePreview)}"
+      >
         <simple-icon-button-lite
           @click="${this.resetPopOver}"
           title="${this.t.close}"
@@ -2291,6 +2301,23 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
         }
       }
     }
+  }
+
+  /**
+   * names the content preview popover after the page it belongs to
+   * (UI only, reads items without changing them)
+   */
+  _activePreviewLabel(activeItemContentNode) {
+    if (activeItemContentNode && activeItemContentNode.getAttribute) {
+      const item = this.items.find(
+        (i) =>
+          i.id === activeItemContentNode.getAttribute("data-content-parent-id"),
+      );
+      if (item && item.title) {
+        return `${this.t.contentStructure}: ${item.title}`;
+      }
+    }
+    return this.t.contentStructure;
   }
 
   setActiveItemForActions(e) {
@@ -2872,6 +2899,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
           : ""
       }"
       role="treeitem"
+      aria-selected="false"
       aria-level="${parseInt(item.indent) + 2}"
       tabindex="-1"
       class="content-adding-operations indent-${
@@ -2962,6 +2990,7 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
     // arrow-key page navigation (tabindex -1)
     return html` <li
       role="treeitem"
+      aria-selected="false"
       aria-level="${parseInt(item.indent) + 2}"
       aria-label="${this.t.contentOfPage
         .replace("{content}", () =>
@@ -3420,6 +3449,10 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
 
   monitorEsc(e) {
     if (e.key === "Escape") {
+      // handled here: Site Settings must not also close on this Escape
+      if (typeof e.preventDefault === "function") {
+        e.preventDefault();
+      }
       e.target.classList.remove("shown");
       e.target.removeAttribute("contenteditable");
       e.target.previousElementSibling.classList.add("shown");

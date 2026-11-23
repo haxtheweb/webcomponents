@@ -24,6 +24,7 @@ const OUT = path.join(ELEMENTS, "haxcms-elements", "lib", "designSystems.json");
 // A system a theme defines only for itself stays with that theme.
 const PRIVATE = {
   keepcase: "vhs-blog-theme's own system, dark by design",
+  glossy: "glossy-portfolio-theme's own system, dark by design",
 };
 
 function discover() {

@@ -13,10 +13,9 @@ describe("simple-popover test", () => {
     `);
   });
 
-  // FIXED (haxtheweb/issues#3102): #content role="alertdialog" now receives
-  // an accessible name — the host aria-label (declared ariaLabel property) is
-  // forwarded to the inner div, falling back to the host title attribute, so
-  // the axe aria-dialog-name rule passes for every popover consumer.
+  // #content is a non-modal dialog named by the host aria-label, then the
+  // host title, then the first slotted heading; with no name it is a group,
+  // so an unnamed dialog is never exposed.
   it("passes the a11y audit via the title fallback accessible name", async () => {
     const content = element.shadowRoot.querySelector("#content");
     expect(content.getAttribute("aria-label")).to.equal("test-title");
@@ -37,10 +36,10 @@ describe("simple-popover test", () => {
     expect(element.fitToVisibleBounds).to.equal(true);
   });
 
-  it("render produces a content div with role=alertdialog and a pointer div", () => {
+  it("render produces a named content dialog and a pointer div", () => {
     const content = element.shadowRoot.querySelector("#content");
     expect(content).to.exist;
-    expect(content.getAttribute("role")).to.equal("alertdialog");
+    expect(content.getAttribute("role")).to.equal("dialog");
     const pointer = element.shadowRoot.querySelector("#pointer");
     expect(pointer).to.exist;
     const pointerOuter = element.shadowRoot.querySelector("#pointer-outer");
@@ -172,7 +171,7 @@ describe("simple-popover test", () => {
 });
 
 describe("simple-popover accessible name forwarding", () => {
-  it("forwards the host aria-label to the alertdialog content div", async () => {
+  it("forwards the host aria-label to the dialog content div", async () => {
     const el = await fixture(html`
       <simple-popover aria-label="Search suggestions"></simple-popover>
     `);
@@ -198,9 +197,37 @@ describe("simple-popover accessible name forwarding", () => {
     const content = el.shadowRoot.querySelector("#content");
     expect(content.getAttribute("aria-label")).to.equal("Dialog name");
   });
-  it("renders no aria-label on content when neither aria-label nor title is set", async () => {
+  it("falls back to an unnamed group, never an unnamed dialog", async () => {
     const el = await fixture(html`<simple-popover></simple-popover>`);
     const content = el.shadowRoot.querySelector("#content");
+    expect(content.getAttribute("aria-label")).to.equal(null);
+    expect(content.getAttribute("role")).to.equal("group");
+    el.contentRole = "dialog";
+    await el.updateComplete;
+    expect(content.getAttribute("role")).to.equal("group");
+    await expect(el).shadowDom.to.be.accessible();
+  });
+  it("names the dialog from the first slotted heading", async () => {
+    const el = await fixture(html`
+      <simple-popover
+        ><h3>Term definition</h3>
+        <p>body</p></simple-popover
+      >
+    `);
+    await aTimeout(0);
+    await el.updateComplete;
+    const content = el.shadowRoot.querySelector("#content");
+    expect(content.getAttribute("role")).to.equal("dialog");
+    expect(content.getAttribute("aria-label")).to.equal("Term definition");
+  });
+  it("content-role none drops the wrapper role and name", async () => {
+    const el = await fixture(html`
+      <simple-popover content-role="none" aria-label="Suggestions">
+        <ul role="listbox" aria-label="Suggestions"></ul>
+      </simple-popover>
+    `);
+    const content = el.shadowRoot.querySelector("#content");
+    expect(content.getAttribute("role")).to.equal("none");
     expect(content.getAttribute("aria-label")).to.equal(null);
   });
 });

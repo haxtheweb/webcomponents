@@ -18,17 +18,16 @@ const savedManifest = store.manifest;
 const savedActiveId = store.activeId;
 const savedEditMode = store.editMode;
 
-// register a fonts-less "glossy-portfolio-theme" system and activate it
-// BEFORE the first theme fixture: firstUpdated then re-registers the real
-// system (with googleapis fonts) but the active assignment is a no-op, so no
-// remote font stylesheet is ever injected in this test session
+// register a fonts-less "glossy" system and activate it BEFORE the first
+// theme fixture: firstUpdated then finds Glossy already registered and
+// active, so no font stylesheet is injected in this test session
 DesignSystemManager.addDesignSystem({
-  name: "glossy-portfolio-theme",
+  name: "glossy",
   styles: [],
   fonts: [],
   hax: true,
 });
-DesignSystemManager.active = "glossy-portfolio-theme";
+DesignSystemManager.active = "glossy";
 
 store.manifest = {
   title: "Portfolio Site",

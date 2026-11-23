@@ -1344,9 +1344,11 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
     const lockPrefix = this.locked ? "🔒 " : "";
     return html` <div
       id="tray-detail"
+      role="region"
+      aria-label="${title ? `${lockPrefix}${title}` : this.t.blocks}"
       aria-live="polite"
       aria-disabled="${this.collapsed ? "true" : "false"}"
-      tabindex="${this.collapsed ? "-1" : "0"}"
+      tabindex="-1"
       selected-detail="${this.trayDetail}"
     >
       <h4 class="tray-detail-titlebar">
@@ -1914,6 +1916,32 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
           if (this.editMode) {
             await HAXStore.refreshActiveNodeForm();
           }
+        }
+      }
+    });
+  }
+  /**
+   * Move focus into the open panel (keyboard shortcuts open it from
+   * anywhere); when the panel just closed and held focus, return focus to
+   * the active block instead (WCAG 2.4.3)
+   */
+  async focusTrayDetail() {
+    await this.updateComplete;
+    requestAnimationFrame(() => {
+      const detail =
+        this.shadowRoot && this.shadowRoot.querySelector("#tray-detail");
+      if (!detail) {
+        return;
+      }
+      if (!this.collapsed) {
+        detail.focus({ preventScroll: true });
+      } else if (
+        this.shadowRoot.activeElement ||
+        globalThis.document.activeElement === globalThis.document.body
+      ) {
+        const node = HAXStore.activeNode;
+        if (node && node.isConnected && typeof node.focus === "function") {
+          node.focus({ preventScroll: true });
         }
       }
     });

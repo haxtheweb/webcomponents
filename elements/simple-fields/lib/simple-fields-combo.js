@@ -327,7 +327,7 @@ class SimpleFieldsCombo extends I18NMixin(
         aria-haspopup="listbox"
         aria-invalid="${this.error ? "true" : "false"}"
         aria-label="${this.label || ""}"
-        aria-owns="${this.id}-list"
+        aria-controls="${this.id}-list"
         ?autofocus="${this.autofocus}"
         @blur="${this._onInputBlur}"
         @change="${this._handleFieldChange}"
