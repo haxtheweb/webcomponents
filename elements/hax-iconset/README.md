@@ -73,3 +73,27 @@ are Material's `lock`, `lock_open` and `format_clear`; `hax:admin-prettify` reus
 ## License
 
 [Apache-2.0 License](http://opensource.org/licenses/Apache-2.0)
+
+## Project area icons (`hax:php`, `hax:nodejs`)
+
+Every HAX project area has an icon, a DDD color and a hover motion. The record
+of which area takes which is the ecosystem web in PRAW
+(<https://github.com/haxtheweb/praw/blob/main/ecosystem/README.md>, "Area icons,
+colors and motion"), which also holds the style guide for drawing a new one.
+Most areas use an icon this set or `simple-icon` already had. Two were drawn
+for their area:
+
+- `hax:php`: the HAXcms PHP backend. A HAX block (the `hax:blocks` shape) with
+  the `<?` that opens a PHP file cut out of it.
+- `hax:nodejs`: the HAXcms Node.js backend. The same block with `.JS` cut out.
+
+Both are HAX's own marks. An area icon never copies another project's logo:
+no PHP elephant or wordmark, no Node.js hexagon. They follow the rest of the
+set: a 24 by 24 grid, one filled path in one ink with no color of its own, so
+`simple-icon` colors it. The hover motion comes from the DDD motion library
+through the `motion` attribute:
+
+```html
+<simple-icon icon="hax:php" motion="beat"></simple-icon>
+<simple-icon icon="hax:nodejs" motion="spin"></simple-icon>
+```
