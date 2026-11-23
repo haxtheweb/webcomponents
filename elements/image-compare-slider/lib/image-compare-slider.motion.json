@@ -193,7 +193,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "top-alt=\"Top image alt text\""
+      "s": "top-alt=\"Before: the original ph…\""
     },
     {
       "type": "text",
@@ -209,7 +209,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "bottom-alt=\"Bottom image alt…\""
+      "s": "bottom-alt=\"After: the edited photo\""
     },
     {
       "type": "text",
@@ -306,7 +306,7 @@
       "ex": 796,
       "ey": 570,
       "label": "top-alt",
-      "sub": "\"Top image alt text\"",
+      "sub": "\"Before: the original photo\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -330,7 +330,7 @@
       "ex": 796,
       "ey": 570,
       "label": "bottom-alt",
-      "sub": "\"Bottom image alt…\"",
+      "sub": "\"After: the edited photo\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -367,7 +367,7 @@
     "line": "Swipe one image over another for comparison.",
     "code": "<image-compare-slider></image-compare-slider>"
   },
-  "surfaceHash": "7f59a44b6d96",
+  "surfaceHash": "c9d7a1789153",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

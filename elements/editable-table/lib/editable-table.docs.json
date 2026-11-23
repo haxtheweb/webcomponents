@@ -257,13 +257,13 @@
       "order": 0,
       "src": "editable-table.motion.json",
       "file": "lib/editable-table.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/editable-table.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

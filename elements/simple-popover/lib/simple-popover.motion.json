@@ -88,10 +88,15 @@
         {
           "name": "title",
           "desc": "Accessible name for the popover…"
+        },
+        {
+          "name": "content-role",
+          "desc": "Role of the content wrapper. De…"
         }
       ],
       "active": [
         [5, 0],
+        [7.4, 1],
         [14.8, 0]
       ]
     },
@@ -113,6 +118,14 @@
     },
     {
       "type": "text",
+      "x": 1022,
+      "y": 304,
+      "c": "code",
+      "in": 7.4,
+      "s": "content-role=\"content role\""
+    },
+    {
+      "type": "text",
       "x": 1000,
       "y": 272,
       "c": "code",
@@ -123,6 +136,13 @@
           5,
           {
             "y": 304
+          },
+          0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 336
           },
           0.4
         ]
@@ -142,6 +162,13 @@
             "y": 336
           },
           0.4
+        ],
+        [
+          7.4,
+          {
+            "y": 368
+          },
+          0.4
         ]
       ]
     },
@@ -156,6 +183,18 @@
       "dir": 1,
       "in": 5.2,
       "out": 7.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 448,
+      "ex": 796,
+      "ey": 500,
+      "label": "content-role",
+      "sub": "\"content role\"",
+      "dir": 1,
+      "in": 7.6000000000000005,
+      "out": 9.600000000000001
     }
   ],
   "beats": [
@@ -168,8 +207,8 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set title",
-      "text": "Accessible name for the popover's role=alertdialog content div."
+      "title": "Set title and content role",
+      "text": "Accessible name for the popover's content. Role of the content wrapper."
     },
     {
       "t": 14.8,
@@ -183,7 +222,7 @@
     "line": "A popover alertdialog that is positioned next to a target e…",
     "code": ""
   },
-  "surfaceHash": "23abc1f149d4",
+  "surfaceHash": "154bb486e1e6",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

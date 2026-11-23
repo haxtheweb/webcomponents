@@ -250,7 +250,7 @@
     "line": "Icon from the full icon library.",
     "code": "<simple-icon icon=\"hax:hax2022\" accentColor=\"purple\"></simple-icon>"
   },
-  "surfaceHash": "b5dfa812a0e3",
+  "surfaceHash": "022be5e93852",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

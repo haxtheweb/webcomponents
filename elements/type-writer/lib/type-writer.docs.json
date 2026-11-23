@@ -177,13 +177,13 @@
       "order": 0,
       "src": "type-writer.motion.json",
       "file": "lib/type-writer.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/type-writer.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

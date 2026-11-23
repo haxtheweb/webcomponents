@@ -87,11 +87,51 @@
     },
     {
       "type": "text",
-      "s": "<md-block markdown=\"- The first bulleted it…",
+      "s": "<md-block markdown=\"## Heading",
       "x": 540,
       "y": 238,
       "c": "cd",
       "in": 3.1
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 540,
+      "y": 268,
+      "c": "cd",
+      "in": 3.22
+    },
+    {
+      "type": "text",
+      "s": "- First item",
+      "x": 540,
+      "y": 298,
+      "c": "cd",
+      "in": 3.34
+    },
+    {
+      "type": "text",
+      "s": "- Second item",
+      "x": 540,
+      "y": 328,
+      "c": "cd",
+      "in": 3.46
+    },
+    {
+      "type": "text",
+      "s": "",
+      "x": 540,
+      "y": 358,
+      "c": "cd",
+      "in": 3.58
+    },
+    {
+      "type": "text",
+      "s": "Some **bold** text.\"></md-block>",
+      "x": 540,
+      "y": 388,
+      "c": "cd",
+      "in": 3.7
     },
     {
       "type": "panel",
@@ -132,7 +172,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "markdown=\"- The first bulleted it…\""
+      "s": "markdown=\"## Heading - First item…\""
     },
     {
       "type": "text",
@@ -197,7 +237,7 @@
       "ex": 616,
       "ey": 520,
       "label": "markdown",
-      "sub": "\"- The first bulleted item in…",
+      "sub": "\"## Heading - First item - Se…",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -237,10 +277,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "A block of markdown content directly or remote loaded",
-    "code": "<md-block></md-block>"
+    "line": "Markdown content, written inline or loaded from a file.",
+    "code": "<md-block markdown=\"## Heading"
   },
-  "surfaceHash": "5c85ebdaa2ab",
+  "surfaceHash": "45e668d01064",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

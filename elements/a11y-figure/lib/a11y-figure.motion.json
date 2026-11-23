@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Descriptive Figure",
+      "s": "Descriptive figure",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -88,7 +88,7 @@
     },
     {
       "type": "text",
-      "s": "Show Description",
+      "s": "Grey placeholder image",
       "x": 524,
       "y": 480,
       "c": "cdd",
@@ -143,7 +143,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "img-alt=\"Alt Text\""
+      "s": "img-alt=\"Grey placeholder image\""
     },
     {
       "type": "text",
@@ -252,7 +252,7 @@
       "ex": 616,
       "ey": 540,
       "label": "img-alt",
-      "sub": "\"Alt Text\"",
+      "sub": "\"Grey placeholder image\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -298,8 +298,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Descriptive Figure",
-      "text": "Find Descriptive Figure in the HAX blocks menu and drop it on the page."
+      "title": "Add Descriptive figure",
+      "text": "Find Descriptive figure in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -325,7 +325,7 @@
     "line": "Accessible figure with long description",
     "code": "<a11y-figure></a11y-figure>"
   },
-  "surfaceHash": "562d661dd3ed",
+  "surfaceHash": "5552922a8d1c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

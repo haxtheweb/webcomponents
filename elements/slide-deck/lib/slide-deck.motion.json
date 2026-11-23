@@ -122,7 +122,7 @@
     },
     {
       "type": "text",
-      "s": "files/decks/my-talk/deck.json",
+      "s": "Slide deck",
       "x": 524,
       "y": 486,
       "c": "cdd",
@@ -172,7 +172,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "source=\"files/decks/my-talk/dec…\""
+      "s": "source=\"null\""
     },
     {
       "type": "text",
@@ -318,9 +318,9 @@
   "end": {
     "in": 17.8,
     "line": "Present an imported PowerPoint deck slide by slide, with sp…",
-    "code": "<slide-deck source=\"files/decks/my-talk/deck.json\"></slide-deck>"
+    "code": "<slide-deck></slide-deck>"
   },
-  "surfaceHash": "76ea02867284",
+  "surfaceHash": "055a7ebe5eda",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

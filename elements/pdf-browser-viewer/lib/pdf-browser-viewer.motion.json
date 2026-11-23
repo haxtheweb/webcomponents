@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "PDF Browser Viewer",
+      "s": "PDF viewer",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -299,7 +299,7 @@
       "ex": 616,
       "ey": 570,
       "label": "file",
-      "sub": "\"sample.pdf\"",
+      "sub": "upload or link",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -345,8 +345,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add PDF Browser Viewer",
-      "text": "Find PDF Browser Viewer in the HAX blocks menu and drop it on the page."
+      "title": "Add PDF viewer",
+      "text": "Find PDF viewer in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -372,7 +372,7 @@
     "line": "Embed a PDF file inline with an optional card layout and do…",
     "code": "<pdf-browser-viewer></pdf-browser-viewer>"
   },
-  "surfaceHash": "5ae3e1f51608",
+  "surfaceHash": "b9b65f7ccfe3",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

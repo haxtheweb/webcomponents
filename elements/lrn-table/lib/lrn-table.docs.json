@@ -139,13 +139,13 @@
       "order": 0,
       "src": "lrn-table.motion.json",
       "file": "lib/lrn-table.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/lrn-table.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

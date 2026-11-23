@@ -122,7 +122,7 @@
     },
     {
       "type": "text",
-      "s": "The GIFs don't stop",
+      "s": "The HAX logo spinning in place",
       "x": 524,
       "y": 486,
       "c": "cdd",
@@ -177,7 +177,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "src=\"https://media0.giphy.co…\""
+      "s": "src=\"https://cdn.hax.cloud/c…\""
     },
     {
       "type": "text",
@@ -185,7 +185,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "alt=\"It's Always Sunny in Ph…\""
+      "s": "alt=\"The HAX logo spinning i…\""
     },
     {
       "type": "text",
@@ -193,7 +193,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "media-title=\"The GIFs don't stop\""
+      "s": "media-title=\"Spinning HAX logo\""
     },
     {
       "type": "text",
@@ -201,7 +201,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "longdesc=\"Pepe Silvia scene from…\""
+      "s": "longdesc=\"The HAX logo, three lin…\""
     },
     {
       "type": "text",
@@ -298,7 +298,7 @@
       "ex": 796,
       "ey": 546,
       "label": "alt",
-      "sub": "\"It's Always Sunny in Philade…",
+      "sub": "\"The HAX logo spinning in pla…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -310,7 +310,7 @@
       "ex": 616,
       "ey": 546,
       "label": "media-title",
-      "sub": "\"The GIFs don't stop\"",
+      "sub": "\"Spinning HAX logo\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -322,7 +322,7 @@
       "ex": 796,
       "ey": 546,
       "label": "longdesc",
-      "sub": "\"Pepe Silvia scene from It's…",
+      "sub": "\"The HAX logo, three linked s…",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -359,7 +359,7 @@
     "line": "Make animated GIFs accessible.",
     "code": "<a11y-gif-player></a11y-gif-player>"
   },
-  "surfaceHash": "f45bcc5ae51c",
+  "surfaceHash": "452c2672fd7d",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

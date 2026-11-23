@@ -171,13 +171,13 @@
       "order": 0,
       "src": "fill-in-the-blanks.motion.json",
       "file": "lib/fill-in-the-blanks.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/fill-in-the-blanks.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

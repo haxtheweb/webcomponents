@@ -87,7 +87,7 @@
     },
     {
       "type": "text",
-      "s": "What is strawberry in Spanish",
+      "s": "What is strawberry in Spanish?",
       "x": 544,
       "y": 226,
       "c": "vt",
@@ -195,16 +195,16 @@
           "desc": "Image Source"
         },
         {
+          "name": "img-keyword",
+          "desc": "Image Keyword"
+        },
+        {
           "name": "type-of-action",
           "desc": "OER Schema: the type of action…"
         },
         {
           "name": "has-learning-objective",
           "desc": "Learning Objective"
-        },
-        {
-          "name": "img-keyword",
-          "desc": "Image Keyword"
         }
       ],
       "active": [
@@ -237,7 +237,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "type-of-action=\"Type of Action\""
+      "s": "img-keyword=\"Image Keyword\""
     },
     {
       "type": "text",
@@ -245,7 +245,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "has-learning-objective=\"Learning Objective\""
+      "s": "type-of-action=\"Type of Action\""
     },
     {
       "type": "text",
@@ -253,7 +253,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "img-keyword=\"Image Keyword\""
+      "s": "has-learning-objective=\"Learning Objective\""
     },
     {
       "type": "text",
@@ -349,8 +349,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "type-of-action",
-      "sub": "\"Type of Action\"",
+      "label": "img-keyword",
+      "sub": "\"Image Keyword\"",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -361,8 +361,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "has-learning-object…",
-      "sub": "\"Learning Objective\"",
+      "label": "type-of-action",
+      "sub": "\"Type of Action\"",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -373,8 +373,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "img-keyword",
-      "sub": "\"Image Keyword\"",
+      "label": "has-learning-object…",
+      "sub": "\"Learning Objective\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -391,13 +391,13 @@
       "t": 4.8,
       "out": 9.8,
       "title": "Set image source",
-      "text": "Image file used for the card."
+      "text": "Image file used for the card. Random image keyword."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set learning objective",
-      "text": "OER Schema: ID or URL of the learning objective this practice supports."
+      "title": "Set type of action",
+      "text": "OER Schema: the type of action this practice involves."
     },
     {
       "t": 14.8,
@@ -409,9 +409,9 @@
   "end": {
     "in": 17.8,
     "line": "Practice concepts with front-and-back flash cards.",
-    "code": "<flash-card></flash-card>"
+    "code": "<flash-card>"
   },
-  "surfaceHash": "447f10f3585a",
+  "surfaceHash": "4a3b42089474",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

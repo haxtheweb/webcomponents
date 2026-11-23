@@ -179,7 +179,7 @@
       "t": 3.2,
       "out": 13.6,
       "title": "Pick a status",
-      "text": "status sets the icon and colours: stop, warning, success or info."
+      "text": "status sets the icon and colours: stop, warning, success, info, tip or new."
     },
     {
       "t": 13.8,
@@ -195,7 +195,7 @@
   },
   "version": 1,
   "tag": "stop-note",
-  "surfaceHash": "1c46800f012e",
+  "surfaceHash": "3066875ce50a",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

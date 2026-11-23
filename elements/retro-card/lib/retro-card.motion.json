@@ -306,7 +306,7 @@
       "ex": 796,
       "ey": 570,
       "label": "url",
-      "sub": "text",
+      "sub": "upload or link",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -367,7 +367,7 @@
     "line": "Simple card with a retro design.",
     "code": "<retro-card></retro-card>"
   },
-  "surfaceHash": "990d793919b3",
+  "surfaceHash": "e34f3cee4e95",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

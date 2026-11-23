@@ -399,13 +399,13 @@
       "order": 0,
       "src": "multiple-choice.motion.json",
       "file": "lib/multiple-choice.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/multiple-choice.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

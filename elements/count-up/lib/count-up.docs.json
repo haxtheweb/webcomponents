@@ -305,13 +305,13 @@
       "order": 0,
       "src": "count-up.motion.json",
       "file": "lib/count-up.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/count-up.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

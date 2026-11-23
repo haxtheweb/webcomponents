@@ -26,7 +26,7 @@
     },
     {
       "type": "text",
-      "s": "Sorting Question",
+      "s": "Sorting question",
       "x": 104,
       "y": 251,
       "c": "rn",
@@ -201,12 +201,12 @@
           "desc": "Show this question as a row tha…"
         },
         {
-          "name": "grading-format",
-          "desc": "OER Schema: grading format for…"
+          "name": "layout",
+          "desc": "List: answers stacked in rows.…"
         },
         {
-          "name": "has-learning-objective",
-          "desc": "Learning objective"
+          "name": "answers",
+          "desc": "Answer order defines the correc…"
         }
       ],
       "active": [
@@ -247,7 +247,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "grading-format=\"Grading format\""
+      "s": "layout=\"cards\""
     },
     {
       "type": "text",
@@ -255,7 +255,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "has-learning-objective=\"Learning objective\""
+      "s": "answers=\"Answers\""
     },
     {
       "type": "text",
@@ -363,8 +363,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "grading-format",
-      "sub": "\"Grading format\"",
+      "label": "layout",
+      "sub": "Image cards",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -375,8 +375,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "has-learning-object…",
-      "sub": "\"Learning objective\"",
+      "label": "answers",
+      "sub": "\"Answers\"",
       "dir": 1,
       "in": 12.6,
       "out": 14.600000000000001
@@ -386,8 +386,8 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Sorting Question",
-      "text": "Find Sorting Question in the HAX blocks menu and drop it on the page."
+      "title": "Add Sorting question",
+      "text": "Find Sorting question in the HAX blocks menu and drop it on the page."
     },
     {
       "t": 4.8,
@@ -398,8 +398,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set grading format",
-      "text": "OER Schema: grading format for this assessment."
+      "title": "Set layout and answers",
+      "text": "List: answers stacked in rows. Answer order defines the correct sequence."
     },
     {
       "t": 14.8,
@@ -413,7 +413,7 @@
     "line": "Sort items into the correct order.",
     "code": "<sorting-question></sorting-question>"
   },
-  "surfaceHash": "2d6fab24f74f",
+  "surfaceHash": "f7d12c9aa09d",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

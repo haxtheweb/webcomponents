@@ -219,13 +219,13 @@
       "order": 0,
       "src": "simple-img.motion.json",
       "file": "lib/simple-img.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-img.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

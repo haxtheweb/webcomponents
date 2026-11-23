@@ -50,13 +50,13 @@
       "order": 0,
       "src": "simple-popover.motion.json",
       "file": "lib/simple-popover.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-popover.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

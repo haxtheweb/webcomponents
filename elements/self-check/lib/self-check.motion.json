@@ -209,7 +209,7 @@
   },
   "version": 1,
   "tag": "self-check",
-  "surfaceHash": "25c803ab9e59",
+  "surfaceHash": "65007e000a59",
   "review": {
     "status": "draft",
     "notes": "Hand-written walkthrough. Needs human review before it is marked approved."

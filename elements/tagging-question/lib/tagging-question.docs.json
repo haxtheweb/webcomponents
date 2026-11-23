@@ -197,13 +197,13 @@
       "order": 0,
       "src": "tagging-question.motion.json",
       "file": "lib/tagging-question.motion.json",
-      "status": "stale"
+      "status": "awaiting"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/tagging-question.motion.json",
-    "status": "stale"
+    "status": "awaiting"
   },
   "video": null,
   "source": {

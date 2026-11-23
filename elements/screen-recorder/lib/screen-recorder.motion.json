@@ -6,74 +6,16 @@
   "objects": [
     {
       "type": "text",
-      "s": "HAX blocks",
+      "s": "import \"@haxtheweb/screen-recorder/screen-recorder.js\";",
       "x": 80,
-      "y": 200,
-      "c": "vt",
-      "in": 0.4,
-      "out": 4.4
-    },
-    {
-      "type": "box",
-      "x": 80,
-      "y": 214,
-      "w": 330,
-      "h": 62,
-      "v": "obj",
-      "r": 10,
+      "y": 150,
+      "c": "cd",
       "in": 0.5,
-      "out": 4.4
-    },
-    {
-      "type": "text",
-      "s": "Screen recorder",
-      "x": 104,
-      "y": 251,
-      "c": "rn",
-      "in": 0.7,
-      "out": 4.4
-    },
-    {
-      "type": "glyph",
-      "name": "plus",
-      "x": 380,
-      "y": 245,
-      "s": 10,
-      "in": 0.8,
-      "out": 4.4
-    },
-    {
-      "type": "box",
-      "x": 196,
-      "y": 232,
-      "w": 150,
-      "h": 36,
-      "v": "slot",
-      "r": 8,
-      "in": 1.5,
-      "d": 0.2,
-      "out": 2.6,
-      "od": 0.2,
-      "keys": [
-        [
-          2.5,
-          {
-            "x": 650,
-            "y": 322
-          },
-          0.9000000000000001
-        ]
-      ]
-    },
-    {
-      "type": "cursor",
-      "keys": [
-        [0.8, 300, 360],
-        [1.4, 240, 248],
-        [2.5, 720, 340]
+      "typed": true,
+      "states": [
+        [0.5, "import \"@haxtheweb/screen-recorder/screen-recorder.js\";"]
       ],
-      "show": [[0.8, 3.2]],
-      "clicks": [1.5, 2.6]
+      "typeDur": 1.4
     },
     {
       "type": "box",
@@ -83,7 +25,7 @@
       "h": 225,
       "v": "hug",
       "r": 6,
-      "pop": [2.6, 0.6]
+      "pop": [1.4, 0.6]
     },
     {
       "type": "glyph",
@@ -91,7 +33,7 @@
       "x": 720,
       "y": 312,
       "s": 34,
-      "in": 3.1
+      "in": 1.9
     },
     {
       "type": "line",
@@ -100,7 +42,7 @@
       "x2": 900,
       "y2": 448,
       "v": "thin",
-      "in": 3.2
+      "in": 2
     },
     {
       "type": "glyph",
@@ -109,10 +51,10 @@
       "y": 448,
       "s": 7,
       "v": "bold",
-      "in": 3.3,
+      "in": 2.0999999999999996,
       "keys": [
         [
-          11.6,
+          10.4,
           {
             "x": 780
           },
@@ -122,18 +64,18 @@
     },
     {
       "type": "text",
-      "s": "Screen recorder",
+      "s": "screen-recorder",
       "x": 524,
       "y": 486,
       "c": "cdd",
-      "in": 3.3
+      "in": 2.0999999999999996
     },
     {
       "type": "text",
       "x": 1000,
       "y": 240,
       "c": "code",
-      "in": 2.8000000000000003,
+      "in": 1.5999999999999999,
       "s": "<screen-recorder>"
     },
     {
@@ -141,7 +83,7 @@
       "x": 1000,
       "y": 272,
       "c": "code",
-      "in": 2.9,
+      "in": 1.7,
       "s": "</screen-recorder>"
     }
   ],
@@ -149,22 +91,22 @@
     {
       "t": 0.3,
       "out": 4.6,
-      "title": "Add Screen recorder",
-      "text": "Find Screen recorder in the HAX blocks menu and drop it on the page."
+      "title": "Import it",
+      "text": "Load the module once; the tag then works anywhere in your HTML."
     },
     {
       "t": 5,
       "out": 17.4,
-      "title": "Edit in HAX",
-      "text": "Each setting is in the HAX sidebar and the page updates as you change it."
+      "title": "Use it on a page",
+      "text": "Set attributes in the markup to configure <screen-recorder>."
     }
   ],
   "end": {
     "in": 17.8,
-    "line": "Record your screen, with optional system and microphone aud…",
-    "code": "<screen-recorder></screen-recorder>"
+    "line": "Webcomponent screen-recorder following hax / open-wc recomm…",
+    "code": ""
   },
-  "surfaceHash": "6f9d81de2621",
+  "surfaceHash": "e1020505c975",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

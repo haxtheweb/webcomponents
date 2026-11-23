@@ -174,20 +174,20 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "condensed",
-          "desc": "Condense Rows"
+          "name": "column-header",
+          "desc": "Treat first column as a header."
         },
         {
           "name": "striped",
           "desc": "Striped Rows"
         },
         {
-          "name": "downloadable",
-          "desc": "Download Button"
+          "name": "rubric-type",
+          "desc": "Rubric style emitted as oer:rub…"
         },
         {
-          "name": "copyable",
-          "desc": "Copy Button"
+          "name": "bordered",
+          "desc": "Bordered"
         }
       ],
       "active": [
@@ -212,7 +212,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "condensed"
+      "s": "column-header"
     },
     {
       "type": "text",
@@ -228,7 +228,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "downloadable"
+      "s": "rubric-type=\"analytic\""
     },
     {
       "type": "text",
@@ -236,7 +236,7 @@
       "y": 368,
       "c": "code",
       "in": 12.4,
-      "s": "copyable"
+      "s": "bordered"
     },
     {
       "type": "text",
@@ -320,7 +320,7 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "condensed",
+      "label": "column-header",
       "sub": "on or off",
       "dir": 1,
       "in": 5.2,
@@ -344,8 +344,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "downloadable",
-      "sub": "on or off",
+      "label": "rubric-type",
+      "sub": "Analytic · Holistic · Single Poin…",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -356,7 +356,7 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "copyable",
+      "label": "bordered",
       "sub": "on or off",
       "dir": 1,
       "in": 12.6,
@@ -373,14 +373,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set condense rows",
-      "text": "Reduce row height. Shade every other row."
+      "title": "Set column header",
+      "text": "Treat first column as a header. Shade every other row."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set download button",
-      "text": "Add a button to download the table. Add a button to copy table CSV data."
+      "title": "Set rubric type",
+      "text": "Rubric style emitted as oer:rubricType."
     },
     {
       "t": 14.8,
@@ -392,9 +392,9 @@
   "end": {
     "in": 17.8,
     "line": "Table-based data for the web.",
-    "code": "<editable-table></editable-table>"
+    "code": "<editable-table columnHeader bordered striped>"
   },
-  "surfaceHash": "7348f68e04e2",
+  "surfaceHash": "e3529735449c",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

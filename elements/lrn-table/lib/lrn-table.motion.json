@@ -174,16 +174,16 @@
       "in": 4.6,
       "rows": [
         {
-          "name": "csv-file",
-          "desc": "Source"
-        },
-        {
           "name": "title",
           "desc": "Title for the table to be gener…"
         },
         {
           "name": "description",
           "desc": "More detailed description for i…"
+        },
+        {
+          "name": "csv-file",
+          "desc": "Source"
         }
       ],
       "active": [
@@ -207,7 +207,7 @@
       "y": 272,
       "c": "code",
       "in": 5,
-      "s": "csv-file=\"https://data.cityofnewy…\""
+      "s": "title=\"Table title\""
     },
     {
       "type": "text",
@@ -215,7 +215,7 @@
       "y": 304,
       "c": "code",
       "in": 7.4,
-      "s": "title=\"NYC Capital Grant Award…\""
+      "s": "description=\"Describe what the data…\""
     },
     {
       "type": "text",
@@ -223,7 +223,7 @@
       "y": 336,
       "c": "code",
       "in": 10,
-      "s": "description=\"Public records showing…\""
+      "s": "csv-file=\"photo.jpg\""
     },
     {
       "type": "text",
@@ -293,8 +293,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "csv-file",
-      "sub": "upload or link",
+      "label": "title",
+      "sub": "\"Table title\"",
       "dir": 1,
       "in": 5.2,
       "out": 7.2
@@ -305,8 +305,8 @@
       "py": 518,
       "ex": 796,
       "ey": 570,
-      "label": "title",
-      "sub": "\"NYC Capital Grant Awards 201…",
+      "label": "description",
+      "sub": "\"Describe what the data shows…",
       "dir": 1,
       "in": 7.6000000000000005,
       "out": 9.600000000000001
@@ -317,8 +317,8 @@
       "py": 518,
       "ex": 616,
       "ey": 570,
-      "label": "description",
-      "sub": "\"Public records showing recip…",
+      "label": "csv-file",
+      "sub": "upload or link",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
@@ -334,14 +334,14 @@
     {
       "t": 4.8,
       "out": 9.8,
-      "title": "Set source and title",
-      "text": "URL for this CSV file. Title for the table to be generated."
+      "title": "Set title",
+      "text": "Title for the table to be generated."
     },
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set description",
-      "text": "More detailed description for improved accessibility of the table data."
+      "title": "Set source",
+      "text": "URL for this CSV file."
     },
     {
       "t": 14.8,
@@ -352,10 +352,10 @@
   ],
   "end": {
     "in": 17.8,
-    "line": "This can generate a table from a CSV file no matter where i…",
+    "line": "Show a CSV file as an accessible table.",
     "code": "<lrn-table></lrn-table>"
   },
-  "surfaceHash": "8c8dba1207a3",
+  "surfaceHash": "9d7304c6b7e4",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",

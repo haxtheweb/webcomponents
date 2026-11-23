@@ -55,6 +55,10 @@
           "desc": "Rotation of the image in degree…"
         },
         {
+          "name": "mirrored",
+          "desc": "Whether the image is mirrored,…"
+        },
+        {
           "name": "hover-class",
           "desc": "Hover class for button styling"
         }
@@ -63,6 +67,7 @@
         [5, 0],
         [7.4, 1],
         [10, 2],
+        [12.4, 3],
         [14.8, 0]
       ]
     },
@@ -96,6 +101,14 @@
       "y": 336,
       "c": "code",
       "in": 10,
+      "s": "mirrored=\"false\""
+    },
+    {
+      "type": "text",
+      "x": 1022,
+      "y": 368,
+      "c": "code",
+      "in": 12.4,
       "s": "hover-class=\"hover class\""
     },
     {
@@ -124,6 +137,13 @@
           10,
           {
             "y": 368
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 400
           },
           0.4
         ]
@@ -155,6 +175,13 @@
           10,
           {
             "y": 400
+          },
+          0.4
+        ],
+        [
+          12.4,
+          {
+            "y": 432
           },
           0.4
         ]
@@ -190,11 +217,23 @@
       "py": 488,
       "ex": 616,
       "ey": 540,
-      "label": "hover-class",
-      "sub": "\"hover class\"",
+      "label": "mirrored",
+      "sub": "on or off",
       "dir": 1,
       "in": 10.2,
       "out": 12.2
+    },
+    {
+      "type": "callout",
+      "px": 770,
+      "py": 488,
+      "ex": 796,
+      "ey": 540,
+      "label": "hover-class",
+      "sub": "\"hover class\"",
+      "dir": 1,
+      "in": 12.6,
+      "out": 14.600000000000001
     }
   ],
   "beats": [
@@ -213,8 +252,8 @@
     {
       "t": 10,
       "out": 14.6,
-      "title": "Set hover class",
-      "text": "Hover class for button styling."
+      "title": "Set mirrored",
+      "text": "Whether the image is mirrored, toggled by the mirror button."
     },
     {
       "t": 14.8,
@@ -228,7 +267,7 @@
     "line": "Inspector tools on an image wrapping open seadragon library",
     "code": ""
   },
-  "surfaceHash": "02583d52ecb6",
+  "surfaceHash": "99b5ff3bbef3",
   "review": {
     "status": "draft",
     "generator": "draft-element-walkthrough",
