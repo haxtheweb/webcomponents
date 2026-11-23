@@ -2,7 +2,7 @@
   "_meta": {
     "elementsScanned": 267,
     "elementsWithTranslations": 179,
-    "translationFilesFound": 49131,
+    "translationFilesFound": 49133,
     "languagesSupported": [
       "af",
       "am",
@@ -426,6 +426,7 @@
       "zh_CN",
       "zu"
     ],
+    ["en"],
     ["ar", "es", "hi", "zh"]
   ],
   "manifest": {
@@ -455,6 +456,7 @@
     "ai-usage-license.haxProperties": 0,
     "app-hax": 2,
     "app-hax-confirmation-modal": 1,
+    "app-hax-filter-tag": 3,
     "app-hax-scroll-button": 1,
     "app-hax-search-results": 1,
     "app-hax-simple-hat-progress": 1,
@@ -562,7 +564,7 @@
     "em.haxProperties": 0,
     "embed.haxProperties": 0,
     "event-badge.haxProperties": 0,
-    "example-hax-element": 3,
+    "example-hax-element": 4,
     "example-hax-element.haxProperties": 0,
     "example-haxcms-theme.haxProperties": 0,
     "figcaption.haxProperties": 0,
@@ -692,6 +694,7 @@
     "learning-component.haxProperties": 0,
     "lecture-player": 1,
     "lesson-highlight": 1,
+    "letter-grade-picker": 3,
     "li.haxProperties": 0,
     "license-element": 1,
     "license-element.haxProperties": 0,
