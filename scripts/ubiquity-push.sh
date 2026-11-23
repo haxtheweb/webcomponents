@@ -28,13 +28,18 @@ enter() {
 enter ~/haxtheweb/webcomponents
 node scripts/ubiquity-network.mjs preflight || exit 1
 
-## STEP 0 publish all current assets
+## STEP 0 EVERY ELEMENT IS ON NPM AT THE RELEASE VERSION
+# Versioning and publishing the elements happen before this script, as two
+# steps a release can redo on their own:
+#   yarn run release-version <x.y.z>   one version everywhere, commit, tag, push
+#   yarn run release-publish           publish what is missing; re-run until done
+# Stop here, before anything is built or committed, unless every element is
+# on npm at lerna.json's version: the backends, CLI and satellites below all
+# point at it.
 enter ~/haxtheweb/webcomponents
-#lerna run build --concurrency=1
+node scripts/release-publish.mjs --check || exit 1
 git add -A
 git commit -m "ubiquity publish"
-# start in webcomponents w/ the biggy that needs human intervention
-#lerna publish --concurrency=1
 
 ## STEP 1 RUN BUILD ROUTINE FOR ALL WEBCOMPONENTS
 # run new build routine in webcomponents
@@ -45,7 +50,8 @@ HAX_BUILD_CACHE=0 yarn run ubiquity
 # .version now holds the release version (version-match). Stop here, before
 # anything is copied into the sibling repos, unless it is past every package
 # (e.g. a haxcms-nodejs hotfix): --release-as in STEP 5 would tag backwards
-# and the npm publishes would fail partway through. Fix: lerna publish first.
+# and the npm publishes would fail partway through. Fix: yarn run release-version
+# <x.y.z> and yarn run release-publish first.
 node scripts/check-ecosystem-version.mjs --strict || exit 1
 
 # normalize internal wc-registry.json copies

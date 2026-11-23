@@ -9,7 +9,7 @@
 # CDN and npm versions have landed, and what each satellite would get).
 #
 #   yarn run ubiquity-dry-run                  preview the release .version holds
-#   yarn run ubiquity-dry-run 26.11.0          preview 26.11.0 before lerna publish
+#   yarn run ubiquity-dry-run 26.11.0          preview 26.11.0 before release-version
 #
 # The full build (`yarn run ubiquity`), the outline-designer fixture capture and
 # the parity release gate are logged, not run. Read-only git commands (status,
@@ -99,6 +99,12 @@ case "\$1" in
     echo "[\$(basename "\$PWD")] node \$*  (runs for real:)" >>"\$UBIQUITY_TRACE"
     "$REAL_NODE" "\$@" 2>&1 | tee -a "\$UBIQUITY_TRACE"
     exit \${PIPESTATUS[0]} ;;
+  *release-publish.mjs)
+    # read-only with --check; reported, and never stops the preview (before
+    # release-publish it lists every element still to go out)
+    echo "[\$(basename "\$PWD")] node \$*  (checked, does not stop the preview:)" >>"\$UBIQUITY_TRACE"
+    "$REAL_NODE" "\$@" 2>&1 | tee -a "\$UBIQUITY_TRACE"
+    exit 0 ;;
   *refresh-haxsite.mjs)
     echo "[\$(basename "\$PWD")] node \$* --dry-run  (runs for real:)" >>"\$UBIQUITY_TRACE"
     "$REAL_NODE" "\$@" --dry-run 2>&1 | tee -a "\$UBIQUITY_TRACE"

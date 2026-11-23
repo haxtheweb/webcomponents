@@ -302,8 +302,10 @@ LICENSE
 # Run command across all components
 lerna run build
 
-# Publish components (maintainers only)
-lerna publish
+# Release the elements (maintainers only): one version everywhere, then
+# publish whatever is not on npm yet (re-runnable)
+yarn run release-version 26.11.0
+yarn run release-publish
 
 # Add dependency to specific component
 lerna add package-name --scope=@haxtheweb/component-name
