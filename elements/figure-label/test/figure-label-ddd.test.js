@@ -521,6 +521,8 @@ describe("figure-label DDD design system integration", () => {
       target.dispatchEvent(new Event("focus"));
       expect(tip._showing).to.be.true;
       target.dispatchEvent(new Event("mouseleave"));
+      // a short grace period lets the pointer reach the tooltip (1.4.13)
+      await aTimeout(200);
       expect(tip._showing).to.be.false;
       target.dispatchEvent(new Event("blur"));
       await aTimeout(50);

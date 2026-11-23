@@ -974,6 +974,8 @@ describe("a11y-collapse tooltip interaction", () => {
     iconButton.dispatchEvent(new MouseEvent("mouseenter"));
     expect(tooltip._showing).to.be.true;
     iconButton.dispatchEvent(new MouseEvent("mouseleave"));
+    // the tooltip waits a moment so the pointer can reach it (WCAG 1.4.13)
+    await new Promise((resolve) => setTimeout(resolve, 200));
     expect(tooltip._showing).to.be.false;
     expect(tipDiv.classList.contains("hidden")).to.be.true;
     expect(tipDiv.classList.contains("fade-in-animation")).to.be.false;
@@ -984,9 +986,20 @@ describe("a11y-collapse tooltip interaction", () => {
     // complete the entry animation the way the browser would
     tipDiv.dispatchEvent(new Event("animationend"));
     expect(tooltip._animationPlaying).to.be.false;
+    // the tooltip waits a moment so the pointer can reach it (WCAG 1.4.13),
+    // so record whether the exit animation ran instead of timing it
+    let exitPlayed = false;
+    const watch = new MutationObserver(() => {
+      if (tipDiv.classList.contains("fade-out-animation")) {
+        exitPlayed = true;
+      }
+    });
+    watch.observe(tipDiv, { attributes: true, attributeFilter: ["class"] });
     iconButton.dispatchEvent(new MouseEvent("mouseleave"));
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    watch.disconnect();
     expect(tooltip._showing).to.be.false;
-    expect(tipDiv.classList.contains("fade-out-animation")).to.be.true;
+    expect(exitPlayed).to.be.true;
     // allow the animation timers to settle before checking the final state
     await new Promise((resolve) => setTimeout(resolve, 650));
     expect(tipDiv.classList.contains("hidden")).to.be.true;
