@@ -339,6 +339,7 @@ class LrndesignImagemap extends I18NMixin(DDD) {
         </div>
         <simple-popover
           auto
+          aria-label="${!active ? this.t.hotspot : active.label || this.t.hotspot}"
           ?hidden="${!active}"
           position="${!active ? "bottom" : active.position}"
           .for="${!active ? undefined : active.id}"
