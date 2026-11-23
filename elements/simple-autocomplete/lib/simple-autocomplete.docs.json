@@ -65,11 +65,10 @@
   ],
   "slots": [],
   "events": [
-    "item-selected",
-    null
+    "item-selected"
   ],
   "hax": {},
-  "surfaceHash": "71f8becd7341",
+  "surfaceHash": "1ea5517e79d5",
   "walkthroughs": [
     {
       "id": "",
@@ -77,13 +76,13 @@
       "order": 0,
       "src": "simple-autocomplete.motion.json",
       "file": "lib/simple-autocomplete.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-autocomplete.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

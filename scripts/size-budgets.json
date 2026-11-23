@@ -42,8 +42,8 @@
       "gzip": 7000
     },
     "elements/a11y-media-player/a11y-media-player.js": {
-      "raw": 233800,
-      "gzip": 56100
+      "raw": 234900,
+      "gzip": 56300
     },
     "elements/a11y-media-player/lib/a11y-media-button.js": {
       "raw": 7800,
@@ -58,7 +58,7 @@
       "gzip": 3000
     },
     "elements/a11y-media-player/lib/a11y-media-transcript-cue.js": {
-      "raw": 10200,
+      "raw": 10400,
       "gzip": 3400
     },
     "elements/a11y-media-player/lib/a11y-media-youtube.js": {
@@ -98,19 +98,19 @@
       "gzip": 3000
     },
     "elements/ai-usage-license/ai-usage-license.js": {
-      "raw": 15700,
+      "raw": 15900,
       "gzip": 5000
     },
     "elements/air-horn/air-horn.js": {
-      "raw": 5600,
-      "gzip": 2500
+      "raw": 8500,
+      "gzip": 3400
     },
     "elements/anchor-behaviors/anchor-behaviors.js": {
       "raw": 5800,
       "gzip": 2400
     },
     "elements/app-hax/app-hax.js": {
-      "raw": 574300,
+      "raw": 574400,
       "gzip": 136300
     },
     "elements/app-hax/lib/app-hax-theme.js": {
@@ -171,7 +171,7 @@
     },
     "elements/app-hax/lib/v2/app-hax-site-creation-modal.js": {
       "raw": 90800,
-      "gzip": 22600
+      "gzip": 22700
     },
     "elements/app-hax/lib/v2/app-hax-site-details.js": {
       "raw": 43900,
@@ -186,8 +186,8 @@
       "gzip": 6500
     },
     "elements/app-hax/lib/v2/app-hax-use-case-filter.js": {
-      "raw": 379500,
-      "gzip": 90000
+      "raw": 379600,
+      "gzip": 90100
     },
     "elements/app-hax/lib/v2/app-hax-use-case.js": {
       "raw": 29500,
@@ -342,8 +342,8 @@
       "gzip": 5000
     },
     "elements/code-sample/code-sample.js": {
-      "raw": 87400,
-      "gzip": 27300
+      "raw": 88100,
+      "gzip": 27400
     },
     "elements/collection-list/collection-list.js": {
       "raw": 4700,
@@ -438,52 +438,52 @@
       "gzip": 4400
     },
     "elements/d-d-d/d-d-d.js": {
-      "raw": 209000,
-      "gzip": 41200
+      "raw": 224500,
+      "gzip": 46200
     },
     "elements/d-d-d/lib/DesignSystemManager.js": {
       "raw": 27900,
       "gzip": 9000
     },
     "elements/d-d-d/lib/d-d-d-sample.js": {
-      "raw": 235300,
-      "gzip": 47900
+      "raw": 250800,
+      "gzip": 52800
     },
     "elements/d-d-d/lib/ddd-brochure-theme.js": {
-      "raw": 218700,
-      "gzip": 44100
+      "raw": 234200,
+      "gzip": 49000
     },
     "elements/d-d-d/lib/ddd-card.js": {
-      "raw": 222000,
-      "gzip": 44600
+      "raw": 237500,
+      "gzip": 49500
     },
     "elements/d-d-d/lib/ddd-hero.js": {
-      "raw": 236400,
-      "gzip": 50400
+      "raw": 251900,
+      "gzip": 55400
     },
     "elements/d-d-d/lib/ddd-steps-list-item.js": {
-      "raw": 218800,
-      "gzip": 43800
+      "raw": 234300,
+      "gzip": 48800
     },
     "elements/d-d-d/lib/ddd-steps-list.js": {
-      "raw": 223400,
-      "gzip": 45600
+      "raw": 238900,
+      "gzip": 50500
     },
     "elements/d-d-d/lib/hax-confirm-dialog.js": {
-      "raw": 302000,
-      "gzip": 60700
+      "raw": 317500,
+      "gzip": 65600
     },
     "elements/d-d-d/lib/hax-palette-picker.js": {
-      "raw": 250100,
-      "gzip": 51600
+      "raw": 265600,
+      "gzip": 56600
     },
     "elements/d-d-d/lib/mini-map.js": {
-      "raw": 220400,
-      "gzip": 44500
+      "raw": 235900,
+      "gzip": 49500
     },
     "elements/d-d-docs/d-d-docs.js": {
-      "raw": 133300,
-      "gzip": 25000
+      "raw": 138400,
+      "gzip": 26400
     },
     "elements/date-card/date-card.js": {
       "raw": 12000,
@@ -662,7 +662,7 @@
       "gzip": 2400
     },
     "elements/glossy-portfolio-theme/glossy-portfolio-theme.js": {
-      "raw": 82800,
+      "raw": 82900,
       "gzip": 30300
     },
     "elements/glossy-portfolio-theme/lib/glossy-portfolio-about.js": {
@@ -746,8 +746,8 @@
       "gzip": 9100
     },
     "elements/hal-9000/lib/hal-9000-ui/hal-9000-ui.js": {
-      "raw": 4400,
-      "gzip": 1900
+      "raw": 4500,
+      "gzip": 2000
     },
     "elements/hax-app-installer/hax-app-installer.js": {
       "raw": 125300,
@@ -775,7 +775,7 @@
     },
     "elements/hax-body/lib/hax-app-picker.js": {
       "raw": 310800,
-      "gzip": 76500
+      "gzip": 76600
     },
     "elements/hax-body/lib/hax-app-search.js": {
       "raw": 281000,
@@ -795,7 +795,7 @@
     },
     "elements/hax-body/lib/hax-context-item-textop.js": {
       "raw": 35800,
-      "gzip": 8000
+      "gzip": 8100
     },
     "elements/hax-body/lib/hax-context-item.js": {
       "raw": 296900,
@@ -806,7 +806,7 @@
       "gzip": 66800
     },
     "elements/hax-body/lib/hax-export-dialog.js": {
-      "raw": 348600,
+      "raw": 348700,
       "gzip": 86900
     },
     "elements/hax-body/lib/hax-file-actions.js": {
@@ -822,7 +822,7 @@
       "gzip": 8700
     },
     "elements/hax-body/lib/hax-map.js": {
-      "raw": 378300,
+      "raw": 378400,
       "gzip": 91600
     },
     "elements/hax-body/lib/hax-picker.js": {
@@ -859,7 +859,7 @@
     },
     "elements/hax-body/lib/hax-toolbar-item.js": {
       "raw": 32100,
-      "gzip": 6700
+      "gzip": 6800
     },
     "elements/hax-body/lib/hax-toolbar-menu.js": {
       "raw": 29200,
@@ -878,7 +878,7 @@
       "gzip": 103100
     },
     "elements/hax-body/lib/hax-tray.js": {
-      "raw": 745800,
+      "raw": 745900,
       "gzip": 186000
     },
     "elements/hax-body/lib/hax-ui-styles.js": {
@@ -890,7 +890,7 @@
       "gzip": 98500
     },
     "elements/hax-body/lib/hax-view-source.js": {
-      "raw": 346200,
+      "raw": 346300,
       "gzip": 85900
     },
     "elements/hax-body/lib/image-framing-dialog.js": {
@@ -926,8 +926,8 @@
       "gzip": 9300
     },
     "elements/hax-marketing-theme/lib/hax-platform-compare.js": {
-      "raw": 18300,
-      "gzip": 5100
+      "raw": 19000,
+      "gzip": 5300
     },
     "elements/hax-marketing-theme/lib/hax-reel.js": {
       "raw": 23000,
@@ -1066,8 +1066,8 @@
       "gzip": 6600
     },
     "elements/haxcms-elements/lib/core/haxcms-toast.js": {
-      "raw": 128900,
-      "gzip": 34700
+      "raw": 129000,
+      "gzip": 34800
     },
     "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": {
       "raw": 260300,
@@ -1182,8 +1182,8 @@
       "gzip": 3100
     },
     "elements/haxcms-elements/lib/core/ui/haxcms-about-dialog-ui.js": {
-      "raw": 137500,
-      "gzip": 38300
+      "raw": 131800,
+      "gzip": 36000
     },
     "elements/haxcms-elements/lib/core/ui/haxcms-allowed-blocks-ui.js": {
       "raw": 138100,
@@ -1198,7 +1198,7 @@
       "gzip": 7300
     },
     "elements/haxcms-elements/lib/core/ui/haxcms-goggles.js": {
-      "raw": 208200,
+      "raw": 208400,
       "gzip": 51300
     },
     "elements/haxcms-elements/lib/core/ui/haxcms-site-platform-ui.js": {
@@ -1258,7 +1258,7 @@
       "gzip": 2100
     },
     "elements/haxcms-elements/lib/ui-components/layout/site-footer.js": {
-      "raw": 85400,
+      "raw": 85500,
       "gzip": 23700
     },
     "elements/haxcms-elements/lib/ui-components/layout/site-modal.js": {
@@ -1414,7 +1414,7 @@
       "gzip": 7000
     },
     "elements/haxor-slevin/haxor-slevin.js": {
-      "raw": 29800,
+      "raw": 29900,
       "gzip": 7200
     },
     "elements/hex-picker/hex-picker.js": {
@@ -1446,7 +1446,7 @@
       "gzip": 11000
     },
     "elements/iframe-loader/iframe-loader.js": {
-      "raw": 17800,
+      "raw": 17900,
       "gzip": 5500
     },
     "elements/iframe-loader/lib/loading-indicator.js": {
@@ -1538,7 +1538,7 @@
       "gzip": 2100
     },
     "elements/learn-two-theme/learn-two-theme.js": {
-      "raw": 23100,
+      "raw": 23200,
       "gzip": 5500
     },
     "elements/license-element/license-element.js": {
@@ -1546,7 +1546,7 @@
       "gzip": 7300
     },
     "elements/link-card-theme/link-card-theme.js": {
-      "raw": 24400,
+      "raw": 24500,
       "gzip": 6100
     },
     "elements/linkedin-embed/lib/linkedin-embed.js": {
@@ -1678,8 +1678,8 @@
       "gzip": 6300
     },
     "elements/media-playlist/media-playlist.js": {
-      "raw": 36300,
-      "gzip": 8600
+      "raw": 36600,
+      "gzip": 8800
     },
     "elements/media-quote/media-quote.js": {
       "raw": 11800,
@@ -1710,8 +1710,8 @@
       "gzip": 7600
     },
     "elements/mermaid-diagram/mermaid-diagram.js": {
-      "raw": 56200,
-      "gzip": 16000
+      "raw": 56300,
+      "gzip": 16100
     },
     "elements/micro-frontend-registry/micro-frontend-registry.js": {
       "raw": 19700,
@@ -1783,7 +1783,7 @@
     },
     "elements/outline-player/outline-player.js": {
       "raw": 21100,
-      "gzip": 5800
+      "gzip": 5900
     },
     "elements/page-break/lib/page-anchor.js": {
       "raw": 10500,
@@ -1818,7 +1818,7 @@
       "gzip": 6200
     },
     "elements/page-section/page-section.js": {
-      "raw": 26000,
+      "raw": 26100,
       "gzip": 6700
     },
     "elements/paper-input-flagged/paper-input-flagged.js": {
@@ -1894,7 +1894,7 @@
       "gzip": 3300
     },
     "elements/place-holder/place-holder.js": {
-      "raw": 12400,
+      "raw": 12500,
       "gzip": 4100
     },
     "elements/play-list/lib/play-list-slide.js": {
@@ -2026,8 +2026,8 @@
       "gzip": 2700
     },
     "elements/replace-tag/replace-tag.js": {
-      "raw": 22300,
-      "gzip": 7500
+      "raw": 22400,
+      "gzip": 7600
     },
     "elements/responsive-grid/lib/responsive-grid-clear.js": {
       "raw": 4000,
@@ -2070,7 +2070,7 @@
       "gzip": 5500
     },
     "elements/retro-tv/lib/programs/retro-tv-disc.js": {
-      "raw": 16000,
+      "raw": 16100,
       "gzip": 6100
     },
     "elements/retro-tv/lib/programs/retro-tv-handheld.js": {
@@ -2090,15 +2090,15 @@
       "gzip": 5100
     },
     "elements/retro-tv/lib/programs/retro-tv-sign-on.js": {
-      "raw": 14100,
+      "raw": 14200,
       "gzip": 5500
     },
     "elements/retro-tv/lib/programs/retro-tv-static.js": {
-      "raw": 17200,
+      "raw": 17300,
       "gzip": 6300
     },
     "elements/retro-tv/lib/programs/retro-tv-title-sequence.js": {
-      "raw": 17400,
+      "raw": 17500,
       "gzip": 6200
     },
     "elements/retro-tv/lib/retro-console.js": {
@@ -2166,7 +2166,7 @@
       "gzip": 17400
     },
     "elements/rich-text-editor/lib/open-apis/link-preview-card.js": {
-      "raw": 9100,
+      "raw": 9200,
       "gzip": 3300
     },
     "elements/rich-text-editor/lib/singletons/rich-text-editor-clipboard.js": {
@@ -2206,12 +2206,12 @@
       "gzip": 58100
     },
     "elements/rpg-character/lib/rpg-character-builder.js": {
-      "raw": 80700,
-      "gzip": 23900
+      "raw": 118400,
+      "gzip": 33700
     },
     "elements/rpg-character/rpg-character.js": {
-      "raw": 53300,
-      "gzip": 17000
+      "raw": 54700,
+      "gzip": 17400
     },
     "elements/schema-behaviors/schema-behaviors.js": {
       "raw": 5900,
@@ -2430,32 +2430,32 @@
       "gzip": 10700
     },
     "elements/simple-icon/lib/simple-clipboard-copy-button.js": {
-      "raw": 34600,
-      "gzip": 11200
+      "raw": 36700,
+      "gzip": 11800
     },
     "elements/simple-icon/lib/simple-icon-button-lite.js": {
-      "raw": 30100,
-      "gzip": 10000
+      "raw": 32300,
+      "gzip": 10500
     },
     "elements/simple-icon/lib/simple-icon-button.js": {
-      "raw": 35400,
-      "gzip": 11700
+      "raw": 37500,
+      "gzip": 12300
     },
     "elements/simple-icon/lib/simple-icon-lite.js": {
-      "raw": 17100,
-      "gzip": 6300
+      "raw": 19100,
+      "gzip": 6800
     },
     "elements/simple-icon/lib/simple-iconset-demo.js": {
-      "raw": 46600,
-      "gzip": 14000
+      "raw": 48800,
+      "gzip": 14600
     },
     "elements/simple-icon/lib/simple-iconset.js": {
       "raw": 8600,
       "gzip": 3500
     },
     "elements/simple-icon/simple-icon.js": {
-      "raw": 19700,
-      "gzip": 7100
+      "raw": 21700,
+      "gzip": 7700
     },
     "elements/simple-img/simple-img.js": {
       "raw": 10600,
@@ -2510,7 +2510,7 @@
       "gzip": 3600
     },
     "elements/simple-progress/simple-progress.js": {
-      "raw": 6500,
+      "raw": 6600,
       "gzip": 2600
     },
     "elements/simple-range-input/simple-range-input.js": {
@@ -2626,7 +2626,7 @@
       "gzip": 10700
     },
     "elements/super-daemon/lib/super-daemon-toast.js": {
-      "raw": 42000,
+      "raw": 42100,
       "gzip": 11200
     },
     "elements/super-daemon/lib/super-daemon-ui.js": {
@@ -2634,7 +2634,7 @@
       "gzip": 32600
     },
     "elements/super-daemon/super-daemon.js": {
-      "raw": 264900,
+      "raw": 265000,
       "gzip": 70400
     },
     "elements/tableau-embed/tableau-embed.js": {
@@ -2754,12 +2754,12 @@
       "gzip": 2600
     },
     "elements/video-player/lib/lecture-player.js": {
-      "raw": 86300,
-      "gzip": 21200
+      "raw": 88200,
+      "gzip": 21400
     },
     "elements/video-player/video-player.js": {
-      "raw": 62900,
-      "gzip": 15600
+      "raw": 64800,
+      "gzip": 15900
     },
     "elements/vocab-term/vocab-term.js": {
       "raw": 20100,
@@ -2776,18 +2776,6 @@
     "elements/web-baseline-status/web-baseline-status.js": {
       "raw": 5400,
       "gzip": 2400
-    },
-    "elements/web-container/lib/web-container-doc-player.js": {
-      "raw": 39900,
-      "gzip": 11400
-    },
-    "elements/web-container/lib/web-container-wc-registry-docs.js": {
-      "raw": 43000,
-      "gzip": 12700
-    },
-    "elements/web-container/web-container.js": {
-      "raw": 28000,
-      "gzip": 7900
     },
     "elements/webawesome-theme/webawesome-theme.js": {
       "raw": 40300,

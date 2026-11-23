@@ -429,11 +429,10 @@
     "transcript-printed",
     "transcript-toggle",
     "user-engagement",
-    "volume-changed",
-    null
+    "volume-changed"
   ],
   "hax": {},
-  "surfaceHash": "cbd8bdf99797",
+  "surfaceHash": "06567793e482",
   "walkthroughs": [
     {
       "id": "",
@@ -441,13 +440,13 @@
       "order": 0,
       "src": "a11y-media-player.motion.json",
       "file": "lib/a11y-media-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/a11y-media-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout, waitUntil } from "@open-wc/testing";
 import "@haxtheweb/d-d-d/lib/ddd-hero.js";
 import { ImageFramingDialog } from "../lib/image-framing-dialog.js";
 import "../lib/simple-fields-image-framing.js";
@@ -8,6 +8,19 @@ const PHOTO = new URL(
   import.meta.url,
 ).href;
 const settle = () => aTimeout(150);
+// the dialog draws its preview once the photo has loaded, which takes as long
+// as it takes: wait for the preview itself, not for a fixed time
+const drawn = async () => {
+  await waitUntil(
+    () => {
+      const dialog = document.querySelector("image-framing-dialog");
+      return dialog && dialog.querySelector("[preview-size]");
+    },
+    "the dialog drew its preview",
+    { timeout: 5000 },
+  );
+  await settle();
+};
 
 describe("image-framing-dialog", () => {
   let page;
@@ -47,7 +60,7 @@ describe("image-framing-dialog", () => {
 
   it("lists the screen sizes and shows the element at the size picked", async () => {
     const done = openOn("sm");
-    await settle();
+    await drawn();
     const dialog = document.querySelector("image-framing-dialog");
     const items = dialog.shadowRoot.querySelectorAll(".rail-item");
     expect(
@@ -67,7 +80,7 @@ describe("image-framing-dialog", () => {
 
   it("makes a size custom when the photo is moved, and returns it on Done", async () => {
     const done = openOn("lg");
-    await settle();
+    await drawn();
     const dialog = document.querySelector("image-framing-dialog");
     const handle = dialog.querySelector("[role='application']");
     handle.dispatchEvent(
@@ -91,7 +104,7 @@ describe("image-framing-dialog", () => {
   it("goes back to automatic", async () => {
     hero.framing = '{"md":{"x":0,"y":0,"w":0.5,"h":0.4}}';
     const done = openOn("md");
-    await settle();
+    await drawn();
     const dialog = document.querySelector("image-framing-dialog");
     expect(dialog.framings.md).to.exist;
     dialog._backToAuto();
@@ -102,7 +115,7 @@ describe("image-framing-dialog", () => {
 
   it("moves the focal point", async () => {
     const done = openOn("lg");
-    await settle();
+    await drawn();
     const dialog = document.querySelector("image-framing-dialog");
     dialog.focalMode = true;
     const handle = dialog.querySelector("[role='application']");

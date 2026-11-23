@@ -154,11 +154,10 @@
   "slots": [],
   "events": [
     "map-menu-item-hidden-check",
-    "selected",
-    null
+    "selected"
   ],
   "hax": {},
-  "surfaceHash": "66f0bacfc682",
+  "surfaceHash": "2670e7b2aefb",
   "walkthroughs": [
     {
       "id": "",

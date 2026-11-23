@@ -426,7 +426,12 @@ export function extractElementDocs(name, elementsDir = ELEMENTS) {
     .map((n) => n.replace(/\$\{\w+\}/g, "N"))
     .filter((n, i, a) => a.indexOf(n) === i)
     .sort();
-  const events = new Set(((decl && decl.events) || []).map((e) => e.name));
+  // an event named with a template literal has no name in the manifest: leave it out
+  const events = new Set(
+    ((decl && decl.events) || [])
+      .map((e) => e.name)
+      .filter((name) => typeof name === "string" && name !== ""),
+  );
   for (const m of src.matchAll(/new CustomEvent\(\s*["'`]([\w-]+)["'`]/g))
     events.add(m[1]);
   // events fired by shared mixins are not part of the element's own surface

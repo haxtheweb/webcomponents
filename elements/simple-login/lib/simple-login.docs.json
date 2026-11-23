@@ -108,11 +108,10 @@
     "buttons"
   ],
   "events": [
-    "simple-login-login",
-    null
+    "simple-login-login"
   ],
   "hax": {},
-  "surfaceHash": "af2c383a3f91",
+  "surfaceHash": "25a46504cbd9",
   "walkthroughs": [
     {
       "id": "",
@@ -120,13 +119,13 @@
       "order": 0,
       "src": "simple-login.motion.json",
       "file": "lib/simple-login.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-login.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

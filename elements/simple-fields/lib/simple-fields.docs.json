@@ -127,11 +127,10 @@
     "fields-changed",
     "fields-ready",
     "schema-changed",
-    "value-changed",
-    null
+    "value-changed"
   ],
   "hax": {},
-  "surfaceHash": "c966758dffd1",
+  "surfaceHash": "6bbd9e46b078",
   "walkthroughs": [
     {
       "id": "",
@@ -139,13 +138,13 @@
       "order": 0,
       "src": "simple-fields.motion.json",
       "file": "lib/simple-fields.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/simple-fields.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {
