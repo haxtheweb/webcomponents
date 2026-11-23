@@ -662,6 +662,23 @@
     "inspiredByTheme": "Minimal Mistakes",
     "acceptsDesignSystems": true
   },
+  "night-draft-theme": {
+    "element": "night-draft-theme",
+    "path": "@haxtheweb/night-draft-theme/night-draft-theme.js",
+    "name": "Night Draft",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-night-draft-theme-thumb.jpg",
+    "description": "A dark blog: posts typed onto paper under a desk lamp, scratched-out words left in",
+    "category": ["Blog", "Portfolio"],
+    "hidden": false,
+    "priority": 30,
+    "terrible": false,
+    "supportedPalettes": null,
+    "layout": "Single column",
+    "designSystem": null,
+    "inspiredBy": null,
+    "inspiredByTheme": null,
+    "acceptsDesignSystems": false
+  },
   "outline-player": {
     "element": "outline-player",
     "path": "@haxtheweb/outline-player/outline-player.js",

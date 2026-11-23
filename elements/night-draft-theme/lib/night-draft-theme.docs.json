@@ -1,0 +1,97 @@
+{
+  "tag": "night-draft-theme",
+  "folder": "night-draft-theme",
+  "package": "@haxtheweb/night-draft-theme",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "night-draft-theme",
+  "description": "Night Draft: a dark HAXcms blog theme where posts are typed onto paper under a desk lamp, with scratched-out words left in",
+  "icon": "",
+  "tags": [],
+  "haxCapable": false,
+  "import": "@haxtheweb/night-draft-theme/night-draft-theme.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/night-draft-theme/night-draft-theme.js",
+  "install": "npm i @haxtheweb/night-draft-theme",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "items",
+      "property": "items",
+      "type": "array",
+      "default": "[]",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeId",
+      "property": "activeId",
+      "type": "null",
+      "default": "null",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "activeItem",
+      "property": "activeItem",
+      "type": "object",
+      "default": "{}",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "siteTitle",
+      "property": "siteTitle",
+      "type": "string",
+      "default": "\"\"",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "selected",
+      "property": "selected",
+      "type": "number",
+      "default": "0",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "flashing",
+      "property": "flashing",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "typing-done",
+      "property": "typingDone",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    },
+    {
+      "name": "reduced-motion",
+      "property": "reducedMotion",
+      "type": "boolean",
+      "default": "false",
+      "description": "",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "hax": {},
+  "surfaceHash": "cff50162b7de",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/night-draft-theme",
+    "file": "night-draft-theme.js"
+  }
+}

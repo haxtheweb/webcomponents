@@ -1,0 +1,155 @@
+{
+  "id": "7e11e0a5-0000-4000-8000-nightdraft01",
+  "title": "Night Draft",
+  "author": "",
+  "description": "A demo blog for night-draft-theme: letters typed at night, scratched-out words left in.",
+  "license": "by-sa",
+  "metadata": {
+    "author": {
+      "image": "",
+      "name": "",
+      "email": "",
+      "socialLink": ""
+    },
+    "site": {
+      "name": "night-draft-theme",
+      "logo": "",
+      "lang": "en",
+      "created": 1795000000,
+      "updated": 1795000000,
+      "git": {},
+      "version": "9.0.6",
+      "domain": "",
+      "static": {},
+      "settings": {
+        "pathauto": false,
+        "publishPagesOn": true,
+        "sw": false,
+        "forceUpgrade": false,
+        "lang": "",
+        "gaID": ""
+      },
+      "tags": ""
+    },
+    "theme": {
+      "element": "night-draft-theme",
+      "path": "@haxtheweb/night-draft-theme/night-draft-theme.js",
+      "name": "night-draft-theme",
+      "regions": {}
+    },
+    "node": {
+      "fields": {}
+    },
+    "build": {
+      "version": "6.0.1",
+      "structure": "flat",
+      "type": ""
+    }
+  },
+  "items": [
+    {
+      "id": "item-7e11e0a5-the-desk",
+      "indent": 0,
+      "location": "pages/item-7e11e0a5-the-desk/index.html",
+      "slug": "the-desk",
+      "order": 0,
+      "parent": null,
+      "title": "The Desk",
+      "description": "Every night the lamp goes on at eleven and the keys start before I have decided what to say. These are the pages that came out of it. Some of them I m",
+      "metadata": {
+        "created": 1795236000,
+        "updated": 1795236000,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": ""
+      }
+    },
+    {
+      "id": "item-7e11e0a5-the-lamp-stays-on",
+      "indent": 0,
+      "location": "pages/item-7e11e0a5-the-lamp-stays-on/index.html",
+      "slug": "the-lamp-stays-on",
+      "order": 1,
+      "parent": null,
+      "title": "The Lamp Stays On",
+      "description": "The rain started a little after midnight and has not made up its mind since. I keep the lamp low so the window does not turn into a mirror. If it turn",
+      "metadata": {
+        "created": 1795149600,
+        "updated": 1795149600,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "image": "files/rain-window.svg"
+      }
+    },
+    {
+      "id": "item-7e11e0a5-pages-i-dont-remember-typing",
+      "indent": 0,
+      "location": "pages/item-7e11e0a5-pages-i-dont-remember-typing/index.html",
+      "slug": "pages-i-dont-remember-typing",
+      "order": 2,
+      "parent": null,
+      "title": "Pages I Don't Remember Typing",
+      "description": "Found three more pages in the drawer this morning. Same paper, same ribbon, the same slightly raised e that this machine has always had. My words, my ",
+      "metadata": {
+        "created": 1794544800,
+        "updated": 1794544800,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "image": "files/lake-night.svg"
+      }
+    },
+    {
+      "id": "item-7e11e0a5-thirteen-steps-down",
+      "indent": 0,
+      "location": "pages/item-7e11e0a5-thirteen-steps-down/index.html",
+      "slug": "thirteen-steps-down",
+      "order": 3,
+      "parent": null,
+      "title": "Thirteen Steps Down",
+      "description": "The building where I rent the room has a stairwell with one working bulb, on the landing between the second and third floors. Everything above and bel",
+      "metadata": {
+        "created": 1793853600,
+        "updated": 1793853600,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "image": "files/stairwell.svg"
+      }
+    },
+    {
+      "id": "item-7e11e0a5-streetlight-312-am",
+      "indent": 0,
+      "location": "pages/item-7e11e0a5-streetlight-312-am/index.html",
+      "slug": "streetlight-312-am",
+      "order": 4,
+      "parent": null,
+      "title": "Streetlight, 3:12 a.m.",
+      "description": "Couldn't sleep, so I walked. The fog had come up off the river and swallowed the whole block except for one streetlight, which stood in it like a man ",
+      "metadata": {
+        "created": 1793248800,
+        "updated": 1793248800,
+        "published": true,
+        "hideInMenu": false,
+        "locked": false,
+        "readtime": 1,
+        "tags": "",
+        "status": "",
+        "image": "files/streetlight.svg"
+      }
+    }
+  ]
+}
