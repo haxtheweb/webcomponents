@@ -115,10 +115,12 @@ describe("terrible-themes main theme", () => {
     expect(
       element.shadowRoot.querySelector("site-active-title") === null,
     ).to.equal(false);
-    // the fake login link is disabled for keyboard and AT
+    // the fake login link has no href, so it is plain text: not a
+    // control, not focusable, nothing to disable
     const login = element.shadowRoot.querySelector("a.loginState");
-    expect(login.getAttribute("aria-disabled")).to.equal("true");
-    expect(login.getAttribute("tabindex")).to.equal("-1");
+    expect(login.hasAttribute("href")).to.equal(false);
+    expect(login.hasAttribute("role")).to.equal(false);
+    expect(login.hasAttribute("tabindex")).to.equal(false);
   });
 
   it("tracks the active manifest index from the store", async () => {

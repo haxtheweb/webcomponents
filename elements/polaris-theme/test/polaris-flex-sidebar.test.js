@@ -95,7 +95,9 @@ describe("polaris-flex-sidebar", () => {
 
   it("renders the accessible sidebar region with the children block", () => {
     const sr = element.shadowRoot;
-    const aside = sr.querySelector('aside[role="complementary"]');
+    // a native aside is the complementary landmark; no role needed
+    const aside = sr.querySelector("aside");
+    expect(aside.hasAttribute("role")).to.equal(false);
     expect(aside === null).to.equal(false);
     expect(aside.getAttribute("aria-label")).to.equal("Primary Sidebar");
     expect(aside.getAttribute("part")).to.equal("page-primary-sidebar");
@@ -103,7 +105,7 @@ describe("polaris-flex-sidebar", () => {
       aside.getAttribute("itemtype") === "http://schema.org/WPSideBar",
     ).to.equal(true);
     // heading is visually hidden but still exposed
-    expect(aside.querySelector("h4.sr-only").textContent.trim()).to.equal(
+    expect(aside.querySelector("h2.sr-only").textContent.trim()).to.equal(
       "Contents",
     );
     const children = aside.querySelector("site-children-block");

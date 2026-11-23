@@ -42,7 +42,11 @@ describe("ExampleHaxcmsTheme test", function () {
   });
 
   it("passes the a11y audit", async () => {
-    await expect(element).shadowDom.to.be.accessible();
+    // axe looks the skip link's target up in the document, not the
+    // shadow root it lives in, so it cannot see #contentcontainer
+    await expect(element).shadowDom.to.be.accessible({
+      ignoredRules: ["skip-link"],
+    });
   });
 });
 
@@ -102,14 +106,18 @@ describe("ExampleHaxcmsTheme behavior", () => {
       'header ul li a[href="/page-one"]',
     );
     expect(first === null).to.equal(false);
-    const firstButton = first.querySelector("button");
-    expect(firstButton.getAttribute("title")).to.equal("Page One");
-    expect(firstButton.textContent).to.equal("1");
+    // each page is one link (no button nested inside it), named with its
+    // number and title
+    expect(first.querySelector("button")).to.equal(null);
+    expect(first.getAttribute("title")).to.equal("Page One");
+    expect(first.textContent).to.equal("1");
+    expect(first.getAttribute("aria-label")).to.equal("Page 1: Page One");
     expect(first.parentNode.className.includes("active")).to.equal(false);
     const second = element.shadowRoot.querySelector(
       'header ul li a[href="/page-two"]',
     );
-    expect(second.querySelector("button").textContent).to.equal("2");
+    expect(second.textContent).to.equal("2");
+    expect(second.getAttribute("aria-current")).to.equal("page");
     expect(second.parentNode.className.includes("active")).to.equal(true);
     expect(
       element.shadowRoot.querySelector(
@@ -132,17 +140,14 @@ describe("ExampleHaxcmsTheme behavior", () => {
     expect(
       element.shadowRoot.querySelector('footer slot[name="footer"]') === null,
     ).to.equal(false);
-    // OBSERVATION (a11y / markup nesting): item pagination renders
-    // <button> inside <a href> — interactive content nested inside
-    // interactive content, which HTML disallows as valid interactive
-    // descendants of links (a keyboard/AT activation-order concern).
-    // Not axe-flagged in this harness (a probe audit only surfaced the
-    // known racy color-contrast family on site-active-title internals,
-    // with computed values matching no stylesheet state), so recorded as
-    // an observation for the round-8 sweep rather than an axe-verified
-    // violation; a single interactive element per item would be cleaner.
+    // one interactive element per page: a link drawn as a button, with
+    // no button nested inside it
     expect(
       element.shadowRoot.querySelectorAll("header ul li a button").length,
+    ).to.equal(0);
+    expect(
+      element.shadowRoot.querySelectorAll("header nav ul li a.page-link")
+        .length,
     ).to.equal(2);
   });
 });
