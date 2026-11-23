@@ -1086,7 +1086,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
             top: 0;
             left: 0;
             width: 200px !important;
-            z-index: 9999;
+            z-index: calc(var(--ddd-z-modal, 10000) - 1);
           }
 
           :host([sticky][sticky-corner="bottom-left"]) #player-and-controls {

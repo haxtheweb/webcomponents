@@ -53,7 +53,7 @@ On a token:
 
 - `--ddd-z-dropdown`: outline-designer (item operations menu), simple-picker (list), app-hax-use-case-filter (sort menu), app-hax-user-menu.
 - `--ddd-z-sticky`: my-learning-button, site-top-menu and site-outline-block (`sticky`), site-dot-indicator, glossy-portfolio-theme (header), haxcms-json-theme (header buttons), reading-analysis (pinned action bar), simple-blog (back button), the back-to-top button of chamfer-theme, polaris-theme, polaris-flex-theme, polaris-invent-theme, journey-theme, ddd-brochure-theme and haxcms-basic-theme, learn-two-theme (the sidebar on wide screens).
-- `--ddd-z-modal`: haxcms-site-editor-ui (the bar), HAXCMSLitElementTheme, haxcms-json-theme and haxcms-print-theme (skip link), QRCodeMixin, mermaid-diagram and ecosystem-web (presenting), app-hax (site creation dialog, design browser), hax-view-source (live preview pane), hax-palette-picker (peek), haxcms-cheat-codes (takeovers, with offsets), hax-network-bar (`+ 1`).
+- `--ddd-z-modal`: haxcms-site-editor-ui (the bar), HAXCMSLitElementTheme, haxcms-json-theme and haxcms-print-theme (skip link), QRCodeMixin, mermaid-diagram and ecosystem-web (presenting), app-hax (site creation dialog, design browser), hax-view-source (live preview pane), hax-palette-picker (peek), haxcms-theme-preview-panel (`- 2`), haxcms-site-editor-ui in edit mode and a11y-media-player raised over its transcript (`- 1`), haxcms-cheat-codes (fly-overs `- 1`, takeovers with offsets), hax-network-bar (`+ 1`).
 - `--ddd-z-tooltip`: simple-tooltip, a11y-media-button (its tooltip).
 - `--ddd-z-toast`: haxcms-cheat-codes (matrix backdrop), hax-ui-styles (`+ 1`), app-hax and haxcms-site-editor-ui docked bar and hal-9000 (`+ 2`), super-daemon-toast (`+ 3`), haxcms-toast (`+ 4`).
 
