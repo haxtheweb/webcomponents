@@ -1100,6 +1100,8 @@ export const DDDVariables = css`
        READING MEASURE
        Comfortable line lengths for running text, in characters.
        Usage: max-width: var(--ddd-theme-measure);
+       Opt-in for authored content: data-measure (or data-measure="sm|md|lg")
+       on a block of running text or on the container around it.
        =========================================== */
     --ddd-measure-sm: 45ch;
     --ddd-measure-md: 65ch; /* default for body copy */
@@ -1359,6 +1361,24 @@ const DDDDataAttributesEnd = css`
   }
   [data-eyebrow] + :is(h1, h2, h3, h4, h5, h6) {
     margin-top: 0;
+  }
+
+  /* reading measure: opt-in cap on line length, see READING MEASURE tokens.
+     On a block of running text it caps that block. On a container it caps
+     the running text directly inside it; media, tables and grids keep the
+     full width. Nothing is capped unless the attribute is set. */
+  :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6)[data-measure],
+  [data-measure] > :is(p, ul, ol, dl, blockquote, h1, h2, h3, h4, h5, h6) {
+    max-width: var(--ddd-theme-measure);
+  }
+  [data-measure="sm"] {
+    --ddd-theme-measure: var(--ddd-measure-sm);
+  }
+  [data-measure="md"] {
+    --ddd-theme-measure: var(--ddd-measure-md);
+  }
+  [data-measure="lg"] {
+    --ddd-theme-measure: var(--ddd-measure-lg);
   }
 
   [data-primary] {
