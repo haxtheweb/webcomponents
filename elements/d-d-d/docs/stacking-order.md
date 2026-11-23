@@ -54,13 +54,13 @@ On a token:
 - `--ddd-z-dropdown`: outline-designer (item operations menu), simple-picker (list).
 - `--ddd-z-sticky`: my-learning-button.
 - `--ddd-z-modal`: haxcms-site-editor-ui (the bar), HAXCMSLitElementTheme, haxcms-json-theme, haxcms-print-theme, QRCodeMixin, mermaid-diagram (presenting), haxcms-cheat-codes (takeovers, with offsets), hax-network-bar (`+ 1`).
+- `--ddd-z-tooltip`: simple-tooltip, a11y-media-button (its tooltip).
 - `--ddd-z-toast`: haxcms-cheat-codes (matrix backdrop), hax-ui-styles (`+ 1`), app-hax and haxcms-site-editor-ui docked bar and hal-9000 (`+ 2`), super-daemon-toast (`+ 3`), haxcms-toast (`+ 4`).
 
 Still a literal, with the role each one plays:
 
 | Value              | Element                                                                                                                                                                                                    | Role                               |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| 100                | a11y-media-button                                                                                                                                                                                          | Tooltip.                           |
 | 100                | haxor-slevin, journey-theme (topbar)                                                                                                                                                                       | Header and fixed bars.             |
 | 100                | map-menu (`is-flex`), haxcms-site-editor (edit button)                                                                                                                                                     | Raised above neighbouring content. |
 | 200                | a11y-carousel, lrndesign-timeline                                                                                                                                                                          | Inside the component.              |
@@ -70,7 +70,6 @@ Still a literal, with the role each one plays:
 | 1000               | app-hax-use-case-filter (sort menu), app-hax-user-menu                                                                                                                                                     | Dropdown menus.                    |
 | 1000               | multiple-choice (confetti), hax-body (loader), haxcms-site-builder (progress), reading-analysis (drag ghost), outline-designer (close button), learn-two-theme (git corner)                                | Decoration and feedback.           |
 | 1001               | hax-body (`--hax-ui-focus-z-index`)                                                                                                                                                                        | The editor tray.                   |
-| 1002               | simple-tooltip                                                                                                                                                                                             | Tooltip.                           |
 | 10000              | chamfer-theme, polaris-theme, polaris-flex-theme, polaris-invent-theme, journey-theme, ddd-brochure-theme                                                                                                  | Back-to-top button.                |
 | 10000              | hax-map (drag ghost), DDD `data-pulse`, portal-launcher                                                                                                                                                    | Feedback and transitions.          |
 | 100000             | simple-fields-array-item                                                                                                                                                                                   | Focused row above its siblings.    |

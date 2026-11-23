@@ -33,7 +33,7 @@ class SimpleTooltip extends LitElement {
           display: block;
           position: absolute;
           outline: none;
-          z-index: 1002;
+          z-index: var(--ddd-z-tooltip, 10100);
           -moz-user-select: none;
           -ms-user-select: none;
           -webkit-user-select: none;
