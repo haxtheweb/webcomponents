@@ -8,8 +8,8 @@
  * When one of them is already at or ahead of it (say a 26.8.1 hotfix of
  * haxcms-nodejs or create while the elements are 26.8.0 or 26.8.1), releasing at
  * .version would tag backwards and `npm publish` would fail on a version that
- * already exists. Run `lerna publish` first so .version moves past every
- * package.
+ * already exists. Run `yarn run release-version <x.y.z>` (then
+ * `yarn run release-publish`) first so .version moves past every package.
  *
  * Checkouts are found under $HAXTHEWEB_ROOT, by default ~/haxtheweb or the
  * folder this repo sits in (../haxcms-nodejs, ...); missing ones are skipped.

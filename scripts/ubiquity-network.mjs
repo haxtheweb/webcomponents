@@ -72,7 +72,7 @@ export function repoDir(entry) {
 export function releaseVersion() {
   const given = option("--version");
   if (given) return given.trim();
-  // a dry run may preview a release whose lerna publish has not happened yet
+  // a dry run may preview a release whose release-version has not happened yet
   if (
     process.env.UBIQUITY_DRY_RUN === "1" &&
     process.env.UBIQUITY_DRY_RUN_VERSION
@@ -179,7 +179,7 @@ export function cmdVersions() {
     console.log(
       `WARNING: release version ${release} (.version) is ${strict ? "not past" : "behind"} ${ahead.join(", ")}; ` +
         "releasing now would re-tag or tag backwards and npm publish would fail. " +
-        "Run `lerna publish` past these first (releases are year.month, e.g. `lerna publish 26.11.0`), then re-run.",
+        "Run `yarn run release-version <x.y.z>` past these first (releases are year.month, e.g. `yarn run release-version 26.11.0`), then `yarn run release-publish`, and re-run.",
     );
     return strict ? 1 : 0;
   }
