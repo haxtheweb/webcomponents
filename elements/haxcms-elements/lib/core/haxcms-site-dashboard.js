@@ -17,6 +17,7 @@ import {
 } from "@haxtheweb/hax-body-behaviors/lib/HAXFields.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 
 /**
  * `haxcms-site-dashboard`
@@ -150,6 +151,7 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
           --simple-fields-color: var(--hax-ui-color);
         }
       `,
+      DDDReducedMotion,
     ];
   }
   // render function

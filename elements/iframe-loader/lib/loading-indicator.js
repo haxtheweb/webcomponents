@@ -57,6 +57,13 @@ class LoadingIndicator extends LitElement {
           opacity: 0;
         }
       }
+      /* reduced motion: the bar stands still. Nothing waits on the end of
+         this loop, so none is right here. */
+      @media (prefers-reduced-motion: reduce) {
+        .progress-line:before {
+          animation: none;
+        }
+      }
     `;
   }
   static get properties() {

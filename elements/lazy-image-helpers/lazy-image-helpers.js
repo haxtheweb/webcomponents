@@ -101,6 +101,12 @@ export const lazyImageLoader = function (SuperClass) {
             float: unset;
             opacity: 1;
           }
+          /* reduced motion: the image appears without the fade */
+          @media (prefers-reduced-motion: reduce) {
+            img[loading="lazy"] {
+              transition-duration: var(--ddd-duration-reduced, 0.01ms);
+            }
+          }
         `,
       ];
     }

@@ -1,0 +1,64 @@
+name: legacy-scan
+
+# Weekly Modern Web Guidance legacy-scan report (haxtheweb/issues#3298).
+# Plain scripting, no AI. INFORMATIONAL: the report goes to the job summary
+# and nowhere else. This workflow never opens an issue or a pull request,
+# comments, labels, merges or deploys, and its token can only read the repo.
+#
+# What it lists: older patterns in element source that Modern Web Guidance
+# has a deterministic rule for (scripts/legacy-scan.mjs), grouped by element.
+# That covers about a fifth of the guides and a match can be a deliberate
+# fallback, so it is a hint list, not a to-do list. AGENTS.md ("Browser
+# support and outside guidance") decides what is worth changing.
+#
+# The tool is the exact npm version pinned in praw's skills-lock.json; the
+# script checks the tarball's sha512 before running it and runs it with
+# DISABLE_TELEMETRY=1. Run it by hand with `yarn legacy-scan [element ...]`.
+#
+# The job fails only when the scan itself could not run (the package could
+# not be fetched, or its integrity did not match the pin).
+on:
+  schedule:
+    - cron: "37 0 * * 1" # Sunday 7:37 PM America/New_York (EST); 8:37 PM during EDT
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: legacy-scan
+  cancel-in-progress: false
+jobs:
+  legacy-scan:
+    name: Legacy pattern hints (informational)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Setup node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+
+      # no install: the script uses Node built-ins and fetches the one pinned
+      # package itself
+      - name: Legacy scan
+        env:
+          DISABLE_TELEMETRY: "1"
+        run: |
+          set -uo pipefail
+          scan_exit=0
+          node scripts/legacy-scan.mjs > legacy-scan.md 2> legacy-scan.err || scan_exit=$?
+          if [[ $scan_exit -ne 0 ]]; then
+            {
+              echo "## Modern Web Guidance legacy-scan: did not run"
+              echo ""
+              echo '~~~text'
+              tail -n 40 legacy-scan.err
+              echo '~~~'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit "$scan_exit"
+          fi
+          cat legacy-scan.md >> "$GITHUB_STEP_SUMMARY"

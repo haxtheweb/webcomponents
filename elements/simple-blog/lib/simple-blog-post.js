@@ -7,6 +7,7 @@ import { DDDReadingSurface } from "@haxtheweb/d-d-d/lib/DDDReading.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `simple-blog-post`
  * @element simple-blog-post
@@ -135,6 +136,7 @@ class SimpleBlogPost extends SimpleColors {
           color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }
       `,
+      DDDReducedMotion,
     ];
   }
   /**

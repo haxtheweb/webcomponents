@@ -201,3 +201,39 @@ describe("hax-iconset — the Future Traveler", () => {
     }
   });
 });
+
+describe("hax-iconset — project area icons", () => {
+  // the two HAXcms backends, drawn as a HAX block with their mark cut out
+  const AREA_ICONS = ["php", "nodejs"];
+
+  it("lists them in the hax set", () => {
+    const hax = HaxIconsetManifest.find((set) => set.name === "hax").icons;
+    for (const name of AREA_ICONS) {
+      expect(hax).to.include(name);
+      expect(SimpleIconsetStore.iconlist).to.include(`hax:${name}`);
+    }
+  });
+
+  it("draws each on the 24 grid in one ink, so it takes any color", async () => {
+    for (const name of AREA_ICONS) {
+      const res = await fetch(SimpleIconsetStore.getIcon(`hax:${name}`));
+      expect(res.ok).to.be.true;
+      const doc = new DOMParser().parseFromString(
+        await res.text(),
+        "image/svg+xml",
+      );
+      const root = doc.documentElement;
+      expect(root.nodeName).to.equal("svg");
+      expect(root.getAttribute("viewBox")).to.equal("0 0 24 24");
+      // one filled path: no strokes, no colors of its own, no lettering
+      expect(root.children.length).to.equal(1);
+      const path = root.children[0];
+      expect(path.nodeName).to.equal("path");
+      expect(path.getAttribute("fill")).to.equal(null);
+      expect(path.getAttribute("stroke")).to.equal(null);
+      expect(root.querySelector("text, image, mask, style, script")).to.equal(
+        null,
+      );
+    }
+  });
+});

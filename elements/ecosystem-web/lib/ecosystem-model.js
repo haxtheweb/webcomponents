@@ -33,17 +33,26 @@ export const COLORS = {
   limestoneGray: "#a2aaad",
   coalyGray: "#262626",
 };
+/**
+ * The icon motions a tile can name: the DDD icon motion library
+ * (@haxtheweb/d-d-d/lib/DDDMotion.js, DDDMotionIconNames).
+ */
 export const MOTIONS = [
   "pop",
   "wiggle",
   "tilt",
-  "pulse",
+  "beat",
   "lift",
   "spin",
   "nudge",
   "strike",
   "glow",
 ];
+/**
+ * Names a web written before the library was named may still use: the
+ * scale motion was called pulse, which in DDD is the attention ring.
+ */
+const MOTION_ALIASES = { pulse: "beat" };
 const SHAPES = {
   "((": "circle",
   "{{": "hex",
@@ -221,7 +230,7 @@ export function parseWeb(text) {
     }
     if (a.a.icon) n.icon = a.a.icon;
     if (a.a.image) n.image = a.a.image;
-    if (a.a.motion) n.motion = a.a.motion;
+    if (a.a.motion) n.motion = MOTION_ALIASES[a.a.motion] || a.a.motion;
     if (a.a.new) n.isNew = true;
     if (a.a.mono) n.mono = String(a.a.mono).slice(0, 5);
     if (a.a.logo) n.logo = a.a.logo;

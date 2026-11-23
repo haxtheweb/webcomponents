@@ -146,7 +146,7 @@ class SimpleTooltip extends LitElement {
           animation-delay: var(--simple-tooltip-delay-out, 0ms);
           animation-name: keyFrameFadeOutOpacity;
           animation-iteration-count: 1;
-          animation-timing-function: ease-in;
+          animation-timing-function: var(--ddd-timing-exit, ease-in);
           animation-duration: var(--simple-tooltip-duration-out, 500ms);
           animation-fill-mode: forwards;
         }
@@ -168,7 +168,7 @@ class SimpleTooltip extends LitElement {
           animation-delay: var(--simple-tooltip-delay-out, 500ms);
           animation-name: keyFrameScaleDown;
           animation-iteration-count: 1;
-          animation-timing-function: ease-in;
+          animation-timing-function: var(--ddd-timing-exit, ease-in);
           animation-duration: var(--simple-tooltip-duration-out, 500ms);
           animation-fill-mode: forwards;
         }
@@ -197,6 +197,20 @@ class SimpleTooltip extends LitElement {
 
         .cancel-animation {
           animation-delay: -30s !important;
+        }
+
+        /* reduced motion: near-zero duration, not none, because show and
+           hide finish on animationend. The delay before showing is timing,
+           not motion, and stays. */
+        @media (prefers-reduced-motion: reduce) {
+          .fade-in-animation,
+          .fade-out-animation,
+          .scale-up-animation,
+          .scale-down-animation,
+          .slide-down-animation,
+          .slide-down-animation-out {
+            animation-duration: var(--ddd-duration-reduced, 0.01ms);
+          }
         }
 
         /* #tooltip.hidden (not .hidden) so the id-level width/padding/margin

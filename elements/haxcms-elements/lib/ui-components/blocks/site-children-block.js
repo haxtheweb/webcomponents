@@ -6,6 +6,7 @@ import { LitElement, html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 /**
  * `site-children-block`
  * `Child pages of whatever is active`
@@ -197,6 +198,7 @@ class SiteChildrenBlock extends LitElement {
           margin-inline-start: calc(var(--site-children-block-indent) * 10);
         }
       `,
+      DDDReducedMotion,
     ];
   }
   resultChanged(e) {

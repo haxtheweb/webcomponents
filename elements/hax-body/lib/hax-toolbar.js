@@ -8,6 +8,7 @@ import "@haxtheweb/hax-body/lib/hax-context-item.js";
 import "@haxtheweb/hax-body/lib/hax-toolbar-menu.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleToolbarBehaviors } from "@haxtheweb/simple-toolbar/simple-toolbar.js";
+import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
 
 const HaxToolbarBehaviors = function (SuperClass) {
   return class extends SimpleToolbarBehaviors(SuperClass) {
@@ -35,6 +36,7 @@ const HaxToolbarBehaviors = function (SuperClass) {
             border: none;
           }
         `,
+        DDDReducedMotion,
       ];
     }
     constructor() {

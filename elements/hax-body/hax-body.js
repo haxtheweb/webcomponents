@@ -602,7 +602,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             transparent 1px 10px
           );
           outline: 2px solid var(--hax-ui-danger);
-          animation: hax-motion-fade 140ms ease-out;
+          animation: hax-motion-fade 140ms var(--ddd-timing-enter, ease-out);
         }
         #motion > .drop-line {
           border-radius: 2px;

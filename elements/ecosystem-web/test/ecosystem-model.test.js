@@ -17,6 +17,7 @@ import {
   impactCuts,
   timelineSteps,
   searchNodes,
+  MOTIONS,
 } from "../lib/ecosystem-model.js";
 
 const MMD = [
@@ -49,6 +50,19 @@ describe("ecosystem-model", () => {
   it("reports what it cannot read", () => {
     const M = parseWeb("x -->|y| z\n%%@ node q color=nope");
     expect(M.errors.length).to.be.greaterThan(0);
+  });
+
+  it("takes the DDD motion names, and pulse as the old name for beat", () => {
+    const web = (motion) =>
+      parseWeb(`${MMD}\n  %%@ node c icon=hax:php motion=${motion}`);
+    expect(MOTIONS).to.include("beat").and.not.include("pulse");
+    const beat = web("beat");
+    expect(beat.errors).to.deep.equal([]);
+    expect(beat.nodes.get("c").motion).to.equal("beat");
+    const old = web("pulse");
+    expect(old.errors).to.deep.equal([]);
+    expect(old.nodes.get("c").motion).to.equal("beat");
+    expect(web("shake").errors.join(" ")).to.contain('unknown motion "shake"');
   });
 
   it("lays out the same web the same way every time", () => {

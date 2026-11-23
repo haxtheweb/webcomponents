@@ -119,6 +119,20 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
         :host([focused]) #codeeditor {
           border: var(--code-editor-focus-code-border);
         }
+        /* reduced motion: near-zero durations instead of none, so end events
+           still fire. This is the DDD rule (d-d-d lib/DDDReducedMotion.js)
+           written out, because this element does not extend DDD. */
+        @media (prefers-reduced-motion: reduce) {
+          :host,
+          *,
+          *::before,
+          *::after {
+            animation-duration: var(--ddd-duration-reduced, 0.01ms) !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: var(--ddd-duration-reduced, 0.01ms) !important;
+            transition-delay: 0ms !important;
+          }
+        }
       `,
     ];
   }

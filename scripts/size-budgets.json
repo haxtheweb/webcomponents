@@ -2494,20 +2494,20 @@
       "gzip": 12400
     },
     "elements/simple-popover/lib/simple-popover-manager.js": {
-      "raw": 19100,
-      "gzip": 6400
+      "raw": 22000,
+      "gzip": 7300
     },
     "elements/simple-popover/lib/simple-popover-selection.js": {
-      "raw": 28300,
-      "gzip": 8900
+      "raw": 31600,
+      "gzip": 9800
     },
     "elements/simple-popover/lib/simple-tour.js": {
-      "raw": 30100,
-      "gzip": 9500
+      "raw": 33300,
+      "gzip": 10400
     },
     "elements/simple-popover/simple-popover.js": {
-      "raw": 9800,
-      "gzip": 3600
+      "raw": 11800,
+      "gzip": 4200
     },
     "elements/simple-progress/simple-progress.js": {
       "raw": 6600,
@@ -2570,8 +2570,8 @@
       "gzip": 19400
     },
     "elements/simple-tooltip/simple-tooltip.js": {
-      "raw": 24300,
-      "gzip": 6300
+      "raw": 29700,
+      "gzip": 7600
     },
     "elements/slide-deck/slide-deck.js": {
       "raw": 37700,
