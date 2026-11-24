@@ -1,5 +1,11 @@
 import { html, fixture, expect, aTimeout } from "@open-wc/testing";
 import { WebBaselineStatus } from "../web-baseline-status.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests are about the widget once webstatus.dev is allowed; what
+// happens before that is in web-baseline-status-consent.test.js
+beforeEach(() => HaxConsent.set("webstatus", "allow"));
+after(() => HaxConsent.clearAll());
 
 const FEATURE = {
   feature_id: "anchor-positioning",

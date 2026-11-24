@@ -16,6 +16,10 @@ const escapeAttr = (value) =>
     .replace(/"/g, "&quot;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
+// Privacy: notes play from the soundfont shipped in this package's own
+// lib/soundfont folder (FluidR3 GM, MIT), never the player's default soundfont
+// on a third-party host, so playing music contacts no one but this site.
+const SOUNDFONT_URL = new URL("./lib/soundfont", import.meta.url).href;
 
 /**
  * `music-player`
@@ -157,7 +161,10 @@ class MusicPlayer extends I18NMixin(LitElement) {
             type="${this.visualizer}"
             src="${this.source}"
           ></midi-visualizer>
-          <midi-player src="${this.source}" sound-font></midi-player>
+          <midi-player
+            src="${this.source}"
+            sound-font="${SOUNDFONT_URL}"
+          ></midi-player>
           <span class="screen-reader-text" aria-live="polite"></span>
         </div>
       </div>

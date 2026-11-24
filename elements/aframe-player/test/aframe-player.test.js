@@ -1,5 +1,11 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { AframePlayer } from "../aframe-player.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests are about the scene once A-Frame is allowed; what happens
+// before that is in aframe-player-consent.test.js
+beforeEach(() => HaxConsent.set("aframe", "allow"));
+after(() => HaxConsent.clearAll());
 
 // Prevent aframe.min.js from loading from the CDN in the test environment.
 // connectedCallback calls ESGlobalBridge.load(...) which injects a <script>

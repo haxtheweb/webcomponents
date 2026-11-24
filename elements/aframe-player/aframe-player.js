@@ -5,9 +5,17 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
+
+// the A-Frame release this player drives
+const AFRAME_URL = "https://aframe.io/releases/0.9.2/aframe.min.js";
 /**
  * `aframe-player`
  * `A wrapper to do data binding into aframe`
+ *
+ * Privacy: the A-Frame library comes from aframe.io, so neither it nor the
+ * scene loads until the visitor allows the "aframe" service in HaxConsent;
+ * a hax-consent-gate panel stands in the scene's place until then.
  *
  * @demo demo/index.html
  * @element aframe-player
@@ -30,6 +38,11 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     ];
   }
   render() {
+    if (!this._consent.allowed) {
+      return html`<div style="width:${this.width};max-width:100%;">
+        ${this._consent.gate({ aspect: this._aspect() })}
+      </div>`;
+    }
     return html`
       <a-scene
         id="scene"
@@ -59,8 +72,33 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     this.y = "0";
     this.z = "0";
     this.position = {};
+    this._consent = new HaxConsentController(this, () => AFRAME_URL);
+  }
+  /**
+   * The scene's shape for the consent panel, when width and height are
+   * plain pixel sizes
+   */
+  _aspect() {
+    const w = parseFloat(this.width);
+    const h = parseFloat(this.height);
+    return w > 0 && h > 0 && /px$/.test(this.width) && /px$/.test(this.height)
+      ? `${w} / ${h}`
+      : "16 / 9";
   }
   updated(changedProperties) {
+    // the library loads once the scene is drawn, which waits for consent
+    if (!this._consent.allowed) {
+      // the scene left with the choice; a later allow draws a new one
+      this.__entity = undefined;
+    } else if (globalThis.AFRAME) {
+      this._aframeLoaded();
+    } else if (!this.__aframeRequested) {
+      this.__aframeRequested = true;
+      globalThis.ESGlobalBridge.requestAvailability().load(
+        "aframePlayer",
+        AFRAME_URL,
+      );
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (["x", "y", "z", "width", "height"].includes(propName)) {
         this.position = this._computePosition(
@@ -161,26 +199,30 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
     // curl URL | openssl dgst -sha384 -binary | openssl base64 -A) once the
     // bridge accepts one; not added here because aframe.io was unreachable
     // from the audit sandbox and a guessed hash would break the player.
-    let location = "https://aframe.io/releases/0.9.2/aframe.min.js";
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
+    // a fresh controller: the one in the constructor is spent once this
+    // element has been removed and put back
+    if (this.windowControllers.signal.aborted) {
+      this.windowControllers = new AbortController();
+    }
     globalThis.addEventListener(
       "es-bridge-aframePlayer-loaded",
       this._aframeLoaded.bind(this),
       { signal: this.windowControllers.signal },
     );
-    globalThis.ESGlobalBridge.requestAvailability().load(
-      "aframePlayer",
-      location,
-    );
   }
 
   _aframeLoaded(_el) {
+    const scene = this.querySelector("#scene");
+    if (!scene || this.__entity) {
+      return;
+    }
     // ensure that this doesn't put full screen styles on the page!
-    this.querySelector("#scene").removeFullScreenStyles();
+    scene.removeFullScreenStyles();
     this.__entity = globalThis.document.createElement("a-entity");
     this.__entity.setAttribute("gltf-model", "url(" + this.source + ")");
     this._positionChanged(this.position);
-    this.querySelector("#scene").appendChild(this.__entity);
+    scene.appendChild(this.__entity);
   }
 
   /**

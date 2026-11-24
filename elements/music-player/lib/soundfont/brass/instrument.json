@@ -1,0 +1,8 @@
+{
+  "name": "brass",
+  "minPitch": 21,
+  "maxPitch": 108,
+  "durationSeconds": 2.0,
+  "releaseSeconds": 0.5,
+  "percussive": false
+}

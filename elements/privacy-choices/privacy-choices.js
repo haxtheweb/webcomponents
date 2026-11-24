@@ -45,6 +45,9 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
       serviceLabel_vimeo: "Vimeo",
       serviceLabel_google_maps: "Google Maps",
       serviceLabel_speech: "Voice input",
+      serviceLabel_github: "GitHub",
+      serviceLabel_webstatus: "webstatus.dev",
+      serviceLabel_aframe: "A-Frame",
       serviceSends_google_analytics:
         "Counts visits and pages read. Google receives your IP address and may set cookies.",
       serviceSends_youtube:
@@ -55,6 +58,12 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
         "Shows maps from Google Maps. Google receives your IP address and may set cookies.",
       serviceSends_speech:
         "When your browser can't understand speech on your device, your voice goes to its speech service (Google, Apple or Microsoft).",
+      serviceSends_github:
+        "Shows repository cards and other content from GitHub. GitHub receives your IP address and may set cookies.",
+      serviceSends_webstatus:
+        "Shows Baseline browser support badges from webstatus.dev, a Google Chrome project. Google receives your IP address.",
+      serviceSends_aframe:
+        "Loads the A-Frame library from aframe.io to show 3D scenes. aframe.io receives your IP address.",
       serviceSends_embed:
         "Shows content from {host}. {host} receives your IP address and may set cookies.",
     };

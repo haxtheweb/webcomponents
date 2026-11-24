@@ -4,6 +4,12 @@ import { GithubPreview } from "../github-preview.js";
 // lib files imported directly so their own files count in coverage
 import { WCMarkdown } from "../lib/wc-markdown.js";
 import { GithubRpgContributors } from "../lib/github-rpg-contributors.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests are about the cards once GitHub is allowed; what happens
+// before that is in github-preview-consent.test.js
+beforeEach(() => HaxConsent.set("github", "allow"));
+after(() => HaxConsent.clearAll());
 
 // HAX schemas ship as JSON next to the element; read one whether the class
 // returns the object or the URL of its file

@@ -19,5 +19,11 @@
   "serviceNotice_youtube": "This video plays from YouTube. Google will receive your IP address and may set cookies.",
   "serviceNotice_vimeo": "This video plays from Vimeo. Vimeo will receive your IP address.",
   "serviceNotice_google_maps": "This map is from Google Maps. Google will receive your IP address and may set cookies.",
-  "serviceNotice_speech": "Your browser would send your voice to its speech service (Google, Apple or Microsoft) to turn it into text."
+  "serviceNotice_speech": "Your browser would send your voice to its speech service (Google, Apple or Microsoft) to turn it into text.",
+  "serviceLabel_github": "GitHub",
+  "serviceLabel_webstatus": "webstatus.dev",
+  "serviceLabel_aframe": "A-Frame",
+  "serviceNotice_github": "This content comes from GitHub. GitHub will receive your IP address and may set cookies.",
+  "serviceNotice_webstatus": "This Baseline status comes from webstatus.dev, a Google Chrome project. Google will receive your IP address.",
+  "serviceNotice_aframe": "This 3D scene needs the A-Frame library from aframe.io. aframe.io will receive your IP address."
 }

@@ -5,7 +5,8 @@
 import { localStorageGet, localStorageSet } from "./storage.js";
 /**
  * One consent store for every third-party service a HAX page can reach
- * (YouTube, Vimeo, maps, the browser speech service).
+ * (YouTube, Vimeo, maps, GitHub, webstatus.dev, A-Frame, the browser speech
+ * service).
  *
  * Invariant: an element that would contact a third party asks
  * `HaxConsent.get(service) === "allow"` first and makes no request to that
@@ -72,6 +73,12 @@ export const HaxConsent = globalThis.HaxConsent;
 const KNOWN_HOSTS = [
   ["youtube", ["youtube.com", "youtube-nocookie.com", "youtu.be"]],
   ["vimeo", ["vimeo.com"]],
+  // github-preview reads api.github.com and raw.githubusercontent.com
+  ["github", ["github.com", "githubusercontent.com", "githubassets.com"]],
+  // web-baseline-status reads api.webstatus.dev
+  ["webstatus", ["webstatus.dev"]],
+  // aframe-player loads the A-Frame library from aframe.io
+  ["aframe", ["aframe.io"]],
 ];
 
 /**

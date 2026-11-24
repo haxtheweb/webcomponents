@@ -7,9 +7,15 @@ import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 
 /**
  * `github-rpg-contributors`
+ * A repository's contributors, each drawn as an rpg-character.
+ *
+ * Privacy: the contributor list comes from api.github.com, so nothing is
+ * requested until the visitor allows the "github" service in HaxConsent; a
+ * hax-consent-gate panel stands where the characters go until then.
  *
  * @demo index.html
  * @element github-rpg-contributors
@@ -35,6 +41,13 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
     this.repo = "";
     this.limit = 50;
     this.contributors = [];
+    this._consent = new HaxConsentController(this, () =>
+      this.org && this.repo ? this._contributorsUrl() : null,
+    );
+  }
+
+  _contributorsUrl() {
+    return `https://api.github.com/repos/${this.org}/${this.repo}/contributors`;
   }
 
   // Lit reactive properties
@@ -78,6 +91,11 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
           flex-wrap: wrap;
           justify-content: center;
         }
+        /* the consent panel takes the row the characters would fill */
+        .rpg-wrapper.gated {
+          display: block;
+          margin: var(--ddd-spacing-0) var(--ddd-spacing-2) var(--ddd-spacing-2);
+        }
         .contributor {
           display: flex;
           flex-direction: column;
@@ -107,16 +125,23 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
+    const allowed = this._consent.allowed;
     if (
-      changedProperties.has("org") ||
-      (changedProperties.has("repo") && this.org && this.repo)
+      allowed &&
+      this.org &&
+      this.repo &&
+      (changedProperties.has("org") ||
+        (changedProperties.has("repo") && this.org && this.repo) ||
+        // the visitor just allowed GitHub
+        this.__wasAllowed === false)
     ) {
       this.fetchContributors();
     }
+    this.__wasAllowed = allowed;
   }
 
   fetchContributors() {
-    const url = `https://api.github.com/repos/${this.org}/${this.repo}/contributors`;
+    const url = this._contributorsUrl();
     try {
       fetch(url)
         .then((d) => (d.ok ? d.json() : {}))
@@ -145,11 +170,14 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
           >
         </h3>
       </div>
-      <div class="rpg-wrapper">
-        ${this.contributors
-          .filter((item, index) => index < this.limit || this.limit === 0)
-          .map(
-            (item) => html`
+      <div class="rpg-wrapper ${this._consent.allowed ? "" : "gated"}">
+        ${
+          !this._consent.allowed
+            ? this._consent.gate({ aspect: "auto" })
+            : this.contributors
+                .filter((item, index) => index < this.limit || this.limit === 0)
+                .map(
+                  (item) => html`
     <div class="contributor">
       <a href=https://github.com/${item.login}>
         <rpg-character seed="${item.login}"></rpg-character>
@@ -160,7 +188,8 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
       </a>
     </div>
   `,
-          )}
+                )
+        }
       </div>`;
   }
 

@@ -2,13 +2,14 @@ import { fixture, expect, html } from "@open-wc/testing";
 
 import "../music-player.js";
 
+// a short tune HAX owns, shipped next to the element
+const TUNE = new URL("../lib/hax-demo-tune.mid", import.meta.url).href;
+
 describe("music-player test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(
-      html`<music-player
-        source="https://magenta.github.io/magenta-js/music/demos/melody.mid"
-      ></music-player> `,
+      html`<music-player source="${TUNE}"></music-player> `,
     );
   });
 
@@ -22,6 +23,20 @@ describe("music-player test", () => {
       const midiPlayer = element.shadowRoot.querySelector("midi-player");
       expect(midiPlayer).to.exist;
       expect(midiPlayer.hasAttribute("sound-font")).to.be.true;
+    });
+
+    it("plays from the soundfont shipped with the element", async () => {
+      await element.updateComplete;
+      const midiPlayer = element.shadowRoot.querySelector("midi-player");
+      const soundFont = new URL(midiPlayer.getAttribute("sound-font"));
+      // same origin as the element, never the player's third-party default
+      expect(soundFont.origin).to.equal(globalThis.location.origin);
+      expect(soundFont.pathname).to.match(/\/music-player\/lib\/soundfont$/);
+      const spec = await (
+        await fetch(soundFont.href + "/soundfont.json")
+      ).json();
+      expect(Object.keys(spec.instruments)).to.have.lengthOf(129);
+      expect(spec.instruments.drums).to.equal("drums");
     });
 
     it("has proper media element structure", async () => {

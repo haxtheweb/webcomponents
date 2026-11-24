@@ -19,6 +19,9 @@ export const HAX_CONSENT_SERVICES = [
   { id: "youtube", icon: "av:video-library" },
   { id: "vimeo", icon: "av:video-library" },
   { id: "google-maps", icon: "maps:map" },
+  { id: "github", icon: "icons:code" },
+  { id: "webstatus", icon: "icons:verified-user" },
+  { id: "aframe", icon: "icons:3d-rotation" },
   { id: "speech", icon: "av:mic" },
 ];
 
@@ -68,6 +71,9 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
       serviceLabel_vimeo: "Vimeo",
       serviceLabel_google_maps: "Google Maps",
       serviceLabel_speech: "Voice input",
+      serviceLabel_github: "GitHub",
+      serviceLabel_webstatus: "webstatus.dev",
+      serviceLabel_aframe: "A-Frame",
       serviceNotice_youtube:
         "This video plays from YouTube. Google will receive your IP address and may set cookies.",
       serviceNotice_vimeo:
@@ -76,6 +82,12 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
         "This map is from Google Maps. Google will receive your IP address and may set cookies.",
       serviceNotice_speech:
         "Your browser would send your voice to its speech service (Google, Apple or Microsoft) to turn it into text.",
+      serviceNotice_github:
+        "This content comes from GitHub. GitHub will receive your IP address and may set cookies.",
+      serviceNotice_webstatus:
+        "This Baseline status comes from webstatus.dev, a Google Chrome project. Google will receive your IP address.",
+      serviceNotice_aframe:
+        "This 3D scene needs the A-Frame library from aframe.io. aframe.io will receive your IP address.",
     };
     this.registerLocalization({
       context: this,
