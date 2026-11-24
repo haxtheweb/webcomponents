@@ -126,8 +126,12 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
         }
 
         /* page content is light DOM, out of reach of the shadow main a
-           rule: its links take the palette's link role too */
-        journey-sidebar-theme a:any-link {
+           rule: its links take the palette's link role too ("body"
+           outranks DDD's global body a:any-link rule); a link inside a DDD
+           accent or primary fill keeps the text color DDD pairs with it */
+        body
+          journey-sidebar-theme
+          a:any-link:not(:is([data-accent], [data-primary]) a) {
           color: var(--text-heading);
         }
 

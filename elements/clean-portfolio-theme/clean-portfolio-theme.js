@@ -596,8 +596,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         /* content links: the palette's link role reads on the page in
            every palette and scheme; always underlined, since in some
            palettes the link and body text are close in color */
-        clean-portfolio-theme a,
-        clean-portfolio-theme a:any-link {
+        /* "body" outranks DDD's global body a:any-link rule, which would
+           otherwise win or lose on stylesheet order alone; links inside a
+           DDD accent or primary fill keep the text color DDD pairs with it */
+        body clean-portfolio-theme a:not(:is([data-accent], [data-primary]) a),
+        body
+          clean-portfolio-theme
+          a:any-link:not(:is([data-accent], [data-primary]) a) {
           color: var(
             --ddd-palette-link,
             light-dark(
