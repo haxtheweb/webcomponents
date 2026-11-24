@@ -30,5 +30,14 @@
     "wipeSlot": false,
     "unsetAttributes": []
   },
-  "demoSchema": []
+  "demoSchema": [
+    {
+      "tag": "hax-consent-gate",
+      "content": "",
+      "properties": {
+        "variant": "panel",
+        "service": "youtube"
+      }
+    }
+  ]
 }

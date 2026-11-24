@@ -19,7 +19,7 @@
   "import": "@haxtheweb/music-player/music-player.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/music-player/music-player.js",
   "install": "npm i @haxtheweb/music-player",
-  "demoHtml": "<music-player source=\"https://magenta.github.io/magenta-js/music/demos/melody.mid\"></music-player>",
+  "demoHtml": "<music-player source=\"https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/music-player/lib/hax-demo-tune.mid\"></music-player>",
   "attributes": [
     {
       "name": "source",
@@ -127,12 +127,12 @@
         "tag": "music-player",
         "content": "",
         "properties": {
-          "source": "https://magenta.github.io/magenta-js/music/demos/melody.mid"
+          "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/music-player/lib/hax-demo-tune.mid"
         }
       }
     ]
   },
-  "surfaceHash": "4762c9bb1a2a",
+  "surfaceHash": "6193cce6da8d",
   "walkthroughs": [
     {
       "id": "",
@@ -140,13 +140,13 @@
       "order": 0,
       "src": "music-player.motion.json",
       "file": "lib/music-player.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/music-player.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

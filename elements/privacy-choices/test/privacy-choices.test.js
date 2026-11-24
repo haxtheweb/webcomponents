@@ -1,6 +1,9 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import "../privacy-choices.js";
 import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+import { HAX_CONSENT_SERVICES } from "@haxtheweb/hax-consent-gate/hax-consent-gate.js";
+
+const KNOWN = HAX_CONSENT_SERVICES.length;
 
 const rows = (el) => [...el.shadowRoot.querySelectorAll("li")];
 const stateOf = (el, i) =>
@@ -18,7 +21,8 @@ describe("privacy-choices", () => {
   });
 
   it("lists every known service, each not chosen yet", () => {
-    expect(rows(element).length).to.equal(5);
+    expect(KNOWN).to.equal(8);
+    expect(rows(element).length).to.equal(KNOWN);
     rows(element).forEach((r, i) =>
       expect(stateOf(element, i)).to.contain("Not chosen yet"),
     );
@@ -50,8 +54,8 @@ describe("privacy-choices", () => {
   it("lists hosts answered on embeds after the known services", async () => {
     HaxConsent.set("embed:example.com", "allow");
     await element.updateComplete;
-    expect(rows(element).length).to.equal(6);
-    expect(rows(element)[5].textContent).to.contain("example.com");
+    expect(rows(element).length).to.equal(KNOWN + 1);
+    expect(rows(element)[KNOWN].textContent).to.contain("example.com");
   });
 
   it("Withdraw all returns every service to ask", async () => {
@@ -60,7 +64,7 @@ describe("privacy-choices", () => {
     element.shadowRoot.querySelector("#withdraw").click();
     await element.updateComplete;
     expect(Object.keys(HaxConsent.choices()).length).to.equal(0);
-    expect(rows(element).length).to.equal(5);
+    expect(rows(element).length).to.equal(KNOWN);
     expect(
       element.shadowRoot.querySelector('[role="status"]').textContent,
     ).to.contain("withdrawn");

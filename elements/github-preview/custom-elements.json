@@ -49,6 +49,16 @@
             },
             {
               "kind": "method",
+              "name": "_githubUrls",
+              "description": "Every URL this card would request: the repository API and, when\nextended, its readme"
+            },
+            {
+              "kind": "method",
+              "name": "_queueFetch",
+              "description": "Fetch on the next tick, once the card is configured and every host it\nwould contact is allowed"
+            },
+            {
+              "kind": "method",
               "name": "fetchGithubData",
               "parameters": [
                 {
@@ -208,6 +218,15 @@
               },
               "default": "false",
               "attribute": "__failed"
+            },
+            {
+              "kind": "field",
+              "name": "_consent",
+              "default": "new HaxConsentController(this, () => { const urls = this._githubUrls(); return urls.find((url) => !urlAllowed(url)) || urls[0] || null; })"
+            },
+            {
+              "kind": "field",
+              "name": "_onConsentChanged"
             },
             {
               "kind": "field",
@@ -518,7 +537,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`github-rpg-contributors`",
+          "description": "`github-rpg-contributors`\nA repository's contributors, each drawn as an rpg-character.\n\nPrivacy: the contributor list comes from api.github.com, so nothing is\nrequested until the visitor allows the \"github\" service in HaxConsent; a\nhax-consent-gate panel stands where the characters go until then.",
           "name": "GithubRpgContributors",
           "members": [
             {
@@ -526,6 +545,10 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_contributorsUrl"
             },
             {
               "kind": "method",
@@ -586,6 +609,11 @@
               },
               "default": "[]",
               "attribute": "contributors"
+            },
+            {
+              "kind": "field",
+              "name": "_consent",
+              "default": "new HaxConsentController(this, () => this.org && this.repo ? this._contributorsUrl() : null, )"
             }
           ],
           "attributes": [

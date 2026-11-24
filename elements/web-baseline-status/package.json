@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@haxtheweb/d-d-d": "^26.8.0",
+    "@haxtheweb/hax-consent-gate": "^26.8.0",
     "baseline-status": "1.2.0",
     "lit": "3.3.3"
   },

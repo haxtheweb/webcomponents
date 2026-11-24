@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+          "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nPrivacy: the A-Frame library comes from aframe.io, so neither it nor the\nscene loads until the visitor allows the \"aframe\" service in HaxConsent;\na hax-consent-gate panel stands in the scene's place until then.",
           "name": "AframePlayer",
           "members": [
             {
@@ -16,6 +16,11 @@
               "name": "tag",
               "static": true,
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_aspect",
+              "description": "The scene's shape for the consent panel, when width and height are\nplain pixel sizes"
             },
             {
               "kind": "field",
@@ -165,6 +170,11 @@
               "description": "Generate a position object when coordinates change.",
               "default": "{}",
               "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "_consent",
+              "default": "new HaxConsentController(this, () => AFRAME_URL)"
             },
             {
               "kind": "field",

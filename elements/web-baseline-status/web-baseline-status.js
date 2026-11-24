@@ -9,6 +9,10 @@ import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 // <baseline-status>; this element wraps it so it can be placed and configured
 // in HAX. Import the ESM entry (not the .min.js bundle) so lit is not duplicated.
 import "baseline-status/baseline-status.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
+
+// where <baseline-status> reads feature data from
+const WEBSTATUS_API = "https://api.webstatus.dev/v1/features/";
 
 const escapeAttr = (value) =>
   String(value == null ? "" : value)
@@ -24,6 +28,10 @@ const escapeAttr = (value) =>
  * web-platform-dx. Feature data is fetched by the widget at runtime from
  * https://api.webstatus.dev.
  *
+ * Privacy: <baseline-status> is not drawn, so webstatus.dev is not
+ * contacted, until the visitor allows the "webstatus" service in HaxConsent;
+ * a hax-consent-gate panel stands in its place until then.
+ *
  * @demo demo/index.html
  * @element web-baseline-status
  */
@@ -37,6 +45,11 @@ export class WebBaselineStatus extends DDD {
     this.featureId = "";
     this._haxstate = false;
     this._live = false;
+    this._consent = new HaxConsentController(this, () =>
+      this.featureId
+        ? WEBSTATUS_API + encodeURIComponent(this.featureId)
+        : null,
+    );
   }
 
   connectedCallback() {
@@ -100,6 +113,9 @@ export class WebBaselineStatus extends DDD {
   render() {
     if (!this._live) {
       return nothing;
+    }
+    if (!this._consent.allowed) {
+      return this._consent.gate({ aspect: "auto" });
     }
     return html`<baseline-status
       class="${this._haxstate ? "is-editing" : ""}"

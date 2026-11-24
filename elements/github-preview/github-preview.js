@@ -13,6 +13,17 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import {
+  HaxConsent,
+  consentServiceForUrl,
+} from "@haxtheweb/utils/lib/hax-consent.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
+
+// whether a URL may be requested now: same origin, or its service allowed
+const urlAllowed = (url) => {
+  const consent = consentServiceForUrl(url);
+  return !consent || HaxConsent.allowed(consent.service);
+};
 
 // fill {key} placeholders in a translated string
 const fill = (str, values) =>
@@ -521,9 +532,27 @@ class GithubPreview extends I18NMixin(
       ><span class="sr-only" role="status">${this.t.loading}</span>`;
   }
 
+  /**
+   * Every URL this card would request: the repository API and, when
+   * extended, its readme
+   */
+  _githubUrls() {
+    if (!this.repo || !this.org) {
+      return [];
+    }
+    const urls = [`${this.apiUrl}/repos/${this.org}/${this.repo}`];
+    if (this.extended) {
+      urls.push(
+        `${this.rawUrl}/${this.org}/${this.repo}/${this.branch}/${this.readMe}`,
+      );
+    }
+    return urls;
+  }
+
   render() {
-    const ready = this.ready;
-    const loading = !ready && !this.__failed;
+    const gated = !this._consent.allowed;
+    const ready = this.ready && !gated;
+    const loading = !ready && !this.__failed && !gated;
     const openLabel = fill(this.t.openOnGitHub, {
       org: this.org,
       repo: this.repo,
@@ -557,7 +586,9 @@ class GithubPreview extends I18NMixin(
                 ></a>`
               : nothing,
         })}
-        <div class="ddd-block-body">${this._body()}</div>
+        <div class="ddd-block-body">
+          ${gated ? this._consent.gate({ aspect: "auto" }) : this._body()}
+        </div>
         ${ready ? this._stats() : nothing}
       </div>
     `;
@@ -575,6 +606,19 @@ class GithubPreview extends I18NMixin(
     this.readMe = "README.md";
     this.branch = "master";
     this.__failed = false;
+    // Privacy: nothing is requested from GitHub (api.github.com,
+    // raw.githubusercontent.com) until the visitor allows the "github"
+    // service in HaxConsent; a hax-consent-gate panel stands in the card
+    // body until then. With a custom apiUrl / rawUrl the panel asks for
+    // whichever of those hosts is not allowed yet.
+    this._consent = new HaxConsentController(this, () => {
+      const urls = this._githubUrls();
+      return urls.find((url) => !urlAllowed(url)) || urls[0] || null;
+    });
+    this._onConsentChanged = () => {
+      this.requestUpdate();
+      this._queueFetch();
+    };
     this.headers = {
       cache: "force-cache",
     };
@@ -595,6 +639,43 @@ class GithubPreview extends I18NMixin(
     // translated defaults; view-more-text / not-found-text still win
     this.i18nDefault("viewMoreText", "viewMore");
     this.i18nDefault("notFoundText", "assetNotFound");
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener("hax-consent-changed", this._onConsentChanged);
+  }
+
+  disconnectedCallback() {
+    globalThis.removeEventListener(
+      "hax-consent-changed",
+      this._onConsentChanged,
+    );
+    clearTimeout(this.__debounce);
+    super.disconnectedCallback();
+  }
+
+  /**
+   * Fetch on the next tick, once the card is configured and every host it
+   * would contact is allowed
+   */
+  _queueFetch() {
+    clearTimeout(this.__debounce);
+    if (!this.repo || !this.org || !this._consent.allowed) {
+      return;
+    }
+    this.__debounce = setTimeout(() => {
+      this.fetchGithubData(
+        this.repo,
+        this.org,
+        this.headers,
+        this.branch,
+        this.rawUrl,
+        this.apiUrl,
+        this.readMe,
+        this.extended,
+      );
+    }, 0);
   }
 
   /*
@@ -755,19 +836,7 @@ class GithubPreview extends I18NMixin(
         this.repo &&
         this.org
       ) {
-        clearTimeout(this.__debounce);
-        this.__debounce = setTimeout(() => {
-          this.fetchGithubData(
-            this.repo,
-            this.org,
-            this.headers,
-            this.branch,
-            this.rawUrl,
-            this.apiUrl,
-            this.readMe,
-            this.extended,
-          );
-        }, 0);
+        this._queueFetch();
       }
       // if extended is set them import wc-markdown
       if (this.extended && propName === "extended") {

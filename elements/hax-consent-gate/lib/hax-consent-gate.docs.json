@@ -16,7 +16,7 @@
   "import": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-consent-gate/hax-consent-gate.js",
   "install": "npm i @haxtheweb/hax-consent-gate",
-  "demoHtml": "",
+  "demoHtml": "<hax-consent-gate variant=\"panel\" service=\"youtube\"></hax-consent-gate>",
   "attributes": [
     {
       "name": "service",
@@ -83,9 +83,18 @@
       "wipeSlot": false,
       "unsetAttributes": []
     },
-    "demoSchema": []
+    "demoSchema": [
+      {
+        "tag": "hax-consent-gate",
+        "content": "",
+        "properties": {
+          "variant": "panel",
+          "service": "youtube"
+        }
+      }
+    ]
   },
-  "surfaceHash": "eb727697f579",
+  "surfaceHash": "78ed42c67270",
   "walkthroughs": [],
   "videos": [],
   "motion": {

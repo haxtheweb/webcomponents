@@ -54,7 +54,7 @@
       "tag": "music-player",
       "content": "",
       "properties": {
-        "source": "https://magenta.github.io/magenta-js/music/demos/melody.mid"
+        "source": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/music-player/lib/hax-demo-tune.mid"
       }
     }
   ]
