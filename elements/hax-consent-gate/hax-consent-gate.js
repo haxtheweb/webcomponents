@@ -96,7 +96,7 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/hax-consent-gate.ar.json", import.meta.url).href +
+        new URL("./locales/hax-consent-gate.en.json", import.meta.url).href +
         "/../",
     });
     this._onConsent = (e) => {
