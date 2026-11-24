@@ -1446,10 +1446,8 @@ describe("HaxAppInstaller haxProperties and attributes", () => {
     globalThis.fetch = originalFetch;
   });
 
-  it("haxProperties returns a URL string", () => {
-    const props = element.constructor.haxProperties;
-    expect(props).to.be.a("string");
-    expect(props).to.contain("hax-app-installer.haxProperties.json");
+  it("is not placeable in HAX, so it declares no haxProperties", () => {
+    expect(element.constructor.haxProperties).to.equal(undefined);
   });
 
   it("reflects api-endpoint attribute to property", () => {

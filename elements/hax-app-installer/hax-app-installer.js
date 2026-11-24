@@ -2519,12 +2519,17 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
         ${[1, 2, 3, 4].map(
           (n) =>
             html`<i
-              class="${n < this.step || done ? "done" : n === this.step ? "now" : ""}"
+              class="${
+                n < this.step || done ? "done" : n === this.step ? "now" : ""
+              }"
             ></i>`,
         )}
       </span>
       <span class="inst-n"
-        >${this._format(this.t.stepCount, { current: this.step, total: 4 })}</span
+        >${this._format(this.t.stepCount, {
+          current: this.step,
+          total: 4,
+        })}</span
       >
     </div>`;
   }
@@ -2975,7 +2980,11 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
     >
       <simple-icon-lite icon="${HaxUiAdminIcons.back}"></simple-icon-lite>
       <span class="btn-label">${this.t.back}</span>
-      ${rail ? "" : html`<span class="hax-ui-kbd" aria-hidden="true">Alt ←</span>`}
+      ${
+        rail
+          ? ""
+          : html`<span class="hax-ui-kbd" aria-hidden="true">Alt ←</span>`
+      }
     </button>`;
     if (this.error) {
       return html`<button
@@ -3555,14 +3564,6 @@ export class HaxAppInstaller extends I18NMixin(LitElement) {
         <p>${this.t.loading}</p>
       </div>
     `;
-  }
-
-  /**
-   * haxProperties integration via file reference
-   */
-  static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
   }
 }
 
