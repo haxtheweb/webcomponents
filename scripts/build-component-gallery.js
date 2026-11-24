@@ -1023,6 +1023,25 @@ ${loader.styles}
       transform: rotate(180deg);
     }
 
+    /* Help translate: opens the HAXcms demo with the goggles' Translate lens */
+    .translate-toggle {
+      flex: none;
+      gap: var(--hax-ui-gap-md);
+      border-color: var(--hax-ui-line-strong);
+      font-weight: var(--ddd-font-weight-bold, 700);
+    }
+
+    .translate-toggle svg {
+      flex: none;
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .translate-toggle[aria-pressed="true"] {
+      background-color: var(--hax-ui-control-hover);
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .appearance-chevron {
         transition: none;
@@ -1378,6 +1397,16 @@ ${loader.styles}
         display: none;
       }
 
+      /* Help translate keeps its icon, and its name for screen readers */
+      .translate-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
       .appearance-panel {
         position: fixed;
         top: var(--gal-bar, 6rem);
@@ -1526,6 +1555,11 @@ ${loader.markup}
         <button class="hax-ui-btn" id="appearanceReset">Reset to DDD</button>
       </div>
     </div>
+    <!-- Help translate: the HAXcms demo with the goggles' Translate lens on (?goggles=translate&lang=) -->
+    <button class="hax-ui-btn translate-toggle" id="translateBtn" aria-pressed="false" title="Open the HAXcms demo with the goggles' Translate lens on">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7 1.62-4.33L19.12 17h-3.24z"/></svg>
+      <span class="translate-label">Help translate</span>
+    </button>
   </header>
 
   <div class="gallery-container">
@@ -1646,6 +1680,14 @@ ${loader.markup}
   <script>
     // Component data embedded from server
     const COMPONENTS = ${componentsData};
+    // ?goggles=<lens>&lang=<language>: the HAXcms demo opens with the goggles
+    // on (the Translate lens, in a translator's language), and the link keeps it
+    const PLATFORM_DEMO = 'haxcms-elements';
+    const LINK_LENSES = ['code', 'makers', 'flag', 'translate'];
+    const LANG_TAG = /^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{2,8}){0,3}$/;
+    const startParams = new URLSearchParams(globalThis.location.search);
+    let goggles = LINK_LENSES.indexOf(startParams.get('goggles')) !== -1 ? startParams.get('goggles') : '';
+    let gogglesLang = goggles && LANG_TAG.test(startParams.get('lang') || '') ? startParams.get('lang') : '';
     let currentComponent = null;
     let filteredComponents = [...COMPONENTS];
     let currentFilter = 'all';
@@ -1658,6 +1700,7 @@ ${loader.markup}
     const demoTitle = document.getElementById('demoTitle');
     const demoDescription = document.getElementById('demoDescription');
     const demoFrame = document.getElementById('demoFrame');
+    const translateBtn = document.getElementById('translateBtn');
     const welcomeMessage = document.getElementById('welcomeMessage');
     const installationCode = document.getElementById('installationCode');
     const usageCode = document.getElementById('usageCode');
@@ -1677,7 +1720,22 @@ ${loader.markup}
     // A demo stays hidden under the stage's progress bar until its page has
     // loaded, so switching components never flashes a blank (white) frame.
     let stageTimer = null;
+    // the goggles link values go to the HAXcms demo only
+    function withGoggles(src) {
+      if (!goggles || !currentComponent || currentComponent.name !== PLATFORM_DEMO) {
+        return src;
+      }
+      const params = new URLSearchParams();
+      params.set('goggles', goggles);
+      if (gogglesLang) {
+        params.set('lang', gogglesLang);
+      }
+      return src + (src.indexOf('?') === -1 ? '?' : '&') + params.toString();
+    }
+
     function loadDemo(src) {
+      src = withGoggles(src);
+      translateBtn.setAttribute('aria-pressed', String(goggles === 'translate' && !!currentComponent && currentComponent.name === PLATFORM_DEMO));
       stage.classList.add('is-loading');
       clearTimeout(stageTimer);
       stageTimer = setTimeout(() => stage.classList.remove('is-loading'), 8000);
@@ -1881,6 +1939,10 @@ ${loader.markup}
       if (currentComponent && currentComponent !== component) {
         currentTopic = '';
       }
+      if (component.name !== PLATFORM_DEMO) {
+        goggles = '';
+        gogglesLang = '';
+      }
       currentComponent = component;
       currentDemoPath = component.demoPath;
       mobileTitle.textContent = '<' + component.name + '>';
@@ -2073,14 +2135,47 @@ ${loader.markup}
       if (!currentComponent && !licensesPane.classList.contains('hidden')) {
         params.set('view', 'licenses');
       }
+      if (goggles && currentComponent && currentComponent.name === PLATFORM_DEMO) {
+        params.set('goggles', goggles);
+        if (gogglesLang) params.set('lang', gogglesLang);
+      }
       if (appearance.system) params.set('system', appearance.system);
       if (appearance.palette) params.set('palette', appearance.palette);
       const search = params.toString();
       globalThis.history.replaceState({}, '', globalThis.location.pathname + (search ? '?' + search : ''));
     }
 
+    // Help translate: the HAXcms demo with the Translate lens on; pressed again, off
+    translateBtn.addEventListener('click', () => {
+      const on = translateBtn.getAttribute('aria-pressed') !== 'true';
+      let platform = null;
+      for (let i = 0; i < COMPONENTS.length; i++) {
+        if (COMPONENTS[i].name === PLATFORM_DEMO) {
+          platform = COMPONENTS[i];
+          break;
+        }
+      }
+      if (!platform) {
+        return;
+      }
+      goggles = on ? 'translate' : '';
+      if (!on) {
+        gogglesLang = '';
+      }
+      if (currentComponent !== platform) {
+        selectComponent(platform);
+      } else {
+        loadDemo(currentDemoPath);
+      }
+      if (currentView !== 'demo') {
+        setView('demo');
+      }
+      updateUrlForCurrentDemo();
+    });
+
     function applyRouteFromUrl() {
-      const slug = getQueryParam('element');
+      // a goggles link with no element opens the HAXcms demo
+      const slug = getQueryParam('element') || (goggles ? PLATFORM_DEMO : null);
       if (!slug) {
         if (getQueryParam('view') === 'licenses') {
           showLicenses();

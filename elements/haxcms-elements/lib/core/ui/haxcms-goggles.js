@@ -20,6 +20,23 @@ import {
   localStorageGet,
   localStorageSet,
 } from "@haxtheweb/utils/lib/storage.js";
+import "../haxcms-language-picker.js";
+import {
+  TRANSLATE_LIST_KEY,
+  TRANSLATE_LANG_KEY,
+  cleanLang,
+  isEnglish,
+  langName,
+  lostTokens,
+  tokensOf,
+  stillEnglish,
+  localeFileOf,
+  partName,
+  stringsOf,
+  scanScreen,
+  translateIssue,
+  translateLink,
+} from "./haxcms-goggles-translate.js";
 
 const REPO = "https://github.com/haxtheweb/webcomponents";
 const ISSUES = "https://github.com/haxtheweb/issues/issues/new";
@@ -35,6 +52,12 @@ const LENSES = [
     say: "lensMakersSay",
   },
   { id: "flag", label: "lensFlag", icon: "icons:flag", say: "lensFlagSay" },
+  {
+    id: "translate",
+    label: "lensTranslate",
+    icon: "icons:translate",
+    say: "lensTranslateSay",
+  },
 ];
 // events the lenses keep from the page while they are on, so looking never changes anything
 const HELD = [
@@ -139,7 +162,7 @@ const withoutComments = (text) => {
  * browser keeps it, next to the developer mode switch.
  */
 export const GOGGLES_LENS_KEY = "haxcms-goggles-lens";
-const LENS_IDS = ["code", "makers", "flag", "person"];
+const LENS_IDS = ["code", "makers", "flag", "translate", "person"];
 const remembered = () => {
   const saved = localStorageGet(GOGGLES_LENS_KEY, null);
   if (!saved || LENS_IDS.indexOf(saved.lens) === -1) {
@@ -229,6 +252,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       _sort: { state: true },
       _showAll: { state: true },
       _showAllPeople: { state: true },
+      _tx: { state: true },
+      _txMarks: { state: true },
+      _txHover: { state: true },
     };
   }
   constructor() {
@@ -253,6 +279,11 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._showAllPeople = false;
     this._era = "now";
     this._mark = null;
+    this._tx = null;
+    this._txMarks = [];
+    this._txHover = null;
+    this._txLang = "";
+    this._langBefore = null;
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -386,6 +417,50 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       commitOne: "{count} commit",
       commitMany: "{count} commits",
       yearRange: "{from} to {to}",
+      lensTranslate: "Translate",
+      lensTranslateSay:
+        "Translate lens. Every outlined piece of text can be improved. Tap one.",
+      txPickLang: "Which language do you speak?",
+      txPickLangHint:
+        "HAX switches to it, so you see the words people really see. You can change it any time.",
+      txLanguage: "Language",
+      txStart: "Start",
+      txShareLink: "Copy a link for a {lang} speaker",
+      txLinkCopied:
+        "Link copied. Whoever opens it gets this page in {lang} with the Translate lens on.",
+      txInEnglish: "In English",
+      txNowIn: "Now in {lang}",
+      txNotYet: "Not translated yet",
+      txWhatsWrong: "What is wrong?",
+      txWrongMeaning: "Wrong meaning",
+      txUnnatural: "Sounds unnatural",
+      txMissing: "Not translated",
+      txTooLong: "Too long",
+      txYourWords: "Your words in {lang}",
+      txKeep: "Keep {tokens} exactly as written: HAX puts a value there.",
+      txKeepMissing: "Missing: {tokens}",
+      txNote: "A note for us (any language, optional)",
+      txMoreWords: "More words from this part ({count})",
+      txInPart: "Part: {name}",
+      txAdd: "Add to my list",
+      txUpdate: "Update my list",
+      txAdded: "Added. {count} in your list.",
+      txMyList: "My list",
+      txListTitle: "Your suggestions",
+      txEmpty: "Nothing yet. Tap any outlined words to start.",
+      txRemove: "Remove {words}",
+      txChange: "Change",
+      txOtherNote: "Anything else? (any language, optional)",
+      txSend: "Send on GitHub",
+      txSendHint:
+        "Opens a ready-made report. Sign in to GitHub and press Create. You do not need to change anything in it.",
+      txCopyAll: "Copy everything",
+      txCopied: "Copied. Paste it in an email or chat to the HAX team.",
+      txWhatWeSend: "What we send",
+      txSameAsNow: "Your words are the same as now.",
+      txLookingAt: "{en}, now {now}. Press Enter to suggest better words.",
+      txLookingMissing:
+        "{en}, not translated yet. Press Enter to translate it.",
     };
     this.registerLocalization({
       context: this,
@@ -407,6 +482,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   }
   disconnectedCallback() {
     globalThis.removeEventListener("haxcms-goggles-changed", this._sync);
+    this._holdLang(false);
     this._watch(false);
     this._markAway(false);
     super.disconnectedCallback();
@@ -457,7 +533,20 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       if (this.lens === "person") {
         this._showAll = false;
       }
-      if (!this.lensOn || this.lens === "flag" || this.lens === "person") {
+      if (this.lens !== "translate" || !this.lensOn) {
+        this._tx = null;
+        this._txMarks = [];
+      }
+      this._holdLang(this.lens === "translate");
+      if (this.lens === "translate" && this.lensOn) {
+        this._txBegin();
+      }
+      if (
+        !this.lensOn ||
+        this.lens === "flag" ||
+        this.lens === "person" ||
+        this.lens === "translate"
+      ) {
         this.pinned = false;
         this._target = null;
         this._box = null;
@@ -571,6 +660,12 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         : this.t[(chosen || LENSES[0]).say],
     );
     loadMakers().then(() => this.requestUpdate());
+    if (this.lens === "translate") {
+      this._holdLang(true);
+      if (this.lensOn) {
+        this._txBegin();
+      }
+    }
     clearTimeout(this._phaseTimer);
     this._phaseTimer = setTimeout(
       () => {
@@ -592,6 +687,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._target = null;
     this._box = null;
     this._closeIssue();
+    this._tx = null;
+    this._txMarks = [];
+    this._holdLang(false);
     this._pins = [];
     this._marks = [];
     this._status = this.t.takeOffSay;
@@ -625,7 +723,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     }
   }
   get looking() {
-    return this.on && this.lensOn && this.phase === "" && !this._issue;
+    return (
+      this.on && this.lensOn && this.phase === "" && !this._issue && !this._tx
+    );
   }
 
   /* ---------- looking at things ---------- */
@@ -640,6 +740,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     return false;
   }
   _pick(e) {
+    if (this.lens === "translate") {
+      return this._txPick(e);
+    }
     const path = e.composedPath ? e.composedPath() : [];
     let node = null;
     let comp = null;
@@ -689,6 +792,15 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     };
   }
   _look(found, point) {
+    if (this.lens === "translate") {
+      // the Translate lens outlines words, never a whole element
+      this._target = found;
+      this._box = null;
+      this._txHover = found
+        ? found.tx.ctx.localName + "/" + found.tx.key
+        : null;
+      return;
+    }
     if (!found) {
       return;
     }
@@ -723,6 +835,13 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     if (found) {
       const r = found.node.getBoundingClientRect();
       this._look(found, { x: r.left + 12, y: r.bottom });
+      if (found.tx) {
+        this._status = found.tx.missing
+          ? this.t.txLookingMissing.replace("{en}", found.tx.en)
+          : this.t.txLookingAt
+              .replace("{en}", found.tx.en)
+              .replace("{now}", found.tx.now);
+      }
     }
   }
   _hold(e) {
@@ -748,6 +867,12 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._choose(found, { x: e.clientX, y: e.clientY });
   }
   _choose(found, point) {
+    if (this.lens === "translate") {
+      if (found && found.tx) {
+        this._txOpen(found.tx.ctx, found.tx.detail, found.tx.key);
+      }
+      return;
+    }
     this.pinned = false;
     this._showAllPeople = false;
     this._look(found, point);
@@ -769,7 +894,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       return;
     }
     if (e.key === "Escape") {
-      if (this._issue) {
+      if (this._tx) {
+        this._tx = null;
+      } else if (this._issue) {
         this._closeIssue();
       } else if (this.pinned) {
         this.pinned = false;
@@ -835,6 +962,25 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     if (markKey !== this._markKey) {
       this._markKey = markKey;
       this._marks = marks;
+    }
+    const words =
+      this.looking && this.lens === "translate"
+        ? scanScreen(this._txLang, ["haxcms-goggles"])
+        : [];
+    const wordKey = words
+      .map(
+        (m) =>
+          m.ctx.localName +
+          m.key +
+          Math.round(m.x) +
+          "," +
+          Math.round(m.y) +
+          m.missing,
+      )
+      .join("|");
+    if (wordKey !== this._txKey) {
+      this._txKey = wordKey;
+      this._txMarks = words;
     }
     const pins =
       this.looking && this.lens === "makers" ? this._landmarks() : [];
@@ -1424,6 +1570,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     }
   }
   _renderMarks() {
+    if (this.lens === "translate") {
+      return this._renderWords();
+    }
     if (!this.looking || this.lens !== "person") {
       return nothing;
     }
@@ -2224,7 +2373,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       !this.looking ||
       !this._target ||
       this.lens === "flag" ||
-      this.lens === "person"
+      this.lens === "person" ||
+      this.lens === "translate"
     ) {
       return nothing;
     }
@@ -2336,6 +2486,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       </figure>`;
   }
   _renderIssue() {
+    if (this._tx) {
+      return this._renderTranslate();
+    }
     const i = this._issue;
     if (!i) {
       return nothing;
@@ -2425,6 +2578,570 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       </div>
     </section>`;
   }
+  /* ---------- the Translate lens ---------- */
+  /*
+   * While the Translate lens is on, the page speaks the translator's
+   * language and keeps speaking it (the site's own language setting is put
+   * back when the lens or the goggles come off).
+   */
+  _holdLang(on) {
+    const root = globalThis.document.documentElement;
+    if (on) {
+      if (this._langBefore === null) {
+        this._langBefore = root.getAttribute("lang") || "";
+      }
+      const saved = cleanLang(localStorageGet(TRANSLATE_LANG_KEY, ""));
+      if (saved && saved !== this._txLang) {
+        this._txLang = saved;
+      }
+      if (this._txLang && root.getAttribute("lang") !== this._txLang) {
+        root.setAttribute("lang", this._txLang);
+      }
+      if (!this._langWatch && globalThis.MutationObserver) {
+        this._langWatch = new globalThis.MutationObserver(() => {
+          if (this._txLang && root.getAttribute("lang") !== this._txLang) {
+            root.setAttribute("lang", this._txLang);
+          }
+        });
+        this._langWatch.observe(root, {
+          attributes: true,
+          attributeFilter: ["lang"],
+        });
+      }
+    } else {
+      if (this._langWatch) {
+        this._langWatch.disconnect();
+        this._langWatch = null;
+      }
+      if (this._langBefore !== null) {
+        if (this._langBefore) {
+          root.setAttribute("lang", this._langBefore);
+        } else {
+          root.removeAttribute("lang");
+        }
+        this._langBefore = null;
+      }
+    }
+  }
+  /** a translator still in English is asked which language they speak first */
+  _txBegin() {
+    if (!this._tx && (!this._txLang || isEnglish(this._txLang))) {
+      this._txLanguage();
+    }
+  }
+  _txPick(e) {
+    let x = e.clientX;
+    let y = e.clientY;
+    if (typeof x !== "number" || e.type === "focusin") {
+      const t = e.composedPath ? e.composedPath()[0] : e.target;
+      if (!t || !t.getBoundingClientRect) {
+        return null;
+      }
+      const r = t.getBoundingClientRect();
+      x = r.left + r.width / 2;
+      y = r.top + r.height / 2;
+    }
+    const hits = (this._txMarks || []).filter(
+      (m) => x >= m.x && x <= m.x + m.w && y >= m.y && y <= m.y + m.h,
+    );
+    if (!hits.length) {
+      return null;
+    }
+    hits.sort((a, b) => a.w * a.h - b.w * b.h);
+    return { node: hits[0].el, comp: hits[0].ctx, tx: hits[0] };
+  }
+  /** the translator's list lives in their browser until they send it */
+  _txItems() {
+    const l = localStorageGet(TRANSLATE_LIST_KEY, []);
+    return Array.isArray(l) ? l : [];
+  }
+  _txSave(list) {
+    localStorageSet(TRANSLATE_LIST_KEY, list);
+    this.requestUpdate();
+  }
+  _txFocus(sel) {
+    this.updateComplete.then(() => {
+      const f = this.shadowRoot.querySelector(sel);
+      if (f) {
+        f.focus();
+      }
+    });
+  }
+  _txLanguage() {
+    this._tx = {
+      mode: "lang",
+      pick: this._txLang && !isEnglish(this._txLang) ? this._txLang : "",
+    };
+    this._txFocus("haxcms-language-picker");
+  }
+  _txSetLang(l) {
+    const lang = cleanLang(l);
+    if (!lang) {
+      return;
+    }
+    localStorageSet(TRANSLATE_LANG_KEY, lang);
+    this._txLang = lang;
+    this._holdLang(true);
+    this._tx = null;
+    this._status = this.t.lensTranslateSay;
+    setTimeout(() => this._reflow(), 900);
+  }
+  /** a link to this page in a language with the lens on, for someone who speaks it */
+  _txShare(l) {
+    const lang = cleanLang(l);
+    // inside the component gallery the link is the gallery's own, which
+    // opens this demo with the lens on (?goggles=translate&lang=)
+    let href = globalThis.location.href;
+    try {
+      const top = globalThis.parent;
+      if (
+        top &&
+        top !== globalThis &&
+        top.location.origin === globalThis.location.origin &&
+        top.document.getElementById("translateBtn")
+      ) {
+        href = top.location.href;
+      }
+    } catch {
+      // another site frames this one: share this page itself
+    }
+    const link = translateLink(lang, href);
+    const done = () => {
+      this._tx = Object.assign({}, this._tx, { shared: true });
+      this._status = this.t.txLinkCopied.replace("{lang}", langName(lang));
+    };
+    try {
+      globalThis.navigator.clipboard.writeText(link).then(done, () => {
+        this._status = this.t.copyBlockedSay;
+      });
+    } catch {
+      this._status = this.t.copyBlockedSay;
+    }
+  }
+  _txOpen(ctx, detail, key) {
+    const lang = this._txLang;
+    const all = stringsOf(ctx);
+    const s = all.find((x) => x.key === key);
+    if (!s) {
+      return;
+    }
+    const before = this._txItems().find(
+      (x) =>
+        x.namespace === detail.namespace && x.key === key && x.lang === lang,
+    );
+    const missing = stillEnglish(s, lang);
+    this._tx = {
+      mode: "string",
+      ctx: ctx,
+      detail: detail,
+      key: key,
+      en: s.en,
+      now: s.now,
+      missing: missing,
+      why: before ? before.why : missing ? "missing" : "",
+      words: before ? before.suggested : missing ? "" : s.now,
+      note: before ? before.note : "",
+      editing: !!before,
+      others: all.filter((x) => x.key !== key),
+    };
+    this._txFocus("#tx-words");
+  }
+  _txField(name, value) {
+    this._tx = Object.assign({}, this._tx, { [name]: value });
+  }
+  _txAdd() {
+    const t = this._tx;
+    const words = (t.words || "").trim();
+    if (
+      !words ||
+      (words === t.now && !t.missing) ||
+      lostTokens(t.en, words).length
+    ) {
+      return;
+    }
+    const lang = this._txLang;
+    const active = store.activeItem || {};
+    const item = {
+      lang: lang,
+      namespace: t.detail.namespace,
+      file: localeFileOf(t.detail, lang),
+      key: t.key,
+      en: t.en,
+      now: t.missing ? "" : t.now,
+      suggested: words,
+      why: t.why || "unnatural",
+      note: (t.note || "").trim(),
+      part: partName(t.ctx),
+      page: active.slug ? "/" + active.slug : "",
+    };
+    const list = this._txItems().filter(
+      (x) =>
+        !(
+          x.namespace === item.namespace &&
+          x.key === item.key &&
+          x.lang === lang
+        ),
+    );
+    list.push(item);
+    this._txSave(list);
+    this._tx = null;
+    this._status = this.t.txAdded.replace("{count}", list.length);
+  }
+  _txRemove(i) {
+    const list = this._txItems();
+    list.splice(i, 1);
+    this._txSave(list);
+  }
+  _txShowList() {
+    this._tx = { mode: "list", note: "" };
+    this._txFocus(".tx h2");
+  }
+  _txIssue() {
+    const manifest = store.manifest;
+    const theme =
+      manifest && manifest.metadata && manifest.metadata.theme
+        ? manifest.metadata.theme.element
+        : "";
+    // only this language's suggestions go in one report
+    return translateIssue({
+      list: this._txItems().filter((x) => x.lang === this._txLang),
+      lang: this._txLang,
+      note: this._tx && this._tx.note,
+      theme: theme,
+      base: MAKERS.sha
+        ? "haxtheweb/webcomponents@" + MAKERS.sha
+        : "haxtheweb/webcomponents",
+    });
+  }
+  _txLink() {
+    const i = this._txIssue();
+    return (
+      ISSUES +
+      "?title=" +
+      encodeURIComponent(i.title) +
+      "&body=" +
+      encodeURIComponent(i.body) +
+      "&labels=i18n"
+    );
+  }
+  _txCopy() {
+    const i = this._txIssue();
+    try {
+      globalThis.navigator.clipboard.writeText(i.title + "\n\n" + i.body).then(
+        () => {
+          this._txField("copied", true);
+          this._status = this.t.txCopied;
+        },
+        () => {
+          this._status = this.t.copyBlockedSay;
+        },
+      );
+    } catch {
+      this._status = this.t.copyBlockedSay;
+    }
+  }
+  _renderWords() {
+    if (!this.looking) {
+      return nothing;
+    }
+    return this._txMarks.map((m) => {
+      const hot = this._txHover === m.ctx.localName + "/" + m.key;
+      return html`<div
+        class="box mark tx ${m.missing ? "missing" : ""} ${hot ? "hot" : ""}"
+        aria-hidden="true"
+        style="left:${m.x}px;top:${m.y}px;width:${m.w}px;height:${m.h}px"
+      >
+        ${m.missing ? html`<b class="badge">EN</b>` : nothing}
+        ${hot ? html`<span>EN: ${m.en}</span>` : nothing}
+      </div>`;
+    });
+  }
+  _renderTranslate() {
+    const t = this._tx;
+    const lang = this._txLang;
+    const name = langName(lang);
+    const eyebrow = html`<p class="eyebrow">
+      <simple-icon-lite icon="icons:translate"></simple-icon-lite
+      >${this.t.lensTranslate}
+    </p>`;
+    if (t.mode === "lang") {
+      return html`<section
+        class="issue tx"
+        role="dialog"
+        aria-labelledby="tx-heading"
+      >
+        ${eyebrow}
+        <h2 id="tx-heading">${this.t.txPickLang}</h2>
+        <p class="hint">${this.t.txPickLangHint}</p>
+        <haxcms-language-picker
+          label="${this.t.txLanguage}"
+          include-regions="featured"
+          .value="${t.pick || ""}"
+          @value-changed="${(e) => this._txField("pick", e.detail.value)}"
+        ></haxcms-language-picker>
+        <div class="actions">
+          <button
+            type="button"
+            class="primary"
+            ?disabled="${!cleanLang(t.pick) || isEnglish(t.pick)}"
+            @click="${() => this._txSetLang(t.pick)}"
+          >
+            <simple-icon-lite icon="icons:check"></simple-icon-lite
+            >${this.t.txStart}
+          </button>
+          ${
+            cleanLang(t.pick) && !isEnglish(t.pick)
+              ? html`<button
+                  type="button"
+                  @click="${() => this._txShare(t.pick)}"
+                >
+                  <simple-icon-lite icon="icons:link"></simple-icon-lite
+                  >${this.t.txShareLink.replace("{lang}", langName(t.pick))}
+                </button>`
+              : nothing
+          }
+          <button type="button" @click="${() => (this._tx = null)}">
+            <simple-icon-lite icon="icons:close"></simple-icon-lite
+            >${this.t.cancel}
+          </button>
+        </div>
+        ${
+          t.shared
+            ? html`<p class="hint">
+                ${this.t.txLinkCopied.replace("{lang}", langName(t.pick))}
+              </p>`
+            : nothing
+        }
+      </section>`;
+    }
+    if (t.mode === "list") {
+      const all = this._txItems();
+      const list = all.filter((x) => x.lang === lang);
+      const issue = this._txIssue();
+      return html`<section
+        class="issue tx"
+        role="dialog"
+        aria-labelledby="tx-heading"
+      >
+        ${eyebrow}
+        <h2 id="tx-heading" tabindex="-1">${this.t.txListTitle}</h2>
+        <p class="langrow">
+          <span>${this.t.txLanguage}: <b lang="${lang}">${name}</b></span>
+          <button type="button" class="small" @click="${this._txLanguage}">
+            ${this.t.txChange}
+          </button>
+        </p>
+        ${
+          list.length
+            ? html`<ol class="txlist">
+                ${list.map(
+                  (x) =>
+                    html`<li>
+                      <div class="pair">
+                        <span class="en" lang="en">${x.en}</span>
+                        <span class="sugg" lang="${x.lang}"
+                          >${x.suggested}</span
+                        >
+                        <span class="part"
+                          >${this.t.txInPart.replace("{name}", x.part)}</span
+                        >
+                      </div>
+                      <button
+                        type="button"
+                        class="small"
+                        aria-label="${this.t.txRemove.replace("{words}", x.suggested)}"
+                        @click="${() => this._txRemove(all.indexOf(x))}"
+                      >
+                        <simple-icon-lite
+                          icon="icons:delete"
+                        ></simple-icon-lite>
+                      </button>
+                    </li>`,
+                )}
+              </ol>`
+            : html`<p class="hint">${this.t.txEmpty}</p>`
+        }
+        <simple-fields-field
+          id="tx-other"
+          class="hax-ui-simple-field notes"
+          type="textarea"
+          label="${this.t.txOtherNote}"
+          .value="${t.note || ""}"
+          @value-changed="${(e) => this._txField("note", e.detail.value || "")}"
+        ></simple-fields-field>
+        <div class="actions">
+          ${
+            list.length
+              ? html`<a
+                  class="primary"
+                  href="${this._txLink()}"
+                  target="_blank"
+                  rel="noopener"
+                  ><simple-icon-lite icon="icons:open-in-new"></simple-icon-lite
+                  >${this.t.txSend}</a
+                >`
+              : nothing
+          }
+          <button
+            type="button"
+            ?disabled="${!list.length}"
+            @click="${this._txCopy}"
+          >
+            <simple-icon-lite icon="icons:content-copy"></simple-icon-lite
+            >${this.t.txCopyAll}
+          </button>
+          <button type="button" @click="${() => (this._tx = null)}">
+            <simple-icon-lite icon="icons:close"></simple-icon-lite
+            >${this.t.cancel}
+          </button>
+        </div>
+        <p class="hint">${t.copied ? this.t.txCopied : this.t.txSendHint}</p>
+        ${
+          list.length
+            ? html`<details class="fold">
+                <summary>${this.t.txWhatWeSend}</summary>
+                <pre>
+${issue.title}
+
+${issue.body}</pre>
+              </details>`
+            : nothing
+        }
+      </section>`;
+    }
+    // one string
+    const need = tokensOf(t.en);
+    const lost = lostTokens(t.en, t.words);
+    const same = (t.words || "").trim() === t.now && !t.missing;
+    const why = [
+      {
+        value: "meaning",
+        icon: "icons:error-outline",
+        label: this.t.txWrongMeaning,
+      },
+      {
+        value: "unnatural",
+        icon: "icons:record-voice-over",
+        label: this.t.txUnnatural,
+      },
+      { value: "missing", icon: "icons:translate", label: this.t.txMissing },
+      { value: "length", icon: "editor:format-size", label: this.t.txTooLong },
+    ];
+    return html`<section
+      class="issue tx"
+      role="dialog"
+      aria-labelledby="tx-heading"
+    >
+      ${eyebrow}
+      <h2 id="tx-heading" lang="en">${t.en}</h2>
+      <p class="part">${this.t.txInPart.replace("{name}", partName(t.ctx))}</p>
+      <dl class="compare">
+        <div>
+          <dt>${this.t.txInEnglish}</dt>
+          <dd lang="en">${t.en}</dd>
+        </div>
+        <div>
+          <dt>${this.t.txNowIn.replace("{lang}", name)}</dt>
+          <dd lang="${lang}" class="${t.missing ? "missing" : ""}">
+            ${t.missing ? this.t.txNotYet : t.now}
+          </dd>
+        </div>
+      </dl>
+      <div class="choices">
+        <p class="legend" id="tx-why">${this.t.txWhatsWrong}</p>
+        <div class="sort" role="group" aria-labelledby="tx-why">
+          ${why.map(
+            (o) =>
+              html`<button
+                type="button"
+                aria-pressed="${t.why === o.value ? "true" : "false"}"
+                @click="${() => this._txField("why", o.value)}"
+              >
+                <simple-icon-lite icon="${o.icon}"></simple-icon-lite>${o.label}
+              </button>`,
+          )}
+        </div>
+      </div>
+      <simple-fields-field
+        id="tx-words"
+        class="hax-ui-simple-field notes"
+        type="textarea"
+        lang="${lang}"
+        label="${this.t.txYourWords.replace("{lang}", name)}"
+        .value="${t.words || ""}"
+        @value-changed="${(e) => this._txField("words", e.detail.value || "")}"
+      ></simple-fields-field>
+      ${
+        need.length
+          ? html`<p class="hint tokens">
+              <simple-icon-lite
+                icon="${lost.length ? "icons:warning" : "icons:info-outline"}"
+              ></simple-icon-lite>
+              <span
+                >${this.t.txKeep.replace("{tokens}", need.join(" "))}
+                ${
+                  lost.length
+                    ? html`<b
+                        >${this.t.txKeepMissing.replace("{tokens}", lost.join(" "))}</b
+                      >`
+                    : nothing
+                }</span
+              >
+            </p>`
+          : nothing
+      }
+      ${same ? html`<p class="hint">${this.t.txSameAsNow}</p>` : nothing}
+      <simple-fields-field
+        id="tx-note"
+        class="hax-ui-simple-field notes"
+        type="textarea"
+        label="${this.t.txNote}"
+        .value="${t.note || ""}"
+        @value-changed="${(e) => this._txField("note", e.detail.value || "")}"
+      ></simple-fields-field>
+      <div class="actions">
+        <button
+          type="button"
+          class="primary"
+          ?disabled="${!(t.words || "").trim() || same || lost.length > 0}"
+          @click="${this._txAdd}"
+        >
+          <simple-icon-lite icon="icons:add"></simple-icon-lite
+          >${t.editing ? this.t.txUpdate : this.t.txAdd}
+        </button>
+        <button type="button" @click="${() => (this._tx = null)}">
+          <simple-icon-lite icon="icons:close"></simple-icon-lite
+          >${this.t.cancel}
+        </button>
+      </div>
+      ${
+        t.others.length
+          ? html`<details class="fold">
+              <summary>
+                ${this.t.txMoreWords.replace("{count}", t.others.length)}
+              </summary>
+              <ul class="others">
+                ${t.others.map(
+                  (o) =>
+                    html`<li>
+                      <button
+                        type="button"
+                        class="other ${stillEnglish(o, lang) ? "missing" : ""}"
+                        @click="${() => this._txOpen(t.ctx, t.detail, o.key)}"
+                      >
+                        <span class="en" lang="en">${o.en}</span>
+                        <span class="sugg" lang="${lang}"
+                          >${stillEnglish(o, lang) ? this.t.txNotYet : o.now}</span
+                        >
+                      </button>
+                    </li>`,
+                )}
+              </ul>
+            </details>`
+          : nothing
+      }
+    </section>`;
+  }
   _renderPins() {
     if (!this.looking || this.lens !== "makers" || this.pinned) {
       return nothing;
@@ -2494,6 +3211,20 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
               </button>`
             : nothing
         }
+        ${
+          this.lens === "translate" && this._txItems().length
+            ? html`<button
+                type="button"
+                class="lens list"
+                aria-label="${this.t.txMyList} (${this._txItems().length})"
+                @click="${this._txShowList}"
+              >
+                <span class="count" aria-hidden="true"
+                  >${this._txItems().length}</span
+                ><span>${this.t.txMyList}</span>
+              </button>`
+            : nothing
+        }
         <span class="pod-split" aria-hidden="true"></span>
         <button
           type="button"
@@ -2513,7 +3244,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           ><span>${this.t.takeOff}</span>
         </button>
       </div>
-      ${this._say && !this.pinned && !this._issue && !(this.lens === "person" && globalThis.innerWidth < 720) ? html`<p class="caption" aria-hidden="true">${this._say}</p>` : nothing}`;
+      ${this._say && !this.pinned && !this._issue && !this._tx && !(this.lens === "person" && globalThis.innerWidth < 720) ? html`<p class="caption" aria-hidden="true">${this._say}</p>` : nothing}`;
   }
   render() {
     const b = this._box;
@@ -2530,7 +3261,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
                 this.looking &&
                 b &&
                 this.lens !== "makers" &&
-                this.lens !== "person"
+                this.lens !== "person" &&
+                this.lens !== "translate"
                   ? html`<div
                       class="box"
                       aria-hidden="true"
@@ -3530,6 +4262,191 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
             both;
         }
 
+        /* the Translate lens: outlined words, a dashed outline when still in English */
+        .box.mark.tx {
+          border-width: var(--ddd-border-size-sm, 2px);
+          box-shadow: 0 0 0 1px var(--ddd-theme-default-coalyGray, #262626);
+        }
+        .box.mark.tx.hot {
+          border-width: var(--ddd-border-size-md, 3px);
+          background: color-mix(
+            in srgb,
+            var(--haxcms-goggles-lens) 25%,
+            transparent
+          );
+        }
+        .box.mark.tx.missing {
+          border-style: dashed;
+        }
+        .box.mark.tx span {
+          top: 100%;
+          font-family: var(--ddd-font-navigation, sans-serif);
+        }
+        .box.mark.tx .badge {
+          position: absolute;
+          right: -2px;
+          top: -14px;
+          padding: 0 var(--ddd-spacing-1, 4px);
+          background: var(--haxcms-goggles-lens);
+          color: var(--ddd-theme-default-black, #000);
+          border-radius: var(--hax-ui-radius, 4px) var(--hax-ui-radius, 4px) 0 0;
+          font-size: 10px;
+          line-height: 14px;
+          font-family: var(--ddd-font-navigation, sans-serif);
+        }
+        .tx h2 {
+          min-height: 24px;
+          line-height: 1.3;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-xs, 24px);
+          margin-top: var(--ddd-spacing-2, 8px);
+          overflow-wrap: anywhere;
+        }
+        .tx h2:focus {
+          outline: none;
+        }
+        .tx .part {
+          margin-top: var(--ddd-spacing-1, 4px);
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+        }
+        .tx .compare {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--ddd-spacing-3, 12px);
+          margin: var(--ddd-spacing-3, 12px) 0 0;
+        }
+        .tx .compare div {
+          display: block;
+          min-width: 0;
+        }
+        .tx .compare dt {
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          color: var(--hax-ui-text-muted);
+        }
+        .tx .compare dd {
+          margin: var(--ddd-spacing-1, 4px) 0 0;
+          padding: var(--ddd-spacing-2, 8px);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--hax-ui-admin-font-size, 14px);
+          overflow-wrap: anywhere;
+        }
+        .tx .compare dd.missing {
+          border-style: dashed;
+          font-style: italic;
+        }
+        .tx .tokens {
+          display: flex;
+          gap: var(--ddd-spacing-2, 8px);
+          align-items: flex-start;
+        }
+        .tx .tokens b {
+          display: block;
+        }
+        .tx button.primary {
+          background: var(--hax-ui-text);
+          color: var(--hax-ui-surface);
+          font-weight: var(--ddd-font-weight-bold, 700);
+        }
+        .tx button.primary:hover:not([disabled]) {
+          background: var(--haxcms-goggles-lens);
+          color: var(--ddd-theme-default-black, #000);
+        }
+        .tx button[disabled] {
+          cursor: not-allowed;
+          opacity: 1;
+          background: transparent;
+          color: var(--hax-ui-text-muted);
+          border-style: dashed;
+          border-color: var(--hax-ui-text-muted);
+        }
+        .tx button.small {
+          min-height: var(--ddd-spacing-8, 32px);
+          min-width: var(--ddd-spacing-8, 32px);
+          padding: 0 var(--ddd-spacing-2, 8px);
+        }
+        .tx .langrow {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-2, 8px);
+          margin-top: var(--ddd-spacing-2, 8px);
+        }
+        .tx haxcms-language-picker {
+          display: block;
+          margin-top: var(--ddd-spacing-3, 12px);
+        }
+        .tx ol.txlist,
+        .tx ul.others {
+          list-style: none;
+          margin: var(--ddd-spacing-3, 12px) 0 0;
+          padding: 0;
+        }
+        .tx ol.txlist li {
+          display: flex;
+          gap: var(--ddd-spacing-2, 8px);
+          align-items: center;
+          padding: var(--ddd-spacing-2, 8px) 0;
+          border-top: 1px solid var(--hax-ui-line-strong);
+        }
+        .tx .pair {
+          flex: 1 1 auto;
+          min-width: 0;
+          display: grid;
+          gap: 2px;
+        }
+        .tx .pair .en,
+        .tx .other .en {
+          color: var(--hax-ui-text-muted);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+        }
+        .tx .pair .sugg {
+          font-weight: var(--ddd-font-weight-bold, 700);
+          overflow-wrap: anywhere;
+        }
+        .tx ul.others li + li {
+          margin-top: var(--ddd-spacing-1, 4px);
+        }
+        .tx button.other {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          text-align: start;
+          border-color: var(--hax-ui-line-strong);
+        }
+        .tx button.other.missing {
+          border-style: dashed;
+        }
+        .tx pre {
+          margin-top: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-2, 8px);
+          max-height: 220px;
+          overflow: auto;
+          white-space: pre-wrap;
+          overflow-wrap: anywhere;
+          font-family: var(--ddd-font-mono, monospace);
+          font-size: var(--hax-ui-admin-font-size-xs, 12px);
+          border: 1px solid var(--hax-ui-line-strong);
+          border-radius: var(--hax-ui-radius, 4px);
+        }
+        .pod .lens.list .count {
+          min-width: 20px;
+          height: 20px;
+          box-sizing: border-box;
+          padding: 0 var(--ddd-spacing-1, 4px);
+          border-radius: 10px;
+          background: var(--haxcms-goggles-lens);
+          color: var(--ddd-theme-default-black, #000);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          line-height: 20px;
+        }
+
         @media (max-width: 719px) {
           :host {
             --haxcms-goggles-rim: 6px;
@@ -3569,6 +4486,31 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           }
           .pin-tag {
             display: none;
+          }
+          .tx .compare {
+            grid-template-columns: 1fr;
+            gap: var(--ddd-spacing-2, 8px);
+          }
+        }
+        /* five lenses and the switches fit a phone: the switches keep their
+           icon and their name for screen readers */
+        @media (max-width: 420px) {
+          .pod {
+            gap: 2px;
+            padding-inline: var(--ddd-spacing-1, 4px);
+          }
+          .pod .lens {
+            min-width: 40px;
+            padding: var(--ddd-spacing-1, 4px) 2px;
+            font-size: 10px;
+          }
+          .pod .lens:not([aria-pressed]) > span:not(.count) {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip-path: inset(50%);
+            white-space: nowrap;
           }
         }
         @media (prefers-reduced-motion: reduce) {
