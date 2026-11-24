@@ -30,6 +30,16 @@
  *   node scripts/vendor-fonts.mjs --check    exit 1 if the output is stale
  *                                            (no network; compares the
  *                                            registry with the config)
+ *   node scripts/vendor-fonts.mjs --trim     narrow the committed CSS's
+ *                                            unicode-ranges (no network)
+ *
+ * Each face's unicode-range is narrowed to the code points its woff2 file
+ * can draw (scripts/fonts/woff2-cmap.mjs). Fontsource's ranges are Google's
+ * subset ranges, which claim characters some subsets don't contain (Roboto's
+ * math and symbols subsets both claim arrows, check marks and stars and have
+ * none of them), so a page using such a character downloads files that
+ * draw nothing before falling back. A face left with no code points is
+ * dropped with its file.
  */
 import console from "node:console";
 import { execFileSync } from "node:child_process";
@@ -38,6 +48,11 @@ import os from "node:os";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import {
+  formatUnicodeRange,
+  parseUnicodeRange,
+  woff2CodePoints,
+} from "./fonts/woff2-cmap.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CONFIG = path.join(root, "scripts", "fonts", "hax-fonts.json");
@@ -99,6 +114,41 @@ function rewriteFaces(css, family, slug, files) {
   return out;
 }
 
+// narrow every face in a family's CSS to the code points its file has;
+// returns how many faces changed and how many were dropped
+export function trimFamily(slug) {
+  const dir = path.join(OUT, slug);
+  const file = path.join(dir, `${slug}.css`);
+  const css = fs.readFileSync(file, "utf8");
+  let changed = 0;
+  let dropped = 0;
+  const used = new Set();
+  const out = css.replace(/@font-face\s*{[^}]*}\n?/g, (face) => {
+    const src = face.match(/url\(\.\/([a-z0-9-]+\.woff2)\)/);
+    const range = face.match(/unicode-range:\s*([^;]+);/);
+    if (!src || !range) {
+      if (src) used.add(src[1]);
+      return face;
+    }
+    const has = woff2CodePoints(path.join(dir, src[1]));
+    const keep = new Set([...parseUnicodeRange(range[1])].filter((c) => has.has(c)));
+    if (!keep.size) {
+      dropped++;
+      return "";
+    }
+    used.add(src[1]);
+    const next = formatUnicodeRange(keep);
+    if (next === range[1].trim()) return face;
+    changed++;
+    return face.replace(range[0], `unicode-range: ${next};`);
+  });
+  fs.writeFileSync(file, out.replace(/\n{3,}/g, "\n\n"));
+  fs.readdirSync(dir)
+    .filter((f) => f.endsWith(".woff2") && !used.has(f))
+    .forEach((f) => fs.rmSync(path.join(dir, f)));
+  return { changed, dropped };
+}
+
 function vendorFamily(entry, scratch) {
   const slug = fontSlug(entry.family);
   const spec = `${entry.package}@${entry.version}`;
@@ -148,10 +198,15 @@ function vendorFamily(entry, scratch) {
       `   Google Fonts ${meta.version}, vendored from ${spec} by scripts/vendor-fonts.mjs. */\n` +
       faces.join("\n"),
   );
+  trimFamily(slug);
   let bytes = 0;
-  files.forEach((file) => {
-    bytes += fs.statSync(path.join(target, file)).size;
-  });
+  let count = 0;
+  fs.readdirSync(target)
+    .filter((file) => file.endsWith(".woff2"))
+    .forEach((file) => {
+      bytes += fs.statSync(path.join(target, file)).size;
+      count++;
+    });
   return {
     family: entry.family,
     slug,
@@ -161,7 +216,7 @@ function vendorFamily(entry, scratch) {
     googleVersion: meta.version,
     source: meta.source || "https://github.com/google/fonts",
     package: spec,
-    files: files.size,
+    files: count,
     bytes,
   };
 }
@@ -261,6 +316,17 @@ async function check() {
 function main() {
   if (process.argv.includes("--check")) {
     return check();
+  }
+  if (process.argv.includes("--trim")) {
+    let changed = 0;
+    let dropped = 0;
+    readFontConfig().forEach((entry) => {
+      const r = trimFamily(fontSlug(entry.family));
+      changed += r.changed;
+      dropped += r.dropped;
+    });
+    console.log(`✔ unicode-ranges narrowed: ${changed} faces changed, ${dropped} dropped`);
+    return 0;
   }
   const config = readFontConfig();
   const scratch = fs.mkdtempSync(path.join(os.tmpdir(), "hax-fonts-"));

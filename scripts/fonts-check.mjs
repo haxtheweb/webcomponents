@@ -11,6 +11,8 @@
  *     or Apache-2.0 license, and an entry in d-d-d/third-party.json, which
  *     scripts/copy-dep-licenses.js turns into its THIRD_PARTY_LICENSES.md row
  *   - the vendored output matches scripts/fonts/hax-fonts.json
+ *   - every @font-face unicode-range claims only code points its woff2 file
+ *     can draw, so a page never downloads a subset that draws nothing
  *
  * To ship a new family: add it to scripts/fonts/hax-fonts.json and run
  * node scripts/vendor-fonts.mjs. Run: node scripts/fonts-check.mjs (exit 1
@@ -22,6 +24,7 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { FONT_LICENSES, fontSlug, readFontConfig } from "./vendor-fonts.mjs";
+import { parseUnicodeRange, woff2CodePoints } from "./fonts/woff2-cmap.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ELEMENTS = path.join(root, "elements");
@@ -157,6 +160,24 @@ async function main() {
       findings.push(`${family} is not listed in d-d-d/third-party.json, so THIRD_PARTY_LICENSES.md would not list it`);
     } else if (!(asset.licenseFiles || []).every((f) => fs.existsSync(path.join(DDD, f)))) {
       findings.push(`${family}: a license file third-party.json names is missing`);
+    }
+    const cssFile = path.join(FONTS, entry.css);
+    if (fs.existsSync(cssFile)) {
+      (fs.readFileSync(cssFile, "utf8").match(/@font-face\s*{[^}]*}/g) || []).forEach((face) => {
+        const src = face.match(/url\(\.\/([a-z0-9-]+\.woff2)\)/);
+        const range = face.match(/unicode-range:\s*([^;]+);/);
+        if (!src || !range) return;
+        const woff2 = path.join(FONTS, slug, src[1]);
+        if (!fs.existsSync(woff2)) {
+          findings.push(`${family}: ${src[1]} is missing`);
+          return;
+        }
+        const has = woff2CodePoints(woff2);
+        const extra = [...parseUnicodeRange(range[1])].filter((c) => !has.has(c)).length;
+        if (extra) {
+          findings.push(`${family}: ${src[1]}'s unicode-range claims ${extra} code point(s) it has no glyph for: run node scripts/vendor-fonts.mjs --trim`);
+        }
+      });
     }
   });
   // every family the elements name is vendored; no HTML points at Google
