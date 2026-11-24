@@ -25,6 +25,8 @@ on:
       - "scripts/contrast*"
       - "scripts/lib/contrast.mjs"
       - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/palette-fixture.mjs"
+      - "scripts/palette-roles*"
       - "web-dev-server.config.mjs"
       - ".github/workflows/contrast.yml"
       - ".github/actions/setup-playwright/**"
@@ -65,3 +67,7 @@ jobs:
           fonts: "true"
       - name: Color contrast of changed elements
         run: node scripts/contrast-check.mjs --base HEAD^1
+      # the palette's own pairings (link role on the page surface, text
+      # on each palette color) in every palette, scheme and design system
+      - name: Palette roles
+        run: node scripts/palette-roles-check.mjs

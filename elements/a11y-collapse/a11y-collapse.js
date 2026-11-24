@@ -70,6 +70,16 @@ class A11yCollapse extends I18NMixin(DDD) {
               var(--ddd-theme-default-potentialMidnight)
             )
           );
+          /* the closed toggle is an icon-only button drawn on the page: its
+             glyph takes the palette's link role, which reads there in every
+             palette (the accent is decorative and only fills the open one) */
+          --a11y-collapse-_action-glyph: var(
+            --ddd-palette-link,
+            light-dark(
+              var(--ddd-theme-default-nittanyNavy),
+              var(--ddd-theme-default-linkLight)
+            )
+          );
           margin: var(
             --a11y-collapse-margin,
             var(--ddd-stack-gap, var(--ddd-spacing-4)) 0
@@ -233,7 +243,7 @@ class A11yCollapse extends I18NMixin(DDD) {
           border-color: var(--a11y-collapse-_line);
           border-radius: var(--ddd-radius-circle);
           background-color: transparent;
-          color: var(--a11y-collapse-_action);
+          color: var(--a11y-collapse-_action-glyph);
           --simple-icon-color: currentColor;
           --simple-icon-width: var(--ddd-icon-3xs);
           --simple-icon-height: var(--ddd-icon-3xs);
@@ -282,6 +292,7 @@ class A11yCollapse extends I18NMixin(DDD) {
             --ddd-theme-bgContrast,
             var(--lowContrast-override, black)
           );
+          --a11y-collapse-_action-glyph: var(--a11y-collapse-_action);
           --a11y-collapse-_action-ink: var(
             --ddd-theme-primary,
             var(--ddd-primary-0)

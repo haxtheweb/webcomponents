@@ -431,9 +431,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           z-index: 1;
           transition: var(--haxcms-site-transition);
         }
+        /* the icon button's own fill (::part(button)) is the white low tone,
+           so the glyph takes the palette's link color made for light */
         .theme-picker {
           z-index: 1;
-          color: var(--ddd-palette-2);
+          color: var(--ddd-palette-link-on-light, var(--ddd-palette-2));
           background-color: var(--ddd-palette-1);
           padding: var(--ddd-spacing-1);
           --simple-icon-width: var(--ddd-spacing-8);
@@ -441,7 +443,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
         header .theme-picker {
           position: absolute;
-          color: var(--ddd-palette-1);
+          color: var(--ddd-palette-link-on-light, var(--ddd-palette-1));
           background-color: var(--ddd-palette-2);
           right: var(--ddd-spacing-2);
           top: var(--ddd-spacing-2);
@@ -569,13 +571,16 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           );
         }
         scroll-button {
-          --scroll-button-color: var(--ddd-palette-2);
+          --scroll-button-color: var(--journey-on-palette-1);
           --scroll-button-background-color: var(--ddd-palette-1);
           --simple-icon-width: var(--ddd-spacing-8);
           --simple-icon-height: var(--ddd-spacing-8);
         }
+        /* icons on the palette-2 button fill take its paired text color; on
+           the white buttons (home, the article list) the palette's link
+           color made for a light surface, in both schemes */
         .article-link-icon.top {
-          color: var(--ddd-palette-1);
+          color: var(--journey-on-palette-2);
           margin: 0 var(--ddd-spacing-3);
           padding-left: 4px;
         }
@@ -608,6 +613,9 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         .home .article-link-icon.top simple-icon-button-lite::part(button) {
           background-color: var(--ddd-theme-default-white);
         }
+        .home .article-link-icon.top {
+          color: var(--ddd-palette-link-on-light, var(--ddd-palette-1));
+        }
         .article-link-icon.active simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-low-tone);
         }
@@ -624,7 +632,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         simple-icon-button-lite.article {
-          color: var(--ddd-palette-1);
+          color: var(--ddd-palette-link-on-light, var(--ddd-palette-1));
         }
         simple-icon-button-lite::part(button) {
           height: auto;

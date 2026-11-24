@@ -121,15 +121,21 @@ export function targetKey(target) {
     .join(" >> ");
 }
 
-/** axe violations (color-contrast only) to { key: count } */
+/**
+ * axe violations to { key: count }: color-contrast (text), plus
+ * non-text-contrast (icons that identify a control, measured by
+ * scripts/lib/palette-fixture.mjs) keyed with a "non-text: " prefix so the
+ * two never share a baseline entry
+ */
 export function countViolations(violations) {
   const counts = {};
   for (const v of violations || []) {
-    if (!v || v.id !== "color-contrast") {
+    if (!v || (v.id !== "color-contrast" && v.id !== "non-text-contrast")) {
       continue;
     }
+    const prefix = v.id === "non-text-contrast" ? "non-text: " : "";
     for (const node of v.nodes || []) {
-      const key = targetKey(node.target);
+      const key = prefix + targetKey(node.target);
       counts[key] = (counts[key] || 0) + 1;
     }
   }

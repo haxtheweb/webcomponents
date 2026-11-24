@@ -245,6 +245,24 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           );
         }
 
+        /* the post holds page content, whose blocks pick their colors by
+           color scheme: in dark mode it stays a dark surface in every
+           palette (a palette whose color-2 is light made it light or mid
+           tone), keeping the palette's hue */
+        @supports (color: oklch(from red l c h)) {
+          :host {
+            --twenty-six-post-bg: light-dark(
+              var(--ddd-theme-default-white),
+              oklch(from var(--ddd-palette-color-2) min(l, 0.28) c h)
+            );
+          }
+          :host([dark-mode]) {
+            --twenty-six-post-bg: oklch(
+              from var(--ddd-palette-color-2) min(l, 0.28) c h
+            );
+          }
+        }
+
         .layout {
           margin: 0 auto;
           max-width: 1480px;
@@ -975,7 +993,44 @@ class TwentySixTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         b: Math.round(Number(srgb[3]) * 255),
       };
     }
-    return null;
+    // any other CSS color (oklch(), lab(), a relative color...): let the
+    // browser convert it to sRGB on a one pixel canvas
+    return this.__canvasColorToRgb(color);
+  }
+
+  __canvasColorToRgb(color) {
+    if (!globalThis.document) {
+      return null;
+    }
+    if (!this.__colorCanvasContext) {
+      const canvas = globalThis.document.createElement("canvas");
+      canvas.width = 1;
+      canvas.height = 1;
+      this.__colorCanvasContext = canvas.getContext("2d", {
+        willReadFrequently: true,
+      });
+    }
+    const context = this.__colorCanvasContext;
+    if (!context) {
+      return null;
+    }
+    // two different starting colors: a value the canvas rejects leaves the
+    // fill style unchanged, which shows as the two reads disagreeing
+    const reads = ["#000000", "#ffffff"].map((start) => {
+      context.clearRect(0, 0, 1, 1);
+      context.fillStyle = start;
+      context.fillStyle = color;
+      context.fillRect(0, 0, 1, 1);
+      return context.getImageData(0, 0, 1, 1).data;
+    });
+    if (
+      reads[0][0] !== reads[1][0] ||
+      reads[0][1] !== reads[1][1] ||
+      reads[0][2] !== reads[1][2]
+    ) {
+      return null;
+    }
+    return { r: reads[0][0], g: reads[0][1], b: reads[0][2] };
   }
 
   __relativeLuminance(color) {

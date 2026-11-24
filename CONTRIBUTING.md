@@ -36,6 +36,7 @@ Please do not ever hesitate to ask a question or send a pull request.
 HAX is an authoring experience that enables rapid creation of fast, static websites. This webcomponents monorepo contains reusable web components built with [Lit](https://lit.dev/) that power the HAX ecosystem. These components work standalone or as part of the broader HAX authoring platform.
 
 **Key Technologies:**
+
 - **Lit** - Modern web components library
 - **Lerna** - Monorepo management
 - **Yarn** - Package management
@@ -47,70 +48,82 @@ This project contains 200+ web components in the `elements/` directory, each des
 ## Getting Started
 
 ### Prerequisites
+
 Before setting up your development environment, ensure you have:
+
 - **Git** or **GitHub Desktop** for version control
 - A **GitHub account** for submitting contributions
 
 ### Install: w/ Dev Containers
-Our project follows the [Dev Container specification](https://containers.dev/implementors/spec/) to provide a consistent, UX-focused experience across operating systems. The container isolation ensures that users on Windows, macOS, and Linux can all develop with the same curated environment. <u>If</u> you're interested in **Dev Containers** (but want a more personalized setup), follow along these general steps: 
+
+Our project follows the [Dev Container specification](https://containers.dev/implementors/spec/) to provide a consistent, UX-focused experience across operating systems. The container isolation ensures that users on Windows, macOS, and Linux can all develop with the same curated environment. <u>If</u> you're interested in **Dev Containers** (but want a more personalized setup), follow along these general steps:
+
 1. Install [Docker](https://docs.docker.com/get-started/get-docker/) (or another container runtime)
-    * **Dev Containers** are broadly supported across OCI-compliant runtimes like Docker, [Podman](https://podman.io/docs/installation), and [OrbStack](https://docs.orbstack.dev/quick-start).
+   - **Dev Containers** are broadly supported across OCI-compliant runtimes like Docker, [Podman](https://podman.io/docs/installation), and [OrbStack](https://docs.orbstack.dev/quick-start).
 2. Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for **VS Code**
-    * Open **VS Code**, then select **Install Recommended Extensions** 
-    * Accepting the alert will automatically download this with other helpful extensions
+   - Open **VS Code**, then select **Install Recommended Extensions**
+   - Accepting the alert will automatically download this with other helpful extensions
 3. Afterwards, another alert will pop up in the **bottom right** corner of **VS Code**
-    * Select **Reopen in Container**
+   - Select **Reopen in Container**
 
 Wait a few minutes for your **Dev Container** to be built, then you're ready to go!
 
 Otherwise, please check out the [Quick install](README.md#getting-started) section in our README. This is a full, step-by-step walkthrough of a **Dev Container** installation (using simple applications and sane defaults)!
 
 ### Install: w/ Bash script (supporting Git Bash/WSL/macOS/Linux)
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
 ```
 
 ### Windows Support
+
 [Docker](https://docs.docker.com/desktop/setup/install/windows-install/), [Git Bash](https://git-scm.com/install/windows), or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) are recommended for the best cross-compatibility with HAX's developer tooling. We also support **PowerShell** for Windows contributors, although certain utilities may experience instability.
 
 #### Windows Developer Mode
-The monorepo uses symlinks in many parts of its local environment. This allows us to emulate the functionality of a live HAXsite without running the full system. On Windows, symlinks normally require running the shell as *Administrator*.
 
-Enable **Developer Mode** to remove this *Administrator* requirement for common development tasks. Start by opening your **Windows Settings**:
-* On Windows 10: Update and Security -> For developers -> Developer Mode
-* On Windows 11: System -> Advanced -> For developers -> Developer Mode
+The monorepo uses symlinks in many parts of its local environment. This allows us to emulate the functionality of a live HAXsite without running the full system. On Windows, symlinks normally require running the shell as _Administrator_.
+
+Enable **Developer Mode** to remove this _Administrator_ requirement for common development tasks. Start by opening your **Windows Settings**:
+
+- On Windows 10: Update and Security -> For developers -> Developer Mode
+- On Windows 11: System -> Advanced -> For developers -> Developer Mode
 
 #### Install: w/ PowerShell script (Windows)
+
 ```powershell
 irm https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1 | iex
 ```
 
 ### Manual Install
-*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](https://tc39.es/ecma262/) and build routines compile to es5 to encompass legacy browsers.*
+
+_Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](https://tc39.es/ecma262/) and build routines compile to es5 to encompass legacy browsers._
 
 1. **Install Node.js**
 
    Visit [nodejs.org](https://nodejs.org/), then install **Node.js version 22.0** or higher
-   * We recommend **fnm** as a cross-platform Node.js manager
+   - We recommend **fnm** as a cross-platform Node.js manager
 
 2. **Fork and Clone the Repository**
+
    ```bash
    # Fork the repo on GitHub, then clone your fork
    git clone https://github.com/YOUR_USERNAME/webcomponents.git
    cd webcomponents
-   
+
    # Add upstream remote for syncing
    git remote add upstream https://github.com/haxtheweb/webcomponents.git
    ```
 
 3. **Install Dependencies**
+
    ```bash
    # Install HAX CLI and yarn globally
    npm install --global @haxtheweb/create yarn
-   
+
    # Install web component analyzer
    yarn global add web-component-analyzer
-   
+
    # Install project dependencies (this may take a few minutes)
    yarn install
    ```
@@ -131,6 +144,7 @@ Verify your setup is working:
    - You should see the HAX development interface
 
 2. **Test building components:**
+
    ```bash
    # Build all components (this may take several minutes first time)
    yarn run build
@@ -162,6 +176,7 @@ Verify your setup is working:
    - Ask "What's a good first issue for someone new to the project?"
 
 **Before starting work:**
+
 - Comment on the issue saying you'd like to work on it
 - Wait for maintainer acknowledgment to avoid duplicate work
 - Ask questions if the requirements aren't clear
@@ -173,16 +188,19 @@ Verify your setup is working:
 **To work on an existing component:**
 
 1. **Navigate to the component:**
+
    ```bash
    cd elements/COMPONENT_NAME  # e.g., cd elements/simple-button
    ```
 
 2. **Start component development:**
+
    ```bash
    yarn start  # Starts dev server for this specific component
    ```
 
 3. **File structure:**
+
    ```
    elements/component-name/
    ├── lib/                    # Supporting files and utilities
@@ -199,6 +217,7 @@ Verify your setup is working:
    - The dev server will auto-reload on changes
 
 **To create a new component:**
+
 ```bash
 # From the project root
 hax webcomponent my-new-element --y
@@ -209,27 +228,32 @@ yarn start
 ### Code Standards
 
 **JavaScript/Lit:**
+
 - Follow existing code style in the project
 - Use Lit's best practices for web components
 - Ensure components are accessible (ARIA attributes, keyboard navigation)
 - Components should work in all modern browsers
 
 **Formatting:**
+
 - Code is automatically formatted with Prettier on commit
 - CSS is formatted with Stylelint
 - Run `yarn run format` to format all files
 
 **Linting:**
+
 - `yarn lint` runs ESLint on `elements/`. An ESLint error fails CI; warnings do not. `yarn lint:fix` fixes what it can
 - Existing `==` comparisons are recorded in `eslint-suppressions.json`; new code uses `===`
 - `yarn precheck` lints the files you changed before you push
 
 **Documentation:**
+
 - Add JSDoc comments to all public methods and properties
 - Update component README files
 - Create comprehensive demo pages showing component usage
 
 **Testing:**
+
 - Write unit tests for new functionality when possible
 - Ensure existing tests still pass: `yarn test`
 - Test in multiple browsers if making significant changes
@@ -279,12 +303,24 @@ Invariant: a HAX-capable element keeps a usable layout when its strings get long
 Invariant: text in an element's demo meets WCAG AA contrast (4.5:1, 3:1 for large text) in light mode and in dark mode, and a theme that takes DDD palettes meets it in every palette.
 
 - **What runs**: the repo's `web-dev-server.config.mjs` serves the repo locally (never a live site). Each element's `demo/index.html` opens in Chromium with `prefers-color-scheme` light, then dark, reduced motion, and every request that leaves the local server blocked. Before measuring, CSS animations and transitions are moved to their end state and the runner waits until the layout stops changing (late renders such as a score or a lazy list have landed), so a slow runner measures the same page as a fast one. axe-core runs only its `color-contrast` rule, shadow DOM included.
-- **Palettes**: a site can give its theme any DDD palette (site settings set `data-palette` on the theme element), so a theme whose demo is a HAXcms site (`demo/site.json`) and whose own source reads `--ddd-palette-*` tokens or reflects `data-palette` is measured again in each color scheme with every palette in `elements/d-d-d/lib/DDDPaletteRegistry.js` applied. When the folder ships more than one site theme (`elements/haxcms-elements/lib/themes.json`, e.g. `journey-theme` with `journey-sidebar-theme` and `journey-topbar-theme`), each one is switched in on the same demo site and swept the same way. Findings use the mode `<scheme>@<palette>` (e.g. `dark@salmon-season`), or `<scheme>@<theme>` and `<scheme>@<theme>:<palette>` for the other themes; the palette the demo already shows is the plain `light` / `dark` run. Put text on a palette fill with the palette's paired text color (`--ddd-palette-text-color-N` on `--ddd-palette-color-N`): DDD holds every pair at 4.5:1 or better in every palette (`elements/d-d-d/test/ddd-palette-contrast.test.js`), and a hard-coded white or black, or another fill as text color, will fail in some palette.
+- **Palettes**: a site can give its theme any DDD palette (site settings set `data-palette` on the theme element), so a theme whose demo is a HAXcms site (`demo/site.json`) and whose own source reads `--ddd-palette-*` tokens or reflects `data-palette` is measured again in each color scheme with every palette in `elements/d-d-d/lib/DDDPaletteRegistry.js` applied. When the folder ships more than one site theme (`elements/haxcms-elements/lib/themes.json`, e.g. `journey-theme` with `journey-sidebar-theme` and `journey-topbar-theme`), each one is switched in on the same demo site and swept the same way. Findings use the mode `<scheme>@<palette>` (e.g. `dark@salmon-season`), or `<scheme>@<theme>` and `<scheme>@<theme>:<palette>` for the other themes; the palette the demo already shows is the plain `light` / `dark` run. Put text on a palette fill with the palette's paired text color (`--ddd-palette-text-color-N` on `--ddd-palette-color-N`): DDD holds every pair at 4.5:1 or better in every palette (`elements/d-d-d/test/ddd-palette-contrast.test.js`), and a hard-coded white or black, or another fill as text color, will fail in some palette. Color links and any other palette text on the page surface with `--ddd-palette-link`, never a palette color by number: palettes do not run their colors in one order (some go light to dark, some dark to light, two in neither), so a slot that reads in one palette is unreadable in another. Keep a surface that holds page content light in light mode and dark in dark mode in every palette, because the blocks on it pick their colors by color scheme.
+- **Palette fixture**: a theme's demo pages may contain no link or block at all, which would pass every palette whatever color it gives them. So each theme run opens a nested page of the demo site (breadcrumbs, parent links and pagination render) and appends the same palette-reactive content to the theme (`scripts/lib/palette-fixture.mjs`): links in prose, lists, quotes and a table, details, mark, code, kbd, a `data-accent` paragraph, and a steps list, tabs, collapses, a learning component, an activity box and a stop note.
+- **Icons (non-text)**: on theme runs, the icon of an icon-only control (a button, link or icon button with no visible text) must be 3:1 against what is behind it (WCAG 1.4.11), measured from the glyph's own flood color; a control with visible text is identified by its text. axe does not measure this; findings are keyed `non-text: <target>` in the same baseline.
 - **Run locally**: `yarn test:contrast` checks the demos of element folders changed against the base branch (`--base <ref>` to pick another, `--elements a,b` for specific ones, `--all` for every demo, about 7 minutes). Exit 1 means a new failure. Set `CONTRAST_CHROMIUM=<path>` to use a Chromium other than Playwright's.
 - **Baseline**: `scripts/contrast.baseline.json` lists today's failures by element, mode and target (axe's selector path with positions and digits dropped), with a node count. A target missing from it, or more nodes than it lists, is new. A demo with new findings is checked a second time and only what both runs show counts, so a finding that depends on load timing does not fail a build.
 - **Shrink only**: the baseline never grows. After fixing contrast, run `yarn test:contrast --update-baseline --elements <name>` and commit the smaller baseline. `--update-baseline` only removes entries (it runs twice and drops only what neither run shows). `--allow-additions` only adds; it exists to rebuild the baseline, and CI fails a pull request whose baseline grew.
 - **CI**: the `contrast` workflow runs on pull requests touching `elements/**`. It fails if the baseline grew compared with the base branch, then blocks on new failures in the elements the pull request changes. Baselined failures in those elements are listed in the job summary so they can be worked down. Demos that do not load are listed, not failed.
 - **Design systems**: a site can run any bridged design system (Carbon, PatternFly, ...), and a bridge recolors every block at once (https://github.com/haxtheweb/issues/issues/3339). `yarn test:contrast --design-system <name|a,b|all>` measures every HAX block demo (an element folder with haxProperties) again with that bridge active: the page calls the bridge's `activate<Prefix>DesignSystem()`, the call its theme makes, then the color-contrast rule runs in light and dark. Palettes and sibling themes are not repeated. Results go to their own shrink-only baseline, `scripts/contrast.design-systems.baseline.json` (system → element → mode → target); `--update-baseline` and `--check-baseline` work per system the same way. Without `--elements` or `--all`, every block is checked when DDD or a bridge changed, otherwise the changed blocks. `--json <file>` also writes what was measured. The `contrast-design-systems` workflow runs one job per system on pull requests and nightly, and `node scripts/design-system-report.mjs` writes each theme README's block review from the baseline. Fix a finding in the bridge (its colors) when it fails under that bridge only, and in the element when it fails under several.
+
+### Palette roles check
+
+Invariant: the DDD palette's own pairings read in every palette, in light and dark, under DDD and under every bridged design system. `--ddd-palette-link` reads at 4.5:1 or better on the page surface (light: white and limestone max light; dark: coaly gray and potential midnight), and each "text on color" pair a palette declares (`--ddd-palette-text-color-N` on `--ddd-palette-color-N`, `accent-ink` on `accent`, `chip-ink` on `chip`) reads at 4.5:1.
+
+- **Why**: `light-dark()`, relative color syntax and a bridge's remapped colors only settle in a browser, and a bridge recolors every palette at once.
+- **What runs**: `scripts/palette-roles-check.mjs` opens `elements/d-d-d/demo/palette-roles.html` with the same local demo runner, activates each design system, and resolves the tokens on a probe inside an element carrying each `data-palette`.
+- **Run locally**: `yarn test:palette-roles` (about 2 minutes; `--design-system ddd,carbon` narrows it, `--all` lists every pair). Set `CONTRAST_CHROMIUM=<path>` to use a Chromium other than Playwright's.
+- **Baseline**: `scripts/palette-roles.baseline.json` lists known pair failures, shrink only. The link role is never baselined: any link failure fails the run.
+- **CI**: a step of the `contrast` workflow.
 
 ### Admin contrast check
 
@@ -360,6 +396,7 @@ Invariant: an element stays usable in Windows high contrast (forced colors), kee
 - **CI**: the `a11y-modes` workflow runs on pull requests touching `elements/**`, fails if the baseline grew, then blocks on new failures in the elements the pull request changes.
 
 ### Lerna
+
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
 ## Common Issues
@@ -369,6 +406,7 @@ New contributors often encounter these issues. Here are solutions to the most co
 ### Setup and Installation Issues
 
 **"Port 8000 already in use" error:**
+
 ```bash
 # Find and kill processes using port 8000
 kill -9 $(lsof -t -i:8000)
@@ -377,6 +415,7 @@ PORT=8001 yarn start
 ```
 
 **Yarn install fails or hangs:**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules yarn.lock
@@ -385,6 +424,7 @@ yarn install
 ```
 
 **Permission errors on global installs:**
+
 ```bash
 # Configure npm to use a different directory
 npm config set prefix ~/.npm-global
@@ -393,6 +433,7 @@ export PATH=~/.npm-global/bin:$PATH
 ```
 
 **Node version issues:**
+
 ```bash
 # Check your Node version
 node --version
@@ -404,6 +445,7 @@ nvm use 22
 ### Development Issues
 
 **Build errors after pulling latest changes:**
+
 ```bash
 # Update dependencies after pulling
 yarn install
@@ -414,16 +456,19 @@ yarn run build
 ```
 
 **"Component not found" or import errors:**
+
 - Ensure you're in the correct component directory: `cd elements/component-name`
 - Check that the component name matches the directory name
 - Verify the main component file exists: `ls component-name.js`
 
 **Hot reload not working:**
+
 - Make sure you're editing the correct files (`component-name.js`, not files in `dist/` or `build/`)
 - Try restarting the dev server: `Ctrl+C` then `yarn start`
 - Clear browser cache or try an incognito window
 
 **Lerna-related errors:**
+
 ```bash
 # Bootstrap all packages
 npx lerna bootstrap
@@ -435,6 +480,7 @@ yarn install
 ### Testing Issues
 
 **Tests failing locally:**
+
 ```bash
 # Run tests for a specific component
 cd elements/component-name
@@ -444,6 +490,7 @@ yarn test -- -p
 ```
 
 **"Chromium not found" test errors:**
+
 ```bash
 # On Ubuntu/Debian
 sudo apt-get install chromium-browser
@@ -454,6 +501,7 @@ brew install chromium
 ### Git and GitHub Issues
 
 **Fork is out of sync:**
+
 ```bash
 # Sync your fork with upstream
 git fetch upstream
@@ -463,6 +511,7 @@ git push origin master
 ```
 
 **Accidentally committed to master instead of a branch:**
+
 ```bash
 # Create a new branch with your changes
 git branch feature-branch-name
@@ -475,6 +524,7 @@ git checkout feature-branch-name
 ### Performance Issues
 
 **Slow build times:**
+
 - Close unnecessary applications to free up memory
 - Build specific components instead of everything: `cd elements/component-name && yarn build`
 - Consider increasing Node's memory limit: `export NODE_OPTIONS="--max-old-space-size=4096"`
@@ -505,6 +555,7 @@ Pull requests are often called a "PR".
 HAX generally follows the standard [github pull request](https://help.github.com/articles/about-pull-requests/) process.
 
 Common new contributor PR issues are:
+
 - Not referencing the issue that the PR resolves
 - Not describing the scope of the solution effectively
 - Include mentions (like @person) and [keywords](https://help.github.com/en/articles/closing-issues-using-keywords) which could close the issue (like fixes #xxxx) in commit messages.
@@ -527,15 +578,15 @@ Note: if your pull request isn't getting enough attention, you can use our [Disc
 ## Best practices
 
 - Write clear and meaningful git commit messages.
-- If the PR will *completely* fix a specific issue, include `fixes #123` in the PR body (where 123 is the specific issue number the PR will fix. This will automatically close the issue when the PR is merged.
+- If the PR will _completely_ fix a specific issue, include `fixes #123` in the PR body (where 123 is the specific issue number the PR will fix. This will automatically close the issue when the PR is merged.
 - Make sure you don't include `@mentions` or `fixes` keywords in your git commit messages. These should be included in the PR body instead.
 - When you make a PR for small change (such as fixing a typo, style change, or grammar fix), please squash your commits so that we can maintain a cleaner git history.
 - Make sure you include a clear and detailed PR description explaining the reasons for the changes, and ensuring there is sufficient information for the reviewer to understand your PR.
-- Additional Readings: 
-    - [chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/)
-    - [github.com/blog/1506-closing-issues-via-pull-requests ](https://github.com/blog/1506-closing-issues-via-pull-requests)
-    - [davidwalsh.name/squash-commits-git ](https://davidwalsh.name/squash-commits-git)
-    - [https://mtlynch.io/code-review-love/](https://mtlynch.io/code-review-love/)
+- Additional Readings:
+  - [chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/)
+  - [github.com/blog/1506-closing-issues-via-pull-requests ](https://github.com/blog/1506-closing-issues-via-pull-requests)
+  - [davidwalsh.name/squash-commits-git ](https://davidwalsh.name/squash-commits-git)
+  - [https://mtlynch.io/code-review-love/](https://mtlynch.io/code-review-love/)
 
 ## Testing
 
@@ -588,10 +639,20 @@ Invariant: content authored with a HAX-capable element keeps working. An authora
 - **Intended breaking change**: add an entry to `api-snapshot/allowed-removals.json` in the same pull request, then run `yarn api:snapshot`:
 
   ```json
-  { "removals": [{ "tag": "video-player", "kind": "attributes", "item": "dark", "reason": "why existing content may break, and the migration" }] }
+  {
+    "removals": [
+      {
+        "tag": "video-player",
+        "kind": "attributes",
+        "item": "dark",
+        "reason": "why existing content may break, and the migration"
+      }
+    ]
+  }
   ```
 
   `kind` is `tag` (the whole element; no `item`) or one of `attributes`, `slots`, `events`, `cssParts`, `cssProperties`, `hax.gizmo`, `hax.properties`, `hax.attributes`, `hax.slots`, `hax.demoTags`. Regenerating the snapshot alone does not pass the check, because CI also compares with the base branch's snapshot. Delete an entry once its pull request has merged.
+
 - **CI**: the `api-snapshot` workflow runs on pull requests that touch `elements/**`, the registry or the snapshot, and is blocking. `node scripts/api-snapshot.mjs --report` lists skipped registry tags and oddities (schemas without a gizmo, and the settings / handles the check fails on).
 
 ### Unused code report
@@ -632,4 +693,4 @@ When an element is meant to grow, raise its budget in the same pull request and 
 
 ## Security
 
-If you discover what you deem to be a critical security issue  please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.
+If you discover what you deem to be a critical security issue please reach out on our Discord channel privately to discuss whether this should be resolved in the open prior or if disclosure should happen after a solution has been crafted.

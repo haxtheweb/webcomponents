@@ -29,6 +29,7 @@ on:
       - "scripts/contrast*"
       - "scripts/lib/contrast.mjs"
       - "scripts/lib/demo-runner.mjs"
+      - "scripts/lib/palette-fixture.mjs"
       - "scripts/lib/design-systems.mjs"
       - "web-dev-server.config.mjs"
       - ".github/workflows/contrast-design-systems.yml"

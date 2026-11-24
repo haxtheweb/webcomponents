@@ -125,6 +125,12 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
             color var(--ddd-duration-normal, 0.3s) ease;
         }
 
+        /* page content is light DOM, out of reach of the shadow main a
+           rule: its links take the palette's link role too */
+        journey-sidebar-theme a:any-link {
+          color: var(--text-heading);
+        }
+
         body.dark-mode {
           background-color: var(--journey-theme-bg-dark);
           color: var(--journey-theme-text-dark);
