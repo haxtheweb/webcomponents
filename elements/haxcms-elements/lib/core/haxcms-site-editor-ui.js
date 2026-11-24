@@ -4850,6 +4850,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.closeMenu();
     await import("@haxtheweb/privacy-choices/privacy-choices.js");
     const el = globalThis.document.createElement("privacy-choices");
+    // the list scrolls inside, the action bar stays at the bottom
+    el.inDialog = true;
+    const gap = "clamp(0px, 2vw - 8px, 32px)";
     this.dispatchEvent(
       new CustomEvent("simple-modal-show", {
         bubbles: true,
@@ -4866,8 +4869,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           styles: {
             ...SITE_ADMIN_TITLEBAR_STYLES,
             ...SITE_ADMIN_MODAL_SIZE,
-            "--simple-modal-width": "min(720px, calc(100vw - 32px))",
+            "--simple-modal-width": `min(720px, calc(100vw - 2 * ${gap}))`,
             "--simple-modal-max-width": "720px",
+            "--simple-modal-height": `min(760px, calc(100dvh - 2 * ${gap}))`,
+            "--simple-modal-max-height": "760px",
+            "--simple-modal-content-padding": "0",
             "--simple-modal-content-container-background":
               "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
             "--simple-modal-z-index": "100000000",

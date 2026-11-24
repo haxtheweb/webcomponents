@@ -81,3 +81,41 @@ describe("privacy-choices change guard", () => {
     expect(HaxConsent.get("youtube")).to.equal(null);
   });
 });
+
+describe("privacy-choices in a dialog", () => {
+  let el;
+  beforeEach(async () => {
+    HaxConsent.clearAll();
+    el = await fixture(html`
+      <div
+        style="--simple-modal-height: 400px; --simple-modal-titlebar-height: 48px;"
+      >
+        <privacy-choices in-dialog></privacy-choices>
+      </div>
+    `);
+    el = el.querySelector("privacy-choices");
+    await el.updateComplete;
+  });
+  after(() => HaxConsent.clearAll());
+
+  it("fills the dialog below its titlebar: the list scrolls, the bar stays", () => {
+    expect(Math.round(el.getBoundingClientRect().height)).to.equal(352);
+    const body = el.shadowRoot.querySelector(".body");
+    expect(globalThis.getComputedStyle(body).overflowY).to.equal("auto");
+    expect(body.scrollHeight).to.be.greaterThan(body.clientHeight);
+    const bar = el.shadowRoot.querySelector(".footer").getBoundingClientRect();
+    expect(Math.round(bar.bottom)).to.equal(
+      Math.round(el.getBoundingClientRect().bottom),
+    );
+  });
+
+  it("uses the HAX UI button in the action bar", () => {
+    expect(
+      el.shadowRoot.querySelector("#withdraw").classList.contains("hax-ui-btn"),
+    ).to.equal(true);
+  });
+
+  it("passes the a11y audit", async () => {
+    await expect(el).shadowDom.to.be.accessible();
+  });
+});

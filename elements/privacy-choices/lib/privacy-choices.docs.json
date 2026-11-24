@@ -20,7 +20,16 @@
   "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/privacy-choices/privacy-choices.js",
   "install": "npm i @haxtheweb/privacy-choices",
   "demoHtml": "<privacy-choices></privacy-choices>",
-  "attributes": [],
+  "attributes": [
+    {
+      "name": "in-dialog",
+      "property": "inDialog",
+      "type": "boolean",
+      "default": "false",
+      "description": "drawn as a site admin dialog's body: scrolling list, action bar",
+      "hax": null
+    }
+  ],
   "slots": [],
   "events": [],
   "hax": {
@@ -69,7 +78,7 @@
       }
     ]
   },
-  "surfaceHash": "f5a2460fff54",
+  "surfaceHash": "e23ad3f2d185",
   "walkthroughs": [],
   "videos": [],
   "motion": {
