@@ -114,6 +114,11 @@ case "\$1" in
   # lookup runs
   --version)
     exec "$REAL_NODE" "\$@" ;;
+  # an inline script is shortened, but its arguments are kept whole so the
+  # values it gets (e.g. the changelog version and date) show in the trace
+  -e)
+    echo "[\$(basename "\$PWD")] node -e \$(printf '%s' "\$2" | cut -c1-80)... args: \${*:3}" >>"\$UBIQUITY_TRACE"
+    exit 0 ;;
 esac
 echo "[\$(basename "\$PWD")] node \$*" | cut -c1-240 >>"\$UBIQUITY_TRACE"
 exit 0

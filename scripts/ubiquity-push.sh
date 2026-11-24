@@ -297,6 +297,11 @@ npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
 npm publish
+# haxcms-desktop, haxcms-browser and create (STEP 6) install this release from
+# npm. A fresh publish can take minutes to be served, and `npm update` would
+# quietly keep the old version, so wait until npm serves it (a failed publish
+# stops here too).
+node ~/haxtheweb/webcomponents/scripts/ubiquity-network.mjs landed --version "$version" --package @haxtheweb/haxcms-nodejs --timeout 900 --interval 15 || exit 1
 
 enter ~/haxtheweb/haxsite/
 git pull origin main
@@ -348,7 +353,7 @@ done
 # haxcms-nodejs release published above
 enter ~/haxtheweb/haxcms-desktop/
 git pull origin master
-npm update @haxtheweb/haxcms-nodejs --save
+npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
 npm run build
@@ -360,7 +365,7 @@ git push --follow-tags origin master
 # Worker is exactly this release; its GitHub Pages demo rebuilds from main on push.
 enter ~/haxtheweb/haxcms-browser/
 git pull origin main
-npm update @haxtheweb/haxcms-nodejs --save
+npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
 HAXCMS_NODEJS_SRC=~/haxtheweb/haxcms-nodejs/src npm run build
@@ -392,7 +397,7 @@ git push --follow-tags origin main
 
 enter ~/haxtheweb/create/
 git pull origin main
-npm update @haxtheweb/haxcms-nodejs --save
+npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
 npm run build

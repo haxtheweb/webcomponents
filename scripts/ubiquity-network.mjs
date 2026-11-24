@@ -17,9 +17,10 @@
  *   node scripts/ubiquity-network.mjs preflight
  *       before anything changes: coverage, then every checkout is there, is
  *       a git repo on its branch, and has the tools its steps use.
- *   node scripts/ubiquity-network.mjs landed [--version x.y.z] [--once]
+ *   node scripts/ubiquity-network.mjs landed [--version x.y.z] [--once] [--package name]
  *       wait (default up to 30 minutes) until every npm package and public
- *       URL in the list reports the release version.
+ *       URL in the list reports the release version. --package waits on that
+ *       one npm package only (e.g. before npm-updating to it).
  *   node scripts/ubiquity-network.mjs satellites [--version x.y.z] [--dry-run] [--only a,b]
  *       refresh, version, commit, tag and push the satellite repos, in order.
  *       Run it after `landed` passes; it is safe to run again on its own.
@@ -328,24 +329,28 @@ function cmdPreflight() {
 
 // ---------------------------------------------------------------- landed
 
-async function checkLanded(version) {
+async function npmHas(name, version) {
+  try {
+    return (
+      execFileSync("npm", ["view", `${name}@${version}`, "version"], {
+        encoding: "utf8",
+        stdio: ["ignore", "pipe", "ignore"],
+      }).trim() === version
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+async function checkLanded(version, only) {
   const pending = [];
+  if (only) {
+    // one npm package, whether or not the network lists it
+    return (await npmHas(only, version)) ? [] : [`npm ${only}@${version}`];
+  }
   for (const entry of NETWORK.repos) {
     if (entry.publish) {
-      let ok = false;
-      try {
-        ok =
-          execFileSync(
-            "npm",
-            ["view", `${entry.publish}@${version}`, "version"],
-            {
-              encoding: "utf8",
-              stdio: ["ignore", "pipe", "ignore"],
-            },
-          ).trim() === version;
-      } catch (e) {
-        ok = false;
-      }
+      const ok = await npmHas(entry.publish, version);
       if (!ok) pending.push(`npm ${entry.publish}@${version}`);
     }
     if (entry.landed) {
@@ -371,11 +376,12 @@ async function cmdLanded() {
     return 1;
   }
   const once = flag("--once");
+  const only = option("--package");
   const timeout = parseInt(option("--timeout") || "1800", 10) * 1000;
   const interval = parseInt(option("--interval") || "30", 10) * 1000;
   const start = Date.now();
   for (;;) {
-    const pending = await checkLanded(version);
+    const pending = await checkLanded(version, only);
     if (!pending.length) {
       console.log(
         `ubiquity-network: ${version} is public everywhere it is checked`,
