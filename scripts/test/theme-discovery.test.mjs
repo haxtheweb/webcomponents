@@ -2,6 +2,8 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
+  shouldSyncPlatforms,
+  formatThemesJson,
   isDirectHAXcmsTheme,
   declaresAcceptsDesignSystems,
   extractTextDocblockTag,
@@ -84,4 +86,26 @@ test("without a description tag the generated one stays", () => {
   );
   assert.match(entry.description, /blank site/i);
   assert.equal(entry.layout, null);
+});
+
+test("only the release build syncs into sibling haxcms checkouts", () => {
+  assert.equal(shouldSyncPlatforms([], {}), false);
+  assert.equal(shouldSyncPlatforms(["--sync-platforms"], {}), true);
+  assert.equal(
+    shouldSyncPlatforms([], { HAX_THEME_SYNC_PLATFORMS: "1" }),
+    true,
+  );
+  assert.equal(
+    shouldSyncPlatforms([], { HAX_THEME_SYNC_PLATFORMS: "0" }),
+    false,
+  );
+});
+
+test("themes.json is written in the repo's own format", async () => {
+  const out = await formatThemesJson(
+    { a: { element: "a", category: ["Blog", "Website"] } },
+    "elements/haxcms-elements/lib/themes.json",
+  );
+  assert.match(out, /"category": \["Blog", "Website"\]/);
+  assert.equal(out.endsWith("\n"), true);
 });

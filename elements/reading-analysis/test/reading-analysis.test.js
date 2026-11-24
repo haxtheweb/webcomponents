@@ -44,6 +44,9 @@ const flag = (el, label) =>
   Array.from(el.shadowRoot.querySelectorAll("button.flag")).find((b) =>
     b.textContent.includes(label),
   );
+// DDD sets scroll-behavior: smooth on :root, so every scrollIntoView here is
+// instant: a position read during a smooth scroll is stale, and the mouse
+// would land where the target used to be
 // the middle of an element's first line box (a wrapped sentence's bounding
 // box can be centered on blank space)
 const center = (node) => {
@@ -53,7 +56,7 @@ const center = (node) => {
 // drag a flag with the real mouse: press on it, move in steps, release
 async function drag(el, label, to, { release = true } = {}) {
   const b = flag(el, label);
-  b.scrollIntoView({ block: "center" });
+  b.scrollIntoView({ block: "center", behavior: "instant" });
   await sendMouse({ type: "move", position: center(b) });
   await sendMouse({ type: "down" });
   const end = to ? center(to) : [5, 5];
@@ -283,7 +286,7 @@ describe("reading-analysis", () => {
 
       it("a press without moving still picks the flag up", async () => {
         const b = flag(el, "Racism");
-        b.scrollIntoView({ block: "center" });
+        b.scrollIntoView({ block: "center", behavior: "instant" });
         await sendMouse({ type: "click", position: center(b) });
         await el.updateComplete;
         expect(b.getAttribute("aria-pressed")).to.equal("true");
@@ -299,7 +302,7 @@ describe("reading-analysis", () => {
           `--ra-flag-${b.getAttribute("data-style")}`,
         );
         const passage = target(el, sid(3));
-        passage.scrollIntoView({ block: "center" });
+        passage.scrollIntoView({ block: "center", behavior: "instant" });
         await sendMouse({ type: "move", position: center(passage) });
         // the passage fades its background in (--ddd-duration-fast), so wait
         // for it rather than reading the first frame

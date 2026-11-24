@@ -393,7 +393,37 @@ function shouldSkipTheme(elementName, filePath) {
 /**
  * Main theme discovery function with multi-pass inheritance detection
  */
-async function discoverThemes() {
+/**
+ * Whether this run also writes themes.json into sibling haxcms-nodejs and
+ * haxcms-php checkouts (../haxcms-nodejs, ../haxcms-php). Only the release
+ * build asks for it (gulp theme-discovery, part of yarn ubiquity), so a
+ * contributor registering a theme never touches other repos by accident.
+ */
+function shouldSyncPlatforms(argv = [], env = {}) {
+  return (
+    argv.indexOf("--sync-platforms") !== -1 ||
+    env.HAX_THEME_SYNC_PLATFORMS === "1"
+  );
+}
+
+/**
+ * themes.json as the repo keeps it: Prettier's JSON format (short arrays on
+ * one line), so a run only shows the entries that changed. Plain
+ * JSON.stringify when Prettier is not installed.
+ */
+async function formatThemesJson(themes, filePath) {
+  const text = JSON.stringify(themes, null, 2);
+  try {
+    const prettier = await import("prettier");
+    const config = (await prettier.resolveConfig(filePath)) || {};
+    return await prettier.format(text, { ...config, parser: "json" });
+  } catch {
+    return text + "\n";
+  }
+}
+
+async function discoverThemes(options = {}) {
+  const syncPlatforms = !!options.syncPlatforms;
   console.log("🔍 Discovering HAXcms themes...");
 
   const themes = {};
@@ -530,21 +560,30 @@ async function discoverThemes() {
 
     // Write themes.json file
     const outputPath = path.join(outputDir, "themes.json");
-    fs.writeFileSync(outputPath, JSON.stringify(sortedThemes, null, 2));
+    const output = await formatThemesJson(sortedThemes, outputPath);
+    fs.writeFileSync(outputPath, output);
 
     console.log(`📄 Theme registry written to: ${outputPath}`);
 
-    // Sync themes.json to both HAXcms platforms using relative paths
+    if (!syncPlatforms) {
+      console.log(
+        "ℹ️  Not syncing to ../haxcms-nodejs or ../haxcms-php (the release build does that with --sync-platforms)",
+      );
+      console.log("🎉 Theme discovery completed successfully!");
+      return themes;
+    }
+
+    // release build: sync themes.json to both HAXcms platforms using relative paths
     try {
       const nodejsPath = "../haxcms-nodejs/src/coreConfig/themes.json";
       const phpPath = "../haxcms-php/system/coreConfig/themes.json";
 
       // Copy to Node.js platform
-      fs.writeFileSync(nodejsPath, JSON.stringify(sortedThemes, null, 2));
+      fs.writeFileSync(nodejsPath, output);
       console.log(`🔄 Synced themes.json to HAXcms Node.js: ${nodejsPath}`);
 
       // Copy to PHP platform
-      fs.writeFileSync(phpPath, JSON.stringify(sortedThemes, null, 2));
+      fs.writeFileSync(phpPath, output);
       console.log(`🔄 Synced themes.json to HAXcms PHP: ${phpPath}`);
     } catch (syncError) {
       console.warn(
@@ -563,7 +602,9 @@ async function discoverThemes() {
 
 // Run the script if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-  discoverThemes().catch((error) => {
+  discoverThemes({
+    syncPlatforms: shouldSyncPlatforms(process.argv.slice(2), process.env),
+  }).catch((error) => {
     console.error("❌ Fatal error:", error);
     process.exit(1);
   });
@@ -571,6 +612,8 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 
 export default discoverThemes;
 export {
+  shouldSyncPlatforms,
+  formatThemesJson,
   isDirectHAXcmsTheme,
   declaresAcceptsDesignSystems,
   extractTextDocblockTag,

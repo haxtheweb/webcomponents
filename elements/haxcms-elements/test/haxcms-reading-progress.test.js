@@ -273,7 +273,7 @@ describe("reading checkpoints", () => {
   });
   const bottom = () => globalThis.scrollTo(0, document.body.scrollHeight);
   const lookAt = async (mark) => {
-    mark.scrollIntoView({ block: "center" });
+    mark.scrollIntoView({ block: "center", behavior: "instant" });
     tracker.measure();
     await flush(120);
     tracker.measure();
@@ -369,7 +369,7 @@ describe("reading checkpoints", () => {
     tracker.begin({ id: "a" }, region);
     tracker.ready();
     for (const mark of marks) {
-      mark.scrollIntoView({ block: "center" });
+      mark.scrollIntoView({ block: "center", behavior: "instant" });
       tracker.measure();
     }
     expect(tracker.checkpointStatus().seen).to.equal(0);
@@ -559,7 +559,9 @@ describe("HAXcms learner progress: reading and page completion", () => {
       expect(state.reading).to.equal(true);
       expect(state.state.covered).to.deep.equal([[1, 1]]);
       // back up to the first note: the page is read from where it is
-      host.querySelector("stop-note").scrollIntoView({ block: "center" });
+      host
+        .querySelector("stop-note")
+        .scrollIntoView({ block: "center", behavior: "instant" });
       await until(() => LearnerProgress.pageProgress().reading.done);
       expect(LearnerProgress.pageProgress().status).to.equal("done");
       const sent = await readingStatements("r2");
