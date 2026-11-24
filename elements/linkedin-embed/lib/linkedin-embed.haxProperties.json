@@ -28,7 +28,14 @@
         "required": true
       }
     ],
-    "advanced": []
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "Locale metadata value such as en_US.",
+        "inputMethod": "textfield"
+      }
+    ]
   },
   "saveOptions": {
     "unsetAttributes": ["_haxstate"]
