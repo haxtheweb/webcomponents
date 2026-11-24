@@ -315,6 +315,29 @@ describe("hal-9000 listener consent", () => {
   beforeEach(() => HaxConsent.clearAll());
   after(() => HaxConsent.clearAll());
 
+  it("can tell ahead of starting whether it needs consent", async () => {
+    // no on-device engine: speech would leave the device
+    const remote = listenerWith(fakeEngine());
+    expect(await remote.needsConsent()).to.equal(true);
+    // asking records nothing
+    expect(remote.state).to.not.equal("listening");
+    HaxConsent.set("speech", "allow");
+    expect(await remote.needsConsent()).to.equal(false);
+    HaxConsent.clearAll();
+    // the language is installed on the device: no consent to ask for
+    const local = listenerWith(
+      fakeEngine({
+        localField: true,
+        available: () => Promise.resolve("available"),
+      }),
+    );
+    expect(await local.needsConsent()).to.equal(false);
+    // a browser that cannot listen has nothing to ask
+    const none = listenerWith(fakeEngine());
+    none.Ctor = null;
+    expect(await none.needsConsent()).to.equal(false);
+  });
+
   it("does not start a remote session before consent and says why", async () => {
     const engine = fakeEngine();
     const states = [];

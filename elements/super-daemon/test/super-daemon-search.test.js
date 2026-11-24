@@ -227,6 +227,7 @@ describe("super-daemon-search behavior", () => {
     const sdi = globalThis.SuperDaemonManager.requestAvailability();
     const spoke = [];
     sdi.hal = {
+      needsSpeechConsent: () => Promise.resolve(false),
       speak: (phrase) => {
         spoke.push(phrase);
         return Promise.resolve();

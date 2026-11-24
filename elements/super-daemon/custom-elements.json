@@ -479,6 +479,49 @@
             },
             {
               "kind": "method",
+              "name": "startListening",
+              "parameters": [
+                {
+                  "name": "phrase",
+                  "default": "this.t.howMayIHelp",
+                  "description": "what Merlin says before listening",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Start a voice conversation: Merlin says the phrase, then listens.\nWhen listening would need the visitor's speech consent, the consent\npanel comes first and the conversation starts once it is allowed, so\nthe panel is never mixed into a listening card."
+            },
+            {
+              "kind": "method",
+              "name": "_askVoiceConsent",
+              "parameters": [
+                {
+                  "name": "phrase",
+                  "default": "this.t.howMayIHelp",
+                  "description": "what Merlin says once allowed",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Speech would leave the device: stop listening and ask, in Merlin's\ntoast, with the same consent panel as every other third-party service.\nAllowing hides the panel and starts the conversation over with a fresh\ncard; nothing is sent before that."
+            },
+            {
+              "kind": "method",
+              "name": "_replaceVoiceConsent",
+              "parameters": [
+                {
+                  "name": "phrase",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Swap the consent panel for Merlin's card with the opening phrase, so\nnothing of the panel (its text, its always-visible hold) carries into\nthe conversation. Without hal-9000 there is no card, so the panel just\ngoes away."
+            },
+            {
+              "kind": "method",
               "name": "_refreshVoiceControls",
               "description": "Re-render every Merlin search box so the mic button can hide"
             },
@@ -666,7 +709,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when you're sleeping, he knows when you're awake, and with this command active he is always listening for input, ready to respond. He's.. Santa from the Future. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Search and commands\", // who the voice is: it answers to \"Ok Future\" voiceName: \"Future\", closeMerlin: \"Close search and commands\", // spoken search vocabulary: pipe separated, translated per language voiceFillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay\", voiceStopWords: \"a|an|the|to|my|this|for|of|me\", voiceNumbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", voiceOrdinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", voicePickPrefixes: \"number|option|item|result|pick|choose|select|the\", voicePickSuffix: \"one\", voiceNumberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", voiceNext: \"next|down|next one\", voiceBack: \"back|previous|up|go back\", voiceRun: \"run|go|yes|do it|run it|open it|that one\", voiceClear: \"clear|start over|reset\", voiceCancel: \"cancel|never mind|nevermind\", voiceHelp: \"help|what can i say|what can i do\", // spoken commands Merlin always knows, in the user's language sayStopListening: \"stop listening\", sayCloseMerlin: \"close search\", sayDisableSanta: \"disable santa mode\", // what the voice card says after hearing something voiceDidYouMean: \"{title}? To run it, say\", voiceShowingMatches: \"Showing matches. To run one, say\", voiceNoMatches: \"Nothing matched. Try other words, or say\", voiceNoSuchResult: \"There is no result {number}. Try\", voiceYouCanSay: \"You can say\", voiceMicBlocked: \"The microphone is blocked. Allow it in your browser to use your voice.\", voiceUnavailable: \"Voice isn't available in this browser. You can still type.\", voiceTipPick: \"To run a result, say\", voiceTipNext: \"To move down the list, say\", voiceTipClear: \"To start over, say\", voiceTipHelp: \"To see what you can say, say\", voiceRunResult: \"Run a result\", voiceMoveDown: \"Move down\", voiceMoveUp: \"Move up\", voiceRunHighlighted: \"Run the highlighted result\", voiceStartOver: \"Start over\", voiceStopListeningLabel: \"Stop listening\", voiceCloseLabel: \"Close search\", }"
+              "default": "{ // product name; no locale entries, so it stays \"Super Daemon\" unless a language adds one superDaemon: \"Super Daemon\", toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when you're sleeping, he knows when you're awake, and with this command active he is always listening for input, ready to respond. He's.. Santa from the Future. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", merlin: \"Search and commands\", // who the voice is: it answers to \"Ok Future\" voiceName: \"Future\", closeMerlin: \"Close search and commands\", // spoken search vocabulary: pipe separated, translated per language voiceFillers: \"please|can you|could you|would you|will you|i want to|i'd like to|i would like to|let's|let me|go ahead and|um|uh|ok future|okay future|hey future|hey|merlin|ok|okay\", voiceStopWords: \"a|an|the|to|my|this|for|of|me\", voiceNumbers: \"zero|one|two|three|four|five|six|seven|eight|nine|ten\", voiceOrdinals: \"zeroth|first|second|third|fourth|fifth|sixth|seventh|eighth|ninth\", voicePickPrefixes: \"number|option|item|result|pick|choose|select|the\", voicePickSuffix: \"one\", voiceNumberSoundalikes: \"won=1|to=2|too=2|tu=2|tree=3|free=3|for=4|fore=4|ate=8\", voiceNext: \"next|down|next one\", voiceBack: \"back|previous|up|go back\", voiceRun: \"run|go|yes|do it|run it|open it|that one\", voiceClear: \"clear|start over|reset\", voiceCancel: \"cancel|never mind|nevermind\", voiceHelp: \"help|what can i say|what can i do\", // spoken commands Merlin always knows, in the user's language sayStopListening: \"stop listening\", sayCloseMerlin: \"close search\", sayDisableSanta: \"disable santa mode\", // what the voice card says after hearing something voiceDidYouMean: \"{title}? To run it, say\", voiceShowingMatches: \"Showing matches. To run one, say\", voiceNoMatches: \"Nothing matched. Try other words, or say\", voiceNoSuchResult: \"There is no result {number}. Try\", voiceYouCanSay: \"You can say\", voiceMicBlocked: \"The microphone is blocked. Allow it in your browser to use your voice.\", voiceUnavailable: \"Voice isn't available in this browser. You can still type.\", voiceNeedsConsent: \"This browser can't understand speech on your device.\", voiceTipPick: \"To run a result, say\", voiceTipNext: \"To move down the list, say\", voiceTipClear: \"To start over, say\", voiceTipHelp: \"To see what you can say, say\", voiceRunResult: \"Run a result\", voiceMoveDown: \"Move down\", voiceMoveUp: \"Move up\", voiceRunHighlighted: \"Run the highlighted result\", voiceStartOver: \"Start over\", voiceStopListeningLabel: \"Stop listening\", voiceCloseLabel: \"Close search\", }"
             },
             {
               "kind": "field",

@@ -10,6 +10,8 @@ import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { HAX_CONSENT_SERVICES } from "@haxtheweb/hax-consent-gate/hax-consent-gate.js";
+import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
+import { HaxUiAdminControls } from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
 
 /**
  * `privacy-choices`
@@ -19,7 +21,9 @@ import { HAX_CONSENT_SERVICES } from "@haxtheweb/hax-consent-gate/hax-consent-ga
  * gates without a reload, through hax-consent-changed. Choices made for
  * other hosts on embeds (embed:<host>) are listed after the known services.
  * Authors place it on a privacy page; HAXcms also opens it from the user
- * menu for signed-in users.
+ * menu for signed-in users, with `in-dialog`: it then fills the dialog
+ * below its titlebar, the list scrolls and Withdraw all sits in the HAX UI
+ * action bar at the bottom, like the other site admin dialogs.
  * @demo demo/index.html
  * @element privacy-choices
  */
@@ -30,6 +34,7 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this._status = "";
+    this.inDialog = false;
     this.t = {
       heading: "Services this site can use",
       allowPrefix: "Allow",
@@ -79,6 +84,8 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       _status: { type: String },
+      /** drawn as a site admin dialog's body: scrolling list, action bar */
+      inDialog: { type: Boolean, reflect: true, attribute: "in-dialog" },
     };
   }
   connectedCallback() {
@@ -92,6 +99,8 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
   static get styles() {
     return [
       super.styles,
+      HaxUiAdminTokens,
+      HaxUiAdminControls,
       css`
         :host {
           display: block;
@@ -179,7 +188,7 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
           gap: var(--ddd-spacing-3) var(--ddd-spacing-5);
           margin-top: var(--ddd-spacing-4);
         }
-        button {
+        :host(:not([in-dialog])) button {
           min-height: var(--ddd-spacing-11);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
@@ -201,7 +210,7 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
           );
           cursor: pointer;
         }
-        button:hover {
+        :host(:not([in-dialog])) button:hover {
           background-color: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
@@ -211,10 +220,10 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
             var(--ddd-theme-default-coalyGray)
           );
         }
-        button:active {
+        :host(:not([in-dialog])) button:active {
           transform: translateY(1px);
         }
-        button:focus-visible {
+        :host(:not([in-dialog])) button:focus-visible {
           outline: var(--ddd-border-md);
           outline-color: light-dark(
             var(--ddd-theme-default-coalyGray),
@@ -225,6 +234,88 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
         .status {
           margin: var(--ddd-spacing-0);
           font-size: var(--ddd-font-size-3xs);
+        }
+        /* in a site admin dialog: fill it below its titlebar; the list
+           scrolls and the action bar stays, so the dialog never scrolls */
+        :host([in-dialog]) {
+          margin: var(--ddd-spacing-0);
+          height: calc(
+            var(--simple-modal-height, 80vh) - var(
+                --simple-modal-titlebar-height,
+                48px
+              )
+          );
+          min-height: 300px;
+          background-color: var(--hax-ui-surface);
+          color: var(--hax-ui-text);
+        }
+        :host([in-dialog]) .wrap {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          min-height: 0;
+          padding: var(--ddd-spacing-0);
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+        }
+        :host([in-dialog]) .body {
+          flex: 1 1 auto;
+          min-height: 0;
+          overflow-y: auto;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-5)
+            var(--ddd-spacing-3);
+        }
+        /* admin type and lines, like the rest of the site admin dialogs */
+        :host([in-dialog]) .wrap {
+          font-family: var(--hax-ui-admin-font-family);
+        }
+        :host([in-dialog]) .heading {
+          margin: var(--ddd-spacing-4) var(--ddd-spacing-0) var(--ddd-spacing-1);
+          font-size: 16px;
+        }
+        :host([in-dialog]) li {
+          border-color: var(--hax-ui-line);
+        }
+        :host([in-dialog]) simple-fields-field {
+          --simple-fields-font-family: var(--hax-ui-admin-font-family);
+          --simple-fields-font-size: var(--hax-ui-admin-font-size);
+          --simple-fields-color: var(--hax-ui-text);
+          --simple-fields-accent-color: var(--hax-ui-accent-strong);
+        }
+        :host([in-dialog]) li simple-icon-lite {
+          margin-top: var(--ddd-spacing-1);
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-dialog]) .sends {
+          font-size: var(--hax-ui-admin-font-size);
+          line-height: 1.45;
+        }
+        :host([in-dialog]) .state {
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
+        }
+        :host([in-dialog]) li:last-child {
+          border-bottom: none;
+        }
+        :host([in-dialog]) .footer {
+          flex: none;
+          flex-wrap: nowrap;
+          gap: var(--ddd-spacing-3);
+          min-height: 56px;
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-5);
+          border-top: 1px solid var(--hax-ui-line);
+          background-color: var(--hax-ui-surface);
+        }
+        /* status on the left, the action on the right, as in every HAX UI
+           action bar */
+        :host([in-dialog]) .status {
+          order: -1;
+          flex: 1;
+          min-width: 0;
+          font-size: var(--hax-ui-admin-font-size-xs);
+          color: var(--hax-ui-text-muted);
         }
       `,
     ];
@@ -262,30 +353,37 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
   }
   render() {
     return html`<div class="wrap">
-      <p class="heading" id="heading">${this.t.heading}</p>
-      <ul aria-labelledby="heading">
-        ${this.services.map(
-          (s) =>
-            html`<li>
-              <simple-icon-lite
-                icon="${s.icon}"
-                aria-hidden="true"
-              ></simple-icon-lite>
-              <div>
-                <simple-fields-field
-                  type="checkbox"
-                  label="${this.t.allowPrefix} ${this._label(s.id)}"
-                  .value="${HaxConsent.allowed(s.id)}"
-                  @value-changed="${(e) => this._change(s.id, e.detail.value)}"
-                ></simple-fields-field>
-                <p class="sends">${this._sends(s.id)}</p>
-                <p class="state">${this._state(s.id)}</p>
-              </div>
-            </li>`,
-        )}
-      </ul>
+      <div class="body">
+        <p class="heading" id="heading">${this.t.heading}</p>
+        <ul aria-labelledby="heading">
+          ${this.services.map(
+            (s) =>
+              html`<li>
+                <simple-icon-lite
+                  icon="${s.icon}"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+                <div>
+                  <simple-fields-field
+                    type="checkbox"
+                    label="${this.t.allowPrefix} ${this._label(s.id)}"
+                    .value="${HaxConsent.allowed(s.id)}"
+                    @value-changed="${(e) => this._change(s.id, e.detail.value)}"
+                  ></simple-fields-field>
+                  <p class="sends">${this._sends(s.id)}</p>
+                  <p class="state">${this._state(s.id)}</p>
+                </div>
+              </li>`,
+          )}
+        </ul>
+      </div>
       <div class="footer">
-        <button id="withdraw" @click="${this._withdrawAll}">
+        <button
+          id="withdraw"
+          type="button"
+          class="${this.inDialog ? "hax-ui-btn" : ""}"
+          @click="${this._withdrawAll}"
+        >
           ${this.t.withdrawAll}
         </button>
         <p class="status" role="status">${this._status}</p>

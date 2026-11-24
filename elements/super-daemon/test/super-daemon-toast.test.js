@@ -297,6 +297,26 @@ describe("super-daemon-toast behavior", () => {
     expect(element.opened).to.equal(false);
   });
 
+  it("a pending switch into listening does not carry to the next message", async () => {
+    const show = (detail) =>
+      globalThis.dispatchEvent(
+        new CustomEvent("super-daemon-toast-show", { detail }),
+      );
+    // Merlin speaks and will listen once the words are read...
+    show({
+      text: "How may I help you?",
+      merlin: true,
+      duration: 200,
+      awaitingMerlinInput: true,
+    });
+    // ...but a consent panel replaces the card first
+    show({ text: "Allow voice input?", alwaysvisible: true });
+    await aTimeout(250);
+    expect(element.awaitingMerlinInput).to.equal(false);
+    expect(element.voiceState).to.not.equal("listening");
+    expect(element.text).to.equal("Allow voice input?");
+  });
+
   it("hideSimpleToast respects alwaysvisible", async () => {
     element.opened = true;
     element.alwaysvisible = true;

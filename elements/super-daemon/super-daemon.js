@@ -164,8 +164,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         "The microphone is blocked. Allow it in your browser to use your voice.",
       voiceUnavailable:
         "Voice isn't available in this browser. You can still type.",
-      voiceNeedsConsent:
-        "This browser can't understand speech on your device. Allow voice input to send your voice to its speech service, or keep typing.",
+      voiceNeedsConsent: "This browser can't understand speech on your device.",
       voiceTipPick: "To run a result, say",
       voiceTipNext: "To move down the list, say",
       voiceTipClear: "To start over, say",
@@ -2067,17 +2066,46 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   }
 
   /**
+   * Start a voice conversation: Merlin says the phrase, then listens.
+   * When listening would need the visitor's speech consent, the consent
+   * panel comes first and the conversation starts once it is allowed, so
+   * the panel is never mixed into a listening card.
+   * @param {string} phrase what Merlin says before listening
+   */
+  async startListening(phrase = this.t.howMayIHelp) {
+    if (this.hal && (await this.hal.needsSpeechConsent())) {
+      this._askVoiceConsent(phrase);
+      return;
+    }
+    if (!this.hal) {
+      this.setListeningStatus(true);
+      return;
+    }
+    return this.hal.speak(phrase, this.santaMode).then(() => {
+      this.playSound();
+      this.setListeningStatus(true);
+    });
+  }
+
+  /**
    * Speech would leave the device: stop listening and ask, in Merlin's
    * toast, with the same consent panel as every other third-party service.
-   * Allowing resumes listening; nothing is sent before that.
+   * Allowing hides the panel and starts the conversation over with a fresh
+   * card; nothing is sent before that.
+   * @param {string} phrase what Merlin says once allowed
    */
-  async _askVoiceConsent() {
+  async _askVoiceConsent(phrase = this.t.howMayIHelp) {
+    this.__voiceConsentPhrase = phrase;
     this.setListeningStatus(false);
     await import("@haxtheweb/hax-consent-gate/hax-consent-gate.js");
     const gate = globalThis.document.createElement("hax-consent-gate");
     gate.setAttribute("variant", "panel");
     gate.setAttribute("service", "speech");
     gate.style.setProperty("--hax-consent-gate-aspect", "auto");
+    // Merlin's card is the frame; no second backdrop inside it
+    gate.style.setProperty("--hax-consent-gate-backdrop", "transparent");
+    gate.style.setProperty("--hax-consent-gate-padding", "0");
+    this.__voiceConsentGate = gate;
     if (!this.__voiceConsentListening) {
       this.__voiceConsentListening = true;
       globalThis.addEventListener(
@@ -2088,15 +2116,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
             e.detail.service === "speech" &&
             e.detail.value === "allow"
           ) {
-            globalThis.dispatchEvent(
-              new CustomEvent("super-daemon-toast-hide", {
-                bubbles: true,
-                composed: true,
-                cancelable: true,
-                detail: {},
-              }),
-            );
-            this.setListeningStatus(true);
+            // only answers the panel Merlin is still showing: allowing
+            // later (privacy choices) must not start listening by surprise
+            const gate = this.__voiceConsentGate;
+            const phrase = this.__voiceConsentPhrase;
+            this.__voiceConsentGate = null;
+            if (!gate || !gate.isConnected) {
+              return;
+            }
+            this._replaceVoiceConsent(phrase);
+            this.startListening(phrase);
           }
         },
         { signal: this.windowControllers.signal },
@@ -2112,6 +2141,32 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           slot: gate,
           alwaysvisible: true,
         },
+      }),
+    );
+  }
+
+  /**
+   * Swap the consent panel for Merlin's card with the opening phrase, so
+   * nothing of the panel (its text, its always-visible hold) carries into
+   * the conversation. Without hal-9000 there is no card, so the panel just
+   * goes away.
+   * @param {string} phrase
+   */
+  _replaceVoiceConsent(phrase) {
+    if (this.hal) {
+      this.hal.setToast(phrase, false, true);
+      return;
+    }
+    const toast = this.toastInstance;
+    if (toast) {
+      toast.alwaysvisible = false;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("super-daemon-toast-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {},
       }),
     );
   }

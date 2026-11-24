@@ -102,5 +102,5 @@
   "resultsOfTotal": "{count} of {total} results",
   "runResult": "Run a result",
   "sayPickResult": "second one",
-  "voiceNeedsConsent": "This browser can't understand speech on your device. Allow voice input to send your voice to its speech service, or keep typing."
+  "voiceNeedsConsent": "This browser can't understand speech on your device."
 }

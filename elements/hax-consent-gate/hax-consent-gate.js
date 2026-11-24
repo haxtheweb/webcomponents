@@ -36,6 +36,10 @@ export const HAX_CONSENT_SERVICES = [
  *   video-player, a map) in place of its content, with one
  *   "Always allow <service>" choice. The embedding element renders its own
  *   content once HaxConsent says "allow"; the panel only asks.
+ * @cssprop --hax-consent-gate-aspect - the panel's shape (default 16 / 9)
+ * @cssprop --hax-consent-gate-backdrop - the panel's backdrop; transparent
+ *   when its host already frames it
+ * @cssprop --hax-consent-gate-padding - space around the panel's card
  * @demo demo/index.html
  * @element hax-consent-gate
  */
@@ -341,12 +345,17 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
           justify-content: center;
           width: 100%;
           aspect-ratio: var(--hax-consent-gate-aspect, 16 / 9);
-          padding: var(--ddd-spacing-4);
+          padding: var(--hax-consent-gate-padding, var(--ddd-spacing-4));
           box-sizing: border-box;
           border-radius: var(--ddd-radius-sm);
-          background-color: light-dark(
-            var(--ddd-theme-default-limestoneLight),
-            var(--ddd-theme-default-potentialMidnight)
+          /* the backdrop stands in for the embed; a host that already frames
+             the panel (Merlin's card) can drop it */
+          background: var(
+            --hax-consent-gate-backdrop,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-potentialMidnight)
+            )
           );
         }
         .panel-inner {

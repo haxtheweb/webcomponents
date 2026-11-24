@@ -26,6 +26,16 @@
             },
             {
               "kind": "method",
+              "name": "needsSpeechConsent",
+              "description": "Listening now would send speech off the device and the visitor has not\nallowed that yet; ask before starting",
+              "return": {
+                "type": {
+                  "text": "Promise<boolean>"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "_fire",
               "parameters": [
                 {
@@ -670,6 +680,16 @@
             {
               "kind": "method",
               "name": "_startSession"
+            },
+            {
+              "kind": "method",
+              "name": "needsConsent",
+              "description": "Whether listening now would need the visitor's \"speech\" consent: the\nbrowser can listen, but not on the device, and speech is not allowed\nyet. Callers ask before they start, so the question comes first.\nNothing is recorded and nothing is sent to find out.",
+              "return": {
+                "type": {
+                  "text": "Promise<boolean>"
+                }
+              }
             },
             {
               "kind": "method",
