@@ -162,12 +162,19 @@ class PolarisInventTheme extends LTIResizingMixin(
             --ddd-palette-color-7,
             var(--ddd-theme-default-inventOrange)
           );
+          /* the glyph takes the text color the palette pairs with color-7 */
+          --scroll-button-color: var(
+            --ddd-palette-text-color-7,
+            var(--ddd-theme-default-white)
+          );
           --simple-icon-width: 32px;
           --simple-icon-height: 32px;
           --simple-icon-button-border-radius: none;
         }
+        /* links on the page: the palette's link role, never a palette
+           color by number */
         .entry-content a {
-          color: var(--ddd-palette-color-4, #2c76c7);
+          color: var(--ddd-palette-link, #2c76c7);
         }
 
         site-active-title h1 {

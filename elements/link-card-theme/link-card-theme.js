@@ -124,14 +124,17 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         :host {
           display: block;
           min-height: 100vh;
+          /* text on each palette fill is the text color the palette pairs
+             with that fill: a fixed black or white does not read on every
+             palette's fill, since palettes order their colors differently */
           --link-card-shell-bg: var(--ddd-palette-color-2);
-          --link-card-shell-text: #000000;
+          --link-card-shell-text: var(--ddd-palette-text-color-2, #000000);
           --link-card-card-bg: var(--ddd-theme-default-white);
           --link-card-card-text: #000000;
           --link-card-button-bg: var(--ddd-palette-color-1);
           --link-card-button-hover-bg: var(--ddd-palette-color-3);
-          --link-card-button-text: light-dark(black, white);
-          --link-card-button-hover-text: var(--link-card-button-text);
+          --link-card-button-text: var(--ddd-palette-text-color-1, black);
+          --link-card-button-hover-text: var(--ddd-palette-text-color-3, white);
           --link-card-outline: light-dark(
             var(--ddd-theme-default-limestoneGray),
             var(--ddd-palette-color-5)
@@ -140,35 +143,27 @@ export class LinkCardTheme extends HAXCMSThemeParts(
         @media (prefers-color-scheme: dark) {
           :host {
             --link-card-shell-bg: var(--ddd-palette-color-6);
-            --link-card-shell-text: #ffffff;
+            --link-card-shell-text: var(--ddd-palette-text-color-6, #ffffff);
             --link-card-card-bg: var(--ddd-theme-default-coalyGray);
             --link-card-card-text: #ffffff;
             --link-card-button-bg: var(--ddd-palette-color-7);
             --link-card-button-hover-bg: var(--ddd-palette-color-5);
-            --link-card-button-hover-text: var(--link-card-button-text);
+            --link-card-button-text: var(--ddd-palette-text-color-7, white);
+            --link-card-button-hover-text: var(
+              --ddd-palette-text-color-5,
+              black
+            );
           }
         }
         :host([dark-mode]) {
           --link-card-shell-bg: var(--ddd-palette-color-6);
-          --link-card-shell-text: #ffffff;
+          --link-card-shell-text: var(--ddd-palette-text-color-6, #ffffff);
           --link-card-card-bg: var(--ddd-theme-default-coalyGray);
           --link-card-card-text: #ffffff;
           --link-card-button-bg: var(--ddd-palette-color-7);
           --link-card-button-hover-bg: var(--ddd-palette-color-5);
-          --link-card-button-hover-text: var(--link-card-button-text);
-        }
-        :host([data-palette="0"]),
-        :host([data-palette="1"]),
-        :host([data-palette="2"]),
-        :host([data-palette="3"]),
-        :host([data-palette="5"]),
-        :host([data-palette="8"]),
-        :host([data-palette="11"]),
-        :host([data-palette="15"]) {
-          --link-card-button-hover-text: light-dark(white, black);
-        }
-        :host([data-palette="10"]) {
-          --link-card-button-hover-text: white;
+          --link-card-button-text: var(--ddd-palette-text-color-7, white);
+          --link-card-button-hover-text: var(--ddd-palette-text-color-5, black);
         }
 
         .theme-shell {
@@ -240,7 +235,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           display: grid;
           gap: var(--ddd-spacing-3);
         }
-        .link-button {
+        .link-button,
+        .link-button:any-link {
           display: inline-flex;
           align-items: center;
           justify-content: center;
@@ -289,7 +285,10 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           justify-content: center;
           gap: var(--ddd-spacing-3);
         }
-        .social-link {
+        /* :any-link matches DDD's base anchor rule, which otherwise wins and
+           clears the button fill to its own accent background */
+        .social-link,
+        .social-link:any-link {
           width: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
           border-radius: var(--ddd-radius-circle);
@@ -316,8 +315,8 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           --simple-icon-button-border-radius: var(--ddd-radius-circle);
           --simple-icon-button-border: var(--ddd-border-size-sm) solid
             var(--link-card-outline);
-          --simple-icon-button-color: var(--link-card-button-text);
-          --simple-icon-button-background: var(--link-card-button-bg);
+          --simple-icon-button-background-color: var(--link-card-button-bg);
+          color: var(--link-card-button-text);
         }
         #contentcontainer {
           width: min(100%, 620px);

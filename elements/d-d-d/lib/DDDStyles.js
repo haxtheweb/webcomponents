@@ -4495,6 +4495,259 @@ export const DDDPaletteStyles = css`
       )
     );
   }
+
+  /**
+   * Link role: text color for links (and other palette-colored text) sitting
+   * on the page surface. Invariant: it reads at 4.5:1 or better on the light
+   * page surface in light mode and on the dark page surface in dark mode, in
+   * every palette and under every bridged design system, whatever order a
+   * palette's color slots run in. It keeps the palette's own accent hue: the
+   * accent slots are clamped in OKLCH lightness (at most the light maximum in
+   * light mode, at least the dark minimum in dark mode), so a bridge that
+   * remaps the underlying colors cannot push it out of range. Browsers
+   * without relative color syntax use DDD's link colors instead.
+   * Themes and elements use this, never a palette slot by number, for text
+   * on the page surface. Its two halves serve a surface that keeps one
+   * lightness in both schemes (a white button in dark mode, say):
+   * --ddd-palette-link-on-light reads on white and limestone max light,
+   * --ddd-palette-link-on-dark on coaly gray and potential midnight.
+   */
+  html,
+  :root,
+  [data-palette] {
+    --ddd-palette-link-light-max: 0.5;
+    --ddd-palette-link-dark-min: 0.8;
+  }
+  [data-palette] {
+    --ddd-palette-link-on-light: var(--ddd-theme-default-link);
+    --ddd-palette-link-on-dark: var(--ddd-theme-default-linkLight);
+    --ddd-palette-link: light-dark(
+      var(--ddd-palette-link-on-light),
+      var(--ddd-palette-link-on-dark)
+    );
+  }
+  @supports (color: oklch(from red l c h)) {
+    [data-palette="wisdom-walk-green"],
+    [data-palette="0"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="very-violent-red"],
+    [data-palette="1"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="beetles-yellow"],
+    [data-palette="2"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-2)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="offbrand-nittany-blue"],
+    [data-palette="3"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="boring-blue-gray"],
+    [data-palette="4"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="monotone"],
+    [data-palette="5"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-5) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="salmon-season"],
+    [data-palette="6"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="tweedle-dee"],
+    [data-palette="7"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="polaris-invent"],
+    [data-palette="8"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-1)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-1) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="positively-purple"],
+    [data-palette="9"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-2)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="honey-bear"],
+    [data-palette="10"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-2) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="boldly-lion"],
+    [data-palette="11"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-2)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="ocean-current"],
+    [data-palette="12"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-4)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="twilight-indigo"],
+    [data-palette="13"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-4)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="evergreen-earth"],
+    [data-palette="14"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="graphite-contrast"],
+    [data-palette="15"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-6)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-6) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="tidepool-teal"],
+    [data-palette="16"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="desert-dune"],
+    [data-palette="17"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="berry-bramble"],
+    [data-palette="18"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-3)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-4) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+    [data-palette="clear-sight"],
+    [data-palette="19"] {
+      --ddd-palette-link-on-light: oklch(
+        from var(--ddd-palette-color-2)
+          min(l, var(--ddd-palette-link-light-max)) c h
+      );
+      --ddd-palette-link-on-dark: oklch(
+        from var(--ddd-palette-color-3) max(l, var(--ddd-palette-link-dark-min))
+          c h
+      );
+    }
+  }
 `;
 
 // export that has all of them for easy stamping as a single sheet

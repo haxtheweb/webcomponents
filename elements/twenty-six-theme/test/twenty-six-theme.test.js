@@ -457,7 +457,21 @@ describe("TwentySixTheme behavior", () => {
       "var(--ddd-theme-default-white)",
     );
     // unparseable color falls back to the black token
+    expect(element.__pickBlackOrWhite("not-a-color")).to.equal(
+      "var(--ddd-theme-default-black)",
+    );
+  });
+
+  it("reads any CSS color, not only rgb and hex", () => {
+    // a palette surface clamped with relative color syntax computes to
+    // oklch(); named colors and oklch() resolve through the browser
     expect(element.__pickBlackOrWhite("blue")).to.equal(
+      "var(--ddd-theme-default-white)",
+    );
+    expect(element.__pickBlackOrWhite("oklch(0.25 0.05 30)")).to.equal(
+      "var(--ddd-theme-default-white)",
+    );
+    expect(element.__pickBlackOrWhite("oklch(0.97 0.02 90)")).to.equal(
       "var(--ddd-theme-default-black)",
     );
   });
@@ -478,10 +492,10 @@ describe("TwentySixTheme behavior", () => {
     // unparseable background is returned unchanged
     expect(
       element.__buildHoverBackgroundColor(
-        "blue",
+        "not-a-color",
         "var(--ddd-theme-default-black)",
       ),
-    ).to.equal("blue");
+    ).to.equal("not-a-color");
   });
 
   it("mixes rgb channels with clamped amounts", () => {

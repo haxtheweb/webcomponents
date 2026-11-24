@@ -107,10 +107,13 @@ export class DddStepsListItem extends DDDSuper(LitElement) {
               )
             )
           );
+          /* the title is text on the page: the palette's link role, which
+             reads on the page in every palette (the accent is decorative and
+             only colors the line and the circle) */
           --ddd-steps-list-item-title: var(
             --ddd-steps-list-item-local-title,
             var(
-              --ddd-palette-accent,
+              --ddd-palette-link,
               var(--lowContrast-override, var(--ddd-steps-list-item-primary))
             )
           );

@@ -119,3 +119,97 @@ describe("DDD palettes contrast", () => {
     });
   });
 });
+
+// the link role (--ddd-palette-link) is palette text on the page surface:
+// links, step titles, breadcrumbs. It reads at 4.5:1 on the light page
+// surfaces in light mode and the dark ones in dark mode in every palette,
+// whatever order a palette's colors run in, and so do its halves on their
+// own surfaces in either scheme. It computes to a relative color, so it is
+// read back through a canvas, which converts any CSS color to sRGB.
+describe("DDD palette link role", () => {
+  const SURFACES = {
+    light: [
+      "--ddd-theme-default-white",
+      "--ddd-theme-default-limestoneMaxLight",
+    ],
+    dark: [
+      "--ddd-theme-default-coalyGray",
+      "--ddd-theme-default-potentialMidnight",
+    ],
+  };
+  const ROLES = [
+    ["--ddd-palette-link", "light", "light"],
+    ["--ddd-palette-link", "dark", "dark"],
+    ["--ddd-palette-link-on-light", "light", "light"],
+    ["--ddd-palette-link-on-light", "dark", "light"],
+    ["--ddd-palette-link-on-dark", "light", "dark"],
+    ["--ddd-palette-link-on-dark", "dark", "dark"],
+  ];
+  let host;
+  let ctx;
+  const srgb = (value) => {
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = "#000";
+    ctx.fillStyle = value;
+    ctx.fillRect(0, 0, 1, 1);
+    const d = ctx.getImageData(0, 0, 1, 1).data;
+    return [d[0] / 255, d[1] / 255, d[2] / 255];
+  };
+  before(() => {
+    const canvas = globalThis.document.createElement("canvas");
+    canvas.width = 1;
+    canvas.height = 1;
+    ctx = canvas.getContext("2d", { willReadFrequently: true });
+    host = globalThis.document.createElement("div");
+    globalThis.document.body.appendChild(host);
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = DDDAllStyles.map((s) => s.styleSheet);
+    root.innerHTML = ["light", "dark"]
+      .map(
+        (scheme) =>
+          `<div style="color-scheme: ${scheme}">${ALL_PALETTES.map(
+            (key) =>
+              `<div data-scheme="${scheme}" data-palette="${key}">${ROLES.map(
+                ([token, , surface]) =>
+                  SURFACES[surface]
+                    .map(
+                      (bg) =>
+                        `<b data-token="${token}" data-bg="${bg}" style="background-color: var(${bg}); color: var(${token})">Aa</b>`,
+                    )
+                    .join(""),
+              ).join("")}</div>`,
+          ).join("")}</div>`,
+      )
+      .join("");
+  });
+  after(() => {
+    host.remove();
+  });
+
+  ALL_PALETTES.forEach((key) => {
+    ["light", "dark"].forEach((scheme) => {
+      it(`${key} (${scheme}): the link role and its halves meet 4.5:1 on their surfaces`, () => {
+        const row = host.shadowRoot.querySelector(
+          `[data-scheme="${scheme}"][data-palette="${key}"]`,
+        );
+        const probes = Array.from(row.querySelectorAll("b")).filter((b) =>
+          ROLES.some(
+            ([token, s, surface]) =>
+              s === scheme &&
+              b.dataset.token === token &&
+              SURFACES[surface].includes(b.dataset.bg),
+          ),
+        );
+        expect(probes.length).to.be.at.least(4);
+        probes.forEach((b) => {
+          const cs = globalThis.getComputedStyle(b);
+          const r = ratio(srgb(cs.backgroundColor), srgb(cs.color));
+          expect(
+            r,
+            `${key} ${scheme} ${b.dataset.token} on ${b.dataset.bg}`,
+          ).to.be.at.least(4.5);
+        });
+      });
+    });
+  });
+});

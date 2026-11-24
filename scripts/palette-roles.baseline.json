@@ -1,0 +1,4 @@
+{
+  "about": "Known palette pairings under 4.5:1: system -> scheme@palette -> pair -> ratio. Shrink-only: node scripts/palette-roles-check.mjs --update-baseline only removes entries. The link role is never baselined.",
+  "systems": {}
+}

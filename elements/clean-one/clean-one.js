@@ -149,6 +149,9 @@ class CleanOne extends LTIResizingMixin(
             --simple-colors-fixed-theme-blue-grey-3,
             #9badb6
           );
+          /* that light step takes dark text, not the palette's own pair for
+             its dark step 6 */
+          --clean-one-on-palette-6: var(--ddd-theme-default-coalyGray);
         }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
@@ -200,11 +203,23 @@ class CleanOne extends LTIResizingMixin(
         :host([is-logged-in]) site-menu {
           height: var(--clean-one-site-menu-height, calc(100vh - 108px));
         }
+        /* each fill takes the text color the palette pairs with it
+           (color-6 light, color-2 dark; color-7 for the tooltip): two
+           palette slots picked by number do not read in every palette */
         scroll-button {
-          --scroll-button-color: var(--ddd-lightDark-7);
+          --scroll-button-color: light-dark(
+            var(
+              --clean-one-on-palette-6,
+              var(--ddd-palette-text-color-6, var(--ddd-lightDark-7))
+            ),
+            var(--ddd-palette-text-color-2, var(--ddd-lightDark-7))
+          );
           --scroll-button-background-color: var(--ddd-lightDark-6);
           --scroll-button-tooltip-background-color: var(--ddd-palette-7);
-          --scroll-button-tooltip-color: var(--ddd-palette-1);
+          --scroll-button-tooltip-color: var(
+            --ddd-palette-text-color-7,
+            var(--ddd-palette-1)
+          );
           color: var(--ddd-lightDark-1);
         }
         simple-icon-button,

@@ -7,15 +7,27 @@ import { css } from "lit";
 export const JourneySidebarThemeStyles = css`
   :host {
     --sidebar-bg: var(--ddd-palette-color-2, var(--ddd-theme-accent));
+    /* the content surface matches the color scheme in every palette (light
+       in light mode, dark in dark mode), so the blocks on it, which pick
+       their colors by scheme, stay readable; a palette whose color-5 is dark
+       put light-mode blocks on a dark fill. Browsers with relative color
+       syntax keep the palette's hue on that surface (below). */
     --content-bg: light-dark(
-      var(--ddd-palette-color-5, var(--ddd-theme-default-white)),
-      var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray))
+      var(--ddd-theme-default-white),
+      var(--ddd-theme-default-coalyGray)
     );
-    --text-heading: light-dark(
-      var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy)),
-      var(--ddd-palette-text-color-1, var(--ddd-theme-default-white))
+    /* headings take the palette's link role, made for that surface */
+    --text-heading: var(
+      --ddd-palette-link,
+      light-dark(
+        var(--ddd-theme-default-nittanyNavy),
+        var(--ddd-theme-default-white)
+      )
     );
-    --text-body: var(--text-heading);
+    --text-body: light-dark(
+      var(--ddd-theme-default-coalyGray),
+      var(--ddd-theme-default-white)
+    );
     --text-primary: var(--text-heading);
     /* prose sits on --content-bg, so it takes the text color paired with it */
     --ddd-reading-prose-color: var(--text-body);
@@ -34,6 +46,21 @@ export const JourneySidebarThemeStyles = css`
     );
     font-family: var(--ddd-font-primary, sans-serif);
     background-color: var(--content-bg);
+  }
+
+  @supports (color: oklch(from red l c h)) {
+    :host {
+      --content-bg: light-dark(
+        oklch(
+          from var(--ddd-palette-color-5, var(--ddd-theme-default-white))
+            max(l, 0.95) c h
+        ),
+        oklch(
+          from var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray))
+            min(l, 0.28) c h
+        )
+      );
+    }
   }
 
   site-active-title {
@@ -75,11 +102,10 @@ export const JourneySidebarThemeStyles = css`
     font-family: var(--ddd-font-primary);
   }
 
-  /* links take the text color paired with --content-bg (another palette
-     fill as text color is not readable in every palette) and an underline,
-     so they never rely on color alone */
+  /* links take the palette's link role, made for the content surface, and
+     an underline, so they never rely on color alone */
   main a {
-    color: var(--text-body);
+    color: var(--text-heading);
     text-decoration: underline;
     text-underline-offset: 3px;
     transition: all var(--ddd-duration-fast, 0.2s) ease;

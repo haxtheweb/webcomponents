@@ -43,6 +43,20 @@ test("countViolations counts nodes per key and ignores other rules", () => {
   assert.deepEqual(counts, { p: 2, "x-el >> .label": 1 });
 });
 
+test("countViolations keys non-text findings apart from text", () => {
+  const counts = countViolations([
+    { id: "color-contrast", nodes: [{ target: [["x-theme", "a.next"]] }] },
+    {
+      id: "non-text-contrast",
+      nodes: [{ target: [["x-theme", "a.next > simple-icon-lite"]] }],
+    },
+  ]);
+  assert.deepEqual(counts, {
+    "x-theme >> a.next": 1,
+    "non-text: x-theme >> a.next > simple-icon-lite": 1,
+  });
+});
+
 test("compareToBaseline: missing key or higher count is new", () => {
   const baseline = { a: { dark: { p: 2, ".gone": 1 } } };
   const results = {

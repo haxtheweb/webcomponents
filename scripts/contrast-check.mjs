@@ -88,6 +88,12 @@ import {
 } from "./lib/demo-runner.mjs";
 import { DDDPaletteRegistry } from "../elements/d-d-d/lib/DDDPaletteRegistry.js";
 import {
+  PALETTE_FIXTURE_HTML,
+  PALETTE_FIXTURE_MODULES,
+  preparePaletteFixture,
+  runNonTextContrast,
+} from "./lib/palette-fixture.mjs";
+import {
   DESIGN_SYSTEM_SOURCES,
   activateDesignSystemInPage,
   isHaxBlock,
@@ -120,6 +126,7 @@ const TOOLING = [
   /^scripts\/contrast/,
   /^scripts\/lib\/contrast\.mjs$/,
   /^scripts\/lib\/demo-runner\.mjs$/,
+  /^scripts\/lib\/palette-fixture\.mjs$/,
   /^elements\/d-d-d\/lib\/DDDPaletteRegistry\.js$/,
   /^web-dev-server\.config\.mjs$/,
   /^\.github\/workflows\/contrast(-design-systems)?\.yml$/,
@@ -484,6 +491,15 @@ async function runContrastRule() {
   }));
 }
 
+/**
+ * one measurement: axe's color-contrast rule, plus, on a site theme with the
+ * palette fixture in place, the icons that identify a control (non-text)
+ */
+async function measure(page, fixture) {
+  const text = await page.evaluate(runContrastRule);
+  return fixture ? text.concat(await page.evaluate(runNonTextContrast)) : text;
+}
+
 // runs in the page: set a palette on the site's theme element and wait for
 // it to render; false when the page has no theme element
 async function applyPalette(value) {
@@ -553,7 +569,7 @@ async function auditPalettes(page, scheme, theme, element) {
     }
     await waitForSettledRender(page);
     out[paletteMode(scheme, palette.key, theme)] = countViolations(
-      await page.evaluate(runContrastRule),
+      await measure(page, true),
     );
   }
   return out;
@@ -590,8 +606,17 @@ async function auditDemo(
       await waitForSettledRender(page);
     }
     await page.addScriptTag({ content: axeSource });
+    // a site theme is measured on a nested page with the palette fixture
+    // in its content, so every theme meets the same palette-reactive blocks
+    if (palettes) {
+      await page.evaluate(preparePaletteFixture, {
+        html: PALETTE_FIXTURE_HTML,
+        modules: PALETTE_FIXTURE_MODULES,
+      });
+      await waitForSettledRender(page);
+    }
     const counts = {
-      [mode]: countViolations(await page.evaluate(runContrastRule)),
+      [mode]: countViolations(await measure(page, !!palettes)),
     };
     if (palettes) {
       Object.assign(counts, await auditPalettes(page, mode, null, element));
@@ -599,9 +624,13 @@ async function auditDemo(
         if (!(await page.evaluate(switchTheme, theme))) {
           throw new Error(`site theme ${theme.tag} did not render on the demo`);
         }
+        await page.evaluate(preparePaletteFixture, {
+          html: PALETTE_FIXTURE_HTML,
+          modules: PALETTE_FIXTURE_MODULES,
+        });
         await waitForSettledRender(page);
         counts[paletteMode(mode, null, theme.tag)] = countViolations(
-          await page.evaluate(runContrastRule),
+          await measure(page, true),
         );
         Object.assign(
           counts,
