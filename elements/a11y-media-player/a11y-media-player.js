@@ -2984,11 +2984,22 @@ class A11yMediaPlayer extends SchemaBehaviors(
   }
 
   /**
-   * remembers the visitor allows YouTube and starts this video
+   * remembers the visitor allows YouTube and shows this video ready to play,
+   * paused. It does not start it: a play call made from the consent click
+   * reaches YouTube only after its player loads, when the browser no longer
+   * counts the click and blocks the autoplay, which left the controls
+   * showing Pause over a video that was not playing.
    */
-  _allowYoutube() {
+  async _allowYoutube() {
     HaxConsent.set("youtube", "allow");
-    this.play();
+    await this.updateComplete;
+    // the panel that had focus is gone: hand focus to the play button
+    const play = this.shadowRoot
+      ? this.shadowRoot.querySelector("#playbutton")
+      : null;
+    const button =
+      play && play.shadowRoot ? play.shadowRoot.querySelector("button") : null;
+    if (button) button.focus();
   }
 
   get isYoutube() {

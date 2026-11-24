@@ -61,7 +61,7 @@ describe("a11y-media-player asks before contacting YouTube", () => {
     expect(el.poster).to.equal("files/poster.jpg");
   });
 
-  it("Always allow saves the choice and starts this video", async () => {
+  it("Always allow saves the choice and leaves this video ready, not playing", async () => {
     const el = await fixture(
       html`<a11y-media-player youtube-id="abc123"></a11y-media-player>`,
     );
@@ -71,7 +71,17 @@ describe("a11y-media-player asks before contacting YouTube", () => {
     await waitUntil(() => el.youtube, "youtube player created", {
       timeout: 3000,
     });
-    expect(el.youtube.autoplay).to.equal(true);
+    // the consent click does not count as play: no autoplay, play button
+    // still says Play, and focus moves to it
+    expect(el.youtube.autoplay).to.equal(false);
+    expect(el.__playing).to.not.equal(true);
+    const play = el.shadowRoot.querySelector("#playbutton");
+    expect(play.getAttribute("action")).to.equal("play");
+    await waitUntil(
+      () => play.shadowRoot.activeElement !== null,
+      "focus on the play button",
+      { timeout: 3000 },
+    );
     expect(el.shadowRoot.querySelector("#consent")).to.equal(null);
     expect(el.shadowRoot.querySelector("#controls").hidden).to.equal(false);
     // the embed itself comes from the reduced-cookie host
