@@ -437,9 +437,11 @@ export class IframeLoader extends LitElement {
   }
   render() {
     if (!this._consent.allowed) {
-      // the panel stands where the frame will be; the frame waits, unloaded
+      // the panel stands where the frame will be; the frame waits, unloaded.
+      // Its own wrapper (not #container), so the edit-mode dimming of the
+      // frame preview never lowers the consent text's contrast
       return html`
-        <div id="container" class="gated">${this._consent.gate()}</div>
+        <div id="consent">${this._consent.gate()}</div>
         <div id="slot" style="display: none"><slot></slot></div>
       `;
     }

@@ -156,6 +156,11 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
         :host([hidden]) {
           display: none;
         }
+        /* a panel fits whatever it stands in for, down to a 320px screen */
+        :host([variant="panel"]) {
+          max-width: 100%;
+          min-width: 0;
+        }
         /* bar: above page content and theme chrome, just below dialogs */
         :host([variant="bar"]) {
           position: fixed;
@@ -333,7 +338,9 @@ export class HaxConsentGate extends DDDSuper(I18NMixin(LitElement)) {
           );
         }
         .panel-inner {
-          max-width: 28rem;
+          max-width: min(28rem, 100%);
+          box-sizing: border-box;
+          overflow-wrap: anywhere;
           display: flex;
           flex-direction: column;
           align-items: center;
