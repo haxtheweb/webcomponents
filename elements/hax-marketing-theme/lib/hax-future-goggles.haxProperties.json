@@ -1,0 +1,77 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Future goggles",
+    "description": "The Future Traveler floating with his goggles lit; click him to travel to another time period",
+    "icon": "hax:future-traveler",
+    "color": "blue",
+    "tags": ["Marketing", "content", "interactive"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "tagline",
+        "title": "Line under him",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "hint",
+        "title": "How to change the era",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "era",
+        "title": "Era he starts in",
+        "inputMethod": "select",
+        "options": {
+          "now": "Today",
+          "steam": "1880s steam age",
+          "nouveau": "1900s modern marvel",
+          "deco": "1920s roaring twenties",
+          "wartime": "1940s home front poster",
+          "tomorrow": "1960s world of tomorrow",
+          "rainbow": "1970s rainbow",
+          "stripes": "1980s corporate",
+          "neon": "1980s cyberpunk",
+          "handheld": "Handheld, four greens",
+          "web": "1990s early web",
+          "polygon": "32-bit polygons",
+          "flash": "2000s web cartoon",
+          "terminal": "Terminal"
+        }
+      },
+      {
+        "property": "noEras",
+        "title": "Hide the row of eras",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "travelLabel",
+        "title": "Button label for screen readers",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "erasLabel",
+        "title": "Label for the row of eras",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-future-goggles",
+      "properties": {
+        "tagline": "Your \"Future\" has never looked so bright.",
+        "hint": "Click him to travel to another time."
+      },
+      "content": ""
+    }
+  ]
+}
