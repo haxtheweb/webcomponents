@@ -10,6 +10,8 @@
  */
 
 export const ISSUES_REPO = "https://github.com/haxtheweb/issues";
+// where a replay opens: HAXcms in the browser, on a scratch site that is never saved
+export const REPLAY_HOME = "https://browser.hax.cloud/";
 
 /*
  * One issue form per kind of report, in haxtheweb/issues
@@ -113,6 +115,56 @@ export function findByPath(steps, doc) {
 }
 
 /*
+ * The piece's place in the page content, as child positions from the
+ * content's host (the theme in view mode, hax-body while editing). A piece
+ * drawn inside another element's shadow root is marked by that element, the
+ * deepest one the page content itself holds. Null when the piece is not in
+ * the page content.
+ */
+export function contentMark(el, host) {
+  let mark = [];
+  let node = el;
+  while (node && node !== host) {
+    const parent = node.parentElement;
+    if (!parent) {
+      const root = node.getRootNode ? node.getRootNode() : null;
+      // out of a shadow root: what was inside it is not page content
+      node = root && root.host ? root.host : null;
+      mark = [];
+      continue;
+    }
+    mark.unshift(Array.prototype.indexOf.call(parent.children, node));
+    node = parent;
+  }
+  return node === host ? mark : null;
+}
+
+/** "0.2.1" for a link, and back; anything else reads as no mark */
+export function markText(mark) {
+  return Array.isArray(mark) ? mark.join(".") : "";
+}
+export function parseMark(text) {
+  const t = String(text || "");
+  return /^\d{1,4}(\.\d{1,4}){0,40}$/.test(t)
+    ? t.split(".").map((n) => parseInt(n, 10))
+    : null;
+}
+
+/** the element a mark points at under the content host, or null */
+export function findByMark(host, mark) {
+  let node = host;
+  for (let i = 0; node && mark && i < mark.length; i++) {
+    node = node.children[mark[i]] || null;
+  }
+  return mark && mark.length && node !== host ? node : null;
+}
+
+/** the link that opens a packed replay on browser.hax.cloud */
+export function replayLink(packed) {
+  return REPLAY_HOME + "#replay=" + packed;
+}
+
+/*
  * Assets that only the site can serve (relative or same-origin URLs) are
  * swapped for placeholders that keep the layout, so a replay never carries
  * or points at private files. Scripts never ride along.
@@ -197,6 +249,7 @@ export function replayBundle(o) {
     scope: o.scope === "page" ? "page" : "block",
     tag: o.tag,
     path: o.path,
+    mark: Array.isArray(o.mark) ? o.mark : [0],
     html: placed.html,
     swapped: placed.swapped,
     theme: o.theme || "",

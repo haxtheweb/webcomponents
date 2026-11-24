@@ -1,9 +1,14 @@
 import { expect } from "@open-wc/testing";
 import {
   a11yFindings,
+  contentMark,
   contrastRatio,
   elementPath,
+  findByMark,
   findByPath,
+  markText,
+  parseMark,
+  replayLink,
   issueUrl,
   openIssuesUrl,
   packBundle,
@@ -129,6 +134,30 @@ describe("haxcms-goggles reports", () => {
     expect(pathText(steps)).to.contain("goggles-path-host > goggles-path-leaf");
     host.remove();
     expect(findByPath(steps)).to.equal(null);
+  });
+
+  it("marks a piece by its place in the page content, through shadow roots", () => {
+    const host = globalThis.document.createElement("div");
+    host.innerHTML =
+      "<p>one</p><section><p>two</p><goggles-mark-box></goggles-mark-box></section>";
+    globalThis.document.body.appendChild(host);
+    const box = host.querySelector("goggles-mark-box");
+    const inner = globalThis.document.createElement("span");
+    box.attachShadow({ mode: "open" }).appendChild(inner);
+    expect(contentMark(box, host)).to.deep.equal([1, 1]);
+    // drawn inside the box's shadow root: the box is what the content holds
+    expect(contentMark(inner, host)).to.deep.equal([1, 1]);
+    expect(contentMark(globalThis.document.body, host)).to.equal(null);
+    expect(findByMark(host, [1, 1])).to.equal(box);
+    expect(findByMark(host, [5])).to.equal(null);
+    expect(markText([1, 1])).to.equal("1.1");
+    expect(parseMark("1.1")).to.deep.equal([1, 1]);
+    expect(parseMark("1;alert(1)")).to.equal(null);
+    expect(parseMark("")).to.equal(null);
+    expect(replayLink("z.abc")).to.equal(
+      "https://browser.hax.cloud/#replay=z.abc",
+    );
+    host.remove();
   });
 
   it("swaps the site's own files for placeholders and drops scripts", () => {

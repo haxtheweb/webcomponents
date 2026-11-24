@@ -132,16 +132,24 @@ describe("haxcms-goggles Translate lens: helpers", () => {
     expect(gogglesFromLink("?goggles=translate&lang=fr")).to.deep.equal({
       lens: "translate",
       lang: "fr",
+      at: "",
     });
     expect(gogglesFromLink("?goggles=code")).to.deep.equal({
       lens: "code",
       lang: "",
+      at: "",
     });
+    // a replay link names the piece to hold still on, digits and dots only
+    expect(gogglesFromLink("?goggles=code&goggles-at=0.2.1").at).to.equal(
+      "0.2.1",
+    );
+    expect(gogglesFromLink("?goggles=code&goggles-at=0<x>").at).to.equal("");
     expect(gogglesFromLink("?goggles=person")).to.equal(null);
     expect(gogglesFromLink("?lang=fr")).to.equal(null);
     expect(gogglesFromLink('?goggles=translate&lang=fr"')).to.deep.equal({
       lens: "translate",
       lang: "",
+      at: "",
     });
   });
 

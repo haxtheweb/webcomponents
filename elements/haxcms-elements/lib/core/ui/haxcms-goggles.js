@@ -19,7 +19,9 @@ import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "../haxcms-site-store.js";
 import {
   a11yFindings,
+  contentMark,
   elementPath,
+  findByMark,
   INLINE_BUNDLE,
   issueFields,
   issueUrl,
@@ -27,6 +29,7 @@ import {
   packBundle,
   pathText,
   replayBundle,
+  replayLink,
   reportTitle,
   translateUrl,
 } from "./haxcms-goggles-report.js";
@@ -2160,7 +2163,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     lines.push("### Element", f.element, "", "### Context", f.context, "");
     lines.push("### Markup", "```html", i.markup, "```", "");
     if (r && r.packed) {
-      lines.push("### Replay", "```", r.packed, "```", "");
+      lines.push("### Replay", replayLink(r.packed), "");
     }
     lines.push(
       "### Screenshot",
@@ -2181,27 +2184,39 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       markup: "```html\n" + i.markup + "\n```",
       replay:
         r && r.packed && r.packed.length <= INLINE_BUNDLE
-          ? "```\n" + r.packed + "\n```"
+          ? "Open on browser.hax.cloud: " + replayLink(r.packed)
           : "",
     });
   }
   /** where the whole page's content lives: the nearest hax-body or content container above the piece */
+  /** where the page content lives: hax-body while editing, the theme otherwise */
+  _contentHost() {
+    const hax =
+      store.editMode && globalThis.HaxStore
+        ? globalThis.HaxStore.requestAvailability().activeHaxBody
+        : null;
+    return hax || store.themeElement || null;
+  }
   _pageHost(comp) {
-    let node = comp;
-    while (node) {
-      if (
-        node.localName === "hax-body" ||
-        node.id === "contentcontainer" ||
-        node.localName === "haxcms-site-builder"
-      ) {
-        return node;
-      }
-      node =
-        node.parentElement ||
-        (node.getRootNode && node.getRootNode().host) ||
-        null;
+    const host = this._contentHost();
+    return host && contentMark(comp, host) ? host : null;
+  }
+  /**
+   * Holds still on the piece a replay link marks (?goggles=...&goggles-at=0.2),
+   * once the page content has arrived.
+   */
+  holdAt(mark, tries) {
+    const left = tries === undefined ? 40 : tries;
+    const host = this._contentHost();
+    const el = host ? findByMark(host, mark) : null;
+    if (el && this.phase === "") {
+      this._go(el);
+      return true;
     }
-    return null;
+    if (left > 0) {
+      setTimeout(() => this.holdAt(mark, left - 1), 250);
+    }
+    return false;
   }
   /** packs the replay for the scope picked; runs again whenever the scope changes */
   async _pack(id) {
@@ -2222,6 +2237,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       scope: page ? "page" : "block",
       tag: i.tag,
       path: i.path,
+      mark: page ? contentMark(this._comp, i.pageHost) : [0],
       html: withoutComments(
         page ? i.pageHost.innerHTML : this._comp ? this._comp.outerHTML : "",
       ),
@@ -2250,7 +2266,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     if (!i || !i.replay) {
       return;
     }
-    const blob = new globalThis.Blob([i.replay.packed], { type: "text/plain" });
+    const blob = new globalThis.Blob([replayLink(i.replay.packed)], {
+      type: "text/plain",
+    });
     const url = globalThis.URL.createObjectURL(blob);
     const a = globalThis.document.createElement("a");
     a.href = url;

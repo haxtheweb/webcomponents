@@ -153,6 +153,39 @@ describe("haxcms-goggles (developer mode)", () => {
     target.remove();
   });
 
+  it("holds still on the piece a replay link marks, once the content is there", async () => {
+    const { store } = await import("../lib/core/haxcms-site-store.js");
+    const before = store.themeElement;
+    const theme = globalThis.document.createElement("div");
+    const piece = globalThis.document.createElement("goggles-test-replayed");
+    piece.textContent = "replayed";
+    theme.appendChild(globalThis.document.createElement("p"));
+    theme.appendChild(piece);
+    globalThis.document.body.appendChild(theme);
+    store.themeElement = theme;
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    expect(g.holdAt([1])).to.equal(true);
+    expect(g.pinned).to.equal(true);
+    expect(g._target.comp).to.equal(piece);
+    // the whole page can go in a replay, and the mark says where the piece sits
+    g._openIssue(piece);
+    g._issueField("scope", "page");
+    for (
+      let n = 0;
+      n < 40 && !(g._issue.replay && g._issue.replay.bundle.scope === "page");
+      n++
+    ) {
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    expect(g._issue.replay.bundle.scope).to.equal("page");
+    expect(g._issue.replay.bundle.mark).to.deep.equal([1]);
+    g._closeIssue();
+    store.themeElement = before;
+    theme.remove();
+  });
+
   it("loads who made what and finds one person's work", async () => {
     const makers = await loadMakers();
     expect(Object.keys(makers.tags).length).to.be.greaterThan(100);

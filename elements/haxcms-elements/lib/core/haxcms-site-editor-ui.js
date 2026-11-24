@@ -7721,7 +7721,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   /**
    * A link can put the goggles on: ?goggles=code|makers|flag|translate, and
-   * for the Translate lens &lang=<language> (a BCP 47 tag). Developer mode is
+   * for the Translate lens &lang=<language> (a BCP 47 tag). A replay link
+   * adds &goggles-at=<mark> to hold still on the piece it was made for. Developer mode is
    * on for this visit only; nothing about it is saved. The language becomes
    * the translator's language, so the page opens in it with the lens on.
    */
@@ -7752,6 +7753,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       lensOn: true,
       person: null,
     });
+    // a replay link (browser.hax.cloud) also names the piece to hold still on
+    if (asked.at) {
+      const { parseMark } = await import("./ui/haxcms-goggles-report.js");
+      const goggles = globalThis.document.querySelector("haxcms-goggles");
+      if (goggles) {
+        goggles.holdAt(parseMark(asked.at));
+      }
+    }
   }
   async toggleGoggles() {
     const { GogglesState } = await import("./ui/haxcms-goggles.js");
