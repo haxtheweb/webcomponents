@@ -111,6 +111,48 @@ describe("haxcms-goggles (developer mode)", () => {
     target.remove();
   });
 
+  it("grows the flag into bug, idea, docs and accessibility reports", async () => {
+    const target = globalThis.document.createElement("goggles-test-flag");
+    target.attachShadow({ mode: "open" }).innerHTML =
+      '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="12" height="12">';
+    globalThis.document.body.appendChild(target);
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    g._openIssue(target);
+    await g.updateComplete;
+    const form = g.shadowRoot.querySelector(".issue");
+    const kinds = form.querySelectorAll('.choices [role="group"]')[0];
+    expect(kinds.querySelectorAll("button").length).to.equal(4);
+    // the pointer, not just the tag, goes with the report
+    expect(g._issue.path[g._issue.path.length - 1].tag).to.equal(
+      "goggles-test-flag",
+    );
+    // "already reported?" links out to GitHub search; nothing is fetched from GitHub
+    const look = form.querySelector('a[href*="/haxtheweb/issues/issues?q="]');
+    expect(look).to.not.equal(null);
+    // the link opens the goggles issue form; the form, not the link, sets labels
+    const open = new URL(form.querySelector("a.primary").href);
+    expect(open.searchParams.get("template")).to.equal("goggles-bug.yml");
+    expect(open.searchParams.get("labels")).to.equal(null);
+    // accessibility runs the checks on the piece, shadow tree included
+    g._issueField("kind", "a11y");
+    await g.updateComplete;
+    expect(g._issue.findings.map((f) => f.check)).to.include("image-alt");
+    expect(g._issue.title).to.contain("alt text");
+    expect(
+      new URL(form.querySelector("a.primary").href).searchParams.get(
+        "template",
+      ),
+    ).to.equal("goggles-a11y.yml");
+    // the replay can be left out entirely
+    g._issueField("scope", "none");
+    await g.updateComplete;
+    expect(g._issue.replay).to.equal(null);
+    g._closeIssue();
+    target.remove();
+  });
+
   it("loads who made what and finds one person's work", async () => {
     const makers = await loadMakers();
     expect(Object.keys(makers.tags).length).to.be.greaterThan(100);
