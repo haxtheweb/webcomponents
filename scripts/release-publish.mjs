@@ -53,12 +53,24 @@ const ALREADY =
 const AUTH =
   /EOTP|one-time pass|ENEEDAUTH|E401|need auth|not logged in|E403 403 Forbidden - PUT/i;
 
+// Run as a yarn (v1) script, npm inherits npm_config_registry=registry.yarnpkg.com.
+// `npm login` keeps its token for registry.npmjs.org, so publishing through the
+// yarn mirror has no token (ENEEDAUTH). Talk to npm's own registry instead.
+const NPM_ENV = { ...process.env };
+if (/yarnpkg\.com/.test(NPM_ENV.npm_config_registry || "")) {
+  NPM_ENV.npm_config_registry = "https://registry.npmjs.org/";
+}
+
 const sleep = (s) => new Promise((resolve) => setTimeout(resolve, s * 1000));
 
 /** run a command, collecting its output; never throws */
 function run(cmd, args, cwd) {
   return new Promise((resolve) => {
-    const child = spawn(cmd, args, { cwd, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn(cmd, args, {
+      cwd,
+      env: NPM_ENV,
+      stdio: ["ignore", "pipe", "pipe"],
+    });
     let out = "";
     child.stdout.on("data", (d) => (out += d));
     child.stderr.on("data", (d) => (out += d));

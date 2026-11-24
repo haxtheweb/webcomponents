@@ -7,6 +7,12 @@
 for v in $(compgen -e | grep -E '^npm_config_(argv$|version_)'); do
   unset "$v"
 done
+# yarn also points npm at registry.yarnpkg.com, where `npm login`'s token (kept
+# for registry.npmjs.org) does not apply, so every npm publish below would fail
+# with ENEEDAUTH. Use npm's own registry.
+case "${npm_config_registry:-}" in
+  *yarnpkg.com*) export npm_config_registry=https://registry.npmjs.org/ ;;
+esac
 
 # deep breath..e
 
