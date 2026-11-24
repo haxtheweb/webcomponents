@@ -5,6 +5,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 
 const FALLBACK_LOCALE = "en_US";
 const TRACKING_PARAM = "profile-badge";
@@ -126,6 +127,12 @@ class LinkedinEmbed extends I18NMixin(DDD) {
 
   constructor() {
     super();
+    // LinkedIn's badge script loads only once the visitor allows it; until
+    // then the plain profile link stays, with the consent panel under it
+    this._consent = new HaxConsentController(
+      this,
+      () => "https://badges.linkedin.com/",
+    );
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -198,9 +205,14 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     if (changedProperties.has("locale") && !this.locale) {
       this.locale = FALLBACK_LOCALE;
     }
+    // a choice made in the panel re-renders: build the badge once allowed
+    const allowed = this._consent.allowed;
+    const consentChanged = allowed !== this.__consentAllowed;
+    this.__consentAllowed = allowed;
     if (
       !this._haxstate &&
-      (changedProperties.has("vanityname") ||
+      (consentChanged ||
+        changedProperties.has("vanityname") ||
         changedProperties.has("locale") ||
         changedProperties.has("_responsiveSize") ||
         changedProperties.has("_prefersDark"))
@@ -374,7 +386,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
   __requestBadgeMarkup() {
     // renderRoot does not exist until the first render commits, so requests
     // that arrive before that point have no badge host to build against yet
-    if (!this.renderRoot) {
+    if (!this.renderRoot || !this._consent.allowed) {
       return;
     }
     const badgeHost = this.renderRoot.querySelector(".badge-host");
@@ -524,6 +536,7 @@ class LinkedinEmbed extends I18NMixin(DDD) {
             ${this.t.viewOnLinkedin.replace("{name}", () => this.vanityname)}
           </a>
         </div>
+        ${this._consent.allowed ? "" : this._consent.gate({ aspect: "auto" })}
       </div>
     `;
   }

@@ -1,6 +1,17 @@
 import { html, fixture, expect, aTimeout } from "@open-wc/testing";
 import { TableauEmbed } from "../tableau-embed.js";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 // network stub: pre-register a tableau-viz placeholder so loadTableau never
 // dynamic-imports the real https://public.tableau.com Embedding API in tests
 const tableauVizStub = class TableauVizStub {};

@@ -1,6 +1,17 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { SpotifyEmbed } from "../spotify-embed.js";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 // network stub: iframe src attributes are captured instead of being loaded so
 // no request to open.spotify.com ever leaves the test run
 const blockedSrcs = [];

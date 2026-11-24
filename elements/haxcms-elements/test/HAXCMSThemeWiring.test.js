@@ -535,7 +535,15 @@ describe("HAXCMSThemeWiring class methods", () => {
       // template contents stay parseable as a code sample
       expect(custom.querySelector("template")).to.not.equal(null);
       const iframe = el.querySelector("iframe");
-      expect(iframe.getAttribute("src")).to.equal("https://example.org/embed");
+      // a cross-origin frame waits for the visitor's consent: its authored
+      // URL is kept aside, nothing is requested, and the panel stands in front
+      expect(iframe.getAttribute("data-hax-consent-src")).to.equal(
+        "https://example.org/embed",
+      );
+      expect(iframe.hasAttribute("src")).to.equal(false);
+      expect(iframe.previousElementSibling.tagName).to.equal(
+        "HAX-CONSENT-GATE",
+      );
       expect(iframe.hasAttribute("srcdoc")).to.equal(false);
     });
     it("leaves the insert to the site builder when it says one is on its way", async () => {

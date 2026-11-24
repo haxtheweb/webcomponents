@@ -1,6 +1,17 @@
 import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import { LinkedinEmbed } from "../linkedin-embed.js";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 const scriptsMatching = (marker) =>
   [...globalThis.document.body.querySelectorAll("script")].filter((s) =>
     s.src.includes(marker),

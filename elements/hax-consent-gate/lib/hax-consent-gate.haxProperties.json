@@ -1,0 +1,34 @@
+{
+  "api": "1",
+  "canScale": false,
+  "canEditSource": false,
+  "type": "element",
+  "designSystem": {
+    "accent": false,
+    "primary": false,
+    "card": false,
+    "text": false,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Consent gate",
+    "description": "Asks a visitor before a third-party service is contacted. Drawn by HAXcms and by embedding elements, not placed by authors.",
+    "icon": "icons:verified-user",
+    "color": "grey",
+    "tags": ["Other", "privacy", "consent"],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb",
+      "hidden": true
+    }
+  },
+  "settings": {
+    "configure": [],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": []
+}

@@ -6,6 +6,7 @@ import { css, html } from "lit";
 import { ifDefined } from "lit/directives/if-defined.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/a11y-media-player/a11y-media-player.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import {
   a11yMediaFallbackHTML,
   removeA11yMediaFallback,
@@ -315,23 +316,28 @@ class VideoPlayer extends IntersectionObserverMixin(
                           .lang="${this.lang || "en"}"
                         >
                           ${
-                            this.sandboxed
-                              ? html``
-                              : html` <webview
-                                  resource="${this.schemaResourceID}-video"
-                                  .src="${
-                                    (this.sourceData &&
-                                      this.sourceData[0] &&
-                                      this.sourceData[0].src) ||
-                                    undefined
-                                  }"
-                                  .width="${this.width || undefined}"
-                                  .height="${this.height || undefined}"
-                                  frameborder="0"
-                                >
-                                </webview>`
+                            // Vimeo and other hosts load nothing until this
+                            // visitor allows them; YouTube asks in a11y-media-player
+                            !this._consent.allowed
+                              ? this._consent.gate()
+                              : this.sandboxed
+                                ? html``
+                                : html` <webview
+                                    resource="${this.schemaResourceID}-video"
+                                    .src="${
+                                      (this.sourceData &&
+                                        this.sourceData[0] &&
+                                        this.sourceData[0].src) ||
+                                      undefined
+                                    }"
+                                    .width="${this.width || undefined}"
+                                    .height="${this.height || undefined}"
+                                    frameborder="0"
+                                  >
+                                  </webview>`
                           }
                           ${
+                            !this._consent.allowed ||
                             !(!this.sandboxed && this.iframed)
                               ? html``
                               : html`
@@ -718,6 +724,14 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   constructor() {
     super();
+    // embeds that are not YouTube or local media (Vimeo, other hosts) wait
+    // for HaxConsent; YouTube consent lives in a11y-media-player
+    this._consent = new HaxConsentController(this, () =>
+      this.isA11yMedia
+        ? null
+        : (this.sourceData && this.sourceData[0] && this.sourceData[0].src) ||
+          null,
+    );
     this.typeof = "oer:MediaObject";
     this.windowControllers = new AbortController();
     this.sourceType = "";

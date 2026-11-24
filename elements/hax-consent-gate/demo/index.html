@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>hax-consent-gate demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '../hax-consent-gate.js';
+      import { HaxConsent } from '@haxtheweb/utils/lib/hax-consent.js';
+      // the demo always starts from "not chosen yet"
+      HaxConsent.clearAll();
+      document.querySelector('#reset').addEventListener('click', () => {
+        HaxConsent.clearAll();
+        if (!document.querySelector('hax-consent-gate[variant="bar"]')) {
+          const bar = document.createElement('hax-consent-gate');
+          bar.setAttribute('variant', 'bar');
+          bar.setAttribute('service', 'google-analytics');
+          document.body.prepend(bar);
+        }
+      });
+    </script>
+    <style>
+      body { font-family: sans-serif; margin: 0; }
+      main { max-width: 48rem; margin: 0 auto; padding: 1rem; }
+    </style>
+  </head>
+  <body>
+    <hax-consent-gate variant="bar" service="google-analytics"></hax-consent-gate>
+    <main>
+      <h1>hax-consent-gate</h1>
+      <p>The bar at the bottom is what HAXcms shows when a site has a Google Analytics ID and the visitor has not chosen yet.</p>
+      <p><button id="reset">Clear every choice</button></p>
+      <h2>Panel for a map</h2>
+      <hax-consent-gate variant="panel" service="google-maps"></hax-consent-gate>
+      <h2>Panel for any other host</h2>
+      <hax-consent-gate variant="panel" service="embed:example.com" host="example.com"></hax-consent-gate>
+    </main>
+  </body>
+</html>

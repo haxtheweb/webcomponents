@@ -12,6 +12,7 @@ import {
   HAL_MAX_ALTERNATIVES,
   HAL_MAX_NETWORK_FAILURES,
 } from "../lib/hal-9000-listener.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 
 const frame = () => new Promise((resolve) => setTimeout(resolve, 40));
 
@@ -124,6 +125,11 @@ describe("hal-9000 listener matching", () => {
 });
 
 describe("hal-9000 listener sessions", () => {
+  // these sessions use a remote fake engine: speech is allowed first, and
+  // the consent stop has its own suite below
+  before(() => HaxConsent.set("speech", "allow"));
+  after(() => HaxConsent.clearAll());
+
   it("is unsupported without a recognition engine", () => {
     const listener = new Hal9000Listener();
     listener.Ctor = null;
@@ -300,5 +306,54 @@ describe("hal-9000 listener sessions", () => {
     expect(remote.onDevice).to.be.false;
     expect(asked[0]).to.deep.equal({ langs: ["en-US"], processLocally: true });
     remote.abort();
+  });
+});
+
+describe("hal-9000 listener consent", () => {
+  // on the device the audio stays on the machine; the browser's remote
+  // speech service is only used once the visitor allows "speech"
+  beforeEach(() => HaxConsent.clearAll());
+  after(() => HaxConsent.clearAll());
+
+  it("does not start a remote session before consent and says why", async () => {
+    const engine = fakeEngine();
+    const states = [];
+    const listener = listenerWith(engine, {
+      onStateChange: (state) => states.push(state),
+    });
+    listener.start();
+    await frame();
+    expect(engine.made[0].started).to.equal(0);
+    expect(listener.state).to.equal("consent");
+    expect(states).to.deep.equal(["consent"]);
+  });
+
+  it("listens on the device without asking", async () => {
+    const engine = fakeEngine({
+      localField: true,
+      available: () => Promise.resolve("available"),
+    });
+    const listener = listenerWith(engine, { lang: "en-US" });
+    listener.start();
+    await frame();
+    expect(engine.made[0].processLocally).to.be.true;
+    expect(engine.made[0].started).to.equal(1);
+    expect(listener.state).to.equal("listening");
+    listener.abort();
+  });
+
+  it("starts a remote session once speech is allowed", async () => {
+    const engine = fakeEngine();
+    const listener = listenerWith(engine);
+    listener.start();
+    await frame();
+    expect(engine.made[0].started).to.equal(0);
+    HaxConsent.set("speech", "allow");
+    listener.abort();
+    listener.start();
+    await frame();
+    expect(engine.made[1].started).to.equal(1);
+    expect(listener.state).to.equal("listening");
+    listener.abort();
   });
 });

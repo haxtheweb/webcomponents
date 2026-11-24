@@ -691,5 +691,7 @@
   "web-dialog": "web-dialog/web-dialog.js",
   "model-viewer": "@google/model-viewer/dist/model-viewer.js",
   "lrn-math-controller": "@haxtheweb/lrn-math/lrn-math.js",
-  "midi-visualizer": "@haxtheweb/music-player/lib/html-midi-player.js"
+  "midi-visualizer": "@haxtheweb/music-player/lib/html-midi-player.js",
+  "hax-consent-gate": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
+  "privacy-choices": "@haxtheweb/privacy-choices/privacy-choices.js"
 }

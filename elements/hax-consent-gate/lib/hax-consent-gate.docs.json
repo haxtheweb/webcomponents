@@ -1,0 +1,100 @@
+{
+  "tag": "hax-consent-gate",
+  "folder": "hax-consent-gate",
+  "package": "@haxtheweb/hax-consent-gate",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Consent gate",
+  "description": "Asks a visitor before a third-party service is contacted. Drawn by HAXcms and by embedding elements, not placed by authors.",
+  "icon": "icons:verified-user",
+  "tags": [
+    "Other",
+    "privacy",
+    "consent"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/hax-consent-gate/hax-consent-gate.js",
+  "install": "npm i @haxtheweb/hax-consent-gate",
+  "demoHtml": "",
+  "attributes": [
+    {
+      "name": "service",
+      "property": "service",
+      "type": "string",
+      "default": "\"google-analytics\"",
+      "description": "HaxConsent service name, e.g. google-analytics, google-maps",
+      "hax": null
+    },
+    {
+      "name": "variant",
+      "property": "variant",
+      "type": "string",
+      "default": "\"bar\"",
+      "description": "bar (fixed to the bottom of the page) or panel (in place of an embed)",
+      "hax": null
+    },
+    {
+      "name": "host",
+      "property": "host",
+      "type": "null",
+      "default": "null",
+      "description": "for a service with no entry of its own: the host it comes from",
+      "hax": null
+    }
+  ],
+  "slots": [],
+  "events": [
+    "hax-consent-gate-closed"
+  ],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": false,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": false,
+      "card": false,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Consent gate",
+      "description": "Asks a visitor before a third-party service is contacted. Drawn by HAXcms and by embedding elements, not placed by authors.",
+      "icon": "icons:verified-user",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "privacy",
+        "consent"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb",
+        "hidden": true
+      }
+    },
+    "settings": {
+      "configure": [],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": false,
+      "unsetAttributes": []
+    },
+    "demoSchema": []
+  },
+  "surfaceHash": "eb727697f579",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/hax-consent-gate",
+    "file": "hax-consent-gate.js"
+  }
+}

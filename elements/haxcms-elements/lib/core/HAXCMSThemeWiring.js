@@ -4,6 +4,7 @@
  */
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { gateIframes } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import { LearnerProgress } from "./haxcms-learner-progress.js";
 import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import {
@@ -254,6 +255,8 @@ const HAXCMSTheme = function (SuperClass) {
           neutralizeStrayScripts(frag);
           // security: same sanitizing pass as the site builder's own insert
           sanitizeNodeTree(frag);
+          // privacy: same consent pass as the site builder's own insert
+          gateIframes(frag);
           this.appendChild(frag);
         }
         this.__styleReapply();

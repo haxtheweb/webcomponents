@@ -10,6 +10,7 @@ import {
   iframeSandboxForSource,
 } from "@haxtheweb/utils/lib/url.js";
 import "./lib/loading-indicator.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 
 export class IframeLoader extends LitElement {
   _safeSource(source) {
@@ -119,8 +120,44 @@ export class IframeLoader extends LitElement {
       }
     `;
   }
+  /**
+   * The URL a frame points at: its src, or the one HAXcms held back until
+   * the visitor allows that host (data-hax-consent-src)
+   */
+  _frameSrc(frame) {
+    if (!frame) {
+      return null;
+    }
+    return (
+      frame.getAttribute("src") || frame.getAttribute("data-hax-consent-src")
+    );
+  }
+  /**
+   * Point the frame at source only once HaxConsent allows its host; until
+   * then the frame has no src and the consent panel stands in its place.
+   */
+  _loadFrame(safeSource) {
+    if (!this.__iframe) {
+      return;
+    }
+    if (safeSource && this._consent.allowed) {
+      this.__iframe.removeAttribute("data-hax-consent-src");
+      if (this.__iframe.getAttribute("src") !== safeSource) {
+        this.__iframe.setAttribute("src", safeSource);
+      }
+    } else if (safeSource) {
+      this.__iframe.removeAttribute("src");
+      this.__iframe.setAttribute("data-hax-consent-src", safeSource);
+    } else {
+      this.__iframe.removeAttribute("src");
+    }
+  }
   constructor() {
     super();
+    // nothing is requested from another host until the visitor allows it
+    this._consent = new HaxConsentController(this, () =>
+      this._safeSource(this.source),
+    );
     this.isPDF = false;
     this.disabled = false;
     this.loading = true;
@@ -134,8 +171,8 @@ export class IframeLoader extends LitElement {
       this.__iframe = this.querySelector("iframe");
       this.__iframe.addEventListener("load", this.__iframeLoadingCallback);
       // ensure source matches iframe source
-      if (this.__iframe.getAttribute("src")) {
-        this.source = this._safeSource(this.__iframe.getAttribute("src"));
+      if (this._frameSrc(this.__iframe)) {
+        this.source = this._safeSource(this._frameSrc(this.__iframe));
         this.height = this.__iframe.getAttribute("height") || this.height;
         this.width = this.__iframe.getAttribute("width") || this.width;
       }
@@ -155,7 +192,7 @@ export class IframeLoader extends LitElement {
     this.__observer = new MutationObserver((_mutations) => {
       if (this.querySelector("iframe")) {
         this.__iframe = this.querySelector("iframe");
-        this.source = this._safeSource(this.__iframe.getAttribute("src"));
+        this.source = this._safeSource(this._frameSrc(this.__iframe));
         // ensure our own height/width mirror the supplied iframe so that
         // the updated() height/width sync below doesn't clobber it with
         // our stale defaults
@@ -206,8 +243,8 @@ export class IframeLoader extends LitElement {
   // ALWAYS enable edit mode if HAX is around
   haxactiveElementChanged(el, _val) {
     if (this.__iframe) {
-      if (this.source !== this.__iframe.getAttribute("src")) {
-        this.source = this._safeSource(this.__iframe.getAttribute("src"));
+      if (this.source !== this._frameSrc(this.__iframe)) {
+        this.source = this._safeSource(this._frameSrc(this.__iframe));
       }
     } else {
       if (el && el.src && this.source !== el.src) {
@@ -252,11 +289,7 @@ export class IframeLoader extends LitElement {
       });
       const safeSource = this._safeSource(this.source);
       this.source = safeSource;
-      if (safeSource) {
-        this.__iframe.setAttribute("src", safeSource);
-      } else {
-        this.__iframe.removeAttribute("src");
-      }
+      this._loadFrame(safeSource);
       // PDFs can't work if this security is applied so we need to check
       if (!this.isPDF) {
         this.__iframe.setAttribute(
@@ -344,6 +377,10 @@ export class IframeLoader extends LitElement {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // a change of consent re-renders without a property change: follow it
+    if (this.__iframe && !changedProperties.has("source")) {
+      this._loadFrame(this._safeSource(this.source));
+    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "isPDF" && this.__iframe) {
         if (this.isPDF) {
@@ -365,11 +402,7 @@ export class IframeLoader extends LitElement {
               iframeSandboxForSource(safeSource),
             );
           }
-          if (safeSource) {
-            this.__iframe.setAttribute("src", safeSource);
-          } else {
-            this.__iframe.removeAttribute("src");
-          }
+          this._loadFrame(safeSource);
           this._applyEmbedPolicy(this.__iframe, safeSource);
         } else {
           this.__iframe = globalThis.document.createElement("iframe");
@@ -391,11 +424,7 @@ export class IframeLoader extends LitElement {
               iframeSandboxForSource(safeSource),
             );
           }
-          if (safeSource) {
-            this.__iframe.setAttribute("src", safeSource);
-          } else {
-            this.__iframe.removeAttribute("src");
-          }
+          this._loadFrame(safeSource);
           this._applyEmbedPolicy(this.__iframe, safeSource);
           this.appendChild(this.__iframe);
         }
@@ -407,6 +436,13 @@ export class IframeLoader extends LitElement {
     });
   }
   render() {
+    if (!this._consent.allowed) {
+      // the panel stands where the frame will be; the frame waits, unloaded
+      return html`
+        <div id="container" class="gated">${this._consent.gate()}</div>
+        <div id="slot" style="display: none"><slot></slot></div>
+      `;
+    }
     return html`
       <div id="container" class="${this.loading ? "loading" : "loaded"}">
         <div id="loading-screen" style="height:${this.height}px;">

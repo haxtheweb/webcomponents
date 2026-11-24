@@ -2,6 +2,17 @@ import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 import { HAXCMSSiteDisqus } from "../lib/haxcms-site-disqus.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 describe("haxcms-site-disqus", () => {
   it("is defined with its tag name", () => {
     expect(HAXCMSSiteDisqus.tag).to.equal("haxcms-site-disqus");

@@ -3,6 +3,7 @@ import { fixture, expect, html } from "@open-wc/testing";
 import "../video-player.js";
 import "@haxtheweb/page-contents-menu/page-contents-menu.js";
 import { activityKey } from "@haxtheweb/user-action/lib/xapi.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 
 // HAX schemas ship as JSON next to the element; read one whether the class
 // returns the object or the URL of its file
@@ -635,8 +636,11 @@ describe("video-player raw iframe embed policy", () => {
   // into credentialless loading; same-origin embeds pass COEP automatically
   let el;
   beforeEach(async () => {
+    // this suite checks frame attributes, so Vimeo is allowed first
+    HaxConsent.set("vimeo", "allow");
     el = await fixture(html`<video-player></video-player>`);
   });
+  afterEach(() => HaxConsent.clearAll());
 
   const embedFrame = () =>
     el.shadowRoot.querySelector(".responsive-video-container iframe");
@@ -950,5 +954,52 @@ describe("video-player activity key across loads", () => {
     expect(second.id).to.not.equal(firstId);
     expect(activityKey(second, second.xapiFingerprint())).to.equal(firstKey);
     expect(firstKey).to.match(/^video-player-[0-9a-z]+$/);
+  });
+});
+
+describe("video-player consent for embeds", () => {
+  // Vimeo and other hosts load nothing until the visitor allows them
+  let el;
+  beforeEach(async () => {
+    HaxConsent.clearAll();
+    el = await fixture(html`<video-player></video-player>`);
+    el.elementVisible = true;
+    el.sourceType = "vimeo";
+    el.sources = [{ src: "https://player.vimeo.com/video/123" }];
+    await el.updateComplete;
+  });
+  afterEach(() => HaxConsent.clearAll());
+
+  const frame = () =>
+    el.shadowRoot.querySelector(".responsive-video-container iframe");
+  const gate = () =>
+    el.shadowRoot.querySelector(".responsive-video-container hax-consent-gate");
+
+  it("shows the Vimeo panel and no frame before consent", () => {
+    expect(frame()).to.not.exist;
+    expect(gate()).to.exist;
+    expect(gate().getAttribute("service")).to.equal("vimeo");
+  });
+
+  it("keeps its header and caption around the panel", () => {
+    expect(el.shadowRoot.querySelector("#videocaption")).to.exist;
+  });
+
+  it("loads the frame once Vimeo is allowed, and asks again when withdrawn", async () => {
+    HaxConsent.set("vimeo", "allow");
+    await el.updateComplete;
+    expect(frame()).to.exist;
+    expect(gate()).to.not.exist;
+    HaxConsent.set("vimeo", null);
+    await el.updateComplete;
+    expect(frame()).to.not.exist;
+    expect(gate()).to.exist;
+  });
+
+  it("leaves YouTube to the a11y-media-player gate", async () => {
+    el.sourceType = "youtube";
+    el.sources = [{ src: "https://www.youtube.com/watch?v=LrS7dqokTLE" }];
+    await el.updateComplete;
+    expect(el._consent.consent).to.equal(null);
   });
 });

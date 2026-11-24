@@ -4,6 +4,7 @@
  */
 import { LitElement, html } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 
 /**
  * True when `value` is an http(s) URL (scheme-less "twitter.com/..." is
@@ -48,6 +49,11 @@ class TwitterEmbed extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    // nothing is requested from X until the visitor allows it
+    this._consent = new HaxConsentController(
+      this,
+      () => "https://platform.x.com/embed/index.html",
+    );
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -201,27 +207,31 @@ class TwitterEmbed extends I18NMixin(LitElement) {
           this._haxstate ? "none" : "inherit"
         }"
       >
-        <iframe
-          .sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
-          scrolling="no"
-          frameborder="0"
-          loading="lazy"
-          allowtransparency="true"
-          allow="autoplay; encrypted-media; fullscreen"
-          style="position: static; visibility: visible; width: ${
-            this.dataWidth
-          }; height: 498px; display: block; flex-grow: 1;"
-          title="${this.t.twitterTweet}"
-          src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
-            this.tweetId
-          }&amp;lang=${this.lang}&amp;theme=${
-            this.dataTheme
-          }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${
-            this.dataWidth
-          }"
-          data-tweet-id="${this.tweetId}"
-        >
-        </iframe>
+        ${
+          !this._consent.allowed
+            ? this._consent.gate()
+            : html`<iframe
+                .sandbox="allow-same-origin allow-scripts ${this.allowPopups}"
+                scrolling="no"
+                frameborder="0"
+                loading="lazy"
+                allowtransparency="true"
+                allow="autoplay; encrypted-media; fullscreen"
+                style="position: static; visibility: visible; width: ${
+                  this.dataWidth
+                }; height: 498px; display: block; flex-grow: 1;"
+                title="${this.t.twitterTweet}"
+                src="https://platform.x.com/embed/index.html?dnt=true&amp;frame=false&amp;hideCard=false&amp;hideThread=false&amp;id=${
+                  this.tweetId
+                }&amp;lang=${this.lang}&amp;theme=${
+                  this.dataTheme
+                }&amp;widgetsVersion=223fc1c4%3A1596143124634&amp;width=${
+                  this.dataWidth
+                }"
+                data-tweet-id="${this.tweetId}"
+              >
+              </iframe>`
+        }
       </div>
     `;
   }
