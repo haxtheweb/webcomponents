@@ -1,0 +1,23 @@
+{
+  "barLabel": "Privacy choice",
+  "allow": "Allow",
+  "dontAllow": "Don't allow",
+  "alwaysAllow": "Always allow",
+  "choicesLabel": "Privacy choices",
+  "changeLater": "Change it any time in",
+  "changeLaterNoPage": "You can change this any time by clearing this site's data in your browser.",
+  "savedAllow": "Saved: Google Analytics is allowed.",
+  "savedDeny": "Saved: Google Analytics stays off.",
+  "analyticsTitle": "Allow Google Analytics?",
+  "analyticsBody": "This site uses it to count visits and pages read. If you allow it, Google receives your IP address and may set cookies. Saying no is fine: the site works the same.",
+  "genericNotice": "This content comes from {host}. {host} will receive your IP address and may set cookies.",
+  "serviceLabel_google_analytics": "Google Analytics",
+  "serviceLabel_youtube": "YouTube",
+  "serviceLabel_vimeo": "Vimeo",
+  "serviceLabel_google_maps": "Google Maps",
+  "serviceLabel_speech": "Voice input",
+  "serviceNotice_youtube": "This video plays from YouTube. Google will receive your IP address and may set cookies.",
+  "serviceNotice_vimeo": "This video plays from Vimeo. Vimeo will receive your IP address.",
+  "serviceNotice_google_maps": "This map is from Google Maps. Google will receive your IP address and may set cookies.",
+  "serviceNotice_speech": "Your browser would send your voice to its speech service (Google, Apple or Microsoft) to turn it into text."
+}

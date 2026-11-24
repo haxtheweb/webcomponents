@@ -1,0 +1,22 @@
+{
+  "heading": "Services this site can use",
+  "allowPrefix": "Allow",
+  "stateAllow": "Allowed",
+  "stateDeny": "Not allowed",
+  "stateAsk": "Not chosen yet: asks first",
+  "withdrawAll": "Withdraw all choices",
+  "changedAllow": "Saved: {service} is allowed.",
+  "changedDeny": "Saved: {service} is not allowed.",
+  "withdrawn": "All choices withdrawn. Each service will ask again.",
+  "serviceLabel_google_analytics": "Google Analytics",
+  "serviceLabel_youtube": "YouTube",
+  "serviceLabel_vimeo": "Vimeo",
+  "serviceLabel_google_maps": "Google Maps",
+  "serviceLabel_speech": "Voice input",
+  "serviceSends_google_analytics": "Counts visits and pages read. Google receives your IP address and may set cookies.",
+  "serviceSends_youtube": "Plays videos from YouTube. Google receives your IP address and may set cookies.",
+  "serviceSends_vimeo": "Plays videos from Vimeo. Vimeo receives your IP address; this site asks it not to track you.",
+  "serviceSends_google_maps": "Shows maps from Google Maps. Google receives your IP address and may set cookies.",
+  "serviceSends_speech": "When your browser can't understand speech on your device, your voice goes to its speech service (Google, Apple or Microsoft).",
+  "serviceSends_embed": "Shows content from {host}. {host} receives your IP address and may set cookies."
+}

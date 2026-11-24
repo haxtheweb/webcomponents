@@ -6,6 +6,7 @@ import {
   aTimeout,
 } from "@open-wc/testing";
 import { IframeLoader } from "../iframe-loader.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 import {
   sanitizeURLValue,
   sanitizeEmbeddableURL,
@@ -13,6 +14,9 @@ import {
 } from "@haxtheweb/utils/lib/url.js";
 
 describe("iframe-loader behaviors", () => {
+  // URL handling, not consent: the test host is allowed up front
+  before(() => HaxConsent.set("embed:btopro.com", "allow"));
+  after(() => HaxConsent.clearAll());
   describe("defaults and initial render", () => {
     it("has sensible defaults", () => {
       const el = globalThis.document.createElement("iframe-loader");

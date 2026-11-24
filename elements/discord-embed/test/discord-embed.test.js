@@ -1,6 +1,17 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import sinon from "sinon";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 // HARD REQUIREMENT: no test in this file may trigger a real load of
 // e.widgetbot.io. Stub IntersectionObserver at module level, before the
 // element import below, with an observer that never reports an

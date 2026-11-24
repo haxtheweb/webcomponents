@@ -1,6 +1,17 @@
 import { fixture, expect, html } from "@open-wc/testing";
 import { TwitterEmbedVanilla } from "../lib/twitter-embed-vanilla.js";
 
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
+// these tests cover the embed itself, so consent is treated as given;
+// the consent gate is tested in the *-consent.test.js file
+before(() => {
+  HaxConsent.allowed = () => true;
+});
+after(() => {
+  delete HaxConsent.allowed;
+});
+
 // network stub: the vanilla element stamps its markup through innerHTML so
 // attribute-driven re-renders are captured and redirected away from
 // platform.twitter.com instead of ever loading a real tweet iframe

@@ -48,6 +48,7 @@
     "@haxtheweb/d-d-d": "^26.8.0",
     "@haxtheweb/future-terminal-text": "^26.8.0",
     "@haxtheweb/hal-9000": "^26.8.0",
+    "@haxtheweb/hax-consent-gate": "^26.8.0",
     "@haxtheweb/hax-iconset": "^26.8.0",
     "@haxtheweb/i18n-manager": "^26.8.0",
     "@haxtheweb/simple-colors": "^26.8.0",

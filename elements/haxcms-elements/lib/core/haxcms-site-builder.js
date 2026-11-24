@@ -19,6 +19,8 @@ import {
 } from "@haxtheweb/utils/lib/sanitize.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+import { gateIframes } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import {
   applySiteDesignSystem,
   siteDesignSystemName,
@@ -1260,6 +1262,24 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           .catch(() => {});
       });
     }
+    // Google Analytics consent: whenever the site has a gaID and this
+    // visitor has not chosen yet, the hax-consent-gate bar asks. No setting
+    // turns this off; the site's loader fetches nothing from Google until
+    // HaxConsent says "allow". Withdrawing every choice brings the bar back.
+    this.__disposer.push(
+      autorun(() => {
+        this._consentGate(toJS(store.manifest));
+      }),
+    );
+    globalThis.addEventListener(
+      "hax-consent-changed",
+      (e) => {
+        if (e.detail && e.detail.service === "google-analytics") {
+          this._consentGate(toJS(store.manifest));
+        }
+      },
+      { signal: this.windowControllers.signal },
+    );
     setTimeout(() => {
       this.__disposer.push(
         autorun((_reaction) => {
@@ -1347,6 +1367,42 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   /**
    * Detached life cycle
    */
+  /**
+   * Show or take down the Google Analytics consent bar for this manifest,
+   * and point consent notices at the site's privacy page when it has one
+   * (slug "privacy", as the site skeletons ship it).
+   * @param {Object} manifest the site manifest (plain object)
+   */
+  async _consentGate(manifest) {
+    if (!manifest || !manifest.metadata) {
+      return;
+    }
+    const items = Array.isArray(manifest.items) ? manifest.items : [];
+    const privacy = items.find((item) => item && item.slug === "privacy");
+    HaxConsent.choicesUrl = privacy ? privacy.slug : null;
+    const site = manifest.metadata.site || {};
+    const settings = site.settings || {};
+    const open = globalThis.document.querySelector(
+      'hax-consent-gate[variant="bar"]',
+    );
+    if (settings.gaID && HaxConsent.get("google-analytics") === null) {
+      if (!open) {
+        await import("@haxtheweb/hax-consent-gate/hax-consent-gate.js");
+        if (
+          !globalThis.document.querySelector('hax-consent-gate[variant="bar"]')
+        ) {
+          const bar = globalThis.document.createElement("hax-consent-gate");
+          bar.setAttribute("variant", "bar");
+          bar.setAttribute("service", "google-analytics");
+          // first in the tab order, without taking focus from the page
+          globalThis.document.body.prepend(bar);
+        }
+      }
+    } else if (open && !open._saved) {
+      // the gaID was removed, or a choice was made elsewhere
+      open.remove();
+    }
+  }
   disconnectedCallback() {
     if (this.__themePaletteReapplyTimer) {
       clearTimeout(this.__themePaletteReapplyTimer);
@@ -1519,6 +1575,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // (custom elements, data attributes, <template> in code-sample,
           // iframes with http(s) src) renders unchanged.
           sanitizeNodeTree(frag);
+          // privacy: cross-origin frames wait for the visitor's consent,
+          // checked while the fragment is detached so nothing loads first
+          gateIframes(frag);
           store.themeElement.appendChild(frag);
           this._checkSvgContrast();
           this.dispatchEvent(

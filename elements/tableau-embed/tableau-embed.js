@@ -5,6 +5,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -27,6 +28,12 @@ export class TableauEmbed extends I18NMixin(LitElement) {
 
   constructor() {
     super();
+    // neither the Tableau script nor the viz loads until the visitor allows
+    // the viz's host (public.tableau.com for public embeds)
+    this._consent = new HaxConsentController(
+      this,
+      () => this.src || "https://public.tableau.com/",
+    );
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -143,7 +150,29 @@ export class TableauEmbed extends I18NMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.loaded && !this.loading) {
+    this._loadWhenAllowed();
+  }
+
+  willUpdate(changedProperties) {
+    if (super.willUpdate) {
+      super.willUpdate(changedProperties);
+    }
+    // a choice made in the panel (or elsewhere) re-renders: load then
+    this._loadWhenAllowed();
+  }
+
+  /**
+   * Load the Embedding API once, and only once this visitor allows Tableau.
+   * A failed load is not retried (it reports "unable to load", as before).
+   */
+  _loadWhenAllowed() {
+    if (
+      !this.__tableauRequested &&
+      !this.loaded &&
+      !this.loading &&
+      this._consent.allowed
+    ) {
+      this.__tableauRequested = true;
       this.loading = true;
       this.loadTableau();
     }
@@ -184,23 +213,25 @@ export class TableauEmbed extends I18NMixin(LitElement) {
       })}
       <div class="ddd-block-body">
         ${
-          !this.loaded
-            ? html`<div class="loading-msg" role="status" aria-live="polite">
-                ${
-                  this.loading
-                    ? this.t.loadingTableau
-                    : this.t.unableToLoadTableau
-                }
-              </div>`
-            : html`<tableau-viz
-                src="${this.src}"
-                width="${this.width}"
-                height="${this.height}"
-                toolbar="${this.toolbar}"
-                ?hide-tabs="${this.hideTabs}"
-                device="${this.device}"
-                aria-label="${this.t.tableauVisualization}"
-              ></tableau-viz>`
+          !this._consent.allowed
+            ? this._consent.gate()
+            : !this.loaded
+              ? html`<div class="loading-msg" role="status" aria-live="polite">
+                  ${
+                    this.loading
+                      ? this.t.loadingTableau
+                      : this.t.unableToLoadTableau
+                  }
+                </div>`
+              : html`<tableau-viz
+                  src="${this.src}"
+                  width="${this.width}"
+                  height="${this.height}"
+                  toolbar="${this.toolbar}"
+                  ?hide-tabs="${this.hideTabs}"
+                  device="${this.device}"
+                  aria-label="${this.t.tableauVisualization}"
+                ></tableau-viz>`
         }
       </div>
     </div>`;

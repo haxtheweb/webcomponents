@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -23,6 +24,8 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    // nothing is requested from Spotify until the visitor allows it
+    this._consent = new HaxConsentController(this, () => this._embedSrc);
     this.t = {
       audio: "Audio",
       openOnSpotify: "Open on Spotify in a new tab",
@@ -84,6 +87,12 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
       `,
     ];
   }
+  /** the Spotify player URL this embed loads */
+  get _embedSrc() {
+    return `https://open.spotify.com/embed/${this.type}/${
+      this.playlistid
+    }?utm_source=generator${this.theme ? `&theme=${this.theme}` : ""}`;
+  }
   /**
    * LitElement render callback
    */
@@ -109,23 +118,25 @@ class SpotifyEmbed extends I18NMixin(LitElement) {
             : null,
         })}
         <div class="ddd-block-body">
-          <iframe
-            src="https://open.spotify.com/embed/${this.type}/${
-              this.playlistid
-            }?utm_source=generator${this.theme ? `&theme=${this.theme}` : ""}"
-            title="${this._embedTitle}"
-            height="${this.size == "normal" ? "352" : "152"}"
-            style="border-radius:12px"
-            width="100%"
-            part="iframe"
-            frameborder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            referrerpolicy="strict-origin-when-cross-origin"
-            ?credentialless="${globalThis.crossOriginIsolated === true}"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-          ></iframe>
+          ${
+            !this._consent.allowed
+              ? this._consent.gate()
+              : html`<iframe
+                  src="${this._embedSrc}"
+                  title="${this._embedTitle}"
+                  height="${this.size == "normal" ? "352" : "152"}"
+                  style="border-radius:12px"
+                  width="100%"
+                  part="iframe"
+                  frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  ?credentialless="${globalThis.crossOriginIsolated === true}"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                ></iframe>`
+          }
         </div>
       </div>
     `;

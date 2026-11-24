@@ -2,6 +2,7 @@
  * Copyright 2026 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 /**
  * Hal9000Listener: a small wrapper over the browser SpeechRecognition API.
  *
@@ -120,8 +121,9 @@ export class Hal9000Listener {
    * @param {Function} [options.onMatch] ({ phrase, transcript, params })
    * @param {Function} [options.onNoMatch] (alternatives) nothing matched
    * @param {Function} [options.onStateChange] (state) idle, listening,
-   *   blocked (mic permission denied) or unavailable (this browser exposes
-   *   the API but cannot recognize speech)
+   *   blocked (mic permission denied), unavailable (this browser exposes
+   *   the API but cannot recognize speech) or consent (speech would leave
+   *   the device and the visitor has not allowed that yet)
    * @param {Function} [options.isEcho] (text) => true to ignore a result
    * @param {boolean} [options.debug]
    */
@@ -316,8 +318,16 @@ export class Hal9000Listener {
     rec.onerror = (e) => this._onError(e);
     rec.onend = () => this._onEnd(rec);
     this._recognition = rec;
-    this._preferOnDevice(rec).then(() => {
+    this._preferOnDevice(rec).then((onDevice) => {
       if (this._recognition !== rec) {
+        return;
+      }
+      // privacy: recognition on the device keeps the audio on the machine;
+      // the browser's remote speech service (Google, Apple or Microsoft)
+      // is used only once the visitor allows "speech" in HaxConsent
+      if (!onDevice && !HaxConsent.allowed("speech")) {
+        this._recognition = null;
+        this._setState("consent");
         return;
       }
       try {

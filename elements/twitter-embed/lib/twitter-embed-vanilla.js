@@ -9,7 +9,11 @@
  * @demo demo/index.html
  * @element twitter-embed-vanilla
  */
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
+
 const FALLBACK_LANG = "en";
+// the tweet frame's host: nothing is requested from it until allowed
+const TWEET_SERVICE = "embed:platform.twitter.com";
 const FALLBACK_WIDTH = "550px";
 
 /**
@@ -77,6 +81,15 @@ class TwitterEmbedVanilla extends HTMLElement {
    * constructor (document.createElement), so defaults are applied here.
    */
   connectedCallback() {
+    // a change of choice redraws the tweet or the consent panel in place
+    if (!this.__onConsent) {
+      this.__onConsent = (e) => {
+        if (e.detail && e.detail.service === TWEET_SERVICE) {
+          this._render();
+        }
+      };
+    }
+    globalThis.addEventListener("hax-consent-changed", this.__onConsent);
     if (this.__initialized) return;
     this.__initialized = true;
     if (globalThis.document && globalThis.document.body) {
@@ -141,8 +154,15 @@ class TwitterEmbedVanilla extends HTMLElement {
         attr,
       )
     ) {
-      this.innerHTML = this.html;
+      this._render();
     }
+  }
+  /**
+   * The one place the element writes its markup: every interpolated value
+   * in html is validated and escaped (see the security note above)
+   */
+  _render() {
+    this.innerHTML = this.html;
   }
   get dataWidth() {
     return this.getAttribute("data-width");
@@ -197,7 +217,17 @@ class TwitterEmbedVanilla extends HTMLElement {
   /**
    * my own convention, easy to remember
    */
+  disconnectedCallback() {
+    if (this.__onConsent) {
+      globalThis.removeEventListener("hax-consent-changed", this.__onConsent);
+    }
+  }
   get html() {
+    if (!HaxConsent.allowed(TWEET_SERVICE)) {
+      import("@haxtheweb/hax-consent-gate/hax-consent-gate.js");
+      // fixed markup: no authored value is interpolated
+      return `<hax-consent-gate variant="panel" service="${TWEET_SERVICE}" host="platform.twitter.com"></hax-consent-gate>`;
+    }
     // cross-origin isolated pages (COEP+COOP, e.g. `hax serve` dev mode)
     // block third-party embed frames that don't opt into credentialless
     // loading; twitter's embed is always cross-origin so this is a fixed

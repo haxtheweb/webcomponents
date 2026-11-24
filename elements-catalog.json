@@ -2131,6 +2131,16 @@
       "tags": []
     },
     {
+      "tag": "hax-consent-gate",
+      "title": "Consent gate",
+      "description": "Asks a visitor before a third-party service is contacted, and stores the answer in HaxConsent (one store for every service). - variant=\"bar\": a bar fixed to the bottom of the page for site-wide services (Google Analytics). It stays until the visitor chooses; Allow and Don't allow carry the same w...",
+      "package": "@haxtheweb/hax-consent-gate",
+      "import": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
+      "type": "element",
+      "haxCapable": false,
+      "tags": ["Other", "privacy", "consent"]
+    },
+    {
       "tag": "hax-context-behaviors",
       "title": "",
       "description": "",
@@ -4821,6 +4831,16 @@
       "type": "element",
       "haxCapable": false,
       "tags": []
+    },
+    {
+      "tag": "privacy-choices",
+      "title": "Privacy choices",
+      "description": "Every third-party service HaxConsent knows, with the visitor's choice for each. Ticking stores \"allow\", unticking stores \"deny\", and Withdraw all returns every service to \"ask me first\". Changes reach open players and gates without a reload, through hax-consent-changed. Choices made for other hos...",
+      "package": "@haxtheweb/privacy-choices",
+      "import": "@haxtheweb/privacy-choices/privacy-choices.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Other", "privacy", "consent", "GDPR", "cookies", "analytics"]
     },
     {
       "tag": "product-glance",

@@ -67,6 +67,8 @@ import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
 import {
   SITE_ADMIN_CONFIRM_STYLES,
+  SITE_ADMIN_TITLEBAR_STYLES,
+  SITE_ADMIN_MODAL_SIZE,
   siteAdminDockedModalStyles,
   resolveSiteAdminRoute,
   siteAdminRouteCapability,
@@ -2431,6 +2433,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       userMenuFor: "User menu for {name}",
       customizeCharacter: "Customize character",
       myLearning: "My learning",
+      privacyChoices: "Privacy choices",
       toggleSoundEffectsOff: "Toggle sound effects off",
       toggleSoundEffectsOn: "Toggle sound effects on",
       soundEffects: "Sound effects",
@@ -4155,6 +4158,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               label="${this.t.customizeCharacter}"
               @click="${this._openCharacterBuilderGuarded}"
             ></app-hax-user-menu-button>
+            <app-hax-user-menu-button
+              slot="main-menu"
+              icon="icons:verified-user"
+              part="privacychoicesbtn"
+              id="privacychoicesbtn"
+              label="${this.t.privacyChoices}"
+              @click="${this._openPrivacyChoicesGuarded}"
+            ></app-hax-user-menu-button>
             <slot
               slot="post-menu"
               name="haxcms-site-editor-ui-post-menu"
@@ -4824,6 +4835,47 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     const { openMyLearning } =
       await import("@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning.js");
     return openMyLearning(this, { title: this.t.myLearning, scope: "site" });
+  }
+
+  /**
+   * "Privacy choices" in the user menu: every third-party service in the
+   * one consent store (HaxConsent), to change or withdraw, in the same site
+   * admin dialog as My learning. privacy-choices is loaded on first use.
+   */
+  async _openPrivacyChoices(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    this.closeMenu();
+    await import("@haxtheweb/privacy-choices/privacy-choices.js");
+    const el = globalThis.document.createElement("privacy-choices");
+    this.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: this.t.privacyChoices,
+          titleIcon: HaxUiAdminIcons.lock,
+          elements: { content: el },
+          invokedBy: this,
+          clone: false,
+          modal: true,
+          showClose: true,
+          styles: {
+            ...SITE_ADMIN_TITLEBAR_STYLES,
+            ...SITE_ADMIN_MODAL_SIZE,
+            "--simple-modal-width": "min(720px, calc(100vw - 32px))",
+            "--simple-modal-max-width": "720px",
+            "--simple-modal-content-container-background":
+              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+            "--simple-modal-z-index": "100000000",
+          },
+        },
+      }),
+    );
+    return el;
   }
 
   /**
@@ -9831,6 +9883,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _openMyLearningGuarded(e) {
     this._siteAdminGuard(() => this._openMyLearning(e));
+  }
+  _openPrivacyChoicesGuarded(e) {
+    this._siteAdminGuard(() => this._openPrivacyChoices(e));
   }
   _openCharacterBuilderGuarded(e) {
     this._siteAdminGuard(() => this._openCharacterBuilder(e));

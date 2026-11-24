@@ -1,8 +1,11 @@
+import { HaxConsent } from "@haxtheweb/utils/lib/hax-consent.js";
 import { fixture, expect, html } from "@open-wc/testing";
 
 import "../iframe-loader.js";
 
 describe("iframe-loader test", () => {
+  before(() => HaxConsent.set("embed:btopro.com", "allow"));
+  after(() => HaxConsent.clearAll());
   let element;
   beforeEach(async () => {
     element = await fixture(

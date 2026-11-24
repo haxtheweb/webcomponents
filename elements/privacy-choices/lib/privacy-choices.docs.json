@@ -1,0 +1,84 @@
+{
+  "tag": "privacy-choices",
+  "folder": "privacy-choices",
+  "package": "@haxtheweb/privacy-choices",
+  "version": "26.8.0",
+  "license": "Apache-2.0",
+  "title": "Privacy choices",
+  "description": "Lets visitors see and change what this site may share with Google Analytics, YouTube, Vimeo, maps and voice input. Place it on the site's privacy page.",
+  "icon": "icons:verified-user",
+  "tags": [
+    "Other",
+    "privacy",
+    "consent",
+    "GDPR",
+    "cookies",
+    "analytics"
+  ],
+  "haxCapable": true,
+  "import": "@haxtheweb/privacy-choices/privacy-choices.js",
+  "cdn": "https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/privacy-choices/privacy-choices.js",
+  "install": "npm i @haxtheweb/privacy-choices",
+  "demoHtml": "<privacy-choices></privacy-choices>",
+  "attributes": [],
+  "slots": [],
+  "events": [],
+  "hax": {
+    "api": "1",
+    "canScale": false,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+      "accent": false,
+      "primary": false,
+      "card": false,
+      "text": false,
+      "designTreatment": false
+    },
+    "gizmo": {
+      "title": "Privacy choices",
+      "description": "Lets visitors see and change what this site may share with Google Analytics, YouTube, Vimeo, maps and voice input. Place it on the site's privacy page.",
+      "icon": "icons:verified-user",
+      "color": "grey",
+      "tags": [
+        "Other",
+        "privacy",
+        "consent",
+        "GDPR",
+        "cookies",
+        "analytics"
+      ],
+      "handles": [],
+      "meta": {
+        "author": "haxtheweb"
+      }
+    },
+    "settings": {
+      "configure": [],
+      "advanced": []
+    },
+    "saveOptions": {
+      "wipeSlot": true,
+      "unsetAttributes": []
+    },
+    "demoSchema": [
+      {
+        "tag": "privacy-choices",
+        "properties": {},
+        "content": ""
+      }
+    ]
+  },
+  "surfaceHash": "f5a2460fff54",
+  "walkthroughs": [],
+  "videos": [],
+  "motion": {
+    "file": "",
+    "status": "none"
+  },
+  "video": null,
+  "source": {
+    "path": "elements/privacy-choices",
+    "file": "privacy-choices.js"
+  }
+}

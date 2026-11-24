@@ -164,6 +164,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         "The microphone is blocked. Allow it in your browser to use your voice.",
       voiceUnavailable:
         "Voice isn't available in this browser. You can still type.",
+      voiceNeedsConsent:
+        "This browser can't understand speech on your device. Allow voice input to send your voice to its speech service, or keep typing.",
       voiceTipPick: "To run a result, say",
       voiceTipNext: "To move down the list, say",
       voiceTipClear: "To start over, say",
@@ -2037,6 +2039,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
    * @param {string} state idle, listening, blocked or unavailable
    */
   _voiceStateChanged(state) {
+    if (state === "consent") {
+      this._askVoiceConsent();
+      return;
+    }
     if (state !== "blocked" && state !== "unavailable") {
       return;
     }
@@ -2058,6 +2064,56 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (state === "unavailable") {
       this._refreshVoiceControls();
     }
+  }
+
+  /**
+   * Speech would leave the device: stop listening and ask, in Merlin's
+   * toast, with the same consent panel as every other third-party service.
+   * Allowing resumes listening; nothing is sent before that.
+   */
+  async _askVoiceConsent() {
+    this.setListeningStatus(false);
+    await import("@haxtheweb/hax-consent-gate/hax-consent-gate.js");
+    const gate = globalThis.document.createElement("hax-consent-gate");
+    gate.setAttribute("variant", "panel");
+    gate.setAttribute("service", "speech");
+    gate.style.setProperty("--hax-consent-gate-aspect", "auto");
+    if (!this.__voiceConsentListening) {
+      this.__voiceConsentListening = true;
+      globalThis.addEventListener(
+        "hax-consent-changed",
+        (e) => {
+          if (
+            e.detail &&
+            e.detail.service === "speech" &&
+            e.detail.value === "allow"
+          ) {
+            globalThis.dispatchEvent(
+              new CustomEvent("super-daemon-toast-hide", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {},
+              }),
+            );
+            this.setListeningStatus(true);
+          }
+        },
+        { signal: this.windowControllers.signal },
+      );
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("super-daemon-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: this.t.voiceNeedsConsent,
+          slot: gate,
+          alwaysvisible: true,
+        },
+      }),
+    );
   }
 
   /** Re-render every Merlin search box so the mic button can hide */

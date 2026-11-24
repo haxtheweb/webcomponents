@@ -5,6 +5,7 @@
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
@@ -48,6 +49,7 @@ class DiscordEmbed extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this._consent = new HaxConsentController(this, () => this.source);
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -127,14 +129,19 @@ class DiscordEmbed extends I18NMixin(LitElement) {
                 ></a>`,
               })}
               <div class="ddd-block-body">
-                <iframe-loader>
-                  <iframe
-                    data-src="${this.source}"
-                    title="${this.t.discordChatEmbed}"
-                    height="${this.height}"
-                    width="${this.width}"
-                  ></iframe>
-                </iframe-loader>
+                ${
+                  // nothing is requested from Discord until it is allowed
+                  !this._consent.allowed
+                    ? this._consent.gate()
+                    : html`<iframe-loader>
+                        <iframe
+                          data-src="${this.source}"
+                          title="${this.t.discordChatEmbed}"
+                          height="${this.height}"
+                          width="${this.width}"
+                        ></iframe>
+                      </iframe-loader>`
+                }
               </div>
             </div>
           `
@@ -206,11 +213,14 @@ class DiscordEmbed extends I18NMixin(LitElement) {
    * Promotes right away when IntersectionObserver is unsupported.
    */
   __observeDeferredSource() {
-    if (this.__deferredPromoted || this.__io) {
-      return;
-    }
     const iframe = this.shadowRoot.querySelector("iframe");
     if (!iframe) {
+      // no frame (consent panel showing): the next frame drawn is new and
+      // needs promoting again
+      this.__deferredPromoted = false;
+      return;
+    }
+    if (this.__deferredPromoted || this.__io) {
       return;
     }
     if (typeof globalThis.IntersectionObserver === "undefined") {

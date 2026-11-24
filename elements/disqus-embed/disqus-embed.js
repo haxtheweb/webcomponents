@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
 /**
  * `disqus-embed`
  * `Disqus service integration`
@@ -12,6 +13,12 @@ import { LitElement, html, css } from "lit";
 class DisqusEmbed extends LitElement {
   constructor() {
     super();
+    // Disqus's script loads only once the visitor allows this forum's host
+    this._consent = new HaxConsentController(this, () =>
+      this.shortName && /^[a-zA-Z0-9_-]+$/.test(this.shortName)
+        ? `https://${this.shortName}.disqus.com/embed.js`
+        : null,
+    );
     this.loadingText = "Loading comments...";
     this.pageURL = null;
     this.pageIdentifier = null;
@@ -65,6 +72,9 @@ class DisqusEmbed extends LitElement {
    * LitElement render callback
    */
   render() {
+    if (!this._consent.allowed) {
+      return this._consent.gate({ aspect: "auto" });
+    }
     // a slot takes no ARIA; the live region is the span around it
     return html`<span role="status" aria-live="polite"
       ><slot>${this.loadingText}</slot></span
@@ -75,10 +85,21 @@ class DisqusEmbed extends LitElement {
     if (super.updated) {
       super.updated(changedProperties);
     }
+    // the script loads the first time the forum is set and allowed: a
+    // choice made in the panel re-renders without a property change
+    const allowed = this._consent.allowed;
+    if (
+      allowed &&
+      this.shortName &&
+      (!this.__embedRequested || changedProperties.has("shortName"))
+    ) {
+      this.__embedRequested = true;
+      DisqusInstance.createEmbedScript(this, this.shortName);
+    }
+    if (!allowed) {
+      return;
+    }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "shortName" && this[propName]) {
-        DisqusInstance.createEmbedScript(this, this.shortName);
-      }
       // on ANY change to the element let's rebuild the configuration except initial shortName setting
       if (propName !== "shortName" && globalThis.DISQUS) {
         clearTimeout(this._timeout);
