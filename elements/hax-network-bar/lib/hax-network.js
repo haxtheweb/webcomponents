@@ -13,7 +13,10 @@ import { html, svg, css } from "lit";
  * `order` is the order the bar lists them. A tool that lives within a property
  * names it in `within` and is not in the bar: RPG me is one of HAX Art's
  * tools, a stand-alone service at its own address (rpg.art.hax.cloud) that
- * the Art site's menu links to; on RPG me the bar lights up Art. `color` and
+ * the Art site's menu links to; on RPG me the bar lights up Art. A record
+ * marked `deployment` (hax.psu.edu) is a place HAX runs, not a property: it
+ * is never in the bar, but content that lists every site made with HAX
+ * draws it the same way. `color` and
  * `on` are DDD
  * color names (the fill, and the ink that reads on it). `icon` is the plain
  * simple-icon to use where the property's own glyph cannot be drawn (Merlin,
@@ -105,6 +108,17 @@ export const HAX_NETWORK = {
       relation:
         "One of HAX Art's tools, linked from the Art site's menu rather than the bar. On RPG me the bar lights up Art.",
     },
+    psu: {
+      url: "https://hax.psu.edu",
+      color: "beaverBlue",
+      on: "white",
+      icon: "social:school",
+      label: "HAX at Penn State",
+      purpose: "Penn State's home for HAX: many sites from one deploy.",
+      deployment: true,
+      relation:
+        "A deployment of HAX (HAXiam), not a property of the network, so it is not in the bar. Content that lists every site made with HAX names it.",
+    },
   },
   install: { details: "https://haxtheweb.org/installation" },
 };
@@ -134,11 +148,15 @@ export const HAX_NETWORK_GLYPHS = {
   // RPG me: the rpg-character, standing still (not in the bar; for content
   // that names RPG me, such as a story link)
   rpg: svg`<path class="a" d="M6 5h12M8.4 5V2.6h7.2V5"/><rect class="m" x="7.5" y="5" width="9" height="7" rx="1.6"/><circle class="a f" cx="10.3" cy="8.6" r=".95"/><circle class="a f" cx="13.7" cy="8.6" r=".95"/><path class="m" d="M8.6 12.6h6.8v5.6H8.6zM8.6 13.8 6.2 16.4M15.4 13.8l2.4 2.6M10.4 18.2v3.2M13.6 18.2v3.2"/>`,
+  // HAX at Penn State (hax.psu.edu, a deployment, not in the bar): a hall on
+  // campus, its columns lighting up one after another (not in the bar; for
+  // content that lists every site made with HAX)
+  psu: svg`<path class="m" d="M3 9.4 12 4l9 5.4M4.5 9.4h15M3.5 20.5h17M4.5 18h15"/><path class="a g-n1" d="M7 11.4v4.6"/><path class="a g-n2" d="M12 11.4v4.6"/><path class="a g-n3" d="M17 11.4v4.6"/><circle class="a f g-dot" cx="12" cy="7.2" r=".9"/>`,
 };
 
 /**
  * A property's glyph as an svg element; nothing for a property without one.
- * @param {string} id web, cloud, try, learn, lab, elements, art or rpg
+ * @param {string} id web, cloud, try, learn, lab, elements, art, rpg or psu
  */
 export function haxNetworkGlyph(id) {
   return HAX_NETWORK_GLYPHS[id]

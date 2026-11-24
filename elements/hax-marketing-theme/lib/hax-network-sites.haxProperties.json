@@ -1,0 +1,32 @@
+{
+  "canScale": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "HAX network sites",
+    "description": "Every site in the HAX network as a card, with the network bar's own animated icons and colors",
+    "icon": "icons:apps",
+    "color": "blue",
+    "tags": ["Marketing", "content", "network"],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "sites",
+        "title": "Which sites, in order (ids separated by spaces: web cloud try learn lab elements art psu); leave empty for all",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "tag": "hax-network-sites",
+      "properties": {},
+      "content": ""
+    }
+  ]
+}

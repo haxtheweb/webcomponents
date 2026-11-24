@@ -43,6 +43,7 @@ describe("hax-network-bar", () => {
     expect(Object.keys(HAX_NETWORK_GLYPHS)).to.deep.equal([
       ...HAX_NETWORK.order,
       "rpg",
+      "psu",
     ]);
   });
 
@@ -124,6 +125,10 @@ describe("hax-network-bar", () => {
       HAX_NETWORK.order.length,
     );
     expect(r.querySelector("#card-rpg")).to.not.exist;
+    expect(HAX_NETWORK.order).to.not.include("psu");
+    expect(HAX_NETWORK.properties.psu.deployment).to.equal(true);
+    expect(r.querySelector("#card-psu")).to.not.exist;
+    expect(r.querySelector('a[href*="hax.psu.edu"]')).to.not.exist;
     expect(r.querySelector('a[href*="rpg"]')).to.not.exist;
     element.current = "rpg";
     await element.updateComplete;
