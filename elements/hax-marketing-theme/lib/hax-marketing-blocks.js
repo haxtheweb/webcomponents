@@ -553,7 +553,10 @@ globalThis.customElements.define(HaxPillarStrip.tag, HaxPillarStrip);
 /**
  * `hax-feature-row`
  * `A screen of the real product beside what it means for you`
+ * With no image, whatever is in the media slot (an interactive block such as
+ * hax-future-goggles) takes the screen's place, without the browser frame.
  * @element hax-feature-row
+ * @slot media - shown in place of the screen when there is no image
  */
 class HaxFeatureRow extends DDD {
   static get tag() {
@@ -597,8 +600,13 @@ class HaxFeatureRow extends DDD {
           align-items: center;
           margin: var(--ddd-spacing-16) var(--ddd-spacing-0);
         }
-        :host([flip]) .screen {
+        :host([flip]) .screen,
+        :host([flip]) .media {
           order: 2;
+        }
+        .media {
+          display: grid;
+          place-items: center;
         }
         .screen {
           border: var(--ddd-border-size-md) solid var(--hm-edge, var(--hm-ink));
@@ -658,7 +666,8 @@ class HaxFeatureRow extends DDD {
             gap: var(--ddd-spacing-6);
             margin: var(--ddd-spacing-10) var(--ddd-spacing-0);
           }
-          :host([flip]) .screen {
+          :host([flip]) .screen,
+          :host([flip]) .media {
             order: 0;
           }
           .screen {
@@ -678,12 +687,16 @@ class HaxFeatureRow extends DDD {
         ? "var(--hm-shade-2, var(--ddd-theme-default-pughBlue))"
         : "var(--hm-shade, var(--ddd-theme-default-keystoneYellow))";
     return html`
-      <div class="screen" style="--shade: ${shade}">
-        <div class="chrome" aria-hidden="true">
-          <span></span><span></span><span></span>
-        </div>
-        <img src="${this.image}" alt="${this.alt}" loading="lazy" />
-      </div>
+      ${
+        this.image
+          ? html`<div class="screen" style="--shade: ${shade}">
+              <div class="chrome" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <img src="${this.image}" alt="${this.alt}" loading="lazy" />
+            </div>`
+          : html`<div class="media"><slot name="media"></slot></div>`
+      }
       <div>
         ${this.eyebrow ? html`<p class="eyebrow">${this.eyebrow}</p>` : ``}
         <h2>${this.heading}</h2>
