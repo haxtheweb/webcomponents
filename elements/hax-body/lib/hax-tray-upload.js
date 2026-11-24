@@ -316,9 +316,14 @@ class HaxTrayUpload extends HaxUploadField {
     const queue = this.shadowRoot
       ? this.shadowRoot.querySelector("#fileupload")
       : null;
+    const xhr = e.detail.xhr;
     let reason = "";
-    if (queue && typeof queue._responseMessage === "function") {
-      reason = queue._responseMessage(e.detail.xhr);
+    if (xhr && xhr.status === 0 && !e.detail.aborted) {
+      // the request never got an answer (wrong host or port, offline,
+      // blocked), so the server cannot have refused the file
+      reason = this.t.uploadServerUnreachable;
+    } else if (queue && typeof queue._responseMessage === "function") {
+      reason = queue._responseMessage(xhr);
     }
     HAXStore.toast(
       this.t.uploadOfFileFailed

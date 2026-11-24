@@ -711,6 +711,7 @@ class SimpleFileUpload extends I18NMixin(DDD) {
             detail: {
               file: file._file,
               xhr: xhr,
+              aborted: true,
             },
           }),
         );
