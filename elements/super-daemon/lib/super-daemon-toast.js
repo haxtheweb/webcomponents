@@ -451,6 +451,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
   }
 
   hideSimpleToast(_e) {
+    clearTimeout(this.__awaitingTimer);
     if (!this.alwaysvisible) {
       // tricks into closing via event in a graceful way
       this._setAnimation("forcedfadeout 0.6s .3s");
@@ -828,10 +829,14 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     // it again on every show
     const merlin = this._merlin();
     this.santa = !!(merlin && merlin.santaMode && this.merlin);
+    // a switch into listening still pending belongs to the message being
+    // replaced; left running it turned the next message (a consent panel)
+    // into a listening card
+    clearTimeout(this.__awaitingTimer);
     // already open and waiting for input, don't do anything
     if (e.detail.awaitingMerlinInput && this.duration) {
       // should appear to switch into waiting for input mode prior to closing state
-      setTimeout(() => {
+      this.__awaitingTimer = setTimeout(() => {
         this._setAnimation("none");
         this.awaitingMerlinInput = e.detail.awaitingMerlinInput;
       }, this.duration / 2);

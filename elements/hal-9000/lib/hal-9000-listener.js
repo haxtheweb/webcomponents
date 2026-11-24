@@ -339,6 +339,27 @@ export class Hal9000Listener {
   }
 
   /**
+   * Whether listening now would need the visitor's "speech" consent: the
+   * browser can listen, but not on the device, and speech is not allowed
+   * yet. Callers ask before they start, so the question comes first.
+   * Nothing is recorded and nothing is sent to find out.
+   * @returns {Promise<boolean>}
+   */
+  async needsConsent() {
+    if (!this.available || HaxConsent.allowed("speech")) {
+      return false;
+    }
+    let rec;
+    try {
+      rec = new this.Ctor();
+    } catch {
+      // starting will report blocked, not ask
+      return false;
+    }
+    return !(await this._preferOnDevice(rec));
+  }
+
+  /**
    * Bias toward known phrases where the engine supports it. Engines that
    * do not support it either lack the field or reject it on start, and
    * plain recognition still works.

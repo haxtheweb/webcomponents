@@ -105,12 +105,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       if (this.listeningForInput) {
         sdi.listeningForInput = false;
       } else {
-        // start talking which listeners in super-daemon will activate
-        // after the text is spoken to avoid polluting input
-        sdi.hal.speak(this.t.howMayIHelp, sdi.santaMode).then((_e) => {
-          sdi.playSound();
-          sdi.listeningForInput = true;
-        });
+        // Merlin asks for speech consent first when it is needed, then
+        // speaks and listens after the words, so they don't pollute input
+        sdi.startListening(this.t.howMayIHelp);
         this.focusInput();
       }
     }

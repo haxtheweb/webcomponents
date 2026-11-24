@@ -175,6 +175,14 @@ class Hal9000 extends LitElement {
   get canListen() {
     return this.listener.available;
   }
+  /**
+   * Listening now would send speech off the device and the visitor has not
+   * allowed that yet; ask before starting
+   * @returns {Promise<boolean>}
+   */
+  needsSpeechConsent() {
+    return this.listener.needsConsent();
+  }
   _fire(name, detail) {
     this.dispatchEvent(
       new CustomEvent(name, {
