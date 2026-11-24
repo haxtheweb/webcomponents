@@ -340,5 +340,6 @@
   "framePhoto": "Frame photo",
   "uploadOfFileFailed": "Could not upload {name}: {reason}",
   "uploadFailedReason": "the server did not accept it",
+  "uploadServerUnreachable": "the server could not be reached",
   "joinHaxCommunity": "Join HAX community"
 }
