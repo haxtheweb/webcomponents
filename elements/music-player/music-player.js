@@ -53,6 +53,7 @@ class MusicPlayer extends I18NMixin(LitElement) {
       playbackStarted: "Playback started",
       playbackFinished: "Playback finished",
       playbackStopped: "Playback stopped",
+      notes: "Notes",
     };
     this.registerLocalization({
       context: this,
@@ -217,6 +218,7 @@ class MusicPlayer extends I18NMixin(LitElement) {
       super.firstUpdated(changedProperties);
     }
     this.visualizerElement = this.shadowRoot.querySelector("midi-visualizer");
+    this.__observeScrollRegions();
     this.__wirePlaybackAnnouncements();
     this.__wiringTimer = setTimeout(() => {
       this.__wiringTimer = null;
@@ -235,7 +237,35 @@ class MusicPlayer extends I18NMixin(LitElement) {
    * Removed from the DOM, cancel the deferred visualizer wiring before it
    * can load the bundled player or wire anything.
    */
+  connectedCallback() {
+    super.connectedCallback();
+    // put back after a move: the observer was dropped on disconnect
+    if (this.hasUpdated) {
+      this.__observeScrollRegions();
+    }
+  }
+  /**
+   * The visualizer redraws its own DOM whenever the music or type changes;
+   * keep every scrolling part of it reachable from the keyboard
+   */
+  __observeScrollRegions() {
+    if (this.__scrollObserver || !this.visualizerElement) {
+      return;
+    }
+    this.__scrollObserver = new MutationObserver(() =>
+      this.__labelScrollRegions(),
+    );
+    this.__scrollObserver.observe(this.visualizerElement, {
+      childList: true,
+      subtree: true,
+    });
+    this.__labelScrollRegions();
+  }
   disconnectedCallback() {
+    if (this.__scrollObserver) {
+      this.__scrollObserver.disconnect();
+      this.__scrollObserver = null;
+    }
     if (this.__wiringTimer) {
       clearTimeout(this.__wiringTimer);
       this.__wiringTimer = null;
@@ -243,6 +273,29 @@ class MusicPlayer extends I18NMixin(LitElement) {
     if (super.disconnectedCallback) {
       super.disconnectedCallback();
     }
+  }
+  /**
+   * A part of the visualizer that scrolls (staff, waterfall) gets a tab stop
+   * and a name, so keyboard users can scroll it (WCAG 2.1.1)
+   */
+  __labelScrollRegions() {
+    if (!this.visualizerElement) {
+      return;
+    }
+    this.visualizerElement.querySelectorAll("div").forEach((div) => {
+      if (div.hasAttribute("tabindex")) {
+        return;
+      }
+      const style = globalThis.getComputedStyle(div);
+      const scrolls = [style.overflowX, style.overflowY].some(
+        (v) => v === "auto" || v === "scroll",
+      );
+      if (scrolls) {
+        div.setAttribute("tabindex", "0");
+        div.setAttribute("role", "group");
+        div.setAttribute("aria-label", this.t.notes);
+      }
+    });
   }
   /**
    * The bundled player keeps its time labels aria-hidden, so announce

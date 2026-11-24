@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout } from "@open-wc/testing";
 
 import "../music-player.js";
 
@@ -233,5 +233,31 @@ describe("music-player progressive enhancement", () => {
     );
     el.source = undefined;
     expect(el.haxprogressiveEnhancement(el)).to.equal("");
+  });
+});
+
+describe("music-player scrolling notes", () => {
+  it("gives every scrolling part of a loaded visualizer a tab stop and name", async () => {
+    const el = await fixture(
+      html`<music-player
+        visualizer="waterfall"
+        source="${new URL("../lib/hax-demo-tune.mid", import.meta.url).href}"
+      ></music-player>`,
+    );
+    const visualizer = el.shadowRoot.querySelector("midi-visualizer");
+    // wait for the visualizer to draw the loaded tune
+    for (let i = 0; i < 50 && !visualizer.noteSequence; i++) {
+      await aTimeout(50);
+    }
+    await aTimeout(50);
+    const regions = [...visualizer.querySelectorAll("div")].filter((div) =>
+      ["auto", "scroll"].includes(globalThis.getComputedStyle(div).overflowY),
+    );
+    expect(regions.length).to.be.greaterThan(0);
+    regions.forEach((div) => {
+      expect(div.getAttribute("tabindex")).to.equal("0");
+      expect(div.getAttribute("aria-label")).to.equal("Notes");
+    });
+    await expect(el).shadowDom.to.be.accessible();
   });
 });
