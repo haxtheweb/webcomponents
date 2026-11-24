@@ -5,7 +5,7 @@
   "version": "26.8.0",
   "license": "Apache-2.0",
   "title": "linkedin-embed",
-  "description": "LinkedIn profile badge embed web component",
+  "description": "Link to a LinkedIn profile (LinkedIn no longer serves embeddable profile badges)",
   "icon": "",
   "tags": [],
   "haxCapable": false,
@@ -26,15 +26,15 @@
       "name": "locale",
       "property": "locale",
       "type": "string",
-      "default": "FALLBACK_LOCALE",
-      "description": "",
+      "default": "\"en_US\"",
+      "description": "Kept so existing content stays valid; the link does not use it.",
       "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "0d38df675525",
+  "surfaceHash": "9ff6055bdee6",
   "walkthroughs": [
     {
       "id": "",
@@ -42,13 +42,13 @@
       "order": 0,
       "src": "linkedin-embed.motion.json",
       "file": "lib/linkedin-embed.motion.json",
-      "status": "awaiting"
+      "status": "stale"
     }
   ],
   "videos": [],
   "motion": {
     "file": "lib/linkedin-embed.motion.json",
-    "status": "awaiting"
+    "status": "stale"
   },
   "video": null,
   "source": {

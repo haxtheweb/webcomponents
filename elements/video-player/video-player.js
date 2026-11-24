@@ -336,7 +336,9 @@ class VideoPlayer extends IntersectionObserverMixin(
                             // visitor allows them; YouTube asks in a11y-media-player
                             !this._consent.allowed
                               ? this._consent.gate()
-                              : this.sandboxed
+                              : // a webview only where the platform has one
+                                // (sandboxed); a browser gets the iframe below
+                                !this.sandboxed
                                 ? html``
                                 : html` <webview
                                     resource="${this.schemaResourceID}-video"

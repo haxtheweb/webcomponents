@@ -1029,6 +1029,23 @@ describe("video-player embed sizing", () => {
     expect(Math.abs(rect.height - (rect.width * 9) / 16)).to.be.below(2);
   });
 
+  it("puts the frame at the top of the block, with no empty box above it", () => {
+    const container = el.shadowRoot.querySelector(
+      ".responsive-video-container",
+    );
+    expect(container.querySelector("webview")).to.not.exist;
+    const top = frame().getBoundingClientRect().top;
+    expect(Math.abs(top - container.getBoundingClientRect().top)).to.be.below(
+      1,
+    );
+    expect(
+      Math.abs(
+        container.getBoundingClientRect().height -
+          frame().getBoundingClientRect().height,
+      ),
+    ).to.be.below(1);
+  });
+
   it("keeps an authored pixel width / height as ratio and widest size", async () => {
     el.width = "400";
     el.height = "300px";

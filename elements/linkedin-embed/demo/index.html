@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
     <title>LinkedIn embed demo</title>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
@@ -73,17 +76,28 @@
       <section class="intro">
         <h1>LinkedIn embed</h1>
         <p>
-          <code>linkedin-embed</code> renders the LinkedIn profile badge in a single element and can
-          be placed in <code>grid-plate</code> layouts.
+          LinkedIn no longer serves profile badges for embedding, so
+          <code>linkedin-embed</code> renders a link to the profile and loads
+          nothing from LinkedIn. It is hidden from the HAX tray and kept so
+          existing content still works.
         </p>
       </section>
       <section class="demo-card">
         <h2>Three-column grid-plate example</h2>
-        <p>Columns stack on narrow screens; each badge follows the page&#39;s light or dark mode.</p>
+        <p>
+          Columns stack on narrow screens; each link follows the page&#39;s
+          light or dark mode.
+        </p>
         <grid-plate layout="1-1-1">
           <linkedin-embed slot="col-1" vanityname="btopro"></linkedin-embed>
-          <linkedin-embed slot="col-2" vanityname="nisha-neupane-6b7219277"></linkedin-embed>
-          <linkedin-embed slot="col-3" vanityname="drdavefusco"></linkedin-embed>
+          <linkedin-embed
+            slot="col-2"
+            vanityname="nisha-neupane-6b7219277"
+          ></linkedin-embed>
+          <linkedin-embed
+            slot="col-3"
+            vanityname="drdavefusco"
+          ></linkedin-embed>
         </grid-plate>
       </section>
       <section class="demo-card">
@@ -92,8 +106,14 @@
           <template>
             <grid-plate layout="1-1-1">
               <linkedin-embed slot="col-1" vanityname="btopro"></linkedin-embed>
-              <linkedin-embed slot="col-2" vanityname="nisha-neupane-6b7219277"></linkedin-embed>
-              <linkedin-embed slot="col-3" vanityname="drdavefusco"></linkedin-embed>
+              <linkedin-embed
+                slot="col-2"
+                vanityname="nisha-neupane-6b7219277"
+              ></linkedin-embed>
+              <linkedin-embed
+                slot="col-3"
+                vanityname="drdavefusco"
+              ></linkedin-embed>
             </grid-plate>
           </template>
         </demo-snippet>
