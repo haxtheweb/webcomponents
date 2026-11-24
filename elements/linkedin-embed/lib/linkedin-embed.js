@@ -11,7 +11,6 @@ const FALLBACK_LOCALE = "en_US";
 const TRACKING_PARAM = "profile-badge";
 const CALLBACK_NAME = "LIBadgeCallback";
 
-/** Non-zero numeric request id from the platform CSPRNG. */
 /**
  * Append LinkedIn's JSONP script. Kept outside the element on purpose: a
  * closure created next to code that uses `this` shares its scope, so the
@@ -42,10 +41,17 @@ function loadBadgeScript(url, manager, uid) {
   globalThis.document.body.appendChild(script);
 }
 
+/**
+ * Request id for LinkedIn's JSONP callback, drawn from the platform CSPRNG.
+ * Ids stay in the range LinkedIn's own profile.js sends (1 to 999999), the
+ * only range the badge service is known to echo back; larger ids risk
+ * overflowing a server-side int and never getting a callback.
+ * @returns {number} 1 to 999999
+ */
 function linkedinRequestUid() {
   const buf = new Uint32Array(1);
   globalThis.crypto.getRandomValues(buf);
-  return buf[0] || 1;
+  return (buf[0] % 999999) + 1;
 }
 
 /**
@@ -403,7 +409,8 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     const url = this.__buildBadgeUrl(uid);
     const manager = this.__ensureCallbackManager();
     manager.handlers[uid] = (badgeHtml, badgeUid) => {
-      if (badgeUid === uid) {
+      // the service may echo the id back as a string
+      if (Number(badgeUid) === uid) {
         this.__lastRequestUid = null;
         this.__renderIframeBadge(badgeHtml, badgeHost);
       }

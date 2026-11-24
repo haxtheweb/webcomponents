@@ -244,6 +244,27 @@ describe("linkedin-embed test", () => {
       expect(manager.handlers[999111]).to.be.undefined;
     });
 
+    it("keeps request ids in LinkedIn's 1 to 999999 range", () => {
+      for (let i = 0; i < 20; i++) {
+        element.__buildBadgeUrl = (uid) =>
+          `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`;
+        element.__requestBadgeMarkup();
+        expect(element.__lastRequestUid).to.be.within(1, 999999);
+      }
+    });
+
+    it("accepts a request id echoed back as a string", () => {
+      const manager = element.__ensureCallbackManager();
+      element.__buildBadgeUrl = (uid) =>
+        `/elements/linkedin-embed/test/does-not-exist.js?uid=${uid}`;
+      element.__requestBadgeMarkup();
+      const uid = element.__lastRequestUid;
+      let rendered = null;
+      element.__renderIframeBadge = (badgeHtml) => (rendered = badgeHtml);
+      manager.handlers[uid]("<b>badge</b>", `${uid}`);
+      expect(rendered).to.equal("<b>badge</b>");
+    });
+
     it("chains a pre-existing global callback", async () => {
       // reset the manager so a fresh one captures a pre-existing callback
       delete globalThis.__linkedinBadgeCallbackManager;

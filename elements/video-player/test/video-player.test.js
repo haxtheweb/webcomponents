@@ -1003,3 +1003,48 @@ describe("video-player consent for embeds", () => {
     expect(el._consent.consent).to.equal(null);
   });
 });
+
+describe("video-player embed sizing", () => {
+  // embedded hosts fill the block like YouTube / local media do
+  let el;
+  beforeEach(async () => {
+    HaxConsent.set("vimeo", "allow");
+    el = await fixture(html`<video-player></video-player>`);
+    el.elementVisible = true;
+    el.sourceType = "vimeo";
+    el.sources = [{ src: "https://player.vimeo.com/video/123" }];
+    await el.updateComplete;
+  });
+  afterEach(() => HaxConsent.clearAll());
+
+  const frame = () =>
+    el.shadowRoot.querySelector(".responsive-video-container iframe");
+
+  it("fills the container width at 16:9 by default", () => {
+    const box = el.shadowRoot
+      .querySelector(".responsive-video-container")
+      .getBoundingClientRect();
+    const rect = frame().getBoundingClientRect();
+    expect(Math.round(rect.width)).to.equal(Math.round(box.width));
+    expect(Math.abs(rect.height - (rect.width * 9) / 16)).to.be.below(2);
+  });
+
+  it("keeps an authored pixel width / height as ratio and widest size", async () => {
+    el.width = "400";
+    el.height = "300px";
+    await el.updateComplete;
+    expect(el._embedSizeStyle).to.equal(
+      "--video-player-embed-ratio: 400 / 300; --video-player-embed-max-width: 400px",
+    );
+    const rect = frame().getBoundingClientRect();
+    expect(rect.width).to.be.at.most(400.5);
+    expect(Math.abs(rect.height - (rect.width * 3) / 4)).to.be.below(2);
+  });
+
+  it("ignores non-pixel sizes", async () => {
+    el.width = "100%";
+    el.height = "auto";
+    await el.updateComplete;
+    expect(el._embedSizeStyle).to.equal("");
+  });
+});

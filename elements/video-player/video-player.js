@@ -260,6 +260,21 @@ class VideoPlayer extends IntersectionObserverMixin(
             var(--ddd-theme-default-coalyGray)
           );
         }
+        /* embedded hosts (Vimeo, Sketchfab, Twitch, ...) fill the block at
+           16:9 like a11y-media-player does for YouTube and local media.
+           An authored width / height pair is kept as the frame's ratio and
+           its widest size, so older content keeps its intended shape. */
+        .responsive-video-container iframe,
+        .responsive-video-container webview {
+          display: block;
+          box-sizing: border-box;
+          width: 100%;
+          max-width: var(--video-player-embed-max-width, 100%);
+          height: auto;
+          aspect-ratio: var(--video-player-embed-ratio, 16 / 9);
+          margin-inline: auto;
+          border: 0;
+        }
         /* Kaltura MediaSpace secure embed: force a responsive iframe so the
            share URL paste renders at a sensible, consistent size. A cross-origin
            Kaltura iframe can't be auto-sized to its internal content from the
@@ -314,6 +329,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                     ? html` <div
                           class="responsive-video-container"
                           .lang="${this.lang || "en"}"
+                          style="${this._embedSizeStyle}"
                         >
                           ${
                             // Vimeo and other hosts load nothing until this
@@ -886,6 +902,32 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.__observingChildren = false;
     this.__mediaPlayerEl = null;
     super.disconnectedCallback();
+  }
+  /**
+   * Sizing hints for embedded (iframe / webview) hosts, from the authored
+   * width and height
+   * @readonly
+   * @returns {String} inline custom properties for the embed container
+   */
+  get _embedSizeStyle() {
+    // width / height may be authored as "560", "560px" or "100%"; only a
+    // pixel pair says something about the frame's shape
+    const px = (value) => {
+      const text =
+        value === undefined || value === null ? "" : `${value}`.trim();
+      const match = /^(\d+(?:\.\d+)?)(?:px)?$/.exec(text);
+      return match ? parseFloat(match[1]) : 0;
+    };
+    const width = px(this.width);
+    const height = px(this.height);
+    const rules = [];
+    if (width > 0 && height > 0) {
+      rules.push(`--video-player-embed-ratio: ${width} / ${height}`);
+    }
+    if (width > 0) {
+      rules.push(`--video-player-embed-max-width: ${width}px`);
+    }
+    return rules.join("; ");
   }
   /**
    * Computes whether uses iframe
