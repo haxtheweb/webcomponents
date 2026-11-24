@@ -124,7 +124,7 @@ Every element in this monorepo (259 packages). Browse them live with `yarn galle
 | [learn-two-theme](./learn-two-theme/) | Learn2 theme for HAXcms | `@haxtheweb/learn-two-theme` | [demo](./learn-two-theme/demo/) |
 | [license-element](./license-element/) | Semantically accurate license for a work | `@haxtheweb/license-element` | [demo](./license-element/demo/) |
 | [link-card-theme](./link-card-theme/) | HAXcms link-card theme for single-page personal profile and menu-link hubs | `@haxtheweb/link-card-theme` | [demo](./link-card-theme/demo/) |
-| [linkedin-embed](./linkedin-embed/) | LinkedIn profile badge embed web component | `@haxtheweb/linkedin-embed` | [demo](./linkedin-embed/demo/) |
+| [linkedin-embed](./linkedin-embed/) | Link to a LinkedIn profile (LinkedIn no longer serves embeddable profile badges) | `@haxtheweb/linkedin-embed` | [demo](./linkedin-embed/demo/) |
 | [lorem-data](./lorem-data/) | Generates placeholder text, images and data for demos and testing | `@haxtheweb/lorem-data` | [demo](./lorem-data/demo/) |
 | [lrn-math](./lrn-math/) | MathJAX element with HAX capabilities baked in | `@haxtheweb/lrn-math` | [demo](./lrn-math/demo/) |
 | [lrn-table](./lrn-table/) | Accessibly render a HTML table from a csv file | `@haxtheweb/lrn-table` | [demo](./lrn-table/demo/) |

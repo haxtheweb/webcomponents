@@ -322,7 +322,7 @@
     {
       "tag": "aframe-player",
       "title": "Aframe Player",
-      "description": "A wrapper to do data binding into aframe",
+      "description": "A wrapper to do data binding into aframe Privacy: the A-Frame library comes from aframe.io, so neither it nor the scene loads until the visitor allows the \"aframe\" service in HaxConsent; a hax-consent-gate panel stands in the scene's place until then.",
       "package": "@haxtheweb/aframe-player",
       "import": "@haxtheweb/aframe-player/aframe-player.js",
       "type": "element",
@@ -1800,7 +1800,7 @@
     {
       "tag": "github-rpg-contributors",
       "title": "Github Rpg Contributors",
-      "description": "List a repository's contributors as RPG characters.",
+      "description": "A repository's contributors, each drawn as an rpg-character. Privacy: the contributor list comes from api.github.com, so nothing is requested until the visitor allows the \"github\" service in HaxConsent; a hax-consent-gate panel stands where the characters go until then.",
       "package": "@haxtheweb/github-preview",
       "import": "@haxtheweb/github-preview/lib/github-rpg-contributors.js",
       "type": "element",
