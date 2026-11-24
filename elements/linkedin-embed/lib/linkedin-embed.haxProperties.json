@@ -8,13 +8,14 @@
   "contentEditable": false,
   "gizmo": {
     "title": "LinkedIn",
-    "description": "Embed a LinkedIn profile card.",
+    "description": "Link to a LinkedIn profile.",
     "icon": "mdi-social:linkedin",
     "color": "blue",
     "tags": ["Media", "social media", "linkedin", "profile", "card"],
     "handles": [],
     "meta": {
-      "author": "HAXTheWeb core team"
+      "author": "HAXTheWeb core team",
+      "hidden": true
     }
   },
   "settings": {
@@ -22,7 +23,7 @@
       {
         "property": "vanityname",
         "title": "Vanity name",
-        "description": "LinkedIn vanity username segment.",
+        "description": "The name at the end of the profile address (linkedin.com/in/name).",
         "inputMethod": "textfield",
         "required": true
       }

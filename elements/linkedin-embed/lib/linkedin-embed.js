@@ -5,52 +5,17 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { HaxConsentController } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
-
-const FALLBACK_LOCALE = "en_US";
-const TRACKING_PARAM = "profile-badge";
-const CALLBACK_NAME = "LIBadgeCallback";
-
-/** Non-zero numeric request id from the platform CSPRNG. */
-/**
- * Append LinkedIn's JSONP script. Kept outside the element on purpose: a
- * closure created next to code that uses `this` shares its scope, so the
- * script's listeners would hold a removed embed until LinkedIn answers.
- * @param {string} url
- * @param {{handlers: Object}} manager shared JSONP callback manager
- * @param {number} uid this request's callback id
- */
-function loadBadgeScript(url, manager, uid) {
-  const script = globalThis.document.createElement("script");
-  script.src = url;
-  script.async = true;
-  script.defer = true;
-  const cleanup = () => {
-    if (script.parentNode) {
-      script.parentNode.removeChild(script);
-    }
-  };
-  script.addEventListener("load", cleanup, { once: true });
-  script.addEventListener(
-    "error",
-    () => {
-      delete manager.handlers[uid];
-      cleanup();
-    },
-    { once: true },
-  );
-  globalThis.document.body.appendChild(script);
-}
-
-function linkedinRequestUid() {
-  const buf = new Uint32Array(1);
-  globalThis.crypto.getRandomValues(buf);
-  return buf[0] || 1;
-}
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 
 /**
  * `linkedin-embed`
- * `LinkedIn profile badge rendered without loading LinkedIn's profile.js file`
+ * `Link to a LinkedIn profile`
+ *
+ * LinkedIn no longer serves profile badges for embedding, so this element
+ * renders a plain link to the profile and loads nothing from LinkedIn.
+ * It stays defined so content that already uses it keeps working, and it is
+ * hidden from the HAX tray so no new content picks it up.
  * @demo demo/index.html
  * @element linkedin-embed
  */
@@ -66,10 +31,11 @@ class LinkedinEmbed extends I18NMixin(DDD) {
        * (linkedin.com/in/<name>).
        */
       vanityname: { type: String, reflect: true },
+      /**
+       * Kept so existing content stays valid; the link does not use it.
+       */
       locale: { type: String },
       _haxstate: { type: Boolean },
-      _prefersDark: { type: Boolean, attribute: false },
-      _responsiveSize: { type: String, attribute: false },
     };
   }
 
@@ -79,47 +45,47 @@ class LinkedinEmbed extends I18NMixin(DDD) {
       css`
         :host {
           display: block;
-          container-type: inline-size;
           max-inline-size: 100%;
         }
-        .badge-shell {
-          display: flex;
-          justify-content: center;
-          inline-size: 100%;
+        a {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          max-inline-size: 100%;
           box-sizing: border-box;
-          padding: 0;
-          border-radius: 0;
-          background-color: transparent;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-sm);
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-xs);
+          font-weight: var(--ddd-font-weight-medium);
+          text-decoration: none;
+          overflow-wrap: anywhere;
         }
-        .badge-shell[data-theme="dark"] {
-          background-color: transparent;
+        a:hover,
+        a:focus-visible {
+          text-decoration: underline;
         }
-        .badge-shell[data-size="small"] {
-          --_linkedin-max-inline-size: 320px;
+        a:focus-visible {
+          outline: var(--ddd-border-md);
+          outline-color: currentColor;
+          outline-offset: var(--ddd-spacing-1);
         }
-        .badge-shell[data-size="medium"] {
-          --_linkedin-max-inline-size: 380px;
+        simple-icon-lite {
+          flex: 0 0 auto;
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
         }
-        .badge-shell[data-size="large"] {
-          --_linkedin-max-inline-size: 460px;
-        }
-        .badge-shell.is-editing {
+        a.is-editing {
           pointer-events: none;
-        }
-        .badge-host {
-          inline-size: 100%;
-          max-inline-size: var(--_linkedin-max-inline-size, 460px);
-          display: flex;
-          justify-content: center;
-          line-height: 0;
-        }
-        iframe {
-          border: 0;
-          display: block;
-          max-inline-size: 100%;
-          vertical-align: top;
-          overflow: hidden;
-          background-color: transparent;
         }
       `,
     ];
@@ -127,72 +93,18 @@ class LinkedinEmbed extends I18NMixin(DDD) {
 
   constructor() {
     super();
-    // LinkedIn's badge script loads only once the visitor allows it; until
-    // then the plain profile link stays, with the consent panel under it
-    this._consent = new HaxConsentController(
-      this,
-      () => "https://badges.linkedin.com/",
-    );
     this.t = this.t || {};
     this.t = {
       ...this.t,
       viewOnLinkedin: "View {name} on LinkedIn",
-      badgeTitle: "LinkedIn profile badge for {name}",
     };
     this.registerLocalization({
       context: this,
       localesPath: new URL("../locales/", import.meta.url).href,
     });
     this.vanityname = "btopro";
-    this.locale = FALLBACK_LOCALE;
-    this._prefersDark = false;
-    this._responsiveSize = "large";
+    this.locale = "en_US";
     this._haxstate = false;
-    this.__resizeObserver = null;
-    this.__darkModeMediaQuery = null;
-    this.__darkModeHandler = null;
-    this.__schemeObserver = null;
-    this.__lastRequestUid = null;
-  }
-
-  connectedCallback() {
-    if (super.connectedCallback) {
-      super.connectedCallback();
-    }
-    this.__watchContainer();
-    this.__watchPreferredTheme();
-    this.__ensureCallbackManager();
-  }
-
-  disconnectedCallback() {
-    if (this.__badgeSizeHandler) {
-      globalThis.removeEventListener("message", this.__badgeSizeHandler);
-      this.__badgeSizeHandler = null;
-    }
-    if (this.__resizeObserver) {
-      this.__resizeObserver.disconnect();
-    }
-    if (this.__schemeObserver) {
-      this.__schemeObserver.disconnect();
-      this.__schemeObserver = null;
-    }
-    if (this.__darkModeMediaQuery && this.__darkModeHandler) {
-      if (this.__darkModeMediaQuery.removeEventListener) {
-        this.__darkModeMediaQuery.removeEventListener(
-          "change",
-          this.__darkModeHandler,
-        );
-      } else if (this.__darkModeMediaQuery.removeListener) {
-        this.__darkModeMediaQuery.removeListener(this.__darkModeHandler);
-      }
-    }
-    if (this.__lastRequestUid) {
-      this.__removePendingHandler(this.__lastRequestUid);
-      this.__lastRequestUid = null;
-    }
-    if (super.disconnectedCallback) {
-      super.disconnectedCallback();
-    }
   }
 
   updated(changedProperties) {
@@ -200,24 +112,10 @@ class LinkedinEmbed extends I18NMixin(DDD) {
       super.updated(changedProperties);
     }
     if (changedProperties.has("vanityname")) {
-      this.vanityname = this.__normalizeVanityname(this.vanityname);
-    }
-    if (changedProperties.has("locale") && !this.locale) {
-      this.locale = FALLBACK_LOCALE;
-    }
-    // a choice made in the panel re-renders: build the badge once allowed
-    const allowed = this._consent.allowed;
-    const consentChanged = allowed !== this.__consentAllowed;
-    this.__consentAllowed = allowed;
-    if (
-      !this._haxstate &&
-      (consentChanged ||
-        changedProperties.has("vanityname") ||
-        changedProperties.has("locale") ||
-        changedProperties.has("_responsiveSize") ||
-        changedProperties.has("_prefersDark"))
-    ) {
-      this.__requestBadgeMarkup();
+      const normalized = this.__normalizeVanityname(this.vanityname);
+      if (normalized !== this.vanityname) {
+        this.vanityname = normalized;
+      }
     }
   }
 
@@ -249,295 +147,27 @@ class LinkedinEmbed extends I18NMixin(DDD) {
       .trim();
   }
 
-  __watchPreferredTheme() {
-    if (!globalThis.matchMedia) {
-      return;
-    }
-    this.__darkModeMediaQuery = globalThis.matchMedia(
-      "(prefers-color-scheme: dark)",
-    );
-    this._prefersDark = this.__resolveDark(this.__darkModeMediaQuery.matches);
-    this.__darkModeHandler = (event) => {
-      this._prefersDark = this.__resolveDark(event.matches);
-      this.requestUpdate();
-    };
-    // a site's own light / dark switch (HAXcms puts dark-mode on body, which
-    // DDD turns into color-scheme) changes the page without changing the OS
-    // setting, so watch the page as well
-    if (
-      typeof MutationObserver === "function" &&
-      !this.__schemeObserver &&
-      globalThis.document &&
-      globalThis.document.body
-    ) {
-      this.__schemeObserver = new MutationObserver(() => {
-        this._prefersDark = this.__resolveDark(
-          this.__darkModeMediaQuery ? this.__darkModeMediaQuery.matches : false,
-        );
-      });
-      [globalThis.document.documentElement, globalThis.document.body].forEach(
-        (node) =>
-          this.__schemeObserver.observe(node, {
-            attributes: true,
-            attributeFilter: ["class", "style", "data-theme"],
-          }),
-      );
-    }
-    if (this.__darkModeMediaQuery.addEventListener) {
-      this.__darkModeMediaQuery.addEventListener(
-        "change",
-        this.__darkModeHandler,
-      );
-    } else if (this.__darkModeMediaQuery.addListener) {
-      this.__darkModeMediaQuery.addListener(this.__darkModeHandler);
-    }
-  }
-
-  /**
-   * Whether the badge should be dark: the page's own color-scheme where it
-   * forces one (a site's dark mode), otherwise the visitor's OS setting.
-   * @param {boolean} osDark prefers-color-scheme: dark
-   */
-  __resolveDark(osDark) {
-    let scheme = "";
-    if (this.isConnected && globalThis.getComputedStyle) {
-      scheme = globalThis.getComputedStyle(this).colorScheme || "";
-    }
-    const dark = /\bdark\b/.test(scheme);
-    const light = /\blight\b/.test(scheme);
-    if (dark && !light) {
-      return true;
-    }
-    if (light && !dark) {
-      return false;
-    }
-    return !!osDark;
-  }
-
-  __watchContainer() {
-    if (typeof ResizeObserver !== "function" || this.__resizeObserver) {
-      return;
-    }
-    this.__resizeObserver = new ResizeObserver((entries) => {
-      entries.forEach((entry) => {
-        const width =
-          entry && entry.contentRect && entry.contentRect.width
-            ? entry.contentRect.width
-            : this.offsetWidth;
-        this.__setResponsiveSize(width);
-      });
-    });
-    this.__resizeObserver.observe(this);
-  }
-
-  __setResponsiveSize(width) {
-    let nextSize = "large";
-    if (width < 330) {
-      nextSize = "small";
-    } else if (width < 500) {
-      nextSize = "medium";
-    }
-    if (nextSize !== this._responsiveSize) {
-      this._responsiveSize = nextSize;
-    }
-  }
-
-  __ensureCallbackManager() {
-    if (!globalThis.__linkedinBadgeCallbackManager) {
-      const manager = {
-        handlers: {},
-        previousCallback: globalThis[CALLBACK_NAME],
-      };
-      globalThis[CALLBACK_NAME] = (badgeHtml, badgeUid) => {
-        if (manager.handlers[badgeUid]) {
-          manager.handlers[badgeUid](badgeHtml, badgeUid);
-          delete manager.handlers[badgeUid];
-        }
-        if (
-          manager.previousCallback &&
-          manager.previousCallback !== globalThis[CALLBACK_NAME]
-        ) {
-          manager.previousCallback(badgeHtml, badgeUid);
-        }
-      };
-      globalThis.__linkedinBadgeCallbackManager = manager;
-    }
-    return globalThis.__linkedinBadgeCallbackManager;
-  }
-
-  __removePendingHandler(uid) {
-    const manager = this.__ensureCallbackManager();
-    if (manager.handlers[uid]) {
-      delete manager.handlers[uid];
-    }
-  }
-
-  __generateBaseUrl() {
-    const hostName =
-      globalThis.location && globalThis.location.hostname
-        ? globalThis.location.hostname
-        : "";
-    const isCNDomain = /linkedin(-ei)?\.cn$/.test(hostName);
-    return isCNDomain
-      ? "https://badges.linkedin.cn/"
-      : "https://badges.linkedin.com/";
-  }
-
-  __requestBadgeMarkup() {
-    // renderRoot does not exist until the first render commits, so requests
-    // that arrive before that point have no badge host to build against yet
-    if (!this.renderRoot || !this._consent.allowed) {
-      return;
-    }
-    const badgeHost = this.renderRoot.querySelector(".badge-host");
-    if (!badgeHost || !globalThis.document || !globalThis.document.body) {
-      return;
-    }
-    if (this.__lastRequestUid) {
-      this.__removePendingHandler(this.__lastRequestUid);
-    }
-    // unguessable callback id so other scripts on the page cannot predict
-    // and pre-claim the JSONP handler slot (CodeQL js/insecure-randomness)
-    const uid = linkedinRequestUid();
-    this.__lastRequestUid = uid;
-    const url = this.__buildBadgeUrl(uid);
-    const manager = this.__ensureCallbackManager();
-    manager.handlers[uid] = (badgeHtml, badgeUid) => {
-      if (badgeUid === uid) {
-        this.__lastRequestUid = null;
-        this.__renderIframeBadge(badgeHtml, badgeHost);
-      }
-    };
-    loadBadgeScript(url, manager, uid);
-  }
-
-  __buildBadgeUrl(uid) {
-    const queryParams = [
-      `locale=${encodeURIComponent(this.locale)}`,
-      "badgetype=VERTICAL",
-      `badgetheme=${encodeURIComponent(this._effectiveTheme)}`,
-      `uid=${encodeURIComponent(uid)}`,
-      "version=v1",
-      `maxsize=${encodeURIComponent(this._effectiveSize)}`,
-      `trk=${encodeURIComponent(TRACKING_PARAM)}`,
-      `vanityname=${encodeURIComponent(this.vanityname)}`,
-    ];
-    return `${this.__generateBaseUrl()}profile?${queryParams.join("&")}`;
-  }
-
-  __renderIframeBadge(badgeHtml, badgeHost) {
-    while (badgeHost.firstChild) {
-      badgeHost.removeChild(badgeHost.firstChild);
-    }
-    const iframe = globalThis.document.createElement("iframe");
-    iframe.setAttribute("frameborder", "0");
-    iframe.setAttribute("scrolling", "no");
-    iframe.style.display = "block";
-    iframe.style.maxWidth = "100%";
-    iframe.setAttribute("height", "300");
-    iframe.setAttribute("width", "330");
-    // the width comes from CSS, capped at the container: a fixed width would
-    // be the frame's minimum size and push narrow layouts (grid-plate columns
-    // on a phone) wider than the screen
-    iframe.style.width = "min(330px, 100%)";
-    // a frame needs a name for screen readers (WCAG 4.1.2)
-    iframe.setAttribute(
-      "title",
-      this.t.badgeTitle.replace("{name}", () => this.vanityname),
-    );
-    // the frame and its page share one color-scheme, or the browser paints
-    // an opaque white box behind a dark badge
-    iframe.style.colorScheme = this._effectiveTheme;
-    // security: the badge HTML is third-party content, so it runs in a
-    // sandboxed (opaque origin) frame with no access to this page's DOM,
-    // cookies or storage. Popups stay allowed so profile links still open.
-    iframe.setAttribute(
-      "sandbox",
-      "allow-scripts allow-popups allow-popups-to-escape-sandbox",
-    );
-    // sizing can no longer read the frame DOM, so the frame reports its own
-    // size; only messages from this exact frame with numeric sizes are used
-    if (this.__badgeSizeHandler) {
-      globalThis.removeEventListener("message", this.__badgeSizeHandler);
-    }
-    this.__badgeSizeHandler = (event) => {
-      if (!iframe.contentWindow || event.source !== iframe.contentWindow) {
-        return;
-      }
-      // the sandboxed (no allow-same-origin) frame has an opaque origin
-      if (event.origin !== "null") {
-        return;
-      }
-      const data = event.data;
-      if (
-        !data ||
-        data.type !== "linkedin-embed-size" ||
-        typeof data.height !== "number" ||
-        typeof data.width !== "number"
-      ) {
-        return;
-      }
-      const height = Math.max(1, Math.min(2000, Math.round(data.height)));
-      const width = Math.max(1, Math.min(2000, Math.round(data.width)));
-      iframe.setAttribute("height", `${height}`);
-      iframe.setAttribute("width", `${width}`);
-      iframe.style.width = `min(${width}px, 100%)`;
-    };
-    globalThis.addEventListener("message", this.__badgeSizeHandler);
-    badgeHost.appendChild(iframe);
-    // security (JS-MSG): the badge only reports its size to this page's own
-    // origin, never "*"; a page with an opaque origin (file://, sandboxed)
-    // has no origin to name, so the badge keeps its default size there
-    const pageOrigin =
-      globalThis.location &&
-      globalThis.location.origin &&
-      globalThis.location.origin !== "null"
-        ? globalThis.location.origin
-        : "";
-    // JSON.stringify alone does not make a value safe inside <script>:
-    // also escape <, > and line separators (CodeQL js/bad-code-sanitization)
-    const parentOrigin = JSON.stringify(pageOrigin).replace(
-      /[<>\u2028\u2029]/g,
-      (c) => {
-        return "\\u" + c.charCodeAt(0).toString(16).padStart(4, "0");
-      },
-    );
-    const sizeScript = pageOrigin
-      ? `<script>(function(){function s(){var b=document.body;if(!b)return;parent.postMessage({type:"linkedin-embed-size",height:b.scrollHeight||300,width:b.scrollWidth||330},${parentOrigin});}window.addEventListener("load",s);setTimeout(s,500);setTimeout(s,2000);})();</script>`
-      : "";
-    // security: write badge via srcdoc instead of document.write (JS-XSS: no document.write sink)
-    iframe.srcdoc = `<!doctype html><html><head><meta name="color-scheme" content="${this._effectiveTheme}"><base target="_blank"><style>:root{color-scheme:${this._effectiveTheme};}html,body{margin:0;padding:0;overflow:hidden;background:transparent;line-height:0;}</style></head><body>${badgeHtml}${sizeScript}</body></html>`;
-  }
-
-  get _effectiveTheme() {
-    return this._prefersDark ? "dark" : "light";
-  }
-
-  get _effectiveSize() {
-    return this._responsiveSize;
-  }
-
   get _profileHref() {
-    return `https://www.linkedin.com/in/${this.vanityname}`;
+    return `https://www.linkedin.com/in/${encodeURIComponent(this.vanityname)}`;
   }
 
   render() {
     return html`
-      <div
-        class="badge-shell ${this._haxstate ? "is-editing" : ""}"
-        data-size="${this._effectiveSize}"
-        data-theme="${this._effectiveTheme}"
+      <a
+        class="${this._haxstate ? "is-editing" : ""}"
+        href="${this._profileHref}"
+        target="_blank"
+        rel="noopener noreferrer"
+        part="link"
       >
-        <div class="badge-host">
-          <a
-            class="badge-base__link LI-simple-link"
-            href="${this._profileHref}"
-          >
-            ${this.t.viewOnLinkedin.replace("{name}", () => this.vanityname)}
-          </a>
-        </div>
-        ${this._consent.allowed ? "" : this._consent.gate({ aspect: "auto" })}
-      </div>
+        <simple-icon-lite
+          icon="mdi-social:linkedin"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span
+          >${this.t.viewOnLinkedin.replace("{name}", () => this.vanityname)}</span
+        >
+      </a>
     `;
   }
 
