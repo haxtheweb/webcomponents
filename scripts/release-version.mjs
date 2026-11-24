@@ -19,6 +19,10 @@
  *     element, as ^<version> (peerDependencies are minimums and are left alone)
  *   - lerna.json "version", the root package.json "version", root
  *     "resolutions" pins on elements, and .version
+ *   - the generated references scripts/release-references.json lists for this
+ *     repo (element docs data, DDD tokens and design-system manifests), and
+ *     the HAXcms version removed from demo site.json files, which must never
+ *     carry it
  *
  * The release then runs in this order:
  *   yarn run release-version <x.y.z>
@@ -32,6 +36,7 @@ import process from "node:process";
 import console from "node:console";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { stampRepos } from "./release-references.mjs";
 
 const WC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ELEMENTS = path.join(WC, "elements");
@@ -164,8 +169,10 @@ console.log(`  lerna.json ${lerna.version} -> ${version}`);
 console.log(`  package.json ${root.version} -> ${version}`);
 console.log(`  root resolutions on elements: ${pins.length} -> ${version}`);
 console.log(`  .version -> ${version}`);
+console.log("  release references (scripts/release-references.json):");
 
 if (dry) {
+  stampRepos(["webcomponents"], version, { write: false });
   console.log("dry run: nothing written");
   process.exit(0);
 }
@@ -184,6 +191,7 @@ pins.forEach((name) => {
 });
 writeJSON(rootFile, root);
 fs.writeFileSync(path.join(WC, ".version"), version);
+stampRepos(["webcomponents"], version);
 
 git(["add", "-A", "lerna.json", "package.json", ".version", "elements"]);
 git(["commit", "-m", `v${version}`]);

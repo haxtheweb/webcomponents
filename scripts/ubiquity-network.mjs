@@ -44,6 +44,7 @@ import process from "node:process";
 import console from "node:console";
 import { execFileSync, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { stampRepos } from "./release-references.mjs";
 
 const WC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 // the same default ubiquity-push.sh and refresh-haxsite.mjs use, then the
@@ -474,6 +475,8 @@ function cmdSatellites() {
           if (!same && !dry) fs.copyFileSync(from, to);
         });
       }
+      // the release references scripts/release-references.json lists here
+      stampRepos([entry.repo], version, { write: !dry, root: ROOT });
       if (entry.versionFile) {
         const file = path.join(dir, entry.versionFile);
         if (entry.versionFile.endsWith("package.json")) {

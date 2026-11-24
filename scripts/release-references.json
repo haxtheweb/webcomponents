@@ -1,0 +1,171 @@
+{
+  "$comment": "Version references across the ubiquity network that are not package versions, ranges or .version files (release-version, version-match, the npm updates and the satellites step own those). `node scripts/release-references.mjs stamp` moves each to the release version (or removes it, for `delete`); `check` fails when one is behind; `scan` reports anything else still on the previous release line. Paths are relative to each repo's checkout under $HAXTHEWEB_ROOT.",
+  "rules": [
+    {
+      "repo": "webcomponents",
+      "files": ["elements/*/lib/*.docs.json"],
+      "set": "version",
+      "why": "docs data for <documentation-player>; extract-element-docs copies the element version in at element build time, which a release does not run"
+    },
+    {
+      "repo": "webcomponents",
+      "files": ["elements/d-d-d/tokens/*.tokens.json"],
+      "set": "$extensions.org\\.haxtheweb\\.ddd.version",
+      "why": "DDD design tokens record the d-d-d version they were generated from"
+    },
+    {
+      "repo": "webcomponents",
+      "files": ["elements/d-d-d/design-system/source/design-system.json"],
+      "set": "libraries[].version",
+      "why": "design system bundle manifest; every library ships in the release"
+    },
+    {
+      "repo": "webcomponents",
+      "files": ["elements/d-d-d/design-system/source/components/*/README.md"],
+      "pattern": "^- Package `[^`]+` {v}$",
+      "why": "generated design-system component READMEs name the package version"
+    },
+    {
+      "repo": "webcomponents",
+      "files": [
+        "elements/*/demo/site.json",
+        "elements/d-d-d/design-system/source/runtime/sites/*/site.json"
+      ],
+      "delete": ["metadata.site.version", "metadata.build.version"],
+      "why": "site.json is public and must never carry the HAXcms version (haxcms-nodejs saveManifest stripPublicVersion); older releases wrote it"
+    },
+    {
+      "repo": "webcomponents",
+      "files": ["elements/ecosystem-web/demo/ecosystem-webs.json"],
+      "set": "network-releases",
+      "why": "ecosystem-web demo data, a copy of the PRAW ecosystem player data"
+    },
+    {
+      "repo": "praw",
+      "files": [
+        "skills/hax-design-system/references/ddd-tokens.md",
+        "plugins/*/skills/hax-design-system/references/ddd-tokens.md"
+      ],
+      "pattern": "\\(`@haxtheweb/d-d-d` {v}\\)",
+      "why": "agent-skill DDD reference header; snapshotted into the haxcms-nodejs boilerplate (and so every new site) in ubiquity STEP 1.5"
+    },
+    {
+      "repo": "praw",
+      "files": ["ecosystem/web/hax-ecosystem.json"],
+      "set": "network-releases",
+      "why": "ecosystem player nodes whose release is a network package or repo show the version they ship at"
+    },
+    {
+      "repo": "praw",
+      "files": ["ecosystem/web/hax-elements.json"],
+      "set": ["meta.releases.npm:@haxtheweb/*", "network-releases"],
+      "why": "every HAX block is on npm at the release version once release-publish passes: the releases map and each block node"
+    },
+    {
+      "repo": "praw",
+      "files": ["ecosystem/player/template.html"],
+      "pattern": "\"version\": \"{v}\", \"status\": \"released\"",
+      "why": "the player's JSON-per-node example"
+    },
+    {
+      "repo": "haxcms-nodejs",
+      "files": [
+        ".well-known/agent-skills/hax-design-system/references/ddd-tokens.md",
+        "src/boilerplate/site/.well-known/agent-skills/hax-design-system/references/ddd-tokens.md"
+      ],
+      "pattern": "\\(`@haxtheweb/d-d-d` {v}\\)",
+      "why": "snapshots of the PRAW agent skills (ubiquity STEP 1.5); listed so check confirms the snapshot ran after PRAW was stamped"
+    },
+    {
+      "repo": "haxcms-php",
+      "files": [
+        ".well-known/agent-skills/hax-design-system/references/ddd-tokens.md",
+        "system/boilerplate/site/.well-known/agent-skills/hax-design-system/references/ddd-tokens.md"
+      ],
+      "pattern": "\\(`@haxtheweb/d-d-d` {v}\\)",
+      "why": "snapshot (system) and haxcms-nodejs boilerplate mirror (site) of the PRAW agent skills; listed so check confirms both ran"
+    },
+    {
+      "repo": "haxcms-mcp",
+      "files": ["src/haxcms_mcp/config.py"],
+      "pattern": "test_haxcms_version: str = \"{v}\"",
+      "why": "default published HAXcms the live tests install when told to test a release"
+    },
+    {
+      "repo": "haxcms-mcp",
+      "files": ["README.md"],
+      "pattern": "HAXCMS_MCP_TEST_HAXCMS_VERSION={v} +# installs @haxtheweb/haxcms-nodejs@{v} from npm",
+      "why": "README example for testing a published release"
+    },
+    {
+      "repo": "learn",
+      "files": ["site.json"],
+      "delete": ["metadata.site.version", "metadata.build.version"],
+      "why": "public site.json must not carry the HAXcms version"
+    },
+    {
+      "repo": "lab",
+      "files": ["site.json"],
+      "delete": ["metadata.site.version", "metadata.build.version"],
+      "why": "public site.json must not carry the HAXcms version"
+    },
+    {
+      "repo": "haxtheweb.org",
+      "files": ["site.json"],
+      "delete": ["metadata.site.version", "metadata.build.version"],
+      "why": "public site.json must not carry the HAXcms version"
+    },
+    {
+      "repo": "art",
+      "files": ["**/site.json"],
+      "delete": ["metadata.site.version", "metadata.build.version"],
+      "why": "public site.json must not carry the HAXcms version"
+    },
+    {
+      "repo": "art",
+      "files": ["hax-art/package.json"],
+      "set": "version",
+      "why": "the hax-art portfolio site's package tracks the release it loads from cdn.hax.cloud; art has no versionFile in ubiquity-network.json"
+    },
+    {
+      "repo": "art",
+      "files": ["**/tools/package.json"],
+      "ranges": "@haxtheweb/",
+      "why": "nested tool packages install HAX elements; the satellites step only updates a repo's versionFile"
+    },
+    {
+      "repo": "hax-psu",
+      "files": [
+        ".well-known/agent-skills/hax-design-system/references/ddd-tokens.md"
+      ],
+      "pattern": "\\(`@haxtheweb/d-d-d` {v}\\)",
+      "why": "copies of the PRAW agent skills in the hax.psu deployment"
+    }
+  ],
+  "scanIgnore": [
+    "**/node_modules/**",
+    "**/CHANGELOG*",
+    "**/*.lock",
+    "**/package-lock.json",
+    "**/yarn.lock",
+    "**/fixtures/**",
+    "**/snapshots/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/build/**",
+    "**/dist/**",
+    "**/*.min.js",
+    "**/*.map",
+    "**/lunrSearchIndex.json",
+    "praw/impact/**",
+    "praw/PACE.*",
+    "praw/WINS.md",
+    "haxcms-mcp/PLAN.md",
+    "haxcms-mcp/PROGRESS.md",
+    "haxcms-mcp/KNOWLEDGE.md",
+    "haxcms-desktop/src/legal-notices/**",
+    "learn/pages/**",
+    "haxcms-mcp/docs/adr/**",
+    "hax-psu/built/**"
+  ]
+}

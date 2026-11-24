@@ -74,6 +74,9 @@ enter ~/haxtheweb/praw
 # fails if they are missing, not x.y.z, or disagree.
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/.version
 cp ~/haxtheweb/webcomponents/.version ~/haxtheweb/praw/plugins/hax-onboarding/.version
+# the release references praw holds (ecosystem data, the DDD token reference
+# the snapshots below copy into every new site); scripts/release-references.json
+node ~/haxtheweb/webcomponents/scripts/release-references.mjs stamp --repos praw || exit 1
 node scripts/build-agent-skills-index.js
 node scripts/snapshot-agent-skills.js site ~/haxtheweb/haxcms-nodejs/src/boilerplate/site/.well-known/agent-skills
 node scripts/snapshot-agent-skills.js system ~/haxtheweb/haxcms-nodejs/.well-known/agent-skills
@@ -218,6 +221,14 @@ mirror_from_nodejs src/coreConfig system/coreConfig
 
 # create cli needs wc-reg for validation purposes
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
+
+## STEP 4.2 RELEASE REFERENCES
+# Every version reference scripts/release-references.json lists for the repos
+# built so far must be on this release (release-version stamped webcomponents,
+# STEP 1.5 stamped praw and snapshotted it into both backends). Stop before
+# anything is committed or tagged if one is not.
+enter ~/haxtheweb/webcomponents
+node scripts/release-references.mjs check --repos webcomponents,praw,haxcms-nodejs,haxcms-php || exit 1
 
 ## STEP 4.5 RELEASE GATE (haxtheweb/issues#3334)
 # Before anything is committed, tagged or published: both backends must serve
@@ -369,6 +380,7 @@ uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs || exit 1
 uv run python scripts/gen_routes.py || exit 1
 uv run python scripts/gen_tools.py || exit 1
 uv run python scripts/gen_tool_docs.py || exit 1
+node ~/haxtheweb/webcomponents/scripts/release-references.mjs stamp --repos haxcms-mcp --version "$version" || exit 1
 uv version "$version"
 # hand-written Keep a Changelog: open a release section under [Unreleased]
 node -e 'const fs=require("fs");const [v,d]=process.argv.slice(1);const t=fs.readFileSync("CHANGELOG.md","utf8");fs.writeFileSync("CHANGELOG.md",t.replace(/^## \[Unreleased\]$/m,`## [Unreleased]\n\n## [${v}] - ${d}`))' "$version" "$(date +%F)"
@@ -399,3 +411,11 @@ npm publish
 enter ~/haxtheweb/webcomponents
 node scripts/ubiquity-network.mjs landed --version "$version" || exit 1
 node scripts/ubiquity-network.mjs satellites --version "$version" || exit 1
+
+## STEP 8 WHAT STILL NAMES THE LAST RELEASE (report only)
+# Every tracked file in the network that still mentions the previous release
+# line, minus history (changelogs, fixtures, lockfiles, build output). A new
+# kind of reference shows up here once: list it in
+# scripts/release-references.json, fix it where it is generated, or add it to
+# scanIgnore if it is history. This never stops the release.
+node scripts/release-references.mjs scan --version "$version"
