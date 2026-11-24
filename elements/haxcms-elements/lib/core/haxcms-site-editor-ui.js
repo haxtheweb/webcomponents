@@ -6970,6 +6970,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (this.developerMode) {
       this._watchGoggles(true);
     }
+    // ?goggles=<lens>&lang=<language> puts the goggles on for this visit
+    this._gogglesFromLink();
     // Merlin's popover covers its field exactly
     this.__boundSyncMerlinPopover = this._syncMerlinPopover.bind(this);
     globalThis.addEventListener("resize", this.__boundSyncMerlinPopover);
@@ -7716,6 +7718,40 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       this.__gogglesSync = null;
     }
+  }
+  /**
+   * A link can put the goggles on: ?goggles=code|makers|flag|translate, and
+   * for the Translate lens &lang=<language> (a BCP 47 tag). Developer mode is
+   * on for this visit only; nothing about it is saved. The language becomes
+   * the translator's language, so the page opens in it with the lens on.
+   */
+  async _gogglesFromLink() {
+    if (
+      !globalThis.location ||
+      globalThis.location.search.indexOf("goggles=") === -1
+    ) {
+      return;
+    }
+    const { gogglesFromLink, TRANSLATE_LANG_KEY } =
+      await import("./ui/haxcms-goggles-translate.js");
+    const asked = gogglesFromLink();
+    if (!asked) {
+      return;
+    }
+    if (!this.developerMode) {
+      this.developerMode = true;
+      this._watchGoggles(true);
+    }
+    if (asked.lang) {
+      localStorageSet(TRANSLATE_LANG_KEY, asked.lang);
+    }
+    const { GogglesState } = await import("./ui/haxcms-goggles.js");
+    GogglesState.set({
+      on: true,
+      lens: asked.lens,
+      lensOn: true,
+      person: null,
+    });
   }
   async toggleGoggles() {
     const { GogglesState } = await import("./ui/haxcms-goggles.js");
