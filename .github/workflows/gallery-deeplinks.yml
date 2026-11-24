@@ -2,7 +2,8 @@ name: gallery-deeplinks
 
 # When a Vercel Preview deployment succeeds, post a single PR comment with deep
 # links into the freshly built gallery (index.html) for each element the PR
-# touches. Routing lives in the gallery itself via the ?element=<slug> query
+# touches, and into the preview's HAXcms demo with the goggles on it (a block's
+# own demo as the page via ?goggles-demo=, a theme via ?theme=). Routing lives in the gallery itself via the ?element=<slug> query
 # param (see scripts/build-component-gallery.js and COMPONENT-GALLERY.md).
 #
 # This replaces the legacy demo-deeplinks workflow, which linked at individual
@@ -82,10 +83,26 @@ jobs:
             echo ''
             echo "Vercel preview for this PR: ${PREVIEW_URL}"
             echo ''
-            echo 'Open each changed element directly in the built component gallery:'
+            echo 'Open each changed element in the built component gallery, or in HAXcms with the goggles on it:'
             echo ''
+            echo '| Element | Gallery | In HAXcms |'
+            echo '| --- | --- | --- |'
+            DEMO="${PREVIEW_URL}/elements/haxcms-elements/demo/index.html"
             for slug in $(printf '%s\n' "${affected[@]}" | sort -u); do
-              echo "- [\`$slug\`](${PREVIEW_URL}/?element=$slug)"
+              docs="elements/$slug/lib/$slug.docs.json"
+              main="elements/$slug/$slug.js"
+              if [[ -f "$docs" ]] && [[ -n "$(jq -r '.demoHtml // "" | gsub("\\s"; "")' "$docs")" ]]; then
+                # a block: its own demo as a page, goggles held on it
+                haxcms="[goggles on it](${DEMO}?goggles=code&goggles-demo=$slug)"
+              elif [[ -f "$main" ]] && grep -q "HAXCMSLitElementTheme" "$main"; then
+                # a theme: the demo site in that theme, goggles on
+                haxcms="[site in this theme](${DEMO}?theme=$slug&goggles=code)"
+              elif [[ "$slug" == "haxcms-elements" ]]; then
+                haxcms="[demo site, goggles on](${DEMO}?goggles=code)"
+              else
+                haxcms=""
+              fi
+              echo "| \`$slug\` | [gallery](${PREVIEW_URL}/?element=$slug) | ${haxcms} |"
             done
             echo ''
             echo '---'
@@ -94,6 +111,7 @@ jobs:
             echo '- Demos that load components through the magic-script / `wc-registry.json` from the CDN render the **published** version, **not** this PR'"'"'s local source.'
             echo '- Demos that import relatively (e.g. `./src/...`) reflect this PR'"'"'s local source.'
             echo '- The gallery is regenerated on every Vercel preview deploy via `yarn build-gallery` and served at the preview'"'"'s root URL.'
+            echo '- **In HAXcms** opens the HAXcms demo on this preview, where every `@haxtheweb` element comes from this branch. A block shows its own demo as the page with the goggles held on it (X-ray lens; `?goggles-demo=`, `haxcms-goggles-demo.js`); a theme shows the demo site in that theme. Nothing is saved.'
           } > comment.md
 
           # One comment per PR: every push makes a new preview deploy, so update

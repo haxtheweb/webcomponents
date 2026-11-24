@@ -491,6 +491,13 @@
     import "@haxtheweb/hax-network-bar/hax-network-bar.js";
     import "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-appearance-switcher.js";
     import './custom/src/custom.js';
+    // review link: ?goggles-demo=<element> shows that element's demo as the
+    // page, with the goggles held on it (lib/core/ui/haxcms-goggles-demo.js)
+    if (new URLSearchParams(globalThis.location.search).has("goggles-demo")) {
+      import("@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-demo.js").then(
+        (m) => m.gogglesDemo(),
+      );
+    }
   </script>
   <script>
     globalThis.WCAutoloadRegistryFile = './wc-registry.json';
