@@ -222,6 +222,7 @@
   "image-framing-dialog": "@haxtheweb/hax-body/lib/image-framing-dialog.js",
   "simple-fields-image-framing": "@haxtheweb/hax-body/lib/simple-fields-image-framing.js",
   "simple-fields-srcset": "@haxtheweb/hax-body/lib/simple-fields-srcset.js",
+  "hax-consent-gate": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
   "hax-logo": "@haxtheweb/hax-logo/hax-logo.js",
   "hax-marketing-theme": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
   "hax-contributors": "@haxtheweb/hax-marketing-theme/lib/hax-contributors.js",
@@ -430,6 +431,7 @@
   "midi-player": "@haxtheweb/music-player/lib/html-midi-player.js",
   "music-player": "@haxtheweb/music-player/music-player.js",
   "mutation-observer-import": "@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
+  "night-draft-theme": "@haxtheweb/night-draft-theme/night-draft-theme.js",
   "numeric-question": "@haxtheweb/numeric-question/numeric-question.js",
   "oer-schema": "@haxtheweb/oer-schema/oer-schema.js",
   "outline-designer": "@haxtheweb/outline-designer/outline-designer.js",
@@ -479,6 +481,7 @@
   "post-card": "@haxtheweb/post-card/post-card.js",
   "pouch-db": "@haxtheweb/pouch-db/pouch-db.js",
   "primer-theme": "@haxtheweb/primer-theme/primer-theme.js",
+  "privacy-choices": "@haxtheweb/privacy-choices/privacy-choices.js",
   "product-glance": "@haxtheweb/product-glance/product-glance.js",
   "product-offering": "@haxtheweb/product-offering/product-offering.js",
   "progress-donut": "@haxtheweb/progress-donut/progress-donut.js",
@@ -691,7 +694,5 @@
   "web-dialog": "web-dialog/web-dialog.js",
   "model-viewer": "@google/model-viewer/dist/model-viewer.js",
   "lrn-math-controller": "@haxtheweb/lrn-math/lrn-math.js",
-  "midi-visualizer": "@haxtheweb/music-player/lib/html-midi-player.js",
-  "hax-consent-gate": "@haxtheweb/hax-consent-gate/hax-consent-gate.js",
-  "privacy-choices": "@haxtheweb/privacy-choices/privacy-choices.js"
+  "midi-visualizer": "@haxtheweb/music-player/lib/html-midi-player.js"
 }

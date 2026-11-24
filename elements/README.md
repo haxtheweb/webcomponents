@@ -3,7 +3,7 @@
 <!-- GENERATED FILE: do not edit by hand. Run `yarn run elements-readme` -->
 <!-- Descriptions come from each element's package.json; edit them there. -->
 
-Every element in this monorepo (257 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
+Every element in this monorepo (259 packages). Browse them live with `yarn gallery`, or open an element's folder for its own README.
 
 | Element | Description | Package | Demo |
 | --- | --- | --- | --- |
@@ -91,6 +91,7 @@ Every element in this monorepo (257 packages). Browse them live with `yarn galle
 | [hax-app-installer](./hax-app-installer/) | Webcomponent hax-app-installer following hax / open-wc recommendations | `@haxtheweb/hax-app-installer` | [demo](./hax-app-installer/demo/) |
 | [hax-body](./hax-body/) | A full on Headless authoring experience as a single tag. The ultimate authoring solution across platforms to win the future. | `@haxtheweb/hax-body` | [demo](./hax-body/demo/) |
 | [hax-body-behaviors](./hax-body-behaviors/) | Wire any element up to HAX | `@haxtheweb/hax-body-behaviors` |  |
+| [hax-consent-gate](./hax-consent-gate/) | Asks a visitor before a third-party service is contacted and stores the answer in HaxConsent: a bottom bar for site-wide services such as Google Analytics, or a panel in place of an embed. | `@haxtheweb/hax-consent-gate` | [demo](./hax-consent-gate/demo/) |
 | [hax-iconset](./hax-iconset/) | HAX-specific icons | `@haxtheweb/hax-iconset` | [demo](./hax-iconset/demo/) |
 | [hax-logo](./hax-logo/) | logo element for hax, obviously as a hax capable element. | `@haxtheweb/hax-logo` | [demo](./hax-logo/demo/) |
 | [hax-marketing-theme](./hax-marketing-theme/) | A HAXcms marketing theme, first built for haxtheweb.org: palette-driven chrome, section blocks, a live theme, palette and design system switcher, a use case picker and its own design system | `@haxtheweb/hax-marketing-theme` | [demo](./hax-marketing-theme/demo/) |
@@ -177,6 +178,7 @@ Every element in this monorepo (257 packages). Browse them live with `yarn galle
 | [post-card](./post-card/) | sending you mail from afar, or the browser. | `@haxtheweb/post-card` | [demo](./post-card/demo/) |
 | [pouch-db](./pouch-db/) | read and write localized data elements | `@haxtheweb/pouch-db` |  |
 | [primer-theme](./primer-theme/) | GitHub Primer theme for HAXcms, built on the DDD-capable Primer design system bridge | `@haxtheweb/primer-theme` | [demo](./primer-theme/demo/) |
+| [privacy-choices](./privacy-choices/) | Lists every third-party service HaxConsent knows with the visitor's choice for each, to change or withdraw at any time. | `@haxtheweb/privacy-choices` | [demo](./privacy-choices/demo/) |
 | [product-glance](./product-glance/) | glance / overview of a product feature | `@haxtheweb/product-glance` | [demo](./product-glance/demo/) |
 | [product-offering](./product-offering/) | Simple card for displaying product info | `@haxtheweb/product-offering` | [demo](./product-offering/demo/) |
 | [progress-donut](./progress-donut/) | Donut chart that visualizes progress or proportions | `@haxtheweb/progress-donut` | [demo](./progress-donut/demo/) |
