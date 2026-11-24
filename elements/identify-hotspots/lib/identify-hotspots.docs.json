@@ -2,7 +2,7 @@
   "tag": "identify-hotspots",
   "folder": "identify-hotspots",
   "package": "@haxtheweb/identify-hotspots",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Identify hotspots",
   "description": "Learners find the right spots on an image by clicking, tapping or moving a keyboard crosshair. The graded counterpart to an image map.",

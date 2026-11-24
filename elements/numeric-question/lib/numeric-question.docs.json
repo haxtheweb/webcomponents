@@ -2,7 +2,7 @@
   "tag": "numeric-question",
   "folder": "numeric-question",
   "package": "@haxtheweb/numeric-question",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Numeric question",
   "description": "A question answered with a number. The answer is a fixed number or a formula worked out from variables, and counts when it is within a tolerance.",

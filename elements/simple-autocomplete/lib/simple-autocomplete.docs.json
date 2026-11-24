@@ -2,7 +2,7 @@
   "tag": "simple-autocomplete",
   "folder": "simple-autocomplete",
   "package": "@haxtheweb/simple-autocomplete",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-autocomplete",
   "description": "auto complete either from an endpoint or local json array",

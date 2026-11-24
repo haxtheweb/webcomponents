@@ -2,7 +2,7 @@
   "tag": "rich-text-editor",
   "folder": "rich-text-editor",
   "package": "@haxtheweb/rich-text-editor",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "rich-text-editor",
   "description": "a standalone rich text editor",

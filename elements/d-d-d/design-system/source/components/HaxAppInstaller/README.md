@@ -2,7 +2,7 @@
 
 A step-by-step installer for HAXcms: choose a language, verify requirements, configure the system and start HAXing.
 
-- Package `@haxtheweb/hax-app-installer` 26.8.0
+- Package `@haxtheweb/hax-app-installer` 26.11.0
 
 ## Usage
 

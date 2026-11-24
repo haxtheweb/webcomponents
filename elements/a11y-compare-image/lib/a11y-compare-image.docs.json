@@ -2,7 +2,7 @@
   "tag": "a11y-compare-image",
   "folder": "a11y-compare-image",
   "package": "@haxtheweb/a11y-compare-image",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "a11y-compare-image",
   "description": "Slider that allows comparison of two images",

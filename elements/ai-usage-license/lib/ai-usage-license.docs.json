@@ -2,7 +2,7 @@
   "tag": "ai-usage-license",
   "folder": "ai-usage-license",
   "package": "@haxtheweb/ai-usage-license",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "AI Usage License",
   "description": "Display an AI Usage License (AIUL) badge for your work",

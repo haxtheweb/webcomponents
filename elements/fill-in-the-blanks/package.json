@@ -6,7 +6,7 @@
     "elementName": "fill-in-the-blanks",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "26.8.0",
+  "version": "26.11.0",
   "description": "Fill in the blanks question",
   "repository": {
     "type": "git",
@@ -30,12 +30,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/mark-the-words": "^26.8.0",
-    "@haxtheweb/user-action": "^26.8.0",
+    "@haxtheweb/mark-the-words": "^26.11.0",
+    "@haxtheweb/user-action": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5"

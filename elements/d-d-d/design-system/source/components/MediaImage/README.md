@@ -2,7 +2,7 @@
 
 A way of presenting images with various enhancements.
 
-- Package `@haxtheweb/media-image` 26.8.0
+- Package `@haxtheweb/media-image` 26.11.0
 - HAX block "Enhanced Image" (Media, media, core, figure, image)
 
 ## Usage

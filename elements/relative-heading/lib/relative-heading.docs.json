@@ -2,7 +2,7 @@
   "tag": "relative-heading",
   "folder": "relative-heading",
   "package": "@haxtheweb/relative-heading",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Relative heading",
   "description": "outputs the correct heading hierarchy based on parent's heading",

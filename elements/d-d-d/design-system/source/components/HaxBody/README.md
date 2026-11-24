@@ -2,7 +2,7 @@
 
 A full on Headless authoring experience as a single tag. The ultimate.
 
-- Package `@haxtheweb/hax-body` 26.8.0
+- Package `@haxtheweb/hax-body` 26.11.0
 
 ## Usage
 

@@ -2,7 +2,7 @@
   "tag": "md-block",
   "folder": "md-block",
   "package": "@haxtheweb/md-block",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Markdown",
   "description": "Markdown content, written inline or loaded from a file.",

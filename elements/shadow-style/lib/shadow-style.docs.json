@@ -2,7 +2,7 @@
   "tag": "shadow-style",
   "folder": "shadow-style",
   "package": "@haxtheweb/shadow-style",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "shadow-style",
   "description": "write css that is for piercing shadow roots and applying CSS automatically",

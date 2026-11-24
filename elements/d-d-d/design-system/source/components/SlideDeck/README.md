@@ -2,7 +2,7 @@
 
 Present an imported PowerPoint deck slide by slide, with speaker notes.
 
-- Package `@haxtheweb/slide-deck` 0.0.0
+- Package `@haxtheweb/slide-deck` 26.11.0
 - HAX block "Slide deck" (Media, presentation, slides, powerpoint, pptx)
 - HAX design-system controls offered: accent, primary, card, text
 

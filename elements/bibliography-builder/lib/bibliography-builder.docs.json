@@ -2,7 +2,7 @@
   "tag": "bibliography-builder",
   "folder": "bibliography-builder",
   "package": "@haxtheweb/bibliography-builder",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Bibliography builder",
   "description": "A tool for creating and managing bibliographies",

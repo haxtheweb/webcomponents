@@ -2,7 +2,7 @@
 
 Simple styling on a range input.
 
-- Package `@haxtheweb/simple-range-input` 26.8.0
+- Package `@haxtheweb/simple-range-input` 26.11.0
 
 ## Usage
 

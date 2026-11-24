@@ -2,7 +2,7 @@
   "tag": "a11y-footnote",
   "folder": "a11y-footnote",
   "package": "@haxtheweb/a11y-footnote",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Footnote",
   "description": "A note written where it belongs in the text. It shows as a number, and the numbered list of notes builds itself at the bottom of the page.",

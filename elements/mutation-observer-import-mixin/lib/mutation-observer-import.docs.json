@@ -2,7 +2,7 @@
   "tag": "mutation-observer-import",
   "folder": "mutation-observer-import-mixin",
   "package": "@haxtheweb/mutation-observer-import-mixin",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "mutation-observer-import",
   "description": "a SuperClass mixin that dynamically imports undefined custom element definitions",

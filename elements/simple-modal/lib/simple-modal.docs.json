@@ -2,7 +2,7 @@
   "tag": "simple-modal",
   "folder": "simple-modal",
   "package": "@haxtheweb/simple-modal",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-modal",
   "description": "A simple modal that ensures accessibility and stack order context appropriately",

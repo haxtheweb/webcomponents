@@ -2,7 +2,7 @@
   "tag": "page-contents-menu",
   "folder": "page-contents-menu",
   "package": "@haxtheweb/page-contents-menu",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "page-contents-menu",
   "description": "Links that jump you to the right place in the page&#39;s content",

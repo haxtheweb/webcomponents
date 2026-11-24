@@ -2,7 +2,7 @@
 
 A feature rich, highly accessible video player.
 
-- Package `@haxtheweb/a11y-media-player` 26.8.0
+- Package `@haxtheweb/a11y-media-player` 26.11.0
 
 ## Usage
 

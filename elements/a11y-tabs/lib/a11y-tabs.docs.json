@@ -2,7 +2,7 @@
   "tag": "a11y-tabs",
   "folder": "a11y-tabs",
   "package": "@haxtheweb/a11y-tabs",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Tabs",
   "description": "Set of tabs.",

@@ -2,7 +2,7 @@
 
 Show the people in a contact file as person cards, quotes, a table or a list.
 
-- Package `@haxtheweb/vcf-render` 26.8.0
+- Package `@haxtheweb/vcf-render` 26.11.0
 - HAX block "Contacts" (Content, contacts, vcard, vcf, directory)
 - HAX design-system controls offered: accent, primary, card, text
 

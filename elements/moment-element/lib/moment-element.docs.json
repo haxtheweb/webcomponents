@@ -2,7 +2,7 @@
   "tag": "moment-element",
   "folder": "moment-element",
   "package": "@haxtheweb/moment-element",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "moment-element",
   "description": "Element wrapper for the moment date formatting library",

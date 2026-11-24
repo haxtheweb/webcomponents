@@ -2,7 +2,7 @@
   "tag": "user-scaffold",
   "folder": "user-scaffold",
   "package": "@haxtheweb/user-scaffold",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "user-scaffold",
   "description": "memory and context to establish and maintain appropriate user scaffolding",

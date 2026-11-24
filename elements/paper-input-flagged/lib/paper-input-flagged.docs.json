@@ -2,7 +2,7 @@
   "tag": "paper-input-flagged",
   "folder": "paper-input-flagged",
   "package": "@haxtheweb/paper-input-flagged",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "paper-input-flagged",
   "description": "Text input that flags and gives feedback on what the user enters, such as alt text quality",

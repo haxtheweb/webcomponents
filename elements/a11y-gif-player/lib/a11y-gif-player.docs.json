@@ -2,7 +2,7 @@
   "tag": "a11y-gif-player",
   "folder": "a11y-gif-player",
   "package": "@haxtheweb/a11y-gif-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "GIF",
   "description": "Make animated GIFs accessible.",

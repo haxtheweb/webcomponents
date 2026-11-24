@@ -2,7 +2,7 @@
   "tag": "bootstrap-theme",
   "folder": "bootstrap-theme",
   "package": "@haxtheweb/bootstrap-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "bootstrap-theme",
   "description": "Bootstrap 5 theme for HAXcms, built on the DDD-capable Bootstrap design system bridge",

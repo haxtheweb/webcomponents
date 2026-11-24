@@ -2,7 +2,7 @@
   "tag": "outline-designer",
   "folder": "outline-designer",
   "package": "@haxtheweb/outline-designer",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "outline-designer",
   "description": "tools to modify and visualize JSON Outline Schema for editing",

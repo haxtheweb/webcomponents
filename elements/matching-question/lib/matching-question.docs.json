@@ -2,7 +2,7 @@
   "tag": "matching-question",
   "folder": "matching-question",
   "package": "@haxtheweb/matching-question",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Matching question",
   "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",

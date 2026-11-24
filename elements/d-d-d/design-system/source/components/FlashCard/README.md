@@ -2,7 +2,7 @@
 
 Practice concepts with front-and-back flash cards.
 
-- Package `@haxtheweb/flash-card` 26.8.0
+- Package `@haxtheweb/flash-card` 26.11.0
 - HAX block "Flash card" (Instructional, self check, flash card, quiz, educational)
 
 ## Usage

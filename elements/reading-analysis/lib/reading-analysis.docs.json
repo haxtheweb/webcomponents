@@ -2,7 +2,7 @@
   "tag": "reading-analysis",
   "folder": "reading-analysis",
   "package": "@haxtheweb/reading-analysis",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Reading analysis",
   "description": "Learners flag the sentences, paragraphs or figures in a reading that are evidence for each label, or select the passage that best answers a question.",

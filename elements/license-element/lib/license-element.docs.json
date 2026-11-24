@@ -2,7 +2,7 @@
   "tag": "license-element",
   "folder": "license-element",
   "package": "@haxtheweb/license-element",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "license-element",
   "description": "Semantically accurate license for a work",

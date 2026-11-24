@@ -2,7 +2,7 @@
   "tag": "book-theme",
   "folder": "book-theme",
   "package": "@haxtheweb/book-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "book-theme",
   "description": "Book, a quiet three-column documentation theme for HAXcms: site menu, page, on-this-page headings",

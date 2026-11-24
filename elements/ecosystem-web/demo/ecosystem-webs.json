@@ -138,7 +138,7 @@
               "label": "DrupalCon Baltimore 2017 session",
               "url": "https://events.drupal.org/baltimore2017/sessions/mad-scientist-road-show"
             },
-            "version": "26.8.0"
+            "version": "26.11.0"
           },
           "merlin": {
             "desc": "HAX's command program, marked by the wand: search for and run actions while editing. HAX Tips will surface here.",
@@ -171,7 +171,7 @@
               "label": "WINS.md",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#site-dashboard-three-generations-of-students-20222026"
             },
-            "version": "26.8.0"
+            "version": "26.11.0"
           },
           "themes": {
             "desc": "Ways to theme HAXcms matched to skill set: skin a site with CSS, or build a theme from web components. Themes grew from 14 at the end of 2024 to more than 30.",
@@ -184,7 +184,7 @@
             },
             "release": "npm:@haxtheweb/haxcms-elements",
             "status": "released",
-            "version": "26.8.0",
+            "version": "26.11.0",
             "year": 2019,
             "yearNote": "HAXcms themes"
           },
@@ -199,7 +199,7 @@
             },
             "release": "git:haxtheweb/haxcms-php",
             "status": "released",
-            "version": "26.8.2",
+            "version": "26.11.0",
             "year": 2018,
             "yearNote": "haxcms-php started July 2018"
           },
@@ -215,7 +215,7 @@
             },
             "release": "npm:@haxtheweb/haxcms-nodejs",
             "status": "released",
-            "version": "26.8.1",
+            "version": "26.11.0",
             "year": 2024,
             "yearNote": "haxcms-nodejs started June 2024"
           },
@@ -271,7 +271,7 @@
             },
             "release": "git:haxtheweb/hax11ty",
             "status": "released",
-            "version": "26.0.0",
+            "version": "26.11.0",
             "year": 2022,
             "yearNote": "HAX11ty, made for the Libraries plays"
           },
@@ -293,7 +293,7 @@
               "label": "WINS.md: Winston White",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md#winston-white-student-to-trainer"
             },
-            "version": "26.8.1"
+            "version": "26.11.0"
           },
           "ubiquity": {
             "desc": "The webcomponents release build that ships every element, as one tested set, to haxcms-nodejs and the other backends.",
@@ -303,7 +303,7 @@
             },
             "release": "git:haxtheweb/webcomponents",
             "status": "released",
-            "version": "26.8.1",
+            "version": "26.11.0",
             "year": 2024,
             "yearNote": "Ubiquity: one tested release build of every element"
           },
@@ -472,7 +472,7 @@
               "label": "WINS.md SIIP timeline",
               "url": "https://github.com/haxtheweb/praw/blob/main/WINS.md"
             },
-            "version": "26.8.1"
+            "version": "26.11.0"
           },
           "ddd": {
             "desc": "DDD (Design, Develop, Deliver), the HAX design system. It began as Keith Charlton Jr's class project and now spans 60+ elements: \"PSU-esque designs by PSU.\"",
@@ -492,7 +492,7 @@
               "label": "hax-lab README",
               "url": "https://github.com/haxtheweb/hax-lab"
             },
-            "version": "26.8.0"
+            "version": "26.11.0"
           },
           "plugins": {
             "desc": "A plugin architecture in progress: spec and examples in haxcms-plugin-examples, while core keeps the evolving baseline (SEO, accessibility, sitemaps).",
@@ -693,7 +693,7 @@
             },
             "release": "npm:@haxtheweb/json-outline-schema",
             "status": "released",
-            "version": "26.8.0",
+            "version": "26.11.0",
             "year": 2018,
             "yearNote": "JSON Outline Schema becomes the site structure"
           },

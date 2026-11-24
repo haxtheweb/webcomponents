@@ -2,7 +2,7 @@
 
 A link to share content on social.
 
-- Package `@haxtheweb/social-share-link` 26.8.0
+- Package `@haxtheweb/social-share-link` 26.11.0
 
 ## Usage
 

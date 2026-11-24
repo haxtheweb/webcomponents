@@ -2,7 +2,7 @@
   "tag": "baseline-build-hax",
   "folder": "baseline-build-hax",
   "package": "@haxtheweb/baseline-build-hax",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "baseline-build-hax",
   "description": "create an inflexible baseline build of hax with all elements",

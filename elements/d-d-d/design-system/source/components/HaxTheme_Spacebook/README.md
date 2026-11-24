@@ -2,7 +2,7 @@
 
 A HAXcms notes and blog theme inspired by the 11ty SpaceBook starter, with a collapsible sidebar, search modal and dark mode.
 
-- Package `@haxtheweb/spacebook-theme` 26.8.0
+- Package `@haxtheweb/spacebook-theme` 26.11.0
 
 ## Using it
 

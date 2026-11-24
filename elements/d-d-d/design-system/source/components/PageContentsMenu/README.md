@@ -2,7 +2,7 @@
 
 Links that jump you to the right place in the page's content.
 
-- Package `@haxtheweb/page-contents-menu` 26.8.0
+- Package `@haxtheweb/page-contents-menu` 26.11.0
 
 ## Usage
 

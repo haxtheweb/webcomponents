@@ -2,7 +2,7 @@
 
 HAXcms Twenty Fifteen inspired blog theme.
 
-- Package `@haxtheweb/twenty-six-theme` 26.8.0
+- Package `@haxtheweb/twenty-six-theme` 26.11.0
 
 ## Using it
 

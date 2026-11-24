@@ -2,7 +2,7 @@
   "tag": "replace-tag",
   "folder": "replace-tag",
   "package": "@haxtheweb/replace-tag",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "replace-tag",
   "description": "Loading helpers and css",

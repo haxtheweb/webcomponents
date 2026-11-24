@@ -2,7 +2,7 @@
   "tag": "simple-picker",
   "folder": "simple-picker",
   "package": "@haxtheweb/simple-picker",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-picker",
   "description": "a simple picker for swatches, icons, etc.",

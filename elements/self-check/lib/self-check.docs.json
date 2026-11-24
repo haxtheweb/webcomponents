@@ -2,7 +2,7 @@
   "tag": "self-check",
   "folder": "self-check",
   "package": "@haxtheweb/self-check",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Self check",
   "description": "A question with a hidden answer the learner reveals to check themselves.",

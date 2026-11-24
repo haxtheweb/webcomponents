@@ -2,7 +2,7 @@
   "tag": "instructional-cadence",
   "folder": "instructional-cadence",
   "package": "@haxtheweb/instructional-cadence",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "instructional-cadence",
   "description": "Course pacing as music: one measure per lesson, one beat per page, scored on a five-part lesson shape. For the HAXcms Site Insights dashboard.",

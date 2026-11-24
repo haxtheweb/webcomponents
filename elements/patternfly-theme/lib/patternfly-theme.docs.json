@@ -2,7 +2,7 @@
   "tag": "patternfly-theme",
   "folder": "patternfly-theme",
   "package": "@haxtheweb/patternfly-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "patternfly-theme",
   "description": "PatternFly 6 theme for HAXcms, built on the DDD-capable PatternFly design system bridge",

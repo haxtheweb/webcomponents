@@ -2,7 +2,7 @@
   "tag": "beaker-broker",
   "folder": "beaker-broker",
   "package": "@haxtheweb/beaker-broker",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "beaker-broker",
   "description": "A broker element to make working with Beaker Browser's API even easier.",

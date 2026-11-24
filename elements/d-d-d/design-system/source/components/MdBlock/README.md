@@ -2,7 +2,7 @@
 
 A block of markdown content directly or remote loaded.
 
-- Package `@haxtheweb/md-block` 26.8.0
+- Package `@haxtheweb/md-block` 26.11.0
 - HAX block "Markdown" (Other, md, markdown, content, text)
 
 ## Usage

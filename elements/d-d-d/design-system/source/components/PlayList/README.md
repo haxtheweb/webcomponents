@@ -2,7 +2,7 @@
 
 Display any kind of content in a playlist.
 
-- Package `@haxtheweb/play-list` 26.8.0
+- Package `@haxtheweb/play-list` 26.11.0
 - HAX block "Play list" (Layout, play list, list, gallery, grid)
 - HAX design-system controls offered: primary
 

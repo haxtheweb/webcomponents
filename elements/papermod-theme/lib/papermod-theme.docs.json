@@ -2,7 +2,7 @@
   "tag": "papermod-theme",
   "folder": "papermod-theme",
   "package": "@haxtheweb/papermod-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "papermod-theme",
   "description": "PaperMod and eleven more HAXcms themes paying homage to popular Hugo, Jekyll and Astro themes: single column and sidebar layouts from DDD tokens",

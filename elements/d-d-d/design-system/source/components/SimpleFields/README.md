@@ -2,7 +2,7 @@
 
 Uses JSON Schema or an array of fields to display a series of fields.
 
-- Package `@haxtheweb/simple-fields` 26.8.0
+- Package `@haxtheweb/simple-fields` 26.11.0
 
 ## Usage
 

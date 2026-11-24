@@ -2,7 +2,7 @@
   "tag": "lrn-table",
   "folder": "lrn-table",
   "package": "@haxtheweb/lrn-table",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "CSV table",
   "description": "Show a CSV file as an accessible table.",

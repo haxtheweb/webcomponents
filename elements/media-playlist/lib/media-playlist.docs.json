@@ -2,7 +2,7 @@
   "tag": "media-playlist",
   "folder": "media-playlist",
   "package": "@haxtheweb/media-playlist",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Media playlist",
   "description": "A playlist that presents video and audio players in a player + sidebar layout.",

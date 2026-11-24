@@ -2,7 +2,7 @@
   "tag": "simple-colors",
   "folder": "simple-colors",
   "package": "@haxtheweb/simple-colors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-colors",
   "description": "Accessible color palette and theming mixin used across elements",

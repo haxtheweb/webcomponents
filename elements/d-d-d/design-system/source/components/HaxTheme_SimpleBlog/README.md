@@ -2,7 +2,7 @@
 
 A HAXcms blog theme that pairs a bold header with a listing of recent posts.
 
-- Package `@haxtheweb/simple-blog` 26.8.0
+- Package `@haxtheweb/simple-blog` 26.11.0
 
 ## Using it
 

@@ -2,7 +2,7 @@
   "tag": "word-search",
   "folder": "word-search",
   "package": "@haxtheweb/word-search",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Word search",
   "description": "A letter grid with hidden words. Learners tap the first and last letter of each word. Practices spotting how a term is spelled, not what it means.",

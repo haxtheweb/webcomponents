@@ -2,7 +2,7 @@
   "tag": "product-glance",
   "folder": "product-glance",
   "package": "@haxtheweb/product-glance",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Product glance",
   "description": "Quick product overview block.",

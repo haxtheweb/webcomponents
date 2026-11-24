@@ -2,7 +2,7 @@
   "tag": "progress-donut",
   "folder": "progress-donut",
   "package": "@haxtheweb/progress-donut",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Progress donut",
   "description": "A donut chart showing progress toward a total.",

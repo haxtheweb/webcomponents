@@ -2,7 +2,7 @@
   "tag": "a11y-media-player",
   "folder": "a11y-media-player",
   "package": "@haxtheweb/a11y-media-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "a11y-media-player",
   "description": "A feature rich, highly accessible video player",

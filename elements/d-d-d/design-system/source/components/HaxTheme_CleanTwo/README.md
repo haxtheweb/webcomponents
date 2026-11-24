@@ -2,7 +2,7 @@
 
 A 2nd clean theme.
 
-- Package `@haxtheweb/clean-two` 26.8.0
+- Package `@haxtheweb/clean-two` 26.11.0
 
 ## Using it
 

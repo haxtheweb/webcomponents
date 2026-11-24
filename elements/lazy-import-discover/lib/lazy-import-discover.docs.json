@@ -2,7 +2,7 @@
   "tag": "lazy-import-discover",
   "folder": "lazy-import-discover",
   "package": "@haxtheweb/lazy-import-discover",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "lazy-import-discover",
   "description": "Break people&#39;s brains on simplifying webcomponent integrations",

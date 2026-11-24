@@ -2,7 +2,7 @@
   "tag": "twitter-embed",
   "folder": "twitter-embed",
   "package": "@haxtheweb/twitter-embed",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "X (Twitter)",
   "description": "Embed a tweet from X in context.",

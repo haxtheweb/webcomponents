@@ -2,7 +2,7 @@
   "tag": "stop-note",
   "folder": "stop-note",
   "package": "@haxtheweb/stop-note",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Stop note",
   "description": "A message to alert readers to specific directions.",

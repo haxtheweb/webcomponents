@@ -2,7 +2,7 @@
 
 HAXma theme for HAXcms inspired by Figma documentation design.
 
-- Package `@haxtheweb/haxma-theme` 26.8.0
+- Package `@haxtheweb/haxma-theme` 26.11.0
 
 ## Using it
 

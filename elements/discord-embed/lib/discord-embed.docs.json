@@ -2,7 +2,7 @@
   "tag": "discord-embed",
   "folder": "discord-embed",
   "package": "@haxtheweb/discord-embed",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Discord",
   "description": "Embed Discord communities from a share URL.",

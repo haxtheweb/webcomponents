@@ -2,7 +2,7 @@
   "tag": "git-corner",
   "folder": "git-corner",
   "package": "@haxtheweb/git-corner",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "git-corner",
   "description": "display a quick link with styling to a repo to help with contributions",

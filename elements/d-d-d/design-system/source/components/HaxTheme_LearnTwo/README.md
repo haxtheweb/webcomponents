@@ -2,7 +2,7 @@
 
 Learn2 theme for HAXcms.
 
-- Package `@haxtheweb/learn-two-theme` 26.8.0
+- Package `@haxtheweb/learn-two-theme` 26.11.0
 
 ## Using it
 

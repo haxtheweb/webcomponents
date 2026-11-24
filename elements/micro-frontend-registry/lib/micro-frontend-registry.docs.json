@@ -2,7 +2,7 @@
   "tag": "micro-frontend-registry",
   "folder": "micro-frontend-registry",
   "package": "@haxtheweb/micro-frontend-registry",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "micro-frontend-registry",
   "description": "A singleton for registration and managing access to leverage microservices for web components",

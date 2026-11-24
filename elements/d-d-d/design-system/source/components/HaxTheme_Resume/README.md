@@ -2,7 +2,7 @@
 
 Single-page résumé theme for HAXcms.
 
-- Package `@haxtheweb/resume-theme` 26.8.0
+- Package `@haxtheweb/resume-theme` 26.11.0
 
 ## Using it
 

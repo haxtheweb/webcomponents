@@ -2,7 +2,7 @@
   "tag": "image-gallery",
   "folder": "image-gallery",
   "package": "@haxtheweb/image-gallery",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Image gallery",
   "description": "A gallery that presents images in grid, masonry, or slideshow layouts.",

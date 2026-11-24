@@ -2,7 +2,7 @@
   "tag": "figure-label",
   "folder": "figure-label",
   "package": "@haxtheweb/figure-label",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Figure label",
   "description": "Figure label element to mark media assets within content.",

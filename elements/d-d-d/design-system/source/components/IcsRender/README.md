@@ -2,7 +2,7 @@
 
 Show the events in a calendar file as date cards, a timeline, a table or a list.
 
-- Package `@haxtheweb/ics-render` 26.8.0
+- Package `@haxtheweb/ics-render` 26.11.0
 - HAX block "Calendar" (Content, calendar, events, ics, schedule)
 - HAX design-system controls offered: accent, primary, card, text
 

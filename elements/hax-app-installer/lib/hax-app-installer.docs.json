@@ -2,7 +2,7 @@
   "tag": "hax-app-installer",
   "folder": "hax-app-installer",
   "package": "@haxtheweb/hax-app-installer",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hax-app-installer",
   "description": "Webcomponent hax-app-installer following hax / open-wc recommendations",

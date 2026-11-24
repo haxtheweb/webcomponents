@@ -2,7 +2,7 @@
   "tag": "simple-filter",
   "folder": "simple-filter",
   "package": "@haxtheweb/simple-filter",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-filter",
   "description": "a super class element to provide filtering capabilities",

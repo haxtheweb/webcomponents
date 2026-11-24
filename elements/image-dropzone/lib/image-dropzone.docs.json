@@ -2,7 +2,7 @@
   "tag": "image-dropzone",
   "folder": "image-dropzone",
   "package": "@haxtheweb/image-dropzone",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Image dropzone",
   "description": "Learners place labels onto zones laid over an image, then check their answer.",

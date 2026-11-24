@@ -2,7 +2,7 @@
 
 A message to alert readers to specific directions.
 
-- Package `@haxtheweb/stop-note` 26.8.0
+- Package `@haxtheweb/stop-note` 26.11.0
 - HAX block "Stop Note" (Instructional, content, layout, pedagogy, warning)
 
 ## Usage

@@ -2,7 +2,7 @@
   "tag": "ics-render",
   "folder": "ics-render",
   "package": "@haxtheweb/ics-render",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Calendar",
   "description": "Show the events in a calendar file as date cards, a timeline, a table or a list.",

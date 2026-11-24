@@ -2,7 +2,7 @@
   "tag": "schema-behaviors",
   "folder": "schema-behaviors",
   "package": "@haxtheweb/schema-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "schema-behaviors",
   "description": "Apply schema helper behaviors to your custom elements",

@@ -2,7 +2,7 @@
   "tag": "fill-in-the-blanks",
   "folder": "fill-in-the-blanks",
   "package": "@haxtheweb/fill-in-the-blanks",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Fill in the blanks",
   "description": "Assessment activity where learners complete missing words in a statement.",

@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/writing-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "description": "A HAXcms theme with nothing but the writing: recent posts, a plain post page and an archive by year",
   "license": "Apache-2.0",
   "author": {
@@ -34,15 +34,15 @@
     "test": "web-test-runner \"test/**/*.test.js\" --coverage --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.8.0",
-    "@haxtheweb/haxcms-elements": "^26.8.0",
+    "@haxtheweb/d-d-d": "^26.11.0",
+    "@haxtheweb/haxcms-elements": "^26.11.0",
     "lit": "3.3.3",
     "mobx": "6.16.1",
-    "@haxtheweb/i18n-manager": "^26.8.0"
+    "@haxtheweb/i18n-manager": "^26.11.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5"

@@ -2,7 +2,7 @@
   "tag": "absolute-position-behavior",
   "folder": "absolute-position-behavior",
   "package": "@haxtheweb/absolute-position-behavior",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "absolute-position-behavior",
   "description": "Abstracting the positioning behavior to be resusable in other elements",

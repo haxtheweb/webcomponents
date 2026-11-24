@@ -2,7 +2,7 @@
 
 Single expandable and collapsible container.
 
-- Package `@haxtheweb/a11y-collapse` 26.8.0
+- Package `@haxtheweb/a11y-collapse` 26.11.0
 - HAX block "Collapsible container" (Layout)
 
 ## Usage

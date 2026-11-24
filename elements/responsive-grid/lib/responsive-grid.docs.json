@@ -2,7 +2,7 @@
   "tag": "responsive-grid",
   "folder": "responsive-grid",
   "package": "@haxtheweb/responsive-grid",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "responsive-grid",
   "description": "Responsive grid layout for rows and columns of content",

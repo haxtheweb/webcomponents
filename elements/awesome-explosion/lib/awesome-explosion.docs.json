@@ -2,7 +2,7 @@
   "tag": "awesome-explosion",
   "folder": "awesome-explosion",
   "package": "@haxtheweb/awesome-explosion",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Awesome explosion",
   "description": "Interactive explosion animation with optional sound effects.",

@@ -2,7 +2,7 @@
   "tag": "crossword-puzzle",
   "folder": "crossword-puzzle",
   "package": "@haxtheweb/crossword-puzzle",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Crossword",
   "description": "A crossword made from a list of words and clues. The grid is generated for you; learners type the words and check them.",

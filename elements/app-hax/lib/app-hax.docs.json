@@ -2,7 +2,7 @@
   "tag": "app-hax",
   "folder": "app-hax",
   "package": "@haxtheweb/app-hax",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "app-hax",
   "description": "HAX+HAXcms as a full app experience",

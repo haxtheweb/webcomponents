@@ -2,7 +2,7 @@
 
 Records the screen, with optional system audio and microphone, from inside the page.
 
-- Package `@haxtheweb/screen-recorder` 26.8.0
+- Package `@haxtheweb/screen-recorder` 26.11.0
 - HAX block "screen-recorder" (Other)
 - HAX design-system controls offered: accent, primary, card, text
 

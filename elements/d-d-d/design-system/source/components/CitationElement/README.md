@@ -2,7 +2,7 @@
 
 Citation element with three presentation modes.
 
-- Package `@haxtheweb/citation-element` 26.8.0
+- Package `@haxtheweb/citation-element` 26.11.0
 - HAX block "Citation" (Text, content, citation, reference, cc0)
 
 ## Usage

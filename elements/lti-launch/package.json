@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/lti-launch",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "description": "A block that opens an external learning tool, as a plain link or an LTI 1.3 login request",
   "license": "Apache-2.0",
   "author": {
@@ -29,15 +29,15 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.8.0",
-    "@haxtheweb/i18n-manager": "^26.8.0",
-    "@haxtheweb/simple-icon": "^26.8.0",
-    "@haxtheweb/user-action": "^26.8.0",
+    "@haxtheweb/d-d-d": "^26.11.0",
+    "@haxtheweb/i18n-manager": "^26.11.0",
+    "@haxtheweb/simple-icon": "^26.11.0",
+    "@haxtheweb/user-action": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5",
     "@open-wc/testing": "4.0.0"

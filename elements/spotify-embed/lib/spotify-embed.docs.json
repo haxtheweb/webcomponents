@@ -2,7 +2,7 @@
   "tag": "spotify-embed",
   "folder": "spotify-embed",
   "package": "@haxtheweb/spotify-embed",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Spotify",
   "description": "Embed a Spotify track, album or playlist.",

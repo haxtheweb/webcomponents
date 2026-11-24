@@ -2,7 +2,7 @@
   "tag": "flash-card",
   "folder": "flash-card",
   "package": "@haxtheweb/flash-card",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Flash card",
   "description": "Practice concepts with front-and-back flash cards.",

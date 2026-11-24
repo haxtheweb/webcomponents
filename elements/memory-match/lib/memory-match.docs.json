@@ -2,7 +2,7 @@
   "tag": "memory-match",
   "folder": "memory-match",
   "package": "@haxtheweb/memory-match",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Memory game",
   "description": "Turn over cards to find pairs. Pair a term with its meaning so a match shows understanding, or use two matching texts or images.",

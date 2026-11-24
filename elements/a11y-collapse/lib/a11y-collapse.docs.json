@@ -2,7 +2,7 @@
   "tag": "a11y-collapse",
   "folder": "a11y-collapse",
   "package": "@haxtheweb/a11y-collapse",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Collapsible container",
   "description": "Single expandable and collapsible container.",

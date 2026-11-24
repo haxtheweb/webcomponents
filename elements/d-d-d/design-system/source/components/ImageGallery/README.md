@@ -2,7 +2,7 @@
 
 A gallery that presents images in grid, masonry, or slideshow layouts.
 
-- Package `@haxtheweb/image-gallery` 26.8.0
+- Package `@haxtheweb/image-gallery` 26.11.0
 - HAX block "Image Gallery" (Media, image, gallery, grid, masonry)
 - HAX design-system controls offered: primary
 

@@ -2,7 +2,7 @@
   "tag": "retro-tv",
   "folder": "retro-tv",
   "package": "@haxtheweb/retro-tv",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "retro-tv",
   "description": "An old CRT with channels: the cabinet, knobs, static and on-screen display, with programs (HAX TV, credits, loading screens, a title sequence) that play on it",

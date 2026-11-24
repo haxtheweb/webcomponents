@@ -2,7 +2,7 @@
 
 Display an AI Usage License (AIUL) badge for your work.
 
-- Package `@haxtheweb/ai-usage-license` 26.8.0
+- Package `@haxtheweb/ai-usage-license` 26.11.0
 - HAX block "AI Usage License" (Other, content, ai, license, aiul)
 
 ## Usage

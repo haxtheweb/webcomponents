@@ -2,7 +2,7 @@
 
 A singular toast / message for conistency.
 
-- Package `@haxtheweb/simple-toast` 26.8.0
+- Package `@haxtheweb/simple-toast` 26.11.0
 
 ## Usage
 

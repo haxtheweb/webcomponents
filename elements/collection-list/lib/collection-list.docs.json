@@ -2,7 +2,7 @@
   "tag": "collection-list",
   "folder": "collection-list",
   "package": "@haxtheweb/collection-list",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Collection",
   "description": "Container that groups and displays multiple collection items.",

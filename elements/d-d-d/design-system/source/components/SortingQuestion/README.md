@@ -2,7 +2,7 @@
 
 Sort items into the correct order.
 
-- Package `@haxtheweb/sorting-question` 26.8.0
+- Package `@haxtheweb/sorting-question` 26.11.0
 - HAX block "Sorting Question" (Instructional, self check, sorting, question, quiz)
 - HAX design-system controls offered: accent, primary
 

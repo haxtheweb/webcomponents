@@ -2,7 +2,7 @@
   "tag": "documentation-player",
   "folder": "documentation-player",
   "package": "@haxtheweb/documentation-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Documentation player",
   "description": "Walkthrough, demo and reference for a web component, with copy buttons for HTML, import, npm and CDN.",

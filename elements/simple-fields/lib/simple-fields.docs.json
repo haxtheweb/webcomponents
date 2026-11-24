@@ -2,7 +2,7 @@
   "tag": "simple-fields",
   "folder": "simple-fields",
   "package": "@haxtheweb/simple-fields",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-fields",
   "description": "Uses JSON Schema or an array of fields to display a series of fields",

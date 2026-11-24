@@ -2,7 +2,7 @@
   "tag": "d-d-docs",
   "folder": "d-d-docs",
   "package": "@haxtheweb/d-d-docs",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "d-d-docs",
   "description": "Webcomponent d-d-docs following hax / open-wc recommendations",

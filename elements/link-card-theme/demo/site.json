@@ -18,7 +18,6 @@
       "created": 1736900000,
       "updated": 1736900000,
       "git": {},
-      "version": "26.8.0",
       "domain": "",
       "static": {},
       "settings": {
@@ -49,7 +48,6 @@
       "fields": {}
     },
     "build": {
-      "version": "6.0.1",
       "structure": "portfolio",
       "type": "Create Your Own"
     }

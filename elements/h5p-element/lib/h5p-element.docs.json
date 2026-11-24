@@ -2,7 +2,7 @@
   "tag": "h5p-element",
   "folder": "h5p-element",
   "package": "@haxtheweb/h5p-element",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "H5P",
   "description": "Plays H5P interactive content from an uploaded .h5p file, with no H5P server needed",

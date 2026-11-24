@@ -2,7 +2,7 @@
 
 A tool for creating and managing bibliographies.
 
-- Package `bibliography-builder` 26.8.0
+- Package `bibliography-builder` 26.11.0
 - HAX block "Bibliography builder" (Content, portfolio, citation, reference, bibliography)
 
 ## Usage

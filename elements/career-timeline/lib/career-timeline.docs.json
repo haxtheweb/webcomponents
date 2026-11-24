@@ -2,7 +2,7 @@
   "tag": "career-timeline",
   "folder": "career-timeline",
   "package": "@haxtheweb/career-timeline",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Career timeline",
   "description": "A career timeline containing organizations, roles, and other data",

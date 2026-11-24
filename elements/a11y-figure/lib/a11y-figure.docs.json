@@ -2,7 +2,7 @@
   "tag": "a11y-figure",
   "folder": "a11y-figure",
   "package": "@haxtheweb/a11y-figure",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Descriptive figure",
   "description": "Accessible figure with long description",

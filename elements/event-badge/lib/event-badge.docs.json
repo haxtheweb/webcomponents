@@ -2,7 +2,7 @@
   "tag": "event-badge",
   "folder": "event-badge",
   "package": "@haxtheweb/event-badge",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Event badge",
   "description": "A conference-style name badge with photo, name and organization.",

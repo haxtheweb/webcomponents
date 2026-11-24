@@ -2,7 +2,7 @@
   "tag": "linkedin-embed",
   "folder": "linkedin-embed",
   "package": "@haxtheweb/linkedin-embed",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "linkedin-embed",
   "description": "Link to a LinkedIn profile (LinkedIn no longer serves embeddable profile badges)",

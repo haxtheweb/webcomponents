@@ -2,7 +2,7 @@
   "tag": "hax-body-behaviors",
   "folder": "hax-body-behaviors",
   "package": "@haxtheweb/hax-body-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hax-body-behaviors",
   "description": "Wire any element up to HAX",

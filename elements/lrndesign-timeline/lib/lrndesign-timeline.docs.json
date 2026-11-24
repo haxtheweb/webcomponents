@@ -2,7 +2,7 @@
   "tag": "lrndesign-timeline",
   "folder": "lrndesign-timeline",
   "package": "@haxtheweb/lrndesign-timeline",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Timeline",
   "description": "A timeline of events with images and text",

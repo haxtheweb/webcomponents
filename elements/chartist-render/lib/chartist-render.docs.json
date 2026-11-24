@@ -2,7 +2,7 @@
   "tag": "chartist-render",
   "folder": "chartist-render",
   "package": "@haxtheweb/chartist-render",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "chartist-render",
   "description": "Renders charts with the Chartist library",

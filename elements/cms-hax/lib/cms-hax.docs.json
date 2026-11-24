@@ -2,7 +2,7 @@
   "tag": "cms-hax",
   "folder": "cms-hax",
   "package": "@haxtheweb/cms-hax",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "cms-hax",
   "description": "HAX integration geared toward CMSs",

@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/micro-game-base",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "description": "Shared shell for short browser games that live inside a page: input, pause rules, progress events, OER Schema, player character, finish panel with slots, and i18n",
   "license": "Apache-2.0",
   "author": {
@@ -28,19 +28,19 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/hax-iconset": "^26.0.0",
-    "@haxtheweb/i18n-manager": "^26.0.0",
-    "@haxtheweb/intersection-element": "^26.0.0",
-    "@haxtheweb/multiple-choice": "^26.0.0",
-    "@haxtheweb/rpg-character": "^26.0.0",
-    "@haxtheweb/schema-behaviors": "^26.0.0",
-    "@haxtheweb/user-action": "^26.0.0",
+    "@haxtheweb/d-d-d": "^26.11.0",
+    "@haxtheweb/hax-iconset": "^26.11.0",
+    "@haxtheweb/i18n-manager": "^26.11.0",
+    "@haxtheweb/intersection-element": "^26.11.0",
+    "@haxtheweb/multiple-choice": "^26.11.0",
+    "@haxtheweb/rpg-character": "^26.11.0",
+    "@haxtheweb/schema-behaviors": "^26.11.0",
+    "@haxtheweb/user-action": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.0.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5"
   },

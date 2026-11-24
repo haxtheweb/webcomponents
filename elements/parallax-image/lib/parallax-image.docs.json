@@ -2,7 +2,7 @@
   "tag": "parallax-image",
   "folder": "parallax-image",
   "package": "@haxtheweb/parallax-image",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Parallax image",
   "description": "A full-width image that scrolls slower than the page, with a heading over it.",

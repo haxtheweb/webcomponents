@@ -2,7 +2,7 @@
   "tag": "fullscreen-behaviors",
   "folder": "fullscreen-behaviors",
   "package": "@haxtheweb/fullscreen-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "fullscreen-behaviors",
   "description": "Mixin that lets an element toggle into and out of fullscreen mode",

@@ -2,7 +2,7 @@
 
 HAXcms link-card theme for single-page personal profile and menu-link.
 
-- Package `@haxtheweb/link-card-theme` 26.8.0
+- Package `@haxtheweb/link-card-theme` 26.11.0
 
 ## Using it
 

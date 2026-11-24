@@ -2,7 +2,7 @@
   "tag": "a11y-menu-button",
   "folder": "a11y-menu-button",
   "package": "@haxtheweb/a11y-menu-button",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "a11y-menu-button",
   "description": "Accessible menu button",

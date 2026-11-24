@@ -2,7 +2,7 @@
   "tag": "page-break",
   "folder": "page-break",
   "package": "@haxtheweb/page-break",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Page details",
   "description": "Define a visual split between pages which CMSs can use to create pages.",

@@ -2,7 +2,7 @@
 
 Container that groups and displays multiple collection items.
 
-- Package `@haxtheweb/collection-list` 26.8.0
+- Package `@haxtheweb/collection-list` 26.11.0
 - HAX block "Collection" (Layout, collection, list, items)
 
 ## Usage

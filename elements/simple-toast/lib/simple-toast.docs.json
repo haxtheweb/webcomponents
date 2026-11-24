@@ -2,7 +2,7 @@
   "tag": "simple-toast",
   "folder": "simple-toast",
   "package": "@haxtheweb/simple-toast",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-toast",
   "description": "A singular toast / message for conistency",

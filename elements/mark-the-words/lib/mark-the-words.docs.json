@@ -2,7 +2,7 @@
   "tag": "mark-the-words",
   "folder": "mark-the-words",
   "package": "@haxtheweb/mark-the-words",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Mark the words",
   "description": "Identify concepts via words by clicking within a body of text.",

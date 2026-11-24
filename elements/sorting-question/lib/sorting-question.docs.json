@@ -2,7 +2,7 @@
   "tag": "sorting-question",
   "folder": "sorting-question",
   "package": "@haxtheweb/sorting-question",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Sorting question",
   "description": "Sort items into the correct order.",

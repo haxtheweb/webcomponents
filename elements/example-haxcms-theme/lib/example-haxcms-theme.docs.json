@@ -2,7 +2,7 @@
   "tag": "example-haxcms-theme",
   "folder": "example-haxcms-theme",
   "package": "@haxtheweb/example-haxcms-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "example-haxcms-theme",
   "description": "Webcomponent example-haxcms-theme following hax / open-wc recommendations",

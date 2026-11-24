@@ -2,7 +2,7 @@
 
 Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.
 
-- Package `@haxtheweb/sheet-music` 0.0.0
+- Package `@haxtheweb/sheet-music` 26.11.0
 - HAX block "Sheet music" (Media, Music, Instructional)
 - HAX design-system controls offered: primary
 

@@ -2,7 +2,7 @@
   "tag": "simple-search",
   "folder": "simple-search",
   "package": "@haxtheweb/simple-search",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-search",
   "description": "Searches and highlights matching text within a region of the page",

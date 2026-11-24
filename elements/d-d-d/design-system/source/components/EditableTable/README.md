@@ -2,7 +2,7 @@
 
 Table-based data for the web.
 
-- Package `@haxtheweb/editable-table` 26.8.0
+- Package `@haxtheweb/editable-table` 26.11.0
 - HAX block "Table" (Instructional, presentation, table, data, layout)
 
 ## Usage

@@ -2,7 +2,7 @@
 
 The DDD style guide as an element: pick a topic and it renders that part of the design system, from colours and type to the pattern library.
 
-- Package `@haxtheweb/d-d-docs` 26.8.0
+- Package `@haxtheweb/d-d-docs` 26.11.0
 - HAX block "Design, Develop, Deliver" (Other, developer, design)
 
 ## Usage

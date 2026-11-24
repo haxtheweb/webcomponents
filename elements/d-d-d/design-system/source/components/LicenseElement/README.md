@@ -2,7 +2,7 @@
 
 Provide a license for your work.
 
-- Package `@haxtheweb/license-element` 26.8.0
+- Package `@haxtheweb/license-element` 26.11.0
 - HAX block "License" (Other, content, copyright, license, cc0)
 
 ## Usage

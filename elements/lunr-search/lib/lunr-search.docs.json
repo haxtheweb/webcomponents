@@ -2,7 +2,7 @@
   "tag": "lunr-search",
   "folder": "lunr-search",
   "package": "@haxtheweb/lunr-search",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "lunr-search",
   "description": "LunrJS search element",

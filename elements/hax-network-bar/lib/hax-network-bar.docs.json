@@ -2,7 +2,7 @@
   "tag": "hax-network-bar",
   "folder": "hax-network-bar",
   "package": "@haxtheweb/hax-network-bar",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hax-network-bar",
   "description": "The top bar of every site in the HAX network: an icon for every property, your character, Merlin to jump anywhere, and Install HAX with every way to get it",

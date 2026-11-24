@@ -2,7 +2,7 @@
   "tag": "q-r",
   "folder": "q-r",
   "package": "@haxtheweb/q-r",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "QR Code",
   "description": "Code to scan from a smartphone.",

@@ -2,7 +2,7 @@
 
 Play audio inline to supplement page content.
 
-- Package `@haxtheweb/inline-audio` 26.8.0
+- Package `@haxtheweb/inline-audio` 26.11.0
 - HAX block "Inline audio" (Media, media, mp3, sound, audio)
 
 ## Usage

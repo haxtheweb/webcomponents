@@ -2,7 +2,7 @@
 
 This can display a wikipedia article in context in a variety of formats.
 
-- Package `@haxtheweb/wikipedia-query` 26.8.0
+- Package `@haxtheweb/wikipedia-query` 26.11.0
 - HAX block "Wikipedia" (Other, creative commons, wikipedia, search, web)
 
 ## Usage

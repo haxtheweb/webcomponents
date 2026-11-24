@@ -2,7 +2,7 @@
   "tag": "pdf-browser-viewer",
   "folder": "pdf-browser-viewer",
   "package": "@haxtheweb/pdf-browser-viewer",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "PDF viewer",
   "description": "Embed a PDF file inline with an optional card layout and download button.",

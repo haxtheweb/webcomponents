@@ -2,7 +2,7 @@
   "tag": "elmsln-loading",
   "folder": "elmsln-loading",
   "package": "@haxtheweb/elmsln-loading",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "elmsln-loading",
   "description": "Basic loading spinner based on the ELMS:LN icon",

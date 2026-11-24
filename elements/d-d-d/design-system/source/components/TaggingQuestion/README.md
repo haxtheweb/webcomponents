@@ -2,7 +2,7 @@
 
 Select tags to answer the question.
 
-- Package `@haxtheweb/tagging-question` 26.8.0
+- Package `@haxtheweb/tagging-question` 26.11.0
 - HAX block "Tagging Question" (Instructional, self check, assessment, tag)
 - HAX design-system controls offered: primary, accent
 

@@ -2,7 +2,7 @@
   "tag": "i18n-manager",
   "folder": "i18n-manager",
   "package": "@haxtheweb/i18n-manager",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "i18n-manager",
   "description": "Internationalization management singleton and helper mixin to allow shipping localizations with elements in an app agnostic manner",

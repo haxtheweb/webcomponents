@@ -2,7 +2,7 @@
 
 Tech blogger theme.
 
-- Package `@haxtheweb/haxor-slevin` 26.8.0
+- Package `@haxtheweb/haxor-slevin` 26.11.0
 
 ## Using it
 

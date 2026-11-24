@@ -2,7 +2,7 @@
   "tag": "hax-logo",
   "folder": "hax-logo",
   "package": "@haxtheweb/hax-logo",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "HAX word art",
   "description": "logo element for hax, obviously as a hax capable element.",

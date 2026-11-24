@@ -2,7 +2,7 @@
   "tag": "radio-behaviors",
   "folder": "radio-behaviors",
   "package": "@haxtheweb/radio-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "radio-behaviors",
   "description": "Provides state management when only one child can be selected at a time.",

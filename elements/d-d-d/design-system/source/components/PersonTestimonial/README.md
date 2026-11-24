@@ -2,7 +2,7 @@
 
 Stylized quote with an optional image.
 
-- Package `@haxtheweb/person-testimonial` 26.8.0
+- Package `@haxtheweb/person-testimonial` 26.11.0
 - HAX block "Image Blockquote" (Layout, content, presentation, blockquote, quote)
 - HAX design-system controls offered: primary
 

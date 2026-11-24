@@ -2,7 +2,7 @@
   "tag": "moar-sarcasm",
   "folder": "moar-sarcasm",
   "package": "@haxtheweb/moar-sarcasm",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Sarcasm",
   "description": "Text in alternating caps for a sarcastic tone.",

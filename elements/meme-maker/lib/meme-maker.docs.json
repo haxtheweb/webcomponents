@@ -2,7 +2,7 @@
   "tag": "meme-maker",
   "folder": "meme-maker",
   "package": "@haxtheweb/meme-maker",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Meme",
   "description": "Make a meme out of an image.",

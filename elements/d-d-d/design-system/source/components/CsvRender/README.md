@@ -2,7 +2,7 @@
 
 Remote render a CSV file in place as an accessible table.
 
-- Package `@haxtheweb/csv-render` 26.8.0
+- Package `@haxtheweb/csv-render` 26.11.0
 
 ## Usage
 

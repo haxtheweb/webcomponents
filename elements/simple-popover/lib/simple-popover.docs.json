@@ -2,7 +2,7 @@
   "tag": "simple-popover",
   "folder": "simple-popover",
   "package": "@haxtheweb/simple-popover",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-popover",
   "description": "A popover alertdialog that is positioned next to a target element",

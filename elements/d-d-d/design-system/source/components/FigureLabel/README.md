@@ -2,7 +2,7 @@
 
 Figure label element to mark media assets within content.
 
-- Package `@haxtheweb/figure-label` 26.8.0
+- Package `@haxtheweb/figure-label` 26.11.0
 - HAX block "Figure label" (Content, figure, a11y, accessibility, image)
 
 ## Usage

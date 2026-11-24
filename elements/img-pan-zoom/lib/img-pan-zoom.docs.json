@@ -2,7 +2,7 @@
   "tag": "img-pan-zoom",
   "folder": "img-pan-zoom",
   "package": "@haxtheweb/img-pan-zoom",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "img-pan-zoom",
   "description": "Image viewer with pan and zoom, including Deep Zoom image support",

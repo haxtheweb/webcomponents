@@ -2,7 +2,7 @@
   "tag": "wikipedia-query",
   "folder": "wikipedia-query",
   "package": "@haxtheweb/wikipedia-query",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Wikipedia",
   "description": "Show a Wikipedia article in the page.",

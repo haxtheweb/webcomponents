@@ -2,7 +2,7 @@
   "tag": "demo-snippet",
   "folder": "demo-snippet",
   "package": "@haxtheweb/demo-snippet",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "demo-snippet",
   "description": "Webcomponent demo-snippet following hax / open-wc recommendations",

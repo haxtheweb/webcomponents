@@ -2,7 +2,7 @@
 
 A presentational pager that mirrors a limit/offset/total page shape and fires one page-changed event; it does no fetching itself.
 
-- Package `@haxtheweb/simple-pager` 26.8.0
+- Package `@haxtheweb/simple-pager` 26.11.0
 
 ## Usage
 

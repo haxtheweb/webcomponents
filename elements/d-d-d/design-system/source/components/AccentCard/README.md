@@ -2,7 +2,7 @@
 
 A card with optional accent styling.
 
-- Package `@haxtheweb/accent-card` 26.8.0
+- Package `@haxtheweb/accent-card` 26.11.0
 - HAX block "Card" (Layout, content, card, Image, Presentation)
 
 ## Usage

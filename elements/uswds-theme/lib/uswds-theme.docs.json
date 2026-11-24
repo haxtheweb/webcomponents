@@ -2,7 +2,7 @@
   "tag": "uswds-theme",
   "folder": "uswds-theme",
   "package": "@haxtheweb/uswds-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "uswds-theme",
   "description": "U.S. Web Design System (USWDS) theme for HAXcms, built on the DDD-capable USWDS design system bridge",

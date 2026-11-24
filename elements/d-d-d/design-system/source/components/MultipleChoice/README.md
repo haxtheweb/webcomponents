@@ -2,7 +2,7 @@
 
 Multiple-choice self-check question.
 
-- Package `@haxtheweb/multiple-choice` 26.8.0
+- Package `@haxtheweb/multiple-choice` 26.11.0
 - HAX block "Multiple choice" (Instructional, quiz, form, multiple, self check)
 - HAX design-system controls offered: accent, primary
 

@@ -2,7 +2,7 @@
   "tag": "sheet-music",
   "folder": "sheet-music",
   "package": "@haxtheweb/sheet-music",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Sheet music",
   "description": "Renders and plays sheet music, guitar tabs, and score notation via alphaTex or MusicXML.",

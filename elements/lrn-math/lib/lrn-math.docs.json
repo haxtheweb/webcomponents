@@ -2,7 +2,7 @@
   "tag": "lrn-math",
   "folder": "lrn-math",
   "package": "@haxtheweb/lrn-math",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Math",
   "description": "Present math in a nice looking way.",

@@ -2,7 +2,7 @@
 
 A clean HAXcms portfolio theme with a boxed site title, top navigation and large serif page headings.
 
-- Package `@haxtheweb/clean-portfolio-theme` 26.8.0
+- Package `@haxtheweb/clean-portfolio-theme` 26.11.0
 
 ## Using it
 

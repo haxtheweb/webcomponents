@@ -2,7 +2,7 @@
   "tag": "lrndesign-sidenote",
   "folder": "lrndesign-sidenote",
   "package": "@haxtheweb/lrndesign-sidenote",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Side note",
   "description": "A note set apart from the surrounding content, with an optional icon and label.",

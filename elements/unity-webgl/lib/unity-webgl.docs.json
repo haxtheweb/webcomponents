@@ -2,7 +2,7 @@
   "tag": "unity-webgl",
   "folder": "unity-webgl",
   "package": "@haxtheweb/unity-webgl",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Unity player",
   "description": "Unity WebGL player.",

@@ -2,7 +2,7 @@
   "tag": "simple-datetime",
   "folder": "simple-datetime",
   "package": "@haxtheweb/simple-datetime",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-datetime",
   "description": "Formats a unix timestamp or date string for display",

@@ -2,7 +2,7 @@
   "tag": "clean-portfolio-theme",
   "folder": "clean-portfolio-theme",
   "package": "@haxtheweb/clean-portfolio-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "clean-portfolio-theme",
   "description": "Webcomponent clean-portfolio-theme following hax / open-wc recommendations",

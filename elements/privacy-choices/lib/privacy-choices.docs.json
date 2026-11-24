@@ -2,7 +2,7 @@
   "tag": "privacy-choices",
   "folder": "privacy-choices",
   "package": "@haxtheweb/privacy-choices",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Privacy choices",
   "description": "Lets visitors see and change what this site may share with Google Analytics, YouTube, Vimeo, maps and voice input. Place it on the site's privacy page.",

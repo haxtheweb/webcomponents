@@ -10,13 +10,13 @@
   "libraries": [
     {
       "name": "ddd-sheet-music",
-      "version": "26.8.0",
+      "version": "26.11.0",
       "global": "DDDSheetMusic",
       "file": "components/lib/ddd-sheet-music.js"
     },
     {
       "name": "ddd-slide-deck",
-      "version": "26.8.0",
+      "version": "26.11.0",
       "global": "DDDSlideDeck",
       "file": "components/lib/ddd-slide-deck.js"
     }

@@ -2,7 +2,7 @@
 
 A career timeline containing organizations, roles, and other data.
 
-- Package `career-timeline` 26.8.0
+- Package `career-timeline` 26.11.0
 - HAX block "Career timeline" (Content, portfolio, career, timeline, resume)
 - HAX design-system controls offered: accent, primary, card, text
 

@@ -2,7 +2,7 @@
   "tag": "scroll-button",
   "folder": "scroll-button",
   "package": "@haxtheweb/scroll-button",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "scroll-button",
   "description": "button to scroll to an area or back to top",

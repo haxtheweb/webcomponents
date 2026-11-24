@@ -2,7 +2,7 @@
   "tag": "wysiwyg-hax",
   "folder": "wysiwyg-hax",
   "package": "@haxtheweb/wysiwyg-hax",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "wysiwyg-hax",
   "description": "Integrates HAX as the editor inside a page's form field",

@@ -2,7 +2,7 @@
   "tag": "media-image",
   "folder": "media-image",
   "package": "@haxtheweb/media-image",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Enhanced image",
   "description": "A way of presenting images with various enhancements.",

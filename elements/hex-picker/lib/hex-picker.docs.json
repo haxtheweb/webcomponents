@@ -2,7 +2,7 @@
   "tag": "hex-picker",
   "folder": "hex-picker",
   "package": "@haxtheweb/hex-picker",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hex-picker",
   "description": "Choose a color by hex or rgba code",

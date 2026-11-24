@@ -2,7 +2,7 @@
   "tag": "json-outline-schema",
   "folder": "json-outline-schema",
   "package": "@haxtheweb/json-outline-schema",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "json-outline-schema",
   "description": "JS based state management helper for the json outline schema spec",

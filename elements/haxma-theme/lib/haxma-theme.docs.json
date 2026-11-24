@@ -2,7 +2,7 @@
   "tag": "haxma-theme",
   "folder": "haxma-theme",
   "package": "@haxtheweb/haxma-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "haxma-theme",
   "description": "HAXma theme for HAXcms inspired by Figma documentation design",

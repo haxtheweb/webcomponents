@@ -2,7 +2,7 @@
   "tag": "arithmetic-drill",
   "folder": "arithmetic-drill",
   "package": "@haxtheweb/arithmetic-drill",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Arithmetic drill",
   "description": "A short run of generated arithmetic problems with instant feedback. Pick the operations and the number range; every run is new.",

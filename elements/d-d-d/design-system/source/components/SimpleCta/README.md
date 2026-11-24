@@ -2,7 +2,7 @@
 
 A simple button with a link to take action.
 
-- Package `@haxtheweb/simple-cta` 26.8.0
+- Package `@haxtheweb/simple-cta` 26.11.0
 - HAX block "Call to action" (Layout, marketing, button, link, url)
 - HAX design-system controls offered: primary, accent
 

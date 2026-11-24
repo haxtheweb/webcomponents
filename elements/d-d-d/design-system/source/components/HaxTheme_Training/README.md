@@ -2,7 +2,7 @@
 
 Theme for training content in HAXcms.
 
-- Package `@haxtheweb/training-theme` 26.8.0
+- Package `@haxtheweb/training-theme` 26.11.0
 
 ## Using it
 

@@ -14,7 +14,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "26.8.0",
+  "version": "26.11.0",
   "description": "A simple twitter embed w/ singleton for performance / multiple embed",
   "repository": {
     "type": "git",
@@ -39,14 +39,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-consent-gate": "^26.8.0",
-    "@haxtheweb/i18n-manager": "^26.8.0",
-    "@haxtheweb/utils": "^26.8.0",
+    "@haxtheweb/hax-consent-gate": "^26.11.0",
+    "@haxtheweb/i18n-manager": "^26.11.0",
+    "@haxtheweb/utils": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5"

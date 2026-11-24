@@ -2,7 +2,7 @@
 
 HAX and HAXcms as a full application: the site dashboard, site creation and the editing experience.
 
-- Package `@haxtheweb/app-hax` 26.8.0
+- Package `@haxtheweb/app-hax` 26.11.0
 
 ## Using it
 

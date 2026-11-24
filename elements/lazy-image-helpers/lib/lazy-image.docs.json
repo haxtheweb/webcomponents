@@ -2,7 +2,7 @@
   "tag": "lazy-image",
   "folder": "lazy-image-helpers",
   "package": "@haxtheweb/lazy-image-helpers",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "lazy-image",
   "description": "helpers for building lazy loading images",

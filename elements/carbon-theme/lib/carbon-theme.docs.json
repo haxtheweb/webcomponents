@@ -2,7 +2,7 @@
   "tag": "carbon-theme",
   "folder": "carbon-theme",
   "package": "@haxtheweb/carbon-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "carbon-theme",
   "description": "IBM Carbon theme for HAXcms, built on the DDD-capable Carbon design system bridge",

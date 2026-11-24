@@ -2,7 +2,7 @@
   "tag": "doodle-board",
   "folder": "doodle-board",
   "package": "@haxtheweb/doodle-board",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "doodle-board",
   "description": "Draw, mark up an image with feedback, or sign: a canvas element with a HAX doodle input",

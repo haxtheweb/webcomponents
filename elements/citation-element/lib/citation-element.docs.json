@@ -2,7 +2,7 @@
   "tag": "citation-element",
   "folder": "citation-element",
   "package": "@haxtheweb/citation-element",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "citation-element",
   "description": "A simple way of citing things on the web.",

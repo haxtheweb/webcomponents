@@ -2,7 +2,7 @@
   "tag": "lrndesign-imagemap",
   "folder": "lrndesign-imagemap",
   "package": "@haxtheweb/lrndesign-imagemap",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Image map",
   "description": "An accessible image map with interactive hotspots.",

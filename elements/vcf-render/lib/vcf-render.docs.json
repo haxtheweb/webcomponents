@@ -2,7 +2,7 @@
   "tag": "vcf-render",
   "folder": "vcf-render",
   "package": "@haxtheweb/vcf-render",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Contacts",
   "description": "Show the people in a contact file as person cards, quotes, a table or a list.",

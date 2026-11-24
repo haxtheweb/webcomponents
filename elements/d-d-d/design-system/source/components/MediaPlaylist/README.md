@@ -2,7 +2,7 @@
 
 A playlist that presents video and audio players in a player + sidebar layout.
 
-- Package `@haxtheweb/media-playlist` 26.8.0
+- Package `@haxtheweb/media-playlist` 26.11.0
 - HAX block "Media Playlist" (Media, video, audio, playlist, player)
 - HAX design-system controls offered: accent, primary, card, text
 

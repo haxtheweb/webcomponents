@@ -2,7 +2,7 @@
 
 A HAXcms theme for outlined documentation: a navigation drawer mirroring the outline, content in the centre, and search, print and paging controls.
 
-- Package `@haxtheweb/outline-player` 26.8.0
+- Package `@haxtheweb/outline-player` 26.11.0
 
 ## Using it
 

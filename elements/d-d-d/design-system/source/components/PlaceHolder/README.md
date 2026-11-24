@@ -2,7 +2,7 @@
 
 A place holder that can be converted into the media type that's been selected.
 
-- Package `@haxtheweb/place-holder` 26.8.0
+- Package `@haxtheweb/place-holder` 26.11.0
 - HAX block "Placeholder" (Text, development, authoring, media, image)
 
 ## Usage

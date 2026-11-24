@@ -2,7 +2,7 @@
   "tag": "accent-card",
   "folder": "accent-card",
   "package": "@haxtheweb/accent-card",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Accent card",
   "description": "A card with optional accent styling.",

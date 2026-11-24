@@ -2,7 +2,7 @@
   "tag": "word-count",
   "folder": "word-count",
   "package": "@haxtheweb/word-count",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "word-count",
   "description": "Counts the words in slotted text and shows a small badge",

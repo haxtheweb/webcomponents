@@ -2,7 +2,7 @@
 
 Accessible video playback across multiple sources.
 
-- Package `@haxtheweb/video-player` 26.8.0
+- Package `@haxtheweb/video-player` 26.11.0
 - HAX block "Video" (Media, youtube, watch, vimeo, twitch)
 - HAX design-system controls offered: card
 

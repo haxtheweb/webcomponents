@@ -2,7 +2,7 @@
 
 Accessible bar, line and pie charts (lrndesign-bar, lrndesign-line, lrndesign-pie) drawn from a CSV data source with Chartist.
 
-- Package `@haxtheweb/lrndesign-chart` 26.8.0
+- Package `@haxtheweb/lrndesign-chart` 26.11.0
 
 ## Usage
 

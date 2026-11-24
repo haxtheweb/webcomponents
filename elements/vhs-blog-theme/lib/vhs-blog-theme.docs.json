@@ -2,7 +2,7 @@
   "tag": "vhs-blog-theme",
   "folder": "vhs-blog-theme",
   "package": "@haxtheweb/vhs-blog-theme",
-  "version": "26.8.1",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "vhs-blog-theme",
   "description": "A dark, bargain-bin video shelf theme for HAXcms blogs: every post is a one-of-a-kind video case generated from a hash of its title, and posts open with a CRT title sequence.",

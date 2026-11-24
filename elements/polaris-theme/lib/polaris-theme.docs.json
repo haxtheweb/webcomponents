@@ -2,7 +2,7 @@
   "tag": "polaris-theme",
   "folder": "polaris-theme",
   "package": "@haxtheweb/polaris-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "polaris-theme",
   "description": "A polaris PSU based branding styled theme",

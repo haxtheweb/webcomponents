@@ -2,7 +2,7 @@
 
 Display author information with photo, bio, and social links.
 
-- Package `@haxtheweb/author-card` 26.8.0
+- Package `@haxtheweb/author-card` 26.11.0
 - HAX block "Author Card" (Other)
 - HAX design-system controls offered: accent, primary
 

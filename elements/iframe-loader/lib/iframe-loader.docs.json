@@ -2,7 +2,7 @@
   "tag": "iframe-loader",
   "folder": "iframe-loader",
   "package": "@haxtheweb/iframe-loader",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Iframe",
   "description": "Embed external web content in an iframe.",

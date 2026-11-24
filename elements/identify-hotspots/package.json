@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/identify-hotspots",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "description": "Graded find-the-hotspot activity: learners find the right spots on an image",
   "license": "Apache-2.0",
   "author": {
@@ -27,16 +27,16 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "@haxtheweb/multiple-choice": "^26.8.0",
+    "@haxtheweb/multiple-choice": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5",
     "@open-wc/testing": "4.0.0",
-    "@haxtheweb/user-action": "^26.8.0"
+    "@haxtheweb/user-action": "^26.11.0"
   },
   "private": false,
   "publishConfig": {

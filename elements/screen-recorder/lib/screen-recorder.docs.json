@@ -2,7 +2,7 @@
   "tag": "screen-recorder",
   "folder": "screen-recorder",
   "package": "@haxtheweb/screen-recorder",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "screen-recorder",
   "description": "Webcomponent screen-recorder following hax / open-wc recommendations",

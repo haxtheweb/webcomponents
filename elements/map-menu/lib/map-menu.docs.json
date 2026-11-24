@@ -2,7 +2,7 @@
   "tag": "map-menu",
   "folder": "map-menu",
   "package": "@haxtheweb/map-menu",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "map-menu",
   "description": "Hierarchical navigation menu built from a site outline",

@@ -2,7 +2,7 @@
   "tag": "simple-blog",
   "folder": "simple-blog",
   "package": "@haxtheweb/simple-blog",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-blog",
   "description": "Simple blog listing and post layout elements",

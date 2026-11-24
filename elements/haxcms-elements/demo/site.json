@@ -19,7 +19,6 @@
       "created": 1683137556,
       "updated": 1736889447,
       "git": {},
-      "version": "9.0.6",
       "domain": "",
       "static": {},
       "settings": {
@@ -53,7 +52,6 @@
     },
     "platform": {},
     "build": {
-      "version": "6.0.1",
       "structure": "course",
       "type": "Create Your Own"
     }

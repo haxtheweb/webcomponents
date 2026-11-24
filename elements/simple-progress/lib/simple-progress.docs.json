@@ -2,7 +2,7 @@
   "tag": "simple-progress",
   "folder": "simple-progress",
   "package": "@haxtheweb/simple-progress",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-progress",
   "description": "a simple progress slider bar",

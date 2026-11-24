@@ -2,7 +2,7 @@
   "tag": "branching-scenario",
   "folder": "branching-scenario",
   "package": "@haxtheweb/branching-scenario",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Branching scenario",
   "description": "A story where each choice leads to a different scene and ending. Learners can step back and try other paths; the ending reached sets the score.",

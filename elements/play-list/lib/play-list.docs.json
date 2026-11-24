@@ -2,7 +2,7 @@
   "tag": "play-list",
   "folder": "play-list",
   "package": "@haxtheweb/play-list",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Play list",
   "description": "Display any kind of content in a playlist.",

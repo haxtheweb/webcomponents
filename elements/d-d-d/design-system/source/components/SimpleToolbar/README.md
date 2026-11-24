@@ -2,7 +2,7 @@
 
 A customizable toolbar.
 
-- Package `@haxtheweb/simple-toolbar` 26.8.0
+- Package `@haxtheweb/simple-toolbar` 26.11.0
 
 ## Usage
 

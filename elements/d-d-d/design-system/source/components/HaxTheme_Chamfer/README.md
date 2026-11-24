@@ -2,7 +2,7 @@
 
 Fixed-width HAXcms theme with a left navigation column and a chamfered.
 
-- Package `@haxtheweb/chamfer-theme` 26.8.1
+- Package `@haxtheweb/chamfer-theme` 26.11.0
 
 ## Using it
 

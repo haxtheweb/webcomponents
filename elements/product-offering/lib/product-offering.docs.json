@@ -2,7 +2,7 @@
   "tag": "product-offering",
   "folder": "product-offering",
   "package": "@haxtheweb/product-offering",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "product-offering",
   "description": "Simple card for displaying product info",

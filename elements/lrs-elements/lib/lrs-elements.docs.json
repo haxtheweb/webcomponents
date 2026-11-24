@@ -2,7 +2,7 @@
   "tag": "lrs-elements",
   "folder": "lrs-elements",
   "package": "@haxtheweb/lrs-elements",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "lrs-elements",
   "description": "elements for interfacing with learning record stores",

@@ -2,7 +2,7 @@
   "tag": "img-view-modal",
   "folder": "img-view-modal",
   "package": "@haxtheweb/img-view-modal",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "img-view-modal",
   "description": "Slider that allows comparison of two images",

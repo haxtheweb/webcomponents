@@ -2,7 +2,7 @@
   "tag": "media-behaviors",
   "folder": "media-behaviors",
   "package": "@haxtheweb/media-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "media-behaviors",
   "description": "Helpers for resolving video sources such as YouTube, Vimeo and Twitch",

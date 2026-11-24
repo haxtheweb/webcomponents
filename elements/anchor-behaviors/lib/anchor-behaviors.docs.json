@@ -2,7 +2,7 @@
   "tag": "anchor-behaviors",
   "folder": "anchor-behaviors",
   "package": "@haxtheweb/anchor-behaviors",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "anchor-behaviors",
   "description": "handles anchors and params in the url",

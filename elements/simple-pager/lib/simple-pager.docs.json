@@ -2,7 +2,7 @@
   "tag": "simple-pager",
   "folder": "simple-pager",
   "package": "@haxtheweb/simple-pager",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-pager",
   "description": "Webcomponent simple-pager following hax / open-wc recommendations",

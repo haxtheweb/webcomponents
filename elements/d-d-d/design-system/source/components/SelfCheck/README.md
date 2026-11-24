@@ -2,7 +2,7 @@
 
 Users can complete a self-check.
 
-- Package `@haxtheweb/self-check` 26.8.0
+- Package `@haxtheweb/self-check` 26.11.0
 - HAX block "Self Check" (Instructional, media, self check, pedagogy, quiz)
 
 ## Usage

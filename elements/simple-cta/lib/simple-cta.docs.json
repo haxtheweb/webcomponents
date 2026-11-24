@@ -2,7 +2,7 @@
   "tag": "simple-cta",
   "folder": "simple-cta",
   "package": "@haxtheweb/simple-cta",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Call to action",
   "description": "A simple button with a link to take action.",

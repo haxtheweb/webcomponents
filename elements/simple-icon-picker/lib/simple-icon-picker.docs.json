@@ -2,7 +2,7 @@
   "tag": "simple-icon-picker",
   "folder": "simple-icon-picker",
   "package": "@haxtheweb/simple-icon-picker",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "simple-icon-picker",
   "description": "Uses simple-picker to create an icon picker",

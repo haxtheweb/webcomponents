@@ -2,7 +2,7 @@
 
 Clean HAXcms theme, one.
 
-- Package `@haxtheweb/clean-one` 26.8.0
+- Package `@haxtheweb/clean-one` 26.11.0
 
 ## Using it
 

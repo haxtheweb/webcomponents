@@ -2,7 +2,7 @@
 
 Embed a LinkedIn profile card.
 
-- Package `@haxtheweb/linkedin-embed` 26.8.0
+- Package `@haxtheweb/linkedin-embed` 26.11.0
 - HAX block "LinkedIn embed" (Other, social media, linkedin, profile, card)
 
 ## Usage

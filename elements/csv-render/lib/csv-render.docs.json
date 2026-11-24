@@ -2,7 +2,7 @@
   "tag": "csv-render",
   "folder": "csv-render",
   "package": "@haxtheweb/csv-render",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "csv-render",
   "description": "Remote render a CSV file in place as an accessible table.",

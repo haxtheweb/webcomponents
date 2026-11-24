@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/vhs-blog-theme",
-  "version": "26.8.1",
+  "version": "26.11.0",
   "description": "A dark, bargain-bin video shelf theme for HAXcms blogs: every post is a one-of-a-kind video case generated from a hash of its title, and posts open with a CRT title sequence.",
   "license": "Apache-2.0",
   "author": {
@@ -32,18 +32,18 @@
     "bridge": "node ../d-d-d/design-system/bridge/build-bridge.js ."
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^26.0.0",
-    "@haxtheweb/haxcms-elements": "^26.0.0",
-    "@haxtheweb/i18n-manager": "^26.8.0",
-    "@haxtheweb/q-r": "^26.8.0",
-    "@haxtheweb/rpg-character": "^26.8.0",
+    "@haxtheweb/d-d-d": "^26.11.0",
+    "@haxtheweb/haxcms-elements": "^26.11.0",
+    "@haxtheweb/i18n-manager": "^26.11.0",
+    "@haxtheweb/q-r": "^26.11.0",
+    "@haxtheweb/rpg-character": "^26.11.0",
     "lit": "3.3.3",
     "mobx": "^6.0.0",
-    "@haxtheweb/retro-tv": "^26.8.0"
+    "@haxtheweb/retro-tv": "^26.11.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.11.0",
-    "@haxtheweb/deduping-fix": "^26.8.0",
+    "@haxtheweb/deduping-fix": "^26.11.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.2.5"

@@ -2,7 +2,7 @@
   "tag": "course-model",
   "folder": "course-model",
   "package": "@haxtheweb/course-model",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Course model",
   "description": "Interactive layout for course concepts with details, animation, and knowledge checks.",

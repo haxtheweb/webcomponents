@@ -2,7 +2,7 @@
 
 Shows a live HTML example next to its highlighted source with a copy button.
 
-- Package `@haxtheweb/demo-snippet` 26.8.0
+- Package `@haxtheweb/demo-snippet` 26.11.0
 
 ## Usage
 

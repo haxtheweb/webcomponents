@@ -2,7 +2,7 @@
   "tag": "jwt-login",
   "folder": "jwt-login",
   "package": "@haxtheweb/jwt-login",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "jwt-login",
   "description": "JSON Web Token login broker / manager",

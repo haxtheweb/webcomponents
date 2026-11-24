@@ -2,7 +2,7 @@
   "tag": "dynamic-import-registry",
   "folder": "dynamic-import-registry",
   "package": "@haxtheweb/dynamic-import-registry",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "dynamic-import-registry",
   "description": "maintain manage the registration and usage of dynamic imports",

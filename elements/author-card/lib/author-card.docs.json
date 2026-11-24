@@ -2,7 +2,7 @@
   "tag": "author-card",
   "folder": "author-card",
   "package": "@haxtheweb/author-card",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Author card",
   "description": "Display author information with photo, bio, and social links.",

@@ -2,7 +2,7 @@
   "tag": "hax-consent-gate",
   "folder": "hax-consent-gate",
   "package": "@haxtheweb/hax-consent-gate",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Consent gate",
   "description": "Asks a visitor before a third-party service is contacted. Drawn by HAXcms and by embedding elements, not placed by authors.",

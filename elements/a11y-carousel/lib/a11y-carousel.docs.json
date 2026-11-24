@@ -2,7 +2,7 @@
   "tag": "a11y-carousel",
   "folder": "a11y-carousel",
   "package": "@haxtheweb/a11y-carousel",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "a11y-carousel",
   "description": "Accessible carousel / slideshow with navigation controls",

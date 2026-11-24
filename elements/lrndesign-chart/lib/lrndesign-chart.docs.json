@@ -2,7 +2,7 @@
   "tag": "lrndesign-chart",
   "folder": "lrndesign-chart",
   "package": "@haxtheweb/lrndesign-chart",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "lrndesign-chart",
   "description": "Accessible charts rendered from CSV data",

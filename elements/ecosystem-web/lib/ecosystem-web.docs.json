@@ -2,7 +2,7 @@
   "tag": "ecosystem-web",
   "folder": "ecosystem-web",
   "package": "@haxtheweb/ecosystem-web",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Ecosystem web",
   "description": "An interactive web of how the parts of a project connect, with sub-webs and step-by-step tours.",

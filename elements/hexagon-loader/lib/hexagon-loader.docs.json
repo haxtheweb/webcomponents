@@ -2,7 +2,7 @@
   "tag": "hexagon-loader",
   "folder": "hexagon-loader",
   "package": "@haxtheweb/hexagon-loader",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hexagon-loader",
   "description": "a simple VJS element that is for showing something is loading",

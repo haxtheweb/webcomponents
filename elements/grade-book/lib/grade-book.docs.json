@@ -2,7 +2,7 @@
   "tag": "grade-book",
   "folder": "grade-book",
   "package": "@haxtheweb/grade-book",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Grade Book",
   "description": "A headless gradebook that supports multiple backends with rubrics.",

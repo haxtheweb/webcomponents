@@ -2,7 +2,7 @@
   "tag": "promise-progress",
   "folder": "promise-progress",
   "package": "@haxtheweb/promise-progress",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "promise-progress",
   "description": "An element to display the progress visually of forfilling an array of JS Promise objects",

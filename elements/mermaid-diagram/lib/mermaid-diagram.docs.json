@@ -2,7 +2,7 @@
   "tag": "mermaid-diagram",
   "folder": "mermaid-diagram",
   "package": "@haxtheweb/mermaid-diagram",
-  "version": "0.0.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Diagram from text",
   "description": "Write a diagram as text (Mermaid): a flowchart, sequence, timeline and more. It is drawn in the page with a text alternative.",

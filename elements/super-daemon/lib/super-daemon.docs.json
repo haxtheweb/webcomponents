@@ -2,7 +2,7 @@
   "tag": "super-daemon",
   "folder": "super-daemon",
   "package": "@haxtheweb/super-daemon",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "super-daemon",
   "description": "Keyboard-driven command palette for searching and running programs across HAX",

@@ -2,7 +2,7 @@
 
 Example starter element used to demonstrate HAX configuration and editable properties.
 
-- Package `@haxtheweb/example-hax-element` 26.8.0
+- Package `@haxtheweb/example-hax-element` 26.11.0
 - HAX block "example-hax-element" (Other)
 - HAX design-system controls offered: accent, primary, card, text
 

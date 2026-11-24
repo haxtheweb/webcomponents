@@ -2,7 +2,7 @@
   "tag": "aframe-player",
   "folder": "aframe-player",
   "package": "@haxtheweb/aframe-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "3D player",
   "description": "A 3D file / augmented reality player.",

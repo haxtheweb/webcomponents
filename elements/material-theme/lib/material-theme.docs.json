@@ -2,7 +2,7 @@
   "tag": "material-theme",
   "folder": "material-theme",
   "package": "@haxtheweb/material-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "material-theme",
   "description": "Material Design 3 theme for HAXcms, built on the DDD-capable Material design system bridge",

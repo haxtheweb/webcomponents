@@ -2,7 +2,7 @@
   "tag": "multiple-choice",
   "folder": "multiple-choice",
   "package": "@haxtheweb/multiple-choice",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Multiple choice",
   "description": "Multiple-choice self-check question.",

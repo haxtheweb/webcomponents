@@ -2,7 +2,7 @@
   "tag": "full-width-image",
   "folder": "full-width-image",
   "package": "@haxtheweb/full-width-image",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Image section",
   "description": "Full-width image that breaks up a page section.",

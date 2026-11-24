@@ -2,7 +2,7 @@
   "tag": "journey-theme",
   "folder": "journey-theme",
   "package": "@haxtheweb/journey-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "journey-theme",
   "description": "Webcomponent journey-theme following hax / open-wc recommendations",

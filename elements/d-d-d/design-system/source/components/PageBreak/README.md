@@ -2,7 +2,7 @@
 
 Define a visual split between pages which CMSs can use to create pages.
 
-- Package `@haxtheweb/page-break` 26.8.0
+- Package `@haxtheweb/page-break` 26.11.0
 - HAX block "Page details" (Other)
 
 ## Usage

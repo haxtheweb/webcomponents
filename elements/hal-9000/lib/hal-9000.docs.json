@@ -2,7 +2,7 @@
   "tag": "hal-9000",
   "folder": "hal-9000",
   "package": "@haxtheweb/hal-9000",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "hal-9000",
   "description": "Robot assistant tag, hopefully not evil",

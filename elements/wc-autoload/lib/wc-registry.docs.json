@@ -2,7 +2,7 @@
   "tag": "wc-registry",
   "folder": "wc-autoload",
   "package": "@haxtheweb/wc-autoload",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "wc-registry",
   "description": "automatically load new tags in the dom",

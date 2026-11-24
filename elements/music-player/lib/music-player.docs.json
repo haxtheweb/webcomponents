@@ -2,7 +2,7 @@
   "tag": "music-player",
   "folder": "music-player",
   "package": "@haxtheweb/music-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "MIDI visualizer",
   "description": "Play MIDI in context with visualization.",

@@ -2,7 +2,7 @@
   "tag": "course-design",
   "folder": "course-design",
   "package": "@haxtheweb/course-design",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "course-design",
   "description": "some different elements specific to the design of educational materials. Lots of small elements and a catch all repo",

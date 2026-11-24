@@ -2,7 +2,7 @@
 
 Container for educational materials and course design elements.
 
-- Package `@haxtheweb/course-design` 26.8.0
+- Package `@haxtheweb/course-design` 26.11.0
 - HAX block "Course Design" (Instructional, course, design, container)
 
 ## Usage

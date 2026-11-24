@@ -2,7 +2,7 @@
   "tag": "outline-player",
   "folder": "outline-player",
   "package": "@haxtheweb/outline-player",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "outline-player",
   "description": "Presents a site outline as a navigable, page-by-page player",

@@ -2,7 +2,7 @@
 
 Image with a quote, citation, and optional caption.
 
-- Package `@haxtheweb/media-quote` 26.8.0
+- Package `@haxtheweb/media-quote` 26.11.0
 - HAX block "Media quote" (Media, quote)
 - HAX design-system controls offered: primary, accent, font
 

@@ -2,7 +2,7 @@
 
 Section container for page content and screen-based layouts.
 
-- Package `@haxtheweb/page-section` 26.8.0
+- Package `@haxtheweb/page-section` 26.11.0
 - HAX block "Page section" (Layout, page, section, container, cta)
 
 ## Usage

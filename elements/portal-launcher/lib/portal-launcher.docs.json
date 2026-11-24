@@ -2,7 +2,7 @@
   "tag": "portal-launcher",
   "folder": "portal-launcher",
   "package": "@haxtheweb/portal-launcher",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "portal-launcher",
   "description": "silly thing to play with portal tag and progressive enhancement",

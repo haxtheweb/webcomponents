@@ -2,7 +2,7 @@
 
 Accessible figure with long description.
 
-- Package `@haxtheweb/github-preview` 26.8.0
+- Package `@haxtheweb/github-preview` 26.11.0
 - HAX block "Github Preview" (Other, git, code, github, repo)
 
 ## Usage

@@ -2,7 +2,7 @@
   "tag": "utils",
   "folder": "utils",
   "package": "@haxtheweb/utils",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "utils",
   "description": "Helper functions to clean up web component data handling.",

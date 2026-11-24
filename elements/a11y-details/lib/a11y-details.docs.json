@@ -2,7 +2,7 @@
   "tag": "a11y-details",
   "folder": "a11y-details",
   "package": "@haxtheweb/a11y-details",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "Details",
   "description": "Accessible progressive disclosure with detail and summary",

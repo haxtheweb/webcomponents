@@ -2,7 +2,7 @@
 
 A polaris PSU based branding styled theme.
 
-- Package `@haxtheweb/polaris-theme` 26.8.0
+- Package `@haxtheweb/polaris-theme` 26.11.0
 
 ## Using it
 

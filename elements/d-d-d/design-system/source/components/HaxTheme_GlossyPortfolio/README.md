@@ -2,7 +2,7 @@
 
 A HAXcms portfolio theme with a dark, glossy look across a home page, project grid and about/contact pages.
 
-- Package `@haxtheweb/glossy-portfolio-theme` 26.8.0
+- Package `@haxtheweb/glossy-portfolio-theme` 26.11.0
 
 ## Using it
 

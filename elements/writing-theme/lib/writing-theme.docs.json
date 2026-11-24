@@ -2,7 +2,7 @@
   "tag": "writing-theme",
   "folder": "writing-theme",
   "package": "@haxtheweb/writing-theme",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "writing-theme",
   "description": "A HAXcms theme with nothing but the writing: recent posts, a plain post page and an archive by year",

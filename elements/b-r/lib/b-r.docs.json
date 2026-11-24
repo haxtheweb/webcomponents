@@ -2,7 +2,7 @@
   "tag": "b-r",
   "folder": "b-r",
   "package": "@haxtheweb/b-r",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "b-r",
   "description": "Creates break statements to show conditional rendering",

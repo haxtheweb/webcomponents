@@ -2,7 +2,7 @@
   "tag": "example-hax-element",
   "folder": "example-hax-element",
   "package": "@haxtheweb/example-hax-element",
-  "version": "26.8.0",
+  "version": "26.11.0",
   "license": "Apache-2.0",
   "title": "example-hax-element",
   "description": "Example starter element used to demonstrate HAX configuration and editable properties.",
