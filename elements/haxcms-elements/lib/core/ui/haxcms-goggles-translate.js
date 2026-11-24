@@ -384,7 +384,13 @@ export const gogglesFromLink = (search) => {
   if (!lens || LINK_LENSES.indexOf(lens) === -1) {
     return null;
   }
-  return { lens: lens, lang: cleanLang(params.get("lang")) };
+  // a replay link also says which piece to hold still on (goggles-report.js)
+  const at = params.get("goggles-at") || "";
+  return {
+    lens: lens,
+    lang: cleanLang(params.get("lang")),
+    at: /^\d{1,4}(\.\d{1,4}){0,40}$/.test(at) ? at : "",
+  };
 };
 
 /** this page, with the Translate lens and a language in its link */

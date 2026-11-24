@@ -111,6 +111,81 @@ describe("haxcms-goggles (developer mode)", () => {
     target.remove();
   });
 
+  it("grows the flag into bug, idea, docs and accessibility reports", async () => {
+    const target = globalThis.document.createElement("goggles-test-flag");
+    target.attachShadow({ mode: "open" }).innerHTML =
+      '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="12" height="12">';
+    globalThis.document.body.appendChild(target);
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    g._openIssue(target);
+    await g.updateComplete;
+    const form = g.shadowRoot.querySelector(".issue");
+    const kinds = form.querySelectorAll('.choices [role="group"]')[0];
+    expect(kinds.querySelectorAll("button").length).to.equal(4);
+    // the pointer, not just the tag, goes with the report
+    expect(g._issue.path[g._issue.path.length - 1].tag).to.equal(
+      "goggles-test-flag",
+    );
+    // "already reported?" links out to GitHub search; nothing is fetched from GitHub
+    const look = form.querySelector('a[href*="/haxtheweb/issues/issues?q="]');
+    expect(look).to.not.equal(null);
+    // the link opens the goggles issue form; the form, not the link, sets labels
+    const open = new URL(form.querySelector("a.primary").href);
+    expect(open.searchParams.get("template")).to.equal("goggles-bug.yml");
+    expect(open.searchParams.get("labels")).to.equal(null);
+    // accessibility runs the checks on the piece, shadow tree included
+    g._issueField("kind", "a11y");
+    await g.updateComplete;
+    expect(g._issue.findings.map((f) => f.check)).to.include("image-alt");
+    expect(g._issue.title).to.contain("alt text");
+    expect(
+      new URL(form.querySelector("a.primary").href).searchParams.get(
+        "template",
+      ),
+    ).to.equal("goggles-a11y.yml");
+    // the replay can be left out entirely
+    g._issueField("scope", "none");
+    await g.updateComplete;
+    expect(g._issue.replay).to.equal(null);
+    g._closeIssue();
+    target.remove();
+  });
+
+  it("holds still on the piece a replay link marks, once the content is there", async () => {
+    const { store } = await import("../lib/core/haxcms-site-store.js");
+    const before = store.themeElement;
+    const theme = globalThis.document.createElement("div");
+    const piece = globalThis.document.createElement("goggles-test-replayed");
+    piece.textContent = "replayed";
+    theme.appendChild(globalThis.document.createElement("p"));
+    theme.appendChild(piece);
+    globalThis.document.body.appendChild(theme);
+    store.themeElement = theme;
+    GogglesState.set({ on: true, lensOn: true, lens: "code" });
+    const g = overlay();
+    g.phase = "";
+    expect(g.holdAt([1])).to.equal(true);
+    expect(g.pinned).to.equal(true);
+    expect(g._target.comp).to.equal(piece);
+    // the whole page can go in a replay, and the mark says where the piece sits
+    g._openIssue(piece);
+    g._issueField("scope", "page");
+    for (
+      let n = 0;
+      n < 40 && !(g._issue.replay && g._issue.replay.bundle.scope === "page");
+      n++
+    ) {
+      await new Promise((r) => setTimeout(r, 50));
+    }
+    expect(g._issue.replay.bundle.scope).to.equal("page");
+    expect(g._issue.replay.bundle.mark).to.deep.equal([1]);
+    g._closeIssue();
+    store.themeElement = before;
+    theme.remove();
+  });
+
   it("loads who made what and finds one person's work", async () => {
     const makers = await loadMakers();
     expect(Object.keys(makers.tags).length).to.be.greaterThan(100);

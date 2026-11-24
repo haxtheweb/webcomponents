@@ -15,7 +15,24 @@ import { futureTraveler } from "@haxtheweb/hax-network-bar/lib/hax-future-travel
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "../haxcms-site-store.js";
+import {
+  a11yFindings,
+  contentMark,
+  elementPath,
+  findByMark,
+  INLINE_BUNDLE,
+  issueFields,
+  issueUrl,
+  openIssuesUrl,
+  packBundle,
+  pathText,
+  replayBundle,
+  replayLink,
+  reportTitle,
+  translateUrl,
+} from "./haxcms-goggles-report.js";
 import {
   localStorageGet,
   localStorageSet,
@@ -39,7 +56,6 @@ import {
 } from "./haxcms-goggles-translate.js";
 
 const REPO = "https://github.com/haxtheweb/webcomponents";
-const ISSUES = "https://github.com/haxtheweb/issues/issues/new";
 const GALLERY = "https://webcomponents.hax.cloud/";
 const STORIES = "https://hax.cloud/";
 // label and say are keys in this.t
@@ -392,6 +408,35 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       whatIsThis: "What is this?",
       needsFixing: "Needs fixing",
       featureIWant: "Feature I want",
+      confusedMe: "This confused me",
+      cantUseIt: "Hard to use or see",
+      whatConfused: "What confused you?",
+      whatBarrier: "What got in the way?",
+      checksFound: "Checks that failed here",
+      noChecksFound:
+        "The automatic checks found nothing here. Describe what got in the way.",
+      checkImageAlt: "Image without alt text",
+      checkControlName: "Button or link without a name",
+      checkFieldLabel: "Field without a label",
+      checkContrast: "Text contrast too low ({ratio})",
+      docsFor: "Docs for {tag}",
+      readTheDocs: "Read the docs",
+      openIssues: "Open issues",
+      alreadyReported: "Already reported? Look first, and +1 it there instead.",
+      seeOpenIssues: "See open issues for {tag}",
+      replayLabel: "Replay to include",
+      replayBlock: "Just this block",
+      replayPage: "The whole page",
+      replayNone: "No replay",
+      replayHelp:
+        "A replay lets a maintainer open this on a scratch site and see the problem. Files from your site are swapped for placeholders.",
+      previewSent: "Preview everything that is sent",
+      replayTooBig:
+        "This replay is too big for the link. Download it and drag the file into the issue.",
+      downloadReplay: "Download replay",
+      swappedCount: "Private files swapped for placeholders: {count}",
+      pathLabel: "Path",
+      githubAccount: "Reports go to GitHub; you need a GitHub account.",
       issueTitle: "Title",
       whatDidYouSee: "What did you see?",
       whatDoYouWish: "What do you wish it did?",
@@ -472,6 +517,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this._keys = this._keys.bind(this);
     this._reflow = this._reflow.bind(this);
     this._sync = this._sync.bind(this);
+    this._caught = this._caught.bind(this);
+    this._errors = [];
+    this._docs = {};
   }
   connectedCallback() {
     super.connectedCallback();
@@ -501,6 +549,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     w[method]("keydown", this._keys, true);
     w[method]("scroll", this._reflow, { capture: true, passive: true });
     w[method]("resize", this._reflow);
+    // errors while the goggles are on ride along in a report
+    w[method]("error", this._caught);
+    w[method]("unhandledrejection", this._caught);
     clearInterval(this._timer);
     if (on) {
       this._timer = setInterval(this._reflow, 700);
@@ -1924,9 +1975,21 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       shot: { state: "developing" },
       attach: "whole",
       shotCopied: false,
+      path: elementPath(comp),
+      lang:
+        I18NManagerStore.lang || globalThis.document.documentElement.lang || "",
+      build: MAKERS.sha ? "master at " + MAKERS.sha : "",
+      errors: this._errors.slice(-5),
+      findings: [],
+      check: "",
+      scope: "block",
+      pageHost: this._pageHost(comp),
+      replay: null,
     };
+    this._comp = comp;
     this._copied = false;
     this._develop(comp, this._issue.id);
+    this._pack(this._issue.id);
     if (!anatomy.file) {
       // flagged before the makers data arrived: fill in source and makers once it does
       loadMakers().then(() => {
@@ -2080,54 +2143,192 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   /** the issue goes to the HAX maintainers' tracker, so its text stays in English */
   _issueText() {
     const i = this._issue;
-    const title =
-      (i.kind === "bug" ? "[goggles] " : "[goggles wish] ") +
-      (i.title || (i.kind === "bug" ? "Problem with " : "Idea for ") + i.tag);
+    const f = issueFields(i);
+    const r = i.replay;
     const lines = [
-      i.kind === "bug" ? "### What I saw" : "### What I wish it did",
-      i.notes || "(not written yet)",
+      "### " +
+        (i.kind === "bug"
+          ? "What's wrong"
+          : i.kind === "wish"
+            ? "What I wish it did"
+            : i.kind === "docs"
+              ? "What confused me"
+              : "What got in the way"),
+      f.description || "(not written yet)",
       "",
-      "### Where",
-      "- Element: `<" +
-        i.tag +
-        ">`" +
-        (i.file ? " (elements/" + i.file + ")" : ""),
-      "- Page: " + (i.page || "(none)"),
-      "- Theme: " + i.theme + ", design system: " + i.designSystem,
-      "- Edit mode: " + (i.edit ? "yes" : "no"),
-      "",
-      "### Specs",
-      "- On screen: " + i.w + " x " + i.h + " px at " + i.x + ", " + i.y,
-      "- Viewport: " + i.viewport + ", " + i.scheme + " scheme",
-      "- Browser: " + i.agent,
-      "- webcomponents master at " + MAKERS.sha,
-      "",
-      "### People who know this piece",
-      i.makers.length ? i.makers.join(", ") : "(unknown)",
-      "",
-      "### Markup",
-      "```html",
-      i.markup,
-      "```",
-      "",
+    ];
+    if (f.check) {
+      lines.push("### Failing check", f.check, "");
+    }
+    lines.push("### Element", f.element, "", "### Context", f.context, "");
+    lines.push("### Markup", "```html", i.markup, "```", "");
+    if (r && r.packed) {
+      lines.push("### Replay", replayLink(r.packed), "");
+    }
+    lines.push(
       "### Screenshot",
       i.shot && i.shot.state === "ready"
         ? "<!-- The goggles put a screenshot on your clipboard: click on the next line and paste it (Ctrl+V or Cmd+V) -->\n"
         : "(no screenshot)",
-    ];
-    return { title: title, body: lines.join("\n") };
-  }
-  _issueLink() {
-    const t = this._issueText();
-    return (
-      ISSUES +
-      "?title=" +
-      encodeURIComponent(t.title) +
-      "&body=" +
-      encodeURIComponent(t.body) +
-      "&labels=" +
-      (this._issue.kind === "bug" ? "bug" : "enhancement")
     );
+    return {
+      title: reportTitle(i.kind, i.tag, i.title),
+      body: lines.join("\n"),
+    };
+  }
+  /** the goggles issue form for this kind, prefilled; what did not fit is attached instead */
+  _issueLink() {
+    const i = this._issue;
+    const r = i.replay;
+    return issueUrl(i, {
+      markup: "```html\n" + i.markup + "\n```",
+      replay:
+        r && r.packed && r.packed.length <= INLINE_BUNDLE
+          ? "Open on browser.hax.cloud: " + replayLink(r.packed)
+          : "",
+    });
+  }
+  /** where the whole page's content lives: the nearest hax-body or content container above the piece */
+  /** where the page content lives: hax-body while editing, the theme otherwise */
+  _contentHost() {
+    const hax =
+      store.editMode && globalThis.HaxStore
+        ? globalThis.HaxStore.requestAvailability().activeHaxBody
+        : null;
+    return hax || store.themeElement || null;
+  }
+  _pageHost(comp) {
+    const host = this._contentHost();
+    return host && contentMark(comp, host) ? host : null;
+  }
+  /**
+   * Holds still on the piece a replay link marks (?goggles=...&goggles-at=0.2),
+   * once the page content has arrived.
+   */
+  holdAt(mark, tries) {
+    const left = tries === undefined ? 40 : tries;
+    const host = this._contentHost();
+    const el = host ? findByMark(host, mark) : null;
+    if (el && this.phase === "") {
+      this._go(el);
+      return true;
+    }
+    if (left > 0) {
+      setTimeout(() => this.holdAt(mark, left - 1), 250);
+    }
+    return false;
+  }
+  /** packs the replay for the scope picked; runs again whenever the scope changes */
+  async _pack(id) {
+    const i = this._issue;
+    if (!i || i.id !== id) {
+      return;
+    }
+    if (i.scope === "none") {
+      this._issue = Object.assign({}, i, { replay: null });
+      return;
+    }
+    const theme =
+      store && store.manifest && store.manifest.metadata
+        ? store.manifest.metadata.theme || {}
+        : {};
+    const page = i.scope === "page" && i.pageHost;
+    const bundle = replayBundle({
+      scope: page ? "page" : "block",
+      tag: i.tag,
+      path: i.path,
+      mark: page ? contentMark(this._comp, i.pageHost) : [0],
+      html: withoutComments(
+        page ? i.pageHost.innerHTML : this._comp ? this._comp.outerHTML : "",
+      ),
+      theme: theme.element || "",
+      designSystem: theme.designSystem || "",
+      build: i.build,
+      lang: i.lang,
+      scheme: i.scheme,
+      viewport: i.viewport,
+    });
+    let packed = "";
+    try {
+      packed = await packBundle(bundle);
+    } catch {
+      packed = "";
+    }
+    if (this._issue && this._issue.id === id && this._issue.scope === i.scope) {
+      this._issue = Object.assign({}, this._issue, {
+        replay: { bundle: bundle, packed: packed },
+      });
+    }
+  }
+  /** a replay too big for the link becomes a file to drag into the issue */
+  _downloadReplay() {
+    const i = this._issue;
+    if (!i || !i.replay) {
+      return;
+    }
+    const blob = new globalThis.Blob([replayLink(i.replay.packed)], {
+      type: "text/plain",
+    });
+    const url = globalThis.URL.createObjectURL(blob);
+    const a = globalThis.document.createElement("a");
+    a.href = url;
+    a.download = "goggles-replay-" + i.tag + ".txt";
+    this.shadowRoot.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => globalThis.URL.revokeObjectURL(url), 1000);
+  }
+  /** an error on the page while the goggles are on, kept short for the report */
+  _caught(e) {
+    const why =
+      e && e.reason !== undefined
+        ? e.reason && e.reason.message
+          ? e.reason.message
+          : String(e.reason)
+        : e && e.message
+          ? e.message
+          : "";
+    if (why) {
+      this._errors = this._errors.concat(String(why).slice(0, 200)).slice(-10);
+    }
+  }
+  /** an element's own docs (lib/<tag>.docs.json, shipped next to it), fetched once */
+  _docsFor(tag) {
+    if (this._docs[tag] !== undefined) {
+      return this._docs[tag];
+    }
+    const info = MAKERS.tags[tag];
+    const base = globalThis.WCGlobalBasePath || globalThis.WCAutoloadBasePath;
+    this._docs[tag] = null;
+    if (!info || !base) {
+      return null;
+    }
+    const folder = info.f.split("/")[0];
+    globalThis
+      .fetch(
+        new URL(
+          "@haxtheweb/" + folder + "/lib/" + tag + ".docs.json",
+          new URL(base, globalThis.location.href),
+        ).href,
+      )
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (d && d.description) {
+          this._docs = Object.assign({}, this._docs, {
+            [tag]: { description: d.description, title: d.title || tag },
+          });
+          this.requestUpdate();
+        }
+      })
+      .catch(() => {});
+    return null;
+  }
+  /** README of the element on GitHub: a plain link, nothing fetched */
+  _readmeUrl(tag) {
+    const info = MAKERS.tags[tag];
+    return info
+      ? REPO + "/blob/master/elements/" + info.f.split("/")[0] + "/README.md"
+      : "";
   }
   _copyIssue() {
     const t = this._issueText();
@@ -2151,8 +2352,33 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     if (name === "attach") {
       next.shotCopied = false;
     }
+    if (name === "kind" && value === "a11y" && this._comp) {
+      // the checks run when someone says it is hard to use or see
+      next.findings = a11yFindings(this._comp);
+      next.check = next.findings.length
+        ? this._checkText(next.findings[0])
+        : "";
+      if (!next.title && next.check) {
+        next.title = next.check;
+      }
+    }
     this._issue = next;
     this._copied = false;
+    if (name === "scope") {
+      this._pack(next.id);
+    }
+  }
+  /** one failed check, as it reads in the issue */
+  _checkText(f) {
+    const label =
+      f.check === "image-alt"
+        ? this.t.checkImageAlt
+        : f.check === "control-name"
+          ? this.t.checkControlName
+          : f.check === "field-label"
+            ? this.t.checkFieldLabel
+            : this.t.checkContrast.replace("{ratio}", f.detail);
+    return label + " (" + f.where + ")";
   }
   /** one of a few answers, as pressed buttons (the HAX UI way to pick one) */
   _renderChoices(name, label, options) {
@@ -2243,7 +2469,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ${this.t.lensXray}
       </p>
       <h2>&lt;${a.nodeTag}&gt;</h2>
-      ${this._renderOwner(a.nodeTag)}
+      ${this._renderOwner(a.nodeTag)} ${this._renderDocsLine(a.tag)}
       ${
         a.same
           ? nothing
@@ -2286,6 +2512,11 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       ${full && a.slots.length ? html`<p class="row"><span class="muted">${this.t.slots}</span> <span class="path">${a.slots.join(", ")}</span></p>` : nothing}
       ${full ? html`<p class="row"><span class="muted">${this.t.inTheEditor}</span> ${a.hax ? (a.gizmo ? this.t.editableAs.replace("{name}", a.gizmo) : this.t.editable) : this.t.notABlock}</p>` : nothing}
     `;
+  }
+  /** the element's own one-line description from its docs, when it ships them */
+  _renderDocsLine(tag) {
+    const d = this._docsFor(tag);
+    return d ? html`<p class="docs-line">${d.description}</p>` : nothing;
   }
   _renderMakers() {
     const c = this._credits(this._target.comp.localName);
@@ -2415,6 +2646,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
               </button>
               ${this._renderAlone(this._target.comp.localName)}
               ${this._renderSource()}
+              ${this._jump(openIssuesUrl(this._target.comp.localName), "icons:list", this.t.openIssues)}
               <button
                 type="button"
                 @click="${() => this._openIssue(this._target.comp)}"
@@ -2511,7 +2743,19 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           icon: "icons:lightbulb-outline",
           label: this.t.featureIWant,
         },
+        { value: "docs", icon: "icons:help-outline", label: this.t.confusedMe },
+        {
+          value: "a11y",
+          icon: "icons:accessibility",
+          label: this.t.cantUseIt,
+        },
       ])}
+      <p class="hint">
+        ${this.t.alreadyReported}
+        <a href="${openIssuesUrl(i.tag)}" target="_blank" rel="noopener"
+          >${this.t.seeOpenIssues.replace("{tag}", i.tag)}</a
+        >
+      </p>
       <simple-fields-field
         id="issue-title"
         class="hax-ui-simple-field"
@@ -2525,11 +2769,12 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         id="issue-notes"
         class="hax-ui-simple-field notes"
         type="textarea"
-        label="${i.kind === "bug" ? this.t.whatDidYouSee : this.t.whatDoYouWish}"
+        label="${this._notesLabel(i.kind)}"
         .value="${i.notes}"
         @value-changed="${(e) => this._issueField("notes", e.detail.value || "")}"
       ></simple-fields-field>
-      ${this._renderShot(i, scale)}
+      ${this._renderKindExtras(i)} ${this._renderShot(i, scale)}
+      ${this._renderReplay(i)}
       <div class="evidence">
         <dl>
           <div>
@@ -2543,6 +2788,10 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           <div>
             <dt>${this.t.viewport}</dt>
             <dd>${i.viewport}, ${i.scheme}</dd>
+          </div>
+          <div>
+            <dt>${this.t.pathLabel}</dt>
+            <dd>${pathText(i.path)}</dd>
           </div>
           <div>
             <dt>${this.t.source}</dt>
@@ -2559,7 +2808,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       <div class="actions">
         <a
           class="primary"
-          href="${this._issueLink()}"
+          href="${this._issueLink().url}"
           target="_blank"
           rel="noopener"
           @click="${this._copyShot}"
@@ -2576,6 +2825,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
           >${this.t.cancel}
         </button>
       </div>
+      <p class="hint">${this.t.githubAccount}</p>
     </section>`;
   }
   /* ---------- the Translate lens ---------- */
@@ -2813,16 +3063,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         : "haxtheweb/webcomponents",
     });
   }
+  /** the goggles translation issue form, which applies the labels for every reporter */
   _txLink() {
-    const i = this._txIssue();
-    return (
-      ISSUES +
-      "?title=" +
-      encodeURIComponent(i.title) +
-      "&body=" +
-      encodeURIComponent(i.body) +
-      "&labels=i18n"
-    );
+    return translateUrl(this._txIssue(), this._txLang);
   }
   _txCopy() {
     const i = this._txIssue();
@@ -3141,6 +3384,96 @@ ${issue.body}</pre>
           : nothing
       }
     </section>`;
+  }
+  _notesLabel(kind) {
+    return kind === "wish"
+      ? this.t.whatDoYouWish
+      : kind === "docs"
+        ? this.t.whatConfused
+        : kind === "a11y"
+          ? this.t.whatBarrier
+          : this.t.whatDidYouSee;
+  }
+  /** what each kind of report adds: the docs, the language and text, or the failed checks */
+  _renderKindExtras(i) {
+    if (i.kind === "docs") {
+      const d = this._docsFor(i.tag);
+      const readme = this._readmeUrl(i.tag);
+      return html`<div class="kind-extra">
+        <p class="legend">${this.t.docsFor.replace("{tag}", i.tag)}</p>
+        ${d ? html`<p>${d.description}</p>` : nothing}
+        ${readme ? this._jump(readme, "icons:description", this.t.readTheDocs) : nothing}
+      </div>`;
+    }
+    if (i.kind === "a11y") {
+      return i.findings.length
+        ? this._renderChoices(
+            "check",
+            this.t.checksFound,
+            i.findings.map((f) => ({
+              value: this._checkText(f),
+              icon:
+                f.check === "contrast"
+                  ? "image:tonality"
+                  : f.check === "image-alt"
+                    ? "image:image"
+                    : "icons:label-outline",
+              label: this._checkText(f),
+            })),
+          )
+        : html`<p class="hint">${this.t.noChecksFound}</p>`;
+    }
+    return nothing;
+  }
+  /** the replay: pick its scope, see exactly what is sent, download it when too big for the link */
+  _renderReplay(i) {
+    const options = [
+      { value: "block", icon: "image:crop", label: this.t.replayBlock },
+    ];
+    if (i.pageHost) {
+      options.push({
+        value: "page",
+        icon: "icons:description",
+        label: this.t.replayPage,
+      });
+    }
+    options.push({
+      value: "none",
+      icon: "icons:block",
+      label: this.t.replayNone,
+    });
+    const r = i.replay;
+    const left = r ? this._issueLink().left : [];
+    return html`<div class="replay">
+      ${this._renderChoices("scope", this.t.replayLabel, options)}
+      <p class="hint">${this.t.replayHelp}</p>
+      ${
+        r && r.bundle.swapped.length
+          ? html`<p class="hint">
+              ${this.t.swappedCount.replace("{count}", r.bundle.swapped.length)}
+            </p>`
+          : nothing
+      }
+      ${
+        left.indexOf("replay") !== -1
+          ? html`<p class="hint">${this.t.replayTooBig}</p>
+              <div class="actions tight">
+                <button type="button" @click="${this._downloadReplay}">
+                  <simple-icon-lite
+                    icon="icons:file-download"
+                  ></simple-icon-lite
+                  >${this.t.downloadReplay}
+                </button>
+              </div>`
+          : nothing
+      }
+      <details class="fold">
+        <summary>${this.t.previewSent}</summary>
+        <pre tabindex="0"><code>${this._issueText().title}
+
+${this._issueText().body}${r ? "\n\n" + JSON.stringify(r.bundle, null, 2) : ""}</code></pre>
+      </details>
+    </div>`;
   }
   _renderPins() {
     if (!this.looking || this.lens !== "makers" || this.pinned) {
@@ -3915,6 +4248,21 @@ ${issue.body}</pre>
           padding-top: var(--ddd-spacing-2, 8px);
           padding-bottom: var(--ddd-spacing-2, 8px);
         }
+        .issue pre {
+          overflow: auto;
+        }
+        .kind-extra,
+        .replay {
+          margin-top: var(--ddd-spacing-3, 12px);
+        }
+        .kind-extra p:not(.legend) {
+          font-size: var(--hax-ui-admin-font-size, 14px);
+        }
+        .docs-line {
+          margin-top: var(--ddd-spacing-2, 8px);
+          font-size: var(--hax-ui-admin-font-size, 14px);
+        }
+        .kind-extra .legend,
         .choices .legend {
           margin: var(--ddd-spacing-3, 12px) 0 var(--ddd-spacing-1, 4px);
           font-size: var(--hax-ui-admin-font-size-xs, 12px);
