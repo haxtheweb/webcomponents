@@ -592,6 +592,20 @@ function main() {
   return 1;
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Run directly (not imported). ubiquity-push.sh calls scripts through the
+// ~/haxtheweb symlink; node resolves import.meta.url to the real path but
+// leaves process.argv[1] as typed, so compare real paths or nothing runs.
+function invokedDirectly() {
+  try {
+    return (
+      fs.realpathSync(process.argv[1]) ===
+      fs.realpathSync(fileURLToPath(import.meta.url))
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+if (invokedDirectly()) {
   process.exitCode = main();
 }

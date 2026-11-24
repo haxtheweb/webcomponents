@@ -2,7 +2,7 @@
   "_meta": {
     "elementsScanned": 270,
     "elementsWithTranslations": 182,
-    "translationFilesFound": 49442,
+    "translationFilesFound": 49443,
     "languagesSupported": [
       "af",
       "am",
@@ -616,6 +616,7 @@
     "hax-logo.haxProperties": 0,
     "hax-marketing-theme": 1,
     "hax-network-bar": 1,
+    "hax-network-sites": 4,
     "hax-palette-picker": 1,
     "hax-pillar-strip.haxProperties": 0,
     "hax-pillar.haxProperties": 0,

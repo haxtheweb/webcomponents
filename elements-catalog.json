@@ -2292,6 +2292,16 @@
       "tags": []
     },
     {
+      "tag": "hax-network-sites",
+      "title": "Hax Network Sites",
+      "description": "Every site in the HAX network as a card, with the network bar's own icons and colors Draws each site from the network's record (the same one the network bar reads), so its name, address, purpose, icon and color always match the bar: the icon lights up in the site's color and moves on hover or foc...",
+      "package": "@haxtheweb/hax-marketing-theme",
+      "import": "@haxtheweb/hax-marketing-theme/lib/hax-network-sites.js",
+      "type": "element",
+      "haxCapable": true,
+      "tags": ["Marketing", "content", "network"]
+    },
+    {
       "tag": "hax-palette-picker",
       "title": "",
       "description": "",

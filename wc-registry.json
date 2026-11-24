@@ -227,6 +227,7 @@
   "hax-marketing-theme": "@haxtheweb/hax-marketing-theme/hax-marketing-theme.js",
   "hax-contributors": "@haxtheweb/hax-marketing-theme/lib/hax-contributors.js",
   "hax-cast": "@haxtheweb/hax-marketing-theme/lib/hax-marketing-blocks.js",
+  "hax-network-sites": "@haxtheweb/hax-marketing-theme/lib/hax-network-sites.js",
   "hax-platform-compare": "@haxtheweb/hax-marketing-theme/lib/hax-platform-compare.js",
   "hax-reel": "@haxtheweb/hax-marketing-theme/lib/hax-reel.js",
   "hax-story-link": "@haxtheweb/hax-marketing-theme/lib/hax-story-link.js",
