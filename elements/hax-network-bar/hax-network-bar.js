@@ -513,6 +513,8 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
+      // pinned so subclasses (a site's own network bar) get these strings
+      namespace: "hax-network-bar",
       localesPath:
         new URL("./locales/hax-network-bar.en.json", import.meta.url).href +
         "/../",
