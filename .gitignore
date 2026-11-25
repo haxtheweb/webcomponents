@@ -14,6 +14,9 @@ yarn-error.log
 .cache
 .yarn
 test/index.html
+# written by scripts/prepare-vercel-deploy.js at deploy time
+/robots.txt
+/sitemap.xml
 /index.html
 elements/video-player/demo/samples/ad/
 elements/haxcms-elements/demo/files/
