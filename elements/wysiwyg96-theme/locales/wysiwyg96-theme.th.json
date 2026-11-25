@@ -25,5 +25,6 @@
   "ready": "พร้อม",
   "editing": "กำลังแก้ไข",
   "updated": "อัปเดตเมื่อ {date}",
-  "position": "หน้า {index} จาก {count}"
+  "position": "หน้า {index} จาก {count}",
+  "pageWindow": "หน้าต่าง {name}"
 }

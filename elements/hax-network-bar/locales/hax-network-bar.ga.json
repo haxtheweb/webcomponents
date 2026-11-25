@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nuacht agus nuashonruithe ó fhoireann HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nuacht agus nuashonruithe ó fhoireann HAX.",
+  "gogglesContribute": "Cuidigh leis na gloiní",
+  "gogglesContributeAbout": "Cuir ort na gloiní le foghlaim conas a dhéantar HAX agus cuidiú lena fheabhsú: déan X-gha ar aon phíosa chun an cód taobh thiar de a fheiceáil, féach cé a thóg é, tuairiscigh fabht nó smaoineamh le gabháil scáileáin dírithe air, ceartaigh aistriúchán i do theanga féin, agus aimsigh na saincheisteanna oscailte don rud atá os do chomhair.",
+  "gogglesProjectLinks": "Tuilleadh faoin tionscadal",
+  "gogglesLinkLab": "HAX Lab: conas páirt a ghlacadh",
+  "gogglesLinkPraw": "PRAW: na daoine, na smaointe agus na scéalta taobh thiar de HAX",
+  "gogglesLinkLearn": "Foghlaim HAX: ranganna teagaisc",
+  "gogglesLinkCode": "HAX ar GitHub: an cód",
   "installAll": "Suiteáil HAX: gach bealach chun é a fháil",
-  "installAllAbout": "An brabhsálaí, an HAX CLI, Node.js, PHP, an aip deisce nó leid do do ghníomhaire."
+  "installAllAbout": "An brabhsálaí, an HAX CLI, Node.js, PHP, an aip deisce nó leid do do ghníomhaire.",
+  "networkBar": "Barra líonra HAX"
 }

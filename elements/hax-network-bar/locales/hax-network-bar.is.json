@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Fréttir og uppfærslur frá HAX-teyminu.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Fréttir og uppfærslur frá HAX-teyminu.",
+  "gogglesContribute": "Leggðu þitt af mörkum með gleraugunum",
+  "gogglesContributeAbout": "Settu upp gleraugun til að læra hvernig HAX er gert og hjálpa til við að bæta það: gegnumlýstu hvaða hluta sem er til að sjá kóðann á bak við hann, sjáðu hver bjó hann til, tilkynntu villu eða hugmynd með skjámynd sem bendir beint á hana, lagaðu þýðingu á þínu tungumáli og finndu opin mál um það sem er fyrir framan þig.",
+  "gogglesProjectLinks": "Meira um verkefnið",
+  "gogglesLinkLab": "HAX Lab: hvernig á að taka þátt",
+  "gogglesLinkPraw": "PRAW: fólkið, hugmyndirnar og sögurnar á bak við HAX",
+  "gogglesLinkLearn": "Learn HAX: kennsluefni",
+  "gogglesLinkCode": "HAX á GitHub: kóðinn",
   "installAll": "Setja upp HAX: allar leiðir til að fá það",
-  "installAllAbout": "Vafrinn, HAX CLI, Node.js, PHP, skjáborðsforritið eða kvaðning fyrir gervigreindarfulltrúann þinn."
+  "installAllAbout": "Vafrinn, HAX CLI, Node.js, PHP, skjáborðsforritið eða kvaðning fyrir gervigreindarfulltrúann þinn.",
+  "networkBar": "HAX netstikan"
 }

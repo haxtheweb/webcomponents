@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ìdàgbàsókè àyíká",
+    "description": "Bí iṣẹ́ àkànṣe kan ṣe dàgbà lákòókò àti ohun tí àtúnlò rẹ̀ ń fipamọ́, tí a yà bí kírísítà láti inú dátà ìdàgbàsókè PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dátà ìdàgbàsókè",
+        "description": "URL fódà tó ní àwọn fáìlì JSON ìdàgbàsókè (PRAW ń tẹ̀ wọ́n jáde ní hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Ìwò àkọ́kọ́",
+        "description": "Ìwò wo ni yóò ṣí kọ́kọ́.",
+        "options": {
+          "themes": "Àwọn àkòrí",
+          "elements": "Àwọn èròjà",
+          "platforms": "Àwọn pèpéle",
+          "cache": "Magic Script",
+          "contributors": "Àwọn olùkópa"
+        }
+      }
+    ]
+  }
+}

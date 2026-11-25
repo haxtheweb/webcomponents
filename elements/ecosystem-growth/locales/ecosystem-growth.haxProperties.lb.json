@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Wuesstem vum Ökosystem",
+    "description": "Wéi e Projet mat der Zäit gewuess ass a wat seng Weiderbenotzung spuert, als Kristall aus de Wuesstemsdate vu PRAW gezeechent."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wuesstemsdaten",
+        "description": "URL vum Dossier mat de Wuesstems-JSON-Fichieren (PRAW publizéiert se op hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Éischt Usiicht",
+        "description": "Wéi eng Usiicht als éischt opgeet.",
+        "options": {
+          "themes": "Themen",
+          "elements": "Elementer",
+          "platforms": "Plattformen",
+          "cache": "Magic Script",
+          "contributors": "Bäidroer"
+        }
+      }
+    ]
+  }
+}

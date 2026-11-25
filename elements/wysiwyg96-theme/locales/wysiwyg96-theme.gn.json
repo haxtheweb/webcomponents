@@ -25,5 +25,6 @@
   "ready": "Oĩma",
   "editing": "Oñembosako'i",
   "updated": "Oñembopyahu {date}",
-  "position": "Kuatiarogue {index} {count} apytégui"
+  "position": "Kuatiarogue {index} {count} apytégui",
+  "pageWindow": "{name} ovetã"
 }

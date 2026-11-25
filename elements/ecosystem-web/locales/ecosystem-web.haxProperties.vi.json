@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Tác động",
           "evidence": "Bằng chứng",
-          "parity": "Tương đương"
+          "parity": "Tương đương",
+          "reuse": "Tái sử dụng",
+          "weight": "Dung lượng"
         }
       }
     ]

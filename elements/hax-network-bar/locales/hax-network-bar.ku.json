@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nûçe û nûkirinên ji tîma HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nûçe û nûkirinên ji tîma HAX.",
+  "gogglesContribute": "Bi gogilan beşdar bibe",
+  "gogglesContributeAbout": "Gogilan li xwe bike da ku fêr bibî HAX çawa tê çêkirin û alîkariya baştirkirina wê bikî: her perçeyekî bi tîrêja X bibîne da ku koda li pişt wê bibînî, bibîne kê ew çêkiriye, xeletiyek an ramanek bi dîmenekî ekranê ku rasterast nîşanî wê dide ragihîne, wergerekê bi zimanê xwe rast bike, û pirsgirêkên vekirî yên ji bo tiştê li pêşiya te bibîne.",
+  "gogglesProjectLinks": "Zêdetir derbarê projeyê de",
+  "gogglesLinkLab": "HAX Lab: çawa beşdar bibî",
+  "gogglesLinkPraw": "PRAW: mirov, raman û çîrokên li pişt HAX",
+  "gogglesLinkLearn": "Learn HAX: dersnameyan",
+  "gogglesLinkCode": "HAX li ser GitHub: kod",
   "installAll": "HAX saz bike: her awayê bidestxistina wê",
-  "installAllAbout": "Gerok, HAX CLI, Node.js, PHP, sepana sermaseyê an promptek ji bo agentê te."
+  "installAllAbout": "Gerok, HAX CLI, Node.js, PHP, sepana sermaseyê an promptek ji bo agentê te.",
+  "networkBar": "Darika tora HAX"
 }

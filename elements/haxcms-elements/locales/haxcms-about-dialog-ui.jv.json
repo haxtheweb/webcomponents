@@ -20,6 +20,7 @@
   "projectOverview": "Ringkesan proyek",
   "documentation": "Dokumentasi",
   "joinTheHaxDiscordCommunity": "Gabung karo komunitas Discord HAX",
+  "contributeWithTheGoggles": "Kontribusi nganggo kacamata: deleng kepiye HAX digawe, laporake bug lan ide",
   "issueQueue": "Antrean masalah (bug lan panjaluk fitur)",
   "keyboardShortcuts": "Trabasan keyboard",
   "keyboardShortcutsDescription": "Didhaftar kanthi terpusat ing HAXcms lan ditampilake miturut konteks aktif. Ikatan nganggo Ctrl+Shift+[Key]; ing panyunting, ngetik pemicu markdown banjur spasi bakal ngowahi blok. Ketik {slash} ing blok teks kosong kanggo mbukak Telusuran inline.",

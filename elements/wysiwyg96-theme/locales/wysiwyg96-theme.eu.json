@@ -25,5 +25,6 @@
   "ready": "Prest",
   "editing": "Editatzen",
   "updated": "Eguneratua: {date}",
-  "position": "{index}. orria / {count}"
+  "position": "{index}. orria / {count}",
+  "pageWindow": "{name} leihoa"
 }

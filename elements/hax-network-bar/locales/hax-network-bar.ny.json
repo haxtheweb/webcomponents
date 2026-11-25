@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nkhani ndi zosintha kuchokera ku gulu la HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nkhani ndi zosintha kuchokera ku gulu la HAX.",
+  "gogglesContribute": "Thandizani ndi magalasi",
+  "gogglesContributeAbout": "Valani magalasi kuti muphunzire momwe HAX imapangidwira ndi kuthandiza kuiwongolera: onani mkati mwa gawo lililonse ngati X-ray kuti muwone khodi yomwe ili kumbuyo kwake, onani amene analipanga, nenani vuto kapena lingaliro ndi chithunzi cha sikirini cholozera pomwepo, konzani kumasulira m'chinenero chanu, ndipo pezani nkhani zotseguka za zomwe zili patsogolo panu.",
+  "gogglesProjectLinks": "Zambiri za ntchitoyi",
+  "gogglesLinkLab": "HAX Lab: momwe mungatengere nawo mbali",
+  "gogglesLinkPraw": "PRAW: anthu, malingaliro ndi nkhani za kumbuyo kwa HAX",
+  "gogglesLinkLearn": "Phunzirani HAX: maphunziro",
+  "gogglesLinkCode": "HAX pa GitHub: khodi",
   "installAll": "Ikani HAX: njira zonse zoipezera",
-  "installAllAbout": "Msakatuli, HAX CLI, Node.js, PHP, pulogalamu ya pakompyuta kapena funso la wothandizira wanu."
+  "installAllAbout": "Msakatuli, HAX CLI, Node.js, PHP, pulogalamu ya pakompyuta kapena funso la wothandizira wanu.",
+  "networkBar": "Bala ya netiweki ya HAX"
 }

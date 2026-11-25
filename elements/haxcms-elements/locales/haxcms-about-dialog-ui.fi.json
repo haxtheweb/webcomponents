@@ -20,6 +20,7 @@
   "projectOverview": "Projektin yleiskatsaus",
   "documentation": "Dokumentaatio",
   "joinTheHaxDiscordCommunity": "Liity HAXin Discord-yhteisöön",
+  "contributeWithTheGoggles": "Osallistu lasien avulla: näe, miten HAX on tehty, ilmoita virheistä ja ideoista",
   "issueQueue": "Tikettijono (virheet ja ominaisuuspyynnöt)",
   "keyboardShortcuts": "Pikanäppäimet",
   "keyboardShortcutsDescription": "Rekisteröity keskitetysti HAXcmsiin ja näytetään aktiivisen kontekstin mukaan. Pikanäppäimet käyttävät muotoa Ctrl+Shift+[Näppäin]; editorissa markdown-laukaisimen ja välilyönnin kirjoittaminen muuntaa lohkon. Kirjoita {slash} tyhjään tekstilohkoon avataksesi rivinsisäisen haun.",

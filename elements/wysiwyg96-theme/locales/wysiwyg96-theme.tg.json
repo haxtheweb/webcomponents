@@ -25,5 +25,6 @@
   "ready": "Омода",
   "editing": "Таҳрир",
   "updated": "Навсозӣ шуд {date}",
-  "position": "Саҳифаи {index} аз {count}"
+  "position": "Саҳифаи {index} аз {count}",
+  "pageWindow": "Равзанаи {name}"
 }

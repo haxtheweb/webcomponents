@@ -25,5 +25,6 @@
   "ready": "Klar",
   "editing": "Redigerar",
   "updated": "Uppdaterad {date}",
-  "position": "Sida {index} av {count}"
+  "position": "Sida {index} av {count}",
+  "pageWindow": "Fönstret {name}"
 }

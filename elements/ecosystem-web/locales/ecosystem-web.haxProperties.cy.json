@@ -40,7 +40,9 @@
           "bus": "Ffactor bws",
           "impact": "Effaith",
           "evidence": "Tystiolaeth",
-          "parity": "Cydraddoldeb"
+          "parity": "Cydraddoldeb",
+          "reuse": "Ailddefnydd",
+          "weight": "Pwysau"
         }
       }
     ]

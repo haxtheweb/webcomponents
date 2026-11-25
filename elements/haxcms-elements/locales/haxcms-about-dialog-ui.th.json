@@ -20,6 +20,7 @@
   "projectOverview": "ภาพรวมโครงการ",
   "documentation": "เอกสารประกอบ",
   "joinTheHaxDiscordCommunity": "เข้าร่วมชุมชน HAX บน Discord",
+  "contributeWithTheGoggles": "ร่วมพัฒนาด้วยแว่น: ดูว่า HAX สร้างขึ้นอย่างไร รายงานบั๊กและไอเดีย",
   "issueQueue": "คิวปัญหา (บั๊กและคำขอฟีเจอร์)",
   "keyboardShortcuts": "แป้นพิมพ์ลัด",
   "keyboardShortcutsDescription": "ลงทะเบียนไว้ที่ส่วนกลางใน HAXcms และแสดงตามบริบทที่ใช้งานอยู่ การผูกปุ่มใช้ Ctrl+Shift+[Key] ในตัวแก้ไข การพิมพ์ตัวกระตุ้น markdown ตามด้วยช่องว่างจะแปลงบล็อก พิมพ์ {slash} ในบล็อกข้อความว่างเพื่อเปิดการค้นหาในบรรทัด",

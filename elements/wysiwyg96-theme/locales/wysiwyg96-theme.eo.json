@@ -25,5 +25,6 @@
   "ready": "Preta",
   "editing": "Redaktante",
   "updated": "Ĝisdatigita {date}",
-  "position": "Paĝo {index} el {count}"
+  "position": "Paĝo {index} el {count}",
+  "pageWindow": "Fenestro {name}"
 }

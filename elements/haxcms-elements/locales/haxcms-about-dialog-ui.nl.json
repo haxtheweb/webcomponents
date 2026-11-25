@@ -20,6 +20,7 @@
   "projectOverview": "Projectoverzicht",
   "documentation": "Documentatie",
   "joinTheHaxDiscordCommunity": "Word lid van de HAX-community op Discord",
+  "contributeWithTheGoggles": "Draag bij met de bril: zie hoe HAX gemaakt is, meld bugs en ideeën",
   "issueQueue": "Issuewachtrij (bugs en functieverzoeken)",
   "keyboardShortcuts": "Sneltoetsen",
   "keyboardShortcutsDescription": "Centraal geregistreerd in HAXcms en getoond op basis van de actieve context. Combinaties gebruiken Ctrl+Shift+[Toets]; in de editor zet je een blok om door een markdown-trigger te typen gevolgd door een spatie. Typ {slash} in een leeg tekstblok om de inline zoekfunctie te openen.",

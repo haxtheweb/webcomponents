@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Mmetụta",
           "evidence": "Ihe akaebe",
-          "parity": "Nha nhata"
+          "parity": "Nha nhata",
+          "reuse": "Iji ọzọ",
+          "weight": "Ịdị arọ"
         }
       }
     ]

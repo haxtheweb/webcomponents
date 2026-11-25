@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Korriinka nidaamka deegaanka",
+    "description": "Sida mashruuc u koray waqti ka dib iyo waxa dib u isticmaalkiisu badbaadiyo, oo loo sawiray sidii kiristaal laga soo qaaday xogta korriinka ee PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Xogta korriinka",
+        "description": "URL-ka galka haya faylasha JSON ee korriinka (PRAW wuxuu ku daabacaa hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Muuqaalka koowaad",
+        "description": "Muuqaalka marka hore furmaya.",
+        "options": {
+          "themes": "Mawduucyo",
+          "elements": "Curiyayaal",
+          "platforms": "Madalo",
+          "cache": "Magic Script",
+          "contributors": "Ka-qaybgalayaasha"
+        }
+      }
+    ]
+  }
+}

@@ -25,5 +25,6 @@
   "ready": "就绪",
   "editing": "编辑中",
   "updated": "{date} 更新",
-  "position": "第 {index} 页，共 {count} 页"
+  "position": "第 {index} 页，共 {count} 页",
+  "pageWindow": "{name} 窗口"
 }

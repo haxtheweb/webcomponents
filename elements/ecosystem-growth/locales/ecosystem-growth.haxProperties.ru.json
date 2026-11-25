@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Рост экосистемы",
+    "description": "Как проект рос со временем и что экономит его повторное использование, изображённое в виде кристалла по данным роста PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Данные роста",
+        "description": "URL папки с JSON-файлами роста (PRAW публикует их по адресу hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Первый вид",
+        "description": "Какой вид открывается первым.",
+        "options": {
+          "themes": "Темы",
+          "elements": "Элементы",
+          "platforms": "Платформы",
+          "cache": "Magic Script",
+          "contributors": "Участники"
+        }
+      }
+    ]
+  }
+}

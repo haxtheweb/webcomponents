@@ -25,5 +25,6 @@
   "ready": "준비",
   "editing": "편집 중",
   "updated": "{date} 업데이트됨",
-  "position": "페이지 {index}/{count}"
+  "position": "페이지 {index}/{count}",
+  "pageWindow": "{name} 창"
 }

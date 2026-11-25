@@ -20,6 +20,7 @@
   "projectOverview": "प्रोजेक्ट अवलोकन",
   "documentation": "दस्तावेज़ीकरण",
   "joinTheHaxDiscordCommunity": "HAX Discord समुदाय से जुड़ें",
+  "contributeWithTheGoggles": "गॉगल्स के साथ योगदान करें: देखें HAX कैसे बनता है, बग और विचार रिपोर्ट करें",
   "issueQueue": "इश्यू कतार (बग और सुविधा अनुरोध)",
   "keyboardShortcuts": "कीबोर्ड शॉर्टकट",
   "keyboardShortcutsDescription": "HAXcms में केंद्रीय रूप से पंजीकृत और सक्रिय संदर्भ के अनुसार दिखाए जाते हैं। बाइंडिंग Ctrl+Shift+[Key] का उपयोग करती हैं; संपादक में, markdown ट्रिगर टाइप करके फिर स्पेस दबाने पर ब्लॉक बदल जाता है। इनलाइन खोज खोलने के लिए खाली टेक्स्ट ब्लॉक में {slash} टाइप करें।",

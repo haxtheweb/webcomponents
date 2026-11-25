@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ukukhula kwe-ecosystem",
+    "description": "Indlela iprojekthi ekhule ngayo ngokuhamba kwexesha nento ekugcinwayo kukusetyenziswa kwayo kwakhona, izotywe njengekristale kwidatha yokukhula ye-PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yokukhula",
+        "description": "I-URL yefolda equlethe iifayile ze-JSON zokukhula (i-PRAW iyazipapasha ku-hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Umbono wokuqala",
+        "description": "Ngowuphi umbono ovuleka kuqala.",
+        "options": {
+          "themes": "Imixholo",
+          "elements": "Izinto",
+          "platforms": "Amaqonga",
+          "cache": "Magic Script",
+          "contributors": "Abanikeli"
+        }
+      }
+    ]
+  }
+}

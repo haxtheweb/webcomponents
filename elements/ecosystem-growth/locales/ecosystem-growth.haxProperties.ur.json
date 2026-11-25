@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ماحولیاتی نظام کی ترقی",
+    "description": "کوئی منصوبہ وقت کے ساتھ کیسے بڑھا اور اس کا دوبارہ استعمال کیا بچاتا ہے، PRAW کے ترقی کے ڈیٹا سے ایک کرسٹل کی صورت میں بنایا گیا۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ترقی کا ڈیٹا",
+        "description": "اس فولڈر کا URL جس میں ترقی کی JSON فائلیں ہیں (PRAW انہیں hax.cloud/data/growth/ پر شائع کرتا ہے)۔"
+      },
+      {
+        "title": "پہلا منظر",
+        "description": "کون سا منظر پہلے کھلتا ہے۔",
+        "options": {
+          "themes": "تھیمز",
+          "elements": "عناصر",
+          "platforms": "پلیٹ فارمز",
+          "cache": "Magic Script",
+          "contributors": "معاونین"
+        }
+      }
+    ]
+  }
+}

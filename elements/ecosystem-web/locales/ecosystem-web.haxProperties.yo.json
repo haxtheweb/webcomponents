@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Ipa",
           "evidence": "Ẹ̀rí",
-          "parity": "Ìbámu"
+          "parity": "Ìbámu",
+          "reuse": "Àtúnlò",
+          "weight": "Ìwúwo"
         }
       }
     ]

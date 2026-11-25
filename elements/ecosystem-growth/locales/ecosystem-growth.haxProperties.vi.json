@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tăng trưởng hệ sinh thái",
+    "description": "Một dự án đã phát triển thế nào theo thời gian và việc tái sử dụng tiết kiệm được gì, vẽ thành một khối pha lê từ dữ liệu tăng trưởng của PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dữ liệu tăng trưởng",
+        "description": "URL của thư mục chứa các tệp JSON tăng trưởng (PRAW xuất bản chúng tại hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Chế độ xem đầu tiên",
+        "description": "Chế độ xem nào mở ra trước.",
+        "options": {
+          "themes": "Giao diện",
+          "elements": "Phần tử",
+          "platforms": "Nền tảng",
+          "cache": "Magic Script",
+          "contributors": "Người đóng góp"
+        }
+      }
+    ]
+  }
+}

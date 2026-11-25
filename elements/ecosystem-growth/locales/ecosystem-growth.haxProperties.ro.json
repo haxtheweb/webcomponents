@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Creșterea ecosistemului",
+    "description": "Cum a crescut un proiect în timp și ce economisește reutilizarea lui, desenat ca un cristal din datele de creștere ale PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Date de creștere",
+        "description": "URL-ul folderului care conține fișierele JSON de creștere (PRAW le publică la hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Prima vizualizare",
+        "description": "Ce vizualizare se deschide prima.",
+        "options": {
+          "themes": "Teme",
+          "elements": "Elemente",
+          "platforms": "Platforme",
+          "cache": "Magic Script",
+          "contributors": "Contribuitori"
+        }
+      }
+    ]
+  }
+}

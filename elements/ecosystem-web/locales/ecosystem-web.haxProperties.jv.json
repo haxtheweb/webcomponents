@@ -40,7 +40,9 @@
           "bus": "Faktor bis",
           "impact": "Pengaruh",
           "evidence": "Bukti",
-          "parity": "Kesetaraan"
+          "parity": "Kesetaraan",
+          "reuse": "Dienggo maneh",
+          "weight": "Bobot"
         }
       }
     ]

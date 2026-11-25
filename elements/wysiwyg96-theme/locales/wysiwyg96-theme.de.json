@@ -25,5 +25,6 @@
   "ready": "Bereit",
   "editing": "Bearbeitung",
   "updated": "Aktualisiert am {date}",
-  "position": "Seite {index} von {count}"
+  "position": "Seite {index} von {count}",
+  "pageWindow": "Fenster {name}"
 }

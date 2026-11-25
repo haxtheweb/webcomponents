@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 263,
-    "elementsWithTranslations": 182,
-    "translationFilesFound": 49749,
+    "elementsScanned": 264,
+    "elementsWithTranslations": 183,
+    "translationFilesFound": 49954,
     "languagesSupported": [
       "af",
       "am",
@@ -553,6 +553,8 @@
     "dt.haxProperties": 0,
     "ebook-button": 1,
     "ebook-button.haxProperties": 0,
+    "ecosystem-growth": 1,
+    "ecosystem-growth.haxProperties": 0,
     "ecosystem-web.haxProperties": 0,
     "editable-table-display": 1,
     "editable-table-edit": 1,

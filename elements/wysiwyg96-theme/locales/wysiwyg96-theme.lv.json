@@ -25,5 +25,6 @@
   "ready": "Gatavs",
   "editing": "Rediģē",
   "updated": "Atjaunināts {date}",
-  "position": "Lapa {index} no {count}"
+  "position": "Lapa {index} no {count}",
+  "pageWindow": "Logs “{name}”"
 }

@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Berita dan kemas kini daripada pasukan HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Berita dan kemas kini daripada pasukan HAX.",
+  "gogglesContribute": "Menyumbang dengan gogal",
+  "gogglesContributeAbout": "Pakai gogal untuk mempelajari cara HAX dibuat dan bantu menjadikannya lebih baik: X-ray mana-mana bahagian untuk melihat kod di sebaliknya, lihat siapa yang membinanya, laporkan pepijat atau idea dengan tangkapan skrin yang menunjuk tepat padanya, betulkan terjemahan dalam bahasa anda, dan cari isu terbuka bagi apa yang ada di hadapan anda.",
+  "gogglesProjectLinks": "Lagi tentang projek ini",
+  "gogglesLinkLab": "HAX Lab: cara untuk terlibat",
+  "gogglesLinkPraw": "PRAW: orang, idea dan kisah di sebalik HAX",
+  "gogglesLinkLearn": "Learn HAX: tutorial",
+  "gogglesLinkCode": "HAX di GitHub: kodnya",
   "installAll": "Pasang HAX: semua cara untuk mendapatkannya",
-  "installAllAbout": "Pelayar, HAX CLI, Node.js, PHP, aplikasi desktop atau gesaan untuk ejen anda."
+  "installAllAbout": "Pelayar, HAX CLI, Node.js, PHP, aplikasi desktop atau gesaan untuk ejen anda.",
+  "networkBar": "Bar rangkaian HAX"
 }

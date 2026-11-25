@@ -25,5 +25,6 @@
   "ready": "Valmis",
   "editing": "Muokataan",
   "updated": "Päivitetty {date}",
-  "position": "Sivu {index}/{count}"
+  "position": "Sivu {index}/{count}",
+  "pageWindow": "{name}-ikkuna"
 }

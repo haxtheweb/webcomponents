@@ -40,7 +40,9 @@
           "bus": "Bussfaktorur",
           "impact": "Ávirkan",
           "evidence": "Prógv",
-          "parity": "Javnstøða"
+          "parity": "Javnstøða",
+          "reuse": "Endurnýtsla",
+          "weight": "Vekt"
         }
       }
     ]

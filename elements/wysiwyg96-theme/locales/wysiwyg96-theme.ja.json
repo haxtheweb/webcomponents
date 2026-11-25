@@ -25,5 +25,6 @@
   "ready": "準備完了",
   "editing": "編集中",
   "updated": "{date} 更新",
-  "position": "{count} ページ中 {index} ページ目"
+  "position": "{count} ページ中 {index} ページ目",
+  "pageWindow": "{name} ウィンドウ"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Guddina sirna naannoo",
+    "description": "Pirojektiin tokko yeroo keessa akkamitti akka guddate fi irra deebiin fayyadamuun isaa maal akka qusatu, daataa guddina PRAW irraa akka kiristaalaatti kan kaafame."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daataa guddinaa",
+        "description": "URL maqaa kuusaa faayiloota JSON guddinaa qabuu (PRAW hax.cloud/data/growth/ irratti maxxansa)."
+      },
+      {
+        "title": "Mul'ata jalqabaa",
+        "description": "Mul'ata kam dura banama.",
+        "options": {
+          "themes": "Dhimmoota bifaa",
+          "elements": "Elementoota",
+          "platforms": "Waltajjiiwwan",
+          "cache": "Magic Script",
+          "contributors": "Gumaachitoota"
+        }
+      }
+    ]
+  }
+}

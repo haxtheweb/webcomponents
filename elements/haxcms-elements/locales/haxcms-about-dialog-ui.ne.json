@@ -20,6 +20,7 @@
   "projectOverview": "परियोजना अवलोकन",
   "documentation": "कागजात",
   "joinTheHaxDiscordCommunity": "HAX Discord समुदायमा सामेल हुनुहोस्",
+  "contributeWithTheGoggles": "चस्मा लगाएर योगदान गर्नुहोस्: HAX कसरी बनेको छ हेर्नुहोस्, बग र विचारहरू रिपोर्ट गर्नुहोस्",
   "issueQueue": "समस्या सूची (बग र सुविधा अनुरोधहरू)",
   "keyboardShortcuts": "किबोर्ड सर्टकटहरू",
   "keyboardShortcutsDescription": "HAXcms मा केन्द्रीय रूपमा दर्ता गरिएका र सक्रिय सन्दर्भअनुसार देखाइएका। बाइन्डिङहरूले Ctrl+Shift+[Key] प्रयोग गर्छन्; सम्पादकमा, markdown ट्रिगर टाइप गरेपछि स्पेस थिच्दा ब्लक रूपान्तरण हुन्छ। इनलाइन खोज खोल्न खाली पाठ ब्लकमा {slash} टाइप गर्नुहोस्।",

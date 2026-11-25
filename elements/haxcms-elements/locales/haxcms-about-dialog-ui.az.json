@@ -20,6 +20,7 @@
   "projectOverview": "Layihəyə ümumi baxış",
   "documentation": "Sənədlər",
   "joinTheHaxDiscordCommunity": "HAX Discord icmasına qoşulun",
+  "contributeWithTheGoggles": "Eynəklə töhfə verin: HAX-ın necə hazırlandığını görün, xətaları və ideyaları bildirin",
   "issueQueue": "Problem növbəsi (xətalar və funksiya təklifləri)",
   "keyboardShortcuts": "Klaviatura qısayolları",
   "keyboardShortcutsDescription": "HAXcms-də mərkəzləşdirilmiş şəkildə qeydiyyata alınır və aktiv kontekstə görə göstərilir. Təyinatlar Ctrl+Shift+[Düymə] istifadə edir; redaktorda markdown tetikleyicisini yazıb ardından boşluq basdıqda blok çevrilir. Sətirdaxili axtarışı açmaq üçün boş mətn blokunda {slash} yazın.",

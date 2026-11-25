@@ -25,5 +25,6 @@
   "ready": "సిద్ధం",
   "editing": "సవరిస్తోంది",
   "updated": "{date}న నవీకరించబడింది",
-  "position": "పేజీ {index} / {count}"
+  "position": "పేజీ {index} / {count}",
+  "pageWindow": "{name} విండో"
 }

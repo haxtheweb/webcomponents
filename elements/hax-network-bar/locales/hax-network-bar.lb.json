@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Neiegkeeten an Updates vun der HAX-Equipe.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Neiegkeeten an Updates vun der HAX-Equipe.",
+  "gogglesContribute": "Mat der Brëll bäidroen",
+  "gogglesContributeAbout": "Setzt d'Brëll op, fir ze léieren, wéi HAX gemaach gëtt, an hëlleft et besser ze maachen: kuckt all Deel mat Röntgeblëck un, fir de Code dohannert ze gesinn, kuckt, wien en gebaut huet, mellt e Feeler oder eng Iddi mat engem Screenshot, deen direkt drop weist, verbessert eng Iwwersetzung an Ärer Sprooch, a fannt déi oppe Problemer fir dat, wat virun Iech ass.",
+  "gogglesProjectLinks": "Méi iwwer de Projet",
+  "gogglesLinkLab": "HAX Lab: wéi ee matmaache kann",
+  "gogglesLinkPraw": "PRAW: d'Leit, Iddien a Geschichten hannert HAX",
+  "gogglesLinkLearn": "Learn HAX: Tutorials",
+  "gogglesLinkCode": "HAX op GitHub: de Code",
   "installAll": "HAX installéieren: all Wee, et ze kréien",
-  "installAllAbout": "De Browser, d'HAX CLI, Node.js, PHP, d'Desktop-App oder e Prompt fir Ären Agent."
+  "installAllAbout": "De Browser, d'HAX CLI, Node.js, PHP, d'Desktop-App oder e Prompt fir Ären Agent.",
+  "networkBar": "HAX-Netzwierkleescht"
 }

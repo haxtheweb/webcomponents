@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Te tipu o te pūnaha hauropi",
+    "description": "Te tipu o tētahi kaupapa i roto i te wā me ngā mea ka penapenatia e tōna whakamahinga anō, he mea tuhi hei tioata mai i ngā raraunga tipu a PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Raraunga tipu",
+        "description": "Te URL o te kōpaki e pupuri ana i ngā kōnae JSON tipu (ka whakaputaina e PRAW ki hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Tirohanga tuatahi",
+        "description": "Ko tēhea tirohanga ka tuwhera tuatahi.",
+        "options": {
+          "themes": "Ngā kaupapa āhua",
+          "elements": "Ngā huānga",
+          "platforms": "Ngā papaaho",
+          "cache": "Magic Script",
+          "contributors": "Ngā kaitautoko"
+        }
+      }
+    ]
+  }
+}

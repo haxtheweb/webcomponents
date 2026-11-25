@@ -25,5 +25,6 @@
   "ready": "چمتو",
   "editing": "سمون روان دی",
   "updated": "په {date} تازه شو",
-  "position": "پاڼه {index} له {count}"
+  "position": "پاڼه {index} له {count}",
+  "pageWindow": "د {name} کړکۍ"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ایکو سسٹم دا ودھا",
+    "description": "اک منصوبہ ویلے نال کیویں ودھیا تے اوہدی دوبارہ ورتوں کی بچاندی اے، PRAW دے ودھے دے ڈیٹا توں اک بلور وانگ بنایا گیا۔"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ودھے دا ڈیٹا",
+        "description": "اوس فولڈر دا URL جیہدے وچ ودھے دیاں JSON فائلاں نیں (PRAW اوہناں نوں hax.cloud/data/growth/ اتے چھاپدا اے)۔"
+      },
+      {
+        "title": "پہلا منظر",
+        "description": "کہڑا منظر پہلاں کھلدا اے۔",
+        "options": {
+          "themes": "تھیماں",
+          "elements": "عنصر",
+          "platforms": "پلیٹ فارم",
+          "cache": "Magic Script",
+          "contributors": "حصہ پان والے"
+        }
+      }
+    ]
+  }
+}

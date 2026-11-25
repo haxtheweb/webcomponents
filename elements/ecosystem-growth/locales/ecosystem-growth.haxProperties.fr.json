@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Croissance de l’écosystème",
+    "description": "Comment un projet a grandi au fil du temps et ce que sa réutilisation fait économiser, dessiné comme un cristal à partir des données de croissance de PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Données de croissance",
+        "description": "URL du dossier qui contient les fichiers JSON de croissance (PRAW les publie sur hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Première vue",
+        "description": "Quelle vue s’ouvre en premier.",
+        "options": {
+          "themes": "Thèmes",
+          "elements": "Éléments",
+          "platforms": "Plateformes",
+          "cache": "Magic Script",
+          "contributors": "Contributeurs"
+        }
+      }
+    ]
+  }
+}

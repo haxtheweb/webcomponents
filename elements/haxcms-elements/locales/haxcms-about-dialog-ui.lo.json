@@ -20,6 +20,7 @@
   "projectOverview": "ພາບລວມໂຄງການ",
   "documentation": "ເອກະສານ",
   "joinTheHaxDiscordCommunity": "ເຂົ້າຮ່ວມຊຸມຊົນ HAX ໃນ Discord",
+  "contributeWithTheGoggles": "ປະກອບສ່ວນດ້ວຍແວ່ນຕາ: ເບິ່ງວ່າ HAX ຖືກສ້າງແນວໃດ, ລາຍງານບັນຫາ ແລະ ແນວຄິດ",
   "issueQueue": "ຄິວບັນຫາ (ຂໍ້ບົກພ່ອງ ແລະ ຄຳຂໍຄຸນສົມບັດ)",
   "keyboardShortcuts": "ທາງລັດແປ້ນພິມ",
   "keyboardShortcutsDescription": "ລົງທະບຽນໄວ້ທີ່ສູນກາງໃນ HAXcms ແລະ ສະແດງຕາມບໍລິບົດທີ່ໃຊ້ງານ. ການຜູກປຸ່ມໃຊ້ Ctrl+Shift+[Key]; ໃນຕົວແກ້ໄຂ, ການພິມຕົວກະຕຸ້ນ markdown ແລ້ວຕາມດ້ວຍຍະຫວ່າງຈະປ່ຽນບລັອກ. ພິມ {slash} ໃນບລັອກຂໍ້ຄວາມຫວ່າງເພື່ອເປີດການຄົ້ນຫາໃນແຖວ.",

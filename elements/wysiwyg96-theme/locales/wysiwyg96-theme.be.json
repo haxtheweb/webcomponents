@@ -25,5 +25,6 @@
   "ready": "Гатова",
   "editing": "Рэдагаванне",
   "updated": "Абноўлена {date}",
-  "position": "Старонка {index} з {count}"
+  "position": "Старонка {index} з {count}",
+  "pageWindow": "Акно {name}"
 }

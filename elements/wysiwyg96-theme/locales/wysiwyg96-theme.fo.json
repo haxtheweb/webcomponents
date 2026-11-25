@@ -25,5 +25,6 @@
   "ready": "Klárt",
   "editing": "Rættar",
   "updated": "Dagført {date}",
-  "position": "Síða {index} av {count}"
+  "position": "Síða {index} av {count}",
+  "pageWindow": "{name}-gluggi"
 }

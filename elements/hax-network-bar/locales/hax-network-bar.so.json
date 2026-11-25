@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Wararka iyo cusboonaysiinta kooxda HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Wararka iyo cusboonaysiinta kooxda HAX.",
+  "gogglesContribute": "Ku biir indho-gashiga",
+  "gogglesContributeAbout": "Xiro indho-gashiga si aad u barato sida HAX loo sameeyo oo aad uga caawiso in la hagaajiyo: raajo ku eeg qayb kasta si aad u aragto koodka ka dambeeya, eeg cidda dhistay, soo sheeg cillad ama fikrad adoo wata sawir shaashadeed oo si toos ah ugu jeeda, sax tarjumaad luqaddaada ah, oo hel arrimaha furan ee waxa hortaada yaal.",
+  "gogglesProjectLinks": "Wax badan oo ku saabsan mashruuca",
+  "gogglesLinkLab": "HAX Lab: sida aad uga qayb qaadan karto",
+  "gogglesLinkPraw": "PRAW: dadka, fikradaha iyo sheekooyinka ka dambeeya HAX",
+  "gogglesLinkLearn": "Learn HAX: casharro",
+  "gogglesLinkCode": "HAX ee GitHub: koodka",
   "installAll": "Rakib HAX: dhammaan siyaabaha loo helo",
-  "installAllAbout": "Browser-ka, HAX CLI, Node.js, PHP, app-ka desktop ama prompt wakiilkaaga."
+  "installAllAbout": "Browser-ka, HAX CLI, Node.js, PHP, app-ka desktop ama prompt wakiilkaaga.",
+  "networkBar": "Barta shabakadda HAX"
 }

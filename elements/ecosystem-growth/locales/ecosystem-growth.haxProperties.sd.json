@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ماحولياتي نظام جو واڌارو",
+    "description": "هڪ منصوبو وقت سان ڪيئن وڌيو ۽ ان جو ٻيهر استعمال ڇا بچائي ٿو، PRAW جي واڌاري واري ڊيٽا مان ڪرسٽل جي صورت ۾ ٺهيل."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "واڌاري جي ڊيٽا",
+        "description": "ان فولڊر جو URL جنهن ۾ واڌاري جون JSON فائلون آهن (PRAW انهن کي hax.cloud/data/growth/ تي شايع ڪري ٿو)."
+      },
+      {
+        "title": "پهريون منظر",
+        "description": "ڪهڙو منظر پهريان کلي ٿو.",
+        "options": {
+          "themes": "ٿيمز",
+          "elements": "عنصر",
+          "platforms": "پليٽ فارم",
+          "cache": "Magic Script",
+          "contributors": "حصو وٺندڙ"
+        }
+      }
+    ]
+  }
+}

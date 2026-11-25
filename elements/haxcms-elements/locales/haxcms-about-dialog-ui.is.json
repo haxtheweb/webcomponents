@@ -20,6 +20,7 @@
   "projectOverview": "Yfirlit verkefnisins",
   "documentation": "Skjölun",
   "joinTheHaxDiscordCommunity": "Taktu þátt í Discord-samfélagi HAX",
+  "contributeWithTheGoggles": "Leggðu þitt af mörkum með gleraugunum: sjáðu hvernig HAX er gert, tilkynntu villur og hugmyndir",
   "issueQueue": "Verkbeiðnaröð (villur og óskir um eiginleika)",
   "keyboardShortcuts": "Flýtilyklar",
   "keyboardShortcutsDescription": "Skráðir miðlægt í HAXcms og sýndir eftir virku samhengi. Lyklasamsetningar nota Ctrl+Shift+[Lykill]; í ritlinum breytist bálkurinn þegar þú slærð inn markdown-kveikju og síðan bil. Sláðu inn {slash} í tóman textabálk til að opna innfellda leit.",

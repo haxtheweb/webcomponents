@@ -20,6 +20,7 @@
   "projectOverview": "Projektáttekintés",
   "documentation": "Dokumentáció",
   "joinTheHaxDiscordCommunity": "Csatlakozz a HAX Discord-közösséghez",
+  "contributeWithTheGoggles": "Közreműködés a szemüveggel: nézze meg, hogyan készül a HAX, jelentsen hibákat és ötleteket",
   "issueQueue": "Hibajegysor (hibák és funkciókérések)",
   "keyboardShortcuts": "Billentyűparancsok",
   "keyboardShortcutsDescription": "Központilag regisztrálva a HAXcms-ben, és az aktív környezet szerint jelennek meg. A kötések Ctrl+Shift+[Billentyű] formájúak; a szerkesztőben egy markdown-kiváltó beírása, majd szóköz átalakítja a blokkot. Üres szövegblokkban írd be a(z) {slash} jelet a szövegközi keresés megnyitásához.",

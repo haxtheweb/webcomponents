@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rritja e ekosistemit",
+    "description": "Si u rrit një projekt me kalimin e kohës dhe çfarë kursen ripërdorimi i tij, i vizatuar si kristal nga të dhënat e rritjes së PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Të dhënat e rritjes",
+        "description": "URL e dosjes që mban skedarët JSON të rritjes (PRAW i publikon në hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Pamja e parë",
+        "description": "Cila pamje hapet e para.",
+        "options": {
+          "themes": "Temat",
+          "elements": "Elementet",
+          "platforms": "Platformat",
+          "cache": "Magic Script",
+          "contributors": "Kontribuuesit"
+        }
+      }
+    ]
+  }
+}

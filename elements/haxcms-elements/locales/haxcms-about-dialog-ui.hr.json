@@ -20,6 +20,7 @@
   "projectOverview": "Pregled projekta",
   "documentation": "Dokumentacija",
   "joinTheHaxDiscordCommunity": "Pridružite se HAX Discord zajednici",
+  "contributeWithTheGoggles": "Doprinesite s naočalama: pogledajte kako je HAX izrađen, prijavite greške i ideje",
   "issueQueue": "Popis problema (greške i zahtjevi za značajke)",
   "keyboardShortcuts": "Tipkovnički prečaci",
   "keyboardShortcutsDescription": "Registrirani centralno u HAXcms-u i prikazani prema aktivnom kontekstu. Povezivanja koriste Ctrl+Shift+[tipka]; u uređivaču upisivanje markdown okidača i zatim razmaka pretvara blok. Upišite {slash} u prazan tekstni blok za otvaranje umetnutog pretraživanja.",

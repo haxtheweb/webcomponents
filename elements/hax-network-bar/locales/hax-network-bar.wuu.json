@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX 团队个新闻搭更新。",
   "goX": "X：@haxtheweb",
   "goXAbout": "HAX 团队个新闻搭更新。",
+  "gogglesContribute": "戴上护目镜来出力",
+  "gogglesContributeAbout": "戴上护目镜，看看 HAX 是哪能做出来个，帮伊变得更好：拿随便啥部件 X 光照一照，看伊背后个代码，看是啥人做个，带一张直接指牢伊个截图来报告错误或者想法，修正侬自家语言个翻译，再寻出侬眼门前搿样物事个未解决问题。",
+  "gogglesProjectLinks": "项目个更多介绍",
+  "gogglesLinkLab": "HAX Lab：哪能参与",
+  "gogglesLinkPraw": "PRAW：HAX 背后个人、想法搭故事",
+  "gogglesLinkLearn": "学 HAX：教程",
+  "gogglesLinkCode": "GitHub 浪个 HAX：代码",
   "installAll": "安装 HAX：所有获取办法",
-  "installAllAbout": "浏览器、HAX CLI、Node.js、PHP、桌面应用，或者拨侬代理个一段提示词。"
+  "installAllAbout": "浏览器、HAX CLI、Node.js、PHP、桌面应用，或者拨侬代理个一段提示词。",
+  "networkBar": "HAX 网络栏"
 }

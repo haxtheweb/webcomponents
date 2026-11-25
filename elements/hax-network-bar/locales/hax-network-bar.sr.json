@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Вести и новости од HAX тима.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Вести и новости од HAX тима.",
+  "gogglesContribute": "Допринесите уз наочаре",
+  "gogglesContributeAbout": "Ставите наочаре да сазнате како је HAX направљен и помогнете да буде бољи: прогледајте рендгеном било који део да видите код иза њега, погледајте ко га је направио, пријавите грешку или идеју са снимком екрана усмереним тачно на њу, исправите превод на свом језику и пронађите отворене пријаве за оно што је пред вама.",
+  "gogglesProjectLinks": "Више о пројекту",
+  "gogglesLinkLab": "HAX Lab: како се укључити",
+  "gogglesLinkPraw": "PRAW: људи, идеје и приче иза HAX-а",
+  "gogglesLinkLearn": "Learn HAX: упутства",
+  "gogglesLinkCode": "HAX на GitHub-у: код",
   "installAll": "Инсталирај HAX: сви начини да га набавите",
-  "installAllAbout": "Прегледач, HAX CLI, Node.js, PHP, десктоп апликација или упит за вашег агента."
+  "installAllAbout": "Прегледач, HAX CLI, Node.js, PHP, десктоп апликација или упит за вашег агента.",
+  "networkBar": "HAX мрежна трака"
 }

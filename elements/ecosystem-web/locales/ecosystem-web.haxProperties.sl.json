@@ -40,7 +40,9 @@
           "bus": "Faktor avtobusa",
           "impact": "Vpliv",
           "evidence": "Dokaz",
-          "parity": "Pariteta"
+          "parity": "Pariteta",
+          "reuse": "Ponovna uporaba",
+          "weight": "Teža"
         }
       }
     ]

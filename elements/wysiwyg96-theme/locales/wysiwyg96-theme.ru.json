@@ -25,5 +25,6 @@
   "ready": "Готово",
   "editing": "Редактирование",
   "updated": "Обновлено {date}",
-  "position": "Страница {index} из {count}"
+  "position": "Страница {index} из {count}",
+  "pageWindow": "Окно {name}"
 }

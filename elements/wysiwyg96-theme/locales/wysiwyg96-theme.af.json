@@ -25,5 +25,6 @@
   "ready": "Gereed",
   "editing": "Redigering",
   "updated": "Opgedateer {date}",
-  "position": "Bladsy {index} van {count}"
+  "position": "Bladsy {index} van {count}",
+  "pageWindow": "{name}-venster"
 }

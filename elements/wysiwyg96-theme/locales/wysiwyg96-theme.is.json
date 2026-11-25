@@ -25,5 +25,6 @@
   "ready": "Tilbúið",
   "editing": "Í breytingu",
   "updated": "Uppfært {date}",
-  "position": "Síða {index} af {count}"
+  "position": "Síða {index} af {count}",
+  "pageWindow": "Gluggi: {name}"
 }

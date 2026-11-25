@@ -25,5 +25,6 @@
   "ready": "Réidh",
   "editing": "Ag eagarthóireacht",
   "updated": "Nuashonraithe {date}",
-  "position": "Leathanach {index} as {count}"
+  "position": "Leathanach {index} as {count}",
+  "pageWindow": "Fuinneog {name}"
 }

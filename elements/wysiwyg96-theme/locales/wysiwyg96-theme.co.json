@@ -25,5 +25,6 @@
   "ready": "Prontu",
   "editing": "Mudificazione",
   "updated": "Aghjurnatu u {date}",
-  "position": "Pagina {index} di {count}"
+  "position": "Pagina {index} di {count}",
+  "pageWindow": "Finestra {name}"
 }

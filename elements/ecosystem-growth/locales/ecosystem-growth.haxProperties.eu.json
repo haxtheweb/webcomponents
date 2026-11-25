@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistemaren hazkundea",
+    "description": "Proiektu bat denboran zehar nola hazi den eta bere berrerabilpenak zer aurrezten duen, kristal gisa marraztua PRAWen hazkunde-datuetatik."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Hazkunde-datuak",
+        "description": "Hazkunde-datuen JSON fitxategiak dituen karpetaren URLa (PRAWek hax.cloud/data/growth/ helbidean argitaratzen ditu)."
+      },
+      {
+        "title": "Lehen ikuspegia",
+        "description": "Zein ikuspegi irekitzen den lehenik.",
+        "options": {
+          "themes": "Gaiak",
+          "elements": "Elementuak",
+          "platforms": "Plataformak",
+          "cache": "Magic Script",
+          "contributors": "Laguntzaileak"
+        }
+      }
+    ]
+  }
+}

@@ -25,5 +25,6 @@
   "ready": "तैयार",
   "editing": "संपादन",
   "updated": "{date} को अपडेट किया गया",
-  "position": "पेज {index} / {count}"
+  "position": "पेज {index} / {count}",
+  "pageWindow": "{name} विंडो"
 }

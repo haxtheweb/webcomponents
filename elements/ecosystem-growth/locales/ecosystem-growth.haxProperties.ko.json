@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "생태계 성장",
+    "description": "PRAW의 성장 데이터로 그린 크리스털로, 프로젝트가 시간에 따라 어떻게 성장했고 재사용으로 무엇을 절약하는지 보여줍니다."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "성장 데이터",
+        "description": "성장 JSON 파일이 들어 있는 폴더의 URL (PRAW는 hax.cloud/data/growth/에 게시합니다)."
+      },
+      {
+        "title": "첫 화면",
+        "description": "가장 먼저 열리는 보기입니다.",
+        "options": {
+          "themes": "테마",
+          "elements": "요소",
+          "platforms": "플랫폼",
+          "cache": "Magic Script",
+          "contributors": "기여자"
+        }
+      }
+    ]
+  }
+}

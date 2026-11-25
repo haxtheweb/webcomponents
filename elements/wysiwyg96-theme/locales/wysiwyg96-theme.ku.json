@@ -25,5 +25,6 @@
   "ready": "Amade",
   "editing": "Tê sererastkirin",
   "updated": "Di {date} de hate nûkirin",
-  "position": "Rûpel {index} ji {count}"
+  "position": "Rûpel {index} ji {count}",
+  "pageWindow": "Pencereya {name}"
 }

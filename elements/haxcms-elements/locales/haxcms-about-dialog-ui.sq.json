@@ -20,6 +20,7 @@
   "projectOverview": "Përmbledhje e projektit",
   "documentation": "Dokumentacioni",
   "joinTheHaxDiscordCommunity": "Bashkohu me komunitetin HAX në Discord",
+  "contributeWithTheGoggles": "Kontribuo me syzet: shiko si bëhet HAX, raporto gabime dhe ide",
   "issueQueue": "Radha e problemeve (defekte dhe kërkesa për veçori)",
   "keyboardShortcuts": "Shkurtoret e tastierës",
   "keyboardShortcutsDescription": "Regjistrohen në mënyrë qendrore në HAXcms dhe shfaqen sipas kontekstit aktiv. Lidhjet përdorin Ctrl+Shift+[Tasti]; në redaktor, shkrimi i një nxitësi markdown e pasuar nga hapësira e shndërron bllokun. Shkruaj {slash} në një bllok teksti bosh për të hapur kërkimin në rresht.",

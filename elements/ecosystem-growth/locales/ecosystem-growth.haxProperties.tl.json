@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Paglago ng ecosystem",
+    "description": "Kung paano lumago ang isang proyekto sa paglipas ng panahon at kung ano ang natitipid ng muling paggamit nito, iginuhit bilang kristal mula sa growth data ng PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Datos ng paglago",
+        "description": "URL ng folder na naglalaman ng mga growth JSON file (inilalathala ito ng PRAW sa hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Unang view",
+        "description": "Kung aling view ang unang bubukas.",
+        "options": {
+          "themes": "Mga theme",
+          "elements": "Mga element",
+          "platforms": "Mga platform",
+          "cache": "Magic Script",
+          "contributors": "Mga contributor"
+        }
+      }
+    ]
+  }
+}

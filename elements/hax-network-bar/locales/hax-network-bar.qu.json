@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX equipomanta musuq willaykuna.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX equipomanta musuq willaykuna.",
+  "gogglesContribute": "Gafaswan yanapay",
+  "gogglesContributeAbout": "Gafasta churakuy HAX imayna rurasqa kasqanta yachanaykipaq, aswan allin kananpaq yanapanaykipaqpas: mayqin t'aqatapas rayos X hina qhaway qhepanpi kaq codigota rikunaykipaq, pim ruraranta rikuy, huk pantayta utaq yuyayta willay chayman chiqanta rikuchiq pantalla siq'iwan, simiykipi huk t'ikrayta allichay, ñawpaqniykipi kaqpaq kichasqa sasachakuykunata tariy.",
+  "gogglesProjectLinks": "Proyectomanta astawan",
+  "gogglesLinkLab": "HAX Lab: imaynatam yanapakuyta qallarinki",
+  "gogglesLinkPraw": "PRAW: HAX qhepanpi runakuna, yuyaykuna, willakuykunapas",
+  "gogglesLinkLearn": "HAX yachay: yachachiykuna",
+  "gogglesLinkCode": "HAX GitHub-pi: codigo",
   "installAll": "HAX churay: hap'inapaq llapan ñankuna",
-  "installAllAbout": "Navegador, HAX CLI, Node.js, PHP, escritorio app utaq agenteykipaq huk prompt."
+  "installAllAbout": "Navegador, HAX CLI, Node.js, PHP, escritorio app utaq agenteykipaq huk prompt.",
+  "networkBar": "HAX llika barra"
 }

@@ -20,6 +20,7 @@
   "projectOverview": "Prezentarea proiectului",
   "documentation": "Documentație",
   "joinTheHaxDiscordCommunity": "Alătură-te comunității HAX pe Discord",
+  "contributeWithTheGoggles": "Contribuiți cu ochelarii: vedeți cum este făcut HAX, raportați erori și idei",
   "issueQueue": "Lista de probleme (erori și cereri de funcționalități)",
   "keyboardShortcuts": "Comenzi rapide de la tastatură",
   "keyboardShortcutsDescription": "Înregistrate central în HAXcms și afișate în funcție de contextul activ. Combinațiile folosesc Ctrl+Shift+[Tastă]; în editor, tastarea unui declanșator markdown urmat de spațiu convertește blocul. Tastează {slash} într-un bloc de text gol pentru a deschide Căutarea inline.",

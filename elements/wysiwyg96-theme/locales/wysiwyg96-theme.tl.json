@@ -25,5 +25,6 @@
   "ready": "Handa",
   "editing": "Nag-e-edit",
   "updated": "Na-update noong {date}",
-  "position": "Pahina {index} sa {count}"
+  "position": "Pahina {index} sa {count}",
+  "pageWindow": "Window ng {name}"
 }

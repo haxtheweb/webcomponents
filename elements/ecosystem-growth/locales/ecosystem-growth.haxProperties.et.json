@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ökosüsteemi kasv",
+    "description": "Kuidas projekt aja jooksul kasvas ja mida selle taaskasutus säästab, joonistatuna kristallina PRAW-i kasvuandmetest."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kasvuandmed",
+        "description": "Kausta URL, kus asuvad kasvuandmete JSON-failid (PRAW avaldab need aadressil hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Esimene vaade",
+        "description": "Milline vaade avaneb esimesena.",
+        "options": {
+          "themes": "Teemad",
+          "elements": "Elemendid",
+          "platforms": "Platvormid",
+          "cache": "Magic Script",
+          "contributors": "Panustajad"
+        }
+      }
+    ]
+  }
+}

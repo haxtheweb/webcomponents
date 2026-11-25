@@ -25,5 +25,6 @@
   "ready": "Njikere",
   "editing": "Na-edezi",
   "updated": "Emelitere {date}",
-  "position": "Peeji {index} n'ime {count}"
+  "position": "Peeji {index} n'ime {count}",
+  "pageWindow": "Windo {name}"
 }

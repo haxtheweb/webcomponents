@@ -25,5 +25,6 @@
   "ready": "Kulungile",
   "editing": "Kuyahlelwa",
   "updated": "Kubuyekezwe ngo-{date}",
-  "position": "Ikhasi {index} kwangu-{count}"
+  "position": "Ikhasi {index} kwangu-{count}",
+  "pageWindow": "Iwindi le-{name}"
 }

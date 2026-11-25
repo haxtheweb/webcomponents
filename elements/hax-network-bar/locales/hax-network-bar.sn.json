@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nhau nemagadziridzo kubva kutimu yeHAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nhau nemagadziridzo kubva kutimu yeHAX.",
+  "gogglesContribute": "Batsira nemagirazi",
+  "gogglesContributeAbout": "Pfeka magirazi kuti udzidze kuti HAX inogadzirwa sei uye ubatsire kuiita iri nani: tarisa chero chikamu nemwaranzi weX kuti uone kodhi iri shure kwacho, ona kuti ndiani akachivaka, shuma bhagi kana pfungwa nemufananidzo wechidzitiro unonongedza pachiri chaipo, gadzirisa shanduro mumutauro wako, uye tsvaga nyaya dzakavhurika dzezviri pamberi pako.",
+  "gogglesProjectLinks": "Zvimwe pamusoro pepurojekiti",
+  "gogglesLinkLab": "HAX Lab: maitiro ekupinda",
+  "gogglesLinkPraw": "PRAW: vanhu, pfungwa nenyaya dziri shure kweHAX",
+  "gogglesLinkLearn": "Learn HAX: zvidzidzo",
+  "gogglesLinkCode": "HAX paGitHub: kodhi",
   "installAll": "Isa HAX: nzira dzese dzekuiwana",
-  "installAllAbout": "Browser, HAX CLI, Node.js, PHP, app yepadesktop kana murayiridzo wemumiriri wako."
+  "installAllAbout": "Browser, HAX CLI, Node.js, PHP, app yepadesktop kana murayiridzo wemumiriri wako.",
+  "networkBar": "Bhawa renetiweki reHAX"
 }

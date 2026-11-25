@@ -25,5 +25,6 @@
   "ready": "Listo",
   "editing": "Editando",
   "updated": "Actualizado o {date}",
-  "position": "Páxina {index} de {count}"
+  "position": "Páxina {index} de {count}",
+  "pageWindow": "Xanela {name}"
 }

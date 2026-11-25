@@ -40,7 +40,9 @@
           "bus": "Busfaktoro",
           "impact": "Efiko",
           "evidence": "Pruvo",
-          "parity": "Egaleco"
+          "parity": "Egaleco",
+          "reuse": "Reuzo",
+          "weight": "Pezo"
         }
       }
     ]

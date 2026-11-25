@@ -25,5 +25,6 @@
   "ready": "તૈયાર",
   "editing": "સંપાદન",
   "updated": "{date} ના રોજ અપડેટ",
-  "position": "પેજ {index} / {count}"
+  "position": "પેજ {index} / {count}",
+  "pageWindow": "{name} વિન્ડો"
 }

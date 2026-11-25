@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Lajme dhe përditësime nga ekipi HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Lajme dhe përditësime nga ekipi HAX.",
+  "gogglesContribute": "Kontribuo me syzet",
+  "gogglesContributeAbout": "Vër syzet për të mësuar si bëhet HAX dhe për ta ndihmuar të bëhet më i mirë: shiko me rreze X çdo pjesë për të parë kodin pas saj, shiko kush e ka ndërtuar, raporto një gabim ose një ide me një pamje ekrani të drejtuar pikërisht tek ajo, rregullo një përkthim në gjuhën tënde dhe gjej çështjet e hapura për atë që ke përpara.",
+  "gogglesProjectLinks": "Më shumë për projektin",
+  "gogglesLinkLab": "HAX Lab: si të përfshihesh",
+  "gogglesLinkPraw": "PRAW: njerëzit, idetë dhe historitë pas HAX",
+  "gogglesLinkLearn": "Learn HAX: udhëzime",
+  "gogglesLinkCode": "HAX në GitHub: kodi",
   "installAll": "Instalo HAX: çdo mënyrë për ta marrë",
-  "installAllAbout": "Shfletuesi, HAX CLI, Node.js, PHP, aplikacioni për desktop ose një prompt për agjentin tënd."
+  "installAllAbout": "Shfletuesi, HAX CLI, Node.js, PHP, aplikacioni për desktop ose një prompt për agjentin tënd.",
+  "networkBar": "Shiriti i rrjetit HAX"
 }

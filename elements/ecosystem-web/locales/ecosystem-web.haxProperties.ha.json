@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Tasiri",
           "evidence": "Shaida",
-          "parity": "Daidaito"
+          "parity": "Daidaito",
+          "reuse": "Sake amfani",
+          "weight": "Nauyi"
         }
       }
     ]

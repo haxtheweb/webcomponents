@@ -20,6 +20,7 @@
   "projectOverview": "Loyiha sharhi",
   "documentation": "Hujjatlar",
   "joinTheHaxDiscordCommunity": "HAX Discord hamjamiyatiga qoʻshiling",
+  "contributeWithTheGoggles": "Ko‘zoynak bilan hissa qo‘shing: HAX qanday yaratilganini ko‘ring, xatolar va g‘oyalar haqida xabar bering",
   "issueQueue": "Muammolar navbati (xatolar va funksiya soʻrovlari)",
   "keyboardShortcuts": "Klaviatura yorliqlari",
   "keyboardShortcutsDescription": "HAXcms da markazlashgan holda roʻyxatdan oʻtkaziladi va faol kontekstga qarab koʻrsatiladi. Bogʻlanishlar Ctrl+Shift+[Key] dan foydalanadi; muharrirda markdown triggerini yozib, soʻng boʻsh joy bosilsa, blok aylantiriladi. Satr ichidagi Qidiruvni ochish uchun boʻsh matn blokida {slash} yozing.",

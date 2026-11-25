@@ -20,6 +20,7 @@
   "projectOverview": "Tổng quan dự án",
   "documentation": "Tài liệu",
   "joinTheHaxDiscordCommunity": "Tham gia cộng đồng HAX trên Discord",
+  "contributeWithTheGoggles": "Đóng góp với kính bảo hộ: xem HAX được làm ra thế nào, báo lỗi và ý tưởng",
   "issueQueue": "Hàng đợi vấn đề (lỗi và yêu cầu tính năng)",
   "keyboardShortcuts": "Phím tắt",
   "keyboardShortcutsDescription": "Được đăng ký tập trung trong HAXcms và hiển thị theo ngữ cảnh hiện hành. Tổ hợp phím dùng Ctrl+Shift+[Phím]; trong trình chỉnh sửa, gõ một ký hiệu markdown rồi nhấn phím cách sẽ chuyển đổi khối. Gõ {slash} trong một khối văn bản trống để mở Tìm kiếm nội dòng.",

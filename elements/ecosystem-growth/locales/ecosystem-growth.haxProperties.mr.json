@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "परिसंस्थेची वाढ",
+    "description": "एखादा प्रकल्प कालांतराने कसा वाढला आणि त्याच्या पुनर्वापरामुळे काय वाचते, PRAW च्या वाढ डेटावरून स्फटिकाच्या रूपात रेखाटलेले."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "वाढ डेटा",
+        "description": "वाढीच्या JSON फायली असलेल्या फोल्डरचा URL (PRAW त्या hax.cloud/data/growth/ येथे प्रकाशित करते)."
+      },
+      {
+        "title": "पहिले दृश्य",
+        "description": "कोणते दृश्य आधी उघडते.",
+        "options": {
+          "themes": "थीम",
+          "elements": "घटक",
+          "platforms": "प्लॅटफॉर्म",
+          "cache": "Magic Script",
+          "contributors": "योगदानकर्ते"
+        }
+      }
+    ]
+  }
+}

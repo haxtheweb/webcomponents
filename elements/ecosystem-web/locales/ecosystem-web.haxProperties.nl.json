@@ -40,7 +40,9 @@
           "bus": "Busfactor",
           "impact": "Impact",
           "evidence": "Bewijs",
-          "parity": "Pariteit"
+          "parity": "Pariteit",
+          "reuse": "Hergebruik",
+          "weight": "Gewicht"
         }
       }
     ]

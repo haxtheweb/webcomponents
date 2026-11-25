@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Aħbarijiet u aġġornamenti mit-tim HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Aħbarijiet u aġġornamenti mit-tim HAX.",
+  "gogglesContribute": "Ikkontribwixxi bin-nuċċali",
+  "gogglesContributeAbout": "Ilbes in-nuċċali biex titgħallem kif inhu magħmul HAX u għin biex isir aħjar: agħmel X-ray lil kwalunkwe biċċa biex tara l-kodiċi warajha, ara min bniha, irrapporta bug jew idea b’screenshot li tipponta dritt lejha, irranġa traduzzjoni fil-lingwa tiegħek, u sib il-kwistjonijiet miftuħa għal dak li għandek quddiemek.",
+  "gogglesProjectLinks": "Aktar dwar il-proġett",
+  "gogglesLinkLab": "HAX Lab: kif tinvolvi ruħek",
+  "gogglesLinkPraw": "PRAW: in-nies, l-ideat u l-istejjer wara HAX",
+  "gogglesLinkLearn": "Learn HAX: tutorials",
+  "gogglesLinkCode": "HAX fuq GitHub: il-kodiċi",
   "installAll": "Installa HAX: kull mod kif tikseb",
-  "installAllAbout": "Il-browser, il-HAX CLI, Node.js, PHP, l-app tad-desktop jew prompt għall-aġent tiegħek."
+  "installAllAbout": "Il-browser, il-HAX CLI, Node.js, PHP, l-app tad-desktop jew prompt għall-aġent tiegħek.",
+  "networkBar": "Bar tan-netwerk HAX"
 }

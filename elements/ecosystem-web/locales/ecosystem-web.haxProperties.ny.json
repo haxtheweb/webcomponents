@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Zotsatira",
           "evidence": "Umboni",
-          "parity": "Kufanana"
+          "parity": "Kufanana",
+          "reuse": "Kugwiritsanso ntchito",
+          "weight": "Kulemera"
         }
       }
     ]

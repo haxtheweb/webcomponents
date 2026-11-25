@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Uto nke usoro obibi",
+    "description": "Otu ọrụ si too ka oge na-aga na ihe iji ya ọzọ na-echekwa, e sere ya dị ka kristal site na data uto nke PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data uto",
+        "description": "URL nke folda nwere faịlụ JSON nke uto (PRAW na-ebipụta ha na hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Nlele mbụ",
+        "description": "Nlele nke na-emepe mbụ.",
+        "options": {
+          "themes": "Isiokwu",
+          "elements": "Ihe mejupụtara",
+          "platforms": "Ikpo okwu",
+          "cache": "Magic Script",
+          "contributors": "Ndị nyere aka"
+        }
+      }
+    ]
+  }
+}

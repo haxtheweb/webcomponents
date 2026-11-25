@@ -25,5 +25,6 @@
   "ready": "Listo",
   "editing": "Editando",
   "updated": "Actualizado el {date}",
-  "position": "Página {index} de {count}"
+  "position": "Página {index} de {count}",
+  "pageWindow": "Ventana de {name}"
 }

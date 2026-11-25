@@ -40,7 +40,9 @@
           "bus": "Rútustuðull",
           "impact": "Áhrif",
           "evidence": "Rökstuðningur",
-          "parity": "Jöfnuður"
+          "parity": "Jöfnuður",
+          "reuse": "Endurnýting",
+          "weight": "Þyngd"
         }
       }
     ]

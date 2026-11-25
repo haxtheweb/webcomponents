@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "生态系统个成长",
+    "description": "一个项目随辰光哪能长大，伊个重复利用省脱多少，用 PRAW 个成长数据画成一块水晶。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "成长数据",
+        "description": "放成长 JSON 文件个文件夹个 URL（PRAW 拿伊拉发布在 hax.cloud/data/growth/）。"
+      },
+      {
+        "title": "第一个视图",
+        "description": "先打开哪一个视图。",
+        "options": {
+          "themes": "主题",
+          "elements": "元件",
+          "platforms": "平台",
+          "cache": "Magic Script",
+          "contributors": "贡献者"
+        }
+      }
+    ]
+  }
+}

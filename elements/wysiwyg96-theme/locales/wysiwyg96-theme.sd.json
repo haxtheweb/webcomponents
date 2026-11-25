@@ -25,5 +25,6 @@
   "ready": "تيار",
   "editing": "ايڊٽنگ",
   "updated": "{date} تي اپڊيٽ ٿيو",
-  "position": "صفحو {index} مان {count}"
+  "position": "صفحو {index} مان {count}",
+  "pageWindow": "{name} ونڊو"
 }

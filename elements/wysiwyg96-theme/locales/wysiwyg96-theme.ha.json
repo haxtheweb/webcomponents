@@ -25,5 +25,6 @@
   "ready": "A shirye",
   "editing": "Ana gyarawa",
   "updated": "An sabunta {date}",
-  "position": "Shafi {index} cikin {count}"
+  "position": "Shafi {index} cikin {count}",
+  "pageWindow": "Tagar {name}"
 }

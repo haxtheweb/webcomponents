@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Oduu fi haaromsa garee HAX irraa.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Oduu fi haaromsa garee HAX irraa.",
+  "gogglesContribute": "Gaashaa ijaatiin gumaachi",
+  "gogglesContributeAbout": "HAX akkamitti akka hojjetame baruuf fi fooyyessuuf gargaaruuf gaashaa ijaa kaa'adhu: kutaa kamiyyuu X-ray godhii koodii isa duuba jiru ilaali, eenyu akka ijaare ilaali, dogoggora ykn yaada suuraa iskiriinii sirritti isa agarsiisuun gabaasi, hiikkaa afaan keetiin jiru sirreessi, akkasumas waan si dura jiruuf dhimmoota banaa ta'an barbaadi.",
+  "gogglesProjectLinks": "Waa'ee pirojektichaa dabalataan",
+  "gogglesLinkLab": "HAX Lab: akkamitti hirmaachuu dandeessa",
+  "gogglesLinkPraw": "PRAW: namoota, yaadota fi seenaa HAX duuba jiran",
+  "gogglesLinkLearn": "HAX baradhu: qajeelfamoota",
+  "gogglesLinkCode": "HAX GitHub irratti: koodii",
   "installAll": "HAX dhaabi: karaawwan itti argattu hunda",
-  "installAllAbout": "Barbaadduu, HAX CLI, Node.js, PHP, appii desktop ykn ajaja eejentii keetiif."
+  "installAllAbout": "Barbaadduu, HAX CLI, Node.js, PHP, appii desktop ykn ajaja eejentii keetiif.",
+  "networkBar": "Barruu networkii HAX"
 }

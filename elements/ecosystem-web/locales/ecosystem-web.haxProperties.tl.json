@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Epekto",
           "evidence": "Ebidensya",
-          "parity": "Parity"
+          "parity": "Parity",
+          "reuse": "Muling paggamit",
+          "weight": "Bigat"
         }
       }
     ]

@@ -20,6 +20,7 @@
   "projectOverview": "প্রকল্পের সারসংক্ষেপ",
   "documentation": "ডকুমেন্টেশন",
   "joinTheHaxDiscordCommunity": "HAX Discord কমিউনিটিতে যোগ দিন",
+  "contributeWithTheGoggles": "গগলস পরে অবদান রাখুন: HAX কীভাবে তৈরি হয় দেখুন, বাগ ও ধারণা জানান",
   "issueQueue": "ইস্যু কিউ (বাগ ও ফিচার অনুরোধ)",
   "keyboardShortcuts": "কিবোর্ড শর্টকাট",
   "keyboardShortcutsDescription": "HAXcms-এ কেন্দ্রীয়ভাবে নিবন্ধিত এবং সক্রিয় প্রসঙ্গ অনুযায়ী দেখানো হয়। বাইন্ডিং Ctrl+Shift+[Key] ব্যবহার করে; এডিটরে একটি markdown ট্রিগার টাইপ করে স্পেস দিলে ব্লকটি রূপান্তরিত হয়। ইনলাইন সার্চ খুলতে খালি টেক্সট ব্লকে {slash} টাইপ করুন।",

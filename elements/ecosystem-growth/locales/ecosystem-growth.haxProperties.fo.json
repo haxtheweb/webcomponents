@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Vøkstur í vistskipanini",
+    "description": "Hvussu ein verkætlan er vaksin við tíðini, og hvat endurnýtslan av henni sparir, teknað sum ein kristallur út frá vakstrardátunum hjá PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vakstrardátur",
+        "description": "URL til mappuna, sum hevur JSON-fílurnar um vøkstur (PRAW útgevur tær á hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Fyrsta sýni",
+        "description": "Hvørt sýni verður latið upp fyrst.",
+        "options": {
+          "themes": "Tema",
+          "elements": "Element",
+          "platforms": "Pallar",
+          "cache": "Magic Script",
+          "contributors": "Íkastarar"
+        }
+      }
+    ]
+  }
+}

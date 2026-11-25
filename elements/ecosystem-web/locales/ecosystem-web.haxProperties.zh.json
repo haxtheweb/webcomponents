@@ -40,7 +40,9 @@
           "bus": "巴士因子",
           "impact": "影响力",
           "evidence": "依据",
-          "parity": "一致性"
+          "parity": "一致性",
+          "reuse": "复用",
+          "weight": "体积"
         }
       }
     ]

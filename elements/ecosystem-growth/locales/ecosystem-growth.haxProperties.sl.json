@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rast ekosistema",
+    "description": "Kako je projekt rasel skozi čas in kaj prihrani njegova ponovna uporaba, narisano kot kristal iz podatkov o rasti iz PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Podatki o rasti",
+        "description": "URL mape z datotekami JSON o rasti (PRAW jih objavlja na hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Prvi pogled",
+        "description": "Kateri pogled se odpre prvi.",
+        "options": {
+          "themes": "Teme",
+          "elements": "Elementi",
+          "platforms": "Platforme",
+          "cache": "Magic Script",
+          "contributors": "Sodelavci"
+        }
+      }
+    ]
+  }
+}

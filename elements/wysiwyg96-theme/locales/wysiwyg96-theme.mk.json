@@ -25,5 +25,6 @@
   "ready": "Подготвено",
   "editing": "Уредување",
   "updated": "Ажурирано {date}",
-  "position": "Страница {index} од {count}"
+  "position": "Страница {index} од {count}",
+  "pageWindow": "Прозорец {name}"
 }

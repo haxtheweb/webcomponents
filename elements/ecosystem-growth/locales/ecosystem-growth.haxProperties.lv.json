@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistēmas izaugsme",
+    "description": "Kā projekts auga laika gaitā un ko ietaupa tā atkalizmantošana, attēlots kā kristāls no PRAW izaugsmes datiem."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Izaugsmes dati",
+        "description": "Mapes URL, kurā atrodas izaugsmes JSON faili (PRAW tos publicē adresē hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Pirmais skats",
+        "description": "Kurš skats tiek atvērts pirmais.",
+        "options": {
+          "themes": "Motīvi",
+          "elements": "Elementi",
+          "platforms": "Platformas",
+          "cache": "Magic Script",
+          "contributors": "Līdzautori"
+        }
+      }
+    ]
+  }
+}

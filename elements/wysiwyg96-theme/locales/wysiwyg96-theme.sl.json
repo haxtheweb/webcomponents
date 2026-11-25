@@ -25,5 +25,6 @@
   "ready": "Pripravljeno",
   "editing": "Urejanje",
   "updated": "Posodobljeno {date}",
-  "position": "Stran {index} od {count}"
+  "position": "Stran {index} od {count}",
+  "pageWindow": "Okno {name}"
 }

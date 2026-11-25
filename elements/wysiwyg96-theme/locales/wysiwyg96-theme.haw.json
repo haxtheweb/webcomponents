@@ -25,5 +25,6 @@
   "ready": "Mākaukau",
   "editing": "Ke hoʻoponopono nei",
   "updated": "Hōʻano hou ʻia ma {date}",
-  "position": "ʻAoʻao {index} o {count}"
+  "position": "ʻAoʻao {index} o {count}",
+  "pageWindow": "Puka aniani {name}"
 }

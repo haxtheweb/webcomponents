@@ -25,5 +25,6 @@
   "ready": "तयार",
   "editing": "सम्पादन हुँदै",
   "updated": "{date} मा अद्यावधिक",
-  "position": "{count} मध्ये पृष्ठ {index}"
+  "position": "{count} मध्ये पृष्ठ {index}",
+  "pageWindow": "{name} विन्डो"
 }

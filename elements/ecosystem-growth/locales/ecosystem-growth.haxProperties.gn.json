@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistema kakuaa",
+    "description": "Mba'éichapa peteĩ tembiaporã okakuaa ára ohasávo ha mba'épa ohepyme'ẽ'ỹ ijepuru jey, ojehaíva peteĩ kristal-icha PRAW kakuaa marandu guive."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kakuaa marandu",
+        "description": "Kuatiañongatuha URL oguerekóva umi kakuaa JSON marandurenda (PRAW omoherakuã hax.cloud/data/growth/-pe)."
+      },
+      {
+        "title": "Jehecha peteĩha",
+        "description": "Mba'e jehechápa ojepe'a raẽ.",
+        "options": {
+          "themes": "Téma",
+          "elements": "Mba'epehẽ",
+          "platforms": "Plataforma",
+          "cache": "Magic Script",
+          "contributors": "Pytyvõhára"
+        }
+      }
+    ]
+  }
+}

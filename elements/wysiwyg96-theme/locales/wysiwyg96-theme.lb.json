@@ -25,5 +25,6 @@
   "ready": "Prett",
   "editing": "Beaarbechtung",
   "updated": "Aktualiséiert den {date}",
-  "position": "Säit {index} vun {count}"
+  "position": "Säit {index} vun {count}",
+  "pageWindow": "Fënster {name}"
 }

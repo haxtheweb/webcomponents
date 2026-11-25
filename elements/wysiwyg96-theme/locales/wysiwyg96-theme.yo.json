@@ -25,5 +25,6 @@
   "ready": "Ó ti ṣetán",
   "editing": "Ó ń ṣàtúnṣe",
   "updated": "A ṣe ìmúdójúìwọ̀n ní {date}",
-  "position": "Ojú-ìwé {index} nínú {count}"
+  "position": "Ojú-ìwé {index} nínú {count}",
+  "pageWindow": "Fèrèsé {name}"
 }

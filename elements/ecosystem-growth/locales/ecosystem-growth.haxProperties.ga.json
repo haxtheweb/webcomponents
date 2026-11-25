@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Fás an éiceachórais",
+    "description": "Conas a d’fhás tionscadal le himeacht ama agus an méid a shábhálann a athúsáid, tarraingthe mar chriostal ó shonraí fáis PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sonraí fáis",
+        "description": "URL an fhillteáin ina bhfuil comhaid JSON an fháis (foilsíonn PRAW iad ag hax.cloud/data/growth/)."
+      },
+      {
+        "title": "An chéad amharc",
+        "description": "Cén t-amharc a osclaítear ar dtús.",
+        "options": {
+          "themes": "Téamaí",
+          "elements": "Eilimintí",
+          "platforms": "Ardáin",
+          "cache": "Magic Script",
+          "contributors": "Rannpháirtithe"
+        }
+      }
+    ]
+  }
+}

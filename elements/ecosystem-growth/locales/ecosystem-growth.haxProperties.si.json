@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "පරිසර පද්ධතියේ වර්ධනය",
+    "description": "ව්‍යාපෘතියක් කාලයත් සමඟ වර්ධනය වූ ආකාරය සහ එහි නැවත භාවිතයෙන් ඉතිරි වන දේ, PRAW හි වර්ධන දත්ත වලින් ස්ඵටිකයක් ලෙස ඇඳ ඇත."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "වර්ධන දත්ත",
+        "description": "වර්ධන JSON ගොනු අඩංගු ෆෝල්ඩරයේ URL (PRAW ඒවා hax.cloud/data/growth/ හි ප්‍රකාශ කරයි)."
+      },
+      {
+        "title": "පළමු දසුන",
+        "description": "මුලින්ම විවෘත වන්නේ කුමන දසුනද.",
+        "options": {
+          "themes": "තේමා",
+          "elements": "මූලාංග",
+          "platforms": "වේදිකා",
+          "cache": "Magic Script",
+          "contributors": "දායකයින්"
+        }
+      }
+    ]
+  }
+}

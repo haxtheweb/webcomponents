@@ -20,6 +20,7 @@
   "projectOverview": "Trosolwg o'r prosiect",
   "documentation": "Dogfennaeth",
   "joinTheHaxDiscordCommunity": "Ymunwch â chymuned Discord HAX",
+  "contributeWithTheGoggles": "Cyfrannwch gyda'r gogls: gweld sut mae HAX wedi'i wneud, rhoi gwybod am namau a syniadau",
   "issueQueue": "Ciw problemau (namau a cheisiadau am nodweddion)",
   "keyboardShortcuts": "Llwybrau byr y bysellfwrdd",
   "keyboardShortcutsDescription": "Wedi'u cofrestru'n ganolog yn HAXcms ac yn cael eu dangos yn ôl y cyd-destun gweithredol. Mae'r rhwymiadau'n defnyddio Ctrl+Shift+[Bysell]; yn y golygydd, mae teipio sbardun markdown ac yna bwlch yn trosi'r bloc. Teipiwch {slash} mewn bloc testun gwag i agor Chwilio mewnol.",

@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Wpływ",
           "evidence": "Dowody",
-          "parity": "Parytet"
+          "parity": "Parytet",
+          "reuse": "Ponowne użycie",
+          "weight": "Waga"
         }
       }
     ]

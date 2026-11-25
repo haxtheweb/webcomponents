@@ -25,5 +25,6 @@
   "ready": "Spremno",
   "editing": "Uređivanje",
   "updated": "Ažurirano {date}",
-  "position": "Stranica {index} od {count}"
+  "position": "Stranica {index} od {count}",
+  "pageWindow": "Prozor {name}"
 }

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kukura kweecosystem",
+    "description": "Kuti purojekiti yakakura sei nekufamba kwenguva uye kuti kushandiswa kwayo zvakare kunochengetedza chii, kwakadhirowewa sekristaro kubva kudata rekukura rePRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data rekukura",
+        "description": "URL yefodha ine mafaira eJSON ekukura (PRAW inoaburitsa pa hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Maonero ekutanga",
+        "description": "Maonero api anovhurwa kutanga.",
+        "options": {
+          "themes": "Madingindira",
+          "elements": "Zvinhu",
+          "platforms": "Mapuratifomu",
+          "cache": "Magic Script",
+          "contributors": "Vabatsiri"
+        }
+      }
+    ]
+  }
+}

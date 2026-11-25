@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nutizie è aghjurnamenti da a squadra HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nutizie è aghjurnamenti da a squadra HAX.",
+  "gogglesContribute": "Cuntribuisce cù l'occhjali",
+  "gogglesContributeAbout": "Mettiti l'occhjali per amparà cumu hè fattu HAX è aiutà à migliurallu: guarda ogni pezzu à i raggi X per vede u codice daretu, vede quale l'hà custruitu, signalà un sbagliu o un'idea cù una catturata di screnu chì punta ghjustu nantu, curreghje una traduzzione in a to lingua, è truvà l'issues aperte per ciò chì ai davanti.",
+  "gogglesProjectLinks": "Di più nant'à u prughjettu",
+  "gogglesLinkLab": "HAX Lab: cumu participà",
+  "gogglesLinkPraw": "PRAW: e persone, l'idee è e storie daretu à HAX",
+  "gogglesLinkLearn": "Learn HAX: tutoriali",
+  "gogglesLinkCode": "HAX nant'à GitHub: u codice",
   "installAll": "Installà HAX: tutti i modi d'avellu",
-  "installAllAbout": "U navigatore, a HAX CLI, Node.js, PHP, l'appiecazione d'uffiziu o un prompt per u vostru agente."
+  "installAllAbout": "U navigatore, a HAX CLI, Node.js, PHP, l'appiecazione d'uffiziu o un prompt per u vostru agente.",
+  "networkBar": "Barra di a reta HAX"
 }

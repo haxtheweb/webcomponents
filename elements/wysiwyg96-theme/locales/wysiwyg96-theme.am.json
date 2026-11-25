@@ -25,5 +25,6 @@
   "ready": "ዝግጁ",
   "editing": "በአርትዖት ላይ",
   "updated": "የተዘመነው {date}",
-  "position": "ገጽ {index} ከ {count}"
+  "position": "ገጽ {index} ከ {count}",
+  "pageWindow": "የ{name} መስኮት"
 }

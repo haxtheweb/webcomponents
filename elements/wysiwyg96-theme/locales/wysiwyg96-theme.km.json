@@ -25,5 +25,6 @@
   "ready": "រួចរាល់",
   "editing": "កំពុងកែសម្រួល",
   "updated": "បានធ្វើបច្ចុប្បន្នភាព {date}",
-  "position": "ទំព័រ {index} នៃ {count}"
+  "position": "ទំព័រ {index} នៃ {count}",
+  "pageWindow": "បង្អួច {name}"
 }

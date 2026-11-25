@@ -20,6 +20,7 @@
   "projectOverview": "Pangkalahatang-ideya ng proyekto",
   "documentation": "Dokumentasyon",
   "joinTheHaxDiscordCommunity": "Sumali sa HAX Discord community",
+  "contributeWithTheGoggles": "Mag-ambag gamit ang goggles: tingnan kung paano ginawa ang HAX, mag-ulat ng mga bug at ideya",
   "issueQueue": "Issue queue (mga bug at hiling na feature)",
   "keyboardShortcuts": "Mga keyboard shortcut",
   "keyboardShortcutsDescription": "Nakarehistro nang sentral sa HAXcms at ipinapakita ayon sa aktibong konteksto. Gumagamit ang mga binding ng Ctrl+Shift+[Key]; sa editor, ang pag-type ng markdown trigger at pagkatapos ay space ay nagko-convert ng block. I-type ang {slash} sa walang lamang text block para buksan ang inline na Paghahanap.",

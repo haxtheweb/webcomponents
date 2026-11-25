@@ -40,7 +40,9 @@
           "bus": "Take pahi",
           "impact": "Pānga",
           "evidence": "Taunakitanga",
-          "parity": "Ōritetanga"
+          "parity": "Ōritetanga",
+          "reuse": "Whakamahi anō",
+          "weight": "Taumaha"
         }
       }
     ]

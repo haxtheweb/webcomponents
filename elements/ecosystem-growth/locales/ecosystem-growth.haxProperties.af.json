@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosisteemgroei",
+    "description": "Hoe ’n projek oor tyd gegroei het en wat die hergebruik daarvan bespaar, geteken as ’n kristal uit PRAW se groeidata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Groeidata",
+        "description": "URL van die gids wat die groei-JSON-lêers bevat (PRAW publiseer dit by hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Eerste aansig",
+        "description": "Watter aansig eerste oopmaak.",
+        "options": {
+          "themes": "Temas",
+          "elements": "Elemente",
+          "platforms": "Platforms",
+          "cache": "Magic Script",
+          "contributors": "Bydraers"
+        }
+      }
+    ]
+  }
+}

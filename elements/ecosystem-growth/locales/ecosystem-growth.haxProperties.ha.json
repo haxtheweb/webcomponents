@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Girman tsarin halittu",
+    "description": "Yadda wani aiki ya girma a tsawon lokaci da abin da sake amfani da shi ke ajiyewa, an zana shi kamar lu'ulu'u daga bayanan girma na PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bayanan girma",
+        "description": "URL na babban fayil ɗin da ke ɗauke da fayilolin JSON na girma (PRAW na wallafa su a hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Duba na farko",
+        "description": "Wane duba ne zai buɗe da farko.",
+        "options": {
+          "themes": "Jigogi",
+          "elements": "Abubuwa",
+          "platforms": "Dandamali",
+          "cache": "Magic Script",
+          "contributors": "Masu ba da gudummawa"
+        }
+      }
+    ]
+  }
+}

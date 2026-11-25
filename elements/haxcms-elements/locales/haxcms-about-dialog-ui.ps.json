@@ -20,6 +20,7 @@
   "projectOverview": "د پروژې عمومي کتنه",
   "documentation": "اسناد",
   "joinTheHaxDiscordCommunity": "د HAX Discord ټولنې سره یوځای شئ",
+  "contributeWithTheGoggles": "د عینکو سره ونډه واخلئ: وګورئ چې HAX څنګه جوړ شوی، ستونزې او نظرونه راپور کړئ",
   "issueQueue": "د مسلو کتار (ستونزې او د ځانګړنو غوښتنې)",
   "keyboardShortcuts": "د کیبورډ لنډلارې",
   "keyboardShortcutsDescription": "په HAXcms کې په مرکزي توګه ثبت شوې او د فعالو شرایطو له مخې ښودل کېږي. تړونونه Ctrl+Shift+[Key] کاروي؛ په سمونګر کې، د markdown محرک لیکل او بیا تشه ځای بلاک بدلوي. د کرښه ییز لټون د پرانیستلو لپاره په تش متن بلاک کې {slash} ولیکئ.",

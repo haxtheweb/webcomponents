@@ -20,6 +20,7 @@
   "projectOverview": "プロジェクトの概要",
   "documentation": "ドキュメント",
   "joinTheHaxDiscordCommunity": "HAX の Discord コミュニティに参加",
+  "contributeWithTheGoggles": "ゴーグルで貢献する: HAX の作られ方を見て、バグやアイデアを報告",
   "issueQueue": "課題キュー (バグと機能リクエスト)",
   "keyboardShortcuts": "キーボードショートカット",
   "keyboardShortcutsDescription": "HAXcms で一元的に登録され、現在のコンテキストに応じて表示されます。キー割り当ては Ctrl+Shift+[Key] を使用します。エディターでは、Markdown のトリガーを入力してからスペースを押すとブロックが変換されます。空のテキストブロックで {slash} を入力すると、インライン検索が開きます。",

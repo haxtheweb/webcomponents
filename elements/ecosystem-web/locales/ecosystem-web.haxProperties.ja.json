@@ -40,7 +40,9 @@
           "bus": "バス係数",
           "impact": "影響",
           "evidence": "根拠",
-          "parity": "同等性"
+          "parity": "同等性",
+          "reuse": "再利用",
+          "weight": "重さ"
         }
       }
     ]

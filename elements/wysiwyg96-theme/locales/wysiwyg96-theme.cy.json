@@ -25,5 +25,6 @@
   "ready": "Yn barod",
   "editing": "Yn golygu",
   "updated": "Diweddarwyd {date}",
-  "position": "Tudalen {index} o {count}"
+  "position": "Tudalen {index} o {count}",
+  "pageWindow": "Ffenestr {name}"
 }

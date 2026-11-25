@@ -25,5 +25,6 @@
   "ready": "Listo",
   "editing": "Allichachkan",
   "updated": "{date} p'unchawpi musuqchasqa",
-  "position": "P'anqa {index} {count} manta"
+  "position": "P'anqa {index} {count} manta",
+  "pageWindow": "{name} ventana"
 }

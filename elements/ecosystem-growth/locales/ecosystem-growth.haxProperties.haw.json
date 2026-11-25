@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ulu ʻana o ka kaiaola",
+    "description": "Pehea i ulu ai kekahi papahana i ka manawa a me ka mea e mālama ʻia e kona hoʻohana hou ʻia, i kaha ʻia me he aniani kalaka lā mai nā ʻikepili ulu o PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ʻIkepili ulu",
+        "description": "URL o ka waihona e paʻa ana i nā faila JSON ulu (hoʻopuka ʻo PRAW iā lākou ma hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Hiʻohiʻona mua",
+        "description": "ʻO ka hiʻohiʻona hea e wehe mua ai.",
+        "options": {
+          "themes": "Nā kumuhana",
+          "elements": "Nā mea",
+          "platforms": "Nā kahua",
+          "cache": "Magic Script",
+          "contributors": "Nā mea kōkua"
+        }
+      }
+    ]
+  }
+}

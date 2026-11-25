@@ -25,5 +25,6 @@
   "ready": "גרייט",
   "editing": "מע רעדאַקטירט",
   "updated": "דערהײַנטיקט {date}",
-  "position": "בלאַט {index} פֿון {count}"
+  "position": "בלאַט {index} פֿון {count}",
+  "pageWindow": "{name} פֿענצטער"
 }

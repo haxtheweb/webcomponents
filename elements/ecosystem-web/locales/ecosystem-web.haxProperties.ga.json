@@ -40,7 +40,9 @@
           "bus": "Fachtóir bus",
           "impact": "Tionchar",
           "evidence": "Fianaise",
-          "parity": "Paireacht"
+          "parity": "Paireacht",
+          "reuse": "Athúsáid",
+          "weight": "Meáchan"
         }
       }
     ]

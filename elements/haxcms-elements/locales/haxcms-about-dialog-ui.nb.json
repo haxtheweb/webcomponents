@@ -20,6 +20,7 @@
   "projectOverview": "Prosjektoversikt",
   "documentation": "Dokumentasjon",
   "joinTheHaxDiscordCommunity": "Bli med i HAX-fellesskapet på Discord",
+  "contributeWithTheGoggles": "Bidra med brillene: se hvordan HAX er laget, meld fra om feil og ideer",
   "issueQueue": "Sakskø (feil og funksjonsforespørsler)",
   "keyboardShortcuts": "Hurtigtaster",
   "keyboardShortcutsDescription": "Registrert sentralt i HAXcms og vist etter aktiv kontekst. Tastekombinasjoner bruker Ctrl+Shift+[tast]; i editoren konverteres blokken når du skriver en markdown-utløser etterfulgt av mellomrom. Skriv {slash} i en tom tekstblokk for å åpne innebygd søk.",

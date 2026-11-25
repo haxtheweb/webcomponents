@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Groei fan it ekosysteem",
+    "description": "Hoe't in projekt mei de tiid groeid is en wat it wergebrûk derfan besparret, tekene as in kristal út de groeigegevens fan PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Groeigegevens",
+        "description": "URL fan de map mei de JSON-bestannen oer de groei (PRAW publisearret se op hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Earste werjefte",
+        "description": "Hokker werjefte as earste iepene wurdt.",
+        "options": {
+          "themes": "Tema’s",
+          "elements": "Eleminten",
+          "platforms": "Platfoarms",
+          "cache": "Magic Script",
+          "contributors": "Bydragers"
+        }
+      }
+    ]
+  }
+}

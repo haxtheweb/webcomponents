@@ -25,5 +25,6 @@
   "ready": "Պատրաստ է",
   "editing": "Խմբագրում",
   "updated": "Թարմացվել է {date}",
-  "position": "Էջ {index}՝ {count}-ից"
+  "position": "Էջ {index}՝ {count}-ից",
+  "pageWindow": "{name} պատուհան"
 }

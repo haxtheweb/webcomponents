@@ -25,5 +25,6 @@
   "ready": "Klar",
   "editing": "Redigerer",
   "updated": "Opdateret {date}",
-  "position": "Side {index} af {count}"
+  "position": "Side {index} af {count}",
+  "pageWindow": "{name}-vindue"
 }

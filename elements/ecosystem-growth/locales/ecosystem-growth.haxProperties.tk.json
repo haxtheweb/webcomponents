@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekoulgamyň ösüşi",
+    "description": "Taslamanyň wagtyň geçmegi bilen nähili ösendigi we gaýtadan ulanmagyň näme tygşytlaýandygy, PRAW-yň ösüş maglumatlaryndan kristal görnüşinde çekilen."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Ösüş maglumatlary",
+        "description": "Ösüş JSON faýllaryny saklaýan bukjanyň URL-i (PRAW olary hax.cloud/data/growth/ salgysynda çap edýär)."
+      },
+      {
+        "title": "Ilkinji görnüş",
+        "description": "Haýsy görnüş ilki açylýar.",
+        "options": {
+          "themes": "Temalar",
+          "elements": "Elementler",
+          "platforms": "Platformalar",
+          "cache": "Magic Script",
+          "contributors": "Goşant goşanlar"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Twf yr ecosystem",
+    "description": "Sut tyfodd prosiect dros amser a beth mae ei ailddefnydd yn ei arbed, wedi'i lunio fel crisial o ddata twf PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data twf",
+        "description": "URL y ffolder sy'n dal y ffeiliau JSON twf (mae PRAW yn eu cyhoeddi yn hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Golwg gyntaf",
+        "description": "Pa olwg sy'n agor gyntaf.",
+        "options": {
+          "themes": "Themâu",
+          "elements": "Elfennau",
+          "platforms": "Platfformau",
+          "cache": "Magic Script",
+          "contributors": "Cyfranwyr"
+        }
+      }
+    ]
+  }
+}

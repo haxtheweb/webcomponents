@@ -40,7 +40,9 @@
           "bus": "Faktor bas",
           "impact": "Impak",
           "evidence": "Bukti",
-          "parity": "Pariti"
+          "parity": "Pariti",
+          "reuse": "Guna semula",
+          "weight": "Berat"
         }
       }
     ]

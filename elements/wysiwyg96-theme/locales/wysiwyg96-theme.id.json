@@ -25,5 +25,6 @@
   "ready": "Siap",
   "editing": "Menyunting",
   "updated": "Diperbarui {date}",
-  "position": "Halaman {index} dari {count}"
+  "position": "Halaman {index} dari {count}",
+  "pageWindow": "Jendela {name}"
 }

@@ -40,7 +40,9 @@
           "bus": "Buszfaktor",
           "impact": "Hatás",
           "evidence": "Bizonyíték",
-          "parity": "Paritás"
+          "parity": "Paritás",
+          "reuse": "Újrafelhasználás",
+          "weight": "Súly"
         }
       }
     ]

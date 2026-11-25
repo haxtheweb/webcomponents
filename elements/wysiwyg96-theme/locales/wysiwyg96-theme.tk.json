@@ -25,5 +25,6 @@
   "ready": "Taýýar",
   "editing": "Redaktirlenýär",
   "updated": "{date} täzelendi",
-  "position": "{count} sahypadan {index}-njisi"
+  "position": "{count} sahypadan {index}-njisi",
+  "pageWindow": "{name} penjiresi"
 }

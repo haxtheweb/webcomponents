@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kukula kwa chilengedwe cha pulojekiti",
+    "description": "Momwe pulojekiti inakulira pakapita nthawi ndi zomwe kugwiritsanso ntchito kwake kumasunga, zojambulidwa ngati kristalo kuchokera ku deta ya kukula ya PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Deta ya kukula",
+        "description": "URL ya foda yomwe ili ndi mafayilo a JSON a kukula (PRAW imawasindikiza pa hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Mawonekedwe oyamba",
+        "description": "Mawonekedwe omwe amatsegulidwa poyamba.",
+        "options": {
+          "themes": "Mitu",
+          "elements": "Zinthu",
+          "platforms": "Mapulatifomu",
+          "cache": "Magic Script",
+          "contributors": "Othandizira"
+        }
+      }
+    ]
+  }
+}

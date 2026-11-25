@@ -25,5 +25,6 @@
   "ready": "Siap",
   "editing": "Nyunting",
   "updated": "Dianyari {date}",
-  "position": "Kaca {index} saka {count}"
+  "position": "Kaca {index} saka {count}",
+  "pageWindow": "Jendhela {name}"
 }

@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Nā nūhou a me nā hōʻano hou mai ka hui HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Nā nūhou a me nā hōʻano hou mai ka hui HAX.",
+  "gogglesContribute": "Kōkua me nā makaaniani",
+  "gogglesContributeAbout": "E komo i nā makaaniani e aʻo ai pehea i hana ʻia ai ʻo HAX a e kōkua e hoʻomaikaʻi iā ia: e kiʻi X-ray i kekahi ʻāpana e ʻike ai i ke code ma hope ona, e ʻike i ka mea nāna i kūkulu, e hōʻike i kahi hewa a manaʻo paha me ke kiʻi pale e kuhikuhi pono ana iā ia, e hoʻoponopono i kahi unuhi ma kāu ʻōlelo, a e ʻimi i nā pilikia hāmama no ka mea i mua ou.",
+  "gogglesProjectLinks": "ʻOi aku e pili ana i ka papahana",
+  "gogglesLinkLab": "HAX Lab: pehea e komo ai",
+  "gogglesLinkPraw": "PRAW: nā kānaka, nā manaʻo a me nā moʻolelo ma hope o HAX",
+  "gogglesLinkLearn": "E aʻo iā HAX: nā haʻawina",
+  "gogglesLinkCode": "HAX ma GitHub: ke code",
   "installAll": "Hoʻokomo iā HAX: nā ala a pau e loaʻa ai",
-  "installAllAbout": "Ka polokalamu kele, ka HAX CLI, Node.js, PHP, ka polokalamu pākaukau a i ʻole kauoha no kāu ʻelele."
+  "installAllAbout": "Ka polokalamu kele, ka HAX CLI, Node.js, PHP, ka polokalamu pākaukau a i ʻole kauoha no kāu ʻelele.",
+  "networkBar": "Pahu pūnaewele HAX"
 }

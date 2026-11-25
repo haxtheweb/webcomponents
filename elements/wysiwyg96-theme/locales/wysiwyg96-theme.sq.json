@@ -25,5 +25,6 @@
   "ready": "Gati",
   "editing": "Në redaktim",
   "updated": "Përditësuar më {date}",
-  "position": "Faqja {index} nga {count}"
+  "position": "Faqja {index} nga {count}",
+  "pageWindow": "Dritarja {name}"
 }
