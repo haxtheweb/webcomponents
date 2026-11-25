@@ -4,6 +4,7 @@
 // mobx autoruns (editMode / trayStatus / activeItemContent), the theme-ready
 // gate, the WCAG skip-link, and disconnect cleanup.
 import { fixture, expect, html } from "@open-wc/testing";
+import { css } from "lit";
 import { HAXCMSLitElementTheme } from "../lib/core/HAXCMSLitElementTheme.js";
 import { store } from "../lib/core/haxcms-site-store.js";
 
@@ -278,5 +279,43 @@ describe("HAXCMSLitElementTheme page change scrolling", () => {
     expect(
       element.style.getPropertyValue("--haxcms-theme-offset-top"),
     ).to.equal(`${Math.max(0, expected)}px`);
+  });
+});
+
+// a theme swap can draw the page-wide stylesheet while the previous theme's
+// design system is still on (its icons, for one); it is drawn again once the
+// system settles, and only by the theme that is still on the page
+describe("HAXCMSLitElementTheme page-wide stylesheet and design systems", () => {
+  class TestRestyleTheme extends HAXCMSLitElementTheme {
+    HAXCMSGlobalStyleSheetContent() {
+      return [
+        css`
+          .restyle-marker {
+            --mark: ${globalThis.__restyleMark};
+          }
+        `,
+      ];
+    }
+  }
+  customElements.define("test-restyle-theme", TestRestyleTheme);
+
+  it("draws it again when the design system changes", async () => {
+    globalThis.__restyleMark = 1;
+    const el = await fixture(html`<test-restyle-theme></test-restyle-theme>`);
+    await el.updateComplete;
+    expect(store.themeStyleElement.textContent).to.include("--mark: 1");
+    globalThis.__restyleMark = 2;
+    globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+    expect(store.themeStyleElement.textContent).to.include("--mark: 2");
+  });
+
+  it("stops once the theme leaves the page", async () => {
+    globalThis.__restyleMark = 3;
+    const el = await fixture(html`<test-restyle-theme></test-restyle-theme>`);
+    await el.updateComplete;
+    el.remove();
+    globalThis.__restyleMark = 4;
+    globalThis.dispatchEvent(new CustomEvent("design-system-active-changed"));
+    expect(store.themeStyleElement.textContent).to.not.include("--mark: 4");
   });
 });

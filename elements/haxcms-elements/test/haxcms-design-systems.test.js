@@ -126,6 +126,39 @@ describe("site design systems", () => {
     expect(manager.active).to.equal("something-the-theme-set");
   });
 
+  // a bridged theme (shadcn-theme, carbon-theme...) switches its own system
+  // on; swapping to a theme that takes none left it restyling that theme
+  it("puts a theme that takes none back on DDD after another theme's own system", async () => {
+    const manager = fakeManager();
+    const registry = await loadDesignSystemRegistry();
+    const [name, entry] = Object.entries(registry).find(
+      ([, e]) => e.theme && e.theme !== "ds-plain-theme",
+    );
+    manager.systems[name] = { name };
+    manager.active = name;
+    const result = await applySiteDesignSystem("", "ds-plain-theme", manager);
+    expect(result).to.equal(null);
+    expect(manager.active).to.equal("ddd");
+    expect(entry.theme).to.not.equal("ds-plain-theme");
+  });
+
+  it("keeps a bridged theme's own system while that theme is shown", async () => {
+    const manager = fakeManager();
+    const registry = await loadDesignSystemRegistry();
+    const [name, entry] = Object.entries(registry).find(([, e]) => e.theme);
+    // the owner takes no site choice, like the bridged themes
+    if (!globalThis.customElements.get(entry.theme)) {
+      globalThis.customElements.define(
+        entry.theme,
+        class extends HTMLElement {},
+      );
+    }
+    manager.systems[name] = { name };
+    manager.active = name;
+    await applySiteDesignSystem("", entry.theme, manager);
+    expect(manager.active).to.equal(name);
+  });
+
   it("puts a theme that takes none back on DDD after the site's choice", async () => {
     const manager = fakeManager();
     await applySiteDesignSystem("carbon", "ds-accepting-theme", manager);
