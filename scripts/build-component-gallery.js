@@ -2213,6 +2213,33 @@ ${loader.markup}
       updateUrlForCurrentDemo();
     });
 
+    // the network bar's "Contribute with the goggles": the HAXcms demo, here,
+    // with the goggles on (X-ray), instead of reloading the gallery
+    globalThis.addEventListener('hax-network-goggles', (e) => {
+      let platform = null;
+      for (let i = 0; i < COMPONENTS.length; i++) {
+        if (COMPONENTS[i].name === PLATFORM_DEMO) {
+          platform = COMPONENTS[i];
+          break;
+        }
+      }
+      if (!platform) {
+        return;
+      }
+      e.preventDefault();
+      goggles = 'code';
+      gogglesLang = '';
+      if (currentComponent !== platform) {
+        selectComponent(platform);
+      } else {
+        loadDemo(currentDemoPath);
+      }
+      if (currentView !== 'demo') {
+        setView('demo');
+      }
+      updateUrlForCurrentDemo();
+    });
+
     function applyRouteFromUrl() {
       // a goggles link with no element opens the HAXcms demo
       const slug = getQueryParam('element') || (goggles ? PLATFORM_DEMO : null);

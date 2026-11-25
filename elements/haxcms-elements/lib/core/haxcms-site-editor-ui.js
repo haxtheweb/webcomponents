@@ -65,6 +65,11 @@ import { haxcmsApiMessage } from "./utils/HAXCMSApiMessages.js";
 import { urlHostMatches } from "./utils/urlHost.js";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
 import { settleOnce } from "@haxtheweb/utils/lib/events.js";
+import { gogglesContributeOption } from "@haxtheweb/hax-network-bar/lib/hax-goggles-contribute.js";
+import {
+  HAX_COMMUNITY_PRIORITY,
+  HAX_COMMUNITY_CONTEXT,
+} from "@haxtheweb/hax-body/lib/hax-community.js";
 import {
   SITE_ADMIN_CONFIRM_STYLES,
   SITE_ADMIN_TITLEBAR_STYLES,
@@ -2364,6 +2369,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageMovedUnder: 'Page moved under "{parent}"',
       expectingToSeeAnOptionMerlinDidntProvide:
         "Expecting to see an option that isn't here?",
+      flagItWithTheGoggles: "Put on the goggles and flag where you expected it",
+      // no longer shown (suggestions come in through the goggles); kept
+      // until the nightly translations drop it from every locale
+      // (translated files may not have keys en lacks)
       makeASuggestionToImproveResults: "Make a suggestion to improve results",
       createAPage: "Create a page",
       pageTitlePlaceholder: "Page title",
@@ -2591,23 +2600,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       SuperDaemonInstance.runProgram("", "*");
       return true;
     };
-    // nothing message so we can suggest a link to make a suggestion
-    // a real link to a prefilled issue in the unified queue, so it works
-    // by click, middle click and keyboard, and pop-up blocking can't eat it
-    SuperDaemonInstance.noResultsSlot = (searchTerm) => {
+    // nothing found: the goggles' Flag lens, to point at where the option
+    // was expected. A real link (?goggles=flag) so it works by keyboard and
+    // middle click too; a plain click puts them on right here.
+    SuperDaemonInstance.noResultsSlot = () => {
       return html`<div class="no-results">
           ${this.t.expectingToSeeAnOptionMerlinDidntProvide}
         </div>
         <a
-          href="${HAXStore.merlinSuggestionUrl(
-            "POP,enhancement",
-            SuperDaemonInstance.commandContext +
-              " " +
-              (searchTerm || SuperDaemonInstance.value || ""),
-          )}"
-          target="_blank"
-          rel="noopener noreferrer"
-          >${this.t.makeASuggestionToImproveResults}</a
+          href="${this._gogglesLinkHref("flag")}"
+          @click="${this._flagMissingOption}"
+          >${this.t.flagItWithTheGoggles}</a
         >`;
     };
     SuperDaemonInstance.appendContext("CMS");
@@ -3520,6 +3523,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       developerModeOff: "Developer mode off",
       gogglesPutOn: "Put on the goggles",
       gogglesTakeOff: "Take off the goggles",
+      gogglesContribute: "Contribute with the goggles",
+      gogglesContributeAbout:
+        "Put on the goggles to learn how HAX is made and help make it better: X-ray any piece to see the code behind it, see who built it, report a bug or an idea with a screenshot pointed right at it, fix a translation in your language, and find the open issues for what is in front of you.",
+      gogglesProjectLinks: "More about the project",
+      gogglesLinkLab: "HAX Lab: how to get involved",
+      gogglesLinkPraw: "PRAW: the people, ideas and stories behind HAX",
+      gogglesLinkLearn: "Learn HAX: tutorials",
+      gogglesLinkCode: "HAX on GitHub: the code",
       previewDialogOpen: "Close the open dialog to preview the site",
       shortcutPreview: "Preview the site as a visitor sees it",
       siteDashboard: "Sites Dashboard",
@@ -5627,6 +5638,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         args: [],
       },
     });
+    // contributing: the goggles lead Merlin's Community group (Tutorials and
+    // the Discord follow, from hax-store); turning them on turns on
+    // developer mode so their buttons stay in the top bar
+    SuperDaemonInstance.defineOption(
+      gogglesContributeOption(this, {
+        method: "contributeWithGoggles",
+        priority: HAX_COMMUNITY_PRIORITY - 1,
+        context: HAX_COMMUNITY_CONTEXT.slice(),
+      }),
+    );
     // not a developer tool: the same Preview as the top bar button, listed
     // with the everyday actions and showing its Ctrl⇧8 shortcut
     SuperDaemonInstance.defineOption({
@@ -7761,6 +7782,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       3000,
       "fit-bottom",
     );
+  }
+  /**
+   * Merlin's "Contribute with the goggles": developer mode on (so the
+   * goggles' buttons are in the top bar) and the goggles on, on `lens` when
+   * given, else the lens used last.
+   * @param {string} lens
+   */
+  async contributeWithGoggles(lens) {
+    if (!this.developerMode) {
+      this.toggleDeveloperMode();
+    }
+    const { GogglesState } = await import("./ui/haxcms-goggles.js");
+    const change = { on: true, lensOn: true };
+    if (typeof lens === "string" && lens) {
+      change.lens = lens;
+      change.person = null;
+    }
+    GogglesState.set(change);
+  }
+  /** this page with ?goggles=<lens>, which puts the goggles on as it loads */
+  _gogglesLinkHref(lens) {
+    try {
+      const u = new URL(globalThis.location.href);
+      u.searchParams.set("goggles", lens);
+      return u.href;
+    } catch {
+      return "?goggles=" + encodeURIComponent(lens);
+    }
+  }
+  /** Merlin found nothing: close him and put the goggles on with Flag */
+  _flagMissingOption(e) {
+    if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      return;
+    }
+    e.preventDefault();
+    SuperDaemonInstance.close();
+    this.contributeWithGoggles("flag");
   }
   /** the top bar buttons follow the goggles' state while developer mode is on */
   _watchGoggles(on) {

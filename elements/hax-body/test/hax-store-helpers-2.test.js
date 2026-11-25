@@ -140,14 +140,6 @@ describe("hax-store additional helper methods", () => {
     });
   });
 
-  describe("getOperatingSystem", () => {
-    it("returns a non-empty string", () => {
-      const os = HAXStore.getOperatingSystem();
-      expect(typeof os).to.equal("string");
-      expect(os.length).to.be.greaterThan(0);
-    });
-  });
-
   describe("_isMediaElement", () => {
     it("returns false for null/undefined", () => {
       expect(HAXStore._isMediaElement(null)).to.equal(false);

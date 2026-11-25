@@ -248,6 +248,7 @@
   "rootLevel": "Root Level",
   "pageMovedUnder": "Page moved under \"{parent}\"",
   "expectingToSeeAnOptionMerlinDidntProvide": "Expecting to see an option that isn't here?",
+  "flagItWithTheGoggles": "Put on the goggles and flag where you expected it",
   "makeASuggestionToImproveResults": "Make a suggestion to improve results",
   "createAPage": "Create a page",
   "pageTitlePlaceholder": "Page title",
@@ -732,5 +733,12 @@
   "developerModeOn": "Developer mode on: the goggles are in the top bar",
   "developerModeOff": "Developer mode off",
   "gogglesPutOn": "Put on the goggles",
-  "gogglesTakeOff": "Take off the goggles"
+  "gogglesTakeOff": "Take off the goggles",
+  "gogglesContribute": "Contribute with the goggles",
+  "gogglesContributeAbout": "Put on the goggles to learn how HAX is made and help make it better: X-ray any piece to see the code behind it, see who built it, report a bug or an idea with a screenshot pointed right at it, fix a translation in your language, and find the open issues for what is in front of you.",
+  "gogglesProjectLinks": "More about the project",
+  "gogglesLinkLab": "HAX Lab: how to get involved",
+  "gogglesLinkPraw": "PRAW: the people, ideas and stories behind HAX",
+  "gogglesLinkLearn": "Learn HAX: tutorials",
+  "gogglesLinkCode": "HAX on GitHub: the code"
 }

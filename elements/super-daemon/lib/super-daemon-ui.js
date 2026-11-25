@@ -378,6 +378,37 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           line-height: 1.4;
           color: var(--hax-ui-text-muted);
         }
+        /* an option's details (more) in the side pane, or inline in its row
+           on a narrow screen: the row's light DOM lives in this shadow root */
+        super-daemon-row .row-desc {
+          margin: 0 0 var(--hax-ui-gap);
+        }
+        .details-more ul,
+        super-daemon-row ul {
+          margin: var(--hax-ui-gap) 0 0;
+          padding-inline-start: var(--hax-ui-gap-lg);
+        }
+        .details-more li + li,
+        super-daemon-row li + li {
+          margin-top: var(--hax-ui-gap);
+        }
+        .details-more a,
+        super-daemon-row a {
+          color: var(--hax-ui-accent-strong);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .details-more a:hover,
+        super-daemon-row a:hover {
+          text-decoration-thickness: 2px;
+        }
+        .details-more a:focus-visible,
+        super-daemon-row a:focus-visible {
+          outline: var(--hax-ui-focus-width) solid var(--hax-ui-focus);
+          outline-offset: 2px;
+          border-radius: 2px;
+        }
         .details-label {
           display: block;
           margin-bottom: var(--hax-ui-gap);
@@ -639,6 +670,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     if (!item) {
       return nothing;
     }
+    // The inline details carry the option's description too, as the side
+    // pane does, so a narrow screen loses nothing.
     // Rows keep their inline details toggle wherever details can show:
     // the wand popover (no pane) and the modal. In the modal the row hides
     // the toggle while the side pane is showing (details-in-pane, wider
@@ -668,7 +701,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       ?details-in-pane="${!this.mini}"
       ?mini="${this.mini}"
       ?external-link="${item.externalLink}"
-      >${inlineMore ? item.more : nothing}</super-daemon-row
+      >${
+        inlineMore
+          ? html`${
+              item.description
+                ? html`<p class="row-desc">${item.description}</p>`
+                : nothing
+            }${item.more}`
+          : nothing
+      }</super-daemon-row
     >`;
   }
 

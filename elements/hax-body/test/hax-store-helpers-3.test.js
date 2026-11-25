@@ -1,6 +1,12 @@
 import { expect } from "@open-wc/testing";
 
 import { HAXStore } from "../lib/hax-store.js";
+import {
+  defineCommunityOptions,
+  HAX_COMMUNITY_PRIORITY,
+  HAX_COMMUNITY_CONTEXT,
+} from "../lib/hax-community.js";
+import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { LitElement } from "lit";
 
 describe("hax-store methods round 3", () => {
@@ -77,68 +83,26 @@ describe("hax-store methods round 3", () => {
     });
   });
 
-  describe("merlinSuggestionUrl", () => {
-    it("builds an encoded new-issue link in the unified queue", () => {
-      const url = HAXStore.merlinSuggestionUrl("POP,enhancement", "* zz q&a");
+  describe("Community group", () => {
+    it("lists Tutorials and the Discord once, with no issue queue link", () => {
+      const community = SuperDaemonInstance.allItems.filter(
+        (o) => o.path && o.path.indexOf("Community/") === 0,
+      );
+      expect(community.map((o) => o.path)).to.deep.equal([
+        "Community/Tutorials",
+        "Community/Join",
+      ]);
+      expect(community[0].priority).to.equal(HAX_COMMUNITY_PRIORITY);
+      expect(community[0].context).to.deep.equal(HAX_COMMUNITY_CONTEXT);
+      const links = community.map((o) => o.value.args[0]);
+      expect(links.join(" ")).to.not.contain("haxtheweb/issues");
+      // a second definer (the dashboard) adds nothing
+      defineCommunityOptions(SuperDaemonInstance, HAXStore);
       expect(
-        url.indexOf("https://github.com/haxtheweb/issues/issues/new?"),
-      ).to.equal(0);
-      expect(url).to.contain("labels=POP%2Cenhancement");
-      expect(url).to.contain(
-        "title=%5Bmerlin%5D%20New%20command%20request%20from%20HAX%20daemon",
-      );
-      expect(decodeURIComponent(url.split("&body=")[1])).to.contain(
-        "Searched for: * zz q&a",
-      );
-    });
-
-    it("is what the merlin report opens", async () => {
-      const originalOpen = globalThis.open;
-      let opened = null;
-      globalThis.open = (u) => {
-        opened = u;
-        return null;
-      };
-      await HAXStore._haxStoreContribute("merlin", "POP", "cmd");
-      globalThis.open = originalOpen;
-      expect(opened).to.equal(HAXStore.merlinSuggestionUrl("POP", "cmd"));
-    });
-  });
-
-  describe("_haxStoreContribute", () => {
-    it("does not throw for bug report type", async () => {
-      const originalOpen = globalThis.open;
-      globalThis.open = () => null;
-      await HAXStore._haxStoreContribute("bug", "bug");
-      globalThis.open = originalOpen;
-    });
-
-    it("does not throw for merlin report type", async () => {
-      const originalOpen = globalThis.open;
-      globalThis.open = () => null;
-      await HAXStore._haxStoreContribute("merlin", "feature", "my command");
-      globalThis.open = originalOpen;
-    });
-
-    it("does not throw for feature report type", async () => {
-      const originalOpen = globalThis.open;
-      globalThis.open = () => null;
-      await HAXStore._haxStoreContribute("feature", "feature");
-      globalThis.open = originalOpen;
-    });
-
-    it("does not throw for issue report type", async () => {
-      const originalOpen = globalThis.open;
-      globalThis.open = () => null;
-      await HAXStore._haxStoreContribute("issue", "issue");
-      globalThis.open = originalOpen;
-    });
-
-    it("defaults to bug when type is null", async () => {
-      const originalOpen = globalThis.open;
-      globalThis.open = () => null;
-      await HAXStore._haxStoreContribute(null, "bug");
-      globalThis.open = originalOpen;
+        SuperDaemonInstance.allItems.filter(
+          (o) => o.path && o.path.indexOf("Community/") === 0,
+        ).length,
+      ).to.equal(2);
     });
   });
 

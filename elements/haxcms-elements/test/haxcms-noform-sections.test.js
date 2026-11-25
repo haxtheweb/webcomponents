@@ -105,7 +105,6 @@ describe("About section", () => {
       "https://haxtheweb.org/",
       "https://haxtheweb.org/documentation",
       "https://discord.gg/aCGxmRHEJP",
-      "https://github.com/haxtheweb/issues/issues",
       "https://haxtheweb.org/tutorials",
       "https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development",
       "https://haxtheweb.org/documentation/data-formats",
@@ -113,6 +112,13 @@ describe("About section", () => {
       "https://haxtheweb.org/documentation/oer-schema",
       "https://haxtheweb.org/hax-lab/hax-ai",
     ].forEach((href) => expect(hrefs).to.include(href));
+    // reports and ideas come in through the goggles, not the issue queue
+    expect(hrefs.join(" ")).to.not.contain("haxtheweb/issues");
+    const goggles = el.shadowRoot.querySelector(
+      'section[data-group="community"] button.hl',
+    );
+    expect(goggles).to.exist;
+    expect(goggles.textContent).to.contain("Contribute with the goggles");
     ["llms.txt", "site.json", "lunrSearchIndex.json", "x/api/openapi"].forEach(
       (resource) =>
         expect(hrefs.some((href) => href && href.endsWith(resource))).to.equal(

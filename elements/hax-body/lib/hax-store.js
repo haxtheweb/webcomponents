@@ -53,6 +53,7 @@ import {
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import { defineCommunityOptions } from "./hax-community.js";
 import "@haxtheweb/media-behaviors/media-behaviors.js";
 import "@haxtheweb/editable-table/editable-table.js";
 import "@haxtheweb/iframe-loader/iframe-loader.js";
@@ -3403,7 +3404,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       searchForSymbol: "Search for a symbol",
       joinHaxCommunity: "Join HAX community",
       userTutorials: "User Tutorials",
-      // no longer in Merlin; kept until the nightly translations drop it
+      // no longer in Merlin; kept until the nightly translations drop them
       // from every locale (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
       reportAnIssueTogether: "Report an issue together",
@@ -3831,63 +3832,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       path: "/HAX/text/symbol",
     });
 
-    // community: its own group at the very end of Merlin's list (the
-    // high priority sinks it), so what can be done right now comes first
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "userTutorials" },
-      title: this.t.userTutorials,
-      icon: "hax:hax2022",
-      priority: 100000,
-      tags: ["Documentation", "tutorials", "learn", "community", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://learn.hax.cloud/"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Tutorials",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "joinHaxCommunity" },
-      title: this.t.joinHaxCommunity,
-      icon: "hax:discord",
-      priority: 100001,
-      tags: ["community", "discord", "chat", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://discord.gg/aCGxmRHEJP"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Join",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "reportAnIssueTogether" },
-      title: this.t.reportAnIssueTogether,
-      icon: "mdi-social:github-circle",
-      priority: 100002,
-      tags: [
-        "Bug report",
-        "Feature request",
-        "idea",
-        "github",
-        "git",
-        "community",
-        "issue queue",
-      ],
-      value: {
-        target: this,
-        method: "_haxStoreContribute",
-        args: ["issue", "POP"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Contribute",
-      context: "community",
-    });
+    // community: Tutorials and the Discord, at the very end of Merlin's
+    // list; contributing (the goggles) is added by the HAXcms editor
+    defineCommunityOptions(SuperDaemonInstance, this);
     // container for HTML primitives to have hooks declared on their behalf
     this.primativeHooks = {};
     this.__dragTarget = null;
@@ -4534,110 +4481,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
 
   _openExternalLink(link) {
     globalThis.open(link, "_blank");
-  }
-
-  /**
-   * The new-issue link (unified haxtheweb/issues queue) for a report, with
-   * the title and body prefilled
-   * @param {string} title
-   * @param {string} tags comma separated labels
-   * @param {string} body
-   * @returns {string}
-   */
-  _haxStoreContributeUrl(title, tags, body) {
-    return `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${encodeURIComponent(
-      tags || "",
-    )}&template=issue-report.md&title=${encodeURIComponent(
-      title,
-    )}&body=${encodeURIComponent(body)}`;
-  }
-  /**
-   * The new-issue link for a Merlin command request. Synchronous so it can
-   * be a real href (keyboard reachable, never caught by pop-up blocking).
-   * @param {string} tags comma separated labels
-   * @param {string} daemonTerm what was searched in Merlin
-   * @returns {string}
-   */
-  merlinSuggestionUrl(tags, daemonTerm = null) {
-    return this._haxStoreContributeUrl(
-      "[merlin] New command request from HAX daemon",
-      tags,
-      `Location: ${globalThis.location.href}
-Searched for: ${daemonTerm}
-What did you want search and commands to do?
-`,
-    );
-  }
-  async _haxStoreContribute(type, tags, daemonTerm = null) {
-    const reportType = type || "bug";
-    let body = "";
-    let title;
-    if (reportType == "merlin") {
-      globalThis.open(this.merlinSuggestionUrl(tags, daemonTerm), "_blank");
-      return;
-    } else {
-      title = `[${reportType}] User report from HAX daemon`;
-      /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded and omitted or shown as ? when absent */
-      body = `Location: ${globalThis.location.href}
-Browser: ${navigator.userAgent}
-OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory || "?"}GB RAM - ${navigator.hardwareConcurrency} cores
-Screen: ${globalThis.screen.width}x${globalThis.screen.height}
-Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
-`;
-      if (navigator.getBattery) {
-        const stats = await globalThis.navigator.getBattery();
-        body += `Battery: ${stats.level * 100}%
-`;
-      }
-      // some things report the "type" of internet connection speed
-      // for terrible connections lets save frustration
-      if (
-        navigator.connection &&
-        globalThis.navigator.connection.effectiveType
-      ) {
-        body += `Connection: ${navigator.connection.effectiveType}
-`;
-      }
-      /* eslint-enable baseline-js/use-baseline */
-      if (reportType == "feature") {
-        body += `Your idea:
-`;
-      } else if (reportType == "issue") {
-        body += `Issue or idea to discuss:
-`;
-      } else {
-        body += `Bug you experienced:
-`;
-      }
-    }
-    globalThis.open(this._haxStoreContributeUrl(title, tags, body), "_blank");
-  }
-
-  /**
-   * @description - Gets operating system from browser navigator
-   * @returns {string} - The operating system either from userAgentData (if supported) with userAgent as back up
-   */
-  getOperatingSystem() {
-    /* eslint-disable baseline-js/use-baseline -- userAgentData is guarded; falls back to parsing userAgent */
-    if (navigator.userAgentData && navigator.userAgentData.platform) {
-      return navigator.userAgentData.platform;
-      /* eslint-enable baseline-js/use-baseline */
-    } else {
-      const USER_AGENT = navigator.userAgent.toLowerCase();
-      if (USER_AGENT.includes("windows")) {
-        return "Windows";
-      } else if (USER_AGENT.includes("iphone")) {
-        return "iOS";
-      } else if (USER_AGENT.includes("mac os")) {
-        return "macOS";
-      } else if (USER_AGENT.includes("linux")) {
-        return "Linux";
-      } else if (USER_AGENT.includes("android")) {
-        return "Android";
-      } else {
-        return "Unknown";
-      }
-    }
   }
 
   async _richTextEditorPromptOpen(e) {

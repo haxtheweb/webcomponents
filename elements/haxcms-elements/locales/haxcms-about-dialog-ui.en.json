@@ -20,6 +20,7 @@
   "projectOverview": "Project overview",
   "documentation": "Documentation",
   "joinTheHaxDiscordCommunity": "Join the HAX Discord community",
+  "contributeWithTheGoggles": "Contribute with the goggles: see how HAX is made, report bugs and ideas",
   "issueQueue": "Issue queue (bugs and feature requests)",
   "keyboardShortcuts": "Keyboard shortcuts",
   "keyboardShortcutsDescription": "Registered centrally in HAXcms and shown by active context. Bindings use Ctrl+Shift+[Key]; in the editor, typing a markdown trigger then space converts the block. Type {slash} in an empty text block to open inline Search.",

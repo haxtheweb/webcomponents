@@ -14,6 +14,11 @@
  *     load: async () => ({ sayText, pick, choose, panel: "my-panel-tag", fromLink }),
  *   });
  *
+ * A site with no lens of its own (haxtheweb.org, Learn, Lab, Art) calls
+ * siteGoggles(): the built-in lenses, the same Merlin command and links.
+ * Either way the network bar's "Contribute with the goggles"
+ * (hax-network-goggles) puts them on here instead of leaving the site.
+ *
  * `load` runs the first time the goggles go on, so a lens and its panel cost
  * nothing until someone asks for them. It resolves to what haxcms-goggles'
  * registerLens takes (sayText, pick, choose) plus `panel`, the tag of the
@@ -93,7 +98,8 @@ export async function toggleGoggles(lens) {
     s.set({ on: false });
     return;
   }
-  const first = lens || (lenses.size ? lenses.keys().next().value : "");
+  const first =
+    lens || (lenses.size ? lenses.keys().next().value : BUILT_IN[0]);
   const remembered = localStorageGet(LENS_KEY, null);
   s.set(
     remembered && !lens
@@ -107,6 +113,9 @@ function defineCommand(merlin) {
   if (!merlin || typeof merlin.defineOption !== "function") return;
   if (merlin.__haxcmsGogglesSite) return;
   merlin.__haxcmsGogglesSite = true;
+  // the editor already lists the goggles (developer mode) in the same Merlin
+  const all = Array.isArray(merlin.allItems) ? merlin.allItems : [];
+  if (all.find((o) => o && o.path === GOGGLES_COMMAND)) return;
   const first = lenses.values().next().value;
   merlin.defineOption({
     title: T.title,
@@ -221,21 +230,35 @@ export function currentPage(site) {
   };
 }
 
+/** the goggles' Merlin command, ?goggles= links, lens panels and the network bar's ask, once per page */
+function wire() {
+  if (wired) return;
+  wired = true;
+  globalThis.addEventListener("haxcms-goggles-changed", (e) =>
+    attach(e.detail),
+  );
+  // the network bar asks the page for its Merlin options the first time Merlin opens
+  globalThis.addEventListener("hax-network-merlin", (e) =>
+    defineCommand(e.detail ? e.detail.merlin : null),
+  );
+  // the network bar's "Contribute with the goggles": on here, not elsewhere
+  globalThis.addEventListener("hax-network-goggles", (e) => {
+    e.preventDefault();
+    toggleGoggles();
+  });
+  globalThis.setTimeout(fromLink, 0);
+}
+
+/** The goggles on this site, with only the built-in lenses. */
+export function siteGoggles() {
+  wire();
+}
+
 /** Add this site's lens: Merlin's developer list, ?goggles= links and the panel follow. */
 export function siteLens(def) {
   if (!def || !def.id || lenses.has(def.id) || typeof def.load !== "function") {
     return;
   }
   lenses.set(def.id, Object.assign({ text: def.id, icon: "hax:goggles" }, def));
-  if (!wired) {
-    wired = true;
-    globalThis.addEventListener("haxcms-goggles-changed", (e) =>
-      attach(e.detail),
-    );
-    // the network bar asks the page for its Merlin options the first time Merlin opens
-    globalThis.addEventListener("hax-network-merlin", (e) =>
-      defineCommand(e.detail ? e.detail.merlin : null),
-    );
-    globalThis.setTimeout(fromLink, 0);
-  }
+  wire();
 }

@@ -12,6 +12,8 @@ globalThis.appSettings = {};
 
 const { store } = await import("../lib/v2/AppHaxStore.js");
 await import("../app-hax.js");
+const { SuperDaemonInstance } =
+  await import("@haxtheweb/super-daemon/super-daemon.js");
 
 // Scoped axe rules for shadowDom audits: the app-hax shadow tree includes
 // child-component surfaces (e.g. the rpg-character toolbar toggle, toggle
@@ -472,74 +474,23 @@ describe("app-hax test", () => {
     });
   });
 
-  describe("Store contribution functionality", () => {
-    let originalOpen;
-    let originalUserAgentData;
-    let originalDeviceMemory;
-
-    beforeEach(() => {
-      originalOpen = globalThis.open;
-      // navigator is an unforgeable getter on globalThis in browsers, so we
-      // override the individual (configurable) props instead of reassigning
-      // globalThis.navigator
-      originalUserAgentData = globalThis.navigator.userAgentData;
-      originalDeviceMemory = globalThis.navigator.deviceMemory;
-      Object.defineProperty(globalThis.navigator, "userAgentData", {
-        value: { platform: "Test OS" },
-        configurable: true,
+  describe("Contributing through the goggles", () => {
+    it("lists the goggles first in Community, and no issue queue reports", () => {
+      const items = SuperDaemonInstance.allItems.filter(
+        (o) => o.path && o.path.indexOf("Community/") === 0,
+      );
+      const goggles = items.find((o) => o.path === "Community/Contribute");
+      expect(goggles.title).to.equal("Contribute with the goggles");
+      expect(goggles.value.method).to.equal("contributeWithGoggles");
+      expect(
+        items.filter((o) => o.path === "Community/Contribute").length,
+      ).to.equal(1);
+      const others = items.filter((o) => o !== goggles);
+      others.forEach((o) => {
+        expect(goggles.priority).to.be.below(o.priority);
+        expect(String(o.value.args[0])).to.not.contain("haxtheweb/issues");
       });
-      Object.defineProperty(globalThis.navigator, "deviceMemory", {
-        value: 8,
-        configurable: true,
-      });
-    });
-
-    afterEach(() => {
-      globalThis.open = originalOpen;
-      Object.defineProperty(globalThis.navigator, "userAgentData", {
-        value: originalUserAgentData,
-        configurable: true,
-      });
-      Object.defineProperty(globalThis.navigator, "deviceMemory", {
-        value: originalDeviceMemory,
-        configurable: true,
-      });
-    });
-
-    it("should create bug report URL", async () => {
-      let capturedUrl = null;
-      globalThis.open = (url, _target) => {
-        capturedUrl = url;
-      };
-
-      await element._haxStoreContribute("bug", "bug,ui");
-      expect(capturedUrl).to.include("github.com/haxtheweb/issues");
-      expect(capturedUrl).to.include("labels=bug,ui");
-      // title is encodeURIComponent'd, so [ and ] become %5B / %5D
-      expect(capturedUrl).to.include("%5Bbug%5D%20User%20report");
-    });
-
-    it("should create feature request URL", async () => {
-      let capturedUrl = null;
-      globalThis.open = (url, _target) => {
-        capturedUrl = url;
-      };
-
-      await element._haxStoreContribute("feature", "feature,enhancement");
-      expect(capturedUrl).to.include("github.com/haxtheweb/issues");
-      expect(capturedUrl).to.include("labels=feature,enhancement");
-      expect(capturedUrl).to.include("%5Bfeature%5D%20User%20report");
-    });
-
-    it("should create merlin command request", async () => {
-      let capturedUrl = null;
-      globalThis.open = (url, _target) => {
-        capturedUrl = url;
-      };
-
-      await element._haxStoreContribute("merlin", "merlin", "test command");
-      expect(capturedUrl).to.include("%5Bmerlin%5D%20New%20command%20request");
-      expect(capturedUrl).to.include("test%20command");
+      expect(typeof element.contributeWithGoggles).to.equal("function");
     });
   });
 
@@ -653,26 +604,6 @@ describe("app-hax test", () => {
       expect(() => {
         testElement.connectedCallback();
       }).to.not.throw();
-    });
-
-    it("should handle missing browser APIs gracefully", async () => {
-      // navigator is unforgeable; simulate an older/limited browser by
-      // deleting the Chromium-only props instead of replacing the object
-      const originalUserAgentData = globalThis.navigator.userAgentData;
-      const originalDeviceMemory = globalThis.navigator.deviceMemory;
-      delete globalThis.navigator.userAgentData;
-      delete globalThis.navigator.deviceMemory;
-
-      await element._haxStoreContribute("bug", "test");
-
-      Object.defineProperty(globalThis.navigator, "userAgentData", {
-        value: originalUserAgentData,
-        configurable: true,
-      });
-      Object.defineProperty(globalThis.navigator, "deviceMemory", {
-        value: originalDeviceMemory,
-        configurable: true,
-      });
     });
   });
 

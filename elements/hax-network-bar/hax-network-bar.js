@@ -22,6 +22,19 @@ import {
   haxNetworkGlyph,
   HaxNetworkGlyphStyles,
 } from "./lib/hax-network.js";
+import { gogglesContributeOption } from "./lib/hax-goggles-contribute.js";
+
+/**
+ * Where the goggles go on when the page has no goggles of its own: the
+ * component gallery opens the HAXcms demo with them on.
+ */
+export const HAX_GOGGLES_URL = "https://webcomponents.hax.cloud/?goggles=code";
+/**
+ * The goggles' Merlin option sits low on a public site (below the site's
+ * pages and the network's places) but turns up for any search about
+ * contributing.
+ */
+export const HAX_GOGGLES_PRIORITY = 1000;
 
 /** Where Install HAX lives: any network page opens it from #install. */
 export const HAX_INSTALL_URL = "https://hax.cloud/#install";
@@ -40,19 +53,17 @@ export const HAX_NETWORK_SITES = HAX_NETWORK.order.map((id) => ({
 /** What `current` used to call two of the sites; both still work. */
 const FORMER_SITE_IDS = { browser: "try", docs: "web" };
 
-/** Where the HAX community talks, shares and files issues. */
+/**
+ * Where the HAX community talks and shares. Issues are not linked: reports
+ * and ideas come in through the goggles (Merlin's "Contribute with the
+ * goggles"), which point them at the piece they are about.
+ */
 export const HAX_COMMUNITY_LINKS = [
   {
     id: "discord",
     label: "discord",
     href: "https://discord.gg/aCGxmRHEJP",
     icon: "hax:discord",
-  },
-  {
-    id: "issues",
-    label: "issues",
-    href: "https://github.com/haxtheweb/issues",
-    icon: "hax:admin-issues",
   },
   {
     id: "linkedin",
@@ -271,12 +282,6 @@ export const HAX_NETWORK_DESTINATIONS = [
     icon: "mdi-social:github-circle",
   },
   {
-    title: "goIssues",
-    about: "goIssuesAbout",
-    href: "https://github.com/haxtheweb/issues",
-    icon: "hax:admin-issues",
-  },
-  {
     title: "goDiscord",
     about: "goDiscordAbout",
     href: "https://discord.gg/aCGxmRHEJP",
@@ -340,6 +345,7 @@ export const HAX_NETWORK_DESTINATIONS = [
  * @slot pre - after the network's icons (in the middle in the mini bar: compact or demo), for the page's own controls
  * @slot post - before Install HAX; holds the GitHub link unless the page fills it
  * @fires hax-network-merlin - {merlin, add(option)} the first time Merlin opens
+ * @fires hax-network-goggles - {bar} cancelable: Merlin's "Contribute with the goggles"; preventDefault to put the page's own goggles on
  */
 export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
   static get tag() {
@@ -387,7 +393,6 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       remix: "Remix the HAX Future Traveler",
       github: "GitHub",
       discord: "Discord",
-      issues: "Issues",
       linkedin: "LinkedIn",
       x: "X",
       demoLabel: "About this demo",
@@ -500,14 +505,26 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
         "Who HAX is for, how it compares and every way to install it.",
       goGithub: "GitHub: the code",
       goGithubAbout: "Every HAX repository, issue and pull request.",
-      goIssues: "Issues: report a bug or ask for a feature",
-      goIssuesAbout: "One issue queue for every part of HAX.",
       goDiscord: "Discord: talk with the HAX community",
       goDiscordAbout: "Ask questions and show what you made.",
       goLinkedin: "LinkedIn: HAX The Web",
       goLinkedinAbout: "News and updates from the HAX team.",
       goX: "X: @haxtheweb",
       goXAbout: "News and updates from the HAX team.",
+      // no longer shown (reports come in through the goggles); kept until
+      // the nightly translations drop them from every locale (translated
+      // files may not have keys en lacks)
+      issues: "Issues",
+      goIssues: "Issues: report a bug or ask for a feature",
+      goIssuesAbout: "One issue queue for every part of HAX.",
+      gogglesContribute: "Contribute with the goggles",
+      gogglesContributeAbout:
+        "Put on the goggles to learn how HAX is made and help make it better: X-ray any piece to see the code behind it, see who built it, report a bug or an idea with a screenshot pointed right at it, fix a translation in your language, and find the open issues for what is in front of you.",
+      gogglesProjectLinks: "More about the project",
+      gogglesLinkLab: "HAX Lab: how to get involved",
+      gogglesLinkPraw: "PRAW: the people, ideas and stories behind HAX",
+      gogglesLinkLearn: "Learn HAX: tutorials",
+      gogglesLinkCode: "HAX on GitHub: the code",
       installAll: "Install HAX: every way to get it",
       installAllAbout:
         "The browser, the HAX CLI, Node.js, PHP, the desktop app or a prompt for your agent.",
@@ -2395,6 +2412,13 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
           }),
         ),
       );
+      // contributing: the goggles, low on a public site's list
+      merlin.defineOption(
+        gogglesContributeOption(this, {
+          method: "goggles",
+          priority: HAX_GOGGLES_PRIORITY,
+        }),
+      );
       this.dispatchEvent(
         new CustomEvent("hax-network-merlin", {
           bubbles: true,
@@ -2444,6 +2468,23 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
       textCharacter: "",
       description: o.about || "",
     };
+  }
+
+  /**
+   * Put on the goggles. A page with goggles of its own (a HAX site, the
+   * component gallery) handles hax-network-goggles and calls preventDefault;
+   * anywhere else the gallery opens with them on.
+   */
+  goggles() {
+    const asked = new CustomEvent("hax-network-goggles", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: { bar: this },
+    });
+    if (this.dispatchEvent(asked)) {
+      this.go(HAX_GOGGLES_URL);
+    }
   }
 
   /** Go to a place Merlin picked. */

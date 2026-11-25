@@ -51,6 +51,18 @@ describe("haxcms-goggles-site", function () {
     expect(options[0].tags).to.include("testlens");
   });
 
+  it("leaves the developer list alone when the editor already lists the goggles", () => {
+    const options = [{ path: GOGGLES_COMMAND }];
+    const merlin = {
+      allItems: options,
+      defineOption: (o) => options.push(o),
+    };
+    globalThis.dispatchEvent(
+      new CustomEvent("hax-network-merlin", { detail: { merlin } }),
+    );
+    expect(options.length).to.equal(1);
+  });
+
   it("loads the lens the first time the goggles go on, with its panel slotted in", async () => {
     expect(loads).to.equal(0);
     await toggleGoggles("testlens");
@@ -68,6 +80,22 @@ describe("haxcms-goggles-site", function () {
     await toggleGoggles();
     await aTimeout(300);
     expect(loads).to.equal(1);
+  });
+
+  it("answers the network bar's goggles here instead of leaving the site", async () => {
+    const asked = new CustomEvent("hax-network-goggles", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+    });
+    globalThis.dispatchEvent(asked);
+    expect(asked.defaultPrevented).to.be.true;
+    await aTimeout(300);
+    const g = globalThis.document.querySelector("haxcms-goggles");
+    expect(g.on).to.be.true;
+    // and off again
+    await toggleGoggles();
+    await aTimeout(300);
   });
 
   it("moves the panel with the arrow keys and puts it back with Home", async () => {
