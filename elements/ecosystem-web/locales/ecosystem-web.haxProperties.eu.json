@@ -40,7 +40,9 @@
           "bus": "Bus faktorea",
           "impact": "Eragina",
           "evidence": "Ebidentzia",
-          "parity": "Parekotasuna"
+          "parity": "Parekotasuna",
+          "reuse": "Berrerabilpena",
+          "weight": "Pisua"
         }
       }
     ]

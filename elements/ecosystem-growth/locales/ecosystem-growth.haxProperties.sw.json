@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ukuaji wa mfumo ikolojia",
+    "description": "Jinsi mradi ulivyokua kwa muda na kile ambacho kutumia tena kunaokoa, kimechorwa kama fuwele kutoka data ya ukuaji ya PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data ya ukuaji",
+        "description": "URL ya folda inayoshikilia faili za JSON za ukuaji (PRAW huzichapisha kwenye hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Mwonekano wa kwanza",
+        "description": "Mwonekano upi unafunguka kwanza.",
+        "options": {
+          "themes": "Mandhari",
+          "elements": "Vipengele",
+          "platforms": "Majukwaa",
+          "cache": "Magic Script",
+          "contributors": "Wachangiaji"
+        }
+      }
+    ]
+  }
+}

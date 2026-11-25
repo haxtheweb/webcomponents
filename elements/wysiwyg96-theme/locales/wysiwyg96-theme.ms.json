@@ -25,5 +25,6 @@
   "ready": "Sedia",
   "editing": "Menyunting",
   "updated": "Dikemas kini {date}",
-  "position": "Halaman {index} daripada {count}"
+  "position": "Halaman {index} daripada {count}",
+  "pageWindow": "Tetingkap {name}"
 }

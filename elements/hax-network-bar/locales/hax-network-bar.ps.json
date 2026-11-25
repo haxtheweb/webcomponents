@@ -117,6 +117,14 @@
   "goLinkedinAbout": "د HAX ټیم خبرونه او تازه معلومات.",
   "goX": "X: @haxtheweb",
   "goXAbout": "د HAX ټیم خبرونه او تازه معلومات.",
+  "gogglesContribute": "د عینکو سره ونډه واخلئ",
+  "gogglesContributeAbout": "عینکې پر سر کړئ ترڅو زده کړئ چې HAX څنګه جوړ شوی او د هغه په ښه کولو کې مرسته وکړئ: د هرې برخې ایکسرې واخلئ ترڅو د هغې تر شا کوډ وګورئ، وګورئ چې چا جوړه کړې، یوه ستونزه یا نظر د داسې سکرین شاټ سره راپور کړئ چې مستقیم هغې ته اشاره کوي، په خپله ژبه کې یوه ژباړه سمه کړئ، او د هغه څه لپاره پرانیستې مسلې ومومئ چې ستاسو مخې ته دي.",
+  "gogglesProjectLinks": "د پروژې په اړه نور",
+  "gogglesLinkLab": "HAX Lab: څنګه ګډون وکړو",
+  "gogglesLinkPraw": "PRAW: د HAX تر شا خلک، نظرونه او کیسې",
+  "gogglesLinkLearn": "HAX زده کړئ: لارښوونې",
+  "gogglesLinkCode": "HAX په GitHub کې: کوډ",
   "installAll": "HAX نصب کړئ: د ترلاسه کولو ټولې لارې",
-  "installAllAbout": "براوزر، HAX CLI، Node.js، PHP، ډیسکټاپ اپ یا ستاسو د اجنټ لپاره یو پرامپټ."
+  "installAllAbout": "براوزر، HAX CLI، Node.js، PHP، ډیسکټاپ اپ یا ستاسو د اجنټ لپاره یو پرامپټ.",
+  "networkBar": "د HAX شبکې پټه"
 }

@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Hírek és frissítések a HAX csapattól.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Hírek és frissítések a HAX csapattól.",
+  "gogglesContribute": "Közreműködés a szemüveggel",
+  "gogglesContributeAbout": "Vegye fel a szemüveget, hogy megtudja, hogyan készül a HAX, és segítsen jobbá tenni: röntgenezzen át bármely részt, hogy lássa a mögötte lévő kódot, nézze meg, ki készítette, jelentsen hibát vagy ötletet egy pontosan rá mutató képernyőképpel, javítson egy fordítást a saját nyelvén, és keresse meg a nyitott hibajegyeket ahhoz, ami ön előtt van.",
+  "gogglesProjectLinks": "Továbbiak a projektről",
+  "gogglesLinkLab": "HAX Lab: hogyan kapcsolódhat be",
+  "gogglesLinkPraw": "PRAW: az emberek, ötletek és történetek a HAX mögött",
+  "gogglesLinkLearn": "HAX tanulása: útmutatók",
+  "gogglesLinkCode": "HAX a GitHubon: a kód",
   "installAll": "A HAX telepítése: minden beszerzési mód",
-  "installAllAbout": "A böngésző, a HAX CLI, a Node.js, a PHP, az asztali alkalmazás vagy egy prompt az ügynökének."
+  "installAllAbout": "A böngésző, a HAX CLI, a Node.js, a PHP, az asztali alkalmazás vagy egy prompt az ügynökének.",
+  "networkBar": "HAX hálózati sáv"
 }

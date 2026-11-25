@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pertumbuhan ekosistem",
+    "description": "Bagaimana sesebuah projek berkembang dari semasa ke semasa dan apa yang dijimatkan oleh guna semulanya, dilukis sebagai kristal daripada data pertumbuhan PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data pertumbuhan",
+        "description": "URL folder yang menyimpan fail JSON pertumbuhan (PRAW menerbitkannya di hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Paparan pertama",
+        "description": "Paparan yang dibuka dahulu.",
+        "options": {
+          "themes": "Tema",
+          "elements": "Elemen",
+          "platforms": "Platform",
+          "cache": "Magic Script",
+          "contributors": "Penyumbang"
+        }
+      }
+    ]
+  }
+}

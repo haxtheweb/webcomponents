@@ -25,5 +25,6 @@
   "ready": "Gata",
   "editing": "Editare",
   "updated": "Actualizat {date}",
-  "position": "Pagina {index} din {count}"
+  "position": "Pagina {index} din {count}",
+  "pageWindow": "Fereastra {name}"
 }

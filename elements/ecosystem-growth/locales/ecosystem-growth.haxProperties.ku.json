@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Mezinbûna ekosîstemê",
+    "description": "Projeyek bi demê re çawa mezin bû û ji nû ve bikaranîna wê çi teserûf dike, wekî krîstalekê ji daneyên mezinbûnê yên PRAW hatiye xêzkirin."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Daneyên mezinbûnê",
+        "description": "URL ya peldanka ku pelên JSON yên mezinbûnê tê de ne (PRAW wan li hax.cloud/data/growth/ diweşîne)."
+      },
+      {
+        "title": "Dîmena yekem",
+        "description": "Kîjan dîmen pêşî vedibe.",
+        "options": {
+          "themes": "Tema",
+          "elements": "Hêman",
+          "platforms": "Platform",
+          "cache": "Magic Script",
+          "contributors": "Beşdar"
+        }
+      }
+    ]
+  }
+}

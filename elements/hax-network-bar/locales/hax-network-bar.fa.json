@@ -117,6 +117,14 @@
   "goLinkedinAbout": "اخبار و به‌روزرسانی‌های تیم HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "اخبار و به‌روزرسانی‌های تیم HAX.",
+  "gogglesContribute": "مشارکت با عینک",
+  "gogglesContributeAbout": "عینک را بزنید تا ببینید HAX چگونه ساخته می‌شود و به بهتر شدنش کمک کنید: از هر بخشی عکس اشعهٔ ایکس بگیرید تا کد پشت آن را ببینید، ببینید چه کسی آن را ساخته، یک اشکال یا ایده را با نماگرفتی که دقیقاً به آن اشاره می‌کند گزارش دهید، ترجمه‌ای را به زبان خودتان اصلاح کنید و مسائل باز مربوط به آنچه پیش رویتان است را پیدا کنید.",
+  "gogglesProjectLinks": "دربارهٔ پروژه بیشتر بدانید",
+  "gogglesLinkLab": "HAX Lab: چگونه مشارکت کنیم",
+  "gogglesLinkPraw": "PRAW: آدم‌ها، ایده‌ها و داستان‌های پشت HAX",
+  "gogglesLinkLearn": "یادگیری HAX: آموزش‌ها",
+  "gogglesLinkCode": "HAX در GitHub: کد",
   "installAll": "نصب HAX: همهٔ راه‌های دریافت آن",
-  "installAllAbout": "مرورگر، HAX CLI، Node.js، PHP، برنامهٔ دسکتاپ یا یک پرامپت برای عامل شما."
+  "installAllAbout": "مرورگر، HAX CLI، Node.js، PHP، برنامهٔ دسکتاپ یا یک پرامپت برای عامل شما.",
+  "networkBar": "نوار شبکهٔ HAX"
 }

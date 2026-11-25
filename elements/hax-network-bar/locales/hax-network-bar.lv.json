@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Jaunumi un atjauninājumi no HAX komandas.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Jaunumi un atjauninājumi no HAX komandas.",
+  "gogglesContribute": "Piedalies ar brillēm",
+  "gogglesContributeAbout": "Uzliec brilles, lai uzzinātu, kā top HAX, un palīdzētu to uzlabot: caurskati jebkuru daļu kā ar rentgenu, lai redzētu kodu aiz tās, uzzini, kas to izveidoja, ziņo par kļūdu vai ideju ar ekrānuzņēmumu, kas norāda tieši uz to, izlabo tulkojumu savā valodā un atrodi atvērtās problēmas tam, kas ir tavā priekšā.",
+  "gogglesProjectLinks": "Vairāk par projektu",
+  "gogglesLinkLab": "HAX Lab: kā iesaistīties",
+  "gogglesLinkPraw": "PRAW: cilvēki, idejas un stāsti aiz HAX",
+  "gogglesLinkLearn": "Learn HAX: pamācības",
+  "gogglesLinkCode": "HAX vietnē GitHub: kods",
   "installAll": "Instalēt HAX: visi veidi, kā to iegūt",
-  "installAllAbout": "Pārlūks, HAX CLI, Node.js, PHP, darbvirsmas lietotne vai uzvedne jūsu aģentam."
+  "installAllAbout": "Pārlūks, HAX CLI, Node.js, PHP, darbvirsmas lietotne vai uzvedne jūsu aģentam.",
+  "networkBar": "HAX tīkla josla"
 }

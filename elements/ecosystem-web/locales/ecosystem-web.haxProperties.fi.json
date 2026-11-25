@@ -40,7 +40,9 @@
           "bus": "Bussikerroin",
           "impact": "Vaikutus",
           "evidence": "Perustelu",
-          "parity": "Pariteetti"
+          "parity": "Pariteetti",
+          "reuse": "Uudelleenkäyttö",
+          "weight": "Paino"
         }
       }
     ]

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ukukhula kwe-ecosystem",
+    "description": "Ukuthi iphrojekthi ikhule kanjani ngokuhamba kwesikhathi nokuthi ukusetshenziswa kabusha kwayo konga malini, kudwetshwe njengekristalu kusuka kudatha yokukhula ye-PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Idatha yokukhula",
+        "description": "I-URL yefolda ephethe amafayela e-JSON okukhula (i-PRAW iwashicilela ku-hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Ukubuka kokuqala",
+        "description": "Ukuthi yikuphi ukubuka okuvuleka kuqala.",
+        "options": {
+          "themes": "Izingqikithi",
+          "elements": "Izakhi",
+          "platforms": "Izinkundla",
+          "cache": "Magic Script",
+          "contributors": "Abanikeli"
+        }
+      }
+    ]
+  }
+}

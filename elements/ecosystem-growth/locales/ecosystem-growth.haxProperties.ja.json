@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "エコシステムの成長",
+    "description": "プロジェクトが時間とともにどう成長し、その再利用で何が節約されるかを、PRAW の成長データから結晶として描きます。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "成長データ",
+        "description": "成長データの JSON ファイルを置いたフォルダーの URL (PRAW は hax.cloud/data/growth/ で公開しています)。"
+      },
+      {
+        "title": "最初のビュー",
+        "description": "最初に開くビュー。",
+        "options": {
+          "themes": "テーマ",
+          "elements": "エレメント",
+          "platforms": "プラットフォーム",
+          "cache": "Magic Script",
+          "contributors": "コントリビューター"
+        }
+      }
+    ]
+  }
+}

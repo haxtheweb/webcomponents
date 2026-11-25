@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rozwój ekosystemu",
+    "description": "Jak projekt rozwijał się w czasie i ile oszczędza ponowne użycie, narysowane jako kryształ na podstawie danych o rozwoju z PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dane o rozwoju",
+        "description": "URL folderu zawierającego pliki JSON z danymi o rozwoju (PRAW publikuje je pod adresem hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Pierwszy widok",
+        "description": "Który widok otwiera się jako pierwszy.",
+        "options": {
+          "themes": "Motywy",
+          "elements": "Elementy",
+          "platforms": "Platformy",
+          "cache": "Magic Script",
+          "contributors": "Współtwórcy"
+        }
+      }
+    ]
+  }
+}

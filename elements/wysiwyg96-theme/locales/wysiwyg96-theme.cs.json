@@ -25,5 +25,6 @@
   "ready": "Připraveno",
   "editing": "Úpravy",
   "updated": "Aktualizováno {date}",
-  "position": "Stránka {index} z {count}"
+  "position": "Stránka {index} z {count}",
+  "pageWindow": "Okno {name}"
 }

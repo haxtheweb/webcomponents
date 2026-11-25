@@ -40,7 +40,9 @@
           "bus": "Bussifaktor",
           "impact": "Mõju",
           "evidence": "Tõendid",
-          "parity": "Pariteet"
+          "parity": "Pariteet",
+          "reuse": "Taaskasutus",
+          "weight": "Kaal"
         }
       }
     ]

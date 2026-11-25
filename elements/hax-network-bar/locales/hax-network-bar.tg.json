@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Хабарҳо ва навигариҳо аз дастаи HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Хабарҳо ва навигариҳо аз дастаи HAX.",
+  "gogglesContribute": "Бо айнак саҳм гузоред",
+  "gogglesContributeAbout": "Айнакро пӯшед, то бифаҳмед, ки HAX чӣ тавр сохта мешавад ва барои беҳтар кардани он кӯмак кунед: ҳар қисмро бо рентген бинед, то коди пушти онро дидан, бинед кӣ онро сохтааст, хато ё ғояро бо скриншоте, ки рост ба он нишон медиҳад, гузориш диҳед, тарҷумаро бо забони худ ислоҳ кунед ва масъалаҳои кушодаро барои он чи дар пеши шумост, ёбед.",
+  "gogglesProjectLinks": "Бештар дар бораи лоиҳа",
+  "gogglesLinkLab": "HAX Lab: чӣ тавр иштирок кардан",
+  "gogglesLinkPraw": "PRAW: одамон, ғояҳо ва ҳикояҳои пушти HAX",
+  "gogglesLinkLearn": "Learn HAX: дарсҳо",
+  "gogglesLinkCode": "HAX дар GitHub: код",
   "installAll": "Насби HAX: ҳамаи роҳҳои гирифтани он",
-  "installAllAbout": "Браузер, HAX CLI, Node.js, PHP, барномаи мизӣ ё prompt барои агентатон."
+  "installAllAbout": "Браузер, HAX CLI, Node.js, PHP, барномаи мизӣ ё prompt барои агентатон.",
+  "networkBar": "Сатри шабакаи HAX"
 }

@@ -40,7 +40,9 @@
           "bus": "Autobusa faktors",
           "impact": "Ietekme",
           "evidence": "Pierādījumi",
-          "parity": "Paritāte"
+          "parity": "Paritāte",
+          "reuse": "Atkalizmantošana",
+          "weight": "Svars"
         }
       }
     ]

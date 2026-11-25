@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX toparyndan habarlar we täzelikler.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX toparyndan habarlar we täzelikler.",
+  "gogglesContribute": "Äýnek bilen goşant goşuň",
+  "gogglesContributeAbout": "HAX-yň nähili ýasalýandygyny öwrenmek we ony gowulandyrmaga kömek etmek üçin äýnegi dakyň: islendik bölegi rentgen bilen görüp, onuň aňyrsyndaky kody görüň, ony kimiň gurandygyny görüň, ýalňyşlyk ýa-da pikir barada göni şoňa gönükdirilen ekran suraty bilen habar beriň, öz diliňizdäki terjimäni düzediň we öňüňizdäki zat üçin açyk meseleleri tapyň.",
+  "gogglesProjectLinks": "Taslama barada has köp",
+  "gogglesLinkLab": "HAX Lab: nädip gatnaşmaly",
+  "gogglesLinkPraw": "PRAW: HAX-yň aňyrsyndaky adamlar, pikirler we hekaýalar",
+  "gogglesLinkLearn": "Learn HAX: sapaklar",
+  "gogglesLinkCode": "GitHub-da HAX: kod",
   "installAll": "HAX gurna: ony almagyň ähli usullary",
-  "installAllAbout": "Brauzer, HAX CLI, Node.js, PHP, iş stoly programmasy ýa-da agentiňiz üçin prompt."
+  "installAllAbout": "Brauzer, HAX CLI, Node.js, PHP, iş stoly programmasy ýa-da agentiňiz üçin prompt.",
+  "networkBar": "HAX tor paneli"
 }

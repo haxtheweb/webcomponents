@@ -25,5 +25,6 @@
   "ready": "Klear",
   "editing": "Bewurkje",
   "updated": "Bywurke op {date}",
-  "position": "Side {index} fan {count}"
+  "position": "Side {index} fan {count}",
+  "pageWindow": "{name}-finster"
 }

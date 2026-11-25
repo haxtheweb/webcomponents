@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "צמיחת המערכת האקולוגית",
+    "description": "איך פרויקט צמח לאורך זמן ומה השימוש החוזר בו חוסך, מצויר כגביש מנתוני הצמיחה של PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "נתוני צמיחה",
+        "description": "URL של התיקייה שמכילה את קובצי ה־JSON של הצמיחה (PRAW מפרסם אותם ב־hax.cloud/data/growth/)."
+      },
+      {
+        "title": "תצוגה ראשונה",
+        "description": "איזו תצוגה נפתחת ראשונה.",
+        "options": {
+          "themes": "ערכות נושא",
+          "elements": "רכיבים",
+          "platforms": "פלטפורמות",
+          "cache": "Magic Script",
+          "contributors": "תורמים"
+        }
+      }
+    ]
+  }
+}

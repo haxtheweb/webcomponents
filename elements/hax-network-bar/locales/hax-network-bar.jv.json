@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Kabar lan nganyari saka tim HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Kabar lan nganyari saka tim HAX.",
+  "gogglesContribute": "Kontribusi nganggo kacamata",
+  "gogglesContributeAbout": "Enggo kacamata kanggo sinau kepiye HAX digawe lan mbantu nggawe luwih apik: rontgen bagean apa wae kanggo ndeleng kode ing mburine, deleng sapa sing nggawe, laporake bug utawa ide nganggo gambar layar sing nuding pas ing kono, dandani terjemahan ing basamu, lan golek masalah sing isih kabukak babagan apa sing ana ing ngarepmu.",
+  "gogglesProjectLinks": "Luwih akeh babagan proyek iki",
+  "gogglesLinkLab": "HAX Lab: carane melu",
+  "gogglesLinkPraw": "PRAW: wong, ide lan crita ing mburi HAX",
+  "gogglesLinkLearn": "Learn HAX: tutorial",
+  "gogglesLinkCode": "HAX ing GitHub: kodene",
   "installAll": "Pasang HAX: kabeh cara kanggo entuk",
-  "installAllAbout": "Browser, HAX CLI, Node.js, PHP, aplikasi desktop utawa prompt kanggo agen panjenengan."
+  "installAllAbout": "Browser, HAX CLI, Node.js, PHP, aplikasi desktop utawa prompt kanggo agen panjenengan.",
+  "networkBar": "Bilah jaringan HAX"
 }

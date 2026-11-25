@@ -25,5 +25,6 @@
   "ready": "Gereed",
   "editing": "Bewerken",
   "updated": "Bijgewerkt op {date}",
-  "position": "Pagina {index} van {count}"
+  "position": "Pagina {index} van {count}",
+  "pageWindow": "Venster {name}"
 }

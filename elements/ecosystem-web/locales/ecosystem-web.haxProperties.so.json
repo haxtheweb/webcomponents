@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Saamayn",
           "evidence": "Caddayn",
-          "parity": "Siman"
+          "parity": "Siman",
+          "reuse": "Dib u isticmaal",
+          "weight": "Miisaan"
         }
       }
     ]

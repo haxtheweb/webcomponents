@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosysteemin kasvu",
+    "description": "Miten projekti on kasvanut ajan myötä ja mitä sen uudelleenkäyttö säästää, piirrettynä kristallina PRAW:n kasvutiedoista."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kasvutiedot",
+        "description": "Sen kansion URL, jossa kasvua kuvaavat JSON-tiedostot ovat (PRAW julkaisee ne osoitteessa hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Ensimmäinen näkymä",
+        "description": "Mikä näkymä avautuu ensin.",
+        "options": {
+          "themes": "Teemat",
+          "elements": "Elementit",
+          "platforms": "Alustat",
+          "cache": "Magic Script",
+          "contributors": "Osallistujat"
+        }
+      }
+    ]
+  }
+}

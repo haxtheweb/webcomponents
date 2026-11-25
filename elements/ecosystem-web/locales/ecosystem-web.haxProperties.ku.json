@@ -40,7 +40,9 @@
           "bus": "Faktora otobûsê",
           "impact": "Bandor",
           "evidence": "Delîl",
-          "parity": "Wekhevî"
+          "parity": "Wekhevî",
+          "reuse": "Ji nû ve bikaranîn",
+          "weight": "Giranî"
         }
       }
     ]

@@ -40,7 +40,9 @@
           "bus": "Factor de autobuz",
           "impact": "Impact",
           "evidence": "Dovezi",
-          "parity": "Paritate"
+          "parity": "Paritate",
+          "reuse": "Reutilizare",
+          "weight": "Greutate"
         }
       }
     ]

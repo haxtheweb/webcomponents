@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Simba",
           "evidence": "Humbowo",
-          "parity": "Kuenzana"
+          "parity": "Kuenzana",
+          "reuse": "Kushandiswa zvakare",
+          "weight": "Huremu"
         }
       }
     ]

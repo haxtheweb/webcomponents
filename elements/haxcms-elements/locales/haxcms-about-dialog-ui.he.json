@@ -20,6 +20,7 @@
   "projectOverview": "סקירת הפרויקט",
   "documentation": "תיעוד",
   "joinTheHaxDiscordCommunity": "הצטרפו לקהילת HAX ב-Discord",
+  "contributeWithTheGoggles": "תרמו עם המשקפת: ראו איך HAX בנוי, דווחו על באגים ורעיונות",
   "issueQueue": "תור התקלות (באגים ובקשות לתכונות)",
   "keyboardShortcuts": "קיצורי מקלדת",
   "keyboardShortcutsDescription": "רשומים באופן מרכזי ב-HAXcms ומוצגים לפי ההקשר הפעיל. הקיצורים משתמשים ב-Ctrl+Shift+[מקש]; בעורך, הקלדת טריגר markdown ואחריו רווח ממירה את הבלוק. הקלידו {slash} בבלוק טקסט ריק כדי לפתוח חיפוש בשורה.",

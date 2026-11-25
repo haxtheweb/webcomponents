@@ -25,5 +25,6 @@
   "ready": "Әзер",
   "editing": "Төзәтелә",
   "updated": "Яңартылды: {date}",
-  "position": "{count} биттән {index}"
+  "position": "{count} биттән {index}",
+  "pageWindow": "{name} тәрәзәсе"
 }

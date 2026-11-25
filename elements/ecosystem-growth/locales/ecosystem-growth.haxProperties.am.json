@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "የሥነ-ምኅዳር እድገት",
+    "description": "አንድ ፕሮጀክት በጊዜ ሂደት እንዴት እንዳደገ እና እንደገና መጠቀሙ ምን እንደሚያድን፣ ከ PRAW የእድገት ውሂብ እንደ ክሪስታል የተሳለ።"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "የእድገት ውሂብ",
+        "description": "የእድገት JSON ፋይሎችን የያዘው አቃፊ URL (PRAW በ hax.cloud/data/growth/ ያትማቸዋል)።"
+      },
+      {
+        "title": "የመጀመሪያ እይታ",
+        "description": "መጀመሪያ የሚከፈተው የትኛው እይታ ነው።",
+        "options": {
+          "themes": "ገጽታዎች",
+          "elements": "ኤለመንቶች",
+          "platforms": "መድረኮች",
+          "cache": "Magic Script",
+          "contributors": "አስተዋጽኦ አድራጊዎች"
+        }
+      }
+    ]
+  }
+}

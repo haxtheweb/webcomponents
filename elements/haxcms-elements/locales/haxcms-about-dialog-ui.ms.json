@@ -20,6 +20,7 @@
   "projectOverview": "Gambaran keseluruhan projek",
   "documentation": "Dokumentasi",
   "joinTheHaxDiscordCommunity": "Sertai komuniti Discord HAX",
+  "contributeWithTheGoggles": "Menyumbang dengan gogal: lihat cara HAX dibuat, laporkan pepijat dan idea",
   "issueQueue": "Baris gilir isu (pepijat dan permintaan ciri)",
   "keyboardShortcuts": "Pintasan papan kekunci",
   "keyboardShortcutsDescription": "Didaftarkan secara berpusat dalam HAXcms dan ditunjukkan mengikut konteks aktif. Ikatan menggunakan Ctrl+Shift+[Kekunci]; dalam editor, menaip pencetus markdown diikuti ruang akan menukar blok. Taip {slash} dalam blok teks kosong untuk membuka Carian sebaris.",

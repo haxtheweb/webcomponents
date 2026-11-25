@@ -25,5 +25,6 @@
   "ready": "Ilungile",
   "editing": "Kuyahlelwa",
   "updated": "Ihlaziywe ngo-{date}",
-  "position": "Iphepha {index} kwali-{count}"
+  "position": "Iphepha {index} kwali-{count}",
+  "pageWindow": "Ifestile ye-{name}"
 }

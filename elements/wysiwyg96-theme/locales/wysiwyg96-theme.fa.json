@@ -25,5 +25,6 @@
   "ready": "آماده",
   "editing": "در حال ویرایش",
   "updated": "به‌روزرسانی {date}",
-  "position": "صفحهٔ {index} از {count}"
+  "position": "صفحهٔ {index} از {count}",
+  "pageWindow": "پنجرهٔ {name}"
 }

@@ -25,5 +25,6 @@
   "ready": "ພ້ອມ",
   "editing": "ກຳລັງແກ້ໄຂ",
   "updated": "ອັບເດດເມື່ອ {date}",
-  "position": "ໜ້າ {index} ຈາກ {count}"
+  "position": "ໜ້າ {index} ຈາກ {count}",
+  "pageWindow": "ໜ້າຕ່າງ {name}"
 }

@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX komandos naujienos ir atnaujinimai.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX komandos naujienos ir atnaujinimai.",
+  "gogglesContribute": "Prisidėkite su akiniais",
+  "gogglesContributeAbout": "Užsidėkite akinius, kad sužinotumėte, kaip kuriamas HAX, ir padėtumėte jį patobulinti: peršvieskite bet kurią dalį lyg rentgenu ir pamatykite už jos esantį kodą, sužinokite, kas ją sukūrė, praneškite apie klaidą ar idėją su ekrano kopija, rodančia tiesiai į ją, pataisykite vertimą savo kalba ir raskite atvirus klausimus tam, kas yra prieš jus.",
+  "gogglesProjectLinks": "Daugiau apie projektą",
+  "gogglesLinkLab": "HAX Lab: kaip įsitraukti",
+  "gogglesLinkPraw": "PRAW: žmonės, idėjos ir istorijos už HAX",
+  "gogglesLinkLearn": "Learn HAX: pamokos",
+  "gogglesLinkCode": "HAX GitHub'e: kodas",
   "installAll": "Įdiegti HAX: visi būdai ją gauti",
-  "installAllAbout": "Naršyklė, HAX CLI, Node.js, PHP, darbalaukio programa arba užklausa jūsų agentui."
+  "installAllAbout": "Naršyklė, HAX CLI, Node.js, PHP, darbalaukio programa arba užklausa jūsų agentui.",
+  "networkBar": "HAX tinklo juosta"
 }

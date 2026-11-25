@@ -25,5 +25,6 @@
   "ready": "A punt",
   "editing": "Editant",
   "updated": "Actualitzat el {date}",
-  "position": "Pàgina {index} de {count}"
+  "position": "Pàgina {index} de {count}",
+  "pageWindow": "Finestra de {name}"
 }

@@ -25,5 +25,6 @@
   "ready": "Lest",
   "editing": "Editjar",
   "updated": "Aġġornat {date}",
-  "position": "Paġna {index} minn {count}"
+  "position": "Paġna {index} minn {count}",
+  "pageWindow": "Tieqa {name}"
 }

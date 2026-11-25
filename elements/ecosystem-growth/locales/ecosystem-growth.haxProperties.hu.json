@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ökoszisztéma növekedése",
+    "description": "Hogyan nőtt egy projekt az idő során, és mit takarít meg az újrafelhasználás, kristályként megrajzolva a PRAW növekedési adataiból."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Növekedési adatok",
+        "description": "A növekedési JSON-fájlokat tartalmazó mappa URL-je (a PRAW a hax.cloud/data/growth/ címen teszi közzé őket)."
+      },
+      {
+        "title": "Első nézet",
+        "description": "Melyik nézet nyílik meg először.",
+        "options": {
+          "themes": "Témák",
+          "elements": "Elemek",
+          "platforms": "Platformok",
+          "cache": "Magic Script",
+          "contributors": "Közreműködők"
+        }
+      }
+    ]
+  }
+}

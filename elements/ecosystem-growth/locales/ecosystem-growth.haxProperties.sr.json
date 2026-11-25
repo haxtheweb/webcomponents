@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Раст екосистема",
+    "description": "Како је пројекат растао током времена и шта уштеђује његова поновна употреба, приказано као кристал из PRAW података о расту."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Подаци о расту",
+        "description": "URL фасцикле која садржи JSON датотеке о расту (PRAW их објављује на hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Први приказ",
+        "description": "Који се приказ први отвара.",
+        "options": {
+          "themes": "Теме",
+          "elements": "Елементи",
+          "platforms": "Платформе",
+          "cache": "Magic Script",
+          "contributors": "Сарадници"
+        }
+      }
+    ]
+  }
+}

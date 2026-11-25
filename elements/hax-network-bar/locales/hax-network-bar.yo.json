@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Ìròyìn àti ìmúdójúìwọ̀n láti ọ̀dọ̀ ẹgbẹ́ HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Ìròyìn àti ìmúdójúìwọ̀n láti ọ̀dọ̀ ẹgbẹ́ HAX.",
+  "gogglesContribute": "Ṣe àfikún pẹ̀lú ìgò ojú",
+  "gogglesContributeAbout": "Wọ ìgò ojú láti kọ́ bí a ṣe ń ṣe HAX kí o sì ràn wá lọ́wọ́ láti mú un dára sí i: wo inú apá èyíkéyìí láti rí kóòdù tó wà lẹ́yìn rẹ̀, wo ẹni tó kọ́ ọ, fi àṣìṣe tàbí èrò ránṣẹ́ pẹ̀lú àwòrán ìbojú tó tọ́ka sí i gan-an, ṣàtúnṣe ìtúmọ̀ ní èdè rẹ, kí o sì rí àwọn ọ̀rọ̀ tó ṣí sílẹ̀ fún ohun tó wà níwájú rẹ.",
+  "gogglesProjectLinks": "Síwájú sí i nípa iṣẹ́ àkànṣe náà",
+  "gogglesLinkLab": "HAX Lab: bí o ṣe lè kópa",
+  "gogglesLinkPraw": "PRAW: àwọn ènìyàn, èrò àti ìtàn tó wà lẹ́yìn HAX",
+  "gogglesLinkLearn": "Kọ́ HAX: ẹ̀kọ́",
+  "gogglesLinkCode": "HAX lórí GitHub: kóòdù náà",
   "installAll": "Fi HAX sori: gbogbo ọ̀nà láti rí i gbà",
-  "installAllAbout": "Aṣàwákiri, HAX CLI, Node.js, PHP, ìṣàfilọ́lẹ̀ kọ̀ǹpútà tàbí ìtọ́ni fún aṣojú rẹ."
+  "installAllAbout": "Aṣàwákiri, HAX CLI, Node.js, PHP, ìṣàfilọ́lẹ̀ kọ̀ǹpútà tàbí ìtọ́ni fún aṣojú rẹ.",
+  "networkBar": "Ọ̀pá nẹ́tíwọ̀ọ̀kì HAX"
 }

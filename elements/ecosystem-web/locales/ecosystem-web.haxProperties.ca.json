@@ -40,7 +40,9 @@
           "bus": "Factor autobús",
           "impact": "Impacte",
           "evidence": "Evidència",
-          "parity": "Paritat"
+          "parity": "Paritat",
+          "reuse": "Reutilització",
+          "weight": "Pes"
         }
       }
     ]

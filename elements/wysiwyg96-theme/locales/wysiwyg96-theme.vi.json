@@ -25,5 +25,6 @@
   "ready": "Sẵn sàng",
   "editing": "Đang chỉnh sửa",
   "updated": "Cập nhật {date}",
-  "position": "Trang {index} / {count}"
+  "position": "Trang {index} / {count}",
+  "pageWindow": "Cửa sổ {name}"
 }

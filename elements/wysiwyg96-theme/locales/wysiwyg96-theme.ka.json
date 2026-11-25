@@ -25,5 +25,6 @@
   "ready": "მზადაა",
   "editing": "რედაქტირება",
   "updated": "განახლდა {date}",
-  "position": "გვერდი {index} / {count}"
+  "position": "გვერდი {index} / {count}",
+  "pageWindow": "ფანჯარა: {name}"
 }

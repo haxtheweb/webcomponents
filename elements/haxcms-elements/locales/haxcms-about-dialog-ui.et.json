@@ -20,6 +20,7 @@
   "projectOverview": "Projekti ülevaade",
   "documentation": "Dokumentatsioon",
   "joinTheHaxDiscordCommunity": "Liitu HAX-i Discordi kogukonnaga",
+  "contributeWithTheGoggles": "Panusta prillidega: vaata, kuidas HAX on tehtud, teata vigadest ja ideedest",
   "issueQueue": "Probleemide järjekord (vead ja funktsioonisoovid)",
   "keyboardShortcuts": "Kiirklahvid",
   "keyboardShortcutsDescription": "Registreeritud keskselt HAXcms-is ja kuvatud aktiivse konteksti järgi. Sidumised kasutavad Ctrl+Shift+[Klahv]; redaktoris teisendab markdowni päästiku sisestamine ja seejärel tühik ploki. Tekstisisese otsingu avamiseks sisesta tühjas tekstiplokis {slash}.",

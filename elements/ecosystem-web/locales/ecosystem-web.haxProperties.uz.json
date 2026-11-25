@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Ta’sir",
           "evidence": "Dalil",
-          "parity": "Moslik"
+          "parity": "Moslik",
+          "reuse": "Qayta foydalanish",
+          "weight": "Og‘irlik"
         }
       }
     ]

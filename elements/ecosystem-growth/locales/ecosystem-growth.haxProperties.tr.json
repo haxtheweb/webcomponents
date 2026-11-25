@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistem büyümesi",
+    "description": "Bir projenin zaman içinde nasıl büyüdüğü ve yeniden kullanımının neler kazandırdığı; PRAW'ın büyüme verilerinden bir kristal olarak çizilir."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Büyüme verileri",
+        "description": "Büyüme JSON dosyalarını barındıran klasörün URL'si (PRAW bunları hax.cloud/data/growth/ adresinde yayımlar)."
+      },
+      {
+        "title": "İlk görünüm",
+        "description": "Önce hangi görünümün açılacağı.",
+        "options": {
+          "themes": "Temalar",
+          "elements": "Öğeler",
+          "platforms": "Platformlar",
+          "cache": "Magic Script",
+          "contributors": "Katkıda bulunanlar"
+        }
+      }
+    ]
+  }
+}

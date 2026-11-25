@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "生态系统增长",
+    "description": "一个项目如何随时间增长，以及复用节省了多少，以 PRAW 增长数据绘制成的晶体呈现。"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "增长数据",
+        "description": "存放增长 JSON 文件的文件夹 URL（PRAW 将其发布在 hax.cloud/data/growth/）。"
+      },
+      {
+        "title": "初始视图",
+        "description": "最先打开哪个视图。",
+        "options": {
+          "themes": "主题",
+          "elements": "元素",
+          "platforms": "平台",
+          "cache": "Magic Script",
+          "contributors": "贡献者"
+        }
+      }
+    ]
+  }
+}

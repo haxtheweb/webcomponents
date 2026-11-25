@@ -25,5 +25,6 @@
   "ready": "तयार",
   "editing": "संपादन सुरू",
   "updated": "{date} रोजी अपडेट केले",
-  "position": "पान {index} / {count}"
+  "position": "पान {index} / {count}",
+  "pageWindow": "{name} विंडो"
 }

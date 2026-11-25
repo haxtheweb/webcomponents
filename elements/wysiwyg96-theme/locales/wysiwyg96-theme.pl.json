@@ -25,5 +25,6 @@
   "ready": "Gotowe",
   "editing": "Edycja",
   "updated": "Zaktualizowano {date}",
-  "position": "Strona {index} z {count}"
+  "position": "Strona {index} z {count}",
+  "pageWindow": "Okno {name}"
 }

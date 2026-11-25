@@ -25,5 +25,6 @@
   "ready": "ಸಿದ್ಧ",
   "editing": "ಸಂಪಾದಿಸಲಾಗುತ್ತಿದೆ",
   "updated": "{date} ರಂದು ನವೀಕರಿಸಲಾಗಿದೆ",
-  "position": "{count} ರಲ್ಲಿ ಪುಟ {index}"
+  "position": "{count} ರಲ್ಲಿ ಪುಟ {index}",
+  "pageWindow": "{name} ವಿಂಡೋ"
 }

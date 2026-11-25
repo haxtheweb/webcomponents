@@ -25,5 +25,6 @@
   "ready": "Έτοιμο",
   "editing": "Επεξεργασία",
   "updated": "Ενημερώθηκε {date}",
-  "position": "Σελίδα {index} από {count}"
+  "position": "Σελίδα {index} από {count}",
+  "pageWindow": "Παράθυρο {name}"
 }

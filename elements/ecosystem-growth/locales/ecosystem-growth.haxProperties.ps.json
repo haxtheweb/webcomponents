@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "د ایکوسیسټم وده",
+    "description": "یوه پروژه د وخت په تېرېدو سره څنګه وده کړې او د هغې بیا کارونه څه سپموي، د PRAW د ودې له معلوماتو څخه د یوې بلورې په څېر انځور شوې."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "د ودې معلومات",
+        "description": "د هغه فولډر URL چې د ودې JSON فایلونه پکې دي (PRAW یې په hax.cloud/data/growth/ کې خپروي)."
+      },
+      {
+        "title": "لومړۍ ننداره",
+        "description": "کومه ننداره لومړی پرانیستل کېږي.",
+        "options": {
+          "themes": "تیمونه",
+          "elements": "عناصر",
+          "platforms": "پلاتفورمونه",
+          "cache": "Magic Script",
+          "contributors": "ونډه اخیستونکي"
+        }
+      }
+    ]
+  }
+}

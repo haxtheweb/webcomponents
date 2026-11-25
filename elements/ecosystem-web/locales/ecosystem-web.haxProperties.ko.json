@@ -40,7 +40,9 @@
           "bus": "버스 팩터",
           "impact": "영향력",
           "evidence": "근거",
-          "parity": "동등성"
+          "parity": "동등성",
+          "reuse": "재사용",
+          "weight": "용량"
         }
       }
     ]

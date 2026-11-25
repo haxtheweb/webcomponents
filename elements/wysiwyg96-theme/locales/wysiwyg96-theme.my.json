@@ -25,5 +25,6 @@
   "ready": "အသင့်",
   "editing": "တည်းဖြတ်နေသည်",
   "updated": "{date} တွင် အပ်ဒိတ်လုပ်ခဲ့သည်",
-  "position": "စာမျက်နှာ {count} အနက် {index}"
+  "position": "စာမျက်နှာ {count} အနက် {index}",
+  "pageWindow": "{name} ဝင်းဒိုး"
 }

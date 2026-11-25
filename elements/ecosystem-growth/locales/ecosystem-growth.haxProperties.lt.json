@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistemos augimas",
+    "description": "Kaip projektas augo laikui bėgant ir ką sutaupo jo pakartotinis naudojimas, nupiešta kaip kristalas iš PRAW augimo duomenų."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Augimo duomenys",
+        "description": "Aplanko, kuriame yra augimo JSON failai, URL (PRAW juos skelbia adresu hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Pirmasis rodinys",
+        "description": "Kuris rodinys atidaromas pirmas.",
+        "options": {
+          "themes": "Temos",
+          "elements": "Elementai",
+          "platforms": "Platformos",
+          "cache": "Magic Script",
+          "contributors": "Bendraautoriai"
+        }
+      }
+    ]
+  }
+}

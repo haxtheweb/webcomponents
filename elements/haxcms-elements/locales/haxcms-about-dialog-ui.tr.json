@@ -20,6 +20,7 @@
   "projectOverview": "Projeye genel bakış",
   "documentation": "Belgeler",
   "joinTheHaxDiscordCommunity": "HAX Discord topluluğuna katılın",
+  "contributeWithTheGoggles": "Gözlükle katkıda bulunun: HAX'ın nasıl yapıldığını görün, hataları ve fikirleri bildirin",
   "issueQueue": "Sorun kuyruğu (hatalar ve özellik istekleri)",
   "keyboardShortcuts": "Klavye kısayolları",
   "keyboardShortcutsDescription": "HAXcms'te merkezi olarak kaydedilir ve etkin bağlama göre gösterilir. Bağlamalar Ctrl+Shift+[Tuş] kullanır; düzenleyicide bir markdown tetikleyicisi yazıp ardından boşluk bırakmak bloğu dönüştürür. Satır içi Arama'yı açmak için boş bir metin bloğuna {slash} yazın.",

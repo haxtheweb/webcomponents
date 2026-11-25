@@ -25,5 +25,6 @@
   "ready": "প্রস্তুত",
   "editing": "সম্পাদনা চলছে",
   "updated": "{date} তারিখে আপডেট",
-  "position": "{count}টির মধ্যে পাতা {index}"
+  "position": "{count}টির মধ্যে পাতা {index}",
+  "pageWindow": "{name} উইন্ডো"
 }

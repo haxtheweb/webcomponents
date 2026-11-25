@@ -25,5 +25,6 @@
   "ready": "Бэлэн",
   "editing": "Засварлаж байна",
   "updated": "{date}-нд шинэчилсэн",
-  "position": "{count}-ийн {index}-р хуудас"
+  "position": "{count}-ийн {index}-р хуудас",
+  "pageWindow": "{name} цонх"
 }

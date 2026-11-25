@@ -117,6 +117,14 @@
   "goLinkedinAbout": "ከ HAX ቡድን ዜናዎች እና ዝማኔዎች።",
   "goX": "X፦ @haxtheweb",
   "goXAbout": "ከ HAX ቡድን ዜናዎች እና ዝማኔዎች።",
+  "gogglesContribute": "በመነጽሩ አስተዋጽኦ ያድርጉ",
+  "gogglesContributeAbout": "HAX እንዴት እንደሚሠራ ለመማር እና የተሻለ እንዲሆን ለማገዝ መነጽሩን ያድርጉ፦ ከጀርባው ያለውን ኮድ ለማየት ማንኛውንም ክፍል በኤክስሬይ ይመልከቱ፣ ማን እንደገነባው ይመልከቱ፣ በቀጥታ ወደ እሱ የሚያመለክት ቅጽበታዊ ገጽ እይታ ያለው ስህተት ወይም ሐሳብ ያሳውቁ፣ በቋንቋዎ ያለውን ትርጉም ያስተካክሉ፣ እና ፊትዎ ላለው ነገር ክፍት ጉዳዮችን ያግኙ።",
+  "gogglesProjectLinks": "ስለ ፕሮጀክቱ ተጨማሪ",
+  "gogglesLinkLab": "HAX Lab፦ እንዴት መሳተፍ እንደሚቻል",
+  "gogglesLinkPraw": "PRAW፦ ከ HAX ጀርባ ያሉት ሰዎች፣ ሐሳቦች እና ታሪኮች",
+  "gogglesLinkLearn": "HAX ይማሩ፦ መማሪያዎች",
+  "gogglesLinkCode": "HAX በ GitHub ላይ፦ ኮዱ",
   "installAll": "HAXን ጫን፦ እሱን የሚያገኙባቸው ሁሉም መንገዶች",
-  "installAllAbout": "አሳሹ፣ HAX CLI፣ Node.js፣ PHP፣ የዴስክቶፕ መተግበሪያው ወይም ለወኪልዎ ጥያቄ።"
+  "installAllAbout": "አሳሹ፣ HAX CLI፣ Node.js፣ PHP፣ የዴስክቶፕ መተግበሪያው ወይም ለወኪልዎ ጥያቄ።",
+  "networkBar": "የ HAX አውታረ መረብ አሞሌ"
 }

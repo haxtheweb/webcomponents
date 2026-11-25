@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ecosistemap wiñaynin",
+    "description": "Huk proyecto pachawan imayna wiñasqanmanta, wakmanta llamk'achiyninpas ima waqaychasqanmanta, PRAW-pa wiñay willakuyninmanta cristal hina siq'isqa."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Wiñay willakuykuna",
+        "description": "Wiñay JSON willañiqikunayuq carpetap URL-nin (PRAW hax.cloud/data/growth/ nisqapi uyarichin)."
+      },
+      {
+        "title": "Ñawpaq qhawana",
+        "description": "Mayqin qhawanam ñawpaqta kichakun.",
+        "options": {
+          "themes": "Temakuna",
+          "elements": "Elementokuna",
+          "platforms": "Plataformakuna",
+          "cache": "Magic Script",
+          "contributors": "Yanapaqkuna"
+        }
+      }
+    ]
+  }
+}

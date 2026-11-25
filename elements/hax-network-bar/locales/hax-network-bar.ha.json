@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Labarai da sabuntawa daga ƙungiyar HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Labarai da sabuntawa daga ƙungiyar HAX.",
+  "gogglesContribute": "Ba da gudummawa da tabarau",
+  "gogglesContributeAbout": "Sanya tabarau don koyon yadda ake yin HAX kuma ka taimaka a inganta shi: yi wa kowane ɓangare hoton X-ray don ganin lambar da ke bayansa, ga wanda ya gina shi, ba da rahoton kuskure ko ra'ayi tare da hoton allo da ke nuna shi kai tsaye, gyara fassara a cikin harshenka, kuma nemo batutuwan da ke buɗe don abin da ke gabanka.",
+  "gogglesProjectLinks": "Ƙari game da aikin",
+  "gogglesLinkLab": "HAX Lab: yadda za ka shiga",
+  "gogglesLinkPraw": "PRAW: mutane, ra'ayoyi da labaran da ke bayan HAX",
+  "gogglesLinkLearn": "Koyi HAX: darussa",
+  "gogglesLinkCode": "HAX a GitHub: lambar",
   "installAll": "Shigar da HAX: kowace hanya ta samun sa",
-  "installAllAbout": "Burauza, HAX CLI, Node.js, PHP, manhajar kwamfuta ko umarni don wakilinka."
+  "installAllAbout": "Burauza, HAX CLI, Node.js, PHP, manhajar kwamfuta ko umarni don wakilinka.",
+  "networkBar": "Sandar hanyar sadarwa ta HAX"
 }

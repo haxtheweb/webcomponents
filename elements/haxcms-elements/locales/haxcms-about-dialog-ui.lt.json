@@ -20,6 +20,7 @@
   "projectOverview": "Projekto apžvalga",
   "documentation": "Dokumentacija",
   "joinTheHaxDiscordCommunity": "Prisijunkite prie HAX Discord bendruomenės",
+  "contributeWithTheGoggles": "Prisidėkite su akiniais: pamatykite, kaip kuriamas HAX, praneškite apie klaidas ir idėjas",
   "issueQueue": "Problemų eilė (klaidos ir funkcijų pageidavimai)",
   "keyboardShortcuts": "Spartieji klavišai",
   "keyboardShortcutsDescription": "Registruojami centralizuotai HAXcms ir rodomi pagal aktyvų kontekstą. Susiejimai naudoja Ctrl+Shift+[Klavišas]; rengyklėje įvedus markdown aktyviklį ir tarpą blokas konvertuojamas. Tuščiame teksto bloke įveskite {slash}, kad atidarytumėte eilutės paiešką.",

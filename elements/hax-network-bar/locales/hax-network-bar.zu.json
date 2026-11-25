@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Izindaba nezibuyekezo ezivela ethimbeni le-HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Izindaba nezibuyekezo ezivela ethimbeni le-HAX.",
+  "gogglesContribute": "Faka isandla ngezibuko",
+  "gogglesContributeAbout": "Gqoka izibuko ukuze ufunde ukuthi i-HAX yenziwa kanjani futhi usize ukuyenza ibe ngcono: bheka ngaphakathi kwanoma iyiphi ingxenye ubone ikhodi engemuva kwayo, ubone ukuthi ubani oyakhile, bika iphutha noma umbono ngesithombe-skrini esikhomba khona kuyo, lungisa ukuhumusha ngolimi lwakho, futhi uthole izinkinga ezivulekile zalokho okuphambi kwakho.",
+  "gogglesProjectLinks": "Okwengeziwe mayelana nephrojekthi",
+  "gogglesLinkLab": "HAX Lab: indlela yokubamba iqhaza",
+  "gogglesLinkPraw": "PRAW: abantu, imibono nezindaba ezingemuva kwe-HAX",
+  "gogglesLinkLearn": "Funda i-HAX: izifundo",
+  "gogglesLinkCode": "I-HAX ku-GitHub: ikhodi",
   "installAll": "Faka i-HAX: zonke izindlela zokuyithola",
-  "installAllAbout": "Isiphequluli, i-HAX CLI, i-Node.js, i-PHP, uhlelo lokusebenza lwedeskithophu noma umyalelo we-ejenti yakho."
+  "installAllAbout": "Isiphequluli, i-HAX CLI, i-Node.js, i-PHP, uhlelo lokusebenza lwedeskithophu noma umyalelo we-ejenti yakho.",
+  "networkBar": "Ibha yenethiwekhi ye-HAX"
 }

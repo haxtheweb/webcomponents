@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosystemets tillväxt",
+    "description": "Hur ett projekt har vuxit över tid och vad återanvändningen sparar, ritat som en kristall utifrån PRAW:s tillväxtdata."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Tillväxtdata",
+        "description": "URL till mappen som innehåller JSON-filerna med tillväxtdata (PRAW publicerar dem på hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Första vyn",
+        "description": "Vilken vy som öppnas först.",
+        "options": {
+          "themes": "Teman",
+          "elements": "Element",
+          "platforms": "Plattformar",
+          "cache": "Magic Script",
+          "contributors": "Bidragsgivare"
+        }
+      }
+    ]
+  }
+}

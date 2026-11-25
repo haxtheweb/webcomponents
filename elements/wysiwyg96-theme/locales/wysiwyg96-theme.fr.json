@@ -25,5 +25,6 @@
   "ready": "Prêt",
   "editing": "Modification",
   "updated": "Mis à jour le {date}",
-  "position": "Page {index} sur {count}"
+  "position": "Page {index} sur {count}",
+  "pageWindow": "Fenêtre {name}"
 }

@@ -25,5 +25,6 @@
   "ready": "തയ്യാർ",
   "editing": "എഡിറ്റ് ചെയ്യുന്നു",
   "updated": "{date}-ന് അപ്ഡേറ്റ് ചെയ്തു",
-  "position": "പേജ് {index} / {count}"
+  "position": "പേജ് {index} / {count}",
+  "pageWindow": "{name} വിൻഡോ"
 }

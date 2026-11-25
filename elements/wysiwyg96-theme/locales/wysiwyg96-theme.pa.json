@@ -25,5 +25,6 @@
   "ready": "ਤਿਆਰ",
   "editing": "ਸੋਧ ਜਾਰੀ",
   "updated": "{date} ਨੂੰ ਅੱਪਡੇਟ",
-  "position": "ਪੰਨਾ {index} / {count}"
+  "position": "ਪੰਨਾ {index} / {count}",
+  "pageWindow": "{name} ਵਿੰਡੋ"
 }

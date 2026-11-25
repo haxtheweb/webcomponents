@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "اثر",
           "evidence": "ثبوت",
-          "parity": "برابری"
+          "parity": "برابری",
+          "reuse": "دوبارہ استعمال",
+          "weight": "وزن"
         }
       }
     ]

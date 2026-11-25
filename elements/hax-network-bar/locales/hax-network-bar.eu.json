@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX taldearen berriak eta eguneratzeak.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX taldearen berriak eta eguneratzeak.",
+  "gogglesContribute": "Lagundu betaurrekoekin",
+  "gogglesContributeAbout": "Jantzi betaurrekoak HAX nola egiten den ikasteko eta hobetzen laguntzeko: egin X izpiak edozein zatiri atzean dagoen kodea ikusteko, ikusi nork eraiki zuen, jakinarazi akats edo ideia bat zuzenean hari begira dagoen pantaila-argazki batekin, zuzendu itzulpen bat zure hizkuntzan, eta aurkitu aurrean duzunari buruzko arazo irekiak.",
+  "gogglesProjectLinks": "Proiektuari buruz gehiago",
+  "gogglesLinkLab": "HAX Lab: nola parte hartu",
+  "gogglesLinkPraw": "PRAW: HAXen atzean dauden pertsonak, ideiak eta istorioak",
+  "gogglesLinkLearn": "Ikasi HAX: tutorialak",
+  "gogglesLinkCode": "HAX GitHuben: kodea",
   "installAll": "Instalatu HAX: hura lortzeko modu guztiak",
-  "installAllAbout": "Arakatzailea, HAX CLI, Node.js, PHP, mahaigaineko aplikazioa edo zure agentearentzako gonbit bat."
+  "installAllAbout": "Arakatzailea, HAX CLI, Node.js, PHP, mahaigaineko aplikazioa edo zure agentearentzako gonbit bat.",
+  "networkBar": "HAX sarearen barra"
 }

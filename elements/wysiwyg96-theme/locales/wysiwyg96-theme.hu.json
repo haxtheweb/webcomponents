@@ -25,5 +25,6 @@
   "ready": "Kész",
   "editing": "Szerkesztés",
   "updated": "Frissítve: {date}",
-  "position": "{index}. oldal / {count}"
+  "position": "{index}. oldal / {count}",
+  "pageWindow": "{name} ablak"
 }

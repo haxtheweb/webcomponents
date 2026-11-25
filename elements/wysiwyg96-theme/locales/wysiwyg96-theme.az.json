@@ -25,5 +25,6 @@
   "ready": "Hazır",
   "editing": "Redaktə",
   "updated": "{date} yeniləndi",
-  "position": "Səhifə {index} / {count}"
+  "position": "Səhifə {index} / {count}",
+  "pageWindow": "{name} pəncərəsi"
 }

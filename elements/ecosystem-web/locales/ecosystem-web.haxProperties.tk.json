@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Täsir",
           "evidence": "Subutnama",
-          "parity": "Deňlik"
+          "parity": "Deňlik",
+          "reuse": "Gaýtadan ulanmak",
+          "weight": "Agram"
         }
       }
     ]

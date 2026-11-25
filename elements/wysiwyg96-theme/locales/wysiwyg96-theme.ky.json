@@ -25,5 +25,6 @@
   "ready": "Даяр",
   "editing": "Түзөтүлүүдө",
   "updated": "{date} жаңыртылды",
-  "position": "{count} барактын {index}-барагы"
+  "position": "{count} барактын {index}-барагы",
+  "pageWindow": "{name} терезеси"
 }

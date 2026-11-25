@@ -25,5 +25,6 @@
   "ready": "Diyaar",
   "editing": "Tafatir",
   "updated": "La cusboonaysiiyay {date}",
-  "position": "Bogga {index} ee {count}"
+  "position": "Bogga {index} ee {count}",
+  "pageWindow": "Daaqadda {name}"
 }

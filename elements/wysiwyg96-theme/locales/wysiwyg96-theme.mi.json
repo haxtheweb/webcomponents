@@ -25,5 +25,6 @@
   "ready": "Kua rite",
   "editing": "E whakatika ana",
   "updated": "I whakahoutia {date}",
-  "position": "Whārangi {index} o {count}"
+  "position": "Whārangi {index} o {count}",
+  "pageWindow": "Matapihi {name}"
 }

@@ -40,7 +40,9 @@
           "bus": "Bussfaktor",
           "impact": "Virkning",
           "evidence": "Bevis",
-          "parity": "Paritet"
+          "parity": "Paritet",
+          "reuse": "Gjenbruk",
+          "weight": "Vekt"
         }
       }
     ]

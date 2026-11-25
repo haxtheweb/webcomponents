@@ -25,5 +25,6 @@
   "ready": "Pronto",
   "editing": "In modifica",
   "updated": "Aggiornato il {date}",
-  "position": "Pagina {index} di {count}"
+  "position": "Pagina {index} di {count}",
+  "pageWindow": "Finestra {name}"
 }

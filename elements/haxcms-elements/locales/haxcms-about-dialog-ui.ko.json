@@ -20,6 +20,7 @@
   "projectOverview": "프로젝트 개요",
   "documentation": "문서",
   "joinTheHaxDiscordCommunity": "HAX Discord 커뮤니티 참여",
+  "contributeWithTheGoggles": "고글을 쓰고 기여하기: HAX가 어떻게 만들어지는지 보고 버그와 아이디어를 신고하세요",
   "issueQueue": "이슈 대기열 (버그 및 기능 요청)",
   "keyboardShortcuts": "키보드 단축키",
   "keyboardShortcutsDescription": "HAXcms에서 중앙으로 등록되며 활성 컨텍스트에 따라 표시됩니다. 바인딩은 Ctrl+Shift+[Key]를 사용하며, 편집기에서 마크다운 트리거를 입력한 후 스페이스를 누르면 블록이 변환됩니다. 빈 텍스트 블록에 {slash}를 입력하면 인라인 검색이 열립니다.",

@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "نمو المنظومة",
+    "description": "كيف نما مشروع بمرور الوقت وما توفره إعادة استخدامه، مرسومًا على هيئة بلّورة من بيانات النمو في PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "بيانات النمو",
+        "description": "URL المجلد الذي يحوي ملفات JSON الخاصة بالنمو (ينشرها PRAW على hax.cloud/data/growth/)."
+      },
+      {
+        "title": "العرض الأول",
+        "description": "أي عرض يُفتح أولًا.",
+        "options": {
+          "themes": "السمات",
+          "elements": "العناصر",
+          "platforms": "المنصات",
+          "cache": "Magic Script",
+          "contributors": "المساهمون"
+        }
+      }
+    ]
+  }
+}

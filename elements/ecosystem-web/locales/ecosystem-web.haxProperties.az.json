@@ -40,7 +40,9 @@
           "bus": "Avtobus faktoru",
           "impact": "Təsir",
           "evidence": "Sübut",
-          "parity": "Paritet"
+          "parity": "Paritet",
+          "reuse": "Təkrar istifadə",
+          "weight": "Çəki"
         }
       }
     ]

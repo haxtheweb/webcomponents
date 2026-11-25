@@ -25,5 +25,6 @@
   "ready": "Tayari",
   "editing": "Inahariri",
   "updated": "Ilisasishwa {date}",
-  "position": "Ukurasa {index} kati ya {count}"
+  "position": "Ukurasa {index} kati ya {count}",
+  "pageWindow": "Dirisha la {name}"
 }

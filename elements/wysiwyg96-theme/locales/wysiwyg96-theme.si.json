@@ -25,5 +25,6 @@
   "ready": "සූදානම්",
   "editing": "සංස්කරණය කරමින්",
   "updated": "{date} යාවත්කාලීන කළා",
-  "position": "පිටුව {index} / {count}"
+  "position": "පිටුව {index} / {count}",
+  "pageWindow": "{name} කවුළුව"
 }

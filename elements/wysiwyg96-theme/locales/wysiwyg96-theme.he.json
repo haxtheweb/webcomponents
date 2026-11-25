@@ -25,5 +25,6 @@
   "ready": "מוכן",
   "editing": "עריכה",
   "updated": "עודכן ב־{date}",
-  "position": "דף {index} מתוך {count}"
+  "position": "דף {index} מתוך {count}",
+  "pageWindow": "חלון {name}"
 }

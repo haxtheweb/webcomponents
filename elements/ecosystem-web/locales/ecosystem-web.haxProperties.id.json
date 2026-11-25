@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Dampak",
           "evidence": "Bukti",
-          "parity": "Paritas"
+          "parity": "Paritas",
+          "reuse": "Penggunaan ulang",
+          "weight": "Bobot"
         }
       }
     ]

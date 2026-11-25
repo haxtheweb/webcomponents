@@ -25,5 +25,6 @@
   "ready": "Qophaa'eera",
   "editing": "Gulaalaa jira",
   "updated": "{date} haaromfame",
-  "position": "Fuula {count} keessaa {index}"
+  "position": "Fuula {count} keessaa {index}",
+  "pageWindow": "Foddaa {name}"
 }

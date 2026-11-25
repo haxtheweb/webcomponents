@@ -25,5 +25,6 @@
   "ready": "Valmis",
   "editing": "Muutmine",
   "updated": "Uuendatud {date}",
-  "position": "Leht {index}/{count}"
+  "position": "Leht {index}/{count}",
+  "pageWindow": "Aken {name}"
 }

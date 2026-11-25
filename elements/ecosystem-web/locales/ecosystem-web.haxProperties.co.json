@@ -40,7 +40,9 @@
           "bus": "Fattore autobus",
           "impact": "Impattu",
           "evidence": "Prova",
-          "parity": "Parità"
+          "parity": "Parità",
+          "reuse": "Riusu",
+          "weight": "Pesu"
         }
       }
     ]

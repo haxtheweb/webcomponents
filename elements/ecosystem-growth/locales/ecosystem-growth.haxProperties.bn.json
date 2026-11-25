@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ইকোসিস্টেমের বৃদ্ধি",
+    "description": "একটি প্রকল্প সময়ের সাথে কীভাবে বেড়েছে এবং এর পুনর্ব্যবহার কী সাশ্রয় করে, PRAW-এর বৃদ্ধির ডেটা থেকে একটি স্ফটিক হিসেবে আঁকা।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "বৃদ্ধির ডেটা",
+        "description": "বৃদ্ধির JSON ফাইলগুলো রাখা ফোল্ডারের URL (PRAW এগুলো hax.cloud/data/growth/-এ প্রকাশ করে)।"
+      },
+      {
+        "title": "প্রথম ভিউ",
+        "description": "কোন ভিউ প্রথমে খুলবে।",
+        "options": {
+          "themes": "থিম",
+          "elements": "এলিমেন্ট",
+          "platforms": "প্ল্যাটফর্ম",
+          "cache": "Magic Script",
+          "contributors": "অবদানকারী"
+        }
+      }
+    ]
+  }
+}

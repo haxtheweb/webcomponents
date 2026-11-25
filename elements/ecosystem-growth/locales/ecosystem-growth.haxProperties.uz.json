@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekotizim o‘sishi",
+    "description": "Loyiha vaqt o‘tishi bilan qanday o‘sgani va uni qayta foydalanish nimani tejashi, PRAW o‘sish ma’lumotlaridan kristall shaklida chizilgan."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "O‘sish ma’lumotlari",
+        "description": "O‘sish JSON fayllari saqlanadigan jildning URL manzili (PRAW ularni hax.cloud/data/growth/ manzilida e’lon qiladi)."
+      },
+      {
+        "title": "Birinchi ko‘rinish",
+        "description": "Qaysi ko‘rinish birinchi ochiladi.",
+        "options": {
+          "themes": "Mavzular",
+          "elements": "Elementlar",
+          "platforms": "Platformalar",
+          "cache": "Magic Script",
+          "contributors": "Hissa qo‘shganlar"
+        }
+      }
+    ]
+  }
+}

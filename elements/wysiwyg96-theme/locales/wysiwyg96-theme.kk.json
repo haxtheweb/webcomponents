@@ -25,5 +25,6 @@
   "ready": "Дайын",
   "editing": "Өңделуде",
   "updated": "{date} жаңартылды",
-  "position": "{count} беттің {index}-і"
+  "position": "{count} беттің {index}-і",
+  "pageWindow": "{name} терезесі"
 }

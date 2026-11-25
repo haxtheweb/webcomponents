@@ -40,7 +40,9 @@
           "bus": "Otobüs faktörü",
           "impact": "Etki",
           "evidence": "Kanıt",
-          "parity": "Eşdeğerlik"
+          "parity": "Eşdeğerlik",
+          "reuse": "Yeniden kullanım",
+          "weight": "Ağırlık"
         }
       }
     ]

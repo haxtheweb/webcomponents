@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "ਈਕੋਸਿਸਟਮ ਦਾ ਵਾਧਾ",
+    "description": "ਇੱਕ ਪ੍ਰੋਜੈਕਟ ਸਮੇਂ ਨਾਲ ਕਿਵੇਂ ਵਧਿਆ ਅਤੇ ਉਸਦੀ ਮੁੜ ਵਰਤੋਂ ਕੀ ਬਚਾਉਂਦੀ ਹੈ, PRAW ਦੇ ਵਾਧੇ ਦੇ ਡੇਟਾ ਤੋਂ ਇੱਕ ਬਲੌਰ ਵਜੋਂ ਬਣਾਇਆ ਗਿਆ।"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "ਵਾਧੇ ਦਾ ਡੇਟਾ",
+        "description": "ਉਸ ਫੋਲਡਰ ਦਾ URL ਜਿਸ ਵਿੱਚ ਵਾਧੇ ਦੀਆਂ JSON ਫਾਈਲਾਂ ਹਨ (PRAW ਇਹਨਾਂ ਨੂੰ hax.cloud/data/growth/ ਉੱਤੇ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰਦਾ ਹੈ)।"
+      },
+      {
+        "title": "ਪਹਿਲਾ ਦ੍ਰਿਸ਼",
+        "description": "ਕਿਹੜਾ ਦ੍ਰਿਸ਼ ਪਹਿਲਾਂ ਖੁੱਲ੍ਹਦਾ ਹੈ।",
+        "options": {
+          "themes": "ਥੀਮਾਂ",
+          "elements": "ਤੱਤ",
+          "platforms": "ਪਲੇਟਫਾਰਮ",
+          "cache": "Magic Script",
+          "contributors": "ਯੋਗਦਾਨੀ"
+        }
+      }
+    ]
+  }
+}

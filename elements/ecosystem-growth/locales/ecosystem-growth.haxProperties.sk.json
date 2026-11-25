@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Rast ekosystému",
+    "description": "Ako projekt rástol v čase a čo šetrí jeho opätovné použitie, nakreslené ako kryštál z údajov o raste z PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Údaje o raste",
+        "description": "URL priečinka so súbormi JSON o raste (PRAW ich zverejňuje na hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Prvé zobrazenie",
+        "description": "Ktoré zobrazenie sa otvorí ako prvé.",
+        "options": {
+          "themes": "Témy",
+          "elements": "Prvky",
+          "platforms": "Platformy",
+          "cache": "Magic Script",
+          "contributors": "Prispievatelia"
+        }
+      }
+    ]
+  }
+}

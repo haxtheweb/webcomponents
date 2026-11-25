@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX ekibinden haberler ve güncellemeler.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX ekibinden haberler ve güncellemeler.",
+  "gogglesContribute": "Gözlükle katkıda bulun",
+  "gogglesContributeAbout": "HAX'ın nasıl yapıldığını öğrenmek ve onu daha iyi hale getirmeye yardım etmek için gözlüğü takın: herhangi bir parçanın arkasındaki kodu görmek için onu röntgenleyin, kimin yaptığını görün, tam üzerine işaret eden bir ekran görüntüsüyle bir hata ya da fikir bildirin, kendi dilinizdeki bir çeviriyi düzeltin ve önünüzdeki şeyle ilgili açık sorunları bulun.",
+  "gogglesProjectLinks": "Proje hakkında daha fazlası",
+  "gogglesLinkLab": "HAX Lab: nasıl katılabilirsiniz",
+  "gogglesLinkPraw": "PRAW: HAX'ın arkasındaki insanlar, fikirler ve hikâyeler",
+  "gogglesLinkLearn": "HAX'ı öğrenin: eğitimler",
+  "gogglesLinkCode": "GitHub'da HAX: kod",
   "installAll": "HAX'ı kur: edinmenin tüm yolları",
-  "installAllAbout": "Tarayıcı, HAX CLI, Node.js, PHP, masaüstü uygulaması veya ajanınız için bir istem."
+  "installAllAbout": "Tarayıcı, HAX CLI, Node.js, PHP, masaüstü uygulaması veya ajanınız için bir istem.",
+  "networkBar": "HAX ağ çubuğu"
 }

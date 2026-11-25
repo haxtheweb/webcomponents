@@ -25,5 +25,6 @@
   "ready": "Tayyor",
   "editing": "Tahrirlanmoqda",
   "updated": "{date} da yangilangan",
-  "position": "{count} tadan {index}-sahifa"
+  "position": "{count} tadan {index}-sahifa",
+  "pageWindow": "{name} oynasi"
 }

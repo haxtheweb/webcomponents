@@ -25,5 +25,6 @@
   "ready": "تیار",
   "editing": "ترمیم جاری",
   "updated": "{date} کو اپ ڈیٹ ہوا",
-  "position": "صفحہ {index} از {count}"
+  "position": "صفحہ {index} از {count}",
+  "pageWindow": "{name} ونڈو"
 }

@@ -25,5 +25,6 @@
   "ready": "Zakonzeka",
   "editing": "Kusintha",
   "updated": "Zasinthidwa {date}",
-  "position": "Tsamba {index} mwa {count}"
+  "position": "Tsamba {index} mwa {count}",
+  "pageWindow": "Zenera la {name}"
 }

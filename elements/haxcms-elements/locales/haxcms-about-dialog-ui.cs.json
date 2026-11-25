@@ -20,6 +20,7 @@
   "projectOverview": "Přehled projektu",
   "documentation": "Dokumentace",
   "joinTheHaxDiscordCommunity": "Připojte se ke komunitě HAX na Discordu",
+  "contributeWithTheGoggles": "Přispívejte s brýlemi: podívejte se, jak je HAX vyrobený, nahlaste chyby a nápady",
   "issueQueue": "Fronta problémů (chyby a požadavky na funkce)",
   "keyboardShortcuts": "Klávesové zkratky",
   "keyboardShortcutsDescription": "Registrováno centrálně v HAXcms a zobrazeno podle aktivního kontextu. Zkratky používají Ctrl+Shift+[Klávesa]; v editoru napsání spouštěče markdown a mezery převede blok. Napište {slash} do prázdného textového bloku pro otevření řádkového vyhledávání.",

@@ -25,5 +25,6 @@
   "ready": "جاهز",
   "editing": "قيد التحرير",
   "updated": "تم التحديث في {date}",
-  "position": "الصفحة {index} من {count}"
+  "position": "الصفحة {index} من {count}",
+  "pageWindow": "نافذة {name}"
 }

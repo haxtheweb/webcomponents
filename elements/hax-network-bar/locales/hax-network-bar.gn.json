@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Marandu ha ñembopyahu HAX aty guive.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Marandu ha ñembopyahu HAX aty guive.",
+  "gogglesContribute": "Eipytyvõ tesa'ã reheve",
+  "gogglesContributeAbout": "Emoĩ tesa'ã eikuaa hag̃ua mba'éichapa ojejapo HAX ha eipytyvõ hag̃ua iporãve hag̃ua: ehecha oimeraẽ pehẽ rayo X reheve rehecha hag̃ua código oĩva hapykuépe, ehecha máva omopu'ã, emomarandu peteĩ jejavy térã temiandu peteĩ ta'ãnga mba'erechaha reheve ohechaukáva hese, emyatyrõ peteĩ ñembohasa ne ñe'ẽme, ha ejuhu umi apañuãi ojeikeha oĩva ne renondépe g̃uarã.",
+  "gogglesProjectLinks": "Hetave tembiaporã rehegua",
+  "gogglesLinkLab": "HAX Lab: mba'éichapa eike",
+  "gogglesLinkPraw": "PRAW: tapicha, temiandu ha tembiasakue oĩva HAX hapykuépe",
+  "gogglesLinkLearn": "Eikuaa HAX: mbo'epyrã",
+  "gogglesLinkCode": "HAX GitHub-pe: código",
   "installAll": "Emohenda HAX: opaite tape rehupyty hag̃ua",
-  "installAllAbout": "Kundahára, HAX CLI, Node.js, PHP, aplicación escritorio peg̃uarã térã peteĩ ñe'ẽ ne agente-pe g̃uarã."
+  "installAllAbout": "Kundahára, HAX CLI, Node.js, PHP, aplicación escritorio peg̃uarã térã peteĩ ñe'ẽ ne agente-pe g̃uarã.",
+  "networkBar": "HAX ñanduti barra"
 }

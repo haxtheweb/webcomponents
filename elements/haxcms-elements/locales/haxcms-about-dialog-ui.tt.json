@@ -20,6 +20,7 @@
   "projectOverview": "Проект күзәтүе",
   "documentation": "Документация",
   "joinTheHaxDiscordCommunity": "HAX Discord җәмгыятенә кушылу",
+  "contributeWithTheGoggles": "Күзлек белән өлеш кертү: HAX ничек ясалганын күрегез, хаталар һәм идеяләр турында хәбәр итегез",
   "issueQueue": "Мәсьәләләр чираты (хаталар һәм функция сораулары)",
   "keyboardShortcuts": "Клавиатура кыска юллары",
   "keyboardShortcutsDescription": "HAXcms'та үзәктән теркәлә һәм актив контекстка карап күрсәтелә. Бәйләүләр Ctrl+Shift+[Key] куллана; мөхәррирдә markdown триггерын язып, аннары бушлык басу блокны үзгәртә. Юлдагы эзләүне ачу өчен буш текст блогында {slash} языгыз.",

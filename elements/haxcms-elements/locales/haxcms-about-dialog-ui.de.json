@@ -20,6 +20,7 @@
   "projectOverview": "Projektübersicht",
   "documentation": "Dokumentation",
   "joinTheHaxDiscordCommunity": "Tritt der HAX-Discord-Community bei",
+  "contributeWithTheGoggles": "Mit der Brille mitwirken: sieh, wie HAX gemacht ist, melde Fehler und Ideen",
   "issueQueue": "Issue-Queue (Fehler und Funktionswünsche)",
   "keyboardShortcuts": "Tastenkombinationen",
   "keyboardShortcutsDescription": "Zentral in HAXcms registriert und je nach aktivem Kontext angezeigt. Belegungen verwenden Ctrl+Shift+[Taste]; im Editor wandelt ein Markdown-Auslöser gefolgt von einem Leerzeichen den Block um. Tippe {slash} in einen leeren Textblock, um die Inline-Suche zu öffnen.",

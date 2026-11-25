@@ -25,5 +25,6 @@
   "ready": "Yagadzirira",
   "editing": "Kugadzirisa",
   "updated": "Yakagadziridzwa {date}",
-  "position": "Peji {index} pa{count}"
+  "position": "Peji {index} pa{count}",
+  "pageWindow": "Hwindo re{name}"
 }

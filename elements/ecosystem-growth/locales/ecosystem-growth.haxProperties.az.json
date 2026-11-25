@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Ekosistemin böyüməsi",
+    "description": "Layihənin zamanla necə böyüdüyü və təkrar istifadəsinin nəyə qənaət etdiyi, PRAW-ın böyümə məlumatlarından kristal kimi çəkilib."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Böyümə məlumatları",
+        "description": "Böyümə JSON fayllarını saxlayan qovluğun URL-i (PRAW onları hax.cloud/data/growth/ ünvanında dərc edir)."
+      },
+      {
+        "title": "İlk görünüş",
+        "description": "Hansı görünüşün ilk açılacağı.",
+        "options": {
+          "themes": "Mövzular",
+          "elements": "Elementlər",
+          "platforms": "Platformalar",
+          "cache": "Magic Script",
+          "contributors": "Töhfəçilər"
+        }
+      }
+    ]
+  }
+}

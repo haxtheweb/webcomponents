@@ -40,7 +40,9 @@
           "bus": "巴士系数",
           "impact": "影响",
           "evidence": "依据",
-          "parity": "一致性"
+          "parity": "一致性",
+          "reuse": "重复利用",
+          "weight": "分量"
         }
       }
     ]

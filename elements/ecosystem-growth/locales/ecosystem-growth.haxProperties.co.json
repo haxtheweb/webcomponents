@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Crescita di l'ecosistema",
+    "description": "Cumu un prughjettu hè crisciutu cù u tempu è ciò chì u so riusu sparmia, disegnatu cum'è un cristallu à partesi da i dati di crescita di PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Dati di crescita",
+        "description": "URL di u cartulare chì cuntene i schedarii JSON di crescita (PRAW i publica nant'à hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Prima vista",
+        "description": "Chì vista s'apre prima.",
+        "options": {
+          "themes": "Temi",
+          "elements": "Elementi",
+          "platforms": "Piattaforme",
+          "cache": "Magic Script",
+          "contributors": "Cuntributori"
+        }
+      }
+    ]
+  }
+}

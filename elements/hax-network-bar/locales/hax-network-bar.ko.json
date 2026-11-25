@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX 팀의 소식과 업데이트.",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX 팀의 소식과 업데이트.",
+  "gogglesContribute": "고글을 쓰고 기여하기",
+  "gogglesContributeAbout": "고글을 쓰고 HAX가 어떻게 만들어지는지 배우고 더 좋게 만드는 데 도움을 주세요. 어떤 부분이든 X선으로 비춰 그 뒤의 코드를 보고, 누가 만들었는지 확인하고, 바로 그 부분을 가리키는 스크린샷과 함께 버그나 아이디어를 신고하고, 내 언어의 번역을 고치고, 눈앞에 있는 것에 대한 열린 이슈를 찾아보세요.",
+  "gogglesProjectLinks": "프로젝트에 대해 더 알아보기",
+  "gogglesLinkLab": "HAX Lab: 참여하는 방법",
+  "gogglesLinkPraw": "PRAW: HAX를 만든 사람들, 아이디어와 이야기",
+  "gogglesLinkLearn": "Learn HAX: 튜토리얼",
+  "gogglesLinkCode": "GitHub의 HAX: 코드",
   "installAll": "HAX 설치: HAX를 얻는 모든 방법",
-  "installAllAbout": "브라우저, HAX CLI, Node.js, PHP, 데스크톱 앱 또는 에이전트용 프롬프트."
+  "installAllAbout": "브라우저, HAX CLI, Node.js, PHP, 데스크톱 앱 또는 에이전트용 프롬프트.",
+  "networkBar": "HAX 네트워크 바"
 }

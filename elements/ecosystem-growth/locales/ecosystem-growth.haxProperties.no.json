@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Økosystemvekst",
+    "description": "Hvordan et prosjekt har vokst over tid og hva gjenbruken sparer, tegnet som en krystall ut fra vekstdataene til PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vekstdata",
+        "description": "URL til mappen som inneholder vekst-JSON-filene (PRAW publiserer dem på hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Første visning",
+        "description": "Hvilken visning som åpnes først.",
+        "options": {
+          "themes": "Temaer",
+          "elements": "Elementer",
+          "platforms": "Plattformer",
+          "cache": "Magic Script",
+          "contributors": "Bidragsytere"
+        }
+      }
+    ]
+  }
+}

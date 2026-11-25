@@ -117,6 +117,14 @@
   "goLinkedinAbout": "HAX ٹیم ولوں خبراں تے اپڈیٹاں۔",
   "goX": "X: @haxtheweb",
   "goXAbout": "HAX ٹیم ولوں خبراں تے اپڈیٹاں۔",
+  "gogglesContribute": "عینکاں نال حصہ پاؤ",
+  "gogglesContributeAbout": "عینکاں پاؤ تاں جے سکھ سکو کہ HAX کیویں بنیا اے تے اوہنوں بہتر بنان وچ مدد کرو: کسے وی حصے دا ایکسرے کر کے اوہدے پچھے دا کوڈ ویکھو، ویکھو کہ کس نے بنایا، سدھا اوہدے ول اشارہ کردے سکرین شاٹ نال کوئی خرابی یا خیال دسو، اپنی بولی وچ کوئی ترجمہ ٹھیک کرو، تے جو تہاڈے سامنے اے اوہدے لئی کھلے مسئلے لبھو۔",
+  "gogglesProjectLinks": "منصوبے بارے ہور",
+  "gogglesLinkLab": "HAX Lab: کیویں شامل ہوئیے",
+  "gogglesLinkPraw": "PRAW: HAX دے پچھے دے لوک، خیال تے کہانیاں",
+  "gogglesLinkLearn": "HAX سکھو: سبق",
+  "gogglesLinkCode": "GitHub اتے HAX: کوڈ",
   "installAll": "HAX انسٹال کرو: ایہنوں لین دا ہر طریقہ",
-  "installAllAbout": "براؤزر، HAX CLI، Node.js، PHP، ڈیسک ٹاپ ایپ یا تہاڈے ایجنٹ لئی پرامپٹ۔"
+  "installAllAbout": "براؤزر، HAX CLI، Node.js، PHP، ڈیسک ٹاپ ایپ یا تہاڈے ایجنٹ لئی پرامپٹ۔",
+  "networkBar": "HAX نیٹ ورک پٹی"
 }

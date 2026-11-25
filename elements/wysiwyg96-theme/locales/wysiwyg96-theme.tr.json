@@ -25,5 +25,6 @@
   "ready": "Hazır",
   "editing": "Düzenleniyor",
   "updated": "Güncellendi: {date}",
-  "position": "Sayfa {index} / {count}"
+  "position": "Sayfa {index} / {count}",
+  "pageWindow": "{name} penceresi"
 }

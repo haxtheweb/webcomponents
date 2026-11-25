@@ -40,7 +40,9 @@
           "bus": "Isiphumo sebhasi",
           "impact": "Impembelelo",
           "evidence": "Ubungqina",
-          "parity": "Ukulingana"
+          "parity": "Ukulingana",
+          "reuse": "Ukusetyenziswa kwakhona",
+          "weight": "Ubunzima"
         }
       }
     ]

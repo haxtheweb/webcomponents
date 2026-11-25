@@ -25,5 +25,6 @@
   "ready": "Paruošta",
   "editing": "Redaguojama",
   "updated": "Atnaujinta {date}",
-  "position": "Puslapis {index} iš {count}"
+  "position": "Puslapis {index} iš {count}",
+  "pageWindow": "Langas „{name}“"
 }

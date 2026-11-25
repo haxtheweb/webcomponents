@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Vöxtur vistkerfisins",
+    "description": "Hvernig verkefni óx með tímanum og hvað endurnýting þess sparar, teiknað sem kristall úr vaxtargögnum PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Vaxtargögn",
+        "description": "URL möppunnar sem geymir JSON-skrár vaxtargagnanna (PRAW birtir þær á hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Fyrsta sýn",
+        "description": "Hvaða sýn opnast fyrst.",
+        "options": {
+          "themes": "Þemu",
+          "elements": "Einingar",
+          "platforms": "Kerfi",
+          "cache": "Magic Script",
+          "contributors": "Þátttakendur"
+        }
+      }
+    ]
+  }
+}

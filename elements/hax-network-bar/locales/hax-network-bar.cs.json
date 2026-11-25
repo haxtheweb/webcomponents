@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Novinky a aktualizace od týmu HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Novinky a aktualizace od týmu HAX.",
+  "gogglesContribute": "Přispívejte s brýlemi",
+  "gogglesContributeAbout": "Nasaďte si brýle, zjistěte, jak je HAX vyrobený, a pomozte ho vylepšit: prosviťte kteroukoli část a uvidíte kód za ní, zjistěte, kdo ji vytvořil, nahlaste chybu nebo nápad se snímkem obrazovky, který míří přímo na ni, opravte překlad ve svém jazyce a najděte otevřené issues k tomu, co máte před sebou.",
+  "gogglesProjectLinks": "Více o projektu",
+  "gogglesLinkLab": "HAX Lab: jak se zapojit",
+  "gogglesLinkPraw": "PRAW: lidé, myšlenky a příběhy za HAX",
+  "gogglesLinkLearn": "Learn HAX: návody",
+  "gogglesLinkCode": "HAX na GitHubu: kód",
   "installAll": "Instalace HAX: všechny způsoby, jak ho získat",
-  "installAllAbout": "Prohlížeč, HAX CLI, Node.js, PHP, desktopová aplikace nebo prompt pro vašeho agenta."
+  "installAllAbout": "Prohlížeč, HAX CLI, Node.js, PHP, desktopová aplikace nebo prompt pro vašeho agenta.",
+  "networkBar": "Síťová lišta HAX"
 }

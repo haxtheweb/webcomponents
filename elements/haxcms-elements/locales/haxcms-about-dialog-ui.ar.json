@@ -20,6 +20,7 @@
   "projectOverview": "نظرة عامة على المشروع",
   "documentation": "الوثائق",
   "joinTheHaxDiscordCommunity": "انضم إلى مجتمع HAX على Discord",
+  "contributeWithTheGoggles": "ساهم باستخدام النظارة: شاهد كيف يُصنع HAX، وأبلغ عن الأخطاء والأفكار",
   "issueQueue": "قائمة المشكلات (الأخطاء وطلبات الميزات)",
   "keyboardShortcuts": "اختصارات لوحة المفاتيح",
   "keyboardShortcutsDescription": "مسجلة مركزيًا في HAXcms وتُعرض حسب السياق النشط. تستخدم الارتباطات Ctrl+Shift+[المفتاح]؛ في المحرر، كتابة مُشغّل Markdown ثم مسافة يحوّل الكتلة. اكتب {slash} في كتلة نص فارغة لفتح البحث المضمّن.",

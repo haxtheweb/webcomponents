@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Kresko de la ekosistemo",
+    "description": "Kiel projekto kreskis laŭlonge de la tempo kaj kion ĝia reuzo ŝparas, desegnita kiel kristalo el la kreskaj datumoj de PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kreskaj datumoj",
+        "description": "URL de la dosierujo, kiu enhavas la kreskajn JSON-dosierojn (PRAW publikigas ilin ĉe hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Unua vido",
+        "description": "Kiu vido malfermiĝas unue.",
+        "options": {
+          "themes": "Temoj",
+          "elements": "Elementoj",
+          "platforms": "Platformoj",
+          "cache": "Magic Script",
+          "contributors": "Kontribuantoj"
+        }
+      }
+    ]
+  }
+}

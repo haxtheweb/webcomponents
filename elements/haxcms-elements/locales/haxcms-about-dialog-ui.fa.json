@@ -20,6 +20,7 @@
   "projectOverview": "نمای کلی پروژه",
   "documentation": "مستندات",
   "joinTheHaxDiscordCommunity": "به جامعه Discord مربوط به HAX بپیوندید",
+  "contributeWithTheGoggles": "مشارکت با عینک: ببینید HAX چگونه ساخته می‌شود، اشکال‌ها و ایده‌ها را گزارش دهید",
   "issueQueue": "صف مشکلات (اشکالات و درخواست قابلیت‌ها)",
   "keyboardShortcuts": "میان‌برهای صفحه‌کلید",
   "keyboardShortcutsDescription": "به‌صورت متمرکز در HAXcms ثبت شده و بر اساس زمینه فعال نمایش داده می‌شوند. اتصال‌ها از Ctrl+Shift+[کلید] استفاده می‌کنند؛ در ویرایشگر، تایپ یک محرک markdown و سپس فاصله، بلوک را تبدیل می‌کند. برای باز کردن جستجوی درون‌خطی، {slash} را در یک بلوک متن خالی تایپ کنید.",

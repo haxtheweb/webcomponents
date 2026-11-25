@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Tkabbir tal-ekosistema",
+    "description": "Kif proġett kiber maż-żmien u x’jiffranka l-użu mill-ġdid tiegħu, imfassal bħala kristall mid-data tat-tkabbir ta’ PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data tat-tkabbir",
+        "description": "URL tal-folder li fih il-fajls JSON tat-tkabbir (PRAW jippubblikahom fuq hax.cloud/data/growth/)."
+      },
+      {
+        "title": "L-ewwel veduta",
+        "description": "Liema veduta tinfetaħ l-ewwel.",
+        "options": {
+          "themes": "Temi",
+          "elements": "Elementi",
+          "platforms": "Pjattaformi",
+          "cache": "Magic Script",
+          "contributors": "Kontributuri"
+        }
+      }
+    ]
+  }
+}

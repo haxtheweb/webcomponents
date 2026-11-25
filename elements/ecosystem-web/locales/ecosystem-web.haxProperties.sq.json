@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Ndikimi",
           "evidence": "Dëshmi",
-          "parity": "Barazia"
+          "parity": "Barazia",
+          "reuse": "Ripërdorim",
+          "weight": "Pesha"
         }
       }
     ]

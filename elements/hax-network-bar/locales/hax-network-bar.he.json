@@ -117,6 +117,14 @@
   "goLinkedinAbout": "חדשות ועדכונים מצוות HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "חדשות ועדכונים מצוות HAX.",
+  "gogglesContribute": "תרמו עם המשקפת",
+  "gogglesContributeAbout": "הרכיבו את המשקפת כדי ללמוד איך HAX בנוי ולעזור לשפר אותו: צלמו ברנטגן כל חלק כדי לראות את הקוד שמאחוריו, ראו מי בנה אותו, דווחו על באג או רעיון עם צילום מסך שמצביע בדיוק עליו, תקנו תרגום בשפה שלכם, ומצאו את הבעיות הפתוחות עבור מה שנמצא מולכם.",
+  "gogglesProjectLinks": "עוד על הפרויקט",
+  "gogglesLinkLab": "HAX Lab: איך להצטרף",
+  "gogglesLinkPraw": "PRAW: האנשים, הרעיונות והסיפורים שמאחורי HAX",
+  "gogglesLinkLearn": "למדו HAX: מדריכים",
+  "gogglesLinkCode": "HAX ב־GitHub: הקוד",
   "installAll": "התקנת HAX: כל הדרכים להשיג אותו",
-  "installAllAbout": "הדפדפן, HAX CLI, Node.js, PHP, אפליקציית שולחן העבודה או הנחיה לסוכן שלכם."
+  "installAllAbout": "הדפדפן, HAX CLI, Node.js, PHP, אפליקציית שולחן העבודה או הנחיה לסוכן שלכם.",
+  "networkBar": "סרגל הרשת של HAX"
 }

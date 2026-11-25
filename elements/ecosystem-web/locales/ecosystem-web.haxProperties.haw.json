@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Hopena",
           "evidence": "Hōʻike",
-          "parity": "Kaulike"
+          "parity": "Kaulike",
+          "reuse": "Hoʻohana hou",
+          "weight": "Kaumaha"
         }
       }
     ]

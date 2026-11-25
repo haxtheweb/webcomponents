@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Impatt",
           "evidence": "Evidenza",
-          "parity": "Parità"
+          "parity": "Parità",
+          "reuse": "Użu mill-ġdid",
+          "weight": "Piż"
         }
       }
     ]

@@ -40,7 +40,9 @@
           "bus": "Kipengele cha basi",
           "impact": "Athari",
           "evidence": "Ushahidi",
-          "parity": "Usawa"
+          "parity": "Usawa",
+          "reuse": "Kutumia tena",
+          "weight": "Uzito"
         }
       }
     ]

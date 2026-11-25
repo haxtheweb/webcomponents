@@ -40,7 +40,9 @@
           "bus": "Bus factor",
           "impact": "Umthelela",
           "evidence": "Ubufakazi",
-          "parity": "Ukulingana"
+          "parity": "Ukulingana",
+          "reuse": "Ukusebenzisa futhi",
+          "weight": "Isisindo"
         }
       }
     ]

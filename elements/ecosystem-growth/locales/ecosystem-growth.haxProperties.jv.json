@@ -1,0 +1,25 @@
+{
+  "gizmo": {
+    "title": "Pertumbuhan ekosistem",
+    "description": "Kepiye proyek tuwuh saka wektu menyang wektu lan apa sing dihemat saka panganggone maneh, digambar kaya kristal saka data pertumbuhan PRAW."
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Data pertumbuhan",
+        "description": "URL folder sing ngemot berkas JSON pertumbuhan (PRAW nerbitake ing hax.cloud/data/growth/)."
+      },
+      {
+        "title": "Tampilan kapisan",
+        "description": "Tampilan endi sing dibukak dhisik.",
+        "options": {
+          "themes": "Tema",
+          "elements": "Elemen",
+          "platforms": "Platform",
+          "cache": "Magic Script",
+          "contributors": "Kontributor"
+        }
+      }
+    ]
+  }
+}

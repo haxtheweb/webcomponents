@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Habari na masasisho kutoka kwa timu ya HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Habari na masasisho kutoka kwa timu ya HAX.",
+  "gogglesContribute": "Changia ukiwa umevaa miwani",
+  "gogglesContributeAbout": "Vaa miwani ujifunze jinsi HAX inavyotengenezwa na usaidie kuiboresha: piga eksirei sehemu yoyote uone msimbo ulio nyuma yake, ona nani aliijenga, ripoti hitilafu au wazo kwa picha ya skrini inayoelekezwa moja kwa moja kwake, rekebisha tafsiri katika lugha yako, na pata masuala yaliyo wazi kwa kile kilicho mbele yako.",
+  "gogglesProjectLinks": "Zaidi kuhusu mradi",
+  "gogglesLinkLab": "HAX Lab: jinsi ya kushiriki",
+  "gogglesLinkPraw": "PRAW: watu, mawazo na hadithi nyuma ya HAX",
+  "gogglesLinkLearn": "Learn HAX: mafunzo",
+  "gogglesLinkCode": "HAX kwenye GitHub: msimbo",
   "installAll": "Sakinisha HAX: kila njia ya kuipata",
-  "installAllAbout": "Kivinjari, HAX CLI, Node.js, PHP, programu ya kompyuta au maagizo kwa wakala wako."
+  "installAllAbout": "Kivinjari, HAX CLI, Node.js, PHP, programu ya kompyuta au maagizo kwa wakala wako.",
+  "networkBar": "Upau wa mtandao wa HAX"
 }

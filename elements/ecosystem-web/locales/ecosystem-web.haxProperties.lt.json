@@ -40,7 +40,9 @@
           "bus": "Autobuso faktorius",
           "impact": "Poveikis",
           "evidence": "Įrodymai",
-          "parity": "Lygiavertiškumas"
+          "parity": "Lygiavertiškumas",
+          "reuse": "Pakartotinis naudojimas",
+          "weight": "Svoris"
         }
       }
     ]

@@ -20,6 +20,7 @@
   "projectOverview": "项目概览",
   "documentation": "文档",
   "joinTheHaxDiscordCommunity": "加入 HAX Discord 社区",
+  "contributeWithTheGoggles": "戴上护目镜来出力：看 HAX 是哪能做个，报告错误搭想法",
   "issueQueue": "问题队列(错误搭功能请求)",
   "keyboardShortcuts": "键盘快捷键",
   "keyboardShortcutsDescription": "辣 HAXcms 里统一注册,按当前环境显示。绑定用 Ctrl+Shift+[键];辣编辑器里,打一只 markdown 触发符再打空格就会转换块。辣空个文字块里打 {slash} 打开行内搜索。",

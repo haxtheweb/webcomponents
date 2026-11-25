@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Akụkọ na mmelite sitere n'aka otu HAX.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Akụkọ na mmelite sitere n'aka otu HAX.",
+  "gogglesContribute": "Nye aka site n'ugogbe anya",
+  "gogglesContributeAbout": "Yiri ugogbe anya ka ị mụta otu e si emepụta HAX ma nyere aka mee ka ọ ka mma: lee akụkụ ọ bụla anya dị ka X-ray ka ị hụ koodu dị n'azụ ya, hụ onye mere ya, kọọ njehie ma ọ bụ echiche site na nseta ihuenyo nke na-atụ aka n'ebe ahụ kpọmkwem, dozie ntụgharị asụsụ n'asụsụ gị, ma chọta okwu ndị ka mepere emepe gbasara ihe dị n'ihu gị.",
+  "gogglesProjectLinks": "Ihe ndị ọzọ gbasara ọrụ a",
+  "gogglesLinkLab": "HAX Lab: otu esi esonye",
+  "gogglesLinkPraw": "PRAW: ndị mmadụ, echiche na akụkọ dị n'azụ HAX",
+  "gogglesLinkLearn": "Learn HAX: nkuzi",
+  "gogglesLinkCode": "HAX na GitHub: koodu ya",
   "installAll": "Wụnye HAX: ụzọ niile isi nweta ya",
-  "installAllAbout": "Brawụza, HAX CLI, Node.js, PHP, ngwa desktọọpụ ma ọ bụ ntụziaka maka onye nnọchite AI gị."
+  "installAllAbout": "Brawụza, HAX CLI, Node.js, PHP, ngwa desktọọpụ ma ọ bụ ntụziaka maka onye nnọchite AI gị.",
+  "networkBar": "Ogwe netwọk HAX"
 }

@@ -117,6 +117,14 @@
   "goLinkedinAbout": "Uudised ja värskendused HAX-i meeskonnalt.",
   "goX": "X: @haxtheweb",
   "goXAbout": "Uudised ja värskendused HAX-i meeskonnalt.",
+  "gogglesContribute": "Panusta prillidega",
+  "gogglesContributeAbout": "Pane prillid ette, et õppida, kuidas HAX on tehtud, ja aidata seda paremaks teha: vaata mis tahes osa läbi röntgenis, et näha selle taga olevat koodi, vaata, kes selle ehitas, teata veast või ideest ekraanipildiga, mis osutab otse sellele, paranda tõlget oma keeles ja leia avatud issue'd selle kohta, mis on sinu ees.",
+  "gogglesProjectLinks": "Rohkem projekti kohta",
+  "gogglesLinkLab": "HAX Lab: kuidas kaasa lüüa",
+  "gogglesLinkPraw": "PRAW: inimesed, ideed ja lood HAX-i taga",
+  "gogglesLinkLearn": "Learn HAX: õpetused",
+  "gogglesLinkCode": "HAX GitHubis: kood",
   "installAll": "Paigalda HAX: kõik viisid selle hankimiseks",
-  "installAllAbout": "Brauser, HAX CLI, Node.js, PHP, töölauarakendus või viip sinu agendile."
+  "installAllAbout": "Brauser, HAX CLI, Node.js, PHP, töölauarakendus või viip sinu agendile.",
+  "networkBar": "HAX-i võrguriba"
 }
