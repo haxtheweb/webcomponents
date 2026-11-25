@@ -260,3 +260,36 @@ describe("clean-one viewport sync branch (unreachable scheduling removed)", () =
     expect(synced).to.be.false;
   });
 });
+
+// WCAG 1.3.1 / axe "region": every control the theme renders sits inside a
+// landmark, so landmark navigation reaches the back-to-top button too
+describe("clean-one back-to-top landmark", () => {
+  it("renders scroll-button inside a labelled nav", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    const button = el.shadowRoot.querySelector("scroll-button");
+    const nav = button.closest("nav");
+    expect(nav).to.exist;
+    expect(nav.classList.contains("back-to-top")).to.be.true;
+    expect(nav.getAttribute("aria-label")).to.equal("Back to top");
+  });
+
+  it("labels each nav landmark uniquely", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    const labels = [...el.shadowRoot.querySelectorAll("nav")].map((n) =>
+      n.getAttribute("aria-label"),
+    );
+    expect(labels.every((l) => l && l.length > 0)).to.be.true;
+    expect(new Set(labels).size).to.equal(labels.length);
+  });
+
+  it("keeps the scroll target wired to main", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    await el.updateComplete;
+    const ok = await waitFor(
+      () =>
+        el.shadowRoot.querySelector("scroll-button").target ===
+        el.shadowRoot.querySelector("main"),
+    );
+    expect(ok).to.be.true;
+  });
+});

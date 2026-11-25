@@ -520,7 +520,8 @@ class CleanOne extends LTIResizingMixin(
           site-breadcrumb {
             display: none;
           }
-          scroll-button {
+          /* the wrapper goes too, so no empty landmark is left behind */
+          .back-to-top {
             display: none;
           }
           footer {
@@ -950,9 +951,11 @@ class CleanOne extends LTIResizingMixin(
             </nav>
           </footer>
         </div>
-        <scroll-button
-          .part="${this.editMode ? `edit-mode-active` : ``}"
-        ></scroll-button>
+        <nav class="back-to-top" aria-label="${this.t.backToTop}">
+          <scroll-button
+            .part="${this.editMode ? `edit-mode-active` : ``}"
+          ></scroll-button>
+        </nav>
       </div>
     `;
   }
@@ -1017,6 +1020,7 @@ class CleanOne extends LTIResizingMixin(
       skipToContent: "Skip to content",
       siteMenu: "Site menu",
       pageNavigation: "Page navigation",
+      backToTop: "Back to top",
     };
     this.dataPalette = 5;
     this.searchTerm = "";
