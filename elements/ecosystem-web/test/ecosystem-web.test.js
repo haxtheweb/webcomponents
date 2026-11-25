@@ -134,18 +134,38 @@ describe("ecosystem-web", () => {
     );
   });
 
-  it("folds the tours behind one button that names the tour picked", async () => {
+  it("keeps the tours behind one button that names the tour picked", async () => {
     const r = element.shadowRoot;
-    const btn = r.querySelector(".tours-toggle");
+    const btn = r.querySelector('button[aria-controls="tourlist"]');
     expect(btn.getAttribute("aria-expanded")).to.equal("false");
-    expect(btn.getAttribute("aria-controls")).to.equal("tourlist");
+    expect(r.querySelector("#tourlist").hidden).to.be.true;
     btn.click();
     await element.updateComplete;
     expect(btn.getAttribute("aria-expanded")).to.equal("true");
+    expect(r.querySelector("#tourlist").hidden).to.be.false;
     element.pickTour("everyone");
     await element.updateComplete;
-    expect(btn.getAttribute("aria-expanded")).to.equal("false");
-    expect(btn.textContent.trim()).to.equal("Tours: Everyone");
+    expect(btn.textContent.replace(/\s+/g, " ").trim()).to.equal(
+      "Tour: Everyone",
+    );
+  });
+
+  it("puts the details beside the drawing or below it, remembered", async () => {
+    const r = element.shadowRoot;
+    const pick = r.querySelector(".layoutpick");
+    const [side, below] = pick.querySelectorAll("button");
+    expect(side.getAttribute("aria-pressed")).to.equal("true");
+    below.click();
+    await element.updateComplete;
+    expect(element.getAttribute("data-layout")).to.equal("below");
+    expect(below.getAttribute("aria-pressed")).to.equal("true");
+    expect(globalThis.localStorage.getItem("ecosystem-web-layout")).to.equal(
+      "below",
+    );
+    side.click();
+    await element.updateComplete;
+    expect(element.getAttribute("data-layout")).to.equal("side");
+    globalThis.localStorage.removeItem("ecosystem-web-layout");
   });
 
   it("offers the same web as lists", async () => {

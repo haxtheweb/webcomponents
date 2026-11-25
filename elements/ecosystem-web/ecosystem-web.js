@@ -66,6 +66,18 @@ const LINK_LABEL = {
   slides: "Slides",
 };
 
+const LAYOUT_KEY = "ecosystem-web-layout";
+/** The remembered place for the details; storage can be missing or refuse (private windows). */
+function readLayout() {
+  try {
+    return globalThis.localStorage.getItem(LAYOUT_KEY) === "below"
+      ? "below"
+      : "side";
+  } catch {
+    return "side";
+  }
+}
+
 /** Up to three initials of a label, as a stand-in for art. */
 function initials(label) {
   return String(label || "")
@@ -138,6 +150,9 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     this.tour = "";
     this.step = -1;
     this.listView = false;
+    this.siteNav = false;
+    this._menuOpen = false;
+    this._layout = readLayout();
     this.playing = false;
     this.compact = false;
     this.lens = "";
@@ -180,7 +195,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       stepOf: "of",
       zoomIn: "Zoom in",
       zoomOut: "Zoom out",
-      fit: "Fit the web",
+      fit: "Reset zoom",
       listView: "List view",
       webView: "Web view",
       open: "Open the",
@@ -192,6 +207,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       howToReadText:
         "Rings run from the center out. Select any tile to see what it is and what it connects to; tiles with a corner badge open their own web.",
       source: "Source",
+      newTab: "(opens in a new tab)",
       connects: "connects to",
       pillar: "Pillars",
       contrib: "People",
@@ -215,9 +231,17 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       peopleJoin: "{n} people join",
       andMore: "and {n} more",
       layers: "Layers",
-      show: "Show",
-      readBy: "Read by",
-      connectionsOnly: "Connections only",
+      show: "Connections",
+      readBy: "Layer",
+      connectionsOnly: "None",
+      tour: "Tour",
+      endTour: "End tour",
+      layer: "Layer",
+      prevLayer: "Previous layer",
+      nextLayer: "Next layer",
+      layerOff: "Turn the layer off",
+      aboutLayer: "What this layer shows",
+      siteMenu: "Site menu",
       search: "Search",
       searchLabel: "Search the web",
       searchPlaceholder: "Search people, parts, verbs",
@@ -227,7 +251,10 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         'Nothing matches. Try a person, a group, an icon or a verb like "styles".',
       searchHelp: 'Type a name, a group, an icon or a verb like "styles".',
       links: "links",
-      present: "Present full screen",
+      present: "Full screen",
+      layout: "Layout",
+      layoutSide: "Side",
+      layoutBelow: "Below",
       exitPresent: "Exit full screen",
       notMeasured: "Not measured for this tile.",
       faded: "faded: not measured",
@@ -323,6 +350,16 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       playing: { type: Boolean, reflect: true },
       /** Only the drawing: no header, tours, details or step bar (a figure on a page) */
       compact: { type: Boolean, reflect: true },
+      /**
+       * The site around the web already has search (the network bar), a
+       * text view (its Content view) and a breadcrumb: the web leaves out
+       * its own Search, List view and breadcrumb, so each has one way in.
+       */
+      siteNav: { type: Boolean, reflect: true, attribute: "site-nav" },
+      /** the site's menu (slot "menu") is open, under site-nav */
+      _menuOpen: { type: Boolean, state: true },
+      /** where the selected tile's details sit: "side" (right of the drawing) or "below" */
+      _layout: { type: String, state: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
       /** Read every tile by one measure: fresh, bus, impact, evidence or parity */
@@ -471,7 +508,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           cursor: pointer;
         }
         button.act[aria-pressed="true"],
-        button.act[aria-expanded="true"]:not(.tours-toggle),
+        button.act[aria-expanded="true"],
         button.act.primary {
           background: var(--accent);
           color: var(--accent-ink);
@@ -494,25 +531,6 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           color: var(--muted);
           margin-inline-end: var(--ddd-spacing-1);
         }
-        .tourlist {
-          display: grid;
-          gap: var(--ddd-spacing-2);
-        }
-        .tours-toggle {
-          display: none;
-          justify-self: start;
-        }
-        /* on a phone the tours fold behind one button, so the drawing is
-           on the first screen */
-        @media (max-width: 600px) {
-          .tours-toggle {
-            display: inline-flex;
-            align-items: center;
-          }
-          .tours:not([data-open]) .tourlist {
-            display: none;
-          }
-        }
         .body {
           display: grid;
           grid-template-columns: minmax(0, 1fr) 360px;
@@ -521,6 +539,27 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         @media (max-width: 980px) {
           .body {
             grid-template-columns: minmax(0, 1fr);
+          }
+        }
+        /* the details below the drawing, by choice (Layout: Below) */
+        :host([data-layout="below"]) .body {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        :host([data-layout="below"]) .rail {
+          border-inline-start: 0;
+          border-top: var(--ddd-border-xs);
+          border-color: var(--line);
+          max-height: none;
+        }
+        /* Layout: Side and Below, like a video's transcript; a narrow
+           screen always has the details below, so the choice is not offered */
+        .layoutpick {
+          display: inline-flex;
+          gap: var(--ddd-spacing-1);
+        }
+        @media (max-width: 980px) {
+          .layoutpick {
+            display: none;
           }
         }
         .stage {
@@ -986,6 +1025,383 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           );
         }
         /* the strips under the header: layers and lenses, search */
+        /* the header and what opens from it: the panels lie over the
+           drawing instead of pushing it down */
+        .top {
+          position: relative;
+          z-index: 3;
+        }
+        button.act.menu {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        button.act.menu b {
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        button.act.menu .chev {
+          width: 16px;
+          height: 16px;
+          flex: none;
+          transition: transform 0.15s;
+        }
+        button.act.menu[aria-expanded="true"] .chev {
+          transform: rotate(180deg);
+        }
+        button.act[data-on]:not([aria-expanded="true"]) {
+          border: var(--ddd-border-sm);
+          border-color: var(--accent);
+        }
+        .panel {
+          position: absolute;
+          top: 100%;
+          inset-inline: var(--ddd-spacing-3);
+          max-height: min(60vh, 420px);
+          overflow: auto;
+          overscroll-behavior: contain;
+          background: var(--surface);
+          border: var(--ddd-border-xs);
+          border-color: var(--line);
+          border-radius: var(--ddd-radius-md);
+          box-shadow: var(--ddd-boxShadow-md);
+        }
+        .tours.panel {
+          border-bottom: var(--ddd-border-xs);
+          border-color: var(--line);
+        }
+        .panel .strip {
+          border-bottom: 0;
+        }
+        /* the layer shown, on the drawing */
+        .layercard {
+          position: absolute;
+          top: var(--ddd-spacing-3);
+          inset-inline-start: var(--ddd-spacing-3);
+          z-index: 2;
+          box-sizing: border-box;
+          width: min(380px, calc(100% - var(--ddd-spacing-6)));
+          max-height: calc(100% - var(--ddd-spacing-16));
+          overflow: auto;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3)
+            var(--ddd-spacing-3);
+          background: var(--surface);
+          border: var(--ddd-border-xs);
+          border-color: var(--line);
+          border-radius: var(--ddd-radius-md);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .lc-head {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .lc-head p {
+          flex: 1;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          gap: 0 var(--ddd-spacing-2);
+        }
+        .lc-head b {
+          color: var(--heading);
+        }
+        .lc-head .lab {
+          color: var(--muted);
+          font-size: var(--ddd-font-size-4xs);
+        }
+        .lc-btn {
+          flex: none;
+          width: 36px;
+          height: 36px;
+          border-radius: var(--ddd-radius-rounded);
+          border: var(--ddd-border-xs);
+          border-color: var(--edge);
+          background: var(--surface);
+          color: var(--fg);
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1;
+          cursor: pointer;
+        }
+        .lc-btn[disabled] {
+          cursor: default;
+          opacity: 0.5;
+        }
+        .layercard .lenskey {
+          padding: 0;
+          border: 0;
+          margin-top: var(--ddd-spacing-2);
+        }
+        /* the design system's disclosure, at the size of the card */
+        .lenskey details.about {
+          max-width: none;
+        }
+        .lenskey details.about summary,
+        .lenskey details.about[open] > summary,
+        .lenskey details.about summary:hover,
+        .lenskey details.about summary:focus {
+          color: var(--heading);
+          background-color: var(--chip);
+          filter: none;
+        }
+        .lenskey details.about summary:hover {
+          text-decoration: underline;
+        }
+        .lenskey details.about summary {
+          font-size: var(--ddd-font-size-4xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          min-height: 32px;
+        }
+        .lenskey details.about summary::after {
+          font-size: var(--ddd-font-size-xs);
+        }
+        .lenskey details.about p {
+          margin: var(--ddd-spacing-1) 0 0;
+        }
+        .lenskey details.about {
+          flex: 0 0 100%;
+        }
+        /* on a phone the card would cover most of the drawing: it sits
+           above it instead */
+        @media (max-width: 600px) {
+          .layercard {
+            position: static;
+            width: auto;
+            max-height: none;
+            margin: var(--ddd-spacing-2);
+            box-shadow: none;
+          }
+        }
+        /* under site-nav the web's title is the site's menu */
+        header.withmenu {
+          justify-content: flex-start;
+        }
+        header.withmenu .actions {
+          flex: 1;
+        }
+        button.act.menubtn {
+          width: 44px;
+          height: 44px;
+          padding: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex: none;
+        }
+        button.act.menubtn simple-icon-lite,
+        button.act.withicon simple-icon-lite {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          --simple-icon-color: currentColor;
+          color: inherit;
+        }
+        button.act.withicon {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+        }
+        .top {
+          scroll-margin-top: var(--ddd-spacing-4);
+        }
+        .panel.menu {
+          inset-inline-end: auto;
+          width: min(420px, calc(100% - var(--ddd-spacing-6)));
+          max-height: min(70vh, 640px);
+          padding: var(--ddd-spacing-2);
+          box-sizing: border-box;
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          padding: 0;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        /* map controls: icons the size of the buttons */
+        .mapctl button {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .mapctl simple-icon-lite {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          --simple-icon-color: currentColor;
+          color: inherit;
+        }
+        /* each kind of connection has a colour, a line style and an icon:
+           pillar, person, organization, schema, relationship */
+        [data-k] {
+          --kind: var(--edge);
+        }
+        [data-k="pillar"] {
+          --kind: var(--pillar);
+        }
+        [data-k="schema"] {
+          --kind: var(--schema);
+        }
+        [data-k="org"] {
+          --kind: var(--org);
+        }
+        [data-k="contrib"] {
+          --kind: var(--person);
+        }
+        .relhead {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .relhead simple-icon-lite,
+        button.act.layer simple-icon-lite {
+          flex: none;
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+          --simple-icon-color: var(--kind);
+          color: var(--kind);
+          vertical-align: middle;
+          margin-inline-end: var(--ddd-spacing-1);
+        }
+        /* on a chip the icon sits on its own disc, so its kind's colour reads
+           the same whether the chip is pressed (dark) or not */
+        button.act.layer simple-icon-lite {
+          box-sizing: content-box;
+          padding: 3px;
+          border-radius: 50%;
+          background: var(--surface);
+        }
+        /* a connection is a way to go, not something that opens in place:
+           its kind's icon and line on the left, the tile it leads to as a
+           link, and an arrow in a round button on the right */
+        .rels {
+          gap: var(--ddd-spacing-2);
+        }
+        .rels button.rel {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          min-height: 48px;
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-color: var(--edge);
+          border-inline-start: 4px solid var(--kind);
+          border-radius: var(--ddd-radius-md);
+          background: var(--surface);
+          box-shadow: var(--ddd-boxShadow-sm);
+          text-align: start;
+        }
+        .rels button.rel[data-k="schema"] {
+          border-inline-start-style: dashed;
+        }
+        .rels button.rel[data-k="org"] {
+          border-inline-start-style: dotted;
+        }
+        .rels button.rel simple-icon-lite.kind {
+          flex: none;
+          --simple-icon-width: 22px;
+          --simple-icon-height: 22px;
+          --simple-icon-color: var(--kind);
+          color: var(--kind);
+        }
+        .rels button.rel .said {
+          flex: 1;
+          min-width: 0;
+        }
+        .rels button.rel .to {
+          color: var(--link);
+          font-weight: var(--ddd-font-weight-bold);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .rels button.rel .go {
+          flex: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: var(--link);
+        }
+        .rels button.rel .go simple-icon-lite {
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+          --simple-icon-color: var(--surface);
+          color: var(--surface);
+        }
+        .rels button.rel:hover,
+        .rels button.rel:focus-visible {
+          background: var(--chip);
+        }
+        .rels button.rel:hover .to {
+          text-decoration-thickness: 2px;
+        }
+        .rail h3:focus {
+          outline: none;
+        }
+        .rail h3:focus-visible {
+          outline: var(--ddd-border-md);
+          outline-color: var(--link);
+        }
+        .stage {
+          scroll-margin-top: var(--ddd-spacing-4);
+        }
+        /* a link that leaves the web is a button: what it is, and an icon
+           that says it opens somewhere else */
+        .lnks {
+          gap: var(--ddd-spacing-2);
+        }
+        .lnks a.out {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 40px;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-3);
+          border: var(--ddd-border-sm);
+          border-color: var(--link);
+          border-radius: var(--ddd-radius-md);
+          background: var(--surface);
+          color: var(--link);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          text-decoration: none;
+          max-width: 100%;
+        }
+        .lnks a.out span {
+          overflow-wrap: anywhere;
+        }
+        .lnks a.out simple-icon-lite {
+          flex: none;
+          --simple-icon-width: 18px;
+          --simple-icon-height: 18px;
+          --simple-icon-color: currentColor;
+          color: inherit;
+        }
+        .lnks a.out simple-icon-lite.away {
+          --simple-icon-width: 14px;
+          --simple-icon-height: 14px;
+        }
+        .lnks a.out:hover,
+        .lnks a.out:focus-visible {
+          background: var(--chip);
+          text-decoration: underline;
+        }
+        /* on a phone the menu sits in the page under the header, so it is
+           never cut off by the bottom of the web or covered by what follows */
+        @media (max-width: 600px) {
+          .panel.menu {
+            position: static;
+            width: auto;
+            max-height: 60dvh;
+            margin: 0 var(--ddd-spacing-3) var(--ddd-spacing-3);
+            box-shadow: none;
+          }
+        }
         .strip {
           display: grid;
           gap: var(--ddd-spacing-2);
@@ -1319,6 +1735,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   // ---------- data ----------
   updated(changed) {
     if (super.updated) super.updated(changed);
+    if (changed.has("_layout")) this.setAttribute("data-layout", this._layout);
     if (changed.has("src") && this.src) this._load();
     if (changed.has("playing")) this._schedule();
     if (
@@ -1326,6 +1743,21 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       this._models
     ) {
       this._announce();
+    }
+    if (["web", "node", "tour"].some((k) => changed.has(k)) && this._menuOpen) {
+      this._menuOpen = false;
+    }
+    if (
+      ["web", "node", "tour", "_models"].some((k) => changed.has(k)) &&
+      this._models
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("ecosystem-web-trail", {
+          bubbles: true,
+          composed: true,
+          detail: { trail: this.trail() },
+        }),
+      );
     }
     this._applyCam();
     this._drawIn();
@@ -1407,6 +1839,36 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     }
     if (node && S[`tile:${web}:${node}`]) return `/${S[`tile:${web}:${node}`]}`;
     return S[`web:${web}`] ? `/${S[`web:${web}`]}` : "";
+  }
+  /**
+   * Where the web is, for a breadcrumb around it: the webs above this one,
+   * this web, then the tile or tour shown, each with its page path.
+   */
+  trail() {
+    const M = this._M;
+    if (!M) return [];
+    const webs = [];
+    let w = this.web;
+    while (w) {
+      webs.unshift(w);
+      w = this._parentOf(w);
+    }
+    const out = webs.map((id) => ({
+      label: this._webTitle(id),
+      path: this.pathFor(id, "", "", -1),
+    }));
+    if (this.tour) {
+      out.push({
+        label: `${this.t.tour}: ${this._tourLabel()}`,
+        path: this.pathFor(this.web, "", this.tour, -1),
+      });
+    } else if (this.node && M.nodes.has(this.node)) {
+      out.push({
+        label: M.nodes.get(this.node).label,
+        path: this.pathFor(this.web, this.node, "", -1),
+      });
+    }
+    return out;
   }
   _announce() {
     this.dispatchEvent(
@@ -1889,7 +2351,10 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const order =
       kind === "parity" && !api ? ["a", "b", "c", "s", "p"] : ["a", "b", "c"];
     return html`<div class="lenskey" aria-live="polite">
-      <p>${about}</p>
+      <details class="about">
+        <summary>${this.t.aboutLayer}</summary>
+        <p>${about}</p>
+      </details>
       ${order
         .filter((b) => cnt[b] || ["a", "b", "c"].indexOf(b) >= 0)
         .map(
@@ -1954,11 +2419,39 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     const kinds = KIND_ORDER.filter((k) =>
       this._M.edges.some((e) => e.kind === k),
     );
-    const lenses = LENSES.filter(
-      (k) => k === this.lens || this._lensAvailable(k, ctx),
-    );
+    const lenses = this._layerList(ctx);
     return html`<div class="strip">
-      <div class="chips" role="group" aria-label="${this.t.layers}">
+      <div class="chips" role="group" aria-label="${this.t.readBy}">
+        <span class="lab">${this.t.readBy}</span>
+        <button
+          class="act"
+          type="button"
+          aria-pressed="${this.lens ? "false" : "true"}"
+          @click="${() => {
+            this.setLens("");
+            this._panel = "";
+          }}"
+        >
+          ${this.t.connectionsOnly}
+        </button>
+        ${lenses.map(
+          (k) =>
+            html`<button
+              class="act"
+              type="button"
+              aria-pressed="${this.lens === k ? "true" : "false"}"
+              @click="${() => {
+                // the panel closes so the layer's card on the drawing,
+                // where the layers are stepped through, is in view
+                this.setLens(k);
+                this._panel = "";
+              }}"
+            >
+              ${this._lensName(k)}
+            </button>`,
+        )}
+      </div>
+      <div class="chips" role="group" aria-label="${this.t.show}">
         <span class="lab">${this.t.show}</span>
         ${kinds.map(
           (k) =>
@@ -1969,36 +2462,74 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
               aria-pressed="${this._hidden.has(k) ? "false" : "true"}"
               @click="${() => this.toggleLayer(k)}"
             >
+              <simple-icon-lite
+                icon="${this._kindIcon(k)}"
+                aria-hidden="true"
+              ></simple-icon-lite>
               ${SL[k] || this.t[k]}
             </button>`,
         )}
       </div>
-      <div class="chips" role="group" aria-label="${this.t.readBy}">
-        <span class="lab">${this.t.readBy}</span>
-        <button
-          class="act"
-          type="button"
-          aria-pressed="${this.lens ? "false" : "true"}"
-          @click="${() => this.setLens("")}"
-        >
-          ${this.t.connectionsOnly}
-        </button>
-        ${lenses.map(
-          (k) =>
-            html`<button
-              class="act"
-              type="button"
-              aria-pressed="${this.lens === k ? "true" : "false"}"
-              @click="${() => this.setLens(k)}"
-            >
-              ${this._lensName(k)}
-            </button>`,
-        )}
-      </div>
-      ${this._lensKey()}
     </div>`;
   }
-
+  /** The layers this web can be read by (the one shown always counts). */
+  _layerList(ctx) {
+    const c = ctx || this._lensCtx();
+    return LENSES.filter((k) => k === this.lens || this._lensAvailable(k, c));
+  }
+  /**
+   * The layer being shown, on the drawing itself: its name, a step to the
+   * layer before or after it, its key, and a way to turn it off, so moving
+   * between layers never leaves the web.
+   */
+  _layerCard() {
+    if (this.compact || !this.lens || !this._M) return nothing;
+    const list = this._layerList();
+    const at = Math.max(0, list.indexOf(this.lens));
+    const go = (d) => this.setLens(list[(at + d + list.length) % list.length]);
+    return html`<section
+      class="layercard"
+      aria-label="${this.t.readBy}: ${this._lensName(this.lens)}"
+    >
+      <div class="lc-head">
+        <button
+          type="button"
+          class="lc-btn"
+          aria-label="${this.t.prevLayer}"
+          title="${this.t.prevLayer}"
+          ?disabled="${list.length < 2}"
+          @click="${() => go(-1)}"
+        >
+          ‹
+        </button>
+        <p>
+          <span class="lab">${this.t.readBy}</span>
+          <b>${this._lensName(this.lens)}</b>
+          <span class="lab">${at + 1} ${this.t.stepOf} ${list.length}</span>
+        </p>
+        <button
+          type="button"
+          class="lc-btn"
+          aria-label="${this.t.nextLayer}"
+          title="${this.t.nextLayer}"
+          ?disabled="${list.length < 2}"
+          @click="${() => go(1)}"
+        >
+          ›
+        </button>
+        <button
+          type="button"
+          class="lc-btn"
+          aria-label="${this.t.layerOff}"
+          title="${this.t.layerOff}"
+          @click="${() => this.setLens("")}"
+        >
+          ×
+        </button>
+      </div>
+      ${this._lensKey()}
+    </section>`;
+  }
   // ---------- search ----------
   _hits() {
     return this._q && this._M ? searchNodes(this._M, this._q) : [];
@@ -2114,6 +2645,18 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         if (q) q.focus();
       });
   }
+  /**
+   * Put the selected tile's details beside the drawing or below it, like a
+   * video's transcript; remembered on this device.
+   */
+  setLayout(layout) {
+    this._layout = layout === "below" ? "below" : "side";
+    try {
+      globalThis.localStorage.setItem(LAYOUT_KEY, this._layout);
+    } catch {
+      // nothing to keep it in; the layout still changes on this page
+    }
+  }
   /** Fill the screen with the web (full screen where the browser allows it). */
   present(on) {
     this._presenting = on === undefined ? !this._presenting : !!on;
@@ -2149,7 +2692,16 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       (el) => el && (el.tagName === "INPUT" || el.tagName === "TEXTAREA"),
     );
     if (typing || !this._M || this.compact) return;
-    if (e.key === "/") {
+    if (
+      e.key === "Escape" &&
+      (this._toursOpen || this._panel || this._menuOpen)
+    ) {
+      this._toursOpen = false;
+      this._panel = "";
+      this._menuOpen = false;
+      return;
+    }
+    if (e.key === "/" && !this.siteNav) {
       e.preventDefault();
       if (this._panel !== "search") this._toggle("search");
       return;
@@ -2401,7 +2953,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     if (ghost)
       return svg`<g class="${cn}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}">${body}</g>`;
     return svg`<g class="${cn}" transform="translate(${n.x.toFixed(1)} ${n.y.toFixed(1)})" style="${style}"
-      tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
+      data-web="${this.web}" data-id="${n.id}" tabindex="${vis && !vis.has(n.id) ? -1 : 0}" role="button" aria-pressed="${this.node === n.id ? "true" : "false"}"
       aria-label="${n.label}${open ? `, ${this.t.open} ${this._webName(n.web)}` : ""}"
       @click="${() => this._tileClick(n.id)}" @dblclick="${() => this._tileOpen(n)}" @keydown="${(e) => this._tileKey(e, n.id)}">
       <circle class="hit" r="${Math.max(h + 4, 14).toFixed(1)}"></circle>
@@ -2439,6 +2991,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       .filter(Boolean)
       .join(" ");
     return html`<div class="stage">
+      ${this._layerCard()}
       <svg
         class="${netCls}"
         role="group"
@@ -2496,7 +3049,10 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           title="${this.t.zoomIn}"
           @click="${() => this._zoom(1 / 1.4)}"
         >
-          +
+          <simple-icon-lite
+            icon="icons:zoom-in"
+            aria-hidden="true"
+          ></simple-icon-lite>
         </button>
         <button
           type="button"
@@ -2504,7 +3060,10 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           title="${this.t.zoomOut}"
           @click="${() => this._zoom(1.4)}"
         >
-          −
+          <simple-icon-lite
+            icon="icons:zoom-out"
+            aria-hidden="true"
+          ></simple-icon-lite>
         </button>
         <button
           type="button"
@@ -2513,7 +3072,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           @click="${() => this._fit()}"
         >
           <simple-icon-lite
-            icon="icons:fullscreen"
+            icon="image:center-focus-strong"
             aria-hidden="true"
           ></simple-icon-lite>
         </button>
@@ -2573,15 +3132,167 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     e.target.classList.remove("enter", "rev");
     e.target.removeAttribute("pathLength");
   }
+  /**
+   * The site's menu opens at the page you are on: its item is scrolled into
+   * the middle of the panel. (The menu itself is the site's: it comes in
+   * through the "menu" slot, and marks the page you are on.)
+   */
+  async _revealActive() {
+    await this.updateComplete;
+    const panel = this.shadowRoot.querySelector("#sitemenu");
+    const slot = panel ? panel.querySelector("slot") : null;
+    if (!slot) return;
+    // on a small screen the panel would run past the bottom: bring the
+    // header to the top so the whole menu, and the button that closes it,
+    // are in view
+    const top = this.shadowRoot.querySelector(".top");
+    if (top && panel.getBoundingClientRect().bottom > globalThis.innerHeight) {
+      top.scrollIntoView({ block: "start" });
+    }
+    // give the menu a moment to open the branch the page is in
+    await new Promise((r) => setTimeout(r, 150));
+    let hit = null;
+    const find = (r) => {
+      const all = r.querySelectorAll("*");
+      for (let i = 0; i < all.length && !hit; i++) {
+        const e = all[i];
+        if (
+          e.getAttribute("aria-current") === "page" ||
+          (e.localName === "map-menu-item" && e.hasAttribute("active"))
+        ) {
+          hit = e;
+        } else if (e.shadowRoot) {
+          find(e.shadowRoot);
+        }
+      }
+    };
+    slot.assignedElements({ flatten: true }).forEach((el) => {
+      if (!hit) find(el);
+    });
+    if (hit) {
+      const p = panel.getBoundingClientRect();
+      const h = hit.getBoundingClientRect();
+      panel.scrollTop += h.top - p.top - p.height / 2 + h.height / 2;
+    }
+  }
+  /**
+   * Each kind of connection is told apart three ways at once: its icon, its
+   * colour (and line style), and its label.
+   */
+  _kindIcon(k) {
+    return (
+      {
+        pillar: "icons:account-balance",
+        contrib: "social:person",
+        org: "social:domain",
+        schema: "icons:assignment",
+        rel: "icons:compare-arrows",
+      }[k] || "icons:compare-arrows"
+    );
+  }
+  /** The icon for a link to somewhere outside the web (a repo, a profile). */
+  _linkIcon(k) {
+    return (
+      {
+        repo: "icons:code",
+        npm: "icons:archive",
+        docs: "icons:description",
+        site: "icons:language",
+        profile: "social:person",
+        issue: "icons:bug-report",
+        demo: "icons:touch-app",
+        example: "icons:lightbulb-outline",
+        recording: "av:videocam",
+        slides: "image:slideshow",
+        source: "icons:description",
+      }[k] || "icons:language"
+    );
+  }
+  /**
+   * A link that leaves the web: a button with the icon of what it is, and
+   * the icon that says it opens somewhere else.
+   */
+  _outLink(kind, url, label) {
+    return html`<a class="out" href="${url}" target="_blank" rel="noopener"
+      ><simple-icon-lite
+        icon="${this._linkIcon(kind)}"
+        aria-hidden="true"
+      ></simple-icon-lite
+      ><span>${label}</span
+      ><simple-icon-lite
+        class="away"
+        icon="icons:open-in-new"
+        aria-hidden="true"
+      ></simple-icon-lite
+      ><span class="sr-only"
+        >${this.t.newTab || "(opens in a new tab)"}</span
+      ></a
+    >`;
+  }
+  /**
+   * Going along a connection: the tile it leads to is selected, and if the
+   * drawing has scrolled out of view (on a phone the details sit below it),
+   * it comes back so the move can be seen. Focus goes to the new tile's
+   * details, which are what changed.
+   */
+  async _goAlong(id) {
+    this.select(id);
+    await this.updateComplete;
+    const stage = this.shadowRoot.querySelector(".stage");
+    const head = this.shadowRoot.querySelector(".rail h3");
+    if (head) {
+      head.setAttribute("tabindex", "-1");
+      head.focus({ preventScroll: true });
+    }
+    if (!stage) return;
+    const r = stage.getBoundingClientRect();
+    const vh = globalThis.innerHeight || 0;
+    // most of the drawing must be on screen, or it is brought back
+    const seen = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    if (seen < Math.min(r.height, vh) * 0.6) {
+      const still =
+        globalThis.matchMedia &&
+        globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      stage.scrollIntoView({
+        block: "start",
+        behavior: still ? "auto" : "smooth",
+      });
+    }
+  }
   _sentence(e, id) {
     const M = this._M;
     const a = M.nodes.get(e.from);
     const b = M.nodes.get(e.to);
     const o = e.from === id ? b : a;
     const lab = e.label || this.t.connects;
+    // a connection is a way to go: its kind's icon and line on the left, the
+    // tile it leads to as a link, and an arrow that says it goes there
     return html`<li>
-      <button type="button" @click="${() => this.select(o.id)}">
-        ${e.from === id ? html`<span class="v">${lab}</span> ${b.label}` : html`${a.label} <span class="v">${lab} ${b.label}</span>`}
+      <button
+        type="button"
+        class="rel"
+        data-k="${e.kind}"
+        data-web="${this.web}"
+        data-id="${o.id}"
+        @click="${() => this._goAlong(o.id)}"
+      >
+        <simple-icon-lite
+          class="kind"
+          icon="${this._kindIcon(e.kind)}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span class="said">
+          ${
+            e.from === id
+              ? html`<span class="v">${lab}</span>
+                  <span class="to">${b.label}</span>`
+              : html`<span class="to">${a.label}</span>
+                  <span class="v">${lab} ${b.label}</span>`
+          }
+        </span>
+        <span class="go" aria-hidden="true"
+          ><simple-icon-lite icon="icons:arrow-forward"></simple-icon-lite
+        ></span>
       </button>
     </li>`;
   }
@@ -2596,7 +3307,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         <p class="hint">
           ${this.web === "main" ? this.t.howToReadText : M.meta.about || ""}
         </p>
-        ${parent ? html`<button class="act" type="button" @click="${() => this.openWeb(parent)}">${this.t.backTo} ${this._webName(parent)}</button>` : nothing}
+        ${parent && !this.siteNav ? html`<button class="act" type="button" @click="${() => this.openWeb(parent)}">${this.t.backTo} ${this._webName(parent)}</button>` : nothing}
       </aside>`;
     }
     const n = M.nodes.get(this.node);
@@ -2618,15 +3329,20 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       ${this._lensNote(n)}
       ${d.status ? html`<span class="st ${d.status}">${d.status === "released" && d.version ? `${d.version}` : stWord[d.status] || d.status}</span>` : nothing}
       ${d.desc ? html`<p>${d.desc}</p>` : nothing}
-      ${d.source && d.source.url ? html`<p class="hint">${this.t.source}: <a href="${safeUrl(d.source.url)}" target="_blank" rel="noopener">${d.source.label}</a></p>` : nothing}
-      ${Object.keys(d.links || {}).length ? html`<div class="lnks">${Object.entries(d.links).map(([k, u]) => html`<a href="${safeUrl(u)}" target="_blank" rel="noopener">${LINK_LABEL[k] || k}</a>`)}</div>` : nothing}
+      ${(d.source && d.source.url) || Object.keys(d.links || {}).length ? html`<div class="lnks">${d.source && d.source.url ? this._outLink("source", safeUrl(d.source.url), `${this.t.source}: ${d.source.label}`) : nothing}${Object.entries(d.links || {}).map(([k, u]) => this._outLink(k, safeUrl(u), LINK_LABEL[k] || k))}</div>` : nothing}
       ${this._canOpen(n) ? html`<button class="act primary" type="button" @click="${() => this.openWeb(n.web)}">${this.t.open} ${this._webName(n.web)}</button>` : nothing}
       ${this.web !== "main" && home && this._models[home] ? html`<button class="act" type="button" @click="${() => this.openWeb(home, n.id)}">${this.t.showIn} ${this._webName(home)}</button>` : nothing}
       ${d.note ? html`<p class="note">${d.note}</p>` : nothing}
       ${KIND_ORDER.map((k) => {
         const L = R.filter((e) => e.kind === k);
         return L.length
-          ? html`<p class="relhead">${SL[k] || this.t[k]} · ${L.length}</p>
+          ? html`<p class="relhead" data-k="${k}">
+                <simple-icon-lite
+                  icon="${this._kindIcon(k)}"
+                  aria-hidden="true"
+                ></simple-icon-lite
+                >${SL[k] || this.t[k]} · ${L.length}
+              </p>
               <ul class="rels">
                 ${L.map((e) => this._sentence(e, n.id))}
               </ul>`
@@ -2666,10 +3382,6 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       >
         ${t.label}
       </button>`;
-    const picked =
-      this.tour === TIME
-        ? { label: this.t.overTime }
-        : M.tours.find((t) => t.id === this.tour);
     const time = !M.meta.noTimeline
       ? html`<button
           class="act"
@@ -2680,22 +3392,15 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           ${this.t.overTime}
         </button>`
       : nothing;
-    return html`<div class="tours" ?data-open="${this._toursOpen}">
-      <button
-        class="act tours-toggle"
-        type="button"
-        aria-expanded="${this._toursOpen ? "true" : "false"}"
-        aria-controls="tourlist"
-        @click="${() => {
-          this._toursOpen = !this._toursOpen;
-        }}"
-      >
-        ${this.t.tours}${picked ? `: ${picked.label}` : ""}
-      </button>
-      <div class="tourlist" id="tourlist">
-        ${aud.length || time !== nothing ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}${time}</div>` : nothing}
-        ${story.length ? html`<div class="chips"><span class="lab">${this.t.followAStory}</span>${story.map(chip)}</div>` : nothing}
-      </div>
+    // closed until asked for, and over the drawing rather than above it, so
+    // the web keeps its place on the screen
+    return html`<div
+      class="tours panel"
+      id="tourlist"
+      ?hidden="${!this._toursOpen}"
+    >
+      ${aud.length || time !== nothing ? html`<div class="chips"><span class="lab">${this.t.tourFor}</span>${aud.map(chip)}${time}</div>` : nothing}
+      ${story.length ? html`<div class="chips"><span class="lab">${this.t.followAStory}</span>${story.map(chip)}</div>` : nothing}
     </div>`;
   }
   _bar() {
@@ -2769,61 +3474,196 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         ${this.t.loading}
       </p>`;
     if (this.compact) return this._drawing();
-    return html`<header>
-        <div class="titles">
-          <p class="eyebrow">${this._crumbs()}</p>
-          <h2>${this._webTitle(this.web)}</h2>
+    const M = this._M;
+    const picked =
+      this.tour === TIME
+        ? { label: this.t.overTime }
+        : this.tour
+          ? M.tours.find((t) => t.id === this.tour)
+          : null;
+    const hasTours = M.tours.length > 0 || !M.meta.noTimeline;
+    const chevron = html`<svg
+      class="chev"
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M6 9l6 6 6-6"></path>
+    </svg>`;
+    return html`<div class="top">
+        <header class="${this.siteNav ? "withmenu" : ""}">
+          ${
+            this.siteNav
+              ? html`<button
+                    class="act menubtn"
+                    type="button"
+                    aria-label="${this.t.siteMenu}"
+                    title="${this.t.siteMenu}"
+                    aria-expanded="${this._menuOpen ? "true" : "false"}"
+                    aria-controls="sitemenu"
+                    @click="${() => {
+                      this._menuOpen = !this._menuOpen;
+                      if (this._menuOpen) {
+                        this._toursOpen = false;
+                        this._panel = "";
+                        this._revealActive();
+                      }
+                    }}"
+                  >
+                    <simple-icon-lite
+                      icon="icons:menu"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </button>
+                  <h2 class="sr-only">${this._webTitle(this.web)}</h2>`
+              : html`<div class="titles">
+                  <p class="eyebrow">${this._crumbs()}</p>
+                  <h2>${this._webTitle(this.web)}</h2>
+                </div>`
+          }
+          <div class="actions">
+            ${
+              hasTours
+                ? html`<button
+                    class="act menu"
+                    type="button"
+                    ?data-on="${!!picked}"
+                    aria-expanded="${this._toursOpen ? "true" : "false"}"
+                    aria-controls="tourlist"
+                    @click="${() => {
+                      this._toursOpen = !this._toursOpen;
+                      if (this._toursOpen) {
+                        this._panel = "";
+                        this._menuOpen = false;
+                      }
+                    }}"
+                  >
+                    ${
+                      picked
+                        ? html`${this.t.tour}: <b>${picked.label}</b>`
+                        : this.t.tours
+                    }${chevron}
+                  </button>`
+                : nothing
+            }
+            ${
+              picked
+                ? html`<button
+                    class="act"
+                    type="button"
+                    @click="${() => this.pickTour("")}"
+                  >
+                    ${this.t.endTour}
+                  </button>`
+                : nothing
+            }
+            <button
+              class="act menu"
+              type="button"
+              ?data-on="${!!this.lens}"
+              aria-expanded="${this._panel === "layers" ? "true" : "false"}"
+              aria-controls="layers"
+              @click="${() => {
+                this._toggle("layers");
+                this._toursOpen = false;
+                this._menuOpen = false;
+              }}"
+            >
+              ${
+                this.lens
+                  ? html`${this.t.layer}: <b>${this._lensName(this.lens)}</b>`
+                  : this.t.layers
+              }${chevron}
+            </button>
+            ${
+              this.siteNav
+                ? nothing
+                : html`<button
+                    class="act"
+                    type="button"
+                    aria-expanded="${this._panel === "search" ? "true" : "false"}"
+                    aria-controls="search"
+                    @click="${() => this._toggle("search")}"
+                  >
+                    ${this.t.search}
+                  </button>`
+            }
+            <button
+              class="act withicon"
+              type="button"
+              aria-pressed="${this._presenting ? "true" : "false"}"
+              @click="${() => this.present()}"
+            >
+              <simple-icon-lite
+                icon="${this._presenting ? "icons:fullscreen-exit" : "icons:fullscreen"}"
+                aria-hidden="true"
+              ></simple-icon-lite
+              >${this._presenting ? this.t.exitPresent : this.t.present}
+            </button>
+            <div class="layoutpick" role="group" aria-label="${this.t.layout}">
+              ${[
+                ["side", "icons:view-column", this.t.layoutSide],
+                ["below", "icons:view-agenda", this.t.layoutBelow],
+              ].map(
+                ([k, icon, label]) =>
+                  html`<button
+                    class="act withicon"
+                    type="button"
+                    aria-pressed="${this._layout === k ? "true" : "false"}"
+                    @click="${() => this.setLayout(k)}"
+                  >
+                    <simple-icon-lite
+                      icon="${icon}"
+                      aria-hidden="true"
+                    ></simple-icon-lite
+                    >${label}
+                  </button>`,
+              )}
+            </div>
+            ${
+              this.siteNav
+                ? nothing
+                : html`<button
+                    class="act"
+                    type="button"
+                    aria-pressed="${this.listView ? "true" : "false"}"
+                    @click="${() => {
+                      this.listView = !this.listView;
+                    }}"
+                  >
+                    ${this.listView ? this.t.webView : this.t.listView}
+                  </button>`
+            }
+          </div>
+        </header>
+        ${
+          this.siteNav
+            ? html`<div
+                id="sitemenu"
+                class="panel menu"
+                ?hidden="${!this._menuOpen}"
+              >
+                <slot name="menu"></slot>
+              </div>`
+            : nothing
+        }
+        ${this._tours()}
+        <div id="layers" class="panel" ?hidden="${this._panel !== "layers"}">
+          ${this._panel === "layers" ? this._layersStrip() : nothing}
         </div>
-        <div class="actions">
-          <button
-            class="act"
-            type="button"
-            aria-expanded="${this._panel === "layers" ? "true" : "false"}"
-            aria-controls="layers"
-            @click="${() => this._toggle("layers")}"
-          >
-            ${this.t.layers}${this.lens ? `: ${this._lensName(this.lens)}` : ""}
-          </button>
-          <button
-            class="act"
-            type="button"
-            aria-expanded="${this._panel === "search" ? "true" : "false"}"
-            aria-controls="search"
-            @click="${() => this._toggle("search")}"
-          >
-            ${this.t.search}
-          </button>
-          <button
-            class="act"
-            type="button"
-            aria-pressed="${this._presenting ? "true" : "false"}"
-            @click="${() => this.present()}"
-          >
-            ${this._presenting ? this.t.exitPresent : this.t.present}
-          </button>
-          <button
-            class="act"
-            type="button"
-            aria-pressed="${this.listView ? "true" : "false"}"
-            @click="${() => {
-              this.listView = !this.listView;
-            }}"
-          >
-            ${this.listView ? this.t.webView : this.t.listView}
-          </button>
+        <div id="search" ?hidden="${this._panel !== "search"}">
+          ${this._panel === "search" ? this._searchStrip() : nothing}
         </div>
-      </header>
-      ${this._tours()}
-      <div id="layers" ?hidden="${this._panel !== "layers"}">
-        ${this._panel === "layers" ? this._layersStrip() : nothing}
-      </div>
-      <div id="search" ?hidden="${this._panel !== "search"}">
-        ${this._panel === "search" ? this._searchStrip() : nothing}
       </div>
       <div class="body">
         ${this.listView ? this._list() : this._drawing()}${this._rail()}
       </div>
-      ${this._bar()} ${this._editing ? this._author() : nothing}`;
+      ${this.tour ? this._bar() : nothing}
+      ${this._editing ? this._author() : nothing}`;
   }
 
   static get haxProperties() {

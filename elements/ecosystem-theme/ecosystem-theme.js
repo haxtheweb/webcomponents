@@ -10,34 +10,10 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/ecosystem-web/ecosystem-web.js";
 import "@haxtheweb/hax-network-bar/hax-network-bar.js";
-import {
-  haxNetworkGlyph,
-  HaxNetworkGlyphStyles,
-} from "@haxtheweb/hax-network-bar/lib/hax-network.js";
-
-const VIEW_KEY = "hax-cloud-view";
-
-/** Read a remembered view; storage can be missing or refuse (private windows). */
-function readView() {
-  try {
-    const v = globalThis.localStorage.getItem(VIEW_KEY);
-    return v === "web" || v === "site" ? v : "";
-  } catch {
-    return "";
-  }
-}
-function writeView(v) {
-  try {
-    globalThis.localStorage.setItem(VIEW_KEY, v);
-  } catch {
-    // nothing to keep it in; the view still switches for this page
-  }
-}
 
 /** True when the page address asks for the embed view (?embed, but not ?embed=0). */
 function readEmbed() {
@@ -46,6 +22,14 @@ function readEmbed() {
     return q.has("embed") && q.get("embed") !== "0";
   } catch {
     return false;
+  }
+}
+/** A value from the page address, or "" (no address to read in some contexts). */
+function readParam(name) {
+  try {
+    return new URLSearchParams(globalThis.location.search).get(name) || "";
+  } catch {
+    return "";
   }
 }
 
@@ -73,38 +57,30 @@ function go(url) {
  * `ecosystem-theme`
  * The hax.cloud theme: the HAX ecosystem as a website. Every page is a web, a
  * tile or a tour from PRAW's ecosystem webs (its `metadata.ecosystem` says
- * which), and every page has two views:
+ * which), and every page shows the interactive `<ecosystem-web>` routed to
+ * it. Selecting a tile, opening a sub-web or picking a tour moves the site to
+ * that page, so the address bar always holds a link to what is shown; the
+ * selected tile's text is the web's details panel. A page that is not part
+ * of a web (Tours, Recent) shows the whole web with its own content below.
  *
- * - **Network view** (`view="web"`): the interactive `<ecosystem-web>`
- *   routed to that page, and the page's own content below. Selecting a
- *   tile, opening a sub-web or picking a tour moves the site to that page,
- *   so the address bar always holds a link to what is shown.
- * - **Content view** (`view="site"`): a reading layout with the site
- *   outline, title, a "Where this sits in the web" figure and the page
- *   content.
- *
- * The viewer's choice is remembered on their device. Pages that are not part
- * of a web (people, recent activity) open in the Content view.
+ * Above the web: the HAX network bar, then the breadcrumb, which the web on
+ * the page reports (ecosystem-web-trail) and which starts at the home web.
+ * The site's menu opens from the web's own menu button, at the page you are
+ * on. Merlin, in the network bar, can jump to every web, tile and tour of the
+ * site as well as across the network, and its developer list (">") holds
+ * "Developer mode: goggles", which puts on the goggles with the Connect lens
+ * (lib/ecosystem-connect.js).
  *
  * **Embed**: a page address ending in `?embed` (or the `embed` attribute)
- * draws the page for an iframe on another site: no network strip, no row
- * under it, no outline or footer, only the page's title, a link that opens it
- * on the site itself, the web (when the page is part of one) and the page
- * content. Moving around the web inside the frame keeps the embed view.
+ * draws the page for an iframe on another site: no network strip, no
+ * breadcrumb or footer, only the page's title, a link that opens it on the
+ * site itself, the web (when the page is part of one) and the page content.
+ * Moving around the web inside the frame keeps the embed view.
  *
  * Site-wide settings come from `metadata.theme.variables` in site.json:
- * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `nav`
- * (`[{label, slug}]`, default the top-level pages: the site's places, in the
- * menu on its name) and `footer` (`[{label, href}]`, plus a `footerNote` line) and `welcome`
- * (`{title, text, tour, tourLabel}`: the greeting on the home page, `tour`
- * being the slug of the tour its button starts).
- *
- * The header is the HAX network bar, then one row: the site's name, opening
- * a menu of its places; the breadcrumb; the two views, Network view and
- * Content view; and the link to this view, whose address is the Copy
- * button. HAXTheWeb, Build now and Web components are not repeated there:
- * the network bar has them. Merlin, in that bar, can jump to every web,
- * tile and tour of the site as well as across the network.
+ * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `footer`
+ * (`[{label, href}]`, plus a `footerNote` line) and `welcome`
+ * (`{title, text}`: the greeting on the home page).
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -121,72 +97,51 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     super();
     this.t = {
       skip: "Skip to content",
-      home: "home",
-      view: "View",
-      networkView: "Network view",
-      contentView: "Content view",
-      networkViewAbout: "Every part of HAX as a web you can move through",
-      contentViewAbout: "This page to read, with the site outline",
-      places: "Places on this site",
-      copyThis: "Copy the link to this view",
-      copy: "Copy link",
-      copied: "Copied",
-      outline: "Site outline",
-      whereInWeb: "Where this sits in the web",
-      openInWeb: "Open in the web",
+      whereYouAre: "Where you are",
+      siteMenu: "Site menu",
       openOn: "Open on",
       theWeb: "The interactive web",
-      askMerlin: "Ask Future",
-      takeTour: "Take the tour",
       welcome: "Welcome",
       merlinWebs: "hax.cloud: webs",
       merlinTours: "hax.cloud: tours",
       merlinPages: "hax.cloud",
+      goggles: "Developer mode: goggles",
+      gogglesAbout:
+        "Put on the goggles. On hax.cloud they add the Connect lens: say more about a tile and connect it, copied as a prompt for a pull request to PRAW",
     };
-    this.view = "web";
     this.embed = readEmbed();
-    this.placesOpen = false;
-    this.outlineOpen = false;
+    this._trail = null;
     this._items = [];
     this._active = null;
     this._vars = {};
     this._title = "";
     this._domain = "";
-    this._copied = false;
-    this._chosen = readView();
     this._disposers = [];
     this._onWebChanged = this._onWebChanged.bind(this);
     this._onMerlin = this._onMerlin.bind(this);
-    this._away = (e) => {
-      if (this.placesOpen && !e.composedPath().includes(this)) {
-        this.placesOpen = false;
-      }
-    };
   }
 
   static get properties() {
     return {
       ...super.properties,
-      /** "web" or "site": the interactive web or the reading layout */
-      view: { type: String, reflect: true },
       /** draw the page for an iframe on another site: no site chrome (set by ?embed in the address) */
       embed: { type: Boolean, reflect: true },
-      /** the menu of the site's places, on its name */
-      placesOpen: { type: Boolean, reflect: true, attribute: "places-open" },
-      /** the site outline on narrow screens, where it folds behind its heading */
-      outlineOpen: { type: Boolean, reflect: true, attribute: "outline-open" },
+      /** where the page sits, as the web on it reports (ecosystem-web-trail) */
+      _trail: { type: Array, state: true },
       _items: { type: Array, state: true },
       _active: { type: Object, state: true },
       _vars: { type: Object, state: true },
       _title: { type: String, state: true },
       _domain: { type: String, state: true },
-      _copied: { type: Boolean, state: true },
     };
   }
 
   connectedCallback() {
     super.connectedCallback();
-    globalThis.addEventListener("click", this._away);
+    // a link that asks for the goggles (?goggles=connect) loads the lens
+    if (readParam("goggles")) {
+      import("./lib/ecosystem-connect.js").then((m) => m.connectGoggles());
+    }
     this._disposers.push(
       autorun(() => {
         const m = toJS(store.manifest);
@@ -204,45 +159,15 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       autorun(() => {
         const a = toJS(store.activeItem);
         Promise.resolve().then(() => {
-          const moved = !!(this._active && a && this._active.id !== a.id);
           this._active = a || null;
-          this._copied = false;
-          this.placesOpen = false;
-          this.outlineOpen = false;
-          // an embed always shows the web: the viewer's remembered choice is for the site itself
-          this.view = this._eco()
-            ? (!this.embed && this._chosen) || "web"
-            : "site";
-          if (moved) this._showPage();
         });
       }),
     );
   }
 
-  /**
-   * On a narrow screen the outline sits above the page: after choosing a
-   * page from it, the outline folds and the page's title is brought into
-   * view, so the reader lands on what they picked instead of the menu.
-   */
-  async _showPage() {
-    const narrow =
-      globalThis.matchMedia &&
-      globalThis.matchMedia("(max-width: 900px)").matches;
-    if (!narrow || this.embed) return;
-    await this.updateComplete;
-    if (this.view !== "site") return;
-    // after the base theme's own scroll to the top of the new page
-    globalThis.requestAnimationFrame(() => {
-      const main = this.shadowRoot && this.shadowRoot.querySelector("main");
-      if (main) main.scrollIntoView({ block: "start", behavior: "auto" });
-    });
-  }
-
   disconnectedCallback() {
-    globalThis.removeEventListener("click", this._away);
     this._disposers.forEach((d) => d());
     this._disposers = [];
-    clearTimeout(this._copyTimer);
     super.disconnectedCallback();
   }
 
@@ -272,31 +197,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   _itemBySlug(slug) {
     return this._items.find((i) => i.slug === slug) || null;
   }
-  /** The top-level page the active page sits under, for the main nav. */
-  _topId() {
-    const byId = new Map(this._items.map((i) => [i.id, i]));
-    let i = this._active ? byId.get(this._active.id) : null;
-    while (i && i.parent && byId.has(i.parent)) i = byId.get(i.parent);
-    return i ? i.id : "";
-  }
-  /** The outline's heading: the section the page is in (the site title on a top-level page). */
-  _topTitle(id) {
-    const i = this._items.find((x) => x.id === id);
-    return i ? i.title : this._title;
-  }
-  _nav() {
-    const v = this._vars.nav;
-    if (Array.isArray(v) && v.length)
-      return v
-        .map((n) => ({ label: n.label, item: this._itemBySlug(n.slug) }))
-        .filter((n) => n.item);
-    return this._items
-      .filter((i) => !i.parent)
-      .map((i) => ({ label: i.title, item: i }));
-  }
-  _href(item) {
-    return item ? item.slug : "";
-  }
   _pageUrl() {
     const slug = this._active ? this._active.slug : "";
     return `${this._domain}/${slug}`;
@@ -309,24 +209,12 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (this.embed) u.search = "?embed";
     go(u.href);
   }
-  _setView(v) {
-    if (v === "web" && !this._eco()) {
-      // a page outside the webs has nothing to draw: the home web opens
-      const home = this._items.find((i) => !i.parent);
-      this._chosen = "web";
-      writeView("web");
-      if (home) this._go(home.slug);
-      return;
-    }
-    this._chosen = v;
-    writeView(v);
-    this.view = v;
-  }
   /** The web moved (a tile, sub-web or tour): follow it when it has a page. */
   _onWebChanged(e) {
     const d = e.detail || {};
     const slug = String(d.path || "").replace(/^\//, "");
     if (!slug || !this._active || slug === this._active.slug) return;
+    if (!this._eco() && d.web === "main" && !d.node && !d.tour) return;
     const item = this._itemBySlug(slug);
     if (item) this._go(item.slug);
   }
@@ -365,7 +253,28 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         eventName: "super-daemon-element-method",
       });
     });
+    // developer commands only (the > list), never global search
+    merlin.defineOption({
+      title: this.t.goggles,
+      icon: "hax:goggles",
+      tags: ["Developer", "goggles", "developer mode", "connect", "praw"],
+      path: ">developer/goggles",
+      context: [">"],
+      more: html`<span>${this.t.gogglesAbout}</span>`,
+      value: { target: this, method: "goggles", args: [] },
+      eventName: "super-daemon-element-method",
+    });
   }
+  /**
+   * Put the goggles on or take them off, with hax.cloud's Connect lens. The
+   * lens and its panel load only when asked for.
+   */
+  async goggles() {
+    const m = await import("./lib/ecosystem-connect.js");
+    m.connectGoggles();
+    return m.toggleGoggles();
+  }
+
   /** Go to a page of this site by its slug. */
   goTo(slug) {
     const item = this._itemBySlug(slug);
@@ -378,42 +287,11 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (!w || !w.title || !home || !this._active) return null;
     return this._active.id === home.id ? w : null;
   }
-  _askMerlin() {
-    const bar = this.shadowRoot.querySelector("hax-network-bar");
-    if (bar && typeof bar.openMerlin === "function") bar.openMerlin();
-  }
-  _copy() {
-    const url = `https://${this._pageUrl()}`;
-    const done = () => {
-      this._copied = true;
-      clearTimeout(this._copyTimer);
-      this._copyTimer = setTimeout(() => {
-        this._copied = false;
-      }, 2000);
-    };
-    const select = () => {
-      const code = this.shadowRoot.querySelector(".copylink code");
-      const sel = globalThis.getSelection && globalThis.getSelection();
-      if (code && sel) {
-        const r = globalThis.document.createRange();
-        r.selectNodeContents(code);
-        sel.removeAllRanges();
-        sel.addRange(r);
-      }
-    };
-    if (globalThis.navigator.clipboard) {
-      globalThis.navigator.clipboard.writeText(url).then(done, select);
-    } else {
-      select();
-    }
-  }
-
   // ---------- styles ----------
   static get styles() {
     return [
       super.styles,
       ...HaxUiAdminTokens,
-      HaxNetworkGlyphStyles,
       css`
         :host {
           display: block;
@@ -511,8 +389,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           border-bottom: var(--ddd-spacing-1) solid
             var(--ddd-theme-default-keystoneYellow);
           font-family: var(--ddd-font-navigation);
-          --site-breadcrumb-margin: 0;
-          --site-breadcrumb-last-color: var(--ddd-theme-default-white);
         }
         .viewbar .wrap {
           display: flex;
@@ -529,224 +405,79 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           flex: 1 1 280px;
           min-width: 0;
         }
-        .vb-crumbs site-breadcrumb {
+
+        [hidden] {
+          display: none !important;
+        }
+        /* the breadcrumb, following the web, on its own row of the bar */
+        .viewbar .vb-crumbs {
+          order: 10;
+          flex: 1 1 100%;
+        }
+        .trail {
           min-width: 0;
+          text-align: start;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: var(--ddd-lh-120);
+        }
+        .trail ol {
           flex: 1 1 auto;
-        }
-
-        /* hax.cloud: the site's name in slab type, opening its places */
-        .places {
-          position: relative;
-          flex: none;
-        }
-        .places-btn {
-          display: inline-flex;
+          min-width: 0;
+          justify-content: flex-start;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
           align-items: center;
-          gap: var(--ddd-spacing-2);
-          min-height: 40px;
-          padding: 0 var(--ddd-spacing-2) 0 var(--ddd-spacing-1);
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-sm);
-          background-color: transparent;
-          color: var(--ddd-theme-default-white);
-          font-family: var(--ddd-font-secondary, var(--ddd-font-primary));
-          font-size: var(--ddd-font-size-xs);
-          font-weight: var(--ddd-font-weight-bold);
-          cursor: pointer;
-          --prop: var(--ddd-theme-default-original87Pink);
-          --glyph-size: 26px;
-        }
-        .places-btn:hover,
-        .places-btn[aria-expanded="true"] {
-          border-color: var(--ddd-theme-default-white);
-        }
-        .places-btn:focus-visible {
-          outline: var(--ddd-border-size-md) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
-        }
-        .places-btn:active {
-          transform: translateY(1px);
-        }
-        .places-btn svg {
-          width: 20px;
-          height: 20px;
-          transition: transform 0.15s;
-        }
-        :host([places-open]) .places-btn svg {
-          transform: rotate(180deg);
-        }
-        .places-menu {
-          display: none;
-          position: absolute;
-          top: calc(100% + var(--ddd-spacing-2));
-          left: 0;
-          min-width: 240px;
+          gap: var(--ddd-spacing-1) var(--ddd-spacing-2);
           margin: 0;
-          padding: var(--ddd-spacing-2);
+          padding: 0;
           list-style: none;
-          background-color: var(--ddd-theme-default-potentialMidnight);
-          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-sm);
-          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
-            var(--ddd-theme-default-keystoneYellow);
         }
-        :host([places-open]) .places-menu {
-          display: block;
-        }
-        .places-menu a {
-          display: block;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-          border-radius: var(--ddd-radius-xs);
-          color: var(--ddd-theme-default-white);
-          font-size: var(--ddd-font-size-4xs);
-          text-decoration: none;
-        }
-        .places-menu a:hover,
-        .places-menu a:focus-visible {
-          background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-potentialMidnight);
-          outline: none;
-        }
-        .places-menu a[aria-current="page"] {
-          font-weight: var(--ddd-font-weight-bold);
-          box-shadow: inset var(--ddd-spacing-1) 0 0
-            var(--ddd-theme-default-keystoneYellow);
-        }
-
-        /* the two views: a sticker switch, the view you are in filled */
-        .views {
-          display: inline-flex;
-          flex: none;
-          padding: 3px;
-          gap: 3px;
-          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-rounded, 999px);
-          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
-            var(--ddd-theme-default-keystoneYellow);
-        }
-        .views button {
+        .trail li {
+          white-space: nowrap;
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
-          min-height: var(--ddd-control-height-sm, 40px);
-          padding: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
-          border: var(--ddd-border-size-sm) solid
-            var(--ddd-theme-default-limestoneGray);
-          border-radius: var(--ddd-radius-rounded, 999px);
-          background-color: transparent;
+          min-width: 0;
+        }
+        .trail li + li::before {
+          content: "/";
+          color: var(--ddd-theme-default-limestoneLight);
+        }
+        .trail a {
           color: var(--ddd-theme-default-white);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          padding-block: var(--ddd-spacing-1);
+        }
+        .trail a:hover,
+        .trail a:focus-visible {
+          color: var(--ddd-theme-default-keystoneYellow);
+        }
+        .trail [aria-current="page"] {
           font-weight: var(--ddd-font-weight-bold);
-          white-space: nowrap;
-          cursor: pointer;
+          color: var(--ddd-theme-default-white);
         }
-        .views button svg {
-          width: 20px;
-          height: 20px;
-          flex: none;
-        }
-        .views button:hover {
-          border-color: var(--ddd-theme-default-white);
-        }
-        .views button:focus-visible {
-          outline: var(--ddd-border-size-md) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
-        }
-        .views button:active {
-          transform: translateY(1px);
-        }
-        .views button[aria-pressed="true"] {
-          background-color: var(--ddd-theme-default-keystoneYellow);
-          color: var(--ddd-theme-default-potentialMidnight);
-          border-color: var(--ddd-theme-default-potentialMidnight);
-        }
-
-        /* the link to this view: the address is the button */
-        .copylink {
-          display: inline-flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          flex: 0 1 auto;
-          min-width: 0;
-          min-height: 40px;
-          padding: 0 var(--ddd-spacing-3);
-          border: var(--ddd-border-size-md) solid var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-white);
-          color: var(--ddd-theme-default-potentialMidnight);
-          font-family: var(--ddd-font-primary);
+        /* the site's menu, in the panel the web opens from its menu button */
+        nav.sitemenu {
           font-size: var(--ddd-font-size-4xs);
-          box-shadow: var(--ddd-spacing-1) var(--ddd-spacing-1) 0
-            var(--ddd-theme-default-keystoneYellow);
-          cursor: pointer;
-          transition:
-            transform 0.12s,
-            box-shadow 0.12s;
-        }
-        .copylink:hover {
-          transform: translate(-1px, -1px);
-          box-shadow: calc(var(--ddd-spacing-1) * 1.5)
-            calc(var(--ddd-spacing-1) * 1.5) 0
-            var(--ddd-theme-default-keystoneYellow);
-        }
-        .copylink:active {
-          transform: translate(2px, 2px);
-          box-shadow: none;
-        }
-        .copylink:focus-visible {
-          outline: var(--ddd-border-size-md) solid
-            var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 3px;
-        }
-        .copylink code {
-          all: unset;
-          font-family: var(--ddd-font-primary);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          min-width: 0;
-        }
-        .copylink .what {
-          font-weight: var(--ddd-font-weight-bold);
-          font-family: var(--ddd-font-navigation);
-          white-space: nowrap;
-        }
-        .copylink svg {
-          flex: none;
-          width: 18px;
-          height: 18px;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .copylink,
-          .copylink:hover,
-          .copylink:active,
-          .views button:active,
-          .places-btn:active {
-            transform: none;
-            transition: none;
-          }
+          --site-menu-font-size: var(--ddd-font-size-4xs);
+          --site-menu-container-background-color: transparent;
+          --site-menu-background-color: transparent;
+          --site-menu-color: var(--eco-fg);
+          --site-menu-item-active-item-color: var(--eco-heading);
+          --map-menu-item-a-color: var(--eco-fg);
+          --map-menu-item-a-active-color: var(--eco-heading);
+          --map-menu-item-a-active-background-color: var(--eco-current);
+          --map-menu-item-border-radius: var(--ddd-radius-sm);
+          --map-menu-container-background-color: transparent;
+          --map-menu-header-button-padding: var(--ddd-spacing-2)
+            var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-8);
         }
         @media (max-width: 1100px) {
           .vb-crumbs {
             order: 3;
             flex-basis: 100%;
-          }
-        }
-        @media (max-width: 640px) {
-          .views .long,
-          .copylink code,
-          .copylink .what {
-            display: none;
-          }
-          .views button {
-            padding: 0 var(--ddd-spacing-3);
-          }
-          .viewbar .wrap {
-            gap: var(--ddd-spacing-2);
           }
         }
 
@@ -788,34 +519,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           max-width: 68ch;
           font-size: var(--ddd-font-size-xs);
           line-height: 1.5;
-        }
-        .welcome .go {
-          display: flex;
-          flex-wrap: wrap;
-          gap: var(--ddd-spacing-3);
-        }
-        .welcome .btn {
-          display: inline-flex;
-          align-items: center;
-          box-sizing: border-box;
-          min-height: var(--ddd-target-comfortable, 44px);
-          line-height: 1.2;
-        }
-        .welcome a.btn:not(.ghost) {
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-nittanyNavy);
-          border-color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-pughBlue)
-          );
-        }
-        .btn.ghost {
-          color: var(--eco-heading);
-          background-color: transparent;
-          border-color: var(--eco-heading);
-        }
-        .btn.ghost:hover {
-          background-color: var(--eco-current);
         }
 
         .btn {
@@ -887,56 +590,12 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           --ddd-theme-primary: var(--ddd-theme-default-nittanyNavy);
         }
 
-        /* ---------- site view ---------- */
-        .body {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0 var(--ddd-spacing-12);
-        }
-        nav.outline {
-          flex: 1 1 280px;
-          max-width: 320px;
-          box-sizing: border-box;
-          padding-block: var(--ddd-spacing-8);
-          font-size: var(--ddd-font-size-4xs);
-          --site-menu-font-size: var(--ddd-font-size-4xs);
-          --site-menu-container-background-color: transparent;
-          --site-menu-background-color: transparent;
-          --site-menu-color: var(--eco-fg);
-          --site-menu-item-active-item-color: var(--eco-heading);
-          --map-menu-item-a-color: var(--eco-fg);
-          --map-menu-item-a-active-color: var(--eco-heading);
-          --map-menu-item-a-active-background-color: var(--eco-current);
-          --map-menu-item-border-radius: var(--ddd-radius-sm);
-          --map-menu-container-background-color: transparent;
-          /* a row with children starts its title past the expand chevron
-             and the progress ring map-menu draws around it on the page you
-             are on (28px from the row start), so the two never touch */
-          --map-menu-header-button-padding: var(--ddd-spacing-2)
-            var(--ddd-spacing-3) var(--ddd-spacing-2) var(--ddd-spacing-8);
-        }
-        .ol-toggle {
-          display: none;
-        }
-        .ol-head {
-          margin: 0 0 var(--ddd-spacing-3);
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-4xs);
-          font-weight: var(--ddd-font-weight-bold);
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--eco-muted);
-        }
+        /* ---------- the page under the web ---------- */
         main {
-          flex: 999 1 640px;
+          display: block;
           min-width: 0;
-          box-sizing: border-box;
         }
-        :host([view="site"]) main {
-          max-width: 880px;
-          padding-block: var(--ddd-spacing-8) var(--ddd-spacing-16);
-        }
-        :host([view="web"]) .content {
+        .content {
           max-width: var(--eco-wrap);
           margin: 0 auto;
           box-sizing: border-box;
@@ -954,23 +613,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         site-active-title {
           --site-active-title-color: var(--eco-heading);
           color: var(--eco-heading);
-        }
-        figure.where {
-          margin: var(--ddd-spacing-6) 0 var(--ddd-spacing-8);
-          border: var(--ddd-border-xs);
-          border-color: var(--eco-line);
-          border-radius: var(--ddd-radius-md);
-          overflow: hidden;
-        }
-        figure.where figcaption {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: space-between;
-          gap: var(--ddd-spacing-3);
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-4);
-          background-color: var(--eco-panel);
-          font-size: var(--ddd-font-size-4xs);
         }
         #slot {
           font-size: var(--ddd-font-size-xs);
@@ -1015,61 +657,6 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           .welcome h1 {
             font-size: var(--ddd-font-size-m);
           }
-          nav.outline {
-            max-width: none;
-            flex-basis: 100%;
-            padding-block: var(--ddd-spacing-4) 0;
-          }
-          /* the outline folds behind a button with its heading, and closes
-             when a page is chosen (_showPage) */
-          nav.outline .ol-head,
-          nav.outline .ol-menu {
-            display: none;
-          }
-          :host([outline-open]) nav.outline .ol-menu {
-            display: block;
-            padding-top: var(--ddd-spacing-2);
-          }
-          .ol-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--ddd-spacing-2);
-            width: 100%;
-            min-height: var(--ddd-target-comfortable, 44px);
-            box-sizing: border-box;
-            margin: 0;
-            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
-            border: var(--ddd-border-xs);
-            border-color: var(--eco-line);
-            border-radius: var(--ddd-radius-sm);
-            background-color: var(--eco-panel);
-            color: var(--eco-heading);
-            font-family: var(--ddd-font-navigation);
-            font-size: var(--ddd-font-size-4xs);
-            font-weight: var(--ddd-font-weight-bold);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            text-align: start;
-            cursor: pointer;
-          }
-          .ol-toggle:hover {
-            background-color: var(--eco-current);
-          }
-          .ol-toggle svg {
-            flex: none;
-            width: 20px;
-            height: 20px;
-            transition: transform 0.2s ease;
-          }
-          :host([outline-open]) .ol-toggle svg {
-            transform: rotate(180deg);
-          }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .ol-toggle svg {
-            transition: none;
-          }
         }
         /* the narrowest phones: everything in the bar stays on one row */
         @media (max-width: 400px) {
@@ -1084,16 +671,19 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
   // ---------- render ----------
   render() {
     const eco = this._eco();
-    const web = this.view === "web" && !!eco;
-    const top = this._topId();
+    const at = eco || { web: "main", node: "", tour: "" };
     const src = this._vars.ecosystemSrc || "ecosystem-webs.json";
     const embed = this.embed;
-    const welcome = web && !embed ? this._welcome() : null;
-    const tour =
-      welcome && welcome.tour ? this._itemBySlug(welcome.tour) : null;
+    // an embedded page outside the webs is only its text
+    const web = !(embed && !eco);
+    const welcome = !embed ? this._welcome() : null;
     return html`
-      <a class="skip-link" href="#contentcontainer">${this.t.skip}</a>
-      ${embed ? this._renderEmbedBar() : this._renderTop(web, top)}
+      <a
+        class="skip-link"
+        href="${web && !embed ? "#webview" : "#contentcontainer"}"
+        >${this.t.skip}</a
+      >
+      ${embed ? this._renderEmbedBar() : this._renderTop()}
       ${
         welcome
           ? html`<section class="welcome" aria-labelledby="welcome">
@@ -1103,301 +693,138 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                   <h1 id="welcome">${welcome.title}</h1>
                   ${welcome.text ? html`<p class="text">${welcome.text}</p>` : ""}
                 </div>
-                <div class="go">
-                  ${
-                    tour
-                      ? html`<a class="btn" href="${tour.slug}"
-                          >${welcome.tourLabel || this.t.takeTour}</a
-                        >`
-                      : ""
-                  }
-                  <button
-                    class="btn ghost"
-                    type="button"
-                    @click="${this._askMerlin}"
-                  >
-                    ${this.t.askMerlin}
-                  </button>
-                </div>
               </div>
             </section>`
           : ""
       }
-      <div class="${web ? "" : "wrap"}">
-        <div class="body">
-          ${
-            web || embed
-              ? ""
-              : html`<nav class="outline" aria-label="${this.t.outline}">
-                  <p class="ol-head">${this._topTitle(top)}</p>
-                  <button
-                    class="ol-toggle"
-                    type="button"
-                    aria-expanded="${this.outlineOpen ? "true" : "false"}"
-                    aria-controls="outline-menu"
-                    @click="${() => {
-                      this.outlineOpen = !this.outlineOpen;
-                    }}"
+      <main>
+        ${
+          web
+            ? html`<section class="webview" aria-label="${this.t.theWeb}">
+                ${
+                  eco && !welcome && this._active
+                    ? html`<h1 class="visually-hidden">
+                        ${this._active.title}
+                      </h1>`
+                    : ""
+                }
+                <ecosystem-web
+                  id="webview"
+                  tabindex="-1"
+                  site-nav
+                  src="${src}"
+                  web="${at.web}"
+                  node="${at.node || ""}"
+                  tour="${at.tour || ""}"
+                  @ecosystem-web-changed="${this._onWebChanged}"
+                  @ecosystem-web-trail="${this._onTrail}"
+                >
+                  <nav
+                    slot="menu"
+                    class="sitemenu"
+                    aria-label="${this.t.siteMenu}"
                   >
-                    <span>${this._topTitle(top)}</span>
-                    <svg
-                      aria-hidden="true"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    >
-                      <path d="M6 9l6 6 6-6"></path>
-                    </svg>
-                  </button>
-                  <div id="outline-menu" class="ol-menu">
                     <site-menu></site-menu>
-                  </div>
-                </nav>`
+                  </nav>
+                </ecosystem-web>
+              </section>`
+            : ""
+        }
+        <div class="content" ?hidden="${!!eco && !embed}">
+          ${
+            eco || embed
+              ? ""
+              : html`${
+                    this._eyebrow()
+                      ? html`<p class="eyebrow">${this._eyebrow()}</p>`
+                      : ""
+                  }<site-active-title></site-active-title>`
           }
-          <main>
-            ${
-              web
-                ? html`<section class="webview" aria-label="${this.t.theWeb}">
-                    <ecosystem-web
-                      src="${src}"
-                      web="${eco.web}"
-                      node="${eco.node || ""}"
-                      tour="${eco.tour || ""}"
-                      @ecosystem-web-changed="${this._onWebChanged}"
-                    ></ecosystem-web>
-                  </section>`
-                : ""
-            }
-            <div class="content">
-              ${
-                web || embed
-                  ? ""
-                  : html`${
-                        this._eyebrow()
-                          ? html`<p class="eyebrow">${this._eyebrow()}</p>`
-                          : ""
-                      }<site-active-title></site-active-title>`
-              }
-              ${
-                !web && !embed && eco && (eco.node || eco.web !== "main")
-                  ? html`<figure class="where">
-                      <ecosystem-web
-                        compact
-                        src="${src}"
-                        web="${eco.web}"
-                        node="${eco.node || ""}"
-                        @ecosystem-web-changed="${this._onWebChanged}"
-                      ></ecosystem-web>
-                      <figcaption>
-                        <span>${this.t.whereInWeb}</span>
-                        <button
-                          class="btn"
-                          type="button"
-                          @click="${() => this._setView("web")}"
-                        >
-                          ${this.t.openInWeb}
-                        </button>
-                      </figcaption>
-                    </figure>`
-                  : ""
-              }
-              <div id="contentcontainer">
-                <div id="slot">
-                  <slot @slotchange="${() => this.requestUpdate()}"></slot>
-                </div>
-              </div>
+          <div id="contentcontainer">
+            <div id="slot">
+              <slot @slotchange="${() => this.requestUpdate()}"></slot>
             </div>
-          </main>
+          </div>
         </div>
-      </div>
+      </main>
       ${embed ? "" : this._renderFooter()}
     `;
   }
-  /**
-   * The network bar, then one row: the site's name opening its places, the
-   * breadcrumb, the two views and the link to this view. Everything above a
-   * page on the site itself.
-   */
-  _renderTop(web, top) {
+  /** The network bar, then the breadcrumb: everything above a page on the site itself. */
+  _renderTop() {
     return html`
       <hax-network-bar
         current="cloud"
         @hax-network-merlin="${this._onMerlin}"
       ></hax-network-bar>
       <div class="viewbar">
-        <div class="wrap">
-          <div class="places">
-            <button
-              class="places-btn glyph-host"
-              type="button"
-              aria-expanded="${this.placesOpen ? "true" : "false"}"
-              aria-controls="places"
-              aria-label="${this._title} (${this.t.places})"
-              @click="${this._togglePlaces}"
-              @keydown="${this._placesKey}"
-            >
-              ${haxNetworkGlyph("cloud")}<span>${this._title}</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M6 9l6 6 6-6"></path>
-              </svg>
-            </button>
-            <ul
-              class="places-menu"
-              id="places"
-              aria-label="${this.t.places}"
-              @keydown="${this._placesKey}"
-            >
-              ${this._nav().map(
-                (n) =>
-                  html`<li>
-                    <a
-                      href="${this._href(n.item)}"
-                      aria-current="${n.item.id === top ? "page" : "false"}"
-                      >${n.label}</a
-                    >
-                  </li>`,
-              )}
-            </ul>
-          </div>
-          <div class="vb-crumbs">
-            <site-breadcrumb></site-breadcrumb>
-          </div>
-          <div class="views" role="group" aria-label="${this.t.view}">
-            <button
-              type="button"
-              aria-pressed="${web ? "true" : "false"}"
-              aria-label="${this.t.networkView}"
-              title="${this.t.networkViewAbout}"
-              @click="${() => this._setView("web")}"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="5" r="2.5"></circle>
-                <circle cx="5" cy="19" r="2.5"></circle>
-                <circle cx="19" cy="19" r="2.5"></circle>
-                <path d="M12 7.5v4M12 11.5l-5.5 5.5M12 11.5l5.5 5.5"></path>
-              </svg>
-              <span class="long">${this.t.networkView}</span>
-            </button>
-            <button
-              type="button"
-              aria-pressed="${web ? "false" : "true"}"
-              aria-label="${this.t.contentView}"
-              title="${this.t.contentViewAbout}"
-              @click="${() => this._setView("site")}"
-            >
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M14 3H6v18h12V7z"></path>
-                <path d="M14 3v4h4M9 12h6M9 16h6"></path>
-              </svg>
-              <span class="long">${this.t.contentView}</span>
-            </button>
-          </div>
-          <button
-            class="copylink"
-            type="button"
-            aria-label="${this._pageUrl()} ${this._copied ? this.t.copied : this.t.copy}"
-            title="${this.t.copyThis}"
-            @click="${this._copy}"
-          >
-            ${
-              this._copied
-                ? html`<svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M5 12l5 5L19 7"></path>
-                  </svg>`
-                : html`<svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"
-                    ></path>
-                    <path
-                      d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"
-                    ></path>
-                  </svg>`
-            }
-            <code>${this._pageUrl()}</code>
-            <span class="what"
-              >${this._copied ? this.t.copied : this.t.copy}</span
-            >
-          </button>
-          <span class="visually-hidden" role="status"
-            >${this._copied ? this.t.copied : ""}</span
-          >
-        </div>
+        <div class="wrap">${this._renderTrail()}</div>
       </div>
     `;
   }
-  _togglePlaces(e) {
-    e.stopPropagation();
-    this.placesOpen = !this.placesOpen;
-    if (this.placesOpen) {
-      this.updateComplete.then(() => {
-        const first = this.shadowRoot.querySelector(".places-menu a");
-        if (first) first.focus();
-      });
-    }
+  /** The web on the page says where it is (ecosystem-web-trail). */
+  _onTrail(e) {
+    const d = e.detail || {};
+    this._trail = Array.isArray(d.trail) ? d.trail : null;
   }
-  /** Escape closes the places menu; the arrow keys move through it */
-  _placesKey(e) {
-    if (e.key === "Escape" && this.placesOpen) {
-      this.placesOpen = false;
-      const b = this.shadowRoot.querySelector(".places-btn");
-      if (b) b.focus();
-      return;
+  /**
+   * The breadcrumb: the webs above the page, its web, then its tile or tour,
+   * as the web on the page reports them, so the breadcrumb and the web never
+   * disagree. A page outside the webs (Tours, Magic script) gets its
+   * breadcrumb from the site's outline. It is all the bar holds: it starts at
+   * the home web, so it is also the way home.
+   */
+  _renderTrail() {
+    const t = this._trail;
+    const slug = this._active ? this._active.slug : "";
+    const last = t && t.length ? t[t.length - 1] : null;
+    if (!this._eco()) {
+      return this._crumbList(this._outlineTrail());
     }
-    if (!this.placesOpen || (e.key !== "ArrowDown" && e.key !== "ArrowUp"))
-      return;
-    const links = [...this.shadowRoot.querySelectorAll(".places-menu a")];
-    const at = links.indexOf(this.shadowRoot.activeElement);
-    const next =
-      e.key === "ArrowDown"
-        ? (at + 1) % links.length
-        : (at - 1 + links.length) % links.length;
-    if (links[next]) {
-      e.preventDefault();
-      links[next].focus();
+    if (!last || String(last.path || "").replace(/^\//, "") !== slug) {
+      // the web has not said where it is yet
+      return "";
     }
+    return this._crumbList(t);
+  }
+  /**
+   * A page outside the webs (Tours, Magic script, Recent): home, the pages
+   * above it in the site, then the page.
+   */
+  _outlineTrail() {
+    const home = this._items.find((i) => !i.parent);
+    const a = this._active;
+    if (!a) return [];
+    const up = [];
+    const byId = new Map(this._items.map((i) => [i.id, i]));
+    let p = a.parent ? byId.get(a.parent) : null;
+    while (p) {
+      up.unshift(p);
+      p = p.parent ? byId.get(p.parent) : null;
+    }
+    const chain = [home, ...up.filter((i) => i !== home), a].filter(
+      (i, n, all) => i && all.indexOf(i) === n,
+    );
+    return chain.map((i) => ({ label: i.title, path: i.slug }));
+  }
+  _crumbList(t) {
+    if (!t || !t.length) return "";
+    return html`<nav class="vb-crumbs trail" aria-label="${this.t.whereYouAre}">
+      <ol>
+        ${t.map(
+          (c, i) =>
+            html`<li>
+              ${
+                i === t.length - 1
+                  ? html`<span aria-current="page">${c.label}</span>`
+                  : html`<a href="${String(c.path || "").replace(/^\//, "")}"
+                      >${c.label}</a
+                    >`
+              }
+            </li>`,
+        )}
+      </ol>
+    </nav>`;
   }
   /** The embed view's only chrome: the page's title and a link that opens it on the site. */
   _renderEmbedBar() {
@@ -1439,7 +866,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       </footer>
     `;
   }
-  /** The page's group, from its eyebrow paragraph (shown above the title in the Content view). */
+  /** The page's group, from its eyebrow paragraph (shown above the title of a page outside the webs). */
   _eyebrow() {
     const kids = this.children ? [...this.children] : [];
     const p = kids.find(

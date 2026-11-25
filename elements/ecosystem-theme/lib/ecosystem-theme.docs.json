@@ -15,42 +15,18 @@
   "demoHtml": "",
   "attributes": [
     {
-      "name": "view",
-      "property": "view",
-      "type": "string",
-      "default": "\"web\"",
-      "description": "\"web\" or \"site\": the interactive web or the reading layout",
-      "hax": null
-    },
-    {
       "name": "embed",
       "property": "embed",
       "type": "boolean",
       "default": "",
       "description": "draw the page for an iframe on another site: no site chrome (set by ?embed in the address)",
       "hax": null
-    },
-    {
-      "name": "places-open",
-      "property": "placesOpen",
-      "type": "boolean",
-      "default": "false",
-      "description": "the menu of the site's places, on its name",
-      "hax": null
-    },
-    {
-      "name": "outline-open",
-      "property": "outlineOpen",
-      "type": "boolean",
-      "default": "false",
-      "description": "the site outline on narrow screens, where it folds behind its heading",
-      "hax": null
     }
   ],
   "slots": [],
   "events": [],
   "hax": {},
-  "surfaceHash": "1a95f98bdf19",
+  "surfaceHash": "85c1b701412b",
   "walkthroughs": [],
   "videos": [],
   "motion": {

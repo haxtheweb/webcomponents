@@ -111,6 +111,14 @@
       }
     },
     {
+      "name": "site-nav",
+      "property": "siteNav",
+      "type": "boolean",
+      "default": "false",
+      "description": "The site around the web already has search (the network bar), a text view (its Content view) and a breadcrumb: the web leaves out its own Search, List view and breadcrumb, so each has one way in.",
+      "hax": null
+    },
+    {
       "name": "lens",
       "property": "lens",
       "type": "string",
@@ -130,9 +138,12 @@
       }
     }
   ],
-  "slots": [],
+  "slots": [
+    "menu"
+  ],
   "events": [
     "ecosystem-web-changed",
+    "ecosystem-web-trail",
     "user-engagement"
   ],
   "hax": {
@@ -242,7 +253,7 @@
       }
     ]
   },
-  "surfaceHash": "32c69f3617a2",
+  "surfaceHash": "7c0399f9a52f",
   "walkthroughs": [],
   "videos": [],
   "motion": {

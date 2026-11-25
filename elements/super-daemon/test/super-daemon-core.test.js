@@ -414,6 +414,29 @@ describe("SuperDaemon core behavior", () => {
     element.commandContext = "*";
   });
 
+  it("filterItems keeps the developer list (>) to developer commands", () => {
+    element.defineOption({
+      title: "A page",
+      value: {},
+      eventName: "e",
+      context: "*",
+    });
+    element.defineOption({
+      title: "Developer only",
+      value: {},
+      eventName: "e",
+      context: [">"],
+    });
+    element.commandContext = ">";
+    const dev = element.filterItems(element.allItems, []);
+    expect(dev.map((i) => i.title)).to.include("Developer only");
+    expect(dev.map((i) => i.title)).to.not.include("A page");
+    element.commandContext = "*";
+    const all = element.filterItems(element.allItems, []);
+    expect(all.map((i) => i.title)).to.include("A page");
+    expect(all.map((i) => i.title)).to.not.include("Developer only");
+  });
+
   it("appendContext and removeContext manage the context list", () => {
     element.appendContext("CMS");
     element.appendContext("CMS");
