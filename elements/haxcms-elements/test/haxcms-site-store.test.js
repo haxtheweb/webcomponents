@@ -3,7 +3,7 @@
 // it with a controlled in-memory manifest and assert the computed getters
 // derive correctly, saving and restoring every field we touch so test order
 // never leaks state into other suites.
-import { expect } from "@open-wc/testing";
+import { expect, waitUntil } from "@open-wc/testing";
 import { store, iconFromPageType } from "../lib/core/haxcms-site-store.js";
 
 // Minimal but realistic JSON Outline Schema manifest used across these tests.
@@ -1075,14 +1075,17 @@ describe("haxcms-site-store link pages", () => {
   it("redirects on a published (static) copy, which has no backend", async () => {
     globalThis.HAXCMSContext = "published";
     visit("page-2");
-    await new Promise((r) => setTimeout(r, 200));
+    await waitUntil(() => opened.length > 0, "the link page redirects");
     expect(opened).to.deep.equal([["https://example.com/moved", "_blank"]]);
   });
 
   it("waits for a backend when the site is not a static copy", async () => {
     globalThis.HAXCMSContext = "demo";
     visit("page-2");
-    await new Promise((r) => setTimeout(r, 200));
+    await waitUntil(
+      () => store.activeId === "page-2",
+      "the page becomes active",
+    );
     expect(opened.length).to.equal(0);
     expect(store.activeId).to.equal("page-2");
   });
