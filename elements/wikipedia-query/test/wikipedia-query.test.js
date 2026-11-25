@@ -448,7 +448,12 @@ describe("wikipedia-query test", () => {
       expect(i18nEvent.detail.namespace).to.equal(
         "wikipedia-query.haxProperties",
       );
-      expect(i18nEvent.detail.localesPath.endsWith("/locales")).to.be.true;
+      // anchored on a shipped locale file + "/../"; resolves to the folder
+      expect(
+        new URL(i18nEvent.detail.localesPath).href.endsWith(
+          "/wikipedia-query/locales/",
+        ),
+      ).to.be.true;
       expect(store.validGizmoTypes).to.include("wikipedia");
       expect(appEvent.detail.details.title).to.equal("Wikipedia");
       expect(appEvent.detail.connection.url).to.equal(
