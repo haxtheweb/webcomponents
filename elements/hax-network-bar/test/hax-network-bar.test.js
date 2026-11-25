@@ -5,6 +5,8 @@ import {
   HAX_NETWORK_SITES,
   HAX_INSTALL_METHODS,
   HAX_COMMUNITY_LINKS,
+  HAX_GOGGLES_PRIORITY,
+  HAX_GOGGLES_URL,
   HaxNetworkBar,
 } from "../hax-network-bar.js";
 import { HAX_NETWORK, HAX_NETWORK_GLYPHS } from "../lib/hax-network.js";
@@ -511,6 +513,23 @@ describe("hax-network-bar", () => {
     expect(globalThis.location.href).to.equal(before);
   });
 
+  it("puts on the page's goggles when it has them, else opens the gallery with them on", async () => {
+    const went = [];
+    const go = element.go;
+    element.go = (href) => went.push(href);
+    try {
+      const handle = (e) => e.preventDefault();
+      globalThis.addEventListener("hax-network-goggles", handle);
+      element.goggles();
+      globalThis.removeEventListener("hax-network-goggles", handle);
+      expect(went).to.deep.equal([]);
+      element.goggles();
+      expect(went).to.deep.equal([HAX_GOGGLES_URL]);
+    } finally {
+      element.go = go;
+    }
+  });
+
   it("gives Merlin the network's places and install commands, and lets the page add its own", async () => {
     const added = [];
     const merlin = {
@@ -531,7 +550,7 @@ describe("hax-network-bar", () => {
       ev.detail.add({ title: "Tours", href: "/tours" });
       await new Promise((r) => setTimeout(r));
       expect(added.length).to.equal(
-        HAX_NETWORK_DESTINATIONS.length + HAX_INSTALL_METHODS.length + 2,
+        HAX_NETWORK_DESTINATIONS.length + HAX_INSTALL_METHODS.length + 3,
       );
       expect(added[0].title).to.equal("PRAW: the brain of the HAX ecosystem");
       const install = added.filter((o) => o.value.method === "openInstall");
@@ -545,7 +564,14 @@ describe("hax-network-bar", () => {
       expect(hrefs).to.include("https://browser.hax.cloud");
       expect(hrefs).to.include("https://learn.hax.cloud");
       expect(hrefs).to.include("https://discord.gg/aCGxmRHEJP");
-      expect(hrefs).to.include("https://github.com/haxtheweb/issues");
+      // no issue queue: reports come in through the goggles
+      expect(hrefs).to.not.include("https://github.com/haxtheweb/issues");
+      const goggles = added.find((o) => o.value.method === "goggles");
+      expect(goggles.title).to.equal("Contribute with the goggles");
+      expect(goggles.priority).to.equal(HAX_GOGGLES_PRIORITY);
+      expect(goggles.path).to.equal("Community/Contribute");
+      expect(goggles.tags).to.include("bug");
+      expect(goggles.tags).to.include("translate");
       expect(added[added.length - 1].value.args).to.deep.equal(["/tours"]);
       expect(merlin.program).to.deep.equal({ like: "", context: "*" });
       expect(merlin.opened).to.be.true;

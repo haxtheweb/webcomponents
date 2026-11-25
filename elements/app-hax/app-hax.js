@@ -16,6 +16,12 @@ import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
+import { gogglesContributeOption } from "@haxtheweb/hax-network-bar/lib/hax-goggles-contribute.js";
+import {
+  defineCommunityOptions,
+  HAX_COMMUNITY_PRIORITY,
+  HAX_COMMUNITY_CONTEXT,
+} from "@haxtheweb/hax-body/lib/hax-community.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
 import {
   defineDashboardPrograms,
@@ -152,54 +158,14 @@ export class AppHax extends I18NMixin(ResponsiveUtilityBehaviors(DDD)) {
     globalThis.open(link, "_blank");
   }
 
-  async _haxStoreContribute(type, tags, daemonTerm = null) {
-    let body = "";
-    let title;
-    if (type == "merlin") {
-      title = `[${type}] New command request from HAX daemon`;
-      body = `Location: ${globalThis.location.href}
-Merlin command: ${daemonTerm}
-What did you want merlin to do?
-`;
-    } else {
-      title = `[${type}] User report from HAX daemon`;
-      // userAgentData/deviceMemory/hardwareConcurrency are Chromium-only and
-      // undefined in other browsers, so guard them before use
-      /* eslint-disable baseline-js/use-baseline -- Chromium-only fields; each is guarded by an existence check and omitted when absent */
-      const osName =
-        navigator.userAgentData && navigator.userAgentData.platform
-          ? navigator.userAgentData.platform
-          : "Unknown";
-      body = `Location: ${globalThis.location.href}
-Browser: ${navigator.userAgent}
-OS: ${osName} - ${navigator.deviceMemory || "?"}GB RAM - ${navigator.hardwareConcurrency || "?"} cores
-Screen: ${globalThis.screen.width}x${globalThis.screen.height}
-Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
-`;
-      if (navigator.getBattery) {
-        const stats = await globalThis.navigator.getBattery();
-        body += `Battery: ${stats.level * 100}%
-`;
-      }
-      // some things report the "type" of internet connection speed
-      // for terrible connections lets save frustration
-      if (
-        navigator.connection &&
-        globalThis.navigator.connection.effectiveType
-      ) {
-        body += `Connection: ${navigator.connection.effectiveType}
-`;
-      }
-      /* eslint-enable baseline-js/use-baseline */
-      body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
-`;
-    }
-    globalThis.open(
-      `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${encodeURIComponent(
-        title,
-      )}&body=${encodeURIComponent(body)}`,
-      "_blank",
-    );
+  /**
+   * Merlin's "Contribute with the goggles": put them on (or take them off)
+   * over the dashboard. Their code loads the first time.
+   */
+  async contributeWithGoggles() {
+    const { toggleGoggles } =
+      await import("@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-site.js");
+    return toggleGoggles();
   }
 
   playSound(sound = "coin2") {
@@ -465,8 +431,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       systemSettings: "System Settings",
       joinHaxCommunity: "Join HAX community",
       userTutorials: "User Tutorials",
-      // no longer in Merlin; kept until the nightly translations drop it
-      // from every locale (translated files may not have keys en lacks)
+      gogglesContribute: "Contribute with the goggles",
+      gogglesContributeAbout:
+        "Put on the goggles to learn how HAX is made and help make it better: X-ray any piece to see the code behind it, see who built it, report a bug or an idea with a screenshot pointed right at it, fix a translation in your language, and find the open issues for what is in front of you.",
+      gogglesProjectLinks: "More about the project",
+      gogglesLinkLab: "HAX Lab: how to get involved",
+      gogglesLinkPraw: "PRAW: the people, ideas and stories behind HAX",
+      gogglesLinkLearn: "Learn HAX: tutorials",
+      gogglesLinkCode: "HAX on GitHub: the code",
+      // no longer in Merlin (reports come in through the goggles); kept
+      // until the nightly translations drop them from every locale
+      // (translated files may not have keys en lacks)
       haxTeachingExcellence: "HAX Teaching Excellence",
       bugIssue: "Bug / issue",
       ideaFeatureRequest: "Idea / Feature request",
@@ -639,76 +614,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       priority: -10,
       context: ["system-settings"],
     });
-    // contribution helpers
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "joinHaxCommunity" },
-      title: this.t.joinHaxCommunity,
-      icon: "hax:discord",
-      priority: 100,
-      tags: ["community", "discord", "chat", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://discord.gg/aCGxmRHEJP"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Join",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "userTutorials" },
-      title: this.t.userTutorials,
-      icon: "hax:hax2022",
-      priority: 100,
-      tags: ["Documentation", "community", "help"],
-      externalLink: true,
-      value: {
-        target: this,
-        method: "_openExternalLink",
-        args: ["https://learn.hax.cloud/"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Tutorials",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "bugIssue" },
-      title: this.t.bugIssue,
-      icon: "mdi-social:github-circle",
-      priority: 100,
-      tags: ["Bug report", "github", "git", "community", "issue queue"],
-      value: {
-        target: this,
-        method: "_haxStoreContribute",
-        args: ["bug", "POP,bug"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "Community/Contribute",
-      context: ["logged-in", "CMS", "HAX", "*"],
-    });
-    SuperDaemonInstance.defineOption({
-      i18n: { context: this, title: "ideaFeatureRequest" },
-      title: this.t.ideaFeatureRequest,
-      icon: "mdi-social:github-circle",
-      priority: 100,
-      tags: [
-        "Feature request",
-        "idea",
-        "github",
-        "git",
-        "community",
-        "issue queue",
-      ],
-      value: {
-        target: this,
-        method: "_haxStoreContribute",
-        args: ["feature", "POP,enhancement"],
-      },
-      context: ["logged-in", "CMS", "HAX", "*"],
-      eventName: "super-daemon-element-method",
-      path: "Community/Contribute",
-    });
+    // community: contributing is the goggles; then Tutorials and the
+    // Discord, shared with the editor (hax-body/lib/hax-community.js)
+    if (!SuperDaemonInstance.__appHaxGoggles) {
+      SuperDaemonInstance.__appHaxGoggles = true;
+      SuperDaemonInstance.defineOption(
+        gogglesContributeOption(this, {
+          method: "contributeWithGoggles",
+          priority: HAX_COMMUNITY_PRIORITY - 1,
+          context: HAX_COMMUNITY_CONTEXT.slice(),
+        }),
+      );
+    }
+    defineCommunityOptions(SuperDaemonInstance, this);
     this.windowControllers = new AbortController();
     this.fileDragActive = false;
     this.fileDragType = "";

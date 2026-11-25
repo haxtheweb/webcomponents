@@ -10,7 +10,7 @@ import {
   HaxUiAdminStyles,
   HaxUiAdminIcons,
 } from "@haxtheweb/d-d-d/lib/HaxUiAdminStyles.js";
-import { HAXcmsStore } from "../haxcms-site-store.js";
+import { HAXcmsStore, store } from "../haxcms-site-store.js";
 import "@haxtheweb/hax-body/lib/hax-store.js";
 import {
   KeyboardShortcutManagerInstance,
@@ -70,6 +70,11 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
       projectOverview: "Project overview",
       documentation: "Documentation",
       joinTheHaxDiscordCommunity: "Join the HAX Discord community",
+      contributeWithTheGoggles:
+        "Contribute with the goggles: see how HAX is made, report bugs and ideas",
+      // no longer shown (reports come in through the goggles); kept until
+      // the nightly translations drop it from every locale (translated
+      // files may not have keys en lacks)
       issueQueue: "Issue queue (bugs and feature requests)",
       keyboardShortcuts: "Keyboard shortcuts",
       keyboardShortcutsDescription:
@@ -416,6 +421,15 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
           text-decoration: none;
           color: var(--hax-ui-text);
         }
+        button.hl {
+          width: 100%;
+          margin: 0;
+          border: 0;
+          background: transparent;
+          font-family: inherit;
+          text-align: start;
+          cursor: pointer;
+        }
         .hl > span {
           font-size: inherit;
         }
@@ -529,6 +543,23 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
     ];
   }
 
+  /** Close Site Settings and put on the goggles (the editor's Contribute) */
+  _goggles() {
+    const ui =
+      store.cmsSiteEditor && store.cmsSiteEditor.haxCmsSiteEditorUIElement;
+    if (!ui || typeof ui.contributeWithGoggles !== "function") {
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    ui.contributeWithGoggles();
+  }
+
   _renderLink(href, label, icon) {
     return html`<li>
       <a class="hl" href="${href}" target="_blank" rel="noopener noreferrer"
@@ -636,11 +667,16 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
                 this.t.joinTheHaxDiscordCommunity,
                 HaxUiAdminIcons.community,
               )}
-              ${this._renderLink(
-                "https://github.com/haxtheweb/issues/issues",
-                this.t.issueQueue,
-                HaxUiAdminIcons.issues,
-              )}
+              <li>
+                <button class="hl" type="button" @click="${this._goggles}">
+                  <span class="ic"
+                    ><simple-icon-lite
+                      icon="hax:goggles"
+                      aria-hidden="true"
+                    ></simple-icon-lite></span
+                  ><span>${this.t.contributeWithTheGoggles}</span>
+                </button>
+              </li>
             </ul>
           </section>
 

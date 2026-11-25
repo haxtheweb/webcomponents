@@ -40,9 +40,6 @@
     }
   },
   "elements/app-hax/app-hax.js": {
-    "eqeqeq": {
-      "count": 2
-    },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 12
     }
@@ -485,7 +482,7 @@
   },
   "elements/hax-body/lib/hax-store.js": {
     "eqeqeq": {
-      "count": 38
+      "count": 35
     },
     "haxtheweb-html/unsanitized-html-sink": {
       "count": 3

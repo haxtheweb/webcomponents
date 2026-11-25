@@ -84,10 +84,11 @@
     "pre"
   ],
   "events": [
+    "hax-network-goggles",
     "hax-network-merlin"
   ],
   "hax": {},
-  "surfaceHash": "7924083d1d10",
+  "surfaceHash": "775ee0d5159d",
   "walkthroughs": [],
   "videos": [],
   "motion": {

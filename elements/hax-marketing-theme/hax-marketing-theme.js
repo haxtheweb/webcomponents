@@ -22,6 +22,7 @@ import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/hax-marketing-theme/lib/hax-style-switcher.js";
 import "@haxtheweb/hax-marketing-theme/lib/hax-reel.js";
 import { applyMarketingPalette } from "@haxtheweb/hax-marketing-theme/lib/hax-marketing-palette.js";
+import { siteGoggles } from "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-site.js";
 
 /**
  * `hax-marketing-theme`
@@ -122,6 +123,9 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
 
   connectedCallback() {
     super.connectedCallback();
+    // the goggles: the network bar's "Contribute with the goggles", Merlin's
+    // developer list and ?goggles= links put them on right here
+    siteGoggles();
     // the site outline, read while the theme is on the page
     this.__stopStore = autorun(() => {
       const activeId = toJS(store.activeId);
