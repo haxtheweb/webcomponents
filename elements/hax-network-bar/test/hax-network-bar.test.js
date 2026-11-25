@@ -684,3 +684,14 @@ describe("hax-network-bar", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 });
+
+// every part of the bar sits inside a landmark (axe region)
+describe("hax-network-bar landmark", () => {
+  it("wraps the whole bar in a labelled region", async () => {
+    const el = await fixture(html`<hax-network-bar></hax-network-bar>`);
+    await el.updateComplete;
+    const frame = el.shadowRoot.querySelector(".frame");
+    expect(frame.getAttribute("role")).to.equal("region");
+    expect(frame.getAttribute("aria-label")).to.equal("HAX network bar");
+  });
+});

@@ -33,11 +33,13 @@ export class CourseIntro extends LitElement {
   static get properties() {
     return {
       color: { type: String },
+      _hasOutlineTitle: { type: Boolean, state: true },
     };
   }
   constructor() {
     super();
     this.color = "";
+    this._hasOutlineTitle = false;
     autorun(() => {
       const _mobx_val_0 = toJS(store.manifest);
       Promise.resolve().then(() => {
@@ -59,8 +61,16 @@ export class CourseIntro extends LitElement {
         <div slot="header-left">
           <slot name="header-left"></slot>
         </div>
-        <div slot="outline-title">
-          <slot name="outline-title"></slot>
+        <!-- the wrapper only goes to the header's outline-title slot when
+             something fills it; always passing it made the header render an
+             empty heading (WCAG 1.3.1) -->
+        <div
+          slot="${this._hasOutlineTitle ? "outline-title" : "outline-title-empty"}"
+        >
+          <slot
+            name="outline-title"
+            @slotchange="${this._outlineTitleChanged}"
+          ></slot>
         </div>
       </course-intro-header>
       <course-intro-lesson-plans
@@ -81,6 +91,13 @@ export class CourseIntro extends LitElement {
         </div>
       </div>
     `;
+  }
+  // same test course-intro-header applies to its own outline-title slot
+  _outlineTitleChanged(e) {
+    const nodes = e.target.assignedNodes({ flatten: true });
+    this._hasOutlineTitle = nodes.some(
+      (n) => n.nodeType === 1 || (n.textContent || "").trim() !== "",
+    );
   }
 }
 globalThis.customElements.define(CourseIntro.tag, CourseIntro);

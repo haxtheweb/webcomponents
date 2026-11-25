@@ -107,6 +107,7 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
       close: "Close",
       highContrast: "High Contrast",
       rollUp: "Roll up {name}",
+      pageWindow: "{name} window",
       rollDown: "Roll down {name}",
       minimize: "Minimize {name}",
       maximize: "Maximize {name}",
@@ -812,7 +813,11 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
           </nav>
         </section>
         <div class="window editor" ?inert="${this.pageMinimized}">
-          <div class="titlebar">
+          <div
+            class="titlebar"
+            role="region"
+            aria-label="${this._label("pageWindow", pageName)}"
+          >
             <button
               class="winbtn sys"
               aria-label="${this._label(

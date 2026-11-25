@@ -42,6 +42,8 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
     this.t = {
       ...this.t,
       skipToContent: "Skip to content",
+      siteNavigation: "Site navigation",
+      backToTop: "Back to top",
     };
     // do NOT reassign this.__disposer here: the constructor chain
     // (HAXCMSLitElementTheme + HAXCMSThemeParts + HAXCMSRememberRoute)
@@ -108,6 +110,12 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           --site-menu-item-active-item-color: #020613;
           --map-menu-item-a-active-color: #020613;
           --map-menu-item-a-active-background-color: #9bbcff;
+        }
+        /* scroll-button hides itself below 600px; its landmark goes too */
+        @media (max-width: 600px) {
+          .back-to-top {
+            display: none;
+          }
         }
         scroll-button {
           position: fixed;
@@ -205,23 +213,27 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           <tr>
             <td style="background-image:url('${this._skaterSrc()}')"></td>
             <td align="center">
-              <site-menu-button
-                type="prev"
-                position="right"
-                class="navigation"
-              ></site-menu-button>
-              <site-menu-button
-                type="next"
-                position="left"
-                class="navigation"
-              ></site-menu-button>
-              <site-menu></site-menu>
+              <nav aria-label="${this.t.siteNavigation}">
+                <site-menu-button
+                  type="prev"
+                  position="right"
+                  class="navigation"
+                ></site-menu-button>
+                <site-menu-button
+                  type="next"
+                  position="left"
+                  class="navigation"
+                ></site-menu-button>
+                <site-menu></site-menu>
+              </nav>
             </td>
             <td style="background-image:url('${this._skaterSrc()}')"></td>
           </tr>
         </tbody>
       </table>
-      <scroll-button></scroll-button>
+      <nav class="back-to-top" aria-label="${this.t.backToTop}">
+        <scroll-button></scroll-button>
+      </nav>
     `;
   }
   /**

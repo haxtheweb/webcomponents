@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { remoteLinkBehavior } from "@haxtheweb/utils/lib/remoteLinkBehavior.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -350,6 +350,7 @@ class StopNote extends DDDVocabulary(
             class="main_message"
             id="title"
             property="oer:mainContent"
+            aria-level="${this._headingLevel === 3 ? nothing : this._headingLevel}"
             ?hidden="${!this.title && !this._haxstate}"
           >
             ${this.title}
@@ -422,6 +423,7 @@ class StopNote extends DDDVocabulary(
   constructor() {
     super();
     this.typeof = "oer:LearningComponent";
+    this._headingLevel = 3;
     this.url = null;
     this.title = "";
     this.status = null;
@@ -444,6 +446,11 @@ class StopNote extends DDDVocabulary(
   static get properties() {
     return {
       ...super.properties,
+      /**
+       * Outline level of the title, one below the heading that comes before
+       * this note in the page (the page title, h1, when there is none).
+       */
+      _headingLevel: { type: Number, state: true },
       /**
        * OER Schema type. Reflected (rather than set in firstUpdated) so it is
        * also in server rendered HTML.
@@ -515,6 +522,42 @@ class StopNote extends DDDVocabulary(
       super.updated(changedProperties);
     }
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this._headingLevel = this._contextHeadingLevel();
+  }
+  /**
+   * The title is an h3 in markup (kept for styles and schema), exposed with
+   * aria-level one below the nearest heading before this note in its tree,
+   * so the page outline does not skip levels (WCAG 1.3.1). With no heading
+   * before it the page title (h1) is the context, so the note is level 2.
+   */
+  _contextHeadingLevel() {
+    const root = this.getRootNode();
+    if (!root || !root.querySelectorAll) {
+      return 3;
+    }
+    let level = 1;
+    for (const h of root.querySelectorAll(
+      "h1, h2, h3, h4, h5, h6, [role='heading']",
+    )) {
+      if (
+        !(
+          this.compareDocumentPosition(h) &
+          globalThis.Node.DOCUMENT_POSITION_PRECEDING
+        )
+      ) {
+        break;
+      }
+      const tag = /^H([1-6])$/.exec(h.tagName);
+      const aria = parseInt(h.getAttribute("aria-level"), 10);
+      const found = aria > 0 ? aria : tag ? parseInt(tag[1], 10) : 0;
+      if (found) {
+        level = found;
+      }
+    }
+    return Math.min(6, level + 1);
+  }
   /**
    * life cycle
    */
@@ -540,6 +583,8 @@ class StopNote extends DDDVocabulary(
   haxeditModeChanged(val) {
     if (super.haxeditModeChanged) super.haxeditModeChanged(val);
     this._haxstate = val;
+    // content may have moved while editing
+    this._headingLevel = this._contextHeadingLevel();
     // the title row stays available to type into while editing
     this.requestUpdate();
   }

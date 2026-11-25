@@ -174,3 +174,27 @@ describe("course-intro-lesson-plan", () => {
     await expect(el).shadowDom.to.be.accessible();
   });
 });
+
+// WCAG 1.3.1: no empty outline heading when nothing fills outline-title
+describe("course-intro outline title", () => {
+  const header = (el) => el.shadowRoot.querySelector("course-intro-header");
+  const heading = (el) => header(el).shadowRoot.querySelector("#outline-title");
+
+  it("hides the outline heading when no outline title is given", async () => {
+    const el = await fixture(html`<course-intro></course-intro>`);
+    await el.updateComplete;
+    await header(el).updateComplete;
+    expect(heading(el).hidden).to.be.true;
+  });
+
+  it("shows the outline heading when an outline title is slotted", async () => {
+    const el = await fixture(
+      html`<course-intro
+        ><span slot="outline-title">Course outline</span></course-intro
+      >`,
+    );
+    await new Promise((resolve) => setTimeout(resolve, 60));
+    await header(el).updateComplete;
+    expect(heading(el).hidden).to.be.false;
+  });
+});

@@ -659,7 +659,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         </div>
       </header>
       <div class="content site-inner">
-        <div class="nav">
+        <div class="nav" role="region" aria-label="${this.t.siteTools}">
           ${this.HAXCMSMobileMenuButton("right")}
           <site-modal
             @site-modal-click="${this.siteModalClick}"
@@ -832,6 +832,7 @@ class PolarisInventTheme extends LTIResizingMixin(
       search: "Search",
       goBack: "Go back",
       continue: "Continue",
+      siteTools: "Site tools",
     };
     this.dataPalette = 8;
     // forcibly set things about the RPG toast for this design

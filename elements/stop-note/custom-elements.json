@@ -59,6 +59,11 @@
             },
             {
               "kind": "method",
+              "name": "_contextHeadingLevel",
+              "description": "The title is an h3 in markup (kept for styles and schema), exposed with\naria-level one below the nearest heading before this note in its tree,\nso the page outline does not skip levels (WCAG 1.3.1). With no heading\nbefore it the page title (h1) is the context, so the note is level 2."
+            },
+            {
+              "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
             },
@@ -102,6 +107,17 @@
               "default": "\"oer:LearningComponent\"",
               "attribute": "typeof",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_headingLevel",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Outline level of the title, one below the heading that comes before\nthis note in the page (the page title, h1, when there is none).",
+              "default": "3",
+              "attribute": "_headingLevel"
             },
             {
               "kind": "field",
@@ -167,6 +183,15 @@
             }
           ],
           "attributes": [
+            {
+              "name": "_headingLevel",
+              "type": {
+                "text": "number"
+              },
+              "description": "Outline level of the title, one below the heading that comes before\nthis note in the page (the page title, h1, when there is none).",
+              "default": "3",
+              "fieldName": "_headingLevel"
+            },
             {
               "name": "typeof",
               "type": {
