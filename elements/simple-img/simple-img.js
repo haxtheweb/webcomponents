@@ -2,8 +2,7 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableCoreServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
+import { simpleImgVariantUrl } from "./lib/SimpleImgVariants.js";
 
 export class SimpleImg extends HTMLElement {
   static get tag() {
@@ -12,11 +11,12 @@ export class SimpleImg extends HTMLElement {
 
   constructor() {
     super();
-    // core services so we can access image manipulation
-    enableCoreServices();
-    // simple-image
-    // simple image conversion work
+    // the sized copy of the photo the HAXcms backends make when the page is
+    // saved (lib/SimpleImgVariants.js); the original when there is none
     this.rendering = false;
+    // the srcconverted value worked out here; any other value (one saved in
+    // older content, pointing at the retired image service) is ignored
+    this.__computedSrc = null;
     // guard so the light DOM adoption below runs exactly once on first
     // connect; custom element constructors must not set attributes, so all
     // self-mutation (attribute defaults, wrapper styles and light DOM wipe)
@@ -128,11 +128,12 @@ export class SimpleImg extends HTMLElement {
     ];
   }
 
-  // user params to generate and set the converted src
+  // work out the src to show: the saved variant of a site photo, else the
+  // original
   updateconvertedurl() {
     // src is only actually required property
     if (this.src) {
-      const params = {
+      const variant = simpleImgVariantUrl({
         height: this.height,
         width: this.width,
         quality: this.quality,
@@ -142,11 +143,9 @@ export class SimpleImg extends HTMLElement {
         watermark: this.watermark,
         wmspot: this.wmspot,
         format: this.format,
-      };
-      this.srcconverted = MicroFrontendRegistry.url(
-        "@core/imgManipulate",
-        params,
-      );
+      });
+      this.__computedSrc = variant || this.src;
+      this.srcconverted = this.__computedSrc;
     }
   }
 
@@ -167,8 +166,13 @@ export class SimpleImg extends HTMLElement {
     ) {
       this.updateconvertedurl();
     }
-    // render when srcconverted is set
-    if (attr === "srcconverted" && this.src != "" && !this.rendering) {
+    // render when srcconverted is set to the value worked out above
+    if (
+      attr === "srcconverted" &&
+      this.src != "" &&
+      !this.rendering &&
+      this.srcconverted === this.__computedSrc
+    ) {
       this.rendering = true;
       // loads the image in the background in-case of quality change
       // also then supports failure events
@@ -176,7 +180,7 @@ export class SimpleImg extends HTMLElement {
       i.onload = () => {
         this.render(this.srcconverted);
       };
-      // try loading just the normal one if this bombed
+      // no variant made yet (or a remote photo): show the original
       i.onerror = () => {
         this.render(this.src);
       };

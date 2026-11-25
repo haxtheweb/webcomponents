@@ -120,6 +120,14 @@
             },
             {
               "kind": "field",
+              "name": "__computedSrc",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
               "name": "__lightDomAdopted",
               "type": {
                 "text": "boolean"
@@ -191,6 +199,237 @@
           "declaration": {
             "name": "SimpleImg",
             "module": "simple-img.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/SimpleImgVariants.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_DIR",
+          "type": {
+            "text": "string"
+          },
+          "default": "\"files/haxcms-managed/simple-img/\"",
+          "description": "where variants live, inside the site"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_SOURCE_FORMATS",
+          "description": "photos a variant can be made from (a gif gives its first frame)"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_WATERMARK_FORMATS",
+          "description": "photos a watermark can be"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_FORMATS",
+          "description": "formats a variant is written as"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_FITS",
+          "description": "how the photo fills width x height"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_SPOTS",
+          "description": "watermark corners"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_DEFAULT_WIDTH",
+          "type": {
+            "text": "number"
+          },
+          "default": "300",
+          "description": "simple-img's own defaults when width / height / quality are not set"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_DEFAULT_HEIGHT",
+          "type": {
+            "text": "number"
+          },
+          "default": "200"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_DEFAULT_QUALITY",
+          "type": {
+            "text": "number"
+          },
+          "default": "80"
+        },
+        {
+          "kind": "variable",
+          "name": "SIMPLE_IMG_MAX_SIDE",
+          "type": {
+            "text": "number"
+          },
+          "default": "4000",
+          "description": "the largest side a variant is made at; bigger asks show the original"
+        },
+        {
+          "kind": "function",
+          "name": "fnv1a",
+          "parameters": [
+            {
+              "name": "str"
+            }
+          ],
+          "description": "32-bit FNV-1a of an ASCII string, as 8 hex digits (as image framing)"
+        },
+        {
+          "kind": "function",
+          "name": "simpleImgSource",
+          "parameters": [
+            {
+              "name": "source"
+            },
+            {
+              "name": "formats"
+            }
+          ],
+          "description": "The site path of a photo: { path, stem, ext } for a plain files/ path\n(not a managed file) with one of `formats`, else null. Folders become\npart of the stem so two photos with one name don't meet."
+        },
+        {
+          "kind": "function",
+          "name": "simpleImgVariant",
+          "parameters": [
+            {
+              "name": "attrs"
+            }
+          ],
+          "description": "The variant a simple-img asks for, from its attribute values\n({ src, width, height, quality, rotate, fit, format, watermark, wmspot }),\nor null when there is nothing the backends will make: a source outside the\nsite, a side over SIMPLE_IMG_MAX_SIDE, a rotation that is not a quarter\nturn, or a watermark that is not a site photo."
+        },
+        {
+          "kind": "function",
+          "name": "simpleImgVariantUrl",
+          "parameters": [
+            {
+              "name": "attrs"
+            }
+          ],
+          "description": "the site path of the variant a simple-img asks for, or null"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_DIR",
+          "declaration": {
+            "name": "SIMPLE_IMG_DIR",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_SOURCE_FORMATS",
+          "declaration": {
+            "name": "SIMPLE_IMG_SOURCE_FORMATS",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_WATERMARK_FORMATS",
+          "declaration": {
+            "name": "SIMPLE_IMG_WATERMARK_FORMATS",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_FORMATS",
+          "declaration": {
+            "name": "SIMPLE_IMG_FORMATS",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_FITS",
+          "declaration": {
+            "name": "SIMPLE_IMG_FITS",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_SPOTS",
+          "declaration": {
+            "name": "SIMPLE_IMG_SPOTS",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_DEFAULT_WIDTH",
+          "declaration": {
+            "name": "SIMPLE_IMG_DEFAULT_WIDTH",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_DEFAULT_HEIGHT",
+          "declaration": {
+            "name": "SIMPLE_IMG_DEFAULT_HEIGHT",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_DEFAULT_QUALITY",
+          "declaration": {
+            "name": "SIMPLE_IMG_DEFAULT_QUALITY",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SIMPLE_IMG_MAX_SIDE",
+          "declaration": {
+            "name": "SIMPLE_IMG_MAX_SIDE",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "fnv1a",
+          "declaration": {
+            "name": "fnv1a",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "simpleImgSource",
+          "declaration": {
+            "name": "simpleImgSource",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "simpleImgVariant",
+          "declaration": {
+            "name": "simpleImgVariant",
+            "module": "lib/SimpleImgVariants.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "simpleImgVariantUrl",
+          "declaration": {
+            "name": "simpleImgVariantUrl",
+            "module": "lib/SimpleImgVariants.js"
           }
         }
       ]

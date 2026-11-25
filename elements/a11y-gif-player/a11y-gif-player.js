@@ -459,49 +459,14 @@ class A11yGifPlayer extends I18NMixin(
     super.updated(changedProperties);
     changedProperties.forEach((oldValue, propName) => {
       // import on visibility
+      // with no authored still, the gif's first frame is drawn here
       if (propName === "elementVisible" && this[propName]) {
         this._makeLocalStill();
-        // support for automatic web service scrape of the gif for a still image
-        if (this.shadowRoot && !this.srcWithoutAnimation && this.src) {
-          // import registry
-          import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js").then(
-            async () => {
-              this._automaticStill = true;
-              this.srcWithoutAnimation = await this.generateStill(this.src);
-            },
-          );
-        }
-      }
-      // support src changing after the fact, we are visible, and set to automatic generation
-      if (
-        this.shadowRoot &&
-        propName === "src" &&
-        this[propName] &&
-        this.elementVisible &&
-        this._automaticStill
-      ) {
-        setTimeout(async () => {
-          this.srcWithoutAnimation = await this.generateStill(this.src);
-        }, 0);
       }
       if (propName === "src" && this.elementVisible && oldValue !== undefined) {
         this.__stillFailed = false;
         this._makeLocalStill();
       }
-    });
-  }
-  async generateStill(src) {
-    // enable core services, though should be available
-    const MicroFrontendRegistry =
-      globalThis.MicroFrontendRegistry.requestAvailability();
-    await import("@haxtheweb/micro-frontend-registry/lib/microServices.js").then(
-      (_e) => {
-        MicroFrontendRegistry.enableServices(["core"]);
-      },
-    );
-    return MicroFrontendRegistry.url("@core/imgManipulate", {
-      quality: 50,
-      src: src,
     });
   }
   /**
@@ -583,13 +548,22 @@ class A11yGifPlayer extends I18NMixin(
    * (or it does not load) the gif's first frame drawn here
    */
   get _stillSrc() {
-    if (this.srcWithoutAnimation && !this.__stillFailed) {
-      return this.srcWithoutAnimation;
+    const authored = this._authoredStill;
+    if (authored && !this.__stillFailed) {
+      return authored;
     }
-    return this.__localStill || this.srcWithoutAnimation || "";
+    return this.__localStill || authored || "";
+  }
+  /**
+   * the authored still, leaving out one older content saved from the
+   * retired open-apis image service, which no longer answers
+   */
+  get _authoredStill() {
+    const still = this.srcWithoutAnimation || "";
+    return still.indexOf("https://open-apis.hax.cloud/") === 0 ? "" : still;
   }
   _stillError() {
-    if (!this.__playing && this.srcWithoutAnimation && !this.__stillFailed) {
+    if (!this.__playing && this._authoredStill && !this.__stillFailed) {
       this.__stillFailed = true;
     }
   }
@@ -611,7 +585,7 @@ class A11yGifPlayer extends I18NMixin(
         this.__localStill = canvas.toDataURL("image/png");
       } catch {
         // a gif from another site without CORS can't be read back; the
-        // still then stays whatever the author or the service supplied
+        // still then stays whatever the author supplied
       }
     };
     img.src = src;

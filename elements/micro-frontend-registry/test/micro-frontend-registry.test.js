@@ -154,23 +154,17 @@ describe("Core services", () => {
   });
 
   const coreServices = [
-    ["@core/linkValidator", "/api/services/website/linkValidator", "GET"],
-    ["@core/websiteMetadata", "/api/services/website/metadata", "GET"],
+    ["@core/websiteMetadata", "/system/api/v1/actions/website-metadata", null],
     ["@core/mdToHtml", "/system/api/v1/actions/md-to-html", null],
     ["@core/htmlToMd", "/system/api/v1/actions/html-to-md", null],
     ["@core/prettyHtml", "/system/api/v1/actions/pretty-html", null],
     ["@core/jsonToYaml", "/system/api/v1/actions/json-to-yaml", null],
     ["@core/xlsxToCsv", "/system/api/v1/actions/xlsx-to-csv", null],
     ["@core/yamlToJson", "/system/api/v1/actions/yaml-to-json", null],
-    ["@core/crypto", "/api/services/security/aes256", null],
-    ["@core/duckDuckGo", "/api/services/website/duckDuckGo", "GET"],
     ["@core/docxToPdf", "/system/api/v1/actions/docx-to-pdf", null],
     ["@core/pdfToHtml", "/system/api/v1/actions/pdf-to-html", null],
     ["@core/docxToHtml", "/system/api/v1/actions/docx-to-html", null],
     ["@core/pptxToHtml", "/system/api/v1/actions/pptx-to-html", null],
-    ["@core/imgToAscii", "/api/services/media/format/imgToAscii", null],
-    ["@core/imgManipulate", "/api/services/media/image/manipulate", null],
-    ["@core/readability", "/api/services/text/readability", null],
   ];
 
   coreServices.forEach(([name, endpoint, method]) => {
@@ -178,31 +172,55 @@ describe("Core services", () => {
       expect(MicroFrontendRegistry.has(name)).to.equal(true);
       const svc = MicroFrontendRegistry.get(name);
       expect(svc).to.exist;
-      // endpoints starting with /api/ get base-rewritten in define();
-      // /system/ endpoints are left as-is
-      if (endpoint.startsWith("/system/")) {
-        expect(svc.endpoint).to.equal(endpoint);
-      } else {
-        expect(svc.endpoint).to.include(endpoint);
-      }
+      // on-premises /system/ endpoints are left as-is
+      expect(svc.endpoint).to.equal(endpoint);
       if (method) {
         expect(svc.method).to.equal(method);
       }
     });
   });
 
-  it("registers linkValidator with a links param", () => {
-    const svc = MicroFrontendRegistry.get("@core/linkValidator");
-    expect(svc.params).to.have.property("links");
-    expect(svc.title).to.equal("Validate URLs");
+  it("registers websiteMetadata as a POST to the backend action with a q param", () => {
+    const svc = MicroFrontendRegistry.get("@core/websiteMetadata");
+    expect(svc.method).to.not.equal("GET");
+    expect(svc.params).to.have.property("q");
   });
 
-  it("registers imgManipulate with expected params", () => {
-    const svc = MicroFrontendRegistry.get("@core/imgManipulate");
-    expect(svc.params).to.have.property("src");
-    expect(svc.params).to.have.property("height");
-    expect(svc.params).to.have.property("width");
-    expect(svc.params).to.have.property("format");
+  it("registers none of the retired open-apis services", () => {
+    enableServices(["core", "haxcms"]);
+    [
+      "@core/linkValidator",
+      "@core/crypto",
+      "@core/duckDuckGo",
+      "@core/imgToAscii",
+      "@core/imgManipulate",
+      "@core/readability",
+      "@system/courseStats",
+      "@system/pageCache",
+      "@system/siteManifest",
+      "@system/siteGlossary",
+      "@system/views",
+      "@system/termsInPage",
+    ].forEach((name) => {
+      expect(MicroFrontendRegistry.has(name), name).to.equal(false);
+    });
+  });
+
+  it("never resolves an endpoint to open-apis.hax.cloud", () => {
+    enableServices(["core", "haxcms", "experimental"]);
+    MicroFrontendRegistry.add({
+      endpoint: "/api/services/test/onPrem",
+      name: "@test/onPremApi",
+    });
+    MicroFrontendRegistry.list.forEach((svc) => {
+      expect(svc.endpoint.indexOf("open-apis.hax.cloud"), svc.name).to.equal(
+        -1,
+      );
+    });
+    // an /api/ endpoint stays on the page's own origin
+    expect(MicroFrontendRegistry.get("@test/onPremApi").endpoint).to.equal(
+      "/api/services/test/onPrem",
+    );
   });
 });
 

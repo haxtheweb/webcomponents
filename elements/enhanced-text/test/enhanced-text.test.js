@@ -241,9 +241,12 @@ describe("EnhancedText test", () => {
   });
 
   // Integration tests
-  it("integrates with MicroFrontendRegistry", () => {
-    // Element should register micro-frontend services
-    expect(globalThis.MicroFrontendRegistry).to.exist;
+  it("registers no outside services", () => {
+    const registry = globalThis.MicroFrontendRegistry;
+    if (registry && typeof registry.has === "function") {
+      expect(registry.has("@enhancedText/textVide")).to.equal(false);
+      expect(registry.has("@system/termsInPage")).to.equal(false);
+    }
   });
 
   it("supports chained enhancements", async () => {

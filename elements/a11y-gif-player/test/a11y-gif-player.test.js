@@ -1,5 +1,4 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "../a11y-gif-player.js";
 
 const DATA_URL =
@@ -271,37 +270,34 @@ describe("a11y-gif-player print and lifecycle", () => {
   });
 });
 
-describe("a11y-gif-player automatic still generation", () => {
-  it("generates a still via the microservice when only src is set", async () => {
-    // the module export is already the singleton registry instance
-    const registry = MicroFrontendRegistry;
-    const originalUrl = registry.url;
-    registry.url = () => "/fake-generated-still.png";
-    try {
-      const el = await fixture(
-        html`<a11y-gif-player src="${DATA_URL}"></a11y-gif-player>`,
-      );
-      el.elementVisible = true;
-      await el.updateComplete;
-      const generated = await poll(
-        () => el.srcWithoutAnimation === "/fake-generated-still.png",
-      );
-      expect(generated).to.be.true;
-      expect(el._automaticStill).to.be.true;
-      // a later src change regenerates the still as well
-      registry.url = () => "/fake-second-still.png";
-      el.src = DATA_URL + "?next";
-      const regenerated = await poll(
-        () => el.srcWithoutAnimation === "/fake-second-still.png",
-      );
-      expect(regenerated).to.be.true;
-    } finally {
-      if (originalUrl) {
-        registry.url = originalUrl;
-      } else {
-        delete registry.url;
-      }
-    }
+describe("a11y-gif-player stills", () => {
+  it("draws the gif's first frame when no still is authored, calling no service", async () => {
+    const el = await fixture(
+      html`<a11y-gif-player src="${DATA_URL}"></a11y-gif-player>`,
+    );
+    el.elementVisible = true;
+    await el.updateComplete;
+    const drawn = await poll(() => !!el.__localStill);
+    expect(drawn).to.be.true;
+    expect(el.srcWithoutAnimation || "").to.equal("");
+    expect(el._stillSrc.indexOf("data:image/png")).to.equal(0);
+    expect(typeof el.generateStill).to.equal("undefined");
+  });
+
+  it("ignores a still saved from the retired open-apis image service", async () => {
+    const el = await fixture(
+      html`<a11y-gif-player
+        src="${DATA_URL}"
+        src-without-animation="https://open-apis.hax.cloud/api/services/media/image/manipulate?quality=50&src=x.gif"
+      ></a11y-gif-player>`,
+    );
+    el.elementVisible = true;
+    await el.updateComplete;
+    expect(el._authoredStill).to.equal("");
+    await poll(() => !!el.__localStill);
+    expect(el._stillSrc.indexOf("open-apis")).to.equal(-1);
+    // the attribute itself is left as authored
+    expect(el.getAttribute("src-without-animation")).to.contain("open-apis");
   });
 });
 

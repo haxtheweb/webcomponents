@@ -30,24 +30,10 @@ MicroFrontendRegistry.enableServices = enableServices;
 
 // core services
 export function enableCoreServices() {
-  // linkValidator
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/website/linkValidator",
-    name: "@core/linkValidator",
-    method: "GET",
-    title: "Validate URLs",
-    description:
-      "Validates that an array of URLs are valid by returning status codes of a HEAD request",
-    params: {
-      links: "link for processing as link otherwise unused",
-    },
-  });
-
   // metadata
   MicroFrontendRegistry.add({
-    endpoint: "/api/services/website/metadata",
+    endpoint: "/system/api/v1/actions/website-metadata",
     name: "@core/websiteMetadata",
-    method: "GET",
     title: "URL Metadata",
     description: "Skims metadata off a link",
     params: {
@@ -148,28 +134,6 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
-  // crypto
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/security/aes256",
-    name: "@core/crypto",
-    title: "Cryptography from string",
-    description: "Convert a string to or from an aes256 based hash",
-    params: {
-      data: "HTML or link to be converted",
-      op: "decrypt or hash",
-    },
-  });
-  // duckDuckGo
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/website/duckDuckGo",
-    name: "@core/duckDuckGo",
-    method: "GET",
-    title: "Duck Duck Go",
-    description: "Search results from duck duck go",
-    params: {
-      q: "query param to search on",
-    },
-  });
 
   // docxToPdf
   MicroFrontendRegistry.add({
@@ -210,47 +174,6 @@ export function enableCoreServices() {
     description: "Convert .pptx file to HTML",
     params: {
       body: "FormData class w/ uploaded file encoded into it",
-    },
-  });
-
-  // imgToAscii
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/format/imgToAscii",
-    name: "@core/imgToAscii",
-    title: "Image to ascii art",
-    description:
-      "Convert any valid image formatted file to ASCII terminal style art",
-    params: {
-      body: "FormData class w/ uploaded file encoded into it",
-    },
-  });
-
-  // imgManipulation
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/media/image/manipulate",
-    name: "@core/imgManipulate",
-    title: "simple image manipulation",
-    description:
-      "scale, resize, convert and perform operations to manipulate any image",
-    params: {
-      src: "image source",
-      height: "height in numbers",
-      width: "width in numbers",
-      quality: "0-100, jpeg quality to reduce image by if jpeg",
-      fit: "how to crop if height and width are supplied (https://sharp.pixelplumbing.com/api-resize)",
-      watermark: "SRC for an image to watermark on the output",
-      wmspot: "nw,ne,se,sw for moving the location of the watermark",
-      rotate: "https://sharp.pixelplumbing.com/api-operation#rotate",
-      format: "png, jpg, gif, webp",
-    },
-  });
-  MicroFrontendRegistry.add({
-    endpoint: "/api/services/text/readability",
-    name: "@core/readability",
-    title: "readability score",
-    description: "Readability metrics from analyzing text",
-    params: {
-      body: "Block of text to enhance",
     },
   });
 }
@@ -409,19 +332,6 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the Quarto git repo",
     },
   });
-  // courseStats
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/courseStats",
-    name: "@system/courseStats",
-    title: "Course stats",
-    description:
-      "Relevant stats for teaching relative to the ancestor in question",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      ancestor: "optional: ancestor to print from as opposed to entire site",
-    },
-  });
   // siteToHtml
   MicroFrontendRegistry.add({
     endpoint: "/x/api/v1/site/export/html",
@@ -433,67 +343,6 @@ export function enableHAXcmsServices() {
       magic: "optional CDN URL to wrap HTML in full document",
       "filter.ancestor":
         "optional: ancestor to print from as opposed to entire site",
-    },
-  });
-  // pageCache
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/pageCache",
-    method: "GET",
-    name: "@system/pageCache",
-    title: "HAXcms Page cache",
-    description: "Load a page from a site via uuid",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      uuid: "page to return content of",
-    },
-  });
-  // siteManifest
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/siteManifest",
-    name: "@system/siteManifest",
-    title: "HAXcms manifest",
-    description: "Load the manifest for a site based on URL",
-    params: {
-      site: "location of the HAXcms site OR site.json data",
-    },
-  });
-
-  // siteGlossary
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/siteGlossary",
-    name: "@system/siteGlossary",
-    title: "HAXcms site Glossary",
-    description: "array of terms found in the glossary slug",
-    params: {
-      url: "location of the HAXcms site",
-    },
-  });
-
-  // views
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/views",
-    name: "@system/views",
-    title: "Views, but for HAX",
-    description: "Views criteria for slicing and remixing HAX site data",
-    params: {
-      site: "location of the HAXcms site",
-    },
-  });
-
-  // termsInPage
-  MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/termsInPage",
-    name: "@system/termsInPage",
-    title: "HAXcms Page terms",
-    description: "array of terms from glossary found in a blob of html",
-    params: {
-      body: "HTML blob to process",
-      site: "location of the HAXcms site OR site.json data",
-      type: "site for site.json or link for remote loading",
-      wikipedia: "if wikipedia links should be included in response, if found",
-      terms:
-        "Optional array of term objects. This is intended for future use / forcibly passing a list from elsewhere",
     },
   });
   // siteToEpub

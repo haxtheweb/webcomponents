@@ -1,10 +1,13 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "../simple-img.js";
+import {
+  simpleImgVariantUrl,
+  simpleImgSource,
+} from "../lib/SimpleImgVariants.js";
 
-// simple-img converts its src through the @core/imgManipulate microservice
-// and then loads the returned URL with new Image(); stub the registry so
-// tests never leave the browser session.
+// simple-img shows the sized copy of a site photo the HAXcms backends make
+// when the page is saved (lib/SimpleImgVariants.js), and the original src
+// when there is no such copy (a remote photo, or no variant made yet).
 // NOTE: the light DOM adoption and default attributes used to run in the
 // constructor, which set attributes during construction and made
 // document.createElement("simple-img") throw NotSupportedError. The
@@ -12,19 +15,6 @@ import "../simple-img.js";
 // safe and the element upgrades on connect.
 const DATA_URL =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-
-let originalUrl = null;
-before(() => {
-  originalUrl = MicroFrontendRegistry.url;
-  MicroFrontendRegistry.url = () => DATA_URL;
-});
-after(() => {
-  if (originalUrl) {
-    MicroFrontendRegistry.url = originalUrl;
-  } else {
-    delete MicroFrontendRegistry.url;
-  }
-});
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function poll(predicate, attempts = 100, delayMs = 20) {
@@ -122,8 +112,72 @@ describe("simple-img defaults", () => {
   });
 });
 
-describe("simple-img conversion pipeline", () => {
-  it("renders the converted image once the manipulated src loads", async () => {
+describe("simple-img variants", () => {
+  it("golden names match haxcms-nodejs and haxcms-php", () => {
+    expect(simpleImgVariantUrl({ src: "files/field-day.jpg" })).to.equal(
+      "files/haxcms-managed/simple-img/field-day-a9eb28d6.jpg",
+    );
+    // simple-img's defaults spelled out name the same file
+    expect(
+      simpleImgVariantUrl({
+        src: "files/field-day.jpg",
+        width: "300",
+        height: "200",
+        quality: "80",
+        rotate: "0",
+        fit: "cover",
+        format: "jpg",
+        wmspot: "se",
+      }),
+    ).to.equal("files/haxcms-managed/simple-img/field-day-a9eb28d6.jpg");
+    expect(
+      simpleImgVariantUrl({
+        src: "files/photos/Field.PNG?v=2",
+        width: 640,
+        height: 480,
+        quality: 60,
+        rotate: "-90",
+        fit: "Inside",
+        format: "webp",
+        watermark: "files/logo.png",
+        wmspot: "nw",
+      }),
+    ).to.equal("files/haxcms-managed/simple-img/photos--Field-00167df4.webp");
+    expect(
+      simpleImgVariantUrl({
+        src: "files/clip.gif",
+        quality: 50,
+        format: "jpeg",
+      }),
+    ).to.equal("files/haxcms-managed/simple-img/clip-4aff2e69.jpg");
+  });
+
+  it("only site photos, quarter turns, sane sizes and site watermarks get a variant", () => {
+    [
+      { src: "https://example.com/files/a.jpg" },
+      { src: "/files/a.jpg" },
+      { src: "files/../site.json" },
+      { src: "files/haxcms-managed/simple-img/a-00000000.jpg" },
+      { src: "files/a.svg" },
+      { src: "files/a b.jpg" },
+      { src: "files/a.jpg", rotate: 45 },
+      { src: "files/a.jpg", width: 5000 },
+      { src: "files/a.jpg", watermark: "https://example.com/logo.png" },
+      { src: "files/a.jpg", watermark: "files/logo.gif" },
+      { src: DATA_URL },
+    ].forEach((attrs) => {
+      expect(simpleImgVariantUrl(attrs), JSON.stringify(attrs)).to.equal(null);
+    });
+    expect(simpleImgSource("files/a.gif?x=1")).to.deep.equal({
+      path: "files/a.gif",
+      stem: "a",
+      ext: "gif",
+    });
+  });
+});
+
+describe("simple-img rendering", () => {
+  it("shows a photo with no variant (not a site file) straight from its src", async () => {
     const el = await fixture(
       html`<simple-img
         src="${DATA_URL}"
@@ -140,7 +194,6 @@ describe("simple-img conversion pipeline", () => {
     const rendered = await poll(() => el.querySelector("img") !== null);
     expect(rendered).to.be.true;
     const img = el.querySelector("img");
-    // the light DOM image uses the converted src with the element params
     expect(img.getAttribute("src")).to.equal(DATA_URL);
     expect(img.getAttribute("alt")).to.equal("A gif");
     expect(img.getAttribute("width")).to.equal("50");
@@ -151,24 +204,46 @@ describe("simple-img conversion pipeline", () => {
     expect(el.rendering).to.be.false;
   });
 
-  it("falls back to the original src when the converted image fails", async () => {
-    // converted src 404s on the local test server, so the fallback runs
-    MicroFrontendRegistry.url = () => "/definitely-missing.png";
-    try {
-      const el = await fixture(
-        html`<simple-img src="${DATA_URL}"></simple-img>`,
-      );
-      expect(el.srcconverted).to.equal("/definitely-missing.png");
-      const rendered = await poll(() => el.querySelector("img") !== null);
-      expect(rendered).to.be.true;
-      // onerror renders the original src instead of the converted one
-      expect(el.querySelector("img").getAttribute("src")).to.equal(DATA_URL);
-    } finally {
-      MicroFrontendRegistry.url = () => DATA_URL;
-    }
+  it("asks for the saved variant of a site photo and falls back to the original when it is missing", async () => {
+    const el = await fixture(
+      html`<simple-img
+        src="files/definitely-missing.jpg"
+        width="50"
+        height="40"
+      ></simple-img>`,
+    );
+    expect(el.srcconverted).to.equal(
+      simpleImgVariantUrl({
+        src: "files/definitely-missing.jpg",
+        width: 50,
+        height: 40,
+      }),
+    );
+    expect(el.srcconverted.startsWith("files/haxcms-managed/simple-img/")).to.be
+      .true;
+    const rendered = await poll(() => el.querySelector("img") !== null);
+    expect(rendered).to.be.true;
+    // the variant 404s on the test server, so the original src is shown
+    expect(el.querySelector("img").getAttribute("src")).to.equal(
+      "files/definitely-missing.jpg",
+    );
   });
 
-  it("recomputes the converted url when element params change", async () => {
+  it("never calls an outside image service, and ignores one saved in older content", async () => {
+    const el = await fixture(
+      html`<simple-img
+        srcconverted="https://open-apis.hax.cloud/api/services/media/image/manipulate?src=x"
+        src="${DATA_URL}"
+      ></simple-img>`,
+    );
+    const rendered = await poll(() => el.querySelector("img") !== null);
+    expect(rendered).to.be.true;
+    expect(el.srcconverted).to.equal(DATA_URL);
+    expect(el.querySelector("img").getAttribute("src")).to.equal(DATA_URL);
+    expect(el.innerHTML.indexOf("open-apis")).to.equal(-1);
+  });
+
+  it("recomputes the src when element params change", async () => {
     const el = await fixture(html`<simple-img src="${DATA_URL}"></simple-img>`);
     await poll(() => el.querySelector("img") !== null);
     el.width = "77";
