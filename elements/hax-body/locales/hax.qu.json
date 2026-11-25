@@ -340,5 +340,6 @@
   "framePhoto": "Fotota marcochay",
   "uploadOfFileFailed": "Manam {name} wichachiyta atikurqanchu: {reason}",
   "uploadFailedReason": "servidorqa manam chaskirqanchu",
+  "uploadServerUnreachable": "servidorman mana chayayta atikurqanchu",
   "joinHaxCommunity": "HAX ayllumanta yaykuy"
 }

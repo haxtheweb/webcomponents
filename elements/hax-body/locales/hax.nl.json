@@ -340,5 +340,6 @@
   "framePhoto": "Foto kadreren",
   "uploadOfFileFailed": "Kan {name} niet uploaden: {reason}",
   "uploadFailedReason": "de server heeft het niet geaccepteerd",
+  "uploadServerUnreachable": "de server was niet bereikbaar",
   "joinHaxCommunity": "Word lid van de HAX-community"
 }

@@ -5,5 +5,6 @@
   "stop": "توقف",
   "playbackStarted": "بدأ التشغيل",
   "playbackFinished": "انتهى التشغيل",
-  "playbackStopped": "توقف التشغيل"
+  "playbackStopped": "توقف التشغيل",
+  "notes": "النوتات الموسيقية"
 }

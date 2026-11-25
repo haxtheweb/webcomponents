@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Saka LinkedIn",
-    "description": "Saka katin bayanin martaba na LinkedIn."
+    "description": "Hanyar haɗi zuwa bayanin martaba na LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Sunan musamman",
-        "description": "Ɓangaren sunan mai amfani na musamman na LinkedIn."
+        "description": "Sunan da ke ƙarshen adireshin bayanin martaba (linkedin.com/in/suna)."
       }
     ],
     "advanced": [

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn 삽입",
-    "description": "LinkedIn 프로필 카드를 삽입합니다."
+    "description": "LinkedIn 프로필 링크."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "사용자 지정 이름",
-        "description": "LinkedIn 사용자 지정 사용자 이름 부분입니다."
+        "description": "프로필 주소 끝에 있는 이름(linkedin.com/in/이름)."
       }
     ],
     "advanced": [

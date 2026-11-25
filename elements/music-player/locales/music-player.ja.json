@@ -5,5 +5,6 @@
   "stop": "停止",
   "playbackStarted": "再生を開始しました",
   "playbackFinished": "再生が終了しました",
-  "playbackStopped": "再生を停止しました"
+  "playbackStopped": "再生を停止しました",
+  "notes": "音符"
 }

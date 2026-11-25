@@ -101,5 +101,6 @@
   "openFullMerlin": "Отвори цео Merlin",
   "resultsOfTotal": "{count} од {total} резултата",
   "runResult": "Покрени резултат",
-  "sayPickResult": "други"
+  "sayPickResult": "други",
+  "voiceNeedsConsent": "Овај прегледач не може да разуме говор на вашем уређају."
 }

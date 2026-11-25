@@ -340,5 +340,6 @@
   "framePhoto": "Inquadrà a foto",
   "uploadOfFileFailed": "Ùn hè micca statu pussibule di carcà {name}: {reason}",
   "uploadFailedReason": "u servitore ùn l'hà micca accettatu",
+  "uploadServerUnreachable": "ùn s'hè micca pussutu ghjunghje u servitore",
   "joinHaxCommunity": "Unisciti à a cumunità HAX"
 }

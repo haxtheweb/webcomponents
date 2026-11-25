@@ -5,5 +5,6 @@
   "stop": "Dur",
   "playbackStarted": "Oynatma başladı",
   "playbackFinished": "Oynatma bitti",
-  "playbackStopped": "Oynatma durduruldu"
+  "playbackStopped": "Oynatma durduruldu",
+  "notes": "Notalar"
 }

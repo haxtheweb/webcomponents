@@ -340,5 +340,6 @@
   "framePhoto": "Gör utsnitt av foto",
   "uploadOfFileFailed": "Kunde inte ladda upp {name}: {reason}",
   "uploadFailedReason": "servern accepterade den inte",
+  "uploadServerUnreachable": "servern kunde inte nås",
   "joinHaxCommunity": "Gå med i HAX-communityn"
 }

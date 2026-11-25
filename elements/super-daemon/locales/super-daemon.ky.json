@@ -101,5 +101,6 @@
   "openFullMerlin": "Толук Merlin'ди ачуу",
   "resultsOfTotal": "{total} ичинен {count} жыйынтык",
   "runResult": "Жыйынтыкты аткаруу",
-  "sayPickResult": "экинчиси"
+  "sayPickResult": "экинчиси",
+  "voiceNeedsConsent": "Бул браузер кепти түзмөгүңүздө тааный албайт."
 }

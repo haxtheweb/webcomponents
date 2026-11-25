@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "Predvajanje se je začelo",
   "playbackFinished": "Predvajanje končano",
-  "playbackStopped": "Predvajanje ustavljeno"
+  "playbackStopped": "Predvajanje ustavljeno",
+  "notes": "Note"
 }

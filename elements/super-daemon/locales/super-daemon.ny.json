@@ -101,5 +101,6 @@
   "openFullMerlin": "Tsegulani Merlin yonse",
   "resultsOfTotal": "Zotsatira {count} mwa {total}",
   "runResult": "Yendetsani zotsatira",
-  "sayPickResult": "chachiwiri"
+  "sayPickResult": "chachiwiri",
+  "voiceNeedsConsent": "Msakatuli uyu sungamvetse mawu pa chipangizo chanu."
 }

@@ -1,0 +1,19 @@
+{
+  "sitesMadeWithHax": "Mga site na ginawa gamit ang HAX",
+  "web": "HAXTheWeb",
+  "webAbout": "Kung bakit para sa iyo ang HAX, at lahat ng paraan para makuha ito.",
+  "cloud": "PRAW",
+  "cloudAbout": "Ang utak ng HAX ecosystem: bawat tao, haligi at proyekto, at kung paano sila magkakaugnay.",
+  "try": "Gumawa na",
+  "tryAbout": "Gamitin ang HAX ngayon din sa tab na ito ng browser. Walang kailangang i-install.",
+  "learn": "Matuto",
+  "learnAbout": "Mga tutorial na nagtuturo ng HAX nang paisa-isang daloy.",
+  "lab": "Lab",
+  "labAbout": "HAX Lab: kung saan natututo ang mga estudyante at junior developer sa pag-ship ng totoong gawaing HAX.",
+  "elements": "Mga web component",
+  "elementsAbout": "Bawat HAX element, may mga live demo at walkthrough.",
+  "art": "Sining",
+  "artAbout": "Ang kilusang sining ng HAX: mga poster, ang Future Traveler sa iba't ibang panahon, at mga masayang tool tulad ng RPG me.",
+  "psu": "HAX sa Penn State",
+  "psuAbout": "Ang tahanan ng HAX sa Penn State: maraming site mula sa iisang deploy."
+}

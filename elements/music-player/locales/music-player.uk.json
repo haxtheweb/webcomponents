@@ -5,5 +5,6 @@
   "stop": "Стоп",
   "playbackStarted": "Відтворення розпочато",
   "playbackFinished": "Відтворення завершено",
-  "playbackStopped": "Відтворення зупинено"
+  "playbackStopped": "Відтворення зупинено",
+  "notes": "Ноти"
 }

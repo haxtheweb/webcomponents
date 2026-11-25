@@ -101,5 +101,6 @@
   "openFullMerlin": "Vula i-Merlin epheleleyo",
   "resultsOfTotal": "{count} kwiziphumo ezingama-{total}",
   "runResult": "Qhuba isiphumo",
-  "sayPickResult": "owesibini"
+  "sayPickResult": "owesibini",
+  "voiceNeedsConsent": "Le bhrawuza ayikwazi ukuqonda intetho kwisixhobo sakho."
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ku dhex darka LinkedIn",
-    "description": "Ku dhex dar kaarka astaanta LinkedIn."
+    "description": "Xiriir u socda bog LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Magaca gaarka ah",
-        "description": "Qaybta magaca isticmaalaha gaarka ah ee LinkedIn."
+        "description": "Magaca ku yaal dhammaadka cinwaanka bogga (linkedin.com/in/magac)."
       }
     ],
     "advanced": [

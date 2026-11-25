@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-inbedding",
-    "description": "Bed 'n LinkedIn-profielkaart in."
+    "description": "Skakel na 'n LinkedIn-profiel."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Persoonlike naam",
-        "description": "LinkedIn se persoonlike gebruikersnaamsegment."
+        "description": "Die naam aan die einde van die profieladres (linkedin.com/in/naam)."
       }
     ],
     "advanced": [

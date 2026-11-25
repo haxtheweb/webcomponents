@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ýerleşdirmesi",
-    "description": "LinkedIn profil kartoçkasyny ýerleşdiriň."
+    "description": "LinkedIn profiline baglanyşyk."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Ýörite at",
-        "description": "LinkedIn ýörite ulanyjy adynyň bölegi."
+        "description": "Profil salgysynyň ahyryndaky at (linkedin.com/in/at)."
       }
     ],
     "advanced": [

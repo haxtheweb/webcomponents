@@ -101,5 +101,6 @@
   "openFullMerlin": "Բացել ամբողջական Merlin-ը",
   "resultsOfTotal": "{total} արդյունքից {count}-ը",
   "runResult": "Գործարկել արդյունքը",
-  "sayPickResult": "երկրորդը"
+  "sayPickResult": "երկրորդը",
+  "voiceNeedsConsent": "Այս դիտարկիչը չի կարող ճանաչել խոսքը ձեր սարքում։"
 }

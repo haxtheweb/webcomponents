@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Embed ta' LinkedIn",
-    "description": "Daħħal karta tal-profil ta' LinkedIn."
+    "description": "Link għal profil ta' LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Isem personalizzat",
-        "description": "Is-segment tal-isem tal-utent personalizzat ta' LinkedIn."
+        "description": "L-isem fit-tmiem tal-indirizz tal-profil (linkedin.com/in/isem)."
       }
     ],
     "advanced": [

@@ -340,5 +340,6 @@
   "framePhoto": "Fotó kivágása",
   "uploadOfFileFailed": "{name} feltöltése sikertelen: {reason}",
   "uploadFailedReason": "a szerver nem fogadta el",
+  "uploadServerUnreachable": "a szerver nem érhető el",
   "joinHaxCommunity": "Csatlakozz a HAX közösséghez"
 }

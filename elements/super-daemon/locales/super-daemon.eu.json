@@ -101,5 +101,6 @@
   "openFullMerlin": "Ireki Merlin osorik",
   "resultsOfTotal": "{total} emaitzatik {count}",
   "runResult": "Exekutatu emaitza bat",
-  "sayPickResult": "bigarrena"
+  "sayPickResult": "bigarrena",
+  "voiceNeedsConsent": "Nabigatzaile honek ezin du hizketa ulertu zure gailuan."
 }

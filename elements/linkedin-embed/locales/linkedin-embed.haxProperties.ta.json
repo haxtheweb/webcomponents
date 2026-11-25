@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn உட்பொதிவு",
-    "description": "LinkedIn சுயவிவர அட்டையை உட்பொதிக்கவும்."
+    "description": "ஒரு LinkedIn சுயவிவரத்துக்கான இணைப்பு."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "தனிப்பயன் பெயர்",
-        "description": "LinkedIn தனிப்பயன் பயனர்பெயர் பகுதி."
+        "description": "சுயவிவர முகவரியின் இறுதியில் உள்ள பெயர் (linkedin.com/in/பெயர்)."
       }
     ],
     "advanced": [

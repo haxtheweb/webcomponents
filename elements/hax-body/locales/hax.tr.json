@@ -340,5 +340,6 @@
   "framePhoto": "Fotoğrafı çerçevele",
   "uploadOfFileFailed": "{name} yüklenemedi: {reason}",
   "uploadFailedReason": "sunucu kabul etmedi",
+  "uploadServerUnreachable": "sunucuya ulaşılamadı",
   "joinHaxCommunity": "HAX topluluğuna katılın"
 }

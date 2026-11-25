@@ -340,5 +340,6 @@
   "framePhoto": "照片取景",
   "uploadOfFileFailed": "{name} 上传勿成功：{reason}",
   "uploadFailedReason": "服务器勿接受",
+  "uploadServerUnreachable": "连勿上服务器",
   "joinHaxCommunity": "加入 HAX 社区"
 }

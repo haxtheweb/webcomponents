@@ -101,5 +101,6 @@
   "openFullMerlin": "Otvori puni Merlin",
   "resultsOfTotal": "{count} od {total} rezultata",
   "runResult": "Pokreni rezultat",
-  "sayPickResult": "drugi"
+  "sayPickResult": "drugi",
+  "voiceNeedsConsent": "Ovaj preglednik ne može razumjeti govor na vašem uređaju."
 }

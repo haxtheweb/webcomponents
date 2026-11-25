@@ -340,5 +340,6 @@
   "framePhoto": "Kadruj zdjęcie",
   "uploadOfFileFailed": "Nie można przesłać {name}: {reason}",
   "uploadFailedReason": "serwer go nie zaakceptował",
+  "uploadServerUnreachable": "nie udało się połączyć z serwerem",
   "joinHaxCommunity": "Dołącz do społeczności HAX"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Nhúng LinkedIn",
-    "description": "Nhúng thẻ hồ sơ LinkedIn."
+    "description": "Liên kết đến hồ sơ LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Tên tùy chỉnh",
-        "description": "Phần tên người dùng tùy chỉnh trên LinkedIn."
+        "description": "Tên ở cuối địa chỉ hồ sơ (linkedin.com/in/tên)."
       }
     ],
     "advanced": [

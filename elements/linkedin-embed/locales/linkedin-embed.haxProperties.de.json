@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-Einbettung",
-    "description": "Eine LinkedIn-Profilkarte einbetten."
+    "description": "Link zu einem LinkedIn-Profil."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Benutzerdefinierter Profilname",
-        "description": "Benutzerdefinierter Profilnamen-Teil der LinkedIn-URL."
+        "description": "Der Name am Ende der Profiladresse (linkedin.com/in/name)."
       }
     ],
     "advanced": [

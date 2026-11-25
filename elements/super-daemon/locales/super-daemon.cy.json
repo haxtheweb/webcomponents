@@ -101,5 +101,6 @@
   "openFullMerlin": "Agor Merlin llawn",
   "resultsOfTotal": "{count} o {total} canlyniad",
   "runResult": "Rhedeg canlyniad",
-  "sayPickResult": "yr ail un"
+  "sayPickResult": "yr ail un",
+  "voiceNeedsConsent": "Ni all y porwr hwn ddeall lleferydd ar eich dyfais."
 }

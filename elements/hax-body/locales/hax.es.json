@@ -340,5 +340,6 @@
   "framePhoto": "Encuadrar foto",
   "uploadOfFileFailed": "No se pudo subir {name}: {reason}",
   "uploadFailedReason": "el servidor no lo aceptó",
+  "uploadServerUnreachable": "no se pudo contactar con el servidor",
   "joinHaxCommunity": "Únete a la comunidad HAX"
 }

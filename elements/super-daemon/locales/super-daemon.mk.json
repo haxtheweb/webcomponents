@@ -101,5 +101,6 @@
   "openFullMerlin": "Отвори го целиот Merlin",
   "resultsOfTotal": "{count} од {total} резултати",
   "runResult": "Изврши резултат",
-  "sayPickResult": "втор"
+  "sayPickResult": "втор",
+  "voiceNeedsConsent": "Овој прелистувач не може да разбере говор на вашиот уред."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "Öppna hela Merlin",
   "resultsOfTotal": "{count} av {total} resultat",
   "runResult": "Kör ett resultat",
-  "sayPickResult": "den andra"
+  "sayPickResult": "den andra",
+  "voiceNeedsConsent": "Den här webbläsaren kan inte förstå tal på din enhet."
 }

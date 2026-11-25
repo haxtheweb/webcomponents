@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn־אײַנבעטונג",
-    "description": "אײַנבעטן אַ LinkedIn־פּראָפֿיל־קאַרטל."
+    "description": "לינק צו אַ LinkedIn פּראָפֿיל."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "פּערזענלעכער נאָמען",
-        "description": "פּערזענלעכער באַניצער־נאָמען־טייל אויף LinkedIn."
+        "description": "דער נאָמען אויפֿן סוף פֿון דער פּראָפֿיל־אַדרעס (linkedin.com/in/נאָמען)."
       }
     ],
     "advanced": [

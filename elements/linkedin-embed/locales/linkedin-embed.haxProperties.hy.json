@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ներկառուցում",
-    "description": "Ներկառուցել LinkedIn պրոֆիլի քարտ։"
+    "description": "Հղում LinkedIn պրոֆիլին։"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Անհատական անուն",
-        "description": "LinkedIn-ի անհատական օգտանվան հատվածը։"
+        "description": "Անունը պրոֆիլի հասցեի վերջում (linkedin.com/in/անուն)։"
       }
     ],
     "advanced": [

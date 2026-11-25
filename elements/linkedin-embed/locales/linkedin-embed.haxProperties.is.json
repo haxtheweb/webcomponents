@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-ívefjun",
-    "description": "Ívefja LinkedIn-prófílspjald."
+    "description": "Tengill á LinkedIn-prófíl."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Sérsniðið heiti",
-        "description": "Sérsniðinn notandanafnshluti á LinkedIn."
+        "description": "Nafnið aftast í slóð prófílsins (linkedin.com/in/nafn)."
       }
     ],
     "advanced": [

@@ -340,5 +340,6 @@
   "framePhoto": "عکس چوکاټ کړئ",
   "uploadOfFileFailed": "{name} پورته نشو: {reason}",
   "uploadFailedReason": "سرور ونه منله",
+  "uploadServerUnreachable": "سرور ته لاسرسی ونشو",
   "joinHaxCommunity": "د HAX ټولنې سره یوځای شئ"
 }

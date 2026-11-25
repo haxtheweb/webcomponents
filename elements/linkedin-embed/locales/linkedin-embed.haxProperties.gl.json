@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Inserción de LinkedIn",
-    "description": "Incrusta unha tarxeta de perfil de LinkedIn."
+    "description": "Ligazón a un perfil de LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nome personalizado",
-        "description": "Segmento do nome de usuario personalizado de LinkedIn."
+        "description": "O nome ao final do enderezo do perfil (linkedin.com/in/nome)."
       }
     ],
     "advanced": [

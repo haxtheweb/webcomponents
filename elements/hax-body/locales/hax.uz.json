@@ -340,5 +340,6 @@
   "framePhoto": "Rasmni kadrlash",
   "uploadOfFileFailed": "{name} yuklanmadi: {reason}",
   "uploadFailedReason": "server uni qabul qilmadi",
+  "uploadServerUnreachable": "serverga ulanib boʻlmadi",
   "joinHaxCommunity": "HAX hamjamiyatiga qo‘shiling"
 }

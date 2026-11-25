@@ -5,5 +5,6 @@
   "stop": "Atura",
   "playbackStarted": "Reproducció iniciada",
   "playbackFinished": "Reproducció acabada",
-  "playbackStopped": "Reproducció aturada"
+  "playbackStopped": "Reproducció aturada",
+  "notes": "Notes musicals"
 }

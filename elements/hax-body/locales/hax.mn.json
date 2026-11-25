@@ -340,5 +340,6 @@
   "framePhoto": "Зургийг хүрээлэх",
   "uploadOfFileFailed": "{name}-г байршуулж чадсангүй: {reason}",
   "uploadFailedReason": "сервер үүнийг хүлээн аваагүй",
+  "uploadServerUnreachable": "сервертэй холбогдож чадсангүй",
   "joinHaxCommunity": "HAX нийгэмлэгт нэгдэх"
 }

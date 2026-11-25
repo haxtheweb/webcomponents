@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "جاسازی LinkedIn",
-    "description": "جاسازی کارت نمایهٔ LinkedIn."
+    "description": "پیوند به یک نمایهٔ LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "نام سفارشی",
-        "description": "بخش نام کاربری سفارشی LinkedIn."
+        "description": "نامی که در انتهای نشانی نمایه می‌آید (linkedin.com/in/name)."
       }
     ],
     "advanced": [

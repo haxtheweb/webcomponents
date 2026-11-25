@@ -340,5 +340,6 @@
   "framePhoto": "Enkoadratu argazkia",
   "uploadOfFileFailed": "Ezin izan da {name} igo: {reason}",
   "uploadFailedReason": "zerbitzariak ez du onartu",
+  "uploadServerUnreachable": "ezin izan da zerbitzariarekin konektatu",
   "joinHaxCommunity": "Batu HAX komunitatera"
 }

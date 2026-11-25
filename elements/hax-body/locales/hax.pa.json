@@ -340,5 +340,6 @@
   "framePhoto": "ਫੋਟੋ ਫ੍ਰੇਮ ਕਰੋ",
   "uploadOfFileFailed": "{name} ਅੱਪਲੋਡ ਨਹੀਂ ਹੋ ਸਕਿਆ: {reason}",
   "uploadFailedReason": "ਸਰਵਰ ਨੇ ਇਸਨੂੰ ਸਵੀਕਾਰ ਨਹੀਂ ਕੀਤਾ",
+  "uploadServerUnreachable": "ਸਰਵਰ ਤੱਕ ਪਹੁੰਚ ਨਹੀਂ ਹੋ ਸਕੀ",
   "joinHaxCommunity": "HAX ਭਾਈਚਾਰੇ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ"
 }

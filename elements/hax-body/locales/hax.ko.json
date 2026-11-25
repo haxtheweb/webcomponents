@@ -340,5 +340,6 @@
   "framePhoto": "사진 구도 잡기",
   "uploadOfFileFailed": "{name}을(를) 업로드할 수 없습니다: {reason}",
   "uploadFailedReason": "서버에서 허용하지 않았습니다",
+  "uploadServerUnreachable": "서버에 연결할 수 없습니다",
   "joinHaxCommunity": "HAX 커뮤니티 참여"
 }

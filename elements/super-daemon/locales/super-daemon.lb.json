@@ -101,5 +101,6 @@
   "openFullMerlin": "Voll Merlin opmaachen",
   "resultsOfTotal": "{count} vun {total} Resultater",
   "runResult": "E Resultat ausféieren",
-  "sayPickResult": "zweet een"
+  "sayPickResult": "zweet een",
+  "voiceNeedsConsent": "Dëse Browser kann Sprooch net op Ärem Apparat verstoen."
 }

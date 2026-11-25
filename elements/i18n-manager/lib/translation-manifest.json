@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 270,
+    "elementsScanned": 263,
     "elementsWithTranslations": 182,
-    "translationFilesFound": 49443,
+    "translationFilesFound": 49749,
     "languagesSupported": [
       "af",
       "am",
@@ -426,8 +426,7 @@
       "zh_CN",
       "zu"
     ],
-    ["ar", "es", "hi", "zh"],
-    ["en"]
+    ["ar", "es", "hi", "zh"]
   ],
   "manifest": {
     "a.haxProperties": 0,
@@ -609,14 +608,14 @@
     "hax-cast.haxProperties": 0,
     "hax-chip.haxProperties": 0,
     "hax-confirm-dialog": 1,
-    "hax-consent-gate": 4,
+    "hax-consent-gate": 1,
     "hax-contributors": 1,
     "hax-contributors.haxProperties": 0,
     "hax-feature-row.haxProperties": 0,
     "hax-logo.haxProperties": 0,
     "hax-marketing-theme": 1,
     "hax-network-bar": 1,
-    "hax-network-sites": 4,
+    "hax-network-sites": 1,
     "hax-palette-picker": 1,
     "hax-pillar-strip.haxProperties": 0,
     "hax-pillar.haxProperties": 0,
@@ -789,7 +788,7 @@
     "post-card.haxProperties": 0,
     "pre.haxProperties": 0,
     "primer-theme": 1,
-    "privacy-choices": 4,
+    "privacy-choices": 1,
     "product-glance.haxProperties": 0,
     "progress-donut.haxProperties": 0,
     "q-r": 1,

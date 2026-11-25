@@ -340,5 +340,6 @@
   "framePhoto": "ಫೋಟೋ ಚೌಕಟ್ಟು ಮಾಡಿ",
   "uploadOfFileFailed": "{name} ಅಪ್‌ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ: {reason}",
   "uploadFailedReason": "ಸರ್ವರ್ ಅದನ್ನು ಸ್ವೀಕರಿಸಲಿಲ್ಲ",
+  "uploadServerUnreachable": "ಸರ್ವರ್ ಅನ್ನು ತಲುಪಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ",
   "joinHaxCommunity": "HAX ಸಮುದಾಯಕ್ಕೆ ಸೇರಿ"
 }

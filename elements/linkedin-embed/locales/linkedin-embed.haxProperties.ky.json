@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn кыстаруу",
-    "description": "LinkedIn профиль картасын кыстаруу."
+    "description": "LinkedIn профилине шилтеме."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Жеке аталыш",
-        "description": "LinkedIn жеке колдонуучу атынын бөлүгү."
+        "description": "Профиль дарегинин аягындагы ат (linkedin.com/in/ат)."
       }
     ],
     "advanced": [

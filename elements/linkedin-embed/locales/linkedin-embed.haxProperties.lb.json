@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-Abannung",
-    "description": "Eng LinkedIn-Profilkaart abannen."
+    "description": "Link op e LinkedIn-Profil."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Profilnumm",
-        "description": "Benotzernumm-Segment vum LinkedIn-Profil."
+        "description": "Den Numm um Enn vun der Profiladress (linkedin.com/in/numm)."
       }
     ],
     "advanced": [

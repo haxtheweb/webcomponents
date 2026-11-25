@@ -340,5 +340,6 @@
   "framePhoto": "I-frame ang larawan",
   "uploadOfFileFailed": "Hindi ma-upload ang {name}: {reason}",
   "uploadFailedReason": "hindi ito tinanggap ng server",
+  "uploadServerUnreachable": "hindi maabot ang server",
   "joinHaxCommunity": "Sumali sa komunidad ng HAX"
 }

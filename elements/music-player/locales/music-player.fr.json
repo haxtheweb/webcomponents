@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "Lecture démarrée",
   "playbackFinished": "Lecture terminée",
-  "playbackStopped": "Lecture arrêtée"
+  "playbackStopped": "Lecture arrêtée",
+  "notes": "Notes de musique"
 }

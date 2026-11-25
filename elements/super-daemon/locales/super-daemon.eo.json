@@ -101,5 +101,6 @@
   "openFullMerlin": "Malfermi plenan Merlin",
   "resultsOfTotal": "{count} el {total} rezultoj",
   "runResult": "Ruli rezulton",
-  "sayPickResult": "la dua"
+  "sayPickResult": "la dua",
+  "voiceNeedsConsent": "Ĉi tiu retumilo ne povas kompreni parolon en via aparato."
 }

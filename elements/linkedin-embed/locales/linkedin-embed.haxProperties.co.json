@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Incrustazione LinkedIn",
-    "description": "Incrustà una carta di prufilu LinkedIn."
+    "description": "Liame versu un prufilu LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nome persunalizatu",
-        "description": "Segmentu di u nome d'utilizatore persunalizatu LinkedIn."
+        "description": "U nome à a fine di l'indirizzu di u prufilu (linkedin.com/in/nome)."
       }
     ],
     "advanced": [

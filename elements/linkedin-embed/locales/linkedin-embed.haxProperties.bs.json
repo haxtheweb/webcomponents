@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ugradnja",
-    "description": "Ugradite karticu LinkedIn profila."
+    "description": "Link na LinkedIn profil."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Prilagođeno ime",
-        "description": "Dio prilagođenog LinkedIn korisničkog imena."
+        "description": "Ime na kraju adrese profila (linkedin.com/in/ime)."
       }
     ],
     "advanced": [

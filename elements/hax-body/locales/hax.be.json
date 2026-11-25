@@ -340,5 +340,6 @@
   "framePhoto": "Кадраваць фота",
   "uploadOfFileFailed": "Не ўдалося загрузіць {name}: {reason}",
   "uploadFailedReason": "сервер не прыняў яго",
+  "uploadServerUnreachable": "не ўдалося звязацца з серверам",
   "joinHaxCommunity": "Далучыцца да супольнасці HAX"
 }

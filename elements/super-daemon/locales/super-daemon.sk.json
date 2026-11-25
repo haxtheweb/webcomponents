@@ -101,5 +101,6 @@
   "openFullMerlin": "Otvoriť celého Merlina",
   "resultsOfTotal": "Výsledky: {count} z {total}",
   "runResult": "Spustiť výsledok",
-  "sayPickResult": "druhý"
+  "sayPickResult": "druhý",
+  "voiceNeedsConsent": "Tento prehliadač nedokáže rozpoznať reč priamo vo vašom zariadení."
 }

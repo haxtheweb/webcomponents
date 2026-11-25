@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-innebygging",
-    "description": "Bygg inn et LinkedIn-profilkort."
+    "description": "Lenke til en LinkedIn-profil."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Tilpasset navn",
-        "description": "Den tilpassede brukernavndelen på LinkedIn."
+        "description": "Navnet på slutten av profiladressen (linkedin.com/in/navn)."
       }
     ],
     "advanced": [

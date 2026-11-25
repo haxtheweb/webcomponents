@@ -5,5 +5,6 @@
   "stop": "Simama",
   "playbackStarted": "Uchezaji umeanza",
   "playbackFinished": "Uchezaji umekamilika",
-  "playbackStopped": "Uchezaji umesimamishwa"
+  "playbackStopped": "Uchezaji umesimamishwa",
+  "notes": "Noti za muziki"
 }

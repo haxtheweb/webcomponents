@@ -101,5 +101,6 @@
   "openFullMerlin": "مکمل Merlin کھولیں",
   "resultsOfTotal": "{total} میں سے {count} نتائج",
   "runResult": "نتیجہ چلائیں",
-  "sayPickResult": "دوسرا والا"
+  "sayPickResult": "دوسرا والا",
+  "voiceNeedsConsent": "یہ براؤزر آپ کے آلے پر بولی نہیں سمجھ سکتا۔"
 }

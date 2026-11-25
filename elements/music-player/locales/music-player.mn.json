@@ -5,5 +5,6 @@
   "stop": "Зогс",
   "playbackStarted": "Тоглуулалт эхэллээ",
   "playbackFinished": "Тоглуулалт дууслаа",
-  "playbackStopped": "Тоглуулалт зогслоо"
+  "playbackStopped": "Тоглуулалт зогслоо",
+  "notes": "Нотууд"
 }

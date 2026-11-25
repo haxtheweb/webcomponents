@@ -101,5 +101,6 @@
   "openFullMerlin": "Кушодани Merlin-и пурра",
   "resultsOfTotal": "{count} аз {total} натиҷа",
   "runResult": "Иҷрои натиҷа",
-  "sayPickResult": "дуюм"
+  "sayPickResult": "дуюм",
+  "voiceNeedsConsent": "Ин браузер нутқро дар дастгоҳи шумо фаҳмида наметавонад."
 }

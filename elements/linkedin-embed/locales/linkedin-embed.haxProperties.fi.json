@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-upotus",
-    "description": "Upota LinkedIn-profiilikortti."
+    "description": "Linkki LinkedIn-profiiliin."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Mukautettu nimi",
-        "description": "LinkedIn-profiilin mukautettu käyttäjänimiosa."
+        "description": "Nimi profiilin osoitteen lopussa (linkedin.com/in/nimi)."
       }
     ],
     "advanced": [

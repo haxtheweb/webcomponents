@@ -340,5 +340,6 @@
   "framePhoto": "تأطير الصورة",
   "uploadOfFileFailed": "تعذّر رفع {name}: {reason}",
   "uploadFailedReason": "لم يقبله الخادم",
+  "uploadServerUnreachable": "تعذّر الوصول إلى الخادم",
   "joinHaxCommunity": "انضم إلى مجتمع HAX"
 }

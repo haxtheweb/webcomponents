@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn embed",
-    "description": "Mag-embed ng profile card ng LinkedIn."
+    "description": "Link sa isang LinkedIn profile."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Vanity name",
-        "description": "Bahagi ng vanity username sa LinkedIn."
+        "description": "Ang pangalan sa dulo ng address ng profile (linkedin.com/in/pangalan)."
       }
     ],
     "advanced": [

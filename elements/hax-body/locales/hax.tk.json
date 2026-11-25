@@ -340,5 +340,6 @@
   "framePhoto": "Suraty çarçuwala",
   "uploadOfFileFailed": "{name} ýükläp bolmady: {reason}",
   "uploadFailedReason": "serwer ony kabul etmedi",
+  "uploadServerUnreachable": "serwere birigip bolmady",
   "joinHaxCommunity": "HAX jemgyýetine goşulyň"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "படத்தைச் சட்டமிடு",
   "uploadOfFileFailed": "{name} ஐப் பதிவேற்ற முடியவில்லை: {reason}",
   "uploadFailedReason": "சேவையகம் அதை ஏற்கவில்லை",
+  "uploadServerUnreachable": "சேவையகத்தை அணுக முடியவில்லை",
   "joinHaxCommunity": "HAX சமூகத்தில் இணையுங்கள்"
 }

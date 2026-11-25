@@ -340,5 +340,6 @@
   "framePhoto": "Fframio'r llun",
   "uploadOfFileFailed": "Methu llwytho {name} i fyny: {reason}",
   "uploadFailedReason": "ni wnaeth y gweinydd ei dderbyn",
+  "uploadServerUnreachable": "nid oedd modd cyrraedd y gweinydd",
   "joinHaxCommunity": "Ymuno â chymuned HAX"
 }

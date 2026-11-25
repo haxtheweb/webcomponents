@@ -101,5 +101,6 @@
   "openFullMerlin": "Merlin'in tamamını aç",
   "resultsOfTotal": "{total} sonuçtan {count} tanesi",
   "runResult": "Bir sonucu çalıştır",
-  "sayPickResult": "ikinci"
+  "sayPickResult": "ikinci",
+  "voiceNeedsConsent": "Bu tarayıcı konuşmayı cihazınızda anlayamıyor."
 }

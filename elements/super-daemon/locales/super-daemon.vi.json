@@ -101,5 +101,6 @@
   "openFullMerlin": "Mở Merlin đầy đủ",
   "resultsOfTotal": "{count}/{total} kết quả",
   "runResult": "Chạy một kết quả",
-  "sayPickResult": "cái thứ hai"
+  "sayPickResult": "cái thứ hai",
+  "voiceNeedsConsent": "Trình duyệt này không thể hiểu giọng nói ngay trên thiết bị của bạn."
 }

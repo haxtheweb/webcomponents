@@ -340,5 +340,6 @@
   "framePhoto": "Enquadra la foto",
   "uploadOfFileFailed": "No s'ha pogut pujar {name}: {reason}",
   "uploadFailedReason": "el servidor no l'ha acceptat",
+  "uploadServerUnreachable": "no s'ha pogut contactar amb el servidor",
   "joinHaxCommunity": "Uneix-te a la comunitat HAX"
 }

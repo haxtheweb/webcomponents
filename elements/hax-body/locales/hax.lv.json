@@ -340,5 +340,6 @@
   "framePhoto": "Kadrēt fotoattēlu",
   "uploadOfFileFailed": "Neizdevās augšupielādēt {name}: {reason}",
   "uploadFailedReason": "serveris to nepieņēma",
+  "uploadServerUnreachable": "neizdevās sasniegt serveri",
   "joinHaxCommunity": "Pievienoties HAX kopienai"
 }

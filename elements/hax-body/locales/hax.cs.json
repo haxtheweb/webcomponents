@@ -340,5 +340,6 @@
   "framePhoto": "Zarámovat fotku",
   "uploadOfFileFailed": "Nepodařilo se nahrát {name}: {reason}",
   "uploadFailedReason": "server jej nepřijal",
+  "uploadServerUnreachable": "server není dostupný",
   "joinHaxCommunity": "Připojte se ke komunitě HAX"
 }

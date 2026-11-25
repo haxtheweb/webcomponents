@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ngulitje LinkedIn",
-    "description": "Ngulit një kartë profili LinkedIn."
+    "description": "Lidhje te një profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Emri personal",
-        "description": "Segmenti i emrit personal të përdoruesit në LinkedIn."
+        "description": "Emri në fund të adresës së profilit (linkedin.com/in/emri)."
       }
     ],
     "advanced": [

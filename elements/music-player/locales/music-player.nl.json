@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "Afspelen gestart",
   "playbackFinished": "Afspelen voltooid",
-  "playbackStopped": "Afspelen gestopt"
+  "playbackStopped": "Afspelen gestopt",
+  "notes": "Noten"
 }

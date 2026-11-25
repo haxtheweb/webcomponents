@@ -101,5 +101,6 @@
   "openFullMerlin": "打开完整版 Merlin",
   "resultsOfTotal": "{count} / {total} 个结果",
   "runResult": "运行某个结果",
-  "sayPickResult": "第二个"
+  "sayPickResult": "第二个",
+  "voiceNeedsConsent": "此浏览器无法在你的设备上识别语音。"
 }

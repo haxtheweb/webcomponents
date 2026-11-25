@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Leabú LinkedIn",
-    "description": "Leabaigh cárta próifíle LinkedIn."
+    "description": "Nasc chuig próifíl LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Ainm pearsantaithe",
-        "description": "Cuid ainm úsáideora pearsantaithe LinkedIn."
+        "description": "An t-ainm ag deireadh sheoladh na próifíle (linkedin.com/in/ainm)."
       }
     ],
     "advanced": [

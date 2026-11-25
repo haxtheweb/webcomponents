@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn embed",
-    "description": "LinkedIn ပရိုဖိုင် ကတ်ကို ထည့်သွင်းရန်။"
+    "description": "LinkedIn ပရိုဖိုင်သို့ လင့်ခ်။"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Vanity အမည်",
-        "description": "LinkedIn vanity အသုံးပြုသူအမည် အပိုင်း။"
+        "description": "ပရိုဖိုင်လိပ်စာ၏ အဆုံးရှိ အမည် (linkedin.com/in/အမည်)။"
       }
     ],
     "advanced": [

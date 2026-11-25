@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ايمبيڊ",
-    "description": "LinkedIn پروفائل ڪارڊ شامل ڪريو."
+    "description": "LinkedIn پروفائل جي لنڪ."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "وينٽي نالو",
-        "description": "LinkedIn وينٽي يوزرنيم جو حصو."
+        "description": "پروفائل پتي جي آخر ۾ نالو (linkedin.com/in/name)."
       }
     ],
     "advanced": [

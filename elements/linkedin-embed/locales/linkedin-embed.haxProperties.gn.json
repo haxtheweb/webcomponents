@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn moinge",
-    "description": "Emoinge LinkedIn kuatia'atã mba'ete."
+    "description": "Joajuha peteĩ LinkedIn perfil-pe."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Téra ojeiporavóva",
-        "description": "LinkedIn puruhára réra ojeiporavóva pehẽ."
+        "description": "Téra perfil kundaharape pahápe (linkedin.com/in/téra)."
       }
     ],
     "advanced": [

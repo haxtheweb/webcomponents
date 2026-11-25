@@ -340,5 +340,6 @@
   "framePhoto": "تصویر فریم کریں",
   "uploadOfFileFailed": "{name} اپ لوڈ نہیں ہو سکا: {reason}",
   "uploadFailedReason": "سرور نے اسے قبول نہیں کیا",
+  "uploadServerUnreachable": "سرور تک رسائی نہیں ہو سکی",
   "joinHaxCommunity": "HAX کمیونٹی میں شامل ہوں"
 }

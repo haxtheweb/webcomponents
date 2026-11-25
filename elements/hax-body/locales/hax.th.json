@@ -340,5 +340,6 @@
   "framePhoto": "จัดเฟรมรูป",
   "uploadOfFileFailed": "ไม่สามารถอัปโหลด {name}: {reason}",
   "uploadFailedReason": "เซิร์ฟเวอร์ไม่ยอมรับ",
+  "uploadServerUnreachable": "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้",
   "joinHaxCommunity": "เข้าร่วมชุมชน HAX"
 }

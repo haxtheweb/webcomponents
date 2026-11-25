@@ -101,5 +101,6 @@
   "openFullMerlin": "სრული Merlin-ის გახსნა",
   "resultsOfTotal": "{total} შედეგიდან {count}",
   "runResult": "შედეგის გაშვება",
-  "sayPickResult": "მეორე"
+  "sayPickResult": "მეორე",
+  "voiceNeedsConsent": "ამ ბრაუზერს არ შეუძლია მეტყველების ამოცნობა თქვენს მოწყობილობაზე."
 }

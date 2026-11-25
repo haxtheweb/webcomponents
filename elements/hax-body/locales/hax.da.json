@@ -340,5 +340,6 @@
   "framePhoto": "Tilpas billedudsnit",
   "uploadOfFileFailed": "Kunne ikke uploade {name}: {reason}",
   "uploadFailedReason": "serveren accepterede den ikke",
+  "uploadServerUnreachable": "serveren kunne ikke nås",
   "joinHaxCommunity": "Bliv en del af HAX-fællesskabet"
 }

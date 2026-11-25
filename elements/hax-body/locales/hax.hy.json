@@ -340,5 +340,6 @@
   "framePhoto": "Կադրավորել լուսանկարը",
   "uploadOfFileFailed": "Չհաջողվեց վերբեռնել {name}-ը՝ {reason}",
   "uploadFailedReason": "սերվերը չընդունեց այն",
+  "uploadServerUnreachable": "սերվերի հետ կապ հաստատել չհաջողվեց",
   "joinHaxCommunity": "Միանալ HAX համայնքին"
 }

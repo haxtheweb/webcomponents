@@ -340,5 +340,6 @@
   "framePhoto": "Чорчӯбаи акс",
   "uploadOfFileFailed": "{name} бор карда нашуд: {reason}",
   "uploadFailedReason": "сервер онро қабул накард",
+  "uploadServerUnreachable": "ба сервер пайваст шудан ғайриимкон буд",
   "joinHaxCommunity": "Ба ҷомеаи HAX ҳамроҳ шавед"
 }

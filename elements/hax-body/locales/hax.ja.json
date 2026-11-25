@@ -340,5 +340,6 @@
   "framePhoto": "写真の構図",
   "uploadOfFileFailed": "{name} をアップロードできませんでした: {reason}",
   "uploadFailedReason": "サーバーが受け付けませんでした",
+  "uploadServerUnreachable": "サーバーに接続できませんでした",
   "joinHaxCommunity": "HAX コミュニティに参加"
 }

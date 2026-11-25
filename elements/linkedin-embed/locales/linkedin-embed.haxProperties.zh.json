@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn 嵌入",
-    "description": "嵌入 LinkedIn 个人资料卡片。"
+    "description": "链接到一个 LinkedIn 个人资料。"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "个性化名称",
-        "description": "LinkedIn 个性化用户名片段。"
+        "description": "个人资料地址末尾的名称（linkedin.com/in/名称）。"
       }
     ],
     "advanced": [

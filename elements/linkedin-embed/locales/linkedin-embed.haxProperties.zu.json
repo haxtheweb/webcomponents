@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ukushumeka kwe-LinkedIn",
-    "description": "Shumeka ikhadi lephrofayela ye-LinkedIn."
+    "description": "Isixhumanisi esiya kuphrofayela ye-LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Igama elikhethekile",
-        "description": "Ingxenye yegama lomsebenzisi elikhethekile le-LinkedIn."
+        "description": "Igama ekugcineni kwekheli lephrofayela (linkedin.com/in/igama)."
       }
     ],
     "advanced": [

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ntinye LinkedIn",
-    "description": "Tinye kaadị profaịlụ LinkedIn."
+    "description": "Njikọ na profaịlụ LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Aha pụrụ iche",
-        "description": "Akụkụ aha njirimara pụrụ iche na LinkedIn."
+        "description": "Aha dị na njedebe adreesị profaịlụ ahụ (linkedin.com/in/aha)."
       }
     ],
     "advanced": [

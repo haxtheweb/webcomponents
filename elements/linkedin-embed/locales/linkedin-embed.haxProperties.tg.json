@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ҷойгиркунии LinkedIn",
-    "description": "Корти профили LinkedIn-ро ҷойгир кунед."
+    "description": "Пайванд ба профили LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Номи шахсӣ",
-        "description": "Қисми номи корбари шахсии LinkedIn."
+        "description": "Ном дар охири суроғаи профил (linkedin.com/in/ном)."
       }
     ],
     "advanced": [

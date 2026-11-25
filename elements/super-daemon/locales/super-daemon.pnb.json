@@ -101,5 +101,6 @@
   "openFullMerlin": "پورا Merlin کھولو",
   "resultsOfTotal": "{total} وچوں {count} نتیجے",
   "runResult": "نتیجہ چلاؤ",
-  "sayPickResult": "دوجا"
+  "sayPickResult": "دوجا",
+  "voiceNeedsConsent": "ایہ براؤزر تہاڈی ڈیوائس اُتے بولی نہیں سمجھ سکدا۔"
 }

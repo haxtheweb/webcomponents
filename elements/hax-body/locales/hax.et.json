@@ -340,5 +340,6 @@
   "framePhoto": "Kadreeri foto",
   "uploadOfFileFailed": "Faili {name} üleslaadimine ebaõnnestus: {reason}",
   "uploadFailedReason": "server ei võtnud seda vastu",
+  "uploadServerUnreachable": "serveriga ei saadud ühendust",
   "joinHaxCommunity": "Liitu HAX-i kogukonnaga"
 }

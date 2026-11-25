@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "הטמעת LinkedIn",
-    "description": "הטמעת כרטיס פרופיל של LinkedIn."
+    "description": "קישור לפרופיל LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "שם מותאם",
-        "description": "מקטע שם המשתמש המותאם ב-LinkedIn."
+        "description": "השם בסוף כתובת הפרופיל (linkedin.com/in/שם)."
       }
     ],
     "advanced": [

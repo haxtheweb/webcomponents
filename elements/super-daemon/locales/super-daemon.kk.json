@@ -101,5 +101,6 @@
   "openFullMerlin": "Толық Merlin ашу",
   "resultsOfTotal": "{total} ішінен {count} нәтиже",
   "runResult": "Нәтижені орындау",
-  "sayPickResult": "екінші"
+  "sayPickResult": "екінші",
+  "voiceNeedsConsent": "Бұл браузер сөйлеуді құрылғыңызда тани алмайды."
 }

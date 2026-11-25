@@ -101,5 +101,6 @@
   "openFullMerlin": "Doly Merlin-i aç",
   "resultsOfTotal": "{total} netijäniň {count} sanysy",
   "runResult": "Netijäni işlet",
-  "sayPickResult": "ikinji"
+  "sayPickResult": "ikinji",
+  "voiceNeedsConsent": "Bu brauzer gürleýşi enjamyňyzda düşünip bilmeýär."
 }

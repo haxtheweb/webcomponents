@@ -340,5 +340,6 @@
   "framePhoto": "Suuraa gaaddisa keessa galchi",
   "uploadOfFileFailed": "{name} olkaa'uun hin danda'amne: {reason}",
   "uploadFailedReason": "sarvarichi hin fudhanne",
+  "uploadServerUnreachable": "sarvarii bira gahuun hin danda'amne",
   "joinHaxCommunity": "Hawaasa HAX tti makami"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Sematan LinkedIn",
-    "description": "Lebokake kertu profil LinkedIn."
+    "description": "Pranala menyang profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Jeneng vanity",
-        "description": "Bagean jeneng pangguna vanity LinkedIn."
+        "description": "Jeneng ing pungkasan alamat profil (linkedin.com/in/jeneng)."
       }
     ],
     "advanced": [

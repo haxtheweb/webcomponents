@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ynslute",
-    "description": "In LinkedIn-profylkaart ynslute."
+    "description": "Keppeling nei in LinkedIn-profyl."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Persoanlike namme",
-        "description": "Diel fan de persoanlike LinkedIn-brûkersnamme."
+        "description": "De namme oan 'e ein fan it profyladres (linkedin.com/in/namme)."
       }
     ],
     "advanced": [

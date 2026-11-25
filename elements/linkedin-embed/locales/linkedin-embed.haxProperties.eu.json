@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn txertaketa",
-    "description": "Txertatu LinkedIn profil txartel bat."
+    "description": "LinkedIn profil baterako esteka."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Izen pertsonalizatua",
-        "description": "LinkedIn erabiltzaile-izen pertsonalizatuaren segmentua."
+        "description": "Profilaren helbidearen amaierako izena (linkedin.com/in/izena)."
       }
     ],
     "advanced": [

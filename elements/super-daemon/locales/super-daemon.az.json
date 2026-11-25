@@ -101,5 +101,6 @@
   "openFullMerlin": "Tam Merlin-i aç",
   "resultsOfTotal": "{total} nəticədən {count}",
   "runResult": "Nəticəni işə sal",
-  "sayPickResult": "ikinci biri"
+  "sayPickResult": "ikinci biri",
+  "voiceNeedsConsent": "Bu brauzer cihazınızda nitqi başa düşə bilmir."
 }

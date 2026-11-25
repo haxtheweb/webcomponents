@@ -340,5 +340,6 @@
   "framePhoto": "Kadruoti nuotrauką",
   "uploadOfFileFailed": "Nepavyko įkelti {name}: {reason}",
   "uploadFailedReason": "serveris jo nepriėmė",
+  "uploadServerUnreachable": "nepavyko pasiekti serverio",
   "joinHaxCommunity": "Prisijunkite prie HAX bendruomenės"
 }

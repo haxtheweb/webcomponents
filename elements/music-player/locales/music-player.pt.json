@@ -5,5 +5,6 @@
   "stop": "Parar",
   "playbackStarted": "Reprodução iniciada",
   "playbackFinished": "Reprodução concluída",
-  "playbackStopped": "Reprodução interrompida"
+  "playbackStopped": "Reprodução interrompida",
+  "notes": "Notas musicais"
 }

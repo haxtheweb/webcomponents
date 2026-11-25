@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ìfisínú LinkedIn",
-    "description": "Fi káàdì profáìlì LinkedIn sínú ojú-ìwé."
+    "description": "Ìjápọ̀ sí profaili LinkedIn kan."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Orúkọ àdáni",
-        "description": "Apá orúkọ olùlò àdáni LinkedIn."
+        "description": "Orúkọ tí ó wà ní ìparí àdírẹ́sì profaili náà (linkedin.com/in/orúkọ)."
       }
     ],
     "advanced": [

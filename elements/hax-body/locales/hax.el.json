@@ -340,5 +340,6 @@
   "framePhoto": "Καδράρισμα φωτογραφίας",
   "uploadOfFileFailed": "Δεν ήταν δυνατή η μεταφόρτωση του {name}: {reason}",
   "uploadFailedReason": "ο διακομιστής δεν το αποδέχτηκε",
+  "uploadServerUnreachable": "δεν ήταν δυνατή η σύνδεση με τον διακομιστή",
   "joinHaxCommunity": "Γίνετε μέλος της κοινότητας HAX"
 }

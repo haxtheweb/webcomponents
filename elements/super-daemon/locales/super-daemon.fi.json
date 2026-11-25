@@ -101,5 +101,6 @@
   "openFullMerlin": "Avaa koko Merlin",
   "resultsOfTotal": "{count} / {total} tulosta",
   "runResult": "Suorita tulos",
-  "sayPickResult": "toinen"
+  "sayPickResult": "toinen",
+  "voiceNeedsConsent": "Tämä selain ei pysty tunnistamaan puhetta laitteellasi."
 }

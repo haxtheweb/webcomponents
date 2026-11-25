@@ -340,5 +340,6 @@
   "framePhoto": "Weka fremu ya picha",
   "uploadOfFileFailed": "Imeshindwa kupakia {name}: {reason}",
   "uploadFailedReason": "seva haikuikubali",
+  "uploadServerUnreachable": "seva haikuweza kufikiwa",
   "joinHaxCommunity": "Jiunge na jumuiya ya HAX"
 }

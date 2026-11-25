@@ -101,5 +101,6 @@
   "openFullMerlin": "പൂർണ്ണ Merlin തുറക്കുക",
   "resultsOfTotal": "{total} ഫലങ്ങളിൽ {count}",
   "runResult": "ഒരു ഫലം പ്രവർത്തിപ്പിക്കുക",
-  "sayPickResult": "രണ്ടാമത്തേത്"
+  "sayPickResult": "രണ്ടാമത്തേത്",
+  "voiceNeedsConsent": "ഈ ബ്രൗസറിന് നിങ്ങളുടെ ഉപകരണത്തിൽ സംഭാഷണം മനസ്സിലാക്കാൻ കഴിയില്ല."
 }

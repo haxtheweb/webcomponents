@@ -340,5 +340,6 @@
   "framePhoto": "Tsara hoto",
   "uploadOfFileFailed": "Ba a iya ɗora {name} ba: {reason}",
   "uploadFailedReason": "sabar ba ta karɓe shi ba",
+  "uploadServerUnreachable": "ba a iya isa ga sabar ba",
   "joinHaxCommunity": "Shiga al'ummar HAX"
 }

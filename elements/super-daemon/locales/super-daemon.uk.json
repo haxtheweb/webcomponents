@@ -101,5 +101,6 @@
   "openFullMerlin": "Відкрити повний Merlin",
   "resultsOfTotal": "{count} із {total} результатів",
   "runResult": "Запустити результат",
-  "sayPickResult": "другий"
+  "sayPickResult": "другий",
+  "voiceNeedsConsent": "Цей браузер не може розпізнавати мовлення на вашому пристрої."
 }

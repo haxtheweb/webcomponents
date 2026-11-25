@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "Seinm tosaithe",
   "playbackFinished": "Seinm críochnaithe",
-  "playbackStopped": "Seinm stoptha"
+  "playbackStopped": "Seinm stoptha",
+  "notes": "Nótaí ceoil"
 }

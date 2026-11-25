@@ -101,5 +101,6 @@
   "openFullMerlin": "مڪمل Merlin کوليو",
   "resultsOfTotal": "{total} مان {count} نتيجا",
   "runResult": "نتيجو هلايو",
-  "sayPickResult": "ٻيو"
+  "sayPickResult": "ٻيو",
+  "voiceNeedsConsent": "هي برائوزر توهان جي ڊوائيس تي ڳالهه نٿو سمجهي سگهي."
 }

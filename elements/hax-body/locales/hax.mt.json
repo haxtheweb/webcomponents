@@ -340,5 +340,6 @@
   "framePhoto": "Ikkwadra r-ritratt",
   "uploadOfFileFailed": "Ma setax jittella' {name}: {reason}",
   "uploadFailedReason": "is-server ma aċċettahx",
+  "uploadServerUnreachable": "ma setax jintlaħaq is-server",
   "joinHaxCommunity": "Ingħaqad mal-komunità HAX"
 }

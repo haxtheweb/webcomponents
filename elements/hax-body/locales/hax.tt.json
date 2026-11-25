@@ -340,5 +340,6 @@
   "framePhoto": "Фотоны кадрлау",
   "uploadOfFileFailed": "{name} йөкләп булмады: {reason}",
   "uploadFailedReason": "сервер аны кабул итмәде",
+  "uploadServerUnreachable": "серверга тоташып булмады",
   "joinHaxCommunity": "HAX җәмгыятенә кушылыгыз"
 }

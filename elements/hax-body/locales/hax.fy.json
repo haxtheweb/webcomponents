@@ -340,5 +340,6 @@
   "framePhoto": "Foto kadrearje",
   "uploadOfFileFailed": "Koe {name} net oplade: {reason}",
   "uploadFailedReason": "de tsjinner hat it net akseptearre",
+  "uploadServerUnreachable": "de server wie net te berikken",
   "joinHaxCommunity": "Doch mei oan de HAX-mienskip"
 }

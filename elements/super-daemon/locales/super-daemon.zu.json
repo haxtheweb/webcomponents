@@ -101,5 +101,6 @@
   "openFullMerlin": "Vula i-Merlin ephelele",
   "resultsOfTotal": "{count} kwemiphumela engu-{total}",
   "runResult": "Sebenzisa umphumela",
-  "sayPickResult": "owesibili"
+  "sayPickResult": "owesibili",
+  "voiceNeedsConsent": "Lesi siphequluli asikwazi ukuqonda inkulumo kudivayisi yakho."
 }

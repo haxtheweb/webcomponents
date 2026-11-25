@@ -101,5 +101,6 @@
   "openFullMerlin": "전체 Merlin 열기",
   "resultsOfTotal": "결과 {total}개 중 {count}개",
   "runResult": "결과 실행",
-  "sayPickResult": "두 번째"
+  "sayPickResult": "두 번째",
+  "voiceNeedsConsent": "이 브라우저는 기기에서 음성을 인식할 수 없습니다."
 }

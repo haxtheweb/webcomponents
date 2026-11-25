@@ -340,5 +340,6 @@
   "framePhoto": "Bingkai foto",
   "uploadOfFileFailed": "Ora bisa ngunggah {name}: {reason}",
   "uploadFailedReason": "server ora nampa",
+  "uploadServerUnreachable": "server ora bisa digayuh",
   "joinHaxCommunity": "Gabung karo komunitas HAX"
 }

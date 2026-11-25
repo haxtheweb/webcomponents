@@ -340,5 +340,6 @@
   "framePhoto": "Enquadrar foto",
   "uploadOfFileFailed": "Não foi possível enviar {name}: {reason}",
   "uploadFailedReason": "o servidor não o aceitou",
+  "uploadServerUnreachable": "não foi possível acessar o servidor",
   "joinHaxCommunity": "Participe da comunidade HAX"
 }

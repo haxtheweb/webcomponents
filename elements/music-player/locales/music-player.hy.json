@@ -5,5 +5,6 @@
   "stop": "Կանգ",
   "playbackStarted": "Նվագարկումը սկսվեց",
   "playbackFinished": "Նվագարկումն ավարտվեց",
-  "playbackStopped": "Նվագարկումը դադարեցվեց"
+  "playbackStopped": "Նվագարկումը դադարեցվեց",
+  "notes": "Նոտաներ"
 }

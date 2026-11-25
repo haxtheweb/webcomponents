@@ -5,5 +5,6 @@
   "stop": "Halt",
   "playbackStarted": "Ludado komenciĝis",
   "playbackFinished": "Ludado finiĝis",
-  "playbackStopped": "Ludado haltis"
+  "playbackStopped": "Ludado haltis",
+  "notes": "Muziknotoj"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ایمبیڈ",
-    "description": "LinkedIn پروفائل کارڈ ایمبیڈ کریں۔"
+    "description": "LinkedIn پروفائل کا لنک۔"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "وینیٹی نام",
-        "description": "LinkedIn وینیٹی صارف نام کا حصہ۔"
+        "description": "پروفائل ایڈریس کے آخر میں نام (linkedin.com/in/name)۔"
       }
     ],
     "advanced": [

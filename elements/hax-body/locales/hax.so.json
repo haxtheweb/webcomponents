@@ -340,5 +340,6 @@
   "framePhoto": "Qaabee sawirka",
   "uploadOfFileFailed": "Lama soo gelin karin {name}: {reason}",
   "uploadFailedReason": "server-ku ma aqbalin",
+  "uploadServerUnreachable": "seerfarka lama gaadhi karin",
   "joinHaxCommunity": "Ku biir bulshada HAX"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Tāmau LinkedIn",
-    "description": "Tāmau i tētahi kāri kōtaha LinkedIn."
+    "description": "He hono ki tētahi kōtaha LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Ingoa whakaingoa",
-        "description": "Te wāhanga ingoa kaiwhakamahi whakaingoa o LinkedIn."
+        "description": "Te ingoa i te mutunga o te wāhitau kōtaha (linkedin.com/in/ingoa)."
       }
     ],
     "advanced": [

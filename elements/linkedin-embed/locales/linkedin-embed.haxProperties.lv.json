@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn iegulums",
-    "description": "Iegult LinkedIn profila kartīti."
+    "description": "Saite uz LinkedIn profilu."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Profila vārds",
-        "description": "LinkedIn profila lietotājvārda segments."
+        "description": "Vārds profila adreses beigās (linkedin.com/in/vards)."
       }
     ],
     "advanced": [

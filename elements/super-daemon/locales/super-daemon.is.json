@@ -101,5 +101,6 @@
   "openFullMerlin": "Opna Merlin í heild",
   "resultsOfTotal": "{count} af {total} niðurstöðum",
   "runResult": "Keyra niðurstöðu",
-  "sayPickResult": "númer tvö"
+  "sayPickResult": "númer tvö",
+  "voiceNeedsConsent": "Þessi vafri getur ekki skilið tal í tækinu þínu."
 }

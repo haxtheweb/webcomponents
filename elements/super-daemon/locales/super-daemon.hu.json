@@ -101,5 +101,6 @@
   "openFullMerlin": "Teljes Merlin megnyitása",
   "resultsOfTotal": "{count} / {total} találat",
   "runResult": "Találat futtatása",
-  "sayPickResult": "a második"
+  "sayPickResult": "a második",
+  "voiceNeedsConsent": "Ez a böngésző nem tudja az eszközén felismerni a beszédet."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "باز کردن Merlin کامل",
   "resultsOfTotal": "{count} از {total} نتیجه",
   "runResult": "اجرای یک نتیجه",
-  "sayPickResult": "دومی"
+  "sayPickResult": "دومی",
+  "voiceNeedsConsent": "این مرورگر نمی‌تواند گفتار را روی دستگاه شما بفهمد."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "Opna fulla Merlin",
   "resultsOfTotal": "{count} av {total} úrslitum",
   "runResult": "Keyr eitt úrslit",
-  "sayPickResult": "annað"
+  "sayPickResult": "annað",
+  "voiceNeedsConsent": "Hesin kagin kann ikki skilja tos á tínum tóli."
 }

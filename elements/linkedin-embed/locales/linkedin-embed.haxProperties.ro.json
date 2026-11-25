@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Încorporare LinkedIn",
-    "description": "Încorporează un card de profil LinkedIn."
+    "description": "Link către un profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nume personalizat",
-        "description": "Segmentul de nume de utilizator personalizat LinkedIn."
+        "description": "Numele de la finalul adresei profilului (linkedin.com/in/nume)."
       }
     ],
     "advanced": [

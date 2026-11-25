@@ -340,5 +340,6 @@
   "framePhoto": "کادربندی عکس",
   "uploadOfFileFailed": "بارگذاری {name} ممکن نشد: {reason}",
   "uploadFailedReason": "سرور آن را نپذیرفت",
+  "uploadServerUnreachable": "دسترسی به سرور ممکن نشد",
   "joinHaxCommunity": "به جامعه HAX بپیوندید"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-inniseting",
-    "description": "Innset eitt LinkedIn-vangakort."
+    "description": "Leinki til ein LinkedIn-vanga."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Persónligt navn",
-        "description": "Persónligi brúkaranavnsparturin á LinkedIn."
+        "description": "Navnið aftast í adressuni á vanganum (linkedin.com/in/navn)."
       }
     ],
     "advanced": [

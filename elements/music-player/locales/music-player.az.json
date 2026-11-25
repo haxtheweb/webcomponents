@@ -5,5 +5,6 @@
   "stop": "Dayan",
   "playbackStarted": "Oxutma başladı",
   "playbackFinished": "Oxutma bitdi",
-  "playbackStopped": "Oxutma dayandırıldı"
+  "playbackStopped": "Oxutma dayandırıldı",
+  "notes": "Notlar"
 }

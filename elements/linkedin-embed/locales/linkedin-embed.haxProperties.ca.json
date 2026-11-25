@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Inserció de LinkedIn",
-    "description": "Insereix una targeta de perfil de LinkedIn."
+    "description": "Enllaç a un perfil de LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nom personalitzat",
-        "description": "Segment del nom d'usuari personalitzat de LinkedIn."
+        "description": "El nom al final de l'adreça del perfil (linkedin.com/in/nom)."
       }
     ],
     "advanced": [

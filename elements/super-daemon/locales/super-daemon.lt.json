@@ -101,5 +101,6 @@
   "openFullMerlin": "Atidaryti visą Merlin",
   "resultsOfTotal": "Rezultatų: {count} iš {total}",
   "runResult": "Vykdyti rezultatą",
-  "sayPickResult": "antras"
+  "sayPickResult": "antras",
+  "voiceNeedsConsent": "Ši naršyklė negali atpažinti kalbos jūsų įrenginyje."
 }

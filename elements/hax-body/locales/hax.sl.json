@@ -340,5 +340,6 @@
   "framePhoto": "Kadriraj fotografijo",
   "uploadOfFileFailed": "{name} ni bilo mogoče naložiti: {reason}",
   "uploadFailedReason": "strežnik ga ni sprejel",
+  "uploadServerUnreachable": "strežnik ni bil dosegljiv",
   "joinHaxCommunity": "Pridružite se skupnosti HAX"
 }

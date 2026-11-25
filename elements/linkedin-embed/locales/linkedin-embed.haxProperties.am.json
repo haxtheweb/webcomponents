@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "የLinkedIn መክተቻ",
-    "description": "የLinkedIn የመገለጫ ካርድ ክተት።"
+    "description": "ወደ LinkedIn መገለጫ የሚወስድ አገናኝ።"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "የግል ስም",
-        "description": "የLinkedIn የግል የተጠቃሚ ስም ክፍል።"
+        "description": "በመገለጫ አድራሻው መጨረሻ ላይ ያለው ስም (linkedin.com/in/name)።"
       }
     ],
     "advanced": [

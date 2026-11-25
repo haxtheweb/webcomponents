@@ -340,5 +340,6 @@
   "framePhoto": "Кадрирай снимката",
   "uploadOfFileFailed": "{name} не можа да бъде качен: {reason}",
   "uploadFailedReason": "сървърът не го прие",
+  "uploadServerUnreachable": "сървърът не можа да бъде достигнат",
   "joinHaxCommunity": "Присъединете се към общността на HAX"
 }

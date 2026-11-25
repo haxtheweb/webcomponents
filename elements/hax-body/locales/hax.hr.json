@@ -340,5 +340,6 @@
   "framePhoto": "Kadriraj fotografiju",
   "uploadOfFileFailed": "Nije moguće prenijeti {name}: {reason}",
   "uploadFailedReason": "poslužitelj ga nije prihvatio",
+  "uploadServerUnreachable": "poslužitelj nije dostupan",
   "joinHaxCommunity": "Pridruži se HAX zajednici"
 }

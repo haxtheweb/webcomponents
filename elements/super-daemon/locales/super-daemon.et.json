@@ -101,5 +101,6 @@
   "openFullMerlin": "Ava täielik Merlin",
   "resultsOfTotal": "{count} tulemust {total}-st",
   "runResult": "Käivita tulemus",
-  "sayPickResult": "teine"
+  "sayPickResult": "teine",
+  "voiceNeedsConsent": "See brauser ei suuda kõnet sinu seadmes ära tunda."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "បើក Merlin ពេញ",
   "resultsOfTotal": "{count} ក្នុងចំណោម {total} លទ្ធផល",
   "runResult": "ដំណើរការលទ្ធផល",
-  "sayPickResult": "ទីពីរ"
+  "sayPickResult": "ទីពីរ",
+  "voiceNeedsConsent": "កម្មវិធីរុករកនេះមិនអាចយល់សំឡេងនៅលើឧបករណ៍របស់អ្នកបានទេ។"
 }

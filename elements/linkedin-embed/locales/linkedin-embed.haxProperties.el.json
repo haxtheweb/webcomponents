@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ενσωμάτωση LinkedIn",
-    "description": "Ενσωμάτωση κάρτας προφίλ LinkedIn."
+    "description": "Σύνδεσμος σε προφίλ LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Προσωπικό όνομα URL",
-        "description": "Τμήμα προσωπικού ονόματος χρήστη LinkedIn."
+        "description": "Το όνομα στο τέλος της διεύθυνσης του προφίλ (linkedin.com/in/όνομα)."
       }
     ],
     "advanced": [

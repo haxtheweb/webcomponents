@@ -340,5 +340,6 @@
   "framePhoto": "ഫോട്ടോ ഫ്രെയിം ചെയ്യുക",
   "uploadOfFileFailed": "{name} അപ്‌ലോഡ് ചെയ്യാനായില്ല: {reason}",
   "uploadFailedReason": "സെർവർ അത് സ്വീകരിച്ചില്ല",
+  "uploadServerUnreachable": "സെർവറിൽ എത്താൻ കഴിഞ്ഞില്ല",
   "joinHaxCommunity": "HAX കമ്മ്യൂണിറ്റിയിൽ ചേരുക"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn埋め込み",
-    "description": "LinkedInのプロフィールカードを埋め込みます。"
+    "description": "LinkedIn プロフィールへのリンク。"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "カスタムURL名",
-        "description": "LinkedInのカスタムURLのユーザー名部分。"
+        "description": "プロフィールのアドレスの末尾にある名前 (linkedin.com/in/name)。"
       }
     ],
     "advanced": [

@@ -340,5 +340,6 @@
   "framePhoto": "Căn khung ảnh",
   "uploadOfFileFailed": "Không thể tải lên {name}: {reason}",
   "uploadFailedReason": "máy chủ không chấp nhận",
+  "uploadServerUnreachable": "không thể kết nối tới máy chủ",
   "joinHaxCommunity": "Tham gia cộng đồng HAX"
 }

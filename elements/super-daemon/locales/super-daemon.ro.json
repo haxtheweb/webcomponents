@@ -101,5 +101,6 @@
   "openFullMerlin": "Deschide Merlin complet",
   "resultsOfTotal": "{count} din {total} rezultate",
   "runResult": "Rulează un rezultat",
-  "sayPickResult": "al doilea"
+  "sayPickResult": "al doilea",
+  "voiceNeedsConsent": "Acest browser nu poate înțelege vorbirea pe dispozitivul tău."
 }
