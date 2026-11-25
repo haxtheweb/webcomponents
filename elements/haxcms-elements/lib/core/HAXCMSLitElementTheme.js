@@ -647,6 +647,21 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.__firstTabHandler = this.__firstTabToSkipLink.bind(this);
     }
     globalThis.addEventListener("keydown", this.__firstTabHandler, true);
+    // the page-wide stylesheet reads the active design system (its icons,
+    // for one) when it renders, and a theme swap can render it before the
+    // previous theme's system is switched off: draw it again once the
+    // system settles so nothing from that theme stays behind
+    if (!this.__designSystemRestyle) {
+      this.__designSystemRestyle = () => {
+        if (this.hasUpdated && this.isConnected && store.themeStyleElement) {
+          render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
+        }
+      };
+    }
+    globalThis.addEventListener(
+      "design-system-active-changed",
+      this.__designSystemRestyle,
+    );
     // --haxcms-theme-offset-top: how far down the page the theme starts
     // (the editor's top bar keeps 64px for itself when someone is logged
     // in). A theme that fills the screen sizes itself with
@@ -679,6 +694,12 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   disconnectedCallback() {
     if (this.__firstTabHandler) {
       globalThis.removeEventListener("keydown", this.__firstTabHandler, true);
+    }
+    if (this.__designSystemRestyle) {
+      globalThis.removeEventListener(
+        "design-system-active-changed",
+        this.__designSystemRestyle,
+      );
     }
     if (this.__offsetObserver) {
       this.__offsetObserver.disconnect();

@@ -169,12 +169,17 @@ export async function applySiteDesignSystem(
   }
   if (!themeAcceptsDesignSystems(themeTag)) {
     // a theme that takes no system keeps its own (a bridged theme activates
-    // it itself) or DDD; only undo what the site's choice put in place
+    // it itself) or DDD. Undo what the site's choice put in place, and the
+    // system another bridged theme switched on before this one was shown:
+    // left active, it restyled whatever theme came next. A system the
+    // registry doesn't list (a site's own code) is left alone.
     const registry = await loadDesignSystemRegistry();
-    const owner = siteActivated ? registry[siteActivated] : null;
+    const active = manager.active;
+    const owner = active && active !== DDD ? registry[active] : null;
+    const fromSite = !!siteActivated && active === siteActivated;
+    const fromOtherTheme = !!(owner && owner.theme && owner.theme !== themeTag);
     if (
-      siteActivated &&
-      manager.active === siteActivated &&
+      (fromSite || fromOtherTheme) &&
       !(owner && owner.theme === themeTag) &&
       manager.systems &&
       manager.systems[DDD]
