@@ -141,7 +141,8 @@ const CONFIG = {
       // tests poll instead of sleeping (sleeps that predate the rule are in
       // scripts/test-sleeps.baseline.json). Also run by the rule-checks
       // workflow.
-      label: "Rule checks (TypeScript, Node LTS, test sleeps)",
+      label:
+        "Rule checks (TypeScript, Node LTS, test sleeps, ARIA references, a11y-collapse)",
       args: ["scripts/rule-checks.mjs", "all"],
     },
     {

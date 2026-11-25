@@ -1,10 +1,11 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import {
   siteLens,
   toggleGoggles,
   GOGGLES_COMMAND,
 } from "../lib/core/ui/haxcms-goggles-site.js";
 import { HaxcmsGogglesPanel } from "../lib/core/ui/haxcms-goggles-panel.js";
+import { GogglesState } from "../lib/core/ui/haxcms-goggles.js";
 
 class TestLensPanel extends HaxcmsGogglesPanel {
   get panelTitle() {
@@ -66,7 +67,10 @@ describe("haxcms-goggles-site", function () {
   it("loads the lens the first time the goggles go on, with its panel slotted in", async () => {
     expect(loads).to.equal(0);
     await toggleGoggles("testlens");
-    await aTimeout(300);
+    await waitUntil(() => {
+      const g = globalThis.document.querySelector("haxcms-goggles");
+      return g && g.on && g.querySelector("test-lens-panel");
+    }, "the lens panel never arrived");
     expect(loads).to.equal(1);
     const g = globalThis.document.querySelector("haxcms-goggles");
     expect(g).to.exist;
@@ -78,7 +82,7 @@ describe("haxcms-goggles-site", function () {
     expect(panel.shadowRoot.querySelector(".body .said")).to.exist;
     // off again
     await toggleGoggles();
-    await aTimeout(300);
+    await waitUntil(() => !GogglesState.on, "the goggles never went off");
     expect(loads).to.equal(1);
   });
 
@@ -90,12 +94,15 @@ describe("haxcms-goggles-site", function () {
     });
     globalThis.dispatchEvent(asked);
     expect(asked.defaultPrevented).to.be.true;
-    await aTimeout(300);
+    await waitUntil(() => {
+      const g = globalThis.document.querySelector("haxcms-goggles");
+      return g && g.on;
+    }, "the goggles never came on");
     const g = globalThis.document.querySelector("haxcms-goggles");
     expect(g.on).to.be.true;
     // and off again
     await toggleGoggles();
-    await aTimeout(300);
+    await waitUntil(() => !GogglesState.on, "the goggles never went off");
   });
 
   it("moves the panel with the arrow keys and puts it back with Home", async () => {

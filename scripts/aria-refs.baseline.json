@@ -1,0 +1,8 @@
+{
+  "elements/a11y-media-player/a11y-media-player.js": 1,
+  "elements/documentation-player/documentation-player.js": 5,
+  "elements/haxcms-elements/lib/core/haxcms-views-admin-dialog.js": 1,
+  "elements/micro-game-base/lib/concept-map-game.js": 1,
+  "elements/micro-game-base/lib/concept-runner-game.js": 1,
+  "elements/simple-toolbar/lib/simple-toolbar-menu.js": 1
+}

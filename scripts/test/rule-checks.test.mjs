@@ -7,6 +7,8 @@ import {
   countSleeps,
   sleepFindings,
   baselineGrowth,
+  countAriaRefs,
+  countCollapses,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -92,4 +94,57 @@ test("test-sleeps: the baseline only shrinks", () => {
   assert.equal(got.length, 2);
   assert.match(got[0], /raises a\.js from 3 to 4/);
   assert.match(got[1], /adds c\.js/);
+});
+
+test("aria-refs: counts id references with no id in the same file", () => {
+  const ok =
+    'html`<h2 id="hdr">T</h2><div aria-labelledby="hdr"></div><label for="f">F</label><input id="f">`';
+  assert.equal(countAriaRefs(ok), 0);
+  assert.equal(
+    countAriaRefs('html`<button aria-controls="menu"></button><slot></slot>`'),
+    1,
+  );
+  assert.equal(
+    countAriaRefs('html`<div aria-labelledby="a b"></div><p id="a"></p>`'),
+    1,
+  );
+  // ids handed to a shared helper, and dynamic ids, are not counted
+  assert.equal(
+    countAriaRefs(
+      'header({ id: "hdr" }); html`<div aria-labelledby="hdr"></div>`',
+    ),
+    0,
+  );
+  assert.equal(
+    countAriaRefs('html`<div aria-labelledby="${this.labelId}"></div>`'),
+    0,
+  );
+  // light DOM elements resolve in the document
+  assert.equal(
+    countAriaRefs(
+      'createRenderRoot() { return this; } html`<div aria-labelledby="x"></div>`',
+    ),
+    0,
+  );
+});
+
+test("a11y-collapse: counts collapses without heading-button", () => {
+  assert.equal(
+    countCollapses(
+      '<a11y-collapse heading-button><p slot="heading">A</p></a11y-collapse>',
+    ),
+    0,
+  );
+  assert.equal(
+    countCollapses(
+      '<a11y-collapse\n  accordion\n><p slot="heading">A</p></a11y-collapse>',
+    ),
+    1,
+  );
+  assert.equal(
+    countCollapses(
+      "<a11y-collapse-group><a11y-collapse></a11y-collapse></a11y-collapse-group>",
+    ),
+    1,
+  );
 });
