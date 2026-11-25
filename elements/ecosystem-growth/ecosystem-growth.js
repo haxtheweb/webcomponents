@@ -5,6 +5,8 @@
 import { LitElement, html, svg, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import {
   DAY,
   FILES,
@@ -15,9 +17,30 @@ import {
   elementLinks,
   seriesValues,
   journeyCost,
+  buildPeople,
+  heatAt,
+  heatLevel,
+  doneBy,
+  peopleAt,
 } from "./lib/growth-model.js";
 
-const VIEWS = ["themes", "elements", "platforms", "cache"];
+const VIEWS = ["themes", "elements", "platforms", "cache", "contributors"];
+/** Each view's button icon, beside its label. */
+const VIEW_ICONS = {
+  themes: "image:palette",
+  elements: "icons:extension",
+  platforms: "hardware:device-hub",
+  cache: "image:flare",
+  contributors: "social:people",
+};
+/** The glow, coolest to hottest: an ember that turns white hot. */
+const HEAT = [
+  "slateGray",
+  "discoveryCoral",
+  "inventOrange",
+  "keystoneYellow",
+  "white",
+];
 const SERIES_ON = ["commits", "prs", "elements", "themes", "platforms"];
 /** Each chart series' stroke and dash, so it reads without colour too. */
 const SERIES_STYLE = {
@@ -28,6 +51,8 @@ const SERIES_STYLE = {
   themes: ["--ddd-theme-default-inventOrange", ""],
   platforms: ["--ddd-theme-default-roarGolden", "8 4"],
   sites: ["--ddd-theme-default-forestGreen", "3 2"],
+  contributors: ["--ddd-theme-default-discoveryCoral", ""],
+  people: ["--ddd-theme-default-keystoneYellow", "4 2"],
 };
 const S3 = Math.sqrt(3);
 
@@ -83,6 +108,8 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     this._tools = null;
     this._presenting = false;
     this._visible = true;
+    this._P = null;
+    this._spots = [];
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -94,7 +121,27 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
       themes: "Themes",
       elements: "Elements",
       platforms: "Platforms",
-      cache: "Cache",
+      cache: "Magic Script",
+      contributors: "Contributors",
+      contributorsOverTime: "Contributors over time",
+      nPeople: "People so far",
+      nActive: "Active this month",
+      nNew: "New in 12 months",
+      peopleText:
+        "Everyone who has contributed, growing out from {root}: the further out, the later they joined. Each one glows with their recent work (commits to any HAX repository, issues opened and issues closed in the HAX issue queue), hottest while they are busy and fading over the following months.",
+      peopleKey: "Glow, from quiet to white hot",
+      hottest: "Hottest in {date}",
+      selectPerson:
+        "Select a person to see when they joined and what they have done.",
+      joined: "First contributed in {date}, in {where}.",
+      theQueue: "the issue queue",
+      didWhat:
+        "Commits: {commits}. Issues opened: {opened}. Issues closed: {closed}.",
+      peopleCount: "{n} people · {active} active in {date}",
+      profile: "{name} on GitHub",
+      agentsText:
+        "Commits AI agents wrote, working in HAX repositories with the people who run them, since {date}. They are counted together here, not as people.",
+      noPeople: "No contributor data in this source.",
       play: "Play",
       pause: "Pause",
       fullScreen: "Full screen",
@@ -206,7 +253,7 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       /** Folder (ending in /) that holds the growth JSON files. */
       src: { type: String },
-      /** The view shown first: themes, elements, platforms or cache. */
+      /** The view shown first: themes, elements, platforms, cache (Magic Script) or contributors. */
       view: { type: String, reflect: true },
       _M: { state: true },
       _error: { state: true },
@@ -336,6 +383,37 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
           background: var(--surface);
           color: var(--fg);
           cursor: pointer;
+        }
+        button.act.withicon {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-4);
+        }
+        button.act.withicon simple-icon-lite {
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          --simple-icon-color: currentColor;
+          flex: none;
+        }
+        .heatkey {
+          display: block;
+          height: var(--ddd-spacing-3);
+          border-radius: var(--ddd-radius-xs);
+          background: linear-gradient(
+            to right,
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-discoveryCoral),
+            var(--ddd-theme-default-inventOrange),
+            var(--ddd-theme-default-keystoneYellow),
+            var(--ddd-theme-default-white)
+          );
+          border: var(--ddd-border-xs);
+          border-color: var(--line);
+        }
+        ol.hot {
+          margin: var(--ddd-spacing-1) var(--ddd-spacing-0);
+          padding-inline-start: var(--ddd-spacing-5);
         }
         button.act[aria-pressed="true"],
         button.act[aria-current="step"] {
@@ -587,8 +665,18 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
       FILES.forEach((f, i) => {
         raw[f] = parts[i];
       });
+      // contributors.json is newer than the other files: a source without it still loads
+      raw.contributors = await globalThis
+        .fetch(
+          new URL("contributors.json", new URL(base, globalThis.location.href))
+            .href,
+        )
+        .then((r) => (r.ok ? r.json() : null))
+        .catch(() => null);
       this._raw = raw;
-      this._M = buildModel(raw);
+      const M = buildModel(raw);
+      this._P = buildPeople(raw.contributors, M.T0, M.T1);
+      this._M = M;
     } catch {
       this._error = this.t.failed;
     }
@@ -598,7 +686,7 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     this._now = this._M.T1;
     this._visit = 0;
     this._shown = new Map();
-    if (!VIEWS.includes(this.view)) this.view = "themes";
+    if (!this._views().includes(this.view)) this.view = "themes";
     this.updateComplete.then(() => {
       this._watch();
       this._registerTools();
@@ -714,6 +802,11 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     if (on) this._kick();
   }
 
+  /** The views this source can show (contributors only with its file). */
+  _views() {
+    return VIEWS.filter((v) => v !== "contributors" || this._P);
+  }
+
   _steps() {
     return this._cacheMode === "site" ? this._M.journey : this._M.visits;
   }
@@ -810,6 +903,7 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     if (this.view === "elements") this._drawElements(now);
     else if (this.view === "platforms") this._drawPlatforms(now);
     else if (this.view === "cache") this._drawCache();
+    else if (this.view === "contributors") this._drawPeople(now);
     else this._drawThemes(now);
   }
 
@@ -1036,6 +1130,155 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     );
   }
 
+  /** A colour on the glow scale, 0 (quiet) to 1 (white hot). */
+  _heatColor(level, alpha) {
+    if (!this._heatStops) {
+      this._heatStops = HEAT.map((n) => {
+        const v = this._color(n).replace("#", "");
+        const h =
+          v.length === 3
+            ? v
+                .split("")
+                .map((c) => c + c)
+                .join("")
+            : v;
+        const rgb = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+        return rgb.some((c) => isNaN(c)) ? [136, 136, 136] : rgb;
+      });
+    }
+    const st = this._heatStops;
+    const f = clamp(level, 0, 1) * (st.length - 1);
+    const i = Math.min(st.length - 2, Math.floor(f));
+    const k = f - i;
+    const c = st[i].map((v, j) => Math.round(v + (st[i + 1][j] - v) * k));
+    return (
+      "rgba(" + c.join(", ") + ", " + (alpha === undefined ? 1 : alpha) + ")"
+    );
+  }
+
+  _drawPeople(now) {
+    const P = this._P;
+    const M = this._M;
+    if (!P) return;
+    const x = this._ctx;
+    const W = this._W;
+    const H = this._H;
+    const cx = W / 2;
+    const cy = H / 2;
+    const R = Math.max(40, Math.min(W, H) / 2 - 22);
+    const span = Math.max(1, M.T1 - M.T0);
+    const fAt = (t) => 0.12 + 0.88 * clamp((t - M.T0) / span, 0, 1);
+    // year rings, like a tree's, and the ring the network has grown to
+    x.font = "500 11px " + this._css("--ddd-font-navigation", "sans-serif");
+    x.textAlign = "center";
+    x.textBaseline = "middle";
+    let lastR = -99;
+    for (let y = new Date(M.T0).getUTCFullYear() + 1; ; y++) {
+      const t = Date.UTC(y, 0, 1);
+      if (t > M.T1) break;
+      const r = fAt(t) * R;
+      x.strokeStyle = "rgba(255, 255, 255, 0.08)";
+      x.lineWidth = 1;
+      x.beginPath();
+      x.arc(cx, cy, r, 0, Math.PI * 2);
+      x.stroke();
+      if (r - lastR > 16 && t <= this._now) {
+        x.fillStyle = "rgba(255, 255, 255, 0.45)";
+        x.fillText(String(y), cx, cy - r);
+        lastR = r;
+      }
+    }
+    x.setLineDash([4, 6]);
+    x.strokeStyle = "rgba(255, 209, 0, 0.5)";
+    x.beginPath();
+    x.arc(cx, cy, fAt(this._now) * R, 0, Math.PI * 2);
+    x.stroke();
+    x.setLineDash([]);
+    x.textAlign = "start";
+    const vis = P.list.filter((p) => p.T <= this._now || p === P.root);
+    const spots = [];
+    vis.forEach((p) => {
+      const g = p === P.root ? 1 : this._grow(p, now);
+      const r = p.f * R * (p === P.root ? 1 : 0.35 + 0.65 * g);
+      const lv = heatLevel(heatAt(p, this._now), P.max);
+      const size =
+        p === P.root
+          ? 9 + 7 * lv
+          : (2.5 + 8 * Math.sqrt(doneBy(p, this._now) / P.most)) * g;
+      spots.push([p, cx + Math.cos(p.a) * r, cy + Math.sin(p.a) * r, size, lv]);
+    });
+    // branches: everyone grows out of the centre, glowing with their work
+    spots.forEach(([p, a, b, , lv]) => {
+      if (p === P.root) return;
+      const bend = 0.35;
+      const mx = cx + (a - cx) * 0.5 - (b - cy) * bend * 0.5;
+      const my = cy + (b - cy) * 0.5 + (a - cx) * bend * 0.5;
+      x.strokeStyle = this._heatColor(lv, 0.14 + 0.5 * lv);
+      x.lineWidth = 0.6 + 1.6 * lv;
+      x.beginPath();
+      x.moveTo(cx, cy);
+      x.quadraticCurveTo(mx, my, a, b);
+      x.stroke();
+    });
+    // dots, coolest first so the hottest sit on top
+    [...spots]
+      .sort((p, q) => p[4] - q[4])
+      .forEach(([p, a, b, r, lv]) => {
+        x.save();
+        if (lv > 0.2 && !reducedMotion()) {
+          x.shadowColor = this._heatColor(lv);
+          x.shadowBlur = 4 + 22 * lv * lv;
+        }
+        x.fillStyle = this._heatColor(lv, lv > 0.02 ? 1 : 0.55);
+        if (p.kind === "agents") this._hex(a, b, r + 2);
+        else {
+          x.beginPath();
+          x.arc(a, b, Math.max(1.5, r), 0, Math.PI * 2);
+        }
+        x.fill();
+        x.restore();
+        if (p === this._hover || p === this._sel) {
+          x.strokeStyle = "#ffffff";
+          x.lineWidth = 2;
+          x.beginPath();
+          x.arc(a, b, Math.max(1.5, r) + 4, 0, Math.PI * 2);
+          x.stroke();
+        }
+      });
+    this._spots = spots;
+    // names: the centre, the hottest few now, and whoever is pointed at
+    const hot = peopleAt(P, this._now, 4).hottest.map((h) => h.id);
+    spots.forEach(([p, a, b, r]) => {
+      const show =
+        p === P.root ||
+        p.kind === "agents" ||
+        hot.includes(p.key) ||
+        p === this._hover ||
+        p === this._sel;
+      if (!show) return;
+      this._pill(
+        p.label,
+        a,
+        b - Math.max(r, 4) - 12,
+        clamp(R * 0.045, 11, 14),
+        p === P.root,
+      );
+    });
+    // how many, at a glance (the panel says the same in words)
+    const at = peopleAt(P, this._now, 0);
+    this._pill(
+      fill(this.t.peopleCount, {
+        n: at.contributors,
+        active: at.activeThisMonth,
+        date: this._date(this._now),
+      }),
+      cx,
+      H - 16,
+      12,
+      true,
+    );
+  }
+
   _drawCache() {
     const M = this._M;
     const { s, px } = this._geom(M.modRing);
@@ -1107,6 +1350,18 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
   _hit(X, Y) {
     const M = this._M;
     if (!M || this.view === "cache") return null;
+    if (this.view === "contributors") {
+      let best = null;
+      let bd = 14;
+      this._spots.forEach(([p, a, b, r]) => {
+        const d = Math.hypot(X - a, Y - b) - r;
+        if (d < bd) {
+          bd = d;
+          best = p;
+        }
+      });
+      return best;
+    }
     const list =
       this.view === "elements"
         ? M.els
@@ -1175,6 +1430,11 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     this._hover = null;
     this._play(false);
     if (v === "cache") this._visit = 0;
+    if (v === "contributors") {
+      const on = new Set(this._on);
+      ["contributors", "people"].forEach((k) => on.add(k));
+      this._on = on;
+    }
     this._kick();
   }
 
@@ -1236,11 +1496,12 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     const M = this._M;
     const raw = this._raw;
     const ro = { readOnlyHint: true };
+    const P = this._P;
     const tools = [
       {
         name: "growth_series",
         description:
-          "Monthly growth of HAX: commits, prs, issues, elements, themes, platforms or sites, between two months (YYYY-MM).",
+          "Monthly growth of HAX: commits, prs, issues, elements, themes, platforms, sites, contributors (active that month) or people (running total), between two months (YYYY-MM).",
         inputSchema: {
           type: "object",
           properties: {
@@ -1338,6 +1599,24 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
           ),
       },
     ];
+    if (P)
+      tools.push({
+        name: "growth_contributors",
+        description:
+          "Who had contributed to HAX by a month (YYYY-MM, default the latest): how many people, how many were active that month, how many joined in the 12 months before, and who was most active recently (commits, issues opened and closed, fading over months).",
+        inputSchema: {
+          type: "object",
+          properties: { month: { type: "string" } },
+        },
+        annotations: ro,
+        execute: async ({ month } = {}) => {
+          const t =
+            month && /^\d{4}-\d{2}$/.test(month)
+              ? Math.min(M.T1, Date.parse(month + "-28"))
+              : M.T1;
+          return JSON.stringify(peopleAt(P, t, 10));
+        },
+      });
     tools.forEach((tool) => {
       try {
         mc.registerTool(tool, { signal: this._tools.signal });
@@ -1369,25 +1648,33 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
         </div>
         <div class="actions">
           <div class="group" role="group" aria-label="${this.t.views}">
-            ${VIEWS.map(
+            ${this._views().map(
               (v) =>
                 html`<button
-                  class="act"
+                  class="act withicon"
                   type="button"
                   aria-pressed="${this.view === v ? "true" : "false"}"
                   @click="${() => this._setView(v)}"
                 >
-                  ${this.t[v]}
+                  <simple-icon-lite
+                    icon="${VIEW_ICONS[v]}"
+                    aria-hidden="true"
+                  ></simple-icon-lite
+                  >${this.t[v]}
                 </button>`,
             )}
           </div>
           <button
-            class="act"
+            class="act withicon"
             type="button"
             aria-pressed="${this._presenting ? "true" : "false"}"
             @click="${this._present}"
           >
-            ${this._presenting ? this.t.exitFullScreen : this.t.fullScreen}
+            <simple-icon-lite
+              icon="${this._presenting ? "icons:fullscreen-exit" : "icons:fullscreen"}"
+              aria-hidden="true"
+            ></simple-icon-lite
+            >${this._presenting ? this.t.exitFullScreen : this.t.fullScreen}
           </button>
         </div>
       </header>
@@ -1475,7 +1762,9 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
           ? M.plats.filter((i) => i.T <= this._now).length
           : this.view === "cache"
             ? this._steps()[this._visit].files
-            : M.themes.filter((i) => !i.isBase && i.T <= this._now).length;
+            : this.view === "contributors"
+              ? peopleAt(this._P, this._now).contributors
+              : M.themes.filter((i) => !i.isBase && i.T <= this._now).length;
     return fill(this.t.drawing, { view: this.t[this.view], date: when, n });
   }
 
@@ -1504,7 +1793,72 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     if (this.view === "cache") return this._cachePanel();
     if (this.view === "elements") return this._elementsPanel();
     if (this.view === "platforms") return this._platformsPanel();
+    if (this.view === "contributors") return this._peoplePanel();
     return this._themesPanel();
+  }
+
+  _peoplePanel() {
+    const P = this._P;
+    if (!P) return html`<p>${this.t.noPeople}</p>`;
+    const at = peopleAt(P, this._now, 5);
+    const sel = this._sel && P.list.includes(this._sel) ? this._sel : null;
+    const tot = sel ? sel.totals : null;
+    return html`<h3>${this.t.contributorsOverTime}</h3>
+      <dl>
+        ${this._num(this.t.nPeople, at.contributors)}
+        ${this._num(this.t.nActive, at.activeThisMonth)}
+        ${this._num(this.t.nNew, at.newInLast12Months)}
+      </dl>
+      <p>${fill(this.t.peopleText, { root: P.root ? P.root.label : "" })}</p>
+      <p class="muted">${this.t.peopleKey}</p>
+      <span class="heatkey" aria-hidden="true"></span>
+      ${
+        at.hottest.length
+          ? html`<h4>
+                ${fill(this.t.hottest, { date: this._date(this._now) })}
+              </h4>
+              <ol class="hot">
+                ${at.hottest.map((h) => html`<li>${h.name}</li>`)}
+              </ol>`
+          : nothing
+      }
+      ${
+        sel
+          ? html`<h4>${sel.label}</h4>
+              ${
+                sel.kind === "person"
+                  ? html`<p>
+                        ${fill(this.t.joined, {
+                          date: this._date(sel.T),
+                          where:
+                            sel.where === "issues"
+                              ? this.t.theQueue
+                              : sel.where,
+                        })}
+                        ${fill(this.t.didWhat, {
+                          commits: (tot.commits || 0).toLocaleString(),
+                          opened: (tot.opened || 0).toLocaleString(),
+                          closed: (tot.closed || 0).toLocaleString(),
+                        })}
+                      </p>
+                      ${
+                        /^[A-Za-z0-9-]{1,39}$/.test(sel.login)
+                          ? html`<p>
+                              <a
+                                href="https://github.com/${sel.login}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >${fill(this.t.profile, { name: sel.label })}</a
+                              >
+                            </p>`
+                          : nothing
+                      }`
+                  : html`<p>
+                      ${fill(this.t.agentsText, { date: this._date(sel.T) })}
+                    </p>`
+              }`
+          : html`<p class="muted">${this.t.selectPerson}</p>`
+      }`;
   }
 
   _themesPanel() {

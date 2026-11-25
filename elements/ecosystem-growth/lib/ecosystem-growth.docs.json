@@ -38,7 +38,7 @@
       "property": "view",
       "type": "string",
       "default": "\"themes\"",
-      "description": "The view shown first: themes, elements, platforms or cache.",
+      "description": "The view shown first: themes, elements, platforms, cache (Magic Script) or contributors.",
       "hax": {
         "title": "First view",
         "input": "select",
@@ -46,7 +46,8 @@
           "themes": "Themes",
           "elements": "Elements",
           "platforms": "Platforms",
-          "cache": "Cache"
+          "cache": "Magic Script",
+          "contributors": "Contributors"
         }
       }
     }
@@ -103,7 +104,8 @@
             "themes": "Themes",
             "elements": "Elements",
             "platforms": "Platforms",
-            "cache": "Cache"
+            "cache": "Magic Script",
+            "contributors": "Contributors"
           }
         }
       ],
@@ -124,7 +126,7 @@
       }
     ]
   },
-  "surfaceHash": "a29d7847e857",
+  "surfaceHash": "8a75377404b0",
   "walkthroughs": [],
   "videos": [],
   "motion": {

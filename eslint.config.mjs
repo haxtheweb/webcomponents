@@ -6,6 +6,7 @@ import baselineJs from "eslint-plugin-baseline-js";
 import globals from "globals";
 import leakPatterns from "./scripts/eslint-rules/leak-patterns.mjs";
 import htmlSinks from "./scripts/eslint-rules/html-sinks.mjs";
+import i18nReserved from "./scripts/eslint-rules/i18n-reserved.mjs";
 
 /**
  * ESLint 9 flat config for the webcomponents monorepo.
@@ -176,6 +177,17 @@ export default [
     plugins: { "haxtheweb-html": htmlSinks },
     rules: {
       "haxtheweb-html/unsanitized-html-sink": "error",
+    },
+  },
+  {
+    // I18NMixin keeps an element's English strings in this._t
+    // (scripts/eslint-rules/i18n-reserved.mjs, haxtheweb/issues#3414): an
+    // element using _t for anything else breaks its labels with no error.
+    files: ["elements/**/*.js"],
+    ignores: ["elements/i18n-manager/**"],
+    plugins: { "haxtheweb-i18n": i18nReserved },
+    rules: {
+      "haxtheweb-i18n/reserved-t": "error",
     },
   },
   {

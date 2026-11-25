@@ -1,716 +1,719 @@
 {
-  "meta": {
-    "generated": "2026-11-25",
-    "generator": "https://github.com/haxtheweb/praw/blob/main/ecosystem/build/build_growth.py",
-    "source": {
-      "webcomponents": "6c0e7a61c3da8a97a2d8450807ecd42313bb4297"
-    },
-    "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "about": "Every HAXcms theme built on the shared theme core (HAXCMSLitElementTheme): when its file appeared, the class it extends ('core' or a family base), and its own code size (bytes and gzipped).",
-    "issue": "https://github.com/haxtheweb/issues/issues/3409"
+ "meta": {
+  "generated": "2026-11-25",
+  "generator": "https://github.com/haxtheweb/praw/blob/main/ecosystem/build/build_growth.py",
+  "source": {
+   "webcomponents": "86f695077af6b0461776552f13a06351a889748a"
   },
-  "core": {
-    "path": "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js",
-    "appeared": "2019-10-29"
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "about": "Every HAXcms theme built on the shared theme core (HAXCMSLitElementTheme): when its file appeared, the class it extends ('core' or a family base), and its own code size (bytes and gzipped).",
+  "issue": "https://github.com/haxtheweb/issues/issues/3409"
+ },
+ "core": {
+  "path": "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js",
+  "appeared": "2019-10-29"
+ },
+ "familyBases": {
+  "HomageThemeBase": {
+   "path": "elements/papermod-theme/lib/HomageThemeBase.js",
+   "appeared": "2026-11-17",
+   "gz": 4326,
+   "classes": [
+    "HomageColumnTheme",
+    "HomageSidebarTheme"
+   ]
+  }
+ },
+ "themes": [
+  {
+   "tag": "outline-player",
+   "class": "OutlinePlayer",
+   "path": "elements/outline-player/outline-player.js",
+   "base": "core",
+   "family": "outline-player",
+   "appeared": "2018-10-23",
+   "bytes": 19126,
+   "gz": 4869
   },
-  "familyBases": {
-    "HomageThemeBase": {
-      "path": "elements/papermod-theme/lib/HomageThemeBase.js",
-      "appeared": "2026-11-17",
-      "gz": 4326,
-      "classes": ["HomageColumnTheme", "HomageSidebarTheme"]
-    }
+  {
+   "tag": "simple-blog",
+   "class": "SimpleBlog",
+   "path": "elements/simple-blog/simple-blog.js",
+   "base": "core",
+   "family": "simple-blog",
+   "appeared": "2018-10-23",
+   "bytes": 11118,
+   "gz": 3540
   },
-  "themes": [
-    {
-      "tag": "outline-player",
-      "class": "OutlinePlayer",
-      "path": "elements/outline-player/outline-player.js",
-      "base": "core",
-      "family": "outline-player",
-      "appeared": "2018-10-23",
-      "bytes": 19126,
-      "gz": 4869
-    },
-    {
-      "tag": "simple-blog",
-      "class": "SimpleBlog",
-      "path": "elements/simple-blog/simple-blog.js",
-      "base": "core",
-      "family": "simple-blog",
-      "appeared": "2018-10-23",
-      "bytes": 11118,
-      "gz": 3540
-    },
-    {
-      "tag": "learn-two-theme",
-      "class": "LearnTwoTheme",
-      "path": "elements/learn-two-theme/learn-two-theme.js",
-      "base": "core",
-      "family": "learn-two-theme",
-      "appeared": "2019-03-10",
-      "bytes": 21165,
-      "gz": 4523
-    },
-    {
-      "tag": "haxcms-basic-theme",
-      "class": "HAXCMSBasicTheme",
-      "path": "elements/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
-      "base": "core",
-      "family": "haxcms-elements",
-      "appeared": "2019-03-14",
-      "bytes": 5353,
-      "gz": 1634
-    },
-    {
-      "tag": "haxcms-slide-theme",
-      "class": "HAXCMSSlideTheme",
-      "path": "elements/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
-      "base": "core",
-      "family": "haxcms-elements",
-      "appeared": "2019-03-14",
-      "bytes": 8163,
-      "gz": 2244
-    },
-    {
-      "tag": "haxor-slevin",
-      "class": "HaxorSlevin",
-      "path": "elements/haxor-slevin/haxor-slevin.js",
-      "base": "core",
-      "family": "haxor-slevin",
-      "appeared": "2019-04-24",
-      "bytes": 27210,
-      "gz": 6205
-    },
-    {
-      "tag": "example-haxcms-theme",
-      "class": "ExampleHaxcmsTheme",
-      "path": "elements/example-haxcms-theme/example-haxcms-theme.js",
-      "base": "core",
-      "family": "example-haxcms-theme",
-      "appeared": "2019-05-21",
-      "bytes": 7648,
-      "gz": 2401
-    },
-    {
-      "tag": "clean-one",
-      "class": "CleanOne",
-      "path": "elements/clean-one/clean-one.js",
-      "base": "core",
-      "family": "clean-one",
-      "appeared": "2020-06-29",
-      "bytes": 40781,
-      "gz": 9198
-    },
-    {
-      "tag": "clean-two",
-      "class": "CleanTwo",
-      "path": "elements/clean-two/clean-two.js",
-      "base": "core",
-      "family": "clean-two",
-      "appeared": "2020-07-06",
-      "bytes": 34585,
-      "gz": 6980
-    },
-    {
-      "tag": "haxcms-blank-theme",
-      "class": "HAXCMSBlankTheme",
-      "path": "elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
-      "base": "CleanTwo",
-      "family": "haxcms-elements",
-      "appeared": "2021-01-11",
-      "bytes": 2067,
-      "gz": 906
-    },
-    {
-      "tag": "bootstrap-theme",
-      "class": "BootstrapTheme",
-      "path": "elements/bootstrap-theme/bootstrap-theme.js",
-      "base": "core",
-      "family": "bootstrap-theme",
-      "appeared": "2021-02-25",
-      "bytes": 31179,
-      "gz": 6308
-    },
-    {
-      "tag": "haxcms-print-theme",
-      "class": "HAXCMSPrintTheme",
-      "path": "elements/haxcms-elements/lib/core/themes/haxcms-print-theme.js",
-      "base": "CleanTwo",
-      "family": "haxcms-elements",
-      "appeared": "2021-11-17",
-      "bytes": 5704,
-      "gz": 1967
-    },
-    {
-      "tag": "terrible-best-themes",
-      "class": "TerribleBestThemes",
-      "path": "elements/terrible-themes/lib/terrible-best-themes.js",
-      "base": "core",
-      "family": "terrible-themes",
-      "appeared": "2023-05-16",
-      "bytes": 8446,
-      "gz": 2519
-    },
-    {
-      "tag": "terrible-outlet-themes",
-      "class": "TerribleOutletThemes",
-      "path": "elements/terrible-themes/lib/terrible-outlet-themes.js",
-      "base": "core",
-      "family": "terrible-themes",
-      "appeared": "2023-05-16",
-      "bytes": 7429,
-      "gz": 2304
-    },
-    {
-      "tag": "terrible-productionz-themes",
-      "class": "TerribleProductionzThemes",
-      "path": "elements/terrible-themes/lib/terrible-productionz-themes.js",
-      "base": "core",
-      "family": "terrible-themes",
-      "appeared": "2023-05-16",
-      "bytes": 13517,
-      "gz": 3342
-    },
-    {
-      "tag": "terrible-resume-themes",
-      "class": "TerribleResumeThemes",
-      "path": "elements/terrible-themes/lib/terrible-resume-themes.js",
-      "base": "core",
-      "family": "terrible-themes",
-      "appeared": "2023-05-16",
-      "bytes": 8780,
-      "gz": 2311
-    },
-    {
-      "tag": "terrible-themes",
-      "class": "TerribleThemes",
-      "path": "elements/terrible-themes/terrible-themes.js",
-      "base": "core",
-      "family": "terrible-themes",
-      "appeared": "2023-05-16",
-      "bytes": 17028,
-      "gz": 3807
-    },
-    {
-      "tag": "polaris-theme",
-      "class": "PolarisTheme",
-      "path": "elements/polaris-theme/polaris-theme.js",
-      "base": "core",
-      "family": "polaris-theme",
-      "appeared": "2023-09-26",
-      "bytes": 22555,
-      "gz": 5339
-    },
-    {
-      "tag": "collections-theme",
-      "class": "CollectionsTheme",
-      "path": "elements/collection-list/lib/collections-theme.js",
-      "base": "core",
-      "family": "collection-list",
-      "appeared": "2023-11-29",
-      "bytes": 14998,
-      "gz": 3582
-    },
-    {
-      "tag": "training-theme",
-      "class": "TrainingTheme",
-      "path": "elements/training-theme/training-theme.js",
-      "base": "core",
-      "family": "training-theme",
-      "appeared": "2023-12-04",
-      "bytes": 27588,
-      "gz": 5832
-    },
-    {
-      "tag": "polaris-invent-theme",
-      "class": "PolarisInventTheme",
-      "path": "elements/polaris-theme/lib/polaris-invent-theme.js",
-      "base": "core",
-      "family": "polaris-theme",
-      "appeared": "2024-01-19",
-      "bytes": 30240,
-      "gz": 7059
-    },
-    {
-      "tag": "ddd-brochure-theme",
-      "class": "DDDBrochureTheme",
-      "path": "elements/d-d-d/lib/ddd-brochure-theme.js",
-      "base": "core",
-      "family": "d-d-d",
-      "appeared": "2024-02-15",
-      "bytes": 8820,
-      "gz": 2628
-    },
-    {
-      "tag": "polaris-flex-theme",
-      "class": "PolarisFlexTheme",
-      "path": "elements/polaris-theme/lib/polaris-flex-theme.js",
-      "base": "core",
-      "family": "polaris-theme",
-      "appeared": "2024-11-21",
-      "bytes": 42014,
-      "gz": 9422
-    },
-    {
-      "tag": "polaris-flex-sidebar",
-      "class": "PolarisFlexSidebar",
-      "path": "elements/polaris-theme/lib/polaris-flex-sidebar.js",
-      "base": "PolarisFlexTheme",
-      "family": "polaris-theme",
-      "appeared": "2025-01-30",
-      "bytes": 6117,
-      "gz": 1829
-    },
-    {
-      "tag": "clean-portfolio-theme",
-      "class": "CleanPortfolioTheme",
-      "path": "elements/clean-portfolio-theme/clean-portfolio-theme.js",
-      "base": "core",
-      "family": "clean-portfolio-theme",
-      "appeared": "2025-02-03",
-      "bytes": 63303,
-      "gz": 11895
-    },
-    {
-      "tag": "journey-theme",
-      "class": "JourneyTheme",
-      "path": "elements/journey-theme/journey-theme.js",
-      "base": "core",
-      "family": "journey-theme",
-      "appeared": "2025-04-25",
-      "bytes": 41778,
-      "gz": 7967
-    },
-    {
-      "tag": "journey-sidebar-theme",
-      "class": "JourneySidebarTheme",
-      "path": "elements/journey-theme/lib/journey-sidebar-theme.js",
-      "base": "core",
-      "family": "journey-theme",
-      "appeared": "2025-05-12",
-      "bytes": 6672,
-      "gz": 2312
-    },
-    {
-      "tag": "journey-topbar-theme",
-      "class": "JourneyTopbarTheme",
-      "path": "elements/journey-theme/lib/journey-topbar-theme.js",
-      "base": "core",
-      "family": "journey-theme",
-      "appeared": "2025-05-12",
-      "bytes": 5551,
-      "gz": 2074
-    },
-    {
-      "tag": "glossy-portfolio-theme",
-      "class": "GlossyPortfolioTheme",
-      "path": "elements/glossy-portfolio-theme/glossy-portfolio-theme.js",
-      "base": "core",
-      "family": "glossy-portfolio-theme",
-      "appeared": "2025-05-21",
-      "bytes": 8549,
-      "gz": 2759
-    },
-    {
-      "tag": "spacebook-theme",
-      "class": "SpacebookTheme",
-      "path": "elements/spacebook-theme/spacebook-theme.js",
-      "base": "core",
-      "family": "spacebook-theme",
-      "appeared": "2025-09-06",
-      "bytes": 39200,
-      "gz": 7467
-    },
-    {
-      "tag": "haxma-theme",
-      "class": "HaxmaTheme",
-      "path": "elements/haxma-theme/haxma-theme.js",
-      "base": "core",
-      "family": "haxma-theme",
-      "appeared": "2025-09-09",
-      "bytes": 29987,
-      "gz": 5927
-    },
-    {
-      "tag": "haxcms-json-theme",
-      "class": "HAXCMSJSONTheme",
-      "path": "elements/haxcms-elements/lib/core/themes/haxcms-json-theme.js",
-      "base": "HAXCMSPrintTheme",
-      "family": "haxcms-elements",
-      "appeared": "2025-09-22",
-      "bytes": 26465,
-      "gz": 6107
-    },
-    {
-      "tag": "link-card-theme",
-      "class": "LinkCardTheme",
-      "path": "elements/link-card-theme/link-card-theme.js",
-      "base": "core",
-      "family": "link-card-theme",
-      "appeared": "2026-05-26",
-      "bytes": 22557,
-      "gz": 5291
-    },
-    {
-      "tag": "twenty-six-theme",
-      "class": "TwentySixTheme",
-      "path": "elements/twenty-six-theme/twenty-six-theme.js",
-      "base": "core",
-      "family": "twenty-six-theme",
-      "appeared": "2026-05-26",
-      "bytes": 35881,
-      "gz": 7665
-    },
-    {
-      "tag": "resume-theme",
-      "class": "ResumeTheme",
-      "path": "elements/resume-theme/resume-theme.js",
-      "base": "core",
-      "family": "resume-theme",
-      "appeared": "2026-06-23",
-      "bytes": 21365,
-      "gz": 4039
-    },
-    {
-      "tag": "chamfer-theme",
-      "class": "ChamferTheme",
-      "path": "elements/chamfer-theme/chamfer-theme.js",
-      "base": "core",
-      "family": "chamfer-theme",
-      "appeared": "2026-08-18",
-      "bytes": 13225,
-      "gz": 3801
-    },
-    {
-      "tag": "patternfly-theme",
-      "class": "PatternflyTheme",
-      "path": "elements/patternfly-theme/patternfly-theme.js",
-      "base": "core",
-      "family": "patternfly-theme",
-      "appeared": "2026-11-11",
-      "bytes": 18322,
-      "gz": 3976
-    },
-    {
-      "tag": "vhs-blog-theme",
-      "class": "VhsBlogTheme",
-      "path": "elements/vhs-blog-theme/vhs-blog-theme.js",
-      "base": "core",
-      "family": "vhs-blog-theme",
-      "appeared": "2026-11-11",
-      "bytes": 71775,
-      "gz": 17758
-    },
-    {
-      "tag": "carbon-theme",
-      "class": "CarbonTheme",
-      "path": "elements/carbon-theme/carbon-theme.js",
-      "base": "core",
-      "family": "carbon-theme",
-      "appeared": "2026-11-12",
-      "bytes": 18079,
-      "gz": 4320
-    },
-    {
-      "tag": "ecosystem-theme",
-      "class": "EcosystemTheme",
-      "path": "elements/ecosystem-theme/ecosystem-theme.js",
-      "base": "core",
-      "family": "ecosystem-theme",
-      "appeared": "2026-11-12",
-      "bytes": 29370,
-      "gz": 7479
-    },
-    {
-      "tag": "material-theme",
-      "class": "MaterialTheme",
-      "path": "elements/material-theme/material-theme.js",
-      "base": "core",
-      "family": "material-theme",
-      "appeared": "2026-11-12",
-      "bytes": 21239,
-      "gz": 4828
-    },
-    {
-      "tag": "shadcn-theme",
-      "class": "ShadcnTheme",
-      "path": "elements/shadcn-theme/shadcn-theme.js",
-      "base": "core",
-      "family": "shadcn-theme",
-      "appeared": "2026-11-12",
-      "bytes": 16460,
-      "gz": 3940
-    },
-    {
-      "tag": "spectrum-theme",
-      "class": "SpectrumTheme",
-      "path": "elements/spectrum-theme/spectrum-theme.js",
-      "base": "core",
-      "family": "spectrum-theme",
-      "appeared": "2026-11-12",
-      "bytes": 17773,
-      "gz": 4137
-    },
-    {
-      "tag": "tailwind-theme",
-      "class": "TailwindTheme",
-      "path": "elements/tailwind-theme/tailwind-theme.js",
-      "base": "core",
-      "family": "tailwind-theme",
-      "appeared": "2026-11-12",
-      "bytes": 18760,
-      "gz": 4377
-    },
-    {
-      "tag": "uswds-theme",
-      "class": "UswdsTheme",
-      "path": "elements/uswds-theme/uswds-theme.js",
-      "base": "core",
-      "family": "uswds-theme",
-      "appeared": "2026-11-13",
-      "bytes": 24783,
-      "gz": 5674
-    },
-    {
-      "tag": "webawesome-theme",
-      "class": "WebawesomeTheme",
-      "path": "elements/webawesome-theme/webawesome-theme.js",
-      "base": "core",
-      "family": "webawesome-theme",
-      "appeared": "2026-11-13",
-      "bytes": 22181,
-      "gz": 5168
-    },
-    {
-      "tag": "fluent-theme",
-      "class": "FluentTheme",
-      "path": "elements/fluent-theme/fluent-theme.js",
-      "base": "core",
-      "family": "fluent-theme",
-      "appeared": "2026-11-16",
-      "bytes": 18507,
-      "gz": 4403
-    },
-    {
-      "tag": "primer-theme",
-      "class": "PrimerTheme",
-      "path": "elements/primer-theme/primer-theme.js",
-      "base": "core",
-      "family": "primer-theme",
-      "appeared": "2026-11-16",
-      "bytes": 17634,
-      "gz": 4289
-    },
-    {
-      "tag": "writing-theme",
-      "class": "WritingTheme",
-      "path": "elements/writing-theme/writing-theme.js",
-      "base": "core",
-      "family": "writing-theme",
-      "appeared": "2026-11-16",
-      "bytes": 16848,
-      "gz": 4578
-    },
-    {
-      "tag": "book-theme",
-      "class": "BookTheme",
-      "path": "elements/book-theme/book-theme.js",
-      "base": "core",
-      "family": "book-theme",
-      "appeared": "2026-11-17",
-      "bytes": 27467,
-      "gz": 5976
-    },
-    {
-      "tag": "guidebook-theme",
-      "class": "GuidebookTheme",
-      "path": "elements/book-theme/lib/guidebook-theme.js",
-      "base": "BookTheme",
-      "family": "book-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2041,
-      "gz": 911
-    },
-    {
-      "tag": "handbook-theme",
-      "class": "HandbookTheme",
-      "path": "elements/book-theme/lib/handbook-theme.js",
-      "base": "BookTheme",
-      "family": "book-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1830,
-      "gz": 825
-    },
-    {
-      "tag": "just-the-docs-theme",
-      "class": "JustTheDocsTheme",
-      "path": "elements/book-theme/lib/just-the-docs-theme.js",
-      "base": "BookTheme",
-      "family": "book-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1945,
-      "gz": 883
-    },
-    {
-      "tag": "manual-theme",
-      "class": "ManualTheme",
-      "path": "elements/book-theme/lib/manual-theme.js",
-      "base": "BookTheme",
-      "family": "book-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2273,
-      "gz": 990
-    },
-    {
-      "tag": "al-folio-theme",
-      "class": "AlFolioTheme",
-      "path": "elements/papermod-theme/lib/al-folio-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1866,
-      "gz": 864
-    },
-    {
-      "tag": "astro-cactus-theme",
-      "class": "AstroCactusTheme",
-      "path": "elements/papermod-theme/lib/astro-cactus-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1833,
-      "gz": 858
-    },
-    {
-      "tag": "astrofy-theme",
-      "class": "AstrofyTheme",
-      "path": "elements/papermod-theme/lib/astrofy-theme.js",
-      "base": "HomageSidebarTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2153,
-      "gz": 921
-    },
-    {
-      "tag": "astropaper-theme",
-      "class": "AstropaperTheme",
-      "path": "elements/papermod-theme/lib/astropaper-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1988,
-      "gz": 878
-    },
-    {
-      "tag": "astrowind-theme",
-      "class": "AstrowindTheme",
-      "path": "elements/papermod-theme/lib/astrowind-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2139,
-      "gz": 941
-    },
-    {
-      "tag": "chirpy-theme",
-      "class": "ChirpyTheme",
-      "path": "elements/papermod-theme/lib/chirpy-theme.js",
-      "base": "HomageSidebarTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1872,
-      "gz": 847
-    },
-    {
-      "tag": "coder-theme",
-      "class": "CoderTheme",
-      "path": "elements/papermod-theme/lib/coder-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1496,
-      "gz": 777
-    },
-    {
-      "tag": "hyde-theme",
-      "class": "HydeTheme",
-      "path": "elements/papermod-theme/lib/hyde-theme.js",
-      "base": "HomageSidebarTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2177,
-      "gz": 967
-    },
-    {
-      "tag": "minima-theme",
-      "class": "MinimaTheme",
-      "path": "elements/papermod-theme/lib/minima-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1700,
-      "gz": 818
-    },
-    {
-      "tag": "minimal-mistakes-theme",
-      "class": "MinimalMistakesTheme",
-      "path": "elements/papermod-theme/lib/minimal-mistakes-theme.js",
-      "base": "HomageSidebarTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2018,
-      "gz": 907
-    },
-    {
-      "tag": "terminal-theme",
-      "class": "TerminalTheme",
-      "path": "elements/papermod-theme/lib/terminal-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 2696,
-      "gz": 1062
-    },
-    {
-      "tag": "papermod-theme",
-      "class": "PapermodTheme",
-      "path": "elements/papermod-theme/papermod-theme.js",
-      "base": "HomageColumnTheme",
-      "family": "papermod-theme",
-      "appeared": "2026-11-17",
-      "bytes": 1833,
-      "gz": 843
-    },
-    {
-      "tag": "hax-marketing-theme",
-      "class": "HaxMarketingTheme",
-      "path": "elements/hax-marketing-theme/hax-marketing-theme.js",
-      "base": "core",
-      "family": "hax-marketing-theme",
-      "appeared": "2026-11-18",
-      "bytes": 44387,
-      "gz": 9243
-    },
-    {
-      "tag": "wysiwyg96-theme",
-      "class": "Wysiwyg96Theme",
-      "path": "elements/wysiwyg96-theme/wysiwyg96-theme.js",
-      "base": "core",
-      "family": "wysiwyg96-theme",
-      "appeared": "2026-11-18",
-      "bytes": 40953,
-      "gz": 8350
-    },
-    {
-      "tag": "night-draft-theme",
-      "class": "NightDraftTheme",
-      "path": "elements/night-draft-theme/night-draft-theme.js",
-      "base": "core",
-      "family": "night-draft-theme",
-      "appeared": "2026-11-23",
-      "bytes": 43236,
-      "gz": 10484
-    }
-  ]
+  {
+   "tag": "learn-two-theme",
+   "class": "LearnTwoTheme",
+   "path": "elements/learn-two-theme/learn-two-theme.js",
+   "base": "core",
+   "family": "learn-two-theme",
+   "appeared": "2019-03-10",
+   "bytes": 21165,
+   "gz": 4523
+  },
+  {
+   "tag": "haxcms-basic-theme",
+   "class": "HAXCMSBasicTheme",
+   "path": "elements/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+   "base": "core",
+   "family": "haxcms-elements",
+   "appeared": "2019-03-14",
+   "bytes": 5353,
+   "gz": 1634
+  },
+  {
+   "tag": "haxcms-slide-theme",
+   "class": "HAXCMSSlideTheme",
+   "path": "elements/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
+   "base": "core",
+   "family": "haxcms-elements",
+   "appeared": "2019-03-14",
+   "bytes": 8163,
+   "gz": 2244
+  },
+  {
+   "tag": "haxor-slevin",
+   "class": "HaxorSlevin",
+   "path": "elements/haxor-slevin/haxor-slevin.js",
+   "base": "core",
+   "family": "haxor-slevin",
+   "appeared": "2019-04-24",
+   "bytes": 27210,
+   "gz": 6205
+  },
+  {
+   "tag": "example-haxcms-theme",
+   "class": "ExampleHaxcmsTheme",
+   "path": "elements/example-haxcms-theme/example-haxcms-theme.js",
+   "base": "core",
+   "family": "example-haxcms-theme",
+   "appeared": "2019-05-21",
+   "bytes": 7648,
+   "gz": 2401
+  },
+  {
+   "tag": "clean-one",
+   "class": "CleanOne",
+   "path": "elements/clean-one/clean-one.js",
+   "base": "core",
+   "family": "clean-one",
+   "appeared": "2020-06-29",
+   "bytes": 40974,
+   "gz": 9269
+  },
+  {
+   "tag": "clean-two",
+   "class": "CleanTwo",
+   "path": "elements/clean-two/clean-two.js",
+   "base": "core",
+   "family": "clean-two",
+   "appeared": "2020-07-06",
+   "bytes": 34585,
+   "gz": 6980
+  },
+  {
+   "tag": "haxcms-blank-theme",
+   "class": "HAXCMSBlankTheme",
+   "path": "elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+   "base": "CleanTwo",
+   "family": "haxcms-elements",
+   "appeared": "2021-01-11",
+   "bytes": 2067,
+   "gz": 906
+  },
+  {
+   "tag": "bootstrap-theme",
+   "class": "BootstrapTheme",
+   "path": "elements/bootstrap-theme/bootstrap-theme.js",
+   "base": "core",
+   "family": "bootstrap-theme",
+   "appeared": "2021-02-25",
+   "bytes": 31179,
+   "gz": 6308
+  },
+  {
+   "tag": "haxcms-print-theme",
+   "class": "HAXCMSPrintTheme",
+   "path": "elements/haxcms-elements/lib/core/themes/haxcms-print-theme.js",
+   "base": "CleanTwo",
+   "family": "haxcms-elements",
+   "appeared": "2021-11-17",
+   "bytes": 5704,
+   "gz": 1967
+  },
+  {
+   "tag": "terrible-best-themes",
+   "class": "TerribleBestThemes",
+   "path": "elements/terrible-themes/lib/terrible-best-themes.js",
+   "base": "core",
+   "family": "terrible-themes",
+   "appeared": "2023-05-16",
+   "bytes": 8446,
+   "gz": 2519
+  },
+  {
+   "tag": "terrible-outlet-themes",
+   "class": "TerribleOutletThemes",
+   "path": "elements/terrible-themes/lib/terrible-outlet-themes.js",
+   "base": "core",
+   "family": "terrible-themes",
+   "appeared": "2023-05-16",
+   "bytes": 7429,
+   "gz": 2304
+  },
+  {
+   "tag": "terrible-productionz-themes",
+   "class": "TerribleProductionzThemes",
+   "path": "elements/terrible-themes/lib/terrible-productionz-themes.js",
+   "base": "core",
+   "family": "terrible-themes",
+   "appeared": "2023-05-16",
+   "bytes": 13517,
+   "gz": 3342
+  },
+  {
+   "tag": "terrible-resume-themes",
+   "class": "TerribleResumeThemes",
+   "path": "elements/terrible-themes/lib/terrible-resume-themes.js",
+   "base": "core",
+   "family": "terrible-themes",
+   "appeared": "2023-05-16",
+   "bytes": 8780,
+   "gz": 2311
+  },
+  {
+   "tag": "terrible-themes",
+   "class": "TerribleThemes",
+   "path": "elements/terrible-themes/terrible-themes.js",
+   "base": "core",
+   "family": "terrible-themes",
+   "appeared": "2023-05-16",
+   "bytes": 17028,
+   "gz": 3807
+  },
+  {
+   "tag": "polaris-theme",
+   "class": "PolarisTheme",
+   "path": "elements/polaris-theme/polaris-theme.js",
+   "base": "core",
+   "family": "polaris-theme",
+   "appeared": "2023-09-26",
+   "bytes": 22555,
+   "gz": 5339
+  },
+  {
+   "tag": "collections-theme",
+   "class": "CollectionsTheme",
+   "path": "elements/collection-list/lib/collections-theme.js",
+   "base": "core",
+   "family": "collection-list",
+   "appeared": "2023-11-29",
+   "bytes": 14998,
+   "gz": 3582
+  },
+  {
+   "tag": "training-theme",
+   "class": "TrainingTheme",
+   "path": "elements/training-theme/training-theme.js",
+   "base": "core",
+   "family": "training-theme",
+   "appeared": "2023-12-04",
+   "bytes": 27588,
+   "gz": 5832
+  },
+  {
+   "tag": "polaris-invent-theme",
+   "class": "PolarisInventTheme",
+   "path": "elements/polaris-theme/lib/polaris-invent-theme.js",
+   "base": "core",
+   "family": "polaris-theme",
+   "appeared": "2024-01-19",
+   "bytes": 30240,
+   "gz": 7059
+  },
+  {
+   "tag": "ddd-brochure-theme",
+   "class": "DDDBrochureTheme",
+   "path": "elements/d-d-d/lib/ddd-brochure-theme.js",
+   "base": "core",
+   "family": "d-d-d",
+   "appeared": "2024-02-15",
+   "bytes": 8820,
+   "gz": 2628
+  },
+  {
+   "tag": "polaris-flex-theme",
+   "class": "PolarisFlexTheme",
+   "path": "elements/polaris-theme/lib/polaris-flex-theme.js",
+   "base": "core",
+   "family": "polaris-theme",
+   "appeared": "2024-11-21",
+   "bytes": 42014,
+   "gz": 9422
+  },
+  {
+   "tag": "polaris-flex-sidebar",
+   "class": "PolarisFlexSidebar",
+   "path": "elements/polaris-theme/lib/polaris-flex-sidebar.js",
+   "base": "PolarisFlexTheme",
+   "family": "polaris-theme",
+   "appeared": "2025-01-30",
+   "bytes": 6117,
+   "gz": 1829
+  },
+  {
+   "tag": "clean-portfolio-theme",
+   "class": "CleanPortfolioTheme",
+   "path": "elements/clean-portfolio-theme/clean-portfolio-theme.js",
+   "base": "core",
+   "family": "clean-portfolio-theme",
+   "appeared": "2025-02-03",
+   "bytes": 63303,
+   "gz": 11895
+  },
+  {
+   "tag": "journey-theme",
+   "class": "JourneyTheme",
+   "path": "elements/journey-theme/journey-theme.js",
+   "base": "core",
+   "family": "journey-theme",
+   "appeared": "2025-04-25",
+   "bytes": 41778,
+   "gz": 7967
+  },
+  {
+   "tag": "journey-sidebar-theme",
+   "class": "JourneySidebarTheme",
+   "path": "elements/journey-theme/lib/journey-sidebar-theme.js",
+   "base": "core",
+   "family": "journey-theme",
+   "appeared": "2025-05-12",
+   "bytes": 6672,
+   "gz": 2312
+  },
+  {
+   "tag": "journey-topbar-theme",
+   "class": "JourneyTopbarTheme",
+   "path": "elements/journey-theme/lib/journey-topbar-theme.js",
+   "base": "core",
+   "family": "journey-theme",
+   "appeared": "2025-05-12",
+   "bytes": 5551,
+   "gz": 2074
+  },
+  {
+   "tag": "glossy-portfolio-theme",
+   "class": "GlossyPortfolioTheme",
+   "path": "elements/glossy-portfolio-theme/glossy-portfolio-theme.js",
+   "base": "core",
+   "family": "glossy-portfolio-theme",
+   "appeared": "2025-05-21",
+   "bytes": 8549,
+   "gz": 2759
+  },
+  {
+   "tag": "spacebook-theme",
+   "class": "SpacebookTheme",
+   "path": "elements/spacebook-theme/spacebook-theme.js",
+   "base": "core",
+   "family": "spacebook-theme",
+   "appeared": "2025-09-06",
+   "bytes": 39200,
+   "gz": 7467
+  },
+  {
+   "tag": "haxma-theme",
+   "class": "HaxmaTheme",
+   "path": "elements/haxma-theme/haxma-theme.js",
+   "base": "core",
+   "family": "haxma-theme",
+   "appeared": "2025-09-09",
+   "bytes": 29987,
+   "gz": 5927
+  },
+  {
+   "tag": "haxcms-json-theme",
+   "class": "HAXCMSJSONTheme",
+   "path": "elements/haxcms-elements/lib/core/themes/haxcms-json-theme.js",
+   "base": "HAXCMSPrintTheme",
+   "family": "haxcms-elements",
+   "appeared": "2025-09-22",
+   "bytes": 26465,
+   "gz": 6107
+  },
+  {
+   "tag": "link-card-theme",
+   "class": "LinkCardTheme",
+   "path": "elements/link-card-theme/link-card-theme.js",
+   "base": "core",
+   "family": "link-card-theme",
+   "appeared": "2026-05-26",
+   "bytes": 22557,
+   "gz": 5291
+  },
+  {
+   "tag": "twenty-six-theme",
+   "class": "TwentySixTheme",
+   "path": "elements/twenty-six-theme/twenty-six-theme.js",
+   "base": "core",
+   "family": "twenty-six-theme",
+   "appeared": "2026-05-26",
+   "bytes": 35881,
+   "gz": 7665
+  },
+  {
+   "tag": "resume-theme",
+   "class": "ResumeTheme",
+   "path": "elements/resume-theme/resume-theme.js",
+   "base": "core",
+   "family": "resume-theme",
+   "appeared": "2026-06-23",
+   "bytes": 21365,
+   "gz": 4039
+  },
+  {
+   "tag": "chamfer-theme",
+   "class": "ChamferTheme",
+   "path": "elements/chamfer-theme/chamfer-theme.js",
+   "base": "core",
+   "family": "chamfer-theme",
+   "appeared": "2026-08-18",
+   "bytes": 13225,
+   "gz": 3801
+  },
+  {
+   "tag": "patternfly-theme",
+   "class": "PatternflyTheme",
+   "path": "elements/patternfly-theme/patternfly-theme.js",
+   "base": "core",
+   "family": "patternfly-theme",
+   "appeared": "2026-11-11",
+   "bytes": 18322,
+   "gz": 3976
+  },
+  {
+   "tag": "vhs-blog-theme",
+   "class": "VhsBlogTheme",
+   "path": "elements/vhs-blog-theme/vhs-blog-theme.js",
+   "base": "core",
+   "family": "vhs-blog-theme",
+   "appeared": "2026-11-11",
+   "bytes": 71775,
+   "gz": 17758
+  },
+  {
+   "tag": "carbon-theme",
+   "class": "CarbonTheme",
+   "path": "elements/carbon-theme/carbon-theme.js",
+   "base": "core",
+   "family": "carbon-theme",
+   "appeared": "2026-11-12",
+   "bytes": 18079,
+   "gz": 4320
+  },
+  {
+   "tag": "ecosystem-theme",
+   "class": "EcosystemTheme",
+   "path": "elements/ecosystem-theme/ecosystem-theme.js",
+   "base": "core",
+   "family": "ecosystem-theme",
+   "appeared": "2026-11-12",
+   "bytes": 28829,
+   "gz": 7335
+  },
+  {
+   "tag": "material-theme",
+   "class": "MaterialTheme",
+   "path": "elements/material-theme/material-theme.js",
+   "base": "core",
+   "family": "material-theme",
+   "appeared": "2026-11-12",
+   "bytes": 21239,
+   "gz": 4828
+  },
+  {
+   "tag": "shadcn-theme",
+   "class": "ShadcnTheme",
+   "path": "elements/shadcn-theme/shadcn-theme.js",
+   "base": "core",
+   "family": "shadcn-theme",
+   "appeared": "2026-11-12",
+   "bytes": 16460,
+   "gz": 3940
+  },
+  {
+   "tag": "spectrum-theme",
+   "class": "SpectrumTheme",
+   "path": "elements/spectrum-theme/spectrum-theme.js",
+   "base": "core",
+   "family": "spectrum-theme",
+   "appeared": "2026-11-12",
+   "bytes": 17773,
+   "gz": 4137
+  },
+  {
+   "tag": "tailwind-theme",
+   "class": "TailwindTheme",
+   "path": "elements/tailwind-theme/tailwind-theme.js",
+   "base": "core",
+   "family": "tailwind-theme",
+   "appeared": "2026-11-12",
+   "bytes": 18760,
+   "gz": 4377
+  },
+  {
+   "tag": "uswds-theme",
+   "class": "UswdsTheme",
+   "path": "elements/uswds-theme/uswds-theme.js",
+   "base": "core",
+   "family": "uswds-theme",
+   "appeared": "2026-11-13",
+   "bytes": 24783,
+   "gz": 5674
+  },
+  {
+   "tag": "webawesome-theme",
+   "class": "WebawesomeTheme",
+   "path": "elements/webawesome-theme/webawesome-theme.js",
+   "base": "core",
+   "family": "webawesome-theme",
+   "appeared": "2026-11-13",
+   "bytes": 22181,
+   "gz": 5168
+  },
+  {
+   "tag": "fluent-theme",
+   "class": "FluentTheme",
+   "path": "elements/fluent-theme/fluent-theme.js",
+   "base": "core",
+   "family": "fluent-theme",
+   "appeared": "2026-11-16",
+   "bytes": 18507,
+   "gz": 4403
+  },
+  {
+   "tag": "primer-theme",
+   "class": "PrimerTheme",
+   "path": "elements/primer-theme/primer-theme.js",
+   "base": "core",
+   "family": "primer-theme",
+   "appeared": "2026-11-16",
+   "bytes": 17634,
+   "gz": 4289
+  },
+  {
+   "tag": "writing-theme",
+   "class": "WritingTheme",
+   "path": "elements/writing-theme/writing-theme.js",
+   "base": "core",
+   "family": "writing-theme",
+   "appeared": "2026-11-16",
+   "bytes": 16848,
+   "gz": 4578
+  },
+  {
+   "tag": "book-theme",
+   "class": "BookTheme",
+   "path": "elements/book-theme/book-theme.js",
+   "base": "core",
+   "family": "book-theme",
+   "appeared": "2026-11-17",
+   "bytes": 27467,
+   "gz": 5976
+  },
+  {
+   "tag": "guidebook-theme",
+   "class": "GuidebookTheme",
+   "path": "elements/book-theme/lib/guidebook-theme.js",
+   "base": "BookTheme",
+   "family": "book-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2041,
+   "gz": 911
+  },
+  {
+   "tag": "handbook-theme",
+   "class": "HandbookTheme",
+   "path": "elements/book-theme/lib/handbook-theme.js",
+   "base": "BookTheme",
+   "family": "book-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1830,
+   "gz": 825
+  },
+  {
+   "tag": "just-the-docs-theme",
+   "class": "JustTheDocsTheme",
+   "path": "elements/book-theme/lib/just-the-docs-theme.js",
+   "base": "BookTheme",
+   "family": "book-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1945,
+   "gz": 883
+  },
+  {
+   "tag": "manual-theme",
+   "class": "ManualTheme",
+   "path": "elements/book-theme/lib/manual-theme.js",
+   "base": "BookTheme",
+   "family": "book-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2273,
+   "gz": 990
+  },
+  {
+   "tag": "al-folio-theme",
+   "class": "AlFolioTheme",
+   "path": "elements/papermod-theme/lib/al-folio-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1866,
+   "gz": 864
+  },
+  {
+   "tag": "astro-cactus-theme",
+   "class": "AstroCactusTheme",
+   "path": "elements/papermod-theme/lib/astro-cactus-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1833,
+   "gz": 858
+  },
+  {
+   "tag": "astrofy-theme",
+   "class": "AstrofyTheme",
+   "path": "elements/papermod-theme/lib/astrofy-theme.js",
+   "base": "HomageSidebarTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2153,
+   "gz": 921
+  },
+  {
+   "tag": "astropaper-theme",
+   "class": "AstropaperTheme",
+   "path": "elements/papermod-theme/lib/astropaper-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1988,
+   "gz": 878
+  },
+  {
+   "tag": "astrowind-theme",
+   "class": "AstrowindTheme",
+   "path": "elements/papermod-theme/lib/astrowind-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2139,
+   "gz": 941
+  },
+  {
+   "tag": "chirpy-theme",
+   "class": "ChirpyTheme",
+   "path": "elements/papermod-theme/lib/chirpy-theme.js",
+   "base": "HomageSidebarTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1872,
+   "gz": 847
+  },
+  {
+   "tag": "coder-theme",
+   "class": "CoderTheme",
+   "path": "elements/papermod-theme/lib/coder-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1496,
+   "gz": 777
+  },
+  {
+   "tag": "hyde-theme",
+   "class": "HydeTheme",
+   "path": "elements/papermod-theme/lib/hyde-theme.js",
+   "base": "HomageSidebarTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2177,
+   "gz": 967
+  },
+  {
+   "tag": "minima-theme",
+   "class": "MinimaTheme",
+   "path": "elements/papermod-theme/lib/minima-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1700,
+   "gz": 818
+  },
+  {
+   "tag": "minimal-mistakes-theme",
+   "class": "MinimalMistakesTheme",
+   "path": "elements/papermod-theme/lib/minimal-mistakes-theme.js",
+   "base": "HomageSidebarTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2018,
+   "gz": 907
+  },
+  {
+   "tag": "terminal-theme",
+   "class": "TerminalTheme",
+   "path": "elements/papermod-theme/lib/terminal-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 2696,
+   "gz": 1062
+  },
+  {
+   "tag": "papermod-theme",
+   "class": "PapermodTheme",
+   "path": "elements/papermod-theme/papermod-theme.js",
+   "base": "HomageColumnTheme",
+   "family": "papermod-theme",
+   "appeared": "2026-11-17",
+   "bytes": 1833,
+   "gz": 843
+  },
+  {
+   "tag": "hax-marketing-theme",
+   "class": "HaxMarketingTheme",
+   "path": "elements/hax-marketing-theme/hax-marketing-theme.js",
+   "base": "core",
+   "family": "hax-marketing-theme",
+   "appeared": "2026-11-18",
+   "bytes": 44387,
+   "gz": 9243
+  },
+  {
+   "tag": "wysiwyg96-theme",
+   "class": "Wysiwyg96Theme",
+   "path": "elements/wysiwyg96-theme/wysiwyg96-theme.js",
+   "base": "core",
+   "family": "wysiwyg96-theme",
+   "appeared": "2026-11-18",
+   "bytes": 40953,
+   "gz": 8350
+  },
+  {
+   "tag": "night-draft-theme",
+   "class": "NightDraftTheme",
+   "path": "elements/night-draft-theme/night-draft-theme.js",
+   "base": "core",
+   "family": "night-draft-theme",
+   "appeared": "2026-11-23",
+   "bytes": 43236,
+   "gz": 10484
+  }
+ ]
 }

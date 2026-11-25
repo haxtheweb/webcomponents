@@ -14,6 +14,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/ecosystem-web/ecosystem-web.js";
 import "@haxtheweb/hax-network-bar/hax-network-bar.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import {
   siteLens,
   toggleGoggles,
@@ -76,7 +77,8 @@ function go(url) {
  * Site-wide settings come from `metadata.theme.variables` in site.json:
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `footer`
  * (`[{label, href}]`, plus a `footerNote` line) and `welcome`
- * (`{title, text}`: the greeting on the home page).
+ * (`{title, text, actions}`: the greeting on the home page; `actions` is
+ * `[{label, href, icon}]`, buttons beside it, such as the way to Growth).
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -271,6 +273,41 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     const home = this._items.find((i) => !i.parent);
     if (!w || !w.title || !home || !this._active) return null;
     return this._active.id === home.id ? w : null;
+  }
+  /**
+   * The greeting's buttons. A site page's slug goes through the site's own
+   * routing, like a menu link; anything else is a plain link.
+   */
+  _welcomeActions(welcome) {
+    const acts = Array.isArray(welcome.actions)
+      ? welcome.actions.filter((a) => a && a.label && a.href)
+      : [];
+    if (!acts.length) return "";
+    return html`<div class="welcome-actions">
+      ${acts.map((a) => {
+        const slug = String(a.href).replace(/^\//, "");
+        const item = /^[a-z][a-z0-9+.-]*:/i.test(a.href)
+          ? null
+          : this._itemBySlug(slug);
+        return html`<a
+          class="btn withicon"
+          href="${item ? item.slug : a.href}"
+          @click="${(e) => {
+            if (!item || e.metaKey || e.ctrlKey || e.shiftKey) return;
+            e.preventDefault();
+            this._go(item.slug);
+          }}"
+          >${
+            a.icon
+              ? html`<simple-icon-lite
+                  icon="${a.icon}"
+                  aria-hidden="true"
+                ></simple-icon-lite>`
+              : ""
+          }${a.label}</a
+        >`;
+      })}
+    </div>`;
   }
   // ---------- styles ----------
   static get styles() {
@@ -525,6 +562,28 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         a.btn:hover {
           text-decoration: none;
         }
+        .welcome-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+        }
+        .welcome-actions a.btn {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          box-sizing: border-box;
+          font-size: var(--ddd-font-size-3xs);
+          text-decoration: none;
+        }
+        .welcome-actions a.btn:hover,
+        .welcome-actions a.btn:focus-visible {
+          background-color: var(--ddd-theme-default-beaverBlue);
+        }
+        .welcome-actions simple-icon-lite {
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          --simple-icon-color: currentColor;
+        }
 
         /* ---------- embed view ---------- */
         :host([embed]) {
@@ -678,6 +737,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
                   <h1 id="welcome">${welcome.title}</h1>
                   ${welcome.text ? html`<p class="text">${welcome.text}</p>` : ""}
                 </div>
+                ${this._welcomeActions(welcome)}
               </div>
             </section>`
           : ""

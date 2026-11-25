@@ -15,7 +15,8 @@ One time slider and Play drive every view.
 - **Themes**: every theme appears in the order it was made and bonds to the shared theme core; families (homage, book) branch off their own base. Hexagons are drawn to scale (area is gzipped code), so select a theme to see it against the core, and what it costs to load cold or after another site.
 - **Elements**: every element package, the most depended-on in the middle, with their dependency links; select one to see what it depends on (orange) and what uses it (blue).
 - **Platforms**: the network-bar properties in their network colours and the runtimes, around site.json. Size grows with commits; a ring pulses with each month's activity.
-- **Cache**: a visitor moving site by site and page by page (same site vs next site), or theme by theme, on one host: which files are fetched and which come from the cache.
+- **Magic Script** (the `cache` view): a visitor moving site by site and page by page (same site vs next site), or theme by theme, on one host: which files are fetched and which come from the cache.
+- **Contributors**: everyone who has contributed, growing out from the network's creator by when they joined, each glowing with their recent commits and issue work (opened and closed) and fading over the following months, so it reads as a heat map and a count of contributors over time. Needs `contributors.json`; a source without it shows the other four views.
 - **Growth over time**: every series on one axis, log or linear, each series on or off, with the figures in a table under it.
 
 ## Properties
@@ -23,7 +24,7 @@ One time slider and Play drive every view.
 | Attribute | Default | What it does |
 | --- | --- | --- |
 | `src` | `https://hax.cloud/data/growth/` | Folder holding the five growth JSON files. |
-| `view` | `themes` | The view that opens first: `themes`, `elements`, `platforms` or `cache`. |
+| `view` | `themes` | The view that opens first: `themes`, `elements`, `platforms`, `cache` (Magic Script) or `contributors`. |
 
 ## For agents (WebMCP)
 
@@ -32,6 +33,7 @@ Where the browser offers `document.modelContext`, the element registers four rea
 - `growth_series`: a monthly series between two months.
 - `growth_theme_cost`: a theme's own code against the core, and what it fetches with other themes already cached.
 - `growth_element_dependencies`: what an element depends on and what uses it.
+- `growth_contributors`: how many people had contributed by a month, how many were active, and who was most active recently.
 - `growth_simulate_journey`: bytes needed, fetched and cached for each step of a visitor's path across sites and pages.
 
 ## Accessibility
