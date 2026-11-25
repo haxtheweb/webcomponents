@@ -14,6 +14,8 @@
  *   bundlers fail with EISDIR
  * - a URL whose file is not in the repo (an .ar.json the element never
  *   shipped): bundlers fail with ENOENT
+ * - a URL that builds the file name at runtime (`../locales/${this.tag}...`):
+ *   bundlers cannot resolve it, and this.tag is not set on an instance
  *
  * haxtheweb/issues#3402, haxtheweb/issues#1616
  *
@@ -37,10 +39,10 @@ const SKIP_DIRS = new Set([
   "public",
   ".git",
 ]);
-// a static string (single, double or backtick quotes, no ${}) that starts
-// with ./ or ../ and names a locales folder, resolved against import.meta.url
+// a string (single, double or backtick quotes) that starts with ./ or ../
+// and names a locales folder, resolved against import.meta.url
 const LOCALE_URL =
-  /new URL\(\s*(["'`])((?:\.\.?\/)+locales(?:\/[^"'`$]*)?)\1\s*,\s*import\.meta\.url\s*\)/g;
+  /new URL\(\s*(["'`])((?:\.\.?\/)+locales(?:\/[^"'`]*)?)\1\s*,\s*import\.meta\.url\s*\)/g;
 
 function walk(dir, out) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -79,7 +81,11 @@ for (const file of files) {
     const rel = match[2];
     const line = source.slice(0, match.index).split("\n").length;
     const where = `${path.relative(root, file)}:${line}`;
-    if (!rel.endsWith(".json")) {
+    if (rel.includes("${")) {
+      problems.push(
+        `${where}  builds the file name at runtime ("${rel}"); bundlers cannot resolve it`,
+      );
+    } else if (!rel.endsWith(".json")) {
       problems.push(`${where}  points at the folder "${rel}"`);
     } else if (!fs.existsSync(path.join(path.dirname(file), rel))) {
       problems.push(`${where}  "${rel}" is not in the repo`);

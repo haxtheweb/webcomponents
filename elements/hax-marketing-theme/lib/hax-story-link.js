@@ -94,7 +94,7 @@ class HaxStoryLink extends I18NMixin(DDD) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
+        new URL("../locales/hax-story-link.en.json", import.meta.url).href +
         "/../",
     });
   }

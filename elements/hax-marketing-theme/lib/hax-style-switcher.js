@@ -130,7 +130,7 @@ class HaxStyleSwitcher extends I18NMixin(DDD) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
+        new URL("../locales/hax-style-switcher.en.json", import.meta.url).href +
         "/../",
     });
     loadThemesRegistry().then((themes) => {

@@ -60,7 +60,7 @@ class HaxNetworkSites extends I18NMixin(DDD) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL(`../locales/${this.tag}.en.json`, import.meta.url).href +
+        new URL("../locales/hax-network-sites.en.json", import.meta.url).href +
         "/../",
     });
   }

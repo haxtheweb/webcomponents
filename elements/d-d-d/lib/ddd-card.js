@@ -29,8 +29,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
-        "/../",
+        new URL("../locales/ddd-card.en.json", import.meta.url).href + "/../",
     });
   }
 
