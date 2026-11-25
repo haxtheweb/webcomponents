@@ -340,5 +340,6 @@
   "framePhoto": "Кадрирај фотографију",
   "uploadOfFileFailed": "Није могуће отпремити {name}: {reason}",
   "uploadFailedReason": "сервер га није прихватио",
+  "uploadServerUnreachable": "сервер није доступан",
   "joinHaxCommunity": "Придружите се HAX заједници"
 }

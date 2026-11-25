@@ -340,5 +340,6 @@
   "framePhoto": "Tāpare whakaahua",
   "uploadOfFileFailed": "Kāore i taea te tukuake i a {name}: {reason}",
   "uploadFailedReason": "kāore te tūmau i whakaae",
+  "uploadServerUnreachable": "kāore i taea te toro atu ki te tūmau",
   "joinHaxCommunity": "Hono atu ki te hapori HAX"
 }

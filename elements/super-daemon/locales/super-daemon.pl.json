@@ -101,5 +101,6 @@
   "openFullMerlin": "Otwórz pełnego Merlina",
   "resultsOfTotal": "{count} z {total} wyników",
   "runResult": "Uruchom wynik",
-  "sayPickResult": "drugi"
+  "sayPickResult": "drugi",
+  "voiceNeedsConsent": "Ta przeglądarka nie potrafi rozpoznać mowy na Twoim urządzeniu."
 }

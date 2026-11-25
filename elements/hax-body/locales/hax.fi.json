@@ -340,5 +340,6 @@
   "framePhoto": "Rajaa kuva",
   "uploadOfFileFailed": "Kohteen {name} lataaminen epäonnistui: {reason}",
   "uploadFailedReason": "palvelin ei hyväksynyt sitä",
+  "uploadServerUnreachable": "palvelimeen ei saatu yhteyttä",
   "joinHaxCommunity": "Liity HAX-yhteisöön"
 }

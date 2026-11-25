@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-ის ჩასმა",
-    "description": "LinkedIn-ის პროფილის ბარათის ჩასმა."
+    "description": "ბმული LinkedIn-ის პროფილზე."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "პერსონალური სახელი",
-        "description": "LinkedIn-ის პერსონალური მომხმარებლის სახელის სეგმენტი."
+        "description": "სახელი პროფილის მისამართის ბოლოს (linkedin.com/in/სახელი)."
       }
     ],
     "advanced": [

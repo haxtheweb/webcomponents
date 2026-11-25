@@ -5,5 +5,6 @@
   "stop": "Sayay",
   "playbackStarted": "Takichiy qallarirqa",
   "playbackFinished": "Takichiy tukukurqa",
-  "playbackStopped": "Takichiy sayarqa"
+  "playbackStopped": "Takichiy sayarqa",
+  "notes": "Takiy notakuna"
 }

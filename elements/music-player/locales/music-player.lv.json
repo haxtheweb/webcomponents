@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "Atskaņošana sākta",
   "playbackFinished": "Atskaņošana beigusies",
-  "playbackStopped": "Atskaņošana apturēta"
+  "playbackStopped": "Atskaņošana apturēta",
+  "notes": "Notis"
 }

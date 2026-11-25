@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn yerleştirme",
-    "description": "Bir LinkedIn profil kartı yerleştirin."
+    "description": "Bir LinkedIn profiline bağlantı."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Özel ad",
-        "description": "LinkedIn özel kullanıcı adı bölümü."
+        "description": "Profil adresinin sonundaki ad (linkedin.com/in/ad)."
       }
     ],
     "advanced": [

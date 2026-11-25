@@ -5,5 +5,6 @@
   "stop": "Стоп",
   "playbackStarted": "Прайграванне пачалося",
   "playbackFinished": "Прайграванне завершана",
-  "playbackStopped": "Прайграванне спынена"
+  "playbackStopped": "Прайграванне спынена",
+  "notes": "Ноты"
 }

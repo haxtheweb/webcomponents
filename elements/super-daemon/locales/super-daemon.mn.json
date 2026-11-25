@@ -101,5 +101,6 @@
   "openFullMerlin": "Merlin-г бүтнээр нээх",
   "resultsOfTotal": "{total} үр дүнгийн {count}",
   "runResult": "Үр дүнг ажиллуулах",
-  "sayPickResult": "хоёр дахь нь"
+  "sayPickResult": "хоёр дахь нь",
+  "voiceNeedsConsent": "Энэ хөтөч таны төхөөрөмж дээр яриаг ойлгож чадахгүй."
 }

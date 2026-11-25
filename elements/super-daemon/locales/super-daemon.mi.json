@@ -101,5 +101,6 @@
   "openFullMerlin": "Whakatuwhera i te Merlin katoa",
   "resultsOfTotal": "{count} o te {total} hua",
   "runResult": "Whakahaere i tētahi hua",
-  "sayPickResult": "tuarua"
+  "sayPickResult": "tuarua",
+  "voiceNeedsConsent": "Kāore e taea e tēnei pūtirotiro te mōhio ki te reo kōrero i tō pūrere."
 }

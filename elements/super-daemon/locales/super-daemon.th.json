@@ -101,5 +101,6 @@
   "openFullMerlin": "เปิด Merlin แบบเต็ม",
   "resultsOfTotal": "{count} จาก {total} ผลลัพธ์",
   "runResult": "เรียกใช้ผลลัพธ์",
-  "sayPickResult": "อันที่สอง"
+  "sayPickResult": "อันที่สอง",
+  "voiceNeedsConsent": "เบราว์เซอร์นี้ไม่สามารถเข้าใจเสียงพูดบนอุปกรณ์ของคุณได้"
 }

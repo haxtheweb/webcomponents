@@ -101,5 +101,6 @@
   "openFullMerlin": "Åpne full Merlin",
   "resultsOfTotal": "{count} av {total} resultater",
   "runResult": "Kjør et resultat",
-  "sayPickResult": "den andre"
+  "sayPickResult": "den andre",
+  "voiceNeedsConsent": "Denne nettleseren kan ikke forstå tale på enheten din."
 }

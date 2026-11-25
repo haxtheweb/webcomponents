@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "ฝัง LinkedIn",
-    "description": "ฝังการ์ดโปรไฟล์ LinkedIn"
+    "description": "ลิงก์ไปยังโปรไฟล์ LinkedIn"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ชื่อเฉพาะ",
-        "description": "ส่วนชื่อผู้ใช้เฉพาะของ LinkedIn"
+        "description": "ชื่อที่อยู่ท้ายที่อยู่โปรไฟล์ (linkedin.com/in/ชื่อ)"
       }
     ],
     "advanced": [

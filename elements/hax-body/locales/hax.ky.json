@@ -340,5 +340,6 @@
   "framePhoto": "Сүрөттү кадрлоо",
   "uploadOfFileFailed": "{name} жүктөлбөй калды: {reason}",
   "uploadFailedReason": "сервер аны кабыл алган жок",
+  "uploadServerUnreachable": "серверге туташуу мүмкүн болгон жок",
   "joinHaxCommunity": "HAX коомчулугуна кошулуу"
 }

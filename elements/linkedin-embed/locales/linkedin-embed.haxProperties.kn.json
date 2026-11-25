@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ಎಂಬೆಡ್",
-    "description": "LinkedIn ಪ್ರೊಫೈಲ್ ಕಾರ್ಡ್ ಎಂಬೆಡ್ ಮಾಡಿ."
+    "description": "LinkedIn ಪ್ರೊಫೈಲ್‌ಗೆ ಲಿಂಕ್."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ವ್ಯಾನಿಟಿ ಹೆಸರು",
-        "description": "LinkedIn ವ್ಯಾನಿಟಿ ಬಳಕೆದಾರಹೆಸರಿನ ಭಾಗ."
+        "description": "ಪ್ರೊಫೈಲ್ ವಿಳಾಸದ ಕೊನೆಯಲ್ಲಿರುವ ಹೆಸರು (linkedin.com/in/ಹೆಸರು)."
       }
     ],
     "advanced": [

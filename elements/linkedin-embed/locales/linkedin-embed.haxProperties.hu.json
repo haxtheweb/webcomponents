@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-beágyazás",
-    "description": "LinkedIn-profilkártya beágyazása."
+    "description": "Hivatkozás egy LinkedIn-profilra."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Egyéni név",
-        "description": "A LinkedIn egyéni felhasználónév-szegmense."
+        "description": "A név a profilcím végén (linkedin.com/in/név)."
       }
     ],
     "advanced": [

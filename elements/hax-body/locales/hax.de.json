@@ -340,5 +340,6 @@
   "framePhoto": "Fotoausschnitt festlegen",
   "uploadOfFileFailed": "{name} konnte nicht hochgeladen werden: {reason}",
   "uploadFailedReason": "der Server hat sie nicht akzeptiert",
+  "uploadServerUnreachable": "der Server war nicht erreichbar",
   "joinHaxCommunity": "Der HAX-Community beitreten"
 }

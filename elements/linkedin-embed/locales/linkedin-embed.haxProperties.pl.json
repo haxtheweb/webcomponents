@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Osadzenie LinkedIn",
-    "description": "Osadź kartę profilu LinkedIn."
+    "description": "Link do profilu na LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nazwa niestandardowa",
-        "description": "Niestandardowy segment nazwy użytkownika LinkedIn."
+        "description": "Nazwa na końcu adresu profilu (linkedin.com/in/nazwa)."
       }
     ],
     "advanced": [

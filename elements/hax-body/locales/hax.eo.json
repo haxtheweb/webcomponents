@@ -340,5 +340,6 @@
   "framePhoto": "Kadrigi foton",
   "uploadOfFileFailed": "Ne eblis alŝuti {name}: {reason}",
   "uploadFailedReason": "la servilo ne akceptis ĝin",
+  "uploadServerUnreachable": "la servilo ne estis atingebla",
   "joinHaxCommunity": "Aliĝi al la HAX-komunumo"
 }

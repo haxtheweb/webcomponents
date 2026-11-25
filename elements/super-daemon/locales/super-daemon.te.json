@@ -101,5 +101,6 @@
   "openFullMerlin": "పూర్తి Merlin తెరవండి",
   "resultsOfTotal": "{total} ఫలితాలలో {count}",
   "runResult": "ఫలితాన్ని అమలు చేయండి",
-  "sayPickResult": "రెండవది"
+  "sayPickResult": "రెండవది",
+  "voiceNeedsConsent": "ఈ బ్రౌజర్ మీ పరికరంలోనే మాటలను అర్థం చేసుకోలేదు."
 }

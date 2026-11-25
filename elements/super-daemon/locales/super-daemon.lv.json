@@ -101,5 +101,6 @@
   "openFullMerlin": "Atvērt pilno Merlin",
   "resultsOfTotal": "{count} no {total} rezultātiem",
   "runResult": "Palaist rezultātu",
-  "sayPickResult": "otrais"
+  "sayPickResult": "otrais",
+  "voiceNeedsConsent": "Šis pārlūks nevar atpazīt runu jūsu ierīcē."
 }

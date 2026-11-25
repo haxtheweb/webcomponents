@@ -340,5 +340,6 @@
   "framePhoto": "ፎቶውን አስተካክል",
   "uploadOfFileFailed": "{name}ን መስቀል አልተቻለም፦ {reason}",
   "uploadFailedReason": "አገልጋዩ አልተቀበለውም",
+  "uploadServerUnreachable": "አገልጋዩ ሊደረስበት አልቻለም",
   "joinHaxCommunity": "የHAX ማህበረሰብን ይቀላቀሉ"
 }

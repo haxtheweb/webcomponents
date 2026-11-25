@@ -340,5 +340,6 @@
   "framePhoto": "ដាក់ស៊ុមរូបថត",
   "uploadOfFileFailed": "មិនអាចផ្ទុកឡើង {name} បានទេ៖ {reason}",
   "uploadFailedReason": "ម៉ាស៊ីនមេមិនបានទទួលយកវាទេ",
+  "uploadServerUnreachable": "មិនអាចភ្ជាប់ទៅម៉ាស៊ីនមេបានទេ",
   "joinHaxCommunity": "ចូលរួមសហគមន៍ HAX"
 }

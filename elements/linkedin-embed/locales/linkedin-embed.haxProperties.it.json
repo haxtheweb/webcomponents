@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn incorporato",
-    "description": "Incorpora una scheda profilo LinkedIn."
+    "description": "Link a un profilo LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nome personalizzato",
-        "description": "Segmento del nome utente personalizzato di LinkedIn."
+        "description": "Il nome alla fine dell'indirizzo del profilo (linkedin.com/in/nome)."
       }
     ],
     "advanced": [

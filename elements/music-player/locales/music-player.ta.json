@@ -5,5 +5,6 @@
   "stop": "நிறுத்து",
   "playbackStarted": "இயக்கம் தொடங்கியது",
   "playbackFinished": "இயக்கம் முடிந்தது",
-  "playbackStopped": "இயக்கம் நிறுத்தப்பட்டது"
+  "playbackStopped": "இயக்கம் நிறுத்தப்பட்டது",
+  "notes": "இசைக் குறிப்புகள்"
 }

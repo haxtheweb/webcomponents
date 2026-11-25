@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "د LinkedIn ځای پر ځای کول",
-    "description": "د LinkedIn د پروفایل کارت ځای پر ځای کړئ."
+    "description": "د LinkedIn پروفایل ته لینک."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ځانګړی نوم",
-        "description": "د LinkedIn د ځانګړي کارن نوم برخه."
+        "description": "د پروفایل د پتې په پای کې نوم (linkedin.com/in/نوم)."
       }
     ],
     "advanced": [

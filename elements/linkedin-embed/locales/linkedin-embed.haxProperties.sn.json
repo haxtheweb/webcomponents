@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Kuisa LinkedIn",
-    "description": "Isa kadhi reprofile reLinkedIn."
+    "description": "Link kuprofile yeLinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Zita rakasarudzwa",
-        "description": "Chikamu chezita remushandisi rakasarudzwa reLinkedIn."
+        "description": "Zita riri kumagumo ekero yeprofile (linkedin.com/in/zita)."
       }
     ],
     "advanced": [

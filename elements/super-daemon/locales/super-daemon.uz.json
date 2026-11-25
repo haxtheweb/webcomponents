@@ -101,5 +101,6 @@
   "openFullMerlin": "To'liq Merlinni ochish",
   "resultsOfTotal": "{total} ta natijadan {count} tasi",
   "runResult": "Natijani ishga tushirish",
-  "sayPickResult": "ikkinchisi"
+  "sayPickResult": "ikkinchisi",
+  "voiceNeedsConsent": "Bu brauzer qurilmangizda nutqni tushuna olmaydi."
 }

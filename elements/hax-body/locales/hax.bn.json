@@ -340,5 +340,6 @@
   "framePhoto": "ছবি ফ্রেম করুন",
   "uploadOfFileFailed": "{name} আপলোড করা যায়নি: {reason}",
   "uploadFailedReason": "সার্ভার এটি গ্রহণ করেনি",
+  "uploadServerUnreachable": "সার্ভারে পৌঁছানো যায়নি",
   "joinHaxCommunity": "HAX কমিউনিটিতে যোগ দিন"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "Hazie okpokolo foto",
   "uploadOfFileFailed": "Enweghị ike ibugo {name}: {reason}",
   "uploadFailedReason": "sava anabataghị ya",
+  "uploadServerUnreachable": "enweghị ike iru sava ahụ",
   "joinHaxCommunity": "Sonye na obodo HAX"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-enkorpigo",
-    "description": "Enkorpigi LinkedIn-profilkarton."
+    "description": "Ligilo al LinkedIn-profilo."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Persona nomo",
-        "description": "Segmento de la persona LinkedIn-uzantnomo."
+        "description": "La nomo ĉe la fino de la profila adreso (linkedin.com/in/nomo)."
       }
     ],
     "advanced": [

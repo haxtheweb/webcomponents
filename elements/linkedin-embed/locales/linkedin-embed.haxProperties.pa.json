@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ਏਮਬੈਡ",
-    "description": "LinkedIn ਪ੍ਰੋਫਾਈਲ ਕਾਰਡ ਏਮਬੈਡ ਕਰੋ।"
+    "description": "ਕਿਸੇ LinkedIn ਪ੍ਰੋਫਾਈਲ ਦਾ ਲਿੰਕ।"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ਕਸਟਮ ਨਾਮ",
-        "description": "LinkedIn ਕਸਟਮ ਉਪਭੋਗਤਾ ਨਾਮ ਹਿੱਸਾ।"
+        "description": "ਪ੍ਰੋਫਾਈਲ ਪਤੇ ਦੇ ਅੰਤ ਵਿੱਚ ਨਾਮ (linkedin.com/in/ਨਾਮ)।"
       }
     ],
     "advanced": [

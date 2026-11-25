@@ -340,5 +340,6 @@
   "framePhoto": "Ramma mynd inn",
   "uploadOfFileFailed": "Kundi ikki leggja {name} upp: {reason}",
   "uploadFailedReason": "ambætarin góðtók tað ikki",
+  "uploadServerUnreachable": "ambætarin var ikki tøkur",
   "joinHaxCommunity": "Ver við í HAX-felagsskapinum"
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ഉൾച്ചേർക്കൽ",
-    "description": "ഒരു LinkedIn പ്രൊഫൈൽ കാർഡ് ഉൾച്ചേർക്കുക."
+    "description": "ഒരു LinkedIn പ്രൊഫൈലിലേക്കുള്ള ലിങ്ക്."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "വാനിറ്റി പേര്",
-        "description": "LinkedIn വാനിറ്റി ഉപയോക്തൃനാമ ഭാഗം."
+        "description": "പ്രൊഫൈൽ വിലാസത്തിന്റെ അവസാനമുള്ള പേര് (linkedin.com/in/പേര്)."
       }
     ],
     "advanced": [

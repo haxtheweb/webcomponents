@@ -340,5 +340,6 @@
   "framePhoto": "Bingkaikan foto",
   "uploadOfFileFailed": "Tidak dapat memuat naik {name}: {reason}",
   "uploadFailedReason": "pelayan tidak menerimanya",
+  "uploadServerUnreachable": "pelayan tidak dapat dihubungi",
   "joinHaxCommunity": "Sertai komuniti HAX"
 }

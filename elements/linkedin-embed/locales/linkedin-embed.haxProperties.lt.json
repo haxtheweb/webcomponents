@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn įterpinys",
-    "description": "Įterpti LinkedIn profilio kortelę."
+    "description": "Nuoroda į LinkedIn profilį."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Profilio vardas",
-        "description": "LinkedIn profilio naudotojo vardo segmentas."
+        "description": "Vardas profilio adreso pabaigoje (linkedin.com/in/vardas)."
       }
     ],
     "advanced": [

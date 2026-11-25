@@ -5,5 +5,6 @@
   "stop": "Tigil",
   "playbackStarted": "Nagsimula ang playback",
   "playbackFinished": "Natapos ang playback",
-  "playbackStopped": "Huminto ang playback"
+  "playbackStopped": "Huminto ang playback",
+  "notes": "Mga nota"
 }

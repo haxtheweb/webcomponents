@@ -340,5 +340,6 @@
   "framePhoto": "ඡායාරූපය රාමුගත කරන්න",
   "uploadOfFileFailed": "{name} උඩුගත කළ නොහැකි විය: {reason}",
   "uploadFailedReason": "සේවාදායකය එය පිළිගත්තේ නැත",
+  "uploadServerUnreachable": "සේවාදායකය වෙත ළඟා විය නොහැකි විය",
   "joinHaxCommunity": "HAX ප්‍රජාවට එක්වන්න"
 }

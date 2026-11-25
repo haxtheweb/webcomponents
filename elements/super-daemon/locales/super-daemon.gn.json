@@ -101,5 +101,6 @@
   "openFullMerlin": "Embojuru Merlin hetãmbýva",
   "resultsOfTotal": "{count} {total}-gui jehupyty",
   "runResult": "Ejapo peteĩ jehupyty",
-  "sayPickResult": "mokõiha"
+  "sayPickResult": "mokõiha",
+  "voiceNeedsConsent": "Ko kundaha ndaikatúi ontende ñe'ẽ ne mba'e'okuápe."
 }

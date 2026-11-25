@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Galchiinsa LinkedIn",
-    "description": "Kaardii piroofaayilii LinkedIn galchi."
+    "description": "Liinkii gara piroofaayilii LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Maqaa addaa",
-        "description": "Kutaa maqaa fayyadamaa addaa LinkedIn."
+        "description": "Maqaa dhuma teessoo piroofaayilii irratti argamu (linkedin.com/in/maqaa)."
       }
     ],
     "advanced": [

@@ -5,5 +5,6 @@
   "stop": "Stop",
   "playbackStarted": "A lejátszás elindult",
   "playbackFinished": "A lejátszás befejeződött",
-  "playbackStopped": "A lejátszás leállt"
+  "playbackStopped": "A lejátszás leállt",
+  "notes": "Hangjegyek"
 }

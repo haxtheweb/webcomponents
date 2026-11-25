@@ -340,5 +340,6 @@
   "framePhoto": "Ṣe férémù fọ́tò",
   "uploadOfFileFailed": "Kò ṣeé ṣe láti gbé {name} sókè: {reason}",
   "uploadFailedReason": "olupin kò gbà á",
+  "uploadServerUnreachable": "a kò lè dé ọ̀dọ̀ olupin náà",
   "joinHaxCommunity": "Darapọ̀ mọ́ àwùjọ HAX"
 }

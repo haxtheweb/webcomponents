@@ -340,5 +340,6 @@
   "framePhoto": "ראַמיר פֿאָטאָ",
   "uploadOfFileFailed": "מע האָט נישט געקענט אַרויפֿלאָדן {name}: {reason}",
   "uploadFailedReason": "דער סערווער האָט עס נישט אָנגענומען",
+  "uploadServerUnreachable": "מ'האָט נישט געקענט דערגרייכן דעם סערווער",
   "joinHaxCommunity": "שליסט זיך אָן אין דער HAX קהילה"
 }

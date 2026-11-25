@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Bicihkirina LinkedIn",
-    "description": "Karta profîla LinkedIn bi cih bike."
+    "description": "Girêdana bi profîleke LinkedIn re."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Navê taybet",
-        "description": "Beşa navê bikarhêner ê taybet a LinkedIn."
+        "description": "Navê li dawiya navnîşana profîlê (linkedin.com/in/nav)."
       }
     ],
     "advanced": [

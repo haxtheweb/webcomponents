@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Intégration LinkedIn",
-    "description": "Intégrer une carte de profil LinkedIn."
+    "description": "Lien vers un profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nom personnalisé",
-        "description": "Segment du nom d'utilisateur personnalisé LinkedIn."
+        "description": "Le nom à la fin de l'adresse du profil (linkedin.com/in/nom)."
       }
     ],
     "advanced": [

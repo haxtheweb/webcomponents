@@ -340,5 +340,6 @@
   "framePhoto": "تصوير فريم ڪريو",
   "uploadOfFileFailed": "{name} اپلوڊ نه ٿي سگهيو: {reason}",
   "uploadFailedReason": "سرور ان کي قبول نه ڪيو",
+  "uploadServerUnreachable": "سرور تائين پهچي نه سگهيو",
   "joinHaxCommunity": "HAX برادريءَ ۾ شامل ٿيو"
 }

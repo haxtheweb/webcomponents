@@ -101,5 +101,6 @@
   "openFullMerlin": "Oscail Merlin iomlán",
   "resultsOfTotal": "{count} as {total} toradh",
   "runResult": "Rith toradh",
-  "sayPickResult": "an dara ceann"
+  "sayPickResult": "an dara ceann",
+  "voiceNeedsConsent": "Ní féidir leis an mbrabhsálaí seo caint a thuiscint ar do ghléas."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "Mepee Merlin zuru ezu",
   "resultsOfTotal": "Nsonaazụ {count} n'ime {total}",
   "runResult": "Mee nsonaazụ",
-  "sayPickResult": "nke abụọ"
+  "sayPickResult": "nke abụọ",
+  "voiceNeedsConsent": "Ihe nchọgharị a enweghị ike ịghọta okwu na ngwaọrụ gị."
 }

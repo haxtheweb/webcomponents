@@ -101,5 +101,6 @@
   "openFullMerlin": "முழு Merlin ஐத் திற",
   "resultsOfTotal": "{total} முடிவுகளில் {count}",
   "runResult": "ஒரு முடிவை இயக்கு",
-  "sayPickResult": "இரண்டாவது"
+  "sayPickResult": "இரண்டாவது",
+  "voiceNeedsConsent": "இந்த உலாவியால் உங்கள் சாதனத்திலேயே பேச்சைப் புரிந்துகொள்ள முடியாது."
 }

@@ -340,5 +340,6 @@
   "framePhoto": "Încadrați fotografia",
   "uploadOfFileFailed": "Nu s-a putut încărca {name}: {reason}",
   "uploadFailedReason": "serverul nu l-a acceptat",
+  "uploadServerUnreachable": "serverul nu a putut fi contactat",
   "joinHaxCommunity": "Alătură-te comunității HAX"
 }

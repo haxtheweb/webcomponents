@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn churasqa",
-    "description": "LinkedIn perfil tarjetata churay."
+    "description": "Huk LinkedIn perfilman t'inki."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Kikin suti",
-        "description": "LinkedIn-pi kikin ruraq sutipa t'aqan."
+        "description": "Perfil tiyanapa tukukuyninpi suti (linkedin.com/in/suti)."
       }
     ],
     "advanced": [

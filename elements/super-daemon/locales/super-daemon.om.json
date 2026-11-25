@@ -101,5 +101,6 @@
   "openFullMerlin": "Merlin guutuu bani",
   "resultsOfTotal": "Bu'aalee {total} keessaa {count}",
   "runResult": "Bu'aa hojjechiisi",
-  "sayPickResult": "inni lammaffaa"
+  "sayPickResult": "inni lammaffaa",
+  "voiceNeedsConsent": "Barbaadduun kun meeshaa kee irratti dubbii hubachuu hin danda'u."
 }

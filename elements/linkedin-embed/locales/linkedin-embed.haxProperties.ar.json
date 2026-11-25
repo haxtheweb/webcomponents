@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "تضمين LinkedIn",
-    "description": "تضمين بطاقة ملف شخصي على LinkedIn."
+    "description": "رابط إلى ملف شخصي على LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "الاسم المخصص",
-        "description": "جزء اسم المستخدم المخصص في LinkedIn."
+        "description": "الاسم في نهاية عنوان الملف الشخصي (linkedin.com/in/name)."
       }
     ],
     "advanced": [

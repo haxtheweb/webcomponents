@@ -101,5 +101,6 @@
   "openFullMerlin": "Hap Merlin të plotë",
   "resultsOfTotal": "{count} nga {total} rezultate",
   "runResult": "Ekzekuto një rezultat",
-  "sayPickResult": "i dyti"
+  "sayPickResult": "i dyti",
+  "voiceNeedsConsent": "Ky shfletues nuk e kupton dot të folurën në pajisjen tuaj."
 }

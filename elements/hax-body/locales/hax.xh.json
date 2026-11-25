@@ -340,5 +340,6 @@
   "framePhoto": "Yenza isakhelo sefoto",
   "uploadOfFileFailed": "Akukwazekanga ukulayisha {name}: {reason}",
   "uploadFailedReason": "iseva ayizange iyamkele",
+  "uploadServerUnreachable": "iseva ayifikeleleki",
   "joinHaxCommunity": "Joyina uluntu lwe-HAX"
 }

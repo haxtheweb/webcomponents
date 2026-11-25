@@ -101,5 +101,6 @@
   "openFullMerlin": "ሙሉ Merlin ክፈት",
   "resultsOfTotal": "{count} ከ{total} ውጤቶች",
   "runResult": "ውጤት አሂድ",
-  "sayPickResult": "ሁለተኛው"
+  "sayPickResult": "ሁለተኛው",
+  "voiceNeedsConsent": "ይህ አሳሽ በመሣሪያዎ ላይ ንግግርን መረዳት አይችልም።"
 }

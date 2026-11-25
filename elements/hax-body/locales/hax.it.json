@@ -340,5 +340,6 @@
   "framePhoto": "Inquadra foto",
   "uploadOfFileFailed": "Impossibile caricare {name}: {reason}",
   "uploadFailedReason": "il server non lo ha accettato",
+  "uploadServerUnreachable": "il server non è raggiungibile",
   "joinHaxCommunity": "Unisciti alla community HAX"
 }

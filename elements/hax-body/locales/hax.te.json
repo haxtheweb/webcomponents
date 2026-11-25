@@ -340,5 +340,6 @@
   "framePhoto": "ఫోటోను ఫ్రేమ్ చేయి",
   "uploadOfFileFailed": "{name}ని అప్‌లోడ్ చేయలేకపోయాము: {reason}",
   "uploadFailedReason": "సర్వర్ దానిని ఆమోదించలేదు",
+  "uploadServerUnreachable": "సర్వర్‌ను చేరుకోలేకపోయాం",
   "joinHaxCommunity": "HAX కమ్యూనిటీలో చేరండి"
 }

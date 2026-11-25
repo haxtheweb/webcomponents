@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn এমবেড",
-    "description": "একটি LinkedIn প্রোফাইল কার্ড এমবেড করুন।"
+    "description": "একটি LinkedIn প্রোফাইলের লিংক।"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ভ্যানিটি নাম",
-        "description": "LinkedIn ভ্যানিটি ব্যবহারকারী নামের অংশ।"
+        "description": "প্রোফাইল ঠিকানার শেষে থাকা নাম (linkedin.com/in/name)।"
       }
     ],
     "advanced": [

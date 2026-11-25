@@ -101,5 +101,6 @@
   "openFullMerlin": "ເປີດ Merlin ເຕັມ",
   "resultsOfTotal": "{count} ຈາກ {total} ຜົນລັບ",
   "runResult": "ແລ່ນຜົນລັບ",
-  "sayPickResult": "ອັນທີສອງ"
+  "sayPickResult": "ອັນທີສອງ",
+  "voiceNeedsConsent": "ໂປຣແກຣມທ່ອງເວັບນີ້ບໍ່ສາມາດເຂົ້າໃຈສຽງເວົ້າໃນອຸປະກອນຂອງທ່ານໄດ້."
 }

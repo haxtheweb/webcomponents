@@ -101,5 +101,6 @@
   "openFullMerlin": "פתח את Merlin המלא",
   "resultsOfTotal": "{count} מתוך {total} תוצאות",
   "runResult": "הפעל תוצאה",
-  "sayPickResult": "השני"
+  "sayPickResult": "השני",
+  "voiceNeedsConsent": "הדפדפן הזה לא יכול לזהות דיבור במכשיר שלכם."
 }

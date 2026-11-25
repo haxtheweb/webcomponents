@@ -101,5 +101,6 @@
   "openFullMerlin": "עפֿן גאַנצן Merlin",
   "resultsOfTotal": "{count} פֿון {total} רעזולטאַטן",
   "runResult": "פֿירע אויס אַ רעזולטאַט",
-  "sayPickResult": "דער צווייטער"
+  "sayPickResult": "דער צווייטער",
+  "voiceNeedsConsent": "דער בראַוזער קען נישט פֿאַרשטיין רייד אויף אײַער מכשיר."
 }

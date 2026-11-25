@@ -340,5 +340,6 @@
   "framePhoto": "Hoʻopahu i ke kiʻi",
   "uploadOfFileFailed": "ʻAʻole hiki ke hoʻouka iā {name}: {reason}",
   "uploadFailedReason": "ʻaʻole i ʻae ke kikowaena iā ia",
+  "uploadServerUnreachable": "ʻaʻole i hiki ke hōʻea i ke kikowaena",
   "joinHaxCommunity": "Komo i ke kaiāulu HAX"
 }

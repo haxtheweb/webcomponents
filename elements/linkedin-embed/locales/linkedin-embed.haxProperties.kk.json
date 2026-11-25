@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn енгізу",
-    "description": "LinkedIn профиль картасын енгізу."
+    "description": "LinkedIn профиліне сілтеме."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Жеке атау",
-        "description": "LinkedIn жеке пайдаланушы атауы бөлігі."
+        "description": "Профиль мекенжайының соңындағы атау (linkedin.com/in/атау)."
       }
     ],
     "advanced": [

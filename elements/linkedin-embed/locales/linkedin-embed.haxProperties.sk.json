@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Vloženie LinkedIn",
-    "description": "Vloženie profilovej karty LinkedIn."
+    "description": "Odkaz na profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Vlastné meno",
-        "description": "Časť vlastného používateľského mena LinkedIn."
+        "description": "Meno na konci adresy profilu (linkedin.com/in/meno)."
       }
     ],
     "advanced": [

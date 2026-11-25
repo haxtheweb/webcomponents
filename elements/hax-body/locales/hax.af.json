@@ -340,5 +340,6 @@
   "framePhoto": "Raam foto",
   "uploadOfFileFailed": "Kon nie {name} oplaai nie: {reason}",
   "uploadFailedReason": "die bediener het dit nie aanvaar nie",
+  "uploadServerUnreachable": "die bediener kon nie bereik word nie",
   "joinHaxCommunity": "Sluit aan by die HAX-gemeenskap"
 }

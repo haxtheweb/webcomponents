@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Sematan LinkedIn",
-    "description": "Sematkan kartu profil LinkedIn."
+    "description": "Tautan ke profil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Nama khusus",
-        "description": "Segmen nama pengguna khusus LinkedIn."
+        "description": "Nama di akhir alamat profil (linkedin.com/in/nama)."
       }
     ],
     "advanced": [

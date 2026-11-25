@@ -340,5 +340,6 @@
   "framePhoto": "Wêneyê çarçove bike",
   "uploadOfFileFailed": "{name} nehat barkirin: {reason}",
   "uploadFailedReason": "pêşkêşkerê ew qebûl nekir",
+  "uploadServerUnreachable": "nehat gihîştin serverê",
   "joinHaxCommunity": "Tevlî civaka HAX bibe"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "ဓာတ်ပုံကို ဘောင်ချရန်",
   "uploadOfFileFailed": "{name} ကို အပ်လုဒ်လုပ်၍ မရပါ- {reason}",
   "uploadFailedReason": "ဆာဗာက လက်မခံခဲ့ပါ",
+  "uploadServerUnreachable": "ဆာဗာကို ဆက်သွယ်၍ မရပါ",
   "joinHaxCommunity": "HAX အသိုင်းအဝိုင်းသို့ ပူးပေါင်းရန်"
 }

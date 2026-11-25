@@ -340,5 +340,6 @@
   "framePhoto": "Ikani chithunzi m'chimango",
   "uploadOfFileFailed": "Sizinatheke kukweza {name}: {reason}",
   "uploadFailedReason": "seva sinavomereze",
+  "uploadServerUnreachable": "seva sinapezeke",
   "joinHaxCommunity": "Lowani nawo gulu la HAX"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "Upraviť kompozíciu fotografie",
   "uploadOfFileFailed": "Nepodarilo sa nahrať {name}: {reason}",
   "uploadFailedReason": "server ho neprijal",
+  "uploadServerUnreachable": "server nebol dostupný",
   "joinHaxCommunity": "Pridajte sa ku komunite HAX"
 }

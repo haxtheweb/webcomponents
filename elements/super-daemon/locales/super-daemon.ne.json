@@ -101,5 +101,6 @@
   "openFullMerlin": "पूर्ण Merlin खोल्नुहोस्",
   "resultsOfTotal": "{total} मध्ये {count} नतिजा",
   "runResult": "नतिजा चलाउनुहोस्",
-  "sayPickResult": "दोस्रो"
+  "sayPickResult": "दोस्रो",
+  "voiceNeedsConsent": "यो ब्राउजरले तपाईंको उपकरणमै बोली बुझ्न सक्दैन।"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "ຈັດກອບຮູບພາບ",
   "uploadOfFileFailed": "ບໍ່ສາມາດອັບໂຫຼດ {name} ໄດ້: {reason}",
   "uploadFailedReason": "ເຊີບເວີບໍ່ຍອມຮັບມັນ",
+  "uploadServerUnreachable": "ບໍ່ສາມາດເຊື່ອມຕໍ່ເຊີບເວີໄດ້",
   "joinHaxCommunity": "ເຂົ້າຮ່ວມຊຸມຊົນ HAX"
 }

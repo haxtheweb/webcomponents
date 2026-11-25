@@ -101,5 +101,6 @@
   "openFullMerlin": "Merlinをフルで開く",
   "resultsOfTotal": "{total}件中{count}件の結果",
   "runResult": "結果を実行",
-  "sayPickResult": "2番目"
+  "sayPickResult": "2番目",
+  "voiceNeedsConsent": "このブラウザーは端末上で音声を認識できません。"
 }

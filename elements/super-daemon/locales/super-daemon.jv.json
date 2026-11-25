@@ -101,5 +101,6 @@
   "openFullMerlin": "Bukak Merlin lengkap",
   "resultsOfTotal": "{count} saka {total} asil",
   "runResult": "Jalanake asil",
-  "sayPickResult": "nomer loro"
+  "sayPickResult": "nomer loro",
+  "voiceNeedsConsent": "Browser iki ora bisa ngerteni wicara ing piranti panjenengan."
 }

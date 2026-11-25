@@ -101,5 +101,6 @@
   "openFullMerlin": "Buka Merlin penuh",
   "resultsOfTotal": "{count} daripada {total} hasil",
   "runResult": "Jalankan hasil",
-  "sayPickResult": "yang kedua"
+  "sayPickResult": "yang kedua",
+  "voiceNeedsConsent": "Pelayar ini tidak dapat memahami pertuturan pada peranti anda."
 }

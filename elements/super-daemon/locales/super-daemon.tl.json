@@ -101,5 +101,6 @@
   "openFullMerlin": "Buksan ang buong Merlin",
   "resultsOfTotal": "{count} sa {total} resulta",
   "runResult": "Magpatakbo ng resulta",
-  "sayPickResult": "ikalawa"
+  "sayPickResult": "ikalawa",
+  "voiceNeedsConsent": "Hindi maintindihan ng browser na ito ang pananalita sa iyong device."
 }

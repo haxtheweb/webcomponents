@@ -101,5 +101,6 @@
   "openFullMerlin": "بشپړ Merlin پرانیزئ",
   "resultsOfTotal": "له {total} څخه {count} پایلې",
   "runResult": "پایله چلول",
-  "sayPickResult": "دویم"
+  "sayPickResult": "دویم",
+  "voiceNeedsConsent": "دا براوزر ستاسو په وسیله کې وینا نشي پوهېدلی."
 }

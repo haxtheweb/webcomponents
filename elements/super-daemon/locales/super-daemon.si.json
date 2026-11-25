@@ -101,5 +101,6 @@
   "openFullMerlin": "සම්පූර්ණ Merlin විවෘත කරන්න",
   "resultsOfTotal": "ප්‍රතිඵල {total} න් {count}",
   "runResult": "ප්‍රතිඵලයක් ධාවනය කරන්න",
-  "sayPickResult": "දෙවෙනි එක"
+  "sayPickResult": "දෙවෙනි එක",
+  "voiceNeedsConsent": "මෙම බ්‍රවුසරයට ඔබගේ උපාංගය මත කථනය තේරුම් ගත නොහැක."
 }

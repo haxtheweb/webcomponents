@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Vdelava LinkedIn",
-    "description": "Vdelava profilne kartice LinkedIn."
+    "description": "Povezava do profila LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Prilagojeno ime",
-        "description": "Del prilagojenega uporabniškega imena LinkedIn."
+        "description": "Ime na koncu naslova profila (linkedin.com/in/ime)."
       }
     ],
     "advanced": [

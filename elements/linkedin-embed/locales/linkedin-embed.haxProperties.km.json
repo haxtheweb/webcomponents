@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "បង្កប់ LinkedIn",
-    "description": "បង្កប់កាតប្រវត្តិរូប LinkedIn។"
+    "description": "តំណទៅកាន់ប្រវត្តិរូប LinkedIn។"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ឈ្មោះផ្ទាល់ខ្លួន",
-        "description": "ផ្នែកឈ្មោះអ្នកប្រើផ្ទាល់ខ្លួនរបស់ LinkedIn។"
+        "description": "ឈ្មោះនៅចុងអាសយដ្ឋានប្រវត្តិរូប (linkedin.com/in/ឈ្មោះ)។"
       }
     ],
     "advanced": [

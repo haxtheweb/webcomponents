@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-insluiting",
-    "description": "Sluit een LinkedIn-profielkaart in."
+    "description": "Link naar een LinkedIn-profiel."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Vanity-naam",
-        "description": "Vanity-gebruikersnaamdeel van LinkedIn."
+        "description": "De naam aan het einde van het profieladres (linkedin.com/in/naam)."
       }
     ],
     "advanced": [

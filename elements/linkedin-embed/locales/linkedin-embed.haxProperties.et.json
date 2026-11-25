@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIni manus",
-    "description": "Manusta LinkedIni profiilikaart."
+    "description": "Link LinkedIni profiilile."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Kohandatud nimi",
-        "description": "LinkedIni kohandatud kasutajanime osa."
+        "description": "Nimi profiili aadressi lõpus (linkedin.com/in/nimi)."
       }
     ],
     "advanced": [

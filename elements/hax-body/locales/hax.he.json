@@ -340,5 +340,6 @@
   "framePhoto": "מסגור תמונה",
   "uploadOfFileFailed": "לא ניתן היה להעלות את {name}: {reason}",
   "uploadFailedReason": "השרת לא קיבל אותו",
+  "uploadServerUnreachable": "לא ניתן היה להגיע לשרת",
   "joinHaxCommunity": "הצטרפו לקהילת HAX"
 }

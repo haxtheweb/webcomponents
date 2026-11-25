@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn කාවැද්දීම",
-    "description": "LinkedIn පැතිකඩ කාඩ්පතක් කාවද්දන්න."
+    "description": "LinkedIn පැතිකඩකට සබැඳිය."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "අභිරුචි නම",
-        "description": "LinkedIn අභිරුචි පරිශීලක නාම කොටස."
+        "description": "පැතිකඩ ලිපිනයේ අවසානයේ ඇති නම (linkedin.com/in/නම)."
       }
     ],
     "advanced": [

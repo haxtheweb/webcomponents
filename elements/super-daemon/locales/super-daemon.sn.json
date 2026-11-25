@@ -101,5 +101,6 @@
   "openFullMerlin": "Vhura Merlin yose",
   "resultsOfTotal": "Mhedzisiro {count} kubva pa{total}",
   "runResult": "Fambisa mhedzisiro",
-  "sayPickResult": "yechipiri"
+  "sayPickResult": "yechipiri",
+  "voiceNeedsConsent": "Browser iyi haikwanise kunzwisisa kutaura pamudziyo wako."
 }

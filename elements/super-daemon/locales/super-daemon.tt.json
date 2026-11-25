@@ -101,5 +101,6 @@
   "openFullMerlin": "Тулы Merlin'ны ачу",
   "resultsOfTotal": "{total} нәтиҗәнең {count}-е",
   "runResult": "Нәтиҗәне башкару",
-  "sayPickResult": "икенче"
+  "sayPickResult": "икенче",
+  "voiceNeedsConsent": "Бу браузер сөйләмне җиһазыгызда аңлый алмый."
 }

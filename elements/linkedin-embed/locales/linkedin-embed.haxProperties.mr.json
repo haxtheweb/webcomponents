@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn एम्बेड",
-    "description": "LinkedIn प्रोफाइल कार्ड एम्बेड करा."
+    "description": "LinkedIn प्रोफाइलची लिंक."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "व्हॅनिटी नाव",
-        "description": "LinkedIn व्हॅनिटी वापरकर्तानाव भाग."
+        "description": "प्रोफाइल पत्त्याच्या शेवटी असलेले नाव (linkedin.com/in/नाव)."
       }
     ],
     "advanced": [

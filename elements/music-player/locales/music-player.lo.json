@@ -5,5 +5,6 @@
   "stop": "ຢຸດ",
   "playbackStarted": "ການຫຼິ້ນເລີ່ມແລ້ວ",
   "playbackFinished": "ການຫຼິ້ນສິ້ນສຸດແລ້ວ",
-  "playbackStopped": "ການຫຼິ້ນຢຸດແລ້ວ"
+  "playbackStopped": "ການຫຼິ້ນຢຸດແລ້ວ",
+  "notes": "ໂນ້ດດົນຕີ"
 }

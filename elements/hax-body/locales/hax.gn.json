@@ -340,5 +340,6 @@
   "framePhoto": "Emohenda ta'ãnga",
   "uploadOfFileFailed": "Ndaikatúi ojehupi {name}: {reason}",
   "uploadFailedReason": "servidor ndoguerováiri",
+  "uploadServerUnreachable": "ndaikatúi ojeguahẽ servidor-pe",
   "joinHaxCommunity": "Eike HAX atýpe"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "Cadrer la photo",
   "uploadOfFileFailed": "Impossible de téléverser {name} : {reason}",
   "uploadFailedReason": "le serveur ne l'a pas accepté",
+  "uploadServerUnreachable": "le serveur est injoignable",
   "joinHaxCommunity": "Rejoindre la communauté HAX"
 }

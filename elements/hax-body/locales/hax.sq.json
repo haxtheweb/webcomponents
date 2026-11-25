@@ -340,5 +340,6 @@
   "framePhoto": "Kuadro foton",
   "uploadOfFileFailed": "{name} nuk u ngarkua dot: {reason}",
   "uploadFailedReason": "serveri nuk e pranoi",
+  "uploadServerUnreachable": "serveri nuk u arrit",
   "joinHaxCommunity": "Bashkohu me komunitetin HAX"
 }

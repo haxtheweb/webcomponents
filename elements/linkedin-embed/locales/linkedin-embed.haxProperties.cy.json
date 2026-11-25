@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Mewnosodiad LinkedIn",
-    "description": "Mewnosod cerdyn proffil LinkedIn."
+    "description": "Dolen i broffil LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Enw personol",
-        "description": "Segment enw defnyddiwr personol LinkedIn."
+        "description": "Yr enw ar ddiwedd cyfeiriad y proffil (linkedin.com/in/enw)."
       }
     ],
     "advanced": [

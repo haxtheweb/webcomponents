@@ -101,5 +101,6 @@
   "openFullMerlin": "Apre Merlin sanu",
   "resultsOfTotal": "{count} nant'à {total} risultati",
   "runResult": "Eseguisce un risultatu",
-  "sayPickResult": "u sicondu"
+  "sayPickResult": "u sicondu",
+  "voiceNeedsConsent": "Stu navigatore ùn pò micca capisce a parolla nantu à u vostru apparechju."
 }

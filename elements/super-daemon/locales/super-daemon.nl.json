@@ -101,5 +101,6 @@
   "openFullMerlin": "Volledige Merlin openen",
   "resultsOfTotal": "{count} van {total} resultaten",
   "runResult": "Een resultaat uitvoeren",
-  "sayPickResult": "de tweede"
+  "sayPickResult": "de tweede",
+  "voiceNeedsConsent": "Deze browser kan spraak niet op je apparaat verwerken."
 }

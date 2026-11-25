@@ -340,5 +340,6 @@
   "framePhoto": "फोटो फ्रेम करा",
   "uploadOfFileFailed": "{name} अपलोड करता आले नाही: {reason}",
   "uploadFailedReason": "सर्व्हरने ते स्वीकारले नाही",
+  "uploadServerUnreachable": "सर्व्हरशी संपर्क होऊ शकला नाही",
   "joinHaxCommunity": "HAX समुदायात सामील व्हा"
 }

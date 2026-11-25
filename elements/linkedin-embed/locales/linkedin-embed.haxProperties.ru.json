@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Встраивание LinkedIn",
-    "description": "Встраивание карточки профиля LinkedIn."
+    "description": "Ссылка на профиль LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Персональное имя",
-        "description": "Персональное имя пользователя LinkedIn из адреса профиля."
+        "description": "Имя в конце адреса профиля (linkedin.com/in/имя)."
       }
     ],
     "advanced": [

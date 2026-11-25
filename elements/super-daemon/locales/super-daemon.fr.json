@@ -101,5 +101,6 @@
   "openFullMerlin": "Ouvrir Merlin en entier",
   "resultsOfTotal": "{count} résultats sur {total}",
   "runResult": "Exécuter un résultat",
-  "sayPickResult": "le deuxième"
+  "sayPickResult": "le deuxième",
+  "voiceNeedsConsent": "Ce navigateur ne peut pas reconnaître la parole sur votre appareil."
 }

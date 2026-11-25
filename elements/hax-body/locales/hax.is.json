@@ -340,5 +340,6 @@
   "framePhoto": "Ramma inn mynd",
   "uploadOfFileFailed": "Ekki tókst að hlaða upp {name}: {reason}",
   "uploadFailedReason": "þjónninn samþykkti það ekki",
+  "uploadServerUnreachable": "ekki náðist samband við þjóninn",
   "joinHaxCommunity": "Taktu þátt í HAX-samfélaginu"
 }

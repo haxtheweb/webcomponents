@@ -101,5 +101,6 @@
   "openFullMerlin": "Άνοιγμα πλήρους Merlin",
   "resultsOfTotal": "{count} από {total} αποτελέσματα",
   "runResult": "Εκτέλεση αποτελέσματος",
-  "sayPickResult": "δεύτερο"
+  "sayPickResult": "δεύτερο",
+  "voiceNeedsConsent": "Αυτό το πρόγραμμα περιήγησης δεν μπορεί να αναγνωρίσει ομιλία στη συσκευή σας."
 }

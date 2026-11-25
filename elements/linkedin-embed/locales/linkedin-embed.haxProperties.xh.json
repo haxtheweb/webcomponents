@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Ukufaka i-LinkedIn",
-    "description": "Faka ikhadi leprofayile ye-LinkedIn."
+    "description": "Ikhonkco eliya kwiprofayili yeLinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Igama lobuqu",
-        "description": "Icandelo legama lomsebenzisi lobuqu le-LinkedIn."
+        "description": "Igama elisekupheleni kwedilesi yeprofayili (linkedin.com/in/igama)."
       }
     ],
     "advanced": [

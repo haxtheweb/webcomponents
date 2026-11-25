@@ -340,5 +340,6 @@
   "framePhoto": "ფოტოს კადრირება",
   "uploadOfFileFailed": "{name}-ის ატვირთვა ვერ მოხერხდა: {reason}",
   "uploadFailedReason": "სერვერმა არ მიიღო",
+  "uploadServerUnreachable": "სერვერთან დაკავშირება ვერ მოხერხდა",
   "joinHaxCommunity": "შემოუერთდით HAX-ის საზოგადოებას"
 }

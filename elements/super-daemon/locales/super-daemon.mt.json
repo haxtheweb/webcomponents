@@ -101,5 +101,6 @@
   "openFullMerlin": "Iftaħ Merlin sħiħ",
   "resultsOfTotal": "{count} minn {total} riżultati",
   "runResult": "Mexxi riżultat",
-  "sayPickResult": "it-tieni wieħed"
+  "sayPickResult": "it-tieni wieħed",
+  "voiceNeedsConsent": "Dan il-browser ma jistax jifhem id-diskors fuq l-apparat tiegħek."
 }

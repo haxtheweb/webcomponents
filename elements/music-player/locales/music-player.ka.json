@@ -5,5 +5,6 @@
   "stop": "გაჩერება",
   "playbackStarted": "დაკვრა დაიწყო",
   "playbackFinished": "დაკვრა დასრულდა",
-  "playbackStopped": "დაკვრა შეჩერდა"
+  "playbackStopped": "დაკვრა შეჩერდა",
+  "notes": "ნოტები"
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "Wehe i Merlin piha",
   "resultsOfTotal": "{count} o {total} hopena",
   "runResult": "Holo i kekahi hopena",
-  "sayPickResult": "ʻelua"
+  "sayPickResult": "ʻelua",
+  "voiceNeedsConsent": "ʻAʻole hiki i kēia polokalamu kele pūnaewele ke hoʻomaopopo i ka ʻōlelo ma kāu mea hana."
 }

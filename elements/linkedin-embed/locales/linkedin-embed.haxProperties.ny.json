@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Kuyika kwa LinkedIn",
-    "description": "Ikani khadi la mbiri ya LinkedIn."
+    "description": "Ulalo wa mbiri ya LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Dzina lapadera",
-        "description": "Gawo la dzina lapadera la wogwiritsa ntchito pa LinkedIn."
+        "description": "Dzina lomwe lili kumapeto kwa adilesi ya mbiri (linkedin.com/in/dzina)."
       }
     ],
     "advanced": [

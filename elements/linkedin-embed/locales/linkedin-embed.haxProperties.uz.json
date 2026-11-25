@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn joylashtirish",
-    "description": "LinkedIn profil kartasini joylashtirish."
+    "description": "LinkedIn profiliga havola."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Maxsus nom",
-        "description": "LinkedIn maxsus foydalanuvchi nomi qismi."
+        "description": "Profil manzili oxiridagi nom (linkedin.com/in/nom)."
       }
     ],
     "advanced": [

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn-indlejring",
-    "description": "Indlejr et LinkedIn-profilkort."
+    "description": "Link til en LinkedIn-profil."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Personligt navn",
-        "description": "Den personlige brugernavnsdel af LinkedIn-URL'en."
+        "description": "Navnet i slutningen af profiladressen (linkedin.com/in/navn)."
       }
     ],
     "advanced": [

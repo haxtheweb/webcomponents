@@ -101,5 +101,6 @@
   "openFullMerlin": "Merlin အပြည့်အစုံကို ဖွင့်ရန်",
   "resultsOfTotal": "ရလဒ် {total} ခုအနက် {count}",
   "runResult": "ရလဒ်တစ်ခုကို လုပ်ဆောင်ရန်",
-  "sayPickResult": "ဒုတိယတစ်ခု"
+  "sayPickResult": "ဒုတိယတစ်ခု",
+  "voiceNeedsConsent": "ဤဘရောက်ဇာသည် သင့်စက်ပေါ်တွင် စကားပြောကို နားမလည်နိုင်ပါ။"
 }

@@ -340,5 +340,6 @@
   "framePhoto": "Frámaigh an grianghraf",
   "uploadOfFileFailed": "Níorbh fhéidir {name} a uaslódáil: {reason}",
   "uploadFailedReason": "níor ghlac an freastalaí leis",
+  "uploadServerUnreachable": "níorbh fhéidir teacht ar an bhfreastalaí",
   "joinHaxCommunity": "Bí páirteach i bpobal HAX"
 }

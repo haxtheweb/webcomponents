@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ایمبیڈ",
-    "description": "LinkedIn پروفائل کارڈ ایمبیڈ کرو۔"
+    "description": "کسے LinkedIn پروفائل دا لنک۔"
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "خاص ناں",
-        "description": "LinkedIn دے خاص یوزر ناں والا حصہ۔"
+        "description": "پروفائل پتے دے اخیر وچ ناں (linkedin.com/in/ناں)۔"
       }
     ],
     "advanced": [

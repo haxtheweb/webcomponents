@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "ຝັງ LinkedIn",
-    "description": "ຝັງບັດໂປຣໄຟລ໌ LinkedIn."
+    "description": "ລິ້ງໄປຫາໂປຣໄຟລ໌ LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "ຊື່ໂປຣໄຟລ໌",
-        "description": "ສ່ວນຊື່ຜູ້ໃຊ້ໂປຣໄຟລ໌ LinkedIn."
+        "description": "ຊື່ຢູ່ທ້າຍທີ່ຢູ່ໂປຣໄຟລ໌ (linkedin.com/in/name)."
       }
     ],
     "advanced": [

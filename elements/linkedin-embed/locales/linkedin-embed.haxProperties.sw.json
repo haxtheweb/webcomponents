@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "Kupachika LinkedIn",
-    "description": "Pachika kadi ya wasifu wa LinkedIn."
+    "description": "Kiungo kwa wasifu wa LinkedIn."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Jina maalum",
-        "description": "Sehemu ya jina maalum la mtumiaji la LinkedIn."
+        "description": "Jina lililo mwishoni mwa anwani ya wasifu (linkedin.com/in/jina)."
       }
     ],
     "advanced": [

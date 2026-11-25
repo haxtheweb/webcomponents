@@ -101,5 +101,6 @@
   "openFullMerlin": "Maak volle Merlin oop",
   "resultsOfTotal": "{count} van {total} resultate",
   "runResult": "Voer 'n resultaat uit",
-  "sayPickResult": "tweede een"
+  "sayPickResult": "tweede een",
+  "voiceNeedsConsent": "Hierdie blaaier kan nie spraak op jou toestel verstaan nie."
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn ఎంబెడ్",
-    "description": "LinkedIn ప్రొఫైల్ కార్డ్‌ను పొందుపరచండి."
+    "description": "LinkedIn ప్రొఫైల్‌కు లింక్."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "వ్యానిటీ పేరు",
-        "description": "LinkedIn వ్యానిటీ వినియోగదారు పేరు భాగం."
+        "description": "ప్రొఫైల్ చిరునామా చివర ఉన్న పేరు (linkedin.com/in/పేరు)."
       }
     ],
     "advanced": [

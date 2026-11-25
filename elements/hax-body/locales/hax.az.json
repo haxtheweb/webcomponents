@@ -340,5 +340,6 @@
   "framePhoto": "Fotonu kadrla",
   "uploadOfFileFailed": "{name} yüklənə bilmədi: {reason}",
   "uploadFailedReason": "server onu qəbul etmədi",
+  "uploadServerUnreachable": "serverə qoşulmaq mümkün olmadı",
   "joinHaxCommunity": "HAX icmasına qoşulun"
 }

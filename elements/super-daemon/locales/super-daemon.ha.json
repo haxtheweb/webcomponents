@@ -101,5 +101,6 @@
   "openFullMerlin": "Buɗe cikakken Merlin",
   "resultsOfTotal": "Sakamako {count} cikin {total}",
   "runResult": "Gudanar da sakamako",
-  "sayPickResult": "na biyu"
+  "sayPickResult": "na biyu",
+  "voiceNeedsConsent": "Wannan burauza ba zai iya fahimtar magana a na'urarka ba."
 }

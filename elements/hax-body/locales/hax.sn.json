@@ -340,5 +340,6 @@
   "framePhoto": "Ronga mufananidzo",
   "uploadOfFileFailed": "Hazvina kukwanisika kuisa {name}: {reason}",
   "uploadFailedReason": "sevha haina kuzvigamuchira",
+  "uploadServerUnreachable": "server haina kuwanikwa",
   "joinHaxCommunity": "Joinha nharaunda yeHAX"
 }

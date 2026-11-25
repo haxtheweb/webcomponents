@@ -101,5 +101,6 @@
   "openFullMerlin": "Адкрыць поўны Merlin",
   "resultsOfTotal": "{count} з {total} вынікаў",
   "runResult": "Выканаць вынік",
-  "sayPickResult": "другі"
+  "sayPickResult": "другі",
+  "voiceNeedsConsent": "Гэты браўзер не можа распазнаваць маўленне на вашай прыладзе."
 }

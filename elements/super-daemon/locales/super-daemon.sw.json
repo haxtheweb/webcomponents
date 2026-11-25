@@ -101,5 +101,6 @@
   "openFullMerlin": "Fungua Merlin kamili",
   "resultsOfTotal": "Matokeo {count} kati ya {total}",
   "runResult": "Endesha tokeo",
-  "sayPickResult": "la pili"
+  "sayPickResult": "la pili",
+  "voiceNeedsConsent": "Kivinjari hiki hakiwezi kuelewa usemi kwenye kifaa chako."
 }

@@ -101,5 +101,6 @@
   "openFullMerlin": "Abrir Merlin completo",
   "resultsOfTotal": "{count} de {total} resultados",
   "runResult": "Executar um resultado",
-  "sayPickResult": "segundo"
+  "sayPickResult": "segundo",
+  "voiceNeedsConsent": "Este navegador não consegue entender a fala no seu dispositivo."
 }

@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn урнаштыру",
-    "description": "LinkedIn профиль карточкасын урнаштырырга."
+    "description": "LinkedIn профиленә сылтама."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Шәхси исем",
-        "description": "LinkedIn шәхси кулланучы исеме өлеше."
+        "description": "Профиль адресы ахырындагы исем (linkedin.com/in/исем)."
       }
     ],
     "advanced": [

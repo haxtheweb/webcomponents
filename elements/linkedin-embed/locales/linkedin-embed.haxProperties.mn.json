@@ -1,14 +1,14 @@
 {
   "gizmo": {
     "title": "LinkedIn суулгац",
-    "description": "LinkedIn профайлын карт суулгах."
+    "description": "LinkedIn профайл руу холбоос."
   },
   "settings": {
     "configure": [
       {
         "property": "vanityname",
         "title": "Хувийн нэр",
-        "description": "LinkedIn хувийн хэрэглэгчийн нэрийн хэсэг."
+        "description": "Профайлын хаягийн төгсгөл дэх нэр (linkedin.com/in/нэр)."
       }
     ],
     "advanced": [

@@ -340,5 +340,6 @@
   "framePhoto": "Faka isithombe ohlakeni",
   "uploadOfFileFailed": "Akukwazanga ukulayisha {name}: {reason}",
   "uploadFailedReason": "iseva ayizange iyamukele",
+  "uploadServerUnreachable": "iseva ayitholakalanga",
   "joinHaxCommunity": "Joyina umphakathi we-HAX"
 }

@@ -5,5 +5,6 @@
   "stop": "Gelditu",
   "playbackStarted": "Erreprodukzioa hasi da",
   "playbackFinished": "Erreprodukzioa amaitu da",
-  "playbackStopped": "Erreprodukzioa gelditu da"
+  "playbackStopped": "Erreprodukzioa gelditu da",
+  "notes": "Musika-notak"
 }

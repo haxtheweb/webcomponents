@@ -340,5 +340,6 @@
   "framePhoto": "Foto ausriichten",
   "uploadOfFileFailed": "{name} konnt net eropgeluede ginn: {reason}",
   "uploadFailedReason": "de Server huet et net akzeptéiert",
+  "uploadServerUnreachable": "de Server war net z'erreechen",
   "joinHaxCommunity": "Der HAX-Communautéit bäitrieden"
 }

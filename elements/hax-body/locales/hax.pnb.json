@@ -340,5 +340,6 @@
   "framePhoto": "فوٹو فریم کرو",
   "uploadOfFileFailed": "{name} اپلوڈ نہیں ہو سکیا: {reason}",
   "uploadFailedReason": "سرور نے اینوں قبول نہیں کیتا",
+  "uploadServerUnreachable": "سرور تک پہنچ نہیں ہو سکی",
   "joinHaxCommunity": "HAX برادری وچ شامل ہوو"
 }
