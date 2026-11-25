@@ -365,6 +365,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.t = {
       ...this.t,
       network: "HAX network",
+      networkBar: "HAX network bar",
       web: "HAXTheWeb",
       webAbout: "Why HAX is for you, and every way to get it.",
       try: "Build now",
@@ -1674,7 +1675,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     const here = this._here();
     return html`
-      <div class="frame">
+      <div class="frame" role="region" aria-label="${this.t.networkBar}">
         <div class="bar">
           <div class="start" @keydown="${this._menuKey}">
             <nav class="props" aria-label="${this.t.network}">

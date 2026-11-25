@@ -392,7 +392,7 @@
   },
   "haxcms-blank-theme": {
     "element": "haxcms-blank-theme",
-    "path": "@haxtheweb/haxcms-elements/lib/haxcms-blank-theme.js",
+    "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
     "name": "Haxcms Blank Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-blank-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Blank Theme",
@@ -409,7 +409,7 @@
   },
   "haxcms-json-theme": {
     "element": "haxcms-json-theme",
-    "path": "@haxtheweb/haxcms-elements/lib/haxcms-json-theme.js",
+    "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-json-theme.js",
     "name": "Haxcms Json Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-json-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Json Theme",
@@ -426,7 +426,7 @@
   },
   "haxcms-print-theme": {
     "element": "haxcms-print-theme",
-    "path": "@haxtheweb/haxcms-elements/lib/haxcms-print-theme.js",
+    "path": "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-print-theme.js",
     "name": "Haxcms Print Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-print-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Print Theme",

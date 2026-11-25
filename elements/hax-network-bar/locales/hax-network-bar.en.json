@@ -118,5 +118,6 @@
   "goX": "X: @haxtheweb",
   "goXAbout": "News and updates from the HAX team.",
   "installAll": "Install HAX: every way to get it",
-  "installAllAbout": "The browser, the HAX CLI, Node.js, PHP, the desktop app or a prompt for your agent."
+  "installAllAbout": "The browser, the HAX CLI, Node.js, PHP, the desktop app or a prompt for your agent.",
+  "networkBar": "HAX network bar"
 }

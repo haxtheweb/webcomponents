@@ -62,6 +62,7 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       search: "Search",
       toggleDarkMode: "Toggle dark mode",
       pageNavigation: "Page navigation",
+      sidebar: "Sidebar",
     };
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
@@ -368,7 +369,13 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     return html`
       <a class="skip-link" href="#contentcontainer">${this.t.skipToContent}</a>
       <div class="layout">
-        <div class="nav" id="nav" part="nav" ?inert="${!this.sidebarOpen}">
+        <aside
+          class="nav"
+          id="nav"
+          part="nav"
+          aria-label="${this.t.sidebar}"
+          ?inert="${!this.sidebarOpen}"
+        >
           <div class="nav-header">
             <site-title
               ?disabled="${this.editMode}"
@@ -378,7 +385,7 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           <nav aria-label="${this.t.siteNavigation}">
             <site-menu part="site-menu"></site-menu>
           </nav>
-        </div>
+        </aside>
         <div class="main-col">
           <header class="inset-header" part="header">
             ${this.renderNavToggle()}

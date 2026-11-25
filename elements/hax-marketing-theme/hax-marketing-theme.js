@@ -79,6 +79,7 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
       anotherTheme: "Show another theme",
       switcherHeading: "Same site, your pick. Swap it live:",
       remix: "Remix",
+      pageIntro: "Page introduction",
       remixRandom: "Remix this site: a look picked by chance",
       remixOptions: "Show every way to remix this site",
       pagesUnder: "Pages under {name}",
@@ -1038,7 +1039,10 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
    */
   renderHero({ isHome, start, v, at, parent, stickers }) {
     return html`
-      <div class="hero ${isHome ? "home" : ""}">
+      <section
+        class="hero ${isHome ? "home" : ""}"
+        aria-label="${this.t.pageIntro}"
+      >
         <div class="inner">
           <div>
             ${
@@ -1119,7 +1123,7 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
                 : ``
           }
         </div>
-      </div>
+      </section>
     `;
   }
 
@@ -1223,7 +1227,12 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
           </div>
         </div>
       </header>
-      <div class="switcher" id="remix" ?hidden="${!this._remix}">
+      <section
+        class="switcher"
+        id="remix"
+        aria-label="${this.t.remix}"
+        ?hidden="${!this._remix}"
+      >
         <div class="inner">
           <hax-style-switcher heading="${this.t.switcherHeading}">
             ${stories.map(
@@ -1237,7 +1246,7 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
             )}
           </hax-style-switcher>
         </div>
-      </div>
+      </section>
       ${this.renderHero({ home, isHome, start, v, at, active, parent, stickers })}
       <main>
         <div class="inner">

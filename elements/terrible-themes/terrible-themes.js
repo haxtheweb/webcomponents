@@ -338,41 +338,43 @@ class TerribleThemes extends HAXCMSRememberRoute(
         <tbody>
           <tr bgcolor="#FFFFFF">
             <td>
-              <!-- Header -->
-              <table
-                role="presentation"
-                border="0"
-                cellspacing="0"
-                cellpadding="3"
-                class="topText"
-                width="100%"
-              >
-                <tbody>
-                  <tr>
-                    <td align="left">${this.t.terribleQuote}</td>
-                    <td align="right" width="100">
-                      <p class="loginState">
-                        <a class="loginState">${this.t.logIn}</a>
-                      </p>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <a
-                ><img
-                  src="${
-                    new URL("lib/assets/header.jpg", import.meta.url).href
-                  }/../header-room407.jpg"
-                  width="100%"
-                  height="200"
+              <header>
+                <!-- Header -->
+                <table
+                  role="presentation"
                   border="0"
-                  alt="${this.t.room407}"
-                  align="absbottom"
-                  vspace="0"
-                  hspace="0"
-                  loading="lazy"
-                  decoding="async"
-              /></a>
+                  cellspacing="0"
+                  cellpadding="3"
+                  class="topText"
+                  width="100%"
+                >
+                  <tbody>
+                    <tr>
+                      <td align="left">${this.t.terribleQuote}</td>
+                      <td align="right" width="100">
+                        <p class="loginState">
+                          <a class="loginState">${this.t.logIn}</a>
+                        </p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a
+                  ><img
+                    src="${
+                      new URL("lib/assets/header.jpg", import.meta.url).href
+                    }/../header-room407.jpg"
+                    width="100%"
+                    height="200"
+                    border="0"
+                    alt="${this.t.room407}"
+                    align="absbottom"
+                    vspace="0"
+                    hspace="0"
+                    loading="lazy"
+                    decoding="async"
+                /></a>
+              </header>
             </td>
           </tr>
           <tr>
@@ -496,7 +498,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
           <tr>
             <!-- Footer -->
             <td align="center">
-              <site-footer></site-footer>
+              <footer><site-footer></site-footer></footer>
             </td>
           </tr>
         </tbody>

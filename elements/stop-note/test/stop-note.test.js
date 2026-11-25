@@ -292,3 +292,57 @@ describe("stop-note shared vocabulary", () => {
     expect(el.icon).to.equal(StopNoteIconList.tip);
   });
 });
+
+// WCAG 1.3.1: the title sits one level below the heading before the note
+describe("stop-note heading level follows the page outline", () => {
+  it("is level 2 under the page title when no heading comes before it", async () => {
+    const el = await fixture(html`<stop-note title="Note"></stop-note>`);
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector("h3#title").getAttribute("aria-level"),
+    ).to.equal("2");
+  });
+
+  it("keeps the plain h3 (no aria-level) after an h2", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <h2>Section</h2>
+        <stop-note title="Note"></stop-note>
+      </div>`,
+    );
+    const el = wrap.querySelector("stop-note");
+    await el.updateComplete;
+    expect(el.shadowRoot.querySelector("h3#title").hasAttribute("aria-level"))
+      .to.be.false;
+  });
+
+  it("goes one below a deeper heading, and ignores headings after it", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <h2>Section</h2>
+        <h4>Detail</h4>
+        <stop-note title="Note"></stop-note>
+        <h2>Later</h2>
+      </div>`,
+    );
+    const el = wrap.querySelector("stop-note");
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector("h3#title").getAttribute("aria-level"),
+    ).to.equal("5");
+  });
+
+  it("caps the level at 6", async () => {
+    const wrap = await fixture(
+      html`<div>
+        <h6>Deep</h6>
+        <stop-note title="Note"></stop-note>
+      </div>`,
+    );
+    const el = wrap.querySelector("stop-note");
+    await el.updateComplete;
+    expect(
+      el.shadowRoot.querySelector("h3#title").getAttribute("aria-level"),
+    ).to.equal("6");
+  });
+});

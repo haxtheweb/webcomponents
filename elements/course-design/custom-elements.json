@@ -508,6 +508,15 @@
           "name": "CourseIntroHeader",
           "members": [
             {
+              "kind": "method",
+              "name": "_outlineTitleChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -562,6 +571,15 @@
               },
               "default": "\"\"",
               "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "_hasOutlineTitle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_hasOutlineTitle"
             }
           ],
           "attributes": [
@@ -604,6 +622,13 @@
               },
               "default": "\"\"",
               "fieldName": "color"
+            },
+            {
+              "name": "_hasOutlineTitle",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_hasOutlineTitle"
             }
           ],
           "superclass": {
@@ -769,6 +794,15 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "_outlineTitleChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "color",
               "privacy": "public",
@@ -777,6 +811,16 @@
               },
               "default": "\"\"",
               "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "_hasOutlineTitle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_hasOutlineTitle"
             }
           ],
           "attributes": [
@@ -787,6 +831,14 @@
               },
               "default": "\"\"",
               "fieldName": "color"
+            },
+            {
+              "name": "_hasOutlineTitle",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_hasOutlineTitle"
             }
           ],
           "superclass": {

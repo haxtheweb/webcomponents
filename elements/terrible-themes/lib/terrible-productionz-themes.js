@@ -39,6 +39,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
       ...this.t,
       skipToContent: "Skip to content",
       sitesOfInterest: "Sites of Interest",
+      siteNavigation: "Site navigation",
+      backToTop: "Back to top",
       acidScorpioWebsite: "Acid Scorpio website",
       posted: "Posted:",
       titleLabel: "Title:",
@@ -131,6 +133,12 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
         :host([dark-mode]) {
           --simple-tooltip-background: #000000;
           --simple-tooltip-text-color: #ffffff;
+        }
+        /* scroll-button hides itself below 600px; its landmark goes too */
+        @media (max-width: 600px) {
+          .back-to-top {
+            display: none;
+          }
         }
         scroll-button {
           position: fixed;
@@ -257,28 +265,32 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                 valign="top"
               ></td>
               <td width="128" valign="top">
-                <site-menu></site-menu>
+                <nav aria-label="${this.t.siteNavigation}">
+                  <site-menu></site-menu>
+                </nav>
                 <hr />
-                &nbsp;${this.t.sitesOfInterest}
-                <hr />
-                <div align="center">
-                  <a
-                    href="http://www.acidscorpio.com/"
-                    target="_blank"
-                    rel="noopener"
-                    ><img
-                      src="${
-                        new URL("assets/header.jpg", import.meta.url).href
-                      }/../acid88.gif"
-                      border="0"
-                      width="88"
-                      height="31"
-                      vspace="3"
-                      alt="${this.t.acidScorpioWebsite}"
-                      loading="lazy"
-                      decoding="async" /></a
-                  ><br />
-                </div>
+                <aside aria-label="${this.t.sitesOfInterest}">
+                  &nbsp;${this.t.sitesOfInterest}
+                  <hr />
+                  <div align="center">
+                    <a
+                      href="http://www.acidscorpio.com/"
+                      target="_blank"
+                      rel="noopener"
+                      ><img
+                        src="${
+                          new URL("assets/header.jpg", import.meta.url).href
+                        }/../acid88.gif"
+                        border="0"
+                        width="88"
+                        height="31"
+                        vspace="3"
+                        alt="${this.t.acidScorpioWebsite}"
+                        loading="lazy"
+                        decoding="async" /></a
+                    ><br />
+                  </div>
+                </aside>
               </td>
               <td
                 width="8"
@@ -370,7 +382,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
           </tbody>
         </table>
       </div>
-      <scroll-button></scroll-button>
+      <nav class="back-to-top" aria-label="${this.t.backToTop}">
+        <scroll-button></scroll-button>
+      </nav>
     `;
   }
   static get properties() {

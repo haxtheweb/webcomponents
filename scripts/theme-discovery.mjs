@@ -260,7 +260,7 @@ function buildThemeEntry(content, file, elementName) {
   const displayName = extractDisplayName(content, elementName);
   return {
     element: elementName,
-    path: generateNpmPath(file, elementName),
+    path: generateNpmPath(file),
     name: displayName,
     thumbnail: getThumbnailPath(elementName),
     description:
@@ -286,17 +286,13 @@ function buildThemeEntry(content, file, elementName) {
 /**
  * Generate the NPM path for the theme
  */
-function generateNpmPath(filePath, elementName) {
+function generateNpmPath(filePath) {
   // Convert file path to NPM path format
+  // keep the file's real location: themes nested below lib/ (haxcms-elements
+  // keeps its built-in themes in lib/core/themes/) must not be flattened to
+  // lib/<tag>.js, a file that does not exist
   const relativePath = filePath.replace("./elements/", "");
-  const packageName = relativePath.split("/")[0];
-
-  // Check if it's in a lib subdirectory
-  if (relativePath.includes("/lib/")) {
-    return `@haxtheweb/${packageName}/lib/${elementName}.js`;
-  } else {
-    return `@haxtheweb/${packageName}/${elementName}.js`;
-  }
+  return `@haxtheweb/${relativePath}`;
 }
 
 /**

@@ -185,7 +185,9 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
                 decoding="async"
               />
             </td>
-            <td valign="middle"><site-title></site-title></td>
+            <td valign="middle">
+              <header><site-title></site-title></header>
+            </td>
           </tr>
           <tr>
             <td colspan="3" height="10"></td>
@@ -206,11 +208,13 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
               </main>
 
               <div align="center">
-                <site-footer></site-footer>
-                <scroll-button
-                  position="right"
-                  label="${this.t.backToTop}"
-                ></scroll-button>
+                <footer>
+                  <site-footer></site-footer>
+                  <scroll-button
+                    position="right"
+                    label="${this.t.backToTop}"
+                  ></scroll-button>
+                </footer>
               </div>
             </td>
           </tr>
