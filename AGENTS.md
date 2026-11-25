@@ -318,6 +318,6 @@ lerna add package-name --scope=@haxtheweb/component-name
 - **HAX Community**: Run `hax party` for involvement opportunities
 - **Discord**: https://discord.gg/aCGxmRHEJP
 - **Issue Reporting**: Use `haxtheweb/issues` or GitHub interface
-- **Merlin Integration**: Use "Issue" command in HAX spaces for automated reporting
+- **Goggles**: Merlin's "Contribute with the goggles" (in the editor, the sites dashboard and on every public HAX site) is how people report bugs and ideas: the Flag lens points the report at the element, with a screenshot
 - **Documentation**: Run `man hax` (Linux/macOS) for comprehensive CLI docs
 - **Educational Resources**: Complete documentation at https://haxtheweb.org/
