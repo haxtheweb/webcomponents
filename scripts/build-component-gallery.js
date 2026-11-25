@@ -586,6 +586,46 @@ function generateHTML(components) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HAX Web Components Gallery</title>
+  <meta name="description" content="Live demos of every HAX web component: accessible LitElement elements, HAXcms themes and the DDD design system, free and open source (Apache-2.0).">
+  <link rel="canonical" href="https://webcomponents.hax.cloud/">
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="Guide for AI agents">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HAX">
+  <meta property="og:title" content="HAX Web Components Gallery">
+  <meta property="og:description" content="Live demos of every HAX web component: accessible LitElement elements, HAXcms themes and the DDD design system.">
+  <meta property="og:url" content="https://webcomponents.hax.cloud/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://webcomponents.hax.cloud/#website",
+        "name": "HAX Web Components Gallery",
+        "url": "https://webcomponents.hax.cloud/",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://haxtheweb.org/#organization" }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "HAX webcomponents",
+        "description": "LitElement web components, HAXcms themes and the DDD design system used by HAX.",
+        "codeRepository": "https://github.com/haxtheweb/webcomponents",
+        "programmingLanguage": "JavaScript",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "isAccessibleForFree": true,
+        "url": "https://webcomponents.hax.cloud/"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://haxtheweb.org/#organization",
+        "name": "HAX The Web",
+        "url": "https://haxtheweb.org/",
+        "sameAs": ["https://github.com/haxtheweb"]
+      }
+    ]
+  }
+  </script>
   <style>
     /* First paint, before any module loads: follow the system light/dark
        setting with the HAX UI surface colors so the page never flashes white */

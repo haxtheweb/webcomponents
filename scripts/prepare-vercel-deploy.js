@@ -262,6 +262,8 @@ if (fs.existsSync(galleryFile)) {
 // --- Process all demo HTML files ---
 var demoCount = 0;
 var rewriteCount = 0;
+// each element's main demo, for the sitemap
+var demoPages = [];
 
 if (fs.existsSync(elementsDir)) {
   var elementDirs = fs
@@ -279,6 +281,9 @@ if (fs.existsSync(elementsDir)) {
     var demoFiles = fs.readdirSync(demoPath).filter(function (f) {
       return f.endsWith(".html");
     });
+    if (demoFiles.indexOf("index.html") !== -1) {
+      demoPages.push("elements/" + elementDirs[i] + "/demo/index.html");
+    }
     for (var j = 0; j < demoFiles.length; j++) {
       var filePath = path.join(demoPath, demoFiles[j]);
       injectImportMap(filePath, elementDirs[i]);
@@ -331,5 +336,47 @@ console.log(
     " of " +
     mathjaxFiles.length +
     " runtime paths into _vendor/node_modules",
+);
+// --- Crawler and agent discovery: robots.txt and sitemap.xml ---
+// Written at deploy time so the sitemap always lists the demos this build
+// ships. URLs are the production host; Vercel marks preview deployments
+// noindex on its own.
+var SITE = "https://webcomponents.hax.cloud/";
+function xmlEscape(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+var sitemapUrls = [SITE].concat(
+  demoPages.sort().map(function (page) {
+    return SITE + page;
+  }),
+);
+fs.writeFileSync(
+  "./sitemap.xml",
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    sitemapUrls
+      .map(function (url) {
+        return "  <url><loc>" + xmlEscape(url) + "</loc></url>";
+      })
+      .join("\n") +
+    "\n</urlset>\n",
+);
+fs.writeFileSync(
+  "./robots.txt",
+  [
+    "# HAX web components gallery: every demo is public and meant to be read.",
+    "User-agent: *",
+    "Content-Signal: search=yes, ai-input=yes, ai-train=yes",
+    "Allow: /",
+    "",
+    "Sitemap: " + SITE + "sitemap.xml",
+    "",
+  ].join("\n"),
+);
+console.log(
+  "Discovery: sitemap.xml (" + sitemapUrls.length + " URLs), robots.txt",
 );
 console.log("Done: Vercel deploy preparation complete");
