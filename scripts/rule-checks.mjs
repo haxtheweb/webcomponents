@@ -40,6 +40,21 @@
  *     <a11y-collapse> without heading-button in element code, demos and HAX
  *     schemas. Baseline: scripts/a11y-collapse.baseline.json.
  *
+ *   node scripts/rule-checks.mjs package-names
+ *     every elements/<name>/package.json is named @haxtheweb/<name> (AGENTS.md Package Names)
+ *
+ *   node scripts/rule-checks.mjs themes
+ *     every theme in haxcms-elements/lib/themes.json reaches HAXCMSLitElementTheme
+ *     (or HAXCMSLitElement) through its extends chain (AGENTS.md Theme Development)
+ *
+ *   node scripts/rule-checks.mjs element-docs [--base <ref>] [--update-baseline]
+ *     an element (its main file defines a custom element) ships lib/<tag>.docs.json
+ *     and its build script runs extract-element-docs (praw RULES.md f3c77167)
+ *
+ *   node scripts/rule-checks.mjs es-modules [--base <ref>] [--update-baseline]
+ *     no CommonJS (module.exports, exports.x, require) in shipped element code
+ *     (AGENTS.md ES Modules); vendored bundles that predate it are baselined
+ *
  *   Every baseline only shrinks: with --base, a new file or a higher count
  *   in it fails.
  *
@@ -194,6 +209,82 @@ export function countCollapses(text) {
   return n;
 }
 
+/* ---------- ES Modules ---------- */
+// CommonJS in shipped element code: module.exports, exports.x = or require()
+export function countCommonJs(text) {
+  return (
+    text.match(
+      /\bmodule\.exports\b|(^|[^.\w$])exports\.\w+\s*=|(^|[^.\w$])require\s*\(\s*["'`]/gm,
+    ) || []
+  ).length;
+}
+
+/* ---------- Element Docs Setup ---------- */
+// an element (its main file defines a custom element) ships lib/<tag>.docs.json
+// and its build script regenerates it
+export function docsMissing(text, file, exists, pkg) {
+  const m = file.match(/^elements\/([^/]+)\/\1\.js$/);
+  if (!m || !/customElements\.define\s*\(/.test(text)) return 0;
+  const build = pkg && pkg.scripts ? pkg.scripts.build || "" : "";
+  // the extractor names the file after the element's tag, which can differ from the folder
+  return exists(`elements/${m[1]}/lib`, ".docs.json") &&
+    build.includes("extract-element-docs")
+    ? 0
+    : 1;
+}
+
+/* ---------- Package Names ---------- */
+// every element's package.json is named @haxtheweb/<folder>
+export function packageNameFindings(packages) {
+  return Object.entries(packages)
+    .filter(([dir, pkg]) => pkg.name !== `@haxtheweb/${dir}`)
+    .map(
+      ([dir, pkg]) =>
+        `elements/${dir}/package.json: name is "${pkg.name}", not "@haxtheweb/${dir}"`,
+    );
+}
+
+/* ---------- Theme Development ---------- */
+// every theme in haxcms-elements/lib/themes.json reaches HAXCMSLitElement
+// (usually through HAXCMSLitElementTheme) by its extends chain
+export function themeFindings(themes, sources) {
+  const parents = new Map();
+  for (const text of Object.values(sources)) {
+    for (const m of text.matchAll(
+      /(?:class\s+(\w+)|(?:const|let)\s+(\w+)\s*=\s*\([^)]*\)\s*=>\s*class)\s+extends\s+([^{]+?)\s*\{/g,
+    )) {
+      const name = m[1] || m[2];
+      if (!parents.has(name)) parents.set(name, m[3]);
+    }
+  }
+  const reaches = (expr, depth = 0) => {
+    if (/\bHAXCMSLitElement(Theme)?\b/.test(expr)) return true;
+    if (depth > 8) return false;
+    return [...expr.matchAll(/\b([A-Z]\w*)\b/g)].some(
+      ([, n]) => parents.has(n) && reaches(parents.get(n), depth + 1),
+    );
+  };
+  const out = [];
+  for (const [tag, t] of Object.entries(themes)) {
+    const file = "elements/" + String(t.path).replace(/^@haxtheweb\//, "");
+    const text = sources[file];
+    if (text === undefined) {
+      out.push(
+        `${file}: theme ${tag} is in themes.json but its file is missing`,
+      );
+      continue;
+    }
+    const decls = [
+      ...text.matchAll(/class\s+\w+\s+extends\s+([^{]+?)\s*\{/g),
+    ].map((m) => m[1]);
+    if (!decls.some((e) => reaches(e)))
+      out.push(
+        `${file}: theme ${tag} does not extend HAXCMSLitElementTheme (or HAXCMSLitElement)`,
+      );
+  }
+  return out;
+}
+
 /* ---------- counted checks: per-file counts against a baseline that only shrinks ---------- */
 const COUNTED = {
   "test-sleeps": {
@@ -225,6 +316,38 @@ const COUNTED = {
     noun: "a11y-collapse without heading-button",
     fix: "add heading-button so the whole heading opens it (praw RULES.md WQoGOB82)",
   },
+  "es-modules": {
+    globs: [
+      "elements/*/*.js",
+      "elements/*/lib/**/*.js",
+      "elements/*/src/**/*.js",
+    ],
+    count: countCommonJs,
+    skip: /\.(min|umd)\.js$|\/test\/|\/demo\//,
+    noun: "CommonJS use(s) (module.exports, exports.x, require)",
+    fix: "use ES module import / export (AGENTS.md ES Modules); a vendored UMD bundle goes in a .umd.js or .min.js file",
+  },
+  "element-docs": {
+    globs: ["elements/*/*.js"],
+    count: (text, file, root) => {
+      const m = file.match(/^elements\/([^/]+)\/\1\.js$/);
+      if (!m) return 0;
+      const pkgFile = path.join(root, `elements/${m[1]}/package.json`);
+      const pkg = fs.existsSync(pkgFile)
+        ? JSON.parse(fs.readFileSync(pkgFile, "utf8"))
+        : null;
+      const hasDocs = (dir, ext) => {
+        const full = path.join(root, dir);
+        return (
+          fs.existsSync(full) &&
+          fs.readdirSync(full).some((n) => n.endsWith(ext))
+        );
+      };
+      return docsMissing(text, file, hasDocs, pkg);
+    },
+    noun: "element without its docs data",
+    fix: "generate lib/<tag>.docs.json and end the build script with node ../../scripts/extract-element-docs.mjs --write . (praw RULES.md f3c77167)",
+  },
 };
 const baselineFile = (name) => `scripts/${name}.baseline.json`;
 
@@ -232,7 +355,7 @@ function counts(root, what) {
   const out = {};
   for (const f of tracked(root, what.globs)) {
     if (what.skip && what.skip.test(f)) continue;
-    const n = what.count(fs.readFileSync(path.join(root, f), "utf8"));
+    const n = what.count(fs.readFileSync(path.join(root, f), "utf8"), f, root);
     if (n) out[f] = n;
   }
   return out;
@@ -303,6 +426,34 @@ function run(check, args, root = ROOT) {
       workflows,
     });
   }
+  if (check === "package-names") {
+    const packages = {};
+    for (const f of tracked(root, ["elements/*/package.json"])) {
+      const m = f.match(/^elements\/([^/]+)\/package\.json$/);
+      if (m)
+        packages[m[1]] = JSON.parse(
+          fs.readFileSync(path.join(root, f), "utf8"),
+        );
+    }
+    return packageNameFindings(packages);
+  }
+  if (check === "themes") {
+    const themes = JSON.parse(
+      fs.readFileSync(
+        path.join(root, "elements/haxcms-elements/lib/themes.json"),
+        "utf8",
+      ),
+    );
+    const sources = {};
+    for (const f of tracked(root, [
+      "elements/*/*.js",
+      "elements/*/lib/**/*.js",
+    ])) {
+      if (/\/test\/|\.min\.js$/.test(f)) continue;
+      sources[f] = fs.readFileSync(path.join(root, f), "utf8");
+    }
+    return themeFindings(themes, sources);
+  }
   if (COUNTED[check]) return counted(check, args, root);
   throw new Error(`unknown check "${check}"`);
 }
@@ -314,11 +465,17 @@ if (isMain) {
   const [check, ...args] = process.argv.slice(2);
   const checks =
     check === "all"
-      ? ["typescript", "node-version", ...Object.keys(COUNTED)]
+      ? [
+          "typescript",
+          "node-version",
+          "package-names",
+          "themes",
+          ...Object.keys(COUNTED),
+        ]
       : [check];
   if (!check) {
     console.error(
-      `usage: node scripts/rule-checks.mjs <typescript|node-version|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
+      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
     );
     process.exit(2);
   }

@@ -142,7 +142,7 @@ const CONFIG = {
       // scripts/test-sleeps.baseline.json). Also run by the rule-checks
       // workflow.
       label:
-        "Rule checks (TypeScript, Node LTS, test sleeps, ARIA references, a11y-collapse)",
+        "Rule checks (TypeScript, Node LTS, test sleeps, ARIA references, a11y-collapse, package names, themes, element docs, ES modules)",
       args: ["scripts/rule-checks.mjs", "all"],
     },
     {

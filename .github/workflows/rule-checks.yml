@@ -23,7 +23,15 @@ name: rule-checks
 #   are skipped, light-DOM elements are skipped.
 # - a11y-collapse heading-button: no element, demo or HAX schema gains an
 #   <a11y-collapse> without heading-button (RULES.md WQoGOB82).
-# Both are counted per file against scripts/<check>.baseline.json, which
+# - Package names: every elements/<name>/package.json is @haxtheweb/<name>.
+# - Theme development: every theme in haxcms-elements/lib/themes.json reaches
+#   HAXCMSLitElementTheme (or HAXCMSLitElement) through its extends chain.
+# - Element docs setup: an element ships lib/<tag>.docs.json and its build
+#   regenerates it (praw RULES.md f3c77167).
+# - ES modules: no shipped element code gains CommonJS (module.exports,
+#   exports.x, require); the vendored bundles that predate it are baselined.
+# The ARIA, a11y-collapse, docs and ES module checks are counted per file
+# against scripts/<check>.baseline.json, which
 # only shrinks, like the test sleeps.
 # All of it runs in yarn precheck too (yarn lint:rules, yarn lint:vision).
 on:
@@ -85,4 +93,30 @@ jobs:
             node scripts/rule-checks.mjs a11y-collapse --base "$BASE_REF"
           else
             node scripts/rule-checks.mjs a11y-collapse
+          fi
+      - name: Package names
+        if: always()
+        run: node scripts/rule-checks.mjs package-names
+      - name: Themes extend HAXCMSLitElementTheme
+        if: always()
+        run: node scripts/rule-checks.mjs themes
+      - name: Element docs setup
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs element-docs --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs element-docs
+          fi
+      - name: ES modules
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs es-modules --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs es-modules
           fi

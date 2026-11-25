@@ -9,6 +9,10 @@ import {
   baselineGrowth,
   countAriaRefs,
   countCollapses,
+  countCommonJs,
+  docsMissing,
+  packageNameFindings,
+  themeFindings,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -147,4 +151,97 @@ test("a11y-collapse: counts collapses without heading-button", () => {
     ),
     1,
   );
+});
+
+test("es-modules: counts CommonJS, not ES modules or lookalikes", () => {
+  assert.equal(
+    countCommonJs('import x from "./x.js";\nexport const y = 1;'),
+    0,
+  );
+  assert.equal(
+    countCommonJs(
+      'const a = require("a");\nmodule.exports = a;\nexports.b = 2;',
+    ),
+    3,
+  );
+  assert.equal(
+    countCommonJs('this.require("x"); obj.exports.y = 1; // requires care'),
+    0,
+  );
+});
+
+test("element-docs: an element needs docs data and a build that regenerates it", () => {
+  const el = 'customElements.define("my-el", MyEl);';
+  const pkg = {
+    scripts: {
+      build:
+        "cem analyze && node ../../scripts/extract-element-docs.mjs --write .",
+    },
+  };
+  assert.equal(
+    docsMissing(el, "elements/my-el/my-el.js", () => true, pkg),
+    0,
+  );
+  assert.equal(
+    docsMissing(el, "elements/my-el/my-el.js", () => false, pkg),
+    1,
+  );
+  assert.equal(
+    docsMissing(el, "elements/my-el/my-el.js", () => true, {
+      scripts: { build: "cem analyze" },
+    }),
+    1,
+  );
+  // not an element's main file, or no element defined
+  assert.equal(
+    docsMissing(el, "elements/my-el/lib/part.js", () => false, pkg),
+    0,
+  );
+  assert.equal(
+    docsMissing(
+      "export const x = 1;",
+      "elements/util/util.js",
+      () => false,
+      pkg,
+    ),
+    0,
+  );
+});
+
+test("package-names: @haxtheweb/<folder>", () => {
+  assert.deepEqual(
+    packageNameFindings({ "a-b": { name: "@haxtheweb/a-b" } }),
+    [],
+  );
+  assert.equal(
+    packageNameFindings({ "a-b": { name: "a-b" }, c: { name: "@haxtheweb/d" } })
+      .length,
+    2,
+  );
+});
+
+test("themes: each theme reaches HAXCMSLitElementTheme through its extends chain", () => {
+  const themes = {
+    "base-theme": { path: "@haxtheweb/t/base-theme.js" },
+    "child-theme": { path: "@haxtheweb/t/child-theme.js" },
+    "mixin-theme": { path: "@haxtheweb/t/mixin-theme.js" },
+  };
+  const sources = {
+    "elements/t/base-theme.js":
+      "export class BaseTheme extends DDDSuper(HAXCMSLitElementTheme) {}",
+    "elements/t/child-theme.js": "class ChildTheme extends BaseTheme {}",
+    "elements/t/mixin-theme.js":
+      "class MixinTheme extends Parts(\n  BaseTheme,\n) {}",
+  };
+  assert.deepEqual(themeFindings(themes, sources), []);
+  const bad = themeFindings(
+    {
+      "lit-theme": { path: "@haxtheweb/t/lit-theme.js" },
+      "gone-theme": { path: "@haxtheweb/t/gone.js" },
+    },
+    { "elements/t/lit-theme.js": "class LitTheme extends LitElement {}" },
+  );
+  assert.equal(bad.length, 2);
+  assert.match(bad[0], /does not extend HAXCMSLitElementTheme/);
+  assert.match(bad[1], /file is missing/);
 });
