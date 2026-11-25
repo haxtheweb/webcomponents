@@ -15,6 +15,16 @@ name: rule-checks
 #   rule are in scripts/test-sleeps.baseline.json, which only shrinks: after
 #   removing sleeps run `node scripts/rule-checks.mjs test-sleeps
 #   --update-baseline` and commit it.
+# - Shadow-boundary ARIA references: no element file gains an id reference
+#   (aria-labelledby, aria-describedby, aria-controls, aria-owns,
+#   aria-activedescendant, for) whose id is not written in the same file,
+#   so it points across a shadow boundary or at nothing (RULES.md 410c4334).
+#   A heuristic: ids handed to a shared template helper count, dynamic ids
+#   are skipped, light-DOM elements are skipped.
+# - a11y-collapse heading-button: no element, demo or HAX schema gains an
+#   <a11y-collapse> without heading-button (RULES.md WQoGOB82).
+# Both are counted per file against scripts/<check>.baseline.json, which
+# only shrinks, like the test sleeps.
 # All of it runs in yarn precheck too (yarn lint:rules, yarn lint:vision).
 on:
   push:
@@ -55,4 +65,24 @@ jobs:
             node scripts/rule-checks.mjs test-sleeps --base "$BASE_REF"
           else
             node scripts/rule-checks.mjs test-sleeps
+          fi
+      - name: Shadow-boundary ARIA references
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs aria-refs --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs aria-refs
+          fi
+      - name: a11y-collapse heading-button
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs a11y-collapse --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs a11y-collapse
           fi

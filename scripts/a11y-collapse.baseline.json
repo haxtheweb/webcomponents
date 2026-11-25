@@ -1,0 +1,22 @@
+{
+  "elements/a11y-collapse/demo/group.html": 6,
+  "elements/a11y-collapse/demo/index.html": 2,
+  "elements/a11y-collapse/lib/a11y-collapse-group.haxProperties.json": 2,
+  "elements/book-theme/demo/pages/item-b00c7e3a-blocks-details/index.html": 2,
+  "elements/d-d-d/demo/palette-roles.html": 2,
+  "elements/grade-book/grade-book.js": 3,
+  "elements/grade-book/lib/grade-book-lite.js": 3,
+  "elements/map-menu/lib/map-menu-submenu.js": 1,
+  "elements/material-theme/demo/pages/item-3a7e2d11-foundations-accessibility/index.html": 3,
+  "elements/papermod-theme/demo/pages/item-1and1n90-home/index.html": 3,
+  "elements/papermod-theme/demo/pages/item-9a9e7m0d-about/index.html": 2,
+  "elements/papermod-theme/demo/pages/item-ac4d3m1c-teaching/index.html": 2,
+  "elements/patternfly-theme/demo/pages/item-5f0a7c1e-getting-started/index.html": 1,
+  "elements/shadcn-theme/demo/pages/item-5c4dc0a1-courses-design-basics/index.html": 1,
+  "elements/shadcn-theme/demo/pages/item-5c4dc0a1-dashboard/index.html": 1,
+  "elements/spectrum-theme/demo/pages/item-5a3e1d70-content/index.html": 3,
+  "elements/tailwind-theme/demo/pages/item-7a11e0d2-getting-started-upgrade-guide/index.html": 2,
+  "elements/uswds-theme/demo/pages/item-7a11e0d2-services/index.html": 3,
+  "elements/webawesome-theme/demo/pages/item-3c9a2f71-components-callout/index.html": 2,
+  "elements/webawesome-theme/demo/pages/item-3c9a2f71-help/index.html": 2
+}

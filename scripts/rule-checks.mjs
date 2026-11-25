@@ -27,6 +27,22 @@
  *     compared with that ref: no new file, no higher count. After removing
  *     sleeps, run with --update-baseline and commit the file.
  *
+ *   node scripts/rule-checks.mjs aria-refs [--base <ref>] [--update-baseline]
+ *     Shadow-Boundary ARIA References (praw RULES.md 410c4334): counts, per
+ *     element file, id references (aria-labelledby, aria-describedby,
+ *     aria-controls, aria-owns, aria-activedescendant, for) whose id is not
+ *     written in the same file. A heuristic: ids handed to a template helper
+ *     ({ id: "hdr" }) count, dynamic ids are skipped, light-DOM elements are
+ *     skipped. Baseline: scripts/aria-refs.baseline.json.
+ *
+ *   node scripts/rule-checks.mjs a11y-collapse [--base <ref>] [--update-baseline]
+ *     a11y-collapse heading-button (praw RULES.md WQoGOB82): counts
+ *     <a11y-collapse> without heading-button in element code, demos and HAX
+ *     schemas. Baseline: scripts/a11y-collapse.baseline.json.
+ *
+ *   Every baseline only shrinks: with --base, a new file or a higher count
+ *   in it fails.
+ *
  *   node scripts/rule-checks.mjs all       every check above (no --base)
  *
  * Standard library only. Self-tests: scripts/test/rule-checks.test.mjs.
@@ -119,42 +135,154 @@ export function countSleeps(text) {
   return SLEEPS.reduce((n, re) => n + (text.match(re) || []).length, 0);
 }
 
-export function sleepFindings(counts, baseline) {
+export function sleepFindings(counts, baseline, what = COUNTED["test-sleeps"]) {
   const out = [];
   for (const [file, n] of Object.entries(counts)) {
     const allowed = baseline[file] || 0;
-    if (n > allowed) {
-      out.push(
-        `${file}: ${n} fixed sleep(s), ${allowed} allowed; wait for the condition instead (poll a property, an event or the DOM)`,
-      );
-    }
+    if (n > allowed)
+      out.push(`${file}: ${n} ${what.noun}, ${allowed} allowed; ${what.fix}`);
   }
   return out;
 }
 
-export function baselineGrowth(previous, next) {
+export function baselineGrowth(previous, next, name = BASELINE) {
   const out = [];
   for (const [file, n] of Object.entries(next)) {
     if (!(file in previous))
-      out.push(`${BASELINE}: adds ${file} (${n}); the baseline only shrinks`);
+      out.push(`${name}: adds ${file} (${n}); the baseline only shrinks`);
     else if (n > previous[file])
       out.push(
-        `${BASELINE}: raises ${file} from ${previous[file]} to ${n}; the baseline only shrinks`,
+        `${name}: raises ${file} from ${previous[file]} to ${n}; the baseline only shrinks`,
       );
   }
   return out;
 }
 
-function sleepCounts(root) {
-  const counts = {};
-  for (const f of tracked(root, [
-    "elements/*/test/*.js",
-    "elements/*/test/**/*.js",
-  ])) {
-    const n = countSleeps(fs.readFileSync(path.join(root, f), "utf8"));
-    if (n) counts[f] = n;
+/* ---------- Shadow-Boundary ARIA References ---------- */
+// An id reference written in a shadow root only resolves inside that root.
+// Counts static references (aria-labelledby, aria-describedby,
+// aria-controls, aria-owns, aria-activedescendant, for) whose id is not
+// written anywhere in the same file: the target lives in another tree, or
+// nowhere. Elements that render into light DOM (createRenderRoot returning
+// this) are skipped: their references resolve in the document.
+const REF =
+  /\s(aria-(?:labelledby|describedby|controls|owns|activedescendant)|for)\s*=\s*(["'])([^"'$`{}]*)\2/g;
+const ID = /\sid\s*=\s*(["'])([^"'$`{}]+)\1/g;
+export function countAriaRefs(text) {
+  if (/createRenderRoot\s*\(\s*\)\s*\{\s*return\s+this\b/.test(text)) return 0;
+  const ids = new Set();
+  for (const m of text.matchAll(ID)) ids.add(m[2].trim());
+  // ids handed to a shared template helper ({ id: "hdr" }) or set in code (el.id = "x")
+  for (const m of text.matchAll(
+    /(?:\bid\s*:|\.id\s*=)\s*(["'])([^"'$`{}]+)\1/g,
+  ))
+    ids.add(m[2].trim());
+  let n = 0;
+  for (const m of text.matchAll(REF)) {
+    for (const id of m[3].split(/\s+/).filter(Boolean)) if (!ids.has(id)) n++;
   }
-  return counts;
+  return n;
+}
+
+/* ---------- a11y-collapse heading-button ---------- */
+// <a11y-collapse> without heading-button: only the small toggle icon opens it
+const COLLAPSE = /<a11y-collapse(?=[\s>/])([^>]*)>/g;
+export function countCollapses(text) {
+  let n = 0;
+  for (const m of text.matchAll(COLLAPSE))
+    if (!/\bheading-button\b/.test(m[1])) n++;
+  return n;
+}
+
+/* ---------- counted checks: per-file counts against a baseline that only shrinks ---------- */
+const COUNTED = {
+  "test-sleeps": {
+    globs: ["elements/*/test/*.js", "elements/*/test/**/*.js"],
+    count: countSleeps,
+    noun: "fixed sleep(s)",
+    fix: "wait for the condition instead (poll a property, an event or the DOM)",
+  },
+  "aria-refs": {
+    globs: [
+      "elements/*/*.js",
+      "elements/*/lib/**/*.js",
+      "elements/*/src/**/*.js",
+    ],
+    count: countAriaRefs,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\//,
+    noun: "id reference(s) with no matching id in the same file",
+    fix: "keep the control and its label in one shadow root, or set ariaLabelledByElements (praw RULES.md 410c4334)",
+  },
+  "a11y-collapse": {
+    globs: [
+      "elements/*/*.js",
+      "elements/*/lib/**/*.js",
+      "elements/*/demo/*.html",
+      "elements/*/lib/*.haxProperties.json",
+    ],
+    count: countCollapses,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\//,
+    noun: "a11y-collapse without heading-button",
+    fix: "add heading-button so the whole heading opens it (praw RULES.md WQoGOB82)",
+  },
+};
+const baselineFile = (name) => `scripts/${name}.baseline.json`;
+
+function counts(root, what) {
+  const out = {};
+  for (const f of tracked(root, what.globs)) {
+    if (what.skip && what.skip.test(f)) continue;
+    const n = what.count(fs.readFileSync(path.join(root, f), "utf8"));
+    if (n) out[f] = n;
+  }
+  return out;
+}
+
+function counted(name, args, root) {
+  const what = COUNTED[name];
+  const now = counts(root, what);
+  const rel = baselineFile(name);
+  const file = path.join(root, rel);
+  if (args.includes("--update-baseline")) {
+    const sorted = Object.fromEntries(
+      Object.keys(now)
+        .sort()
+        .map((k) => [k, now[k]]),
+    );
+    fs.writeFileSync(file, JSON.stringify(sorted, null, 2) + "\n");
+    console.log(
+      `${name}: baseline written with ${Object.keys(sorted).length} file(s)`,
+    );
+    return [];
+  }
+  const baseline = fs.existsSync(file)
+    ? JSON.parse(fs.readFileSync(file, "utf8"))
+    : {};
+  const out = sleepFindings(now, baseline, what);
+  const at = args.indexOf("--base");
+  if (at !== -1 && args[at + 1]) {
+    let previous = null;
+    try {
+      previous = JSON.parse(
+        execFileSync("git", ["show", `${args[at + 1]}:${rel}`], {
+          cwd: root,
+          encoding: "utf8",
+          stdio: ["ignore", "pipe", "ignore"],
+        }),
+      );
+    } catch (e) {
+      previous = null; // no baseline at the base yet: this pull request adds it
+    }
+    if (previous) out.push(...baselineGrowth(previous, baseline, rel));
+  }
+  const fewer = Object.entries(baseline).filter(
+    ([f, n]) => (now[f] || 0) < n,
+  ).length;
+  if (fewer)
+    console.log(
+      `${name}: ${fewer} file(s) are now below the baseline; run with --update-baseline to lock that in`,
+    );
+  return out;
 }
 
 /* ---------- runner ---------- */
@@ -175,50 +303,7 @@ function run(check, args, root = ROOT) {
       workflows,
     });
   }
-  if (check === "test-sleeps") {
-    const counts = sleepCounts(root);
-    const file = path.join(root, BASELINE);
-    if (args.includes("--update-baseline")) {
-      const sorted = Object.fromEntries(
-        Object.keys(counts)
-          .sort()
-          .map((k) => [k, counts[k]]),
-      );
-      fs.writeFileSync(file, JSON.stringify(sorted, null, 2) + "\n");
-      console.log(
-        `test-sleeps: baseline written with ${Object.keys(sorted).length} file(s)`,
-      );
-      return [];
-    }
-    const baseline = fs.existsSync(file)
-      ? JSON.parse(fs.readFileSync(file, "utf8"))
-      : {};
-    const out = sleepFindings(counts, baseline);
-    const at = args.indexOf("--base");
-    if (at !== -1 && args[at + 1]) {
-      let previous = {};
-      try {
-        previous = JSON.parse(
-          execFileSync("git", ["show", `${args[at + 1]}:${BASELINE}`], {
-            cwd: root,
-            encoding: "utf8",
-            stdio: ["ignore", "pipe", "ignore"],
-          }),
-        );
-      } catch (e) {
-        previous = null; // no baseline at the base yet: this pull request adds it
-      }
-      if (previous) out.push(...baselineGrowth(previous, baseline));
-    }
-    const fewer = Object.entries(baseline).filter(
-      ([f, n]) => (counts[f] || 0) < n,
-    ).length;
-    if (fewer)
-      console.log(
-        `test-sleeps: ${fewer} file(s) now have fewer sleeps than the baseline; run with --update-baseline to lock that in`,
-      );
-    return out;
-  }
+  if (COUNTED[check]) return counted(check, args, root);
   throw new Error(`unknown check "${check}"`);
 }
 
@@ -228,10 +313,12 @@ const isMain =
 if (isMain) {
   const [check, ...args] = process.argv.slice(2);
   const checks =
-    check === "all" ? ["typescript", "node-version", "test-sleeps"] : [check];
+    check === "all"
+      ? ["typescript", "node-version", ...Object.keys(COUNTED)]
+      : [check];
   if (!check) {
     console.error(
-      "usage: node scripts/rule-checks.mjs <typescript|node-version|test-sleeps|all> [--base <ref>] [--update-baseline]",
+      `usage: node scripts/rule-checks.mjs <typescript|node-version|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
     );
     process.exit(2);
   }
