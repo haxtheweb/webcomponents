@@ -1,0 +1,4323 @@
+{
+  "meta": {
+    "generated": "2026-11-25",
+    "generator": "https://github.com/haxtheweb/praw/blob/main/ecosystem/build/build_growth.py",
+    "source": { "webcomponents": "6c0e7a61c3da8a97a2d8450807ecd42313bb4297" },
+    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+    "about": "What a visitor's browser loads for each theme and element, file by file, and the shared core. Bytes are gzip of each file's source, not minified CDN output; third-party code (lit, mobx) is left out; static imports are followed from haxcms-site-builder, the theme and each element.",
+    "issue": "https://github.com/haxtheweb/issues/issues/3409"
+  },
+  "core": {
+    "files": 58,
+    "gz": 246369,
+    "bytes": 954522,
+    "definition": "haxcms-site-builder's static closure plus every module at least 80% of themes load"
+  },
+  "builder": { "files": 32, "gz": 132004 },
+  "modules": [
+    {
+      "path": "elements/absolute-position-behavior/lib/absolute-position-state-manager.js",
+      "package": "absolute-position-behavior",
+      "bytes": 16112,
+      "gz": 4844,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/anchor-behaviors/anchor-behaviors.js",
+      "package": "anchor-behaviors",
+      "bytes": 3726,
+      "gz": 1301,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/d-d-d/lib/DesignSystemManager.js",
+      "package": "d-d-d",
+      "bytes": 15805,
+      "gz": 4799,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/d-d-d/lib/fonts.js",
+      "package": "d-d-d",
+      "bytes": 5525,
+      "gz": 2235,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/d-d-d/lib/fonts/registry.js",
+      "package": "d-d-d",
+      "bytes": 3997,
+      "gz": 991,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/editable-table/lib/editable-table-styles.js",
+      "package": "editable-table",
+      "bytes": 9679,
+      "gz": 1680,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/hax-consent-gate/lib/hax-consent-embeds.js",
+      "package": "hax-consent-gate",
+      "bytes": 6766,
+      "gz": 2362,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js",
+      "package": "haxcms-elements",
+      "bytes": 29337,
+      "gz": 8417,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/HAXCMSThemeWiring.js",
+      "package": "haxcms-elements",
+      "bytes": 20367,
+      "gz": 5933,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/hax-router.js",
+      "package": "haxcms-elements",
+      "bytes": 9337,
+      "gz": 3173,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-learner-progress.js",
+      "package": "haxcms-elements",
+      "bytes": 29625,
+      "gz": 8667,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-reading-progress.js",
+      "package": "haxcms-elements",
+      "bytes": 16171,
+      "gz": 5162,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-site-builder.js",
+      "package": "haxcms-elements",
+      "bytes": 70785,
+      "gz": 20047,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-site-router.js",
+      "package": "haxcms-elements",
+      "bytes": 6469,
+      "gz": 2211,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-site-store.js",
+      "package": "haxcms-elements",
+      "bytes": 65665,
+      "gz": 17327,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSDesignSystems.js",
+      "package": "haxcms-elements",
+      "bytes": 6699,
+      "gz": 2336,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSPreview.js",
+      "package": "haxcms-elements",
+      "bytes": 9181,
+      "gz": 3286,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/page-content-html.js",
+      "package": "haxcms-elements",
+      "bytes": 4651,
+      "gz": 1659,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/i18n-manager/i18n-manager.js",
+      "package": "i18n-manager",
+      "bytes": 24433,
+      "gz": 6315,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/i18n-manager/lib/I18NMixin.js",
+      "package": "i18n-manager",
+      "bytes": 9597,
+      "gz": 3084,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/i18n-manager/lib/LanguageRegistry.js",
+      "package": "i18n-manager",
+      "bytes": 11657,
+      "gz": 3870,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/json-outline-schema/json-outline-schema.js",
+      "package": "json-outline-schema",
+      "bytes": 21762,
+      "gz": 6022,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/json-outline-schema/lib/json-outline-schema-item.js",
+      "package": "json-outline-schema",
+      "bytes": 1636,
+      "gz": 700,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/replace-tag/lib/PerformanceDetect.js",
+      "package": "replace-tag",
+      "bytes": 5322,
+      "gz": 1692,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/replace-tag/lib/loading-styles.js",
+      "package": "replace-tag",
+      "bytes": 3407,
+      "gz": 1317,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/replace-tag/replace-tag.js",
+      "package": "replace-tag",
+      "bytes": 11684,
+      "gz": 3595,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/responsive-utility/lib/responsive-utility-behaviors.js",
+      "package": "responsive-utility",
+      "bytes": 4532,
+      "gz": 1458,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/responsive-utility/responsive-utility.js",
+      "package": "responsive-utility",
+      "bytes": 10400,
+      "gz": 2989,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/simple-colors-shared-styles/simple-colors-shared-styles.js",
+      "package": "simple-colors-shared-styles",
+      "bytes": 42844,
+      "gz": 6717,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/simple-icon/lib/simple-icons.js",
+      "package": "simple-icon",
+      "bytes": 1202,
+      "gz": 640,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/simple-icon/lib/simple-iconset.js",
+      "package": "simple-icon",
+      "bytes": 6544,
+      "gz": 2435,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/simple-progress/simple-progress.js",
+      "package": "simple-progress",
+      "bytes": 4496,
+      "gz": 1591,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/user-action/lib/UserActionBroker.js",
+      "package": "user-action",
+      "bytes": 6067,
+      "gz": 2359,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/user-action/lib/xapi-vocabulary.js",
+      "package": "user-action",
+      "bytes": 22383,
+      "gz": 3158,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/user-action/lib/xapi.js",
+      "package": "user-action",
+      "bytes": 28805,
+      "gz": 9103,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/user-scaffold/lib/user-scaffold-storage.js",
+      "package": "user-scaffold",
+      "bytes": 8153,
+      "gz": 2541,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/user-scaffold/user-scaffold.js",
+      "package": "user-scaffold",
+      "bytes": 53117,
+      "gz": 15407,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/clipboard.js",
+      "package": "utils",
+      "bytes": 966,
+      "gz": 557,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/hax-consent.js",
+      "package": "utils",
+      "bytes": 4617,
+      "gz": 1930,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/idle.js",
+      "package": "utils",
+      "bytes": 1593,
+      "gz": 713,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/object-path.js",
+      "package": "utils",
+      "bytes": 2238,
+      "gz": 990,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/safe-html.js",
+      "package": "utils",
+      "bytes": 20606,
+      "gz": 6837,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/sanitize.js",
+      "package": "utils",
+      "bytes": 18023,
+      "gz": 5668,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/slot.js",
+      "package": "utils",
+      "bytes": 622,
+      "gz": 337,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/storage.js",
+      "package": "utils",
+      "bytes": 967,
+      "gz": 467,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/svg-contrast.js",
+      "package": "utils",
+      "bytes": 9594,
+      "gz": 3626,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/utils/lib/url.js",
+      "package": "utils",
+      "bytes": 6537,
+      "gz": 2441,
+      "core": true,
+      "themesUsing": 69
+    },
+    {
+      "path": "elements/simple-icon/lib/simple-icon-lite.js",
+      "package": "simple-icon",
+      "bytes": 10434,
+      "gz": 3366,
+      "core": true,
+      "themesUsing": 67
+    },
+    {
+      "path": "elements/d-d-d/d-d-d.js",
+      "package": "d-d-d",
+      "bytes": 5415,
+      "gz": 1925,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDLayout.js",
+      "package": "d-d-d",
+      "bytes": 2994,
+      "gz": 1343,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDMotion.js",
+      "package": "d-d-d",
+      "bytes": 13354,
+      "gz": 4286,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDReducedMotion.js",
+      "package": "d-d-d",
+      "bytes": 1892,
+      "gz": 898,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDStatusTokens.js",
+      "package": "d-d-d",
+      "bytes": 4479,
+      "gz": 1044,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDStyles.js",
+      "package": "d-d-d",
+      "bytes": 161938,
+      "gz": 26705,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/hax-iconset/lib/simple-hax-iconset.js",
+      "package": "hax-iconset",
+      "bytes": 470,
+      "gz": 323,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/simple-colors/simple-colors.js",
+      "package": "simple-colors",
+      "bytes": 63990,
+      "gz": 6868,
+      "core": true,
+      "themesUsing": 66
+    },
+    {
+      "path": "elements/simple-icon/lib/simple-icon-button-lite.js",
+      "package": "simple-icon",
+      "bytes": 11627,
+      "gz": 3227,
+      "core": true,
+      "themesUsing": 59
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js",
+      "package": "haxcms-elements",
+      "bytes": 4228,
+      "gz": 1395,
+      "core": true,
+      "themesUsing": 56
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js",
+      "package": "haxcms-elements",
+      "bytes": 1029,
+      "gz": 544,
+      "core": false,
+      "themesUsing": 54
+    },
+    {
+      "path": "elements/simple-icon/simple-icon.js",
+      "package": "simple-icon",
+      "bytes": 2591,
+      "gz": 883,
+      "core": false,
+      "themesUsing": 49
+    },
+    {
+      "path": "elements/simple-tooltip/simple-tooltip.js",
+      "package": "simple-tooltip",
+      "bytes": 26992,
+      "gz": 6515,
+      "core": false,
+      "themesUsing": 44
+    },
+    {
+      "path": "elements/schema-behaviors/schema-behaviors.js",
+      "package": "schema-behaviors",
+      "bytes": 3785,
+      "gz": 1459,
+      "core": false,
+      "themesUsing": 43
+    },
+    {
+      "path": "elements/utils/lib/ids.js",
+      "package": "utils",
+      "bytes": 604,
+      "gz": 383,
+      "core": false,
+      "themesUsing": 43
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDBlock.js",
+      "package": "d-d-d",
+      "bytes": 22749,
+      "gz": 6511,
+      "core": false,
+      "themesUsing": 40
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDProgressRing.js",
+      "package": "d-d-d",
+      "bytes": 8835,
+      "gz": 2802,
+      "core": false,
+      "themesUsing": 40
+    },
+    {
+      "path": "elements/utils/lib/events.js",
+      "package": "utils",
+      "bytes": 1557,
+      "gz": 725,
+      "core": false,
+      "themesUsing": 38
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/site/site-title.js",
+      "package": "haxcms-elements",
+      "bytes": 5098,
+      "gz": 1559,
+      "core": false,
+      "themesUsing": 36
+    },
+    {
+      "path": "elements/a11y-collapse/a11y-collapse.js",
+      "package": "a11y-collapse",
+      "bytes": 31589,
+      "gz": 6969,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-builder.js",
+      "package": "map-menu",
+      "bytes": 9178,
+      "gz": 2173,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-container.js",
+      "package": "map-menu",
+      "bytes": 822,
+      "gz": 449,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-header.js",
+      "package": "map-menu",
+      "bytes": 15652,
+      "gz": 4057,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-item.js",
+      "package": "map-menu",
+      "bytes": 13297,
+      "gz": 3533,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-progress.js",
+      "package": "map-menu",
+      "bytes": 10109,
+      "gz": 3285,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-submenu.js",
+      "package": "map-menu",
+      "bytes": 13258,
+      "gz": 3182,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/lib/map-menu-tree.js",
+      "package": "map-menu",
+      "bytes": 1819,
+      "gz": 849,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/map-menu/map-menu.js",
+      "package": "map-menu",
+      "bytes": 29237,
+      "gz": 6304,
+      "core": false,
+      "themesUsing": 34
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDReading.js",
+      "package": "d-d-d",
+      "bytes": 4282,
+      "gz": 1761,
+      "core": false,
+      "themesUsing": 33
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/navigation/site-menu.js",
+      "package": "haxcms-elements",
+      "bytes": 10932,
+      "gz": 3398,
+      "core": false,
+      "themesUsing": 33
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/active-item/site-active-title.js",
+      "package": "haxcms-elements",
+      "bytes": 11314,
+      "gz": 2735,
+      "core": false,
+      "themesUsing": 31
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js",
+      "package": "haxcms-elements",
+      "bytes": 2676,
+      "gz": 1100,
+      "core": false,
+      "themesUsing": 27
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/query/site-query.js",
+      "package": "haxcms-elements",
+      "bytes": 14315,
+      "gz": 3651,
+      "core": false,
+      "themesUsing": 21
+    },
+    {
+      "path": "elements/simple-icon/lib/simple-icon-button.js",
+      "package": "simple-icon",
+      "bytes": 2178,
+      "gz": 819,
+      "core": false,
+      "themesUsing": 19
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/navigation/site-top-menu.js",
+      "package": "haxcms-elements",
+      "bytes": 14562,
+      "gz": 3995,
+      "core": false,
+      "themesUsing": 18
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/navigation/site-menu-content.js",
+      "package": "haxcms-elements",
+      "bytes": 5144,
+      "gz": 1694,
+      "core": false,
+      "themesUsing": 17
+    },
+    {
+      "path": "elements/page-contents-menu/page-contents-menu.js",
+      "package": "page-contents-menu",
+      "bytes": 22507,
+      "gz": 6036,
+      "core": false,
+      "themesUsing": 17
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js",
+      "package": "haxcms-elements",
+      "bytes": 4188,
+      "gz": 1442,
+      "core": false,
+      "themesUsing": 14
+    },
+    {
+      "path": "elements/scroll-button/scroll-button.js",
+      "package": "scroll-button",
+      "bytes": 4720,
+      "gz": 1739,
+      "core": false,
+      "themesUsing": 14
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js",
+      "package": "haxcms-elements",
+      "bytes": 9465,
+      "gz": 2610,
+      "core": false,
+      "themesUsing": 13
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js",
+      "package": "haxcms-elements",
+      "bytes": 8824,
+      "gz": 2524,
+      "core": false,
+      "themesUsing": 13
+    },
+    {
+      "path": "elements/es-global-bridge/es-global-bridge.js",
+      "package": "es-global-bridge",
+      "bytes": 3843,
+      "gz": 1381,
+      "core": false,
+      "themesUsing": 12
+    },
+    {
+      "path": "elements/papermod-theme/lib/HomageThemeBase.js",
+      "package": "papermod-theme",
+      "bytes": 17056,
+      "gz": 4326,
+      "core": false,
+      "themesUsing": 12
+    },
+    {
+      "path": "elements/papermod-theme/lib/homage-page-list.js",
+      "package": "papermod-theme",
+      "bytes": 6848,
+      "gz": 2200,
+      "core": false,
+      "themesUsing": 12
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/layout/site-modal.js",
+      "package": "haxcms-elements",
+      "bytes": 3921,
+      "gz": 1443,
+      "core": false,
+      "themesUsing": 11
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/layout/site-region.js",
+      "package": "haxcms-elements",
+      "bytes": 5041,
+      "gz": 1797,
+      "core": false,
+      "themesUsing": 11
+    },
+    {
+      "path": "elements/simple-modal/lib/simple-modal-template.js",
+      "package": "simple-modal",
+      "bytes": 4278,
+      "gz": 1546,
+      "core": false,
+      "themesUsing": 11
+    },
+    {
+      "path": "elements/simple-modal/simple-modal.js",
+      "package": "simple-modal",
+      "bytes": 44352,
+      "gz": 9689,
+      "core": false,
+      "themesUsing": 11
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/PDFPageMixin.js",
+      "package": "haxcms-elements",
+      "bytes": 3923,
+      "gz": 1471,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/PrintBranchMixin.js",
+      "package": "haxcms-elements",
+      "bytes": 10109,
+      "gz": 2187,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/QRCodeMixin.js",
+      "package": "haxcms-elements",
+      "bytes": 17228,
+      "gz": 4443,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/site-api-auth-fetch.js",
+      "package": "haxcms-elements",
+      "bytes": 4719,
+      "gz": 1975,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/active-item/site-active-tags.js",
+      "package": "haxcms-elements",
+      "bytes": 6526,
+      "gz": 2158,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/micro-frontend-registry/lib/microServices.js",
+      "package": "micro-frontend-registry",
+      "bytes": 11018,
+      "gz": 2341,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/micro-frontend-registry/micro-frontend-registry.js",
+      "package": "micro-frontend-registry",
+      "bytes": 16867,
+      "gz": 4389,
+      "core": false,
+      "themesUsing": 9
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/LTIResizingMixin.js",
+      "package": "haxcms-elements",
+      "bytes": 3788,
+      "gz": 1245,
+      "core": false,
+      "themesUsing": 8
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/navigation/site-menu-button.js",
+      "package": "haxcms-elements",
+      "bytes": 15725,
+      "gz": 4286,
+      "core": false,
+      "themesUsing": 8
+    },
+    {
+      "path": "elements/papermod-theme/lib/HomageColumnTheme.js",
+      "package": "papermod-theme",
+      "bytes": 4544,
+      "gz": 1488,
+      "core": false,
+      "themesUsing": 8
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/progress/my-learning-button.js",
+      "package": "haxcms-elements",
+      "bytes": 15898,
+      "gz": 4884,
+      "core": false,
+      "themesUsing": 7
+    },
+    {
+      "path": "elements/license-element/lib/licenses-data.js",
+      "package": "license-element",
+      "bytes": 5674,
+      "gz": 1224,
+      "core": false,
+      "themesUsing": 7
+    },
+    {
+      "path": "elements/license-element/license-element.js",
+      "package": "license-element",
+      "bytes": 16873,
+      "gz": 5129,
+      "core": false,
+      "themesUsing": 7
+    },
+    {
+      "path": "elements/book-theme/book-theme.js",
+      "package": "book-theme",
+      "bytes": 27467,
+      "gz": 5976,
+      "core": false,
+      "themesUsing": 5
+    },
+    {
+      "path": "elements/clean-two/clean-two.js",
+      "package": "clean-two",
+      "bytes": 34585,
+      "gz": 6980,
+      "core": false,
+      "themesUsing": 4
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDVocabulary.js",
+      "package": "d-d-d",
+      "bytes": 4822,
+      "gz": 1789,
+      "core": false,
+      "themesUsing": 4
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/layout/site-footer.js",
+      "package": "haxcms-elements",
+      "bytes": 2959,
+      "gz": 1050,
+      "core": false,
+      "themesUsing": 4
+    },
+    {
+      "path": "elements/papermod-theme/lib/HomageSidebarTheme.js",
+      "package": "papermod-theme",
+      "bytes": 11186,
+      "gz": 2610,
+      "core": false,
+      "themesUsing": 4
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiAdminIcons.js",
+      "package": "d-d-d",
+      "bytes": 3387,
+      "gz": 1234,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiAdminTokens.js",
+      "package": "d-d-d",
+      "bytes": 19392,
+      "gz": 5229,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js",
+      "package": "haxcms-elements",
+      "bytes": 9828,
+      "gz": 2605,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/blocks/site-children-block.js",
+      "package": "haxcms-elements",
+      "bytes": 9035,
+      "gz": 2472,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js",
+      "package": "haxcms-elements",
+      "bytes": 4258,
+      "gz": 1443,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/site/site-search.js",
+      "package": "haxcms-elements",
+      "bytes": 21326,
+      "gz": 5027,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/iframe-loader/lib/loading-indicator.js",
+      "package": "iframe-loader",
+      "bytes": 2206,
+      "gz": 829,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/lunr-search/lunr-search.js",
+      "package": "lunr-search",
+      "bytes": 13144,
+      "gz": 3691,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-datetime/lib/date.format.js",
+      "package": "simple-datetime",
+      "bytes": 6296,
+      "gz": 1822,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-datetime/simple-datetime.js",
+      "package": "simple-datetime",
+      "bytes": 2447,
+      "gz": 1009,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-container.js",
+      "package": "simple-fields",
+      "bytes": 45221,
+      "gz": 10272,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-field.js",
+      "package": "simple-fields",
+      "bytes": 56672,
+      "gz": 10956,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-ui.js",
+      "package": "simple-fields",
+      "bytes": 16057,
+      "gz": 3532,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-tag-lite.js",
+      "package": "simple-fields",
+      "bytes": 5004,
+      "gz": 1495,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-tag.js",
+      "package": "simple-fields",
+      "bytes": 9489,
+      "gz": 2609,
+      "core": false,
+      "themesUsing": 3
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDAccent.js",
+      "package": "d-d-d",
+      "bytes": 3913,
+      "gz": 1620,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiAdminControls.js",
+      "package": "d-d-d",
+      "bytes": 53788,
+      "gz": 8904,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiAdminShell.js",
+      "package": "d-d-d",
+      "bytes": 17738,
+      "gz": 3874,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiAdminStyles.js",
+      "package": "d-d-d",
+      "bytes": 2227,
+      "gz": 930,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/d-d-d/lib/HaxUiDialogFrame.js",
+      "package": "d-d-d",
+      "bytes": 7288,
+      "gz": 2267,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/hax-network-bar/hax-network-bar.js",
+      "package": "hax-network-bar",
+      "bytes": 81802,
+      "gz": 18879,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/hax-network-bar/lib/hax-network.js",
+      "package": "hax-network-bar",
+      "bytes": 15151,
+      "gz": 4570,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/themes/haxcms-print-theme.js",
+      "package": "haxcms-elements",
+      "bytes": 5704,
+      "gz": 1967,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/urlHost.js",
+      "package": "haxcms-elements",
+      "bytes": 416,
+      "gz": 299,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/polaris-theme/lib/polaris-flex-theme.js",
+      "package": "polaris-theme",
+      "bytes": 42014,
+      "gz": 9422,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/rpg-character/lib/rpg-character-code.js",
+      "package": "rpg-character",
+      "bytes": 8420,
+      "gz": 2883,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/rpg-character/lib/rpg-character-overlays.js",
+      "package": "rpg-character",
+      "bytes": 2763,
+      "gz": 1187,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/rpg-character/lib/rpg-character-seasons.js",
+      "package": "rpg-character",
+      "bytes": 3314,
+      "gz": 1338,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/rpg-character/rpg-character.js",
+      "package": "rpg-character",
+      "bytes": 36465,
+      "gz": 10884,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/super-daemon/lib/super-daemon-hax-ui.js",
+      "package": "super-daemon",
+      "bytes": 9952,
+      "gz": 3182,
+      "core": false,
+      "themesUsing": 2
+    },
+    {
+      "path": "elements/accent-card/accent-card.js",
+      "package": "accent-card",
+      "bytes": 18053,
+      "gz": 4406,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/book-theme/lib/guidebook-theme.js",
+      "package": "book-theme",
+      "bytes": 2041,
+      "gz": 911,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/book-theme/lib/handbook-theme.js",
+      "package": "book-theme",
+      "bytes": 1830,
+      "gz": 825,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/book-theme/lib/just-the-docs-theme.js",
+      "package": "book-theme",
+      "bytes": 1945,
+      "gz": 883,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/book-theme/lib/manual-theme.js",
+      "package": "book-theme",
+      "bytes": 2273,
+      "gz": 990,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/bootstrap-theme.js",
+      "package": "bootstrap-theme",
+      "bytes": 31179,
+      "gz": 6308,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapBreadcrumb.js",
+      "package": "bootstrap-theme",
+      "bytes": 11048,
+      "gz": 2862,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapDDDMap.js",
+      "package": "bootstrap-theme",
+      "bytes": 6402,
+      "gz": 1813,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapDesignSystem.js",
+      "package": "bootstrap-theme",
+      "bytes": 2533,
+      "gz": 970,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapDesignSystemStyles.js",
+      "package": "bootstrap-theme",
+      "bytes": 1310,
+      "gz": 556,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapFooter.js",
+      "package": "bootstrap-theme",
+      "bytes": 9922,
+      "gz": 2263,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapIcons.js",
+      "package": "bootstrap-theme",
+      "bytes": 8997,
+      "gz": 2040,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapSearch.js",
+      "package": "bootstrap-theme",
+      "bytes": 4503,
+      "gz": 1630,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapStylesheetManager.js",
+      "package": "bootstrap-theme",
+      "bytes": 3336,
+      "gz": 1247,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapTokens.js",
+      "package": "bootstrap-theme",
+      "bytes": 5665,
+      "gz": 1690,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js",
+      "package": "bootstrap-theme",
+      "bytes": 17512,
+      "gz": 3386,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/carbon-theme/carbon-theme.js",
+      "package": "carbon-theme",
+      "bytes": 18079,
+      "gz": 4320,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/carbon-theme/lib/CarbonDDDMap.js",
+      "package": "carbon-theme",
+      "bytes": 8119,
+      "gz": 2093,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/carbon-theme/lib/CarbonDesignSystem.js",
+      "package": "carbon-theme",
+      "bytes": 1697,
+      "gz": 741,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/carbon-theme/lib/CarbonIcons.js",
+      "package": "carbon-theme",
+      "bytes": 8394,
+      "gz": 1970,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/carbon-theme/lib/CarbonTokens.js",
+      "package": "carbon-theme",
+      "bytes": 3580,
+      "gz": 1143,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/chamfer-theme/chamfer-theme.js",
+      "package": "chamfer-theme",
+      "bytes": 13225,
+      "gz": 3801,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/clean-one/clean-one.js",
+      "package": "clean-one",
+      "bytes": 40781,
+      "gz": 9198,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/clean-one/lib/clean-one-search-box.js",
+      "package": "clean-one",
+      "bytes": 2808,
+      "gz": 1127,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/clean-portfolio-theme/clean-portfolio-theme.js",
+      "package": "clean-portfolio-theme",
+      "bytes": 63303,
+      "gz": 11895,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/code-sample.js",
+      "package": "code-sample",
+      "bytes": 22068,
+      "gz": 6699,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/highlight.js",
+      "package": "code-sample",
+      "bytes": 37959,
+      "gz": 11232,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/css.js",
+      "package": "code-sample",
+      "bytes": 2830,
+      "gz": 855,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/javascript.js",
+      "package": "code-sample",
+      "bytes": 5170,
+      "gz": 1680,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/json.js",
+      "package": "code-sample",
+      "bytes": 1073,
+      "gz": 547,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/php.js",
+      "package": "code-sample",
+      "bytes": 3537,
+      "gz": 1265,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/xml.js",
+      "package": "code-sample",
+      "bytes": 3265,
+      "gz": 1063,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/highlightjs/languages/yaml.js",
+      "package": "code-sample",
+      "bytes": 2381,
+      "gz": 885,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/code-sample/lib/themes/one-dark.js",
+      "package": "code-sample",
+      "bytes": 1995,
+      "gz": 798,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/collection-list/collection-list.js",
+      "package": "collection-list",
+      "bytes": 2581,
+      "gz": 999,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/collection-list/lib/collection-item.js",
+      "package": "collection-list",
+      "bytes": 11177,
+      "gz": 2685,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/collection-list/lib/collections-theme-banner.js",
+      "package": "collection-list",
+      "bytes": 4784,
+      "gz": 1392,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/collection-list/lib/collections-theme.js",
+      "package": "collection-list",
+      "bytes": 14998,
+      "gz": 3582,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDPaletteRegistry.js",
+      "package": "d-d-d",
+      "bytes": 5550,
+      "gz": 1379,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/d-d-d/lib/ddd-brochure-theme.js",
+      "package": "d-d-d",
+      "bytes": 8820,
+      "gz": 2628,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/d-d-d/lib/hax-palette-picker.js",
+      "package": "d-d-d",
+      "bytes": 31918,
+      "gz": 8157,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/date-card/lib/date-chip.js",
+      "package": "date-card",
+      "bytes": 3667,
+      "gz": 1248,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/ecosystem-theme/ecosystem-theme.js",
+      "package": "ecosystem-theme",
+      "bytes": 29370,
+      "gz": 7479,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/ecosystem-web/ecosystem-web.js",
+      "package": "ecosystem-web",
+      "bytes": 122552,
+      "gz": 29638,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/ecosystem-web/lib/ecosystem-model.js",
+      "package": "ecosystem-web",
+      "bytes": 29744,
+      "gz": 10661,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/example-haxcms-theme/example-haxcms-theme.js",
+      "package": "example-haxcms-theme",
+      "bytes": 7648,
+      "gz": 2401,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/fluent-theme/fluent-theme.js",
+      "package": "fluent-theme",
+      "bytes": 18507,
+      "gz": 4403,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/fluent-theme/lib/FluentDDDMap.js",
+      "package": "fluent-theme",
+      "bytes": 8213,
+      "gz": 2101,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/fluent-theme/lib/FluentDesignSystem.js",
+      "package": "fluent-theme",
+      "bytes": 1705,
+      "gz": 744,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/fluent-theme/lib/FluentIcons.js",
+      "package": "fluent-theme",
+      "bytes": 8429,
+      "gz": 1999,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/fluent-theme/lib/FluentTokens.js",
+      "package": "fluent-theme",
+      "bytes": 3931,
+      "gz": 1309,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/full-width-image/full-width-image.js",
+      "package": "full-width-image",
+      "bytes": 8624,
+      "gz": 2792,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/future-terminal-text/future-terminal-text.js",
+      "package": "future-terminal-text",
+      "bytes": 1590,
+      "gz": 669,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/future-terminal-text/lib/FutureTerminalTextSuper.js",
+      "package": "future-terminal-text",
+      "bytes": 1726,
+      "gz": 715,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/future-terminal-text/lib/future-terminal-text-lite.js",
+      "package": "future-terminal-text",
+      "bytes": 3949,
+      "gz": 1454,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/glossy-portfolio-theme.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 8549,
+      "gz": 2759,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/GlossyContentStyles.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 1152,
+      "gz": 615,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/GlossyDDDMap.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 6694,
+      "gz": 1778,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/GlossyDesignSystem.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 1762,
+      "gz": 751,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/GlossyPageStyles.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 2136,
+      "gz": 930,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/GlossyTokens.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 1826,
+      "gz": 707,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-breadcrumb.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 6419,
+      "gz": 2072,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-card.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 15908,
+      "gz": 10192,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-footer.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 5874,
+      "gz": 1933,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-grid.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 11962,
+      "gz": 3614,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-header.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 19383,
+      "gz": 4823,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/glossy-portfolio-theme/lib/glossy-portfolio-home.js",
+      "package": "glossy-portfolio-theme",
+      "bytes": 4987,
+      "gz": 1760,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/grid-plate/grid-plate.js",
+      "package": "grid-plate",
+      "bytes": 25292,
+      "gz": 6230,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/hax-marketing-theme/hax-marketing-theme.js",
+      "package": "hax-marketing-theme",
+      "bytes": 44387,
+      "gz": 9243,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/hax-marketing-theme/lib/hax-marketing-palette.js",
+      "package": "hax-marketing-theme",
+      "bytes": 3699,
+      "gz": 1605,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/hax-marketing-theme/lib/hax-reel.js",
+      "package": "hax-marketing-theme",
+      "bytes": 20817,
+      "gz": 5079,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/hax-marketing-theme/lib/hax-story-link.js",
+      "package": "hax-marketing-theme",
+      "bytes": 6983,
+      "gz": 2531,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/hax-marketing-theme/lib/hax-style-switcher.js",
+      "package": "hax-marketing-theme",
+      "bytes": 24575,
+      "gz": 6223,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/haxcms-toast.js",
+      "package": "haxcms-elements",
+      "bytes": 28024,
+      "gz": 7447,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+      "package": "haxcms-elements",
+      "bytes": 5353,
+      "gz": 1634,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/themes/haxcms-blank-theme.js",
+      "package": "haxcms-elements",
+      "bytes": 2067,
+      "gz": 906,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/themes/haxcms-json-theme.js",
+      "package": "haxcms-elements",
+      "bytes": 26465,
+      "gz": 6107,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/themes/haxcms-slide-theme.js",
+      "package": "haxcms-elements",
+      "bytes": 8163,
+      "gz": 2244,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/ui/rpg-character-toast/rpg-character-toast.js",
+      "package": "haxcms-elements",
+      "bytes": 14445,
+      "gz": 3746,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/core/utils/HAXCMSUserStylesMenu.js",
+      "package": "haxcms-elements",
+      "bytes": 16470,
+      "gz": 2916,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/magic/site-collection-list.js",
+      "package": "haxcms-elements",
+      "bytes": 9720,
+      "gz": 3138,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/site/site-print-button.js",
+      "package": "haxcms-elements",
+      "bytes": 4318,
+      "gz": 1598,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxcms-elements/lib/ui-components/templates/basic-template.js",
+      "package": "haxcms-elements",
+      "bytes": 5650,
+      "gz": 1251,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxma-theme/haxma-theme.js",
+      "package": "haxma-theme",
+      "bytes": 29987,
+      "gz": 5927,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/haxor-slevin/haxor-slevin.js",
+      "package": "haxor-slevin",
+      "bytes": 27210,
+      "gz": 6205,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/intersection-element/lib/IntersectionObserverMixin.js",
+      "package": "intersection-element",
+      "bytes": 3865,
+      "gz": 1394,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/journey-theme.js",
+      "package": "journey-theme",
+      "bytes": 41778,
+      "gz": 7967,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/lib/journey-menu.js",
+      "package": "journey-theme",
+      "bytes": 8962,
+      "gz": 2629,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/lib/journey-sidebar-theme-styles.js",
+      "package": "journey-theme",
+      "bytes": 4658,
+      "gz": 1525,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/lib/journey-sidebar-theme.js",
+      "package": "journey-theme",
+      "bytes": 6672,
+      "gz": 2312,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/lib/journey-topbar-theme-styles.js",
+      "package": "journey-theme",
+      "bytes": 5108,
+      "gz": 1360,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/journey-theme/lib/journey-topbar-theme.js",
+      "package": "journey-theme",
+      "bytes": 5551,
+      "gz": 2074,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/learn-two-theme/learn-two-theme.js",
+      "package": "learn-two-theme",
+      "bytes": 21165,
+      "gz": 4523,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/link-card-theme/link-card-theme.js",
+      "package": "link-card-theme",
+      "bytes": 22557,
+      "gz": 5291,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/material-theme/lib/MaterialDDDMap.js",
+      "package": "material-theme",
+      "bytes": 8968,
+      "gz": 2125,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/material-theme/lib/MaterialDesignSystem.js",
+      "package": "material-theme",
+      "bytes": 1757,
+      "gz": 739,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/material-theme/lib/MaterialIcons.js",
+      "package": "material-theme",
+      "bytes": 13596,
+      "gz": 2922,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/material-theme/lib/MaterialTokens.js",
+      "package": "material-theme",
+      "bytes": 4395,
+      "gz": 1203,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/material-theme/material-theme.js",
+      "package": "material-theme",
+      "bytes": 21239,
+      "gz": 4828,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/night-draft-theme/night-draft-theme.js",
+      "package": "night-draft-theme",
+      "bytes": 43236,
+      "gz": 10484,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/outline-player/outline-player.js",
+      "package": "outline-player",
+      "bytes": 19126,
+      "gz": 4869,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/al-folio-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1866,
+      "gz": 864,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/astro-cactus-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1833,
+      "gz": 858,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/astrofy-theme.js",
+      "package": "papermod-theme",
+      "bytes": 2153,
+      "gz": 921,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/astropaper-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1988,
+      "gz": 878,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/astrowind-theme.js",
+      "package": "papermod-theme",
+      "bytes": 2139,
+      "gz": 941,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/chirpy-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1872,
+      "gz": 847,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/coder-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1496,
+      "gz": 777,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/hyde-theme.js",
+      "package": "papermod-theme",
+      "bytes": 2177,
+      "gz": 967,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/minima-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1700,
+      "gz": 818,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/minimal-mistakes-theme.js",
+      "package": "papermod-theme",
+      "bytes": 2018,
+      "gz": 907,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/lib/terminal-theme.js",
+      "package": "papermod-theme",
+      "bytes": 2696,
+      "gz": 1062,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/papermod-theme/papermod-theme.js",
+      "package": "papermod-theme",
+      "bytes": 1833,
+      "gz": 843,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/patternfly-theme/lib/PatternflyDDDMap.js",
+      "package": "patternfly-theme",
+      "bytes": 8396,
+      "gz": 1931,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/patternfly-theme/lib/PatternflyDesignSystem.js",
+      "package": "patternfly-theme",
+      "bytes": 1631,
+      "gz": 701,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/patternfly-theme/lib/PatternflyTokens.js",
+      "package": "patternfly-theme",
+      "bytes": 6043,
+      "gz": 1460,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/patternfly-theme/patternfly-theme.js",
+      "package": "patternfly-theme",
+      "bytes": 18322,
+      "gz": 3976,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/polaris-theme/lib/polaris-flex-sidebar.js",
+      "package": "polaris-theme",
+      "bytes": 6117,
+      "gz": 1829,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/polaris-theme/lib/polaris-invent-theme.js",
+      "package": "polaris-theme",
+      "bytes": 30240,
+      "gz": 7059,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/polaris-theme/polaris-theme.js",
+      "package": "polaris-theme",
+      "bytes": 22555,
+      "gz": 5339,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/primer-theme/lib/PrimerDDDMap.js",
+      "package": "primer-theme",
+      "bytes": 7436,
+      "gz": 2128,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/primer-theme/lib/PrimerDesignSystem.js",
+      "package": "primer-theme",
+      "bytes": 1700,
+      "gz": 742,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/primer-theme/lib/PrimerIcons.js",
+      "package": "primer-theme",
+      "bytes": 6751,
+      "gz": 1652,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/primer-theme/lib/PrimerTokens.js",
+      "package": "primer-theme",
+      "bytes": 4831,
+      "gz": 1460,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/primer-theme/primer-theme.js",
+      "package": "primer-theme",
+      "bytes": 17634,
+      "gz": 4289,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/q-r/lib/qr-code.js",
+      "package": "q-r",
+      "bytes": 4533,
+      "gz": 1589,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/resume-theme/resume-theme.js",
+      "package": "resume-theme",
+      "bytes": 21365,
+      "gz": 4039,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-blocks.js",
+      "package": "retro-tv",
+      "bytes": 10432,
+      "gz": 3602,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-credits.js",
+      "package": "retro-tv",
+      "bytes": 4616,
+      "gz": 1566,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-disc.js",
+      "package": "retro-tv",
+      "bytes": 7004,
+      "gz": 2159,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-handheld.js",
+      "package": "retro-tv",
+      "bytes": 2927,
+      "gz": 937,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-hax-tv.js",
+      "package": "retro-tv",
+      "bytes": 5100,
+      "gz": 1920,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-home-computer.js",
+      "package": "retro-tv",
+      "bytes": 3793,
+      "gz": 1497,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-pc.js",
+      "package": "retro-tv",
+      "bytes": 2640,
+      "gz": 1140,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-sign-on.js",
+      "package": "retro-tv",
+      "bytes": 5052,
+      "gz": 1624,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-static.js",
+      "package": "retro-tv",
+      "bytes": 8144,
+      "gz": 2404,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/programs/retro-tv-title-sequence.js",
+      "package": "retro-tv",
+      "bytes": 8375,
+      "gz": 2268,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-console.js",
+      "package": "retro-tv",
+      "bytes": 10161,
+      "gz": 2907,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-controller.js",
+      "package": "retro-tv",
+      "bytes": 13366,
+      "gz": 3798,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-kit.js",
+      "package": "retro-tv",
+      "bytes": 2429,
+      "gz": 1111,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-tv-controls.js",
+      "package": "retro-tv",
+      "bytes": 6048,
+      "gz": 2250,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-tv-program.js",
+      "package": "retro-tv",
+      "bytes": 7052,
+      "gz": 2883,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/lib/retro-vcr.js",
+      "package": "retro-tv",
+      "bytes": 13019,
+      "gz": 3920,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/retro-tv/retro-tv.js",
+      "package": "retro-tv",
+      "bytes": 18491,
+      "gz": 4865,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/rpg-character/lib/rpg-character-avatar.js",
+      "package": "rpg-character",
+      "bytes": 1535,
+      "gz": 670,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/shadcn-theme/lib/ShadcnDDDMap.js",
+      "package": "shadcn-theme",
+      "bytes": 7308,
+      "gz": 1948,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/shadcn-theme/lib/ShadcnDesignSystem.js",
+      "package": "shadcn-theme",
+      "bytes": 1696,
+      "gz": 738,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/shadcn-theme/lib/ShadcnIcons.js",
+      "package": "shadcn-theme",
+      "bytes": 8307,
+      "gz": 1962,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/shadcn-theme/lib/ShadcnTokens.js",
+      "package": "shadcn-theme",
+      "bytes": 5076,
+      "gz": 1497,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/shadcn-theme/shadcn-theme.js",
+      "package": "shadcn-theme",
+      "bytes": 16460,
+      "gz": 3940,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/simple-blog/lib/simple-blog-post.js",
+      "package": "simple-blog",
+      "bytes": 8998,
+      "gz": 2823,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/simple-blog/simple-blog.js",
+      "package": "simple-blog",
+      "bytes": 11118,
+      "gz": 3540,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/simple-cta/simple-cta.js",
+      "package": "simple-cta",
+      "bytes": 16426,
+      "gz": 4093,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/simple-toast/lib/simple-toast-el.js",
+      "package": "simple-toast",
+      "bytes": 7089,
+      "gz": 2013,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spacebook-theme/spacebook-theme.js",
+      "package": "spacebook-theme",
+      "bytes": 39200,
+      "gz": 7467,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spectrum-theme/lib/SpectrumDDDMap.js",
+      "package": "spectrum-theme",
+      "bytes": 8808,
+      "gz": 2235,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spectrum-theme/lib/SpectrumDesignSystem.js",
+      "package": "spectrum-theme",
+      "bytes": 1755,
+      "gz": 739,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spectrum-theme/lib/SpectrumIcons.js",
+      "package": "spectrum-theme",
+      "bytes": 7819,
+      "gz": 1890,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spectrum-theme/lib/SpectrumTokens.js",
+      "package": "spectrum-theme",
+      "bytes": 6336,
+      "gz": 1609,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/spectrum-theme/spectrum-theme.js",
+      "package": "spectrum-theme",
+      "bytes": 17773,
+      "gz": 4137,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/tailwind-theme/lib/TailwindDDDMap.js",
+      "package": "tailwind-theme",
+      "bytes": 6986,
+      "gz": 1835,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/tailwind-theme/lib/TailwindDesignSystem.js",
+      "package": "tailwind-theme",
+      "bytes": 1755,
+      "gz": 738,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/tailwind-theme/lib/TailwindIcons.js",
+      "package": "tailwind-theme",
+      "bytes": 7988,
+      "gz": 1873,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/tailwind-theme/lib/TailwindTokens.js",
+      "package": "tailwind-theme",
+      "bytes": 4548,
+      "gz": 1569,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/tailwind-theme/tailwind-theme.js",
+      "package": "tailwind-theme",
+      "bytes": 18760,
+      "gz": 4377,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/terrible-themes/lib/terrible-best-themes.js",
+      "package": "terrible-themes",
+      "bytes": 8446,
+      "gz": 2519,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/terrible-themes/lib/terrible-outlet-themes.js",
+      "package": "terrible-themes",
+      "bytes": 7429,
+      "gz": 2304,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/terrible-themes/lib/terrible-productionz-themes.js",
+      "package": "terrible-themes",
+      "bytes": 13517,
+      "gz": 3342,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/terrible-themes/lib/terrible-resume-themes.js",
+      "package": "terrible-themes",
+      "bytes": 8780,
+      "gz": 2311,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/terrible-themes/terrible-themes.js",
+      "package": "terrible-themes",
+      "bytes": 17028,
+      "gz": 3807,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/training-theme/lib/training-button.js",
+      "package": "training-theme",
+      "bytes": 6120,
+      "gz": 2043,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/training-theme/training-theme.js",
+      "package": "training-theme",
+      "bytes": 27588,
+      "gz": 5832,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/twenty-six-theme/twenty-six-theme.js",
+      "package": "twenty-six-theme",
+      "bytes": 35881,
+      "gz": 7665,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/uswds-theme/lib/UswdsDDDMap.js",
+      "package": "uswds-theme",
+      "bytes": 7247,
+      "gz": 2016,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/uswds-theme/lib/UswdsDesignSystem.js",
+      "package": "uswds-theme",
+      "bytes": 1494,
+      "gz": 680,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/uswds-theme/lib/UswdsTokens.js",
+      "package": "uswds-theme",
+      "bytes": 2143,
+      "gz": 809,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/uswds-theme/uswds-theme.js",
+      "package": "uswds-theme",
+      "bytes": 24783,
+      "gz": 5674,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/activeStateBehavior.js",
+      "package": "utils",
+      "bytes": 1081,
+      "gz": 417,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/browser.js",
+      "package": "utils",
+      "bytes": 2541,
+      "gz": 1122,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/keyboardShortcuts.js",
+      "package": "utils",
+      "bytes": 12005,
+      "gz": 4128,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/markdown.js",
+      "package": "utils",
+      "bytes": 17137,
+      "gz": 5733,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/remoteLinkBehavior.js",
+      "package": "utils",
+      "bytes": 2444,
+      "gz": 965,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/lib/selection.js",
+      "package": "utils",
+      "bytes": 11897,
+      "gz": 3691,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/utils/utils.js",
+      "package": "utils",
+      "bytes": 54684,
+      "gz": 14604,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/KeepcaseDDDMap.js",
+      "package": "vhs-blog-theme",
+      "bytes": 7510,
+      "gz": 1979,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/KeepcaseDesignSystem.js",
+      "package": "vhs-blog-theme",
+      "bytes": 1632,
+      "gz": 719,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/KeepcaseTokens.js",
+      "package": "vhs-blog-theme",
+      "bytes": 2160,
+      "gz": 823,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-back.js",
+      "package": "vhs-blog-theme",
+      "bytes": 6299,
+      "gz": 2045,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-case.js",
+      "package": "vhs-blog-theme",
+      "bytes": 8900,
+      "gz": 3571,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-console.js",
+      "package": "vhs-blog-theme",
+      "bytes": 7863,
+      "gz": 2244,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-cover.js",
+      "package": "vhs-blog-theme",
+      "bytes": 10491,
+      "gz": 2871,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-spine.js",
+      "package": "vhs-blog-theme",
+      "bytes": 13851,
+      "gz": 4091,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/lib/vhs-blog-tv.js",
+      "package": "vhs-blog-theme",
+      "bytes": 13613,
+      "gz": 4235,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/vhs-blog-theme/vhs-blog-theme.js",
+      "package": "vhs-blog-theme",
+      "bytes": 71775,
+      "gz": 17758,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/webawesome-theme/lib/WebawesomeDDDMap.js",
+      "package": "webawesome-theme",
+      "bytes": 7814,
+      "gz": 1879,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/webawesome-theme/lib/WebawesomeDesignSystem.js",
+      "package": "webawesome-theme",
+      "bytes": 1628,
+      "gz": 695,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/webawesome-theme/lib/WebawesomeTokens.js",
+      "package": "webawesome-theme",
+      "bytes": 5365,
+      "gz": 1312,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/webawesome-theme/webawesome-theme.js",
+      "package": "webawesome-theme",
+      "bytes": 22181,
+      "gz": 5168,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/writing-theme/writing-theme.js",
+      "package": "writing-theme",
+      "bytes": 16848,
+      "gz": 4578,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/wysiwyg96-theme/lib/ClassicDesktopDDDMap.js",
+      "package": "wysiwyg96-theme",
+      "bytes": 7672,
+      "gz": 1645,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/wysiwyg96-theme/lib/ClassicDesktopDesignSystem.js",
+      "package": "wysiwyg96-theme",
+      "bytes": 2123,
+      "gz": 851,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/wysiwyg96-theme/lib/ClassicDesktopHaxUiSkin.js",
+      "package": "wysiwyg96-theme",
+      "bytes": 5530,
+      "gz": 1253,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/wysiwyg96-theme/lib/ClassicDesktopTokens.js",
+      "package": "wysiwyg96-theme",
+      "bytes": 2621,
+      "gz": 811,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/wysiwyg96-theme/wysiwyg96-theme.js",
+      "package": "wysiwyg96-theme",
+      "bytes": 40953,
+      "gz": 8350,
+      "core": false,
+      "themesUsing": 1
+    },
+    {
+      "path": "elements/a11y-media-player/a11y-media-player.js",
+      "package": "a11y-media-player",
+      "bytes": 176683,
+      "gz": 39431,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-button.js",
+      "package": "a11y-media-player",
+      "bytes": 5791,
+      "gz": 1623,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-fallback.js",
+      "package": "a11y-media-player",
+      "bytes": 3145,
+      "gz": 1475,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-play-button.js",
+      "package": "a11y-media-player",
+      "bytes": 5497,
+      "gz": 1785,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-state-manager.js",
+      "package": "a11y-media-player",
+      "bytes": 6022,
+      "gz": 1921,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-transcript-cue.js",
+      "package": "a11y-media-player",
+      "bytes": 8326,
+      "gz": 2389,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-media-player/lib/a11y-media-youtube.js",
+      "package": "a11y-media-player",
+      "bytes": 19191,
+      "gz": 5869,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-menu-button/a11y-menu-button.js",
+      "package": "a11y-menu-button",
+      "bytes": 31491,
+      "gz": 6914,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/a11y-menu-button/lib/a11y-menu-button-item.js",
+      "package": "a11y-menu-button",
+      "bytes": 10453,
+      "gz": 2525,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/absolute-position-behavior/absolute-position-behavior.js",
+      "package": "absolute-position-behavior",
+      "bytes": 7372,
+      "gz": 2103,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/audio-player/audio-player.js",
+      "package": "audio-player",
+      "bytes": 1488,
+      "gz": 773,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/citation-element/citation-element.js",
+      "package": "citation-element",
+      "bytes": 18428,
+      "gz": 4973,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/d-d-d/lib/DDDTable.js",
+      "package": "d-d-d",
+      "bytes": 12485,
+      "gz": 3082,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/editable-table/editable-table.js",
+      "package": "editable-table",
+      "bytes": 15841,
+      "gz": 4200,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/editable-table/lib/editable-table-behaviors.js",
+      "package": "editable-table",
+      "bytes": 33351,
+      "gz": 8603,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/editable-table/lib/editable-table-display.js",
+      "package": "editable-table",
+      "bytes": 35157,
+      "gz": 9111,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/editable-table/lib/editable-table-edit.js",
+      "package": "editable-table",
+      "bytes": 35910,
+      "gz": 6862,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/editable-table/lib/editable-table-editor-rowcol.js",
+      "package": "editable-table",
+      "bytes": 6479,
+      "gz": 2094,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/figure-label/figure-label.js",
+      "package": "figure-label",
+      "bytes": 3631,
+      "gz": 1236,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/fullscreen-behaviors/fullscreen-behaviors.js",
+      "package": "fullscreen-behaviors",
+      "bytes": 3773,
+      "gz": 1298,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/lazy-image-helpers/lazy-image-helpers.js",
+      "package": "lazy-image-helpers",
+      "bytes": 5991,
+      "gz": 2087,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/media-behaviors/media-behaviors.js",
+      "package": "media-behaviors",
+      "bytes": 8154,
+      "gz": 2534,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/media-image/media-image.js",
+      "package": "media-image",
+      "bytes": 20902,
+      "gz": 5308,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/multiple-choice/lib/QuestionElement.js",
+      "package": "multiple-choice",
+      "bytes": 102565,
+      "gz": 24505,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/multiple-choice/multiple-choice.js",
+      "package": "multiple-choice",
+      "bytes": 3474,
+      "gz": 1401,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/radio-behaviors/radio-behaviors.js",
+      "package": "radio-behaviors",
+      "bytes": 9198,
+      "gz": 2630,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/replace-tag/lib/LoadingHelper.js",
+      "package": "replace-tag",
+      "bytes": 1117,
+      "gz": 486,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-button.js",
+      "package": "rich-text-editor",
+      "bytes": 15815,
+      "gz": 3823,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-emoji-picker.js",
+      "package": "rich-text-editor",
+      "bytes": 2938,
+      "gz": 1193,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js",
+      "package": "rich-text-editor",
+      "bytes": 3487,
+      "gz": 1359,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-image.js",
+      "package": "rich-text-editor",
+      "bytes": 3535,
+      "gz": 1114,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-link.js",
+      "package": "rich-text-editor",
+      "bytes": 5671,
+      "gz": 1879,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-picker.js",
+      "package": "rich-text-editor",
+      "bytes": 10530,
+      "gz": 3255,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js",
+      "package": "rich-text-editor",
+      "bytes": 10554,
+      "gz": 3100,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-source-code.js",
+      "package": "rich-text-editor",
+      "bytes": 2215,
+      "gz": 891,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js",
+      "package": "rich-text-editor",
+      "bytes": 2876,
+      "gz": 1166,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-underline.js",
+      "package": "rich-text-editor",
+      "bytes": 2389,
+      "gz": 921,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/buttons/rich-text-editor-unlink.js",
+      "package": "rich-text-editor",
+      "bytes": 1705,
+      "gz": 789,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/singletons/rich-text-editor-clipboard.js",
+      "package": "rich-text-editor",
+      "bytes": 3131,
+      "gz": 1222,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/singletons/rich-text-editor-highlight.js",
+      "package": "rich-text-editor",
+      "bytes": 4205,
+      "gz": 1616,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/singletons/rich-text-editor-prompt.js",
+      "package": "rich-text-editor",
+      "bytes": 14817,
+      "gz": 4065,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js",
+      "package": "rich-text-editor",
+      "bytes": 22037,
+      "gz": 5350,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/singletons/rich-text-editor-source.js",
+      "package": "rich-text-editor",
+      "bytes": 8489,
+      "gz": 2703,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/stripHtmlComments.js",
+      "package": "rich-text-editor",
+      "bytes": 625,
+      "gz": 392,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/toolbars/rich-text-editor-breadcrumbs.js",
+      "package": "rich-text-editor",
+      "bytes": 4806,
+      "gz": 1610,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-full.js",
+      "package": "rich-text-editor",
+      "bytes": 1495,
+      "gz": 618,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar-mini.js",
+      "package": "rich-text-editor",
+      "bytes": 1657,
+      "gz": 729,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js",
+      "package": "rich-text-editor",
+      "bytes": 60202,
+      "gz": 12354,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/rich-text-editor/rich-text-editor.js",
+      "package": "rich-text-editor",
+      "bytes": 11786,
+      "gz": 3178,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/self-check/self-check.js",
+      "package": "self-check",
+      "bytes": 21657,
+      "gz": 5499,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-array-item.js",
+      "package": "simple-fields",
+      "bytes": 19586,
+      "gz": 4794,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-array.js",
+      "package": "simple-fields",
+      "bytes": 9462,
+      "gz": 2829,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-fieldset.js",
+      "package": "simple-fields",
+      "bytes": 3714,
+      "gz": 1096,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-fields/lib/simple-fields-lite.js",
+      "package": "simple-fields",
+      "bytes": 37417,
+      "gz": 8432,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-fields/simple-fields.js",
+      "package": "simple-fields",
+      "bytes": 33244,
+      "gz": 6550,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-modal/lib/simple-modal-handler.js",
+      "package": "simple-modal",
+      "bytes": 2294,
+      "gz": 1003,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-picker/lib/simple-picker-option.js",
+      "package": "simple-picker",
+      "bytes": 5942,
+      "gz": 1886,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-picker/simple-picker.js",
+      "package": "simple-picker",
+      "bytes": 44700,
+      "gz": 9419,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-popover/simple-popover.js",
+      "package": "simple-popover",
+      "bytes": 9677,
+      "gz": 3164,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-range-input/simple-range-input.js",
+      "package": "simple-range-input",
+      "bytes": 29444,
+      "gz": 5603,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-search/lib/simple-search-content.js",
+      "package": "simple-search",
+      "bytes": 1686,
+      "gz": 780,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-search/lib/simple-search-match.js",
+      "package": "simple-search",
+      "bytes": 3362,
+      "gz": 1072,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-search/simple-search.js",
+      "package": "simple-search",
+      "bytes": 19942,
+      "gz": 4886,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toast/simple-toast.js",
+      "package": "simple-toast",
+      "bytes": 7586,
+      "gz": 2393,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-button-group.js",
+      "package": "simple-toolbar",
+      "bytes": 2821,
+      "gz": 1174,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-button.js",
+      "package": "simple-toolbar",
+      "bytes": 31693,
+      "gz": 6565,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-field.js",
+      "package": "simple-toolbar",
+      "bytes": 6197,
+      "gz": 1907,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-menu-item.js",
+      "package": "simple-toolbar",
+      "bytes": 1690,
+      "gz": 767,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-menu.js",
+      "package": "simple-toolbar",
+      "bytes": 8952,
+      "gz": 2494,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/lib/simple-toolbar-more-button.js",
+      "package": "simple-toolbar",
+      "bytes": 2043,
+      "gz": 852,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/simple-toolbar/simple-toolbar.js",
+      "package": "simple-toolbar",
+      "bytes": 29142,
+      "gz": 7290,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/stop-note/stop-note.js",
+      "package": "stop-note",
+      "bytes": 18410,
+      "gz": 4854,
+      "core": false,
+      "themesUsing": 0
+    },
+    {
+      "path": "elements/video-player/video-player.js",
+      "package": "video-player",
+      "bytes": 61496,
+      "gz": 15275,
+      "core": false,
+      "themesUsing": 0
+    }
+  ],
+  "themes": {
+    "al-folio-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 245
+      ],
+      "gz": 269559,
+      "own": 864,
+      "afterCleanOne": 20002
+    },
+    "astro-cactus-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 246
+      ],
+      "gz": 269553,
+      "own": 858,
+      "afterCleanOne": 19996
+    },
+    "astrofy-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 90, 91, 113, 247
+      ],
+      "gz": 331062,
+      "own": 921,
+      "afterCleanOne": 65677
+    },
+    "astropaper-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 248
+      ],
+      "gz": 269573,
+      "own": 878,
+      "afterCleanOne": 20016
+    },
+    "astrowind-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 249
+      ],
+      "gz": 269636,
+      "own": 941,
+      "afterCleanOne": 20079
+    },
+    "book-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 83, 84, 109
+      ],
+      "gz": 318516,
+      "own": 5976,
+      "afterCleanOne": 53131
+    },
+    "bootstrap-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 87, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 223, 322,
+        323, 324, 326, 327
+      ],
+      "gz": 356561,
+      "own": 6308,
+      "afterCleanOne": 90327
+    },
+    "carbon-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 160, 161, 162, 163, 164
+      ],
+      "gz": 312216,
+      "own": 4320,
+      "afterCleanOne": 48592
+    },
+    "chamfer-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 77, 78, 86, 87, 88, 93, 165
+      ],
+      "gz": 315596,
+      "own": 3801,
+      "afterCleanOne": 42364
+    },
+    "chirpy-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 90, 91, 113, 250
+      ],
+      "gz": 330988,
+      "own": 847,
+      "afterCleanOne": 65603
+    },
+    "clean-one": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 63, 64, 76, 78, 85, 86, 87, 88, 89, 96, 97, 98, 99,
+        100, 101, 102, 103, 106, 166, 167
+      ],
+      "gz": 313234,
+      "own": 9198,
+      "afterCleanOne": 0
+    },
+    "clean-portfolio-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 61, 62, 78, 86, 107, 108, 116, 168
+      ],
+      "gz": 272143,
+      "own": 11895,
+      "afterCleanOne": 22695
+    },
+    "clean-two": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 76, 78, 79, 83, 84, 85, 87, 88,
+        89, 92, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 106, 110
+      ],
+      "gz": 332225,
+      "own": 6980,
+      "afterCleanOne": 31055
+    },
+    "coder-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 251
+      ],
+      "gz": 269472,
+      "own": 777,
+      "afterCleanOne": 19915
+    },
+    "collections-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 79, 80, 81, 82, 85, 86, 87, 93, 96, 97, 98, 99, 101,
+        102, 180, 181
+      ],
+      "gz": 293244,
+      "own": 3582,
+      "afterCleanOne": 16336
+    },
+    "ddd-brochure-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 48, 49, 50, 51, 52, 53, 54, 55, 58,
+        85, 93, 183
+      ],
+      "gz": 244792,
+      "own": 2628,
+      "afterCleanOne": 4425
+    },
+    "ecosystem-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75, 77,
+        78, 93, 114, 115, 130, 131, 132, 133, 134, 135, 143, 186, 187, 188
+      ],
+      "gz": 400342,
+      "own": 7479,
+      "afterCleanOne": 135410
+    },
+    "example-haxcms-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        57, 58, 66, 78, 104, 189
+      ],
+      "gz": 254667,
+      "own": 2401,
+      "afterCleanOne": 8246
+    },
+    "fluent-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 190, 191, 192, 193, 194
+      ],
+      "gz": 312505,
+      "own": 4403,
+      "afterCleanOne": 48881
+    },
+    "glossy-portfolio-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        61, 62, 78, 107, 108, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208,
+        209, 210
+      ],
+      "gz": 284611,
+      "own": 2759,
+      "afterCleanOne": 40129
+    },
+    "guidebook-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 83, 84, 109, 145
+      ],
+      "gz": 319427,
+      "own": 911,
+      "afterCleanOne": 54042
+    },
+    "handbook-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 83, 84, 109, 146
+      ],
+      "gz": 319341,
+      "own": 825,
+      "afterCleanOne": 53956
+    },
+    "hax-marketing-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 78, 86, 93, 114, 115, 130, 131, 132, 133, 134, 135, 143, 182,
+        184, 212, 213, 214, 215, 216
+      ],
+      "gz": 335926,
+      "own": 9243,
+      "afterCleanOne": 85083
+    },
+    "haxcms-basic-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 211, 218, 226
+      ],
+      "gz": 204104,
+      "own": 1634,
+      "afterCleanOne": 9115
+    },
+    "haxcms-blank-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 76, 78, 79, 83, 84, 85, 87, 88,
+        89, 92, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 106, 110, 219
+      ],
+      "gz": 333131,
+      "own": 906,
+      "afterCleanOne": 31961
+    },
+    "haxcms-json-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 76, 78, 79, 83, 84, 85, 87, 88,
+        89, 92, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 106, 107, 108, 110,
+        112, 136, 169, 170, 171, 172, 173, 174, 175, 176, 177, 220
+      ],
+      "gz": 372726,
+      "own": 6107,
+      "afterCleanOne": 71556
+    },
+    "haxcms-print-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 76, 78, 79, 83, 84, 85, 87, 88,
+        89, 92, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 106, 107, 108, 110,
+        112, 136
+      ],
+      "gz": 341595,
+      "own": 1967,
+      "afterCleanOne": 40425
+    },
+    "haxcms-slide-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        59, 221
+      ],
+      "gz": 244874,
+      "own": 2244,
+      "afterCleanOne": 2244
+    },
+    "haxma-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 76, 77, 78, 80, 81, 82, 83, 84, 88, 89, 92, 94, 95, 104, 111, 119,
+        120, 121, 122, 123, 124, 125, 126, 127, 128, 227
+      ],
+      "gz": 390908,
+      "own": 5927,
+      "afterCleanOne": 118883
+    },
+    "haxor-slevin": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 76, 78, 80, 93, 129, 144, 185, 195, 228, 229
+      ],
+      "gz": 273978,
+      "own": 6205,
+      "afterCleanOne": 23113
+    },
+    "hyde-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 90, 91, 113, 252
+      ],
+      "gz": 331108,
+      "own": 967,
+      "afterCleanOne": 65723
+    },
+    "journey-sidebar-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 56, 76, 78, 86, 231, 232, 233
+      ],
+      "gz": 214283,
+      "own": 2312,
+      "afterCleanOne": 6466
+    },
+    "journey-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 58, 60, 61, 62, 76, 78, 80, 86, 88, 107, 108, 111, 129, 178, 179,
+        224, 230, 296, 321, 325
+      ],
+      "gz": 296311,
+      "own": 7967,
+      "afterCleanOne": 35519
+    },
+    "journey-topbar-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 76, 78, 234, 235
+      ],
+      "gz": 206285,
+      "own": 2074,
+      "afterCleanOne": 3434
+    },
+    "just-the-docs-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 83, 84, 109, 147
+      ],
+      "gz": 319399,
+      "own": 883,
+      "afterCleanOne": 54014
+    },
+    "learn-two-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 89, 103, 106, 236
+      ],
+      "gz": 315743,
+      "own": 4523,
+      "afterCleanOne": 42848
+    },
+    "link-card-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 137, 237
+      ],
+      "gz": 251959,
+      "own": 5291,
+      "afterCleanOne": 5590
+    },
+    "manual-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 83, 84, 109, 148
+      ],
+      "gz": 319506,
+      "own": 990,
+      "afterCleanOne": 54121
+    },
+    "material-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 238, 239, 240, 241, 242
+      ],
+      "gz": 313766,
+      "own": 4828,
+      "afterCleanOne": 50142
+    },
+    "minima-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 253
+      ],
+      "gz": 269513,
+      "own": 818,
+      "afterCleanOne": 19956
+    },
+    "minimal-mistakes-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 90, 91, 113, 254
+      ],
+      "gz": 331048,
+      "own": 907,
+      "afterCleanOne": 65663
+    },
+    "night-draft-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        243
+      ],
+      "gz": 252231,
+      "own": 10484,
+      "afterCleanOne": 10484
+    },
+    "outline-player": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 59, 61, 62, 76, 89, 103, 244
+      ],
+      "gz": 256955,
+      "own": 4869,
+      "afterCleanOne": 6711
+    },
+    "papermod-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 256
+      ],
+      "gz": 269538,
+      "own": 843,
+      "afterCleanOne": 19981
+    },
+    "patternfly-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 257, 258, 259, 260
+      ],
+      "gz": 310017,
+      "own": 3976,
+      "afterCleanOne": 46393
+    },
+    "polaris-flex-sidebar": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 78, 79, 86, 87, 88, 92, 93, 94, 95, 100, 116, 117, 118, 138,
+        261
+      ],
+      "gz": 347061,
+      "own": 1829,
+      "afterCleanOne": 71671
+    },
+    "polaris-flex-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 78, 79, 86, 87, 88, 92, 93, 94, 95, 100, 116, 138
+      ],
+      "gz": 341317,
+      "own": 9422,
+      "afterCleanOne": 65927
+    },
+    "polaris-invent-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 76, 77, 78, 79, 85, 86, 87, 89, 92, 93, 94, 95, 96, 97, 98, 99, 100,
+        101, 102, 103, 114, 115, 139, 140, 141, 142, 196, 197, 198, 217, 222,
+        262, 288, 297
+      ],
+      "gz": 394370,
+      "own": 7059,
+      "afterCleanOne": 98869
+    },
+    "polaris-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 66, 78, 79, 80, 81, 82, 86, 87, 88, 92, 93, 94, 95,
+        96, 97, 98, 99, 100, 101, 102, 117, 118, 263
+      ],
+      "gz": 317736,
+      "own": 5339,
+      "afterCleanOne": 34853
+    },
+    "primer-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 264, 265, 266, 267, 268
+      ],
+      "gz": 312220,
+      "own": 4289,
+      "afterCleanOne": 48596
+    },
+    "resume-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        137, 270
+      ],
+      "gz": 246085,
+      "own": 4039,
+      "afterCleanOne": 4338
+    },
+    "shadcn-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 289, 290, 291, 292, 293
+      ],
+      "gz": 312034,
+      "own": 3940,
+      "afterCleanOne": 48410
+    },
+    "simple-blog": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 59, 60, 76, 81, 294, 295
+      ],
+      "gz": 261315,
+      "own": 3540,
+      "afterCleanOne": 7182
+    },
+    "spacebook-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 76, 77, 78, 89, 92, 94, 95, 104, 111, 119, 120, 121, 122, 123,
+        124, 125, 126, 127, 128, 298
+      ],
+      "gz": 375288,
+      "own": 7467,
+      "afterCleanOne": 105787
+    },
+    "spectrum-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 83, 84, 299, 300, 301, 302, 303
+      ],
+      "gz": 320289,
+      "own": 4137,
+      "afterCleanOne": 56665
+    },
+    "tailwind-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 83, 84, 304, 305, 306, 307, 308
+      ],
+      "gz": 320071,
+      "own": 4377,
+      "afterCleanOne": 56447
+    },
+    "terminal-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 66, 76, 79, 80, 81, 82, 90, 91, 105, 255
+      ],
+      "gz": 269757,
+      "own": 1062,
+      "afterCleanOne": 20200
+    },
+    "terrible-best-themes": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75,
+        77, 78, 85, 86, 104, 309
+      ],
+      "gz": 312228,
+      "own": 2519,
+      "afterCleanOne": 43571
+    },
+    "terrible-outlet-themes": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 77, 78, 85, 86, 107, 108, 112, 310
+      ],
+      "gz": 316689,
+      "own": 2304,
+      "afterCleanOne": 48032
+    },
+    "terrible-productionz-themes": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75,
+        77, 78, 85, 86, 311
+      ],
+      "gz": 308765,
+      "own": 3342,
+      "afterCleanOne": 40108
+    },
+    "terrible-resume-themes": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 78, 80, 81, 82, 85, 117, 118, 312
+      ],
+      "gz": 320817,
+      "own": 2311,
+      "afterCleanOne": 53016
+    },
+    "terrible-themes": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 61, 62, 78, 80, 81, 82, 85, 104, 107, 108, 112, 313
+      ],
+      "gz": 277776,
+      "own": 3807,
+      "afterCleanOne": 25803
+    },
+    "training-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 63, 64, 76, 78, 79, 85, 87, 96, 97, 98, 99, 101,
+        102, 104, 106, 314, 315
+      ],
+      "gz": 307123,
+      "own": 5832,
+      "afterCleanOne": 13261
+    },
+    "twenty-six-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        57, 58, 66, 78, 80, 104, 316
+      ],
+      "gz": 263582,
+      "own": 7665,
+      "afterCleanOne": 17161
+    },
+    "uswds-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 317, 318, 319, 320
+      ],
+      "gz": 311128,
+      "own": 5674,
+      "afterCleanOne": 47504
+    },
+    "vhs-blog-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74, 75,
+        77, 78, 88, 89, 93, 139, 140, 141, 142, 269, 271, 272, 273, 274, 275,
+        276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 328, 329,
+        330, 331, 332, 333, 334, 335, 336, 337
+      ],
+      "gz": 407012,
+      "own": 17758,
+      "afterCleanOne": 137631
+    },
+    "webawesome-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73,
+        74, 75, 77, 83, 84, 338, 339, 340, 341
+      ],
+      "gz": 318733,
+      "own": 5168,
+      "afterCleanOne": 55109
+    },
+    "writing-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        78, 342
+      ],
+      "gz": 249060,
+      "own": 4578,
+      "afterCleanOne": 4578
+    },
+    "wysiwyg96-theme": {
+      "modules": [
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
+        20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37,
+        38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 67, 68, 69, 70, 71, 72, 73, 74,
+        75, 77, 78, 80, 81, 82, 88, 89, 92, 94, 95, 104, 111, 119, 120, 121,
+        122, 123, 124, 125, 126, 127, 128, 225, 343, 344, 345, 346, 347
+      ],
+      "gz": 389998,
+      "own": 8350,
+      "afterCleanOne": 119734
+    }
+  },
+  "elements": {
+    "a11y-collapse": {
+      "modules": [
+        2, 3, 4, 18, 19, 28, 29, 30, 34, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+        60, 67
+      ],
+      "gz": 99788
+    },
+    "audio-player": {
+      "modules": [
+        0, 1, 2, 3, 4, 6, 18, 19, 27, 28, 29, 30, 34, 37, 38, 39, 41, 42, 44,
+        46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 59, 60, 61, 62, 63, 65, 124,
+        125, 126, 129, 229, 348, 349, 350, 351, 352, 353, 354, 357, 358, 367,
+        369, 407, 408, 409, 410, 420
+      ],
+      "gz": 249480
+    },
+    "citation-element": {
+      "modules": [
+        2, 3, 4, 18, 19, 28, 29, 30, 47, 48, 49, 50, 51, 52, 53, 54, 55, 61, 62,
+        107, 108, 359
+      ],
+      "gz": 87142
+    },
+    "editable-table": {
+      "modules": [
+        0, 2, 3, 4, 5, 18, 19, 26, 27, 28, 29, 30, 37, 40, 41, 42, 43, 44, 46,
+        47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 59, 60, 61, 62, 63, 65, 124,
+        125, 126, 322, 323, 324, 326, 327, 355, 356, 357, 360, 361, 362, 363,
+        364, 365, 373, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385,
+        386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 398, 399, 400,
+        401, 402, 404, 405, 406, 412, 413, 414, 415, 416, 417, 418
+      ],
+      "gz": 336653
+    },
+    "grid-plate": { "modules": [27, 211], "gz": 9219 },
+    "media-image": {
+      "modules": [
+        2, 3, 4, 18, 19, 28, 29, 30, 34, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+        61, 62, 95, 133, 366, 370, 403
+      ],
+      "gz": 107649
+    },
+    "multiple-choice": {
+      "modules": [
+        2, 3, 4, 18, 19, 27, 28, 29, 30, 34, 47, 48, 49, 50, 51, 52, 53, 54, 55,
+        56, 59, 60, 61, 62, 63, 124, 125, 126, 211, 297, 371, 372, 411, 413
+      ],
+      "gz": 172911
+    },
+    "rpg-character": {
+      "modules": [28, 39, 55, 139, 140, 141, 142],
+      "gz": 30590
+    },
+    "self-check": {
+      "modules": [
+        2, 3, 4, 18, 19, 28, 29, 30, 34, 47, 48, 49, 50, 51, 52, 53, 54, 55, 61,
+        62, 63, 229, 368, 374, 397
+      ],
+      "gz": 100896
+    },
+    "stop-note": {
+      "modules": [
+        2, 3, 4, 18, 19, 28, 29, 30, 47, 48, 49, 50, 51, 52, 53, 54, 55, 59, 61,
+        62, 63, 111, 325, 419
+      ],
+      "gz": 90818
+    },
+    "video-player": {
+      "modules": [
+        0, 1, 2, 3, 4, 6, 18, 19, 27, 28, 29, 30, 34, 37, 38, 39, 41, 42, 44,
+        46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 59, 60, 61, 62, 63, 65, 124,
+        125, 126, 129, 229, 348, 349, 350, 351, 352, 353, 354, 357, 367, 369,
+        407, 408, 409, 410, 420
+      ],
+      "gz": 248707
+    }
+  },
+  "journeys": {
+    "siteBySite": [
+      {
+        "site": "Course",
+        "theme": "clean-one",
+        "pages": [
+          { "page": "Syllabus", "elements": ["media-image", "a11y-collapse"] },
+          { "page": "Unit 1", "elements": ["video-player", "self-check"] },
+          { "page": "Quiz", "elements": ["multiple-choice", "media-image"] }
+        ]
+      },
+      {
+        "site": "Docs",
+        "theme": "clean-two",
+        "pages": [
+          {
+            "page": "Install",
+            "elements": ["a11y-collapse", "editable-table"]
+          },
+          {
+            "page": "Guide",
+            "elements": ["stop-note", "media-image", "video-player"]
+          }
+        ]
+      },
+      {
+        "site": "Blog",
+        "theme": "journey-theme",
+        "pages": [
+          { "page": "Post", "elements": ["media-image", "citation-element"] },
+          { "page": "Episode", "elements": ["audio-player"] }
+        ]
+      },
+      {
+        "site": "Lab",
+        "theme": "polaris-invent-theme",
+        "pages": [
+          { "page": "Team", "elements": ["rpg-character", "media-image"] },
+          { "page": "Games", "elements": ["multiple-choice", "video-player"] }
+        ]
+      }
+    ],
+    "note": "every page also uses grid-plate; moving between pages of one site keeps what is loaded"
+  }
+}
