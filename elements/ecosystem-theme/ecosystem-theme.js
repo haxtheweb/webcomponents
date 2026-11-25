@@ -112,6 +112,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this._trail = null;
     this._items = [];
     this._active = null;
+    this._onHash = () => this._arrive();
     this._vars = {};
     this._title = "";
     this._domain = "";
@@ -166,10 +167,51 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           this._active = a || null;
         });
       }),
+      // a page's content arrived: land on the part the address names
+      autorun(() => {
+        if (store.activeItemContent) this._arrive();
+      }),
     );
+    globalThis.addEventListener("hashchange", this._onHash);
+  }
+
+  /**
+   * Land where the address's #fragment points: the element in the page with
+   * that id (the part before any &, so #watch&person=x lands on #watch and
+   * leaves the rest to what is there). Content arrives a little after the
+   * route changes, so look a few times before giving up.
+   */
+  _arrive(tries = 12) {
+    clearTimeout(this._arriveTimer);
+    let id = "";
+    try {
+      id = decodeURIComponent(
+        String(globalThis.location.hash || "")
+          .slice(1)
+          .split("&")[0],
+      );
+    } catch {
+      id = "";
+    }
+    if (!/^[A-Za-z][\w-]{0,60}$/.test(id)) return;
+    const el = this.querySelector("#" + id);
+    if (el) {
+      el.scrollIntoView({
+        block: "start",
+        behavior: globalThis.matchMedia("(prefers-reduced-motion: reduce)")
+          .matches
+          ? "auto"
+          : "smooth",
+      });
+      return;
+    }
+    if (tries > 0)
+      this._arriveTimer = setTimeout(() => this._arrive(tries - 1), 150);
   }
 
   disconnectedCallback() {
+    globalThis.removeEventListener("hashchange", this._onHash);
+    clearTimeout(this._arriveTimer);
     this._disposers.forEach((d) => d());
     this._disposers = [];
     super.disconnectedCallback();

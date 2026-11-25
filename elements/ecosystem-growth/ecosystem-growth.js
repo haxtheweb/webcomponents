@@ -723,7 +723,7 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
 
   /**
    * Arriving from somewhere else: #watch brings the drawing into view (the
-   * home page's button), and #person=<id> (a person's tile in the ecosystem
+   * home page's button), and #watch&person=<id> or #person=<id> (a person's tile in the ecosystem
    * web) opens Contributors on that person at their busiest month.
    */
   _fromHash() {
