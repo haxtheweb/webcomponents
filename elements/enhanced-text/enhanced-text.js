@@ -3,20 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { sanitizeHTMLString } from "@haxtheweb/utils/utils.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-// enable services for glossary enhancement
-enableServices(["haxcms"]);
-MicroFrontendRegistry.add({
-  endpoint: "/api/services/text/textVide",
-  name: "@enhancedText/textVide",
-  title: "text-vide",
-  description: "Enhance readability of text based on brain science",
-  params: {
-    body: "Block of text to enhance",
-  },
-});
 /**
  * `enhanced-text`
  * `take text and process it with various enhancements`
@@ -132,49 +119,101 @@ class EnhancedText extends LitElement {
   }
 
   // apply enhancement to text. if not in auto user must invoke this.
+  // Everything runs in the browser: vide with the text-vide library, the
+  // glossary from the site's own glossary page. No outside service is
+  // called (both used to go through open-apis.hax.cloud, now retired).
   async enhance() {
     const body = this.innerHTML;
     this.loading = true;
     if (this.vide) {
-      await MicroFrontendRegistry.call(
-        "@enhancedText/textVide",
-        { body: body, fixationPoint: this.fixationPoint },
-        this.enhancedTextResponse.bind(this),
-      );
+      this.enhancedTextResponse({
+        status: 200,
+        data: await this.videText(body),
+      });
     }
     if (this.haxcmsGlossary && (this.haxcmsSiteLocation || this.haxcmsSite)) {
-      if (this.haxcmsSite) {
-        await MicroFrontendRegistry.call(
-          "@system/termsInPage",
-          {
-            body: body,
-            type: "site",
-            site: this.haxcmsSite,
-            wikipedia: this.wikipedia,
-          },
-          this.applyTermFromList.bind(this),
-        );
-      } else {
-        await MicroFrontendRegistry.call(
-          "@system/termsInPage",
-          {
-            body: body,
-            type: "link",
-            site: this.haxcmsSiteLocation,
-            wikipedia: this.wikipedia,
-          },
-          this.applyTermFromList.bind(this),
-        );
-      }
+      this.applyTermFromList({
+        status: 200,
+        data: await this.siteGlossaryTerms(),
+      });
     }
     // all above will run in order
     this.loading = false;
   }
 
+  /**
+   * the html with the start of each word in bold (text-vide); "" when the
+   * library can't load
+   */
+  async videText(body) {
+    let fixationPoint = parseInt(this.fixationPoint, 10);
+    if (!(fixationPoint >= 1 && fixationPoint <= 5)) {
+      fixationPoint = 4;
+    }
+    try {
+      const { textVide } = await import("text-vide");
+      return textVide(body, { fixationPoint: fixationPoint });
+    } catch (e) {
+      console.warn("text-vide failed to load; skipping vide enhancement", e);
+      return "";
+    }
+  }
+
+  /**
+   * [{ term, definition }] from the HAXcms site's glossary page (the page
+   * with the slug "glossary"): each dt with the dd after it. The site comes
+   * from haxcmsSite (site.json data) or haxcmsSiteLocation (where the site
+   * lives, with or without /site.json); [] when there is no glossary.
+   */
+  async siteGlossaryTerms() {
+    const terms = [];
+    try {
+      let site = null;
+      let base = "";
+      if (this.haxcmsSite && Array.isArray(this.haxcmsSite.items)) {
+        site = this.haxcmsSite;
+        base =
+          typeof site.file === "string"
+            ? site.file.replace(/\/?site\.json$/, "")
+            : "";
+      } else if (this.haxcmsSiteLocation) {
+        base = String(this.haxcmsSiteLocation).replace(/\/?site\.json$/, "");
+        site = await fetch(`${base}/site.json`).then((r) =>
+          r.ok ? r.json() : null,
+        );
+      }
+      if (!site || !Array.isArray(site.items)) {
+        return terms;
+      }
+      const item = site.items.find((i) => i && i.slug === "glossary");
+      if (!item || typeof item.location !== "string" || !item.location) {
+        return terms;
+      }
+      const url = base ? `${base}/${item.location}` : item.location;
+      const html = await fetch(url).then((r) => (r.ok ? r.text() : ""));
+      // parsed inert: nothing in the page runs
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const dts = doc.querySelectorAll("dt");
+      const dds = doc.querySelectorAll("dd");
+      if (dts.length && dts.length === dds.length) {
+        for (let i = 0; i < dts.length; i++) {
+          terms.push({
+            term: dts[i].textContent,
+            definition: dds[i].textContent,
+          });
+        }
+      }
+    } catch (e) {
+      console.warn("glossary could not be read; skipping glossary", e);
+    }
+    return terms;
+  }
+
   static get properties() {
     return {
       /**
-       * Also link terms that are found to their Wikipedia articles.
+       * Kept so older content keeps working; it no longer does anything
+       * (glossary terms are not looked up on Wikipedia).
        */
       wikipedia: {
         type: Boolean,

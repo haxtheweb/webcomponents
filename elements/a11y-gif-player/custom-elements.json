@@ -45,15 +45,6 @@
               ]
             },
             {
-              "kind": "method",
-              "name": "generateStill",
-              "parameters": [
-                {
-                  "name": "src"
-                }
-              ]
-            },
-            {
               "kind": "field",
               "name": "observer",
               "description": "mutation observer for a11y-details",
@@ -78,6 +69,12 @@
               "kind": "field",
               "name": "_stillSrc",
               "description": "the still shown before play: the authored one, or when there is none\n(or it does not load) the gif's first frame drawn here",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_authoredStill",
+              "description": "the authored still, leaving out one older content saved from the\nretired open-apis image service, which no longer answers",
               "readonly": true
             },
             {

@@ -142,32 +142,15 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       }
       // validate item has all keys we care about
       if (Object.keys(item).every((key) => MicroFrontendKeys.includes(key))) {
-        // support for local resolution of vercel vs serve for things that are
-        // built off of the main registry on localhost
-        if (item.endpoint.startsWith("/api/")) {
-          let base = "";
-          // support base rewrite
-          if (globalThis.MicroFrontendRegistryConfig.base) {
-            base = globalThis.MicroFrontendRegistryConfig.base;
-          }
-          // in nodejs backend context, unmigrated /api/ endpoints still need cloud fallback
-          else if (globalThis.HAXCMSContext === "nodejs") {
-            base = "https://open-apis.hax.cloud";
-          }
-          // keep local based on if we're local, otherwise we need to leverage deployed address
-          else if (
-            globalThis.location.origin.startsWith("http://127.0.0.1") ||
-            globalThis.location.origin.startsWith("http://localhost")
-          ) {
-            base = globalThis.location.origin
-              .replace(/127.0.0.1:8(.*)/, "localhost:3000")
-              .replace(/localhost:8(.*)/, "localhost:3000");
-          }
-          // most common case, hit production open api address
-          else {
-            base = "https://open-apis.hax.cloud";
-          }
-          item.endpoint = `${base}${item.endpoint}`;
+        // an /api/ endpoint can be pointed at another host with
+        // MicroFrontendRegistryConfig.base; otherwise it stays on the origin
+        // the page came from. Every call is on-premises: nothing here
+        // resolves to an outside service (open-apis.hax.cloud is retired).
+        if (
+          item.endpoint.startsWith("/api/") &&
+          globalThis.MicroFrontendRegistryConfig.base
+        ) {
+          item.endpoint = `${globalThis.MicroFrontendRegistryConfig.base}${item.endpoint}`;
         }
         // check for registry config object
         if (globalThis.MicroFrontendRegistryConfig[item.name]) {

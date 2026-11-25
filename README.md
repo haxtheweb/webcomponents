@@ -88,7 +88,7 @@ Watch and Learn more about HAX here:
 ### Related links and tech
 - [HAXcms (NodeJS)](https://github.com/haxtheweb/haxcms-nodejs)
 - [HAXcms (PHP)](https://github.com/haxtheweb/haxcms-php)
-- [Storybook docs](https://open-apis.hax.cloud/)
+- [Storybook docs](https://cdn.hax.cloud/storybook/)
 - [HAX [dot] PSU](https://hax.psu.edu)
 - [HAX doc site](https://haxtheweb.org/)
 - [HAX + 11ty](https://github.com/haxtheweb/hax11ty)

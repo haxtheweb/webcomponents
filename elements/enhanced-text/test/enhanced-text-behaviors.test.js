@@ -2,12 +2,31 @@ import { fixture, expect, html } from "@open-wc/testing";
 import sinon from "sinon";
 
 import "../enhanced-text.js";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 // Gap-closing behavioral tests for enhanced-text: glossary term
 // application (single text node, element-only content, links, mark-all)
-// and the enhance() micro-frontend call routing (call is stubbed so no
-// network is ever hit).
+// and enhance(), which runs in the browser: vide through the text-vide
+// library and the glossary from the site's own glossary page (fetch is
+// stubbed so no network is ever hit, and no outside service is called).
+const SITE = {
+  items: [
+    { id: "a", slug: "intro", location: "pages/intro/index.html" },
+    { id: "g", slug: "glossary", location: "pages/glossary/index.html" },
+  ],
+};
+const GLOSSARY =
+  "<dl><dt>body</dt><dd>The main part</dd><dt>text</dt><dd>Words</dd></dl>";
+function stubFetch(routes) {
+  return sinon.stub(globalThis, "fetch").callsFake(async (url) => {
+    const key = Object.keys(routes).find((k) => String(url).endsWith(k));
+    if (!key) return new Response("", { status: 404 });
+    const value = routes[key];
+    return new Response(
+      typeof value === "string" ? value : JSON.stringify(value),
+      { status: 200 },
+    );
+  });
+}
 describe("enhanced-text behaviors", () => {
   it("wraps a matching term in vocab-term from a single text node", async () => {
     const el = await fixture(
@@ -93,8 +112,8 @@ describe("enhanced-text behaviors", () => {
     expect(all.querySelectorAll("vocab-term").length).to.equal(2);
   });
 
-  it("enhance() routes the vide call through the registry", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
+  it("enhance() bolds word starts with text-vide in the browser", async () => {
+    const fetchStub = stubFetch({});
     try {
       const el = await fixture(
         html`<enhanced-text vide>Some body text</enhanced-text>`,
@@ -102,109 +121,123 @@ describe("enhanced-text behaviors", () => {
       const p = el.enhance();
       expect(el.loading).to.equal(true);
       await p;
-      expect(callStub.callCount).to.equal(1);
-      expect(callStub.getCall(0).args[0]).to.equal("@enhancedText/textVide");
-      expect(callStub.getCall(0).args[1].fixationPoint).to.equal(4);
-      expect(callStub.getCall(0).args[1].body).to.contain("Some body text");
-      expect(el.loading).to.equal(false);
-    } finally {
-      callStub.restore();
-    }
-  });
-
-  it("enhance() routes the glossary site call through the registry", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
-    try {
-      const site = { title: "Site" };
-      const el = await fixture(
-        html`<enhanced-text haxcms-glossary .haxcmsSite=${site}>
-          Some body text
-        </enhanced-text>`,
+      expect(el.querySelectorAll("b").length).to.be.greaterThan(0);
+      expect(el.textContent.replace(/\s+/g, " ").trim()).to.equal(
+        "Some body text",
       );
-      await el.enhance();
-      expect(callStub.callCount).to.equal(1);
-      expect(callStub.getCall(0).args[0]).to.equal("@system/termsInPage");
-      expect(callStub.getCall(0).args[1].type).to.equal("site");
-      expect(callStub.getCall(0).args[1].site).to.equal(site);
-      expect(callStub.getCall(0).args[1].wikipedia).to.equal(false);
+      expect(fetchStub.callCount).to.equal(0);
       expect(el.loading).to.equal(false);
     } finally {
-      callStub.restore();
+      fetchStub.restore();
     }
   });
 
-  it("enhance() routes the glossary link call through the registry", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
+  it("enhance() reads the glossary from haxcms-site data, relative to the page", async () => {
+    const fetchStub = stubFetch({ "pages/glossary/index.html": GLOSSARY });
+    try {
+      const el = await fixture(
+        html`<enhanced-text haxcms-glossary .haxcmsSite=${SITE}
+          >Some body text</enhanced-text
+        >`,
+      );
+      expect(await el.siteGlossaryTerms()).to.deep.equal([
+        { term: "body", definition: "The main part" },
+        { term: "text", definition: "Words" },
+      ]);
+      await el.enhance();
+      expect(el.querySelectorAll("vocab-term").length).to.equal(2);
+      expect(String(fetchStub.getCall(0).args[0])).to.equal(
+        "pages/glossary/index.html",
+      );
+      expect(el.loading).to.equal(false);
+    } finally {
+      fetchStub.restore();
+    }
+  });
+
+  it("enhance() reads the glossary from a haxcms-site-location, never from Wikipedia", async () => {
+    const fetchStub = stubFetch({
+      "/site.json": SITE,
+      "pages/glossary/index.html": GLOSSARY,
+    });
     try {
       const el = await fixture(
         html`<enhanced-text
           haxcms-glossary
-          haxcms-site-location="https://example.com"
+          haxcms-site-location="https://example.com/sites/a/site.json"
           wikipedia
           >Some body text</enhanced-text
         >`,
       );
       await el.enhance();
-      expect(callStub.callCount).to.equal(1);
-      expect(callStub.getCall(0).args[0]).to.equal("@system/termsInPage");
-      expect(callStub.getCall(0).args[1].type).to.equal("link");
-      expect(callStub.getCall(0).args[1].site).to.equal("https://example.com");
-      expect(callStub.getCall(0).args[1].wikipedia).to.equal(true);
+      const urls = fetchStub.getCalls().map((c) => String(c.args[0]));
+      expect(urls).to.deep.equal([
+        "https://example.com/sites/a/site.json",
+        "https://example.com/sites/a/pages/glossary/index.html",
+      ]);
+      expect(urls.join(" ").indexOf("wikipedia")).to.equal(-1);
+      expect(el.querySelectorAll("vocab-term").length).to.equal(2);
     } finally {
-      callStub.restore();
+      fetchStub.restore();
     }
   });
 
-  it("enhance() calls both flows in order when configured together", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
+  it("a site without a glossary page, or one that fails to load, leaves the text alone", async () => {
+    const fetchStub = stubFetch({ "/site.json": { items: [] } });
     try {
       const el = await fixture(
         html`<enhanced-text
-          vide
           haxcms-glossary
-          haxcms-site-location="https://example.com"
+          haxcms-site-location="https://example.com/sites/b"
           >Some body text</enhanced-text
         >`,
       );
+      expect(await el.siteGlossaryTerms()).to.deep.equal([]);
+      el.haxcmsSiteLocation = "https://example.com/sites/missing";
+      expect(await el.siteGlossaryTerms()).to.deep.equal([]);
       await el.enhance();
-      expect(callStub.callCount).to.equal(2);
-      expect(callStub.getCall(0).args[0]).to.equal("@enhancedText/textVide");
-      expect(callStub.getCall(1).args[0]).to.equal("@system/termsInPage");
+      expect(el.querySelectorAll("vocab-term").length).to.equal(0);
+      expect(el.loading).to.equal(false);
     } finally {
-      callStub.restore();
+      fetchStub.restore();
     }
   });
 
-  it("enhance() skips the registry without enhancement flags", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
+  it("enhance() does nothing without enhancement flags", async () => {
+    const fetchStub = stubFetch({});
     try {
       const el = await fixture(
         html`<enhanced-text>Some body text</enhanced-text>`,
       );
       await el.enhance();
-      expect(callStub.callCount).to.equal(0);
+      expect(fetchStub.callCount).to.equal(0);
+      expect(el.innerHTML).to.equal("Some body text");
       expect(el.loading).to.equal(false);
       // glossary without a site or location also skips
       el.haxcmsGlossary = true;
       await el.enhance();
-      expect(callStub.callCount).to.equal(0);
+      expect(fetchStub.callCount).to.equal(0);
     } finally {
-      callStub.restore();
+      fetchStub.restore();
     }
   });
 
   it("firstUpdated auto-enhances once connected with flags", async () => {
-    const callStub = sinon.stub(MicroFrontendRegistry, "call");
-    try {
-      const el = await fixture(
-        html`<enhanced-text auto vide>Some body text</enhanced-text>`,
-      );
-      await el.updateComplete;
-      expect(callStub.callCount).to.equal(1);
-      expect(callStub.getCall(0).args[0]).to.equal("@enhancedText/textVide");
-    } finally {
-      callStub.restore();
-    }
+    const el = await fixture(
+      html`<enhanced-text auto vide>Some body text</enhanced-text>`,
+    );
+    const done = await new Promise((resolve) => {
+      let tries = 0;
+      const check = () => {
+        if (el.querySelectorAll("b").length || tries++ > 100) {
+          resolve(el.querySelectorAll("b").length > 0);
+        } else {
+          setTimeout(check, 20);
+        }
+      };
+      check();
+    });
+    expect(done).to.be.true;
   });
 
   it("invokes the response callback data into innerHTML", async () => {

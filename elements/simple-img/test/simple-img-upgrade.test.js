@@ -1,28 +1,14 @@
 import { expect } from "@open-wc/testing";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import "../simple-img.js";
 
 // simple-img adopts pre-upgrade light DOM content (an <img> or a
 // <template><img></template>) in its constructor. Parsing markup into a
 // DETACHED div keeps the fragment inert (no constructors run), so appending
 // the div upgrades the simple-img with its children already in place — the
-// same upgrade path real progressive-enhancement markup takes. The registry
-// url is stubbed so no conversion request leaves the test session.
+// same upgrade path real progressive-enhancement markup takes. Nothing here
+// is a site photo (files/...), so simple-img shows each src as it is.
 const DATA_URL =
   "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-
-let originalUrl = null;
-before(() => {
-  originalUrl = MicroFrontendRegistry.url;
-  MicroFrontendRegistry.url = () => DATA_URL;
-});
-after(() => {
-  if (originalUrl) {
-    MicroFrontendRegistry.url = originalUrl;
-  } else {
-    delete MicroFrontendRegistry.url;
-  }
-});
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function poll(predicate, attempts = 100, delayMs = 20) {
@@ -120,32 +106,24 @@ describe("simple-img progressive enhancement on upgrade", () => {
   });
 
   it("adopts a broken light DOM image and renders the original src fallback", async () => {
-    // the adopted image never loads and the converted URL 404s; the element
-    // still adopts the attribute dimensions and the onerror path renders the
-    // original src
-    const original = MicroFrontendRegistry.url;
-    MicroFrontendRegistry.url = () => "/definitely-missing-converted.png";
-    try {
-      const el = upgradedElement(
-        '<simple-img><img src="/definitely-missing-original.png" alt="Broken" width="50" height="40"></simple-img>',
-      );
-      // attribute dimensions survive even though the image never loads
-      const adopted = await poll(() => el.getAttribute("width") === "50");
-      expect(adopted).to.be.true;
-      expect(el.getAttribute("height")).to.equal("40");
-      expect(el.getAttribute("alt")).to.equal("Broken");
-      expect(el.src.endsWith("/definitely-missing-original.png")).to.be.true;
-      // conversion fails, so the fallback renders the original (broken) src
-      const rendered = await poll(() => el.querySelector("img") !== null);
-      expect(rendered).to.be.true;
-      const img = el.querySelector("img");
-      expect(
-        img.getAttribute("src").endsWith("/definitely-missing-original.png"),
-      ).to.be.true;
-      expect(img.getAttribute("width")).to.equal("50");
-      expect(img.getAttribute("height")).to.equal("40");
-    } finally {
-      MicroFrontendRegistry.url = original;
-    }
+    // the adopted image never loads; the element still adopts the attribute
+    // dimensions and the onerror path renders the original src
+    const el = upgradedElement(
+      '<simple-img><img src="/definitely-missing-original.png" alt="Broken" width="50" height="40"></simple-img>',
+    );
+    // attribute dimensions survive even though the image never loads
+    const adopted = await poll(() => el.getAttribute("width") === "50");
+    expect(adopted).to.be.true;
+    expect(el.getAttribute("height")).to.equal("40");
+    expect(el.getAttribute("alt")).to.equal("Broken");
+    expect(el.src.endsWith("/definitely-missing-original.png")).to.be.true;
+    // loading fails, so the fallback renders the original (broken) src
+    const rendered = await poll(() => el.querySelector("img") !== null);
+    expect(rendered).to.be.true;
+    const img = el.querySelector("img");
+    expect(img.getAttribute("src").endsWith("/definitely-missing-original.png"))
+      .to.be.true;
+    expect(img.getAttribute("width")).to.equal("50");
+    expect(img.getAttribute("height")).to.equal("40");
   });
 });

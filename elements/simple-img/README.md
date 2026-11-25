@@ -1,7 +1,14 @@
 # &lt;simple-img&gt;
 
 Img
-> simple image manipulation with a microservice
+> simple image manipulation: resize, crop, rotate, re-encode and watermark a photo
+
+simple-img shows a sized copy of its photo. When the photo lives in a HAXcms
+site (a `files/...` src), the HAXcms backends make that copy when the page is
+saved, under `files/haxcms-managed/simple-img/`, so it is a plain file on any
+host, static ones included. Any other src, or a page not saved since, shows
+the original photo. Variants are made for quarter-turn rotations, sides up to
+4000px and watermarks that are site photos; see `lib/SimpleImgVariants.js`.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

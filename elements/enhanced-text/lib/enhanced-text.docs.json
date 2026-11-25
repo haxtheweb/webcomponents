@@ -19,7 +19,7 @@
       "property": "wikipedia",
       "type": "boolean",
       "default": "false",
-      "description": "Also link terms that are found to their Wikipedia articles.",
+      "description": "Kept so older content keeps working; it no longer does anything (glossary terms are not looked up on Wikipedia).",
       "hax": null
     },
     {
