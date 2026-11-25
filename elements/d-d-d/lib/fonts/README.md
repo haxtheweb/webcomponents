@@ -55,7 +55,7 @@ uses. 42 families, 5.2 MB in all.
 | Roboto Mono      | OFL-1.1    | Google Fonts v31 | `@fontsource-variable/roboto-mono@5.3.0`      | 6     | 131 KB |
 | Roboto Slab      | Apache-2.0 | Google Fonts v36 | `@fontsource-variable/roboto-slab@5.3.0`      | 7     | 133 KB |
 | Russo One        | OFL-1.1    | Google Fonts v18 | `@fontsource/russo-one@5.3.0`                 | 3     | 16 KB  |
-| Source Code Pro  | OFL-1.1    | Google Fonts v32 | `@fontsource-variable/source-code-pro@5.3.1`  | 14    | 169 KB |
+| Source Code Pro  | OFL-1.1    | Google Fonts v32 | `@fontsource-variable/source-code-pro@5.3.1`  | 13    | 167 KB |
 | Source Sans 3    | OFL-1.1    | Google Fonts v20 | `@fontsource-variable/source-sans-3@5.3.1`    | 14    | 299 KB |
 | Special Elite    | Apache-2.0 | Google Fonts v20 | `@fontsource/special-elite@5.3.0`             | 2     | 77 KB  |
 | Staatliches      | OFL-1.1    | Google Fonts v15 | `@fontsource/staatliches@5.3.0`               | 2     | 25 KB  |
