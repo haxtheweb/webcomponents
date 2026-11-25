@@ -4,9 +4,12 @@
 # npm_config_version_* settings. The npm builds and publishes below do not
 # know them and print an "Unknown env config" warning per name per call, which
 # buries real warnings in the output. npm has no such settings, so drop them.
-for v in $(compgen -e | grep -E '^npm_config_(argv$|version_)'); do
+for v in $(compgen -e | grep -E '^npm_config_(argv$|version_|allow_scripts$)'); do
   unset "$v"
 done
+# (yarn also exports .npmrc's allow-scripts as npm_config_allow_scripts; npm 11
+# treats that like --allow-scripts and refuses project installs with
+# EALLOWSCRIPTS. Unset, npm still reads the setting from .npmrc itself.)
 # yarn also points npm at registry.yarnpkg.com, where `npm login`'s token (kept
 # for registry.npmjs.org) does not apply, so every npm publish below would fail
 # with ENEEDAUTH. Use npm's own registry.
@@ -28,6 +31,16 @@ enter() {
     exit 1
   }
 }
+
+## RESUME: UBIQUITY_RESUME=6 yarn run ubiquity-publish picks up at STEP 6
+# (haxcms-desktop onward) after a run stopped there, without rebuilding,
+# re-tagging or re-publishing what already went out.
+if [ "${UBIQUITY_RESUME:-}" = "6" ]; then
+  version=$(cat ~/haxtheweb/webcomponents/.version)
+  echo "ubiquity: resuming at STEP 6 for $version"
+  eval "$(sed -n '/^# STEP 6 /,$p' "${BASH_SOURCE[0]}")"
+  exit $?
+fi
 
 ## PREFLIGHT, before anything changes: every repo PRAW names is accounted for,
 ## and every checkout is there, on its release branch, with the tools it needs
@@ -271,10 +284,10 @@ if [ "$UBIQUITY_DRY_RUN" = "1" ] && [ -n "$UBIQUITY_DRY_RUN_VERSION" ]; then
 fi
 
 enter ~/haxtheweb/webcomponents
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 # praw (its CLI pin, .version, and the agent-skills index written in STEP
 # 1.5) is committed, tagged and pushed in STEP 7: hax.cloud builds from
@@ -282,26 +295,26 @@ git push --follow-tags origin master
 # must not point at a create release that is not on npm yet.
 
 enter ~/haxtheweb/hax11ty/
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 enter ~/haxtheweb/haxcms-php/
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 enter ~/haxtheweb/haxcms-nodejs/
-git pull origin main
+git pull --no-rebase --no-edit --autostash origin main || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
 npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
-git push --follow-tags origin main
+git push --follow-tags origin main || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 npm publish
 # haxcms-desktop, haxcms-browser and create (STEP 6) install this release from
 # npm. A fresh publish can take minutes to be served, and `npm update` would
@@ -310,7 +323,7 @@ npm publish
 node ~/haxtheweb/webcomponents/scripts/ubiquity-network.mjs landed --version "$version" --package @haxtheweb/haxcms-nodejs --timeout 900 --interval 15 || exit 1
 
 enter ~/haxtheweb/haxsite/
-git pull origin main
+git pull --no-rebase --no-edit --autostash origin main || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 # haxsite is a standalone example site, not part of CI. Regenerate its managed files
 # (index.html, manifest, .htaccess, .well-known/agent-skills, sitemap/feeds/llms.txt, ...)
 # from the haxcms-nodejs core built above, so it always reflects this release.
@@ -321,21 +334,21 @@ git pull origin main
 node ~/haxtheweb/webcomponents/scripts/refresh-haxsite.mjs --haxsite ~/haxtheweb/haxsite --haxcms ~/haxtheweb/haxcms-nodejs || echo "WARNING: haxsite refresh failed; pushing build artifacts only"
 git add -A
 git commit -m "ubiquity publish"
-git push --follow-tags origin main
+git push --follow-tags origin main || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 enter ~/haxtheweb/HAXiam/
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 enter ~/haxtheweb/psucdn/
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 git add -A
 git commit -m "ubiquity publish"
 # psucdn has no package.json; it is tagged directly, as praw is
 git tag -a "v$version" -m "v$version"
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 # STEP 5.5 SCHEMA / SPEC PACKAGES
 # validators used by `hax audit schema` (create) and by agents; versioned with
@@ -344,12 +357,12 @@ for spec in json-outline-schema:master hax-schema:main hax-element-schema:master
   repo=${spec%%:*}
   branch=${spec#*:}
   enter ~/haxtheweb/$repo
-  git pull origin $branch
+  git pull --no-rebase --no-edit --autostash origin $branch || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
   git add -A
   git commit -m "ubiquity publish"
   npm test
   ./node_modules/.bin/commit-and-tag-version --release-as $version
-  git push --follow-tags origin $branch
+  git push --follow-tags origin $branch || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
   npm publish
 done
 
@@ -358,19 +371,19 @@ done
 # haxcms-desktop (renamed from desktop): Electron wrapper around the
 # haxcms-nodejs release published above
 enter ~/haxtheweb/haxcms-desktop/
-git pull origin master
+git pull --no-rebase --no-edit --autostash origin master || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
 npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
-git push --follow-tags origin master
+git push --follow-tags origin master || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 # haxcms-browser: haxcms-nodejs bundled to run in a browser Worker. Built from
 # the haxcms-nodejs checkout tagged above (HAXCMS_NODEJS_SRC) so the published
 # Worker is exactly this release; its GitHub Pages demo rebuilds from main on push.
 enter ~/haxtheweb/haxcms-browser/
-git pull origin main
+git pull --no-rebase --no-edit --autostash origin main || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
@@ -379,14 +392,14 @@ HAXCMS_NODEJS_SRC=~/haxtheweb/haxcms-nodejs/src npm run build
 # devDependency: its tree includes a CC-BY-3.0 data package that the repo's
 # license gate does not allow
 npx --yes commit-and-tag-version@12.7.3 --release-as $version
-git push --follow-tags origin main
+git push --follow-tags origin main || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 npm publish
 
 # haxcms-mcp (Python): vendor the OpenAPI specs of the haxcms-nodejs release
 # tagged above, regenerate the routes/tools/docs built from them, then version
 # and tag to match. A failed regeneration stops here rather than tagging stale specs.
 enter ~/haxtheweb/haxcms-mcp/
-git pull origin main
+git pull --no-rebase --no-edit --autostash origin main || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 uv run python scripts/sync_specs.py --from ~/haxtheweb/haxcms-nodejs || exit 1
 uv run python scripts/gen_routes.py || exit 1
 uv run python scripts/gen_tools.py || exit 1
@@ -398,17 +411,17 @@ node -e 'const fs=require("fs");const [v,d]=process.argv.slice(1);const t=fs.rea
 git add -A
 git commit -m "ubiquity publish"
 git tag -a "v$version" -m "v$version"
-git push --follow-tags origin main
+git push --follow-tags origin main || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 
 
 enter ~/haxtheweb/create/
-git pull origin main
+git pull --no-rebase --no-edit --autostash origin main || { echo "ERROR: git pull failed in $PWD; stopping"; exit 1; }
 npm install "@haxtheweb/haxcms-nodejs@$version" --save || exit 1
 git add -A
 git commit -m "ubiquity publish"
 npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
-git push --follow-tags origin main
+git push --follow-tags origin main || { echo "ERROR: git push failed in $PWD; stopping"; exit 1; }
 npm publish
 
 ## STEP 7 SATELLITES, ONCE THE RELEASE IS PUBLIC

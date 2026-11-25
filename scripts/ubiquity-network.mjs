@@ -26,13 +26,19 @@
  *       Run it after `landed` passes; it is safe to run again on its own.
  *   node scripts/ubiquity-network.mjs plan
  *       print what a release does, repo by repo.
- *   node scripts/ubiquity-network.mjs sync [--clone]
+ *   node scripts/ubiquity-network.mjs sync [--clone] [--delay s] [--retries n] [--retry-wait s]
  *       (yarn run ubiquity-git-sync) bring every checkout up to date before a
  *       dry run or release: coverage, then a fast-forward-only `git pull` of
  *       each repo's release branch, and of the waxam mirror. Missing
  *       checkouts and checkouts on another branch are reported, not
  *       changed; --clone clones the missing ones. Exits 1 unless every repo
  *       is there, on its branch and current.
+ *       GitHub throttles many connections in a row, so sync waits --delay
+ *       seconds (default 3) between repos, and a failed pull is tried again
+ *       up to --retries times (default 3), waiting --retry-wait seconds
+ *       (default 20) times the attempt number first: 20s, 40s, 60s. A
+ *       connection that stops sending data is dropped after about a minute
+ *       rather than hanging, so it is retried too.
  *
  * Checkouts are found under $HAXTHEWEB_ROOT, which defaults to ~/haxtheweb
  * (where ubiquity-push.sh works) or, without one, the folder this
@@ -563,11 +569,28 @@ function cmdPlan() {
 const WAXAM = path.join(os.homedir(), "Documents", "git", "waxam", "cdn");
 
 // git never waits on a prompt nobody can see: no credential prompt, and ssh
-// fails instead of asking for a passphrase (an ssh-agent still works)
+// fails instead of asking for a passphrase (an ssh-agent still works).
+// A connection the other side stops answering ends instead of hanging: ssh
+// after four missed 15 second keepalives, https after 60 seconds under
+// 1 KB/s. Either is then retried like any other failed pull.
 const SYNC_ENV = Object.assign({}, process.env, {
   GIT_TERMINAL_PROMPT: "0",
-  GIT_SSH_COMMAND: process.env.GIT_SSH_COMMAND || "ssh -o BatchMode=yes",
+  GIT_SSH_COMMAND:
+    process.env.GIT_SSH_COMMAND ||
+    "ssh -o BatchMode=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=4",
+  GIT_HTTP_LOW_SPEED_LIMIT: process.env.GIT_HTTP_LOW_SPEED_LIMIT || "1000",
+  GIT_HTTP_LOW_SPEED_TIME: process.env.GIT_HTTP_LOW_SPEED_TIME || "60",
 });
+
+const sleep = (seconds) =>
+  new Promise((r) => setTimeout(r, Math.max(0, seconds) * 1000));
+
+/** a non-negative number from --name, else the environment, else fallback */
+function syncNumber(name, envName, fallback) {
+  const raw = option(name) || process.env[envName];
+  const n = parseFloat(raw);
+  return raw !== undefined && Number.isFinite(n) && n >= 0 ? n : fallback;
+}
 
 /** fast-forward one checkout; never merges, rebases or touches local edits */
 function pullFastForward(dir, args) {
@@ -588,14 +611,42 @@ function pullFastForward(dir, args) {
   return { ok: true, text: `updated, ${n} new commit${n === "1" ? "" : "s"}` };
 }
 
-function cmdSync() {
+async function cmdSync() {
   const clone = flag("--clone");
+  const delay = syncNumber("--delay", "UBIQUITY_SYNC_DELAY", 3);
+  const retries = Math.floor(
+    syncNumber("--retries", "UBIQUITY_SYNC_RETRIES", 3),
+  );
+  const retryWait = syncNumber("--retry-wait", "UBIQUITY_SYNC_RETRY_WAIT", 20);
   const problems = [];
   if (cmdCoverage() !== 0) problems.push("coverage (above)");
-  console.log(`ubiquity-network: syncing checkouts under ${ROOT}`);
+  console.log(
+    `ubiquity-network: syncing checkouts under ${ROOT} (${delay}s between repos, up to ${retries} retries)`,
+  );
   const width = Math.max(...NETWORK.repos.map((e) => e.repo.length));
   const line = (name, text) => console.log(`  ${name.padEnd(width)}  ${text}`);
-  NETWORK.repos.forEach((entry) => {
+  // pause only between network calls, so a repo that is skipped costs nothing
+  let contacted = false;
+  const pace = async () => {
+    if (contacted && delay > 0) await sleep(delay);
+    contacted = true;
+  };
+  /** a fast-forward pull, tried again with a growing wait when it fails */
+  const pullPaced = async (name, dir, args) => {
+    await pace();
+    let result = pullFastForward(dir, args);
+    for (let attempt = 1; !result.ok && attempt <= retries; attempt++) {
+      const wait = retryWait * attempt;
+      line(
+        name,
+        `pull failed; waiting ${wait}s before retry ${attempt} of ${retries}`,
+      );
+      await sleep(wait);
+      result = pullFastForward(dir, args);
+    }
+    return result;
+  };
+  for (const entry of NETWORK.repos) {
     const dir = repoDir(entry);
     const name = entry.repo;
     if (!fs.existsSync(path.join(dir, ".git"))) {
@@ -603,10 +654,12 @@ function cmdSync() {
       if (!clone) {
         line(name, `MISSING: git clone -b ${entry.branch} ${url} ${dir}`);
         problems.push(`${name}: no checkout (rerun with --clone)`);
-        return;
+        continue;
       }
+      await pace();
       try {
         execFileSync("git", ["clone", "-q", "-b", entry.branch, url, dir], {
+          env: SYNC_ENV,
           stdio: ["ignore", "ignore", "pipe"],
         });
         line(name, `cloned (${entry.branch})`);
@@ -614,7 +667,7 @@ function cmdSync() {
         line(name, `CLONE FAILED: ${String(e.stderr || e.message).trim()}`);
         problems.push(`${name}: clone failed`);
       }
-      return;
+      continue;
     }
     let branch = "";
     try {
@@ -622,25 +675,25 @@ function cmdSync() {
     } catch (e) {
       line(name, "ERROR: git cannot read this checkout");
       problems.push(`${name}: unreadable`);
-      return;
+      continue;
     }
     if (branch !== entry.branch) {
       line(name, `SKIPPED: on ${branch}, the release uses ${entry.branch}`);
       problems.push(`${name}: on ${branch}, not ${entry.branch}`);
-      return;
+      continue;
     }
     console.log(`  ${name.padEnd(width)}  pulling origin ${entry.branch}...`);
-    const result = pullFastForward(dir, ["origin", entry.branch]);
+    const result = await pullPaced(name, dir, ["origin", entry.branch]);
     line(name, result.ok ? result.text : `FAILED: ${result.text}`);
     if (!result.ok) problems.push(`${name}: ${result.text}`);
-  });
+  }
   // the waxam mirror is outside $HAXTHEWEB_ROOT and optional; pull it on
   // whatever branch it tracks when it is a git checkout
   if (fs.existsSync(WAXAM)) {
     try {
       const top = git(WAXAM, ["rev-parse", "--show-toplevel"]);
       console.log(`  ${"waxam".padEnd(width)}  pulling...`);
-      const result = pullFastForward(top, []);
+      const result = await pullPaced("waxam", top, []);
       line("waxam", result.ok ? result.text : `FAILED: ${result.text}`);
       if (!result.ok) problems.push(`waxam: ${result.text}`);
     } catch (e) {
@@ -672,7 +725,21 @@ const commands = {
   sync: cmdSync,
 };
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+// Run directly (not imported). ubiquity-push.sh calls scripts through the
+// ~/haxtheweb symlink; node resolves import.meta.url to the real path but
+// leaves process.argv[1] as typed, so compare real paths or nothing runs.
+function invokedDirectly() {
+  try {
+    return (
+      fs.realpathSync(process.argv[1]) ===
+      fs.realpathSync(fileURLToPath(import.meta.url))
+    );
+  } catch (e) {
+    return false;
+  }
+}
+
+if (invokedDirectly()) {
   const command = commands[argv[0]];
   if (!command) {
     console.log(
