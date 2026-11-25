@@ -8,7 +8,7 @@ const { AppHaxUseCaseFilter } =
   await import("../lib/v2/app-hax-use-case-filter.js");
 const { MicroFrontendRegistry } =
   await import("@haxtheweb/micro-frontend-registry/micro-frontend-registry.js");
-const { AppHaxImportUrlDialog } =
+const { AppHaxImportUrlDialog, askImportUrl } =
   await import("../lib/v2/app-hax-import-url-dialog.js");
 const {
   siteRows,
@@ -468,6 +468,72 @@ describe("app-hax-use-case-filter: the two import cards", () => {
     expect(started).to.deep.equal([["drupal", "https://news.example.edu"]]);
     expect(document.querySelector("app-hax-import-url-dialog")).to.equal(null);
   });
+
+  // haxcms-browser ?remix= hands people ?import-url=&import-type=
+  it("an import link opens the URL dialog filled in and waits for the person", async () => {
+    const started = [];
+    el.startImport = async (item, preset) =>
+      started.push([item.importType, preset.url]);
+    const before = globalThis.location.href;
+    const link = new URL(before);
+    link.searchParams.set("import-url", "https://lab.hax.cloud/");
+    link.searchParams.set("import-type", "haxcms");
+    link.searchParams.set("keep", "1");
+    globalThis.history.replaceState(null, "", link.href);
+    try {
+      const taken = el._takeImportLinkFromUrl();
+      expect(taken).to.deep.equal({
+        url: "https://lab.hax.cloud/",
+        importType: "haxcms",
+      });
+      // read once: the address no longer carries it, other params stay
+      const after = new URL(globalThis.location.href);
+      expect(after.searchParams.has("import-url")).to.equal(false);
+      expect(after.searchParams.has("import-type")).to.equal(false);
+      expect(after.searchParams.get("keep")).to.equal("1");
+      const pending = el.importFromUrl(taken.url, taken.importType);
+      await new Promise((r) => setTimeout(r, 0));
+      const dialog = document.querySelector("app-hax-import-url-dialog");
+      await dialog.updateComplete;
+      expect(dialog.url).to.equal("https://lab.hax.cloud/");
+      expect(dialog.importType).to.equal("haxcms");
+      // nothing has started until the person continues
+      expect(started).to.deep.equal([]);
+      dialog._continue();
+      await pending;
+      expect(started).to.deep.equal([["haxcms", "https://lab.hax.cloud/"]]);
+    } finally {
+      globalThis.history.replaceState(null, "", before);
+    }
+  });
+
+  it("an import link with a bad address or kind is dropped", () => {
+    const before = globalThis.location.href;
+    try {
+      for (const [address, kind, expected] of [
+        ["javascript:alert(1)", "haxcms", null],
+        ["ftp://example.com/", "haxcms", null],
+        [
+          "https://example.com/",
+          "not-a-kind",
+          { url: "https://example.com/", importType: "" },
+        ],
+      ]) {
+        const link = new URL(before);
+        link.searchParams.set("import-url", address);
+        link.searchParams.set("import-type", kind);
+        globalThis.history.replaceState(null, "", link.href);
+        expect(el._takeImportLinkFromUrl()).to.deep.equal(expected);
+        expect(
+          new URL(globalThis.location.href).searchParams.has("import-url"),
+        ).to.equal(false);
+      }
+      globalThis.history.replaceState(null, "", before);
+      expect(el._takeImportLinkFromUrl()).to.equal(null);
+    } finally {
+      globalThis.history.replaceState(null, "", before);
+    }
+  });
 });
 
 describe("app-hax-import-url-dialog", () => {
@@ -488,6 +554,29 @@ describe("app-hax-import-url-dialog", () => {
     expect(el._canContinue()).to.equal(true);
     el.importType = "";
     expect(el._canContinue()).to.equal(false);
+  });
+
+  it("askImportUrl keeps a preset kind only when it is offered", async () => {
+    const kinds = [
+      { importType: "haxcms", title: "HAXcms", icon: "hax:hax2022" },
+    ];
+    for (const [preset, expected] of [
+      ["haxcms", "haxcms"],
+      ["drupal", ""],
+      [undefined, ""],
+    ]) {
+      const pending = askImportUrl({
+        kinds,
+        url: "https://lab.hax.cloud/",
+        importType: preset,
+      });
+      const dialog = document.querySelector("app-hax-import-url-dialog");
+      expect(dialog.importType).to.equal(expected);
+      await dialog.updateComplete;
+      await new Promise((r) => setTimeout(r, 0));
+      dialog._cancel();
+      await pending;
+    }
   });
 
   it("resolves null when cancelled", async () => {

@@ -11,7 +11,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
 import { HaxUiAdminTokens } from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
 import { adminPrompt } from "@haxtheweb/haxcms-elements/lib/core/admin/haxcms-admin-confirm.js";
-import { askImportUrl } from "./app-hax-import-url-dialog.js";
+import { askImportUrl, isImportUrl } from "./app-hax-import-url-dialog.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-site-creation-modal.js";
@@ -1178,7 +1178,54 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     return null;
   }
 
+  /**
+   * ?import-url=<address>&import-type=<kind> (haxcms-browser's ?remix= link
+   * hands people this): read once and taken out of the address, so a reload
+   * does not ask again. Only an http(s) address and a kind the From a URL
+   * dialog offers are kept; anything else is dropped.
+   * @returns {{url: string, importType: string}|null}
+   */
+  _takeImportLinkFromUrl() {
+    let url;
+    try {
+      url = new URL(globalThis.location.href);
+    } catch {
+      return null;
+    }
+    const address = url.searchParams.get("import-url");
+    const kind = url.searchParams.get("import-type");
+    if (address === null && kind === null) {
+      return null;
+    }
+    url.searchParams.delete("import-url");
+    url.searchParams.delete("import-type");
+    globalThis.history.replaceState(
+      globalThis.history.state,
+      "",
+      `${url.pathname}${url.search}${url.hash}`,
+    );
+    if (!isImportUrl(address || "") || String(address).length > 2048) {
+      return null;
+    }
+    return {
+      url: String(address).trim(),
+      importType: this.importItemFor("url", kind) ? kind : "",
+    };
+  }
+
   async _maybeAutoOpenUseCaseFromUrl() {
+    // an import link opens the From a URL dialog filled in; nothing is
+    // imported until the person continues
+    if (!this.__importLinkHandled && this.shadowRoot) {
+      this.__importLinkHandled = true;
+      const link = this._takeImportLinkFromUrl();
+      if (link) {
+        this.__useCaseParamHandled = true;
+        await this.updateComplete;
+        await this.importFromUrl(link.url, link.importType);
+        return;
+      }
+    }
     if (this.__useCaseParamHandled || this.__useCaseParamHandling) {
       return;
     }
@@ -3456,11 +3503,13 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
    * From a URL: one dialog takes the URL and asks what kind of site it
    * is; that importer then runs with the URL.
    * @param {string} url a URL to start the dialog with
+   * @param {string} importType a kind to start the dialog with
    */
-  async importFromUrl(url = "") {
+  async importFromUrl(url = "", importType = "") {
     const urlKinds = this._importKinds("url");
     const answer = await askImportUrl({
       url: url,
+      importType: importType,
       kinds: urlKinds.map((item) => ({
         importType: item.importType,
         title: item.useCaseTitle,

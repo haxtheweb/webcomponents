@@ -21,12 +21,28 @@
  *
  * Works on static publishes too: search uses lunrSearchIndex.json and pages
  * come from the pages/<id>/index.md files written on save.
+ *
+ * A static publish also declares search_site and remix_site in the HTML, as
+ * forms with toolname/tooldescription (the declarative API; haxcms-nodejs
+ * renderStaticPages), so they work before and without this module. Those
+ * forms are removed before these tools are registered, so a name is only
+ * ever registered once.
+ *
+ * Remix: a site whose license allows derivatives can be opened as a copy in
+ * HAX in the browser (browser.hax.cloud ?remix=<site address>), where the
+ * person confirms before anything is made. The license rule is the same as
+ * haxcms-nodejs staticPages.js remixTerms.
  */
 import { autorun, toJS } from "mobx";
 import { trimSlashes } from "@haxtheweb/utils/lib/safe-html.js";
+import { licenseData } from "@haxtheweb/license-element/lib/licenses-data.js";
 
 const SEARCH_LIMIT_DEFAULT = 10;
 const SEARCH_LIMIT_MAX = 25;
+// HAXcms in the browser; it imports a published HAX site from its address
+export const REMIX_APP = "https://browser.hax.cloud/";
+// licenses that keep others from making a derivative
+const NO_DERIVATIVES = ["by-nd", "by-nc-nd", "all-rights-reserved"];
 
 function isFalseLike(value) {
   if (value === false || value === 0) {
@@ -156,6 +172,77 @@ function findVisibleItem(manifest, slugOrId) {
 }
 
 /**
+ * Whether and on what terms a site's content may be remixed, from its
+ * license code: { allowed, license: { code, name, link } | null,
+ * conditions: [...] }. An unset or unknown license allows nothing.
+ */
+export function remixTerms(code) {
+  const wanted = typeof code === "string" ? code.trim() : "";
+  const license =
+    wanted === ""
+      ? null
+      : licenseData.licenses.find((entry) => entry.code === wanted) || null;
+  if (!license) {
+    return { allowed: false, license: null, conditions: [] };
+  }
+  const conditions = [];
+  if (/^by(-|$)/.test(license.code)) {
+    conditions.push("attribution");
+  }
+  if (/(^|-)sa$/.test(license.code)) {
+    conditions.push("share-alike");
+  }
+  if (/(^|-)nc(-|$)/.test(license.code)) {
+    conditions.push("non-commercial");
+  }
+  return {
+    allowed: !NO_DERIVATIVES.includes(license.code),
+    license: { code: license.code, name: license.name, link: license.link },
+    conditions,
+  };
+}
+
+/**
+ * The site's own address with a trailing "/": its domain setting when that
+ * is an http(s) address, else the document's base. "" when neither is.
+ */
+export function siteAddress(manifest) {
+  const domain =
+    manifest &&
+    manifest.metadata &&
+    manifest.metadata.site &&
+    typeof manifest.metadata.site.domain === "string"
+      ? manifest.metadata.site.domain.trim()
+      : "";
+  const candidate = /^https?:\/\//i.test(domain) ? domain : resolveUrl("");
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "https:" && url.protocol !== "http:") {
+      return "";
+    }
+    url.search = "";
+    url.hash = "";
+    return url.href.replace(/\/*$/, "/");
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Where remix_site opens the copy: browser.hax.cloud with the site's address,
+ * or "" when the site has no http(s) address.
+ */
+export function remixLink(manifest) {
+  const address = siteAddress(manifest);
+  if (address === "") {
+    return "";
+  }
+  const url = new URL(REMIX_APP);
+  url.searchParams.set("remix", address);
+  return url.href;
+}
+
+/**
  * Score lunr index entries against the query terms. Matches in the title
  * count most, then description, then body text.
  */
@@ -202,7 +289,7 @@ function snippetFor(entry, query) {
 }
 
 /**
- * Build the four public tools against a getter for the current manifest.
+ * Build the public tools against a getter for the current manifest.
  * Exported for tests; registration happens in initHAXcmsWebMCP.
  */
 export function buildPublicTools(getManifest, fetchImpl = globalThis.fetch) {
@@ -329,7 +416,84 @@ export function buildPublicTools(getManifest, fetchImpl = globalThis.fetch) {
         return JSON.stringify({ opened: summarizeItem(item) });
       },
     },
+    {
+      name: "get_remix_options",
+      description:
+        "What a person or agent may do with this site's content: its license and conditions, whether it can be remixed into a new site in HAX, and the files to read it in bulk (llms.txt, llms-full.txt, each page as markdown).",
+      inputSchema: { type: "object", properties: {} },
+      annotations: { readOnlyHint: true, untrustedContentHint: true },
+      execute: async () => {
+        const manifest = getManifest();
+        const terms = remixTerms(manifest && manifest.license);
+        const address = siteAddress(manifest);
+        const author =
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.author &&
+          typeof manifest.metadata.author.name === "string"
+            ? manifest.metadata.author.name
+            : "";
+        const link = terms.allowed ? remixLink(manifest) : "";
+        return JSON.stringify({
+          title: (manifest && manifest.title) || "",
+          url: address,
+          author,
+          license: terms.license,
+          conditions: terms.conditions,
+          remix: {
+            allowed: terms.allowed && link !== "",
+            // the copy is made only after the person confirms there
+            openInHax: link,
+          },
+          formats: {
+            llms: resolveUrl("llms.txt"),
+            llmsFull: resolveUrl("llms-full.txt"),
+            pageMarkdown:
+              "Each page as markdown: get_page, or <page url>.md on a published site.",
+          },
+        });
+      },
+    },
+    {
+      name: "remix_site",
+      description:
+        "Open a copy of this site in HAX (browser.hax.cloud) in the visitor's tab to remix it. Navigation only: nothing is made until the person confirms there, and only when the site's license allows derivatives (see get_remix_options).",
+      inputSchema: { type: "object", properties: {} },
+      annotations: { readOnlyHint: true },
+      execute: async () => {
+        const manifest = getManifest();
+        const terms = remixTerms(manifest && manifest.license);
+        if (!terms.allowed) {
+          return JSON.stringify({
+            error: terms.license
+              ? `This site's license (${terms.license.name}) does not allow derivatives.`
+              : "This site does not state a license, so it can't be remixed.",
+          });
+        }
+        const link = remixLink(manifest);
+        if (link === "") {
+          return JSON.stringify({
+            error: "This site has no web address to remix from.",
+          });
+        }
+        globalThis.location.assign(link);
+        return JSON.stringify({ opened: link });
+      },
+    },
   ];
+}
+
+/**
+ * Take out the tool forms a static publish declared (data-haxcms-agent-tools),
+ * so the registered tools are the only ones by those names.
+ */
+export function removeStaticToolForms(root = globalThis.document) {
+  if (!root || typeof root.querySelectorAll !== "function") {
+    return 0;
+  }
+  const found = root.querySelectorAll("[data-haxcms-agent-tools]");
+  found.forEach((node) => node.remove());
+  return found.length;
 }
 
 /**
@@ -369,6 +533,7 @@ export function initHAXcmsWebMCP(store) {
       return;
     }
     controller = new AbortController();
+    removeStaticToolForms();
     buildPublicTools(getManifest).forEach((tool) => {
       try {
         modelContext.registerTool(tool, { signal: controller.signal });

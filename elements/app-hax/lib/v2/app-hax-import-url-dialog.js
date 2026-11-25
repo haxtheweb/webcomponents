@@ -34,7 +34,7 @@ export function isImportUrl(value) {
  *
  * Use the helper rather than the element:
  *
- *   const answer = await askImportUrl({ kinds, labels });
+ *   const answer = await askImportUrl({ kinds, labels, url, importType });
  *   // { url, importType } or null when cancelled
  *
  * @element app-hax-import-url-dialog
@@ -362,6 +362,11 @@ export function askImportUrl(options) {
   el.kinds = opts.kinds || [];
   el.labels = opts.labels || {};
   el.url = typeof opts.url === "string" ? opts.url : "";
+  // a kind picked ahead (a deep link, Merlin); only one of the offered kinds
+  const preset = typeof opts.importType === "string" ? opts.importType : "";
+  el.importType = el.kinds.some((kind) => kind && kind.importType === preset)
+    ? preset
+    : "";
   globalThis.document.body.appendChild(el);
   return el.ask();
 }
