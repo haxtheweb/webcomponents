@@ -1075,17 +1075,16 @@ describe("haxcms-site-store link pages", () => {
   it("redirects on a published (static) copy, which has no backend", async () => {
     globalThis.HAXCMSContext = "published";
     visit("page-2");
-    await waitUntil(() => opened.length > 0, "the link page never redirected");
+    await waitUntil(() => opened.length > 0, "the link page redirects");
     expect(opened).to.deep.equal([["https://example.com/moved", "_blank"]]);
   });
 
   it("waits for a backend when the site is not a static copy", async () => {
     globalThis.HAXCMSContext = "demo";
     visit("page-2");
-    // with no backend yet the page is shown at once instead of redirected
     await waitUntil(
       () => store.activeId === "page-2",
-      "the page never became active",
+      "the page becomes active",
     );
     expect(opened.length).to.equal(0);
     expect(store.activeId).to.equal("page-2");

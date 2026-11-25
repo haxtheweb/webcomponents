@@ -113,4 +113,29 @@ describe("haxcms-site-builder _updateActiveItemContent", () => {
     expect(seen).to.include("<p");
     expect(seen).to.not.include("script");
   });
+
+  // pages saved by older editors kept role="textbox" and other editing state;
+  // a screen reader announced every such block as an unnamed text field
+  it("renders without editing state an older editor saved", () => {
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    let seen = null;
+    const stub = {
+      nodeNormalizeIDs: Builder.prototype.nodeNormalizeIDs,
+      hashCode: Builder.prototype.hashCode,
+      _activeItemContentChanged(content) {
+        seen = content;
+      },
+      _flushAfterFirstContent() {},
+    };
+    Builder.prototype._updateActiveItemContent.call(
+      stub,
+      '<h2 role="textbox" data-hax-grid="">Title</h2><ul><li role="textbox" contenteditable="true">One</li></ul><p><rich-text-editor-highlight id="rte-1" range="{}">Kept text</rich-text-editor-highlight></p>',
+      { id: "p3" },
+    );
+    expect(seen).to.not.include("textbox");
+    expect(seen).to.not.include("contenteditable");
+    expect(seen).to.not.include("rich-text-editor-highlight");
+    expect(seen).to.include("Kept text");
+    expect(seen).to.include("data-hax-grid");
+  });
 });
