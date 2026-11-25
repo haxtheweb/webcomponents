@@ -75,7 +75,7 @@ export class PrivacyChoices extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/privacy-choices.ar.json", import.meta.url).href +
+        new URL("./locales/privacy-choices.en.json", import.meta.url).href +
         "/../",
     });
     this._onConsent = () => this.requestUpdate();
