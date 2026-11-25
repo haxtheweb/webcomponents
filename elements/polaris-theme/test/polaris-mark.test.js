@@ -66,6 +66,22 @@ describe("polaris-mark", () => {
     ).to.equal("0 0 640 200");
   });
 
+  it("draws the mark at the width of its host", async () => {
+    const el = await fixture(
+      html`<polaris-mark style="width: 300px" name="Office"></polaris-mark>`,
+    );
+    await el.updateComplete;
+    const svg = el.shadowRoot.querySelector("svg");
+    const box = svg.getBoundingClientRect();
+    expect(Math.round(box.width)).to.equal(300);
+    // height follows the viewBox ratio (600 by 180)
+    expect(Math.round(box.height)).to.equal(90);
+    const link = el.shadowRoot
+      .querySelector("#logo-wrap a")
+      .getBoundingClientRect();
+    expect(Math.round(link.width)).to.equal(300);
+  });
+
   it("renders name, name2 and the vertical name3 layout by default", async () => {
     element.name = "Eberly";
     element.name2 = "College of";

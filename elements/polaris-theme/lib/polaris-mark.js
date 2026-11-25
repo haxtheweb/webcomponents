@@ -80,10 +80,18 @@ class PolarisMark extends I18NMixin(LitElement) {
 
         /* a focus ring that reads on light and dark surfaces; outlines also
            survive forced colors, where box-shadows and backgrounds vanish */
-        /* the link wraps the mark's svg: an inline-block box gives the
-           focus ring the svg's size */
+        /* the link wraps the mark's svg. The svg has only a viewBox, so it
+           takes its width from the box around it: a block link gives it the
+           host's width (an inline-block link shrinks to the svg, which then
+           has no width of its own and draws at 0 by 0). The focus ring is
+           the link's box, which is the svg's size. */
         a {
-          display: inline-block;
+          display: block;
+        }
+        svg {
+          display: block;
+          width: 100%;
+          height: auto;
         }
         a:focus-visible {
           outline: 2px solid

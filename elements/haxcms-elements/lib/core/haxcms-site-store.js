@@ -1703,10 +1703,15 @@ class HAXCMSSiteStore extends HTMLElement {
         });
         if (found) {
           // Check if this page has a link URL configured and user is not logged in
-          // Only perform redirect check if the app and backend are fully ready to avoid timing issues
+          // Only perform redirect check if the app and backend are fully ready to avoid timing issues.
+          // A published (static) copy has no backend and no one can be logged
+          // in, so its link pages redirect without waiting for one.
+          const staticCopy = ["published", "11ty"].includes(
+            globalThis.HAXCMSContext,
+          );
           if (
             store.appReady &&
-            store.cmsSiteEditorBackend.instance &&
+            (store.cmsSiteEditorBackend.instance || staticCopy) &&
             found.metadata &&
             found.metadata.linkUrl &&
             !store.isLoggedIn

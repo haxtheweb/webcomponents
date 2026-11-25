@@ -1027,3 +1027,63 @@ describe("haxcms-site-store computeItems and spiderChildren", () => {
     expect(data.length).to.be.greaterThan(0);
   });
 });
+
+describe("haxcms-site-store link pages", () => {
+  let saved = {};
+  let opened = [];
+  let realOpen;
+
+  beforeEach(() => {
+    saved = {
+      manifest: store.manifest,
+      activeId: store.activeId,
+      location: store.location,
+      appReady: store.appReady,
+      jwt: store.jwt,
+      context: globalThis.HAXCMSContext,
+    };
+    realOpen = globalThis.open;
+    opened = [];
+    globalThis.open = (url, target) => {
+      opened.push([url, target]);
+    };
+    const m = makeManifest();
+    // a page whose link setting sends visitors to another site, in a new tab
+    // so the test page itself does not navigate away
+    m.items[1].metadata.linkUrl = "https://example.com/moved";
+    m.items[1].metadata.linkTarget = "_blank";
+    store.jwt = null;
+    store.activeId = null;
+    store.manifest = m;
+    store.appReady = true;
+  });
+
+  afterEach(() => {
+    globalThis.open = realOpen;
+    globalThis.HAXCMSContext = saved.context;
+    store.location = saved.location;
+    store.manifest = saved.manifest;
+    store.activeId = saved.activeId;
+    store.appReady = saved.appReady;
+    store.jwt = saved.jwt;
+  });
+
+  const visit = (id) => {
+    store.location = { route: { name: id, component: "fake-route" } };
+  };
+
+  it("redirects on a published (static) copy, which has no backend", async () => {
+    globalThis.HAXCMSContext = "published";
+    visit("page-2");
+    await new Promise((r) => setTimeout(r, 200));
+    expect(opened).to.deep.equal([["https://example.com/moved", "_blank"]]);
+  });
+
+  it("waits for a backend when the site is not a static copy", async () => {
+    globalThis.HAXCMSContext = "demo";
+    visit("page-2");
+    await new Promise((r) => setTimeout(r, 200));
+    expect(opened.length).to.equal(0);
+    expect(store.activeId).to.equal("page-2");
+  });
+});
