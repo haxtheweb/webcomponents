@@ -1,0 +1,71 @@
+{
+  "api": "1",
+  "canScale": false,
+  "canEditSource": true,
+  "type": "element",
+  "designSystem": {
+    "accent": false,
+    "primary": false,
+    "card": false,
+    "text": false,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "Ecosystem growth",
+    "description": "How a project grew over time and what its reuse saves, drawn as a crystal from PRAW's growth data.",
+    "icon": "hax:node-web",
+    "color": "blue",
+    "tags": [
+      "Media",
+      "data",
+      "interactive",
+      "visualization",
+      "ecosystem",
+      "timeline"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "haxtheweb",
+      "hidden": true
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Growth data",
+        "description": "URL of the folder that holds the growth JSON files (PRAW publishes them at hax.cloud/data/growth/).",
+        "inputMethod": "textfield",
+        "icon": "icons:link",
+        "required": true
+      },
+      {
+        "property": "view",
+        "title": "First view",
+        "description": "Which view opens first.",
+        "inputMethod": "select",
+        "options": {
+          "themes": "Themes",
+          "elements": "Elements",
+          "platforms": "Platforms",
+          "cache": "Cache"
+        }
+      }
+    ],
+    "advanced": []
+  },
+  "saveOptions": {
+    "wipeSlot": true,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "ecosystem-growth",
+      "properties": {
+        "src": "https://hax.cloud/data/growth/",
+        "view": "themes"
+      },
+      "content": ""
+    }
+  ]
+}
