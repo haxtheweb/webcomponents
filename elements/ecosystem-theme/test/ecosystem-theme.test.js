@@ -235,7 +235,6 @@ describe("ecosystem-theme", function () {
       "Ecosystem web",
       "4. Quality Education",
       "Tours",
-      "Developer mode: goggles",
     ]);
     expect(options[0].path).to.equal("hax.cloud: webs");
     expect(options[1].path).to.equal("hax.cloud: Ecosystem web");
@@ -244,11 +243,25 @@ describe("ecosystem-theme", function () {
       method: "goTo",
       args: ["un-sdgs/4-quality-education"],
     });
-    // the goggles are a developer command: only in Merlin's > list
-    const g = options[3];
+  });
+
+  it("puts the goggles in Merlin's developer list, with the Connect lens", () => {
+    const options = [];
+    const merlin = { defineOption: (o) => options.push(o) };
+    globalThis.dispatchEvent(
+      new CustomEvent("hax-network-merlin", { detail: { merlin } }),
+    );
+    // once per Merlin, however often the bar asks
+    globalThis.dispatchEvent(
+      new CustomEvent("hax-network-merlin", { detail: { merlin } }),
+    );
+    expect(options.length).to.equal(1);
+    const g = options[0];
+    expect(g.title).to.equal("Developer mode: goggles");
     expect(g.context).to.deep.equal([">"]);
     expect(g.path).to.equal(">developer/goggles");
-    expect(g.value.method).to.equal("goggles");
+    expect(g.tags).to.include("connect");
+    expect(g.value.method).to.equal("toggleGoggles");
   });
 
   it("passes the a11y audit", async () => {

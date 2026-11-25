@@ -14,6 +14,10 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 import "@haxtheweb/ecosystem-web/ecosystem-web.js";
 import "@haxtheweb/hax-network-bar/hax-network-bar.js";
+import {
+  siteLens,
+  toggleGoggles,
+} from "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-site.js";
 
 /** True when the page address asks for the embed view (?embed, but not ?embed=0). */
 function readEmbed() {
@@ -22,14 +26,6 @@ function readEmbed() {
     return q.has("embed") && q.get("embed") !== "0";
   } catch {
     return false;
-  }
-}
-/** A value from the page address, or "" (no address to read in some contexts). */
-function readParam(name) {
-  try {
-    return new URLSearchParams(globalThis.location.search).get(name) || "";
-  } catch {
-    return "";
   }
 }
 
@@ -105,7 +101,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
       merlinWebs: "hax.cloud: webs",
       merlinTours: "hax.cloud: tours",
       merlinPages: "hax.cloud",
-      goggles: "Developer mode: goggles",
+      connect: "Connect",
       gogglesAbout:
         "Put on the goggles. On hax.cloud they add the Connect lens: say more about a tile and connect it, copied as a prompt for a pull request to PRAW",
     };
@@ -138,10 +134,15 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   connectedCallback() {
     super.connectedCallback();
-    // a link that asks for the goggles (?goggles=connect) loads the lens
-    if (readParam("goggles")) {
-      import("./lib/ecosystem-connect.js").then((m) => m.connectGoggles());
-    }
+    // hax.cloud's own lens: Merlin's developer list and ?goggles=connect
+    // links put the goggles on with it; the lens loads the first time
+    siteLens({
+      id: "connect",
+      text: this.t.connect,
+      icon: "icons:create",
+      about: this.t.gogglesAbout,
+      load: () => import("./lib/ecosystem-connect.js").then((m) => m.lens),
+    });
     this._disposers.push(
       autorun(() => {
         const m = toJS(store.manifest);
@@ -253,26 +254,10 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
         eventName: "super-daemon-element-method",
       });
     });
-    // developer commands only (the > list), never global search
-    merlin.defineOption({
-      title: this.t.goggles,
-      icon: "hax:goggles",
-      tags: ["Developer", "goggles", "developer mode", "connect", "praw"],
-      path: ">developer/goggles",
-      context: [">"],
-      more: html`<span>${this.t.gogglesAbout}</span>`,
-      value: { target: this, method: "goggles", args: [] },
-      eventName: "super-daemon-element-method",
-    });
   }
-  /**
-   * Put the goggles on or take them off, with hax.cloud's Connect lens. The
-   * lens and its panel load only when asked for.
-   */
-  async goggles() {
-    const m = await import("./lib/ecosystem-connect.js");
-    m.connectGoggles();
-    return m.toggleGoggles();
+  /** Put the goggles on or take them off, with hax.cloud's Connect lens (as Merlin does). */
+  goggles() {
+    return toggleGoggles("connect");
   }
 
   /** Go to a page of this site by its slug. */
