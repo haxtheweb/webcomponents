@@ -78,7 +78,8 @@ function go(url) {
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `footer`
  * (`[{label, href}]`, plus a `footerNote` line) and `welcome`
  * (`{title, text, actions}`: the greeting on the home page; `actions` is
- * `[{label, href, icon}]`, buttons beside it, such as the way to Growth).
+ * `[{label, href, icon}]`, buttons beside it, such as the way to Growth; an
+ * href may end in #fragment, where on that page to land).
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -285,17 +286,19 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (!acts.length) return "";
     return html`<div class="welcome-actions">
       ${acts.map((a) => {
-        const slug = String(a.href).replace(/^\//, "");
+        // a page slug, and what follows # (where on that page to land)
+        const [path, frag] = String(a.href).split("#");
+        const hash = frag ? "#" + frag : "";
         const item = /^[a-z][a-z0-9+.-]*:/i.test(a.href)
           ? null
-          : this._itemBySlug(slug);
+          : this._itemBySlug(path.replace(/^\//, ""));
         return html`<a
           class="btn withicon"
-          href="${item ? item.slug : a.href}"
+          href="${item ? item.slug + hash : a.href}"
           @click="${(e) => {
             if (!item || e.metaKey || e.ctrlKey || e.shiftKey) return;
             e.preventDefault();
-            this._go(item.slug);
+            this._go(item.slug + hash);
           }}"
           >${
             a.icon

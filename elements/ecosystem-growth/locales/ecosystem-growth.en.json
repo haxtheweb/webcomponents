@@ -1,5 +1,5 @@
 {
-  "title": "How HAX grew",
+  "title": "Watch HAX grow",
   "eyebrow": "Growth, reuse and what it saves",
   "loading": "Loading the growth data…",
   "failed": "The growth data could not be loaded.",
@@ -22,6 +22,7 @@
   "didWhat": "Commits: {commits}. Issues opened: {opened}. Issues closed: {closed}.",
   "peopleCount": "{n} people · {active} active in {date}",
   "profile": "{name} on GitHub",
+  "story": "{name}'s story and connections",
   "agentsText": "Commits AI agents wrote, working in HAX repositories with the people who run them, since {date}. They are counted together here, not as people.",
   "noPeople": "No contributor data in this source.",
   "play": "Play",

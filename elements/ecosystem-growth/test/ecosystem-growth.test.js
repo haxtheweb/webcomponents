@@ -46,6 +46,21 @@ describe("EcosystemGrowth test", () => {
     );
   });
 
+  it("opens Contributors on a person from #person=, at their busiest month", async () => {
+    const before = globalThis.location.hash;
+    globalThis.location.hash = "#person=btopro";
+    element._fromHash();
+    await element.updateComplete;
+    expect(element.view).to.equal("contributors");
+    expect(element._sel.key).to.equal("btopro");
+    const peak = element._sel.act.reduce((a, b) => (b[1] > a[1] ? b : a));
+    expect(element._now).to.equal(Math.min(element._M.T1, peak[0]));
+    const story = element.shadowRoot.querySelector("aside a.go");
+    expect(story.getAttribute("href")).to.equal("/stories/ecosystem/bryan");
+    expect(story.querySelector("simple-icon-lite")).to.exist;
+    globalThis.location.hash = before;
+  });
+
   it("labels every header button with an icon and words", async () => {
     const buttons = [...element.shadowRoot.querySelectorAll("header button")];
     expect(buttons.length).to.equal(6);

@@ -73,7 +73,7 @@ function fill(str, vals) {
 
 /**
  * `ecosystem-growth`
- * How HAX grew, drawn as a crystal: themes, elements and platforms appear in
+ * HAX growing, drawn as a crystal: themes, elements and platforms appear in
  * the order they were made around what they share, and the cache view shows
  * what that sharing saves a visitor. Reads the growth data layer PRAW
  * publishes (haxtheweb/issues#3409) from `src`; nothing is baked in.
@@ -109,11 +109,12 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
     this._presenting = false;
     this._visible = true;
     this._P = null;
+    this._onHash = () => this._fromHash();
     this._spots = [];
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      title: "How HAX grew",
+      title: "Watch HAX grow",
       eyebrow: "Growth, reuse and what it saves",
       loading: "Loading the growth data…",
       failed: "The growth data could not be loaded.",
@@ -139,6 +140,7 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
         "Commits: {commits}. Issues opened: {opened}. Issues closed: {closed}.",
       peopleCount: "{n} people · {active} active in {date}",
       profile: "{name} on GitHub",
+      story: "{name}'s story and connections",
       agentsText:
         "Commits AI agents wrote, working in HAX repositories with the people who run them, since {date}. They are counted together here, not as people.",
       noPeople: "No contributor data in this source.",
@@ -410,6 +412,24 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
           );
           border: var(--ddd-border-xs);
           border-color: var(--line);
+        }
+        p.links {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
+        }
+        a.go {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 44px;
+        }
+        a.go simple-icon-lite {
+          --simple-icon-width: 20px;
+          --simple-icon-height: 20px;
+          --simple-icon-color: currentColor;
+          flex: none;
         }
         ol.hot {
           margin: var(--ddd-spacing-1) var(--ddd-spacing-0);
@@ -691,16 +711,50 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
       this._watch();
       this._registerTools();
       this._kick();
+      this._fromHash();
     });
   }
 
   connectedCallback() {
     super.connectedCallback();
     globalThis.document.addEventListener("fullscreenchange", this._fsChange);
+    globalThis.addEventListener("hashchange", this._onHash);
+  }
+
+  /**
+   * Arriving from somewhere else: #watch brings the drawing into view (the
+   * home page's button), and #person=<id> (a person's tile in the ecosystem
+   * web) opens Contributors on that person at their busiest month.
+   */
+  _fromHash() {
+    const M = this._M;
+    if (!M) return;
+    const h = String(globalThis.location.hash || "");
+    const m = h.match(/(?:^#|&)person=([A-Za-z0-9_-]{1,60})(?:&|$)/);
+    const who = m && this._P ? this._P.list.find((p) => p.key === m[1]) : null;
+    if (!who && !/^#watch(?:&|$)/.test(h)) return;
+    if (who) {
+      this._play(false);
+      this._setView("contributors");
+      let peak = who.act[0] || [who.T, 0];
+      who.act.forEach((a) => {
+        if (a[1] > peak[1]) peak = a;
+      });
+      this._now = Math.max(M.T0, Math.min(M.T1, peak[0]));
+      this._sel = who;
+      this._kick();
+    }
+    this.updateComplete.then(() =>
+      this.scrollIntoView({
+        block: "start",
+        behavior: reducedMotion() ? "auto" : "smooth",
+      }),
+    );
   }
 
   disconnectedCallback() {
     globalThis.document.removeEventListener("fullscreenchange", this._fsChange);
+    globalThis.removeEventListener("hashchange", this._onHash);
     if (this._ro) this._ro.disconnect();
     if (this._io) this._io.disconnect();
     if (this._tools) this._tools.abort();
@@ -1841,18 +1895,34 @@ export class EcosystemGrowth extends DDDSuper(I18NMixin(LitElement)) {
                           closed: (tot.closed || 0).toLocaleString(),
                         })}
                       </p>
-                      ${
-                        /^[A-Za-z0-9-]{1,39}$/.test(sel.login)
-                          ? html`<p>
-                              <a
+                      <p class="links">
+                        ${
+                          /^(\/|https:\/\/)[^\s"<>]*$/.test(sel.page)
+                            ? html`<a class="go" href="${sel.page}"
+                                ><simple-icon-lite
+                                  icon="social:person"
+                                  aria-hidden="true"
+                                ></simple-icon-lite
+                                >${fill(this.t.story, { name: sel.label })}</a
+                              >`
+                            : nothing
+                        }
+                        ${
+                          /^[A-Za-z0-9-]{1,39}$/.test(sel.login)
+                            ? html`<a
+                                class="go"
                                 href="https://github.com/${sel.login}"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                ><simple-icon-lite
+                                  icon="icons:code"
+                                  aria-hidden="true"
+                                ></simple-icon-lite
                                 >${fill(this.t.profile, { name: sel.label })}</a
-                              >
-                            </p>`
-                          : nothing
-                      }`
+                              >`
+                            : nothing
+                        }
+                      </p>`
                   : html`<p>
                       ${fill(this.t.agentsText, { date: this._date(sel.T) })}
                     </p>`
