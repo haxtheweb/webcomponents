@@ -12,6 +12,7 @@ import {
   localStorageGet,
 } from "@haxtheweb/utils/lib/storage.js";
 import { buildPageContentHTML } from "./utils/page-content-html.js";
+import { removeEditorArtifacts } from "./utils/editor-artifacts.js";
 import {
   neutralizeStrayScripts,
   removeExternalScripts,
@@ -237,6 +238,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // Vercel preview toolbar, dev-server reload sockets); drop those here
       // so they don't render as escaped `<script></script>` text
       removeExternalScripts(tmp);
+      // editing state older editors saved into pages (role="textbox",
+      // contenteditable, the text editor's highlight) never renders
+      removeEditorArtifacts(tmp);
       for (const node of tmp.childNodes) {
         this.nodeNormalizeIDs(node);
       }

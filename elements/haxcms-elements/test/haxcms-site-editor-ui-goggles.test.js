@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html } from "@open-wc/testing";
 import { render } from "lit";
 import "../lib/core/haxcms-site-editor-ui.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
@@ -14,7 +14,7 @@ describe("haxcms-site-editor-ui: contributing with the goggles", function () {
     element = await fixture(
       html`<haxcms-site-editor-ui></haxcms-site-editor-ui>`,
     );
-    await aTimeout(0);
+    await element.updateComplete;
   });
 
   afterEach(async () => {
@@ -22,7 +22,7 @@ describe("haxcms-site-editor-ui: contributing with the goggles", function () {
     if (element.developerMode) {
       element.toggleDeveloperMode();
     }
-    await aTimeout(0);
+    await element.updateComplete;
   });
 
   it("leads Merlin's Community group with the goggles", () => {

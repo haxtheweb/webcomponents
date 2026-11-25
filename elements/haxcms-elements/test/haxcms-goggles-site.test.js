@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 import {
   siteLens,
   toggleGoggles,
@@ -66,9 +66,14 @@ describe("haxcms-goggles-site", function () {
   it("loads the lens the first time the goggles go on, with its panel slotted in", async () => {
     expect(loads).to.equal(0);
     await toggleGoggles("testlens");
-    await aTimeout(300);
+    const goggles = () => globalThis.document.querySelector("haxcms-goggles");
+    await waitUntil(
+      () =>
+        loads === 1 && goggles() && goggles().querySelector("test-lens-panel"),
+      "the lens loads and its panel is slotted in",
+    );
     expect(loads).to.equal(1);
-    const g = globalThis.document.querySelector("haxcms-goggles");
+    const g = goggles();
     expect(g).to.exist;
     expect(g.lens).to.equal("testlens");
     const panel = g.querySelector("test-lens-panel");
@@ -78,7 +83,12 @@ describe("haxcms-goggles-site", function () {
     expect(panel.shadowRoot.querySelector(".body .said")).to.exist;
     // off again
     await toggleGoggles();
-    await aTimeout(300);
+    // taking them off plays a 1.3s animation, then the element removes itself
+    await waitUntil(
+      () => !g.isConnected || g.on === false,
+      "the goggles come off",
+      { timeout: 3000 },
+    );
     expect(loads).to.equal(1);
   });
 
@@ -90,12 +100,20 @@ describe("haxcms-goggles-site", function () {
     });
     globalThis.dispatchEvent(asked);
     expect(asked.defaultPrevented).to.be.true;
-    await aTimeout(300);
+    await waitUntil(() => {
+      const on = globalThis.document.querySelector("haxcms-goggles");
+      return on && on.on === true;
+    }, "the goggles go on");
     const g = globalThis.document.querySelector("haxcms-goggles");
     expect(g.on).to.be.true;
     // and off again
     await toggleGoggles();
-    await aTimeout(300);
+    // taking them off plays a 1.3s animation, then the element removes itself
+    await waitUntil(
+      () => !g.isConnected || g.on === false,
+      "the goggles come off",
+      { timeout: 3000 },
+    );
   });
 
   it("moves the panel with the arrow keys and puts it back with Home", async () => {
