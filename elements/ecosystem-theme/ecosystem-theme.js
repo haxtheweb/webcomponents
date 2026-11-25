@@ -567,7 +567,9 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           flex-wrap: wrap;
           gap: var(--ddd-spacing-2);
         }
-        .welcome-actions a.btn {
+        .welcome .welcome-actions a.btn {
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-nittanyNavy);
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
@@ -575,8 +577,8 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           font-size: var(--ddd-font-size-3xs);
           text-decoration: none;
         }
-        .welcome-actions a.btn:hover,
-        .welcome-actions a.btn:focus-visible {
+        .welcome .welcome-actions a.btn:hover,
+        .welcome .welcome-actions a.btn:focus-visible {
           background-color: var(--ddd-theme-default-beaverBlue);
         }
         .welcome-actions simple-icon-lite {
