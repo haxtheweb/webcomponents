@@ -136,6 +136,15 @@ const CONFIG = {
       args: ["scripts/vision-pairs-check.mjs", "--strict", "--quiet"],
     },
     {
+      // RULES.md checks nothing enforced before: no TypeScript under
+      // elements/, Node.js latest LTS everywhere a version is named, and
+      // tests poll instead of sleeping (sleeps that predate the rule are in
+      // scripts/test-sleeps.baseline.json). Also run by the rule-checks
+      // workflow.
+      label: "Rule checks (TypeScript, Node LTS, test sleeps)",
+      args: ["scripts/rule-checks.mjs", "all"],
+    },
+    {
       // every .js source file under elements/<name>/ starts with the
       // Apache-2.0 header `hax webcomponent` writes (third-party code listed
       // in THIRD_PARTY is skipped). Also run by the license-check workflow.

@@ -1,0 +1,58 @@
+name: rule-checks
+# Blocking: HAX rules that had no check (praw RULES.md and this repo's
+# AGENTS.md), each a plain script with no AI:
+# - Color vision action pairs: accept / dismiss pairs in
+#   scripts/vision-pairs.json stay tellable apart in greyscale and with color
+#   vision deficiencies (RULES.md "Color Vision"; haxtheweb/issues#3219).
+#   It already ran in yarn precheck; this runs it on every pull request.
+# - No TypeScript: no .ts, .tsx, .mts or .cts source under elements/
+#   (.d.ts declarations are fine).
+# - Node.js latest LTS: package.json engines.node, any .nvmrc and every
+#   node-version in .github/workflows name the LTS in
+#   scripts/rule-checks.mjs (NODE_LTS).
+# - Tests poll, don't sleep: no test file gains a fixed sleep (aTimeout,
+#   setTimeout in a bare Promise, waitForTimeout). Sleeps that predate the
+#   rule are in scripts/test-sleeps.baseline.json, which only shrinks: after
+#   removing sleeps run `node scripts/rule-checks.mjs test-sleeps
+#   --update-baseline` and commit it.
+# All of it runs in yarn precheck too (yarn lint:rules, yarn lint:vision).
+on:
+  push:
+    branches: [master]
+  # No branch filter: stacked PRs (base is another feature branch) must run too.
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  rule-checks:
+    name: Rule checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Color vision action pairs
+        run: node scripts/vision-pairs-check.mjs --strict --quiet
+      - name: No TypeScript
+        if: always()
+        run: node scripts/rule-checks.mjs typescript
+      - name: Node.js latest LTS
+        if: always()
+        run: node scripts/rule-checks.mjs node-version
+      - name: Tests poll, don't sleep
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs test-sleeps --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs test-sleeps
+          fi
