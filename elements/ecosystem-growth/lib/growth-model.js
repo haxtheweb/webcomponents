@@ -426,6 +426,7 @@ export function buildPeople(contrib, T0, T1) {
         label: p.name || p.id,
         login: p.login || "",
         tile: p.tile || "",
+        page: p.page || "",
         kind: p.kind,
         d: p.first,
         T: parse(p.first),

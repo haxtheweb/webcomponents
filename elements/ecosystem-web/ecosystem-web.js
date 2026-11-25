@@ -208,6 +208,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       howToReadText:
         "Rings run from the center out. Select any tile to see what it is and what it connects to; tiles with a corner badge open their own web.",
       source: "Source",
+      whenContributing: "When they contributed",
       newTab: "(opens in a new tab)",
       connects: "connects to",
       pillar: "Pillars",
@@ -3265,6 +3266,20 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
     >`;
   }
   /**
+   * A person's place in the Growth page's Contributors view (the "growth"
+   * link PRAW gives people tiles): the same dataset seen over time, so it
+   * opens here rather than in a new tab.
+   */
+  _growthLink(url) {
+    return html`<a class="out" href="${url}"
+      ><simple-icon-lite
+        icon="icons:trending-up"
+        aria-hidden="true"
+      ></simple-icon-lite
+      ><span>${this.t.whenContributing}</span></a
+    >`;
+  }
+  /**
    * Going along a connection: the tile it leads to is selected, and if the
    * drawing has scrolled out of view (on a phone the details sit below it),
    * it comes back so the move can be seen. Focus goes to the new tile's
@@ -3364,7 +3379,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       ${this._lensNote(n)}
       ${d.status ? html`<span class="st ${d.status}">${d.status === "released" && d.version ? `${d.version}` : stWord[d.status] || d.status}</span>` : nothing}
       ${d.desc ? html`<p>${d.desc}</p>` : nothing}
-      ${(d.source && d.source.url) || Object.keys(d.links || {}).length ? html`<div class="lnks">${d.source && d.source.url ? this._outLink("source", safeUrl(d.source.url), `${this.t.source}: ${d.source.label}`) : nothing}${Object.entries(d.links || {}).map(([k, u]) => this._outLink(k, safeUrl(u), LINK_LABEL[k] || k))}</div>` : nothing}
+      ${(d.source && d.source.url) || Object.keys(d.links || {}).length ? html`<div class="lnks">${d.source && d.source.url ? this._outLink("source", safeUrl(d.source.url), `${this.t.source}: ${d.source.label}`) : nothing}${Object.entries(d.links || {}).map(([k, u]) => (k === "growth" ? this._growthLink(safeUrl(u)) : this._outLink(k, safeUrl(u), LINK_LABEL[k] || k)))}</div>` : nothing}
       ${this._canOpen(n) ? html`<button class="act primary" type="button" @click="${() => this.openWeb(n.web)}">${this.t.open} ${this._webName(n.web)}</button>` : nothing}
       ${this.web !== "main" && home && this._models[home] ? html`<button class="act" type="button" @click="${() => this.openWeb(home, n.id)}">${this.t.showIn} ${this._webName(home)}</button>` : nothing}
       ${d.note ? html`<p class="note">${d.note}</p>` : nothing}

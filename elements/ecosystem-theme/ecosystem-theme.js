@@ -78,7 +78,8 @@ function go(url) {
  * `ecosystemSrc` (the bundle URL, default `ecosystem-webs.json`), `footer`
  * (`[{label, href}]`, plus a `footerNote` line) and `welcome`
  * (`{title, text, actions}`: the greeting on the home page; `actions` is
- * `[{label, href, icon}]`, buttons beside it, such as the way to Growth).
+ * `[{label, href, icon}]`, buttons beside it, such as the way to Growth; an
+ * href may end in #fragment, where on that page to land).
  *
  * @title Ecosystem
  * @element ecosystem-theme
@@ -111,6 +112,7 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     this._trail = null;
     this._items = [];
     this._active = null;
+    this._onHash = () => this._arrive();
     this._vars = {};
     this._title = "";
     this._domain = "";
@@ -165,10 +167,51 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
           this._active = a || null;
         });
       }),
+      // a page's content arrived: land on the part the address names
+      autorun(() => {
+        if (store.activeItemContent) this._arrive();
+      }),
     );
+    globalThis.addEventListener("hashchange", this._onHash);
+  }
+
+  /**
+   * Land where the address's #fragment points: the element in the page with
+   * that id (the part before any &, so #watch&person=x lands on #watch and
+   * leaves the rest to what is there). Content arrives a little after the
+   * route changes, so look a few times before giving up.
+   */
+  _arrive(tries = 12) {
+    clearTimeout(this._arriveTimer);
+    let id = "";
+    try {
+      id = decodeURIComponent(
+        String(globalThis.location.hash || "")
+          .slice(1)
+          .split("&")[0],
+      );
+    } catch {
+      id = "";
+    }
+    if (!/^[A-Za-z][\w-]{0,60}$/.test(id)) return;
+    const el = this.querySelector("#" + id);
+    if (el) {
+      el.scrollIntoView({
+        block: "start",
+        behavior: globalThis.matchMedia("(prefers-reduced-motion: reduce)")
+          .matches
+          ? "auto"
+          : "smooth",
+      });
+      return;
+    }
+    if (tries > 0)
+      this._arriveTimer = setTimeout(() => this._arrive(tries - 1), 150);
   }
 
   disconnectedCallback() {
+    globalThis.removeEventListener("hashchange", this._onHash);
+    clearTimeout(this._arriveTimer);
     this._disposers.forEach((d) => d());
     this._disposers = [];
     super.disconnectedCallback();
@@ -285,17 +328,19 @@ class EcosystemTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     if (!acts.length) return "";
     return html`<div class="welcome-actions">
       ${acts.map((a) => {
-        const slug = String(a.href).replace(/^\//, "");
+        // a page slug, and what follows # (where on that page to land)
+        const [path, frag] = String(a.href).split("#");
+        const hash = frag ? "#" + frag : "";
         const item = /^[a-z][a-z0-9+.-]*:/i.test(a.href)
           ? null
-          : this._itemBySlug(slug);
+          : this._itemBySlug(path.replace(/^\//, ""));
         return html`<a
           class="btn withicon"
-          href="${item ? item.slug : a.href}"
+          href="${item ? item.slug + hash : a.href}"
           @click="${(e) => {
             if (!item || e.metaKey || e.ctrlKey || e.shiftKey) return;
             e.preventDefault();
-            this._go(item.slug);
+            this._go(item.slug + hash);
           }}"
           >${
             a.icon

@@ -726,7 +726,8 @@ export function evidenceScore(M, n) {
   const d = n.doc || {};
   let s =
     (d.source ? 1 : 0) +
-    Object.keys(d.links || {}).length +
+    // the growth link is a view of the same data, not evidence for the tile
+    Object.keys(d.links || {}).filter((k) => k !== "growth").length +
     (d.yearSource ? 1 : 0);
   relsOf(M, n.id).forEach((e) => {
     s += (M.evidence[`${e.from}>${e.to}`] || []).length;
