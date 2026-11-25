@@ -368,3 +368,125 @@ export function journeyCost(M, steps, payload) {
     newFiles: s.newFiles,
   }));
 }
+
+// ---------- contributors (haxtheweb/issues#3416) ----------
+
+/** How long a month's activity keeps glowing: it fades to about a third in this time. */
+export const HEAT_TAU = 120 * DAY;
+const GOLDEN = Math.PI * (3 - Math.sqrt(5));
+
+/** A person's glow at time t: each month's contributions, fading with age. */
+export function heatAt(p, t, tau) {
+  const k = tau || HEAT_TAU;
+  let h = 0;
+  for (let i = 0; i < p.act.length; i++) {
+    const [at, v] = p.act[i];
+    if (at > t) break;
+    h += v * Math.exp(-(t - at) / k);
+  }
+  return h;
+}
+
+/** Glow on a 0..1 scale against the hottest anyone has been (log, so a few commits still show). */
+export function heatLevel(h, max) {
+  return max > 0 ? clamp01(Math.log1p(h) / Math.log1p(max)) : 0;
+}
+
+function clamp01(v) {
+  return Math.max(0, Math.min(1, v));
+}
+
+/** Contributions a person had made by time t. */
+export function doneBy(p, t) {
+  let s = 0;
+  for (let i = 0; i < p.act.length && p.act[i][0] <= t; i++) s += p.act[i][1];
+  return s;
+}
+
+/**
+ * The contributors file as a drawing: the root (the network's creator) at the
+ * centre, everyone else placed outward by when they first contributed, the
+ * order around the circle spreading them evenly (a sunflower's spiral).
+ * Returns null without the file, so older data still loads.
+ */
+export function buildPeople(contrib, T0, T1) {
+  if (!contrib || !Array.isArray(contrib.people)) return null;
+  const parse = (d) => Date.parse(d);
+  const list = contrib.people
+    .filter((p) => p && p.first && p.monthly)
+    .map((p) => {
+      const act = Object.keys(p.monthly)
+        .sort()
+        .map((m) => [
+          parse(m + "-15"),
+          (p.monthly[m] || []).reduce((a, v) => a + v, 0),
+        ]);
+      return {
+        key: p.id,
+        label: p.name || p.id,
+        login: p.login || "",
+        tile: p.tile || "",
+        kind: p.kind,
+        d: p.first,
+        T: parse(p.first),
+        where: p.firstRepo || "",
+        totals: p.totals || {},
+        act,
+      };
+    })
+    .sort((a, b) => a.T - b.T);
+  const root = list.find((p) => p.key === contrib.root) || null;
+  const span = Math.max(1, T1 - T0);
+  let i = 0;
+  list.forEach((p) => {
+    if (p === root) {
+      p.f = 0;
+      p.a = 0;
+    } else if (p.kind !== "person") {
+      // agents sit on the ring of when they started, to one side
+      p.f = 0.12 + 0.88 * clamp01((p.T - T0) / span);
+      p.a = Math.PI;
+    } else {
+      p.f = 0.12 + 0.88 * clamp01((p.T - T0) / span);
+      p.a = i * GOLDEN;
+      i += 1;
+    }
+  });
+  // the hottest anyone has been, sampled monthly, so the scale holds while playing
+  let max = 0;
+  for (let t = T0; t <= T1 + DAY; t += 30 * DAY) {
+    list.forEach((p) => {
+      max = Math.max(max, heatAt(p, t));
+    });
+  }
+  const most = Math.max(1, ...list.map((p) => doneBy(p, T1)));
+  return { list, root, max, most };
+}
+
+/** Who had contributed by time t, who was active that month, and who glows most. */
+export function peopleAt(P, t, n) {
+  const ym = new Date(t).toISOString().slice(0, 7);
+  const people = P.list.filter((p) => p.kind === "person" && p.T <= t);
+  const active = people.filter((p) =>
+    p.act.some(
+      ([at, v]) => v > 0 && new Date(at).toISOString().slice(0, 7) === ym,
+    ),
+  );
+  const hot = P.list
+    .filter((p) => p.T <= t)
+    .map((p) => ({ p, h: heatAt(p, t) }))
+    .filter((x) => x.h > 0.05)
+    .sort((a, b) => b.h - a.h)
+    .slice(0, n || 5);
+  return {
+    month: ym,
+    contributors: people.length,
+    activeThisMonth: active.length,
+    newInLast12Months: people.filter((p) => p.T > t - 365 * DAY).length,
+    hottest: hot.map((x) => ({
+      id: x.p.key,
+      name: x.p.label,
+      glow: Math.round(heatLevel(x.h, P.max) * 100) / 100,
+    })),
+  };
+}

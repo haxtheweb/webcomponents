@@ -38,6 +38,22 @@ describe("EcosystemGrowth test", () => {
     expect(
       element.shadowRoot.querySelectorAll("ol.journey li").length,
     ).to.be.above(1);
+    buttons[4].click();
+    await element.updateComplete;
+    expect(element.view).to.equal("contributors");
+    expect(element.shadowRoot.querySelector("aside h3").textContent).to.equal(
+      "Contributors over time",
+    );
+  });
+
+  it("labels every header button with an icon and words", async () => {
+    const buttons = [...element.shadowRoot.querySelectorAll("header button")];
+    expect(buttons.length).to.equal(6);
+    buttons.forEach((b) => {
+      expect(b.querySelector("simple-icon-lite")).to.exist;
+      expect(b.textContent.trim().length).to.be.above(2);
+    });
+    expect(buttons[3].textContent.trim()).to.equal("Magic Script");
   });
 
   it("shows an error, not a blank, when the data is missing", async () => {

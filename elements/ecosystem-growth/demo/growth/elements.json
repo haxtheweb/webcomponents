@@ -1,3441 +1,4684 @@
 {
-  "meta": {
-    "generated": "2026-11-25",
-    "generator": "https://github.com/haxtheweb/praw/blob/main/ecosystem/build/build_growth.py",
-    "source": {
-      "webcomponents": "6c0e7a61c3da8a97a2d8450807ecd42313bb4297"
-    },
-    "license": "https://www.apache.org/licenses/LICENSE-2.0",
-    "about": "Every element package in webcomponents: when its package.json appeared, its main file's gzipped size, whether it builds on DDD, the packages it imports (statically or dynamically) and how many packages import it. History starts in September 2018, when the existing elements were moved into this repository.",
-    "issue": "https://github.com/haxtheweb/issues/issues/3409"
+ "meta": {
+  "generated": "2026-11-25",
+  "generator": "https://github.com/haxtheweb/praw/blob/main/ecosystem/build/build_growth.py",
+  "source": {
+   "webcomponents": "86f695077af6b0461776552f13a06351a889748a"
   },
-  "elements": [
-    {
-      "name": "a11y-carousel",
-      "package": "@haxtheweb/a11y-carousel",
-      "main": "elements/a11y-carousel/a11y-carousel.js",
-      "appeared": "2020-06-18",
-      "gz": 3294,
-      "ddd": false,
-      "dependsOn": ["radio-behaviors", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-collapse",
-      "package": "@haxtheweb/a11y-collapse",
-      "main": "elements/a11y-collapse/a11y-collapse.js",
-      "appeared": "2018-10-26",
-      "gz": 6969,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "simple-icon",
-        "simple-tooltip",
-        "user-action"
-      ],
-      "usedBy": 5
-    },
-    {
-      "name": "a11y-compare-image",
-      "package": "@haxtheweb/a11y-compare-image",
-      "main": "elements/a11y-compare-image/a11y-compare-image.js",
-      "appeared": "2020-06-17",
-      "gz": 6046,
-      "ddd": true,
-      "dependsOn": ["d-d-d"],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-details",
-      "package": "@haxtheweb/a11y-details",
-      "main": "elements/a11y-details/a11y-details.js",
-      "appeared": "2020-05-21",
-      "gz": 4203,
-      "ddd": true,
-      "dependsOn": ["i18n-manager"],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-figure",
-      "package": "@haxtheweb/a11y-figure",
-      "main": "elements/a11y-figure/a11y-figure.js",
-      "appeared": "2020-05-21",
-      "gz": 3268,
-      "ddd": true,
-      "dependsOn": ["a11y-details"],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-footnote",
-      "package": "@haxtheweb/a11y-footnote",
-      "main": "elements/a11y-footnote/a11y-footnote.js",
-      "appeared": "2026-11-16",
-      "gz": 2740,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "a11y-gif-player",
-      "package": "@haxtheweb/a11y-gif-player",
-      "main": "elements/a11y-gif-player/a11y-gif-player.js",
-      "appeared": "2018-10-23",
-      "gz": 5798,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "intersection-element",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-tooltip"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-media-player",
-      "package": "@haxtheweb/a11y-media-player",
-      "main": "elements/a11y-media-player/a11y-media-player.js",
-      "appeared": "2018-10-23",
-      "gz": 39431,
-      "ddd": true,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "anchor-behaviors",
-        "d-d-d",
-        "fullscreen-behaviors",
-        "hax-iconset",
-        "i18n-manager",
-        "responsive-utility",
-        "schema-behaviors",
-        "simple-fields",
-        "simple-icon",
-        "simple-range-input",
-        "simple-search",
-        "simple-tooltip",
-        "user-action",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "a11y-menu-button",
-      "package": "@haxtheweb/a11y-menu-button",
-      "main": "elements/a11y-menu-button/a11y-menu-button.js",
-      "appeared": "2020-11-25",
-      "gz": 6914,
-      "ddd": false,
-      "dependsOn": ["absolute-position-behavior", "utils"],
-      "usedBy": 2
-    },
-    {
-      "name": "a11y-tabs",
-      "package": "@haxtheweb/a11y-tabs",
-      "main": "elements/a11y-tabs/a11y-tabs.js",
-      "appeared": "2019-07-17",
-      "gz": 7015,
-      "ddd": true,
-      "dependsOn": [
-        "i18n-manager",
-        "responsive-utility",
-        "simple-icon",
-        "simple-tooltip"
-      ],
-      "usedBy": 4
-    },
-    {
-      "name": "absolute-position-behavior",
-      "package": "@haxtheweb/absolute-position-behavior",
-      "main": "elements/absolute-position-behavior/absolute-position-behavior.js",
-      "appeared": "2019-03-29",
-      "gz": 2103,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 9
-    },
-    {
-      "name": "accent-card",
-      "package": "@haxtheweb/accent-card",
-      "main": "elements/accent-card/accent-card.js",
-      "appeared": "2018-10-29",
-      "gz": 4406,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "intersection-element",
-        "simple-icon"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "aframe-player",
-      "package": "@haxtheweb/aframe-player",
-      "main": "elements/aframe-player/aframe-player.js",
-      "appeared": "2018-10-23",
-      "gz": 2484,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge", "hax-consent-gate", "schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "ai-usage-license",
-      "package": "@haxtheweb/ai-usage-license",
-      "main": "elements/ai-usage-license/ai-usage-license.js",
-      "appeared": "2026-03-26",
-      "gz": 4010,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "air-horn",
-      "package": "@haxtheweb/air-horn",
-      "main": "elements/air-horn/air-horn.js",
-      "appeared": "2019-06-26",
-      "gz": 2378,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "anchor-behaviors",
-      "package": "@haxtheweb/anchor-behaviors",
-      "main": "elements/anchor-behaviors/anchor-behaviors.js",
-      "appeared": "2019-10-25",
-      "gz": 1301,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 5
-    },
-    {
-      "name": "app-hax",
-      "package": "@haxtheweb/app-hax",
-      "main": "elements/app-hax/app-hax.js",
-      "appeared": "2022-03-23",
-      "gz": 23856,
-      "ddd": true,
-      "dependsOn": [
-        "code-editor",
-        "d-d-d",
-        "file-system-broker",
-        "grid-plate",
-        "h-a-x",
-        "hax-body",
-        "hax-body-behaviors",
-        "hax-iconset",
-        "hax-network-bar",
-        "haxcms-elements",
-        "i18n-manager",
-        "jwt-login",
-        "license-element",
-        "micro-frontend-registry",
-        "multiple-choice",
-        "promise-progress",
-        "replace-tag",
-        "responsive-utility",
-        "rpg-character",
-        "scroll-button",
-        "simple-colors",
-        "simple-datetime",
-        "simple-fields",
-        "simple-icon",
-        "simple-modal",
-        "simple-toolbar",
-        "simple-tooltip",
-        "super-daemon",
-        "utils",
-        "wc-autoload"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "arithmetic-drill",
-      "package": "@haxtheweb/arithmetic-drill",
-      "main": "elements/arithmetic-drill/arithmetic-drill.js",
-      "appeared": "2026-11-14",
-      "gz": 8384,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "audio-player",
-      "package": "@haxtheweb/audio-player",
-      "main": "elements/audio-player/audio-player.js",
-      "appeared": "2023-05-31",
-      "gz": 773,
-      "ddd": false,
-      "dependsOn": ["video-player"],
-      "usedBy": 2
-    },
-    {
-      "name": "author-card",
-      "package": "@haxtheweb/author-card",
-      "main": "elements/author-card/author-card.js",
-      "appeared": "2025-09-19",
-      "gz": 2758,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 1
-    },
-    {
-      "name": "awesome-explosion",
-      "package": "@haxtheweb/awesome-explosion",
-      "main": "elements/awesome-explosion/awesome-explosion.js",
-      "appeared": "2018-10-23",
-      "gz": 3700,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "b-r",
-      "package": "@haxtheweb/b-r",
-      "main": "elements/b-r/b-r.js",
-      "appeared": "2021-04-20",
-      "gz": 765,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "baseline-build-hax",
-      "package": "@haxtheweb/baseline-build-hax",
-      "main": "elements/baseline-build-hax/baseline-build-hax.js",
-      "appeared": "2018-12-04",
-      "gz": 438,
-      "ddd": false,
-      "dependsOn": [
-        "a11y-gif-player",
-        "citation-element",
-        "cms-hax",
-        "grid-plate",
-        "hax-body",
-        "image-compare-slider",
-        "license-element",
-        "lrn-math",
-        "lrn-table",
-        "lrn-vocab",
-        "media-behaviors",
-        "media-image",
-        "meme-maker",
-        "multiple-choice",
-        "oer-schema",
-        "person-testimonial",
-        "place-holder",
-        "q-r",
-        "self-check",
-        "stop-note",
-        "video-player",
-        "wikipedia-query",
-        "wysiwyg-hax"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "beaker-broker",
-      "package": "@haxtheweb/beaker-broker",
-      "main": "elements/beaker-broker/beaker-broker.js",
-      "appeared": "2018-10-09",
-      "gz": 1814,
-      "ddd": true,
-      "dependsOn": [],
-      "usedBy": 1
-    },
-    {
-      "name": "bibliography-builder",
-      "package": "@haxtheweb/bibliography-builder",
-      "main": "elements/bibliography-builder/bibliography-builder.js",
-      "appeared": "2026-05-07",
-      "gz": 4107,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-modal"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "book-theme",
-      "package": "@haxtheweb/book-theme",
-      "main": "elements/book-theme/book-theme.js",
-      "appeared": "2026-11-17",
-      "gz": 5976,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-datetime",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "bootstrap-theme",
-      "package": "@haxtheweb/bootstrap-theme",
-      "main": "elements/bootstrap-theme/bootstrap-theme.js",
-      "appeared": "2021-02-25",
-      "gz": 6308,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "map-menu",
-        "simple-icon",
-        "simple-popover",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "branching-scenario",
-      "package": "@haxtheweb/branching-scenario",
-      "main": "elements/branching-scenario/branching-scenario.js",
-      "appeared": "2026-11-14",
-      "gz": 9321,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "bullet-check-list",
-      "package": "@haxtheweb/bullet-check-list",
-      "main": "elements/bullet-check-list/bullet-check-list.js",
-      "appeared": "2026-10-19",
-      "gz": 8268,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "user-action"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "carbon-theme",
-      "package": "@haxtheweb/carbon-theme",
-      "main": "elements/carbon-theme/carbon-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 4320,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "career-timeline",
-      "package": "@haxtheweb/career-timeline",
-      "main": "elements/career-timeline/career-timeline.js",
-      "appeared": "2026-05-07",
-      "gz": 1766,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "chamfer-theme",
-      "package": "@haxtheweb/chamfer-theme",
-      "main": "elements/chamfer-theme/chamfer-theme.js",
-      "appeared": "2026-08-18",
-      "gz": 3801,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "scroll-button"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "chartist-render",
-      "package": "@haxtheweb/chartist-render",
-      "main": "elements/chartist-render/chartist-render.js",
-      "appeared": "2018-10-23",
-      "gz": 8896,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge", "utils"],
-      "usedBy": 1
-    },
-    {
-      "name": "citation-element",
-      "package": "@haxtheweb/citation-element",
-      "main": "elements/citation-element/citation-element.js",
-      "appeared": "2018-10-23",
-      "gz": 4973,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "license-element",
-        "schema-behaviors",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "clean-one",
-      "package": "@haxtheweb/clean-one",
-      "main": "elements/clean-one/clean-one.js",
-      "appeared": "2020-06-29",
-      "gz": 9198,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "micro-frontend-registry",
-        "scroll-button",
-        "user-scaffold"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "clean-portfolio-theme",
-      "package": "@haxtheweb/clean-portfolio-theme",
-      "main": "elements/clean-portfolio-theme/clean-portfolio-theme.js",
-      "appeared": "2025-02-03",
-      "gz": 11895,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "license-element",
-        "scroll-button",
-        "simple-icon",
-        "user-scaffold"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "clean-two",
-      "package": "@haxtheweb/clean-two",
-      "main": "elements/clean-two/clean-two.js",
-      "appeared": "2020-07-06",
-      "gz": 6980,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "micro-frontend-registry",
-        "simple-icon"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "cms-hax",
-      "package": "@haxtheweb/cms-hax",
-      "main": "elements/cms-hax/cms-hax.js",
-      "appeared": "2018-10-23",
-      "gz": 3473,
-      "ddd": false,
-      "dependsOn": ["h-a-x", "hax-body", "utils"],
-      "usedBy": 2
-    },
-    {
-      "name": "code-editor",
-      "package": "@haxtheweb/code-editor",
-      "main": "elements/code-editor/code-editor.js",
-      "appeared": "2018-10-23",
-      "gz": 5627,
-      "ddd": true,
-      "dependsOn": ["i18n-manager", "schema-behaviors", "utils"],
-      "usedBy": 5
-    },
-    {
-      "name": "code-sample",
-      "package": "@haxtheweb/code-sample",
-      "main": "elements/code-sample/code-sample.js",
-      "appeared": "2019-02-10",
-      "gz": 6699,
-      "ddd": true,
-      "dependsOn": ["code-editor", "d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 2
-    },
-    {
-      "name": "collection-list",
-      "package": "@haxtheweb/collection-list",
-      "main": "elements/collection-list/collection-list.js",
-      "appeared": "2023-11-29",
-      "gz": 999,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "responsive-utility",
-        "scroll-button",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "count-up",
-      "package": "@haxtheweb/count-up",
-      "main": "elements/count-up/count-up.js",
-      "appeared": "2019-03-14",
-      "gz": 2624,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "intersection-element", "utils"],
-      "usedBy": 2
-    },
-    {
-      "name": "course-design",
-      "package": "@haxtheweb/course-design",
-      "main": "elements/course-design/course-design.js",
-      "appeared": "2021-01-11",
-      "gz": 949,
-      "ddd": false,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "haxcms-elements",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-tooltip"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "course-model",
-      "package": "@haxtheweb/course-model",
-      "main": "elements/course-model/course-model.js",
-      "appeared": "2023-06-29",
-      "gz": 4413,
-      "ddd": true,
-      "dependsOn": ["i18n-manager", "schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "crossword-puzzle",
-      "package": "@haxtheweb/crossword-puzzle",
-      "main": "elements/crossword-puzzle/crossword-puzzle.js",
-      "appeared": "2026-11-14",
-      "gz": 9929,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "multiple-choice"],
-      "usedBy": 0
-    },
-    {
-      "name": "csv-render",
-      "package": "@haxtheweb/csv-render",
-      "main": "elements/csv-render/csv-render.js",
-      "appeared": "2018-10-23",
-      "gz": 3396,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hexagon-loader",
-        "i18n-manager",
-        "intersection-element",
-        "simple-icon"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "d-d-d",
-      "package": "@haxtheweb/d-d-d",
-      "main": "elements/d-d-d/d-d-d.js",
-      "appeared": "2024-01-08",
-      "gz": 1925,
-      "ddd": true,
-      "dependsOn": [
-        "hax-iconset",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-colors",
-        "simple-icon",
-        "simple-modal",
-        "simple-tooltip"
-      ],
-      "usedBy": 141
-    },
-    {
-      "name": "d-d-docs",
-      "package": "@haxtheweb/d-d-docs",
-      "main": "elements/d-d-docs/d-d-docs.js",
-      "appeared": "2024-12-05",
-      "gz": 24115,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-carousel",
-        "a11y-collapse",
-        "a11y-figure",
-        "a11y-tabs",
-        "accent-card",
-        "audio-player",
-        "author-card",
-        "collection-list",
-        "count-up",
-        "course-design",
-        "d-d-d",
-        "date-card",
-        "editable-table",
-        "figure-label",
-        "flash-card",
-        "grid-plate",
-        "i18n-manager",
-        "image-gallery",
-        "lrndesign-timeline",
-        "media-image",
-        "media-playlist",
-        "multiple-choice",
-        "oer-schema",
-        "page-contents-menu",
-        "page-section",
-        "person-testimonial",
-        "post-card",
-        "promise-progress",
-        "q-r",
-        "self-check",
-        "simple-cta",
-        "simple-fields",
-        "simple-icon",
-        "simple-pager",
-        "simple-progress",
-        "simple-toast",
-        "social-share-link",
-        "stop-note",
-        "utils",
-        "video-player",
-        "vocab-term"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "date-card",
-      "package": "@haxtheweb/date-card",
-      "main": "elements/date-card/date-card.js",
-      "appeared": "2020-07-09",
-      "gz": 2731,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 2
-    },
-    {
-      "name": "deduping-fix",
-      "package": "@haxtheweb/deduping-fix",
-      "main": "elements/deduping-fix/deduping-fix.js",
-      "appeared": "2018-10-31",
-      "gz": 419,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "demo-snippet",
-      "package": "@haxtheweb/demo-snippet",
-      "main": "elements/demo-snippet/demo-snippet.js",
-      "appeared": "2025-10-16",
-      "gz": 3589,
-      "ddd": true,
-      "dependsOn": ["code-sample", "d-d-d", "utils"],
-      "usedBy": 0
-    },
-    {
-      "name": "discord-embed",
-      "package": "@haxtheweb/discord-embed",
-      "main": "elements/discord-embed/discord-embed.js",
-      "appeared": "2023-12-08",
-      "gz": 2721,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "iframe-loader",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "disqus-embed",
-      "package": "@haxtheweb/disqus-embed",
-      "main": "elements/disqus-embed/disqus-embed.js",
-      "appeared": "2024-01-03",
-      "gz": 3082,
-      "ddd": false,
-      "dependsOn": ["hax-consent-gate", "haxcms-elements"],
-      "usedBy": 0
-    },
-    {
-      "name": "documentation-player",
-      "package": "@haxtheweb/documentation-player",
-      "main": "elements/documentation-player/documentation-player.js",
-      "appeared": "2023-09-13",
-      "gz": 11138,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "simple-range-input",
-        "utils",
-        "video-player"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "doodle-board",
-      "package": "@haxtheweb/doodle-board",
-      "main": "elements/doodle-board/doodle-board.js",
-      "appeared": "2026-11-11",
-      "gz": 1901,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "dynamic-import-registry",
-      "package": "@haxtheweb/dynamic-import-registry",
-      "main": "elements/dynamic-import-registry/dynamic-import-registry.js",
-      "appeared": "2020-03-30",
-      "gz": 1816,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 3
-    },
-    {
-      "name": "ecosystem-theme",
-      "package": "@haxtheweb/ecosystem-theme",
-      "main": "elements/ecosystem-theme/ecosystem-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 7479,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "ecosystem-web",
-        "hax-iconset",
-        "hax-network-bar",
-        "haxcms-elements",
-        "simple-fields",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "ecosystem-web",
-      "package": "@haxtheweb/ecosystem-web",
-      "main": "elements/ecosystem-web/ecosystem-web.js",
-      "appeared": "2026-11-12",
-      "gz": 29638,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "hax-iconset", "i18n-manager", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "editable-table",
-      "package": "@haxtheweb/editable-table",
-      "main": "elements/editable-table/editable-table.js",
-      "appeared": "2018-10-23",
-      "gz": 4200,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-menu-button",
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "responsive-utility",
-        "rich-text-editor",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-picker",
-        "simple-toolbar",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 7
-    },
-    {
-      "name": "elmsln-loading",
-      "package": "@haxtheweb/elmsln-loading",
-      "main": "elements/elmsln-loading/elmsln-loading.js",
-      "appeared": "2018-10-23",
-      "gz": 1662,
-      "ddd": false,
-      "dependsOn": [
-        "hax-iconset",
-        "i18n-manager",
-        "simple-colors",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "enhanced-text",
-      "package": "@haxtheweb/enhanced-text",
-      "main": "elements/enhanced-text/enhanced-text.js",
-      "appeared": "2022-06-21",
-      "gz": 3917,
-      "ddd": false,
-      "dependsOn": ["utils", "vocab-term"],
-      "usedBy": 0
-    },
-    {
-      "name": "es-global-bridge",
-      "package": "@haxtheweb/es-global-bridge",
-      "main": "elements/es-global-bridge/es-global-bridge.js",
-      "appeared": "2018-11-07",
-      "gz": 1381,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 13
-    },
-    {
-      "name": "event-badge",
-      "package": "@haxtheweb/event-badge",
-      "main": "elements/event-badge/event-badge.js",
-      "appeared": "2021-11-05",
-      "gz": 91177,
-      "ddd": false,
-      "dependsOn": ["simple-colors"],
-      "usedBy": 0
-    },
-    {
-      "name": "example-hax-element",
-      "package": "@haxtheweb/example-hax-element",
-      "main": "elements/example-hax-element/example-hax-element.js",
-      "appeared": "2018-11-21",
-      "gz": 876,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "example-haxcms-theme",
-      "package": "@haxtheweb/example-haxcms-theme",
-      "main": "elements/example-haxcms-theme/example-haxcms-theme.js",
-      "appeared": "2019-05-21",
-      "gz": 2401,
-      "ddd": true,
-      "dependsOn": ["haxcms-elements"],
-      "usedBy": 0
-    },
-    {
-      "name": "figure-label",
-      "package": "@haxtheweb/figure-label",
-      "main": "elements/figure-label/figure-label.js",
-      "appeared": "2019-08-28",
-      "gz": 1236,
-      "ddd": true,
-      "dependsOn": ["d-d-d"],
-      "usedBy": 2
-    },
-    {
-      "name": "file-system-broker",
-      "package": "@haxtheweb/file-system-broker",
-      "main": "elements/file-system-broker/file-system-broker.js",
-      "appeared": "2021-05-21",
-      "gz": 3689,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge"],
-      "usedBy": 3
-    },
-    {
-      "name": "fill-in-the-blanks",
-      "package": "@haxtheweb/fill-in-the-blanks",
-      "main": "elements/fill-in-the-blanks/fill-in-the-blanks.js",
-      "appeared": "2024-05-20",
-      "gz": 5248,
-      "ddd": false,
-      "dependsOn": ["mark-the-words", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "flash-card",
-      "package": "@haxtheweb/flash-card",
-      "main": "elements/flash-card/flash-card.js",
-      "appeared": "2018-10-23",
-      "gz": 3785,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "multiple-choice",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-toast",
-        "simple-toolbar",
-        "user-action"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "fluent-theme",
-      "package": "@haxtheweb/fluent-theme",
-      "main": "elements/fluent-theme/fluent-theme.js",
-      "appeared": "2026-11-16",
-      "gz": 4403,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "full-width-image",
-      "package": "@haxtheweb/full-width-image",
-      "main": "elements/full-width-image/full-width-image.js",
-      "appeared": "2019-01-28",
-      "gz": 2792,
-      "ddd": false,
-      "dependsOn": ["i18n-manager", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "fullscreen-behaviors",
-      "package": "@haxtheweb/fullscreen-behaviors",
-      "main": "elements/fullscreen-behaviors/fullscreen-behaviors.js",
-      "appeared": "2020-08-10",
-      "gz": 1298,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "future-terminal-text",
-      "package": "@haxtheweb/future-terminal-text",
-      "main": "elements/future-terminal-text/future-terminal-text.js",
-      "appeared": "2020-12-17",
-      "gz": 669,
-      "ddd": false,
-      "dependsOn": ["simple-colors"],
-      "usedBy": 2
-    },
-    {
-      "name": "git-corner",
-      "package": "@haxtheweb/git-corner",
-      "main": "elements/git-corner/git-corner.js",
-      "appeared": "2019-09-05",
-      "gz": 2084,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 1
-    },
-    {
-      "name": "github-preview",
-      "package": "@haxtheweb/github-preview",
-      "main": "elements/github-preview/github-preview.js",
-      "appeared": "2021-01-19",
-      "gz": 6541,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "intersection-element",
-        "rpg-character",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "glossy-portfolio-theme",
-      "package": "@haxtheweb/glossy-portfolio-theme",
-      "main": "elements/glossy-portfolio-theme/glossy-portfolio-theme.js",
-      "appeared": "2025-05-21",
-      "gz": 2759,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "license-element"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "grade-book",
-      "package": "@haxtheweb/grade-book",
-      "main": "elements/grade-book/grade-book.js",
-      "appeared": "2021-03-10",
-      "gz": 7983,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-collapse",
-        "a11y-tabs",
-        "d-d-d",
-        "editable-table",
-        "es-global-bridge",
-        "file-system-broker",
-        "grid-plate",
-        "hax-iconset",
-        "i18n-manager",
-        "iframe-loader",
-        "md-block",
-        "micro-frontend-registry",
-        "schema-behaviors",
-        "simple-colors",
-        "simple-fields",
-        "simple-filter",
-        "simple-icon",
-        "simple-popover",
-        "simple-tooltip",
-        "utils",
-        "video-player"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "grid-plate",
-      "package": "@haxtheweb/grid-plate",
-      "main": "elements/grid-plate/grid-plate.js",
-      "appeared": "2018-10-23",
-      "gz": 6230,
-      "ddd": true,
-      "dependsOn": ["responsive-utility"],
-      "usedBy": 7
-    },
-    {
-      "name": "h-a-x",
-      "package": "@haxtheweb/h-a-x",
-      "main": "elements/h-a-x/h-a-x.js",
-      "appeared": "2018-12-24",
-      "gz": 3449,
-      "ddd": false,
-      "dependsOn": ["editable-table", "hax-body", "utils"],
-      "usedBy": 3
-    },
-    {
-      "name": "h5p-element",
-      "package": "@haxtheweb/h5p-element",
-      "main": "elements/h5p-element/h5p-element.js",
-      "appeared": "2019-08-13",
-      "gz": 6567,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "es-global-bridge",
-        "haxcms-elements",
-        "i18n-manager",
-        "iframe-loader",
-        "simple-icon",
-        "user-action"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "hal-9000",
-      "package": "@haxtheweb/hal-9000",
-      "main": "elements/hal-9000/hal-9000.js",
-      "appeared": "2019-01-16",
-      "gz": 3558,
-      "ddd": false,
-      "dependsOn": ["simple-colors", "utils"],
-      "usedBy": 1
-    },
-    {
-      "name": "hax-app-installer",
-      "package": "@haxtheweb/hax-app-installer",
-      "main": "elements/hax-app-installer/hax-app-installer.js",
-      "appeared": "2026-09-08",
-      "gz": 24405,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "retro-tv",
-        "simple-icon",
-        "stop-note"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "hax-body",
-      "package": "@haxtheweb/hax-body",
-      "main": "elements/hax-body/hax-body.js",
-      "appeared": "2018-10-09",
-      "gz": 70433,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-collapse",
-        "absolute-position-behavior",
-        "code-editor",
-        "d-d-d",
-        "editable-table",
-        "grid-plate",
-        "hax-body-behaviors",
-        "hax-iconset",
-        "i18n-manager",
-        "iframe-loader",
-        "image-gallery",
-        "intersection-element",
-        "media-behaviors",
-        "media-image",
-        "micro-frontend-registry",
-        "rich-text-editor",
-        "simple-colors",
-        "simple-fields",
-        "simple-filter",
-        "simple-icon",
-        "simple-modal",
-        "simple-picker",
-        "simple-popover",
-        "simple-toolbar",
-        "super-daemon",
-        "undo-manager",
-        "user-scaffold",
-        "utils"
-      ],
-      "usedBy": 8
-    },
-    {
-      "name": "hax-body-behaviors",
-      "package": "@haxtheweb/hax-body-behaviors",
-      "main": "elements/hax-body-behaviors/hax-body-behaviors.js",
-      "appeared": "2018-09-27",
-      "gz": 172,
-      "ddd": false,
-      "dependsOn": ["simple-fields"],
-      "usedBy": 3
-    },
-    {
-      "name": "hax-consent-gate",
-      "package": "@haxtheweb/hax-consent-gate",
-      "main": "elements/hax-consent-gate/hax-consent-gate.js",
-      "appeared": "2026-11-23",
-      "gz": 4839,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "utils"],
-      "usedBy": 13
-    },
-    {
-      "name": "hax-iconset",
-      "package": "@haxtheweb/hax-iconset",
-      "main": "elements/hax-iconset/hax-iconset.js",
-      "appeared": "2019-06-11",
-      "gz": 250,
-      "ddd": false,
-      "dependsOn": ["simple-icon"],
-      "usedBy": 35
-    },
-    {
-      "name": "hax-logo",
-      "package": "@haxtheweb/hax-logo",
-      "main": "elements/hax-logo/hax-logo.js",
-      "appeared": "2019-08-13",
-      "gz": 1551,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "hax-marketing-theme",
-      "package": "@haxtheweb/hax-marketing-theme",
-      "main": "elements/hax-marketing-theme/hax-marketing-theme.js",
-      "appeared": "2026-11-18",
-      "gz": 9243,
-      "ddd": true,
-      "dependsOn": [
-        "count-up",
-        "d-d-d",
-        "hax-iconset",
-        "hax-network-bar",
-        "haxcms-elements",
-        "i18n-manager",
-        "rpg-character",
-        "scroll-button",
-        "simple-cta",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "hax-network-bar",
-      "package": "@haxtheweb/hax-network-bar",
-      "main": "elements/hax-network-bar/hax-network-bar.js",
-      "appeared": "2026-11-12",
-      "gz": 18879,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-icon",
-        "super-daemon"
-      ],
-      "usedBy": 4
-    },
-    {
-      "name": "haxcms-elements",
-      "package": "@haxtheweb/haxcms-elements",
-      "main": "elements/haxcms-elements/haxcms-elements.js",
-      "appeared": "2018-10-23",
-      "gz": 246,
-      "ddd": false,
-      "dependsOn": [
-        "a11y-collapse",
-        "a11y-tabs",
-        "absolute-position-behavior",
-        "accent-card",
-        "anchor-behaviors",
-        "app-hax",
-        "beaker-broker",
-        "citation-element",
-        "clean-two",
-        "code-sample",
-        "collection-list",
-        "d-d-d",
-        "editable-table",
-        "es-global-bridge",
-        "file-system-broker",
-        "future-terminal-text",
-        "git-corner",
-        "github-preview",
-        "grid-plate",
-        "h-a-x",
-        "hax-body",
-        "hax-body-behaviors",
-        "hax-consent-gate",
-        "hax-iconset",
-        "hax-network-bar",
-        "i18n-manager",
-        "iframe-loader",
-        "image-gallery",
-        "instructional-cadence",
-        "intersection-element",
-        "json-outline-schema",
-        "jwt-login",
-        "license-element",
-        "lrndesign-chart",
-        "lrndesign-timeline",
-        "lunr-search",
-        "map-menu",
-        "media-playlist",
-        "micro-frontend-registry",
-        "outline-designer",
-        "page-contents-menu",
-        "play-list",
-        "privacy-choices",
-        "q-r",
-        "replace-tag",
-        "responsive-utility",
-        "rpg-character",
-        "scroll-button",
-        "simple-colors",
-        "simple-colors-shared-styles",
-        "simple-datetime",
-        "simple-fields",
-        "simple-icon",
-        "simple-modal",
-        "simple-pager",
-        "simple-popover",
-        "simple-progress",
-        "simple-toast",
-        "simple-toolbar",
-        "simple-tooltip",
-        "super-daemon",
-        "user-action",
-        "user-scaffold",
-        "utils",
-        "video-player"
-      ],
-      "usedBy": 47
-    },
-    {
-      "name": "haxma-theme",
-      "package": "@haxtheweb/haxma-theme",
-      "main": "elements/haxma-theme/haxma-theme.js",
-      "appeared": "2025-09-09",
-      "gz": 5927,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "haxor-slevin",
-      "package": "@haxtheweb/haxor-slevin",
-      "main": "elements/haxor-slevin/haxor-slevin.js",
-      "appeared": "2019-04-24",
-      "gz": 6205,
-      "ddd": true,
-      "dependsOn": [
-        "accent-card",
-        "anchor-behaviors",
-        "d-d-d",
-        "date-card",
-        "full-width-image",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-colors",
-        "simple-icon",
-        "social-share-link",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "hex-picker",
-      "package": "@haxtheweb/hex-picker",
-      "main": "elements/hex-picker/hex-picker.js",
-      "appeared": "2021-02-17",
-      "gz": 2885,
-      "ddd": false,
-      "dependsOn": ["i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "hexagon-loader",
-      "package": "@haxtheweb/hexagon-loader",
-      "main": "elements/hexagon-loader/hexagon-loader.js",
-      "appeared": "2018-11-19",
-      "gz": 2890,
-      "ddd": true,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "html-block",
-      "package": "@haxtheweb/html-block",
-      "main": "elements/html-block/html-block.js",
-      "appeared": "2019-05-23",
-      "gz": 2440,
-      "ddd": false,
-      "dependsOn": ["utils"],
-      "usedBy": 0
-    },
-    {
-      "name": "i18n-manager",
-      "package": "@haxtheweb/i18n-manager",
-      "main": "elements/i18n-manager/i18n-manager.js",
-      "appeared": "2021-02-25",
-      "gz": 6315,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 145
-    },
-    {
-      "name": "ics-render",
-      "package": "@haxtheweb/ics-render",
-      "main": "elements/ics-render/ics-render.js",
-      "appeared": "2026-10-05",
-      "gz": 6932,
-      "ddd": true,
-      "dependsOn": [
-        "collection-list",
-        "d-d-d",
-        "editable-table",
-        "i18n-manager",
-        "intersection-element",
-        "lrndesign-timeline"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "identify-hotspots",
-      "package": "@haxtheweb/identify-hotspots",
-      "main": "elements/identify-hotspots/identify-hotspots.js",
-      "appeared": "2026-11-14",
-      "gz": 8781,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "iframe-loader",
-      "package": "@haxtheweb/iframe-loader",
-      "main": "elements/iframe-loader/iframe-loader.js",
-      "appeared": "2020-05-26",
-      "gz": 4270,
-      "ddd": false,
-      "dependsOn": ["hax-consent-gate", "utils"],
-      "usedBy": 5
-    },
-    {
-      "name": "image-compare-slider",
-      "package": "@haxtheweb/image-compare-slider",
-      "main": "elements/image-compare-slider/image-compare-slider.js",
-      "appeared": "2018-10-23",
-      "gz": 5085,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-compare-image",
-        "d-d-d",
-        "i18n-manager",
-        "intersection-element",
-        "schema-behaviors",
-        "user-action"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "image-dropzone",
-      "package": "@haxtheweb/image-dropzone",
-      "main": "elements/image-dropzone/image-dropzone.js",
-      "appeared": "2026-11-14",
-      "gz": 9683,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "image-gallery",
-      "package": "@haxtheweb/image-gallery",
-      "main": "elements/image-gallery/image-gallery.js",
-      "appeared": "2026-06-25",
-      "gz": 7699,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 3
-    },
-    {
-      "name": "image-inspector",
-      "package": "@haxtheweb/image-inspector",
-      "main": "elements/image-inspector/image-inspector.js",
-      "appeared": "2018-10-23",
-      "gz": 2608,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "img-pan-zoom", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "img-pan-zoom",
-      "package": "@haxtheweb/img-pan-zoom",
-      "main": "elements/img-pan-zoom/img-pan-zoom.js",
-      "appeared": "2018-10-28",
-      "gz": 5651,
-      "ddd": true,
-      "dependsOn": ["es-global-bridge", "hexagon-loader"],
-      "usedBy": 2
-    },
-    {
-      "name": "img-view-modal",
-      "package": "@haxtheweb/img-view-modal",
-      "main": "elements/img-view-modal/img-view-modal.js",
-      "appeared": "2020-07-31",
-      "gz": 2070,
-      "ddd": false,
-      "dependsOn": [
-        "fullscreen-behaviors",
-        "i18n-manager",
-        "img-pan-zoom",
-        "simple-icon",
-        "simple-modal",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "inline-audio",
-      "package": "@haxtheweb/inline-audio",
-      "main": "elements/inline-audio/inline-audio.js",
-      "appeared": "2023-04-20",
-      "gz": 3198,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "hax-iconset", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "instructional-cadence",
-      "package": "@haxtheweb/instructional-cadence",
-      "main": "elements/instructional-cadence/instructional-cadence.js",
-      "appeared": "2026-11-04",
-      "gz": 5223,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "sheet-music"],
-      "usedBy": 1
-    },
-    {
-      "name": "intersection-element",
-      "package": "@haxtheweb/intersection-element",
-      "main": "elements/intersection-element/lib/IntersectionObserverMixin.js",
-      "appeared": "2020-02-07",
-      "gz": 1394,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 20
-    },
-    {
-      "name": "journey-theme",
-      "package": "@haxtheweb/journey-theme",
-      "main": "elements/journey-theme/journey-theme.js",
-      "appeared": "2025-04-25",
-      "gz": 7967,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "license-element",
-        "scroll-button",
-        "simple-cta",
-        "simple-icon",
-        "simple-tooltip",
-        "user-scaffold"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "json-outline-schema",
-      "package": "@haxtheweb/json-outline-schema",
-      "main": "elements/json-outline-schema/json-outline-schema.js",
-      "appeared": "2018-10-23",
-      "gz": 6022,
-      "ddd": false,
-      "dependsOn": ["dynamic-import-registry", "utils"],
-      "usedBy": 2
-    },
-    {
-      "name": "jwt-login",
-      "package": "@haxtheweb/jwt-login",
-      "main": "elements/jwt-login/jwt-login.js",
-      "appeared": "2018-10-23",
-      "gz": 6322,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "la-tex",
-      "package": "@haxtheweb/la-tex",
-      "main": "elements/la-tex/la-tex.js",
-      "appeared": "2024-09-11",
-      "gz": 4032,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "es-global-bridge",
-        "i18n-manager",
-        "lrn-math",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "lazy-image-helpers",
-      "package": "@haxtheweb/lazy-image-helpers",
-      "main": "elements/lazy-image-helpers/lazy-image-helpers.js",
-      "appeared": "2020-11-24",
-      "gz": 2087,
-      "ddd": false,
-      "dependsOn": ["intersection-element", "replace-tag", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "lazy-import-discover",
-      "package": "@haxtheweb/lazy-import-discover",
-      "main": "elements/lazy-import-discover/lazy-import-discover.js",
-      "appeared": "2019-06-02",
-      "gz": 1033,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "learn-two-theme",
-      "package": "@haxtheweb/learn-two-theme",
-      "main": "elements/learn-two-theme/learn-two-theme.js",
-      "appeared": "2019-03-10",
-      "gz": 4523,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "license-element",
-      "package": "@haxtheweb/license-element",
-      "main": "elements/license-element/license-element.js",
-      "appeared": "2018-10-23",
-      "gz": 5129,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "schema-behaviors"],
-      "usedBy": 7
-    },
-    {
-      "name": "link-card-theme",
-      "package": "@haxtheweb/link-card-theme",
-      "main": "elements/link-card-theme/link-card-theme.js",
-      "appeared": "2026-05-26",
-      "gz": 5291,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-icon",
-        "user-scaffold"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "linkedin-embed",
-      "package": "@haxtheweb/linkedin-embed",
-      "main": "elements/linkedin-embed/linkedin-embed.js",
-      "appeared": "2026-05-04",
-      "gz": 172,
-      "ddd": false,
-      "dependsOn": ["d-d-d", "hax-iconset", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "lorem-data",
-      "package": "@haxtheweb/lorem-data",
-      "main": "elements/lorem-data/lorem-data.js",
-      "appeared": "2020-07-17",
-      "gz": 2078,
-      "ddd": false,
-      "dependsOn": [
-        "hax-iconset",
-        "i18n-manager",
-        "simple-colors",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "lrn-math",
-      "package": "@haxtheweb/lrn-math",
-      "main": "elements/lrn-math/lrn-math.js",
-      "appeared": "2018-10-23",
-      "gz": 3641,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "lrn-table",
-      "package": "@haxtheweb/lrn-table",
-      "main": "elements/lrn-table/lrn-table.js",
-      "appeared": "2018-10-23",
-      "gz": 1426,
-      "ddd": true,
-      "dependsOn": [
-        "csv-render",
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "schema-behaviors"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "lrn-vocab",
-      "package": "@haxtheweb/lrn-vocab",
-      "main": "elements/lrn-vocab/lrn-vocab.js",
-      "appeared": "2018-10-23",
-      "gz": 2744,
-      "ddd": true,
-      "dependsOn": [
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-modal"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "lrndesign-chart",
-      "package": "@haxtheweb/lrndesign-chart",
-      "main": "elements/lrndesign-chart/lrndesign-chart.js",
-      "appeared": "2018-10-23",
-      "gz": 6593,
-      "ddd": true,
-      "dependsOn": ["chartist-render", "d-d-d", "i18n-manager"],
-      "usedBy": 2
-    },
-    {
-      "name": "lrndesign-imagemap",
-      "package": "@haxtheweb/lrndesign-imagemap",
-      "main": "elements/lrndesign-imagemap/lrndesign-imagemap.js",
-      "appeared": "2018-10-23",
-      "gz": 7949,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "relative-heading",
-        "simple-icon",
-        "simple-popover",
-        "user-action"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "lrndesign-sidenote",
-      "package": "@haxtheweb/lrndesign-sidenote",
-      "main": "elements/lrndesign-sidenote/lrndesign-sidenote.js",
-      "appeared": "2018-10-23",
-      "gz": 2428,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "lrndesign-timeline",
-      "package": "@haxtheweb/lrndesign-timeline",
-      "main": "elements/lrndesign-timeline/lrndesign-timeline.js",
-      "appeared": "2019-01-15",
-      "gz": 5949,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "responsive-utility",
-        "schema-behaviors",
-        "simple-colors",
-        "utils"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "lrs-elements",
-      "package": "@haxtheweb/lrs-elements",
-      "main": "elements/lrs-elements/lrs-elements.js",
-      "appeared": "2020-11-11",
-      "gz": 164,
-      "ddd": false,
-      "dependsOn": ["intersection-element", "user-action", "utils"],
-      "usedBy": 0
-    },
-    {
-      "name": "lti-launch",
-      "package": "@haxtheweb/lti-launch",
-      "main": "elements/lti-launch/lti-launch.js",
-      "appeared": "2026-11-14",
-      "gz": 7054,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "lunr-search",
-      "package": "@haxtheweb/lunr-search",
-      "main": "elements/lunr-search/lunr-search.js",
-      "appeared": "2019-04-25",
-      "gz": 3691,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge", "i18n-manager"],
-      "usedBy": 1
-    },
-    {
-      "name": "map-menu",
-      "package": "@haxtheweb/map-menu",
-      "main": "elements/map-menu/map-menu.js",
-      "appeared": "2018-10-23",
-      "gz": 6304,
-      "ddd": false,
-      "dependsOn": [
-        "a11y-collapse",
-        "d-d-d",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "mark-the-words",
-      "package": "@haxtheweb/mark-the-words",
-      "main": "elements/mark-the-words/mark-the-words.js",
-      "appeared": "2021-11-05",
-      "gz": 4630,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "simple-toolbar"],
-      "usedBy": 1
-    },
-    {
-      "name": "matching-question",
-      "package": "@haxtheweb/matching-question",
-      "main": "elements/matching-question/matching-question.js",
-      "appeared": "2024-05-14",
-      "gz": 5465,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "material-theme",
-      "package": "@haxtheweb/material-theme",
-      "main": "elements/material-theme/material-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 4828,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "md-block",
-      "package": "@haxtheweb/md-block",
-      "main": "elements/md-block/md-block.js",
-      "appeared": "2019-02-27",
-      "gz": 1582,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "utils"],
-      "usedBy": 2
-    },
-    {
-      "name": "media-behaviors",
-      "package": "@haxtheweb/media-behaviors",
-      "main": "elements/media-behaviors/media-behaviors.js",
-      "appeared": "2018-10-23",
-      "gz": 2534,
-      "ddd": false,
-      "dependsOn": ["utils"],
-      "usedBy": 3
-    },
-    {
-      "name": "media-image",
-      "package": "@haxtheweb/media-image",
-      "main": "elements/media-image/media-image.js",
-      "appeared": "2018-10-23",
-      "gz": 5308,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "figure-label",
-        "image-inspector",
-        "md-block",
-        "schema-behaviors",
-        "simple-modal",
-        "user-action"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "media-playlist",
-      "package": "@haxtheweb/media-playlist",
-      "main": "elements/media-playlist/media-playlist.js",
-      "appeared": "2026-06-23",
-      "gz": 7724,
-      "ddd": true,
-      "dependsOn": [
-        "audio-player",
-        "d-d-d",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "utils",
-        "video-player"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "media-quote",
-      "package": "@haxtheweb/media-quote",
-      "main": "elements/media-quote/media-quote.js",
-      "appeared": "2024-05-13",
-      "gz": 2562,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 1
-    },
-    {
-      "name": "meme-maker",
-      "package": "@haxtheweb/meme-maker",
-      "main": "elements/meme-maker/meme-maker.js",
-      "appeared": "2018-10-23",
-      "gz": 2244,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 1
-    },
-    {
-      "name": "memory-match",
-      "package": "@haxtheweb/memory-match",
-      "main": "elements/memory-match/memory-match.js",
-      "appeared": "2026-11-14",
-      "gz": 9256,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "merit-badge",
-      "package": "@haxtheweb/merit-badge",
-      "main": "elements/merit-badge/merit-badge.js",
-      "appeared": "2023-05-05",
-      "gz": 2278,
-      "ddd": true,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-colors",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "mermaid-diagram",
-      "package": "@haxtheweb/mermaid-diagram",
-      "main": "elements/mermaid-diagram/mermaid-diagram.js",
-      "appeared": "2026-11-14",
-      "gz": 11815,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "es-global-bridge",
-        "i18n-manager",
-        "simple-icon",
-        "simple-tooltip"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "micro-frontend-registry",
-      "package": "@haxtheweb/micro-frontend-registry",
-      "main": "elements/micro-frontend-registry/micro-frontend-registry.js",
-      "appeared": "2022-05-20",
-      "gz": 4389,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 8
-    },
-    {
-      "name": "micro-game-base",
-      "package": "@haxtheweb/micro-game-base",
-      "main": "elements/micro-game-base/micro-game-base.js",
-      "appeared": "2026-10-23",
-      "gz": 9212,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "intersection-element",
-        "multiple-choice",
-        "rpg-character",
-        "schema-behaviors",
-        "user-action"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "moar-sarcasm",
-      "package": "@haxtheweb/moar-sarcasm",
-      "main": "elements/moar-sarcasm/moar-sarcasm.js",
-      "appeared": "2020-09-11",
-      "gz": 2467,
-      "ddd": false,
-      "dependsOn": ["i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "moment-element",
-      "package": "@haxtheweb/moment-element",
-      "main": "elements/moment-element/moment-element.js",
-      "appeared": "2018-10-27",
-      "gz": 1503,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge"],
-      "usedBy": 0
-    },
-    {
-      "name": "multiple-choice",
-      "package": "@haxtheweb/multiple-choice",
-      "main": "elements/multiple-choice/multiple-choice.js",
-      "appeared": "2018-10-23",
-      "gz": 1401,
-      "ddd": false,
-      "dependsOn": [
-        "d-d-d",
-        "grid-plate",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-fields",
-        "simple-icon",
-        "simple-toast",
-        "simple-toolbar",
-        "user-action"
-      ],
-      "usedBy": 14
-    },
-    {
-      "name": "music-player",
-      "package": "@haxtheweb/music-player",
-      "main": "elements/music-player/music-player.js",
-      "appeared": "2020-08-27",
-      "gz": 3458,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "mutation-observer-import-mixin",
-      "package": "@haxtheweb/mutation-observer-import-mixin",
-      "main": "elements/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
-      "appeared": "2020-03-30",
-      "gz": 382,
-      "ddd": false,
-      "dependsOn": ["dynamic-import-registry"],
-      "usedBy": 0
-    },
-    {
-      "name": "night-draft-theme",
-      "package": "@haxtheweb/night-draft-theme",
-      "main": "elements/night-draft-theme/night-draft-theme.js",
-      "appeared": "2026-11-23",
-      "gz": 10484,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "numeric-question",
-      "package": "@haxtheweb/numeric-question",
-      "main": "elements/numeric-question/numeric-question.js",
-      "appeared": "2026-11-14",
-      "gz": 9005,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "oer-schema",
-      "package": "@haxtheweb/oer-schema",
-      "main": "elements/oer-schema/oer-schema.js",
-      "appeared": "2018-10-23",
-      "gz": 1754,
-      "ddd": false,
-      "dependsOn": ["schema-behaviors"],
-      "usedBy": 2
-    },
-    {
-      "name": "outline-designer",
-      "package": "@haxtheweb/outline-designer",
-      "main": "elements/outline-designer/outline-designer.js",
-      "appeared": "2018-12-04",
-      "gz": 50764,
-      "ddd": false,
-      "dependsOn": [
-        "hax-body",
-        "hax-iconset",
-        "haxcms-elements",
-        "i18n-manager",
-        "json-outline-schema",
-        "schema-behaviors",
-        "simple-fields",
-        "simple-icon",
-        "simple-popover",
-        "simple-toolbar",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "outline-player",
-      "package": "@haxtheweb/outline-player",
-      "main": "elements/outline-player/outline-player.js",
-      "appeared": "2018-10-23",
-      "gz": 4869,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-colors",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "page-break",
-      "package": "@haxtheweb/page-break",
-      "main": "elements/page-break/page-break.js",
-      "appeared": "2021-10-07",
-      "gz": 12871,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-body",
-        "haxcms-elements",
-        "i18n-manager",
-        "intersection-element",
-        "schema-behaviors",
-        "simple-fields",
-        "simple-icon",
-        "simple-toolbar",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "page-contents-menu",
-      "package": "@haxtheweb/page-contents-menu",
-      "main": "elements/page-contents-menu/page-contents-menu.js",
-      "appeared": "2020-06-18",
-      "gz": 6036,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "schema-behaviors",
-        "simple-popover",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "page-flag",
-      "package": "@haxtheweb/page-flag",
-      "main": "elements/page-flag/page-flag.js",
-      "appeared": "2023-04-17",
-      "gz": 2992,
-      "ddd": false,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "i18n-manager",
-        "rpg-character",
-        "simple-colors",
-        "simple-datetime",
-        "simple-fields",
-        "simple-icon",
-        "simple-picker",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "page-section",
-      "package": "@haxtheweb/page-section",
-      "main": "elements/page-section/page-section.js",
-      "appeared": "2023-09-06",
-      "gz": 5637,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "simple-tooltip"],
-      "usedBy": 1
-    },
-    {
-      "name": "paper-input-flagged",
-      "package": "@haxtheweb/paper-input-flagged",
-      "main": "elements/paper-input-flagged/paper-input-flagged.js",
-      "appeared": "2018-10-23",
-      "gz": 2700,
-      "ddd": true,
-      "dependsOn": ["simple-fields", "simple-icon", "simple-tooltip"],
-      "usedBy": 0
-    },
-    {
-      "name": "papermod-theme",
-      "package": "@haxtheweb/papermod-theme",
-      "main": "elements/papermod-theme/papermod-theme.js",
-      "appeared": "2026-11-17",
-      "gz": 843,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-datetime",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "parallax-image",
-      "package": "@haxtheweb/parallax-image",
-      "main": "elements/parallax-image/parallax-image.js",
-      "appeared": "2018-10-23",
-      "gz": 1772,
-      "ddd": false,
-      "dependsOn": ["schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "patternfly-theme",
-      "package": "@haxtheweb/patternfly-theme",
-      "main": "elements/patternfly-theme/patternfly-theme.js",
-      "appeared": "2026-11-11",
-      "gz": 3976,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "pdf-browser-viewer",
-      "package": "@haxtheweb/pdf-browser-viewer",
-      "main": "elements/pdf-browser-viewer/pdf-browser-viewer.js",
-      "appeared": "2018-10-27",
-      "gz": 3826,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "person-testimonial",
-      "package": "@haxtheweb/person-testimonial",
-      "main": "elements/person-testimonial/person-testimonial.js",
-      "appeared": "2018-10-23",
-      "gz": 2293,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "schema-behaviors"],
-      "usedBy": 3
-    },
-    {
-      "name": "place-holder",
-      "package": "@haxtheweb/place-holder",
-      "main": "elements/place-holder/place-holder.js",
-      "appeared": "2018-10-23",
-      "gz": 3104,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "play-list",
-      "package": "@haxtheweb/play-list",
-      "main": "elements/play-list/play-list.js",
-      "appeared": "2023-08-09",
-      "gz": 6091,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "polaris-theme",
-      "package": "@haxtheweb/polaris-theme",
-      "main": "elements/polaris-theme/polaris-theme.js",
-      "appeared": "2023-09-26",
-      "gz": 5339,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "micro-frontend-registry",
-        "scroll-button",
-        "simple-tooltip"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "portal-launcher",
-      "package": "@haxtheweb/portal-launcher",
-      "main": "elements/portal-launcher/portal-launcher.js",
-      "appeared": "2019-09-26",
-      "gz": 1797,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "post-card",
-      "package": "@haxtheweb/post-card",
-      "main": "elements/post-card/post-card.js",
-      "appeared": "2021-11-05",
-      "gz": 3341,
-      "ddd": false,
-      "dependsOn": ["i18n-manager", "simple-colors"],
-      "usedBy": 1
-    },
-    {
-      "name": "pouch-db",
-      "package": "@haxtheweb/pouch-db",
-      "main": "elements/pouch-db/pouch-db.js",
-      "appeared": "2019-05-24",
-      "gz": 2684,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "primer-theme",
-      "package": "@haxtheweb/primer-theme",
-      "main": "elements/primer-theme/primer-theme.js",
-      "appeared": "2026-11-16",
-      "gz": 4289,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "privacy-choices",
-      "package": "@haxtheweb/privacy-choices",
-      "main": "elements/privacy-choices/privacy-choices.js",
-      "appeared": "2026-11-23",
-      "gz": 3961,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-consent-gate",
-        "i18n-manager",
-        "simple-fields",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "product-glance",
-      "package": "@haxtheweb/product-glance",
-      "main": "elements/product-glance/product-glance.js",
-      "appeared": "2021-04-22",
-      "gz": 1753,
-      "ddd": false,
-      "dependsOn": ["simple-colors", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "product-offering",
-      "package": "@haxtheweb/product-offering",
-      "main": "elements/product-offering/product-offering.js",
-      "appeared": "2021-04-29",
-      "gz": 2244,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "intersection-element", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "progress-donut",
-      "package": "@haxtheweb/progress-donut",
-      "main": "elements/progress-donut/progress-donut.js",
-      "appeared": "2018-10-29",
-      "gz": 2210,
-      "ddd": false,
-      "dependsOn": ["lrndesign-chart"],
-      "usedBy": 0
-    },
-    {
-      "name": "promise-progress",
-      "package": "@haxtheweb/promise-progress",
-      "main": "elements/promise-progress/promise-progress.js",
-      "appeared": "2022-02-16",
-      "gz": 755,
-      "ddd": true,
-      "dependsOn": ["wc-autoload"],
-      "usedBy": 2
-    },
-    {
-      "name": "q-r",
-      "package": "@haxtheweb/q-r",
-      "main": "elements/q-r/q-r.js",
-      "appeared": "2018-10-23",
-      "gz": 2796,
-      "ddd": false,
-      "dependsOn": ["es-global-bridge", "i18n-manager", "simple-icon"],
-      "usedBy": 4
-    },
-    {
-      "name": "radar-chart",
-      "package": "@haxtheweb/radar-chart",
-      "main": "elements/radar-chart/radar-chart.js",
-      "appeared": "2026-10-19",
-      "gz": 7106,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "radio-behaviors",
-      "package": "@haxtheweb/radio-behaviors",
-      "main": "elements/radio-behaviors/radio-behaviors.js",
-      "appeared": "2020-06-10",
-      "gz": 2630,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "reading-analysis",
-      "package": "@haxtheweb/reading-analysis",
-      "main": "elements/reading-analysis/reading-analysis.js",
-      "appeared": "2026-11-04",
-      "gz": 15175,
-      "ddd": false,
-      "dependsOn": ["multiple-choice", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "relative-heading",
-      "package": "@haxtheweb/relative-heading",
-      "main": "elements/relative-heading/relative-heading.js",
-      "appeared": "2018-10-28",
-      "gz": 1980,
-      "ddd": false,
-      "dependsOn": ["anchor-behaviors", "i18n-manager", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "replace-tag",
-      "package": "@haxtheweb/replace-tag",
-      "main": "elements/replace-tag/replace-tag.js",
-      "appeared": "2021-01-20",
-      "gz": 3595,
-      "ddd": false,
-      "dependsOn": ["wc-autoload"],
-      "usedBy": 3
-    },
-    {
-      "name": "responsive-grid",
-      "package": "@haxtheweb/responsive-grid",
-      "main": "elements/responsive-grid/responsive-grid.js",
-      "appeared": "2018-10-23",
-      "gz": 154,
-      "ddd": false,
-      "dependsOn": ["responsive-utility"],
-      "usedBy": 0
-    },
-    {
-      "name": "responsive-utility",
-      "package": "@haxtheweb/responsive-utility",
-      "main": "elements/responsive-utility/responsive-utility.js",
-      "appeared": "2018-10-23",
-      "gz": 2989,
-      "ddd": true,
-      "dependsOn": [],
-      "usedBy": 10
-    },
-    {
-      "name": "resume-theme",
-      "package": "@haxtheweb/resume-theme",
-      "main": "elements/resume-theme/resume-theme.js",
-      "appeared": "2026-06-23",
-      "gz": 4039,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "retro-card",
-      "package": "@haxtheweb/retro-card",
-      "main": "elements/retro-card/retro-card.js",
-      "appeared": "2019-12-21",
-      "gz": 3400,
-      "ddd": true,
-      "dependsOn": ["simple-colors"],
-      "usedBy": 0
-    },
-    {
-      "name": "retro-tv",
-      "package": "@haxtheweb/retro-tv",
-      "main": "elements/retro-tv/retro-tv.js",
-      "appeared": "2026-11-12",
-      "gz": 4865,
-      "ddd": false,
-      "dependsOn": ["d-d-d", "i18n-manager", "rpg-character"],
-      "usedBy": 2
-    },
-    {
-      "name": "rich-text-editor",
-      "package": "@haxtheweb/rich-text-editor",
-      "main": "elements/rich-text-editor/rich-text-editor.js",
-      "appeared": "2019-02-04",
-      "gz": 3178,
-      "ddd": false,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "code-editor",
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "micro-frontend-registry",
-        "simple-fields",
-        "simple-icon",
-        "simple-icon-picker",
-        "simple-picker",
-        "simple-popover",
-        "simple-toolbar",
-        "utils"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "rpg-character",
-      "package": "@haxtheweb/rpg-character",
-      "main": "elements/rpg-character/rpg-character.js",
-      "appeared": "2022-03-14",
-      "gz": 10884,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "simple-colors",
-        "simple-fields",
-        "simple-pager",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 7
-    },
-    {
-      "name": "schema-behaviors",
-      "package": "@haxtheweb/schema-behaviors",
-      "main": "elements/schema-behaviors/schema-behaviors.js",
-      "appeared": "2018-10-23",
-      "gz": 1459,
-      "ddd": false,
-      "dependsOn": ["utils"],
-      "usedBy": 38
-    },
-    {
-      "name": "screen-recorder",
-      "package": "@haxtheweb/screen-recorder",
-      "main": "elements/screen-recorder/screen-recorder.js",
-      "appeared": "2025-09-30",
-      "gz": 3740,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "scroll-button",
-      "package": "@haxtheweb/scroll-button",
-      "main": "elements/scroll-button/scroll-button.js",
-      "appeared": "2019-03-17",
-      "gz": 1739,
-      "ddd": false,
-      "dependsOn": ["simple-icon", "simple-tooltip"],
-      "usedBy": 10
-    },
-    {
-      "name": "self-check",
-      "package": "@haxtheweb/self-check",
-      "main": "elements/self-check/self-check.js",
-      "appeared": "2018-10-23",
-      "gz": 5499,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "lazy-image-helpers",
-        "schema-behaviors",
-        "simple-icon",
-        "user-action"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "self-reflective-nudge",
-      "package": "@haxtheweb/self-reflective-nudge",
-      "main": "elements/self-reflective-nudge/self-reflective-nudge.js",
-      "appeared": "2026-10-20",
-      "gz": 6516,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-icon",
-        "user-action"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "shadcn-theme",
-      "package": "@haxtheweb/shadcn-theme",
-      "main": "elements/shadcn-theme/shadcn-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 3940,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "shadow-style",
-      "package": "@haxtheweb/shadow-style",
-      "main": "elements/shadow-style/shadow-style.js",
-      "appeared": "2021-02-03",
-      "gz": 2495,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "sheet-music",
-      "package": "@haxtheweb/sheet-music",
-      "main": "elements/sheet-music/sheet-music.js",
-      "appeared": "2026-09-11",
-      "gz": 9227,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "intersection-element",
-        "simple-icon",
-        "simple-tooltip"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "simple-autocomplete",
-      "package": "@haxtheweb/simple-autocomplete",
-      "main": "elements/simple-autocomplete/simple-autocomplete.js",
-      "appeared": "2020-12-01",
-      "gz": 5843,
-      "ddd": false,
-      "dependsOn": [
-        "i18n-manager",
-        "simple-filter",
-        "simple-icon",
-        "simple-popover",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "simple-blog",
-      "package": "@haxtheweb/simple-blog",
-      "main": "elements/simple-blog/simple-blog.js",
-      "appeared": "2018-10-23",
-      "gz": 3540,
-      "ddd": true,
-      "dependsOn": [
-        "anchor-behaviors",
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-colors",
-        "simple-datetime",
-        "simple-icon",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "simple-colors",
-      "package": "@haxtheweb/simple-colors",
-      "main": "elements/simple-colors/simple-colors.js",
-      "appeared": "2018-10-23",
-      "gz": 6868,
-      "ddd": false,
-      "dependsOn": ["simple-colors-shared-styles", "simple-picker"],
-      "usedBy": 25
-    },
-    {
-      "name": "simple-colors-shared-styles",
-      "package": "@haxtheweb/simple-colors-shared-styles",
-      "main": "elements/simple-colors-shared-styles/simple-colors-shared-styles.js",
-      "appeared": "2019-08-01",
-      "gz": 6717,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 2
-    },
-    {
-      "name": "simple-cta",
-      "package": "@haxtheweb/simple-cta",
-      "main": "elements/simple-cta/simple-cta.js",
-      "appeared": "2020-10-01",
-      "gz": 4093,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "simple-icon", "utils"],
-      "usedBy": 4
-    },
-    {
-      "name": "simple-datetime",
-      "package": "@haxtheweb/simple-datetime",
-      "main": "elements/simple-datetime/simple-datetime.js",
-      "appeared": "2018-10-23",
-      "gz": 1009,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 7
-    },
-    {
-      "name": "simple-emoji",
-      "package": "@haxtheweb/simple-emoji",
-      "main": "elements/simple-emoji/simple-emoji.js",
-      "appeared": "2021-11-01",
-      "gz": 787,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "simple-fields",
-      "package": "@haxtheweb/simple-fields",
-      "main": "elements/simple-fields/simple-fields.js",
-      "appeared": "2019-04-05",
-      "gz": 6550,
-      "ddd": false,
-      "dependsOn": [
-        "a11y-tabs",
-        "code-editor",
-        "d-d-d",
-        "es-global-bridge",
-        "hax-iconset",
-        "i18n-manager",
-        "responsive-utility",
-        "screen-recorder",
-        "simple-colors",
-        "simple-icon",
-        "simple-toolbar",
-        "simple-tooltip",
-        "utils",
-        "voice-recorder"
-      ],
-      "usedBy": 19
-    },
-    {
-      "name": "simple-filter",
-      "package": "@haxtheweb/simple-filter",
-      "main": "elements/simple-filter/simple-filter.js",
-      "appeared": "2020-11-10",
-      "gz": 2623,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 4
-    },
-    {
-      "name": "simple-icon",
-      "package": "@haxtheweb/simple-icon",
-      "main": "elements/simple-icon/simple-icon.js",
-      "appeared": "2020-09-02",
-      "gz": 883,
-      "ddd": false,
-      "dependsOn": ["simple-colors"],
-      "usedBy": 123
-    },
-    {
-      "name": "simple-icon-picker",
-      "package": "@haxtheweb/simple-icon-picker",
-      "main": "elements/simple-icon-picker/simple-icon-picker.js",
-      "appeared": "2019-02-04",
-      "gz": 2180,
-      "ddd": false,
-      "dependsOn": ["simple-icon", "simple-picker"],
-      "usedBy": 1
-    },
-    {
-      "name": "simple-img",
-      "package": "@haxtheweb/simple-img",
-      "main": "elements/simple-img/simple-img.js",
-      "appeared": "2022-06-07",
-      "gz": 2856,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 0
-    },
-    {
-      "name": "simple-login",
-      "package": "@haxtheweb/simple-login",
-      "main": "elements/simple-login/simple-login.js",
-      "appeared": "2019-05-10",
-      "gz": 2249,
-      "ddd": true,
-      "dependsOn": ["simple-colors", "simple-fields", "simple-progress"],
-      "usedBy": 0
-    },
-    {
-      "name": "simple-modal",
-      "package": "@haxtheweb/simple-modal",
-      "main": "elements/simple-modal/simple-modal.js",
-      "appeared": "2018-11-13",
-      "gz": 9689,
-      "ddd": false,
-      "dependsOn": ["i18n-manager", "simple-icon"],
-      "usedBy": 10
-    },
-    {
-      "name": "simple-pager",
-      "package": "@haxtheweb/simple-pager",
-      "main": "elements/simple-pager/simple-pager.js",
-      "appeared": "2026-08-27",
-      "gz": 2954,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 3
-    },
-    {
-      "name": "simple-picker",
-      "package": "@haxtheweb/simple-picker",
-      "main": "elements/simple-picker/simple-picker.js",
-      "appeared": "2018-11-22",
-      "gz": 9419,
-      "ddd": false,
-      "dependsOn": ["intersection-element", "simple-icon", "utils"],
-      "usedBy": 6
-    },
-    {
-      "name": "simple-popover",
-      "package": "@haxtheweb/simple-popover",
-      "main": "elements/simple-popover/simple-popover.js",
-      "appeared": "2019-03-29",
-      "gz": 3164,
-      "ddd": false,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "i18n-manager",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 10
-    },
-    {
-      "name": "simple-progress",
-      "package": "@haxtheweb/simple-progress",
-      "main": "elements/simple-progress/simple-progress.js",
-      "appeared": "2020-11-06",
-      "gz": 1591,
-      "ddd": true,
-      "dependsOn": [],
-      "usedBy": 3
-    },
-    {
-      "name": "simple-range-input",
-      "package": "@haxtheweb/simple-range-input",
-      "main": "elements/simple-range-input/simple-range-input.js",
-      "appeared": "2020-11-06",
-      "gz": 5603,
-      "ddd": true,
-      "dependsOn": ["d-d-d"],
-      "usedBy": 2
-    },
-    {
-      "name": "simple-search",
-      "package": "@haxtheweb/simple-search",
-      "main": "elements/simple-search/simple-search.js",
-      "appeared": "2018-10-24",
-      "gz": 4886,
-      "ddd": true,
-      "dependsOn": ["simple-fields", "simple-icon", "simple-tooltip", "utils"],
-      "usedBy": 1
-    },
-    {
-      "name": "simple-toast",
-      "package": "@haxtheweb/simple-toast",
-      "main": "elements/simple-toast/simple-toast.js",
-      "appeared": "2018-12-17",
-      "gz": 2393,
-      "ddd": true,
-      "dependsOn": ["d-d-d"],
-      "usedBy": 6
-    },
-    {
-      "name": "simple-toolbar",
-      "package": "@haxtheweb/simple-toolbar",
-      "main": "elements/simple-toolbar/simple-toolbar.js",
-      "appeared": "2021-01-21",
-      "gz": 7290,
-      "ddd": false,
-      "dependsOn": [
-        "a11y-menu-button",
-        "d-d-d",
-        "radio-behaviors",
-        "simple-icon",
-        "simple-tooltip",
-        "utils"
-      ],
-      "usedBy": 12
-    },
-    {
-      "name": "simple-tooltip",
-      "package": "@haxtheweb/simple-tooltip",
-      "main": "elements/simple-tooltip/simple-tooltip.js",
-      "appeared": "2020-01-15",
-      "gz": 6515,
-      "ddd": true,
-      "dependsOn": [],
-      "usedBy": 26
-    },
-    {
-      "name": "slide-deck",
-      "package": "@haxtheweb/slide-deck",
-      "main": "elements/slide-deck/slide-deck.js",
-      "appeared": "2026-09-12",
-      "gz": 9734,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "simple-icon",
-        "user-action",
-        "utils"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "social-share-link",
-      "package": "@haxtheweb/social-share-link",
-      "main": "elements/social-share-link/social-share-link.js",
-      "appeared": "2019-02-12",
-      "gz": 3822,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "hax-iconset", "simple-icon"],
-      "usedBy": 2
-    },
-    {
-      "name": "sorting-question",
-      "package": "@haxtheweb/sorting-question",
-      "main": "elements/sorting-question/sorting-question.js",
-      "appeared": "2021-11-05",
-      "gz": 5922,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "multiple-choice",
-        "simple-icon",
-        "simple-toast",
-        "simple-toolbar"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "spacebook-theme",
-      "package": "@haxtheweb/spacebook-theme",
-      "main": "elements/spacebook-theme/spacebook-theme.js",
-      "appeared": "2025-09-06",
-      "gz": 7467,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "spectrum-theme",
-      "package": "@haxtheweb/spectrum-theme",
-      "main": "elements/spectrum-theme/spectrum-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 4137,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "spotify-embed",
-      "package": "@haxtheweb/spotify-embed",
-      "main": "elements/spotify-embed/spotify-embed.js",
-      "appeared": "2023-05-24",
-      "gz": 2310,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "star-rating",
-      "package": "@haxtheweb/star-rating",
-      "main": "elements/star-rating/star-rating.js",
-      "appeared": "2021-04-21",
-      "gz": 4407,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-colors",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "stat-tile",
-      "package": "@haxtheweb/stat-tile",
-      "main": "elements/stat-tile/stat-tile.js",
-      "appeared": "2026-11-14",
-      "gz": 1997,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "stop-note",
-      "package": "@haxtheweb/stop-note",
-      "main": "elements/stop-note/stop-note.js",
-      "appeared": "2018-10-23",
-      "gz": 4854,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 3
-    },
-    {
-      "name": "super-daemon",
-      "package": "@haxtheweb/super-daemon",
-      "main": "elements/super-daemon/super-daemon.js",
-      "appeared": "2023-02-22",
-      "gz": 23831,
-      "ddd": true,
-      "dependsOn": [
-        "absolute-position-behavior",
-        "d-d-d",
-        "future-terminal-text",
-        "hal-9000",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-colors",
-        "simple-fields",
-        "simple-filter",
-        "simple-icon",
-        "simple-toast",
-        "user-scaffold",
-        "utils"
-      ],
-      "usedBy": 4
-    },
-    {
-      "name": "tableau-embed",
-      "package": "@haxtheweb/tableau-embed",
-      "main": "elements/tableau-embed/tableau-embed.js",
-      "appeared": "2026-07-13",
-      "gz": 2348,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "tagging-question",
-      "package": "@haxtheweb/tagging-question",
-      "main": "elements/tagging-question/tagging-question.js",
-      "appeared": "2024-05-08",
-      "gz": 5387,
-      "ddd": false,
-      "dependsOn": ["multiple-choice"],
-      "usedBy": 0
-    },
-    {
-      "name": "tailwind-theme",
-      "package": "@haxtheweb/tailwind-theme",
-      "main": "elements/tailwind-theme/tailwind-theme.js",
-      "appeared": "2026-11-12",
-      "gz": 4377,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "terrible-themes",
-      "package": "@haxtheweb/terrible-themes",
-      "main": "elements/terrible-themes/terrible-themes.js",
-      "appeared": "2023-05-16",
-      "gz": 3807,
-      "ddd": false,
-      "dependsOn": ["d-d-d", "haxcms-elements", "scroll-button"],
-      "usedBy": 0
-    },
-    {
-      "name": "training-theme",
-      "package": "@haxtheweb/training-theme",
-      "main": "elements/training-theme/training-theme.js",
-      "appeared": "2023-12-04",
-      "gz": 5832,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "utils"],
-      "usedBy": 0
-    },
-    {
-      "name": "twenty-six-theme",
-      "package": "@haxtheweb/twenty-six-theme",
-      "main": "elements/twenty-six-theme/twenty-six-theme.js",
-      "appeared": "2026-05-26",
-      "gz": 7665,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "simple-datetime",
-        "simple-icon"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "twitter-embed",
-      "package": "@haxtheweb/twitter-embed",
-      "main": "elements/twitter-embed/twitter-embed.js",
-      "appeared": "2020-08-26",
-      "gz": 2614,
-      "ddd": false,
-      "dependsOn": ["hax-consent-gate", "i18n-manager", "utils"],
-      "usedBy": 0
-    },
-    {
-      "name": "type-writer",
-      "package": "@haxtheweb/type-writer",
-      "main": "elements/type-writer/type-writer.js",
-      "appeared": "2020-02-04",
-      "gz": 2190,
-      "ddd": false,
-      "dependsOn": ["intersection-element"],
-      "usedBy": 0
-    },
-    {
-      "name": "un-sdg",
-      "package": "@haxtheweb/un-sdg",
-      "main": "elements/un-sdg/un-sdg.js",
-      "appeared": "2024-11-05",
-      "gz": 2403,
-      "ddd": false,
-      "dependsOn": ["i18n-manager", "schema-behaviors"],
-      "usedBy": 0
-    },
-    {
-      "name": "undo-manager",
-      "package": "@haxtheweb/undo-manager",
-      "main": "elements/undo-manager/undo-manager.js",
-      "appeared": "2019-11-29",
-      "gz": 3420,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 1
-    },
-    {
-      "name": "unity-webgl",
-      "package": "@haxtheweb/unity-webgl",
-      "main": "elements/unity-webgl/unity-webgl.js",
-      "appeared": "2021-02-25",
-      "gz": 3068,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "user-action",
-      "package": "@haxtheweb/user-action",
-      "main": "elements/user-action/user-action.js",
-      "appeared": "2019-05-28",
-      "gz": 2528,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 26
-    },
-    {
-      "name": "user-scaffold",
-      "package": "@haxtheweb/user-scaffold",
-      "main": "elements/user-scaffold/user-scaffold.js",
-      "appeared": "2023-11-03",
-      "gz": 15407,
-      "ddd": false,
-      "dependsOn": ["utils"],
-      "usedBy": 7
-    },
-    {
-      "name": "uswds-theme",
-      "package": "@haxtheweb/uswds-theme",
-      "main": "elements/uswds-theme/uswds-theme.js",
-      "appeared": "2026-11-13",
-      "gz": 5674,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "utils",
-      "package": "@haxtheweb/utils",
-      "main": "elements/utils/utils.js",
-      "appeared": "2019-11-30",
-      "gz": 14604,
-      "ddd": false,
-      "dependsOn": [],
-      "usedBy": 61
-    },
-    {
-      "name": "vcf-render",
-      "package": "@haxtheweb/vcf-render",
-      "main": "elements/vcf-render/vcf-render.js",
-      "appeared": "2026-10-05",
-      "gz": 6153,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "editable-table",
-        "i18n-manager",
-        "intersection-element",
-        "media-quote",
-        "person-testimonial"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "vhs-blog-theme",
-      "package": "@haxtheweb/vhs-blog-theme",
-      "main": "elements/vhs-blog-theme/vhs-blog-theme.js",
-      "appeared": "2026-11-11",
-      "gz": 17758,
-      "ddd": true,
-      "dependsOn": [
-        "d-d-d",
-        "haxcms-elements",
-        "i18n-manager",
-        "q-r",
-        "retro-tv"
-      ],
-      "usedBy": 0
-    },
-    {
-      "name": "video-player",
-      "package": "@haxtheweb/video-player",
-      "main": "elements/video-player/video-player.js",
-      "appeared": "2018-10-23",
-      "gz": 15275,
-      "ddd": true,
-      "dependsOn": [
-        "a11y-media-player",
-        "d-d-d",
-        "hax-consent-gate",
-        "hax-iconset",
-        "i18n-manager",
-        "intersection-element",
-        "media-behaviors",
-        "schema-behaviors",
-        "simple-cta",
-        "simple-icon",
-        "simple-modal",
-        "utils"
-      ],
-      "usedBy": 7
-    },
-    {
-      "name": "vocab-term",
-      "package": "@haxtheweb/vocab-term",
-      "main": "elements/vocab-term/vocab-term.js",
-      "appeared": "2021-09-30",
-      "gz": 5083,
-      "ddd": true,
-      "dependsOn": [
-        "i18n-manager",
-        "schema-behaviors",
-        "simple-icon",
-        "simple-modal",
-        "simple-popover",
-        "user-action"
-      ],
-      "usedBy": 2
-    },
-    {
-      "name": "voice-recorder",
-      "package": "@haxtheweb/voice-recorder",
-      "main": "elements/voice-recorder/voice-recorder.js",
-      "appeared": "2019-12-14",
-      "gz": 1271,
-      "ddd": false,
-      "dependsOn": ["simple-icon"],
-      "usedBy": 1
-    },
-    {
-      "name": "wc-autoload",
-      "package": "@haxtheweb/wc-autoload",
-      "main": "elements/wc-autoload/wc-autoload.js",
-      "appeared": "2020-04-03",
-      "gz": 3093,
-      "ddd": false,
-      "dependsOn": ["dynamic-import-registry"],
-      "usedBy": 3
-    },
-    {
-      "name": "web-baseline-status",
-      "package": "@haxtheweb/web-baseline-status",
-      "main": "elements/web-baseline-status/web-baseline-status.js",
-      "appeared": "2026-10-19",
-      "gz": 1894,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "hax-consent-gate"],
-      "usedBy": 0
-    },
-    {
-      "name": "webawesome-theme",
-      "package": "@haxtheweb/webawesome-theme",
-      "main": "elements/webawesome-theme/webawesome-theme.js",
-      "appeared": "2026-11-13",
-      "gz": 5168,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    },
-    {
-      "name": "wikipedia-query",
-      "package": "@haxtheweb/wikipedia-query",
-      "main": "elements/wikipedia-query/wikipedia-query.js",
-      "appeared": "2018-10-23",
-      "gz": 4572,
-      "ddd": true,
-      "dependsOn": [
-        "citation-element",
-        "d-d-d",
-        "hax-iconset",
-        "i18n-manager",
-        "intersection-element",
-        "simple-icon",
-        "utils"
-      ],
-      "usedBy": 1
-    },
-    {
-      "name": "word-count",
-      "package": "@haxtheweb/word-count",
-      "main": "elements/word-count/word-count.js",
-      "appeared": "2018-10-23",
-      "gz": 1698,
-      "ddd": false,
-      "dependsOn": ["i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "word-search",
-      "package": "@haxtheweb/word-search",
-      "main": "elements/word-search/word-search.js",
-      "appeared": "2026-11-14",
-      "gz": 9839,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "i18n-manager", "simple-icon", "user-action"],
-      "usedBy": 0
-    },
-    {
-      "name": "writing-theme",
-      "package": "@haxtheweb/writing-theme",
-      "main": "elements/writing-theme/writing-theme.js",
-      "appeared": "2026-11-16",
-      "gz": 4578,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager"],
-      "usedBy": 0
-    },
-    {
-      "name": "wysiwyg-hax",
-      "package": "@haxtheweb/wysiwyg-hax",
-      "main": "elements/wysiwyg-hax/wysiwyg-hax.js",
-      "appeared": "2018-10-23",
-      "gz": 2141,
-      "ddd": false,
-      "dependsOn": ["cms-hax", "hax-body"],
-      "usedBy": 1
-    },
-    {
-      "name": "wysiwyg96-theme",
-      "package": "@haxtheweb/wysiwyg96-theme",
-      "main": "elements/wysiwyg96-theme/wysiwyg96-theme.js",
-      "appeared": "2026-11-18",
-      "gz": 8350,
-      "ddd": true,
-      "dependsOn": ["d-d-d", "haxcms-elements", "i18n-manager", "simple-icon"],
-      "usedBy": 0
-    }
-  ]
+  "license": "https://www.apache.org/licenses/LICENSE-2.0",
+  "about": "Every element package in webcomponents: when its package.json appeared, its main file's gzipped size (gz), whether it builds on DDD, the packages it imports (statically or dynamically), how many packages import it (usedBy) and how many themes load any of its files (themes); load is the gzipped size of everything its main file loads (static imports, third-party code left out) and adds is the part of that outside the shared core (payload.json), what it costs a visitor on a site that already has the core. History starts in September 2018, when the existing elements were moved into this repository.",
+  "issue": "https://github.com/haxtheweb/issues/issues/3409"
+ },
+ "elements": [
+  {
+   "name": "a11y-carousel",
+   "package": "@haxtheweb/a11y-carousel",
+   "main": "elements/a11y-carousel/a11y-carousel.js",
+   "appeared": "2020-06-18",
+   "gz": 3294,
+   "ddd": false,
+   "dependsOn": [
+    "radio-behaviors",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 13634,
+   "adds": 7193,
+   "themes": 0
+  },
+  {
+   "name": "a11y-collapse",
+   "package": "@haxtheweb/a11y-collapse",
+   "main": "elements/a11y-collapse/a11y-collapse.js",
+   "appeared": "2018-10-26",
+   "gz": 6969,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "simple-tooltip",
+    "user-action"
+   ],
+   "usedBy": 5,
+   "load": 99788,
+   "adds": 13484,
+   "themes": 34
+  },
+  {
+   "name": "a11y-compare-image",
+   "package": "@haxtheweb/a11y-compare-image",
+   "main": "elements/a11y-compare-image/a11y-compare-image.js",
+   "appeared": "2020-06-17",
+   "gz": 6046,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d"
+   ],
+   "usedBy": 1,
+   "load": 48413,
+   "adds": 12557,
+   "themes": 0
+  },
+  {
+   "name": "a11y-details",
+   "package": "@haxtheweb/a11y-details",
+   "main": "elements/a11y-details/a11y-details.js",
+   "appeared": "2020-05-21",
+   "gz": 4203,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager"
+   ],
+   "usedBy": 1,
+   "load": 13602,
+   "adds": 4203,
+   "themes": 0
+  },
+  {
+   "name": "a11y-figure",
+   "package": "@haxtheweb/a11y-figure",
+   "main": "elements/a11y-figure/a11y-figure.js",
+   "appeared": "2020-05-21",
+   "gz": 3268,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-details"
+   ],
+   "usedBy": 1,
+   "load": 16870,
+   "adds": 7471,
+   "themes": 0
+  },
+  {
+   "name": "a11y-footnote",
+   "package": "@haxtheweb/a11y-footnote",
+   "main": "elements/a11y-footnote/a11y-footnote.js",
+   "appeared": "2026-11-16",
+   "gz": 2740,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 76311,
+   "adds": 5703,
+   "themes": 0
+  },
+  {
+   "name": "a11y-gif-player",
+   "package": "@haxtheweb/a11y-gif-player",
+   "main": "elements/a11y-gif-player/a11y-gif-player.js",
+   "appeared": "2018-10-23",
+   "gz": 5798,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "intersection-element",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 1,
+   "load": 37900,
+   "adds": 22060,
+   "themes": 0
+  },
+  {
+   "name": "a11y-media-player",
+   "package": "@haxtheweb/a11y-media-player",
+   "main": "elements/a11y-media-player/a11y-media-player.js",
+   "appeared": "2018-10-23",
+   "gz": 39431,
+   "ddd": true,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "anchor-behaviors",
+    "d-d-d",
+    "fullscreen-behaviors",
+    "hax-iconset",
+    "i18n-manager",
+    "responsive-utility",
+    "schema-behaviors",
+    "simple-fields",
+    "simple-icon",
+    "simple-range-input",
+    "simple-search",
+    "simple-tooltip",
+    "user-action",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 225110,
+   "adds": 111616,
+   "themes": 0
+  },
+  {
+   "name": "a11y-menu-button",
+   "package": "@haxtheweb/a11y-menu-button",
+   "main": "elements/a11y-menu-button/a11y-menu-button.js",
+   "appeared": "2020-11-25",
+   "gz": 6914,
+   "ddd": false,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 17111,
+   "adds": 12267,
+   "themes": 0
+  },
+  {
+   "name": "a11y-tabs",
+   "package": "@haxtheweb/a11y-tabs",
+   "main": "elements/a11y-tabs/a11y-tabs.js",
+   "appeared": "2019-07-17",
+   "gz": 7015,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager",
+    "responsive-utility",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 4,
+   "load": 37550,
+   "adds": 17263,
+   "themes": 0
+  },
+  {
+   "name": "absolute-position-behavior",
+   "package": "@haxtheweb/absolute-position-behavior",
+   "main": "elements/absolute-position-behavior/absolute-position-behavior.js",
+   "appeared": "2019-03-29",
+   "gz": 2103,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 9,
+   "load": 6947,
+   "adds": 2103,
+   "themes": 69
+  },
+  {
+   "name": "accent-card",
+   "package": "@haxtheweb/accent-card",
+   "main": "elements/accent-card/accent-card.js",
+   "appeared": "2018-10-29",
+   "gz": 4406,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "intersection-element",
+    "simple-icon"
+   ],
+   "usedBy": 3,
+   "load": 81394,
+   "adds": 7420,
+   "themes": 1
+  },
+  {
+   "name": "aframe-player",
+   "package": "@haxtheweb/aframe-player",
+   "main": "elements/aframe-player/aframe-player.js",
+   "appeared": "2018-10-23",
+   "gz": 2484,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge",
+    "hax-consent-gate",
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 12907,
+   "adds": 5707,
+   "themes": 0
+  },
+  {
+   "name": "ai-usage-license",
+   "package": "@haxtheweb/ai-usage-license",
+   "main": "elements/ai-usage-license/ai-usage-license.js",
+   "appeared": "2026-03-26",
+   "gz": 4010,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 76460,
+   "adds": 5852,
+   "themes": 0
+  },
+  {
+   "name": "air-horn",
+   "package": "@haxtheweb/air-horn",
+   "main": "elements/air-horn/air-horn.js",
+   "appeared": "2019-06-26",
+   "gz": 2378,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 2378,
+   "adds": 2378,
+   "themes": 0
+  },
+  {
+   "name": "anchor-behaviors",
+   "package": "@haxtheweb/anchor-behaviors",
+   "main": "elements/anchor-behaviors/anchor-behaviors.js",
+   "appeared": "2019-10-25",
+   "gz": 1301,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 5,
+   "load": 1301,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "app-hax",
+   "package": "@haxtheweb/app-hax",
+   "main": "elements/app-hax/app-hax.js",
+   "appeared": "2022-03-23",
+   "gz": 23856,
+   "ddd": true,
+   "dependsOn": [
+    "code-editor",
+    "d-d-d",
+    "file-system-broker",
+    "grid-plate",
+    "h-a-x",
+    "hax-body",
+    "hax-body-behaviors",
+    "hax-iconset",
+    "hax-network-bar",
+    "haxcms-elements",
+    "i18n-manager",
+    "jwt-login",
+    "license-element",
+    "micro-frontend-registry",
+    "multiple-choice",
+    "promise-progress",
+    "replace-tag",
+    "responsive-utility",
+    "rpg-character",
+    "scroll-button",
+    "simple-colors",
+    "simple-datetime",
+    "simple-fields",
+    "simple-icon",
+    "simple-modal",
+    "simple-toolbar",
+    "simple-tooltip",
+    "super-daemon",
+    "utils",
+    "wc-autoload"
+   ],
+   "usedBy": 1,
+   "load": 495444,
+   "adds": 368129,
+   "themes": 0
+  },
+  {
+   "name": "arithmetic-drill",
+   "package": "@haxtheweb/arithmetic-drill",
+   "main": "elements/arithmetic-drill/arithmetic-drill.js",
+   "appeared": "2026-11-14",
+   "gz": 8384,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 101876,
+   "adds": 18799,
+   "themes": 0
+  },
+  {
+   "name": "audio-player",
+   "package": "@haxtheweb/audio-player",
+   "main": "elements/audio-player/audio-player.js",
+   "appeared": "2023-05-31",
+   "gz": 773,
+   "ddd": false,
+   "dependsOn": [
+    "video-player"
+   ],
+   "usedBy": 2,
+   "load": 249480,
+   "adds": 133067,
+   "themes": 0
+  },
+  {
+   "name": "author-card",
+   "package": "@haxtheweb/author-card",
+   "main": "elements/author-card/author-card.js",
+   "appeared": "2025-09-19",
+   "gz": 2758,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 1,
+   "load": 73366,
+   "adds": 2758,
+   "themes": 0
+  },
+  {
+   "name": "awesome-explosion",
+   "package": "@haxtheweb/awesome-explosion",
+   "main": "elements/awesome-explosion/awesome-explosion.js",
+   "appeared": "2018-10-23",
+   "gz": 3700,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 74308,
+   "adds": 3700,
+   "themes": 0
+  },
+  {
+   "name": "b-r",
+   "package": "@haxtheweb/b-r",
+   "main": "elements/b-r/b-r.js",
+   "appeared": "2021-04-20",
+   "gz": 765,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 765,
+   "adds": 765,
+   "themes": 0
+  },
+  {
+   "name": "baseline-build-hax",
+   "package": "@haxtheweb/baseline-build-hax",
+   "main": "elements/baseline-build-hax/baseline-build-hax.js",
+   "appeared": "2018-12-04",
+   "gz": 438,
+   "ddd": false,
+   "dependsOn": [
+    "a11y-gif-player",
+    "citation-element",
+    "cms-hax",
+    "grid-plate",
+    "hax-body",
+    "image-compare-slider",
+    "license-element",
+    "lrn-math",
+    "lrn-table",
+    "lrn-vocab",
+    "media-behaviors",
+    "media-image",
+    "meme-maker",
+    "multiple-choice",
+    "oer-schema",
+    "person-testimonial",
+    "place-holder",
+    "q-r",
+    "self-check",
+    "stop-note",
+    "video-player",
+    "wikipedia-query",
+    "wysiwyg-hax"
+   ],
+   "usedBy": 0,
+   "load": 1064540,
+   "adds": 925714,
+   "themes": 0
+  },
+  {
+   "name": "beaker-broker",
+   "package": "@haxtheweb/beaker-broker",
+   "main": "elements/beaker-broker/beaker-broker.js",
+   "appeared": "2018-10-09",
+   "gz": 1814,
+   "ddd": true,
+   "dependsOn": [],
+   "usedBy": 1,
+   "load": 1814,
+   "adds": 1814,
+   "themes": 0
+  },
+  {
+   "name": "bibliography-builder",
+   "package": "@haxtheweb/bibliography-builder",
+   "main": "elements/bibliography-builder/bibliography-builder.js",
+   "appeared": "2026-05-07",
+   "gz": 4107,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-modal"
+   ],
+   "usedBy": 0,
+   "load": 106197,
+   "adds": 28996,
+   "themes": 0
+  },
+  {
+   "name": "book-theme",
+   "package": "@haxtheweb/book-theme",
+   "main": "elements/book-theme/book-theme.js",
+   "appeared": "2026-11-17",
+   "gz": 5976,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-datetime",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 274754,
+   "adds": 72147,
+   "themes": 5
+  },
+  {
+   "name": "bootstrap-theme",
+   "package": "@haxtheweb/bootstrap-theme",
+   "main": "elements/bootstrap-theme/bootstrap-theme.js",
+   "appeared": "2021-02-25",
+   "gz": 6308,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "map-menu",
+    "simple-icon",
+    "simple-popover",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 313136,
+   "adds": 110192,
+   "themes": 1
+  },
+  {
+   "name": "branching-scenario",
+   "package": "@haxtheweb/branching-scenario",
+   "main": "elements/branching-scenario/branching-scenario.js",
+   "appeared": "2026-11-14",
+   "gz": 9321,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 105556,
+   "adds": 22479,
+   "themes": 0
+  },
+  {
+   "name": "bullet-check-list",
+   "package": "@haxtheweb/bullet-check-list",
+   "main": "elements/bullet-check-list/bullet-check-list.js",
+   "appeared": "2026-10-19",
+   "gz": 8268,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 99698,
+   "adds": 16621,
+   "themes": 0
+  },
+  {
+   "name": "carbon-theme",
+   "package": "@haxtheweb/carbon-theme",
+   "main": "elements/carbon-theme/carbon-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 4320,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 268454,
+   "adds": 65847,
+   "themes": 1
+  },
+  {
+   "name": "career-timeline",
+   "package": "@haxtheweb/career-timeline",
+   "main": "elements/career-timeline/career-timeline.js",
+   "appeared": "2026-05-07",
+   "gz": 1766,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 81379,
+   "adds": 10771,
+   "themes": 0
+  },
+  {
+   "name": "chamfer-theme",
+   "package": "@haxtheweb/chamfer-theme",
+   "main": "elements/chamfer-theme/chamfer-theme.js",
+   "appeared": "2026-08-18",
+   "gz": 3801,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "scroll-button"
+   ],
+   "usedBy": 0,
+   "load": 271834,
+   "adds": 69227,
+   "themes": 1
+  },
+  {
+   "name": "chartist-render",
+   "package": "@haxtheweb/chartist-render",
+   "main": "elements/chartist-render/chartist-render.js",
+   "appeared": "2018-10-23",
+   "gz": 8896,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 57960,
+   "adds": 40663,
+   "themes": 0
+  },
+  {
+   "name": "citation-element",
+   "package": "@haxtheweb/citation-element",
+   "main": "elements/citation-element/citation-element.js",
+   "appeared": "2018-10-23",
+   "gz": 4973,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "license-element",
+    "schema-behaviors",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 87142,
+   "adds": 13168,
+   "themes": 0
+  },
+  {
+   "name": "clean-one",
+   "package": "@haxtheweb/clean-one",
+   "main": "elements/clean-one/clean-one.js",
+   "appeared": "2020-06-29",
+   "gz": 9269,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "micro-frontend-registry",
+    "scroll-button",
+    "user-scaffold"
+   ],
+   "usedBy": 0,
+   "load": 269543,
+   "adds": 66936,
+   "themes": 1
+  },
+  {
+   "name": "clean-portfolio-theme",
+   "package": "@haxtheweb/clean-portfolio-theme",
+   "main": "elements/clean-portfolio-theme/clean-portfolio-theme.js",
+   "appeared": "2025-02-03",
+   "gz": 11895,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "license-element",
+    "scroll-button",
+    "simple-icon",
+    "user-scaffold"
+   ],
+   "usedBy": 0,
+   "load": 228381,
+   "adds": 27169,
+   "themes": 1
+  },
+  {
+   "name": "clean-two",
+   "package": "@haxtheweb/clean-two",
+   "main": "elements/clean-two/clean-two.js",
+   "appeared": "2020-07-06",
+   "gz": 6980,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "micro-frontend-registry",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 288463,
+   "adds": 85856,
+   "themes": 4
+  },
+  {
+   "name": "cms-hax",
+   "package": "@haxtheweb/cms-hax",
+   "main": "elements/cms-hax/cms-hax.js",
+   "appeared": "2018-10-23",
+   "gz": 3473,
+   "ddd": false,
+   "dependsOn": [
+    "h-a-x",
+    "hax-body",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 876169,
+   "adds": 739357,
+   "themes": 0
+  },
+  {
+   "name": "code-editor",
+   "package": "@haxtheweb/code-editor",
+   "main": "elements/code-editor/code-editor.js",
+   "appeared": "2018-10-23",
+   "gz": 5627,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager",
+    "schema-behaviors",
+    "utils"
+   ],
+   "usedBy": 5,
+   "load": 27654,
+   "adds": 11418,
+   "themes": 0
+  },
+  {
+   "name": "code-sample",
+   "package": "@haxtheweb/code-sample",
+   "main": "elements/code-sample/code-sample.js",
+   "appeared": "2019-02-10",
+   "gz": 6699,
+   "ddd": true,
+   "dependsOn": [
+    "code-editor",
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 2,
+   "load": 47375,
+   "adds": 31535,
+   "themes": 1
+  },
+  {
+   "name": "collection-list",
+   "package": "@haxtheweb/collection-list",
+   "main": "elements/collection-list/collection-list.js",
+   "appeared": "2023-11-29",
+   "gz": 999,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "responsive-utility",
+    "scroll-button",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 65197,
+   "adds": 999,
+   "themes": 2
+  },
+  {
+   "name": "count-up",
+   "package": "@haxtheweb/count-up",
+   "main": "elements/count-up/count-up.js",
+   "appeared": "2019-03-14",
+   "gz": 2624,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "intersection-element",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 22568,
+   "adds": 7622,
+   "themes": 0
+  },
+  {
+   "name": "course-design",
+   "package": "@haxtheweb/course-design",
+   "main": "elements/course-design/course-design.js",
+   "appeared": "2021-01-11",
+   "gz": 949,
+   "ddd": false,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "haxcms-elements",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 1,
+   "load": 2791,
+   "adds": 2791,
+   "themes": 0
+  },
+  {
+   "name": "course-model",
+   "package": "@haxtheweb/course-model",
+   "main": "elements/course-model/course-model.js",
+   "appeared": "2023-06-29",
+   "gz": 4413,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 17536,
+   "adds": 8137,
+   "themes": 0
+  },
+  {
+   "name": "crossword-puzzle",
+   "package": "@haxtheweb/crossword-puzzle",
+   "main": "elements/crossword-puzzle/crossword-puzzle.js",
+   "appeared": "2026-11-14",
+   "gz": 9929,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "multiple-choice"
+   ],
+   "usedBy": 0,
+   "load": 186489,
+   "adds": 97196,
+   "themes": 0
+  },
+  {
+   "name": "csv-render",
+   "package": "@haxtheweb/csv-render",
+   "main": "elements/csv-render/csv-render.js",
+   "appeared": "2018-10-23",
+   "gz": 3396,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hexagon-loader",
+    "i18n-manager",
+    "intersection-element",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 85275,
+   "adds": 11301,
+   "themes": 0
+  },
+  {
+   "name": "d-d-d",
+   "package": "@haxtheweb/d-d-d",
+   "main": "elements/d-d-d/d-d-d.js",
+   "appeared": "2024-01-08",
+   "gz": 1925,
+   "ddd": true,
+   "dependsOn": [
+    "hax-iconset",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-colors",
+    "simple-icon",
+    "simple-modal",
+    "simple-tooltip"
+   ],
+   "usedBy": 141,
+   "load": 61209,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "d-d-docs",
+   "package": "@haxtheweb/d-d-docs",
+   "main": "elements/d-d-docs/d-d-docs.js",
+   "appeared": "2024-12-05",
+   "gz": 24115,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-carousel",
+    "a11y-collapse",
+    "a11y-figure",
+    "a11y-tabs",
+    "accent-card",
+    "audio-player",
+    "author-card",
+    "collection-list",
+    "count-up",
+    "course-design",
+    "d-d-d",
+    "date-card",
+    "editable-table",
+    "figure-label",
+    "flash-card",
+    "grid-plate",
+    "i18n-manager",
+    "image-gallery",
+    "lrndesign-timeline",
+    "media-image",
+    "media-playlist",
+    "multiple-choice",
+    "oer-schema",
+    "page-contents-menu",
+    "page-section",
+    "person-testimonial",
+    "post-card",
+    "promise-progress",
+    "q-r",
+    "self-check",
+    "simple-cta",
+    "simple-fields",
+    "simple-icon",
+    "simple-pager",
+    "simple-progress",
+    "simple-toast",
+    "social-share-link",
+    "stop-note",
+    "utils",
+    "video-player",
+    "vocab-term"
+   ],
+   "usedBy": 0,
+   "load": 725065,
+   "adds": 602596,
+   "themes": 0
+  },
+  {
+   "name": "date-card",
+   "package": "@haxtheweb/date-card",
+   "main": "elements/date-card/date-card.js",
+   "appeared": "2020-07-09",
+   "gz": 2731,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 2,
+   "load": 74959,
+   "adds": 4351,
+   "themes": 1
+  },
+  {
+   "name": "deduping-fix",
+   "package": "@haxtheweb/deduping-fix",
+   "main": "elements/deduping-fix/deduping-fix.js",
+   "appeared": "2018-10-31",
+   "gz": 419,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 419,
+   "adds": 419,
+   "themes": 0
+  },
+  {
+   "name": "demo-snippet",
+   "package": "@haxtheweb/demo-snippet",
+   "main": "elements/demo-snippet/demo-snippet.js",
+   "appeared": "2025-10-16",
+   "gz": 3589,
+   "ddd": true,
+   "dependsOn": [
+    "code-sample",
+    "d-d-d",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 124044,
+   "adds": 35124,
+   "themes": 0
+  },
+  {
+   "name": "discord-embed",
+   "package": "@haxtheweb/discord-embed",
+   "main": "elements/discord-embed/discord-embed.js",
+   "appeared": "2023-12-08",
+   "gz": 2721,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "iframe-loader",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 37694,
+   "adds": 14331,
+   "themes": 0
+  },
+  {
+   "name": "disqus-embed",
+   "package": "@haxtheweb/disqus-embed",
+   "main": "elements/disqus-embed/disqus-embed.js",
+   "appeared": "2024-01-03",
+   "gz": 3082,
+   "ddd": false,
+   "dependsOn": [
+    "hax-consent-gate",
+    "haxcms-elements"
+   ],
+   "usedBy": 0,
+   "load": 10282,
+   "adds": 3082,
+   "themes": 0
+  },
+  {
+   "name": "documentation-player",
+   "package": "@haxtheweb/documentation-player",
+   "main": "elements/documentation-player/documentation-player.js",
+   "appeared": "2023-09-13",
+   "gz": 11138,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-range-input",
+    "utils",
+    "video-player"
+   ],
+   "usedBy": 0,
+   "load": 144937,
+   "adds": 57032,
+   "themes": 0
+  },
+  {
+   "name": "doodle-board",
+   "package": "@haxtheweb/doodle-board",
+   "main": "elements/doodle-board/doodle-board.js",
+   "appeared": "2026-11-11",
+   "gz": 1901,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 72509,
+   "adds": 1901,
+   "themes": 0
+  },
+  {
+   "name": "dynamic-import-registry",
+   "package": "@haxtheweb/dynamic-import-registry",
+   "main": "elements/dynamic-import-registry/dynamic-import-registry.js",
+   "appeared": "2020-03-30",
+   "gz": 1816,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 3,
+   "load": 1816,
+   "adds": 1816,
+   "themes": 0
+  },
+  {
+   "name": "ecosystem-theme",
+   "package": "@haxtheweb/ecosystem-theme",
+   "main": "elements/ecosystem-theme/ecosystem-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 7335,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "ecosystem-web",
+    "hax-network-bar",
+    "haxcms-elements",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 356436,
+   "adds": 153829,
+   "themes": 1
+  },
+  {
+   "name": "ecosystem-web",
+   "package": "@haxtheweb/ecosystem-web",
+   "main": "elements/ecosystem-web/ecosystem-web.js",
+   "appeared": "2026-11-12",
+   "gz": 29638,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 120784,
+   "adds": 46810,
+   "themes": 1
+  },
+  {
+   "name": "editable-table",
+   "package": "@haxtheweb/editable-table",
+   "main": "elements/editable-table/editable-table.js",
+   "appeared": "2018-10-23",
+   "gz": 4200,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-menu-button",
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "responsive-utility",
+    "rich-text-editor",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-picker",
+    "simple-toolbar",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 7,
+   "load": 336653,
+   "adds": 231184,
+   "themes": 69
+  },
+  {
+   "name": "elmsln-loading",
+   "package": "@haxtheweb/elmsln-loading",
+   "main": "elements/elmsln-loading/elmsln-loading.js",
+   "appeared": "2018-10-23",
+   "gz": 1662,
+   "ddd": false,
+   "dependsOn": [
+    "hax-iconset",
+    "i18n-manager",
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 32293,
+   "adds": 2545,
+   "themes": 0
+  },
+  {
+   "name": "enhanced-text",
+   "package": "@haxtheweb/enhanced-text",
+   "main": "elements/enhanced-text/enhanced-text.js",
+   "appeared": "2022-06-21",
+   "gz": 3917,
+   "ddd": false,
+   "dependsOn": [
+    "utils",
+    "vocab-term"
+   ],
+   "usedBy": 0,
+   "load": 51600,
+   "adds": 34303,
+   "themes": 0
+  },
+  {
+   "name": "es-global-bridge",
+   "package": "@haxtheweb/es-global-bridge",
+   "main": "elements/es-global-bridge/es-global-bridge.js",
+   "appeared": "2018-11-07",
+   "gz": 1381,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 13,
+   "load": 1381,
+   "adds": 1381,
+   "themes": 12
+  },
+  {
+   "name": "event-badge",
+   "package": "@haxtheweb/event-badge",
+   "main": "elements/event-badge/event-badge.js",
+   "appeared": "2021-11-05",
+   "gz": 91177,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors"
+   ],
+   "usedBy": 0,
+   "load": 104762,
+   "adds": 91177,
+   "themes": 0
+  },
+  {
+   "name": "example-hax-element",
+   "package": "@haxtheweb/example-hax-element",
+   "main": "elements/example-hax-element/example-hax-element.js",
+   "appeared": "2018-11-21",
+   "gz": 876,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 71484,
+   "adds": 876,
+   "themes": 0
+  },
+  {
+   "name": "example-haxcms-theme",
+   "package": "@haxtheweb/example-haxcms-theme",
+   "main": "elements/example-haxcms-theme/example-haxcms-theme.js",
+   "appeared": "2019-05-21",
+   "gz": 2401,
+   "ddd": true,
+   "dependsOn": [
+    "haxcms-elements"
+   ],
+   "usedBy": 0,
+   "load": 210905,
+   "adds": 11525,
+   "themes": 1
+  },
+  {
+   "name": "figure-label",
+   "package": "@haxtheweb/figure-label",
+   "main": "elements/figure-label/figure-label.js",
+   "appeared": "2019-08-28",
+   "gz": 1236,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d"
+   ],
+   "usedBy": 2,
+   "load": 62445,
+   "adds": 1236,
+   "themes": 0
+  },
+  {
+   "name": "file-system-broker",
+   "package": "@haxtheweb/file-system-broker",
+   "main": "elements/file-system-broker/file-system-broker.js",
+   "appeared": "2021-05-21",
+   "gz": 3689,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge"
+   ],
+   "usedBy": 3,
+   "load": 3689,
+   "adds": 3689,
+   "themes": 0
+  },
+  {
+   "name": "fill-in-the-blanks",
+   "package": "@haxtheweb/fill-in-the-blanks",
+   "main": "elements/fill-in-the-blanks/fill-in-the-blanks.js",
+   "appeared": "2024-05-20",
+   "gz": 5248,
+   "ddd": false,
+   "dependsOn": [
+    "mark-the-words",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 181388,
+   "adds": 92095,
+   "themes": 0
+  },
+  {
+   "name": "flash-card",
+   "package": "@haxtheweb/flash-card",
+   "main": "elements/flash-card/flash-card.js",
+   "appeared": "2018-10-23",
+   "gz": 3785,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "multiple-choice",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-toast",
+    "simple-toolbar",
+    "user-action"
+   ],
+   "usedBy": 1,
+   "load": 118163,
+   "adds": 35086,
+   "themes": 0
+  },
+  {
+   "name": "fluent-theme",
+   "package": "@haxtheweb/fluent-theme",
+   "main": "elements/fluent-theme/fluent-theme.js",
+   "appeared": "2026-11-16",
+   "gz": 4403,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 268743,
+   "adds": 66136,
+   "themes": 1
+  },
+  {
+   "name": "full-width-image",
+   "package": "@haxtheweb/full-width-image",
+   "main": "elements/full-width-image/full-width-image.js",
+   "appeared": "2019-01-28",
+   "gz": 2792,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 18632,
+   "adds": 2792,
+   "themes": 1
+  },
+  {
+   "name": "fullscreen-behaviors",
+   "package": "@haxtheweb/fullscreen-behaviors",
+   "main": "elements/fullscreen-behaviors/fullscreen-behaviors.js",
+   "appeared": "2020-08-10",
+   "gz": 1298,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 1298,
+   "adds": 1298,
+   "themes": 0
+  },
+  {
+   "name": "future-terminal-text",
+   "package": "@haxtheweb/future-terminal-text",
+   "main": "elements/future-terminal-text/future-terminal-text.js",
+   "appeared": "2020-12-17",
+   "gz": 669,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors"
+   ],
+   "usedBy": 2,
+   "load": 16423,
+   "adds": 2838,
+   "themes": 1
+  },
+  {
+   "name": "git-corner",
+   "package": "@haxtheweb/git-corner",
+   "main": "elements/git-corner/git-corner.js",
+   "appeared": "2019-09-05",
+   "gz": 2084,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 1,
+   "load": 2084,
+   "adds": 2084,
+   "themes": 0
+  },
+  {
+   "name": "github-preview",
+   "package": "@haxtheweb/github-preview",
+   "main": "elements/github-preview/github-preview.js",
+   "appeared": "2021-01-19",
+   "gz": 6541,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "intersection-element",
+    "rpg-character",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 95620,
+   "adds": 14446,
+   "themes": 0
+  },
+  {
+   "name": "glossy-portfolio-theme",
+   "package": "@haxtheweb/glossy-portfolio-theme",
+   "main": "elements/glossy-portfolio-theme/glossy-portfolio-theme.js",
+   "appeared": "2025-05-21",
+   "gz": 2759,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "license-element"
+   ],
+   "usedBy": 0,
+   "load": 240849,
+   "adds": 42864,
+   "themes": 1
+  },
+  {
+   "name": "grade-book",
+   "package": "@haxtheweb/grade-book",
+   "main": "elements/grade-book/grade-book.js",
+   "appeared": "2021-03-10",
+   "gz": 7983,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-collapse",
+    "a11y-tabs",
+    "d-d-d",
+    "editable-table",
+    "es-global-bridge",
+    "file-system-broker",
+    "grid-plate",
+    "hax-iconset",
+    "i18n-manager",
+    "iframe-loader",
+    "md-block",
+    "micro-frontend-registry",
+    "schema-behaviors",
+    "simple-colors",
+    "simple-fields",
+    "simple-filter",
+    "simple-icon",
+    "simple-popover",
+    "simple-tooltip",
+    "utils",
+    "video-player"
+   ],
+   "usedBy": 0,
+   "load": 301589,
+   "adds": 191861,
+   "themes": 0
+  },
+  {
+   "name": "grid-plate",
+   "package": "@haxtheweb/grid-plate",
+   "main": "elements/grid-plate/grid-plate.js",
+   "appeared": "2018-10-23",
+   "gz": 6230,
+   "ddd": true,
+   "dependsOn": [
+    "responsive-utility"
+   ],
+   "usedBy": 7,
+   "load": 9219,
+   "adds": 6230,
+   "themes": 1
+  },
+  {
+   "name": "h-a-x",
+   "package": "@haxtheweb/h-a-x",
+   "main": "elements/h-a-x/h-a-x.js",
+   "appeared": "2018-12-24",
+   "gz": 3449,
+   "ddd": false,
+   "dependsOn": [
+    "editable-table",
+    "hax-body",
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 872696,
+   "adds": 735884,
+   "themes": 0
+  },
+  {
+   "name": "h5p-element",
+   "package": "@haxtheweb/h5p-element",
+   "main": "elements/h5p-element/h5p-element.js",
+   "appeared": "2019-08-13",
+   "gz": 6567,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "es-global-bridge",
+    "haxcms-elements",
+    "i18n-manager",
+    "iframe-loader",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 44245,
+   "adds": 19302,
+   "themes": 0
+  },
+  {
+   "name": "hal-9000",
+   "package": "@haxtheweb/hal-9000",
+   "main": "elements/hal-9000/hal-9000.js",
+   "appeared": "2019-01-16",
+   "gz": 3558,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 10926,
+   "adds": 8529,
+   "themes": 0
+  },
+  {
+   "name": "hax-app-installer",
+   "package": "@haxtheweb/hax-app-installer",
+   "main": "elements/hax-app-installer/hax-app-installer.js",
+   "appeared": "2026-09-08",
+   "gz": 24405,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "retro-tv",
+    "simple-icon",
+    "stop-note"
+   ],
+   "usedBy": 0,
+   "load": 152965,
+   "adds": 75121,
+   "themes": 0
+  },
+  {
+   "name": "hax-body",
+   "package": "@haxtheweb/hax-body",
+   "main": "elements/hax-body/hax-body.js",
+   "appeared": "2018-10-09",
+   "gz": 70433,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-collapse",
+    "absolute-position-behavior",
+    "code-editor",
+    "d-d-d",
+    "editable-table",
+    "grid-plate",
+    "hax-body-behaviors",
+    "hax-iconset",
+    "i18n-manager",
+    "iframe-loader",
+    "image-gallery",
+    "intersection-element",
+    "media-behaviors",
+    "media-image",
+    "micro-frontend-registry",
+    "rich-text-editor",
+    "simple-colors",
+    "simple-fields",
+    "simple-filter",
+    "simple-icon",
+    "simple-modal",
+    "simple-picker",
+    "simple-popover",
+    "simple-toolbar",
+    "super-daemon",
+    "undo-manager",
+    "user-scaffold",
+    "utils"
+   ],
+   "usedBy": 8,
+   "load": 707466,
+   "adds": 570654,
+   "themes": 0
+  },
+  {
+   "name": "hax-body-behaviors",
+   "package": "@haxtheweb/hax-body-behaviors",
+   "main": "elements/hax-body-behaviors/hax-body-behaviors.js",
+   "appeared": "2018-09-27",
+   "gz": 172,
+   "ddd": false,
+   "dependsOn": [
+    "simple-fields"
+   ],
+   "usedBy": 3,
+   "load": 183772,
+   "adds": 91901,
+   "themes": 0
+  },
+  {
+   "name": "hax-consent-gate",
+   "package": "@haxtheweb/hax-consent-gate",
+   "main": "elements/hax-consent-gate/hax-consent-gate.js",
+   "appeared": "2026-11-23",
+   "gz": 4839,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 13,
+   "load": 81210,
+   "adds": 4839,
+   "themes": 69
+  },
+  {
+   "name": "hax-iconset",
+   "package": "@haxtheweb/hax-iconset",
+   "main": "elements/hax-iconset/hax-iconset.js",
+   "appeared": "2019-06-11",
+   "gz": 250,
+   "ddd": false,
+   "dependsOn": [
+    "simple-icon"
+   ],
+   "usedBy": 34,
+   "load": 250,
+   "adds": 250,
+   "themes": 66
+  },
+  {
+   "name": "hax-logo",
+   "package": "@haxtheweb/hax-logo",
+   "main": "elements/hax-logo/hax-logo.js",
+   "appeared": "2019-08-13",
+   "gz": 1551,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 1551,
+   "adds": 1551,
+   "themes": 0
+  },
+  {
+   "name": "hax-marketing-theme",
+   "package": "@haxtheweb/hax-marketing-theme",
+   "main": "elements/hax-marketing-theme/hax-marketing-theme.js",
+   "appeared": "2026-11-18",
+   "gz": 9243,
+   "ddd": true,
+   "dependsOn": [
+    "count-up",
+    "d-d-d",
+    "hax-iconset",
+    "hax-network-bar",
+    "haxcms-elements",
+    "i18n-manager",
+    "rpg-character",
+    "scroll-button",
+    "simple-cta",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 294500,
+   "adds": 89557,
+   "themes": 1
+  },
+  {
+   "name": "hax-network-bar",
+   "package": "@haxtheweb/hax-network-bar",
+   "main": "elements/hax-network-bar/hax-network-bar.js",
+   "appeared": "2026-11-12",
+   "gz": 18879,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon",
+    "super-daemon"
+   ],
+   "usedBy": 4,
+   "load": 123043,
+   "adds": 49069,
+   "themes": 2
+  },
+  {
+   "name": "haxcms-elements",
+   "package": "@haxtheweb/haxcms-elements",
+   "main": "elements/haxcms-elements/haxcms-elements.js",
+   "appeared": "2018-10-23",
+   "gz": 246,
+   "ddd": false,
+   "dependsOn": [
+    "a11y-collapse",
+    "a11y-tabs",
+    "absolute-position-behavior",
+    "accent-card",
+    "anchor-behaviors",
+    "app-hax",
+    "beaker-broker",
+    "citation-element",
+    "clean-two",
+    "code-sample",
+    "collection-list",
+    "d-d-d",
+    "editable-table",
+    "es-global-bridge",
+    "file-system-broker",
+    "future-terminal-text",
+    "git-corner",
+    "github-preview",
+    "grid-plate",
+    "h-a-x",
+    "hax-body",
+    "hax-body-behaviors",
+    "hax-consent-gate",
+    "hax-iconset",
+    "hax-network-bar",
+    "i18n-manager",
+    "iframe-loader",
+    "image-gallery",
+    "instructional-cadence",
+    "intersection-element",
+    "json-outline-schema",
+    "jwt-login",
+    "license-element",
+    "lrndesign-chart",
+    "lrndesign-timeline",
+    "lunr-search",
+    "map-menu",
+    "media-playlist",
+    "micro-frontend-registry",
+    "outline-designer",
+    "page-contents-menu",
+    "play-list",
+    "privacy-choices",
+    "q-r",
+    "replace-tag",
+    "responsive-utility",
+    "rpg-character",
+    "scroll-button",
+    "simple-colors",
+    "simple-colors-shared-styles",
+    "simple-datetime",
+    "simple-fields",
+    "simple-icon",
+    "simple-modal",
+    "simple-pager",
+    "simple-popover",
+    "simple-progress",
+    "simple-toast",
+    "simple-toolbar",
+    "simple-tooltip",
+    "super-daemon",
+    "user-action",
+    "user-scaffold",
+    "utils",
+    "video-player"
+   ],
+   "usedBy": 47,
+   "load": 1385258,
+   "adds": 1172585,
+   "themes": 69
+  },
+  {
+   "name": "haxma-theme",
+   "package": "@haxtheweb/haxma-theme",
+   "main": "elements/haxma-theme/haxma-theme.js",
+   "appeared": "2025-09-09",
+   "gz": 5927,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 347146,
+   "adds": 144539,
+   "themes": 1
+  },
+  {
+   "name": "haxor-slevin",
+   "package": "@haxtheweb/haxor-slevin",
+   "main": "elements/haxor-slevin/haxor-slevin.js",
+   "appeared": "2019-04-24",
+   "gz": 6205,
+   "ddd": true,
+   "dependsOn": [
+    "accent-card",
+    "anchor-behaviors",
+    "d-d-d",
+    "date-card",
+    "full-width-image",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-colors",
+    "simple-icon",
+    "social-share-link",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 230216,
+   "adds": 27609,
+   "themes": 1
+  },
+  {
+   "name": "hex-picker",
+   "package": "@haxtheweb/hex-picker",
+   "main": "elements/hex-picker/hex-picker.js",
+   "appeared": "2021-02-17",
+   "gz": 2885,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 12284,
+   "adds": 2885,
+   "themes": 0
+  },
+  {
+   "name": "hexagon-loader",
+   "package": "@haxtheweb/hexagon-loader",
+   "main": "elements/hexagon-loader/hexagon-loader.js",
+   "appeared": "2018-11-19",
+   "gz": 2890,
+   "ddd": true,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 4175,
+   "adds": 4175,
+   "themes": 0
+  },
+  {
+   "name": "html-block",
+   "package": "@haxtheweb/html-block",
+   "main": "elements/html-block/html-block.js",
+   "appeared": "2019-05-23",
+   "gz": 2440,
+   "ddd": false,
+   "dependsOn": [
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 50123,
+   "adds": 32826,
+   "themes": 0
+  },
+  {
+   "name": "i18n-manager",
+   "package": "@haxtheweb/i18n-manager",
+   "main": "elements/i18n-manager/i18n-manager.js",
+   "appeared": "2021-02-25",
+   "gz": 6315,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 145,
+   "load": 6315,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "ics-render",
+   "package": "@haxtheweb/ics-render",
+   "main": "elements/ics-render/ics-render.js",
+   "appeared": "2026-10-05",
+   "gz": 6932,
+   "ddd": true,
+   "dependsOn": [
+    "collection-list",
+    "d-d-d",
+    "editable-table",
+    "i18n-manager",
+    "intersection-element",
+    "lrndesign-timeline"
+   ],
+   "usedBy": 0,
+   "load": 94260,
+   "adds": 20286,
+   "themes": 0
+  },
+  {
+   "name": "identify-hotspots",
+   "package": "@haxtheweb/identify-hotspots",
+   "main": "elements/identify-hotspots/identify-hotspots.js",
+   "appeared": "2026-11-14",
+   "gz": 8781,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 181519,
+   "adds": 92226,
+   "themes": 0
+  },
+  {
+   "name": "iframe-loader",
+   "package": "@haxtheweb/iframe-loader",
+   "main": "elements/iframe-loader/iframe-loader.js",
+   "appeared": "2020-05-26",
+   "gz": 4270,
+   "ddd": false,
+   "dependsOn": [
+    "hax-consent-gate",
+    "utils"
+   ],
+   "usedBy": 5,
+   "load": 12299,
+   "adds": 5099,
+   "themes": 3
+  },
+  {
+   "name": "image-compare-slider",
+   "package": "@haxtheweb/image-compare-slider",
+   "main": "elements/image-compare-slider/image-compare-slider.js",
+   "appeared": "2018-10-23",
+   "gz": 5085,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-compare-image",
+    "d-d-d",
+    "i18n-manager",
+    "intersection-element",
+    "schema-behaviors",
+    "user-action"
+   ],
+   "usedBy": 1,
+   "load": 39775,
+   "adds": 14832,
+   "themes": 0
+  },
+  {
+   "name": "image-dropzone",
+   "package": "@haxtheweb/image-dropzone",
+   "main": "elements/image-dropzone/image-dropzone.js",
+   "appeared": "2026-11-14",
+   "gz": 9683,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 181193,
+   "adds": 91900,
+   "themes": 0
+  },
+  {
+   "name": "image-gallery",
+   "package": "@haxtheweb/image-gallery",
+   "main": "elements/image-gallery/image-gallery.js",
+   "appeared": "2026-06-25",
+   "gz": 7699,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 3,
+   "load": 84900,
+   "adds": 7699,
+   "themes": 0
+  },
+  {
+   "name": "image-inspector",
+   "package": "@haxtheweb/image-inspector",
+   "main": "elements/image-inspector/image-inspector.js",
+   "appeared": "2018-10-23",
+   "gz": 2608,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "img-pan-zoom",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 39613,
+   "adds": 23773,
+   "themes": 0
+  },
+  {
+   "name": "img-pan-zoom",
+   "package": "@haxtheweb/img-pan-zoom",
+   "main": "elements/img-pan-zoom/img-pan-zoom.js",
+   "appeared": "2018-10-28",
+   "gz": 5651,
+   "ddd": true,
+   "dependsOn": [
+    "es-global-bridge",
+    "hexagon-loader"
+   ],
+   "usedBy": 2,
+   "load": 7032,
+   "adds": 7032,
+   "themes": 0
+  },
+  {
+   "name": "img-view-modal",
+   "package": "@haxtheweb/img-view-modal",
+   "main": "elements/img-view-modal/img-view-modal.js",
+   "appeared": "2020-07-31",
+   "gz": 2070,
+   "ddd": false,
+   "dependsOn": [
+    "fullscreen-behaviors",
+    "i18n-manager",
+    "img-pan-zoom",
+    "simple-icon",
+    "simple-modal",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 47079,
+   "adds": 28012,
+   "themes": 0
+  },
+  {
+   "name": "inline-audio",
+   "package": "@haxtheweb/inline-audio",
+   "main": "elements/inline-audio/inline-audio.js",
+   "appeared": "2023-04-20",
+   "gz": 3198,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 83721,
+   "adds": 6520,
+   "themes": 0
+  },
+  {
+   "name": "instructional-cadence",
+   "package": "@haxtheweb/instructional-cadence",
+   "main": "elements/instructional-cadence/instructional-cadence.js",
+   "appeared": "2026-11-04",
+   "gz": 5223,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "sheet-music"
+   ],
+   "usedBy": 1,
+   "load": 82126,
+   "adds": 11518,
+   "themes": 0
+  },
+  {
+   "name": "intersection-element",
+   "package": "@haxtheweb/intersection-element",
+   "main": "elements/intersection-element/lib/IntersectionObserverMixin.js",
+   "appeared": "2020-02-07",
+   "gz": 1394,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 20,
+   "load": 1394,
+   "adds": 1394,
+   "themes": 1
+  },
+  {
+   "name": "journey-theme",
+   "package": "@haxtheweb/journey-theme",
+   "main": "elements/journey-theme/journey-theme.js",
+   "appeared": "2025-04-25",
+   "gz": 7967,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "license-element",
+    "scroll-button",
+    "simple-cta",
+    "simple-icon",
+    "simple-tooltip",
+    "user-scaffold"
+   ],
+   "usedBy": 0,
+   "load": 252549,
+   "adds": 51337,
+   "themes": 3
+  },
+  {
+   "name": "json-outline-schema",
+   "package": "@haxtheweb/json-outline-schema",
+   "main": "elements/json-outline-schema/json-outline-schema.js",
+   "appeared": "2018-10-23",
+   "gz": 6022,
+   "ddd": false,
+   "dependsOn": [
+    "dynamic-import-registry",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 6722,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "jwt-login",
+   "package": "@haxtheweb/jwt-login",
+   "main": "elements/jwt-login/jwt-login.js",
+   "appeared": "2018-10-23",
+   "gz": 6322,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 6322,
+   "adds": 6322,
+   "themes": 0
+  },
+  {
+   "name": "la-tex",
+   "package": "@haxtheweb/la-tex",
+   "main": "elements/la-tex/la-tex.js",
+   "appeared": "2024-09-11",
+   "gz": 4032,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "es-global-bridge",
+    "i18n-manager",
+    "lrn-math",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 33598,
+   "adds": 14132,
+   "themes": 0
+  },
+  {
+   "name": "lazy-image-helpers",
+   "package": "@haxtheweb/lazy-image-helpers",
+   "main": "elements/lazy-image-helpers/lazy-image-helpers.js",
+   "appeared": "2020-11-24",
+   "gz": 2087,
+   "ddd": false,
+   "dependsOn": [
+    "intersection-element",
+    "replace-tag",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 7042,
+   "adds": 3967,
+   "themes": 0
+  },
+  {
+   "name": "lazy-import-discover",
+   "package": "@haxtheweb/lazy-import-discover",
+   "main": "elements/lazy-import-discover/lazy-import-discover.js",
+   "appeared": "2019-06-02",
+   "gz": 1033,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 1033,
+   "adds": 1033,
+   "themes": 0
+  },
+  {
+   "name": "learn-two-theme",
+   "package": "@haxtheweb/learn-two-theme",
+   "main": "elements/learn-two-theme/learn-two-theme.js",
+   "appeared": "2019-03-10",
+   "gz": 4523,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 271981,
+   "adds": 69374,
+   "themes": 1
+  },
+  {
+   "name": "license-element",
+   "package": "@haxtheweb/license-element",
+   "main": "elements/license-element/license-element.js",
+   "appeared": "2018-10-23",
+   "gz": 5129,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 7,
+   "load": 78803,
+   "adds": 8195,
+   "themes": 7
+  },
+  {
+   "name": "link-card-theme",
+   "package": "@haxtheweb/link-card-theme",
+   "main": "elements/link-card-theme/link-card-theme.js",
+   "appeared": "2026-05-26",
+   "gz": 5291,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon",
+    "user-scaffold"
+   ],
+   "usedBy": 0,
+   "load": 208197,
+   "adds": 5590,
+   "themes": 1
+  },
+  {
+   "name": "linkedin-embed",
+   "package": "@haxtheweb/linkedin-embed",
+   "main": "elements/linkedin-embed/linkedin-embed.js",
+   "appeared": "2026-05-04",
+   "gz": 172,
+   "ddd": false,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 75893,
+   "adds": 1919,
+   "themes": 0
+  },
+  {
+   "name": "lorem-data",
+   "package": "@haxtheweb/lorem-data",
+   "main": "elements/lorem-data/lorem-data.js",
+   "appeared": "2020-07-17",
+   "gz": 2078,
+   "ddd": false,
+   "dependsOn": [
+    "hax-iconset",
+    "i18n-manager",
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 50780,
+   "adds": 21355,
+   "themes": 0
+  },
+  {
+   "name": "lrn-math",
+   "package": "@haxtheweb/lrn-math",
+   "main": "elements/lrn-math/lrn-math.js",
+   "appeared": "2018-10-23",
+   "gz": 3641,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 5849,
+   "adds": 5849,
+   "themes": 0
+  },
+  {
+   "name": "lrn-table",
+   "package": "@haxtheweb/lrn-table",
+   "main": "elements/lrn-table/lrn-table.js",
+   "appeared": "2018-10-23",
+   "gz": 1426,
+   "ddd": true,
+   "dependsOn": [
+    "csv-render",
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 1,
+   "load": 25942,
+   "adds": 9779,
+   "themes": 0
+  },
+  {
+   "name": "lrn-vocab",
+   "package": "@haxtheweb/lrn-vocab",
+   "main": "elements/lrn-vocab/lrn-vocab.js",
+   "appeared": "2018-10-23",
+   "gz": 2744,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-modal"
+   ],
+   "usedBy": 1,
+   "load": 33342,
+   "adds": 14275,
+   "themes": 0
+  },
+  {
+   "name": "lrndesign-chart",
+   "package": "@haxtheweb/lrndesign-chart",
+   "main": "elements/lrndesign-chart/lrndesign-chart.js",
+   "appeared": "2018-10-23",
+   "gz": 6593,
+   "ddd": true,
+   "dependsOn": [
+    "chartist-render",
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 2,
+   "load": 92712,
+   "adds": 59575,
+   "themes": 0
+  },
+  {
+   "name": "lrndesign-imagemap",
+   "package": "@haxtheweb/lrndesign-imagemap",
+   "main": "elements/lrndesign-imagemap/lrndesign-imagemap.js",
+   "appeared": "2018-10-23",
+   "gz": 7949,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "relative-heading",
+    "simple-icon",
+    "simple-popover",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 99070,
+   "adds": 15993,
+   "themes": 0
+  },
+  {
+   "name": "lrndesign-sidenote",
+   "package": "@haxtheweb/lrndesign-sidenote",
+   "main": "elements/lrndesign-sidenote/lrndesign-sidenote.js",
+   "appeared": "2018-10-23",
+   "gz": 2428,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 74397,
+   "adds": 9822,
+   "themes": 0
+  },
+  {
+   "name": "lrndesign-timeline",
+   "package": "@haxtheweb/lrndesign-timeline",
+   "main": "elements/lrndesign-timeline/lrndesign-timeline.js",
+   "appeared": "2019-01-15",
+   "gz": 5949,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "responsive-utility",
+    "schema-behaviors",
+    "simple-colors",
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 47441,
+   "adds": 15027,
+   "themes": 0
+  },
+  {
+   "name": "lrs-elements",
+   "package": "@haxtheweb/lrs-elements",
+   "main": "elements/lrs-elements/lrs-elements.js",
+   "appeared": "2020-11-11",
+   "gz": 164,
+   "ddd": false,
+   "dependsOn": [
+    "intersection-element",
+    "user-action",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 65038,
+   "adds": 36279,
+   "themes": 0
+  },
+  {
+   "name": "lti-launch",
+   "package": "@haxtheweb/lti-launch",
+   "main": "elements/lti-launch/lti-launch.js",
+   "appeared": "2026-11-14",
+   "gz": 7054,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 100009,
+   "adds": 16932,
+   "themes": 0
+  },
+  {
+   "name": "lunr-search",
+   "package": "@haxtheweb/lunr-search",
+   "main": "elements/lunr-search/lunr-search.js",
+   "appeared": "2019-04-25",
+   "gz": 3691,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge",
+    "i18n-manager"
+   ],
+   "usedBy": 1,
+   "load": 14471,
+   "adds": 5072,
+   "themes": 3
+  },
+  {
+   "name": "map-menu",
+   "package": "@haxtheweb/map-menu",
+   "main": "elements/map-menu/map-menu.js",
+   "appeared": "2018-10-23",
+   "gz": 6304,
+   "ddd": false,
+   "dependsOn": [
+    "a11y-collapse",
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 135500,
+   "adds": 49196,
+   "themes": 34
+  },
+  {
+   "name": "mark-the-words",
+   "package": "@haxtheweb/mark-the-words",
+   "main": "elements/mark-the-words/mark-the-words.js",
+   "appeared": "2021-11-05",
+   "gz": 4630,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "simple-toolbar"
+   ],
+   "usedBy": 1,
+   "load": 176140,
+   "adds": 86847,
+   "themes": 0
+  },
+  {
+   "name": "matching-question",
+   "package": "@haxtheweb/matching-question",
+   "main": "elements/matching-question/matching-question.js",
+   "appeared": "2024-05-14",
+   "gz": 5465,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 176975,
+   "adds": 87682,
+   "themes": 0
+  },
+  {
+   "name": "material-theme",
+   "package": "@haxtheweb/material-theme",
+   "main": "elements/material-theme/material-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 4828,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 270004,
+   "adds": 67397,
+   "themes": 1
+  },
+  {
+   "name": "md-block",
+   "package": "@haxtheweb/md-block",
+   "main": "elements/md-block/md-block.js",
+   "appeared": "2019-02-27",
+   "gz": 1582,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 110474,
+   "adds": 31968,
+   "themes": 0
+  },
+  {
+   "name": "media-behaviors",
+   "package": "@haxtheweb/media-behaviors",
+   "main": "elements/media-behaviors/media-behaviors.js",
+   "appeared": "2018-10-23",
+   "gz": 2534,
+   "ddd": false,
+   "dependsOn": [
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 4975,
+   "adds": 2534,
+   "themes": 0
+  },
+  {
+   "name": "media-image",
+   "package": "@haxtheweb/media-image",
+   "main": "elements/media-image/media-image.js",
+   "appeared": "2018-10-23",
+   "gz": 5308,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "figure-label",
+    "image-inspector",
+    "md-block",
+    "schema-behaviors",
+    "simple-modal",
+    "user-action"
+   ],
+   "usedBy": 3,
+   "load": 107649,
+   "adds": 21345,
+   "themes": 0
+  },
+  {
+   "name": "media-playlist",
+   "package": "@haxtheweb/media-playlist",
+   "main": "elements/media-playlist/media-playlist.js",
+   "appeared": "2026-06-23",
+   "gz": 7724,
+   "ddd": true,
+   "dependsOn": [
+    "audio-player",
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "utils",
+    "video-player"
+   ],
+   "usedBy": 2,
+   "load": 287809,
+   "adds": 170069,
+   "themes": 0
+  },
+  {
+   "name": "media-quote",
+   "package": "@haxtheweb/media-quote",
+   "main": "elements/media-quote/media-quote.js",
+   "appeared": "2024-05-13",
+   "gz": 2562,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 1,
+   "load": 73170,
+   "adds": 2562,
+   "themes": 0
+  },
+  {
+   "name": "meme-maker",
+   "package": "@haxtheweb/meme-maker",
+   "main": "elements/meme-maker/meme-maker.js",
+   "appeared": "2018-10-23",
+   "gz": 2244,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 1,
+   "load": 2244,
+   "adds": 2244,
+   "themes": 0
+  },
+  {
+   "name": "memory-match",
+   "package": "@haxtheweb/memory-match",
+   "main": "elements/memory-match/memory-match.js",
+   "appeared": "2026-11-14",
+   "gz": 9256,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 100464,
+   "adds": 17387,
+   "themes": 0
+  },
+  {
+   "name": "merit-badge",
+   "package": "@haxtheweb/merit-badge",
+   "main": "elements/merit-badge/merit-badge.js",
+   "appeared": "2023-05-05",
+   "gz": 2278,
+   "ddd": true,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 46252,
+   "adds": 11983,
+   "themes": 0
+  },
+  {
+   "name": "mermaid-diagram",
+   "package": "@haxtheweb/mermaid-diagram",
+   "main": "elements/mermaid-diagram/mermaid-diagram.js",
+   "appeared": "2026-11-14",
+   "gz": 11815,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "es-global-bridge",
+    "i18n-manager",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 0,
+   "load": 104627,
+   "adds": 30653,
+   "themes": 0
+  },
+  {
+   "name": "micro-frontend-registry",
+   "package": "@haxtheweb/micro-frontend-registry",
+   "main": "elements/micro-frontend-registry/micro-frontend-registry.js",
+   "appeared": "2022-05-20",
+   "gz": 4389,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 8,
+   "load": 4389,
+   "adds": 4389,
+   "themes": 9
+  },
+  {
+   "name": "micro-game-base",
+   "package": "@haxtheweb/micro-game-base",
+   "main": "elements/micro-game-base/micro-game-base.js",
+   "appeared": "2026-10-23",
+   "gz": 9212,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "intersection-element",
+    "multiple-choice",
+    "rpg-character",
+    "schema-behaviors",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 121135,
+   "adds": 37345,
+   "themes": 0
+  },
+  {
+   "name": "moar-sarcasm",
+   "package": "@haxtheweb/moar-sarcasm",
+   "main": "elements/moar-sarcasm/moar-sarcasm.js",
+   "appeared": "2020-09-11",
+   "gz": 2467,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 11866,
+   "adds": 2467,
+   "themes": 0
+  },
+  {
+   "name": "moment-element",
+   "package": "@haxtheweb/moment-element",
+   "main": "elements/moment-element/moment-element.js",
+   "appeared": "2018-10-27",
+   "gz": 1503,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge"
+   ],
+   "usedBy": 0,
+   "load": 2884,
+   "adds": 2884,
+   "themes": 0
+  },
+  {
+   "name": "multiple-choice",
+   "package": "@haxtheweb/multiple-choice",
+   "main": "elements/multiple-choice/multiple-choice.js",
+   "appeared": "2018-10-23",
+   "gz": 1401,
+   "ddd": false,
+   "dependsOn": [
+    "d-d-d",
+    "grid-plate",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-fields",
+    "simple-icon",
+    "simple-toast",
+    "simple-toolbar",
+    "user-action"
+   ],
+   "usedBy": 14,
+   "load": 172911,
+   "adds": 83618,
+   "themes": 0
+  },
+  {
+   "name": "music-player",
+   "package": "@haxtheweb/music-player",
+   "main": "elements/music-player/music-player.js",
+   "appeared": "2020-08-27",
+   "gz": 3458,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 25809,
+   "adds": 9969,
+   "themes": 0
+  },
+  {
+   "name": "mutation-observer-import-mixin",
+   "package": "@haxtheweb/mutation-observer-import-mixin",
+   "main": "elements/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
+   "appeared": "2020-03-30",
+   "gz": 382,
+   "ddd": false,
+   "dependsOn": [
+    "dynamic-import-registry"
+   ],
+   "usedBy": 0,
+   "load": 2842,
+   "adds": 2842,
+   "themes": 0
+  },
+  {
+   "name": "night-draft-theme",
+   "package": "@haxtheweb/night-draft-theme",
+   "main": "elements/night-draft-theme/night-draft-theme.js",
+   "appeared": "2026-11-23",
+   "gz": 10484,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 208469,
+   "adds": 10484,
+   "themes": 1
+  },
+  {
+   "name": "numeric-question",
+   "package": "@haxtheweb/numeric-question",
+   "main": "elements/numeric-question/numeric-question.js",
+   "appeared": "2026-11-14",
+   "gz": 9005,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 183859,
+   "adds": 94566,
+   "themes": 0
+  },
+  {
+   "name": "oer-schema",
+   "package": "@haxtheweb/oer-schema",
+   "main": "elements/oer-schema/oer-schema.js",
+   "appeared": "2018-10-23",
+   "gz": 1754,
+   "ddd": false,
+   "dependsOn": [
+    "schema-behaviors"
+   ],
+   "usedBy": 2,
+   "load": 9377,
+   "adds": 9377,
+   "themes": 0
+  },
+  {
+   "name": "outline-designer",
+   "package": "@haxtheweb/outline-designer",
+   "main": "elements/outline-designer/outline-designer.js",
+   "appeared": "2018-12-04",
+   "gz": 50764,
+   "ddd": false,
+   "dependsOn": [
+    "hax-body",
+    "hax-iconset",
+    "haxcms-elements",
+    "i18n-manager",
+    "json-outline-schema",
+    "schema-behaviors",
+    "simple-fields",
+    "simple-icon",
+    "simple-popover",
+    "simple-toolbar",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 641546,
+   "adds": 484810,
+   "themes": 0
+  },
+  {
+   "name": "outline-player",
+   "package": "@haxtheweb/outline-player",
+   "main": "elements/outline-player/outline-player.js",
+   "appeared": "2018-10-23",
+   "gz": 4869,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 213193,
+   "adds": 11981,
+   "themes": 1
+  },
+  {
+   "name": "page-break",
+   "package": "@haxtheweb/page-break",
+   "main": "elements/page-break/page-break.js",
+   "appeared": "2021-10-07",
+   "gz": 12871,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-body",
+    "haxcms-elements",
+    "i18n-manager",
+    "intersection-element",
+    "schema-behaviors",
+    "simple-fields",
+    "simple-icon",
+    "simple-toolbar",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 85341,
+   "adds": 18628,
+   "themes": 0
+  },
+  {
+   "name": "page-contents-menu",
+   "package": "@haxtheweb/page-contents-menu",
+   "main": "elements/page-contents-menu/page-contents-menu.js",
+   "appeared": "2020-06-18",
+   "gz": 6036,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "schema-behaviors",
+    "simple-popover",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 69812,
+   "adds": 8603,
+   "themes": 17
+  },
+  {
+   "name": "page-flag",
+   "package": "@haxtheweb/page-flag",
+   "main": "elements/page-flag/page-flag.js",
+   "appeared": "2023-04-17",
+   "gz": 2992,
+   "ddd": false,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "i18n-manager",
+    "rpg-character",
+    "simple-colors",
+    "simple-datetime",
+    "simple-fields",
+    "simple-icon",
+    "simple-picker",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 126818,
+   "adds": 73663,
+   "themes": 0
+  },
+  {
+   "name": "page-section",
+   "package": "@haxtheweb/page-section",
+   "main": "elements/page-section/page-section.js",
+   "appeared": "2023-09-06",
+   "gz": 5637,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 1,
+   "load": 90973,
+   "adds": 13772,
+   "themes": 0
+  },
+  {
+   "name": "paper-input-flagged",
+   "package": "@haxtheweb/paper-input-flagged",
+   "main": "elements/paper-input-flagged/paper-input-flagged.js",
+   "appeared": "2018-10-23",
+   "gz": 2700,
+   "ddd": true,
+   "dependsOn": [
+    "simple-fields",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 0,
+   "load": 58111,
+   "adds": 34858,
+   "themes": 0
+  },
+  {
+   "name": "papermod-theme",
+   "package": "@haxtheweb/papermod-theme",
+   "main": "elements/papermod-theme/papermod-theme.js",
+   "appeared": "2026-11-17",
+   "gz": 843,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-datetime",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 225776,
+   "adds": 23169,
+   "themes": 12
+  },
+  {
+   "name": "parallax-image",
+   "package": "@haxtheweb/parallax-image",
+   "main": "elements/parallax-image/parallax-image.js",
+   "appeared": "2018-10-23",
+   "gz": 1772,
+   "ddd": false,
+   "dependsOn": [
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 3614,
+   "adds": 3614,
+   "themes": 0
+  },
+  {
+   "name": "patternfly-theme",
+   "package": "@haxtheweb/patternfly-theme",
+   "main": "elements/patternfly-theme/patternfly-theme.js",
+   "appeared": "2026-11-11",
+   "gz": 3976,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 266255,
+   "adds": 63648,
+   "themes": 1
+  },
+  {
+   "name": "pdf-browser-viewer",
+   "package": "@haxtheweb/pdf-browser-viewer",
+   "main": "elements/pdf-browser-viewer/pdf-browser-viewer.js",
+   "appeared": "2018-10-27",
+   "gz": 3826,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 26177,
+   "adds": 10337,
+   "themes": 0
+  },
+  {
+   "name": "person-testimonial",
+   "package": "@haxtheweb/person-testimonial",
+   "main": "elements/person-testimonial/person-testimonial.js",
+   "appeared": "2018-10-23",
+   "gz": 2293,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "schema-behaviors"
+   ],
+   "usedBy": 3,
+   "load": 65344,
+   "adds": 4135,
+   "themes": 0
+  },
+  {
+   "name": "place-holder",
+   "package": "@haxtheweb/place-holder",
+   "main": "elements/place-holder/place-holder.js",
+   "appeared": "2018-10-23",
+   "gz": 3104,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 77961,
+   "adds": 3987,
+   "themes": 0
+  },
+  {
+   "name": "play-list",
+   "package": "@haxtheweb/play-list",
+   "main": "elements/play-list/play-list.js",
+   "appeared": "2023-08-09",
+   "gz": 6091,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 138054,
+   "adds": 43556,
+   "themes": 0
+  },
+  {
+   "name": "polaris-theme",
+   "package": "@haxtheweb/polaris-theme",
+   "main": "elements/polaris-theme/polaris-theme.js",
+   "appeared": "2023-09-26",
+   "gz": 5339,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "micro-frontend-registry",
+    "scroll-button",
+    "simple-tooltip"
+   ],
+   "usedBy": 0,
+   "load": 273974,
+   "adds": 71367,
+   "themes": 4
+  },
+  {
+   "name": "portal-launcher",
+   "package": "@haxtheweb/portal-launcher",
+   "main": "elements/portal-launcher/portal-launcher.js",
+   "appeared": "2019-09-26",
+   "gz": 1797,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 1797,
+   "adds": 1797,
+   "themes": 0
+  },
+  {
+   "name": "post-card",
+   "package": "@haxtheweb/post-card",
+   "main": "elements/post-card/post-card.js",
+   "appeared": "2021-11-05",
+   "gz": 3341,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager",
+    "simple-colors"
+   ],
+   "usedBy": 1,
+   "load": 12740,
+   "adds": 3341,
+   "themes": 0
+  },
+  {
+   "name": "pouch-db",
+   "package": "@haxtheweb/pouch-db",
+   "main": "elements/pouch-db/pouch-db.js",
+   "appeared": "2019-05-24",
+   "gz": 2684,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 2684,
+   "adds": 2684,
+   "themes": 0
+  },
+  {
+   "name": "primer-theme",
+   "package": "@haxtheweb/primer-theme",
+   "main": "elements/primer-theme/primer-theme.js",
+   "appeared": "2026-11-16",
+   "gz": 4289,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 268458,
+   "adds": 65851,
+   "themes": 1
+  },
+  {
+   "name": "privacy-choices",
+   "package": "@haxtheweb/privacy-choices",
+   "main": "elements/privacy-choices/privacy-choices.js",
+   "appeared": "2026-11-23",
+   "gz": 3961,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate",
+    "i18n-manager",
+    "simple-fields",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 134689,
+   "adds": 55091,
+   "themes": 0
+  },
+  {
+   "name": "product-glance",
+   "package": "@haxtheweb/product-glance",
+   "main": "elements/product-glance/product-glance.js",
+   "appeared": "2021-04-22",
+   "gz": 1753,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 15338,
+   "adds": 1753,
+   "themes": 0
+  },
+  {
+   "name": "product-offering",
+   "package": "@haxtheweb/product-offering",
+   "main": "elements/product-offering/product-offering.js",
+   "appeared": "2021-04-29",
+   "gz": 2244,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "intersection-element",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 70716,
+   "adds": 6141,
+   "themes": 0
+  },
+  {
+   "name": "progress-donut",
+   "package": "@haxtheweb/progress-donut",
+   "main": "elements/progress-donut/progress-donut.js",
+   "appeared": "2018-10-29",
+   "gz": 2210,
+   "ddd": false,
+   "dependsOn": [
+    "lrndesign-chart"
+   ],
+   "usedBy": 0,
+   "load": 154726,
+   "adds": 63455,
+   "themes": 0
+  },
+  {
+   "name": "promise-progress",
+   "package": "@haxtheweb/promise-progress",
+   "main": "elements/promise-progress/promise-progress.js",
+   "appeared": "2022-02-16",
+   "gz": 755,
+   "ddd": true,
+   "dependsOn": [
+    "wc-autoload"
+   ],
+   "usedBy": 2,
+   "load": 2340,
+   "adds": 2340,
+   "themes": 0
+  },
+  {
+   "name": "q-r",
+   "package": "@haxtheweb/q-r",
+   "main": "elements/q-r/q-r.js",
+   "appeared": "2018-10-23",
+   "gz": 2796,
+   "ddd": false,
+   "dependsOn": [
+    "es-global-bridge",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 4,
+   "load": 18636,
+   "adds": 2796,
+   "themes": 1
+  },
+  {
+   "name": "radar-chart",
+   "package": "@haxtheweb/radar-chart",
+   "main": "elements/radar-chart/radar-chart.js",
+   "appeared": "2026-10-19",
+   "gz": 7106,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 88697,
+   "adds": 14723,
+   "themes": 0
+  },
+  {
+   "name": "radio-behaviors",
+   "package": "@haxtheweb/radio-behaviors",
+   "main": "elements/radio-behaviors/radio-behaviors.js",
+   "appeared": "2020-06-10",
+   "gz": 2630,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 2630,
+   "adds": 2630,
+   "themes": 0
+  },
+  {
+   "name": "reading-analysis",
+   "package": "@haxtheweb/reading-analysis",
+   "main": "elements/reading-analysis/reading-analysis.js",
+   "appeared": "2026-11-04",
+   "gz": 15175,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 189922,
+   "adds": 100629,
+   "themes": 0
+  },
+  {
+   "name": "relative-heading",
+   "package": "@haxtheweb/relative-heading",
+   "main": "elements/relative-heading/relative-heading.js",
+   "appeared": "2018-10-28",
+   "gz": 1980,
+   "ddd": false,
+   "dependsOn": [
+    "anchor-behaviors",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 26898,
+   "adds": 6530,
+   "themes": 0
+  },
+  {
+   "name": "replace-tag",
+   "package": "@haxtheweb/replace-tag",
+   "main": "elements/replace-tag/replace-tag.js",
+   "appeared": "2021-01-20",
+   "gz": 3595,
+   "ddd": false,
+   "dependsOn": [
+    "wc-autoload"
+   ],
+   "usedBy": 3,
+   "load": 6604,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "responsive-grid",
+   "package": "@haxtheweb/responsive-grid",
+   "main": "elements/responsive-grid/responsive-grid.js",
+   "appeared": "2018-10-23",
+   "gz": 154,
+   "ddd": false,
+   "dependsOn": [
+    "responsive-utility"
+   ],
+   "usedBy": 0,
+   "load": 6685,
+   "adds": 3696,
+   "themes": 0
+  },
+  {
+   "name": "responsive-utility",
+   "package": "@haxtheweb/responsive-utility",
+   "main": "elements/responsive-utility/responsive-utility.js",
+   "appeared": "2018-10-23",
+   "gz": 2989,
+   "ddd": true,
+   "dependsOn": [],
+   "usedBy": 10,
+   "load": 2989,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "resume-theme",
+   "package": "@haxtheweb/resume-theme",
+   "main": "elements/resume-theme/resume-theme.js",
+   "appeared": "2026-06-23",
+   "gz": 4039,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 202323,
+   "adds": 4338,
+   "themes": 1
+  },
+  {
+   "name": "retro-card",
+   "package": "@haxtheweb/retro-card",
+   "main": "elements/retro-card/retro-card.js",
+   "appeared": "2019-12-21",
+   "gz": 3400,
+   "ddd": true,
+   "dependsOn": [
+    "simple-colors"
+   ],
+   "usedBy": 0,
+   "load": 16985,
+   "adds": 3400,
+   "themes": 0
+  },
+  {
+   "name": "retro-tv",
+   "package": "@haxtheweb/retro-tv",
+   "main": "elements/retro-tv/retro-tv.js",
+   "appeared": "2026-11-12",
+   "gz": 4865,
+   "ddd": false,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "rpg-character"
+   ],
+   "usedBy": 2,
+   "load": 22623,
+   "adds": 9998,
+   "themes": 1
+  },
+  {
+   "name": "rich-text-editor",
+   "package": "@haxtheweb/rich-text-editor",
+   "main": "elements/rich-text-editor/rich-text-editor.js",
+   "appeared": "2019-02-04",
+   "gz": 3178,
+   "ddd": false,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "code-editor",
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "micro-frontend-registry",
+    "simple-fields",
+    "simple-icon",
+    "simple-icon-picker",
+    "simple-picker",
+    "simple-popover",
+    "simple-toolbar",
+    "utils"
+   ],
+   "usedBy": 2,
+   "load": 291593,
+   "adds": 189262,
+   "themes": 0
+  },
+  {
+   "name": "rpg-character",
+   "package": "@haxtheweb/rpg-character",
+   "main": "elements/rpg-character/rpg-character.js",
+   "appeared": "2022-03-14",
+   "gz": 10884,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-colors",
+    "simple-fields",
+    "simple-pager",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 7,
+   "load": 30590,
+   "adds": 16292,
+   "themes": 2
+  },
+  {
+   "name": "schema-behaviors",
+   "package": "@haxtheweb/schema-behaviors",
+   "main": "elements/schema-behaviors/schema-behaviors.js",
+   "appeared": "2018-10-23",
+   "gz": 1459,
+   "ddd": false,
+   "dependsOn": [
+    "utils"
+   ],
+   "usedBy": 38,
+   "load": 1842,
+   "adds": 1842,
+   "themes": 43
+  },
+  {
+   "name": "screen-recorder",
+   "package": "@haxtheweb/screen-recorder",
+   "main": "elements/screen-recorder/screen-recorder.js",
+   "appeared": "2025-09-30",
+   "gz": 3740,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 84225,
+   "adds": 10251,
+   "themes": 0
+  },
+  {
+   "name": "scroll-button",
+   "package": "@haxtheweb/scroll-button",
+   "main": "elements/scroll-button/scroll-button.js",
+   "appeared": "2019-03-17",
+   "gz": 1739,
+   "ddd": false,
+   "dependsOn": [
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 10,
+   "load": 11407,
+   "adds": 1739,
+   "themes": 14
+  },
+  {
+   "name": "self-check",
+   "package": "@haxtheweb/self-check",
+   "main": "elements/self-check/self-check.js",
+   "appeared": "2018-10-23",
+   "gz": 5499,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "lazy-image-helpers",
+    "schema-behaviors",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 2,
+   "load": 100896,
+   "adds": 17819,
+   "themes": 0
+  },
+  {
+   "name": "self-reflective-nudge",
+   "package": "@haxtheweb/self-reflective-nudge",
+   "main": "elements/self-reflective-nudge/self-reflective-nudge.js",
+   "appeared": "2026-10-20",
+   "gz": 6516,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 96104,
+   "adds": 13027,
+   "themes": 0
+  },
+  {
+   "name": "shadcn-theme",
+   "package": "@haxtheweb/shadcn-theme",
+   "main": "elements/shadcn-theme/shadcn-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 3940,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 268272,
+   "adds": 65665,
+   "themes": 1
+  },
+  {
+   "name": "shadow-style",
+   "package": "@haxtheweb/shadow-style",
+   "main": "elements/shadow-style/shadow-style.js",
+   "appeared": "2021-02-03",
+   "gz": 2495,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 2495,
+   "adds": 2495,
+   "themes": 0
+  },
+  {
+   "name": "sheet-music",
+   "package": "@haxtheweb/sheet-music",
+   "main": "elements/sheet-music/sheet-music.js",
+   "appeared": "2026-09-11",
+   "gz": 9227,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "intersection-element",
+    "simple-icon",
+    "simple-tooltip"
+   ],
+   "usedBy": 1,
+   "load": 100848,
+   "adds": 23647,
+   "themes": 0
+  },
+  {
+   "name": "simple-autocomplete",
+   "package": "@haxtheweb/simple-autocomplete",
+   "main": "elements/simple-autocomplete/simple-autocomplete.js",
+   "appeared": "2020-12-01",
+   "gz": 5843,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager",
+    "simple-filter",
+    "simple-icon",
+    "simple-popover",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 31667,
+   "adds": 17424,
+   "themes": 0
+  },
+  {
+   "name": "simple-blog",
+   "package": "@haxtheweb/simple-blog",
+   "main": "elements/simple-blog/simple-blog.js",
+   "appeared": "2018-10-23",
+   "gz": 3540,
+   "ddd": true,
+   "dependsOn": [
+    "anchor-behaviors",
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-colors",
+    "simple-datetime",
+    "simple-icon",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 217553,
+   "adds": 16341,
+   "themes": 1
+  },
+  {
+   "name": "simple-colors",
+   "package": "@haxtheweb/simple-colors",
+   "main": "elements/simple-colors/simple-colors.js",
+   "appeared": "2018-10-23",
+   "gz": 6868,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors-shared-styles",
+    "simple-picker"
+   ],
+   "usedBy": 25,
+   "load": 13585,
+   "adds": 0,
+   "themes": 66
+  },
+  {
+   "name": "simple-colors-shared-styles",
+   "package": "@haxtheweb/simple-colors-shared-styles",
+   "main": "elements/simple-colors-shared-styles/simple-colors-shared-styles.js",
+   "appeared": "2019-08-01",
+   "gz": 6717,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 2,
+   "load": 6717,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "simple-cta",
+   "package": "@haxtheweb/simple-cta",
+   "main": "elements/simple-cta/simple-cta.js",
+   "appeared": "2020-10-01",
+   "gz": 4093,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 4,
+   "load": 71839,
+   "adds": 7264,
+   "themes": 1
+  },
+  {
+   "name": "simple-datetime",
+   "package": "@haxtheweb/simple-datetime",
+   "main": "elements/simple-datetime/simple-datetime.js",
+   "appeared": "2018-10-23",
+   "gz": 1009,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 7,
+   "load": 2831,
+   "adds": 2831,
+   "themes": 3
+  },
+  {
+   "name": "simple-emoji",
+   "package": "@haxtheweb/simple-emoji",
+   "main": "elements/simple-emoji/simple-emoji.js",
+   "appeared": "2021-11-01",
+   "gz": 787,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 787,
+   "adds": 787,
+   "themes": 0
+  },
+  {
+   "name": "simple-fields",
+   "package": "@haxtheweb/simple-fields",
+   "main": "elements/simple-fields/simple-fields.js",
+   "appeared": "2019-04-05",
+   "gz": 6550,
+   "ddd": false,
+   "dependsOn": [
+    "a11y-tabs",
+    "code-editor",
+    "d-d-d",
+    "es-global-bridge",
+    "hax-iconset",
+    "i18n-manager",
+    "responsive-utility",
+    "screen-recorder",
+    "simple-colors",
+    "simple-icon",
+    "simple-toolbar",
+    "simple-tooltip",
+    "utils",
+    "voice-recorder"
+   ],
+   "usedBy": 18,
+   "load": 169823,
+   "adds": 77952,
+   "themes": 3
+  },
+  {
+   "name": "simple-filter",
+   "package": "@haxtheweb/simple-filter",
+   "main": "elements/simple-filter/simple-filter.js",
+   "appeared": "2020-11-10",
+   "gz": 2623,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 4,
+   "load": 2623,
+   "adds": 2623,
+   "themes": 0
+  },
+  {
+   "name": "simple-icon",
+   "package": "@haxtheweb/simple-icon",
+   "main": "elements/simple-icon/simple-icon.js",
+   "appeared": "2020-09-02",
+   "gz": 883,
+   "ddd": false,
+   "dependsOn": [
+    "simple-colors"
+   ],
+   "usedBy": 122,
+   "load": 20269,
+   "adds": 883,
+   "themes": 69
+  },
+  {
+   "name": "simple-icon-picker",
+   "package": "@haxtheweb/simple-icon-picker",
+   "main": "elements/simple-icon-picker/simple-icon-picker.js",
+   "appeared": "2019-02-04",
+   "gz": 2180,
+   "ddd": false,
+   "dependsOn": [
+    "simple-icon",
+    "simple-picker"
+   ],
+   "usedBy": 1,
+   "load": 47932,
+   "adds": 26545,
+   "themes": 0
+  },
+  {
+   "name": "simple-img",
+   "package": "@haxtheweb/simple-img",
+   "main": "elements/simple-img/simple-img.js",
+   "appeared": "2022-06-07",
+   "gz": 2856,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 0,
+   "load": 2856,
+   "adds": 2856,
+   "themes": 0
+  },
+  {
+   "name": "simple-login",
+   "package": "@haxtheweb/simple-login",
+   "main": "elements/simple-login/simple-login.js",
+   "appeared": "2019-05-10",
+   "gz": 2249,
+   "ddd": true,
+   "dependsOn": [
+    "simple-colors",
+    "simple-fields",
+    "simple-progress"
+   ],
+   "usedBy": 0,
+   "load": 59251,
+   "adds": 34407,
+   "themes": 0
+  },
+  {
+   "name": "simple-modal",
+   "package": "@haxtheweb/simple-modal",
+   "main": "elements/simple-modal/simple-modal.js",
+   "appeared": "2018-11-13",
+   "gz": 9689,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 10,
+   "load": 28756,
+   "adds": 9689,
+   "themes": 11
+  },
+  {
+   "name": "simple-pager",
+   "package": "@haxtheweb/simple-pager",
+   "main": "elements/simple-pager/simple-pager.js",
+   "appeared": "2026-08-27",
+   "gz": 2954,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 3,
+   "load": 80155,
+   "adds": 2954,
+   "themes": 0
+  },
+  {
+   "name": "simple-picker",
+   "package": "@haxtheweb/simple-picker",
+   "main": "elements/simple-picker/simple-picker.js",
+   "appeared": "2018-11-22",
+   "gz": 9419,
+   "ddd": false,
+   "dependsOn": [
+    "intersection-element",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 6,
+   "load": 32692,
+   "adds": 11305,
+   "themes": 0
+  },
+  {
+   "name": "simple-popover",
+   "package": "@haxtheweb/simple-popover",
+   "main": "elements/simple-popover/simple-popover.js",
+   "appeared": "2019-03-29",
+   "gz": 3164,
+   "ddd": false,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "i18n-manager",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 10,
+   "load": 10111,
+   "adds": 5267,
+   "themes": 0
+  },
+  {
+   "name": "simple-progress",
+   "package": "@haxtheweb/simple-progress",
+   "main": "elements/simple-progress/simple-progress.js",
+   "appeared": "2020-11-06",
+   "gz": 1591,
+   "ddd": true,
+   "dependsOn": [],
+   "usedBy": 3,
+   "load": 1591,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "simple-range-input",
+   "package": "@haxtheweb/simple-range-input",
+   "main": "elements/simple-range-input/simple-range-input.js",
+   "appeared": "2020-11-06",
+   "gz": 5603,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d"
+   ],
+   "usedBy": 2,
+   "load": 66812,
+   "adds": 5603,
+   "themes": 0
+  },
+  {
+   "name": "simple-search",
+   "package": "@haxtheweb/simple-search",
+   "main": "elements/simple-search/simple-search.js",
+   "appeared": "2018-10-24",
+   "gz": 4886,
+   "ddd": true,
+   "dependsOn": [
+    "simple-fields",
+    "simple-icon",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 77095,
+   "adds": 38896,
+   "themes": 0
+  },
+  {
+   "name": "simple-toast",
+   "package": "@haxtheweb/simple-toast",
+   "main": "elements/simple-toast/simple-toast.js",
+   "appeared": "2018-12-17",
+   "gz": 2393,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d"
+   ],
+   "usedBy": 6,
+   "load": 65615,
+   "adds": 4406,
+   "themes": 1
+  },
+  {
+   "name": "simple-toolbar",
+   "package": "@haxtheweb/simple-toolbar",
+   "main": "elements/simple-toolbar/simple-toolbar.js",
+   "appeared": "2021-01-21",
+   "gz": 7290,
+   "ddd": false,
+   "dependsOn": [
+    "a11y-menu-button",
+    "d-d-d",
+    "radio-behaviors",
+    "simple-icon",
+    "simple-tooltip",
+    "utils"
+   ],
+   "usedBy": 12,
+   "load": 91508,
+   "adds": 26933,
+   "themes": 0
+  },
+  {
+   "name": "simple-tooltip",
+   "package": "@haxtheweb/simple-tooltip",
+   "main": "elements/simple-tooltip/simple-tooltip.js",
+   "appeared": "2020-01-15",
+   "gz": 6515,
+   "ddd": true,
+   "dependsOn": [],
+   "usedBy": 26,
+   "load": 6515,
+   "adds": 6515,
+   "themes": 44
+  },
+  {
+   "name": "slide-deck",
+   "package": "@haxtheweb/slide-deck",
+   "main": "elements/slide-deck/slide-deck.js",
+   "appeared": "2026-09-12",
+   "gz": 9734,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 150232,
+   "adds": 46631,
+   "themes": 0
+  },
+  {
+   "name": "social-share-link",
+   "package": "@haxtheweb/social-share-link",
+   "main": "elements/social-share-link/social-share-link.js",
+   "appeared": "2019-02-12",
+   "gz": 3822,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-iconset",
+    "simple-icon"
+   ],
+   "usedBy": 2,
+   "load": 68397,
+   "adds": 3822,
+   "themes": 0
+  },
+  {
+   "name": "sorting-question",
+   "package": "@haxtheweb/sorting-question",
+   "main": "elements/sorting-question/sorting-question.js",
+   "appeared": "2021-11-05",
+   "gz": 5922,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "multiple-choice",
+    "simple-icon",
+    "simple-toast",
+    "simple-toolbar"
+   ],
+   "usedBy": 0,
+   "load": 182527,
+   "adds": 93234,
+   "themes": 0
+  },
+  {
+   "name": "spacebook-theme",
+   "package": "@haxtheweb/spacebook-theme",
+   "main": "elements/spacebook-theme/spacebook-theme.js",
+   "appeared": "2025-09-06",
+   "gz": 7467,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 331526,
+   "adds": 128919,
+   "themes": 1
+  },
+  {
+   "name": "spectrum-theme",
+   "package": "@haxtheweb/spectrum-theme",
+   "main": "elements/spectrum-theme/spectrum-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 4137,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 276527,
+   "adds": 73920,
+   "themes": 1
+  },
+  {
+   "name": "spotify-embed",
+   "package": "@haxtheweb/spotify-embed",
+   "main": "elements/spotify-embed/spotify-embed.js",
+   "appeared": "2023-05-24",
+   "gz": 2310,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 32184,
+   "adds": 8821,
+   "themes": 0
+  },
+  {
+   "name": "star-rating",
+   "package": "@haxtheweb/star-rating",
+   "main": "elements/star-rating/star-rating.js",
+   "appeared": "2021-04-21",
+   "gz": 4407,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-colors",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 42223,
+   "adds": 9571,
+   "themes": 0
+  },
+  {
+   "name": "stat-tile",
+   "package": "@haxtheweb/stat-tile",
+   "main": "elements/stat-tile/stat-tile.js",
+   "appeared": "2026-11-14",
+   "gz": 1997,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 72605,
+   "adds": 1997,
+   "themes": 0
+  },
+  {
+   "name": "stop-note",
+   "package": "@haxtheweb/stop-note",
+   "main": "elements/stop-note/stop-note.js",
+   "appeared": "2018-10-23",
+   "gz": 4854,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 3,
+   "load": 90818,
+   "adds": 16844,
+   "themes": 0
+  },
+  {
+   "name": "super-daemon",
+   "package": "@haxtheweb/super-daemon",
+   "main": "elements/super-daemon/super-daemon.js",
+   "appeared": "2023-02-22",
+   "gz": 23831,
+   "ddd": true,
+   "dependsOn": [
+    "absolute-position-behavior",
+    "d-d-d",
+    "future-terminal-text",
+    "hal-9000",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-colors",
+    "simple-fields",
+    "simple-filter",
+    "simple-icon",
+    "simple-toast",
+    "user-scaffold",
+    "utils"
+   ],
+   "usedBy": 4,
+   "load": 273608,
+   "adds": 156318,
+   "themes": 2
+  },
+  {
+   "name": "tableau-embed",
+   "package": "@haxtheweb/tableau-embed",
+   "main": "elements/tableau-embed/tableau-embed.js",
+   "appeared": "2026-07-13",
+   "gz": 2348,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 32222,
+   "adds": 8859,
+   "themes": 0
+  },
+  {
+   "name": "tagging-question",
+   "package": "@haxtheweb/tagging-question",
+   "main": "elements/tagging-question/tagging-question.js",
+   "appeared": "2024-05-08",
+   "gz": 5387,
+   "ddd": false,
+   "dependsOn": [
+    "multiple-choice"
+   ],
+   "usedBy": 0,
+   "load": 176897,
+   "adds": 87604,
+   "themes": 0
+  },
+  {
+   "name": "tailwind-theme",
+   "package": "@haxtheweb/tailwind-theme",
+   "main": "elements/tailwind-theme/tailwind-theme.js",
+   "appeared": "2026-11-12",
+   "gz": 4377,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 276309,
+   "adds": 73702,
+   "themes": 1
+  },
+  {
+   "name": "terrible-themes",
+   "package": "@haxtheweb/terrible-themes",
+   "main": "elements/terrible-themes/terrible-themes.js",
+   "appeared": "2023-05-16",
+   "gz": 3807,
+   "ddd": false,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "scroll-button"
+   ],
+   "usedBy": 0,
+   "load": 234014,
+   "adds": 31407,
+   "themes": 5
+  },
+  {
+   "name": "training-theme",
+   "package": "@haxtheweb/training-theme",
+   "main": "elements/training-theme/training-theme.js",
+   "appeared": "2023-12-04",
+   "gz": 5832,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 263361,
+   "adds": 60754,
+   "themes": 1
+  },
+  {
+   "name": "twenty-six-theme",
+   "package": "@haxtheweb/twenty-six-theme",
+   "main": "elements/twenty-six-theme/twenty-six-theme.js",
+   "appeared": "2026-05-26",
+   "gz": 7665,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-datetime",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 219820,
+   "adds": 20440,
+   "themes": 1
+  },
+  {
+   "name": "twitter-embed",
+   "package": "@haxtheweb/twitter-embed",
+   "main": "elements/twitter-embed/twitter-embed.js",
+   "appeared": "2020-08-26",
+   "gz": 2614,
+   "ddd": false,
+   "dependsOn": [
+    "hax-consent-gate",
+    "i18n-manager",
+    "utils"
+   ],
+   "usedBy": 0,
+   "load": 19213,
+   "adds": 2614,
+   "themes": 0
+  },
+  {
+   "name": "type-writer",
+   "package": "@haxtheweb/type-writer",
+   "main": "elements/type-writer/type-writer.js",
+   "appeared": "2020-02-04",
+   "gz": 2190,
+   "ddd": false,
+   "dependsOn": [
+    "intersection-element"
+   ],
+   "usedBy": 0,
+   "load": 3584,
+   "adds": 3584,
+   "themes": 0
+  },
+  {
+   "name": "un-sdg",
+   "package": "@haxtheweb/un-sdg",
+   "main": "elements/un-sdg/un-sdg.js",
+   "appeared": "2024-11-05",
+   "gz": 2403,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager",
+    "schema-behaviors"
+   ],
+   "usedBy": 0,
+   "load": 13644,
+   "adds": 4245,
+   "themes": 0
+  },
+  {
+   "name": "undo-manager",
+   "package": "@haxtheweb/undo-manager",
+   "main": "elements/undo-manager/undo-manager.js",
+   "appeared": "2019-11-29",
+   "gz": 3420,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 1,
+   "load": 3420,
+   "adds": 3420,
+   "themes": 0
+  },
+  {
+   "name": "unity-webgl",
+   "package": "@haxtheweb/unity-webgl",
+   "main": "elements/unity-webgl/unity-webgl.js",
+   "appeared": "2021-02-25",
+   "gz": 3068,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 25419,
+   "adds": 9579,
+   "themes": 0
+  },
+  {
+   "name": "user-action",
+   "package": "@haxtheweb/user-action",
+   "main": "elements/user-action/user-action.js",
+   "appeared": "2019-05-28",
+   "gz": 2528,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 26,
+   "load": 13990,
+   "adds": 2528,
+   "themes": 69
+  },
+  {
+   "name": "user-scaffold",
+   "package": "@haxtheweb/user-scaffold",
+   "main": "elements/user-scaffold/user-scaffold.js",
+   "appeared": "2023-11-03",
+   "gz": 15407,
+   "ddd": false,
+   "dependsOn": [
+    "utils"
+   ],
+   "usedBy": 7,
+   "load": 20856,
+   "adds": 0,
+   "themes": 69
+  },
+  {
+   "name": "uswds-theme",
+   "package": "@haxtheweb/uswds-theme",
+   "main": "elements/uswds-theme/uswds-theme.js",
+   "appeared": "2026-11-13",
+   "gz": 5674,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 267366,
+   "adds": 64759,
+   "themes": 1
+  },
+  {
+   "name": "utils",
+   "package": "@haxtheweb/utils",
+   "main": "elements/utils/utils.js",
+   "appeared": "2019-11-30",
+   "gz": 14604,
+   "ddd": false,
+   "dependsOn": [],
+   "usedBy": 61,
+   "load": 47683,
+   "adds": 30386,
+   "themes": 69
+  },
+  {
+   "name": "vcf-render",
+   "package": "@haxtheweb/vcf-render",
+   "main": "elements/vcf-render/vcf-render.js",
+   "appeared": "2026-10-05",
+   "gz": 6153,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "editable-table",
+    "i18n-manager",
+    "intersection-element",
+    "media-quote",
+    "person-testimonial"
+   ],
+   "usedBy": 0,
+   "load": 91748,
+   "adds": 17774,
+   "themes": 0
+  },
+  {
+   "name": "vhs-blog-theme",
+   "package": "@haxtheweb/vhs-blog-theme",
+   "main": "elements/vhs-blog-theme/vhs-blog-theme.js",
+   "appeared": "2026-11-11",
+   "gz": 17758,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "q-r",
+    "retro-tv"
+   ],
+   "usedBy": 0,
+   "load": 363250,
+   "adds": 160643,
+   "themes": 1
+  },
+  {
+   "name": "video-player",
+   "package": "@haxtheweb/video-player",
+   "main": "elements/video-player/video-player.js",
+   "appeared": "2018-10-23",
+   "gz": 15275,
+   "ddd": true,
+   "dependsOn": [
+    "a11y-media-player",
+    "d-d-d",
+    "hax-consent-gate",
+    "hax-iconset",
+    "i18n-manager",
+    "intersection-element",
+    "media-behaviors",
+    "schema-behaviors",
+    "simple-cta",
+    "simple-icon",
+    "simple-modal",
+    "utils"
+   ],
+   "usedBy": 7,
+   "load": 248707,
+   "adds": 132294,
+   "themes": 0
+  },
+  {
+   "name": "vocab-term",
+   "package": "@haxtheweb/vocab-term",
+   "main": "elements/vocab-term/vocab-term.js",
+   "appeared": "2021-09-30",
+   "gz": 5083,
+   "ddd": true,
+   "dependsOn": [
+    "i18n-manager",
+    "schema-behaviors",
+    "simple-icon",
+    "simple-modal",
+    "simple-popover",
+    "user-action"
+   ],
+   "usedBy": 2,
+   "load": 56441,
+   "adds": 23427,
+   "themes": 0
+  },
+  {
+   "name": "voice-recorder",
+   "package": "@haxtheweb/voice-recorder",
+   "main": "elements/voice-recorder/voice-recorder.js",
+   "appeared": "2019-12-14",
+   "gz": 1271,
+   "ddd": false,
+   "dependsOn": [
+    "simple-icon"
+   ],
+   "usedBy": 1,
+   "load": 18610,
+   "adds": 8942,
+   "themes": 0
+  },
+  {
+   "name": "wc-autoload",
+   "package": "@haxtheweb/wc-autoload",
+   "main": "elements/wc-autoload/wc-autoload.js",
+   "appeared": "2020-04-03",
+   "gz": 3093,
+   "ddd": false,
+   "dependsOn": [
+    "dynamic-import-registry"
+   ],
+   "usedBy": 3,
+   "load": 4909,
+   "adds": 4909,
+   "themes": 0
+  },
+  {
+   "name": "web-baseline-status",
+   "package": "@haxtheweb/web-baseline-status",
+   "main": "elements/web-baseline-status/web-baseline-status.js",
+   "appeared": "2026-10-19",
+   "gz": 1894,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "hax-consent-gate"
+   ],
+   "usedBy": 0,
+   "load": 70303,
+   "adds": 1894,
+   "themes": 0
+  },
+  {
+   "name": "webawesome-theme",
+   "package": "@haxtheweb/webawesome-theme",
+   "main": "elements/webawesome-theme/webawesome-theme.js",
+   "appeared": "2026-11-13",
+   "gz": 5168,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 274971,
+   "adds": 72364,
+   "themes": 1
+  },
+  {
+   "name": "wikipedia-query",
+   "package": "@haxtheweb/wikipedia-query",
+   "main": "elements/wikipedia-query/wikipedia-query.js",
+   "appeared": "2018-10-23",
+   "gz": 4572,
+   "ddd": true,
+   "dependsOn": [
+    "citation-element",
+    "d-d-d",
+    "hax-iconset",
+    "i18n-manager",
+    "intersection-element",
+    "simple-icon",
+    "utils"
+   ],
+   "usedBy": 1,
+   "load": 134134,
+   "adds": 42863,
+   "themes": 0
+  },
+  {
+   "name": "word-count",
+   "package": "@haxtheweb/word-count",
+   "main": "elements/word-count/word-count.js",
+   "appeared": "2018-10-23",
+   "gz": 1698,
+   "ddd": false,
+   "dependsOn": [
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 11097,
+   "adds": 1698,
+   "themes": 0
+  },
+  {
+   "name": "word-search",
+   "package": "@haxtheweb/word-search",
+   "main": "elements/word-search/word-search.js",
+   "appeared": "2026-11-14",
+   "gz": 9839,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "i18n-manager",
+    "simple-icon",
+    "user-action"
+   ],
+   "usedBy": 0,
+   "load": 104870,
+   "adds": 21793,
+   "themes": 0
+  },
+  {
+   "name": "writing-theme",
+   "package": "@haxtheweb/writing-theme",
+   "main": "elements/writing-theme/writing-theme.js",
+   "appeared": "2026-11-16",
+   "gz": 4578,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager"
+   ],
+   "usedBy": 0,
+   "load": 205298,
+   "adds": 7313,
+   "themes": 1
+  },
+  {
+   "name": "wysiwyg-hax",
+   "package": "@haxtheweb/wysiwyg-hax",
+   "main": "elements/wysiwyg-hax/wysiwyg-hax.js",
+   "appeared": "2018-10-23",
+   "gz": 2141,
+   "ddd": false,
+   "dependsOn": [
+    "cms-hax",
+    "hax-body"
+   ],
+   "usedBy": 1,
+   "load": 878310,
+   "adds": 741498,
+   "themes": 0
+  },
+  {
+   "name": "wysiwyg96-theme",
+   "package": "@haxtheweb/wysiwyg96-theme",
+   "main": "elements/wysiwyg96-theme/wysiwyg96-theme.js",
+   "appeared": "2026-11-18",
+   "gz": 8350,
+   "ddd": true,
+   "dependsOn": [
+    "d-d-d",
+    "haxcms-elements",
+    "i18n-manager",
+    "simple-icon"
+   ],
+   "usedBy": 0,
+   "load": 346236,
+   "adds": 143629,
+   "themes": 1
+  }
+ ]
 }

@@ -125,7 +125,8 @@ function glyphShape(sh) {
  * A list view (the List button) shows the same web as nested lists for
  * screen readers and keyboard users. Layers hide kinds of connection; a lens
  * reads every tile by one measure (freshness, bus factor, impact, evidence,
- * parity) from the bundle's `layers`; search finds a tile by name, group or
+ * parity, and from PRAW's growth data reuse and weight) from the bundle's
+ * `layers`; search finds a tile by name, group or
  * verb; "Over time" grows the web year by year; Present fills the screen.
  * In the HAX editor the element shows the web's Mermaid and JSON source.
  *
@@ -263,6 +264,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       lensImpact: "Impact",
       lensEvidence: "Evidence",
       lensParity: "Parity",
+      lensReuse: "Reuse",
+      lensWeight: "Weight",
       freshAbout:
         "How recently the code behind a tile changed: the last commit on main to its path. A filled corner dot means main has changed more than 14 days after the last release, so a release is due. Faded tiles have no code path to check.",
       freshA: "Changed in the last 90 days",
@@ -319,6 +322,21 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       parityDotsKey: "filled matches, open has a gap, small not measured",
       parityOp:
         "PHP backend: {php}. Node.js backend: {nodejs}. CLI calls it: {cli}. MCP calls it: {mcp}.",
+      reuseAbout:
+        "How much of HAX builds on a tile's code: how many other element packages import its package, and how many themes load any of its files. Only tiles that are element packages are measured; other tiles are faded. The corner badge shows the package count.",
+      reuseA: "Built on widely: 5+ packages or most themes",
+      reuseB: "Used by a few packages or themes",
+      reuseC: "Nothing imports it yet",
+      reuseText:
+        "{package} is imported by {n} other packages and loaded by {themes} of {total} themes.",
+      weightAbout:
+        "What a tile's code costs a visitor: everything its package's main file loads, gzipped, with third-party code left out, and the part of that a site with the shared theme core does not already have. Bands go by that added part. Only tiles that are element packages are measured; other tiles are faded.",
+      weightA: "Adds 10 KB or less",
+      weightB: "Adds 10 to 40 KB",
+      weightC: "Adds over 40 KB",
+      weightText:
+        "{package}: its own file is {gz}; it loads {load} in all, {adds} of it beyond the shared core.",
+      kb: "{n} KB",
       yes: "yes",
       no: "no",
       authorSource: "Web source",
@@ -362,7 +380,7 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       _layout: { type: String, state: true },
       _models: { type: Object, state: true },
       _error: { type: String, state: true },
-      /** Read every tile by one measure: fresh, bus, impact, evidence or parity */
+      /** Read every tile by one measure: fresh, bus, impact, evidence, parity, reuse or weight */
       lens: { type: String, reflect: true },
       _toursOpen: { type: Boolean, state: true },
       _hidden: { type: Object, state: true },
@@ -2272,6 +2290,11 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
   _bandWord(kind, band) {
     return this.t[`${kind}${band.toUpperCase()}`] || "";
   }
+  /** Gzipped bytes in words: one decimal under 10 KB. */
+  _kb(bytes) {
+    const k = bytes / 1024;
+    return this.t.kb.replace("{n}", k < 10 ? k.toFixed(1) : Math.round(k));
+  }
   _ago(days) {
     if (days < 1) return this.t.today0;
     if (days === 1) return this.t.dayAgo;
@@ -2308,6 +2331,18 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
         .replace("{w}", r.webs);
     if (kind === "evidence")
       return r.count ? t.evidenceText.replace("{n}", r.count) : t.evidenceNone;
+    if (kind === "reuse")
+      return t.reuseText
+        .replace("{package}", r.package)
+        .replace("{n}", r.usedBy)
+        .replace("{themes}", r.themes)
+        .replace("{total}", r.total || "?");
+    if (kind === "weight")
+      return t.weightText
+        .replace("{package}", r.package)
+        .replace("{gz}", this._kb(r.gz))
+        .replace("{load}", this._kb(r.load))
+        .replace("{adds}", this._kb(r.adds));
     if (kind === "parity") {
       if (r.op)
         return t.parityOp.replace(/\{(php|nodejs|cli|mcp)\}/g, (m, k) =>

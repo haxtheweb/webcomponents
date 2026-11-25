@@ -83,7 +83,9 @@
           "bus": "Bus factor",
           "impact": "Impact",
           "evidence": "Evidence",
-          "parity": "Parity"
+          "parity": "Parity",
+          "reuse": "Reuse",
+          "weight": "Weight"
         }
       }
     ]

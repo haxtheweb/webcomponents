@@ -644,7 +644,18 @@ export function lerpView(a, b, e) {
 // ---------- lenses: reading the web by a measure ----------
 
 /** The lenses, in the order they are offered. */
-export const LENSES = ["fresh", "bus", "impact", "evidence", "parity"];
+export const LENSES = [
+  "fresh",
+  "bus",
+  "impact",
+  "evidence",
+  "parity",
+  "reuse",
+  "weight",
+];
+
+/** Weight bands: what a package adds beyond the shared core, in gzipped bytes. */
+export const WEIGHT_CUTS = [10240, 40960];
 
 /** The id of a portal tile's home web. */
 function homeOf(n) {
@@ -743,7 +754,8 @@ export function daysSince(iso, now) {
 /**
  * Read one tile through a lens. Returns null when the lens does not measure
  * it, or {band, ...facts}: bands a (best), b, c, and for parity s (a surface
- * compared) and p (planned). The facts are for the caller to put in words.
+ * compared) and p (planned). For reuse, a is the most built upon; for weight,
+ * a is the lightest. The facts are for the caller to put in words.
  * @param {string} kind one of LENSES
  * @param {Object} n the tile
  * @param {Object} ctx {M, web, layers, impact, cut, people: Set, maintainers: Set, now}
@@ -815,6 +827,39 @@ export function lensOf(kind, n, ctx) {
       band: gaps === 0 ? "a" : gaps === got.length ? "c" : "b",
       dots,
       why: fo.f.why || [],
+    };
+  }
+  if (kind === "reuse") {
+    // from PRAW's growth data: packages that import this one, themes that load it
+    const r = layerValue(layers, "reuse", web, n);
+    if (!r) return null;
+    const total = (layers && layers.themeCount) || 0;
+    const most = total > 0 && r.themes >= total * 0.8;
+    return {
+      band:
+        r.usedBy >= 5 || most
+          ? "a"
+          : r.usedBy >= 1 || r.themes >= 1
+            ? "b"
+            : "c",
+      badge: String(r.usedBy),
+      usedBy: r.usedBy,
+      themes: r.themes,
+      total,
+      package: r.package,
+    };
+  }
+  if (kind === "weight") {
+    // from PRAW's growth data: what the package loads, and adds beyond the core
+    const r = layerValue(layers, "weight", web, n);
+    if (!r) return null;
+    return {
+      band:
+        r.adds <= WEIGHT_CUTS[0] ? "a" : r.adds <= WEIGHT_CUTS[1] ? "b" : "c",
+      gz: r.gz,
+      load: r.load,
+      adds: r.adds,
+      package: r.package,
     };
   }
   return null;

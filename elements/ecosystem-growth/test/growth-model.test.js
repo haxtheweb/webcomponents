@@ -7,6 +7,11 @@ import {
   seriesValues,
   journeyCost,
   layLattice,
+  buildPeople,
+  heatAt,
+  heatLevel,
+  peopleAt,
+  DAY,
 } from "../lib/growth-model.js";
 
 const SRC = new URL("../demo/growth/", import.meta.url).href;
@@ -72,5 +77,31 @@ describe("growth model", () => {
     );
     expect(steps[0].fetchGz).to.equal(steps[0].needGz);
     expect(steps[1].fetchGz).to.equal(0);
+  });
+
+  it("grows contributors out from the root, and their glow fades", async () => {
+    const contrib = await (await fetch(SRC + "contributors.json")).json();
+    const P = buildPeople(contrib, M.T0, M.T1);
+    expect(P.root.key).to.equal(contrib.root);
+    expect(P.root.f).to.equal(0);
+    const later = P.list.filter((p) => p.kind === "person" && p !== P.root);
+    later.forEach((p) => expect(p.f).to.be.within(0.12, 1));
+    // a month's work glows, and fades once it is months old
+    const one = { act: [[Date.parse("2020-01-15"), 10]] };
+    const hot = heatAt(one, Date.parse("2020-01-20"));
+    const cold = heatAt(one, Date.parse("2021-01-20"));
+    expect(hot).to.be.above(9);
+    expect(cold).to.be.below(hot / 10);
+    expect(heatAt(one, Date.parse("2019-12-01"))).to.equal(0);
+    expect(heatLevel(P.max, P.max)).to.equal(1);
+    const now = peopleAt(P, M.T1, 3);
+    expect(now.contributors).to.equal(
+      contrib.people.filter((p) => p.kind === "person").length,
+    );
+    expect(now.hottest.length).to.be.at.most(3);
+    expect(peopleAt(P, M.T0 - 400 * DAY).contributors).to.be.below(
+      now.contributors,
+    );
+    expect(buildPeople(null, M.T0, M.T1)).to.equal(null);
   });
 });

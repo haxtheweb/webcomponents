@@ -13,6 +13,7 @@ import {
   easeOut,
   safeImage,
   lensOf,
+  LENSES,
   impactIndex,
   impactCuts,
   timelineSteps,
@@ -206,6 +207,38 @@ describe("ecosystem-model", () => {
     // only code parts have a bus factor
     expect(lensOf("bus", M.nodes.get("b"), ctx).band).to.equal("c");
     expect(lensOf("bus", M.nodes.get("c"), ctx)).to.equal(null);
+    // reuse and weight come from PRAW's growth data; tiles without it are not measured
+    const g = {
+      ...ctx,
+      layers: {
+        themeCount: 10,
+        reuse: {
+          main: {
+            a: { package: "pa", usedBy: 0, themes: 9 },
+            b: { package: "pb", usedBy: 2, themes: 0 },
+            c: { package: "pc", usedBy: 0, themes: 0 },
+          },
+        },
+        weight: {
+          main: {
+            a: { package: "pa", gz: 900, load: 9000, adds: 0 },
+            b: { package: "pb", gz: 4000, load: 60000, adds: 20000 },
+            c: { package: "pc", gz: 4000, load: 90000, adds: 50000 },
+          },
+        },
+      },
+    };
+    expect(lensOf("reuse", M.nodes.get("a"), g).band).to.equal("a");
+    const rb = lensOf("reuse", M.nodes.get("b"), g);
+    expect(rb.band).to.equal("b");
+    expect(rb.badge).to.equal("2");
+    expect(lensOf("reuse", M.nodes.get("c"), g).band).to.equal("c");
+    expect(lensOf("reuse", M.nodes.get("b"), ctx)).to.equal(null);
+    expect(lensOf("weight", M.nodes.get("a"), g).band).to.equal("a");
+    expect(lensOf("weight", M.nodes.get("b"), g).band).to.equal("b");
+    expect(lensOf("weight", M.nodes.get("c"), g).band).to.equal("c");
+    expect(lensOf("weight", M.nodes.get("c"), g).adds).to.equal(50000);
+    expect(LENSES).to.include.members(["reuse", "weight"]);
   });
 
   it("grows a web year by year, then today and what is planned", () => {
