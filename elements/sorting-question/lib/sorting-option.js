@@ -90,7 +90,9 @@ export class SortingOption extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/sorting-option.en.json", import.meta.url).href +
+        "/../",
     });
     this.dragging = false;
     this.disabled = false;

@@ -47,7 +47,10 @@ export class ConceptQuestGame extends ConceptMapGame {
   }
 
   static get localesPath() {
-    return new URL("../locales/", import.meta.url).href;
+    return (
+      new URL("../locales/concept-quest-game.en.json", import.meta.url).href +
+      "/../"
+    );
   }
 
   constructor() {

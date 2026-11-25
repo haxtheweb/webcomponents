@@ -477,7 +477,9 @@ const LrndesignChart = function (SuperClass) {
       this.registerLocalization({
         context: this,
         namespace: "lrndesign-chart",
-        localesPath: new URL("./locales/", import.meta.url).href,
+        localesPath:
+          new URL("./locales/lrndesign-chart.en.json", import.meta.url).href +
+          "/../",
       });
       this._hasHeading = false;
       this._hasDesc = false;

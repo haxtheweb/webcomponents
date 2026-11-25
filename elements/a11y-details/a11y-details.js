@@ -287,7 +287,9 @@ class A11yDetails extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "a11y-details",
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/a11y-details.en.json", import.meta.url).href +
+        "/../",
     });
     this.closeText = "";
     this.openText = "";

@@ -61,7 +61,8 @@ export class LrnH5p extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/lrn-h5p.en.json", import.meta.url).href + "/../",
     });
     this._editing = false;
     this._fullscreen = false;

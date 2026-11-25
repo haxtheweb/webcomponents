@@ -207,7 +207,10 @@ describe("hax-store _registerHaxPropertiesLocales", () => {
       HAXStore._registerHaxPropertiesLocales("blockquote");
       const found = registered("blockquote");
       expect(found.length).to.equal(1);
-      expect(found[0].localesPath).to.match(/\/hax-body\/locales$/);
+      // anchored on a shipped locale file + "/../"; resolves to the folder
+      expect(new URL(found[0].localesPath).href).to.match(
+        /\/hax-body\/locales\/$/,
+      );
     } finally {
       forget("blockquote");
     }

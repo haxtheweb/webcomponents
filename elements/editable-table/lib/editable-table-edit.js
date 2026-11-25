@@ -876,7 +876,9 @@ class EditableTableEdit extends I18NMixin(editBehaviors(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/editable-table-edit.en.json", import.meta.url)
+          .href + "/../",
     });
   }
 

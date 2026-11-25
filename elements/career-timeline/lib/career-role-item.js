@@ -36,7 +36,9 @@ export class CareerRoleItem extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/career-role-item.en.json", import.meta.url).href +
+        "/../",
     });
     this.i18nDefault("title", "roleTitle");
     this.startDate = new Date().toISOString();

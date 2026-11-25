@@ -44,7 +44,10 @@ export class ConceptMapGame extends MicroGameBase {
   }
 
   static get localesPath() {
-    return new URL("../locales/", import.meta.url).href;
+    return (
+      new URL("../locales/concept-map-game.en.json", import.meta.url).href +
+      "/../"
+    );
   }
 
   constructor() {

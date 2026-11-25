@@ -88,7 +88,8 @@ class LoremData extends I18NMixin(LoremDataBehaviors(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/lorem-data.en.json", import.meta.url).href + "/../",
     });
     this.schemas = {};
     this.__downloadUrls = {};

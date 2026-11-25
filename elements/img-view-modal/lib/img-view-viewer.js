@@ -378,7 +378,9 @@ class ImgViewViewer extends I18NMixin(FullscreenBehaviors(ImgPanZoom)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/img-view-viewer.en.json", import.meta.url).href +
+        "/../",
     });
     import("@haxtheweb/simple-tooltip/simple-tooltip.js");
   }

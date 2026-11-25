@@ -49,7 +49,11 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/app-hax-user-access-modal.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
   }
 

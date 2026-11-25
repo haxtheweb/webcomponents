@@ -663,7 +663,9 @@ class EditableTableDisplay extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/editable-table-display.en.json", import.meta.url)
+          .href + "/../",
     });
     this.hideBlockHeader = false;
     this.selected = 1;

@@ -133,7 +133,8 @@ class LunrSearch extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/lunr-search.en.json", import.meta.url).href + "/../",
     });
     this.windowControllers = new AbortController();
     this.method = "GET";

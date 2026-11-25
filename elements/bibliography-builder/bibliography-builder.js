@@ -442,7 +442,9 @@ export class BibliographyBuilder extends SchemaBehaviors(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `bibliography-builder.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/bibliography-builder.en.json", import.meta.url)
+              .href + "/../",
         },
       }),
     );

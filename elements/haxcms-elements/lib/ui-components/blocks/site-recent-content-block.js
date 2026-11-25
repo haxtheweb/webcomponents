@@ -30,7 +30,11 @@ class SiteRecentContentBlock extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/site-recent-content-block.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.limit = 10;
     this.startIndex = 0;

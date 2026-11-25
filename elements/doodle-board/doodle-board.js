@@ -47,7 +47,9 @@ export class DoodleBoard extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/doodle-board.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

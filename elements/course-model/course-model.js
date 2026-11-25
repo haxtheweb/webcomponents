@@ -167,7 +167,9 @@ class CourseModel extends I18NMixin(SchemaBehaviors(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/course-model.en.json", import.meta.url).href +
+        "/../",
     });
     if (globalThis.HaxStore) {
       globalThis.ModelViewerController = new AbortController();

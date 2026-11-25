@@ -31,7 +31,9 @@ class BadgeSticker extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/badge-sticker.en.json", import.meta.url).href +
+        "/../",
     });
     const currentDate = new Date();
     this.badgeDate = currentDate.toLocaleDateString();

@@ -305,7 +305,11 @@ class HAXCMSSitePlatformUI extends HaxcmsAdminSectionMixin(
 
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-site-platform-ui.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
   }
 

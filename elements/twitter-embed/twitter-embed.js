@@ -61,7 +61,9 @@ class TwitterEmbed extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/twitter-embed.en.json", import.meta.url).href +
+        "/../",
     });
     const docBody = globalThis.document && globalThis.document.body;
     const docRoot = globalThis.document && globalThis.document.documentElement;
@@ -139,7 +141,9 @@ class TwitterEmbed extends I18NMixin(LitElement) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `twitter-embed.haxProperties`,
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL("./locales/twitter-embed.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

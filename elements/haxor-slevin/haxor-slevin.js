@@ -686,7 +686,9 @@ class HaxorSlevin extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/haxor-slevin.en.json", import.meta.url).href +
+        "/../",
     });
     // to avoid error
     this.icon = "icons:search";

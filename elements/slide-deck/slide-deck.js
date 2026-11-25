@@ -1042,7 +1042,9 @@ export class SlideDeck extends DDDSuper(I18NMixin(LitElement)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `slide-deck.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/slide-deck.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

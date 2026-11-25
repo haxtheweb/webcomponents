@@ -62,7 +62,9 @@ export const SimpleTagLiteSuper = function (SuperClass) {
       this.registerLocalization({
         context: this,
         namespace: "simple-fields",
-        localesPath: new URL("../locales/", import.meta.url).href,
+        localesPath:
+          new URL("../locales/simple-fields.en.json", import.meta.url).href +
+          "/../",
       });
       this.data = {};
       this.icon = "cancel";

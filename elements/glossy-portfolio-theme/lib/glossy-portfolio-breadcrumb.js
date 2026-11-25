@@ -97,7 +97,11 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../locales/glossy-portfolio-breadcrumb.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
   }
   // render function

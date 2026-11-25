@@ -39,7 +39,9 @@ class HAXCMSSiteDashboard extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/haxcms-site-dashboard.en.json", import.meta.url)
+          .href + "/../",
     });
     this.siteTitle = "";
     this.activeSection = "site";

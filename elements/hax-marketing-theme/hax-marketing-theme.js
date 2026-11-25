@@ -90,7 +90,9 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/hax-marketing-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.__repaint = () => {
       // the design system and palette settle over a few frames

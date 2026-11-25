@@ -25,7 +25,9 @@ class SiteMenuContent extends HAXCMSThemeParts(I18NMixin(PageContentsMenu)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-menu-content.en.json", import.meta.url)
+          .href + "/../",
     });
     this.hierarchyTags = [
       "h1",

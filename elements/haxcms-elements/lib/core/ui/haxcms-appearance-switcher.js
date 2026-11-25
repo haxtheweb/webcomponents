@@ -67,7 +67,11 @@ class HAXCMSAppearanceSwitcher extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-appearance-switcher.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.syncUrl = false;
     this.themeOnly = false;

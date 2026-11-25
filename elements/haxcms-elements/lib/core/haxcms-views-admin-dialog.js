@@ -199,7 +199,11 @@ class HAXCMSViewsAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/haxcms-views-admin-dialog.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.specLoading = false;
     this.previewLoading = false;

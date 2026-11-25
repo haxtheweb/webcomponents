@@ -101,7 +101,11 @@ class HAXCMSAboutDialogUI extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-about-dialog-ui.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.keyboardShortcuts = [];
     this.shortcutContext = "global";

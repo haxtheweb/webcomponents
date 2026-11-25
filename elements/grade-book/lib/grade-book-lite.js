@@ -156,7 +156,9 @@ class GradeBookLite extends UIRenderPieces(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/grade-book-lite.en.json", import.meta.url).href +
+        "/../",
     });
     // notice that a category on the active grading area responded that it changed
     this.addEventListener(

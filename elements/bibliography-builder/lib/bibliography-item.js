@@ -46,7 +46,9 @@ export class BibliographyItem extends SchemaBehaviors(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/bibliography-item.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

@@ -100,7 +100,9 @@ export class CrosswordPuzzle extends QuestionElement {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/crossword-puzzle.en.json", import.meta.url).href +
+        "/../",
     });
     this.question = "";
     this.accentColor = null;

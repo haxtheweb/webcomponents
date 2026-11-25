@@ -542,7 +542,9 @@ class LrndesignTimeline extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/lrndesign-timeline.en.json", import.meta.url).href +
+        "/../",
     });
     this.typeof = "oer:LearningComponent";
     this.hideBlockHeader = false;

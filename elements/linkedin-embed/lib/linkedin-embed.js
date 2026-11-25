@@ -100,7 +100,9 @@ class LinkedinEmbed extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/linkedin-embed.en.json", import.meta.url).href +
+        "/../",
     });
     this.vanityname = "btopro";
     this.locale = "en_US";

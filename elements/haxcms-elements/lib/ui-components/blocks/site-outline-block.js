@@ -30,7 +30,9 @@ class SiteOutlineBlock extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-outline-block.en.json", import.meta.url)
+          .href + "/../",
     });
     this.windowControllers = new AbortController();
     this.__items = [];

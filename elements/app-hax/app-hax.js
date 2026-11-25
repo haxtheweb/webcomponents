@@ -546,7 +546,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/app-hax.en.json", import.meta.url).href + "/../",
     });
     if (
       typeof globalThis.speechSynthesis !== "undefined" &&

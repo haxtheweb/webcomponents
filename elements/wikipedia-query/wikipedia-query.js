@@ -104,7 +104,9 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/wikipedia-query.en.json", import.meta.url).href +
+        "/../",
     });
     this.hideTitle = false;
     const FALLBACK_LANG = "en";
@@ -358,7 +360,9 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `wikipedia-query.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/wikipedia-query.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

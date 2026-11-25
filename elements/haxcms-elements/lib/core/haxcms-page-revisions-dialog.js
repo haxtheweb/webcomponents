@@ -220,7 +220,11 @@ class HAXCMSPageRevisionsDialog extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/haxcms-page-revisions-dialog.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.nodeId = "";
     this.nodeTitle = "";

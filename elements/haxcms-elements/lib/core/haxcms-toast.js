@@ -500,7 +500,9 @@ export class HAXCMSToast extends I18NMixin(RPGCharacterToast) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/app-hax-top-bar.en.json", import.meta.url).href +
+        "/../",
     });
     this.windowControllers = new AbortController();
     this.characterHeight = 40;

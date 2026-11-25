@@ -67,7 +67,11 @@ class HAXCMSBackendBeaker extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-backend-beaker.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.windowControllers = new AbortController();
     this.__disposer = [];

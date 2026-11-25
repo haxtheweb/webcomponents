@@ -319,7 +319,11 @@ class HAXCMSFilesAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/haxcms-files-admin-dialog.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.rows = [];
     this.loading = false;

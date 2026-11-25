@@ -162,7 +162,8 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/code-editor.en.json", import.meta.url).href + "/../",
     });
     this.codePenData = null;
     this.haxUIElement = true;

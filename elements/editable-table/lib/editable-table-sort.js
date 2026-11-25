@@ -163,7 +163,9 @@ class EditableTableSort extends I18NMixin(SimpleToolbarButtonBehaviors(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/editable-table-sort.en.json", import.meta.url)
+          .href + "/../",
     });
     this.sortMode = "none";
     this.sortColumn = -1;

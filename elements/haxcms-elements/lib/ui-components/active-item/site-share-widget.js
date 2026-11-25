@@ -70,7 +70,9 @@ class SiteShareWidget extends I18NMixin(LitElement) {
     defineCustomElements(globalThis);
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-share-widget.en.json", import.meta.url)
+          .href + "/../",
     });
     this.i18nDefault("alt", "sharePage");
     this.icon = "social:share";

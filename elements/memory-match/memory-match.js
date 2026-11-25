@@ -178,7 +178,9 @@ export class MemoryMatch extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/memory-match.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

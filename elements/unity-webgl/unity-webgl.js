@@ -75,7 +75,8 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     // translations only touch the header text, never the running player
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/unity-webgl.en.json", import.meta.url).href + "/../",
       updateCallback: "_updateStrings",
     });
   }

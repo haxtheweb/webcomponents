@@ -214,7 +214,8 @@ class A11yTab extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       namespace: "a11y-tab",
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/a11y-tab.en.json", import.meta.url).href + "/../",
     });
     this.disabled = false;
     // eslint-disable-next-line wc/no-constructor-attributes -- Lit reactive property default; attribute reflection is deferred to the update cycle

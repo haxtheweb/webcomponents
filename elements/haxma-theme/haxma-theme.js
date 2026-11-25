@@ -61,7 +61,8 @@ export class HaxmaTheme extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/haxma-theme.en.json", import.meta.url).href + "/../",
     });
     this._items = [];
     this.activeItem = {};

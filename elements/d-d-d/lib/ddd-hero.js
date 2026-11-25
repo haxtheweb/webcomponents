@@ -73,7 +73,8 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/ddd-hero.en.json", import.meta.url).href + "/../",
     });
   }
 
@@ -560,7 +561,9 @@ export class DDDHero extends DDDSuper(I18NMixin(LitElement)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `ddd-hero.haxProperties`,
-          localesPath: new URL(`../locales`, import.meta.url).href,
+          localesPath:
+            new URL("../locales/ddd-hero.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

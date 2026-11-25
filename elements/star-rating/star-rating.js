@@ -151,7 +151,8 @@ class StarRating extends I18NMixin(SchemaBehaviors(SimpleColors)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/star-rating.en.json", import.meta.url).href + "/../",
     });
     this._calPercent = 0;
     this.numStars = 5;

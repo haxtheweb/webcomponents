@@ -103,7 +103,8 @@ class HAXFileActions extends I18NMixin(DDD) {
     this.registerLocalization({
       context: this,
       namespace: "hax",
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/hax.en.json", import.meta.url).href + "/../",
     });
   }
 

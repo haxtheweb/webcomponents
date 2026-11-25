@@ -189,7 +189,11 @@ class MemeMaker extends LitElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `meme-maker.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL(
+              "./locales/meme-maker.haxProperties.es.json",
+              import.meta.url,
+            ).href + "/../",
           // No need to specify locales - manifest handles this automatically!
         },
       }),

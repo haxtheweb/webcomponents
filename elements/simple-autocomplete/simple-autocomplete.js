@@ -371,7 +371,9 @@ class SimpleAutocomplete extends I18NMixin(SimpleFilterMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/simple-autocomplete.en.json", import.meta.url).href +
+        "/../",
     });
     // default limit of items to show even if there are more results
     this.itemLimit = 6;

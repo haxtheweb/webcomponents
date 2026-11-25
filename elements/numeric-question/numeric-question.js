@@ -122,7 +122,9 @@ export class NumericQuestion extends QuestionElement {
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/numeric-question.en.json", import.meta.url).href +
+        "/../",
     });
     this.guessDataValue = "typed";
     this.singleOption = true;
