@@ -12,26 +12,18 @@
  * nothing: the only output is text.
  *
  * The goggles go on from Merlin (>developer/goggles, "Developer mode:
- * goggles", which ecosystem-theme defines) or a link: ?goggles=connect, and
- * &from=<address> to open a tile. Any other lens works by link too
- * (?goggles=code). The panel sits on the right and can be moved: drag its
- * title bar, or use the arrow keys on its move button.
+ * goggles") or a link: ?goggles=connect, and &from=<address> to open a tile;
+ * ecosystem-theme adds the lens with siteLens() (haxcms-goggles-site.js),
+ * which loads this module the first time the goggles go on. The panel is a
+ * HaxcmsGogglesPanel: on the right, movable, a sheet on a phone.
  */
-import { html, css, nothing } from "lit";
 import { toJS } from "mobx";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
-  HaxUiAdminTokens,
-  HaxUiDarkChromeDeclarations,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminTokens.js";
-import {
-  HaxUiAdminControls,
-  HaxUiAdminSimpleFields,
-} from "@haxtheweb/d-d-d/lib/HaxUiAdminControls.js";
-import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+  HaxcmsGogglesPanel,
+  html,
+  css,
+  nothing,
+} from "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-panel.js";
 import { buildWebs } from "@haxtheweb/ecosystem-web/lib/ecosystem-model.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import {
@@ -43,11 +35,7 @@ import {
 export const EDIT_FORMAT = "praw-edit/1";
 export const LENS_ID = "connect";
 const LIST_KEY = "ecosystem-connect-list";
-const LENS_KEY = "haxcms-goggles-lens";
-const PLACE_KEY = "ecosystem-connect-place";
 const SITE = "https://hax.cloud/";
-const goggles = () =>
-  import("@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles.js");
 
 /** the web a tile belongs to: a portal is drawn in one web and owned by another */
 export function homeWeb(models, web, id) {
@@ -645,110 +633,27 @@ function choose(found) {
   }
 }
 
-let registered = null;
-/** the goggles, with the Connect lens added */
-async function ready() {
-  if (!registered) {
-    registered = goggles().then((m) => {
-      m.registerLens({
-        id: LENS_ID,
-        text: T.lens,
-        icon: "icons:create",
-        sayText: T.lensSay,
-        pick,
-        choose,
-        panel: true,
-      });
-      return m;
-    });
-  }
-  State.load();
-  return registered;
-}
-/** the panel rides inside the goggles, which put themselves on the body */
-function attachPanel(state) {
-  if (!state || !state.on) {
-    return;
-  }
-  const g = globalThis.document.querySelector("haxcms-goggles");
-  if (!g) {
-    return;
-  }
-  let panel = globalThis.document.querySelector(EcosystemConnect.tag);
-  if (!panel) {
-    panel = globalThis.document.createElement(EcosystemConnect.tag);
-  }
-  if (panel.parentNode !== g) {
-    panel.setAttribute("slot", "lens-panel");
-    g.appendChild(panel);
-  }
-  panel.lensOn = !!state.lensOn;
-}
-
-/** Merlin >developer/goggles: on or off; the first time here, with Connect */
-export async function toggleGoggles() {
-  const m = await ready();
-  const s = m.GogglesState;
-  if (s.on) {
-    s.set({ on: false });
-    return;
-  }
-  const remembered = localStorageGet(LENS_KEY, null);
-  s.set(
-    remembered
-      ? { on: true, lensOn: true }
-      : { on: true, lensOn: true, lens: LENS_ID, person: null },
-  );
-}
-
-/** ?goggles=<lens>, and for Connect &from=<address> to open a tile */
-async function fromLink() {
-  let asked = null;
-  try {
-    asked = new URLSearchParams(globalThis.location.search);
-  } catch {
-    asked = null;
-  }
-  const lens = asked ? asked.get("goggles") : "";
-  if (!lens) {
-    return;
-  }
-  const m = await ready();
-  const known = ["code", "makers", "flag", "translate", LENS_ID];
-  if (known.indexOf(lens) === -1) {
-    return;
-  }
-  m.GogglesState.set({ on: true, lensOn: true, lens, person: null });
-  const from = asked.get("from") || "";
-  if (lens === LENS_ID && /^[a-z0-9]{4,40}$/.test(from)) {
+/**
+ * What siteLens() loads: the lens's pick and choose, its panel, and the rest
+ * of a ?goggles=connect link (&from=<address> opens that tile).
+ */
+export const lens = {
+  sayText: T.lensSay,
+  pick,
+  choose,
+  panel: "ecosystem-connect",
+  async fromLink(params) {
+    const from = params ? params.get("from") || "" : "";
+    if (!/^[a-z0-9]{4,40}$/.test(from)) return;
     await State.load();
     const t = State.tileFromHref("stories/" + from);
     if (t && !State.edit) {
       State.take(t);
     }
-  }
-}
+  },
+};
 
-/** where the panel was moved to ({x, y}), or null for its place on the right */
-function readPlace() {
-  const p = localStorageGet(PLACE_KEY, null);
-  return p && typeof p.x === "number" && typeof p.y === "number" ? p : null;
-}
-
-let wired = false;
-/** hax.cloud's wiring: the panel rides the goggles, and ?goggles= links work */
-export function connectGoggles() {
-  if (wired) {
-    return;
-  }
-  wired = true;
-  globalThis.addEventListener("haxcms-goggles-changed", (e) =>
-    attachPanel(e.detail),
-  );
-  fromLink();
-}
-
-export class EcosystemConnect extends DDD {
+export class EcosystemConnect extends HaxcmsGogglesPanel {
   static get tag() {
     return "ecosystem-connect";
   }
@@ -756,34 +661,19 @@ export class EcosystemConnect extends DDD {
   static get state() {
     return State;
   }
-  /** what Merlin's >developer/goggles runs */
-  static toggleGoggles() {
-    return toggleGoggles();
-  }
-
   constructor() {
     super();
-    this.lensOn = true;
-    this.collapsed = false;
-    this._said = "";
     this._peek = "";
     this._q = {};
     this._linkKind = "profile";
     this._linkUrl = "";
-    this.t = { ...T };
-    this._place = readPlace();
-    this._onResize = () => this._applyPlace();
+    this.t = { ...this.t, ...T };
     this._changed = () => this.requestUpdate();
   }
 
   static get properties() {
     return {
       ...super.properties,
-      /** the goggles' lenses are on: selecting picks a tile */
-      lensOn: { type: Boolean, reflect: true, attribute: "lens-on" },
-      /** only the panel's title bar shows, so the web under it can be seen */
-      collapsed: { type: Boolean, reflect: true },
-      _said: { type: String, state: true },
       _peek: { type: String, state: true },
       /** what is typed in each sentence's search, by sentence */
       _q: { type: Object, state: true },
@@ -795,106 +685,7 @@ export class EcosystemConnect extends DDD {
   static get styles() {
     return [
       super.styles,
-      HaxUiAdminTokens,
-      ...HaxUiAdminControls,
-      ...HaxUiAdminSimpleFields,
       css`
-        :host {
-          /* the goggles' panel: HAX UI dark chrome. It sits on the right and
-             can be moved anywhere on the screen (its title bar drags it) */
-          color-scheme: dark;
-          ${HaxUiDarkChromeDeclarations}
-          position: absolute;
-          top: 76px;
-          right: var(--ddd-spacing-4, 16px);
-          bottom: 92px;
-          width: min(380px, calc(100vw - 32px));
-          display: flex;
-          flex-direction: column;
-          box-sizing: border-box;
-          pointer-events: auto;
-          background-color: var(--hax-ui-surface);
-          color: var(--hax-ui-text);
-          border: var(--ddd-border-size-xs, 1px) solid var(--hax-ui-line-strong);
-          border-top: var(--ddd-border-size-md, 3px) solid
-            var(--haxcms-goggles-lens, #2fd3e0);
-          border-radius: var(--hax-ui-radius-lg, 8px);
-          box-shadow: var(
-            --hax-ui-shadow-popover,
-            0 8px 24px rgba(0, 0, 0, 0.4)
-          );
-          overflow: hidden;
-          font-family: var(
-            --hax-ui-admin-font-family,
-            var(--ddd-font-navigation)
-          );
-          font-size: var(--ddd-font-size-4xs, 16px);
-          line-height: var(--ddd-lh-140, 1.4);
-        }
-        :host([collapsed]) {
-          bottom: auto;
-        }
-        header {
-          cursor: grab;
-          touch-action: none;
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2, 8px);
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-          border-bottom: var(--ddd-border-size-xs, 1px) solid var(--hax-ui-line);
-        }
-        .eyebrow {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2, 8px);
-          margin: var(--ddd-spacing-0);
-          font-size: var(--hax-ui-font-size-sm, 14px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text);
-        }
-        .eyebrow .n {
-          font-weight: var(--ddd-font-weight-regular, 400);
-          color: var(--hax-ui-text-muted);
-        }
-        simple-icon-lite {
-          --simple-icon-width: var(--ddd-icon-4xs, 16px);
-          --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          --simple-icon-color: currentColor;
-          flex: none;
-        }
-        .body {
-          flex: 1;
-          overflow-y: auto;
-          overscroll-behavior: contain;
-          padding: var(--ddd-spacing-3, 12px);
-          display: grid;
-          align-content: start;
-          gap: var(--ddd-spacing-4, 16px);
-        }
-        :host([collapsed]) .body {
-          display: none;
-        }
-        h2,
-        h3 {
-          margin: 0 0 var(--ddd-spacing-2, 8px);
-          color: var(--hax-ui-text);
-        }
-        h2 {
-          font-size: var(--ddd-font-size-3xs, 18px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-        }
-        h3 {
-          font-size: var(--hax-ui-font-size-sm, 14px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--hax-ui-text-muted);
-        }
-        p,
-        li p {
-          margin: var(--ddd-spacing-0);
-          font-size: var(--ddd-font-size-4xs, 16px);
-          line-height: var(--ddd-lh-140, 1.4);
-        }
         .tile {
           font-weight: var(--ddd-font-weight-bold, 700);
           overflow-wrap: anywhere;
@@ -1151,32 +942,6 @@ export class EcosystemConnect extends DDD {
         .said li button {
           flex: none;
         }
-        :host([moving]) header {
-          cursor: grabbing;
-        }
-        /* moved: where it was put, as tall as the screen below it allows */
-        :host([placed]) {
-          bottom: auto;
-          right: auto;
-          max-height: calc(100vh - var(--connect-top, 76px) - 16px);
-        }
-        @media (max-width: 719px) {
-          .move {
-            display: none;
-          }
-          header {
-            cursor: auto;
-          }
-          :host,
-          :host([placed]) {
-            top: auto;
-            left: 12px;
-            right: 12px;
-            bottom: 84px;
-            width: auto;
-            max-height: 50dvh;
-          }
-        }
       `,
     ];
   }
@@ -1184,105 +949,23 @@ export class EcosystemConnect extends DDD {
   connectedCallback() {
     super.connectedCallback();
     globalThis.addEventListener("ecosystem-connect-changed", this._changed);
-    globalThis.addEventListener("resize", this._onResize);
     State.load();
   }
 
   disconnectedCallback() {
     globalThis.removeEventListener("ecosystem-connect-changed", this._changed);
-    globalThis.removeEventListener("resize", this._onResize);
     super.disconnectedCallback();
   }
 
-  firstUpdated(changed) {
-    if (super.firstUpdated) super.firstUpdated(changed);
-    this._applyPlace();
+  get panelTitle() {
+    return this.t.lens;
   }
-
-  /** a phone keeps the panel as a sheet at the bottom: it is not moved there */
-  get _movable() {
-    return !(
-      globalThis.matchMedia &&
-      globalThis.matchMedia("(max-width: 719px)").matches
-    );
+  get panelIcon() {
+    return "icons:create";
   }
-
-  /** the panel where it was put, kept on screen; or back in its place on the right */
-  _applyPlace() {
-    const p = this._place;
-    if (!p || !this._movable) {
-      this.removeAttribute("placed");
-      this.style.removeProperty("left");
-      this.style.removeProperty("top");
-      this.style.removeProperty("--connect-top");
-      return;
-    }
-    const w = this.offsetWidth || 380;
-    const x = Math.max(8, Math.min(p.x, globalThis.innerWidth - w - 8));
-    const y = Math.max(8, Math.min(p.y, globalThis.innerHeight - 120));
-    this.setAttribute("placed", "");
-    this.style.left = x + "px";
-    this.style.top = y + "px";
-    this.style.setProperty("--connect-top", y + "px");
-  }
-
-  /** move the panel to {x, y} (null: its place on the right), and remember it */
-  _putAt(p) {
-    this._place = p;
-    if (p) {
-      localStorageSet(PLACE_KEY, p);
-    } else {
-      localStorageDelete(PLACE_KEY);
-    }
-    this._applyPlace();
-  }
-
-  /** drag by the title bar (but not from its other buttons) */
-  _dragStart(e) {
-    if (!this._movable || e.button !== 0) return;
-    const path = e.composedPath();
-    const btn = path.find((n) => n.localName === "button");
-    if (btn && !btn.classList.contains("move")) return;
-    const r = this.getBoundingClientRect();
-    const dx = e.clientX - r.left;
-    const dy = e.clientY - r.top;
-    const header = e.currentTarget;
-    header.setPointerCapture(e.pointerId);
-    this.setAttribute("moving", "");
-    const move = (m) => {
-      this._place = { x: m.clientX - dx, y: m.clientY - dy };
-      this._applyPlace();
-    };
-    const up = () => {
-      header.removeEventListener("pointermove", move);
-      header.removeEventListener("pointerup", up);
-      header.removeEventListener("pointercancel", up);
-      this.removeAttribute("moving");
-      if (this._place) this._putAt(this._place);
-    };
-    header.addEventListener("pointermove", move);
-    header.addEventListener("pointerup", up);
-    header.addEventListener("pointercancel", up);
-  }
-
-  /** the move button: arrow keys move the panel (Shift for bigger steps), Home puts it back */
-  _moveKey(e) {
-    const step = e.shiftKey ? 64 : 16;
-    const d = {
-      ArrowLeft: [-step, 0],
-      ArrowRight: [step, 0],
-      ArrowUp: [0, -step],
-      ArrowDown: [0, step],
-    }[e.key];
-    if (e.key === "Home") {
-      e.preventDefault();
-      this._putAt(null);
-      return;
-    }
-    if (!d) return;
-    e.preventDefault();
-    const r = this.getBoundingClientRect();
-    this._putAt({ x: r.left + d[0], y: r.top + d[1] });
+  renderSubtitle() {
+    const e = State.edit;
+    return e ? html`<span class="n">${e.tile.label}</span>` : nothing;
   }
 
   /** what the lens just did, for the status line and screen readers */
@@ -1350,20 +1033,6 @@ export class EcosystemConnect extends DDD {
     }
   }
 
-  _field(label, value, change, type, help) {
-    // help is plain text under the field: a field's own description adds a
-    // small info button, under the 24px a phone needs
-    return html`<simple-fields-field
-        class="hax-ui-simple-field"
-        type="${type || "text"}"
-        label="${label}"
-        autocomplete="off"
-        .value="${value}"
-        @value-changed="${(e) => change(e.detail.value || "")}"
-      ></simple-fields-field
-      >${help ? html`<p class="muted help">${help}</p>` : nothing}`;
-  }
-
   _icon(kind) {
     return (KINDS[kind] || KINDS.thing).icon;
   }
@@ -1425,7 +1094,7 @@ export class EcosystemConnect extends DDD {
     const exact = hits.some(
       (h) => h.label.toLowerCase() === q.trim().toLowerCase(),
     );
-    return html`${this._field(
+    return html`${this.field(
       this.t.connectsTo,
       q,
       (v) => {
@@ -1508,7 +1177,7 @@ export class EcosystemConnect extends DDD {
       ${
         s.remove
           ? nothing
-          : html`${this._field(this.t.verb, s.verb, (v) => State.setSentence(i, { verb: v }), "text", this.t.verbHelp)}
+          : html`${this.field(this.t.verb, s.verb, (v) => State.setSentence(i, { verb: v }), "text", this.t.verbHelp)}
             ${
               String(s.verb || "").trim()
                 ? nothing
@@ -1531,7 +1200,7 @@ export class EcosystemConnect extends DDD {
             }
             ${this._object(s, i)}`
       }
-      ${this._field(this.t.url, s.url, (v) => State.setSentence(i, { url: v }), "text", this.t.urlHelp)}
+      ${this.field(this.t.url, s.url, (v) => State.setSentence(i, { url: v }), "text", this.t.urlHelp)}
     </li>`;
   }
 
@@ -1647,7 +1316,7 @@ export class EcosystemConnect extends DDD {
             </button>`,
         )}
       </div>
-      ${this._field(this.t.linkUrl, this._linkUrl, (v) => {
+      ${this.field(this.t.linkUrl, this._linkUrl, (v) => {
         this._linkUrl = v;
       })}
       <div class="row">
@@ -1710,7 +1379,7 @@ export class EcosystemConnect extends DDD {
         <p class="where">${t.group ? t.group + " · " : ""}${t.webName}</p>
       </section>
       <section>
-        ${this._field(
+        ${this.field(
           this.t.says,
           e.blurb == null ? e.says : e.blurb,
           (v) => State.setBlurb(v),
@@ -1847,63 +1516,23 @@ export class EcosystemConnect extends DDD {
     </section>`;
   }
 
-  render() {
+  renderBody() {
     const e = State.edit;
-    return html`<header @pointerdown="${this._dragStart}">
-        <button
-          type="button"
-          class="hax-ui-icon-btn move"
-          aria-label="${this.t.move}"
-          title="${this.t.moveHelp}"
-          @keydown="${this._moveKey}"
-          @dblclick="${() => this._putAt(null)}"
-        >
-          <simple-icon-lite icon="icons:open-with"></simple-icon-lite>
-        </button>
-        <p class="eyebrow">
-          <simple-icon-lite icon="icons:create"></simple-icon-lite
-          >${this.t.lens}
-          ${e ? html`<span class="n">${e.tile.label}</span>` : nothing}
-        </p>
-        <button
-          type="button"
-          class="hax-ui-icon-btn"
-          aria-expanded="${this.collapsed ? "false" : "true"}"
-          aria-label="${this.collapsed ? this.t.expand : this.t.collapse}"
-          @click="${() => {
-            this.collapsed = !this.collapsed;
-          }}"
-        >
-          <simple-icon-lite
-            icon="${this.collapsed ? "icons:expand-less" : "icons:expand-more"}"
-          ></simple-icon-lite>
-        </button>
-      </header>
-      <div class="body" role="region" aria-label="${this.t.panel}">
-        ${
-          !State.models
-            ? html`<p class="hax-ui-empty">${this.t.loading}</p>`
-            : html`${
-                this.lensOn
-                  ? nothing
-                  : html`<p class="hax-ui-message" data-tone="info">
-                      ${this.t.lensesOff}
-                    </p>`
-              }
-              ${
-                e
-                  ? nothing
-                  : html`<section>
-                      <h2>${this.t.emptyTitle}</h2>
-                      <p class="muted">${this.t.emptyHint}</p>
-                    </section>`
-              }
-              ${this._renderThisPage()} ${e ? this._renderEdit() : nothing}`
-        }
-        <p class="muted" role="status">${this._said}</p>
-        ${this._peek ? html`<pre id="peek" tabindex="0">${this._peek}</pre>` : nothing}
-        ${this._renderList()}
-      </div>`;
+    return html`${
+      !State.models
+        ? html`<p class="hax-ui-empty">${this.t.loading}</p>`
+        : html`${
+            e
+              ? nothing
+              : html`<section>
+                  <h2>${this.t.emptyTitle}</h2>
+                  <p class="muted">${this.t.emptyHint}</p>
+                </section>`
+          }
+          ${this._renderThisPage()} ${e ? this._renderEdit() : nothing}`
+    }
+    ${this._peek ? html`<pre id="peek" tabindex="0">${this._peek}</pre>` : nothing}
+    ${this._renderList()}`;
   }
 }
 
