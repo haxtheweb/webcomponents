@@ -16,16 +16,10 @@ const MANIFEST = {
       element: "ecosystem-theme",
       variables: {
         ecosystemSrc: "about:blank",
-        nav: [
-          { label: "Explore", slug: "ecosystem" },
-          { label: "Tours", slug: "tours" },
-        ],
         footerNote: "Built from PRAW.",
         welcome: {
           title: "Everything in HAX is connected",
           text: "One web.",
-          tour: "tours",
-          tourLabel: "Take the tour",
         },
       },
     },
@@ -74,11 +68,6 @@ describe("ecosystem-theme", function () {
   });
 
   beforeEach(async () => {
-    try {
-      globalThis.localStorage.removeItem("hax-cloud-view");
-    } catch {
-      // storage may be unavailable; the theme copes without it
-    }
     store.manifest = MANIFEST;
     store.activeId = "home";
     element = await fixture(html`<ecosystem-theme></ecosystem-theme>`);
@@ -89,17 +78,18 @@ describe("ecosystem-theme", function () {
 
   it("keeps the content contract HAX edits through", () => {
     const r = element.shadowRoot;
-    expect(r.querySelector("a.skip-link[href='#contentcontainer']")).to.exist;
+    expect(r.querySelector("a.skip-link[href='#webview']")).to.exist;
     expect(r.querySelector("#contentcontainer > #slot > slot")).to.exist;
   });
 
-  it("opens a page of a web in the Web view, routed to that web", () => {
-    expect(element.view).to.equal("web");
-    const web = element.shadowRoot.querySelector(".webview ecosystem-web");
+  it("shows every page with the web, the site's menu in the web's menu", () => {
+    const r = element.shadowRoot;
+    const web = r.querySelector(".webview ecosystem-web#webview");
     expect(web.getAttribute("web")).to.equal("main");
-    expect(
-      element.shadowRoot.querySelector(".viewbar .copylink code").textContent,
-    ).to.equal("hax.cloud/ecosystem");
+    expect(web.hasAttribute("site-nav")).to.be.true;
+    expect(web.querySelector('nav[slot="menu"] site-menu')).to.exist;
+    // a page of a web is the web's details: its own text is not shown twice
+    expect(r.querySelector(".content").hidden).to.be.true;
   });
 
   it("routes a tile page to its web with the tile selected", async () => {
@@ -111,88 +101,35 @@ describe("ecosystem-theme", function () {
     expect(web.getAttribute("node")).to.equal("sdg_4");
   });
 
-  it("shows the Site view with the outline and a figure of the web", async () => {
-    store.activeId = "goal";
-    await tick();
-    element._setView("site");
-    await element.updateComplete;
-    const r = element.shadowRoot;
-    expect(element.view).to.equal("site");
-    expect(r.querySelector("nav.outline site-menu")).to.exist;
-    expect(r.querySelector("nav.outline .ol-head").textContent).to.equal(
-      "Ecosystem web",
-    );
-    const fig = r.querySelector("figure.where ecosystem-web");
-    expect(fig.hasAttribute("compact")).to.be.true;
-    expect(fig.getAttribute("node")).to.equal("sdg_4");
-    // one row in both views: the breadcrumb, the views and the link
-    expect(r.querySelector(".viewbar site-breadcrumb")).to.exist;
-    expect(r.querySelector(".viewbar .copylink")).to.exist;
-    expect(r.querySelector("main site-breadcrumb")).to.equal(null);
-    const views = [...r.querySelectorAll(".views button")];
-    expect(views.map((b) => b.getAttribute("aria-label"))).to.deep.equal([
-      "Network view",
-      "Content view",
-    ]);
-    expect(views[1].getAttribute("aria-pressed")).to.equal("true");
-  });
-
-  it("opens pages outside the webs in the Site view", async () => {
+  it("shows a page outside the webs under the whole web, with a breadcrumb from the outline", async () => {
     store.activeId = "tours";
     await tick();
     await element.updateComplete;
-    expect(element.view).to.equal("site");
-    expect(element.shadowRoot.querySelector("ecosystem-web")).to.equal(null);
-  });
-
-  it("puts the site's places in a menu on its name, with no links the network bar has", () => {
     const r = element.shadowRoot;
-    const places = [...r.querySelectorAll(".places-menu a")].map((a) =>
-      a.textContent.trim(),
+    const web = r.querySelector(".webview ecosystem-web");
+    expect(web.getAttribute("web")).to.equal("main");
+    expect(web.getAttribute("node")).to.equal("");
+    expect(r.querySelector(".content").hidden).to.be.false;
+    expect(r.querySelector(".content site-active-title")).to.exist;
+    const crumbs = [...r.querySelectorAll(".viewbar .trail li")].map((li) =>
+      li.textContent.trim(),
     );
-    expect(places).to.deep.equal(["Explore", "Tours"]);
+    expect(crumbs).to.deep.equal(["Ecosystem web", "Tours"]);
     expect(
-      r.querySelector('.places-menu a[aria-current="page"]').textContent.trim(),
-    ).to.equal("Explore");
-    expect(r.querySelector("header.top")).to.equal(null);
-    expect(r.querySelector(".linkbar")).to.equal(null);
-    expect(r.querySelector(".pill")).to.equal(null);
+      r.querySelector('.viewbar .trail [aria-current="page"]').textContent,
+    ).to.equal("Tours");
   });
 
-  it("opens and closes the places menu, Escape giving focus back", async () => {
-    const btn = element.shadowRoot.querySelector(".places-btn");
-    expect(btn.getAttribute("aria-expanded")).to.equal("false");
-    btn.click();
-    await element.updateComplete;
-    expect(btn.getAttribute("aria-expanded")).to.equal("true");
-    expect(element.hasAttribute("places-open")).to.be.true;
-    btn.dispatchEvent(
-      new KeyboardEvent("keydown", { key: "Escape", bubbles: true }),
-    );
-    await element.updateComplete;
-    expect(element.placesOpen).to.be.false;
-    btn.click();
-    await element.updateComplete;
-    globalThis.document.body.click();
-    await element.updateComplete;
-    expect(element.placesOpen).to.be.false;
-  });
-
-  it("folds the outline on narrow screens and closes it when a page is chosen", async () => {
-    element._setView("site");
-    await element.updateComplete;
-    const btn = element.shadowRoot.querySelector("nav.outline .ol-toggle");
-    expect(btn.getAttribute("aria-controls")).to.equal("outline-menu");
-    expect(btn.getAttribute("aria-expanded")).to.equal("false");
-    btn.click();
-    await element.updateComplete;
-    expect(btn.getAttribute("aria-expanded")).to.equal("true");
-    expect(element.hasAttribute("outline-open")).to.be.true;
-    store.activeId = "tours";
-    await tick();
-    await element.updateComplete;
-    expect(element.outlineOpen).to.be.false;
-    expect(element.hasAttribute("outline-open")).to.be.false;
+  it("holds only the breadcrumb under the network bar", () => {
+    const r = element.shadowRoot;
+    [
+      ".places-btn",
+      ".views",
+      ".copylink",
+      "nav.outline",
+      "figure.where",
+      "site-breadcrumb",
+    ].forEach((sel) => expect(r.querySelector(sel), sel).to.equal(null));
   });
 
   it("leaves the Future Traveler's corner to the network bar above it", () => {
@@ -205,16 +142,13 @@ describe("ecosystem-theme", function () {
     ).to.equal("hax:future-traveler");
   });
 
-  it("welcomes you on the home page, with a tour and Merlin", async () => {
+  it("welcomes you on the home page", async () => {
     const r = element.shadowRoot;
     const w = r.querySelector("section.welcome");
     expect(w.querySelector("h1").textContent).to.equal(
       "Everything in HAX is connected",
     );
-    expect(w.querySelector("a.btn").getAttribute("href")).to.equal("tours");
-    expect(w.querySelector("button.btn").textContent.trim()).to.equal(
-      "Ask Future",
-    );
+    expect(w.querySelector(".go")).to.equal(null);
     store.activeId = "goal";
     await tick();
     await element.updateComplete;
@@ -253,15 +187,6 @@ describe("ecosystem-theme", function () {
       const web = r.querySelector(".webview ecosystem-web");
       expect(web.getAttribute("node")).to.equal("sdg_4");
       expect(r.querySelector("#contentcontainer > #slot > slot")).to.exist;
-    });
-
-    it("shows the web even when the viewer chose the Site view on the site", async () => {
-      globalThis.localStorage.setItem("hax-cloud-view", "site");
-      const el = await fixture(html`<ecosystem-theme embed></ecosystem-theme>`);
-      await tick();
-      await el.updateComplete;
-      expect(el.view).to.equal("web");
-      globalThis.localStorage.removeItem("hax-cloud-view");
     });
 
     it("shows a page outside the webs as its content alone", async () => {
@@ -310,6 +235,7 @@ describe("ecosystem-theme", function () {
       "Ecosystem web",
       "4. Quality Education",
       "Tours",
+      "Developer mode: goggles",
     ]);
     expect(options[0].path).to.equal("hax.cloud: webs");
     expect(options[1].path).to.equal("hax.cloud: Ecosystem web");
@@ -318,6 +244,11 @@ describe("ecosystem-theme", function () {
       method: "goTo",
       args: ["un-sdgs/4-quality-education"],
     });
+    // the goggles are a developer command: only in Merlin's > list
+    const g = options[3];
+    expect(g.context).to.deep.equal([">"]);
+    expect(g.path).to.equal(">developer/goggles");
+    expect(g.value.method).to.equal("goggles");
   });
 
   it("passes the a11y audit", async () => {

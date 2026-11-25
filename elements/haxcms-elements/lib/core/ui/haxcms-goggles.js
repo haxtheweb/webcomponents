@@ -75,6 +75,29 @@ const LENSES = [
     say: "lensTranslateSay",
   },
 ];
+/**
+ * A site can add a lens of its own (hax.cloud adds Connect): { id, text,
+ * icon, sayText, pick(path), choose(found), panel }. pick turns the composed
+ * path under the pointer into { node, comp, label } or null; choose runs when
+ * that is clicked (or Enter is pressed on it); with panel: true, the element
+ * the site puts in the goggles as slot="lens-panel" shows while the lens is
+ * the chosen one.
+ */
+export function registerLens(def) {
+  if (!def || !def.id || LENSES.find((l) => l.id === def.id)) {
+    return;
+  }
+  LENSES.push(Object.assign({ label: "", say: "" }, def));
+  LENS_IDS.push(def.id);
+  const saved = localStorageGet(GOGGLES_LENS_KEY, null);
+  if (saved && saved.lens === def.id) {
+    GogglesState.lens = def.id;
+  }
+  GogglesState.set({});
+}
+/** the lens a site added, when it is the chosen one */
+const siteLens = (id, what) =>
+  LENSES.find((l) => l.id === id && typeof l[what] !== "undefined" && l[what]);
 // events the lenses keep from the page while they are on, so looking never changes anything
 const HELD = [
   "click",
@@ -582,7 +605,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
         ? this.t.lensesOffSay
         : this.lens === "person"
           ? this.t.followingSay.replace("{name}", who)
-          : this.t[lens.say];
+          : this.t[lens.say] || lens.sayText;
       if (this.lens === "person") {
         this._showAll = false;
       }
@@ -710,7 +733,7 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       "{lens}",
       this.lens === "person" && this.person
         ? this.t.followingSay.replace("{name}", this._name(this.person))
-        : this.t[(chosen || LENSES[0]).say],
+        : this.t[(chosen || LENSES[0]).say] || (chosen || LENSES[0]).sayText,
     );
     loadMakers().then(() => this.requestUpdate());
     if (this.lens === "translate") {
@@ -795,6 +818,10 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
   _pick(e) {
     if (this.lens === "translate") {
       return this._txPick(e);
+    }
+    const own = siteLens(this.lens, "pick");
+    if (own) {
+      return own.pick(e.composedPath ? e.composedPath() : []);
     }
     const path = e.composedPath ? e.composedPath() : [];
     let node = null;
@@ -929,6 +956,11 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     this.pinned = false;
     this._showAllPeople = false;
     this._look(found, point);
+    const own = siteLens(this.lens, "choose");
+    if (own) {
+      own.choose(found);
+      return;
+    }
     if (this.lens === "flag") {
       this._openIssue(found.comp);
     } else {
@@ -2607,7 +2639,8 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
       !this._target ||
       this.lens === "flag" ||
       this.lens === "person" ||
-      this.lens === "translate"
+      this.lens === "translate" ||
+      siteLens(this.lens, "pick")
     ) {
       return nothing;
     }
@@ -3524,7 +3557,7 @@ ${this._issueText().body}${r ? "\n\n" + JSON.stringify(r.bundle, null, 2) : ""}<
               @click="${() => GogglesState.set({ lens: l.id, lensOn: true })}"
             >
               <simple-icon-lite icon="${l.icon}"></simple-icon-lite
-              ><span>${this.t[l.label]}</span>
+              ><span>${this.t[l.label] || l.text}</span>
             </button>`,
         )}
         ${
@@ -3604,7 +3637,7 @@ ${this._issueText().body}${r ? "\n\n" + JSON.stringify(r.bundle, null, 2) : ""}<
                       style="left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px"
                     >
                       <span
-                        >&lt;${(this.lens === "code" ? this._target.node : this._target.comp).localName}&gt;</span
+                        >${this._target.label ? this._target.label : html`&lt;${(this.lens === "code" ? this._target.node : this._target.comp).localName}&gt;`}</span
                       >
                     </div>`
                   : nothing
@@ -3623,6 +3656,7 @@ ${this._issueText().body}${r ? "\n\n" + JSON.stringify(r.bundle, null, 2) : ""}<
               }
               ${this._renderMarks()} ${this._renderPins()} ${this._renderCard()}
               ${this._renderPersonPanel()} ${this._renderIssue()}
+              ${siteLens(this.lens, "panel") ? html`<slot name="lens-panel"></slot>` : nothing}
               ${this.phase ? nothing : this._renderPod()}
             `
           : nothing

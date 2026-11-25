@@ -1137,9 +1137,11 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         // if we're in a global context, include all global context results
         let results = [];
         // if we have a context and it's ALL then it shows up for any context
-        // system wide commands for example
+        // system wide commands for example, except the developer list (>),
+        // which holds developer commands only: without this a site's
+        // pages and the network's places (all "*") fill it
         if (item.context === "*") {
-          return item;
+          return this.commandContext !== ">";
         }
         if (this.commandContext == "*") {
           results = context.filter((value) => item.context.includes(value));
