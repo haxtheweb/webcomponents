@@ -66,7 +66,11 @@ class HAXCMSBackendUserfs extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-backend-userfs.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     // file object references so we can load and work with read/write ops
     this.fileObjects = {};

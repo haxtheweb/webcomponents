@@ -31,7 +31,9 @@ class LessonHighlight extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../../locales/lesson-highlight.en.json", import.meta.url)
+          .href + "/../",
     });
     this.title = "";
     this.subtitle = "";

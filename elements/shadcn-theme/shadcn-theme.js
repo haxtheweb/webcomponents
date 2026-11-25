@@ -66,7 +66,9 @@ class ShadcnTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/shadcn-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.HAXCMSThemeSettings.autoScroll = true;
     this.sidebarOpen = true;

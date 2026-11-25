@@ -303,7 +303,9 @@ class SimpleFileUpload extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/simple-file-upload.en.json", import.meta.url).href +
+        "/../",
     });
     this._preventWindowDrop = (e) => {
       e.preventDefault();

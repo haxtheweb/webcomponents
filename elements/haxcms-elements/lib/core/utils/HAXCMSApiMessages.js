@@ -200,7 +200,9 @@ function ensureRegistered() {
   I18NManagerStore.registerLocalization({
     context: HAXCMSApiMessages,
     namespace: "haxcms-api",
-    localesPath: new URL("../../../locales", import.meta.url).href,
+    localesPath:
+      new URL("../../../locales/app-hax-top-bar.en.json", import.meta.url)
+        .href + "/../",
     updateCallback: "_i18nUpdated",
   });
 }

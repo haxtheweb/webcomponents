@@ -87,7 +87,11 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-page-operations.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
 
     // store subscriptions live only while connected (see connectedCallback)

@@ -39,7 +39,9 @@ export class SiteCollectionList extends CollectionList {
     I18NManagerStore.registerLocalization({
       context: this,
       namespace: "haxcms",
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/app-hax-top-bar.en.json", import.meta.url)
+          .href + "/../",
     });
   }
   // release the manager's registration while off the page, restore it on return

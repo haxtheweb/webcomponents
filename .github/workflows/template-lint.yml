@@ -8,6 +8,9 @@ name: template-lint
 #   <x-el/> swallowing siblings, nested <button>, stray end tags), and
 #   bindings inside <style> text, which cannot be server rendered.
 #   Known cases: scripts/html-template-check.baseline.json
+# - new URL() for locales: must name a locale file that ships, never the
+#   locales/ folder or an uncommitted file, so bundlers can read it
+#   (haxtheweb/issues#3402). Nothing is baselined.
 # Only problems missing from the baselines fail. To accept one on purpose,
 # run `yarn lint:css-templates --update-baseline` or
 # `yarn lint:html-templates --update-baseline` and commit the baseline.
@@ -37,3 +40,6 @@ jobs:
       - name: HTML structure in html and svg templates
         if: always()
         run: node scripts/html-template-check.mjs
+      - name: Locale URLs point at a shipped locale file
+        if: always()
+        run: node scripts/locale-url-check.mjs

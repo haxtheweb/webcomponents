@@ -59,7 +59,9 @@ export class AppHaxSiteDetails extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/app-hax-site-details.en.json", import.meta.url)
+          .href + "/../",
     });
     this.need = "all need to succeed";
     this.details = {};

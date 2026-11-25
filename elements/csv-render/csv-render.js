@@ -168,7 +168,8 @@ class CsvRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/csv-render.en.json", import.meta.url).href + "/../",
     });
   }
   /**

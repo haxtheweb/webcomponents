@@ -115,7 +115,9 @@ export class IdentifyHotspots extends QuestionElement {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/identify-hotspots.en.json", import.meta.url).href +
+        "/../",
     });
     this.question = "";
     this.src = "";

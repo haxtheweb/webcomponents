@@ -148,7 +148,8 @@ class MeritBadge extends I18NMixin(SchemaBehaviors(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/merit-badge.en.json", import.meta.url).href + "/../",
     });
     this.typeof = "oer:LearningObjective";
     this.badgeUnlocked = false;

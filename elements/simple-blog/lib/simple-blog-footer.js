@@ -287,7 +287,9 @@ class SimpleBlogFooter extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/simple-blog-footer.en.json", import.meta.url).href +
+        "/../",
     });
     this.prevTitle = "";
     this.prevChanged = "";

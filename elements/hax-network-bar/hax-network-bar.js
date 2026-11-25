@@ -514,7 +514,7 @@ export class HaxNetworkBar extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/hax-network-bar.es.json", import.meta.url).href +
+        new URL("./locales/hax-network-bar.en.json", import.meta.url).href +
         "/../",
     });
     this._onHash = this._onHash.bind(this);

@@ -250,7 +250,9 @@ class CitationElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/citation-element.en.json", import.meta.url).href +
+        "/../",
     });
     this.scope = "sibling";
     this.source = "";

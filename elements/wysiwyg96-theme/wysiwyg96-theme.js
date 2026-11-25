@@ -120,7 +120,9 @@ class Wysiwyg96Theme extends DDDSuper(HAXCMSLitElementTheme) {
     };
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/wysiwyg96-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.HAXCMSThemeSettings.autoScroll = true;
     // window states: rolled up (title bar only), minimized (an icon on the

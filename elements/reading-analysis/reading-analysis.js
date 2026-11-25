@@ -115,7 +115,9 @@ export class ReadingAnalysis extends QuestionElement {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/reading-analysis.en.json", import.meta.url).href +
+        "/../",
     });
     this.question = "";
     this.mode = "flag";

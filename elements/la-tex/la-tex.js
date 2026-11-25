@@ -38,7 +38,8 @@ class LaTex extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/la-tex.en.json", import.meta.url).href + "/../",
     });
     this._inline = false;
     this.hydrated = false;

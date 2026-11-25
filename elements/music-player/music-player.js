@@ -57,7 +57,9 @@ class MusicPlayer extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/music-player.en.json", import.meta.url).href +
+        "/../",
     });
   }
   //styles function

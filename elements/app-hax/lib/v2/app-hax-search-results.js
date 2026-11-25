@@ -37,7 +37,9 @@ export class AppHaxSearchResults extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/app-hax-search-results.en.json", import.meta.url)
+          .href + "/../",
     });
     this.searchItems = [];
     this.displayItems = [];

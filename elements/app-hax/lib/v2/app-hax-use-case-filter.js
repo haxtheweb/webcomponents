@@ -179,7 +179,11 @@ export class AppHaxUseCaseFilter extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/app-hax-use-case-filter.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.windowControllers = new AbortController();
     this.searchTerm = "";

@@ -44,7 +44,8 @@ export class MiniMap extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/mini-map.en.json", import.meta.url).href + "/../",
     });
     // modal buttons keep their listeners because simple-modal receives the
     // original nodes (clone: false); bind once so `this` is the MiniMap

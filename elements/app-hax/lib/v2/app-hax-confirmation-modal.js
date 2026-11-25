@@ -41,7 +41,11 @@ export class AppHaxConfirmationModal extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/app-hax-confirmation-modal.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.open = false;
     this.title = "";

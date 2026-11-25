@@ -246,7 +246,9 @@ class HAXCMSSiteAdmin extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/haxcms-site-admin.en.json", import.meta.url)
+          .href + "/../",
     });
     this.route = "admin";
     this.allowRoute = null;

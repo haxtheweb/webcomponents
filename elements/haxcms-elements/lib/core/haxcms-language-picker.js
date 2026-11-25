@@ -340,7 +340,9 @@ class HAXCMSLanguagePicker extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/haxcms-language-picker.en.json", import.meta.url)
+          .href + "/../",
     });
     this.i18nDefault("label", "language");
     this.i18nDefault("placeholder", "searchPlaceholder");

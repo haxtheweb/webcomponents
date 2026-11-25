@@ -278,7 +278,11 @@ class RichTextEditorPrompt extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/rich-text-editor-prompt.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.haxUIElement = true;
     if (globalThis.addEventListener) {

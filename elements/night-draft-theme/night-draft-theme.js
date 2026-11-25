@@ -79,7 +79,9 @@ class NightDraftTheme extends DDDSuper(HAXCMSLitElementTheme) {
     };
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/night-draft-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.items = [];
     this.activeId = null;

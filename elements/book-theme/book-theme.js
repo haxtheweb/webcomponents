@@ -93,7 +93,8 @@ class BookTheme extends HAXCMSOperationButtons(
     I18NManagerStore.registerLocalization({
       context: this,
       namespace: "book-theme",
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/book-theme.en.json", import.meta.url).href + "/../",
     });
     this.HAXCMSThemeSettings.autoScroll = true;
     this.menuOpen = true;

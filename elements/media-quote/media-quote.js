@@ -32,7 +32,8 @@ class MediaQuote extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/media-quote.en.json", import.meta.url).href + "/../",
     });
 
     // Media Item (Img)

@@ -380,7 +380,9 @@ class LicenseElement extends I18NMixin(SchemaBehaviors(DDDSuper(LitElement))) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/license-element.en.json", import.meta.url).href +
+        "/../",
     });
     this.licenseList = new licenseList();
     this.i18nDefault("creator", "author");

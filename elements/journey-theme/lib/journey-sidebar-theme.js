@@ -53,7 +53,9 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/journey-sidebar-theme.en.json", import.meta.url)
+          .href + "/../",
     });
     this.dataPalette = 11;
     this._items = [];

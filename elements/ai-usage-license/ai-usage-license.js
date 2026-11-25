@@ -367,7 +367,9 @@ class AiUsageLicense extends SchemaBehaviors(I18NMixin(DDDSuper(LitElement))) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `ai-usage-license.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/ai-usage-license.en.json", import.meta.url)
+              .href + "/../",
         },
       }),
     );

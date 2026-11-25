@@ -35,7 +35,9 @@ export class SitePageProgress extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-page-progress.en.json", import.meta.url)
+          .href + "/../",
     });
     this.__disposer = [];
   }

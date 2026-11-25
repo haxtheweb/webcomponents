@@ -129,7 +129,9 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
 
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/page-template.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

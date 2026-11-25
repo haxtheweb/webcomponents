@@ -52,7 +52,9 @@ export class SiteCitation extends HAXCMSI18NMixin(DDD) {
     // own namespace (locales/{tag}.*.json) on top of the shared haxcms one
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-citation.en.json", import.meta.url)
+          .href + "/../",
     });
     this.__disposer = this.__disposer ? this.__disposer : [];
     // Only the handful of fields we cite are read inside the autorun, so it

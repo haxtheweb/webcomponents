@@ -58,7 +58,11 @@ class HAXCMSSiteSettingsDashboard extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/haxcms-site-settings-dashboard.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.allowContent = true;
     this.allowStructure = true;

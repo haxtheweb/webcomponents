@@ -235,7 +235,8 @@ export class RetroTvLocalizedProgram extends I18NMixin(RetroTvProgram) {
     this.registerLocalization({
       context: this,
       namespace: "retro-tv",
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/retro-tv.en.json", import.meta.url).href + "/../",
     });
   }
 }

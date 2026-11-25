@@ -20,7 +20,11 @@ export class AppHaxSimpleHatProgress extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL(
+          "../../locales/app-hax-simple-hat-progress.en.json",
+          import.meta.url,
+        ).href + "/../",
     });
     this.progress = 0;
     this.max = 100;

@@ -200,7 +200,9 @@ class BootstrapBreadcrumb extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/bootstrap-breadcrumb.en.json", import.meta.url)
+          .href + "/../",
     });
     this.items = [];
     this._activeItem = {};

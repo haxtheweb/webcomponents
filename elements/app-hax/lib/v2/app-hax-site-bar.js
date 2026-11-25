@@ -70,7 +70,9 @@ export class AppHaxSiteBars extends I18NMixin(SimpleColors) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/app-hax-site-bar.en.json", import.meta.url)
+          .href + "/../",
     });
     this.showOptions = false;
     this.inprogress = false;

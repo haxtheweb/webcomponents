@@ -71,7 +71,9 @@ export class WorksheetDownload extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/worksheet-download.en.json", import.meta.url).href +
+        "/../",
     });
     this.title = "";
     this.link = "";

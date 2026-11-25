@@ -116,7 +116,9 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/branching-scenario.en.json", import.meta.url).href +
+        "/../",
     });
     this._path = [];
     this._seen = new Set();
@@ -1037,7 +1039,9 @@ export class BranchingScenario extends DDDSuper(I18NMixin(LitElement)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: "branching-scenario.haxProperties",
-          localesPath: new URL("./locales", import.meta.url).href,
+          localesPath:
+            new URL("./locales/branching-scenario.en.json", import.meta.url)
+              .href + "/../",
         },
       }),
     );

@@ -71,7 +71,9 @@ class HomageThemeBase extends HAXCMSOperationButtons(
     I18NManagerStore.registerLocalization({
       context: this,
       namespace: "papermod-theme",
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/papermod-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.HAXCMSThemeSettings.autoScroll = true;
     this.prevPage = "";

@@ -56,7 +56,8 @@ class PlayList extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/play-list.en.json", import.meta.url).href + "/../",
     });
     this.items = [];
     this.loop = false;

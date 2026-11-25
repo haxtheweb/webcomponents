@@ -35,7 +35,9 @@ export class GithubRpgContributors extends I18NMixin(DDDSuper(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/github-rpg-contributors.en.json", import.meta.url)
+          .href + "/../",
     });
     this.org = "";
     this.repo = "";

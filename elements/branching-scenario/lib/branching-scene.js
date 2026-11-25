@@ -81,7 +81,9 @@ export class BranchingScene extends DDDSuper(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/branching-scene.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

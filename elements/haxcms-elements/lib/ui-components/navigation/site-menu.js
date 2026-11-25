@@ -113,7 +113,9 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this._activePercent = null;
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-menu.en.json", import.meta.url).href +
+        "/../",
     });
     this.__operationsLoaded = false;
     this.__disposer = [];

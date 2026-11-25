@@ -43,7 +43,9 @@ export class GlossyPortfolioTheme extends DDDSuper(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/glossy-portfolio-theme.en.json", import.meta.url)
+          .href + "/../",
     });
     this.title = "";
     this.HAXCMSThemeSettings.autoScroll = true;

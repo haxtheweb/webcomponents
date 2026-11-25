@@ -84,7 +84,9 @@ class TrueFalseQuestion extends QuestionElement {
     // QuestionElement's shared strings live in each question type's own namespace
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/true-false-question.en.json", import.meta.url)
+          .href + "/../",
     });
     this._tfanswer = null;
     // force this to true and use can't set

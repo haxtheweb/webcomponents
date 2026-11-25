@@ -57,7 +57,9 @@ class ChamferTheme extends HAXCMSThemeParts(
     // no I18NMixin in this class chain, so register with the store directly
     I18NManagerStore.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/chamfer-theme.en.json", import.meta.url).href +
+        "/../",
     });
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(

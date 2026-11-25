@@ -6701,7 +6701,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!tag.includes("-")) {
       I18NManagerStore.registerLocalization({
         namespace: namespace,
-        localesPath: new URL("../locales", import.meta.url).href,
+        localesPath:
+          new URL("../locales/hax.en.json", import.meta.url).href + "/../",
       });
       return;
     }

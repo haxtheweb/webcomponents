@@ -30,7 +30,8 @@ class LrnTable extends I18NMixin(SchemaBehaviors(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/lrn-table.en.json", import.meta.url).href + "/../",
     });
     setTimeout(() => {
       import("@haxtheweb/csv-render/csv-render.js");

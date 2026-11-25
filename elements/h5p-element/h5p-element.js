@@ -489,7 +489,8 @@ class H5PElement extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/h5p-element.en.json", import.meta.url).href + "/../",
     });
     this._fullscreen = false;
     this._fullscreenChanged = this._fullscreenChanged.bind(this);

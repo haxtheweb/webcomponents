@@ -212,7 +212,8 @@ class SimpleBlog extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/simple-blog.en.json", import.meta.url).href + "/../",
     });
     this.selectedPage = 0;
     setTimeout(() => {

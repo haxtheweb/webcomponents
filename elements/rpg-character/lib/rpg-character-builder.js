@@ -379,13 +379,17 @@ class RpgCharacterBuilder extends I18NMixin(DDD) {
     });
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales", import.meta.url).href,
+      localesPath:
+        new URL("../locales/rpg-character-builder.en.json", import.meta.url)
+          .href + "/../",
     });
     // option and setting labels come from rpg-character's own (already
     // translated) HAX settings so they are never translated twice
     I18NManagerStore.registerLocalization({
       namespace: "rpg-character.haxProperties",
-      localesPath: new URL("../locales", import.meta.url).href,
+      localesPath:
+        new URL("../locales/rpg-character-builder.en.json", import.meta.url)
+          .href + "/../",
     });
     // tile size follows the builder's own width (a dialog or a page), and
     // a page holds as many tiles as fit; measured on the next frame, since

@@ -509,7 +509,9 @@ export class HaxcmsGoggles extends I18NMixin(DDD) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/haxcms-goggles.en.json", import.meta.url)
+          .href + "/../",
     });
     this._hold = this._hold.bind(this);
     this._move = this._move.bind(this);

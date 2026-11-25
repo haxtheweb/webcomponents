@@ -935,7 +935,9 @@ export class MediaPlaylist extends SchemaBehaviors(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `media-playlist.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/media-playlist.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

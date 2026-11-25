@@ -45,7 +45,9 @@ export class TableauEmbed extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/tableau-embed.en.json", import.meta.url).href +
+        "/../",
     });
     this.src = "";
     this.width = "100%";
@@ -124,7 +126,9 @@ export class TableauEmbed extends I18NMixin(LitElement) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `tableau-embed.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/tableau-embed.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

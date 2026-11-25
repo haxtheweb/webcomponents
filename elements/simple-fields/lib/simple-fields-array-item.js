@@ -429,7 +429,9 @@ class SimpleFieldsArrayItem extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/simple-fields-array-item.en.json", import.meta.url)
+          .href + "/../",
     });
     this.addEventListener("dragenter", this._dragEnter);
     this.addEventListener("dragleave", this._dragLeave);

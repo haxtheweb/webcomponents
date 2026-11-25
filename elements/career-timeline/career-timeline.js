@@ -137,7 +137,9 @@ export class CareerTimeline extends SchemaBehaviors(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `career-timeline.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/career-timeline.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

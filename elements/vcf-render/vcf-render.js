@@ -733,7 +733,9 @@ export class VcfRender extends I18NMixin(IntersectionObserverMixin(DDD)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `vcf-render.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/vcf-render.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

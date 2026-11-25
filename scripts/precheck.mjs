@@ -108,6 +108,13 @@ const CONFIG = {
       blocking: false,
     },
     {
+      // new URL() for locales points at a locale file that ships, not the
+      // folder or a file that was never committed, so bundlers can read it.
+      // Blocking: nothing is baselined. haxtheweb/issues#3402
+      label: "Locale URLs",
+      args: ["scripts/locale-url-check.mjs"],
+    },
+    {
       // Dead code knip cannot see: eager imports of tags the file never
       // renders, _private methods nothing calls, unminified vendor copies
       // nothing loads. We don't tree shake, so it all ships. Advisory; known

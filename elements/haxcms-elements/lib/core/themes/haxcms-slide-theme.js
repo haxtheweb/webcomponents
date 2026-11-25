@@ -32,7 +32,9 @@ class HAXCMSSlideTheme extends I18NMixin(
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/haxcms-slide-theme.en.json", import.meta.url)
+          .href + "/../",
     });
     // do NOT reassign this.__disposer here: HAXCMSLitElementTheme's
     // constructor already created it and pushed its constructor-time

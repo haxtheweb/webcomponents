@@ -307,7 +307,9 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `author-card.haxProperties`,
-          localesPath: new URL(`./locales`, import.meta.url).href,
+          localesPath:
+            new URL("./locales/author-card.en.json", import.meta.url).href +
+            "/../",
         },
       }),
     );

@@ -18,7 +18,9 @@ export class HAXCMSDarkmodeToggle extends I18NMixin(DarkmodeToggle) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../locales/haxcms-darkmode-toggle.en.json", import.meta.url)
+          .href + "/../",
     });
     autorun(() => {
       const _mobx_val_0 = toJS(store.darkMode);

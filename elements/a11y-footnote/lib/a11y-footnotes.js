@@ -31,7 +31,9 @@ export class A11yFootnotes extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../locales/a11y-footnotes.en.json", import.meta.url).href +
+        "/../",
     });
   }
 

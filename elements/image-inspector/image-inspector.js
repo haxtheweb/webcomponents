@@ -121,7 +121,9 @@ class ImageInspector extends I18NMixin(LitElement) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("./locales/", import.meta.url).href,
+      localesPath:
+        new URL("./locales/image-inspector.en.json", import.meta.url).href +
+        "/../",
     });
   }
   render() {

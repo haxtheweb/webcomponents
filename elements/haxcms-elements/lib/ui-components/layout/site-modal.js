@@ -60,7 +60,9 @@ class SiteModal extends HAXCMSThemeParts(I18NMixin(LitElement)) {
     };
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../locales/", import.meta.url).href,
+      localesPath:
+        new URL("../../../locales/site-modal.en.json", import.meta.url).href +
+        "/../",
     });
     this.i18nDefault("title", "dialog");
     this.icon = "icons:menu";
