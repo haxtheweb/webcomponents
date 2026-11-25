@@ -1284,8 +1284,8 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
           align-items: center;
           gap: var(--ddd-spacing-3);
           min-height: 48px;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-2)
-            var(--ddd-spacing-2) var(--ddd-spacing-3);
+          padding-block: var(--ddd-spacing-2);
+          padding-inline: var(--ddd-spacing-3) var(--ddd-spacing-2);
           border: var(--ddd-border-xs);
           border-color: var(--edge);
           border-inline-start: 4px solid var(--kind);
