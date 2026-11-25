@@ -90,7 +90,7 @@ Before starting any work, check the unified issue queue:
 
 ### JavaScript-Only Architecture
 - **Language**: Pure JavaScript with LitElement for web components
-- **NO TypeScript**: HAX strictly avoids TypeScript to eliminate compilation requirements
+- **NO TypeScript**: HAX strictly avoids TypeScript to eliminate compilation requirements. `yarn lint:rules` and the `rule-checks` workflow fail on any `.ts`, `.tsx`, `.mts` or `.cts` source under `elements/` (`.d.ts` declarations are fine)
 - **Unbundled Approach**: Components ship as native JS/HTML/CSS for maximum compatibility
 - **Third-party Libraries**: When using libraries written in TypeScript, always import the pre-compiled JavaScript distribution
 
@@ -187,6 +187,8 @@ The HAX ecosystem uses a sophisticated build pipeline optimized for unbundled Ja
   ```bash
   npm test
   ```
+
+- **Poll, don't sleep**: a test waits for the condition it needs (`waitUntil`, an event, `el.updateComplete`), never a fixed `aTimeout(n)`, `new Promise((r) => setTimeout(r, n))` or `waitForTimeout(n)`. `yarn lint:rules` and the `rule-checks` workflow fail when a test file gains one; sleeps that predate the rule are in `scripts/test-sleeps.baseline.json`, which only shrinks (after removing some, run `node scripts/rule-checks.mjs test-sleeps --update-baseline`).
 
 - **Monorepo testing**:
   ```bash

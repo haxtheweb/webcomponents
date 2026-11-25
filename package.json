@@ -55,6 +55,7 @@
     "lint:locale-urls": "node scripts/locale-url-check.mjs",
     "lint:dead-code": "node scripts/dead-code-check.mjs",
     "lint:vision": "node scripts/vision-pairs-check.mjs",
+    "lint:rules": "node scripts/rule-checks.mjs all",
     "vision:gallery": "node scripts/vision-gallery.mjs",
     "precheck": "node scripts/precheck.mjs",
     "precheck:fix": "node scripts/precheck.mjs --fix",
