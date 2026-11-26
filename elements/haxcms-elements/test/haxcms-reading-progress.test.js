@@ -138,6 +138,25 @@ describe("HAXCMSReadingProgress tracker", () => {
     expect(reports).to.deep.equal([]);
   });
 
+  // haxtheweb/issues#3428: ready() runs right after the content is put in
+  // place; reading its size there forced a layout of the whole page
+  it("does not read the page's layout on the spot when the content is ready", async () => {
+    tracker.begin({ id: "a" }, region);
+    scrollToShare(0.6);
+    let reads = 0;
+    const read = region.getBoundingClientRect.bind(region);
+    region.getBoundingClientRect = () => {
+      reads++;
+      return read();
+    };
+    tracker.ready();
+    expect(reads).to.equal(0);
+    // measured on the next throttled tick
+    await until(() => reports.length > 0);
+    expect(reads).to.be.above(0);
+    expect(reports[0][0]).to.equal("progressed");
+  });
+
   it("coalesces thresholds crossed at once into one progressed", async () => {
     tracker.begin({ id: "a" }, region);
     tracker.ready();

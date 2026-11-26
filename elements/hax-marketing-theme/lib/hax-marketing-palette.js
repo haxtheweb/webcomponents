@@ -65,25 +65,35 @@ export function applyMarketingPalette(host) {
   if (!host || !host.isConnected) {
     return;
   }
-  const probe = globalThis.document.createElement("span");
-  // no transition: a page that shortens transitions for reduced motion still
-  // runs one, and a color read mid-transition is not the color
-  probe.style.cssText =
-    "position:absolute;width:0;height:0;visibility:hidden;transition:none!important;animation:none!important";
-  (host.shadowRoot || host).appendChild(probe);
-  const read = (value) => {
-    probe.style.backgroundColor = "";
-    probe.style.backgroundColor = value;
-    return parse(globalThis.getComputedStyle(probe).backgroundColor);
-  };
-  const surface = read(
+  // haxtheweb/issues#3428: one probe per color, all in place before the
+  // first read, so the page's styles are worked out once per call instead
+  // of once per color (each set-then-read forced a fresh style pass)
+  const values = [
     "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
-  ) || [255, 255, 255];
+    "var(--ddd-palette-color-1)",
+    "var(--ddd-palette-color-4)",
+    "var(--ddd-palette-color-6)",
+  ];
+  const root = host.shadowRoot || host;
+  const probes = values.map((value) => {
+    const probe = globalThis.document.createElement("span");
+    // no transition: a page that shortens transitions for reduced motion still
+    // runs one, and a color read mid-transition is not the color
+    probe.style.cssText =
+      "position:absolute;width:0;height:0;visibility:hidden;transition:none!important;animation:none!important";
+    probe.style.backgroundColor = value;
+    root.appendChild(probe);
+    return probe;
+  });
+  const colors = probes.map((probe) =>
+    parse(globalThis.getComputedStyle(probe).backgroundColor),
+  );
+  probes.forEach((probe) => probe.remove());
+  const surface = colors[0] || [255, 255, 255];
   const ink = on(surface);
-  const brand = read("var(--ddd-palette-color-1)");
-  const accent = read("var(--ddd-palette-color-4)");
-  const second = read("var(--ddd-palette-color-6)");
-  probe.remove();
+  const brand = colors[1];
+  const accent = colors[2];
+  const second = colors[3];
   const set = (name, value) => host.style.setProperty(name, value);
   if (brand) {
     set("--hm-brand", "var(--ddd-palette-color-1)");
