@@ -114,7 +114,25 @@ class MoarSarcasm extends I18NMixin(HTMLElement) {
       this.say = this.textContent;
     } else {
       this.processText(this.getAttribute("say"));
+      // the light DOM follows say (saving the element serializes it), now
+      // that any children it was made with have been appended
+      if (this.textContent !== this.getAttribute("say")) {
+        this._syncLightDOM(this.getAttribute("say"));
+      }
     }
+  }
+  /**
+   * Set the light DOM text without the observer reading it back as say.
+   */
+  _syncLightDOM(text) {
+    this.observer.disconnect();
+    this.textContent = text;
+    this.observer.observe(this, {
+      characterData: true,
+      attributes: false,
+      childList: true,
+      subtree: true,
+    });
   }
   /**
    * Render / rerender the shadowRoot
@@ -214,15 +232,12 @@ class MoarSarcasm extends I18NMixin(HTMLElement) {
           // (eg the HAX settings tray writes attributes directly for
           // properties that aren't own-properties), which otherwise would
           // leave the light DOM stale.
-          if (newValue !== this.textContent) {
-            this.observer.disconnect();
-            this.textContent = newValue;
-            this.observer.observe(this, {
-              characterData: true,
-              attributes: false,
-              childList: true,
-              subtree: true,
-            });
+          // Only once connected: an element made in script (replace-tag
+          // does this when it lazy loads) gets its attributes before its
+          // children are appended, and writing say into the light DOM then
+          // would put the text in twice.
+          if (this.isConnected && newValue !== this.textContent) {
+            this._syncLightDOM(newValue);
           }
           break;
         case "a11y":

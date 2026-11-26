@@ -30,20 +30,59 @@
  *   around the content) are put on hax-body, which stands in that place in
  *   edit mode. Only properties that inherit or that size the content box are
  *   copied; display and the like stay with the wrapper.
- * Rules that depend on the theme's own state (":host([...])") can't be
- * evaluated where the editor is, so they are left out.
+ * Rules that depend on the theme's state through its attributes
+ * (":host([menu-open]) ::slotted(p)") are kept: the theme's attributes are
+ * copied onto h-a-x as data-theme-* (syncThemeAttributes) and the condition
+ * is rewritten to match those. edit-mode is never copied, so the content in
+ * the editor follows the theme's view mode rules. Conditions on anything but
+ * attributes (a class, :host-context) are left out.
  */
 
 import {
   splitSelectorList,
   rewriteSheetSelectors,
+  pageScopedSelector,
 } from "@haxtheweb/utils/lib/shadow-sheets.js";
 
 // the layer holding a theme's ::slotted rules, see mirrorThemeShadowStyles
 const SLOTTED_LAYER = "haxcms-theme-slotted";
-// what the #slot wrapper rules become: hax-body, at the specificity h-a-x
-// gives its own in-place rule so these come after and win
-const SLOT_TARGET = ":host([in-place]) hax-body";
+// the #slot wrapper rules become rules on hax-body, written as
+// ":host([in-place]) hax-body" so they match the specificity h-a-x gives its
+// own in-place rule and, coming after it, win
+
+// attributes of the theme copied onto h-a-x as data-theme-*; edit-mode is
+// left off so the editor's content follows the theme's view mode rules
+const SKIP_THEME_ATTRIBUTES = ["edit-mode", "id", "class", "style", "hidden"];
+
+/**
+ * Copy the theme element's attributes onto the editor (h-a-x) as
+ * data-theme-<name>, so theme rules keyed to its state can be applied to the
+ * content inside the editor. Copies the editor has that the theme no longer
+ * has are removed.
+ * @param {Element} theme
+ * @param {Element} editor
+ */
+export function syncThemeAttributes(theme, editor) {
+  if (!theme || !editor) {
+    return;
+  }
+  const wanted = {};
+  Array.from(theme.attributes).forEach((attr) => {
+    if (!SKIP_THEME_ATTRIBUTES.includes(attr.name)) {
+      wanted[`data-theme-${attr.name}`] = attr.value;
+    }
+  });
+  Array.from(editor.attributes).forEach((attr) => {
+    if (attr.name.startsWith("data-theme-") && !(attr.name in wanted)) {
+      editor.removeAttribute(attr.name);
+    }
+  });
+  Object.keys(wanted).forEach((name) => {
+    if (editor.getAttribute(name) !== wanted[name]) {
+      editor.setAttribute(name, wanted[name]);
+    }
+  });
+}
 // properties of a #slot rule that reach the content: inherited text
 // properties, plus the box around the content
 const SLOT_PROPERTY =
@@ -65,10 +104,33 @@ export function editModeSelectorPart(selector, tag) {
   if (!SAFE_TAG.test(tag) || selector.includes(":host")) {
     return "";
   }
+  let host = "";
+  // "body.dark-mode clean-one > p" and the like: see pageScopedSelector
+  let rest = pageScopedSelector(selector).trim();
+  const page = splitHost(rest);
+  if (page) {
+    host = page.arg;
+    rest = page.after.trim();
+  }
+  // the theme element with conditions on its own attributes
+  // ("clean-one:not([data-palette='5']) a"): hax-body can't answer those,
+  // the copies of the theme's attributes on h-a-x can
+  const qualified = new RegExp(
+    `^${tag}((?:\\[[^\\]]*\\]|:not\\((?:\\[[^\\]]*\\])+\\))+)`,
+  ).exec(rest);
+  if (qualified) {
+    const condition = themeHostCondition(qualified[1]);
+    if (condition === null) {
+      return "";
+    }
+    host += condition;
+    rest = `hax-body${rest.slice(qualified[0].length)}`;
+  }
   // the tag at the start, or after a combinator or an opening paren, and not
   // followed by more of a name
   const tagSelector = new RegExp(`(^|[\\s>+~(,])${tag}(?![\\w-])`, "g");
-  return selector.replace(tagSelector, "$1hax-body");
+  rest = rest.replace(tagSelector, "$1hax-body");
+  return host ? `:host(${host}) ${rest}` : rest;
 }
 
 /**
@@ -118,24 +180,83 @@ function splitSlotted(selector) {
  * @returns {{kind: string, selector: string}|null} kind "slotted" or "slot"
  */
 export function mirrorShadowSelector(selector) {
-  // state of the theme element can't be seen from inside h-a-x
-  if (selector.includes(":host(") || selector.includes(":host-context")) {
+  if (selector.includes(":host-context")) {
     return null;
   }
-  const slotted = splitSlotted(selector);
+  // a rule that depends on the theme's state (":host([menu-open]) ...") is
+  // kept and keyed to the copies of the theme's attributes h-a-x carries
+  // (data-theme-*, see syncThemeAttributes)
+  let host = "";
+  let rest = selector.trim();
+  const condition = splitHost(rest);
+  if (condition) {
+    host = themeHostCondition(condition.arg);
+    if (host === null) {
+      return null;
+    }
+    rest = condition.after;
+  } else if (rest.includes(":host(")) {
+    return null;
+  }
+  const slotted = splitSlotted(rest);
   if (slotted) {
     if (slotted.arg.trim() === "" || slotted.after.includes("::slotted(")) {
       return null;
     }
     return {
       kind: "slotted",
-      selector: `hax-body > :is(${slotted.arg.trim()})${slotted.after}`,
+      selector: `${
+        host ? `:host(${host}) ` : ""
+      }hax-body > :is(${slotted.arg.trim()})${slotted.after}`,
     };
   }
-  if (/(^|[\s>+~])#slot$/.test(selector.trim())) {
-    return { kind: "slot", selector: SLOT_TARGET };
+  if (/(^|[\s>+~])#slot$/.test(rest.trim())) {
+    return {
+      kind: "slot",
+      selector: `:host([in-place]${host}) hax-body`,
+    };
   }
   return null;
+}
+
+/**
+ * Split a leading ":host(...)" off a selector.
+ * @param {string} selector
+ * @returns {{arg: string, after: string}|null}
+ */
+function splitHost(selector) {
+  if (!selector.startsWith(":host(")) {
+    return null;
+  }
+  let depth = 0;
+  for (let i = 5; i < selector.length; i++) {
+    if (selector[i] === "(") {
+      depth++;
+    } else if (selector[i] === ")") {
+      depth--;
+      if (depth === 0) {
+        return { arg: selector.slice(6, i), after: selector.slice(i + 1) };
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * The argument of a theme ":host(...)" rewritten for h-a-x: each attribute
+ * becomes its data-theme- copy. Only attribute conditions (also inside
+ * :not() / :is()) can be carried over; a class, id or other state can't.
+ * @param {string} arg
+ * @returns {string|null}
+ */
+export function themeHostCondition(arg) {
+  // what is left once attribute selectors are taken out must be only the
+  // logic around them
+  const bare = arg.replace(/\[[^\]]*\]/g, "");
+  if (!/^(\s|:not\(|:is\(|\)|,)*$/.test(bare)) {
+    return null;
+  }
+  return arg.replace(/\[\s*([a-zA-Z][\w-]*)/g, "[data-theme-$1");
 }
 
 /**
@@ -221,10 +342,13 @@ function mirrorRules(rules) {
           slotted += `${slottedParts.join(", ")} { ${body}}\n`;
         }
       }
-      if (parts.some((part) => part.kind === "slot")) {
+      const slotParts = parts
+        .filter((part) => part.kind === "slot")
+        .map((part) => part.selector);
+      if (slotParts.length > 0) {
         const body = declarations(rule.style, SLOT_PROPERTY);
         if (body) {
-          slot += `${SLOT_TARGET} { ${body}}\n`;
+          slot += `${[...new Set(slotParts)].join(", ")} { ${body}}\n`;
         }
       }
     } else if (

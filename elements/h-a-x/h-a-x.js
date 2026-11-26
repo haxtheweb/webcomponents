@@ -265,6 +265,15 @@ class HAX extends HTMLElement {
     fallbackStyle.textContent = fallbackCSSText;
     this.shadowRoot.appendChild(fallbackStyle);
   }
+  __syncPageClasses() {
+    const body = globalThis.document.body;
+    const classes = body ? body.className.trim() : "";
+    if (classes) {
+      this.setAttribute("data-page-classes", classes);
+    } else {
+      this.removeAttribute("data-page-classes");
+    }
+  }
   /**
    * Adopt the document's .hax stylesheets (the design system and, in HAXcms,
    * the theme's edit mode content sheet) into this shadow root. Safe to call
@@ -300,6 +309,33 @@ class HAX extends HTMLElement {
       super.connectedCallback();
     }
     this.__applyHAXAdoptedStylesToShadowRoot();
+    // the content being edited lives in this shadow root, out of sight of the
+    // page's autoloader; have it load definitions here too, so a block shows
+    // in the editor whether or not the page had loaded it yet
+    if (
+      globalThis.WCAutoload &&
+      typeof globalThis.WCAutoload.requestAvailability === "function"
+    ) {
+      const loader = globalThis.WCAutoload.requestAvailability();
+      if (loader && typeof loader.observeRoot === "function") {
+        loader.observeRoot(this.shadowRoot);
+      }
+    }
+    // page level rules keyed to body classes ("body.dark-mode a") are
+    // adopted here as ':host([data-page-classes~="dark-mode"]) a' (see
+    // utils/lib/shadow-sheets.js), so carry body's classes
+    this.__syncPageClasses();
+    if (!this.__pageClassObserver && globalThis.document.body) {
+      this.__pageClassObserver = new MutationObserver(() =>
+        this.__syncPageClasses(),
+      );
+    }
+    if (this.__pageClassObserver) {
+      this.__pageClassObserver.observe(globalThis.document.body, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    }
     // this ensures it's only applied once
     if (!this.__HAXApplied && !globalThis.__HAXApplied) {
       globalThis.__HAXApplied = this.__HAXApplied = this.applyHAX();
@@ -413,6 +449,9 @@ class HAX extends HTMLElement {
     }
     if (this.windowControllersReady) {
       this.windowControllersReady.abort();
+    }
+    if (this.__pageClassObserver) {
+      this.__pageClassObserver.disconnect();
     }
     if (super.disconnectedCallback) {
       super.disconnectedCallback();

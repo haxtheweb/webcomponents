@@ -109,4 +109,22 @@ describe("moar-sarcasm behavior", () => {
     expect(el.innerText).to.equal("dfg fgddfg dfg dfgdfg dfg");
     container.remove();
   });
+  it("does not double the text when made in script like replace-tag does", async () => {
+    // replace-tag (lazy loading on the published page) creates the element,
+    // sets its attributes, then appends the original children
+    const el = globalThis.document.createElement("moar-sarcasm");
+    el.setAttribute("say", "I am so cool");
+    el.append(globalThis.document.createTextNode("I am so cool"));
+    globalThis.document.body.appendChild(el);
+    expect(el.textContent).to.equal("I am so cool");
+    expect(el.getAttribute("say")).to.equal("I am so cool");
+    el.remove();
+  });
+  it("fills empty light DOM from say when made in script without text", async () => {
+    const el = globalThis.document.createElement("moar-sarcasm");
+    el.setAttribute("say", "so great");
+    globalThis.document.body.appendChild(el);
+    expect(el.textContent).to.equal("so great");
+    el.remove();
+  });
 });

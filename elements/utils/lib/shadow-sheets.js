@@ -100,11 +100,61 @@ export function withoutHost(selector) {
 }
 
 /**
- * Whether any style rule in the sheet uses :host.
+ * Rewrite a selector that starts at the page root (html, body, :root) for a
+ * shadow root, where nothing has those as ancestors:
+ * - "body a", "html p", ":root h2" become "a", "p", "h2" (every page content
+ *   element is inside body, so the condition always held)
+ * - "body.dark-mode a" becomes ':host([data-page-classes~="dark-mode"]) a';
+ *   the shadow host carries body's classes in data-page-classes (h-a-x does,
+ *   see its connectedCallback)
+ * Anything else (body > p, html.x p, body alone) is returned as is.
+ * @param {string} selector one selector of a list, without :host
+ * @returns {string}
+ */
+export function pageScopedSelector(selector) {
+  const text = selector.trim();
+  const root = /^(html|body|:root)((?:\.[\w-]+)*)/.exec(text);
+  if (!root) {
+    return selector;
+  }
+  const after = text.slice(root[0].length);
+  // only a descendant combinator right after the root compound
+  if (after === "" || !/^\s/.test(after)) {
+    return selector;
+  }
+  const rest = after.trimStart();
+  if (rest === "" || /^[>+~]/.test(rest)) {
+    return selector;
+  }
+  const classes = root[2].split(".").filter((c) => c);
+  if (classes.length === 0) {
+    return rest;
+  }
+  if (root[1] !== "body") {
+    return selector;
+  }
+  return `:host(${classes
+    .map((c) => `[data-page-classes~="${c}"]`)
+    .join("")}) ${rest}`;
+}
+
+/**
+ * Map one selector of a document level sheet for a shadow root: drop it if
+ * it uses :host, otherwise rewrite a page root start (pageScopedSelector).
+ * @param {string} selector
+ * @returns {string}
+ */
+export function shadowSelector(selector) {
+  const kept = withoutHost(selector);
+  return kept === "" ? "" : pageScopedSelector(kept);
+}
+
+/**
+ * Whether any style rule in the sheet needs mapping for a shadow root.
  * @param {CSSStyleSheet|CSSRule} parent
  * @returns {boolean}
  */
-function usesHost(parent) {
+function needsShadowCopy(parent) {
   const rules = parent.cssRules;
   if (!rules) {
     return false;
@@ -113,11 +163,14 @@ function usesHost(parent) {
     const rule = rules[i];
     if (
       typeof rule.selectorText === "string" &&
-      rule.selectorText.includes(":host")
+      (rule.selectorText.includes(":host") ||
+        splitSelectorList(rule.selectorText).some(
+          (part) => pageScopedSelector(part) !== part,
+        ))
     ) {
       return true;
     }
-    if (rule.cssRules && usesHost(rule)) {
+    if (rule.cssRules && needsShadowCopy(rule)) {
       return true;
     }
   }
@@ -128,9 +181,9 @@ const shadowCopies = new WeakMap();
 
 /**
  * A sheet to adopt into a shadow root in place of a document level sheet:
- * the same sheet when nothing in it uses :host, otherwise a copy without
- * the :host selectors (kept per source sheet, so each root adopts the same
- * copy). The copy is made once; a source changed later with replaceSync is
+ * the same sheet when nothing in it needs changing, otherwise a copy with
+ * selectors mapped by shadowSelector (no :host; page root starts rewritten),
+ * kept per source sheet so each root adopts the same copy. The copy is made once; a source changed later with replaceSync is
  * not followed, so a sheet meant to change in place either has no :host or
  * is written for the shadow root already and says so with
  * sheet.shadowSafe = true (then it is adopted as is).
@@ -146,14 +199,14 @@ export function shadowSafeSheet(sheet) {
   }
   let result = sheet;
   try {
-    if (usesHost(sheet)) {
+    if (needsShadowCopy(sheet)) {
       const copy = new globalThis.CSSStyleSheet();
       copy.replaceSync(
         Array.from(sheet.cssRules)
           .map((rule) => rule.cssText)
           .join("\n"),
       );
-      rewriteSheetSelectors(copy, withoutHost);
+      rewriteSheetSelectors(copy, shadowSelector);
       result = copy;
     }
   } catch {
