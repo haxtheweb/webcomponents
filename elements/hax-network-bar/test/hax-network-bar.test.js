@@ -9,7 +9,15 @@ import {
   HAX_GOGGLES_URL,
   HaxNetworkBar,
 } from "../hax-network-bar.js";
-import { HAX_NETWORK, HAX_NETWORK_GLYPHS } from "../lib/hax-network.js";
+import {
+  HAX_NETWORK,
+  HAX_NETWORK_GLYPHS,
+  HaxNetworkGlyphStyles,
+} from "../lib/hax-network.js";
+import {
+  DDDMotionIconNames,
+  DDDMotionGlyphNames,
+} from "@haxtheweb/d-d-d/lib/DDDMotion.js";
 
 describe("hax-network-bar", () => {
   let element;
@@ -719,5 +727,26 @@ describe("hax-network-bar landmark", () => {
     const frame = el.shadowRoot.querySelector(".frame");
     expect(frame.getAttribute("role")).to.equal("region");
     expect(frame.getAttribute("aria-label")).to.equal("HAX network bar");
+  });
+});
+
+describe("hax-network motion record", () => {
+  it("records a DDD icon motion and the DDD glyph motions for every property", () => {
+    for (const [id, p] of Object.entries(HAX_NETWORK.properties)) {
+      expect(DDDMotionIconNames, `${id} motion`).to.include(p.motion);
+      expect(p.glyphMotions, `${id} glyphMotions`).to.be.an("array");
+      for (const g of p.glyphMotions) {
+        expect(DDDMotionGlyphNames, `${id} glyph motion`).to.include(g);
+      }
+    }
+  });
+  it("plays only DDD glyph motions in the glyph styles", () => {
+    const text = HaxNetworkGlyphStyles.cssText;
+    const used = [...text.matchAll(/animation:\s*([\w-]+)/g)].map((m) => m[1]);
+    expect(used.length).to.be.greaterThan(0);
+    for (const name of used) {
+      expect(name.startsWith("ddd-glyph-"), name).to.be.true;
+      expect(DDDMotionGlyphNames).to.include(name.slice("ddd-glyph-".length));
+    }
   });
 });

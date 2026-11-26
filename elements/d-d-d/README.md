@@ -97,6 +97,25 @@ With those styles in place:
 | `--ddd-motion-icon-timing` | `--ddd-timing-ease` | easing |
 | `--ddd-motion-icon-distance` | `--ddd-spacing-1` (4px) | how far `lift` and `nudge` travel, and the width of the `glow` halo |
 
+### Glyph motions
+
+The network glyphs (each property's own icon in `hax-network-bar`, also drawn by the marketing theme) move their parts, not the whole icon: the brain's neurons fire in turn while its links signal, the TV's antenna swings while its picture scans. Those part motions are DDD's too. `DDDMotionGlyphKeyframes` in `lib/DDDMotion.js` holds their keyframes, named `ddd-glyph-<name>`, and `DDDMotionGlyphNames` lists them:
+
+| Name | Motion |
+|---|---|
+| `spread-left`, `spread-right` | a part steps out sideways and back |
+| `pop` | a part grows and settles |
+| `nudge` | a part steps forward and grows a little |
+| `blink` | a part fades and returns, in two steps |
+| `swing` | a part rocks either way about its origin |
+| `scan` | a line sweeps down and fades at either end |
+| `snap` | a part drops into place, rotated in, then settles |
+| `float` | a dot drifts out, swells and returns |
+| `signal` | a link fades and returns |
+| `fire` | a node swells and settles, like a firing neuron |
+
+A glyph's own styles say which part plays which motion, with what timing and delay, inside `@media (prefers-reduced-motion: no-preference)`. Each network property records its glyph motions (`glyphMotions`) and the icon motion its plain icon plays elsewhere (`motion`) in `HAX_NETWORK` (`elements/hax-network-bar/lib/hax-network.js`).
+
 ## Develop / Demo
 Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash
