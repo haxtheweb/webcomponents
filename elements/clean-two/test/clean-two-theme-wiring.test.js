@@ -271,3 +271,40 @@ describe("clean-two rail tooltip and page navigation accent", () => {
     }
   });
 });
+
+describe("clean-two palette pattern (same as clean-one)", () => {
+  it("defaults to Monotone (5)", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    expect(el.dataPalette).to.equal(5);
+    expect(el.getAttribute("data-palette")).to.equal("5");
+  });
+
+  it("keeps the open page as the rail inverted and hovers with the palette accent", async () => {
+    const a = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const b = await fixture(html`<clean-two data-palette="3"></clean-two>`);
+    const v = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+    const menu = (el) => el.shadowRoot.querySelector("site-menu");
+    if (menu(a) && menu(b)) {
+      expect(v(menu(a), "--map-menu-item-a-active-background-color")).to.equal(
+        v(menu(b), "--map-menu-item-a-active-background-color"),
+      );
+      expect(v(menu(a), "--map-menu-item-a-hover-background-color")).to.equal(
+        v(a, "--ddd-palette-accent"),
+      );
+    }
+  });
+
+  it("gives breadcrumb links the palette's link color", async () => {
+    const el = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const crumb = el.shadowRoot.querySelector("site-breadcrumb");
+    if (crumb) {
+      expect(
+        getComputedStyle(crumb)
+          .getPropertyValue("--site-breadcrumb-color")
+          .trim(),
+      ).to.equal(
+        getComputedStyle(el).getPropertyValue("--ddd-palette-link").trim(),
+      );
+    }
+  });
+});

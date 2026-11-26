@@ -30,21 +30,38 @@ describe("clean-one theme metadata", () => {
     expect(CleanOne.supportedPalettes).to.equal(undefined);
   });
 
-  it("keeps the menu rail neutral and uses the palette only as accent", async () => {
+  it("keeps the rail and open page neutral; hover takes the palette accent", async () => {
     const a = await fixture(html`<clean-one data-palette="1"></clean-one>`);
     const b = await fixture(html`<clean-one data-palette="3"></clean-one>`);
-    const rail = (el) =>
-      getComputedStyle(el).getPropertyValue("--clean-one-7").trim();
-    expect(rail(a)).to.not.equal("");
-    expect(rail(a)).to.equal(rail(b));
+    const v = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+    expect(v(a, "--clean-one-7")).to.not.equal("");
+    expect(v(a, "--clean-one-7")).to.equal(v(b, "--clean-one-7"));
     const menu = (el) => el.shadowRoot.querySelector("site-menu");
     if (menu(a)) {
+      // the open page is the rail inverted, not the palette
+      expect(v(menu(a), "--map-menu-item-a-active-background-color")).to.equal(
+        v(menu(b), "--map-menu-item-a-active-background-color"),
+      );
+      // hovering takes the palette accent
+      expect(v(menu(a), "--map-menu-item-a-hover-background-color")).to.equal(
+        v(a, "--ddd-palette-accent"),
+      );
+      // the expand disc never matches the row it sits on
+      expect(v(menu(a), "--map-menu-item-icon-active-color")).to.not.equal(
+        v(menu(a), "--site-menu-container-background-color"),
+      );
+    }
+  });
+
+  it("Monotone (the default) hovers like the open page, as it always did", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    const menu = el.shadowRoot.querySelector("site-menu");
+    if (menu) {
+      const cs = getComputedStyle(menu);
       expect(
-        getComputedStyle(menu(a))
-          .getPropertyValue("--map-menu-item-a-active-background-color")
-          .trim(),
+        cs.getPropertyValue("--map-menu-item-a-hover-background-color").trim(),
       ).to.equal(
-        getComputedStyle(a).getPropertyValue("--ddd-palette-accent").trim(),
+        cs.getPropertyValue("--map-menu-item-a-active-background-color").trim(),
       );
     }
   });

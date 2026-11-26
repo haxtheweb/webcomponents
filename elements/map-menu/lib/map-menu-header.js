@@ -82,16 +82,24 @@ class MapMenuHeader extends I18NMixin(LitElement) {
               var(--ddd-theme-primary, currentColor)
             );
         }
+        /* hover / focus (and the path to it) look like the open page unless
+           a theme gives them their own pair (--map-menu-item-a-hover-*) */
         :host([hovered]) button,
         a:hover button,
         a:focus-within button,
         a:focus button {
           color: var(
-            --map-menu-item-a-active-color,
-            var(--map-menu-item-a-color, inherit)
+            --map-menu-item-a-hover-color,
+            var(
+              --map-menu-item-a-active-color,
+              var(--map-menu-item-a-color, inherit)
+            )
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
-          background-color: var(--map-menu-item-a-active-background-color);
+          background-color: var(
+            --map-menu-item-a-hover-background-color,
+            var(--map-menu-item-a-active-background-color)
+          );
           border-radius: var(--map-menu-item-border-radius, 0px);
         }
 

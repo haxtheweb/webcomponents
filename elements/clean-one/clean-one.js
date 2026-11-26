@@ -52,10 +52,9 @@ const bpBelowXl = unsafeCSS(DDDBreakpoints.xl - 1);
  * @demo demo/index.html
  * @element clean-one
  *
- * Every palette works: the site palette accents the content (breadcrumb,
- * page navigation, the open page's marker in the menu, back to top) while
- * the menu rail and reading surface stay neutral, so the theme reads the
- * same in every palette and color scheme.
+ * Every palette works, Monotone (5) by default: the site palette accents
+ * the menu on hover, the breadcrumb, page navigation and back to top, while
+ * the menu rail, the open page and the reading surface stay neutral.
  */
 class CleanOne extends LTIResizingMixin(
   PrintBranchMixin(
@@ -123,6 +122,25 @@ class CleanOne extends LTIResizingMixin(
           color: var(--ddd-lightDark-text);
           color-scheme: light dark;
         }
+        /* Monotone, the default, keeps the look the theme always had:
+           hovering a row inverts it like the open page */
+        :host([data-palette="5"]) site-menu {
+          --map-menu-item-a-hover-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-hover-background-color: var(--ddd-lightDark-1);
+        }
+        :host([data-palette="5"]) site-breadcrumb {
+          --site-breadcrumb-color: var(--ddd-lightDark-2);
+        }
+        :host([data-palette="5"]) site-menu-button {
+          --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
+          --site-menu-button-button-hover-background-color: var(
+            --ddd-lightDark-2
+          );
+        }
+        :host([data-palette="5"]) scroll-button {
+          --scroll-button-color: var(--ddd-lightDark-1);
+          --scroll-button-background-color: var(--ddd-lightDark-6);
+        }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
         }
@@ -158,12 +176,17 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-active-color: var(--ddd-lightDark-2);
           --site-menu-item-active-item-color: var(--ddd-lightDark-7);
           --map-menu-item-a-color: var(--ddd-lightDark-1);
-          /* the open page is filled with the palette accent and its paired
-             ink, the same pair DDD makes for every palette, so it reads in
-             each palette and color scheme */
-          --map-menu-item-a-active-color: var(--ddd-palette-accent-ink);
-          --map-menu-item-a-active-background-color: var(--ddd-palette-accent);
-          --map-menu-item-icon-active-color: var(--ddd-palette-accent-ink);
+          /* the open page is the rail inverted (its text color as the
+             background, its background as the text), the same in every
+             palette; hovering a row (and the path to it) takes the palette
+             accent and the ink DDD pairs with it */
+          --map-menu-item-a-active-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-active-background-color: var(--ddd-lightDark-1);
+          --map-menu-item-a-hover-color: var(--ddd-palette-accent-ink);
+          --map-menu-item-a-hover-background-color: var(--ddd-palette-accent);
+          /* the expand / collapse disc on a hovered or open row is drawn in
+             the rail's own pair so it never matches the row (blank disc) */
+          --map-menu-item-icon-active-color: var(--ddd-lightDark-1);
           --site-menu-container-background-color: var(--ddd-lightDark-7);
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-3xs);

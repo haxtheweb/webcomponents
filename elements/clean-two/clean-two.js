@@ -375,6 +375,10 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-primary-4),
             var(--ddd-accent-6)
           );
+          /* the open page stays the rail inverted in every palette; hovering
+             a row (and the path to it) takes the palette accent and its ink */
+          --map-menu-item-a-hover-color: var(--ddd-palette-accent-ink);
+          --map-menu-item-a-hover-background-color: var(--ddd-palette-accent);
           --site-menu-container-background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -392,6 +396,24 @@ class CleanTwo extends LTIResizingMixin(
           padding: var(--ddd-spacing-5) 0 0 0;
           overflow-x: hidden;
           -webkit-overflow-scrolling: touch;
+        }
+
+        /* Monotone, the default, keeps the look the theme always had */
+        :host([data-palette="5"]) site-menu {
+          --map-menu-item-a-hover-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --map-menu-item-a-hover-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+        }
+        :host([data-palette="5"]) site-breadcrumb {
+          --site-breadcrumb-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
 
         site-menu::part(map-menu) {
@@ -705,9 +727,14 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-theme-default-black),
             var(--ddd-accent-6)
           );
-          --site-breadcrumb-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
+          /* breadcrumb links take the palette's link color (made to read on
+             light and dark) */
+          --site-breadcrumb-color: var(
+            --ddd-palette-link,
+            light-dark(
+              var(--ddd-theme-default-link),
+              var(--ddd-theme-default-linkLight)
+            )
           );
           --site-breadcrumb-last-color: light-dark(
             var(--ddd-theme-default-black),
@@ -939,6 +966,12 @@ class CleanTwo extends LTIResizingMixin(
     }
     return {
       ...props,
+      /**
+       * Site palette; Monotone (5) unless the site picks another. Any
+       * palette works: it accents the menu on hover, the breadcrumb and
+       * previous / next, and the rail keeps its own colors.
+       */
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       searchTerm: {
         type: String,
       },
@@ -982,6 +1015,7 @@ class CleanTwo extends LTIResizingMixin(
     };
     this.xl = 1800;
     this.HAXCMSThemeSettings.autoScroll = true;
+    this.dataPalette = 5;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(
