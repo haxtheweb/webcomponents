@@ -26,8 +26,27 @@ async function waitFor(fn, timeout = 6000) {
 }
 
 describe("clean-one theme metadata", () => {
-  it("declares supported palettes 4 and 5", () => {
-    expect(CleanOne.supportedPalettes).to.deep.equal(["4", "5"]);
+  it("takes every palette (no supported list)", () => {
+    expect(CleanOne.supportedPalettes).to.equal(undefined);
+  });
+
+  it("keeps the menu rail neutral and uses the palette only as accent", async () => {
+    const a = await fixture(html`<clean-one data-palette="1"></clean-one>`);
+    const b = await fixture(html`<clean-one data-palette="3"></clean-one>`);
+    const rail = (el) =>
+      getComputedStyle(el).getPropertyValue("--clean-one-7").trim();
+    expect(rail(a)).to.not.equal("");
+    expect(rail(a)).to.equal(rail(b));
+    const menu = (el) => el.shadowRoot.querySelector("site-menu");
+    if (menu(a)) {
+      expect(
+        getComputedStyle(menu(a))
+          .getPropertyValue("--map-menu-item-a-active-background-color")
+          .trim(),
+      ).to.equal(
+        getComputedStyle(a).getPropertyValue("--ddd-palette-accent").trim(),
+      );
+    }
   });
 
   it("defaults dataPalette to 5 (Monotone)", async () => {

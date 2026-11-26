@@ -245,3 +245,29 @@ describe("clean-two search modal wiring", () => {
     }
   });
 });
+
+describe("clean-two rail tooltip and page navigation accent", () => {
+  it("puts the My learning hover text to the right, like the rest of the rail", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    const btn = el.shadowRoot.querySelector("my-learning-button");
+    expect(btn.getAttribute("tooltip-position")).to.equal("right");
+    expect(btn.tooltipPosition).to.equal("right");
+  });
+
+  it("outlines previous / next in the palette's link color on hover and focus", async () => {
+    const el = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const link = getComputedStyle(el)
+      .getPropertyValue("--ddd-palette-link")
+      .trim();
+    const smb = el.shadowRoot.querySelector("site-menu-button");
+    if (smb && link) {
+      const cs = getComputedStyle(smb);
+      expect(
+        cs.getPropertyValue("--site-menu-button-button-hover-color").trim(),
+      ).to.equal(link);
+      expect(
+        cs.getPropertyValue("--site-menu-button-focus-color").trim(),
+      ).to.equal(link);
+    }
+  });
+});

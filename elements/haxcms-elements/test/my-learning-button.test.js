@@ -559,3 +559,21 @@ describe("My learning button and panel", () => {
     expect(LEARNER_ITEM_ICONS.collapse).to.equal("icons:expand-more");
   });
 });
+
+describe("my-learning-button tooltip-position", () => {
+  it("places the compact hover text where the theme asks, auto by default", async () => {
+    const plain = await fixture(
+      html`<my-learning-button compact></my-learning-button>`,
+    );
+    const tip = (el) => el.shadowRoot.querySelector("simple-tooltip");
+    expect(plain.tooltipPosition).to.equal("auto");
+    expect(tip(plain).getAttribute("position")).to.equal("auto");
+    const right = await fixture(
+      html`<my-learning-button
+        compact
+        tooltip-position="right"
+      ></my-learning-button>`,
+    );
+    expect(tip(right).getAttribute("position")).to.equal("right");
+  });
+});

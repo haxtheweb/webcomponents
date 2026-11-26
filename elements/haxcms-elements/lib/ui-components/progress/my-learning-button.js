@@ -104,6 +104,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
     });
     this.__disposer = [];
     this._onResize = () => this._place();
+    this.tooltipPosition = "auto";
   }
   static get properties() {
     return {
@@ -118,6 +119,12 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
        * safe area), for narrow layouts
        */
       floating: { type: Boolean, reflect: true },
+      /**
+       * Where the compact button's hover text sits (simple-tooltip
+       * position: auto, top, right, bottom, left), so a theme can match
+       * the other buttons in its rail
+       */
+      tooltipPosition: { type: String, attribute: "tooltip-position" },
       /**
        * Percent of the page open now, 0 to 1 (read only, from the learner
        * profile on this device)
@@ -326,7 +333,7 @@ export class MyLearningButton extends I18NMixin(DDDSuper(LitElement)) {
         this.compact
           ? html`<simple-tooltip
               for="button"
-              position="auto"
+              position="${this.tooltipPosition}"
               ?hidden="${this._open}"
               aria-hidden="true"
               >${name}</simple-tooltip

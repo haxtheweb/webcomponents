@@ -103,9 +103,15 @@ class CleanTwo extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
+          /* hover and focus outline the card and its arrow in the site
+             palette's link color (made to read on light and dark) */
           --site-menu-button-button-hover-color: var(
-            --ddd-theme-default-info,
-            var(--ddd-primary-4)
+            --ddd-palette-link,
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6))
+          );
+          --site-menu-button-focus-color: var(
+            --ddd-palette-link,
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6))
           );
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -790,6 +796,7 @@ class CleanTwo extends LTIResizingMixin(
               ${this.HAXCMSMobileMenuButton("right")}
               <my-learning-button
                 compact
+                tooltip-position="right"
                 class="learning-btn"
                 part="my-learning-btn"
               ></my-learning-button>

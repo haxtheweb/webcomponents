@@ -106,9 +106,12 @@ class SiteMenuButton extends HAXCMSI18NMixin(
            survive forced colors, where box-shadows and backgrounds vanish */
         button:focus-visible {
           outline: 2px solid
-            light-dark(
-              var(--ddd-theme-default-link, #005fa9),
-              var(--ddd-theme-default-linkLight, #cce9ff)
+            var(
+              --site-menu-button-focus-color,
+              light-dark(
+                var(--ddd-theme-default-link, #005fa9),
+                var(--ddd-theme-default-linkLight, #cce9ff)
+              )
             );
           outline-offset: 2px;
         }
