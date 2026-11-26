@@ -1539,7 +1539,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
 
       htmlcontent = encapScript(htmlcontent);
-      wipeSlot(store.themeElement, "*");
+      // the page on screen stays until its replacement goes in (below, in
+      // the same task); haxtheweb/issues#3428
       store.activeItemContent = htmlcontent;
       // insert the content as quickly as possible, then work on the dynamic
       // imports. The theme must be defined (and rendered once) first: content
@@ -1567,6 +1568,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         if (store.activeItemContent !== htmlcontent) {
           return;
         }
+        // haxtheweb/issues#3428: out with the old page and in with the new
+        // one in the same task. Emptying the theme when this was called left
+        // it empty across the wait above (at least one task), so a frame
+        // could paint the theme with no content: the footer (previous/next)
+        // jumped up under the title, then back down. That happened on every
+        // content change, twice on a logged-in load (fresh site.json, then
+        // the fresh page body).
+        wipeSlot(store.themeElement, "*");
         if (store.themeElement.childNodes.length === 0) {
           // security (JS-XSS): parsed in an inert document (no browsing
           // context), so nothing in the page loads, runs or upgrades before
