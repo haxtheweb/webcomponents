@@ -348,7 +348,9 @@ export class LinkCardTheme extends HAXCMSThemeParts(
           white-space: nowrap !important;
           border: 0 !important;
         }
-        :host(:not([edit-mode])) #contentcontainer {
+        /* the page body shows below the links in both modes, so what is
+           edited is what is published; a page with no body gets no card */
+        :host([empty-content]:not([edit-mode])) #contentcontainer {
           display: none;
         }
         @media (max-width: 360px) {

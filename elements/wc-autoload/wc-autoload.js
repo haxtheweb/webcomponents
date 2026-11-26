@@ -278,6 +278,50 @@ class WcAutoload extends HTMLElement {
     this._mutationObserver.disconnect();
   }
   /**
+   * Also load definitions for tags added inside a shadow root, which the
+   * document level observer can't see into. An editor that keeps its content
+   * in a shadow root (h-a-x) registers it here, so a block placed or imported
+   * there loads like it would on the page. Safe to call again for a root.
+   * @param {ShadowRoot|Element} root
+   */
+  observeRoot(root) {
+    if (!root || typeof root.querySelectorAll !== "function") {
+      return;
+    }
+    if (!this.__roots) {
+      this.__roots = new WeakSet();
+    }
+    if (!this.__roots.has(root)) {
+      this.__roots.add(root);
+      new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            this.processNewTree(node);
+          });
+        });
+      }).observe(root, { childList: true, subtree: true });
+    }
+    // whatever is already there
+    this.processNewTree(root);
+  }
+  /**
+   * Process a node and the not yet defined elements inside it; content set
+   * in one go (innerHTML) reports only its top level nodes as added.
+   * @param {Node} node
+   */
+  processNewTree(node) {
+    this.processNewElement(node);
+    if (node && typeof node.querySelectorAll === "function") {
+      const seen = {};
+      node.querySelectorAll(":not(:defined)").forEach((el) => {
+        if (!seen[el.tagName]) {
+          seen[el.tagName] = true;
+          this.processNewElement(el);
+        }
+      });
+    }
+  }
+  /**
    * Process new elements
    */
   processNewElement(node) {

@@ -73,6 +73,11 @@ export const PageBreakBandStyles = css`
   /* only visible while editing in HAX (data-hax-ray); visitors never see it */
   :host([data-hax-ray]) {
     display: block;
+    /* the band is editor chrome: it fills the width the content has and
+       never sets it. Without this its title and chips (which do not wrap)
+       widen a theme whose content column sizes to its content, and the page
+       reflows on entering edit mode */
+    contain: inline-size;
     height: auto;
     margin: var(--ddd-spacing-4) 0;
     padding: 0;

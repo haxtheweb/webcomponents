@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../h-a-x.js";
 import "../lib/h-a-x-dependencies.js";
@@ -68,5 +68,22 @@ describe("h-a-x in-place", () => {
     );
     el.applyHAXStyles();
     expect(el.shadowRoot.adoptedStyleSheets.length).to.equal(count - 1);
+  });
+
+  it("carries body's classes for page rules keyed to them", async () => {
+    const el = await fixture(html`<h-a-x in-place><p>text</p></h-a-x>`);
+    document.body.classList.add("h-a-x-probe-class");
+    await waitUntil(() =>
+      (el.getAttribute("data-page-classes") || "").includes(
+        "h-a-x-probe-class",
+      ),
+    );
+    document.body.classList.remove("h-a-x-probe-class");
+    await waitUntil(
+      () =>
+        !(el.getAttribute("data-page-classes") || "").includes(
+          "h-a-x-probe-class",
+        ),
+    );
   });
 });

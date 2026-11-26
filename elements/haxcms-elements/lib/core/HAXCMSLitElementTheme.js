@@ -16,6 +16,7 @@ import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manage
 import {
   getEditModeContentSheet,
   syncEditModeContentStyles,
+  syncThemeAttributes,
 } from "./utils/HAXCMSEditModeContentStyles.js";
 
 // create the edit mode content sheet before any editor (h-a-x) exists, so
@@ -292,13 +293,21 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.HAXCMSContentShadowStyles(),
     );
     // an editor that rendered before this sheet existed adopts it now
-    const editor =
-      store.cmsSiteEditor && store.cmsSiteEditor.instance
-        ? store.cmsSiteEditor.instance.querySelector("h-a-x")
-        : null;
+    const editor = this._contentEditor();
     if (editor && typeof editor.applyHAXStyles === "function") {
       editor.applyHAXStyles();
     }
+    syncThemeAttributes(this, editor);
+  }
+
+  /**
+   * The editor (h-a-x) that stands in for this theme's content in edit mode
+   * @returns {Element|null}
+   */
+  _contentEditor() {
+    return store.cmsSiteEditor && store.cmsSiteEditor.instance
+      ? store.cmsSiteEditor.instance.querySelector("h-a-x")
+      : null;
   }
 
   /**
@@ -707,6 +716,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       "design-system-active-changed",
       this.__designSystemRestyle,
     );
+    // theme rules keyed to this element's state (":host([menu-open]) ...")
+    // follow the content into the editor through copies of its attributes
+    if (!this.__themeAttributeObserver) {
+      this.__themeAttributeObserver = new MutationObserver(() => {
+        syncThemeAttributes(this, this._contentEditor());
+      });
+    }
+    this.__themeAttributeObserver.observe(this, { attributes: true });
     // --haxcms-theme-offset-top: how far down the page the theme starts
     // (the editor's top bar keeps 64px for itself when someone is logged
     // in). A theme that fills the screen sizes itself with
@@ -737,6 +754,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     }
   }
   disconnectedCallback() {
+    if (this.__themeAttributeObserver) {
+      this.__themeAttributeObserver.disconnect();
+    }
     if (this.__firstTabHandler) {
       globalThis.removeEventListener("keydown", this.__firstTabHandler, true);
     }

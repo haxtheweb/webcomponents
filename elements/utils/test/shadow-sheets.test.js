@@ -4,6 +4,7 @@ import {
   rewriteSheetSelectors,
   withoutHost,
   shadowSafeSheet,
+  pageScopedSelector,
 } from "../lib/shadow-sheets.js";
 
 describe("shadow-sheets", () => {
@@ -55,6 +56,37 @@ describe("shadow-sheets", () => {
     expect(getComputedStyle(p).getPropertyValue("--measure").trim()).to.equal(
       "40px",
     );
+    host.remove();
+  });
+
+  it("rewrites selectors that start at the page root for a shadow root", () => {
+    expect(pageScopedSelector("body a:any-link")).to.equal("a:any-link");
+    expect(pageScopedSelector(":root h2")).to.equal("h2");
+    expect(pageScopedSelector("body.dark-mode a")).to.equal(
+      ':host([data-page-classes~="dark-mode"]) a',
+    );
+    // nothing to rewrite, or nothing that could be kept
+    expect(pageScopedSelector("body > p")).to.equal("body > p");
+    expect(pageScopedSelector("html.x p")).to.equal("html.x p");
+    expect(pageScopedSelector("body")).to.equal("body");
+    expect(pageScopedSelector("bodyguard p")).to.equal("bodyguard p");
+  });
+
+  it("colors links in a shadow root the way the page does", async () => {
+    const page = new CSSStyleSheet();
+    page.replaceSync(
+      "body a { color: rgb(1, 2, 3); } body.night a { color: rgb(4, 5, 6); }",
+    );
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = host.attachShadow({ mode: "open" });
+    root.adoptedStyleSheets = [shadowSafeSheet(page)];
+    const a = document.createElement("a");
+    a.href = "#x";
+    root.appendChild(a);
+    expect(getComputedStyle(a).color).to.equal("rgb(1, 2, 3)");
+    host.setAttribute("data-page-classes", "night");
+    expect(getComputedStyle(a).color).to.equal("rgb(4, 5, 6)");
     host.remove();
   });
 });

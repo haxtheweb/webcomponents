@@ -22,6 +22,7 @@
  *   node scripts/edit-mode-parity-check.mjs                       every theme, default page
  *   node scripts/edit-mode-parity-check.mjs --themes clean-one,polaris-flex-theme
  *   node scripts/edit-mode-parity-check.mjs --page welcome --width 600
+ *   node scripts/edit-mode-parity-check.mjs --dark                site in dark mode
  *   node scripts/edit-mode-parity-check.mjs --chrome /usr/bin/google-chrome
  *
  * Exit 1 when any theme drifts, 0 otherwise. Not part of CI yet: it takes a
@@ -43,9 +44,8 @@ function arg(name, fallback) {
   return i > -1 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
 }
 
-// themes that render site data rather than a page of content, and
-// link-card-theme, whose view mode shows the site's links instead of the page
-const SKIP = ["haxcms-json-theme", "haxcms-print-theme", "link-card-theme"];
+// themes that render site data rather than a page of content
+const SKIP = ["haxcms-json-theme", "haxcms-print-theme"];
 const themesFile = path.join(
   root,
   "elements",
@@ -64,6 +64,8 @@ const themes = arg(
 const page = arg("page", "welcome/what-is-hax/meme-maker");
 const width = Number(arg("width", "1400"));
 const executablePath = arg("chrome", undefined);
+// --dark: run with the site in dark mode (body.dark-mode)
+const dark = process.argv.includes("--dark");
 
 const PROPS = [
   "font-size",
@@ -101,6 +103,12 @@ function measure(props) {
     props.forEach((p) => {
       out[p] = cs.getPropertyValue(p);
     });
+    const link = k.querySelector("a[href]");
+    if (link) {
+      const a = globalThis.getComputedStyle(link);
+      out["link color"] = a.color;
+      out["link decoration"] = a.textDecorationLine;
+    }
     const li = k.querySelector("li");
     if (li) {
       const l = globalThis.getComputedStyle(li);
@@ -110,6 +118,24 @@ function measure(props) {
     }
     return out;
   });
+}
+
+// runs in the page: bring every block into view once, top to bottom, so
+// blocks that start when seen (type-writer) or load when seen (replace-tag)
+// get the same chance in both modes
+async function scrollThrough(edit) {
+  const store = globalThis.HAXCMS.instance.store;
+  const root = edit
+    ? globalThis.HaxStore.requestAvailability().activeHaxBody
+    : store.themeElement;
+  const blocks = Array.from(root.children);
+  for (let i = 0; i < blocks.length; i += 6) {
+    blocks[i].scrollIntoView();
+    await new Promise((resolve) => globalThis.setTimeout(resolve, 120));
+  }
+  if (blocks.length) {
+    blocks[blocks.length - 1].scrollIntoView();
+  }
 }
 
 function compare(view, edit) {
@@ -146,6 +172,11 @@ async function checkTheme(browser, base, theme) {
   const context = await browser.newContext({
     viewport: { width, height: 1000 },
   });
+  if (dark) {
+    await context.addInitScript(() => {
+      globalThis.localStorage.setItem("app-hax-darkMode", "true");
+    });
+  }
   const tab = await context.newPage();
   try {
     await tab.goto(`${base}${demo}index.html?theme=${theme}`);
@@ -194,6 +225,8 @@ async function checkTheme(browser, base, theme) {
       }
       await tab.waitForTimeout(2500);
     }
+    await tab.evaluate(scrollThrough, false);
+    await tab.waitForTimeout(3000);
     await tab.evaluate(() => {
       const first =
         globalThis.HAXCMS.instance.store.themeElement.firstElementChild;
@@ -234,6 +267,14 @@ async function checkTheme(browser, base, theme) {
       view.length,
       { timeout: 30000 },
     );
+    await tab.evaluate(scrollThrough, true);
+    await tab.waitForTimeout(3000);
+    await tab.evaluate(() => {
+      const body = globalThis.HaxStore.requestAvailability().activeHaxBody;
+      if (body.firstElementChild) {
+        body.firstElementChild.scrollIntoView();
+      }
+    });
     await tab.waitForTimeout(500);
     const edit = await tab.evaluate(measure, PROPS);
     return compare(view, edit);
@@ -285,6 +326,6 @@ try {
   await server.stop();
 }
 console.log(
-  `\n${themes.length - drifting} of ${themes.length} themes keep content the same in edit mode (${page}, ${width}px).`,
+  `\n${themes.length - drifting} of ${themes.length} themes keep content the same in edit mode (${page}, ${width}px${dark ? ", dark" : ""}).`,
 );
 process.exit(drifting ? 1 : 0);

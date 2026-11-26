@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../wc-autoload.js";
 
@@ -494,3 +494,31 @@ describe('Test Desktop Responsiveness', () => {
       expect(hidden).to.equal(true);
     })
 }) */
+
+describe("wc-autoload observeRoot", () => {
+  it("asks for definitions of tags added inside a registered shadow root", async () => {
+    const loader = new (customElements.get("wc-autoload"))();
+    const asked = [];
+    loader.registry = { loadDefinition: (tag) => asked.push(tag) };
+    const host = document.createElement("div");
+    document.body.appendChild(host);
+    const root = host.attachShadow({ mode: "open" });
+    root.innerHTML = "<x-already-here></x-already-here>";
+    loader.observeRoot(root);
+    expect(asked).to.include("X-ALREADY-HERE");
+    // content set in one go: the nested tag is found too
+    const wrap = document.createElement("div");
+    wrap.innerHTML = "<x-outer><x-inner></x-inner></x-outer>";
+    root.appendChild(wrap);
+    await waitUntil(() => asked.includes("X-INNER"));
+    expect(asked).to.include("X-OUTER");
+    // registering again does not double observe
+    loader.observeRoot(root);
+    const count = asked.length;
+    root.appendChild(document.createElement("x-later"));
+    await waitUntil(() => asked.includes("X-LATER"));
+    // once: a second observer would ask twice
+    expect(asked.length).to.equal(count + 1);
+    host.remove();
+  });
+});
