@@ -70,6 +70,12 @@
  *     link-rewrites: no http link rewrite or upgrade-insecure-requests
  *       (RULES.md f54de8cb)
  *
+ *   node scripts/rule-checks.mjs model-calls
+ *     the AI Content rules (praw RULES.md): no element calls a model (a
+ *     hosted provider's API or SDK, or a browser built-in model) unless
+ *     scripts/ai-call-sites.json lists the call site with the test that
+ *     covers each rule, and no test reaches a real model
+ *
  *   Browser Support (non-Baseline APIs) is compared per changed file by
  *   scripts/baseline-apis-check.mjs, which needs ESLint, in the build workflow.
  *
@@ -385,6 +391,35 @@ export function secretFindings(file, text, allowed = []) {
   return out;
 }
 
+/* ---------- AI Content ---------- */
+// A model call: a hosted provider's API or SDK, or the browser's built-in
+// models. Today no element calls a model, so the AI Content rules in praw
+// RULES.md (output validated, facts from the data, no self-approval,
+// personal information stripped, nothing truncated silently, cost shown,
+// tests make no paid calls) have no code to hold yet. This keeps it that
+// way until a call site is reviewed against them: a new call site fails
+// unless scripts/ai-call-sites.json lists it with the test that covers each
+// rule, and a test file may never reach a real provider.
+const MODEL_CALL =
+  /api\.openai\.com|api\.anthropic\.com|generativelanguage\.googleapis\.com|api\.mistral\.ai|api\.groq\.com|openrouter\.ai\/api|\/v1\/chat\/completions|["'`]@anthropic-ai\/sdk["'`]|\bfrom\s+["'`]openai["'`]|["'`]@google\/generative-ai["'`]|\bLanguageModel\.create\s*\(|\bai\.languageModel\b|\b(?:Summarizer|Writer|Rewriter|Translator)\.create\s*\(/;
+export function modelCallFindings(file, text, sites = []) {
+  const out = [];
+  const isTest = /\/test\//.test(file);
+  text.split("\n").forEach((line, i) => {
+    if (!MODEL_CALL.test(line)) return;
+    if (isTest) {
+      out.push(
+        `${file}:${i + 1}: a test reaches a real model; tests run against a scripted fake provider (praw RULES.md AI Content: Tests Make No Paid or Networked Model Calls)`,
+      );
+    } else if (!sites.some((site) => site.file === file)) {
+      out.push(
+        `${file}:${i + 1}: a model call site that scripts/ai-call-sites.json does not list; list it with the test that covers each AI Content rule (praw RULES.md, AI Content)`,
+      );
+    }
+  });
+  return out;
+}
+
 /* ---------- counted checks: per-file counts against a baseline that only shrinks ---------- */
 const COUNTED = {
   "test-sleeps": {
@@ -582,6 +617,29 @@ function run(check, args, root = ROOT) {
     }
     return themeFindings(themes, sources);
   }
+  if (check === "model-calls") {
+    const sitesFile = path.join(root, "scripts/ai-call-sites.json");
+    const sites = fs.existsSync(sitesFile)
+      ? JSON.parse(fs.readFileSync(sitesFile, "utf8")).sites
+      : [];
+    const out = [];
+    for (const f of tracked(root, [
+      "elements/*/*.js",
+      "elements/*/lib/**/*.js",
+      "elements/*/src/**/*.js",
+      "elements/*/test/**/*.js",
+    ])) {
+      if (/\.min\.js$|pptx-rendered\.js$/.test(f)) continue;
+      out.push(
+        ...modelCallFindings(
+          f,
+          fs.readFileSync(path.join(root, f), "utf8"),
+          sites,
+        ),
+      );
+    }
+    return out;
+  }
   if (check === "secrets") {
     const out = [];
     const allowFile = path.join(root, "scripts/secrets-allow.json");
@@ -624,12 +682,13 @@ if (isMain) {
           "package-names",
           "themes",
           "secrets",
+          "model-calls",
           ...Object.keys(COUNTED),
         ]
       : [check];
   if (!check) {
     console.error(
-      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|secrets|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
+      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|secrets|model-calls|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
     );
     process.exit(2);
   }

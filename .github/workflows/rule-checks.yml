@@ -41,6 +41,9 @@ name: rule-checks
 #   (RULES.md ea643795).
 # - Authored links kept: no http link rewrite or upgrade-insecure-requests
 #   (RULES.md f54de8cb).
+# - Model calls: no element calls a model unless scripts/ai-call-sites.json
+#   lists it with the test covering each AI Content rule, and no test reaches
+#   a real model (praw RULES.md, AI Content). None today.
 # The ARIA, a11y-collapse, docs, ES module, MFR, incorrect, tracking and
 # link checks are counted per file
 # against scripts/<check>.baseline.json, which
@@ -175,3 +178,6 @@ jobs:
           else
             node scripts/rule-checks.mjs link-rewrites
           fi
+      - name: Model calls
+        if: always()
+        run: node scripts/rule-checks.mjs model-calls

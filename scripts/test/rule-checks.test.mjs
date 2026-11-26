@@ -19,6 +19,7 @@ import {
   countUndeclaredTracking,
   countLinkRewrites,
   secretFindings,
+  modelCallFindings,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -344,5 +345,34 @@ test("secrets: high-confidence shapes, allow-listed by hash only", () => {
       { file: "a.json", sha256: hash },
     ]).length,
     1,
+  );
+});
+
+test("model-calls: a call site must be listed, and a test never reaches a model", () => {
+  const call =
+    'await fetch("https://api.openai.com/v1/chat/completions", opts);';
+  assert.equal(modelCallFindings("elements/x/x.js", call).length, 1);
+  assert.equal(
+    modelCallFindings("elements/x/x.js", call, [{ file: "elements/x/x.js" }])
+      .length,
+    0,
+  );
+  assert.equal(
+    modelCallFindings("elements/x/test/x.test.js", call, [
+      { file: "elements/x/test/x.test.js" },
+    ]).length,
+    1,
+  );
+  assert.equal(
+    modelCallFindings("elements/x/x.js", "const s = await Summarizer.create();")
+      .length,
+    1,
+  );
+  assert.equal(
+    modelCallFindings(
+      "elements/x/x.js",
+      'import x from "./llms.js"; fetch("/x/api/v1/site");',
+    ).length,
+    0,
   );
 });
