@@ -67,7 +67,12 @@ jobs:
           fonts: "true"
       - name: Color contrast of changed elements
         run: node scripts/contrast-check.mjs --base HEAD^1
+      # the switch check must be able to fail: a planted palette that
+      # repeats another has to be caught before the real run counts
+      - name: Palette roles self-test
+        run: node scripts/palette-roles-check.mjs --self-test
       # the palette's own pairings (link role on the page surface, text
-      # on each palette color) in every palette, scheme and design system
+      # on each palette color) and that data-palette really switches the
+      # colors, in every palette, scheme and design system
       - name: Palette roles
         run: node scripts/palette-roles-check.mjs
