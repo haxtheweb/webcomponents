@@ -8,7 +8,7 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { SimpleColorsSuper } from "@haxtheweb/simple-colors/simple-colors.js";
-import "@haxtheweb/simple-blog/lib/simple-blog-post.js";
+import { SimpleBlogPost } from "@haxtheweb/simple-blog/lib/simple-blog-post.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -27,6 +27,13 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 class SimpleBlog extends I18NMixin(
   SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)),
 ) {
+  // page content is slotted through simple-blog-post in view mode
+  HAXCMSContentShadowStyles() {
+    return [
+      ...super.HAXCMSContentShadowStyles(),
+      ...SimpleBlogPost.elementStyles,
+    ];
+  }
   HAXCMSGlobalStyleSheetContent() {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),

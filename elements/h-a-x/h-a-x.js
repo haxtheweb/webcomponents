@@ -6,6 +6,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import "./lib/h-a-x-dependencies.js";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
+import { shadowSafeSheet } from "@haxtheweb/utils/lib/shadow-sheets.js";
 
 /**
  * `h-a-x`
@@ -25,7 +26,12 @@ class HAX extends HTMLElement {
     return `
     <style>
     ${editableTableDisplayStyles
-      .map((s) => s.cssText.replace(/:host/g, "hax-body table"))
+      .map((s) =>
+        s.cssText.replace(
+          /:host(?!\()/g,
+          ":host(:not([in-place])) hax-body table",
+        ),
+      )
       .join(" ")}
 
     :host,h-a-x {
@@ -41,6 +47,21 @@ class HAX extends HTMLElement {
       max-width: -moz-available;
       max-width: -webkit-fill-available;
       max-width: fill-available;
+    }
+
+    /* in-place: this editor stands in for content the page renders itself
+       (a HAXcms theme's content column), so the editable copy looks the way
+       that content does. It inherits its type from the page instead of
+       taking DDD's base type for hax-body, and tables in it do not get the
+       editable-table display box above, which the published page does not
+       have. Otherwise text and tables change size on entering edit mode and
+       the content reflows. */
+    :host([in-place]) hax-body {
+      font-size: inherit;
+      line-height: inherit;
+      font-family: inherit;
+      letter-spacing: inherit;
+      text-align: inherit;
     }
 
     hax-body[edit-mode] page-break[data-hax-active],
@@ -112,9 +133,13 @@ class HAX extends HTMLElement {
     ) {
       return [];
     }
-    return Array.from(globalThis.document.adoptedStyleSheets).filter(
-      (sheet) => sheet && sheet.hax,
-    );
+    // these sheets were written for the document, where :host matches
+    // nothing; adopt copies without it so (for one) DDD's ":root, :host"
+    // token block does not set every token again on h-a-x and undo what the
+    // page around the editor changed
+    return Array.from(globalThis.document.adoptedStyleSheets)
+      .filter((sheet) => sheet && sheet.hax)
+      .map((sheet) => shadowSafeSheet(sheet));
   }
   __supportsShadowSheetAdoption() {
     if (typeof this.__canAdoptConstructedStylesheets === "boolean") {
@@ -188,18 +213,28 @@ class HAX extends HTMLElement {
     let adopted = false;
     if (this.__supportsShadowSheetAdoption()) {
       try {
+        // drop .hax sheets this root adopted earlier that the document no
+        // longer has (a design system switched off), so the editor does not
+        // keep styling content with a system the page dropped
+        const previous = this.__haxAdoptedSheets || [];
         const existingSheets = Array.from(
           this.shadowRoot.adoptedStyleSheets || [],
+        ).filter(
+          (sheet) => !previous.includes(sheet) || haxSheets.includes(sheet),
         );
         const newSheets = haxSheets.filter(
           (sheet) => !existingSheets.includes(sheet),
         );
-        if (newSheets.length > 0) {
+        if (
+          newSheets.length > 0 ||
+          existingSheets.length !== this.shadowRoot.adoptedStyleSheets.length
+        ) {
           this.shadowRoot.adoptedStyleSheets = [
             ...existingSheets,
             ...newSheets,
           ];
         }
+        this.__haxAdoptedSheets = haxSheets;
         adopted = haxSheets.every((sheet) =>
           this.shadowRoot.adoptedStyleSheets.includes(sheet),
         );
@@ -229,6 +264,14 @@ class HAX extends HTMLElement {
     }
     fallbackStyle.textContent = fallbackCSSText;
     this.shadowRoot.appendChild(fallbackStyle);
+  }
+  /**
+   * Adopt the document's .hax stylesheets (the design system and, in HAXcms,
+   * the theme's edit mode content sheet) into this shadow root. Safe to call
+   * again; sheets already adopted are kept once.
+   */
+  applyHAXStyles() {
+    this.__applyHAXAdoptedStylesToShadowRoot();
   }
   cancelEvent(_e) {
     this.importSlotToHaxBody();

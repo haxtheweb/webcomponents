@@ -469,6 +469,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
       </style>
       <h-a-x
         id="hax"
+        in-place
         element-align="left"
         offset-margin="calc(64px + var(--haxcms-top-offset, 0px)) 0 0 0"
         hide-panel-ops="hide-panel-ops"
