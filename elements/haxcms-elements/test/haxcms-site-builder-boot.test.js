@@ -207,6 +207,38 @@ describe("haxcms-site-builder boot", () => {
     expect(ran).to.equal(true);
   });
 
+  // haxtheweb/issues#3431: fetching the page body is not having it on
+  // screen; the insert waits for the theme, and idle work started at fetch
+  // time (site.json revalidation) competed with the theme's download
+  it("fetching the page body does not start the idle work", () => {
+    const proto = Builder().prototype;
+    let flushed = 0;
+    const stub = {
+      nodeNormalizeIDs: proto.nodeNormalizeIDs,
+      hashCode: proto.hashCode,
+      _activeItemContentChanged() {},
+      _flushAfterFirstContent() {
+        flushed++;
+      },
+    };
+    proto._updateActiveItemContent.call(stub, "<p>Body</p>", { id: "p1" });
+    expect(flushed).to.equal(0);
+  });
+
+  it("the idle work starts once the theme is no longer busy", () => {
+    const proto = Builder().prototype;
+    let flushed = 0;
+    const stub = {
+      _flushAfterFirstContent() {
+        flushed++;
+      },
+    };
+    proto._setThemeBusyState.call(stub, true);
+    expect(flushed).to.equal(0);
+    proto._setThemeBusyState.call(stub, false);
+    expect(flushed).to.equal(1);
+  });
+
   it("a toast hide with nothing showing does not load the toast", async () => {
     if (globalThis.HAXCMSToast && globalThis.HAXCMSToast.instance) {
       return;

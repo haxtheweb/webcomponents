@@ -255,8 +255,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (resolvedActiveItem && resolvedActiveItem.id) {
         this.__pageContentOwner = resolvedActiveItem.id;
       }
+      // the after-first-content queue runs when this content is on screen
+      // (_setThemeBusyState), not here: the insert waits for the theme, so
+      // flushing at fetch time started idle work (site.json revalidation,
+      // the toast) while the theme was still downloading;
+      // haxtheweb/issues#3431
       this._activeItemContentChanged(this.__pageContent, resolvedActiveItem);
-      this._flushAfterFirstContent();
     }
     // punt, we didn't find anything
     else if (
@@ -966,6 +970,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       } else {
         store.themeElement.removeAttribute("aria-busy");
       }
+    }
+    // every path that puts something in the theme (page content, a 404, an
+    // internal route, a failed load) ends here, so this is when the first
+    // content is on screen and deferred work may start
+    if (!isBusy) {
+      this._flushAfterFirstContent();
     }
   }
 

@@ -8,6 +8,7 @@ import { LitElement } from "lit";
 import {
   HAXCMSTheme,
   HAXCMSThemeWiring,
+  startLearnerProgress,
 } from "../lib/core/HAXCMSThemeWiring.js";
 import { store } from "../lib/core/haxcms-site-store.js";
 
@@ -90,6 +91,27 @@ function makeManifest() {
     ],
   };
 }
+
+// haxtheweb/issues#3431: themes no longer wait for learner progress (and
+// the xAPI vocabulary) to download before they can be defined; it still
+// starts for every theme
+describe("HAXCMSThemeWiring learner progress", () => {
+  it("is not a static import of the theme wiring", async () => {
+    const src = await (
+      await fetch(new URL("../lib/core/HAXCMSThemeWiring.js", import.meta.url))
+    ).text();
+    expect(src).to.not.match(/^import[^;]*haxcms-learner-progress\.js/m);
+    expect(src).to.contain('import("./haxcms-learner-progress.js")');
+  });
+
+  it("starts once a theme connects", async () => {
+    const el = await fixture(html`<test-theme-wiring></test-theme-wiring>`);
+    const progress = await startLearnerProgress();
+    expect(el.isConnected).to.equal(true);
+    expect(progress).to.exist;
+    expect(progress.started).to.equal(true);
+  });
+});
 
 describe("HAXCMSTheme mixin helper methods", () => {
   let element;

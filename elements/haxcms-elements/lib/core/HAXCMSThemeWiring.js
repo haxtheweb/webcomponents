@@ -5,7 +5,6 @@
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { gateIframes } from "@haxtheweb/hax-consent-gate/lib/hax-consent-embeds.js";
-import { LearnerProgress } from "./haxcms-learner-progress.js";
 import { varExists, varGet } from "@haxtheweb/utils/lib/object-path.js";
 import {
   localStorageGet,
@@ -17,6 +16,28 @@ import {
 } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+// haxtheweb/issues#3431: learner progress (and the xAPI vocabulary it
+// brings, ~28 KB gzipped) is not needed to define or render a theme, but a
+// static import made every theme wait for it before a visitor saw the page.
+// The download starts as soon as this module runs and the theme starts it
+// once both are ready. Nothing is missed by starting a moment later: start()
+// records the visit, scans the page and writes preferences from autoruns
+// that run immediately, and content elements ask again on
+// learner-progress-ready. Progress UI (site-menu, site-page-progress,
+// my-learning-button) still imports it statically, so its first frame is
+// unchanged.
+const learnerProgress = import("./haxcms-learner-progress.js");
+export function startLearnerProgress() {
+  return learnerProgress
+    .then((m) => {
+      m.LearnerProgress.start();
+      return m.LearnerProgress;
+    })
+    .catch((e) => {
+      console.warn(e);
+      return null;
+    });
+}
 
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state
@@ -244,7 +265,7 @@ const HAXCMSTheme = function (SuperClass) {
     connectedCallback() {
       super.connectedCallback();
       // learner progress (statements into the learner profile on this device)
-      LearnerProgress.start();
+      startLearnerProgress();
       // re-establish the wiring instance's watchdog autorun in case this
       // is a reconnect after a disconnect disposed it; fresh themes already
       // established it from the wiring constructor and the guard prevents
