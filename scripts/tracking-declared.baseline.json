@@ -1,0 +1,8 @@
+{
+  "elements/ecosystem-web/ecosystem-web.js": 1,
+  "elements/h5p-element/lib/h5p-xapi-bridge.js": 1,
+  "elements/haxcms-elements/lib/core/haxcms-learner-progress.js": 1,
+  "elements/micro-game-base/micro-game-base.js": 1,
+  "elements/user-action/lib/UserActionBroker.js": 1,
+  "elements/user-action/lib/xapi.js": 1
+}

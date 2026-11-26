@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   typescriptFindings,
   namesLts,
@@ -13,6 +14,11 @@ import {
   docsMissing,
   packageNameFindings,
   themeFindings,
+  countHaxcmsNamespace,
+  countRedIncorrect,
+  countUndeclaredTracking,
+  countLinkRewrites,
+  secretFindings,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -244,4 +250,99 @@ test("themes: each theme reaches HAXCMSLitElementTheme through its extends chain
   assert.equal(bad.length, 2);
   assert.match(bad[0], /does not extend HAXCMSLitElementTheme/);
   assert.match(bad[1], /file is missing/);
+});
+
+test("mfr-haxcms: counts the retired @haxcms/ namespace only", () => {
+  assert.equal(
+    countHaxcmsNamespace(
+      'MicroFrontendRegistry.call("@haxcms/pageCache", {});',
+    ),
+    1,
+  );
+  assert.equal(
+    countHaxcmsNamespace(
+      'MicroFrontendRegistry.call("@system/importSite"); call("@site/x")',
+    ),
+    0,
+  );
+});
+
+test("incorrect-colors: a wrong-answer rule painted red counts, purple does not", () => {
+  assert.equal(
+    countRedIncorrect(
+      ".answer.incorrect { color: var(--ddd-theme-default-error); }",
+    ),
+    1,
+  );
+  assert.equal(
+    countRedIncorrect(":host([wrong]) .mark { background-color: red; }"),
+    1,
+  );
+  assert.equal(
+    countRedIncorrect(".incorrect { color: var(--ddd-status-incorrect-ink); }"),
+    0,
+  );
+  assert.equal(
+    countRedIncorrect(
+      ".error-message { color: var(--ddd-theme-default-error); }",
+    ),
+    0,
+  );
+  assert.equal(countRedIncorrect(".correct { color: green; }"), 0);
+});
+
+test("tracking-declared: a file that sends xAPI declares its vocabulary", () => {
+  const sends =
+    'this.dispatchEvent(new CustomEvent("user-engagement", { detail }));';
+  assert.equal(countUndeclaredTracking(sends), 1);
+  assert.equal(
+    countUndeclaredTracking(
+      sends + " static get xapiVocabulary() { return {}; }",
+    ),
+    0,
+  );
+  assert.equal(
+    countUndeclaredTracking("const s = buildStatement(verb, object);"),
+    1,
+  );
+  assert.equal(
+    countUndeclaredTracking('this.addEventListener("click", go);'),
+    0,
+  );
+});
+
+test("link-rewrites: rewriting http links or upgrading requests counts", () => {
+  assert.equal(
+    countLinkRewrites('href = href.replace("http://", "https://");'),
+    1,
+  );
+  assert.equal(countLinkRewrites("url.replace(/^http:/, 'https:')"), 1);
+  assert.equal(
+    countLinkRewrites('meta.content = "upgrade-insecure-requests";'),
+    1,
+  );
+  assert.equal(countLinkRewrites("const u = new URL(href, base);"), 0);
+});
+
+test("secrets: high-confidence shapes, allow-listed by hash only", () => {
+  const key = "AIza" + "B".repeat(35);
+  assert.equal(secretFindings("a.json", `{"key":"${key}"}`).length, 1);
+  assert.equal(
+    secretFindings("a.txt", "-----BEGIN " + "PRIVATE KEY-----").length,
+    1,
+  );
+  assert.equal(secretFindings("a.txt", "token: ghp_short").length, 0);
+  const hash = createHash("sha256").update(key).digest("hex");
+  assert.equal(
+    secretFindings("a.json", `{"key":"${key}"}`, [
+      { file: "a.json", sha256: hash },
+    ]).length,
+    0,
+  );
+  assert.equal(
+    secretFindings("b.json", `{"key":"${key}"}`, [
+      { file: "a.json", sha256: hash },
+    ]).length,
+    1,
+  );
 });

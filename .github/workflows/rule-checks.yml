@@ -30,7 +30,19 @@ name: rule-checks
 #   regenerates it (praw RULES.md f3c77167).
 # - ES modules: no shipped element code gains CommonJS (module.exports,
 #   exports.x, require); the vendored bundles that predate it are baselined.
-# The ARIA, a11y-collapse, docs and ES module checks are counted per file
+# - Secrets: no tracked file holds a high-confidence secret shape (cloud
+#   keys, tokens, private keys); a value that has to ship is listed in
+#   scripts/secrets-allow.json by hash, with why (AGENTS.md Sensitive Data).
+# - MFR namespacing: no new calls in the retired @haxcms/ micro-frontend
+#   namespace; new work uses @system/ or @site/ (praw RULES.md 82dc87fd).
+# - Incorrect is purple: no wrong-answer style painted red (RULES.md 8d0c033b).
+# - Tracking is declared: a file that sends xAPI declares static get
+#   xapiVocabulary(), which the What's tracked view and My learning read
+#   (RULES.md ea643795).
+# - Authored links kept: no http link rewrite or upgrade-insecure-requests
+#   (RULES.md f54de8cb).
+# The ARIA, a11y-collapse, docs, ES module, MFR, incorrect, tracking and
+# link checks are counted per file
 # against scripts/<check>.baseline.json, which
 # only shrinks, like the test sleeps.
 # All of it runs in yarn precheck too (yarn lint:rules, yarn lint:vision).
@@ -119,4 +131,47 @@ jobs:
             node scripts/rule-checks.mjs es-modules --base "$BASE_REF"
           else
             node scripts/rule-checks.mjs es-modules
+          fi
+      - name: Secrets
+        if: always()
+        run: node scripts/rule-checks.mjs secrets
+      - name: MFR namespacing
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs mfr-haxcms --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs mfr-haxcms
+          fi
+      - name: Incorrect is purple, never red
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs incorrect-colors --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs incorrect-colors
+          fi
+      - name: Tracking is declared
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs tracking-declared --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs tracking-declared
+          fi
+      - name: Authored links kept
+        if: always()
+        env:
+          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || '' }}
+        run: |
+          if [ -n "$BASE_REF" ]; then
+            node scripts/rule-checks.mjs link-rewrites --base "$BASE_REF"
+          else
+            node scripts/rule-checks.mjs link-rewrites
           fi

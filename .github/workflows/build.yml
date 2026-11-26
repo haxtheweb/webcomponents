@@ -22,6 +22,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # the base branch too, for the non-Baseline API comparison below
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
@@ -40,6 +43,17 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: ESLint
         run: yarn lint
+      # Browser Support (AGENTS.md): yarn lint only warns on JS built-ins and
+      # Web APIs that are not Baseline widely available. This fails a pull
+      # request whose changed element files have more of those warnings than
+      # on the base branch (scripts/baseline-apis-check.mjs); a deliberate
+      # exception gets the eslint-disable-next-line note BROWSER-SUPPORT-MATRIX.md
+      # describes.
+      - name: No new non-Baseline APIs
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: origin/${{ github.base_ref }}
+        run: node scripts/baseline-apis-check.mjs --base "$BASE_REF"
   build-and-test:
     name: "${{ matrix.platform }}: node.js ${{ matrix.node-version }}"
     strategy:

@@ -55,6 +55,24 @@
  *     no CommonJS (module.exports, exports.x, require) in shipped element code
  *     (AGENTS.md ES Modules); vendored bundles that predate it are baselined
  *
+ *   node scripts/rule-checks.mjs secrets
+ *     no tracked file holds a high-confidence secret shape (AGENTS.md
+ *     Sensitive Data); a value that has to ship is listed in
+ *     scripts/secrets-allow.json by sha256, never by value, with why
+ *
+ *   node scripts/rule-checks.mjs mfr-haxcms|incorrect-colors|tracking-declared|link-rewrites [--base <ref>] [--update-baseline]
+ *     mfr-haxcms: no new calls in the retired @haxcms/ micro-frontend
+ *       namespace (praw RULES.md 82dc87fd)
+ *     incorrect-colors: no wrong-answer style painted red; incorrect is
+ *       purple (--ddd-status-incorrect-*) (RULES.md 8d0c033b)
+ *     tracking-declared: a file that sends xAPI declares static get
+ *       xapiVocabulary() so the person tracked can see it (RULES.md ea643795)
+ *     link-rewrites: no http link rewrite or upgrade-insecure-requests
+ *       (RULES.md f54de8cb)
+ *
+ *   Browser Support (non-Baseline APIs) is compared per changed file by
+ *   scripts/baseline-apis-check.mjs, which needs ESLint, in the build workflow.
+ *
  *   Every baseline only shrinks: with --base, a new file or a higher count
  *   in it fails.
  *
@@ -67,6 +85,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -285,6 +304,87 @@ export function themeFindings(themes, sources) {
   return out;
 }
 
+/* ---------- MFR Call Namespacing ---------- */
+// "@haxcms/..." micro-frontend names: the retired namespace (praw RULES.md 82dc87fd);
+// new calls use @system/ or @site/
+export function countHaxcmsNamespace(text) {
+  return (text.match(/["'`]@haxcms\/[\w-]+/g) || []).length;
+}
+
+/* ---------- Green for correct, purple for incorrect ---------- */
+// a CSS rule whose selector names a wrong / incorrect state and paints it
+// with a red-family color (praw RULES.md 8d0c033b, Meaning Channels).
+// Use --ddd-status-incorrect-* (purple) instead.
+const RED =
+  /--ddd-theme-default-(?:error|original87Pink)\b|(?:^|[\s:,(])(?:red|crimson|#f00\b|#ff0000\b|#d32f2f\b|#e53935\b)/im;
+export function countRedIncorrect(text) {
+  let n = 0;
+  for (const m of text.matchAll(/([^{}]*)\{([^{}]*)\}/g)) {
+    if (
+      /incorrect|wrong|is-error-answer/i.test(m[1]) &&
+      /[.#\[:]/.test(m[1]) &&
+      RED.test(m[2])
+    )
+      n++;
+  }
+  return n;
+}
+
+/* ---------- Tracking Is Visible to the Person Tracked ---------- */
+// an element file that sends xAPI (dispatches user-engagement or builds a
+// statement) declares static get xapiVocabulary(), which is what the
+// "what's tracked" view and My learning read (praw RULES.md ea643795)
+export function countUndeclaredTracking(text) {
+  const sends =
+    /new\s+CustomEvent\(\s*["'`]user-engagement["'`]|\bbuildStatement\s*\(/.test(
+      text,
+    );
+  return sends && !/\bxapiVocabulary\b/.test(text) ? 1 : 0;
+}
+
+/* ---------- User-authored links are always respected ---------- */
+// code that rewrites http:// links or turns on upgrade-insecure-requests
+// (praw RULES.md f54de8cb: authored http links keep working)
+export function countLinkRewrites(text) {
+  return (
+    text.match(
+      /upgrade-insecure-requests|\.replace(?:All)?\(\s*(?:\/\^?\(?http:|\/\^?\(?http\\:|["'`]http:\/\/["'`]\s*,\s*["'`]https:\/\/["'`])/g,
+    ) || []
+  ).length;
+}
+
+/* ---------- Sensitive Data ---------- */
+// high-confidence secret shapes only: cloud keys, tokens and private keys
+const SECRETS = [
+  [/AKIA[0-9A-Z]{16}/, "an AWS access key id"],
+  [/\bgh[pousr]_[0-9A-Za-z]{36,}\b/, "a GitHub token"],
+  [/\bgithub_pat_[0-9A-Za-z_]{40,}\b/, "a GitHub fine-grained token"],
+  [/\bxox[abpr]-[0-9A-Za-z-]{10,}/, "a Slack token"],
+  [/\bsk-(?:proj-|ant-)?[A-Za-z0-9_-]{32,}/, "an AI provider API key"],
+  [/\bAIza[0-9A-Za-z_-]{35}\b/, "a Google API key"],
+  [
+    /-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP )?PRIVATE KEY( BLOCK)?-----/,
+    "a private key",
+  ],
+];
+// allowed: { file, sha256 of the matched text, reason } from scripts/secrets-allow.json,
+// for a value that has to ship (a restricted browser key); the file never repeats it
+export function secretFindings(file, text, allowed = []) {
+  const out = [];
+  text.split("\n").forEach((line, i) => {
+    for (const [re, what] of SECRETS) {
+      const m = line.match(re);
+      if (!m) continue;
+      const hash = createHash("sha256").update(m[0]).digest("hex");
+      if (allowed.some((a) => a.file === file && a.sha256 === hash)) continue;
+      out.push(
+        `${file}:${i + 1}: looks like ${what} (sha256 ${hash.slice(0, 12)}); never commit secrets (AGENTS.md Sensitive Data)`,
+      );
+    }
+  });
+  return out;
+}
+
 /* ---------- counted checks: per-file counts against a baseline that only shrinks ---------- */
 const COUNTED = {
   "test-sleeps": {
@@ -347,6 +447,34 @@ const COUNTED = {
     },
     noun: "element without its docs data",
     fix: "generate lib/<tag>.docs.json and end the build script with node ../../scripts/extract-element-docs.mjs --write . (praw RULES.md f3c77167)",
+  },
+  "mfr-haxcms": {
+    globs: ["elements/*/*.js", "elements/*/lib/**/*.js"],
+    count: countHaxcmsNamespace,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\/|\/demo\//,
+    noun: "call(s) in the retired @haxcms/ micro-frontend namespace",
+    fix: "use @system/ or @site/ (praw RULES.md 82dc87fd, MFR Call Namespacing)",
+  },
+  "incorrect-colors": {
+    globs: ["elements/*/*.js", "elements/*/lib/**/*.js"],
+    count: countRedIncorrect,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\/|\/demo\//,
+    noun: "wrong-answer style(s) painted red",
+    fix: "incorrect is purple, never red: use --ddd-status-incorrect-* (praw RULES.md 8d0c033b)",
+  },
+  "tracking-declared": {
+    globs: ["elements/*/*.js", "elements/*/lib/**/*.js"],
+    count: countUndeclaredTracking,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\/|\/demo\//,
+    noun: "file that sends xAPI without declaring static get xapiVocabulary()",
+    fix: "declare what it sends so the What's tracked view and My learning can show it (praw RULES.md ea643795)",
+  },
+  "link-rewrites": {
+    globs: ["elements/*/*.js", "elements/*/lib/**/*.js"],
+    count: countLinkRewrites,
+    skip: /\.(min|umd)\.js$|\/lib\/[^/]*vendor|\/test\/|\/demo\//,
+    noun: "http link rewrite(s) or upgrade-insecure-requests",
+    fix: "keep authored links as written (praw RULES.md f54de8cb: authored http links keep working)",
   },
 };
 const baselineFile = (name) => `scripts/${name}.baseline.json`;
@@ -454,6 +582,31 @@ function run(check, args, root = ROOT) {
     }
     return themeFindings(themes, sources);
   }
+  if (check === "secrets") {
+    const out = [];
+    const allowFile = path.join(root, "scripts/secrets-allow.json");
+    const allowed = fs.existsSync(allowFile)
+      ? JSON.parse(fs.readFileSync(allowFile, "utf8")).allowed
+      : [];
+    for (const f of tracked(root, ["."])) {
+      if (
+        /(^|\/)node_modules\/|\.(png|jpe?g|gif|webp|ico|woff2?|ttf|otf|eot|mp3|mp4|webm|ogg|wav|zip|gz|pdf|wasm)$|\.min\.js$|(^|\/)yarn\.lock$|package-lock\.json$/.test(
+          f,
+        )
+      )
+        continue;
+      const full = path.join(root, f);
+      let text;
+      try {
+        if (fs.statSync(full).size > 2 * 1024 * 1024) continue;
+        text = fs.readFileSync(full, "utf8");
+      } catch (e) {
+        continue;
+      }
+      out.push(...secretFindings(f, text, allowed));
+    }
+    return out;
+  }
   if (COUNTED[check]) return counted(check, args, root);
   throw new Error(`unknown check "${check}"`);
 }
@@ -470,12 +623,13 @@ if (isMain) {
           "node-version",
           "package-names",
           "themes",
+          "secrets",
           ...Object.keys(COUNTED),
         ]
       : [check];
   if (!check) {
     console.error(
-      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
+      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|secrets|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
     );
     process.exit(2);
   }
