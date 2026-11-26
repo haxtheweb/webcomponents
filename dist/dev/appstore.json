@@ -28,7 +28,7 @@
                 "protocol": "https",
                 "url": "www.googleapis.com/youtube/v3",
                 "data": {
-                    "key": "AIzaSyDiSvloa49gHUJG0YAt3Ys_I6IEoiscPUM"
+                    "key": ""
                 },
                 "operations": {
                     "browse": {

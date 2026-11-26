@@ -20,11 +20,19 @@
  *             4.5:1: --ddd-palette-text-color-N on --ddd-palette-color-N,
  *             --ddd-palette-accent-ink on --ddd-palette-accent and
  *             --ddd-palette-chip-ink on --ddd-palette-chip.
+ *   switch    data-palette really switches the palette: every
+ *             --ddd-palette-color-1..7 resolves to a color in every palette,
+ *             and no two palettes resolve to the same seven colors, in every
+ *             scheme and design system. A theme or block that sets
+ *             data-palette instead of picking single colors relies on this
+ *             (rule "DDD Palettes vs Single Colors"); a palette that resolves
+ *             like another, or not at all, switches nothing and is never
+ *             baselined.
  *
  * Tokens are resolved where they are used (light-dark(), relative color
  * syntax and a bridge's remapped colors only settle in the browser), on a
  * probe inside an element carrying data-palette, so the result is what a
- * theme or block gets. Link failures always fail the run. Pair failures that
+ * theme or block gets. Link and switch failures always fail the run. Pair failures that
  * already exist are listed in scripts/palette-roles.baseline.json (system ->
  * mode -> pair -> ratio) and only new ones fail; the baseline only shrinks.
  *
@@ -34,6 +42,10 @@
  *   node scripts/palette-roles-check.mjs --all              list every pair measured
  *   node scripts/palette-roles-check.mjs --json out.json    write the measurements
  *   node scripts/palette-roles-check.mjs --update-baseline  drop what is fixed (only removes)
+ *   node scripts/palette-roles-check.mjs --self-test        prove the switch check fails:
+ *                                                           plant a palette that repeats
+ *                                                           another under DDD; exit 0 only
+ *                                                           when it is caught
  */
 import console from "node:console";
 import fs from "node:fs";
@@ -68,15 +80,20 @@ const option = (name) => {
     : null;
 };
 
+const SELF_TEST = flag("--self-test");
 const PALETTES = DDDPaletteRegistry.map((p) => ({
   key: p.key,
   value: p.dataPalette,
 }));
+if (SELF_TEST) {
+  // a palette that sets the same data-palette as the first one switches nothing
+  PALETTES.push({ key: "planted-repeat", value: PALETTES[0].value });
+}
 
 /** DDD (null) plus each bridge, or only the ones asked for */
 function pickSystems() {
   const all = [{ name: "ddd", title: "DDD" }].concat(listDesignSystems(root));
-  const want = option("--design-system");
+  const want = SELF_TEST ? "ddd" : option("--design-system");
   if (!want || want === "all") {
     return all;
   }
@@ -158,9 +175,11 @@ function measurePalettes({ palettes, scheme }) {
       ["--ddd-palette-accent-ink", "--ddd-palette-accent"],
       ["--ddd-palette-chip-ink", "--ddd-palette-chip"],
     ]);
+  const swatch = () =>
+    [1, 2, 3, 4, 5, 6, 7].map((n) => resolve(`--ddd-palette-color-${n}`));
   for (const palette of palettes) {
     holder.setAttribute("data-palette", palette.value);
-    const row = { link: {}, pairs: {} };
+    const row = { link: {}, pairs: {}, colors: swatch() };
     for (const [token, surfaces] of links) {
       const link = resolve(token);
       for (const surface of surfaces) {
@@ -281,12 +300,32 @@ async function main() {
   }
   const baseline = readBaseline();
   const linkFails = [];
+  const switchFails = [];
   const freshPairs = [];
   const current = {};
   let pairFailCount = 0;
   for (const [system, schemes] of Object.entries(report)) {
     current[system] = {};
     for (const [scheme, palettes] of Object.entries(schemes)) {
+      const seen = {};
+      for (const [palette, row] of Object.entries(palettes)) {
+        const unset = row.colors
+          .map((c, i) => (c[3] === 0 ? i + 1 : 0))
+          .filter(Boolean);
+        if (unset.length) {
+          switchFails.push(
+            `${system} ${scheme}@${palette}: --ddd-palette-color-${unset.join(", ")} unset`,
+          );
+        }
+        const sig = JSON.stringify(row.colors);
+        if (seen[sig]) {
+          switchFails.push(
+            `${system} ${scheme}: ${palette} resolves to the same colors as ${seen[sig]}`,
+          );
+        } else {
+          seen[sig] = palette;
+        }
+      }
       for (const [palette, row] of Object.entries(palettes)) {
         const mode = `${scheme}@${palette}`;
         for (const [surface, r] of Object.entries(row.link)) {
@@ -314,6 +353,18 @@ async function main() {
         }
       }
     }
+  }
+  if (SELF_TEST) {
+    const caught = switchFails.filter((l) => l.includes("planted-repeat"));
+    console.log(
+      caught.length === SCHEMES.length
+        ? `palette-roles self-test: planted repeat caught in ${caught.length} scheme(s)`
+        : `palette-roles self-test FAILED: planted repeat caught in ${caught.length} of ${SCHEMES.length} scheme(s)`,
+    );
+    return caught.length === SCHEMES.length &&
+      switchFails.length === caught.length
+      ? 0
+      : 1;
   }
   if (flag("--update-baseline")) {
     // shrink only: keep entries that still fail and were already listed
@@ -348,14 +399,17 @@ async function main() {
     console.log(`palette-roles: baseline written (${BASELINE})`);
   }
   console.log(
-    `palette-roles: ${systems.length} system(s) x ${SCHEMES.length} schemes x ${PALETTES.length} palettes; link failures ${linkFails.length}; pairs under ${TEXT_MIN}:1 ${pairFailCount} (${freshPairs.length} new)`,
+    `palette-roles: ${systems.length} system(s) x ${SCHEMES.length} schemes x ${PALETTES.length} palettes; link failures ${linkFails.length}; switch failures ${switchFails.length}; pairs under ${TEXT_MIN}:1 ${pairFailCount} (${freshPairs.length} new)`,
   );
   linkFails.slice(0, 40).forEach((l) => console.log(`  link  ${l}`));
+  switchFails.slice(0, 40).forEach((l) => console.log(`  switch  ${l}`));
   freshPairs.slice(0, 40).forEach((l) => console.log(`  pair  ${l}`));
   if (freshPairs.length > 40) {
     console.log(`  ...and ${freshPairs.length - 40} more new pairs`);
   }
-  return linkFails.length || (freshPairs.length && !flag("--update-baseline"))
+  return linkFails.length ||
+    switchFails.length ||
+    (freshPairs.length && !flag("--update-baseline"))
     ? 1
     : 0;
 }

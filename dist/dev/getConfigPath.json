@@ -93,7 +93,7 @@
           "googlepoly": {
             "title": "Google Poly",
             "type": "string",
-            "value": "AIzaSyDiSvloa49gHUJG0YAt3Ys_I6IEoiscPUM",
+            "value": "",
             "component": {
               "slot": "<div slot=\"suffix\"><a href=\"https:\/\/developers.google.com\/poly\/develop\/api\" target=\"_blank\">See Google Poly developer docs.<\/a><\/div>",
               "name": "paper-input",
