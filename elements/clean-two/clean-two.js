@@ -103,9 +103,15 @@ class CleanTwo extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
+          /* hover and focus outline the card and its arrow in the site
+             palette's link color (made to read on light and dark) */
           --site-menu-button-button-hover-color: var(
-            --ddd-theme-default-info,
-            var(--ddd-primary-4)
+            --ddd-palette-link,
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6))
+          );
+          --site-menu-button-focus-color: var(
+            --ddd-palette-link,
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6))
           );
           transition: all var(--ddd-duration-normal, 0.3s) ease-in-out;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -369,6 +375,10 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-primary-4),
             var(--ddd-accent-6)
           );
+          /* the open page stays the rail inverted in every palette; hovering
+             a row (and the path to it) takes the palette accent and its ink */
+          --map-menu-item-a-hover-color: var(--ddd-palette-accent-ink);
+          --map-menu-item-a-hover-background-color: var(--ddd-palette-accent);
           --site-menu-container-background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
@@ -386,6 +396,24 @@ class CleanTwo extends LTIResizingMixin(
           padding: var(--ddd-spacing-5) 0 0 0;
           overflow-x: hidden;
           -webkit-overflow-scrolling: touch;
+        }
+
+        /* Monotone, the default, keeps the look the theme always had */
+        :host([data-palette="5"]) site-menu {
+          --map-menu-item-a-hover-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
+          --map-menu-item-a-hover-background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+        }
+        :host([data-palette="5"]) site-breadcrumb {
+          --site-breadcrumb-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
         }
 
         site-menu::part(map-menu) {
@@ -699,9 +727,14 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-theme-default-black),
             var(--ddd-accent-6)
           );
-          --site-breadcrumb-color: light-dark(
-            var(--ddd-theme-default-link),
-            var(--ddd-theme-default-linkLight)
+          /* breadcrumb links take the palette's link color (made to read on
+             light and dark) */
+          --site-breadcrumb-color: var(
+            --ddd-palette-link,
+            light-dark(
+              var(--ddd-theme-default-link),
+              var(--ddd-theme-default-linkLight)
+            )
           );
           --site-breadcrumb-last-color: light-dark(
             var(--ddd-theme-default-black),
@@ -724,6 +757,15 @@ class CleanTwo extends LTIResizingMixin(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       dddReadingProse("clean-two"),
+      css`
+        /* links in the page take the site palette's link color (made to
+           read on light and dark); Monotone, the default, keeps the DDD
+           link color it always had. Class-less links only, so links styled
+           as buttons or chips keep their own colors */
+        clean-two:not([data-palette="5"]) a:any-link:not([class]) {
+          color: var(--ddd-palette-link);
+        }
+      `,
     ];
   }
   firstUpdated(changedProperties) {
@@ -742,10 +784,17 @@ class CleanTwo extends LTIResizingMixin(
       block: "start",
       inline: "nearest",
     };
+    // a new page starts at the top of the theme's own scroller (the body
+    // wrapper). scrollIntoView on the top marker also scrolled the page
+    // around the theme, which body overflow: hidden then kept the reader
+    // from scrolling back (mobile lost the top of the rail); scrollTo on
+    // the wrapper moves only the theme
     this.HAXCMSThemeSettings.scrollTarget =
       inEmbeddedContext && contentWrapper
         ? contentWrapper
-        : themeTop || contentWrapper;
+        : bodyWrapper
+          ? { scrollTo: (options) => bodyWrapper.scrollTo(options) }
+          : themeTop || contentWrapper;
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       contentWrapper || this.HAXCMSThemeSettings.siteMenuContent;
     // shadow ready which means we should be able to open this even on a slow load
@@ -790,6 +839,7 @@ class CleanTwo extends LTIResizingMixin(
               ${this.HAXCMSMobileMenuButton("right")}
               <my-learning-button
                 compact
+                tooltip-position="right"
                 class="learning-btn"
                 part="my-learning-btn"
               ></my-learning-button>
@@ -932,6 +982,12 @@ class CleanTwo extends LTIResizingMixin(
     }
     return {
       ...props,
+      /**
+       * Site palette; Monotone (5) unless the site picks another. Any
+       * palette works: it accents the menu on hover, the breadcrumb and
+       * previous / next, and the rail keeps its own colors.
+       */
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       searchTerm: {
         type: String,
       },
@@ -975,6 +1031,7 @@ class CleanTwo extends LTIResizingMixin(
     };
     this.xl = 1800;
     this.HAXCMSThemeSettings.autoScroll = true;
+    this.dataPalette = 5;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
     this.__disposer.push(

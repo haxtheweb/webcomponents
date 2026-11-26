@@ -49,13 +49,12 @@ const bpBelowXl = unsafeCSS(DDDBreakpoints.xl - 1);
  * @haxcms-theme-layout Sidebar
  * @haxcms-theme-internal false
  * @haxcms-theme-priority -2
- * @haxcms-theme-palettes 4, 5
  * @demo demo/index.html
  * @element clean-one
  *
- * Palettes supported by this theme:
- * 4 = Boring Blue Gray
- * 5 = Monotone (default)
+ * Every palette works, Monotone (5) by default: the site palette accents
+ * the menu on hover, the breadcrumb, page navigation and back to top, while
+ * the menu rail, the open page and the reading surface stay neutral.
  */
 class CleanOne extends LTIResizingMixin(
   PrintBranchMixin(
@@ -80,13 +79,15 @@ class CleanOne extends LTIResizingMixin(
           --ddd-palette-light: var(--ddd-theme-default-white);
           --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
-          --ddd-palette-1: var(--ddd-palette-color-1, default);
-          --ddd-palette-2: var(--ddd-palette-color-2, default);
-          --ddd-palette-3: var(--ddd-palette-color-3, default);
-          --ddd-palette-4: var(--ddd-palette-color-4, default);
-          --ddd-palette-5: var(--ddd-palette-color-5, default);
-          --ddd-palette-6: var(--ddd-palette-color-6, default);
-          --ddd-palette-7: var(--ddd-palette-color-7, default);
+          /* the chrome's own neutral ladder (dark to light); the site
+             palette only accents (--ddd-palette-accent / -link) */
+          --clean-one-1: var(--simple-colors-fixed-theme-grey-12);
+          --clean-one-2: var(--ddd-theme-default-coalyGray);
+          --clean-one-3: var(--simple-colors-fixed-theme-grey-9);
+          --clean-one-4: var(--simple-colors-fixed-theme-grey-7);
+          --clean-one-5: var(--simple-colors-fixed-theme-grey-5);
+          --clean-one-6: var(--simple-colors-fixed-theme-grey-3);
+          --clean-one-7: var(--ddd-theme-default-white);
 
           --ddd-lightDark-background: light-dark(
             var(--ddd-palette-light),
@@ -100,30 +101,12 @@ class CleanOne extends LTIResizingMixin(
             var(--simple-colors-default-theme-grey-9),
             var(--simple-colors-default-theme-grey-3)
           );
-          --ddd-lightDark-2: light-dark(
-            var(--ddd-palette-2),
-            var(--ddd-palette-6)
-          );
-          --ddd-lightDark-3: light-dark(
-            var(--ddd-palette-3),
-            var(--ddd-palette-7)
-          );
-          --ddd-lightDark-4: light-dark(
-            var(--ddd-palette-4),
-            var(--ddd-palette-4)
-          );
-          --ddd-lightDark-5: light-dark(
-            var(--ddd-palette-5),
-            var(--ddd-palette-1)
-          );
-          --ddd-lightDark-6: light-dark(
-            var(--ddd-palette-6),
-            var(--ddd-palette-2)
-          );
-          --ddd-lightDark-7: light-dark(
-            var(--ddd-palette-7),
-            var(--ddd-palette-3)
-          );
+          --ddd-lightDark-2: light-dark(var(--clean-one-2), var(--clean-one-6));
+          --ddd-lightDark-3: light-dark(var(--clean-one-3), var(--clean-one-7));
+          --ddd-lightDark-4: light-dark(var(--clean-one-4), var(--clean-one-4));
+          --ddd-lightDark-5: light-dark(var(--clean-one-5), var(--clean-one-1));
+          --ddd-lightDark-6: light-dark(var(--clean-one-6), var(--clean-one-2));
+          --ddd-lightDark-7: light-dark(var(--clean-one-7), var(--clean-one-3));
 
           width: 100%;
           margin: 0;
@@ -139,19 +122,24 @@ class CleanOne extends LTIResizingMixin(
           color: var(--ddd-lightDark-text);
           color-scheme: light dark;
         }
-        /* dark mode reads palette steps 6 and 2 as the light accents, and
-           palette 4 has a dark slate at step 6 (its other steps run light
-           to dark), which gave dark breadcrumb links and hover states on
-           the dark page; use the matching light blue grey so palette 4
-           follows the same ladder as palette 5 */
-        :host([data-palette="4"]) {
-          --ddd-palette-6: var(
-            --simple-colors-fixed-theme-blue-grey-3,
-            #9badb6
+        /* Monotone, the default, keeps the look the theme always had:
+           hovering a row inverts it like the open page */
+        :host([data-palette="5"]) site-menu {
+          --map-menu-item-a-hover-color: var(--ddd-lightDark-7);
+          --map-menu-item-a-hover-background-color: var(--ddd-lightDark-1);
+        }
+        :host([data-palette="5"]) site-breadcrumb {
+          --site-breadcrumb-color: var(--ddd-lightDark-2);
+        }
+        :host([data-palette="5"]) site-menu-button {
+          --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
+          --site-menu-button-button-hover-background-color: var(
+            --ddd-lightDark-2
           );
-          /* that light step takes dark text, not the palette's own pair for
-             its dark step 6 */
-          --clean-one-on-palette-6: var(--ddd-theme-default-coalyGray);
+        }
+        :host([data-palette="5"]) scroll-button {
+          --scroll-button-color: var(--ddd-lightDark-1);
+          --scroll-button-background-color: var(--ddd-lightDark-6);
         }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
@@ -189,11 +177,15 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-item-active-item-color: var(--ddd-lightDark-7);
           --map-menu-item-a-color: var(--ddd-lightDark-1);
           /* the open page is the rail inverted (its text color as the
-             background, its background as the text), so it has the same
-             contrast as every other row in each palette and color scheme;
-             palette accents gave dark on dark in some palettes */
+             background, its background as the text), the same in every
+             palette; hovering a row (and the path to it) takes the palette
+             accent and the ink DDD pairs with it */
           --map-menu-item-a-active-color: var(--ddd-lightDark-7);
           --map-menu-item-a-active-background-color: var(--ddd-lightDark-1);
+          --map-menu-item-a-hover-color: var(--ddd-palette-accent-ink);
+          --map-menu-item-a-hover-background-color: var(--ddd-palette-accent);
+          /* the expand / collapse disc on a hovered or open row is drawn in
+             the rail's own pair so it never matches the row (blank disc) */
           --map-menu-item-icon-active-color: var(--ddd-lightDark-1);
           --site-menu-container-background-color: var(--ddd-lightDark-7);
           font-family: var(--ddd-font-navigation);
@@ -203,23 +195,13 @@ class CleanOne extends LTIResizingMixin(
         :host([is-logged-in]) site-menu {
           height: var(--clean-one-site-menu-height, calc(100vh - 108px));
         }
-        /* each fill takes the text color the palette pairs with it
-           (color-6 light, color-2 dark; color-7 for the tooltip): two
-           palette slots picked by number do not read in every palette */
+        /* back to top is filled with the palette accent and its paired
+           ink; its tooltip stays on the neutral chrome */
         scroll-button {
-          --scroll-button-color: light-dark(
-            var(
-              --clean-one-on-palette-6,
-              var(--ddd-palette-text-color-6, var(--ddd-lightDark-7))
-            ),
-            var(--ddd-palette-text-color-2, var(--ddd-lightDark-7))
-          );
-          --scroll-button-background-color: var(--ddd-lightDark-6);
-          --scroll-button-tooltip-background-color: var(--ddd-palette-7);
-          --scroll-button-tooltip-color: var(
-            --ddd-palette-text-color-7,
-            var(--ddd-palette-1)
-          );
+          --scroll-button-color: var(--ddd-palette-accent-ink);
+          --scroll-button-background-color: var(--ddd-palette-accent);
+          --scroll-button-tooltip-background-color: var(--ddd-lightDark-1);
+          --scroll-button-tooltip-color: var(--ddd-lightDark-7);
           color: var(--ddd-lightDark-1);
         }
         simple-icon-button,
@@ -258,14 +240,18 @@ class CleanOne extends LTIResizingMixin(
         site-breadcrumb {
           min-height: 48px;
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
-          --site-breadcrumb-color: var(--ddd-lightDark-2);
+          --site-breadcrumb-color: var(
+            --ddd-palette-link,
+            var(--ddd-lightDark-2)
+          );
           --site-breadcrumb-last-color: var(--ddd-lightDark-1);
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--ddd-lightDark-6);
+          /* previous / next take the palette accent on hover and focus */
+          --site-menu-button-button-hover-color: var(--ddd-palette-accent-ink);
           --site-menu-button-button-hover-background-color: var(
-            --ddd-lightDark-2
+            --ddd-palette-accent
           );
         }
 
@@ -984,10 +970,6 @@ class CleanOne extends LTIResizingMixin(
     return true;
   }
 
-  static get supportedPalettes() {
-    return ["4", "5"];
-  }
-
   static get properties() {
     return {
       ...super.properties,
@@ -1063,19 +1045,30 @@ class CleanOne extends LTIResizingMixin(
       ...super.HAXCMSGlobalStyleSheetContent(),
       dddReadingProse("clean-one"),
       css`
+        /* links in the page take the site palette's link color (made to
+           read on light and dark); Monotone, the default, keeps the DDD
+           link color it always had. Class-less links only, so links styled
+           as buttons or chips keep their own colors */
+        clean-one:not([data-palette="5"]) a:any-link:not([class]) {
+          color: var(--ddd-palette-link);
+        }
+      `,
+      css`
         :host,
         html,
         body {
           --ddd-palette-light: var(--ddd-theme-default-white);
           --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
-          --ddd-palette-1: var(--ddd-palette-color-1, default);
-          --ddd-palette-2: var(--ddd-palette-color-2, default);
-          --ddd-palette-3: var(--ddd-palette-color-3, default);
-          --ddd-palette-4: var(--ddd-palette-color-4, default);
-          --ddd-palette-5: var(--ddd-palette-color-5, default);
-          --ddd-palette-6: var(--ddd-palette-color-6, default);
-          --ddd-palette-7: var(--ddd-palette-color-7, default);
+          /* the chrome's own neutral ladder (dark to light); the site
+             palette only accents (--ddd-palette-accent / -link) */
+          --clean-one-1: var(--simple-colors-fixed-theme-grey-12);
+          --clean-one-2: var(--ddd-theme-default-coalyGray);
+          --clean-one-3: var(--simple-colors-fixed-theme-grey-9);
+          --clean-one-4: var(--simple-colors-fixed-theme-grey-7);
+          --clean-one-5: var(--simple-colors-fixed-theme-grey-5);
+          --clean-one-6: var(--simple-colors-fixed-theme-grey-3);
+          --clean-one-7: var(--ddd-theme-default-white);
 
           --ddd-lightDark-background: light-dark(
             var(--ddd-palette-light),
@@ -1089,30 +1082,12 @@ class CleanOne extends LTIResizingMixin(
             var(--simple-colors-default-theme-grey-9),
             var(--simple-colors-default-theme-grey-3)
           );
-          --ddd-lightDark-2: light-dark(
-            var(--ddd-palette-2),
-            var(--ddd-palette-6)
-          );
-          --ddd-lightDark-3: light-dark(
-            var(--ddd-palette-3),
-            var(--ddd-palette-7)
-          );
-          --ddd-lightDark-4: light-dark(
-            var(--ddd-palette-4),
-            var(--ddd-palette-4)
-          );
-          --ddd-lightDark-5: light-dark(
-            var(--ddd-palette-5),
-            var(--ddd-palette-1)
-          );
-          --ddd-lightDark-6: light-dark(
-            var(--ddd-palette-6),
-            var(--ddd-palette-2)
-          );
-          --ddd-lightDark-7: light-dark(
-            var(--ddd-palette-7),
-            var(--ddd-palette-3)
-          );
+          --ddd-lightDark-2: light-dark(var(--clean-one-2), var(--clean-one-6));
+          --ddd-lightDark-3: light-dark(var(--clean-one-3), var(--clean-one-7));
+          --ddd-lightDark-4: light-dark(var(--clean-one-4), var(--clean-one-4));
+          --ddd-lightDark-5: light-dark(var(--clean-one-5), var(--clean-one-1));
+          --ddd-lightDark-6: light-dark(var(--clean-one-6), var(--clean-one-2));
+          --ddd-lightDark-7: light-dark(var(--clean-one-7), var(--clean-one-3));
         }
         body stop-note a,
         body stop-note a:any-link,

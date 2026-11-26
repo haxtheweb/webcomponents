@@ -196,7 +196,7 @@
     "hidden": false,
     "priority": -2,
     "terrible": false,
-    "supportedPalettes": ["4", "5"],
+    "supportedPalettes": null,
     "layout": "Sidebar",
     "designSystem": null,
     "inspiredBy": null,

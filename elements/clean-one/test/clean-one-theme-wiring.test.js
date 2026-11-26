@@ -26,8 +26,55 @@ async function waitFor(fn, timeout = 6000) {
 }
 
 describe("clean-one theme metadata", () => {
-  it("declares supported palettes 4 and 5", () => {
-    expect(CleanOne.supportedPalettes).to.deep.equal(["4", "5"]);
+  it("takes every palette (no supported list)", () => {
+    expect(CleanOne.supportedPalettes).to.equal(undefined);
+  });
+
+  it("keeps the rail and open page neutral; hover takes the palette accent", async () => {
+    const a = await fixture(html`<clean-one data-palette="1"></clean-one>`);
+    const b = await fixture(html`<clean-one data-palette="3"></clean-one>`);
+    const v = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+    expect(v(a, "--clean-one-7")).to.not.equal("");
+    expect(v(a, "--clean-one-7")).to.equal(v(b, "--clean-one-7"));
+    const menu = (el) => el.shadowRoot.querySelector("site-menu");
+    if (menu(a)) {
+      // the open page is the rail inverted, not the palette
+      expect(v(menu(a), "--map-menu-item-a-active-background-color")).to.equal(
+        v(menu(b), "--map-menu-item-a-active-background-color"),
+      );
+      // hovering takes the palette accent
+      expect(v(menu(a), "--map-menu-item-a-hover-background-color")).to.equal(
+        v(a, "--ddd-palette-accent"),
+      );
+      // the expand disc never matches the row it sits on
+      expect(v(menu(a), "--map-menu-item-icon-active-color")).to.not.equal(
+        v(menu(a), "--site-menu-container-background-color"),
+      );
+    }
+  });
+
+  it("Monotone (the default) hovers like the open page, as it always did", async () => {
+    const el = await fixture(html`<clean-one></clean-one>`);
+    const menu = el.shadowRoot.querySelector("site-menu");
+    if (menu) {
+      const cs = getComputedStyle(menu);
+      expect(
+        cs.getPropertyValue("--map-menu-item-a-hover-background-color").trim(),
+      ).to.equal(
+        cs.getPropertyValue("--map-menu-item-a-active-background-color").trim(),
+      );
+    }
+  });
+
+  it("colors class-less content links with the palette, Monotone excepted", () => {
+    const el = new CleanOne();
+    const text = el
+      .HAXCMSGlobalStyleSheetContent()
+      .map((s) => (s && s.cssText) || "")
+      .join("\n");
+    expect(text).to.include(
+      'clean-one:not([data-palette="5"]) a:any-link:not([class])',
+    );
   });
 
   it("defaults dataPalette to 5 (Monotone)", async () => {

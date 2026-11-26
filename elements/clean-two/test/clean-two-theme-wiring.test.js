@@ -245,3 +245,98 @@ describe("clean-two search modal wiring", () => {
     }
   });
 });
+
+describe("clean-two rail tooltip and page navigation accent", () => {
+  it("puts the My learning hover text to the right, like the rest of the rail", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    const btn = el.shadowRoot.querySelector("my-learning-button");
+    expect(btn.getAttribute("tooltip-position")).to.equal("right");
+    expect(btn.tooltipPosition).to.equal("right");
+  });
+
+  it("outlines previous / next in the palette's link color on hover and focus", async () => {
+    const el = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const link = getComputedStyle(el)
+      .getPropertyValue("--ddd-palette-link")
+      .trim();
+    const smb = el.shadowRoot.querySelector("site-menu-button");
+    if (smb && link) {
+      const cs = getComputedStyle(smb);
+      expect(
+        cs.getPropertyValue("--site-menu-button-button-hover-color").trim(),
+      ).to.equal(link);
+      expect(
+        cs.getPropertyValue("--site-menu-button-focus-color").trim(),
+      ).to.equal(link);
+    }
+  });
+});
+
+describe("clean-two palette pattern (same as clean-one)", () => {
+  it("defaults to Monotone (5)", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    expect(el.dataPalette).to.equal(5);
+    expect(el.getAttribute("data-palette")).to.equal("5");
+  });
+
+  it("keeps the open page as the rail inverted and hovers with the palette accent", async () => {
+    const a = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const b = await fixture(html`<clean-two data-palette="3"></clean-two>`);
+    const v = (el, name) => getComputedStyle(el).getPropertyValue(name).trim();
+    const menu = (el) => el.shadowRoot.querySelector("site-menu");
+    if (menu(a) && menu(b)) {
+      expect(v(menu(a), "--map-menu-item-a-active-background-color")).to.equal(
+        v(menu(b), "--map-menu-item-a-active-background-color"),
+      );
+      expect(v(menu(a), "--map-menu-item-a-hover-background-color")).to.equal(
+        v(a, "--ddd-palette-accent"),
+      );
+    }
+  });
+
+  it("gives breadcrumb links the palette's link color", async () => {
+    const el = await fixture(html`<clean-two data-palette="1"></clean-two>`);
+    const crumb = el.shadowRoot.querySelector("site-breadcrumb");
+    if (crumb) {
+      expect(
+        getComputedStyle(crumb)
+          .getPropertyValue("--site-breadcrumb-color")
+          .trim(),
+      ).to.equal(
+        getComputedStyle(el).getPropertyValue("--ddd-palette-link").trim(),
+      );
+    }
+  });
+});
+
+describe("clean-two new page scroll and content links", () => {
+  it("starts a new page at the top of its own scroller, never scrolling the page around it", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    await el.updateComplete;
+    const target = el.HAXCMSThemeSettings.scrollTarget;
+    // no scrollIntoView: that also scrolled the locked page on mobile
+    expect(target.scrollIntoView).to.equal(undefined);
+    expect(typeof target.scrollTo).to.equal("function");
+    const wrapper = el.shadowRoot.querySelector(".body-wrapper");
+    let called = null;
+    const real = wrapper.scrollTo;
+    wrapper.scrollTo = (o) => {
+      called = o;
+    };
+    target.scrollTo({ top: 0, left: 0 });
+    wrapper.scrollTo = real;
+    expect(called).to.deep.equal({ top: 0, left: 0 });
+  });
+
+  it("colors class-less content links with the palette, Monotone excepted", () => {
+    const el = new CleanTwo();
+    const text = el
+      .HAXCMSGlobalStyleSheetContent()
+      .map((s) => (s && s.cssText) || "")
+      .join("\n");
+    expect(text).to.include(
+      'clean-two:not([data-palette="5"]) a:any-link:not([class])',
+    );
+    expect(text).to.include("var(--ddd-palette-link)");
+  });
+});
