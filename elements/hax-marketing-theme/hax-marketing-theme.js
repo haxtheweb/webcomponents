@@ -299,6 +299,17 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
           );
           transition: margin 0.6s ease-in-out;
         }
+        /* the tray only gets room when it is open and the screen can share:
+           on a phone its width is most of the screen and the page would be
+           squeezed into a sliver (same as polaris-flex-theme) */
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0;
+        }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0;
+          }
+        }
         .inner {
           max-width: var(--hax-marketing-measure);
           margin: var(--ddd-spacing-0) auto;
