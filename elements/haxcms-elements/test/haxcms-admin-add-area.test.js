@@ -285,6 +285,42 @@ describe("Merlin's upload program opt-ins", () => {
     expect(record[0][0]).to.equal("import");
   });
 
+  it("insert into page names the open page so its images save to it (#3058)", async () => {
+    const realActive = store.activeId;
+    const realFind = store.findItem;
+    const realManifest = store.manifest;
+    store.findItem = (id) =>
+      id === "item-1" ? { id: "item-1", parent: null } : null;
+    store.activeId = "item-1";
+    store.manifest = { metadata: { site: { name: "mysite" } }, items: [] };
+    try {
+      const record = [];
+      const h = host(record);
+      h.insertElementsFromContentBlob = (blob) => record.push(["insert", blob]);
+      await proto().processFileContentsBasedOnUserDesire.call(
+        h,
+        values(),
+        "insert-html",
+      );
+      expect(posted[0][0]).to.equal("@system/docxToHtml");
+      expect(posted[0][1].get("siteName")).to.equal("mysite");
+      expect(posted[0][1].get("itemId")).to.equal("item-1");
+      expect(record).to.deep.equal([["insert", "<p>converted</p>"]]);
+      // a new page has no page yet: nothing is named
+      posted = [];
+      await proto().processFileContentsBasedOnUserDesire.call(
+        host([]),
+        values(),
+        "create-child",
+      );
+      expect(posted[0][1].has("itemId")).to.equal(false);
+    } finally {
+      store.activeId = realActive;
+      store.findItem = realFind;
+      store.manifest = realManifest;
+    }
+  });
+
   it("createNewNode sends keepOpen beside, not inside, the request values", async () => {
     const sent = [];
     const fake = {

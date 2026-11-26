@@ -128,6 +128,31 @@ class MediaImage extends SchemaBehaviors(DDD) {
         :host(:not([disable-zoom])) media-image-image:hover {
           cursor: pointer;
         }
+        /* print / PDF: keep the image and its caption together on one page
+           and inside the printable width (the screen offsets pull past the
+           text column with vw margins, which a page clips) */
+        @media print {
+          :host {
+            break-inside: avoid;
+          }
+          :host([offset="left"]),
+          :host([offset="right"]) {
+            margin-left: var(--ddd-spacing-4);
+            margin-right: var(--ddd-spacing-4);
+            padding-left: 0;
+            padding-right: 0;
+          }
+          :host([offset="left"]) {
+            margin-left: 0;
+          }
+          :host([offset="right"]) {
+            margin-right: 0;
+          }
+          :host([offset="wide"]) {
+            margin: 0;
+            max-width: 100%;
+          }
+        }
       `,
     ];
   }

@@ -451,6 +451,31 @@ export class ImageGallery extends I18NMixin(DDD) {
             background-color: var(--ddd-theme-default-coalyGray);
           }
         }
+
+        /* print / PDF: paper can't click through a carousel or open a
+           lightbox, so every mode prints the images it was made from (the
+           media-image / img children, captions included), two to a row,
+           with the interactive layout left off */
+        @media print {
+          .grid-layout,
+          .masonry-layout,
+          .gallery-layout {
+            display: none;
+          }
+          .slot-hidden {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--ddd-spacing-4);
+          }
+          .slot-hidden ::slotted(*) {
+            break-inside: avoid;
+            margin: 0;
+            max-width: 100%;
+          }
+          .slot-hidden ::slotted(img) {
+            height: auto;
+          }
+        }
       `,
     ];
   }

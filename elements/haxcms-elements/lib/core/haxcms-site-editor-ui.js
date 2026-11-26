@@ -1776,6 +1776,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             dataToPost.append("upload", values.data); // should contain our file
             // single file vs whole site processing
             endpointCall = "@system/docxToHtml";
+            if (mode === "insert-html") {
+              // the page it goes into, so the backend saves the document's
+              // images as files of this page (haxtheweb/issues#3058)
+              const page = toJS(store.activeItem);
+              const manifest = toJS(store.manifest);
+              if (
+                page &&
+                page.id &&
+                manifest &&
+                manifest.metadata &&
+                manifest.metadata.site &&
+                manifest.metadata.site.name
+              ) {
+                dataToPost.append("siteName", manifest.metadata.site.name);
+                dataToPost.append("itemId", page.id);
+              }
+            }
             if (mode === "create-branch") {
               endpointCall = "@system/importDocx";
               dataToPost.append("method", "branch");
