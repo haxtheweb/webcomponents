@@ -806,9 +806,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
 
         /* Definition list specific styles for empty states */
+        /* no line-height here: a list keeps the line height it has in the
+           published page, so it does not reflow on entering edit mode */
         :host([edit-mode]) #bodycontainer ::slotted(dl[contenteditable]) {
           min-height: var(--ddd-spacing-8, 32px);
-          line-height: var(--ddd-lh-150, 150%);
           display: block;
           position: relative;
         }

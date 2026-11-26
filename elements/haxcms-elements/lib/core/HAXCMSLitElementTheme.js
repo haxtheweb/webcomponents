@@ -13,6 +13,14 @@ import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editab
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
 import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";
+import {
+  getEditModeContentSheet,
+  syncEditModeContentStyles,
+} from "./utils/HAXCMSEditModeContentStyles.js";
+
+// create the edit mode content sheet before any editor (h-a-x) exists, so
+// h-a-x finds it among the document's .hax sheets when it first renders
+getEditModeContentSheet();
 
 /**
  * LitElement Version of HAXCMSTheme
@@ -265,6 +273,43 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         node.addEventListener("pointerleave", this.__hoverIntentLeaveHandler);
       });
     }
+  }
+
+  /**
+   * Draw HAXCMSGlobalStyleSheetContent() for the page content in both modes:
+   * at document level for view mode, and into the edit mode content sheet
+   * (theme tag swapped for hax-body) that h-a-x adopts, so editing shows the
+   * content laid out as it will be published.
+   */
+  renderGlobalContentStyles() {
+    const styles = this.HAXCMSGlobalStyleSheetContent();
+    if (store.themeStyleElement) {
+      render(styles, store.themeStyleElement);
+    }
+    syncEditModeContentStyles(
+      styles,
+      this.tagName.toLowerCase(),
+      this.HAXCMSContentShadowStyles(),
+    );
+    // an editor that rendered before this sheet existed adopts it now
+    const editor =
+      store.cmsSiteEditor && store.cmsSiteEditor.instance
+        ? store.cmsSiteEditor.instance.querySelector("h-a-x")
+        : null;
+    if (editor && typeof editor.applyHAXStyles === "function") {
+      editor.applyHAXStyles();
+    }
+  }
+
+  /**
+   * The shadow styles the page content is slotted through in view mode; their
+   * ::slotted and #slot rules are carried over to edit mode (see
+   * HAXCMSEditModeContentStyles). A theme that passes its content through a
+   * nested element's slot adds that element's styles.
+   * @returns {Array} CSSResults / CSSStyleSheets
+   */
+  HAXCMSContentShadowStyles() {
+    return this.constructor.elementStyles || [];
   }
 
   HAXCMSGlobalStyleSheetContent() {
@@ -580,7 +625,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this._syncResponsiveStoreState();
     // update the global managed CSS styles so we can "theme" the content
     // witout leaning on ::slotted which doesn't work always
-    render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
+    this.renderGlobalContentStyles();
     // delay bc this shouldn't block page load in any way
     setTimeout(() => {
       setTimeout(() => {
@@ -654,7 +699,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     if (!this.__designSystemRestyle) {
       this.__designSystemRestyle = () => {
         if (this.hasUpdated && this.isConnected && store.themeStyleElement) {
-          render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
+          this.renderGlobalContentStyles();
         }
       };
     }

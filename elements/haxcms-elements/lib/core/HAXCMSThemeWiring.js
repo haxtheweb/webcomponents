@@ -71,6 +71,15 @@ const HAXCMSTheme = function (SuperClass) {
      *    <div id="slot"><slot></slot></div>
      *  </div>`;
      *  }
+     *
+     * Edit mode shows the page content the way view mode does: the editor
+     * carries over the theme's HAXCMSGlobalStyleSheetContent() (with
+     * "theme-tag > p" style selectors), its ::slotted() rules and its #slot
+     * rules (see utils/HAXCMSEditModeContentStyles.js). Rules that depend on
+     * the theme's own attributes (":host([menu-open]) ::slotted(p)") can't
+     * follow the content into the editor; put content styling that must hold
+     * in both modes in one of the three places above.
+     * Check with: node scripts/edit-mode-parity-check.mjs --themes <tag>
      */
     _colorChanged(newValue) {
       if (newValue) {
