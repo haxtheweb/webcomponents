@@ -76,6 +76,11 @@
  *     scripts/ai-call-sites.json lists the call site with the test that
  *     covers each rule, and no test reaches a real model
  *
+ *   node scripts/rule-checks.mjs wc-registry
+ *     every @haxtheweb entry in wc-registry.json (what the magic script
+ *     imports a tag from) names a file an element ships, and the
+ *     haxcms-elements demo copy matches it (praw RULES.md 69qeidwq)
+ *
  *   Browser Support (non-Baseline APIs) is compared per changed file by
  *   scripts/baseline-apis-check.mjs, which needs ESLint, in the build workflow.
  *
@@ -420,6 +425,36 @@ export function modelCallFindings(file, text, sites = []) {
   return out;
 }
 
+/* ---------- Web Component Registry ---------- */
+// wc-registry.json is what the magic script imports a tag from (praw RULES.md
+// 69qeidwq): every @haxtheweb entry names a file this repo ships, and the
+// copy the haxcms-elements demo serves says the same thing
+export function registryFindings(registry, demo, exists) {
+  const out = [];
+  for (const [tag, spec] of Object.entries(registry)) {
+    if (typeof spec !== "string") {
+      out.push(`wc-registry.json: "${tag}" has no import path`);
+      continue;
+    }
+    if (
+      spec.startsWith("@haxtheweb/") &&
+      !exists(`elements/${spec.slice("@haxtheweb/".length)}`)
+    ) {
+      out.push(
+        `wc-registry.json: "${tag}" imports ${spec}, which no element ships`,
+      );
+    }
+  }
+  if (demo && JSON.stringify(demo) !== JSON.stringify(registry)) {
+    const keys = new Set([...Object.keys(registry), ...Object.keys(demo)]);
+    const differ = [...keys].filter((k) => registry[k] !== demo[k]);
+    out.push(
+      `elements/haxcms-elements/demo/wc-registry.json differs from wc-registry.json for ${differ.length} tag(s): ${differ.slice(0, 5).join(", ")}`,
+    );
+  }
+  return out;
+}
+
 /* ---------- counted checks: per-file counts against a baseline that only shrinks ---------- */
 const COUNTED = {
   "test-sleeps": {
@@ -617,6 +652,15 @@ function run(check, args, root = ROOT) {
     }
     return themeFindings(themes, sources);
   }
+  if (check === "wc-registry") {
+    const read = (f) => JSON.parse(fs.readFileSync(path.join(root, f), "utf8"));
+    const demoFile = "elements/haxcms-elements/demo/wc-registry.json";
+    return registryFindings(
+      read("wc-registry.json"),
+      fs.existsSync(path.join(root, demoFile)) ? read(demoFile) : null,
+      (f) => fs.existsSync(path.join(root, f)),
+    );
+  }
   if (check === "model-calls") {
     const sitesFile = path.join(root, "scripts/ai-call-sites.json");
     const sites = fs.existsSync(sitesFile)
@@ -683,12 +727,13 @@ if (isMain) {
           "themes",
           "secrets",
           "model-calls",
+          "wc-registry",
           ...Object.keys(COUNTED),
         ]
       : [check];
   if (!check) {
     console.error(
-      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|secrets|model-calls|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
+      `usage: node scripts/rule-checks.mjs <typescript|node-version|package-names|themes|secrets|model-calls|wc-registry|${Object.keys(COUNTED).join("|")}|all> [--base <ref>] [--update-baseline]`,
     );
     process.exit(2);
   }

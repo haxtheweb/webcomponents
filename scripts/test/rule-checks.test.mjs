@@ -20,6 +20,7 @@ import {
   countLinkRewrites,
   secretFindings,
   modelCallFindings,
+  registryFindings,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -374,5 +375,24 @@ test("model-calls: a call site must be listed, and a test never reaches a model"
       'import x from "./llms.js"; fetch("/x/api/v1/site");',
     ).length,
     0,
+  );
+});
+
+test("wc-registry: @haxtheweb entries resolve, and the demo copy matches", () => {
+  const reg = { "a-b": "@haxtheweb/a-b/a-b.js", "x-y": "@other/x/x.js" };
+  const has = (f) => f === "elements/a-b/a-b.js";
+  assert.deepEqual(registryFindings(reg, reg, has), []);
+  assert.equal(
+    registryFindings({ ...reg, "c-d": "@haxtheweb/c-d/c-d.js" }, null, has)
+      .length,
+    1,
+  );
+  assert.match(
+    registryFindings(
+      reg,
+      { "a-b": "@haxtheweb/a-b/old.js", "x-y": "@other/x/x.js" },
+      has,
+    )[0],
+    /differs/,
   );
 });

@@ -44,6 +44,8 @@ name: rule-checks
 # - Model calls: no element calls a model unless scripts/ai-call-sites.json
 #   lists it with the test covering each AI Content rule, and no test reaches
 #   a real model (praw RULES.md, AI Content). None today.
+# - Web component registry: every @haxtheweb entry in wc-registry.json names
+#   a file an element ships, and the demo copy matches (RULES.md 69qeidwq).
 # The ARIA, a11y-collapse, docs, ES module, MFR, incorrect, tracking and
 # link checks are counted per file
 # against scripts/<check>.baseline.json, which
@@ -181,3 +183,6 @@ jobs:
       - name: Model calls
         if: always()
         run: node scripts/rule-checks.mjs model-calls
+      - name: Web component registry
+        if: always()
+        run: node scripts/rule-checks.mjs wc-registry
