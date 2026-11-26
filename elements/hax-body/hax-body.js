@@ -4031,7 +4031,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     } else if (node.getAttribute("slot")) {
       newNode.setAttribute("slot", node.getAttribute("slot"));
     }
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
     node.innerHTML = beforeHTML;
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
     newNode.innerHTML = afterHTML;
     this.__scrubTransientEditorStyleSpans(node);
     this.__scrubTransientEditorStyleSpans(newNode);
@@ -5397,6 +5399,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             grandparentNode.tagName.toLowerCase() !== "ul"
           ) {
             const strippedLI = globalThis.document.createElement("p");
+            // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
             strippedLI.innerHTML = currentNode.innerHTML.trim();
             this.__removeDirectBreakChildren(strippedLI);
             if (this.__isEffectivelyEmptyTextBlock(strippedLI)) {
@@ -5415,16 +5418,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // Persist contents
         // account for empty list and ordered list items
         if (maintainContent) {
+          // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
           replacement.innerHTML = node.innerHTML.trim();
         }
         if (tagName == "ul" || tagName == "ol") {
           // make sure a new list also creates an li
           if (!replacement.innerHTML.includes("<fake-hax-list-break>")) {
+            // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
             replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
           } else if (!(
             node.tagName.toLowerCase() === "ul" ||
             node.tagName.toLowerCase() === "ol"
           )) {
+            // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
             replacement.innerHTML = node.innerHTML
               .trim()
               .replace(/<fake-hax-list-break>/g, "<li>")
@@ -5458,6 +5464,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               );
             else if (tag === "ul" || tag === "ol") return child.outerHTML;
           });
+          // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
           replacement.innerHTML = items.join("");
         }
         // Switch!
@@ -6719,6 +6726,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (node.tagName === "FAKE-HAX-LIST-BREAK") {
                 const normalizedParagraph =
                   globalThis.document.createElement("p");
+                // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
                 normalizedParagraph.innerHTML = node.innerHTML.trim();
                 this.__removeDirectBreakChildren(normalizedParagraph);
                 if (this.__isEffectivelyEmptyTextBlock(normalizedParagraph)) {
@@ -6734,6 +6742,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 node.children[0].tagName === "FAKE-HAX-LIST-BREAK"
               ) {
                 const normalizedListBreak = node.children[0];
+                // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- re-serialized markup of a block already live in the editor, rearranged; no new markup enters
                 node.innerHTML = normalizedListBreak.innerHTML.trim();
                 this.__removeDirectBreakChildren(node);
                 if (this.__isEffectivelyEmptyTextBlock(node)) {

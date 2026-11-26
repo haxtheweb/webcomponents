@@ -203,6 +203,16 @@ describe("editable-table behaviors", () => {
       expect(node.querySelectorAll('th[scope="row"]').length > 0).to.be.true;
     });
 
+    it("sanitizes the caption like a cell", () => {
+      element.caption = 'Cap <img src="x" onerror="void 0"><b>bold</b>';
+      const str = element.getTableHTML();
+      expect(str.includes("onerror")).to.be.false;
+      expect(str.includes("<b>bold</b>")).to.be.true;
+      const node = element.getTableHTML(true, true);
+      expect(node.querySelector("caption img").hasAttribute("onerror")).to.be
+        .false;
+    });
+
     it("getTableHTMLNode builds an editable-table-display node", () => {
       const node = element.getTableHTMLNode();
       expect(node.tagName.toLowerCase()).to.equal("editable-table-display");
@@ -305,12 +315,9 @@ describe("editable-table behaviors", () => {
       );
       await display.updateComplete;
       const calls = [];
-      const fakeDoc = {
-        head: { innerHTML: "" },
-        body: { innerHTML: "" },
-        close() {
-          calls.push("close");
-        },
+      const fakeDoc = globalThis.document.implementation.createHTMLDocument("");
+      fakeDoc.close = () => {
+        calls.push("close");
       };
       const fakeWin = {
         document: fakeDoc,
@@ -333,7 +340,7 @@ describe("editable-table behaviors", () => {
       globalThis.open = originalOpen;
       expect(calls).to.deep.equal(["close", "focus", "print"]);
       expect(fakeDoc.body.innerHTML.includes("<table")).to.be.true;
-      expect(fakeDoc.head.innerHTML.includes("<style>")).to.be.true;
+      expect(fakeDoc.head.querySelector("style")).to.exist;
       expect(printed === display).to.be.true;
     });
 

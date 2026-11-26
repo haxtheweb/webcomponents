@@ -93,8 +93,10 @@ class QRCodeElement extends HTMLElement {
       } else if (this.format === "svg") {
         this.generateSVG();
       } else {
-        this.shadowRoot.innerHTML =
-          "<div>qr-code: " + this.format + " not supported!</div>";
+        // the format is an attribute value: written as text
+        const message = globalThis.document.createElement("div");
+        message.textContent = "qr-code: " + this.format + " not supported!";
+        this.shadowRoot.replaceChildren(message);
         this._error("format");
       }
     } else {

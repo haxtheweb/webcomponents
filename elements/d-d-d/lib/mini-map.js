@@ -161,6 +161,7 @@ export class MiniMap extends I18NMixin(DDD) {
 
     const content = globalThis.document.createElement("div");
     content.classList.add("modal-form");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- this element's own form markup with shipped translations; author values are set as properties after
     content.innerHTML = `
     <style>
       simple-modal {

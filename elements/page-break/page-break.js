@@ -708,7 +708,8 @@ export class PageBreak extends IntersectionObserverMixin(
                   el.attributes.item(i).nodeValue,
                 );
               }
-              newH.innerHTML = el.innerHTML;
+              // move the heading's content over: already parsed, no reparse
+              newH.append(...Array.from(el.childNodes));
               this.setupTargetData(newH);
               el.parentNode.replaceChild(newH, el);
             });
@@ -733,7 +734,8 @@ export class PageBreak extends IntersectionObserverMixin(
                       el.attributes.item(i).nodeValue,
                     );
                   }
-                  newH.innerHTML = el.innerHTML;
+                  // move the heading's content over: already parsed, no reparse
+                  newH.append(...Array.from(el.childNodes));
                   el.parentNode.replaceChild(newH, el);
                   this.setupTargetData(newH);
                 }
@@ -757,7 +759,8 @@ export class PageBreak extends IntersectionObserverMixin(
                     el.attributes.item(i).nodeValue,
                   );
                 }
-                newH.innerHTML = el.innerHTML;
+                // move the heading's content over: already parsed, no reparse
+                newH.append(...Array.from(el.childNodes));
                 el.parentNode.replaceChild(newH, el);
                 this.setupTargetData(newH);
               });

@@ -1578,6 +1578,7 @@ const ChartistRenderSuper = function (SuperClass) {
                )
                .join("")}
            </tbody>`;
+        // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- built from fixed markup; every cell passes safe() (sanitizeHTMLString) above
         table.innerHTML = html;
         this.appendChild(table);
       } else if (table) {

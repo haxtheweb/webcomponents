@@ -3329,6 +3329,11 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
     }
     const preview =
       this._preview && this._preview.id === row.id ? this._preview : null;
+    const previewPage =
+      preview && preview.state === "ready"
+        ? // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- preview.html is only ever set from _cleanPreview (inert DOMParser parse, removeUnsafeElements, handler and URL stripping)
+          unsafeHTML(preview.html)
+        : nothing;
     return html`<aside
       class="detail"
       aria-label="${this.t.detailsOf.replace("{title}", () => row.title)}"
@@ -3337,7 +3342,7 @@ class HAXCMSContentAdminDialog extends HaxcmsAdminSectionMixin(I18NMixin(DDD)) {
         ${
           preview && preview.state === "ready"
             ? html`<div class="pv-frame" inert aria-hidden="true">
-                <div class="pv-page">${unsafeHTML(preview.html)}</div>
+                <div class="pv-page">${previewPage}</div>
               </div>`
             : html`<div class="pv-frame pv-msg">
                 ${

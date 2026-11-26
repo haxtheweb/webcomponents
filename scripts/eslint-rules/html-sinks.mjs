@@ -14,12 +14,16 @@
  *       .innerHTML / .outerHTML property bindings in lit html`` templates
  *
  * A value is accepted when it is a fixed string (a literal, or a template
- * literal with no expressions), or a call to a function whose name starts
+ * literal whose every expression is itself accepted), or a call to a function whose name starts
  * with "sanitize" (sanitizeHTMLString in @haxtheweb/utils/lib/sanitize.js),
- * or a ternary / || / ?? whose every branch is one of those.
+ * or a ternary / || / ?? whose every branch is one of those, or a local
+ * variable (not a parameter) whose every assignment is one of those.
  *
- * Existing hits are recorded in eslint-suppressions.json, so only new code is
- * reported. Fixing one: `npx eslint elements --prune-suppressions`.
+ * A sink that is safe for a reason the rule can't see (an inert <template>,
+ * the element's own static template) carries an inline exemption that says
+ * why: `// eslint-disable-next-line haxtheweb-html/unsanitized-html-sink --
+ * <reason>`. There is no suppressions-file baseline for this rule, so every
+ * new sink in any file is reported.
  */
 
 const SINK_PROPERTIES = ["innerHTML", "outerHTML"];
@@ -42,23 +46,75 @@ function calleeName(callee) {
   return "";
 }
 
-function isSafe(node) {
+// the variable a name refers to, from the innermost scope out
+function findVariable(scope, name) {
+  for (let current = scope; current; current = current.upper) {
+    const variable = current.set.get(name);
+    if (variable) {
+      return variable;
+    }
+  }
+  return null;
+}
+
+// a local variable is safe when it is declared in this file (not a
+// parameter, import or global) and every value written to it is safe.
+// `seen` holds the variables being checked, so a cycle counts as unsafe.
+function isSafeVariable(node, context, seen) {
+  const variable = findVariable(context.sourceCode.getScope(node), node.name);
+  if (
+    !variable ||
+    seen.has(variable) ||
+    variable.defs.length === 0 ||
+    variable.defs.some((def) => def.type !== "Variable")
+  ) {
+    return false;
+  }
+  const writes = variable.references.filter((ref) => ref.isWrite());
+  if (writes.length === 0) {
+    return false;
+  }
+  seen.add(variable);
+  const safe = writes.every((ref) => {
+    const parent = ref.identifier.parent;
+    // `x += y` keeps the old value too; a for-in/of loop writes items
+    if (
+      (parent.type === "AssignmentExpression" && parent.operator !== "=") ||
+      parent.type === "ForInStatement" ||
+      parent.type === "ForOfStatement"
+    ) {
+      return false;
+    }
+    return Boolean(ref.writeExpr) && isSafe(ref.writeExpr, context, seen);
+  });
+  seen.delete(variable);
+  return safe;
+}
+
+function isSafe(node, context, seen = new Set()) {
   if (!node) {
     return true;
   }
   switch (node.type) {
+    case "Identifier":
+      return context ? isSafeVariable(node, context, seen) : false;
     case "Literal":
       return true;
     case "TemplateLiteral":
-      return node.expressions.length === 0;
+      return node.expressions.every((expression) =>
+        isSafe(expression, context, seen),
+      );
     case "CallExpression":
       return /^sanitize/.test(calleeName(node.callee));
     case "ConditionalExpression":
-      return isSafe(node.consequent) && isSafe(node.alternate);
+      return (
+        isSafe(node.consequent, context, seen) &&
+        isSafe(node.alternate, context, seen)
+      );
     case "LogicalExpression":
-      return isSafe(node.left) && isSafe(node.right);
+      return isSafe(node.left, context, seen) && isSafe(node.right, context, seen);
     case "AwaitExpression":
-      return isSafe(node.argument);
+      return isSafe(node.argument, context, seen);
     default:
       return false;
   }
@@ -97,18 +153,18 @@ const unsanitizedHtmlSink = {
     }
     return {
       AssignmentExpression(node) {
-        if (isSinkMember(node.left) && !isSafe(node.right)) {
+        if (isSinkMember(node.left) && !isSafe(node.right, context)) {
           report(node.right, node.left.property.name);
         }
       },
       CallExpression(node) {
         const name = calleeName(node.callee);
         if (name === "insertAdjacentHTML") {
-          if (!isSafe(node.arguments[1])) {
+          if (!isSafe(node.arguments[1], context)) {
             report(node, name);
           }
         } else if (name === "createContextualFragment") {
-          if (!isSafe(node.arguments[0])) {
+          if (!isSafe(node.arguments[0], context)) {
             report(node, name);
           }
         } else if (
@@ -117,14 +173,14 @@ const unsanitizedHtmlSink = {
           node.callee.object.type === "Identifier" &&
           node.callee.object.name === "document"
         ) {
-          if (!isSafe(node.arguments[0])) {
+          if (!isSafe(node.arguments[0], context)) {
             report(node, "document." + name);
           }
         } else if (
           node.callee.type === "Identifier" &&
           DIRECTIVES.indexOf(name) !== -1
         ) {
-          if (!isSafe(node.arguments[0])) {
+          if (!isSafe(node.arguments[0], context)) {
             report(node, name);
           }
         }
@@ -137,7 +193,7 @@ const unsanitizedHtmlSink = {
         for (let i = 0; i < quasi.expressions.length; i++) {
           const before = quasi.quasis[i].value.raw;
           const match = /\.(innerHTML|outerHTML)\s*=\s*["']?$/.exec(before);
-          if (match && !isSafe(quasi.expressions[i])) {
+          if (match && !isSafe(quasi.expressions[i], context)) {
             report(quasi.expressions[i], "." + match[1] + " binding");
           }
         }

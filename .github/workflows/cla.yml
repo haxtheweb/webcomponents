@@ -35,7 +35,9 @@ jobs:
           # "copilot-swe-agent[bot]" and "Copilot" are GitHub Copilot agents.
           # Those changes are reviewed and merged by a maintainer who has signed the CLA,
           # so they are pre-authorized here along with the remaining bot accounts.
-          allowlist: "*[bot],bot*,claude,copilot-swe-agent[bot],Copilot"
+          # No "bot*" prefix pattern: that let any account whose name starts
+          # with "bot" skip the CLA; GitHub App bots all end in "[bot]".
+          allowlist: "*[bot],claude,copilot-swe-agent[bot],Copilot"
           # the followings are the optional inputs - If the optional inputs are not given, then default values will be taken
           remote-organization-name: "haxtheweb"
           remote-repository-name: "cla"

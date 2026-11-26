@@ -219,7 +219,8 @@ export class PageBreakManagerEl extends HTMLElement {
                 console.warn(e);
               }
             }
-            newH.innerHTML = el.innerHTML;
+            // move the heading's content over: already parsed, no reparse
+            newH.append(...Array.from(el.childNodes));
             el.parentNode.replaceChild(newH, el);
             // route the reassignment through setupTargetData so the
             // page-break heading observer tracks the replacement instead

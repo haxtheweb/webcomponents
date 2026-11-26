@@ -1091,6 +1091,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         let end = legendHtml.length;
         while (end > 0 && /\s/.test(legendHtml[end - 1])) end--;
         while (end > 0 && legendHtml[end - 1] === "*") end--;
+        // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- the legend's own live markup with trailing * markers trimmed
         legend.innerHTML = legendHtml.slice(0, end) + (this.error ? "*" : "");
         legend.style.color = this.error
           ? "var(--simple-fields-error-color, #b40000)"
@@ -1386,7 +1387,7 @@ const SimpleFieldsContainerBehaviors = function (SuperClass) {
         this.shadowRoot &&
         this.shadowRoot.querySelector("#fieldmeta")
       )
-        this.shadowRoot.querySelector("#fieldmeta").innerHTML = countmax
+        this.shadowRoot.querySelector("#fieldmeta").textContent = countmax
           ? `${count}/${countmax}`
           : count;
     }

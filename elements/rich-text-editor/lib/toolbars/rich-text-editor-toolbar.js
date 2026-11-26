@@ -1676,6 +1676,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
      * @memberof RichTextEditor
      */
     revertTarget(_target = this.target) {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- __canceledEdits is the target's own live markup saved when editing began
       if (this.target) this.target.innerHTML = this.__canceledEdits;
     }
 
@@ -1913,10 +1914,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       if (this.targetEmpty() && e.key && this.target) {
         // write the first key into the TARGET, never into the toolbar
         // itself (issue #3077, bug 5)
-        this.target.innerHTML = e.key
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;");
+        this.target.textContent = e.key;
         this.range = this.getRange();
         if (this.range) {
           this.range.selectNodeContents(this.target);

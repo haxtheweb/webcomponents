@@ -816,6 +816,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           const char = chars[Math.floor(Math.random() * chars.length)];
           columnText += `<span style="color: #00ff00; background: rgba(0,0,0,0.8); display: block; text-align: center; margin: 2px 0;">${char}</span>`;
         }
+        // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
         column.innerHTML = columnText;
 
         matrixContainer.appendChild(column);
@@ -1405,7 +1406,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     for (let i = 0; i < 150; i++) {
       const emoji = globalThis.document.createElement("div");
       emoji.className = "joker-emoji";
-      emoji.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
       emoji.style.cssText = `
         position: absolute;
         left: ${Math.random() * 100}%;
@@ -1594,6 +1595,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       popup.style.top = `${randomY}px`;
 
       // Furby trading card content
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
       popup.innerHTML = `
         <div style="font-size: 50px; margin-bottom: 8px;">👾</div>
         <div style="font-weight: bold; font-size: 16px; margin-bottom: 8px; color: #ff0066;">FURBY™ #${popupCount}</div>
@@ -1811,6 +1813,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Create system tray area
     const systemTray = globalThis.document.createElement("div");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
     systemTray.innerHTML = `
       <span style="font-size: 11px; color: #000;">3:${String(new Date().getMinutes()).padStart(2, "0")} PM</span>
     `;
@@ -1858,6 +1861,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         user-select: none;
       `;
 
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
       icon.innerHTML = `
         <div style="font-size: 32px; margin-bottom: 4px;">${iconData.icon}</div>
         <div>${iconData.name}</div>
@@ -1940,6 +1944,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         padding: 0 4px;
         cursor: move;
       `;
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
       titleBar.innerHTML = `
         <span>${title}</span>
         <button class="close-btn" style="
@@ -2034,7 +2039,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         startMenu.appendChild(separator);
       } else {
         const menuItem = globalThis.document.createElement("div");
-        menuItem.innerHTML = `${item.icon} ${item.name}`;
+        menuItem.textContent = `${item.icon} ${item.name}`;
         menuItem.style.cssText = `
           padding: 4px 8px;
           font-size: 11px;
@@ -2327,6 +2332,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create Geocities content
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
     geocitiesOverlay.innerHTML = `
       <div style="text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
         <h1 style="font-size: 48px; animation: geocities-blink 1s var(--ddd-timing-linear, linear) infinite; margin: 20px 0;">🏗️ UNDER CONSTRUCTION 🏗️</h1>
@@ -2564,6 +2570,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         animation: clippy-bubble-appear 0.3s var(--ddd-timing-enter, ease-out);
       `;
 
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- Easter-egg overlay built from fixed markup and strings in this file
       speechBubble.innerHTML = `
         <div>${message}</div>
         <div style="
@@ -2850,7 +2857,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         transition: transform 0.3s ease-in-out;
       `;
 
-      element.innerHTML = emoji;
+      element.textContent = emoji;
 
       if (isSpecial) {
         element.addEventListener("mouseenter", () => {

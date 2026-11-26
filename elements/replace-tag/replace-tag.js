@@ -176,7 +176,10 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
         replacement.removeAttribute("with");
         replacement.removeAttribute("import-method");
         replacement.removeAttribute("importing-text");
-        replacement.innerHTML = this.innerHTML;
+        // copy the content as nodes: it is already parsed, no reparse
+        replacement.append(
+          ...Array.from(this.childNodes, (node) => node.cloneNode(true)),
+        );
         this.replaceWith(replacement);
       }
     } else {
@@ -213,7 +216,10 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
               }
             }
             replacement.removeAttribute("laser-loader");
-            replacement.innerHTML = this.innerHTML;
+            // copy the content as nodes: it is already parsed, no reparse
+            replacement.append(
+              ...Array.from(this.childNodes, (node) => node.cloneNode(true)),
+            );
             this.replaceWith(replacement);
             // variable / attribute clean up on the element that got replaced as
             // "this" is still valid for this loop
@@ -293,17 +299,21 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
       }
     }
     </style>
-<div>${this.importingText}</div>`;
+<div id="importing-text"></div>`;
   }
   render() {
     if (this.exists) {
       this.shadowRoot.innerHTML = null;
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- this element's own static markup; author text is set with textContent below
       this.template.innerHTML = this.html;
 
       if (globalThis.ShadyCSS) {
         globalThis.ShadyCSS.prepareTemplate(this.template, this.tag);
       }
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+      // security (JS-XSS): importing-text is author data, written as text
+      this.shadowRoot.querySelector("#importing-text").textContent =
+        this.importingText || "";
     }
   }
 }

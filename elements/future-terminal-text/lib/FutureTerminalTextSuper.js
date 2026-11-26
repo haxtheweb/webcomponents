@@ -22,7 +22,13 @@ export const FutureTerminalTextLiteSuper = function (SuperClass) {
       );
       const prefersReducedMotion = motionMQ.matches;
       if (!prefersReducedMotion) {
-        const text = this.innerHTML;
+        // security (JS-XSS): the glitch scrambles text, never markup: a
+        // scrambled character can be "<", which in an HTML string would
+        // start a tag. The original nodes are put back afterwards.
+        const original = Array.from(this.childNodes, (node) =>
+          node.cloneNode(true),
+        );
+        const text = this.textContent;
         const scrambleCount =
           Math.floor(
             Math.floor((Math.random() * text.length) / 10) + text.length / 20,
@@ -34,10 +40,10 @@ export const FutureTerminalTextLiteSuper = function (SuperClass) {
           for (let i = 0; i < scrambleCount; i++) {
             newText = this._scramble(newText);
           }
-          this.innerHTML = newText;
+          this.textContent = newText;
           await this._wait(this.glitchDuration);
         }
-        this.innerHTML = text;
+        this.replaceChildren(...original);
       }
     }
 

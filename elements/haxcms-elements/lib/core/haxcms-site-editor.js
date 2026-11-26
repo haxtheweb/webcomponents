@@ -1479,7 +1479,7 @@ class HAXCMSSiteEditor extends I18NMixin(LitElement) {
     if (!globalThis.document.head.querySelector("[data-haxcms-ddd-vars]")) {
       const style = globalThis.document.createElement("style");
       style.setAttribute("data-haxcms-ddd-vars", "");
-      style.innerHTML = variableStyles;
+      style.textContent = variableStyles;
       globalThis.document.head.appendChild(style);
     }
   }

@@ -532,6 +532,7 @@ function parseSanitizedTemplate(
   const safeHTML = encapsulateScriptTags ? encapScript(raw) : raw;
   const inert = globalThis.document.implementation.createHTMLDocument("");
   const template = inert.createElement("template");
+  // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- the sanitizer's own parse, into a template in an inert document
   template.innerHTML = safeHTML;
   if (encapsulateScriptTags) {
     neutralizeStrayScripts(template.content);

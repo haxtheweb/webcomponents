@@ -122,12 +122,19 @@ class DateTitle extends LitElement {
 
     const deg = range / textArr.length;
     textArr.forEach((ch) => {
-      ch = `<p style="height:${radius}px;${css};transform:rotate(${startPos}deg);left:50%;top:${
-        containerHeight / 2 - radius
-      }px;position:absolute;transform-origin:0 100%">
-             <span style="${bottomCss}">${ch}</span>
-           </p>`;
-      newElement.innerHTML += ch;
+      // each character is written as text into its own rotated box
+      const p = globalThis.document.createElement("p");
+      p.setAttribute(
+        "style",
+        `height:${radius}px;${css};transform:rotate(${startPos}deg);left:50%;top:${
+          containerHeight / 2 - radius
+        }px;position:absolute;transform-origin:0 100%`,
+      );
+      const span = globalThis.document.createElement("span");
+      span.setAttribute("style", bottomCss);
+      span.textContent = ch;
+      p.appendChild(span);
+      newElement.appendChild(p);
       startPos += deg;
     });
     container.appendChild(newElement);

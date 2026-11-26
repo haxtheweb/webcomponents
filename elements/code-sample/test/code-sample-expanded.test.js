@@ -93,17 +93,33 @@ describe("code-sample HAX hooks", () => {
   });
 
   it("haxeditModeChanged writes the editor value back on deactivate", async () => {
-    // render the (unupgraded, inert) editor host and stub its value node
+    // render the (unupgraded, inert) editor host and set its value
     element._haxstate = true;
     await element.updateComplete;
     const codeEditor = element.shadowRoot.querySelector("code-editor");
     expect(codeEditor).to.exist;
-    const stubNode = globalThis.document.createElement("div");
-    stubNode.innerHTML = "stubbed code";
-    codeEditor.getValueAsNode = () => stubNode;
+    codeEditor.value = "stubbed code";
     element.haxeditModeChanged(false);
     expect(element.innerHTML).to.include("stubbed code");
     expect(element.innerHTML).to.include("preserve-content");
+    // reset synchronously so no inert editor host lingers
+    element._haxstate = false;
+    await element.updateComplete;
+    expect(element.shadowRoot.querySelector("code-editor")).to.not.exist;
+  });
+
+  it("keeps markup in edited code inert", async () => {
+    element._haxstate = true;
+    await element.updateComplete;
+    const codeEditor = element.shadowRoot.querySelector("code-editor");
+    codeEditor.value = '</template><img src="x" onerror="void 0">';
+    element.haxeditModeChanged(false);
+    const template = element.querySelector("template");
+    expect(element.children.length).to.equal(1);
+    expect(template).to.exist;
+    // the image stays inside the template's inert content, as written
+    expect(template.content.querySelector("img[onerror]")).to.exist;
+    expect(element.querySelector("img")).to.not.exist;
     // reset synchronously so no inert editor host lingers
     element._haxstate = false;
     await element.updateComplete;

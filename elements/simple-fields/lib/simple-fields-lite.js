@@ -7,6 +7,7 @@ import "./simple-fields-container.js";
 import "./simple-fields-fieldset.js";
 import "./simple-fields-array.js";
 import { removeThroughLast } from "@haxtheweb/utils/lib/safe-html.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 /**
  * `simple-fields-lite`
  * Uses JSON Schema of fields to display a series of fields
@@ -735,7 +736,9 @@ class SimpleFieldsLite extends LitElement {
             data.slots[slot].split(/[\s,]/).forEach((field) => {
               let span = globalThis.document.createElement("span");
               span.slot = slot;
-              span.innerHTML = schemaProp[field];
+              // security (JS-XSS): schema text (labels, descriptions) can
+              // come from a remote app store, so it is sanitized
+              span.innerHTML = sanitizeHTMLString(String(schemaProp[field]));
               element.appendChild(span);
             });
           }
@@ -811,7 +814,7 @@ class SimpleFieldsLite extends LitElement {
     if (slotName) {
       let span = globalThis.document.createElement("span");
       span.slot = slotName;
-      if (value) span.innerHTML = value;
+      if (value) span.innerHTML = sanitizeHTMLString(String(value));
       if (target)
         target
           .querySelectorAll(`[slot=${slotName}]`)

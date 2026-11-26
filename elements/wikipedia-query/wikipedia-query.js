@@ -316,10 +316,9 @@ class WikipediaQuery extends IntersectionObserverMixin(I18NMixin(DDD)) {
           this.shadowRoot &&
           this.shadowRoot.querySelector("#result")
         ) {
-          let html = response.query.pages[key].extract;
           // security (JS-XSS): sanitize network HTML from Wikipedia API
           // before assigning to innerHTML (neutralizes onerror/javascript:/iframe/svg)
-          html = sanitizeHTMLString(html);
+          const html = sanitizeHTMLString(response.query.pages[key].extract);
           // need to innerHTML this or it won't set
           this.shadowRoot.querySelector("#result").removeAttribute("role");
           this.shadowRoot.querySelector("#result").innerHTML = html;

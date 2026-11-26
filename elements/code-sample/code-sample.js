@@ -367,11 +367,28 @@ class CodeSample extends I18NMixin(LitElement) {
     return node;
   }
 
+  /**
+   * Store edited code as this element's light DOM: one inert
+   * <template preserve-content>, which is what the element reads back
+   * @param {String} code the code as written in the editor
+   */
+  _stampCodeTemplate(code) {
+    // security (JS-XSS): parsed straight into an inert <template>, never a
+    // live element, so markup in a code sample is never rendered or run
+    // while editing, and a `</template>` in the code can't close it early
+    const template = globalThis.document.createElement("template");
+    template.setAttribute("preserve-content", "preserve-content");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert <template> content: code is stored as written, never rendered or run
+    template.innerHTML = code || "";
+    this.innerHTML = "";
+    this.appendChild(template);
+  }
+
   haxeditModeChanged(value) {
     if (!value && this.shadowRoot) {
       const codeEditor = this.shadowRoot.querySelector("code-editor");
-      if (codeEditor && codeEditor.getValueAsNode) {
-        this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
+      if (codeEditor) {
+        this._stampCodeTemplate(codeEditor.value);
       }
     }
     this._haxstate = value;
@@ -582,13 +599,17 @@ if ($MrTheCheat) {
           import("@haxtheweb/code-editor/code-editor.js").then((_module) => {
             const codeEditor = this.shadowRoot.querySelector("code-editor");
             if (codeEditor) {
-              codeEditor.innerHTML = this.innerHTML;
+              // copy the <template> holding the code as nodes; a clone of a
+              // template keeps its content inert
+              codeEditor.replaceChildren(
+                ...Array.from(this.childNodes, (node) => node.cloneNode(true)),
+              );
             }
           });
         } else {
           const codeEditor = this.shadowRoot.querySelector("code-editor");
           if (codeEditor) {
-            this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
+            this._stampCodeTemplate(codeEditor.value);
           }
         }
       }
@@ -679,6 +700,7 @@ if ($MrTheCheat) {
   _applyHighlightjs(str) {
     this._code = globalThis.document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- _entitize escapes <, > and quotes, so the code is shown as text
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
     if (
       this.shadowRoot &&

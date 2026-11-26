@@ -369,23 +369,27 @@ class UndoManagerCommand {
       this.el.undoStack.commands &&
       this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
     ) {
-      this.el.innerHTML =
-        this.el.undoStack.commands[
-          this.el.undoStack.undoStackPosition - 1
-        ].newValue;
+      const snapshot =
+        this.el.undoStack.commands[this.el.undoStack.undoStackPosition - 1]
+          .newValue;
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- a snapshot of this element's own live markup from the undo stack
+      this.el.innerHTML = snapshot;
     } else if (
       this.el.undoStack &&
       this.el.undoStack.commands &&
       this.el.undoStack.undoStackPosition === 0
     ) {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- a snapshot of this element's own live markup from the undo stack
       this.el.innerHTML = this.el.undoStackInitialValue;
     } else {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- a snapshot of this element's own live markup from the undo stack
       this.el.innerHTML = this.oldValue;
     }
   }
   // perform a "redo"
   redo() {
     this.el.undoStackIgnore = true;
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- a snapshot of this element's own live markup from the undo stack
     this.el.innerHTML = this.newValue;
   }
 }

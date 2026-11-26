@@ -3610,6 +3610,7 @@ class A11yMediaPlayer extends SchemaBehaviors(
         "",
         "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0",
       );
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- every interpolated value is escaped (escapeHTML) or a formatted time
     print.document.body.innerHTML = `
      <h1>${escapeHTML(title)}</h1>
      ${Object.keys(cues)

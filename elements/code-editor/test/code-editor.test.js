@@ -680,9 +680,8 @@ describe("code-editor test", () => {
     });
 
     it("handles active element changes", () => {
-      const mockEl = {
-        replaceWith: sandbox.spy(),
-      };
+      const mockEl = globalThis.document.createElement("div");
+      mockEl.replaceWith = sandbox.spy();
 
       element.value = "<div>test</div>";
       element.haxactiveElementChanged(mockEl, false);
@@ -695,6 +694,24 @@ describe("code-editor test", () => {
 
       const node = element.getValueAsNode();
       expect(node.innerHTML).to.equal("<div>Test Content</div>");
+    });
+
+    it("sanitizes editor source before it becomes page markup", () => {
+      element.value =
+        '<p>ok</p><img src="x" onerror="void 0"><a href="javascript:void 0">x</a>';
+      const node = element.getValueAsNode();
+      expect(node.querySelector("p").textContent).to.equal("ok");
+      expect(node.querySelector("img").hasAttribute("onerror")).to.be.false;
+      expect(node.querySelector("a").getAttribute("href") || "").to.not.match(
+        /^javascript:/i,
+      );
+    });
+
+    it("stores code in an inert template", () => {
+      element._editorValueChanged('</template><img src="x" onerror="void 0">');
+      expect(element.children.length).to.equal(1);
+      expect(element.firstElementChild.tagName).to.equal("TEMPLATE");
+      expect(element.querySelector("img")).to.not.exist;
     });
 
     it("handles self-referencing elements in getValueAsNode", () => {

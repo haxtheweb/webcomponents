@@ -526,7 +526,9 @@ export const displayBehaviors = function (SuperClass) {
               "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status=0",
             );
       if (print) {
-        print.document.head.innerHTML += `<style>
+        // styles are this element's own CSS, written as text
+        const style = print.document.createElement("style");
+        style.textContent = `
           ${editableTableDisplayStyles
             .map((s) => s.cssText.replace(/:host/g, "table"))
             .join(" ")}
@@ -534,8 +536,13 @@ export const displayBehaviors = function (SuperClass) {
             -webkit-print-color-adjust: exact !important;
             color-adjust: exact !important;
           }
-        </style>`;
-        print.document.body.innerHTML = this.getTableHTML(true);
+        `;
+        print.document.head.appendChild(style);
+        // security (JS-XSS): the print window is a live page; the table
+        // markup is author data, so it is sanitized as a whole on the way in
+        print.document.body.innerHTML = sanitizeHTMLString(
+          this.getTableHTML(true),
+        );
         print.document.close();
         print.focus();
         print.print();
@@ -687,7 +694,8 @@ export const displayBehaviors = function (SuperClass) {
         this.caption !== "null" &&
         this.caption !== "undefined"
           ? `\n\t<caption${!addStyleClasses ? "" : ` class="caption"`}>\n\t\t${
-              this.caption
+              // security (JS-XSS): the caption is author data, like a cell
+              sanitizeHTMLString(this.caption)
             }\n\t</caption>`
           : "",
         headers.length > 0
@@ -709,9 +717,8 @@ export const displayBehaviors = function (SuperClass) {
       ].join("");
       // allow response as a DOM node
       if (asNode) {
-        let div = globalThis.document.createElement("div");
-        div.innerHTML = response;
-        return div.querySelector("table");
+        // security (JS-XSS): parsed in an inert document, never a live div
+        return sanitizeHTMLForImport(response).querySelector("table");
       }
       return response;
     }
@@ -727,7 +734,8 @@ export const displayBehaviors = function (SuperClass) {
       for (let i in props) {
         n[i] = props[i];
       }
-      n.innerHTML = this.getTableHTML();
+      // security (JS-XSS): parsed in an inert document, never a live element
+      n.replaceChildren(sanitizeHTMLForImport(this.getTableHTML()));
       return n;
     }
     /**

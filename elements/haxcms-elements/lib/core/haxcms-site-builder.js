@@ -233,6 +233,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // insert happens later in _activeItemContentChanged after sanitizing
       const inert = globalThis.document.implementation.createHTMLDocument("");
       let tmp = inert.createElement("div");
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- tmp belongs to an inert document; content is sanitized before the live insert in _activeItemContentChanged
       tmp.innerHTML = data;
       // hosts add their own <script src> to every HTML file they serve (the
       // Vercel preview toolbar, dev-server reload sockets); drop those here
@@ -1567,7 +1568,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           return;
         }
         if (store.themeElement.childNodes.length === 0) {
-          let frag = document
+          // security (JS-XSS): parsed in an inert document (no browsing
+          // context), so nothing in the page loads, runs or upgrades before
+          // the passes below; elements upgrade once inserted
+          // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert document; neutralizeStrayScripts, sanitizeNodeTree and gateIframes run before the insert
+          let frag = globalThis.document.implementation
+            .createHTMLDocument("")
             .createRange()
             .createContextualFragment(this.replaceTagReplacement(htmlcontent));
           // createContextualFragment scripts run once connected; encapScript

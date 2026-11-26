@@ -162,6 +162,7 @@ class TwitterEmbedVanilla extends HTMLElement {
    * in html is validated and escaped (see the security note above)
    */
   _render() {
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- every value in the html getter is validated and escaped (escapeAttr / safe* helpers)
     this.innerHTML = this.html;
   }
   get dataWidth() {

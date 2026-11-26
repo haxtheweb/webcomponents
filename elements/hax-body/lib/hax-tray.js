@@ -2573,6 +2573,7 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
                     setAhead = true;
                     // inject the slotted content but use text nodes if this is a text element
                     if (HAXStore.isTextElement(this.activeNode)) {
+                      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- tmpel holds the sanitizeHTMLString output from the line above
                       this.activeNode.innerHTML = tmpel.innerHTML;
                     } else {
                       // wipe just the slot in question
