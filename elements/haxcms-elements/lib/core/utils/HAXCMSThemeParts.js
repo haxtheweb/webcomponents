@@ -5,6 +5,7 @@
 import { css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { applyFromStore } from "./storeApply.js";
 
 const HAXCMSThemeParts = function (SuperClass) {
   return class extends SuperClass {
@@ -31,7 +32,7 @@ const HAXCMSThemeParts = function (SuperClass) {
           }),
           autorun((_reaction) => {
             const _mobx_val_0 = toJS(store.darkMode);
-            Promise.resolve().then(() => {
+            applyFromStore(_reaction, () => {
               const darkMode = _mobx_val_0;
               if (this.darkMode !== darkMode) {
                 this.darkMode = darkMode;

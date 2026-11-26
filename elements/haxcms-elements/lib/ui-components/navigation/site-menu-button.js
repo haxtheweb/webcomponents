@@ -11,6 +11,7 @@ import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 /**
  * `site-menu-button`
  * `Menu button based on the hierarchy`
@@ -140,7 +141,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeRouterManifestIndex);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.activeRouterManifestIndex = _mobx_val_0;
         });
       }),
@@ -148,7 +149,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.routerManifest = _mobx_val_0;
         });
       }),
@@ -156,7 +157,7 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),

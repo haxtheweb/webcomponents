@@ -19,6 +19,7 @@ import "./lib/glossy-portfolio-footer.js";
 import "./lib/glossy-portfolio-home.js";
 import "./lib/glossy-portfolio-grid.js";
 import "./lib/glossy-portfolio-breadcrumb.js";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 /**
  * @title Glossy Portfolio
  * `A theme for creating glossy portfolio-style websites`
@@ -54,7 +55,7 @@ export class GlossyPortfolioTheme extends DDDSuper(
 
     autorun((_reaction) => {
       const _mobx_val_0 = toJS(store.activeItem);
-      Promise.resolve().then(() => {
+      applyFromStore(_reaction, () => {
         this.isHome = false; // default to false
         const active = _mobx_val_0;
         if (active) {

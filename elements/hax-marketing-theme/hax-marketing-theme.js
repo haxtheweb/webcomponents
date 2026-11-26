@@ -23,6 +23,7 @@ import "@haxtheweb/hax-marketing-theme/lib/hax-style-switcher.js";
 import "@haxtheweb/hax-marketing-theme/lib/hax-reel.js";
 import { applyMarketingPalette } from "@haxtheweb/hax-marketing-theme/lib/hax-marketing-palette.js";
 import { siteGoggles } from "@haxtheweb/haxcms-elements/lib/core/ui/haxcms-goggles-site.js";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 
 /**
  * `hax-marketing-theme`
@@ -128,12 +129,13 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
     // developer list and ?goggles= links put them on right here
     siteGoggles();
     // the site outline, read while the theme is on the page
-    this.__stopStore = autorun(() => {
+    this.__stopStore = autorun((reaction) => {
       const activeId = toJS(store.activeId);
       const manifest = toJS(store.manifest);
       const activeItem = toJS(store.activeItem);
       const editor = !!store.isLoggedIn;
-      Promise.resolve().then(() => {
+      // the first read lands before the first render (haxtheweb/issues#3431)
+      applyFromStore(reaction, () => {
         this._editor = editor;
         this._menu = "";
         this.activeId = activeId;

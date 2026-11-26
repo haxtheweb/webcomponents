@@ -61,6 +61,7 @@
     "precheck": "node scripts/precheck.mjs",
     "precheck:fix": "node scripts/precheck.mjs --fix",
     "codeql": "node scripts/codeql-local.mjs",
+    "report:theme-cost": "node scripts/theme-first-render-report.mjs",
     "codeql:install": "node scripts/codeql-local.mjs --install",
     "tokens:ddd": "node elements/d-d-d/design-system/build-tokens.js",
     "ddd:bridge": "node elements/d-d-d/design-system/bridge/build-bridge.js",

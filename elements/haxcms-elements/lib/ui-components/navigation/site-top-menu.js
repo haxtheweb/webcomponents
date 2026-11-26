@@ -11,6 +11,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 /**
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`
@@ -455,7 +456,7 @@ class SiteTopMenu extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),

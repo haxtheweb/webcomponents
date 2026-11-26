@@ -17,6 +17,7 @@ import {
   getEditModeContentSheet,
   syncEditModeContentStyles,
 } from "./utils/HAXCMSEditModeContentStyles.js";
+import { applyFromStore } from "./utils/storeApply.js";
 
 // create the edit mode content sheet before any editor (h-a-x) exists, so
 // h-a-x finds it among the document's .hax sheets when it first renders
@@ -62,7 +63,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.trayStatus);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.trayStatus = _mobx_val_0;
         });
       }),

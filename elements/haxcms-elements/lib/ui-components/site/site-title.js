@@ -9,6 +9,7 @@ import { HAXCMSI18NMixin } from "../../core/utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 
 /**
  * `site-title`
@@ -77,7 +78,7 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteTitle);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.siteTitle = _mobx_val_0;
         });
       }),
@@ -85,7 +86,7 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.homeLink);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.homeLink = _mobx_val_0;
         });
       }),
@@ -93,7 +94,7 @@ class SiteTitle extends HAXCMSThemeParts(HAXCMSI18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),
