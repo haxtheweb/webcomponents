@@ -4382,6 +4382,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ></simple-toolbar-button>
             <simple-toolbar-button
               ?hidden="${
+                !this.pageAllowed ||
+                this.editMode ||
+                !store.platformAllows("pageBreak")
+              }"
+              ?disabled="${this.adminDocked}"
+              class="top-bar-button"
+              id="editdetails"
+              icon="hax:page-details"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              label="${this.t.editDetails}"
+              @click="${this._pageDetailsButtonTap}"
+              voice-command="(open) page details"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              ?hidden="${
                 !this.activeItem ||
                 !this.activeItem.metadata ||
                 !this.activeItem.metadata.locked ||
@@ -9478,6 +9493,42 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * Toggle locked status
    */
+  /**
+   * Page details (haxtheweb/issues#2952): the active page's details in a
+   * modal, with the page actions menu's actions alongside them
+   */
+  async _pageDetailsButtonTap(_e) {
+    store.playSound("click");
+    await import("./haxcms-page-details-dialog.js");
+    const el = globalThis.document.createElement("haxcms-page-details-dialog");
+    const gap = "clamp(0px, 2vw - 8px, 32px)";
+    this.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: this.t.editDetails,
+          titleIcon: HaxUiAdminIcons.details,
+          elements: { content: el },
+          invokedBy: this.shadowRoot.querySelector("#editdetails"),
+          clone: false,
+          modal: true,
+          showClose: true,
+          styles: {
+            ...SITE_ADMIN_TITLEBAR_STYLES,
+            "--simple-modal-width": `min(560px, calc(100vw - 2 * ${gap}))`,
+            "--simple-modal-max-width": "560px",
+            "--simple-modal-height": "auto",
+            "--simple-modal-content-padding": "0",
+            "--simple-modal-content-container-background":
+              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+            "--simple-modal-z-index": "100000000",
+          },
+        },
+      }),
+    );
+  }
   _toggleLockedStatus(_e) {
     const item = toJS(store.activeItem);
     if (!item || !item.id) {
