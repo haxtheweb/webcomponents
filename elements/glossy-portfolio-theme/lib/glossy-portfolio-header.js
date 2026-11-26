@@ -8,6 +8,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 /**
  * `glossy-portfolio-header`
  *
@@ -49,7 +50,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.getItemChildren(null));
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           let items = _mobx_val_0;
           if (items && items.length > 0) {
             this.topItems = [...items];
@@ -62,7 +63,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.homeLink);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.homeLink = _mobx_val_0;
         });
       }),

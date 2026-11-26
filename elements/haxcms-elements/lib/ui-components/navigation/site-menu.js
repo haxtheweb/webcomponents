@@ -9,6 +9,7 @@ import "@haxtheweb/map-menu/map-menu.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
 import { LearnerProgress } from "../../core/haxcms-learner-progress.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
@@ -130,7 +131,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
           id && item && !item._internalRoute
             ? LearnerProgress.pageProgress(id).percent
             : null;
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this._activePercent = typeof percent === "number" ? percent : null;
         });
       }),
@@ -138,7 +139,7 @@ class SiteMenu extends I18NMixin(HAXCMSThemeParts(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.routerManifest = Object.assign({}, _mobx_val_0);
         });
       }),

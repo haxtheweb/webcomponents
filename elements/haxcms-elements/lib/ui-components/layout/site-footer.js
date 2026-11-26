@@ -7,6 +7,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/license-element/license-element.js";
 import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 /**
  * `site-footer`
  * `A basic site footer`
@@ -43,7 +44,7 @@ class SiteFooter extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.manifest = _mobx_val_0;
         });
       }),
@@ -51,7 +52,7 @@ class SiteFooter extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),
@@ -59,7 +60,7 @@ class SiteFooter extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteTitle);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.siteTitle = _mobx_val_0;
         });
       }),

@@ -11,6 +11,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 
 export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
   static get tag() {
@@ -39,7 +40,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           let activeItem = _mobx_val_0;
           if (activeItem && activeItem.metadata && activeItem.metadata.image) {
             this.mediaSource = activeItem.metadata.image;
@@ -52,7 +53,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           let activeItem = _mobx_val_0;
           if (activeItem && activeItem.description) {
             this.description = activeItem.description;

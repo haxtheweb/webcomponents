@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDReducedMotion } from "@haxtheweb/d-d-d/lib/DDDReducedMotion.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 /**
  * `site-dot-indicator`
  * `list of items based on manifest`
@@ -168,7 +169,7 @@ class SiteDotIndicator extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.routerManifest);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.routerManifest = _mobx_val_0;
         });
       }),
@@ -176,7 +177,7 @@ class SiteDotIndicator extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeId);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.activeId = _mobx_val_0;
         });
       }),
@@ -186,7 +187,7 @@ class SiteDotIndicator extends LitElement {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),

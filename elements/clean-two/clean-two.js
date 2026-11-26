@@ -28,6 +28,7 @@ import {
   DDDReadingSurface,
   dddReadingProse,
 } from "@haxtheweb/d-d-d/lib/DDDReading.js";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 /**
  * `Clean two`
  *
@@ -1037,7 +1038,7 @@ class CleanTwo extends LTIResizingMixin(
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeManifestIndex);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.activeManifestIndex = _mobx_val_0;
         });
       }),
@@ -1051,7 +1052,7 @@ class CleanTwo extends LTIResizingMixin(
           store.activeItem.metadata.updated
         ) {
           const _mobx_val_0 = toJS(store.activeItem.metadata.updated);
-          Promise.resolve().then(() => {
+          applyFromStore(_reaction, () => {
             this.pageTimestamp = _mobx_val_0;
           });
         }

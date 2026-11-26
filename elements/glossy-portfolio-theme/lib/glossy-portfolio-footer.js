@@ -9,6 +9,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 
 /**
  * `glossy-portfolio-footer`
@@ -42,7 +43,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.manifest);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.manifest = _mobx_val_0;
           let LList = new licenseList();
           if (
@@ -79,7 +80,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
             ? store.manifest.metadata.site.created
             : null,
         );
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           if (_mobx_val_0) {
             this.lastUpdated = new Date(_mobx_val_0 * 1000).toDateString();
           }

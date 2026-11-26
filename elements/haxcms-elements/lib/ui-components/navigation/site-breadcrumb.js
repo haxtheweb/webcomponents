@@ -10,6 +10,7 @@ import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDBreadcrumb } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 
 /**
  * `site-breadcrumb`
@@ -213,7 +214,7 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),

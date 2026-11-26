@@ -10,6 +10,7 @@ import {
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 
 /**
  * `site-active-title`
@@ -288,7 +289,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),
@@ -296,7 +297,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeItem);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           const activeItem = _mobx_val_0;
           this._activeHideTitle = !!(
             activeItem &&
@@ -315,7 +316,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTitle);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.activeTitle = _mobx_val_0;
           this.__title = this._makeTitle(
             this.dynamicMethodology,
@@ -329,7 +330,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.ancestorTitle);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.ancestorTitle = _mobx_val_0;
           this.__title = this._makeTitle(
             this.dynamicMethodology,
@@ -343,7 +344,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.parentTitle);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.parentTitle = _mobx_val_0;
           this.__title = this._makeTitle(
             this.dynamicMethodology,

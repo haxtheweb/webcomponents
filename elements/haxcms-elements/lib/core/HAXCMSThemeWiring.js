@@ -16,6 +16,7 @@ import {
 } from "@haxtheweb/utils/lib/sanitize.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
+import { applyFromStore } from "./utils/storeApply.js";
 // haxtheweb/issues#3431: learner progress (and the xAPI vocabulary it
 // brings, ~28 KB gzipped) is not needed to define or render a theme, but a
 // static import made every theme wait for it before a visitor saw the page.
@@ -299,7 +300,7 @@ const HAXCMSTheme = function (SuperClass) {
       this.__disposer.push(
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.activeItemContent);
-          Promise.resolve().then(() => {
+          applyFromStore(_reaction, () => {
             this.activeItemContent = _mobx_val_0;
           });
         }),
@@ -319,7 +320,7 @@ const HAXCMSTheme = function (SuperClass) {
       this.__disposer.push(
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.trayStatus);
-          Promise.resolve().then(() => {
+          applyFromStore(_reaction, () => {
             this.trayStatus = _mobx_val_0;
           });
         }),
@@ -331,7 +332,7 @@ const HAXCMSTheme = function (SuperClass) {
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.isLoggedIn);
           const _mobx_val_1 = toJS(store.previewMode);
-          Promise.resolve().then(() => {
+          applyFromStore(_reaction, () => {
             this.isLoggedIn = _mobx_val_0 && !_mobx_val_1;
           });
         }),
@@ -384,7 +385,7 @@ const HAXCMSTheme = function (SuperClass) {
       this.__disposer.push(
         autorun((_reaction) => {
           const _mobx_val_0 = toJS(store.location);
-          Promise.resolve().then(() => {
+          applyFromStore(_reaction, () => {
             this._location = _mobx_val_0;
           });
         }),

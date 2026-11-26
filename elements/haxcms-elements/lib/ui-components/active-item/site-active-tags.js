@@ -6,6 +6,7 @@ import { LitElement, html, css } from "lit";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { applyFromStore } from "../../core/utils/storeApply.js";
 // simple-tags is only loaded once a page actually has tags (see updated)
 let simpleTagsImport = null;
 function loadSimpleTags() {
@@ -142,7 +143,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.activeTags);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.tags = _mobx_val_0;
         });
       }),
@@ -150,7 +151,7 @@ class SiteActiveTags extends I18NMixin(LitElement) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.editMode);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.editMode = _mobx_val_0;
         });
       }),

@@ -8,6 +8,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { applyFromStore } from "@haxtheweb/haxcms-elements/lib/core/utils/storeApply.js";
 /**
  * `glossy-portfolio-home`
  *
@@ -28,7 +29,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer.push(
       autorun((_reaction) => {
         const _mobx_val_0 = toJS(store.siteDescription);
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.siteDescription =
             _mobx_val_0 || "A portfolio showcasing my work and projects.";
         });
@@ -43,7 +44,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
             ? store.themeData.variables.image
             : null,
         );
-        Promise.resolve().then(() => {
+        applyFromStore(_reaction, () => {
           this.backgroundImage = _mobx_val_0;
         });
       }),
