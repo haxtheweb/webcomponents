@@ -57,6 +57,7 @@ class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {
   haxactiveElementChanged(el, val) {
     // overwrite the HAX dom w/ what our editor is supplying
     if (!val && el) {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- the editor's own serialization of its live content, written back to the node it edits
       el.innerHTML = this.getValue();
     }
     return el;

@@ -67,6 +67,15 @@ describe("AppHaxBackendAPI", () => {
     it("returns absolute path as-is", () => {
       expect(el._renderUrl("/api/endpoint")).to.equal("/api/endpoint");
     });
+    it("keeps protocol-relative and backslash paths on this origin", () => {
+      expect(el._renderUrl("//evil.example/login")).to.equal(
+        "/evil.example/login",
+      );
+      expect(el._renderUrl("/\\evil.example/login")).to.equal(
+        "/evil.example/login",
+      );
+      expect(el._renderUrl("\\\\evil.example")).to.equal("/evil.example");
+    });
     it("prepends basePath for relative path", () => {
       expect(el._renderUrl("api/endpoint")).to.equal("/myapp/api/endpoint");
     });

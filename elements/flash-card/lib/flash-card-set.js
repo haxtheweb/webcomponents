@@ -9,6 +9,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "../flash-card.js";
+import { sanitizeHTMLForImport } from "@haxtheweb/utils/lib/sanitize.js";
 
 export class FlashCardSet extends I18NMixin(DDD) {
   static get tag() {
@@ -182,9 +183,15 @@ export class FlashCardSet extends I18NMixin(DDD) {
     // add the text
     // the set header names the block, so the card drops its own
     el._inSet = true;
-    el.innerHTML = `
-      <p slot="front">${arguments[1]}</p>
-      <p slot="back">${arguments[2]}</p>`;
+    // security (JS-XSS): the front and back are author markup; they are
+    // parsed inertly and sanitized, then added as nodes
+    const front = globalThis.document.createElement("p");
+    front.slot = "front";
+    front.append(sanitizeHTMLForImport(arguments[1]));
+    const back = globalThis.document.createElement("p");
+    back.slot = "back";
+    back.append(sanitizeHTMLForImport(arguments[2]));
+    el.append(front, back);
 
     el.setAttribute("img-source", arguments[3]);
 

@@ -124,6 +124,7 @@ class MoarSarcasm extends I18NMixin(HTMLElement) {
       this.shadowRoot.innerHTML = null;
     }
     if (this.template) {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- this element's own static template (fixed markup and shipped translations, no author data)
       this.template.innerHTML = this.html;
     }
     if (globalThis.ShadyCSS && this.template) {

@@ -195,13 +195,13 @@ describe("lrndesign-imagemap", () => {
       "svg",
     );
     element._getInfoNode(bareSvg, "title");
-    // the shadow heading supplies the new title's seeded content; svg
-    // elements escape assigned markup, so assert on the seeded text
+    // the shadow heading supplies the new title's text
     expect(bareSvg.querySelector("title").textContent).to.include("Test map");
     element._getInfoNode(bareSvg, "desc");
-    // the shadow desc supplies the new desc's seeded markup; unlike an
-    // html title (rcdata), a desc parses its markup into child elements
-    expect(bareSvg.querySelector("desc").innerHTML).to.include("slot");
+    // the slotted description supplies the new desc's text, as text only
+    const desc = bareSvg.querySelector("desc");
+    expect(desc.textContent).to.equal("A test map description.");
+    expect(desc.children.length).to.equal(0);
   });
 
   it("gets or generates element ids", async () => {

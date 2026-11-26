@@ -170,9 +170,10 @@ export default [
   {
     // Markup sinks (scripts/eslint-rules/html-sinks.mjs): a value that is not
     // a fixed string must be sanitized before it is written as HTML. Error,
-    // with every hit that predates the rule recorded in
-    // eslint-suppressions.json, so only new code is reported; fixing an old
-    // one: `npx eslint elements --prune-suppressions`.
+    // with no suppressions-file baseline: a sink that is safe for a reason
+    // the rule can't see carries an inline
+    // `eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- <why>`
+    // that a reviewer can check, so every new sink in any file is reported.
     files: ["elements/**/*.js"],
     plugins: { "haxtheweb-html": htmlSinks },
     rules: {

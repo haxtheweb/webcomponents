@@ -377,6 +377,7 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
       .setAttribute("disabled", "true");
     let endBtnDiv = globalThis.document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- fixed button markup with a shipped translation
     endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">${this.t.closeLecturePlayer}</simple-cta>`;
     endBtnDiv.classList.add("endBtnContainer");
     globalThis.document.querySelector(".jumbotron").appendChild(endBtnDiv);
@@ -393,6 +394,7 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   showModal() {
     let c = globalThis.document.createElement("div");
     c.classList.add("modal-content");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- fixed modal markup with no interpolated values
     c.innerHTML = `
     <style>
       simple-modal{

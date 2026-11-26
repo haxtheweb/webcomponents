@@ -148,6 +148,7 @@ class HtmlBlock extends HTMLElement {
         // see if we had anything in the holding pen
         if (this.__rawHTML) {
           this.__ignoreChange = true;
+          // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- raw HTML is restored only when the platform opted in to allowscript (HtmlBlock.platformAllowsScript, checked above)
           this.innerHTML = this.__rawHTML;
         }
       }

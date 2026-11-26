@@ -357,7 +357,7 @@ export class DesignSystem extends LitElement {
       } catch {
         const oldStyleSafariBs = globalThis.document.createElement("style");
         oldStyleSafariBs.setAttribute("data-ds", "style");
-        oldStyleSafariBs.innerHTML = globalStyles;
+        oldStyleSafariBs.textContent = globalStyles;
         globalThis.document.head.appendChild(oldStyleSafariBs);
       }
       if (newSystem.fonts) {

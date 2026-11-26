@@ -90,6 +90,29 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
   }
+  /**
+   * A width / height / background attribute as a CSS value: only plain CSS
+   * value characters, and a value the browser accepts for that property.
+   * security (JS-XSS): these attributes are author data written into this
+   * element's shadow markup, so quotes, angle brackets, braces and
+   * semicolons never get through
+   * @param {String} property CSS property the value is for
+   * @param {String} value the attribute value
+   * @returns {String} the value, or "" when it isn't a plain CSS value
+   */
+  _cssValue(property, value) {
+    if (typeof value !== "string" || !/^[-\w\s.,#%()/+]*$/.test(value)) {
+      return "";
+    }
+    if (
+      globalThis.CSS &&
+      typeof globalThis.CSS.supports === "function" &&
+      !globalThis.CSS.supports(property, value)
+    ) {
+      return "";
+    }
+    return value;
+  }
   get _label() {
     return `${this.t.simulation} · Unity`;
   }
@@ -155,7 +178,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
     <style>
       :host {
         display: block;
-        width: ${this.width};
+        width: ${this._cssValue("width", this.width)};
         max-width: 100%;
       }
       .ddd-block-body canvas {
@@ -193,7 +216,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
         }
       </div>
       <div class="ddd-block-body">
-        <canvas role="img" aria-label="${this._escape(this.t.player)}" style="width: ${this.width}; height: ${this.height}; background: ${this.background}"></canvas>
+        <canvas role="img" aria-label="${this._escape(this.t.player)}" style="width: ${this._cssValue("width", this.width)}; height: ${this._cssValue("height", this.height)}; background: ${this._cssValue("background", this.background)}"></canvas>
       </div>
     </div>`;
   }
@@ -229,6 +252,7 @@ class UnityWebgl extends I18NMixin(HTMLElement) {
    */
   render() {
     this.shadowRoot.innerHTML = null;
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- this element's own template; author attributes pass _escape / _cssValue in the html getter
     this.template.innerHTML = this.html;
 
     if (globalThis.ShadyCSS) {

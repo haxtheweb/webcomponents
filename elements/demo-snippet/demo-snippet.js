@@ -291,6 +291,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
     // Create a new template element with the markdown content
     const newTemplate = document.createElement("template");
     newTemplate.setAttribute("preserve-content", "preserve-content");
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert <template> content: demo source is shown as code, never rendered
     newTemplate.innerHTML = this._markdown;
 
     // Insert the template into the code-sample element

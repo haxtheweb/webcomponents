@@ -38,6 +38,11 @@ test("unsanitized-html-sink", () => {
       "html`<div title=\"${this.mood}\">${this.mood}</div>`;",
       "css`.innerHTML=${x}`;",
       `el.value = x;`,
+      `const safe = sanitizeHTMLString(x); el.innerHTML = safe;`,
+      "el.innerHTML = `<p>${sanitizeHTMLString(a)}</p><p>${\"b\"}</p>`;",
+      `let h = ""; h = sanitizeHTMLString(x); el.innerHTML = h;`,
+      `let h = sanitizeHTMLString(x); const g = h; unsafeHTML(g);`,
+      `function f() { const h = this.ok ? sanitizeHTMLString(x) : ""; el.innerHTML = h; }`,
     ],
     invalid: [
       { code: `el.innerHTML = this.label;`, errors: [error] },
@@ -51,6 +56,27 @@ test("unsanitized-html-sink", () => {
       { code: `unsafeHTML(this.body);`, errors: [error] },
       { code: "html`<div .innerHTML=\"${this.mood}\"></div>`;", errors: [error] },
       { code: "html`<div .innerHTML=${this.mood}></div>`;", errors: [error] },
+      { code: `const h = this.label; el.innerHTML = h;`, errors: [error] },
+      {
+        code: "el.innerHTML = `<p>${sanitizeHTMLString(a)}</p><p>${b}</p>`;",
+        errors: [error],
+      },
+      {
+        code: `let h = sanitizeHTMLString(x); h = data; el.innerHTML = h;`,
+        errors: [error],
+      },
+      {
+        code: `let h = sanitizeHTMLString(x); h += data; el.innerHTML = h;`,
+        errors: [error],
+      },
+      { code: `function f(h) { el.innerHTML = h; }`, errors: [error] },
+      { code: `el.innerHTML = undeclared;`, errors: [error] },
+      { code: `let h; el.innerHTML = h;`, errors: [error] },
+      {
+        code: `for (const h of list) { el.innerHTML = h; }`,
+        errors: [error],
+      },
+      { code: `let a = b; let b = a; el.innerHTML = a;`, errors: [error] },
     ],
   });
 });

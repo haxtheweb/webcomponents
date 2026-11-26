@@ -367,19 +367,21 @@ class LaTex extends I18NMixin(LitElement) {
   }
   // about to convert to content, ensure we are no longer the editable-table
   async haxpreProcessNodeToContent(node) {
-    node.innerHTML = this.initialText;
+    // security (JS-XSS): initialText is the LaTeX as text (innerText), so it
+    // goes back as text; as markup, a "<" in it would start a tag
+    node.textContent = this.initialText;
     node.hydrated = false;
     return node;
   }
   // ALWAYS enable edit mode if HAX is around
   haxactiveElementChanged(el, _val) {
-    this.innerHTML = this.initialText;
+    this.textContent = this.initialText;
     this.hydrated = false;
     return el;
   }
   // allow HAX to toggle edit state when activated
   haxeditModeChanged(_val) {
-    this.innerHTML = this.initialText;
+    this.textContent = this.initialText;
     this.hydrated = false;
     setTimeout(() => {
       this.hydrateLaTeX();

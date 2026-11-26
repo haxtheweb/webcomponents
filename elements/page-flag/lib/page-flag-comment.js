@@ -202,9 +202,10 @@ export class PageFlagComment extends I18NMixin(LitElement) {
             this.shadowRoot.querySelector("simple-fields-field").focus();
           }, 0);
         } else {
-          this.innerHTML = this.shadowRoot.querySelector(
-            "simple-fields-field",
-          ).value;
+          // security (JS-XSS): the comment is typed by a user
+          this.innerHTML = sanitizeHTMLString(
+            this.shadowRoot.querySelector("simple-fields-field").value,
+          );
         }
       }
     });

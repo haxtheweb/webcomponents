@@ -2374,6 +2374,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   // normalize this functionality with what we preovide in the View Source based method
   _onCommand(e) {
     if (e.detail.command && e.detail.command === "removeFormat") {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- stripMSWord of the node's own live markup; it only removes formatting
       this.activeNode.innerHTML = stripMSWord(this.activeNode.innerHTML);
     }
     // @todo this will help with keeping styling and slot in some situation
@@ -3471,6 +3472,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           for (let category of Object.keys(globalThis.SimplePickerEmojis)) {
             for (let emoji of globalThis.SimplePickerEmojis[category]) {
               if (input == "" || emoji.description.includes(input)) {
+                // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- textarea content is text (RCDATA): this only decodes an entity from the bundled emoji list
                 txt.innerHTML = emoji.value;
                 results.push({
                   title: emoji.description,
@@ -3794,6 +3796,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           const q = input.toLowerCase();
           for (let category of Object.keys(globalThis.SimplePickerSymbols)) {
             for (let symbol of globalThis.SimplePickerSymbols[category]) {
+              // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- textarea content is text (RCDATA): this only decodes an entity from the bundled symbol list
               txt.innerHTML = symbol.value;
               const name = nameFor(symbol.value);
               const match =

@@ -1,4 +1,4 @@
-import { fixture, expect, html } from "@open-wc/testing";
+import { fixture, expect, html, waitUntil } from "@open-wc/testing";
 
 import "../replace-tag.js";
 import "../lib/LoadingHelper.js";
@@ -67,6 +67,21 @@ describe("replace-tag basic construction", () => {
     const div = el.shadowRoot.querySelector("div");
     expect(div).to.exist;
     expect(div.textContent).to.contain("My Text");
+  });
+
+  it("writes importing-text as text, not markup", async () => {
+    const el = await fixture(
+      html`<replace-tag
+        with="undefined-rt-x"
+        importing-text='<img id="injected" src="x">'
+        >text</replace-tag
+      >`,
+    );
+    await waitUntil(() => el.shadowRoot.querySelector("#importing-text"));
+    expect(el.shadowRoot.querySelector("img")).to.not.exist;
+    expect(
+      el.shadowRoot.querySelector("#importing-text").textContent,
+    ).to.contain("<img");
   });
 });
 
@@ -238,15 +253,18 @@ describe("replace-tag with pre-defined element", () => {
 });
 
 describe("replace-tag html getter and render", () => {
-  it("html getter returns styled template with importingText", async () => {
+  it("html getter returns the styled template; importingText renders as text", async () => {
     const el = await fixture(
       html`<replace-tag with="undefined-rt-o" importing-text="MyMsg"
         >text</replace-tag
       >`,
     );
     await new Promise((resolve) => setTimeout(resolve, 200));
-    expect(el.html).to.contain("MyMsg");
     expect(el.html).to.contain("<style>");
+    expect(el.html).to.contain('id="importing-text"');
+    expect(el.shadowRoot.querySelector("#importing-text").textContent).to.equal(
+      "MyMsg",
+    );
   });
 
   it("render populates shadowRoot", async () => {

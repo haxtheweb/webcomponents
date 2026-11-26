@@ -6,6 +6,7 @@ import { LitElement } from "lit";
 import { RichTextEditorPromptButtonBehaviors } from "@haxtheweb/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { HAXStore } from "./hax-store.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 
 /**
  * `hax-text-editor-button`
@@ -208,7 +209,9 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
     this.__highlight.innerHTML = "";
     this.__highlight.parentNode.insertBefore(tag, this.__highlight);
     this.__highlight.unwrap();
-    tag.innerHTML = html;
+    // security (JS-XSS): slot values are typed into the editor's form, so
+    // they get the same sanitizing as any other editor insert
+    tag.innerHTML = sanitizeHTMLString(html);
   }
   /**
    * gets a slot wrapper tag that meets field requirements

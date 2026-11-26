@@ -1312,6 +1312,7 @@ export function normalizeClipboardHTML(html) {
   // and load <img src>, so strip those here, at the first parse.
   const inert = globalThis.document.implementation.createHTMLDocument("");
   const template = inert.createElement("template");
+  // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- template in an inert document; sanitizeNodeTree runs on it next
   template.innerHTML = html;
   const fragment = template.content;
   sanitizeNodeTree(fragment);
@@ -1615,6 +1616,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   // mark/abbr stay text-only as they rarely wrap elements.
   if (tag === "a") {
     if (node && node.children && node.children.length > 0) {
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- props is a plain object of element properties, not a DOM node
       props.innerHTML = slotContent;
       props.__htmlContent = true;
     } else {
@@ -1629,6 +1631,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
     tag === "ul" ||
     tag === "div"
   ) {
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- props is a plain object of element properties, not a DOM node
     props.innerHTML = slotContent;
   }
   let element = {

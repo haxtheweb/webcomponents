@@ -194,7 +194,8 @@ let __assign =
           ? (this.el.value = i)
           : "text" === this.el.tagName || "tspan" === this.el.tagName
             ? (this.el.textContent = i)
-            : (this.el.innerHTML = i);
+            : // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- formats a number; count-up passes prefix and suffix through _safeText
+              (this.el.innerHTML = i);
       }),
       (t.prototype.ensureNumber = function (t) {
         return "number" === typeof t && !isNaN(t);

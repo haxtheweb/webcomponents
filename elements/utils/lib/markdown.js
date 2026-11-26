@@ -516,6 +516,7 @@ export function htmlToMarkdown(html) {
   const doc = globalThis.document.implementation.createHTMLDocument("");
   // Security: the inert document never runs scripts or loads resources; the
   // result is text for an editor, not markup inserted into the page
+  // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert document; the result is text for an editor, not markup inserted into the page
   doc.body.innerHTML = typeof html === "string" ? html : "";
   const managed = [];
   const count = {};
@@ -578,6 +579,7 @@ export function restoreManagedAttributes(html, managed) {
   const doc = globalThis.document.implementation.createHTMLDocument("");
   // Security: inert document; only attributes are changed and the string is
   // handed back to the caller, which imports it through the HAX sanitizer
+  // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert document; the string goes back to a caller that imports it through the HAX sanitizer
   doc.body.innerHTML = typeof html === "string" ? html : "";
   const byTag = {};
   managed.forEach((m) => {

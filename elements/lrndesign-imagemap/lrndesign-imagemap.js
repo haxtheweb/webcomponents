@@ -712,6 +712,26 @@ class LrndesignImagemap extends I18NMixin(DDD) {
     this._progressChecked = true;
   }
   /**
+   * text of an element, with each slot standing in for what is slotted
+   * @param {object} el the shadow heading or description wrapper
+   * @returns {string}
+   */
+  _infoText(el) {
+    const walk = (node) => {
+      if (node.nodeType === globalThis.Node.TEXT_NODE) {
+        return node.textContent;
+      }
+      if (node.tagName === "SLOT") {
+        return node
+          .assignedNodes({ flatten: true })
+          .map((assigned) => assigned.textContent)
+          .join("");
+      }
+      return Array.from(node.childNodes, walk).join("");
+    };
+    return walk(el).replace(/\s+/g, " ").trim();
+  }
+  /**
    * Gets / Sets description and label
    * @param {object} svg an svg element
    * @param {string} nodeName  the name of the info element (title or desc)
@@ -724,8 +744,11 @@ class LrndesignImagemap extends I18NMixin(DDD) {
     if (!node) {
       node = globalThis.document.createElement(nodeName);
       svg.prepend(node);
-      if (query && query.innerHTML !== "") {
-        node.innerHTML = query.innerHTML;
+      // an SVG <title> / <desc> is text: copy the heading's or slotted
+      // description's text, never markup
+      const text = query ? this._infoText(query) : "";
+      if (text !== "") {
+        node.textContent = text;
       }
     }
     return this._getId(node);

@@ -248,7 +248,11 @@ const HAXCMSTheme = function (SuperClass) {
         // the site builder is inserting this page itself once the theme is
         // ready; only fill in when nothing is on its way
         if (this.childNodes.length === 0 && !this.__haxcmsContentPending) {
-          let frag = document
+          // security (JS-XSS): parsed in an inert document, as the site
+          // builder does, so nothing loads or runs before the passes below
+          // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert document; neutralizeStrayScripts, sanitizeNodeTree and gateIframes run before the insert
+          let frag = globalThis.document.implementation
+            .createHTMLDocument("")
             .createRange()
             .createContextualFragment(store.activeItemContent);
           // see haxcms-site-builder: scripts in this fragment would run

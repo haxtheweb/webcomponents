@@ -29,6 +29,7 @@ import {
   haxElementToNode,
   sanitizeHTMLString,
 } from "@haxtheweb/utils/utils.js";
+import { safeNavigateHref } from "@haxtheweb/utils/lib/sanitize.js";
 
 // pointer travel (px) before a mouse or pen press becomes a drag
 const DRAG_THRESHOLD = 5;
@@ -6037,7 +6038,9 @@ export class OutlineDesigner extends SchemaBehaviors(I18NMixin(LitElement)) {
                 detail: {},
               }),
             );
-            globalThis.location.href = href;
+            // security (JS-URL): a slug is author data; only http(s)
+            // navigation, never javascript: or data:
+            globalThis.location.href = safeNavigateHref(href);
             break;
           }
           case "lock":

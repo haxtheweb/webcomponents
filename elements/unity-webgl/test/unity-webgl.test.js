@@ -1,4 +1,4 @@
-import { fixture, expect, html, aTimeout } from "@open-wc/testing";
+import { fixture, expect, html, aTimeout, waitUntil } from "@open-wc/testing";
 import { UnityWebgl } from "../unity-webgl.js";
 
 // network stub: render() assigns the Unity loader through the script src
@@ -77,6 +77,23 @@ describe("unity-webgl", () => {
     expect(script.hasAttribute("src")).to.be.false;
   });
 
+  it("keeps markup in size and color attributes out of its shadow root", async () => {
+    const el = await fixture(
+      html`<unity-webgl
+        target="demo-build"
+        width='1px"><img id="injected" src="x"><b x="'
+        height="1px;}</style><img id=injected2 src=x><style>"
+        background="red"
+      ></unity-webgl>`,
+    );
+    await waitUntil(() => el.shadowRoot.querySelector("canvas"));
+    const canvas = el.shadowRoot.querySelector("canvas");
+    expect(el.shadowRoot.querySelector("img")).to.not.exist;
+    expect(canvas.getAttribute("style")).to.include("background: red");
+    expect(el._cssValue("width", "100%")).to.equal("100%");
+    expect(el._cssValue("width", "1px; color: red")).to.equal("");
+  });
+
   it("boots the unity instance once the loader script loads", async () => {
     const el = await fixture(
       html`<unity-webgl
@@ -146,7 +163,8 @@ describe("unity-webgl", () => {
     await aTimeout(50);
     expect(capturedScriptSrcs.includes("null.loader.js")).to.be.true;
     const canvas = el.shadowRoot.querySelector("canvas");
-    expect(canvas.getAttribute("style")).to.include("width: null");
+    // a missing size is left empty rather than written as "null"
+    expect(canvas.getAttribute("style")).to.include("width: ;");
   });
 
   it("clears the shadow root between renders", async () => {

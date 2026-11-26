@@ -214,7 +214,7 @@ class RichTextEditorSource extends LitElement {
       this.__target = undefined;
       this.disabled = true;
       this.__codeEditorValue = "";
-      this.innerHTML = this.__codeEditorValue;
+      this.innerHTML = "";
       globalThis.document.body.append(this);
     } else {
       this.__toolbar = toolbar;
@@ -226,6 +226,7 @@ class RichTextEditorSource extends LitElement {
       );
       this.__target.parentNode.insertBefore(this, this.__target);
       this.__codeEditorValue = this.__toolbar.targetHTML;
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- targetHTML is the markup of the editor's live target, mirrored into the source view
       this.innerHTML = this.__codeEditorValue;
       code.editorValue = this.__codeEditorValue;
       this.hidden = false;

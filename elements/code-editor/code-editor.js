@@ -7,6 +7,7 @@ import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import "@haxtheweb/code-editor/lib/monaco-element/monaco-element.js";
 import { removeTagsWithSpace } from "@haxtheweb/utils/lib/safe-html.js";
+import { sanitizeHTMLForImport } from "@haxtheweb/utils/lib/sanitize.js";
 /**
  * `code-editor`
  * `Wrapper on top of a code editor`
@@ -532,8 +533,14 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
   }
   _editorValueChanged(newValue) {
     if (newValue) {
+      // security (JS-XSS): the code goes into an inert <template>, never a
+      // live element, so a `</template>` in it can't close the wrapper early
+      // and let the rest of the code render or run
+      const template = globalThis.document.createElement("template");
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- inert <template> content: code is stored as written, never rendered or run
+      template.innerHTML = newValue;
       this.innerHTML = "";
-      this.innerHTML = `<template>${newValue}</template>`;
+      this.appendChild(template);
       // keep value in sync immediately so consumers reading .value
       // don't get undefined before the monaco iframe round-trips
       this.value = newValue;
@@ -583,7 +590,12 @@ class CodeEditor extends I18NMixin(SchemaBehaviors(LitElement)) {
       wrap = globalThis.document.createElement("p");
     }
     if (this.value) {
-      wrap.innerHTML = this.value;
+      // security (JS-XSS): editor source becomes page markup here, so it is
+      // parsed inertly and gets the same import sanitizing as a paste; code in
+      // <template> (code-sample) is left as written, as on the render path
+      wrap.replaceChildren(
+        sanitizeHTMLForImport(this.value, { sanitizeTemplateContents: false }),
+      );
     }
     // implies we were actually modifying the thing in question
     // which we wanted to leverage. Example, code-sample won't have code-sample as

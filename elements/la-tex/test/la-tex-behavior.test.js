@@ -189,6 +189,15 @@ describe("la-tex behavior", () => {
     expect(node.hydrated).to.equal(false);
   });
 
+  it("writes the latex back as text, so a < never starts a tag", async () => {
+    const element = await fixture(html`<la-tex></la-tex>`);
+    element.initialText = 'a<b <img src="x" onerror="void 0">';
+    const node = globalThis.document.createElement("div");
+    await element.haxpreProcessNodeToContent(node);
+    expect(node.querySelector("img")).to.not.exist;
+    expect(node.textContent).to.equal('a<b <img src="x" onerror="void 0">');
+  });
+
   it("restores the original latex when activated in HAX", async () => {
     const element = await fixture(html`<la-tex></la-tex>`);
     element.initialText = "\\frac{1}{2}";

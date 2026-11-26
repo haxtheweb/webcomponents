@@ -266,13 +266,9 @@ class EnhancedText extends LitElement {
 
   enhancedTextResponse(data) {
     if (data.status && data.data && data.data.length) {
-      // security: service response is untrusted; sanitize before innerHTML
-      let parser = new DOMParser();
-      let doc = parser.parseFromString(
-        sanitizeHTMLString(data.data),
-        "text/html",
-      );
-      this.innerHTML = doc.body.innerHTML;
+      // security (JS-XSS): service response is untrusted; sanitize before
+      // innerHTML
+      this.innerHTML = sanitizeHTMLString(data.data);
     }
   }
 

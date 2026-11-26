@@ -1090,7 +1090,7 @@ globalThis.SimpleColorsSharedStyles.requestAvailability = () => {
       globalThis.SimpleColorsSharedStyles.instance.contrasts;
     globalThis.SimpleColorsSharedStyles.stylesheet =
       globalThis.document.createElement("style");
-    globalThis.SimpleColorsSharedStyles.stylesheet.innerHTML = `${SimpleColorsSharedStyles.styles[0].cssText}`;
+    globalThis.SimpleColorsSharedStyles.stylesheet.textContent = `${SimpleColorsSharedStyles.styles[0].cssText}`;
     if (globalThis.document && globalThis.document.head) {
       globalThis.document.head.appendChild(
         globalThis.SimpleColorsSharedStyles.stylesheet,

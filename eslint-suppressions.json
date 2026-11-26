@@ -4,16 +4,6 @@
       "count": 2
     }
   },
-  "elements/a11y-details/a11y-details.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/a11y-media-player/a11y-media-player.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/a11y-media-player/lib/a11y-media-play-button.js": {
     "eqeqeq": {
       "count": 1
@@ -31,11 +21,6 @@
   },
   "elements/aframe-player/aframe-player.js": {
     "eqeqeq": {
-      "count": 1
-    }
-  },
-  "elements/air-horn/air-horn.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -140,9 +125,6 @@
   "elements/chartist-render/chartist-render.js": {
     "eqeqeq": {
       "count": 3
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/citation-element/citation-element.js": {
@@ -191,9 +173,6 @@
   "elements/code-editor/code-editor.js": {
     "eqeqeq": {
       "count": 3
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/code-editor/lib/code-pen-button.js": {
@@ -209,9 +188,6 @@
   "elements/code-sample/code-sample.js": {
     "eqeqeq": {
       "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 4
     }
   },
   "elements/collection-list/lib/collections-theme.js": {
@@ -225,11 +201,6 @@
   "elements/count-up/count-up.js": {
     "eqeqeq": {
       "count": 2
-    }
-  },
-  "elements/count-up/lib/countup.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/course-design/lib/course-intro-header.js": {
@@ -262,11 +233,6 @@
       "count": 1
     }
   },
-  "elements/d-d-d/lib/DesignSystemManager.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/d-d-d/lib/ddd-brochure-theme.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
@@ -275,27 +241,9 @@
       "count": 1
     }
   },
-  "elements/d-d-d/lib/mini-map.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/demo-snippet/demo-snippet.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/disqus-embed/lib/haxcms-site-disqus.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 4
-    }
-  },
-  "elements/editable-table/lib/editable-table-behaviors.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 4
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 1
     }
   },
   "elements/editable-table/lib/editable-table-display.js": {
@@ -323,29 +271,14 @@
       "count": 1
     }
   },
-  "elements/enhanced-text/enhanced-text.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/example-haxcms-theme/example-haxcms-theme.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
-  "elements/flash-card/lib/flash-card-set.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
   "elements/full-width-image/full-width-image.js": {
     "eqeqeq": {
       "count": 1
-    }
-  },
-  "elements/future-terminal-text/lib/FutureTerminalTextSuper.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/glossy-portfolio-theme/glossy-portfolio-theme.js": {
@@ -413,9 +346,6 @@
   "elements/h-a-x/h-a-x.js": {
     "eqeqeq": {
       "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/hax-body-behaviors/lib/HAXWiring.js": {
@@ -426,9 +356,6 @@
   "elements/hax-body/hax-body.js": {
     "eqeqeq": {
       "count": 23
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 9
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 5
@@ -484,23 +411,10 @@
     "eqeqeq": {
       "count": 35
     },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 3
-    },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 4
     },
     "haxtheweb-leaks/live-document-parse": {
-      "count": 1
-    }
-  },
-  "elements/hax-body/lib/hax-text-editor-button.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/hax-body/lib/hax-text-editor.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -517,9 +431,6 @@
   "elements/hax-body/lib/hax-tray.js": {
     "eqeqeq": {
       "count": 32
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 5
@@ -541,11 +452,6 @@
       "count": 1
     }
   },
-  "elements/hax-logo/hax-logo.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/haxcms-elements/lib/core/HAXCMSLitElementTheme.js": {
     "eqeqeq": {
       "count": 6
@@ -561,14 +467,8 @@
     "eqeqeq": {
       "count": 1
     },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    },
     "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 2
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js": {
@@ -610,16 +510,6 @@
       "count": 1
     }
   },
-  "elements/haxcms-elements/lib/core/haxcms-cheat-codes.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 10
-    }
-  },
-  "elements/haxcms-elements/lib/core/haxcms-content-admin-dialog.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/haxcms-elements/lib/core/haxcms-darkmode-toggle.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
@@ -639,14 +529,8 @@
     "eqeqeq": {
       "count": 11
     },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
-    },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 3
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 1
     }
   },
   "elements/haxcms-elements/lib/core/haxcms-site-dashboard.js": {
@@ -668,9 +552,6 @@
   "elements/haxcms-elements/lib/core/haxcms-site-editor.js": {
     "eqeqeq": {
       "count": 3
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     },
     "haxtheweb-leaks/disposer-without-disconnect": {
       "count": 1
@@ -743,11 +624,6 @@
   },
   "elements/haxcms-elements/lib/core/utils/LTIResizingMixin.js": {
     "haxtheweb-leaks/autorun-in-constructor": {
-      "count": 1
-    }
-  },
-  "elements/haxcms-elements/lib/core/utils/page-content-html.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -906,12 +782,6 @@
   "elements/haxcms-elements/lib/ui-components/site/site-random-content.js": {
     "eqeqeq": {
       "count": 2
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 1
     }
   },
   "elements/haxcms-elements/lib/ui-components/site/site-remote-content.js": {
@@ -960,16 +830,6 @@
       "count": 1
     }
   },
-  "elements/hexagon-loader/lib/hex-a-gon.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/html-block/html-block.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/i18n-manager/i18n-manager.js": {
     "eqeqeq": {
       "count": 2
@@ -1006,9 +866,6 @@
   "elements/json-outline-schema/json-outline-schema.js": {
     "eqeqeq": {
       "count": 4
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/json-outline-schema/lib/jos-render.js": {
@@ -1019,11 +876,6 @@
   "elements/jwt-login/jwt-login.js": {
     "eqeqeq": {
       "count": 4
-    }
-  },
-  "elements/la-tex/la-tex.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 3
     }
   },
   "elements/lazy-image-helpers/lazy-image-helpers.js": {
@@ -1042,11 +894,6 @@
   "elements/lorem-data/lib/lorem-data-behaviors.js": {
     "eqeqeq": {
       "count": 2
-    }
-  },
-  "elements/lrndesign-imagemap/lrndesign-imagemap.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/lrs-elements/lib/lrs-emitter.js": {
@@ -1079,11 +926,6 @@
       "count": 1
     }
   },
-  "elements/md-block/md-block.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/media-behaviors/media-behaviors.js": {
     "eqeqeq": {
       "count": 4
@@ -1092,16 +934,6 @@
   "elements/media-image/media-image.js": {
     "eqeqeq": {
       "count": 2
-    }
-  },
-  "elements/merit-badge/lib/date-title.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/moar-sarcasm/moar-sarcasm.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/multiple-choice/lib/QuestionElement.js": {
@@ -1135,24 +967,13 @@
       "count": 3
     }
   },
-  "elements/page-break/lib/page-break-manager.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/page-break/lib/page-break-outline.js": {
     "eqeqeq": {
-      "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
   "elements/page-break/page-break.js": {
     "eqeqeq": {
-      "count": 3
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 3
     },
     "haxtheweb-leaks/autorun-in-constructor": {
@@ -1166,9 +987,6 @@
   },
   "elements/page-flag/lib/page-flag-comment.js": {
     "eqeqeq": {
-      "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -1219,9 +1037,6 @@
   "elements/portal-launcher/portal-launcher.js": {
     "eqeqeq": {
       "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/promise-progress/lib/promise-progress-lite.js": {
@@ -1229,19 +1044,9 @@
       "count": 1
     }
   },
-  "elements/q-r/lib/qr-code.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/relative-heading/lib/relative-heading-state-manager.js": {
     "eqeqeq": {
       "count": 1
-    }
-  },
-  "elements/replace-tag/replace-tag.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 3
     }
   },
   "elements/responsive-grid/lib/responsive-grid-row.js": {
@@ -1272,32 +1077,14 @@
       "count": 1
     }
   },
-  "elements/rich-text-editor/lib/singletons/rich-text-editor-highlight.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js": {
     "eqeqeq": {
       "count": 5
     }
   },
-  "elements/rich-text-editor/lib/singletons/rich-text-editor-source.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 4
-    }
-  },
   "elements/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js": {
     "eqeqeq": {
       "count": 4
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
-    }
-  },
-  "elements/rich-text-editor/rich-text-editor.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/schema-behaviors/schema-behaviors.js": {
@@ -1307,11 +1094,6 @@
   },
   "elements/self-check/self-check.js": {
     "eqeqeq": {
-      "count": 1
-    }
-  },
-  "elements/shadow-style/shadow-style.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -1340,42 +1122,14 @@
       "count": 1
     }
   },
-  "elements/simple-colors-shared-styles/simple-colors-shared-styles.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-camera-snap.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/simple-fields/lib/simple-fields-code.js": {
     "eqeqeq": {
-      "count": 2
-    }
-  },
-  "elements/simple-fields/lib/simple-fields-container.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 2
     }
   },
   "elements/simple-fields/lib/simple-fields-form-lite.js": {
     "eqeqeq": {
       "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-fields-html-block.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    },
-    "haxtheweb-leaks/live-document-parse": {
-      "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-fields-lite.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/simple-fields/lib/simple-fields-tag-list.js": {
@@ -1390,16 +1144,6 @@
   },
   "elements/simple-fields/lib/simple-fields-url-combo-item.js": {
     "eqeqeq": {
-      "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-login-avatar.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
-  "elements/simple-fields/lib/simple-login-camera.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -1461,11 +1205,6 @@
   "elements/simple-popover/lib/simple-tour.js": {
     "eqeqeq": {
       "count": 6
-    }
-  },
-  "elements/simple-progress/simple-progress.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/simple-toast/lib/simple-toast-el.js": {
@@ -1583,24 +1322,15 @@
   "elements/twitter-embed/lib/twitter-embed-vanilla.js": {
     "eqeqeq": {
       "count": 6
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
     }
   },
   "elements/undo-manager/undo-manager.js": {
     "eqeqeq": {
       "count": 6
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 4
     }
   },
   "elements/unity-webgl/unity-webgl.js": {
     "eqeqeq": {
-      "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },
@@ -1610,11 +1340,6 @@
     },
     "haxtheweb-leaks/autorun-in-constructor": {
       "count": 1
-    }
-  },
-  "elements/utils/lib/markdown.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/utils/lib/object-path.js": {
@@ -1627,25 +1352,14 @@
       "count": 1
     }
   },
-  "elements/utils/lib/sanitize.js": {
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 1
-    }
-  },
   "elements/utils/utils.js": {
     "eqeqeq": {
       "count": 21
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 3
     }
   },
   "elements/video-player/lib/lecture-player.js": {
     "eqeqeq": {
       "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
-      "count": 2
     }
   },
   "elements/video-player/video-player.js": {
@@ -1655,9 +1369,6 @@
   },
   "elements/wikipedia-query/wikipedia-query.js": {
     "eqeqeq": {
-      "count": 1
-    },
-    "haxtheweb-html/unsanitized-html-sink": {
       "count": 1
     }
   },

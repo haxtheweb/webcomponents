@@ -53,6 +53,7 @@
     "@haxtheweb/simple-toast": "^26.11.0",
     "@haxtheweb/simple-toolbar": "^26.11.0",
     "@haxtheweb/user-action": "^26.11.0",
+    "@haxtheweb/utils": "^26.11.0",
     "lit": "3.3.3"
   },
   "devDependencies": {

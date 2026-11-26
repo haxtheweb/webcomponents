@@ -62,6 +62,7 @@ class MdBlock extends DDD {
 
   // render function
   render() {
+    // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- _parsedMarkdown is only ever set to sanitizeHTMLString output or "" (see updated)
     return html`<div>${unsafeHTML(this._parsedMarkdown)}</div>
       ${
         this._loadError

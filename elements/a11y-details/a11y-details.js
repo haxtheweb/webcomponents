@@ -500,7 +500,8 @@ class A11yDetails extends I18NMixin(LitElement) {
       tagName = clone.tagName;
     }
     let slot = this._getSlot(slotName, tagName);
-    slot.innerHTML = clone.innerHTML;
+    // move the cloned nodes over: they are already parsed, no reparse
+    slot.replaceChildren(...Array.from(clone.childNodes));
     clone.remove();
   }
   /**

@@ -135,12 +135,14 @@ class ShadowStyle extends HTMLElement {
         }
         // make a style tag that is empty
         let style = globalThis.document.createElement("style");
-        style.innerHTML = "";
-        // apply any / all selectors found to this element
+        // apply any / all selectors found to this element; CSS is set as
+        // text, so a "</style>" in it can't end the style and start markup
+        let cssText = "";
         for (let shadowSelector in this.cssMap[tagName]) {
           // append the selector
-          style.innerHTML += `${shadowSelector} {${this.cssMap[tagName][shadowSelector]}}`;
+          cssText += `${shadowSelector} {${this.cssMap[tagName][shadowSelector]}}`;
         }
+        style.textContent = cssText;
         // append it to the shadowRoot of the node in question
         appendTo.appendChild(style);
       });

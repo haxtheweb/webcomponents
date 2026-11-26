@@ -8,6 +8,7 @@ import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 import { stripHtmlComments } from "./lib/stripHtmlComments.js";
+import { sanitizeHTMLString } from "@haxtheweb/utils/lib/sanitize.js";
 /**
 
  * RichTextEditorBehaviors
@@ -298,7 +299,9 @@ const RichTextEditorBehaviors = function (SuperClass) {
         super.firstUpdated(changedProperties);
       }
       if (this.isEmpty && !!this.rawhtml) {
-        this.innerHTML = this.rawhtml.trim();
+        // security (JS-XSS): rawhtml is an attribute; it becomes editable
+        // live content, so it gets the editor's import sanitizing
+        this.innerHTML = sanitizeHTMLString(this.rawhtml.trim());
       } else if (this.isEmpty) {
         this.innerHTML = "";
       }
@@ -308,7 +311,7 @@ const RichTextEditorBehaviors = function (SuperClass) {
       super.updated(changedProperties);
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "rawhtml" && !!this.rawhtml) {
-          this.innerHTML = this.rawhtml.trim();
+          this.innerHTML = sanitizeHTMLString(this.rawhtml.trim());
         }
         if (propName === "contenteditable") this._contenteditableChange();
       });

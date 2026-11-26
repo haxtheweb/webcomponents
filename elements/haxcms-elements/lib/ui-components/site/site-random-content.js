@@ -262,9 +262,12 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       return [];
     }
 
-    // Create a temporary div to parse HTML
-    const tempDiv = globalThis.document.createElement("div");
-    tempDiv.innerHTML = htmlContent;
+    // security (JS-XSS): page HTML is parsed in an inert document and
+    // sanitized at the parse, never in a live div, so nothing in it runs or
+    // loads before the sanitized render below
+    const inert = globalThis.document.implementation.createHTMLDocument("");
+    const tempDiv = inert.createElement("div");
+    tempDiv.innerHTML = sanitizeHTMLString(htmlContent);
 
     // Get all direct children that are meaningful content elements
     const topLevelElements = [];

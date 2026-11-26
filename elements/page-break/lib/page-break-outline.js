@@ -168,6 +168,7 @@ export class PageBreakOutline extends HTMLElement {
         }
       }
       html += "</ul>" + "\n";
+      // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- fixed list markup; every authored value passes escapeHTML above
       container.innerHTML = html;
     }
   }

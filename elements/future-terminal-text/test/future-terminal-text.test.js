@@ -191,6 +191,36 @@ describe("future-terminal-text-lite (lib) behavior", () => {
     }
   });
 
+  it("scrambles text only and restores markup afterwards", async () => {
+    const el = await fixture(
+      html`<future-terminal-text-lite
+        >Ximg src=x onerror=void(0)<b>bold</b></future-terminal-text-lite
+      >`,
+    );
+    const before = el.innerHTML;
+    const originalMatchMedia = globalThis.matchMedia;
+    const originalRandom = Math.random;
+    globalThis.matchMedia = () => ({ matches: false });
+    // char code 60: every scramble writes a "<" into the text
+    Math.random = () => 0.6;
+    try {
+      el.glitchMax = 1;
+      el.glitchDuration = 1;
+      el._wait = () => {
+        // mid-glitch: the scrambled "<" is text, never the start of a tag
+        expect(el.children.length).to.equal(0);
+        expect(el.textContent).to.include("<");
+        return Promise.resolve();
+      };
+      await el._doGlitch();
+      expect(el.innerHTML).to.equal(before);
+      expect(el.querySelector("b")).to.exist;
+    } finally {
+      Math.random = originalRandom;
+      globalThis.matchMedia = originalMatchMedia;
+    }
+  });
+
   it("glitches and then restores the original text", async () => {
     const el = await fixture(
       html`<future-terminal-text-lite>dddd</future-terminal-text-lite>`,

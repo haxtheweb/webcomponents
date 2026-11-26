@@ -92,6 +92,7 @@ export function buildPageContentHTML(htmlcontent, activeItem, options = {}) {
   }
   wrapper.appendChild(pageBreak);
   // parsed in the inert document: same markup, no element upgrades
+  // eslint-disable-next-line haxtheweb-html/unsanitized-html-sink -- wrapper belongs to an inert document; callers sanitize before any live insert
   wrapper.insertAdjacentHTML("beforeend", htmlcontent);
   // a link-out page also gets a plain link and a short hint, for visitors
   if (safeLinkUrl) {
