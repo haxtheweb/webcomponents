@@ -1,4 +1,4 @@
-import { expect } from "@open-wc/testing";
+import { expect, waitUntil } from "@open-wc/testing";
 import {
   vhsBlogCase,
   vhsBlogContrast,
@@ -7,6 +7,7 @@ import {
   VHS_BLOG_PALETTES,
   VHS_BLOG_FACES,
   VHS_BLOG_STICKERS,
+  vhsBlogLoadFace,
 } from "../lib/vhs-blog-case.js";
 
 // a spread of real-world titles, short and very long
@@ -92,5 +93,53 @@ describe("vhs-blog case generator", () => {
         (t.trim() || "Untitled").replace(/\s+/g, " "),
       );
     });
+  });
+});
+
+// haxtheweb/issues#3428: a shelf of covers loaded a dozen display faces at
+// first paint; a face for a case now waits until the case is near the screen
+describe("vhs-blog case faces", () => {
+  const fontLink = (family) =>
+    globalThis.document.head.querySelector(`link[data-hax-font="${family}"]`);
+  const forget = (family) => {
+    const link = fontLink(family);
+    if (link) {
+      link.remove();
+    }
+  };
+
+  it("loads a case's face only once the case comes near the screen", async () => {
+    forget("Staatliches");
+    const spacer = globalThis.document.createElement("div");
+    spacer.style.height = "5000px";
+    const host = globalThis.document.createElement("div");
+    host.style.height = "50px";
+    globalThis.document.body.appendChild(spacer);
+    globalThis.document.body.appendChild(host);
+    try {
+      vhsBlogLoadFace("Staatliches", host);
+      // give the observer its first look: the case is far below the screen
+      await new Promise((resolve) =>
+        globalThis.requestAnimationFrame(() =>
+          globalThis.requestAnimationFrame(resolve),
+        ),
+      );
+      expect(fontLink("Staatliches")).to.equal(null);
+      host.scrollIntoView();
+      await waitUntil(
+        () => fontLink("Staatliches"),
+        "the face loads once the case is near the screen",
+      );
+    } finally {
+      spacer.remove();
+      host.remove();
+      globalThis.scrollTo(0, 0);
+    }
+  });
+
+  it("loads at once without an element (the theme's own chrome)", () => {
+    forget("Special Elite");
+    vhsBlogLoadFace("Special Elite");
+    expect(fontLink("Special Elite")).to.not.equal(null);
   });
 });

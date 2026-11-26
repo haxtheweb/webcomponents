@@ -386,7 +386,7 @@ export class VhsBlogSpine extends LitElement {
     }
     if (changedProperties.has("caseTitle") || changedProperties.has("seed")) {
       const c = vhsBlogCase(this.caseTitle, this.seed);
-      vhsBlogLoadFace(c.family);
+      vhsBlogLoadFace(c.family, this);
       this._fit();
     }
   }
