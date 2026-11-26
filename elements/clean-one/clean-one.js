@@ -24,7 +24,6 @@ import "./lib/clean-one-search-box.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
-import { HAXCMSThemeVideoPlayerPalette } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeVideoPlayerPalette.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { DDDBreakpoints } from "@haxtheweb/d-d-d/lib/DDDLayout.js";
@@ -75,7 +74,6 @@ class CleanOne extends LTIResizingMixin(
   static get styles() {
     return [
       super.styles,
-      HAXCMSThemeVideoPlayerPalette,
       DDDReadingSurface,
       css`
         :host {

@@ -23,7 +23,6 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/progress/my-learning-button.js";
-import { HAXCMSThemeVideoPlayerPalette } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeVideoPlayerPalette.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
   DDDReadingSurface,
@@ -63,7 +62,6 @@ class CleanTwo extends LTIResizingMixin(
     return [
       super.styles,
       DDDReadingSurface,
-      HAXCMSThemeVideoPlayerPalette,
       css`
         :host {
           --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
