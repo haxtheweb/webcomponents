@@ -351,7 +351,6 @@
   "elements/twenty-six-theme/test/twenty-six-theme.test.js": 1,
   "elements/type-writer/test/type-writer.test.js": 7,
   "elements/undo-manager/test/undo-manager-behaviors.test.js": 1,
-  "elements/unity-webgl/test/unity-webgl.test.js": 12,
   "elements/user-scaffold/test/user-scaffold-idle-counter.test.js": 9,
   "elements/utils/test/idle.test.js": 1,
   "elements/utils/test/utils-deep-imports.test.js": 1,
