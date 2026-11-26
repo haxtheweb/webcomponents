@@ -308,3 +308,35 @@ describe("clean-two palette pattern (same as clean-one)", () => {
     }
   });
 });
+
+describe("clean-two new page scroll and content links", () => {
+  it("starts a new page at the top of its own scroller, never scrolling the page around it", async () => {
+    const el = await fixture(html`<clean-two></clean-two>`);
+    await el.updateComplete;
+    const target = el.HAXCMSThemeSettings.scrollTarget;
+    // no scrollIntoView: that also scrolled the locked page on mobile
+    expect(target.scrollIntoView).to.equal(undefined);
+    expect(typeof target.scrollTo).to.equal("function");
+    const wrapper = el.shadowRoot.querySelector(".body-wrapper");
+    let called = null;
+    const real = wrapper.scrollTo;
+    wrapper.scrollTo = (o) => {
+      called = o;
+    };
+    target.scrollTo({ top: 0, left: 0 });
+    wrapper.scrollTo = real;
+    expect(called).to.deep.equal({ top: 0, left: 0 });
+  });
+
+  it("colors class-less content links with the palette, Monotone excepted", () => {
+    const el = new CleanTwo();
+    const text = el
+      .HAXCMSGlobalStyleSheetContent()
+      .map((s) => (s && s.cssText) || "")
+      .join("\n");
+    expect(text).to.include(
+      'clean-two:not([data-palette="5"]) a:any-link:not([class])',
+    );
+    expect(text).to.include("var(--ddd-palette-link)");
+  });
+});

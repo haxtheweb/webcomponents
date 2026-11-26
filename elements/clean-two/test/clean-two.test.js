@@ -367,7 +367,7 @@ describe("clean-two mobile responsiveness", function () {
     expect(leftColStyle.zIndex).to.equal("16");
     expect(leftColStyle.backgroundColor).to.not.equal("rgba(0, 0, 0, 0)");
   });
-  it("targets a true top anchor for route scroll in logged-in mobile", async () => {
+  it("starts a new page at the true top in logged-in mobile", async () => {
     const el = await fixture(html`<clean-two is-logged-in></clean-two>`);
     const cssText = el.constructor.styles
       .map((style) => style.cssText || "")
@@ -379,9 +379,15 @@ describe("clean-two mobile responsiveness", function () {
     expect(themeTop).to.exist;
     expect(contentWrapper).to.exist;
     expect(el.HAXCMSThemeSettings.scrollSettings.block).to.equal("start");
-    expect(el.HAXCMSThemeSettings.scrollTarget).to.equal(
-      inEmbeddedContext ? contentWrapper : themeTop,
-    );
+    const target = el.HAXCMSThemeSettings.scrollTarget;
+    if (inEmbeddedContext) {
+      expect(target === contentWrapper).to.equal(true);
+    } else {
+      // scrolls the theme's own scroller to its top; never scrollIntoView,
+      // which also moved the locked page around the theme on mobile
+      expect(typeof target.scrollTo).to.equal("function");
+      expect(target.scrollIntoView).to.equal(undefined);
+    }
     expect(cssText).to.include("height: 100dvh;");
     expect(cssText).to.include("height: calc(100dvh - 56px);");
     expect(cssText).to.include("scroll-padding-top");

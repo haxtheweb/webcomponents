@@ -66,6 +66,17 @@ describe("clean-one theme metadata", () => {
     }
   });
 
+  it("colors class-less content links with the palette, Monotone excepted", () => {
+    const el = new CleanOne();
+    const text = el
+      .HAXCMSGlobalStyleSheetContent()
+      .map((s) => (s && s.cssText) || "")
+      .join("\n");
+    expect(text).to.include(
+      'clean-one:not([data-palette="5"]) a:any-link:not([class])',
+    );
+  });
+
   it("defaults dataPalette to 5 (Monotone)", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
     expect(el.dataPalette).to.equal(5);

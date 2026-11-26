@@ -757,6 +757,15 @@ class CleanTwo extends LTIResizingMixin(
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       dddReadingProse("clean-two"),
+      css`
+        /* links in the page take the site palette's link color (made to
+           read on light and dark); Monotone, the default, keeps the DDD
+           link color it always had. Class-less links only, so links styled
+           as buttons or chips keep their own colors */
+        clean-two:not([data-palette="5"]) a:any-link:not([class]) {
+          color: var(--ddd-palette-link);
+        }
+      `,
     ];
   }
   firstUpdated(changedProperties) {
@@ -775,10 +784,17 @@ class CleanTwo extends LTIResizingMixin(
       block: "start",
       inline: "nearest",
     };
+    // a new page starts at the top of the theme's own scroller (the body
+    // wrapper). scrollIntoView on the top marker also scrolled the page
+    // around the theme, which body overflow: hidden then kept the reader
+    // from scrolling back (mobile lost the top of the rail); scrollTo on
+    // the wrapper moves only the theme
     this.HAXCMSThemeSettings.scrollTarget =
       inEmbeddedContext && contentWrapper
         ? contentWrapper
-        : themeTop || contentWrapper;
+        : bodyWrapper
+          ? { scrollTo: (options) => bodyWrapper.scrollTo(options) }
+          : themeTop || contentWrapper;
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       contentWrapper || this.HAXCMSThemeSettings.siteMenuContent;
     // shadow ready which means we should be able to open this even on a slow load

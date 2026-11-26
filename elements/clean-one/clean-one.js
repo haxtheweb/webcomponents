@@ -1045,6 +1045,15 @@ class CleanOne extends LTIResizingMixin(
       ...super.HAXCMSGlobalStyleSheetContent(),
       dddReadingProse("clean-one"),
       css`
+        /* links in the page take the site palette's link color (made to
+           read on light and dark); Monotone, the default, keeps the DDD
+           link color it always had. Class-less links only, so links styled
+           as buttons or chips keep their own colors */
+        clean-one:not([data-palette="5"]) a:any-link:not([class]) {
+          color: var(--ddd-palette-link);
+        }
+      `,
+      css`
         :host,
         html,
         body {
