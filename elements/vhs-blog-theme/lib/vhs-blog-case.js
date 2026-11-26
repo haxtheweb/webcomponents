@@ -296,12 +296,52 @@ export function vhsBlogCase(title, seed = 0) {
   };
 }
 
+// cases waiting to come near the screen, and the faces each one needs
+let vhsBlogNearScreen = null;
+const vhsBlogWaiting = new WeakMap();
+
 /**
  * Load a font family once per document, only when a case on the page uses
  * it. HAX ships every face here (d-d-d/lib/fonts), so none comes from
  * Google; @font-face has to live in the document for shadow roots to use it.
+ *
+ * Given the element that draws the case, the face waits until that element
+ * is within 400px of the screen (haxtheweb/issues#3428): a shelf of covers
+ * named a dozen display faces at once, ~300 KB of fonts at first paint, for
+ * covers mostly further down the page. Without an element (the theme's own
+ * chrome) the face loads at once.
  * @param {string} family
+ * @param {Element} [host] the element that draws the case
  */
-export function vhsBlogLoadFace(family) {
-  loadFontFamily(family);
+export function vhsBlogLoadFace(family, host) {
+  if (!host || typeof globalThis.IntersectionObserver !== "function") {
+    loadFontFamily(family);
+    return;
+  }
+  let faces = vhsBlogWaiting.get(host);
+  if (faces) {
+    faces.add(family);
+    return;
+  }
+  faces = new Set([family]);
+  vhsBlogWaiting.set(host, faces);
+  if (!vhsBlogNearScreen) {
+    vhsBlogNearScreen = new globalThis.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+          const waiting = vhsBlogWaiting.get(entry.target);
+          vhsBlogWaiting.delete(entry.target);
+          vhsBlogNearScreen.unobserve(entry.target);
+          if (waiting) {
+            waiting.forEach((name) => loadFontFamily(name));
+          }
+        });
+      },
+      { rootMargin: "400px" },
+    );
+  }
+  vhsBlogNearScreen.observe(host);
 }

@@ -155,7 +155,7 @@ export class VhsBlogBack extends LitElement {
 
   render() {
     const c = vhsBlogCase(this.caseTitle, this.seed);
-    vhsBlogLoadFace(c.family);
+    vhsBlogLoadFace(c.family, this);
     const vars = {
       "--vhs-case-bg": c.bg,
       "--vhs-case-ink": c.ink,

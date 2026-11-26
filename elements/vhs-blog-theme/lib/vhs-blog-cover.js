@@ -300,7 +300,7 @@ export class VhsBlogCover extends LitElement {
       super.updated(changedProperties);
     }
     if (changedProperties.has("caseTitle") || changedProperties.has("seed")) {
-      vhsBlogLoadFace(vhsBlogCase(this.caseTitle, this.seed).family);
+      vhsBlogLoadFace(vhsBlogCase(this.caseTitle, this.seed).family, this);
     }
   }
 
