@@ -215,7 +215,11 @@ export class HAXCMSReadingProgress {
       this._readyAt = Date.now();
     }
     this._observeChildren();
-    this.measure();
+    // haxtheweb/issues#3428: measured on the next throttled tick, not here.
+    // ready() runs right after the content was put in place, so reading its
+    // size now made the browser lay out the whole page on the spot, before
+    // the elements in it had upgraded, and again once they did.
+    this.schedule();
   }
   /**
    * End the visit: a share read past the last one reported goes out as a

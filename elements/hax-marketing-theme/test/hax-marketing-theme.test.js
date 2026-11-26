@@ -5,6 +5,7 @@ import {
   lockLightColorScheme,
 } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeA11yTestHelpers.js";
 import { HaxMarketingTheme } from "../hax-marketing-theme.js";
+import { applyMarketingPalette } from "../lib/hax-marketing-palette.js";
 
 // a theme made from this one, as the README describes
 class MarketingSubTheme extends HaxMarketingTheme {
@@ -307,5 +308,43 @@ describe("hax-marketing-theme", function () {
     await expect(element).shadowDom.to.be.accessible({
       ignoredRules: ["skip-link"],
     });
+  });
+});
+
+// haxtheweb/issues#3428: all four colors are read in one style pass; the
+// roles they produce are the same as reading them one at a time
+describe("applyMarketingPalette", () => {
+  it("sets the roles from the palette where the host sits", async () => {
+    const host = await fixture(
+      html`<div
+        style="--ddd-palette-color-1: #001e44; --ddd-palette-color-4: #ffd100; --ddd-palette-color-6: #1e407c; color-scheme: light;"
+      ></div>`,
+    );
+    applyMarketingPalette(host);
+    const role = (name) => host.style.getPropertyValue(name);
+    expect(role("--hm-brand")).to.equal("var(--ddd-palette-color-1)");
+    // dark navy brand: white text on it, and it shows against a light page
+    expect(role("--hm-on-brand")).to.equal("#ffffff");
+    expect(role("--hm-edge")).to.equal("var(--ddd-palette-color-1)");
+    // gold accent reads on the navy band, with black text on it
+    expect(role("--hm-accent")).to.equal("var(--ddd-palette-color-4)");
+    expect(role("--hm-on-accent")).to.equal("#000000");
+    expect(role("--hm-shade")).to.equal("var(--ddd-palette-color-4)");
+    expect(role("--hm-shade-2")).to.equal("var(--ddd-palette-color-6)");
+    // the probes are gone
+    expect(host.querySelector("span")).to.equal(null);
+  });
+
+  it("falls back to ink when the accent cannot show on the brand", async () => {
+    const host = await fixture(
+      html`<div
+        style="--ddd-palette-color-1: #001e44; --ddd-palette-color-4: #002050; color-scheme: light;"
+      ></div>`,
+    );
+    applyMarketingPalette(host);
+    expect(host.style.getPropertyValue("--hm-accent")).to.equal("#ffffff");
+    expect(host.style.getPropertyValue("--hm-on-accent")).to.equal(
+      "var(--ddd-palette-color-1)",
+    );
   });
 });
