@@ -389,3 +389,132 @@ if (globalThis.document && globalThis.dispatchEvent) {
   globalThis.DDDMotion.adoptHost = adoptDDDMotionIconHost;
   globalThis.dispatchEvent(new CustomEvent("ddd-motion-ready"));
 }
+
+/**
+ * Glyph motions: the part motions of HAX's multi-part network glyphs (the
+ * icons in hax-network-bar and every place that draws a network property).
+ * An icon motion moves a whole icon; a glyph motion moves one part of an SVG
+ * glyph, and a glyph plays several at once, each with its own timing and
+ * delay (the brain's neurons fire in turn while its links signal). Keyframes
+ * only: a glyph's own styles say which part plays which motion, for how long
+ * and with what delay, and wrap that in prefers-reduced-motion:
+ * no-preference, so nothing moves for a visitor who asks for less.
+ *
+ *   spread-left, spread-right  a part steps out sideways and back
+ *   pop      a part grows and settles
+ *   nudge    a part steps forward and grows a little
+ *   blink    a part fades and returns, in two steps
+ *   swing    a part rocks either way about its transform-origin
+ *   scan     a line sweeps down and fades at either end
+ *   snap     a part drops into place, rotated in, then settles
+ *   float    a dot drifts out, swells and returns
+ *   signal   a link fades and returns
+ *   fire     a node swells and settles, like a firing neuron
+ *
+ *   import { DDDMotionGlyphKeyframes } from "@haxtheweb/d-d-d/lib/DDDMotion.js";
+ *   css`${DDDMotionGlyphKeyframes}
+ *     @media (prefers-reduced-motion: no-preference) {
+ *       .host:hover svg .part { animation: ddd-glyph-fire 1.2s ease-in-out infinite; }
+ *     }`
+ */
+export const DDDMotionGlyphNames = [
+  "spread-left",
+  "spread-right",
+  "pop",
+  "nudge",
+  "blink",
+  "swing",
+  "scan",
+  "snap",
+  "float",
+  "signal",
+  "fire",
+];
+
+export const DDDMotionGlyphKeyframes = css`
+  @keyframes ddd-glyph-spread-left {
+    50% {
+      transform: translateX(-1.6px);
+    }
+  }
+  @keyframes ddd-glyph-spread-right {
+    50% {
+      transform: translateX(1.6px);
+    }
+  }
+  @keyframes ddd-glyph-pop {
+    50% {
+      transform: scale(1.18);
+    }
+  }
+  @keyframes ddd-glyph-nudge {
+    50% {
+      transform: translateX(1.4px) scale(1.12);
+    }
+  }
+  @keyframes ddd-glyph-blink {
+    50% {
+      opacity: 0.25;
+    }
+  }
+  @keyframes ddd-glyph-swing {
+    25% {
+      transform: rotate(-9deg);
+    }
+    75% {
+      transform: rotate(9deg);
+    }
+  }
+  @keyframes ddd-glyph-scan {
+    0% {
+      transform: translateY(-1.6px);
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(1.6px);
+      opacity: 0.4;
+    }
+  }
+  @keyframes ddd-glyph-snap {
+    0% {
+      transform: translate(2.4px, -3px) rotate(16deg);
+    }
+    35%,
+    100% {
+      transform: none;
+    }
+    45% {
+      transform: scale(1.1);
+    }
+  }
+  @keyframes ddd-glyph-float {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    30% {
+      transform: translate(0.5px, -0.7px) scale(1.35);
+    }
+    65% {
+      transform: translate(-0.4px, 0.5px) scale(1);
+    }
+  }
+  @keyframes ddd-glyph-signal {
+    50% {
+      opacity: 0.35;
+    }
+  }
+  @keyframes ddd-glyph-fire {
+    0%,
+    60%,
+    100% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.6);
+    }
+  }
+`;

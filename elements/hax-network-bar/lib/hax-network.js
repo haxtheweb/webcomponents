@@ -3,6 +3,7 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { html, svg, css } from "lit";
+import { DDDMotionGlyphKeyframes } from "@haxtheweb/d-d-d/lib/DDDMotion.js";
 
 /**
  * The HAX network: one record per property, read by the network bar and by
@@ -20,7 +21,10 @@ import { html, svg, css } from "lit";
  * `on` are DDD
  * color names (the fill, and the ink that reads on it). `icon` is the plain
  * simple-icon to use where the property's own glyph cannot be drawn (Merlin,
- * for one). `label` and `purpose` are the English the bar's own strings
+ * for one), and `motion` the DDD icon motion that icon plays there.
+ * `glyphMotions` names the DDD glyph motions (DDDMotionGlyphNames in
+ * @haxtheweb/d-d-d/lib/DDDMotion.js) the property's own glyph plays on hover
+ * or focus. `label` and `purpose` are the English the bar's own strings
  * start from; the bar translates them through its `t`.
  */
 export const HAX_NETWORK = {
@@ -31,6 +35,8 @@ export const HAX_NETWORK = {
       color: "keystoneYellow",
       on: "coalyGray",
       icon: "hax:hax2022",
+      motion: "pop",
+      glyphMotions: ["spread-left", "spread-right", "pop"],
       label: "HAXTheWeb",
       purpose: "Why HAX is for you, and every way to get it.",
       relation: "The front door. It sends people to try, learn and install.",
@@ -40,6 +46,8 @@ export const HAX_NETWORK = {
       color: "futureLime",
       on: "coalyGray",
       icon: "av:play-circle-filled",
+      motion: "nudge",
+      glyphMotions: ["blink", "nudge"],
       label: "Build now",
       purpose: "Use HAX right now in this browser tab. Nothing to install.",
       relation:
@@ -50,6 +58,8 @@ export const HAX_NETWORK = {
       color: "skyBlue",
       on: "coalyGray",
       icon: "hardware:tv",
+      motion: "wiggle",
+      glyphMotions: ["swing", "scan"],
       label: "Learn",
       purpose: "Tutorials that teach HAX one flow at a time.",
       relation:
@@ -60,6 +70,8 @@ export const HAX_NETWORK = {
       color: "creekTeal",
       on: "coalyGray",
       icon: "hax:hax2022",
+      motion: "glow",
+      glyphMotions: ["scan", "fire"],
       label: "Lab",
       purpose:
         "HAX Lab: where students and junior developers learn by shipping real HAX work.",
@@ -71,6 +83,8 @@ export const HAX_NETWORK = {
       color: "inventOrange",
       on: "coalyGray",
       icon: "icons:extension",
+      motion: "tilt",
+      glyphMotions: ["snap"],
       label: "Web components",
       purpose: "Every HAX element, with live demos and walkthroughs.",
       relation: "The parts every HAX site and editor is built from.",
@@ -80,6 +94,8 @@ export const HAX_NETWORK = {
       color: "original87Pink",
       on: "white",
       icon: "lrn:network",
+      motion: "glow",
+      glyphMotions: ["signal", "fire", "float"],
       label: "PRAW",
       purpose:
         "The brain of the HAX ecosystem: every person, pillar and project, and how they connect.",
@@ -91,6 +107,8 @@ export const HAX_NETWORK = {
       color: "discoveryCoral",
       on: "coalyGray",
       icon: "image:palette",
+      motion: "wiggle",
+      glyphMotions: ["fire", "swing"],
       label: "Art",
       purpose:
         "The HAX art movement: posters, the Future Traveler across time, and playful tools like RPG me.",
@@ -102,6 +120,8 @@ export const HAX_NETWORK = {
       color: "athertonViolet",
       on: "coalyGray",
       icon: "face",
+      motion: "lift",
+      glyphMotions: [],
       label: "RPG me",
       purpose: "Make the character that is you across HAX.",
       within: "art",
@@ -113,6 +133,8 @@ export const HAX_NETWORK = {
       color: "beaverBlue",
       on: "white",
       icon: "social:school",
+      motion: "beat",
+      glyphMotions: ["fire", "blink"],
       label: "HAX at Penn State",
       purpose: "Penn State's home for HAX: many sites from one deploy.",
       deployment: true,
@@ -232,32 +254,32 @@ export const HaxNetworkGlyphStyles = css`
   @media (prefers-reduced-motion: no-preference) {
     .glyph-host:hover svg.glyph .g-l,
     .glyph-host:focus-visible svg.glyph .g-l {
-      animation: g-left 0.9s ease-in-out infinite;
+      animation: ddd-glyph-spread-left 0.9s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-r,
     .glyph-host:focus-visible svg.glyph .g-r {
-      animation: g-right 0.9s ease-in-out infinite;
+      animation: ddd-glyph-spread-right 0.9s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-h,
     .glyph-host:focus-visible svg.glyph .g-h {
-      animation: g-pop 0.9s ease-in-out infinite;
+      animation: ddd-glyph-pop 0.9s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-play,
     .glyph-host:focus-visible svg.glyph .g-play {
-      animation: g-nudge 0.8s ease-in-out infinite;
+      animation: ddd-glyph-nudge 0.8s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-dot,
     .glyph-host:focus-visible svg.glyph .g-dot {
-      animation: g-blink 0.8s steps(2, jump-none) infinite;
+      animation: ddd-glyph-blink 0.8s steps(2, jump-none) infinite;
     }
     .glyph-host:hover svg.glyph .g-ant,
     .glyph-host:focus-visible svg.glyph .g-ant {
       transform-origin: 50% 100%;
-      animation: g-wiggle 0.6s ease-in-out infinite;
+      animation: ddd-glyph-swing 0.6s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-scan,
     .glyph-host:focus-visible svg.glyph .g-scan {
-      animation: g-scan 0.7s var(--ddd-timing-linear, linear) infinite;
+      animation: ddd-glyph-scan 0.7s var(--ddd-timing-linear, linear) infinite;
     }
     .glyph-host:hover svg.glyph .g-scan2,
     .glyph-host:focus-visible svg.glyph .g-scan2 {
@@ -265,11 +287,11 @@ export const HaxNetworkGlyphStyles = css`
     }
     .glyph-host:hover svg.glyph .g-piece,
     .glyph-host:focus-visible svg.glyph .g-piece {
-      animation: g-snap 1.1s ease-out infinite;
+      animation: ddd-glyph-snap 1.1s ease-out infinite;
     }
     .glyph-host:hover svg.glyph .g-o,
     .glyph-host:focus-visible svg.glyph .g-o {
-      animation: g-float 1.6s ease-in-out infinite;
+      animation: ddd-glyph-float 1.6s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-o2,
     .glyph-host:focus-visible svg.glyph .g-o2 {
@@ -293,104 +315,20 @@ export const HaxNetworkGlyphStyles = css`
     }
     .glyph-host:hover svg.glyph .g-link,
     .glyph-host:focus-visible svg.glyph .g-link {
-      animation: g-signal 0.8s ease-in-out infinite;
+      animation: ddd-glyph-signal 0.8s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-n1,
     .glyph-host:focus-visible svg.glyph .g-n1 {
-      animation: g-fire 1.2s ease-in-out infinite;
+      animation: ddd-glyph-fire 1.2s ease-in-out infinite;
     }
     .glyph-host:hover svg.glyph .g-n2,
     .glyph-host:focus-visible svg.glyph .g-n2 {
-      animation: g-fire 1.2s ease-in-out 0.4s infinite;
+      animation: ddd-glyph-fire 1.2s ease-in-out 0.4s infinite;
     }
     .glyph-host:hover svg.glyph .g-n3,
     .glyph-host:focus-visible svg.glyph .g-n3 {
-      animation: g-fire 1.2s ease-in-out 0.8s infinite;
+      animation: ddd-glyph-fire 1.2s ease-in-out 0.8s infinite;
     }
   }
-  @keyframes g-left {
-    50% {
-      transform: translateX(-1.6px);
-    }
-  }
-  @keyframes g-right {
-    50% {
-      transform: translateX(1.6px);
-    }
-  }
-  @keyframes g-pop {
-    50% {
-      transform: scale(1.18);
-    }
-  }
-  @keyframes g-nudge {
-    50% {
-      transform: translateX(1.4px) scale(1.12);
-    }
-  }
-  @keyframes g-blink {
-    50% {
-      opacity: 0.25;
-    }
-  }
-  @keyframes g-wiggle {
-    25% {
-      transform: rotate(-9deg);
-    }
-    75% {
-      transform: rotate(9deg);
-    }
-  }
-  @keyframes g-scan {
-    0% {
-      transform: translateY(-1.6px);
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(1.6px);
-      opacity: 0.4;
-    }
-  }
-  @keyframes g-snap {
-    0% {
-      transform: translate(2.4px, -3px) rotate(16deg);
-    }
-    35%,
-    100% {
-      transform: none;
-    }
-    45% {
-      transform: scale(1.1);
-    }
-  }
-  @keyframes g-float {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1);
-    }
-    30% {
-      transform: translate(0.5px, -0.7px) scale(1.35);
-    }
-    65% {
-      transform: translate(-0.4px, 0.5px) scale(1);
-    }
-  }
-  @keyframes g-signal {
-    50% {
-      opacity: 0.35;
-    }
-  }
-  @keyframes g-fire {
-    0%,
-    60%,
-    100% {
-      transform: scale(1);
-    }
-    30% {
-      transform: scale(1.6);
-    }
-  }
+  ${DDDMotionGlyphKeyframes}
 `;
