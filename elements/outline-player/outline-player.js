@@ -127,8 +127,10 @@ class OutlinePlayer extends I18NMixin(
         :host([edit-mode]) #slot {
           display: none !important;
         }
+        /* room above the content for the editor; the sides keep their view
+           mode padding so the content column is the same width in both */
         :host([edit-mode]) #contentcontainer {
-          padding: 32px 8px 8px 8px;
+          padding-top: 32px;
         }
         #contentcontainer {
           max-width: 840px;

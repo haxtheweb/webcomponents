@@ -43,8 +43,9 @@ function arg(name, fallback) {
   return i > -1 && process.argv[i + 1] ? process.argv[i + 1] : fallback;
 }
 
-// themes that render site data rather than a page of content
-const SKIP = ["haxcms-json-theme", "haxcms-print-theme"];
+// themes that render site data rather than a page of content, and
+// link-card-theme, whose view mode shows the site's links instead of the page
+const SKIP = ["haxcms-json-theme", "haxcms-print-theme", "link-card-theme"];
 const themesFile = path.join(
   root,
   "elements",
