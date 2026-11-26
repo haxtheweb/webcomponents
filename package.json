@@ -56,6 +56,7 @@
     "lint:dead-code": "node scripts/dead-code-check.mjs",
     "lint:vision": "node scripts/vision-pairs-check.mjs",
     "lint:rules": "node scripts/rule-checks.mjs all",
+    "lint:baseline-apis": "node scripts/baseline-apis-check.mjs --base origin/master",
     "vision:gallery": "node scripts/vision-gallery.mjs",
     "precheck": "node scripts/precheck.mjs",
     "precheck:fix": "node scripts/precheck.mjs --fix",

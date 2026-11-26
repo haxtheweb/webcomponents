@@ -111,7 +111,7 @@ Before starting any work, check the unified issue queue:
 ### Browser support and outside guidance
 - **Browser Support:** Current and previous evergreen browsers. Baseline Widely available features without fallbacks; Baseline Newly available features behind feature detection with a working plain path; no polyfills.
   - Limited availability features need a reason in the PR plus the same feature detection (`'x' in obj`, `CSS.supports()`, `@supports`). Do not add a dependency only to fake a platform feature.
-  - `yarn lint` warns on JS built-ins and Web APIs that are not Widely available (`baseline-js/use-baseline` in `eslint.config.mjs`); [BROWSER-SUPPORT-MATRIX.md](BROWSER-SUPPORT-MATRIX.md) says how to mark a deliberate exception. Rule: `4e0800ef-32ff-42dc-83f0-bbb953d97554`.
+  - `yarn lint` warns on JS built-ins and Web APIs that are not Widely available (`baseline-js/use-baseline` in `eslint.config.mjs`), and a pull request may not add more of those warnings to a file (`yarn lint:baseline-apis`, enforced in the build workflow); [BROWSER-SUPPORT-MATRIX.md](BROWSER-SUPPORT-MATRIX.md) says how to mark a deliberate exception. Rule: `4e0800ef-32ff-42dc-83f0-bbb953d97554`.
 - **HAX rules win over outside guidance.** [Modern Web Guidance](https://github.com/GoogleChrome/modern-web-guidance) (MWG) and similar agent guidance are advice. Where they conflict with a rule in this file or in PRAW, follow the HAX rule and say in the PR which advice you set aside. Known conflicts:
   - no optional chaining (`?.`)
   - `globalThis`, not `window`

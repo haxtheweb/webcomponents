@@ -1,0 +1,4 @@
+{
+  "about": "Every place an element calls a model (a hosted provider's API or SDK, or a browser built-in model), for scripts/rule-checks.mjs model-calls. Each entry gives the file and, for each AI Content rule in https://github.com/haxtheweb/praw/blob/main/RULES.md (output validated, facts from the data, no self-approval, personal information stripped, nothing truncated silently, cost shown, tests make no paid calls), the test that shows the call site keeps it. The reference implementation is the Course Consultant in https://github.com/djfusco/hax-ai-canvas. Empty: no element calls a model today.",
+  "sites": []
+}

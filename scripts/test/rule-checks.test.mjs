@@ -1,5 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import {
   typescriptFindings,
   namesLts,
@@ -13,6 +14,13 @@ import {
   docsMissing,
   packageNameFindings,
   themeFindings,
+  countHaxcmsNamespace,
+  countRedIncorrect,
+  countUndeclaredTracking,
+  countLinkRewrites,
+  secretFindings,
+  modelCallFindings,
+  registryFindings,
 } from "../rule-checks.mjs";
 
 test("typescript: flags .ts, .tsx, .mts and .cts, allows .d.ts and .js", () => {
@@ -244,4 +252,147 @@ test("themes: each theme reaches HAXCMSLitElementTheme through its extends chain
   assert.equal(bad.length, 2);
   assert.match(bad[0], /does not extend HAXCMSLitElementTheme/);
   assert.match(bad[1], /file is missing/);
+});
+
+test("mfr-haxcms: counts the retired @haxcms/ namespace only", () => {
+  assert.equal(
+    countHaxcmsNamespace(
+      'MicroFrontendRegistry.call("@haxcms/pageCache", {});',
+    ),
+    1,
+  );
+  assert.equal(
+    countHaxcmsNamespace(
+      'MicroFrontendRegistry.call("@system/importSite"); call("@site/x")',
+    ),
+    0,
+  );
+});
+
+test("incorrect-colors: a wrong-answer rule painted red counts, purple does not", () => {
+  assert.equal(
+    countRedIncorrect(
+      ".answer.incorrect { color: var(--ddd-theme-default-error); }",
+    ),
+    1,
+  );
+  assert.equal(
+    countRedIncorrect(":host([wrong]) .mark { background-color: red; }"),
+    1,
+  );
+  assert.equal(
+    countRedIncorrect(".incorrect { color: var(--ddd-status-incorrect-ink); }"),
+    0,
+  );
+  assert.equal(
+    countRedIncorrect(
+      ".error-message { color: var(--ddd-theme-default-error); }",
+    ),
+    0,
+  );
+  assert.equal(countRedIncorrect(".correct { color: green; }"), 0);
+});
+
+test("tracking-declared: a file that sends xAPI declares its vocabulary", () => {
+  const sends =
+    'this.dispatchEvent(new CustomEvent("user-engagement", { detail }));';
+  assert.equal(countUndeclaredTracking(sends), 1);
+  assert.equal(
+    countUndeclaredTracking(
+      sends + " static get xapiVocabulary() { return {}; }",
+    ),
+    0,
+  );
+  assert.equal(
+    countUndeclaredTracking("const s = buildStatement(verb, object);"),
+    1,
+  );
+  assert.equal(
+    countUndeclaredTracking('this.addEventListener("click", go);'),
+    0,
+  );
+});
+
+test("link-rewrites: rewriting http links or upgrading requests counts", () => {
+  assert.equal(
+    countLinkRewrites('href = href.replace("http://", "https://");'),
+    1,
+  );
+  assert.equal(countLinkRewrites("url.replace(/^http:/, 'https:')"), 1);
+  assert.equal(
+    countLinkRewrites('meta.content = "upgrade-insecure-requests";'),
+    1,
+  );
+  assert.equal(countLinkRewrites("const u = new URL(href, base);"), 0);
+});
+
+test("secrets: high-confidence shapes, allow-listed by hash only", () => {
+  const key = "AIza" + "B".repeat(35);
+  assert.equal(secretFindings("a.json", `{"key":"${key}"}`).length, 1);
+  assert.equal(
+    secretFindings("a.txt", "-----BEGIN " + "PRIVATE KEY-----").length,
+    1,
+  );
+  assert.equal(secretFindings("a.txt", "token: ghp_short").length, 0);
+  const hash = createHash("sha256").update(key).digest("hex");
+  assert.equal(
+    secretFindings("a.json", `{"key":"${key}"}`, [
+      { file: "a.json", sha256: hash },
+    ]).length,
+    0,
+  );
+  assert.equal(
+    secretFindings("b.json", `{"key":"${key}"}`, [
+      { file: "a.json", sha256: hash },
+    ]).length,
+    1,
+  );
+});
+
+test("model-calls: a call site must be listed, and a test never reaches a model", () => {
+  const call =
+    'await fetch("https://api.openai.com/v1/chat/completions", opts);';
+  assert.equal(modelCallFindings("elements/x/x.js", call).length, 1);
+  assert.equal(
+    modelCallFindings("elements/x/x.js", call, [{ file: "elements/x/x.js" }])
+      .length,
+    0,
+  );
+  assert.equal(
+    modelCallFindings("elements/x/test/x.test.js", call, [
+      { file: "elements/x/test/x.test.js" },
+    ]).length,
+    1,
+  );
+  assert.equal(
+    modelCallFindings("elements/x/x.js", "const s = await Summarizer.create();")
+      .length,
+    1,
+  );
+  assert.equal(
+    modelCallFindings(
+      "elements/x/x.js",
+      'import x from "./llms.js"; fetch("/x/api/v1/site");',
+    ).length,
+    0,
+  );
+});
+
+test("wc-registry: @haxtheweb entries resolve, and the demo copy matches", () => {
+  const reg = { "a-b": "@haxtheweb/a-b/a-b.js", "x-y": "@other/x/x.js" };
+  const has = (f) => f === "elements/a-b/a-b.js";
+  assert.deepEqual(registryFindings(reg, reg, has), []);
+  assert.equal(
+    registryFindings({ ...reg, "c-d": "@haxtheweb/c-d/c-d.js" }, null, has)
+      .length,
+    1,
+  );
+  assert.match(
+    registryFindings(
+      reg,
+      { "a-b": "@haxtheweb/a-b/old.js", "x-y": "@other/x/x.js" },
+      has,
+    )[0],
+    /differs/,
+  );
 });
