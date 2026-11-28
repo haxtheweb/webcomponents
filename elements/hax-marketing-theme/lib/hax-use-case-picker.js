@@ -438,8 +438,8 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
           font-weight: var(--ddd-font-weight-bold);
         }
         ol {
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-3)
-            var(--ddd-spacing-3) var(--ddd-spacing-8);
+          padding-block: var(--ddd-spacing-3);
+          padding-inline: var(--ddd-spacing-8) var(--ddd-spacing-3);
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-3);
