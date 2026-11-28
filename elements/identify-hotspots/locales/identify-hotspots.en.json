@@ -31,7 +31,7 @@
   "addContent": "Add content",
   "quiz": "Quiz",
   "practice": "Practice",
-  "questionType": "Identify hotspots",
+  "questionType": "Hotspots",
   "attemptsUsed": "Attempt {used} of {max}",
   "showDirections": "Show directions",
   "hideDirections": "Hide directions",

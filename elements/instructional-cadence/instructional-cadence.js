@@ -85,6 +85,12 @@ export class InstructionalCadence extends DDDSuper(I18NMixin(LitElement)) {
       beatsLabel: "{n} pages, {rests} rests, climax on page {climax}",
       score: "Score",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/instructional-cadence.en.json", import.meta.url)
+          .href + "/../",
+    });
   }
 
   static get properties() {

@@ -7,7 +7,7 @@
   "lensFlagSay": "Flag lens. Pick the piece you want to report or wish for.",
   "lensesOffSay": "Lenses off. The system works as usual; the rims show the goggles are still on.",
   "followingSay": "Following {name}: everything they made is outlined. Click any piece to see who else made it.",
-  "putOnSay": "You are seeing what the Future Traveler sees. Point at anything to see how it is made.",
+  "putOnSay": "You are seeing what the Future Traveler sees. {lens}",
   "takeOffSay": "Goggles off.",
   "holdingSay": "Holding still on {tag}. Press Escape to let go.",
   "seeItAlone": "See it alone",

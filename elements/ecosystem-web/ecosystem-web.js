@@ -348,6 +348,12 @@ export class EcosystemWeb extends DDDSuper(I18NMixin(LitElement)) {
       problems: "Problems in this web",
       noProblems: "No problems found in this web.",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/ecosystem-web.en.json", import.meta.url).href +
+        "/../",
+    });
   }
 
   static get properties() {

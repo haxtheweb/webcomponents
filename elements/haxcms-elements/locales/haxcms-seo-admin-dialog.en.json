@@ -43,5 +43,10 @@
   "unableToLoadSeoSettings": "Unable to load SEO settings.",
   "noSeoSettings": "No SEO settings are available.",
   "normalizeSlugs": "Normalize slugs",
-  "save": "Save"
+  "save": "Save",
+  "changed": "changed",
+  "hasChanges": "has changes",
+  "off": "Off",
+  "on": "On",
+  "seo": "SEO"
 }

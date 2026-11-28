@@ -95,7 +95,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       heading: "Heading",
       image: "Image",
       columns: "Columns",
-      blocks: "Blocks…",
+      blocksMenu: "Blocks…",
       allBlocks: "all blocks",
       back: "Back",
       indent: "Indent",
@@ -1147,7 +1147,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       <div class="sep"></div>
       ${this._mi(
         "icons:view-quilt",
-        this.t.blocks,
+        this.t.blocksMenu,
         (e) =>
           this._fire(e.currentTarget, "insert-block-picker", {
             above: where === "above",

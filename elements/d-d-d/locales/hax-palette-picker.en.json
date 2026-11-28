@@ -6,5 +6,7 @@
   "currentlyActiveAndSelectedPalette": "Currently active and selected palette",
   "currentlyActivePalette": "Currently active palette",
   "selectedPaletteToApply": "Selected palette to apply",
-  "paletteNumber": "Palette {number}"
+  "paletteNumber": "Palette {number}",
+  "activePaletteLabel": "Active palette",
+  "colorNumber": "Colour {number}"
 }

@@ -3574,7 +3574,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       clonePage: "Clone page",
       delete: "Delete page",
       siteSettings: "Site Settings",
-      siteMenu: "Site settings quick links",
       siteMenuDashboard: "Dashboard",
       closeMerlin: "Close search and commands",
       siteMenuContent: "Content",

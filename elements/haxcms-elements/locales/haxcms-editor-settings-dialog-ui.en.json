@@ -9,5 +9,6 @@
   "novice": "Novice",
   "expert": "Expert",
   "toolbarPreviewAlt": "{audience} editing toolbar preview",
-  "savingEditorSettingsFailed": "Saving editor settings failed: {error}"
+  "savingEditorSettingsFailed": "Saving editor settings failed: {error}",
+  "changed": "changed"
 }

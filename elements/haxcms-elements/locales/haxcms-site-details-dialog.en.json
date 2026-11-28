@@ -12,5 +12,9 @@
   "forceBrowserUpgradeDescription": "Require evergreen browsers before loading the site experience.",
   "unableToLoadSiteDetails": "Unable to load site details.",
   "noSiteDetails": "No site details are available.",
-  "save": "Save"
+  "save": "Save",
+  "changed": "changed",
+  "off": "Off",
+  "on": "On",
+  "titleRequired": "Enter a title for the site."
 }

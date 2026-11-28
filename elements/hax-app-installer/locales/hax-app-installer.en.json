@@ -21,7 +21,7 @@
   "configureSystemDescription": "Set up your administrator account for the new HAX site.",
   "adminUsername": "Admin username",
   "adminPassword": "Admin password",
-  "passwordHelp": "Leave blank for an auto-generated secure password, or enter 10+ characters with at least one letter and one number.",
+  "passwordHelp": "Enter a password that meets all the requirements below, then confirm it to enable installation.",
   "confirmPassword": "Confirm password",
   "passwordsDoNotMatch": "Passwords do not match.",
   "passwordsMatch": "Passwords match.",

@@ -32,5 +32,8 @@
   "answered": "Answered",
   "done": "Done",
   "percentComplete": "{percent}% complete",
-  "complete": "Complete"
+  "complete": "Complete",
+  "editorTools": "Editor tools",
+  "showTracked": "Show what's tracked",
+  "showTrackedDetail": "Flags every block on the page: what counts toward progress, what sends data and what nobody has declared. Only people who can edit this site see this."
 }

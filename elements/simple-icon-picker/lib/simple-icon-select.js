@@ -9,6 +9,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 // only registers iconset locations)
 import "@haxtheweb/simple-icon/lib/simple-iconset-manifest.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * parse an Array-or-JSON-string property into an array (or false when empty)
@@ -105,13 +106,14 @@ const SUPPORTS_POPOVER =
  * @element simple-icon-select
  * @demo demo/index.html
  */
-class SimpleIconSelect extends LitElement {
+class SimpleIconSelect extends I18NMixin(LitElement) {
   static get tag() {
     return "simple-icon-select";
   }
 
   static get properties() {
     return {
+      ...super.properties,
       /**
        * Allow "No icon" to be selected
        */
@@ -150,7 +152,9 @@ class SimpleIconSelect extends LitElement {
 
   constructor() {
     super();
+    this.t = this.t || {};
     this.t = {
+      ...this.t,
       selectAnIcon: "Select an icon",
       searchIcons: "Search icons",
       noIcon: "No icon",
@@ -158,6 +162,12 @@ class SimpleIconSelect extends LitElement {
       noIconsAvailable: "No icons available",
       showingIcons: "{shown} of {total} icons",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("../locales/simple-icon-select.en.json", import.meta.url).href +
+        "/../",
+    });
     this.allowNull = true; // default true to match simple-icon-picker
     this.icons = [];
     this.includeSets = [];

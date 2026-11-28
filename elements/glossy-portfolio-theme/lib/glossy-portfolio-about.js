@@ -27,6 +27,12 @@ export class GlossyPortfolioAbout extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("../locales/glossy-portfolio-about.en.json", import.meta.url)
+          .href + "/../",
+    });
   }
 
   // Lit reactive properties

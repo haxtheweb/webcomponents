@@ -230,10 +230,10 @@ class Store {
     this.t = {
       close: "Close",
       search: "Search",
-      tags: "Content tags",
+      contentTags: "Content tags",
       random: "Random page",
-      home: "Home page",
-      print: "Print page",
+      homePage: "Home page",
+      printPage: "Print page",
       pageNotFound: "Page not found",
     };
     // Store is not an element; register it against the shared haxcms namespace

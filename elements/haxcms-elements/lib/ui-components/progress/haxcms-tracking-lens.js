@@ -177,6 +177,14 @@ export class HAXCMSTrackingLens extends I18NMixin(DDDSuper(LitElement)) {
       done: "Done",
       editingPaused: "Paused while editing",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL(
+          "../../../locales/haxcms-tracking-lens.en.json",
+          import.meta.url,
+        ).href + "/../",
+    });
     this.__disposer = [];
     this._onScroll = () => this._schedule();
     this._onClickCapture = (e) => this._ghostCheck(e);

@@ -43,5 +43,7 @@
   "appearanceNote": "Configure theme, palette, branding, and layout regions for your site.",
   "noAppearanceSettings": "No appearance settings are available.",
   "themePreview": "Theme Preview",
-  "save": "Save"
+  "save": "Save",
+  "accentNone": "None",
+  "changed": "changed"
 }
