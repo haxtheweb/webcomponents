@@ -276,6 +276,36 @@ describe("hax-marketing-theme", function () {
     );
   });
 
+  it("takes the header call to action to the starter picker", async () => {
+    const root = await show("start", { cta: "Start building" });
+    const picker = globalThis.document.createElement("hax-use-case-picker");
+    picker.setAttribute("source", "javascript:void(0)");
+    element.appendChild(picker);
+    const go = new MouseEvent("click", { bubbles: true, cancelable: true });
+    root.querySelector("header a.cta").dispatchEvent(go);
+    expect(go.defaultPrevented).to.be.true;
+    expect(picker.getAttribute("tabindex")).to.equal("-1");
+    picker.remove();
+  });
+
+  it("lets the header call to action go home when the picker is not on the page", async () => {
+    const root = await show("compare", { cta: "Start building" });
+    let prevented = null;
+    // the test page must not navigate; record what the theme did first
+    const hold = (e) => {
+      prevented = e.defaultPrevented;
+      e.preventDefault();
+    };
+    root.addEventListener("click", hold);
+    root
+      .querySelector("header a.cta")
+      .dispatchEvent(
+        new MouseEvent("click", { bubbles: true, cancelable: true }),
+      );
+    root.removeEventListener("click", hold);
+    expect(prevented).to.be.false;
+  });
+
   it("shows the page description as the lede", async () => {
     const root = await show("start");
     expect(root.querySelector(".lede").textContent.trim()).to.equal(

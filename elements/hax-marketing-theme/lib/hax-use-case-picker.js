@@ -9,6 +9,9 @@ import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
+// installs the hax command; @haxtheweb/create needs Node.js 22 or newer
+const INSTALL = "npm install --global @haxtheweb/create";
+
 // which this.t keys finish "I want a website that..." for a skeleton, and
 // name the site it makes; a skeleton not listed shows its own title
 const PHRASES = {
@@ -83,6 +86,24 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
       build: "Build my site",
       agentLink: "Link an agent can hand you",
       terminal: "Or from a terminal",
+      terminalHint:
+        "Installs the hax command, then makes your site in a new folder and opens it in your browser.",
+      haveHax: "Already have hax? Skip the install:",
+      firstTime: "First time using a terminal?",
+      stepNode: "Install Node.js 22 or newer (the LTS download) from",
+      stepOpen:
+        "Open a terminal. macOS: Terminal (search with Spotlight). Windows: PowerShell (Start menu). Linux: your terminal app.",
+      stepPaste:
+        "Paste the command above and press Enter. Your site folder is made wherever the terminal is, usually your home folder.",
+      stepSplit:
+        "If PowerShell says && is not valid, run the two parts one at a time:",
+      stepInstall: "Install hax, once per computer",
+      stepMake: "Make your site",
+      stepOpenSite:
+        "Your site opens at a localhost address in your browser. Press Ctrl+C in the terminal to stop it. To work on it again later:",
+      stepPermission:
+        "If the install says permission denied (EACCES) on macOS or Linux, follow",
+      npmGuide: "npm's guide to fixing permissions",
       copy: "Copy",
       copied: "Copied",
       loading: "Loading the starter sites.",
@@ -363,6 +384,77 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
             var(--ddd-theme-default-potentialMidnight)
           );
         }
+        .terminal {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+        .terminal .rowlabel {
+          margin-bottom: var(--ddd-spacing-0);
+        }
+        .hint {
+          font-size: var(--ddd-font-size-5xs);
+        }
+        details {
+          max-width: none;
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+          border: var(--ddd-border-size-xs) solid
+            light-dark(
+              var(--ddd-theme-default-slateGray),
+              var(--ddd-theme-default-limestoneLight)
+            );
+          border-radius: var(--ddd-radius-xs);
+        }
+        /* the card's own ink and surface, not the DDD summary colors: those
+           follow the page primary, which can sit too close to this surface */
+        details > summary,
+        details[open] > summary {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          padding: var(--ddd-spacing-3);
+          color: inherit;
+          filter: none;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        details summary:hover,
+        details summary:focus {
+          color: inherit;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+        }
+        summary:focus-visible,
+        details a:focus-visible {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
+        }
+        details a {
+          color: inherit;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        ol {
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-3)
+            var(--ddd-spacing-3) var(--ddd-spacing-8);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+        }
+        ol,
+        ol li {
+          margin: var(--ddd-spacing-0);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-150);
+        }
+        li > .row,
+        li > .rowlabel,
+        li > .hint {
+          margin-top: var(--ddd-spacing-2);
+        }
         code:focus-visible {
           outline: var(--ddd-focus-ring);
           outline-offset: var(--ddd-focus-offset);
@@ -370,8 +462,10 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
         code {
           flex: 1 1 auto;
           min-width: 0;
-          overflow-x: auto;
-          white-space: nowrap;
+          /* the whole command stays readable on a phone: it wraps instead
+             of hiding its end, and Copy still takes it as one line */
+          white-space: normal;
+          overflow-wrap: anywhere;
           padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           font-family: var(--ddd-font-mono, monospace);
           font-size: var(--ddd-font-size-5xs);
@@ -441,14 +535,23 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
     return url.href;
   }
 
-  _command() {
-    const folder =
+  _folder() {
+    return (
       this._name()
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "") || "mysite";
+        .replace(/^-|-$/g, "") || "mysite"
+    );
+  }
+
+  _command() {
     const machineName = `${this.selected}`.replace(/[^a-z0-9-]/g, "");
-    return `hax site ${folder} --skeleton-machine-name ${machineName} --y`;
+    return `hax site ${this._folder()} --skeleton-machine-name ${machineName} --y`;
+  }
+
+  // a first-timer has no hax yet, so the line they copy installs it first
+  _fullCommand() {
+    return `${INSTALL} && ${this._command()}`;
   }
 
   _nameInput(e) {
@@ -558,30 +661,78 @@ class HaxUseCasePicker extends I18NMixin(DDD) {
                         </div>`
                     : ``
                 }
-                <div>
+                <div class="terminal">
                   <span class="rowlabel" id="terminallabel"
                     >${this.t.terminal}</span
                   >
-                  <div class="row">
-                    <code
-                      tabindex="0"
-                      role="region"
-                      aria-labelledby="terminallabel"
-                      >${this._command()}</code
-                    >
-                    <button
-                      class="copy"
-                      @click="${() => this._copy("cli", this._command())}"
-                    >
-                      ${this._copied === "cli" ? this.t.copied : this.t.copy}
-                    </button>
-                  </div>
+                  ${this._row("full", "terminallabel", this._fullCommand())}
+                  <p class="hint">${this.t.terminalHint}</p>
+                  <span class="rowlabel" id="havehaxlabel"
+                    >${this.t.haveHax}</span
+                  >
+                  ${this._row("cli", "havehaxlabel", this._command())}
+                  <details>
+                    <summary>${this.t.firstTime}</summary>
+                    <ol>
+                      <li>
+                        ${this.t.stepNode}
+                        <a
+                          href="https://nodejs.org/en/download"
+                          target="_blank"
+                          rel="noopener"
+                          >nodejs.org</a
+                        >.
+                      </li>
+                      <li>${this.t.stepOpen}</li>
+                      <li>
+                        ${this.t.stepPaste}
+                        <p class="hint">${this.t.stepSplit}</p>
+                        <span class="rowlabel" id="steplabel1"
+                          >${this.t.stepInstall}</span
+                        >
+                        ${this._row("install", "steplabel1", INSTALL)}
+                        <span class="rowlabel" id="steplabel2"
+                          >${this.t.stepMake}</span
+                        >
+                        ${this._row("make", "steplabel2", this._command())}
+                      </li>
+                      <li>
+                        <span id="steplabel3">${this.t.stepOpenSite}</span>
+                        ${this._row(
+                          "serve",
+                          "steplabel3",
+                          `cd ${this._folder()} && hax serve`,
+                        )}
+                      </li>
+                      <li>
+                        ${this.t.stepPermission}
+                        <a
+                          href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally"
+                          target="_blank"
+                          rel="noopener"
+                          >${this.t.npmGuide}</a
+                        >.
+                      </li>
+                    </ol>
+                  </details>
                 </div>
               `
             : html`<p>${this.t.loading}</p>`
         }
       </div>
     `;
+  }
+
+  // one copyable command, named by the label with the given id
+  _row(which, labelId, text) {
+    return html`<div class="row">
+      <code tabindex="0" role="region" aria-labelledby="${labelId}"
+        >${text}</code
+      >
+      <button class="copy" @click="${() => this._copy(which, text)}">
+        ${this._copied === which ? this.t.copied : this.t.copy}
+      </button>
+    </div>`;
   }
 
   // the skeleton's own screenshot: the full-size image beside its thumbnail
