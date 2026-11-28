@@ -14,5 +14,13 @@
   "selectAllButton": "Select All",
   "deselectAllButton": "Deselect All",
   "selectedOfAvailable": "{selected} selected / {total} available",
-  "savingBlocksFailed": "Saving blocks failed: {error}"
+  "savingBlocksFailed": "Saving blocks failed: {error}",
+  "blockOff": "{title} off",
+  "blockOn": "{title} on",
+  "blocksChanged": "{count} blocks",
+  "changed": "changed",
+  "closePreview": "Close preview",
+  "groupActions": "{category} blocks",
+  "groupCount": "{selected} of {total} on",
+  "previewOf": "Preview {title}"
 }

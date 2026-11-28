@@ -136,5 +136,15 @@
   "outlinePagesCount": "{count} pages",
   "outlinePercent": "{percent}%",
   "outlinePercentComplete": "{percent}% complete",
-  "outlineComplete": "Complete"
+  "outlineComplete": "Complete",
+  "mapNothingTracked": "Nothing on this page is tracked, so it shows as visited, not done.",
+  "mapOutlineKey": "Part of",
+  "mapRelatedKey": "Related pages",
+  "mapRelatedTo": "Related to: {names}",
+  "mapShowRelated": "Show related pages",
+  "tableRelated": "Related pages",
+  "zoom": "Zoom",
+  "zoomFit": "Fit the whole map",
+  "zoomIn": "Zoom in",
+  "zoomOut": "Zoom out"
 }

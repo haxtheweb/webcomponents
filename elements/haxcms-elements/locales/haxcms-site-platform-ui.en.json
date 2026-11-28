@@ -54,5 +54,9 @@
   "onlineMediaFeatureLabel": "Online media search",
   "onlineMediaFeatureDescription": "Enables online media integrations and remote media search sources.",
   "communityFeatureLabel": "Community outreach",
-  "communityFeatureDescription": "Enables community-related command search context and outreach-oriented actions."
+  "communityFeatureDescription": "Enables community-related command search context and outreach-oriented actions.",
+  "changed": "changed",
+  "featureOff": "{label} off",
+  "featureOn": "{label} on",
+  "featuresOnCount": "{on} of {total} on"
 }

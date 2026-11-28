@@ -25,7 +25,7 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
     this.t.print = "Print";
     this.t.redirectingToPrint = "Redirecting to print mode...";
     this.t.noPageSpecified = "No page specified for printing";
-    this.t.pageNotFound = "The specified page could not be found";
+    this.t.printPageNotFound = "The specified page could not be found";
     this.t.printError = "Print Error";
     this.t.printYouCanTry = "You can try:";
     this.t.printTryGoingBack =
@@ -119,7 +119,7 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
       targetPage = this.validatePage(pageSlug);
       if (!targetPage) {
         console.warn(`Page not found or not accessible: ${pageSlug}`);
-        this.errorMessage = this.t.pageNotFound;
+        this.errorMessage = this.t.printPageNotFound;
         return;
       }
     } else {

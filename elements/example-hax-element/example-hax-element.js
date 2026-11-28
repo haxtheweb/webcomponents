@@ -29,7 +29,7 @@ export class ExampleHaxElement extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/example-hax-element.ar.json", import.meta.url).href +
+        new URL("./locales/example-hax-element.en.json", import.meta.url).href +
         "/../",
     });
   }

@@ -12,6 +12,7 @@ import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js
 import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-styles.js";
 import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 import { whenIdle } from "@haxtheweb/utils/lib/idle.js";
+import { I18NManagerStore } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";
 import {
   getEditModeContentSheet,
@@ -614,6 +615,17 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
+    }
+    // a theme that did not register its own locales in its constructor uses
+    // the shared haxcms namespace, so its this.t strings still get translated
+    if (!I18NManagerStore.elements.find((el) => el.context === this)) {
+      I18NManagerStore.registerLocalization({
+        context: this,
+        namespace: "haxcms",
+        localesPath:
+          new URL("../../locales/haxcms.en.json", import.meta.url).href +
+          "/../",
+      });
     }
 
     // intentional post-render reactive set; see the contentContainer

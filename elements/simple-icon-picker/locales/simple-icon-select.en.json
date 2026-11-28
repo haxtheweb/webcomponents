@@ -1,0 +1,8 @@
+{
+  "selectAnIcon": "Select an icon",
+  "searchIcons": "Search icons",
+  "noIcon": "No icon",
+  "noIconsFoundFor": "No icons found for \"{search}\"",
+  "noIconsAvailable": "No icons available",
+  "showingIcons": "{shown} of {total} icons"
+}

@@ -105,7 +105,6 @@ class HaxTray extends I18NMixin(winEventsElement(SimpleColors)) {
       media: "Media",
       blocks: "Blocks",
       cancel: "Cancel",
-      cancelWithoutSaving: "Cancel without saving",
       configure: "Configure",
       advanced: "Advanced",
       developer: "Developer",

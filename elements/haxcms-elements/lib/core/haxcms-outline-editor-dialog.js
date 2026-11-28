@@ -161,7 +161,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
                 @click="${this._saveTap}"
                 class="hax-modal-btn"
               >
-                ${this.t.save}
+                ${this.t.saveOutline}
               </button>
             </div>`
       }
@@ -188,7 +188,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      save: "Save Outline",
+      saveOutline: "Save Outline",
       addPage: "Add page",
       outlineNewPageCreated: "{count} new page will be created",
       outlineNewPagesCreated: "{count} new pages will be created",
@@ -698,7 +698,7 @@ class HAXCMSOutlineEditorDialog extends HaxcmsAdminSectionMixin(
         message: this.t.outlineSaveConfirm.replace("{changes}", () =>
           sumChanges.replace(/\n$/, ""),
         ),
-        confirmLabel: this.t.save,
+        confirmLabel: this.t.saveOutline,
         cancelLabel: this.t.cancel,
       });
     }

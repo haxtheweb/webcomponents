@@ -42,5 +42,6 @@
   "loadFailed": "Could not load",
   "reviewed": "Walkthrough reviewed",
   "awaitingReview": "Walkthrough awaiting review",
-  "stale": "Walkthrough may be out of date"
+  "stale": "Walkthrough may be out of date",
+  "topics": "Topics"
 }

@@ -63,7 +63,8 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       layout: "Layout",
       designSystem: "Design system",
       inspiredBy: "Inspired by",
-      source: "Made by",
+      // "source" is shared in the app-hax namespace as "Source"
+      madeBy: "Made by",
       hax: "HAX",
       you: "You",
       yours: "Your organization",
@@ -651,7 +652,7 @@ export class AppHaxDesignBrowser extends I18NMixin(DDDSuper(LitElement)) {
       const picks = this.selected[key] || [];
       return html`
         <fieldset>
-          <legend>${this.t[key]}</legend>
+          <legend>${this.t[key === "source" ? "madeBy" : key]}</legend>
           ${[...values.entries()]
             .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
             .map(

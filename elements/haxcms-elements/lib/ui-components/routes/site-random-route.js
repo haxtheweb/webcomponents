@@ -21,9 +21,9 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
     super();
     this.windowControllers = new AbortController();
     this.HAXCMSI18NMixinBase = "../../../";
-    this.t.random = "Random Page";
-    this.t.navigating = "Taking you to a random page...";
-    this.t.noPages = "No published pages found";
+    this.t.random = "Random page";
+    this.t.navigatingRandom = "Taking you to a random page...";
+    this.t.noPublishedPages = "No published pages found";
 
     // Perform the random selection and redirection immediately
     this.performRandomRedirect();
@@ -98,8 +98,8 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
       <div role="status" aria-live="polite">
         ${
           !randomPage
-            ? html`<p>${this.t.noPages}</p>`
-            : html`<p>${this.t.navigating}</p>`
+            ? html`<p>${this.t.noPublishedPages}</p>`
+            : html`<p>${this.t.navigatingRandom}</p>`
         }
       </div>
     `;

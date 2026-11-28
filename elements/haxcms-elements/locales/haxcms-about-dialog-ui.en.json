@@ -41,5 +41,6 @@
   "apiLinksOpenapi": "Explore the site API contract at {openapi}.",
   "learnMoreInTheHaxEcosystem": "Learn more in the HAX ecosystem:",
   "dataFormatsGuide": "Data formats guide",
-  "haxAiOverview": "HAX AI overview"
+  "haxAiOverview": "HAX AI overview",
+  "shortcutContextLabel": "Shortcut context"
 }

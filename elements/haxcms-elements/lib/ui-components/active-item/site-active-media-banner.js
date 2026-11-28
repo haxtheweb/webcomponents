@@ -11,8 +11,9 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
+export class SiteActiveMediaBanner extends I18NMixin(DDDSuper(LitElement)) {
   static get tag() {
     return "site-active-media-banner";
   }
@@ -29,10 +30,20 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
       ? "av:pause-circle-outline"
       : "av:play-circle-outline";
     this.description = "";
+    this.t = this.t || {};
     this.t = {
+      ...this.t,
       pauseVideo: "Pause background video",
       playVideo: "Play background video",
     };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL(
+          "../../../locales/site-active-media-banner.en.json",
+          import.meta.url,
+        ).href + "/../",
+    });
 
     this.__disposer = this.__disposer ? this.__disposer : [];
 
@@ -71,6 +82,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
 
   static get properties() {
     return {
+      t: { type: Object },
       mediaSource: { type: String, reflect: true, attribute: "media-source" },
       fileExt: { type: String, attribute: "file-ext" },
       mediaType: { type: String, reflect: true, attribute: "media-type" },

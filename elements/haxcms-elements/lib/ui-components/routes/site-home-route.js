@@ -21,7 +21,7 @@ export class SiteHomeRoute extends HAXCMSI18NMixin(DDD) {
     super();
     this.windowControllers = new AbortController();
     this.HAXCMSI18NMixinBase = "../../../";
-    this.t.home = "Home Page";
+    this.t.homePage = "Home page";
     this.t.navigating = "Taking you to the home page...";
     this.t.noPages = "No pages found";
 
