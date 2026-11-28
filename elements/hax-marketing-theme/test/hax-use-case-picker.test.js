@@ -78,6 +78,29 @@ describe("hax-use-case-picker", function () {
     );
   });
 
+  it("puts the install in front of the command for a first timer", async () => {
+    const root = await show();
+    expect(element._fullCommand()).to.equal(
+      "npm install --global @haxtheweb/create && hax site my-course --skeleton-machine-name online-course --y",
+    );
+    const lines = [...root.querySelectorAll(".terminal code")].map((code) =>
+      code.textContent.trim(),
+    );
+    expect(lines[0]).to.equal(element._fullCommand());
+    expect(lines[1]).to.equal(element._command());
+    expect(lines).to.include("npm install --global @haxtheweb/create");
+    expect(lines).to.include("cd my-course && hax serve");
+    expect(root.querySelector(".terminal details summary")).to.exist;
+  });
+
+  it("names every command by a label on the page", async () => {
+    const root = await show();
+    root.querySelectorAll(".terminal code").forEach((code) => {
+      const id = code.getAttribute("aria-labelledby");
+      expect(root.getElementById(id), id).to.exist;
+    });
+  });
+
   it("shows no link when the browser address is not http(s)", async () => {
     const root = await show({ browserUrl: "javascript:alert(1)" });
     expect(element._deepLink()).to.equal("");

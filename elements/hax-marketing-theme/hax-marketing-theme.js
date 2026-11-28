@@ -949,6 +949,29 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
     target.focus({ preventScroll: true });
   }
 
+  // the header call to action lands on the starter picker: on its page it
+  // scrolls there; from any other page it goes home, then scrolls once the
+  // picker has arrived with the page content
+  _toBuild(e) {
+    if (this.querySelector("hax-use-case-picker")) {
+      this._toContent(e);
+      return;
+    }
+    const home = this._items.length ? this._items[0] : null;
+    const until = Date.now() + 8000;
+    const look = () => {
+      const picker = this.querySelector("hax-use-case-picker");
+      if (picker && home && this.activeId === home.id) {
+        // a new page first scrolls to its top; go after that, once the
+        // picker has laid out
+        setTimeout(() => this._toContent(new Event("go")), 150);
+      } else if (Date.now() < until) {
+        globalThis.requestAnimationFrame(look);
+      }
+    };
+    globalThis.requestAnimationFrame(look);
+  }
+
   _toggleMenu(id) {
     this._menu = this._menu === id ? "" : id;
   }
@@ -1236,7 +1259,12 @@ class HaxMarketingTheme extends HAXCMSThemeParts(
             }
             ${
               home && v.cta
-                ? html`<a class="cta" href="${home.slug}">${v.cta}</a>`
+                ? html`<a
+                    class="cta"
+                    href="${home.slug}"
+                    @click="${this._toBuild}"
+                    >${v.cta}</a
+                  >`
                 : ``
             }
           </div>
